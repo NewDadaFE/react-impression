@@ -14,8 +14,9 @@ export default class Sidebar extends Component {
             <div className="sidebar">
                 <div className="sidebar-title">react-dui</div>
                 <div className="list-group">
+                    <Link to="/image" className="list-group-item">Image</Link>
                     <Link to="/button" className="list-group-item">Button</Link>
-                    <Link to="/button-group" className="list-group-item">Button Group</Link>
+                    <Link to="/button-group" className="list-group-item">Button-Group</Link>
                 </div>
             </div>
         );
