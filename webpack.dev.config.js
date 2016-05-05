@@ -1,0 +1,40 @@
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+module.exports = {
+    devtool: 'cheap-module-eval-source-map',
+    entry: [
+        'webpack-dev-server/client?http://localhost:9016',
+        'webpack/hot/only-dev-server',
+        'react-hot-loader/patch',
+        './src/scripts/index'
+    ],
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'app.js',
+        publicPath: '/'
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            '__SHOW_DEV_TOOLS__': false,
+            '__ENABLE_LOG__': true,
+            'NODE_ENV': 'development'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './index.html',
+            inject: true
+        })
+    ],
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            loaders: ['babel'],
+            exclude: /node_modules/,
+            include: path.join(__dirname, 'src')
+        }]
+    }
+};

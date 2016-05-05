@@ -1,0 +1,34 @@
+//
+// Layout
+// --------------------------------------------------
+// ***** .sidebar                             - 侧边栏
+// ***** .content                             - 主内容区
+
+
+//容器
+.appboard{
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+//侧边栏
+.sidebar{
+    height: 100%;
+    overflow: scroll;
+    width: $sidebar-width;
+    color: $sidebar-color;
+    background-color: $sidebar-bg;
+}
+
+.sidebar-heading{
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+}
+
+//主内容区
+.content{
+    flex: 1;
+    padding: 30px;//临时
+}

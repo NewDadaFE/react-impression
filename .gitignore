@@ -1,0 +1,10 @@
+/node_modules
+/bower_components
+/local
+/build
+/cache
+/app
+*.log
+/.idea
+/.sass-cache
+/bower_components
