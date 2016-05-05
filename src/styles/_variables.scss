@@ -287,7 +287,7 @@ $btn-padding-x-lg:               1.5rem !default;
 $btn-padding-y-lg:               .75rem !default;
 
 $btn-block-spacing-y:            5px !default;
-$btn-toolbar-margin:             5px !default;
+$btn-toolbar-margin:             15px !default;
 
 $split-btn-dropdown-toggle-padding-x:     8px !default;
 $split-btn-lg-dropdown-toggle-padding-x: 12px !default;
@@ -296,6 +296,9 @@ $split-btn-lg-dropdown-toggle-padding-x: 12px !default;
 $btn-border-radius:              $border-radius !default;
 $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
+
+
+$btn-group-active-box-shadow:    2px 2px 6px rgba(0, 0, 0, .18), -1px -1px 6px rgba(0, 0, 0, .18) !default;
 
 
 // Forms

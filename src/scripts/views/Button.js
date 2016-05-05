@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Help extends Component{
+export default class Button extends Component{
     render(){
         return (
             <div>
