@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 100%;
   margin-bottom: $spacer;
+  background-color: $table-bg;
 
   th,
   td {
@@ -14,17 +15,15 @@
     border-top: $table-border-width solid $table-border-color;
   }
 
-  thead th {
+  thead th{
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    border-bottom: $table-border-width solid $table-border-color;
+    background: $table-thead-bg;
   }
+
 
   tbody + tbody {
     border-top: (2 * $table-border-width) solid $table-border-color;
-  }
-
-  .table {
-    background-color: $body-bg;
   }
 }
 
@@ -67,7 +66,7 @@
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  tbody tr:nth-of-type(odd) {
+  tbody tr:nth-of-type(even) {
     background-color: $table-bg-accent;
   }
 }
@@ -84,19 +83,6 @@
     }
   }
 }
-
-
-// Table backgrounds
-//
-// Exact selectors below required to override `.table-striped` and prevent
-// inheritance to nested tables.
-
-// Generate the contextual variants
-@include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
 
 
 // Responsive tables
@@ -118,22 +104,15 @@
 }
 
 
-.thead-inverse {
-  th {
-    color: #fff;
-    background-color: $gray-dark;
-  }
-}
-.thead-default {
-  th {
-    color: $gray;
-    background-color: $gray-lighter;
-  }
-}
-
 .table-inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
+  &, thead th{
+    color: $table-inverse-color;
+    background-color: $table-inverse-bg;
+  }
+
+  thead th{
+    color: $table-inverse-thead-color;
+  }
 
   &.table-bordered {
     border: 0;
@@ -142,7 +121,7 @@
   th,
   td,
   thead th {
-    border-color: $gray;
+    border-color: $table-inverse-border-color;
   }
 }
 

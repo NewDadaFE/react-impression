@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Router, hashHistory } from 'react-router';
 import Layout from '../containers/Layout';
 import Image from '../views/Image';
+import Table from '../views/Table';
 import Button from '../views/Button';
 import ButtonGroup from '../views/ButtonGroup';
 
@@ -14,6 +15,7 @@ export default class App extends Component {
              <Router history={hashHistory}>
                 <Route path='/' component={Layout}>
                     <Route path='image' component={Image}/>
+                    <Route path='table' component={Table}/>
                     <Route path='button' component={Button}/>
                     <Route path='button-group' component={ButtonGroup}/>
                 </Route>
