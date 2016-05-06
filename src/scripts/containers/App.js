@@ -8,6 +8,7 @@ import ButtonGroup from '../views/ButtonGroup';
 import InputGroup from '../views/InputGroup';
 import Tag from '../views/Tag';
 import Alert from '../views/Alert';
+import Card from '../views/Card';
 
 /**
  * 主应用入口.
@@ -24,6 +25,7 @@ export default class App extends Component {
                     <Route path='input-group' component={InputGroup}/>
                     <Route path='tag' component={Tag}/>
                     <Route path='alert' component={Alert}/>
+                    <Route path='card' component={Card}/>
                 </Route>
             </Router>
         );
