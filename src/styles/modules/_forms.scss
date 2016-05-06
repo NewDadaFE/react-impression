@@ -19,9 +19,7 @@
   background-clip: padding-box;
   border: $input-btn-border-width solid $input-border-color;
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
-  @include border-radius($input-border-radius);
-  @include box-shadow($input-box-shadow);
-  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+  @include transition(border-color ease-in-out .18s, box-shadow ease-in-out .18s);
 
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {

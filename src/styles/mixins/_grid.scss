@@ -31,6 +31,7 @@
   }
   margin-left:  ($gutter / -2);
   margin-right: ($gutter / -2);
+  margin-bottom: $spacer-y;
 }
 
 @mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {

@@ -58,10 +58,10 @@ $brand-danger:              #ea4335 !default;
 
 $enable-flex:               true !default;
 $enable-rounded:            true !default;
-$enable-shadows:            false !default;
-$enable-gradients:          false !default;
-$enable-transitions:        false !default;
-$enable-hover-media-query:  false !default;
+$enable-shadows:            true !default;
+$enable-gradients:          true !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  true !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
@@ -319,7 +319,7 @@ $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 $input-color:                    $gray !default;
-$input-border-color:             rgba(0,0,0,.15) !default;
+$input-border-color:             #ccc !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075) !default;
 
@@ -344,7 +344,7 @@ $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-pa
 
 $form-group-margin-bottom:       $spacer-y !default;
 
-$input-group-addon-bg:           $gray-lighter !default;
+$input-group-addon-bg:           $input-border-color !default;
 $input-group-addon-border-color: $input-border-color !default;
 
 $cursor-disabled:                not-allowed !default;
