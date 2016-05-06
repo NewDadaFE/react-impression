@@ -762,10 +762,12 @@ $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
 
-$breadcrumb-bg:                 $gray-lighter !default;
+$breadcrumb-bg:                 transparent !default;
 $breadcrumb-divider-color:      $gray-light !default;
 $breadcrumb-active-color:       $gray-light !default;
 $breadcrumb-divider:            "/" !default;
+
+$breadcrumb-arrow-divider:      ">" !default;
 
 
 // Media objects

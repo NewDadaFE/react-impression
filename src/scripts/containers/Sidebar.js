@@ -22,6 +22,7 @@ export default class Sidebar extends Component {
                     <Link to="/tag" className="list-group-item">Tag</Link>
                     <Link to="/alert" className="list-group-item">Alert</Link>
                     <Link to="/card" className="list-group-item">Card</Link>
+                    <Link to="/breadcrumb" className="list-group-item">Breadcrumb</Link>
                 </div>
             </div>
         );

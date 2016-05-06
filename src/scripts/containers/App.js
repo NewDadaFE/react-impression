@@ -9,6 +9,7 @@ import InputGroup from '../views/InputGroup';
 import Tag from '../views/Tag';
 import Alert from '../views/Alert';
 import Card from '../views/Card';
+import Breadcrumb from '../views/Breadcrumb';
 
 /**
  * 主应用入口.
@@ -26,6 +27,7 @@ export default class App extends Component {
                     <Route path='tag' component={Tag}/>
                     <Route path='alert' component={Alert}/>
                     <Route path='card' component={Card}/>
+                    <Route path='breadcrumb' component={Breadcrumb}/>
                 </Route>
             </Router>
         );

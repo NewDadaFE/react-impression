@@ -1,7 +1,7 @@
 .breadcrumb {
   padding: $breadcrumb-padding-y $breadcrumb-padding-x;
-  margin-bottom: $spacer-y;
   list-style: none;
+  margin-bottom: 0;
   background-color: $breadcrumb-bg;
   @include border-radius($border-radius);
   @include clearfix;
@@ -17,6 +17,10 @@
     padding-left: $breadcrumb-item-padding;
     color: $breadcrumb-divider-color;
     content: "#{$breadcrumb-divider}";
+
+    .breadcrumb-arrow &{
+      content: "#{$breadcrumb-arrow-divider}";
+    }
   }
 
   // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
