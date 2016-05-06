@@ -7,11 +7,15 @@
   text-shadow: $close-text-shadow;
   opacity: .2;
 
-  @include hover-focus {
+  &:hover{
     color: $close-color;
     text-decoration: none;
     cursor: pointer;
     opacity: .5;
+  }
+
+  &:focus{
+    outline: none;
   }
 }
 

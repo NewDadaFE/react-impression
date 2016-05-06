@@ -104,7 +104,7 @@
 // Organizationally, this must come after the `:hover` states.
 
 @include list-group-item-variant(success, $state-success-bg, $state-success-text);
-@include list-group-item-variant(info, $state-info-bg, $state-info-text);
+@include list-group-item-variant(primary, $state-primary-bg, $state-primary-text);
 @include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
 @include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
 

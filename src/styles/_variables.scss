@@ -45,7 +45,7 @@ $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
 $brand-primary:             #4285f4 !default;
-$brand-secondary:           #ea4335 !default;
+$brand-secondary:           complement($brand-primary) !default;
 $brand-success:             #34a853 !default;
 $brand-info:                #5bc0de !default;
 $brand-warning:             #fbbc05 !default;
@@ -554,22 +554,23 @@ $jumbotron-bg:                   $gray-lighter !default;
 //
 // Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #3c763d !default;
-$state-success-bg:               #dff0d8 !default;
-$state-success-border:           darken($state-success-bg, 5%) !default;
+$state-success-text:             darken($brand-success, 3%) !default;
+$state-success-bg:               lighten($brand-success, 36%) !default;
+$state-success-border:           darken($state-success-bg, 6%) !default;
 
-$state-info-text:                #31708f !default;
-$state-info-bg:                  #d9edf7 !default;
-$state-info-border:              darken($state-info-bg, 7%) !default;
+$state-primary-text:             darken($brand-primary, 3%) !default;
+$state-primary-bg:               lighten($brand-primary, 24%) !default;
+$state-primary-border:           darken($state-primary-bg, 6%) !default;
 
-$state-warning-text:             #8a6d3b !default;
-$state-warning-bg:               #fcf8e3 !default;
+$state-warning-text:             darken($brand-warning, 3%) !default;
+$state-warning-bg:               lighten($brand-warning, 36%) !default;
 $mark-bg:                        $state-warning-bg !default;
-$state-warning-border:           darken($state-warning-bg, 5%) !default;
+$state-warning-border:           darken($state-warning-bg, 12%) !default;
 
-$state-danger-text:              #a94442 !default;
-$state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken($state-danger-bg, 5%) !default;
+
+$state-danger-text:              darken($brand-danger, 3%) !default;
+$state-danger-bg:                lighten($brand-danger, 36%) !default;
+$state-danger-border:            darken($state-danger-bg, 6%) !default;
 
 
 // Cards
@@ -687,9 +688,9 @@ $alert-success-bg:            $state-success-bg !default;
 $alert-success-text:          $state-success-text !default;
 $alert-success-border:        $state-success-border !default;
 
-$alert-info-bg:               $state-info-bg !default;
-$alert-info-text:             $state-info-text !default;
-$alert-info-border:           $state-info-border !default;
+$alert-primary-bg:            $state-primary-bg !default;
+$alert-primary-text:          $state-primary-text !default;
+$alert-primary-border:        $state-primary-border !default;
 
 $alert-warning-bg:            $state-warning-bg !default;
 $alert-warning-text:          $state-warning-text !default;

@@ -20,6 +20,7 @@ export default class Sidebar extends Component {
                     <Link to="/button-group" className="list-group-item">Button-Group</Link>
                     <Link to="/input-group" className="list-group-item">Input-Group</Link>
                     <Link to="/tag" className="list-group-item">Tag</Link>
+                    <Link to="/alert" className="list-group-item">Alert</Link>
                 </div>
             </div>
         );
