@@ -10,6 +10,7 @@ import Tag from '../views/Tag';
 import Alert from '../views/Alert';
 import Card from '../views/Card';
 import Breadcrumb from '../views/Breadcrumb';
+import Progress from '../views/Progress';
 
 /**
  * 主应用入口.
@@ -28,6 +29,7 @@ export default class App extends Component {
                     <Route path='alert' component={Alert}/>
                     <Route path='card' component={Card}/>
                     <Route path='breadcrumb' component={Breadcrumb}/>
+                    <Route path='progress' component={Progress}/>
                 </Route>
             </Router>
         );

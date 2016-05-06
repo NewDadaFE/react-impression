@@ -16,7 +16,6 @@
   display: block;
   width: 100%;
   height: $spacer-y; // todo: make a new var for this
-  margin-bottom: $spacer-y;
 }
 .progress[value] {
   // Set overall background
@@ -133,9 +132,6 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
 
 .progress-success {
   @include progress-variant($progress-bar-success-bg);
-}
-.progress-info {
-  @include progress-variant($progress-bar-info-bg);
 }
 .progress-warning {
   @include progress-variant($progress-bar-warning-bg);
