@@ -154,10 +154,11 @@ $grid-gutter-width: 30px !default;
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
-$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:       $font-family-sans-serif !default;
+$font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "WenQuanYi Micro Hei", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
 $font-size-root: 14px !default;
@@ -167,7 +168,7 @@ $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
 
-$line-height-base: 1.5 !default;
+$line-height-base: 1.43 !default;
 
 $font-size-h1: 2.5rem !default;
 $font-size-h2: 2rem !default;
@@ -626,7 +627,7 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 // Tags
 
-$tag-default-bg:            $gray-light !default;
+$tag-default-bg:            #ccc !default;
 $tag-primary-bg:            $brand-primary !default;
 $tag-success-bg:            $brand-success !default;
 $tag-info-bg:               $brand-info !default;
@@ -639,10 +640,9 @@ $tag-font-size:             75% !default;
 $tag-font-weight:           bold !default;
 $tag-padding-x:             .4em !default;
 $tag-padding-y:             .25em !default;
+$tag-border-radius:         $border-radius-sm;
 
 $tag-pill-padding-x:        .6em !default;
-// Use a higher than normal value to ensure completely rounded edges when
-// customizing padding or font-size on labels.
 $tag-pill-border-radius:    10rem !default;
 
 // Modals

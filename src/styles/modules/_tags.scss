@@ -13,7 +13,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius();
+  border-radius: $tag-border-radius;
 
   // Empty tags collapse automatically
   &:empty {
@@ -45,7 +45,7 @@ a.tag {
 .tag-pill {
   padding-right: $tag-pill-padding-x;
   padding-left: $tag-pill-padding-x;
-  @include border-radius($tag-pill-border-radius);
+  border-radius: $tag-pill-border-radius;
 }
 
 // Colors
