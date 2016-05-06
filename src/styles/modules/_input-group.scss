@@ -16,6 +16,7 @@
   }
 
   .form-control {
+    border-radius: $input-border-radius;
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
