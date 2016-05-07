@@ -21,10 +21,7 @@
     // proper border colors.
     position: relative;
     z-index: 2;
-    // Bring the "active" form control to the front
-    @include hover-focus-active {
-      z-index: 3;
-    }
+
     @if $enable-flex {
       flex: 1;
     } @else {
