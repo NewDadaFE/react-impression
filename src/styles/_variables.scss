@@ -518,22 +518,23 @@ $nav-pills-active-link-bg:    $component-active-bg !default;
 
 // Pagination
 
-$pagination-padding-x:                .75rem !default;
-$pagination-padding-y:                .5rem !default;
+$pagination-padding-x:                .8rem !default;
+$pagination-padding-y:                .4rem !default;
 $pagination-padding-x-sm:             .75rem !default;
 $pagination-padding-y-sm:             .275rem !default;
 $pagination-padding-x-lg:             1.5rem !default;
 $pagination-padding-y-lg:             .75rem !default;
 
 
-$pagination-color:                     $link-color !default;
+$pagination-color:                     $gray-light !default;
 $pagination-bg:                        #fff !default;
 $pagination-border-width:              $border-width !default;
 $pagination-border-color:              #ddd !default;
+$pagination-transition:               all .2s cubic-bezier(0.4, 0, 0.2, 1) !default;
 
-$pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-border:              #ddd !default;
+$pagination-hover-color:               $brand-primary !default;
+$pagination-hover-bg:                  #fff !default;
+$pagination-hover-border:              $brand-primary !default;
 
 $pagination-active-color:              #fff !default;
 $pagination-active-bg:                 $brand-primary !default;
@@ -542,6 +543,8 @@ $pagination-active-border:             $brand-primary !default;
 $pagination-disabled-color:            $gray-light !default;
 $pagination-disabled-bg:               #fff !default;
 $pagination-disabled-border:           #ddd !default;
+
+$page-item-spacer-x:                   0.6rem;
 
 
 // Jumbotron

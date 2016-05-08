@@ -11,6 +11,7 @@ import Alert from '../views/Alert';
 import Card from '../views/Card';
 import Breadcrumb from '../views/Breadcrumb';
 import Progress from '../views/Progress';
+import Pagination from '../views/Pagination';
 
 /**
  * 主应用入口.
@@ -30,6 +31,7 @@ export default class App extends Component {
                     <Route path='card' component={Card}/>
                     <Route path='breadcrumb' component={Breadcrumb}/>
                     <Route path='progress' component={Progress}/>
+                    <Route path='pagination' component={Pagination}/>
                 </Route>
             </Router>
         );
