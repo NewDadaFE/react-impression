@@ -90,23 +90,12 @@
   }
 
   // Hover state
-  @include hover-focus {
+  &:hover{
     color: $list-group-link-hover-color;
     text-decoration: none;
     background-color: $list-group-hover-bg;
   }
 }
-
-
-// Contextual variants
-//
-// Add modifier classes to change text and background color on individual items.
-// Organizationally, this must come after the `:hover` states.
-
-@include list-group-item-variant(success, $state-success-bg, $state-success-text);
-@include list-group-item-variant(primary, $state-primary-bg, $state-primary-text);
-@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
-@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
 
 
 // Custom content options
