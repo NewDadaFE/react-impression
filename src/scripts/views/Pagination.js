@@ -10,9 +10,7 @@ export default class Alert extends Component{
                         <div className="col-sm-12">
                             <ul className="pagination">
                                 <li className="page-item">
-                                  <a className="page-link" href="#">
-                                    <span>‹</span>
-                                  </a>
+                                    <a className="page-link" href="#">‹</a>
                                 </li>
                                 <li className="page-item"><a className="page-link" href="#">1</a></li>
                                 <li className="page-item"><a className="page-link" href="#">2</a></li>
@@ -20,9 +18,7 @@ export default class Alert extends Component{
                                 <li className="page-item"><a className="page-link" href="#">4</a></li>
                                 <li className="page-item disabled"><a className="page-link" href="#">5</a></li>
                                 <li className="page-item">
-                                  <a className="page-link" href="#">
-                                    <span aria-hidden="true">›</span>
-                                  </a>
+                                    <a className="page-link" href="#">›</a>
                                 </li>
                               </ul>
                         </div>
