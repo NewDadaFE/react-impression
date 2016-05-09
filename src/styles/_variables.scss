@@ -596,15 +596,15 @@ $card-columns-sm-up-column-gap: 1.25rem !default;
 
 // Tooltips
 
-$tooltip-max-width:           200px !default;
+$tooltip-max-width:           15rem !default;
 $tooltip-color:               #fff !default;
-$tooltip-bg:                  #000 !default;
+$tooltip-bg:                  $gray-secondary !default;
 $tooltip-opacity:             .9 !default;
-$tooltip-padding-y:           3px !default;
-$tooltip-padding-x:           8px !default;
+$tooltip-padding-y:           0.3rem !default;
+$tooltip-padding-x:           0.6rem !default;
 $tooltip-margin:              3px !default;
 
-$tooltip-arrow-width:         5px !default;
+$tooltip-arrow-width:         0.5rem !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
