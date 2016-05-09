@@ -11,6 +11,7 @@ export default class Image extends Component{
     }
     //prop type校验
     static propTypes = {
+        //形状（fluid、rounded、circle、thumbnail）
         shape: React.PropTypes.string,
     }
     //渲染

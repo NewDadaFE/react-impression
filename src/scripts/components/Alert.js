@@ -1,7 +1,9 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
 
-//Alert 组件
+/**
+ *Alert 组件
+ */
 export default class Alert extends Component{
 
     constructor(props, context){
@@ -9,6 +11,7 @@ export default class Alert extends Component{
     }
 
     static propTypes = {
+        //样式（success、primary、warning、danger）
         style: React.PropTypes.string,
     }
     
