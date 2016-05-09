@@ -19,7 +19,7 @@ export default class ImageView extends Component{
                             <Image shape="circle" src="http://placehold.it/200x200"/>
                         </div>
                         <div className="col-sm-4">
-                            <Image shape="thubnail" src="http://placehold.it/200x200"/>
+                            <Image shape="thumbnail" src="http://placehold.it/200x200"/>
                         </div>
                     </div>
                 </div>

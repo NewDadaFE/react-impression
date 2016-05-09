@@ -17,7 +17,6 @@ export default class Image extends Component{
     render(){
         let { shape, src, alt, className } = this.props;
         let imgStyle = `img-${shape}`;
-        alert(imgStyle);
 
         return(
             <img src={src} alt={alt} className={classnames(imgStyle,className)}/>
