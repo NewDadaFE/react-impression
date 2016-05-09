@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Router, hashHistory } from 'react-router';
 import Layout from '../containers/Layout';
-import Image from '../views/Image';
-import Table from '../views/Table';
+import ImageView from '../views/ImageView';
+import TableView from '../views/TableView';
 import ButtonView from '../views/ButtonView';
-import ButtonGroup from '../views/ButtonGroup';
-import InputGroup from '../views/InputGroup';
-import Tag from '../views/Tag';
-import Alert from '../views/Alert';
-import Card from '../views/Card';
-import Breadcrumb from '../views/Breadcrumb';
-import Progress from '../views/Progress';
-import Pagination from '../views/Pagination';
-import ListGroup from '../views/ListGroup';
+import ButtonGroupView from '../views/ButtonGroupView';
+import InputGroupView from '../views/InputGroupView';
+import TagView from '../views/TagView';
+import AlertView from '../views/AlertView';
+import CardView from '../views/CardView';
+import BreadcrumbView from '../views/BreadcrumbView';
+import ProgressView from '../views/ProgressView';
+import PaginationView from '../views/PaginationView';
+import ListGroupView from '../views/ListGroupView';
 
 /**
  * 主应用入口.
@@ -22,18 +22,18 @@ export default class App extends Component {
         return (
              <Router history={hashHistory}>
                 <Route path='/' component={Layout}>
-                    <Route path='image' component={Image}/>
-                    <Route path='table' component={Table}/>
+                    <Route path='image' component={ImageView}/>
+                    <Route path='table' component={TableView}/>
                     <Route path='button' component={ButtonView}/>
-                    <Route path='button-group' component={ButtonGroup}/>
-                    <Route path='input-group' component={InputGroup}/>
-                    <Route path='tag' component={Tag}/>
-                    <Route path='alert' component={Alert}/>
-                    <Route path='card' component={Card}/>
-                    <Route path='breadcrumb' component={Breadcrumb}/>
-                    <Route path='progress' component={Progress}/>
-                    <Route path='pagination' component={Pagination}/>
-                    <Route path='list-group' component={ListGroup}/>
+                    <Route path='button-group' component={ButtonGroupView}/>
+                    <Route path='input-group' component={InputGroupView}/>
+                    <Route path='tag' component={TagView}/>
+                    <Route path='alert' component={AlertView}/>
+                    <Route path='card' component={CardView}/>
+                    <Route path='breadcrumb' component={BreadcrumbView}/>
+                    <Route path='progress' component={ProgressView}/>
+                    <Route path='pagination' component={PaginationView}/>
+                    <Route path='list-group' component={ListGroupView}/>
                 </Route>
             </Router>
         );

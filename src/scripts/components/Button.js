@@ -8,8 +8,9 @@ export default class Button extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);
-        this.state = {};
-        this.state.Tag = props.href? 'a': 'button';
+        this.state = {
+            Tag: props.href? 'a': 'button'
+        };
     }
     //默认props
     static defaultProps = {

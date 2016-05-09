@@ -3,8 +3,6 @@ import { Button } from '../components';
 
 export default class ButtonView extends Component{
     buttonClickHandle(event){
-        console.log(event);
-        console.log("按钮被点击了！");
     }
     render(){
         return (
