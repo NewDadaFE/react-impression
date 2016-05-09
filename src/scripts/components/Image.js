@@ -15,12 +15,12 @@ export default class Image extends Component{
     }
     //渲染
     render(){
-        let { shape, src, alt } = this.props;
-        let imgStyle = `img${shape?'-fluid':''}-${shape}`;
+        let { shape, src, alt, className } = this.props;
+        let imgStyle = `img-${shape}`;
+        alert(imgStyle);
 
         return(
-            <img src={src} alt={alt} 
-                className={classnames('img', imgStyle, className)}/>
+            <img src={src} alt={alt} className={classnames(imgStyle,className)}/>
         );
     }
  }
