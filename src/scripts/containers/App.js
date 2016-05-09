@@ -15,6 +15,7 @@ import PaginationView from '../views/PaginationView';
 import ListGroupView from '../views/ListGroupView';
 import ModalView from '../views/ModalView';
 import TooltipView from '../views/TooltipView';
+import PopoverView from '../views/PopoverView';
 
 /**
  * 主应用入口.
@@ -38,6 +39,7 @@ export default class App extends Component {
                     <Route path='list-group' component={ListGroupView}/>
                     <Route path='modal' component={ModalView}/>
                     <Route path='tooltip' component={TooltipView}/>
+                    <Route path='popover' component={PopoverView}/>
                 </Route>
             </Router>
         );

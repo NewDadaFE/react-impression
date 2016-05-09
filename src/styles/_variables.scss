@@ -613,21 +613,22 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 $popover-bg:                          #fff !default;
 $popover-max-width:                   276px !default;
 $popover-border-width:                $border-width !default;
-$popover-border-color:                rgba(0,0,0,.2) !default;
-$popover-box-shadow:                  0 5px 10px rgba(0,0,0,.2) !default;
+$popover-border-color:                rgba($gray-secondary, .2) !default;
+$popover-box-shadow:                  0 2px 6px rgba(0,0,0,.2) !default;
 
-$popover-title-bg:                    darken($popover-bg, 3%) !default;
-$popover-title-padding-x:             14px !default;
-$popover-title-padding-y:             8px !default;
+$popover-title-bg:                    $gray-secondary !default;
+$popover-title-color:                 #fff;
+$popover-title-padding-x:             0.8rem !default;
+$popover-title-padding-y:             0.6rem !default;
 
-$popover-content-padding-x:           14px !default;
-$popover-content-padding-y:           9px !default;
+$popover-content-padding-x:           0.8rem !default;
+$popover-content-padding-y:           0.4rem !default;
 
 $popover-arrow-width:                 10px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
 $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
-$popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
+$popover-arrow-outer-color:           fade-in($popover-border-color, .2) !default;
 
 
 // Tags

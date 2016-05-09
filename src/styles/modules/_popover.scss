@@ -5,10 +5,8 @@
   z-index: $zindex-popover;
   display: block;
   max-width: $popover-max-width;
-  padding: 1px;
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  @include reset-text();
   font-size: $font-size-sm;
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
@@ -21,8 +19,7 @@
 
   // Popover directions
 
-  &.popover-top,
-  &.bs-tether-element-attached-bottom {
+  &.popover-top{
     margin-top: -$popover-arrow-width;
 
     .popover-arrow {
@@ -41,8 +38,7 @@
     }
   }
 
-  &.popover-right,
-  &.bs-tether-element-attached-left {
+  &.popover-right {
     margin-left: $popover-arrow-width;
 
     .popover-arrow {
@@ -61,8 +57,7 @@
     }
   }
 
-  &.popover-bottom,
-  &.bs-tether-element-attached-top {
+  &.popover-bottom {
     margin-top: $popover-arrow-width;
 
     .popover-arrow {
@@ -81,8 +76,7 @@
     }
   }
 
-  &.popover-left,
-  &.bs-tether-element-attached-right {
+  &.popover-left {
     margin-left: -$popover-arrow-width;
 
     .popover-arrow {
@@ -105,6 +99,7 @@
 
 // Offset the popover to account for the popover arrow
 .popover-title {
+  color: $popover-title-color;
   padding: $popover-title-padding-y $popover-title-padding-x;
   margin: 0; // reset heading margin
   font-size: $font-size-base;
