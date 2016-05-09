@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Tag extends Component{
+export default class TagView extends Component{
     render(){
         return (
             <div>

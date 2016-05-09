@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class InputGroup extends Component{
+export default class InputGroupView extends Component{
     render(){
         return (
             <div>

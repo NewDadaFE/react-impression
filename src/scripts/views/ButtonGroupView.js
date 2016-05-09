@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ButtonGroup extends Component{
+export default class ButtonGroupView extends Component{
     render(){
         return (
             <div>

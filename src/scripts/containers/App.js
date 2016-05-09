@@ -13,6 +13,7 @@ import BreadcrumbView from '../views/BreadcrumbView';
 import ProgressView from '../views/ProgressView';
 import PaginationView from '../views/PaginationView';
 import ListGroupView from '../views/ListGroupView';
+import ModalView from '../views/ModalView';
 
 /**
  * 主应用入口.
@@ -34,6 +35,7 @@ export default class App extends Component {
                     <Route path='progress' component={ProgressView}/>
                     <Route path='pagination' component={PaginationView}/>
                     <Route path='list-group' component={ListGroupView}/>
+                    <Route path='modal' component={ModalView}/>
                 </Route>
             </Router>
         );

@@ -26,6 +26,7 @@ export default class Sidebar extends Component {
                     <Link to="/progress" className="list-group-item">Progress</Link>
                     <Link to="/pagination" className="list-group-item">Pagination</Link>
                     <Link to="/list-group" className="list-group-item">List-Group</Link>
+                    <Link to="/modal" className="list-group-item">Modal</Link>
                 </div>
             </div>
         );

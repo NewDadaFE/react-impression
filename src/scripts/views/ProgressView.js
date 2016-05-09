@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Alert extends Component{
+export default class ProgressView extends Component{
     render(){
         return (
             <div>
