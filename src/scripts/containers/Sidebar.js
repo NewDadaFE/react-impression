@@ -29,6 +29,7 @@ export default class Sidebar extends Component {
                     <Link to="/modal" className="list-group-item">Modal</Link>
                     <Link to="/tooltip" className="list-group-item">Tooltip</Link>
                     <Link to="/popover" className="list-group-item">Popover</Link>
+                    <Link to="/nav" className="list-group-item">Nav</Link>
                 </div>
             </div>
         );

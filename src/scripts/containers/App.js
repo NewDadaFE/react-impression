@@ -16,6 +16,7 @@ import ListGroupView from '../views/ListGroupView';
 import ModalView from '../views/ModalView';
 import TooltipView from '../views/TooltipView';
 import PopoverView from '../views/PopoverView';
+import NavView from '../views/NavView';
 
 /**
  * 主应用入口.
@@ -40,6 +41,7 @@ export default class App extends Component {
                     <Route path='modal' component={ModalView}/>
                     <Route path='tooltip' component={TooltipView}/>
                     <Route path='popover' component={PopoverView}/>
+                    <Route path='nav' component={NavView}/>
                 </Route>
             </Router>
         );
