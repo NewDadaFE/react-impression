@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Alert } from '../components';
 
 export default class AlertView extends Component{
     render(){
@@ -8,30 +9,30 @@ export default class AlertView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-success">
+                            <Alert style="success">
                                 <strong>Well done!</strong> You successfully read this important alert message.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-primary">
+                            <Alert style="primary">
                                 <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-warning">
+                            <Alert style="warning">
                                 <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-danger">
+                            <Alert style="danger">
                                 <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                 </div>
@@ -39,41 +40,41 @@ export default class AlertView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-success">
+                            <Alert style="success">
                               You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-primary">
+                            <Alert style="primary">
                               This alert needs your attention, but it's not super important<a href="#" className="alert-link"> click here</a>.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-warning">
+                            <Alert style="warning">
                               Better check yourself, you're not looking too good<a href="#" className="alert-link"> click here</a>.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="alert alert-danger">
+                            <Alert style="danger">
                               Change a few things up and try submitting again<a href="#" className="alert-link"> click here</a>.
-                            </div>
+                            </Alert>
                         </div>
                     </div>
                 </div>
                 <h3>Dismissible</h3>
                 <div className="card card-block">
-                        <div className="alert alert-success">
+                        <Alert style="success">
                           <button type="button" className="close">
                                 <span aria-hidden="true">&times;</span>
                           </button>
                           You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
-                        </div>
+                        </Alert>
                 </div>
             </div>
         );
