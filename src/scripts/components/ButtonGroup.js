@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 /**
  * ButtonGroup组件.
  */
- export default class ButtonGroup extends Component{
+export default class ButtonGroup extends Component{
     constructor(props, context){
         super(props, context);
     }
@@ -28,6 +28,6 @@ import React, { Component } from 'react';
             <div className={classnames('btn-group', btnGroupSize, btnGroupStyle, className)}>
                 {this.props.children}
             </div>
-        )
+        );
     }
- }
+}

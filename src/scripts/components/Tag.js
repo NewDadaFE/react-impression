@@ -33,6 +33,6 @@ export default class Tag extends Component{
             <span className = {classnames('tag', tagStyle, tagShape, className)}>
                 {this.props.children}
             </span>
-        )
+        );
     }
 }
