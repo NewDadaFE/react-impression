@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Tag } from '../components';
 
 export default class TagView extends Component{
     render(){
@@ -6,33 +7,33 @@ export default class TagView extends Component{
             <div>
                 <h3>Examples</h3>
                 <div className="card card-block">
-                    <h1>Example heading <span className="tag tag-default">tag</span></h1>
-                    <h2>Example heading <span className="tag tag-default">tag</span></h2>
-                    <h3>Example heading <span className="tag tag-default">tag</span></h3>
-                    <h4>Example heading <span className="tag tag-default">tag</span></h4>
-                    <h5>Example heading <span className="tag tag-default">tag</span></h5>
-                    <h6>Example heading <span className="tag tag-default">tag</span></h6>
+                    <h1>Example heading <Tag>tag</Tag></h1>
+                    <h2>Example heading <Tag>tag</Tag></h2>
+                    <h3>Example heading <Tag>tag</Tag></h3>
+                    <h4>Example heading <Tag>tag</Tag></h4>
+                    <h5>Example heading <Tag>tag</Tag></h5>
+                    <h6>Example heading <Tag>tag</Tag></h6>
                 </div>
                 <h3>Theme tag</h3>
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-1">
-                            <span className="tag tag-default">default</span>
+                            <Tag style="default">default</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-primary">primary</span>
+                            <Tag style="primary">primary</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-success">success</span>
+                            <Tag style="success">success</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-info">info</span>
+                            <Tag style="info">info</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-warning">warning</span>
+                            <Tag style="warning">warning</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-danger">danger</span>
+                            <Tag style="danger">danger</Tag>
                         </div>
                     </div>
                 </div>
@@ -40,22 +41,22 @@ export default class TagView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-1">
-                            <span className="tag tag-pill tag-default">default</span>
+                            <Tag style="default" shape="pill">default</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-pill tag-primary">primary</span>
+                            <Tag style="primary" shape="pill">primary</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-pill tag-success">success</span>
+                            <Tag style="success" shape="pill">success</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-pill tag-info">info</span>
+                            <Tag style="info" shape="pill">info</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-pill tag-warning">warning</span>
+                            <Tag style="warning" shape="pill">warning</Tag>
                         </div>
                         <div className="col-sm-1">
-                            <span className="tag tag-pill tag-danger">danger</span>
+                            <Tag style="danger" shape="pill">danger</Tag>
                         </div>
                     </div>
                 </div>
