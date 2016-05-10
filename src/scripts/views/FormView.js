@@ -4,6 +4,67 @@ export default class FormView extends Component{
     render(){
         return (
             <div>
+                <h3>Checkbox</h3>
+                <div className="card card-block">
+                    <form className="form-inline">
+                        <div className="form-group">
+                            <label>爱好:</label>
+                            <div className="checkbox-inline">
+                                <label className="checkbox">
+                                    <div className="checkbox-addon">
+                                        <input type="checkbox"/>
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        篮球
+                                    </span>
+                                </label>
+                                <label className="checkbox">
+                                    <div className="checkbox-addon">
+                                        <input type="checkbox"/>
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        足球
+                                    </span>
+                                </label>
+                                <label className="checkbox">
+                                    <div className="checkbox-addon">
+                                        <input type="checkbox"/>
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        排球
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <h3>Radio</h3>
+                <div className="card card-block">
+                    <form className="form-inline">
+                        <div className="form-group">
+                              <label>性别：</label>
+                              <div className="radio-inline">
+                                  <label className="radio">
+                                      <div className="radio-addon">
+                                          <input type="radio" name="sex"/>
+                                          <i></i>
+                                      </div>
+                                      <span className="radio-label">男</span>
+                                  </label>
+                                  <label className="radio">
+                                      <div className="radio-addon">
+                                          <input type="radio" name="sex"/>
+                                          <i></i>
+                                      </div>
+                                      <span className="radio-label">女</span>
+                                  </label>
+                              </div>
+                        </div>
+                    </form>
+                </div>
                 <h3>Form inline</h3>
                 <div className="card card-block">
                     <form className="form-inline">
@@ -64,11 +125,15 @@ export default class FormView extends Component{
                       <div className="form-group row">
                         <label className="col-sm-2  text-xs-right">Checkbox:</label>
                         <div className="col-sm-10">
-                          <div className="checkbox">
-                            <label>
-                              <input type="checkbox"/> Check me out
-                            </label>
-                          </div>
+                            <label className="checkbox">
+                            <div className="checkbox-addon">
+                                <input type="checkbox"/>
+                                <i className="fa fa-check"></i>
+                            </div>
+                            <span className="checkbox-label">
+                                篮球
+                            </span>
+                        </label>
                         </div>
                       </div>
                       <div className="form-group row">

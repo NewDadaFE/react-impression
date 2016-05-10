@@ -12,7 +12,10 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div className="sidebar">
-                <div className="sidebar-title">react-dui</div>
+                <div className="sidebar-title">
+                    <i className="fa fa-3x fa-diamond"></i>
+                    react-dui
+                </div>
                 <div className="list-group">
                     <Link to="/image" className="list-group-item">Image</Link>
                     <Link to="/table" className="list-group-item">Table</Link>
