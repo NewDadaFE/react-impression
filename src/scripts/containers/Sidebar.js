@@ -32,6 +32,7 @@ export default class Sidebar extends Component {
                     <Link to="/nav" className="list-group-item">Nav</Link>
                     <Link to="/navbar" className="list-group-item">Navbar</Link>
                     <Link to="/form" className="list-group-item">Form</Link>
+                    <Link to="/dropdowns" className="list-group-item">Dropdowns</Link>
                 </div>
             </div>
         );

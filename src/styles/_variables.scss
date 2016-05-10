@@ -457,13 +457,13 @@ $form-icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www
 // Dropdown menu container and contents.
 
 $dropdown-min-width:             160px !default;
-$dropdown-padding-y:             5px !default;
+$dropdown-padding-y:             0.5rem !default;
 $dropdown-margin-top:            2px !default;
 $dropdown-bg:                    #fff !default;
-$dropdown-border-color:          rgba(0,0,0,.15) !default;
+$dropdown-border-color:          rgba($gray-secondary, .2) !default;
 $dropdown-border-width:          $border-width !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
-$dropdown-box-shadow:            0 6px 12px rgba(0,0,0,.175) !default;
+$dropdown-box-shadow:            0 2px 6px rgba(0,0,0,.2) !default;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
@@ -474,7 +474,8 @@ $dropdown-link-active-bg:        $component-active-bg !default;
 
 $dropdown-link-disabled-color:   $gray-light !default;
 
-$dropdown-item-padding-x:        20px !default;
+$dropdown-item-padding-x:        1.5rem !default;
+$dropdown-item-padding-y:        0.5rem !default;
 
 $dropdown-header-color:          $gray-light !default;
 

@@ -20,7 +20,7 @@ export default class Image extends Component{
         let imgStyle = `img-${shape}`;
 
         return(
-            <img src={src} alt={alt} className={classnames(imgStyle,className)}/>
+            <img src={src} alt={alt} className={classnames(imgStyle, className)}/>
         );
     }
  }

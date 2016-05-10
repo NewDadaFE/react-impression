@@ -43,7 +43,6 @@
   display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: $dropdown-min-width;
-  padding: $dropdown-padding-y 0;
   margin: $dropdown-margin-top 0 0; // override default ul
   font-size: $font-size-base;
   color: $body-color;
@@ -58,7 +57,9 @@
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
-  @include nav-divider($dropdown-divider-bg);
+  height: 1px;
+  overflow: hidden;
+  background: $dropdown-divider-bg;
 }
 
 // Links, buttons, and more within the dropdown menu
@@ -67,7 +68,7 @@
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
-  padding: 3px $dropdown-item-padding-x;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   clear: both;
   font-weight: normal;
   color: $dropdown-link-color;
