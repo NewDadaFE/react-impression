@@ -53,7 +53,7 @@
   .nav-item {
     float: left;
     // Make the list-items overlay the bottom border
-    margin-bottom: -$nav-tabs-border-width;
+    // margin-bottom: -$nav-tabs-border-width;
 
     + .nav-item {
       margin-left: $nav-item-margin;
@@ -61,31 +61,29 @@
   }
 
   .nav-link {
+    color: $nav-tabs-link-color;
     display: block;
     padding: $nav-link-padding;
-    border: $nav-tabs-border-width solid transparent;
-    @include border-radius($border-radius $border-radius 0 0);
+    border: $nav-tabs-link-border-width solid transparent;
+    border-bottom: 0;
 
-    @include hover-focus {
-      border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+    &:hover{
+      background: $nav-tabs-link-hover-bg;
+      border-color: $nav-tabs-link-hover-border-color;
     }
 
     &.disabled {
-      @include plain-hover-focus {
-        color: $nav-disabled-link-color;
-        background-color: transparent;
-        border-color: transparent;
-      }
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
     }
   }
 
   .nav-link.active,
   .nav-item.open .nav-link {
-    @include plain-hover-focus {
       color: $nav-tabs-active-link-hover-color;
       background-color: $nav-tabs-active-link-hover-bg;
-      border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
-    }
+      border-color: $nav-tabs-active-link-border-color;
   }
 
   .dropdown-menu {
@@ -114,17 +112,27 @@
 
   .nav-link {
     display: block;
+    color: $nav-pills-color;
     padding: $nav-link-padding;
     @include border-radius($nav-pills-border-radius);
+
+    &:hover{
+      background: $nav-tabs-link-hover-bg;
+      border-color: $nav-tabs-link-hover-border-color;
+    }
+
+    &.disabled {
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
   }
 
   .nav-link.active,
   .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-pills-active-link-color;
-      cursor: default;
-      background-color: $nav-pills-active-link-bg;
-    }
+    color: $nav-pills-active-link-color;
+    cursor: default;
+    background-color: $nav-pills-active-link-bg;
   }
 }
 

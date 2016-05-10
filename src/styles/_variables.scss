@@ -102,7 +102,7 @@ $border-width: 1px !default;
 // Settings for the `<body>` element.
 
 $body-bg:    #fff !default;
-$body-color: $gray-dark !default;
+$body-color: #333 !default;
 
 
 // Links
@@ -503,15 +503,22 @@ $nav-disabled-link-color:       $gray-light !default;
 $nav-disabled-link-hover-color: $gray-light !default;
 $nav-disabled-link-hover-bg:    transparent !default;
 
-$nav-tabs-border-color:                       #ddd !default;
-$nav-tabs-border-width:                       $border-width !default;
-$nav-tabs-link-hover-border-color:            $gray-lighter !default;
-$nav-tabs-active-link-hover-color:            $gray !default;
-$nav-tabs-active-link-hover-bg:               $body-bg !default;
+$nav-tabs-link-color:                         $gray !default;
+$nav-tabs-border-color:                       $brand-primary !default;
+$nav-tabs-border-width:                       2px !default;
+$nav-tabs-link-border-width:                  1px !default;
+$nav-tabs-link-hover-bg:                      $gray-lighter !default;
+$nav-tabs-link-hover-border-color:            $nav-tabs-link-hover-bg !default;
+
+$nav-tabs-active-link-hover-color:            #fff !default;
+$nav-tabs-active-link-hover-bg:               $nav-tabs-border-color !default;
+$nav-tabs-active-link-border-color:           $nav-tabs-border-color !default;
 $nav-tabs-active-link-hover-border-color:     #ddd !default;
 $nav-tabs-justified-link-border-color:        #ddd !default;
+
 $nav-tabs-justified-active-link-border-color: $body-bg !default;
 
+$nav-pills-color:             $nav-tabs-link-color !default;
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;
 $nav-pills-active-link-bg:    $component-active-bg !default;
