@@ -182,6 +182,10 @@ input[type="month"] {
 
 .form-group {
   margin-bottom: $form-group-margin-bottom;
+
+  > label{
+    font-weight: bold;
+  }
 }
 
 
@@ -395,7 +399,10 @@ input[type="checkbox"] {
 // default HTML form controls and our custom form controls (e.g., input groups).
 
 .form-inline {
-
+  margin: 0;
+  > :not(:last-child){
+    margin-right: $spacer-x;
+  }
   // Kick in the inline
   @include media-breakpoint-up(sm) {
     // Inline-block all the things for "inline"
@@ -403,6 +410,10 @@ input[type="checkbox"] {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
+
+      > label{
+        margin-right: $spacer-x / 2;
+      }
     }
 
     // Allow folks to *not* use `.form-group`
@@ -460,6 +471,16 @@ input[type="checkbox"] {
     // Re-override the feedback icon.
     .has-feedback .form-control-feedback {
       top: 0;
+    }
+  }
+}
+
+
+.form-horizontal{
+  .form-group{
+    > label{
+      padding-left: $input-padding-x;
+      padding-right: $input-padding-x;
     }
   }
 }

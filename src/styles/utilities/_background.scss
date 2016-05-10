@@ -17,7 +17,7 @@
 
 @include bg-variant('.bg-success', $brand-success);
 
-@include bg-variant('.bg-info', $brand-info);
+@include bg-variant('.bg-secondary', $brand-secondary);
 
 @include bg-variant('.bg-warning', $brand-warning);
 

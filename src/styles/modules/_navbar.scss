@@ -6,48 +6,27 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
+  border-bottom: 1px solid transparent;
   @include clearfix;
-
-  @include media-breakpoint-up(sm) {
-    @include border-radius($navbar-border-radius);
-  }
+  @include nav-variant($navbar-color, $navbar-bg, $navbar-border-color);
 }
 
-
-// Navbar alignment options
-//
-// Display the navbar across the entirety of the page or fixed it to the top or
-// bottom of the page.
-
-// A static, full width modifier with no rounded corners.
-.navbar-full {
-  z-index: $zindex-navbar;
-
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
+.navbar-primary{
+  @include nav-variant($navbar-primary-color, $navbar-primary-bg, $navbar-primary-border-color);
 }
+
+.navbar-pure{
+  @include nav-variant($navbar-pure-color, $navbar-pure-bg, $navbar-pure-border-color);
+}
+
 
 // Fix the top/bottom navbars when screen real estate supports it
-.navbar-fixed-top,
-.navbar-fixed-bottom {
+.navbar-fixed-top {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: $zindex-navbar-fixed;
-
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
-}
-
-.navbar-fixed-top {
   top: 0;
-}
-
-.navbar-fixed-bottom {
-  bottom: 0;
+  z-index: $zindex-navbar-fixed;
 }
 
 .navbar-sticky-top {
@@ -55,11 +34,6 @@
   top: 0;
   z-index: $zindex-navbar-sticky;
   width: 100%;
-
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 
@@ -160,73 +134,5 @@
 
   .nav-item + .nav-item {
     margin-left: 1rem;
-  }
-}
-
-// Dark links against a light background
-.navbar-light {
-  .navbar-brand {
-    color: $navbar-light-active-color;
-
-    @include hover-focus {
-      color: $navbar-light-active-color;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-light-color;
-
-      @include hover-focus {
-        color: $navbar-light-hover-color;
-      }
-    }
-
-    .open > .nav-link,
-    .active > .nav-link,
-    .nav-link.open,
-    .nav-link.active {
-      @include plain-hover-focus {
-        color: $navbar-light-active-color;
-      }
-    }
-  }
-
-  .navbar-divider {
-    background-color: rgba(0,0,0,.075);
-  }
-}
-
-// White links against a dark background
-.navbar-dark {
-  .navbar-brand {
-    color: $navbar-dark-active-color;
-
-    @include hover-focus {
-      color: $navbar-dark-active-color;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-dark-color;
-
-      @include hover-focus {
-        color: $navbar-dark-hover-color;
-      }
-    }
-
-    .open > .nav-link,
-    .active > .nav-link,
-    .nav-link.open,
-    .nav-link.active {
-      @include plain-hover-focus {
-        color: $navbar-dark-active-color;
-      }
-    }
-  }
-
-  .navbar-divider {
-    background-color: rgba(255,255,255,.075);
   }
 }

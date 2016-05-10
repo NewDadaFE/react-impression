@@ -42,7 +42,7 @@ $gray-dark:                 #373a3c !default;
 $gray:                      #55595c !default;
 $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
-$gray-lightest:             #f7f7f9 !default;
+$gray-lightest:             #f4f4f4 !default;
 
 $brand-primary:             #4285f4 !default;
 $brand-secondary:           complement($brand-primary) !default;
@@ -103,6 +103,8 @@ $border-width: 1px !default;
 
 $body-bg:    #fff !default;
 $body-color: #333 !default;
+
+$border-color: #ddd !default;
 
 
 // Links
@@ -351,6 +353,7 @@ $input-group-addon-bg:           $input-border-color !default;
 $input-group-addon-border-color: $input-border-color !default;
 
 $cursor-disabled:                not-allowed !default;
+$cursor-pointer:                 pointer !default;
 
 $custom-control-gutter:   1.5rem !default;
 $custom-control-spacer-x: 1rem !default;
@@ -426,6 +429,23 @@ $custom-file-text: (
 ) !default;
 
 
+$switch-width:                  3rem !default;
+$switch-toggle-bg:              #ccc !default;
+$switch-toggle-active-bg:       $brand-primary;
+$switch-toggle-padding:         2px !default;
+
+$switch-toggle-addon-bg:        #fdfdfd;
+$switch-toggle-addon-width:     1rem;
+$switch-toggle-addon-height:    $switch-toggle-addon-width;
+$switch-toggle-addon-translateX: $switch-width - $switch-toggle-addon-width - 0.4rem;
+
+$checkbox-height:               round(1.4 * $font-size-root);
+$checkbox-width:                round(1.4 * $font-size-root);
+
+$radio-height:                  round(1.5 * $font-size-root);
+$radio-width:                   round(1.5 * $font-size-root);
+
+
 // Form validation icons
 $form-icon-success: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E") !default;
 $form-icon-warning: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E") !default;
@@ -477,7 +497,6 @@ $zindex-modal:             1050 !default;
 
 // Navbar
 
-$navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-brand-padding-y:            .25rem !default;
@@ -492,6 +511,17 @@ $navbar-light-hover-color:          rgba(0,0,0,.6) !default;
 $navbar-light-active-color:         rgba(0,0,0,.8) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.15) !default;
 
+$navbar-bg:                         $gray-lightest !default;
+$navbar-color:                      $gray-light !default;
+$navbar-border-color:               $border-color !default;
+
+$navbar-primary-bg:                 $brand-primary !default;
+$navbar-primary-color:              #fff !default;
+$navbar-primary-border-color:       $navbar-bg !default;
+
+$navbar-pure-bg:                    #fff !default;
+$navbar-pure-color:                 $body-color !default;
+$navbar-pure-border-color:          $navbar-pure-bg !default;
 
 // Navs
 
