@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Pagination } from '../components';
+
 
 export default class PaginationView extends Component{
     render(){
@@ -20,7 +22,8 @@ export default class PaginationView extends Component{
                                 <li className="page-item">
                                     <a className="page-link" href="#">›</a>
                                 </li>
-                              </ul>
+                            </ul>
+                            <Pagination items={10} activePage={5}></Pagination>
                         </div>
                     </div>
                 </div>

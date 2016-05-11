@@ -23,6 +23,6 @@ export default class Alert extends Component{
             <div className={classnames('alert', alertStyle, className)}>
                 {this.props.children}
             </div>
-        )
+        );
     }
 } 
