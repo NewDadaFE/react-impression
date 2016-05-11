@@ -6,11 +6,56 @@
     user-select: none;
     display: inline-block;
     vertical-align: middle;
+    position: relative;
+
+    input{
+        visibility: hidden;
+    }
+}
+
+.checkbox-label,
+.radio-label{
+    user-select: none;
+    vertical-align: middle;
+    &:not(:empty){
+        margin-left: ($spacer-y / 2);
+    }
+}
+
+.checkbox-inline,
+.radio-inline{
+    user-select: none;
+    display: inline-block;
+
+    .checkbox:not(:last-child),
+    .radio:not(:last-child){
+        margin-right: $spacer-y;
+    }
+}
+
+.checkbox{
+    input{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+
+        &:checked{
+            & + .checkbox-addon i{
+                color: #4285f4;
+            }
+        }
+
+        &:disabled + .checkbox-addon,
+        &.disabled + .checkbox-addon{
+            opacity: .6;
+            background: #eee;
+        }
+    }
 }
 
 .checkbox-addon{
-    padding: 0.15rem;
-    position: relative;
+    padding: round(($line-height-base - 1) * $font-size-root / 2);
     display: inline-block;
     border: 1px solid #ddd;
     border-radius: 2px;
@@ -22,51 +67,11 @@
         height: 1rem;
         transition: all .2s ease-in-out;
     }
-
-
-
-    input{
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: -1;
-
-        &:checked{
-            & + i{
-                color: #4285f4;
-            }
-        }
-    }
-}
-
-.checkbox-label,
-.radio-label{
-    user-select: none;
-    &:not(:empty){
-        margin-left: 5px;
-    }
-}
-
-.checkbox-inline,
-.radio-inline{
-    display: inline-block;
-
-    .checkbox:not(:last-child),
-    .radio:not(:last-child){
-        margin-right: 10px;
-    }
 }
 
 
-.radio-addon{
-    position: relative;
-    padding: 0.15rem;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    display: inline-block;
-    border-radius: 50%;
-    vertical-align: middle;
-
+//radio
+.radio{
     input {
         position: absolute;
         left: 0;
@@ -74,19 +79,37 @@
         z-index: -1;
 
         &:checked{
-            & + i{
+            & + .radio-addon i{
                 background: #4285f4;
             }
         }
+
+        &:disabled + .radio-addon,
+        &.disabled + .radio-addon{
+            opacity: .6;
+            background: #eee;
+        }
     }
+}
+
+.radio-addon{
+    position: relative;
+    padding: round(($line-height-base - 0.6) * $font-size-root / 2);;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+
 
     i {
         display: inline-block;
         content: " ";
-        width: 1rem;
-        height: 1rem;
+        width: round(0.6 * $font-size-root);
+        height: round(0.6 * $font-size-root);
         background: transparent;
         border-radius: 50%;
+        transition: all .2s ease-in-out;
     }
 }
 
@@ -100,26 +123,33 @@
         left: 0;
         top: 0;
         z-index: -1;
+
+        &:checked + .switch-addon{
+            border-color: #4285f4;
+            background: #4285f4;
+
+            &:before{
+                float: right;
+            }
+        }
+
+        &:disabled + .switch-addon,
+        &.disabled + .switch-addon{
+            opacity: .6;
+        }
     }
 }
 
 .switch-addon{
     display: inline-block;
-    padding: 0.15rem;
+    padding: 1px;
     border: 1px solid #ddd;
     background: #ddd;
     width: 3rem;
-    border-radius: 3rem;
-    transition: all .2s ease-in-out;
+    border-radius: 100px;
+    padding: round(($line-height-base - 1) * $font-size-root / 2) - 1;
+    transition: all .2s linear;
 
-    input:checked + &{
-        border-color: #4285f4;
-        background: #4285f4;
-
-        &:before{
-            float: right;
-        }
-    }
 
     &:before{
         float: left;

@@ -6,35 +6,85 @@ export default class FormView extends Component{
             <div>
                 <h3>Checkbox</h3>
                 <div className="card card-block">
-                    <form className="form-inline">
-                        <div className="form-group">
-                            <label>爱好:</label>
+                    <form className="form-inline row">
+                        <div className="form-group col-xs-6">
+                            <label>interest:</label>
                             <div className="checkbox-inline">
                                 <label className="checkbox">
+                                    <input type="checkbox" defaultChecked/>
                                     <div className="checkbox-addon">
-                                        <input type="checkbox"/>
                                         <i className="fa fa-check"></i>
                                     </div>
                                     <span className="checkbox-label">
-                                        篮球
+                                        basketball
                                     </span>
                                 </label>
                                 <label className="checkbox">
+                                    <input type="checkbox"/>
                                     <div className="checkbox-addon">
-                                        <input type="checkbox"/>
                                         <i className="fa fa-check"></i>
                                     </div>
                                     <span className="checkbox-label">
-                                        足球
+                                        football
                                     </span>
                                 </label>
                                 <label className="checkbox">
+                                    <input type="checkbox"/>
                                     <div className="checkbox-addon">
-                                        <input type="checkbox"/>
                                         <i className="fa fa-check"></i>
                                     </div>
                                     <span className="checkbox-label">
-                                        排球
+                                        volleyball
+                                    </span>
+                                </label>
+                                <label className="checkbox">
+                                    <input type="checkbox" defaultChecked/>
+                                    <div className="checkbox-addon">
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        ping-pong
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div className="form-group col-sm-5">
+                            <label>disabled:</label>
+                            <div className="checkbox-inline">
+                                <label className="checkbox">
+                                    <input type="checkbox" disabled/>
+                                    <div className="checkbox-addon">
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        Benz
+                                    </span>
+                                </label>
+                                <label className="checkbox">
+                                    <input type="checkbox" disabled checked/>
+                                    <div className="checkbox-addon">
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        BMW
+                                    </span>
+                                </label>
+                                <label className="checkbox">
+                                    <input type="checkbox" disabled/>
+                                    <div className="checkbox-addon">
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        Audi
+                                    </span>
+                                </label>
+                                <label className="checkbox">
+                                    <input type="checkbox" disabled checked/>
+                                    <div className="checkbox-addon">
+                                        <i className="fa fa-check"></i>
+                                    </div>
+                                    <span className="checkbox-label">
+                                        Volvo
                                     </span>
                                 </label>
                             </div>
@@ -43,23 +93,42 @@ export default class FormView extends Component{
                 </div>
                 <h3>Radio</h3>
                 <div className="card card-block">
-                    <form className="form-inline">
-                        <div className="form-group">
-                              <label>性别：</label>
+                    <form className="form-inline row">
+                        <div className="form-group col-xs-6">
+                              <label>Gender</label>
                               <div className="radio-inline">
                                   <label className="radio">
-                                      <div className="radio-addon">
-                                          <input type="radio" name="sex"/>
-                                          <i></i>
-                                      </div>
-                                      <span className="radio-label">男</span>
+                                        <input type="radio" name="gender" defaultChecked/>
+                                        <div className="radio-addon">
+                                            <i></i>
+                                        </div>
+                                      <span className="radio-label">Male</span>
                                   </label>
                                   <label className="radio">
-                                      <div className="radio-addon">
-                                          <input type="radio" name="sex"/>
-                                          <i></i>
-                                      </div>
-                                      <span className="radio-label">女</span>
+                                        <input type="radio" name="gender"/>
+                                        <div className="radio-addon">
+                                            <i></i>
+                                        </div>
+                                        <span className="radio-label">Female</span>
+                                  </label>
+                              </div>
+                        </div>
+                        <div className="form-group col-xs-5">
+                              <label>Disabled</label>
+                              <div className="radio-inline">
+                                  <label className="radio">
+                                        <input type="radio" name="radio" defaultChecked disabled/>
+                                        <div className="radio-addon">
+                                            <i></i>
+                                        </div>
+                                      <span className="radio-label">Yes</span>
+                                  </label>
+                                  <label className="radio">
+                                        <input type="radio" name="radio" disabled/>
+                                        <div className="radio-addon">
+                                            <i></i>
+                                        </div>
+                                        <span className="radio-label">No</span>
                                   </label>
                               </div>
                         </div>
@@ -67,11 +136,18 @@ export default class FormView extends Component{
                 </div>
                 <h3>Switch</h3>
                 <div className="card card-block">
-                    <form className="form-inline">
-                        <div className="form-group">
-                                <label>静音：</label>
+                    <form className="form-inline row">
+                        <div className="form-group col-xs-3">
+                                <label>Mute</label>
                                 <label className="switch">
                                     <input type="checkbox"/>
+                                    <div className="switch-addon"></div>
+                                </label>
+                        </div>
+                        <div className="form-group col-xs-3">
+                                <label>Disabled</label>
+                                <label className="switch">
+                                    <input type="checkbox" defaultChecked disabled/>
                                     <div className="switch-addon"></div>
                                 </label>
                         </div>
