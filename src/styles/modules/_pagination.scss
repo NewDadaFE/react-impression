@@ -3,6 +3,8 @@
   padding-left: 0;
   margin-top: $spacer-y;
   margin-bottom: $spacer-y;
+  user-select: none;
+  cursor: pointer;
 }
 
 .page-item {
