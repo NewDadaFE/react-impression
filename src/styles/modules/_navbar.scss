@@ -128,11 +128,11 @@
     padding-bottom: .425rem;
 
     + .nav-link {
-      margin-left: 1rem;
+      margin-left: $nav-item-spacer-x;
     }
   }
 
   .nav-item + .nav-item {
-    margin-left: 1rem;
+    margin-left: $nav-item-spacer-x;
   }
 }

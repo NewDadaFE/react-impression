@@ -514,7 +514,7 @@ $zindex-modal:             1050 !default;
 
 // Navbar
 
-$navbar-padding-x:                  $spacer !default;
+$navbar-padding-x:                  3rem !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-brand-padding-y:            .25rem !default;
 
@@ -534,7 +534,7 @@ $navbar-border-color:               $border-color !default;
 
 $navbar-primary-bg:                 $brand-primary !default;
 $navbar-primary-color:              #fff !default;
-$navbar-primary-border-color:       $navbar-bg !default;
+$navbar-primary-border-color:       $navbar-primary-bg !default;
 
 $navbar-pure-bg:                    #fff !default;
 $navbar-pure-color:                 $body-color !default;
@@ -543,6 +543,7 @@ $navbar-pure-border-color:          $navbar-pure-bg !default;
 // Navs
 
 $nav-item-margin:               .2rem !default;
+$nav-item-spacer-x:             3rem !default;
 $nav-item-inline-spacer:        1rem !default;
 $nav-link-padding:              .5em 1em !default;
 $nav-link-hover-bg:             $gray-lighter !default;

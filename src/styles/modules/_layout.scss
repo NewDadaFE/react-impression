@@ -47,6 +47,6 @@
 .content{
     flex: 1;
     height: 100%;
-    padding: 30px;//临时
+    padding: 1rem $nav-item-spacer-x;//临时
     overflow: scroll;
 }
