@@ -6,10 +6,26 @@
 
 
 //容器
-.appboard{
-    height: 100%;
+.flex{
     overflow: hidden;
     display: flex;
+}
+
+.flex-vertical{
+    height: 100%;
+    flex-direction: column;
+}
+
+.flex-item{
+    flex: 1;
+}
+
+.flex-item-2{
+    flex: 2;
+}
+
+.flex-item-3{
+    flex: 3;
 }
 
 //侧边栏
@@ -30,6 +46,7 @@
 //主内容区
 .content{
     flex: 1;
+    height: 100%;
     padding: 30px;//临时
     overflow: scroll;
 }

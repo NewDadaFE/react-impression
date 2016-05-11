@@ -1,3 +1,5 @@
+export Flex from './Flex';
+export FlexItem from './FlexItem';
 export Button from './Button';
 export Image from './Image';
 export Alert from './Alert';
