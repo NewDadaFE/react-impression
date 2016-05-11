@@ -18,7 +18,7 @@
     user-select: none;
     vertical-align: middle;
     &:not(:empty){
-        margin-left: ($spacer-y / 2);
+        margin-left: $checkbox-label-space-x;
     }
 }
 
@@ -29,7 +29,7 @@
 
     .checkbox:not(:last-child),
     .radio:not(:last-child){
-        margin-right: $spacer-y;
+        margin-right: $checkbox-space-x;
     }
 }
 
@@ -42,14 +42,14 @@
 
         &:checked{
             & + .checkbox-addon i{
-                color: #4285f4;
+                color: $checkbox-addon-checked-color;
             }
         }
 
         &:not(:disabled):not(.disabled){
             &:active{
                 & + .checkbox-addon {
-                    box-shadow: inset 0 0 2rem rgba(#ddd, .8);
+                    box-shadow: $checkbox-addon-active-box-shadow;
                 }
             }
         }
@@ -57,25 +57,25 @@
         &:disabled + .checkbox-addon,
         &.disabled + .checkbox-addon{
             opacity: .6;
-            background: #eee;
+            background: $checkbox-addon-disabled-bg;
         }
     }
 }
 
 .checkbox-addon{
-    padding: round(($line-height-base - 1) * $font-size-root / 2);
+    padding: $checkbox-addon-padding;
     display: inline-block;
-    border: 1px solid #ddd;
-    border-radius: 2px;
+    border: 1px solid $checkbox-addon-border-color;
+    border-radius: $checkbox-addon-border-radius;
     vertical-align: middle;
-    transition: all .2s ease;
+    transition: $checkbox-addon-transtion;
 
 
     i{
         color: transparent;
-        width: 1rem;
-        height: 1rem;
-        transition: all .2s ease-in-out;
+        width: round($checkbox-addon-width * $font-size-root);
+        height: round($checkbox-addon-height * $font-size-root);
+        transition: $checkbox-addon-transtion;
     }
 }
 
@@ -90,14 +90,14 @@
 
         &:checked{
             & + .radio-addon i{
-                background: #4285f4;
+                background: $checkbox-addon-checked-color;
             }
         }
 
         &:not(:checked):not(:disabled):not(.disabled){
             &:active{
                 & + .radio-addon{
-                    box-shadow: inset 0 0 2rem rgba(#ddd, .8);
+                    box-shadow: $checkbox-addon-active-box-shadow;
                 }
             }
         }
@@ -106,29 +106,29 @@
         &:disabled + .radio-addon,
         &.disabled + .radio-addon{
             opacity: .6;
-            background: #eee;
+            background: $checkbox-addon-disabled-bg;
         }
     }
 }
 
 .radio-addon{
     position: relative;
-    padding: round(($line-height-base - 0.6) * $font-size-root / 2);
-    border: 1px solid #ddd;
-    border-radius: 2px;
+    padding: $radio-addon-padding;
+    border: 1px solid $checkbox-addon-border-color;
+    border-radius: $checkbox-addon-border-radius;
     display: inline-block;
     border-radius: 50%;
     vertical-align: middle;
-    transition: all .2s ease;
+    transition: $checkbox-addon-transtion;
 
     i {
         display: inline-block;
         content: " ";
-        width: round(0.6 * $font-size-root);
-        height: round(0.6 * $font-size-root);
+        width: round($radio-addon-width * $font-size-root);
+        height: round($radio-addon-height * $font-size-root);
         background: transparent;
         border-radius: 50%;
-        transition: all .2s ease-in-out;
+        transition: $checkbox-addon-transtion;
     }
 }
 
@@ -144,11 +144,11 @@
         z-index: -1;
 
         &:checked + .switch-addon{
-            border-color: #4285f4;
-            background: #4285f4;
+            border-color: $checkbox-addon-checked-color;
+            background:  $checkbox-addon-checked-color;
 
             &:before{
-                transform: translateX(round((3 - 1) * $font-size-root) - 6);
+                transform: $switch-addon-translateX;
             }
         }
 
@@ -161,20 +161,20 @@
 
 .switch-addon{
     display: inline-block;
-    background: #ddd;
-    width: 3rem;
-    border-radius: 100px;
-    padding: round(($line-height-base - 1) *  $font-size-root / 2);
-    transition: all .2s ease;
+    background: $switch-bg;
+    width: round($switch-width * $font-size-root);
+    border-radius: round($switch-addon-width * $font-size-root);
+    padding: $switch-addon-padding;
+    transition: $checkbox-addon-transtion;
 
 
     &:before{
         content: " ";
         display: inline-block;
-        width: 1rem;
-        height: 1rem;
+        width: round($switch-addon-width * $font-size-root);
+        height: round($switch-addon-height * $font-size-root);
         border-radius: 50%;
-        background: #fff;
-        transition: all .2s ease;
+        background: $switch-addon-bg;;
+        transition: $checkbox-addon-transtion;
     }
 }
