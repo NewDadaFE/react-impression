@@ -12,15 +12,30 @@ export default class Image extends Component{
     //prop type校验
     static propTypes = {
         //形状（fluid、rounded、circle、thumbnail）
-        shape: React.PropTypes.string,
+        fluid: React.PropTypes.bool,
+        rounded: React.PropTypes.bool,
+        circle: React.PropTypes.bool,
+        thumbnail: React.PropTypes.bool,
+    }
+    //默认props
+    static defaultProps = {
+        fluid: false,
+        rounded: false,
+        circle: false,
+        thumbnail: false,
     }
     //渲染
     render(){
-        let { shape, src, alt, className } = this.props;
-        let imgStyle = `img-${shape}`;
+        let { fluid, rounded, circle, thumbnail, className } = this.props;
+        const classes = {
+            'img-fluid': fluid,
+            'img-rounded': rounded,
+            'img-circle': circle,
+            'img-thumbnail': thumbnail,
+        };
 
         return(
-            <img src={src} alt={alt} className={classnames(imgStyle, className)}/>
+            <img {...this.props} className={classnames(classes, className)}/>
         );
     }
  }
