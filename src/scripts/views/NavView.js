@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavItem, Nav as Test } from '../components';
 
 export default class NavView extends Component{
     render(){
@@ -9,18 +10,10 @@ export default class NavView extends Component{
                     <div className="row">
                         <div className="col-sm-12">
                             <ul className="nav nav-inline">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Another link</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link disabled" href="#">Disabled</a>
-                                </li>
+                                <NavItem href='#' active>Link</NavItem>
+                                <NavItem href='#'>Link</NavItem>
+                                <NavItem href='#'>Anothor link</NavItem>
+                                <NavItem href='#' disabled>Disabled</NavItem>
                             </ul>
                         </div>
                     </div>
@@ -29,20 +22,12 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <ul className="nav nav-tabs">
-                                <li className="nav-item">
-                                    <a className="nav-link active" href="#">Active</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Another link</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link disabled" href="#">Disabled</a>
-                                </li>
-                            </ul>
+                            <Test>
+                                <NavItem href='#' active>Active</NavItem>
+                                <NavItem href='#'>Link</NavItem>
+                                <NavItem href='#'>Anothor link</NavItem>
+                                <NavItem href='#' disabled>Disabled</NavItem>
+                            </Test>
                         </div>
                     </div>
                 </div>
@@ -52,16 +37,16 @@ export default class NavView extends Component{
                         <div className="col-sm-12">
                             <ul className="nav nav-pills">
                                 <li className="nav-item">
-                                    <a className="nav-link active" href="#">Active</a>
+                                    <a className="nav-link active">Active</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
+                                    <a className="nav-link">Link</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Another link</a>
+                                    <a className="nav-link">Another link</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link disabled" href="#">Disabled</a>
+                                    <a className="nav-link disabled">Disabled</a>
                                 </li>
                             </ul>
                         </div>
@@ -73,16 +58,16 @@ export default class NavView extends Component{
                         <div className="col-sm-2">
                             <ul className="nav nav-pills nav-stacked">
                                 <li className="nav-item">
-                                    <a className="nav-link active" href="#">Active</a>
+                                    <a className="nav-link active">Active</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
+                                    <a className="nav-link">Link</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Another link</a>
+                                    <a className="nav-link">Another link</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link disabled" href="#">Disabled</a>
+                                    <a className="nav-link disabled">Disabled</a>
                                 </li>
                             </ul>
                         </div>
