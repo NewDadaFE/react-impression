@@ -1,0 +1,44 @@
+//侧边栏
+.sidebar{
+    position: relative;
+    height: 100%;
+    width: $sidebar-width;
+    color: $sidebar-color;
+    background-color: $sidebar-bg;
+    padding-bottom: $sidebar-footer-height;
+}
+
+.sidebar-nav{
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0;
+    overflow: scroll;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: $sidebar-footer-height;
+
+    .nav-item{
+        display: block;
+        a{
+            display: block;
+            color: #a7b1c2;
+            padding: 1rem 1.4rem;
+            &:hover{
+                color: #fff;
+                background: darken($sidebar-bg, 3%);
+            }
+        }
+
+    }
+}
+
+.sidebar-footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $sidebar-footer-height;
+    background: $sidebar-footer-bg;
+}

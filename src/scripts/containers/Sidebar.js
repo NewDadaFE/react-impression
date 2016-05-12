@@ -12,27 +12,66 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div className="sidebar">
-                <div className="list-group">
-                    <Link to="/image" className="list-group-item">Image</Link>
-                    <Link to="/table" className="list-group-item">Table</Link>
-                    <Link to="/button" className="list-group-item">Button</Link>
-                    <Link to="/button-group" className="list-group-item">Button-Group</Link>
-                    <Link to="/input-group" className="list-group-item">Input-Group</Link>
-                    <Link to="/tag" className="list-group-item">Tag</Link>
-                    <Link to="/alert" className="list-group-item">Alert</Link>
-                    <Link to="/card" className="list-group-item">Card</Link>
-                    <Link to="/breadcrumb" className="list-group-item">Breadcrumb</Link>
-                    <Link to="/progress" className="list-group-item">Progress</Link>
-                    <Link to="/pagination" className="list-group-item">Pagination</Link>
-                    <Link to="/list-group" className="list-group-item">List-Group</Link>
-                    <Link to="/modal" className="list-group-item">Modal</Link>
-                    <Link to="/tooltip" className="list-group-item">Tooltip</Link>
-                    <Link to="/popover" className="list-group-item">Popover</Link>
-                    <Link to="/nav" className="list-group-item">Nav</Link>
-                    <Link to="/navbar" className="list-group-item">Navbar</Link>
-                    <Link to="/form" className="list-group-item">Form</Link>
-                    <Link to="/dropdowns" className="list-group-item">Dropdowns</Link>
-                </div>
+                <ul className="sidebar-nav">
+                    <li className="nav-item">
+                        <Link to="/image">Image</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/table">Table</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/button">Button</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/button-group">Button-Group</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/input-group">Input-Group</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/tag">Tag</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/alert">Alert</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/card">Card</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/breadcrumb">Breadcrumb</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/progress">Progress</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/pagination">Pagination</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/list-group">List-Group</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/modal">Modal</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/tooltip">Tooltip</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/popover">Popover</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/nav">Nav</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/navbar">Navbar</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/form">Form</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/dropdowns">Dropdowns</Link>
+                    </li>
+                </ul>
+                <div className="sidebar-footer"></div>
             </div>
         );
     }

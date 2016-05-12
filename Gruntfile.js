@@ -18,28 +18,12 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            prod: {
+            img: {
                 files: [{
                     expand: true,
-                    src: 'config.prod.js',
-                    dest: 'src/scripts/constants/',
-                    ext: '.js'
-                }]
-            },
-            dev: {
-                files: [{
-                    expand: true,
-                    src: 'config.dev.js',
-                    dest: 'src/scripts/constants/',
-                    ext: '.js'
-                }]
-            },
-            local: {
-                files: [{
-                    expand: true,
-                    src: 'config.local.js',
-                    dest: 'src/scripts/constants/',
-                    ext: '.js'
+                    cwd: 'src/images',
+                    src: ['**/*'],
+                    dest: 'build/images/'
                 }]
             },
             font: {
@@ -134,5 +118,5 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', ['eslint', 'clean', 'copy:local', 'sass', 'copy:font', 'autoprefixer','execute']);
+    grunt.registerTask('default', ['eslint', 'clean', 'copy:img', 'sass', 'copy:font', 'autoprefixer','execute']);
 };

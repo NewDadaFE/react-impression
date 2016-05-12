@@ -5,6 +5,7 @@ var port  = 9016;
 
 
 new WebpackDevServer(webpack(config), {
+    contentBase: "./build",
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true,

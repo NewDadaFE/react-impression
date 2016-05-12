@@ -157,12 +157,12 @@ export default class FormView extends Component{
                 <div className="card card-block">
                     <form className="form-inline">
                         <div className="form-group">
-                            <label htmlFor="exampleInputName2">Name:</label>
-                            <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+                            <label>Name:</label>
+                            <input type="text" className="form-control" placeholder="Jane Doe"/>
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputEmail2">Email</label>
-                            <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
+                            <label>Email</label>
+                            <input type="email" className="form-control" placeholder="jane.doe@example.com"/>
                         </div>
                         <label className="checkbox">
                             <input type="checkbox" defaultChecked/>
@@ -180,15 +180,15 @@ export default class FormView extends Component{
                 <div className="card card-block">
                     <form className="form-horizontal">
                         <div className="form-group row">
-                            <label for="inputEmail3" className="col-sm-2 form-control-label text-xs-right">Email:</label>
+                            <label className="col-sm-2 form-control-label text-xs-right">Email:</label>
                             <div className="col-sm-10">
-                                <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
+                                <input type="email" className="form-control" placeholder="Email"/>
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label for="inputPassword3" className="col-sm-2 form-control-label text-xs-right">name:</label>
+                            <label className="col-sm-2 form-control-label text-xs-right">name:</label>
                             <div className="col-sm-10">
-                                <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+                                <input type="password" className="form-control" placeholder="Password"/>
                             </div>
                         </div>
                         <div className="form-group row">

@@ -9,6 +9,7 @@
 .flex{
     overflow: hidden;
     display: flex;
+    height: 100%;
 }
 
 .flex-vertical{
@@ -18,29 +19,28 @@
 
 .flex-item{
     flex: 1;
+    overflow: scroll;
+    position: relative;
 }
 
 .flex-item-2{
     flex: 2;
+    overflow: scroll;
+    position: relative;
 }
 
 .flex-item-3{
     flex: 3;
-}
-
-//侧边栏
-.sidebar{
-    height: 100%;
     overflow: scroll;
-    width: $sidebar-width;
-    color: $sidebar-color;
-    background-color: $sidebar-bg;
+    position: relative;
 }
 
-.sidebar-heading{
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
+.square{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 //主内容区

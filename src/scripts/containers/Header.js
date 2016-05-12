@@ -7,25 +7,12 @@ import React, { Component } from 'react';
 export default class Header extends Component{
     render(){
         return (
-            <div>
-                <nav className="navbar">
-                    <a className="navbar-brand" href="#">Navbar</a>
-                    <ul className="nav navbar-nav pull-xs-right">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">首页</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">PC端</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">移动端</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">动画</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <nav className="navbar">
+                <div className="navbar-sidebar-title">
+                    <img style={{maxHeight: '45px'}} src="http://localhost:9016/images/logo.png"/>Impression
+                </div>
+                <button className="btn btn-secondary"><i className="fa fa-bars"></i></button>
+            </nav>
         );
     }
 }

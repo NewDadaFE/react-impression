@@ -104,7 +104,7 @@ $border-width: 1px !default;
 $body-bg:    #fff !default;
 $body-color: #333 !default;
 
-$border-color: #ddd !default;
+$border-color: #e7eaec !default;
 
 
 // Links
@@ -513,20 +513,11 @@ $zindex-modal:             1050 !default;
 
 
 // Navbar
-
+$navbar-height:                     60px !default;
+$navbar-line-height:                $navbar-height !default;
 $navbar-padding-x:                  3rem !default;
-$navbar-padding-y:                  ($spacer / 2) !default;
+$navbar-padding-y:                  0 !default;
 $navbar-brand-padding-y:            .25rem !default;
-
-$navbar-dark-color:                 rgba(255,255,255,.5) !default;
-$navbar-dark-hover-color:           rgba(255,255,255,.75) !default;
-$navbar-dark-active-color:          rgba(255,255,255,1) !default;
-$navbar-dark-disabled-color:        rgba(255,255,255,.25) !default;
-
-$navbar-light-color:                rgba(0,0,0,.3) !default;
-$navbar-light-hover-color:          rgba(0,0,0,.6) !default;
-$navbar-light-active-color:         rgba(0,0,0,.8) !default;
-$navbar-light-disabled-color:       rgba(0,0,0,.15) !default;
 
 $navbar-bg:                         $gray-lightest !default;
 $navbar-color:                      $gray-light !default;
@@ -540,16 +531,31 @@ $navbar-pure-bg:                    #fff !default;
 $navbar-pure-color:                 $body-color !default;
 $navbar-pure-border-color:          $navbar-pure-bg !default;
 
-// Navs
 
+//Sidebar
+$sidebar-width:               12rem !default;
+$sidebar-color:               $gray-light !default;
+$sidebar-bg:                  $gray-secondary !default;
+
+$sidebar-footer-bg:           darken($sidebar-bg, 3%) !default;
+$sidebar-footer-height:       $navbar-height !default;
+
+// Navs
 $nav-item-margin:               .2rem !default;
-$nav-item-spacer-x:             3rem !default;
+$nav-item-spacer-x:             1rem !default;
 $nav-item-inline-spacer:        1rem !default;
 $nav-link-padding:              .5em 1em !default;
 $nav-link-hover-bg:             $gray-lighter !default;
 $nav-disabled-link-color:       $gray-light !default;
 $nav-disabled-link-hover-color: $gray-light !default;
 $nav-disabled-link-hover-bg:    transparent !default;
+
+$navbar-sidebar-title-bg:           darken($sidebar-bg, 3%) !default;
+$navbar-sidebar-title-font-size:    $font-size-lg !default;
+$navbar-sidebar-title-color:        $gray-lighter !default;
+$navbar-sidebar-title-width:        $sidebar-width !default;
+$navbar-sidebar-title-margin:       0  $nav-item-spacer-x 0 $navbar-padding-x / -1 !default;
+
 
 $nav-tabs-link-color:                         $gray !default;
 $nav-tabs-border-color:                       $brand-primary !default;
@@ -870,8 +876,3 @@ $close-font-weight:           normal !default;
 $close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
-
-//Sidebar
-$sidebar-width:               160px !default;
-$sidebar-color:               $gray-light !default;
-$sidebar-bg:                  #2f4050 !default;

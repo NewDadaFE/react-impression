@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Content from './Content';
-import { Flex, FlexItem } from '../components';
+import { Flex, FlexItem, Square } from '../components';
 
 /**
  * 页面布局.
@@ -16,14 +16,16 @@ export default class Layout extends Component {
             <Flex direction="column">
                 <Header/>
                 <FlexItem>
-                     <Flex>
-                        {/* 侧边栏 */}
-                        <Sidebar/>
-                        {/* 内容区 */}
-                        <Content>
-                            {this.props.children}
-                        </Content>
-                     </Flex>
+                    <Square>
+                        <Flex>
+                            {/* 侧边栏 */}
+                            <Sidebar/>
+                            {/* 内容区 */}
+                            <Content>
+                                {this.props.children}
+                            </Content>
+                         </Flex>
+                    </Square>
                 </FlexItem>
             </Flex>
         );

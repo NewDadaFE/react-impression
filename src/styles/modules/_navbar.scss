@@ -4,6 +4,8 @@
 // other navbar variations.
 
 .navbar {
+  height: $navbar-height;
+  line-height: $navbar-line-height;
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
   border-bottom: 1px solid transparent;
@@ -43,8 +45,6 @@
 
 .navbar-brand {
   float: left;
-  padding-top:    $navbar-brand-padding-y;
-  padding-bottom: $navbar-brand-padding-y;
   margin-right: 1rem;
   font-size: $font-size-lg;
 
@@ -54,6 +54,22 @@
 
   > img {
     display: block;
+  }
+}
+
+
+.navbar-sidebar-title{
+  text-align: center;
+  display: inline-block;
+  font-size: $navbar-sidebar-title-font-size;
+  color: $navbar-sidebar-title-color;
+  width: $navbar-sidebar-title-width;
+  background: $navbar-sidebar-title-bg;
+  margin: $navbar-sidebar-title-margin;
+
+  img{
+    max-height: $navbar-height;
+    max-width: $navbar-sidebar-title-width;
   }
 }
 
@@ -124,8 +140,6 @@
 
   .nav-link {
     display: block;
-    padding-top:    .425rem;
-    padding-bottom: .425rem;
 
     + .nav-link {
       margin-left: $nav-item-spacer-x;
