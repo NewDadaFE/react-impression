@@ -25,6 +25,6 @@ export default class Switch extends Component{
                 <input type="checkbox" defaultChecked={defaultChecked} disabled={disabled} />
                 <div className="switch-addon"></div>
             </label>
-        )
+        );
     }
 }

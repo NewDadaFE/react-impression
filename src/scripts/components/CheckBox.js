@@ -23,7 +23,6 @@ export default class CheckBox extends Component{
     //渲染
     render(){
         let { defaultChecked, disabled, classname } = this.props;
-        console.log(disabled);
 
         return(
             <label className={classnames('checkbox', classname)}>

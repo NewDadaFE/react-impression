@@ -28,6 +28,6 @@ export default class Radio extends Component{
                 </div>
                 <span className="radio-label">{this.props.children}</span>
             </label>
-        )
+        );
     }
 }
