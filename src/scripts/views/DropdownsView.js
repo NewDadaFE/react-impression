@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-;
+
 export default class DropdownsView extends Component{
     render(){
         return (

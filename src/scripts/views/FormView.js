@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CheckBox, Radio, Switch } from '../components';
 
 export default class FormView extends Component{
     render(){
@@ -10,83 +11,19 @@ export default class FormView extends Component{
                         <div className="form-group col-xs-6">
                             <label>interest:</label>
                             <div className="checkbox-inline">
-                                <label className="checkbox">
-                                    <input type="checkbox" defaultChecked/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        basketball
-                                    </span>
-                                </label>
-                                <label className="checkbox">
-                                    <input type="checkbox"/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        football
-                                    </span>
-                                </label>
-                                <label className="checkbox">
-                                    <input type="checkbox"/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        volleyball
-                                    </span>
-                                </label>
-                                <label className="checkbox">
-                                    <input type="checkbox" defaultChecked/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        ping-pong
-                                    </span>
-                                </label>
+                                <CheckBox defaultChecked>basketball</CheckBox>
+                                <CheckBox>football</CheckBox>
+                                <CheckBox>volleyball</CheckBox>
+                                <CheckBox defaultChecked>ping-pong</CheckBox>
                             </div>
                         </div>
                         <div className="form-group col-sm-5">
                             <label>disabled:</label>
                             <div className="checkbox-inline">
-                                <label className="checkbox">
-                                    <input type="checkbox" disabled/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        Benz
-                                    </span>
-                                </label>
-                                <label className="checkbox">
-                                    <input type="checkbox" disabled checked/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        BMW
-                                    </span>
-                                </label>
-                                <label className="checkbox">
-                                    <input type="checkbox" disabled/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        Audi
-                                    </span>
-                                </label>
-                                <label className="checkbox">
-                                    <input type="checkbox" disabled checked/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        Volvo
-                                    </span>
-                                </label>
+                                <CheckBox disabled>Benz</CheckBox>
+                                <CheckBox disabled defaultChecked>BMW</CheckBox>
+                                <CheckBox disabled>Audi</CheckBox>
+                                <CheckBox disabled defaultChecked>Volvo</CheckBox>
                             </div>
                         </div>
                     </form>
@@ -97,39 +34,15 @@ export default class FormView extends Component{
                         <div className="form-group col-xs-6">
                               <label>Gender</label>
                               <div className="radio-inline">
-                                  <label className="radio">
-                                        <input type="radio" name="gender" defaultChecked/>
-                                        <div className="radio-addon">
-                                            <i></i>
-                                        </div>
-                                      <span className="radio-label">Male</span>
-                                  </label>
-                                  <label className="radio">
-                                        <input type="radio" name="gender"/>
-                                        <div className="radio-addon">
-                                            <i></i>
-                                        </div>
-                                        <span className="radio-label">Female</span>
-                                  </label>
+                                    <Radio defaultChecked>Male</Radio>
+                                    <Radio>Female</Radio>
                               </div>
                         </div>
                         <div className="form-group col-xs-5">
                               <label>Disabled</label>
                               <div className="radio-inline">
-                                  <label className="radio">
-                                        <input type="radio" name="radio" defaultChecked disabled/>
-                                        <div className="radio-addon">
-                                            <i></i>
-                                        </div>
-                                      <span className="radio-label">Yes</span>
-                                  </label>
-                                  <label className="radio">
-                                        <input type="radio" name="radio" disabled/>
-                                        <div className="radio-addon">
-                                            <i></i>
-                                        </div>
-                                        <span className="radio-label">No</span>
-                                  </label>
+                                  <Radio disabled>Yes</Radio>
+                                  <Radio disabled>No</Radio>
                               </div>
                         </div>
                     </form>
@@ -138,18 +51,12 @@ export default class FormView extends Component{
                 <div className="card card-block">
                     <form className="form-inline row">
                         <div className="form-group col-xs-3">
-                                <label>Mute</label>
-                                <label className="switch">
-                                    <input type="checkbox"/>
-                                    <div className="switch-addon"></div>
-                                </label>
+                            <label>Mute</label>
+                            <Switch />
                         </div>
                         <div className="form-group col-xs-3">
-                                <label>Disabled</label>
-                                <label className="switch">
-                                    <input type="checkbox" defaultChecked disabled/>
-                                    <div className="switch-addon"></div>
-                                </label>
+                            <label>Disabled</label>
+                            <Switch disabled defaultChecked />
                         </div>
                     </form>
                 </div>
@@ -161,7 +68,7 @@ export default class FormView extends Component{
                             <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputEmail2">Email</label>
+                            <label htmlFor="exampleInputEmail2">Email</label>
                             <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
                         </div>
                         <label className="checkbox">
@@ -180,13 +87,13 @@ export default class FormView extends Component{
                 <div className="card card-block">
                     <form className="form-horizontal">
                         <div className="form-group row">
-                            <label for="inputEmail3" className="col-sm-2 form-control-label text-xs-right">Email:</label>
+                            <label htmlFor="inputEmail3" className="col-sm-2 form-control-label text-xs-right">Email:</label>
                             <div className="col-sm-10">
                                 <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label for="inputPassword3" className="col-sm-2 form-control-label text-xs-right">name:</label>
+                            <label htmlFor="inputPassword3" className="col-sm-2 form-control-label text-xs-right">name:</label>
                             <div className="col-sm-10">
                                 <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
                             </div>
