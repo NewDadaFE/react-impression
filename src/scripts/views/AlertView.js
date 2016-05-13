@@ -69,10 +69,7 @@ export default class AlertView extends Component{
                 </div>
                 <h3>Dismissible</h3>
                 <div className="card card-block">
-                        <Alert style="success">
-                          <button type="button" className="close">
-                                <span aria-hidden="true">&times;</span>
-                          </button>
+                        <Alert style="success" closeable>
                           You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
                         </Alert>
                 </div>

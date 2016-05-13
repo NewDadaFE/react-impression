@@ -21,7 +21,7 @@
 
     .nav-item,
     .nav-link,
-    .nav-collapse{
+    .nav-collapse-title{
         display: block;
         color: #a7b1c2;
         padding: 0.6rem 1.6rem;
@@ -37,12 +37,28 @@
     }
 
     .nav-link{
+        cursor: pointer;
         &:hover{
             color: #fff;
             background: darken($sidebar-bg, 3%);
             border-left-color: $brand-primary;
             box-shadow: inset 0 0 3rem darken($sidebar-bg, 4%);
         }
+
+        .pull-xs-right{
+            line-height: $line-height-base;
+        }
+    }
+}
+
+.nav-collapse{
+
+}
+
+.nav-collapse-block{
+    box-shadow: inset 0 0 1px darken($sidebar-bg, 12%), inset 0 0 100rem lighten($sidebar-bg, 6%);
+    .nav-link{
+        text-indent: 1.5rem;
     }
 }
 
