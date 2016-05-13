@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component,cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 
 /**
  * Nav 组件
@@ -24,7 +24,8 @@ export default class Nav extends Component{
 
     }
     handleChangeActive(eventKey){
-        this.setSate({activeKey: eventKey});
+        this.props.onSelect(eventKey);
+        this.setState({activeKey: eventKey});
     }
     //渲染
     render(){
@@ -35,34 +36,18 @@ export default class Nav extends Component{
         let navStacked = stacked ? 'nav-stacked' : null;
         let navStyle = style ? `nav-${style}` : null;
 
-        function renderNavItem(children){
-            let rows = [];
-
-            for(let i=0; i < children.length; i++){
-                if(children[i].props.eventKey === activeKey){
-                    rows.push(cloneElement(
-                        children[i],{
-                            active:true,
-                            onSelect,
-                            handleChangeActive}
-                        )
-                    );
-                }else{
-                    rows.push(cloneElement(
-                        children[i],{
-                            onSelect,
-                            handleChangeActive}
-                        )
-                    );
-                }
-            }
-
-            return rows;
-        }
+        let rows = this.props.children.map((child, index) => {
+            return cloneElement(child, {
+                key: index,
+                active: child.props.eventKey === activeKey,
+                onSelect,
+                handleChangeActive
+            });
+        });
 
         return(
             <ul className={classnames('nav', navStacked, navStyle, className)}>
-                {renderNavItem(this.props.children)}
+                {rows}
             </ul>
         );
     }
