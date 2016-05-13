@@ -3,8 +3,8 @@ import { NavItem, Nav } from '../components';
 
 export default class NavView extends Component{
     handleSelect(selectKey){
-        console.log(this);
-        console.log(selectKey);
+        // console.log(this);
+        // console.log(selectKey);
     }
     render(){
         return (

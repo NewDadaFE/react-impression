@@ -24,7 +24,6 @@ export default class Nav extends Component{
 
     }
     handleChangeActive(eventKey){
-        console.log(eventKey);
         this.setSate({activeKey: eventKey});
     }
     //渲染
@@ -59,7 +58,7 @@ export default class Nav extends Component{
             }
 
             return rows;
-        };
+        }
 
         return(
             <ul className={classnames('nav', navStacked, navStyle, className)}>

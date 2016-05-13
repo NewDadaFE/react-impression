@@ -31,7 +31,7 @@ export default class NavItem extends Component{
         let classes = {
             disabled: disabled,
             active: active,
-        }
+        };
 
         return(
             <li className={classnames('nav-item', classname)} 
