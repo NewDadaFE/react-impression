@@ -19,13 +19,13 @@ export default class Sidebar extends Component {
                         BASIC
                     </div>
                     <Link className="nav-link" to="/image"><i className="fa fa-picture-o fa-left"></i>Image</Link>
-                    <Link className="nav-link" to="/table"><i className="fa fa-table fa-left" aria-hidden="true"></i>Table</Link>
-                    <Link className="nav-link" to="/button"><i className="fa fa-hand-pointer-o fa-left" aria-hidden="true"></i>Button</Link>
-                    <Link className="nav-link" to="/button-group"><i className="fa fa-th-large fa-left" aria-hidden="true"></i>Button-Group</Link>
+                    <Link className="nav-link" to="/table"><i className="fa fa-table fa-left"></i>Table</Link>
+                    <Link className="nav-link" to="/button"><i className="fa fa-hand-pointer-o fa-left"></i>Button</Link>
+                    <Link className="nav-link" to="/button-group"><i className="fa fa-th-large fa-left"></i>Button-Group</Link>
                     <div className="nav-item">
                         COMPONENT
                     </div>
-                    <Link className="nav-link" to="/input-group"><i className="fa fa-outdent fa-left" aria-hidden="true"></i>Input-Group</Link>
+                    <Link className="nav-link" to="/input-group"><i className="fa fa-outdent fa-left"></i>Input-Group</Link>
                     <Link className="nav-link" to="/tag"><i className="fa fa-tag fa-left"></i>Tag</Link>
                     <Link className="nav-link" to="/alert"><i className="fa fa-info-circle fa-left"></i>Alert<span className="fa-right tag tag-warning">New</span></Link>
                     <Link className="nav-link" to="/card"><i className="fa fa-television fa-left"></i>Card</Link>
@@ -33,6 +33,14 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/progress"><i className="fa fa-hourglass-start fa-left"></i>Progress</Link>
                     <Link className="nav-link" to="/pagination"><i className="fa fa-angle-double-right fa-left"></i>Pagination</Link>
                     <Link className="nav-link" to="/list-group"><i className="fa fa-list fa-left"></i>List-Group</Link>
+                    <div className="nav-collapse"><i className="fa fa-list fa-left"></i>List-Group<i className="fa fa-angle-right pull-xs-right"></i>
+                        <div className="sidebar-collapse-nav">
+                            <Link className="nav-link" to="/image">Image</Link>
+                            <Link className="nav-link" to="/table">Table</Link>
+                            <Link className="nav-link" to="/button">Button</Link>
+                            <Link className="nav-link" to="/button-group">Button-Group</Link>
+                        </div>
+                    </div>
                     <Link className="nav-link" to="/modal"><i className="fa fa-file-text fa-left"></i>Modal</Link>
                     <Link className="nav-link" to="/tooltip"><i className="fa fa-commenting-o fa-left"></i>Tooltip</Link>
                     <Link className="nav-link" to="/popover"><i className="fa fa-comments fa-left"></i>Popover</Link>
