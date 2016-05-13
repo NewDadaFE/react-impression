@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 /**
  * Nav 组件
  */
-export default class ComponentName extends Component{
+export default class Nav extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);

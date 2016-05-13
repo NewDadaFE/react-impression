@@ -7,3 +7,12 @@
 @import "../utilities/spacing";
 @import "../utilities/text";
 @import "../utilities/visibility";
+
+
+.fa-left{
+    margin-right: $spacer-x / 2;
+}
+
+.fa-right{
+    margin-left: $spacer-x / 2;
+}

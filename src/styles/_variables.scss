@@ -538,7 +538,8 @@ $sidebar-color:               $gray-light !default;
 $sidebar-bg:                  $gray-secondary !default;
 
 $sidebar-footer-bg:           darken($sidebar-bg, 3%) !default;
-$sidebar-footer-height:       $navbar-height !default;
+$sidebar-footer-font-size:    $font-size-sm !default;
+$sidebar-footer-height:       35px !default;
 
 // Navs
 $nav-item-margin:               .2rem !default;
