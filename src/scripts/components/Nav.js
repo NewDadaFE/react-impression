@@ -19,18 +19,13 @@ export default class Nav extends Component{
         activeKey: React.PropTypes.number,
         onSelect: React.PropTypes.func,
     }
-    //默认props
-    static defaultProps = {
-
-    }
     changeActiveHandle(eventKey){
-        this.setState({activeKey: eventKey});
-        // debugger;
+        this.state.activeKey !== eventKey && this.setState({activeKey: eventKey});
         this.state.activeKey !== eventKey && this.props.onSelect(eventKey);
     }
     //渲染
     render(){
-        let { style, stacked, onSelect, className } = this.props;
+        let { style, stacked, className } = this.props;
         let { activeKey } = this.state;
         let changeActiveHandle = this.changeActiveHandle.bind(this);
 

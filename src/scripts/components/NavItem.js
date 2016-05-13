@@ -28,7 +28,7 @@ export default class NavItem extends Component{
     渲染
     render(){
         // debugger;
-        let { disabled, active, classname, href, changeActiveHandle, eventKey } = this.props;
+        let { disabled, active, classname, href } = this.props;
 
         let classes = {
             disabled: disabled,

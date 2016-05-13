@@ -33,6 +33,7 @@
 .nav-inline {
   .nav-item {
     display: inline-block;
+    cursor: pointer;
   }
 
   .nav-item + .nav-item,
@@ -52,6 +53,7 @@
 
   .nav-item {
     float: left;
+    cursor: pointer;
     // Make the list-items overlay the bottom border
     // margin-bottom: -$nav-tabs-border-width;
 
@@ -104,6 +106,7 @@
 
   .nav-item {
     float: left;
+    cursor: pointer;
 
     + .nav-item {
       margin-left: $nav-item-margin;
@@ -140,6 +143,7 @@
   .nav-item {
     display: block;
     float: none;
+    cursor: pointer;
 
     + .nav-item {
       margin-top: $nav-item-margin;
