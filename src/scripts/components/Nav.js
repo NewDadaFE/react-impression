@@ -23,15 +23,16 @@ export default class Nav extends Component{
     static defaultProps = {
 
     }
-    handleChangeActive(eventKey){
-        this.props.onSelect(eventKey);
+    changeActiveHandle(eventKey){
         this.setState({activeKey: eventKey});
+        // debugger;
+        this.state.activeKey !== eventKey && this.props.onSelect(eventKey);
     }
     //渲染
     render(){
         let { style, stacked, onSelect, className } = this.props;
         let { activeKey } = this.state;
-        let handleChangeActive = this.handleChangeActive.bind(this);
+        let changeActiveHandle = this.changeActiveHandle.bind(this);
 
         let navStacked = stacked ? 'nav-stacked' : null;
         let navStyle = style ? `nav-${style}` : null;
@@ -40,8 +41,7 @@ export default class Nav extends Component{
             return cloneElement(child, {
                 key: index,
                 active: child.props.eventKey === activeKey,
-                onSelect,
-                handleChangeActive
+                changeActiveHandle
             });
         });
 
