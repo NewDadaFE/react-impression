@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Flex, FlexItem } from '../components';
+// import { Flex, FlexItem } from '../components';
 
 
 

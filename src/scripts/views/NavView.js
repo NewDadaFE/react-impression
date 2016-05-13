@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { NavItem, Nav as Test } from '../components';
+import { NavItem, Nav } from '../components';
 
 export default class NavView extends Component{
+    handleSelect(selectKey){
+        // console.log(this);
+        // console.log(selectKey);
+    }
     render(){
         return (
             <div>
@@ -10,10 +14,10 @@ export default class NavView extends Component{
                     <div className="row">
                         <div className="col-sm-12">
                             <ul className="nav nav-inline">
-                                <NavItem href='#' active>Link</NavItem>
-                                <NavItem href='#'>Link</NavItem>
-                                <NavItem href='#'>Anothor link</NavItem>
-                                <NavItem href='#' disabled>Disabled</NavItem>
+                                <NavItem active>Link</NavItem>
+                                <NavItem>Link</NavItem>
+                                <NavItem>Anothor link</NavItem>
+                                <NavItem disabled>Disabled</NavItem>
                             </ul>
                         </div>
                     </div>
@@ -22,12 +26,12 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <Test>
-                                <NavItem href='#' active>Active</NavItem>
-                                <NavItem href='#'>Link</NavItem>
-                                <NavItem href='#'>Anothor link</NavItem>
-                                <NavItem href='#' disabled>Disabled</NavItem>
-                            </Test>
+                            <Nav activeKey={2} onSelect={this.handleSelect} style="tabs">
+                                <NavItem eventKey={1}>Active</NavItem>
+                                <NavItem eventKey={2}>Link</NavItem>
+                                <NavItem eventKey={3}>Anothor link</NavItem>
+                                <NavItem eventKey={4} disabled>Disabled</NavItem>
+                            </Nav>
                         </div>
                     </div>
                 </div>

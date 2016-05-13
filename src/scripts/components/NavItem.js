@@ -15,28 +15,27 @@ export default class NavItem extends Component{
         active: React.PropTypes.bool,
         eventKey: React.PropTypes.any,
         href: React.PropTypes.string,
+        onSelect: React.PropTypes.func,
+        handleChangeActive: React.PropTypes.func,
     }
     //默认props
     static defaultProps = {
         disabled: false,
         active: false,
     }
-    //handleClick
-    handleClick(eventKey){
-        console.log(this.props.eventKey)
-    }
     //渲染
     render(){
-        let { disabled, active, classname, href } = this.props;
+        // debugger;
+        let { disabled, active, classname, href, handleChangeActive } = this.props;
 
         let classes = {
             disabled: disabled,
             active: active,
-        }
+        };
 
         return(
             <li className={classnames('nav-item', classname)} 
-            onClick={this.handleClick.bind(this)}>
+            onClick={handleChangeActive}>
                 <a href={href} className={classnames('nav-link', classes)}>
                     {this.props.children}
                 </a>

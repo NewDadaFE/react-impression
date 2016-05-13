@@ -75,7 +75,7 @@ export default class Pagination extends Component{
     renderEllipsisButton(){
         return(
             <li className="page-item disabled">
-                <a className="page-link">...</a>
+                <a style={{border: 'none'}} className="page-link">...</a>
             </li>
         );
     }
