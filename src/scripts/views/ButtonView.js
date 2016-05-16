@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from '../components';
+import { CommenTable } from '../site';
 
 export default class ButtonView extends Component{
     buttonClickHandle(event){
@@ -77,6 +78,17 @@ export default class ButtonView extends Component{
                         </div>
                     </div>
                 </div>
+                <h3>API</h3>
+                <CommenTable 
+                    data = {[
+                        ['style', '可选参数，设置按钮的样式，可选值为 primary、default、secondary', 'string', 'primary'],
+                        ['onClick', '可选参数，click 事件的 handler', 'function', ''],
+                        ['outline', '可选参数，设置按钮样式是否有外边线', 'bool', 'false'],
+                        ['size', '可选参数，设置按钮大小，可选值为 sm、normal、large', 'string', ''],
+                        ['shape', '可选参数，设置按钮形状，可选值为 pill', 'string', ''],
+                        ['href', '可选参数，设置按钮链接', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

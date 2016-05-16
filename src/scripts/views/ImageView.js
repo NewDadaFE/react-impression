@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from '../components';
+import { CommenTable } from '../site';
 
 export default class ImageView extends Component{
     render(){
@@ -23,6 +24,15 @@ export default class ImageView extends Component{
                         </div>
                     </div>
                 </div>
+                <h3>API</h3>
+                <CommenTable
+                    data = {[
+                        ['fluid', '图片是否自适应', 'bool', 'false'],
+                        ['rounded', '图片是否圆角', 'bool', 'false'],
+                        ['circle', '图片是否为圆形', 'bool', 'false'],
+                        ['thumbnail', '图片是否为缩略图', 'bool', 'false'],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
