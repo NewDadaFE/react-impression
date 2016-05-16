@@ -16,8 +16,10 @@ export default class Alert extends Component{
     }
     // props 校验
     static propTypes = {
-        style: React.PropTypes.string, //样式（success、primary、warning、danger）
-        closeable: React.PropTypes.bool, //是否可关闭
+        //样式（success、primary、warning、danger）
+        style: React.PropTypes.string,
+        //是否可关闭
+        closeable: React.PropTypes.bool,
     }
     //关闭
     hideHandle(){

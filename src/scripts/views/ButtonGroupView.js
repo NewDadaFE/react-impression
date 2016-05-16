@@ -2,29 +2,32 @@ import React, { Component } from 'react';
 import { Button, ButtonGroup } from '../components';
 
 export default class ButtonGroupView extends Component{
+    //onSelect
+    btnGroupSelectHandle(eventKey, event){
+    }
     render(){
         return (
             <div>
                 <h3>Examples</h3>
                 <div className="card card-block">
-                    <ButtonGroup style="default">
-                        <Button>Left</Button>
-                        <Button>Middle</Button>
-                        <Button>Right</Button>
+                    <ButtonGroup style="default" activeKey="left">
+                        <Button eventKey="left">Left</Button>
+                        <Button eventKey="middle">Middle</Button>
+                        <Button eventKey="right">Right</Button>
                     </ButtonGroup>
                 </div>
                 <h3>Thems</h3>
                 <div className="card card-block">
                     <div className="btn-toolbar">
-                        <ButtonGroup style="primary">
-                            <Button>Left</Button>
-                            <Button>Middle</Button>
-                            <Button>Right</Button>
+                        <ButtonGroup style="primary" onSelect={this.btnGroupSelectHandle.bind(this)} activeKey="right">
+                            <Button eventKey="left">Left</Button>
+                            <Button eventKey="middle">Middle</Button>
+                            <Button eventKey="right">Right</Button>
                         </ButtonGroup>
-                        <ButtonGroup style="secondary">
-                            <Button>Left</Button>
-                            <Button>Middle</Button>
-                            <Button>Right</Button>
+                        <ButtonGroup style="secondary" activeKey="middle">
+                            <Button eventKey="left">Left</Button>
+                            <Button eventKey="middle">Middle</Button>
+                            <Button eventKey="right">Right</Button>
                         </ButtonGroup>
                     </div>
                 </div>
