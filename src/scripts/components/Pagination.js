@@ -26,25 +26,34 @@ export default class Pagination extends Component{
         maxButtons: React.PropTypes.number,
         //自定义样式
         className: React.PropTypes.string,
+        //onSelect
+        onSelect: React.PropTypes.func,
     }
     //改变当前active页函数
     handleChangeActivePage(num){
-        this.setState({activePage: num});
+        if (num !== this.state.activePage) {
+            this.setState({activePage: num});
+            this.state.activePage && this.props.onSelect(num);
+        }
     }
     //增大当前active页
     handleAddActivePage(){
         let { activePage } = this.state;
         let {items} = this.props;
 
-        activePage < items && 
-        this.setState({activePage: activePage+1});
+        if (activePage < items) {
+            this.setState({activePage: activePage+1});
+            this.props.onSelect(activePage+1);
+        }
     }
     // 减小当前active页
     handleSubActivePage(){
         let { activePage } = this.state;
 
-        activePage > 1 && 
-        this.setState({activePage: activePage-1});
+        if (activePage > 1) {
+            this.setState({activePage: activePage-1});
+            this.props.onSelect(activePage-1);
+        }
     }
     //渲染AddButton
     renderPaginationAddButton(){
@@ -54,7 +63,7 @@ export default class Pagination extends Component{
         let disabledStyle = (activePage === items) ? 'disabled' : '';
 
         return(
-            <li className={classnames('page-item', disabledStyle)} onClick={this.handleAddActivePage.bind(this)}>
+            <li key='add' className={classnames('page-item', disabledStyle)} onClick={this.handleAddActivePage.bind(this)}>
                 <a className="page-link">›</a>
             </li>
         );
@@ -66,15 +75,15 @@ export default class Pagination extends Component{
         let disabledStyle = (activePage === 1) ? 'disabled' : '';
 
         return(
-            <li className={classnames('page-item', disabledStyle)} onClick={this.handleSubActivePage.bind(this)}>
+            <li key='sub' className={classnames('page-item', disabledStyle)} onClick={this.handleSubActivePage.bind(this)}>
                 <a className="page-link">‹</a>
             </li>
         );
     }
     //渲染...Button
-    renderEllipsisButton(){
+    renderEllipsisButton(str){
         return(
-            <li className="page-item disabled">
+            <li key={str} className="page-item disabled">
                 <a style={{border: 'none'}} className="page-link">...</a>
             </li>
         );
@@ -108,8 +117,8 @@ export default class Pagination extends Component{
                 );
         }
 
-        startPage > 1 && pageButtons.unshift(this.renderEllipsisButton());
-        endPage < items && pageButtons.push(this.renderEllipsisButton());
+        startPage > 1 && pageButtons.unshift(this.renderEllipsisButton('front'));
+        endPage < items && pageButtons.push(this.renderEllipsisButton('back'));
 
         return(
             pageButtons

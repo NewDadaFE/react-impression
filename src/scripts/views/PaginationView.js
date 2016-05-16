@@ -3,6 +3,9 @@ import { Pagination } from '../components';
 
 
 export default class PaginationView extends Component{
+    onSelectHandle(pageNum){
+        // console.log(pageNum);
+    }
     render(){
         return (
             <div>
@@ -23,7 +26,7 @@ export default class PaginationView extends Component{
                                     <a className="page-link" href="#">›</a>
                                 </li>
                             </ul>
-                            <Pagination items={10} activePage={5}></Pagination>
+                            <Pagination onSelect={this.onSelectHandle} items={10} activePage={5}></Pagination>
                         </div>
                     </div>
                 </div>
