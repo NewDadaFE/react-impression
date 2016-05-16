@@ -10,7 +10,7 @@ export default class ButtonGroup extends Component{
         super(props, context);
         this.state = {
             activeKey: props.activeKey
-        }
+        };
     }
     //默认props
     static defaultProps = {
