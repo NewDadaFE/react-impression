@@ -10,6 +10,7 @@ export Pagination from './Pagination';
 export PaginationButton from './PaginationButton';
 export CheckBox from './CheckBox';
 export Radio from './Radio';
+export RadioGroup from './RadioGroup';
 export Switch from './Switch';
 export NavItem from './NavItem';
 export Nav from './Nav';

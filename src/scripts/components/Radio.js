@@ -1,28 +1,38 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
 
+/**
+ * Radio组件.
+ */
 export default class Radio extends Component{
-    //构造函数
-    constructor(props, context){
-        super(props, context);
+    //props校验
+    static propTypes = {
+        //名称
+        name: React.PropTypes.any,
+        //返回值
+        value: React.PropTypes.any,
+        //自定义样式
+        className: React.PropTypes.string,
+        //是否选中
+        checked: React.PropTypes.bool,
+        //默认是否选中
+        defaultChecked: React.PropTypes.bool,
+        //是否disabled
+        disabled: React.PropTypes.bool,
+        //回调函数
+        onChange: React.PropTypes.func,
     }
     //默认props
     static defaultProps = {
-        defaultChecked: false,
         disabled: false,
-    }
-    //props校验
-    static propTypes: {
-        classname: React.propTypes.string,
-        defaultChecked: React.propTypes.bool,
-        disabled: React.propTypes.bool,
     }
     //渲染
     render(){
-        let { defaultChecked, disabled, classname } = this.props;
+        let { value, checked, defaultChecked, disabled, className, name, onChange } = this.props;
+
         return(
-            <label className={classnames('radio', classname)}>
-                <input type="radio" name="radio" defaultChecked={defaultChecked} disabled={disabled} />
+            <label className={classnames('radio', className)}>
+                <input type="radio" value={value} name={name} checked={checked} defaultChecked={defaultChecked} disabled={disabled} onChange={onChange}/>
                 <div className="radio-addon">
                     <i></i>
                 </div>

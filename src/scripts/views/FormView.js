@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { CheckBox, Radio, Switch } from '../components';
+import { CheckBox, Radio, RadioGroup, Switch } from '../components';
 
 export default class FormView extends Component{
     render(){
@@ -33,18 +33,18 @@ export default class FormView extends Component{
                 <div className="card card-block">
                     <form className="form-inline row">
                         <div className="form-group col-xs-6">
-                              <label>Gender</label>
-                              <div className="radio-inline">
-                                    <Radio defaultChecked>Male</Radio>
-                                    <Radio>Female</Radio>
-                              </div>
+                            <label>Gender</label>
+                            <RadioGroup value="1">
+                                <Radio value="1">Male</Radio>
+                                <Radio value="0">Female</Radio>
+                            </RadioGroup>
                         </div>
                         <div className="form-group col-xs-5">
-                              <label>Disabled</label>
-                              <div className="radio-inline">
-                                  <Radio disabled>Yes</Radio>
-                                  <Radio disabled>No</Radio>
-                              </div>
+                            <label>Disabled</label>
+                            <RadioGroup disabled>
+                                <Radio defaultChecked>Yes</Radio>
+                                <Radio>No</Radio>
+                            </RadioGroup>
                         </div>
                     </form>
                 </div>

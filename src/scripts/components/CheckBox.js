@@ -23,10 +23,10 @@ export default class CheckBox extends Component{
     }
     //渲染
     render(){
-        let { defaultChecked, disabled, classname, onChange} = this.props;
+        let { defaultChecked, disabled, className, onChange} = this.props;
 
         return(
-            <label className={classnames('checkbox', classname)}>
+            <label className={classnames('checkbox', className)}>
                 <input type="checkbox" disabled={disabled} defaultChecked={defaultChecked} ref="main" onChange={onChange}/>
                 <div className="checkbox-addon">
                     <i className="fa fa-check"></i>
