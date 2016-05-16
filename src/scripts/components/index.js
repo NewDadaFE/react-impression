@@ -16,3 +16,4 @@ export NavItem from './NavItem';
 export Nav from './Nav';
 export ListGroupItem from './ListGroupItem';
 export ListGroup from './ListGroup';
+export Breadcrumb from './Breadcrumb';
