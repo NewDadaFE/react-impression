@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Progress } from '../components';
+
 
 export default class ProgressView extends Component{
     render(){
@@ -8,22 +10,22 @@ export default class ProgressView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress" value="1" max="100"></progress>
+                            <Progress value="1"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress" value="25" max="100"></progress>
+                            <Progress value="25"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress" value="50" max="100"></progress>
+                            <Progress value="50"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress" value="75" max="100"></progress>
+                            <Progress value="75"/>
                         </div>
                     </div>
                 </div>
@@ -31,22 +33,22 @@ export default class ProgressView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress" value="50" max="100"></progress>
+                            <Progress value="50"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-success" value="50" max="100"></progress>
+                            <Progress value="50" style="success"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-warning" value="50" max="100"></progress>
+                            <Progress value="50" style="warning"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-danger" value="50" max="100"></progress>
+                            <Progress value="50" style="danger"/>
                         </div>
                     </div>
                 </div>
@@ -54,22 +56,22 @@ export default class ProgressView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-striped progress-animated" value="50" max="100"></progress>
+                            <Progress value="50" striped/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-striped progress-animated progress-success" value="50" max="100"></progress>
+                            <Progress value="50" style="success" striped/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-striped progress-animated progress-warning" value="50" max="100"></progress>
+                            <Progress value="50" style="warning" striped/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <progress className="progress progress-striped progress-animated progress-danger" value="50" max="100"></progress>
+                            <Progress value="50" style="danger" striped/>
                         </div>
                     </div>
                 </div>
