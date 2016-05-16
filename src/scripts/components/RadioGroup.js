@@ -27,23 +27,26 @@ export default class RadioGroup extends Component{
         disabled: React.PropTypes.bool,
         //名称
         name: React.PropTypes.string,
+        //排列方向
+        direction: React.PropTypes.oneOf(['row', 'column'])
     }
     //默认props
     static defaultProps = {
         disabled: false,
+        direction: 'row'
     }
     //radio切换回调函数
     onChangeHandle(event){
         let value = event.target.value;
         let { onChange } = this.props;
-        this.setState({
+        value !== 'on' && this.setState({
             value
         });
         onChange && onChange(value, event);
     }
     //渲染
     render(){
-        let { className, name } = this.props;
+        let { className, name, direction } = this.props;
         let children = this.props.children.map((child, index) => {
             let { value, disabled } = child.props;
             let options = {
@@ -53,7 +56,7 @@ export default class RadioGroup extends Component{
                 disabled: disabled || this.props.disabled
             };
 
-            if(value != undefined || this.state.value != undefined){
+            if((value !== undefined) || this.state.value !== undefined){
                 options.checked = (this.state.value === value);
             }
 
@@ -61,7 +64,7 @@ export default class RadioGroup extends Component{
         });
 
         return(
-            <div className={classnames('radio-inline', className)}>
+            <div className={classnames(direction=='row'?'radio-inline': 'radio-vertical', className)}>
                 {children}
             </div>
         );

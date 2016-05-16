@@ -33,6 +33,18 @@
     }
 }
 
+.checkbox-vertical,
+.radio-vertical{
+    user-select: none;
+    display: block;
+
+    .checkbox:not(:last-child),
+    .radio:not(:last-child){
+        display: block;
+        margin-bottom: $checkbox-space-x;
+    }
+}
+
 .checkbox{
     input{
         position: absolute;

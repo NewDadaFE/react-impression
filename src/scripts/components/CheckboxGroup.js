@@ -25,10 +25,13 @@ export default class CheckboxGroup extends Component{
         onChange: React.PropTypes.func,
         //是否disabled
         disabled: React.PropTypes.bool,
+        //排列方向
+        direction: React.PropTypes.oneOf(['row', 'column'])
     }
     //默认props
     static defaultProps = {
         disabled: false,
+        direction: 'row'
     }
     //radio切换回调函数
     onChangeHandle(event){
@@ -44,7 +47,7 @@ export default class CheckboxGroup extends Component{
     }
     //渲染
     render(){
-        let { className } = this.props;
+        let { className, direction } = this.props;
         let children = this.props.children.map((child, index) => {
             let { value, disabled } = child.props;
             value = value !== undefined? value: child.props.children;
@@ -58,7 +61,7 @@ export default class CheckboxGroup extends Component{
         });
 
         return(
-            <div className={classnames('checkbox-inline', className)}>
+            <div className={classnames(direction=='row'?'checkbox-inline': 'checkbox-vertical', className)}>
                 {children}
             </div>
         );

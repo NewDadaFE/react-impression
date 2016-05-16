@@ -381,6 +381,7 @@ $custom-control-active-indicator-box-shadow: none !default;
 
 $checkbox-label-space-x:                    $spacer-y / 2 !default;
 $checkbox-space-x:                          $spacer-y !default;
+$checkbox-space-y:                          $spacer-y !default;
 $checkbox-addon-width:                      1 !default;
 $checkbox-addon-height:                     $checkbox-addon-width !default;
 $checkbox-addon-padding:                    round(($line-height-base - $checkbox-addon-width) * $font-size-root / 2) !default;

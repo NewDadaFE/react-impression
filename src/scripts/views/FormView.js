@@ -53,7 +53,7 @@ export default class FormView extends Component{
                     <form className="form-inline row">
                         <div className="form-group col-xs-3">
                             <label>Mute</label>
-                            <Switch />
+                            <Switch defaultChecked/>
                         </div>
                         <div className="form-group col-xs-3">
                             <label>Disabled</label>
@@ -102,56 +102,13 @@ export default class FormView extends Component{
                         <div className="form-group row">
                             <label className="col-sm-2 text-xs-right">Radios:</label>
                             <div className="col-sm-10">
-                                <label className="radio">
-                                    <input type="radio" name="gender" defaultChecked/>
-                                    <div className="radio-addon">
-                                        <i></i>
-                                    </div>
-                                    <span className="radio-label">
-                                        Option one is this and that&mdash;be sure to include why it's great
-                                    </span>
-                                </label>
+                                <RadioGroup direction="column">
+                                    <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
+                                    <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
+                                    <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
+                                    <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
+                                </RadioGroup>
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="offset-sm-2 col-sm-10">
-                                <label className="radio">
-                                    <input type="radio" name="gender" defaultChecked/>
-                                    <div className="radio-addon">
-                                        <i></i>
-                                    </div>
-                                    <span className="radio-label">
-                                        Option one is this and that&mdash;be sure to include why it's great
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="offset-sm-2 col-sm-10">
-                                <label className="radio">
-                                    <input type="radio" name="gender" defaultChecked/>
-                                    <div className="radio-addon">
-                                        <i></i>
-                                    </div>
-                                    <span className="radio-label">
-                                        Option one is this and that&mdash;be sure to include why it's great
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label className="col-sm-2  text-xs-right">Checkbox:</label>
-                            <div className="col-sm-10">
-                                <label className="checkbox">
-                                    <input type="checkbox" defaultChecked/>
-                                    <div className="checkbox-addon">
-                                        <i className="fa fa-check"></i>
-                                    </div>
-                                    <span className="checkbox-label">
-                                        Remember me
-                                    </span>
-                                </label>
-                          </div>
                         </div>
                         <div className="form-group row">
                             <div className="offset-sm-1 col-sm-10">
