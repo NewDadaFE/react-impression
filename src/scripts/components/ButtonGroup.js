@@ -5,6 +5,7 @@ import React, { Component } from 'react';
  * ButtonGroup组件.
  */
 export default class ButtonGroup extends Component{
+    //初始state
     constructor(props, context){
         super(props, context);
         this.state = {
@@ -21,7 +22,7 @@ export default class ButtonGroup extends Component{
         size: React.PropTypes.string,
         //主题样式(primary、secondary、default)
         style: React.PropTypes.string,
-        //激活索引
+        //激活索引（被选中Button会额外添加选中样式，为空时不额外添加选中样式）
         activeKey: React.PropTypes.any,
         //选中回调
         onSelect: React.PropTypes.func,

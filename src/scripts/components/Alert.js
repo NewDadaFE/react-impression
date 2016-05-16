@@ -2,10 +2,10 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
- *Alert 组件
+ * Alert 组件
  */
 export default class Alert extends Component{
-    //构造函数
+    //初始state
     constructor(props, context){
         super(props, context);
         this.state = {
