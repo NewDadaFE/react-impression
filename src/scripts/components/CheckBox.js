@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 /**
  * Checkbox 组件.
  */
-export default class CheckBox extends Component{
+export default class Checkbox extends Component{
     //props校验
     static propTypes = {
         //自定义样式
@@ -13,21 +13,22 @@ export default class CheckBox extends Component{
         disabled: React.PropTypes.bool,
         //是否默认选中
         defaultChecked: React.PropTypes.bool,
+        //是否选中
+        checked: React.PropTypes.bool,
         //状态变更回调
         onChange: React.PropTypes.func,
     }
     //默认props
     static defaultProps = {
         disabled: false,
-        defaultChecked: false,
     }
     //渲染
     render(){
-        let { defaultChecked, disabled, className, onChange} = this.props;
+        let { value, checked, defaultChecked, disabled, className, onChange} = this.props;
 
         return(
             <label className={classnames('checkbox', className)}>
-                <input type="checkbox" disabled={disabled} defaultChecked={defaultChecked} ref="main" onChange={onChange}/>
+                <input type="checkbox" value={value || this.props.children} disabled={disabled} defaultChecked={defaultChecked} checked={checked} ref="main" onChange={onChange}/>
                 <div className="checkbox-addon">
                     <i className="fa fa-check"></i>
                 </div>

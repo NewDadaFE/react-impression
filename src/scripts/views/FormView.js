@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { CheckBox, Radio, RadioGroup, Switch } from '../components';
+import { Checkbox, CheckboxGroup, Radio, RadioGroup, Switch } from '../components';
 
 export default class FormView extends Component{
     render(){
@@ -11,21 +11,21 @@ export default class FormView extends Component{
                     <form className="form-inline row">
                         <div className="form-group col-xs-6">
                             <label>interest:</label>
-                            <div className="checkbox-inline">
-                                <CheckBox defaultChecked>basketball</CheckBox>
-                                <CheckBox>football</CheckBox>
-                                <CheckBox>volleyball</CheckBox>
-                                <CheckBox defaultChecked>ping-pong</CheckBox>
-                            </div>
+                            <CheckboxGroup value={['basketball', 'football']}>
+                                <Checkbox>basketball</Checkbox>
+                                <Checkbox>football</Checkbox>
+                                <Checkbox>volleyball</Checkbox>
+                                <Checkbox>ping-pong</Checkbox>
+                            </CheckboxGroup>
                         </div>
                         <div className="form-group col-sm-5">
                             <label>disabled:</label>
-                            <div className="checkbox-inline">
-                                <CheckBox disabled>Benz</CheckBox>
-                                <CheckBox disabled defaultChecked>BMW</CheckBox>
-                                <CheckBox disabled>Audi</CheckBox>
-                                <CheckBox disabled defaultChecked>Volvo</CheckBox>
-                            </div>
+                            <CheckboxGroup value={['Benz', 'BMW']} disabled>
+                                <Checkbox>Benz</Checkbox>
+                                <Checkbox>BMW</Checkbox>
+                                <Checkbox>Audi</Checkbox>
+                                <Checkbox>Volvo</Checkbox>
+                            </CheckboxGroup>
                         </div>
                     </form>
                 </div>

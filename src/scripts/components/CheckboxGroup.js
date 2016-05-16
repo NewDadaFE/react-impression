@@ -2,15 +2,15 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
- * RadioGroup组件.
+ * CheckboxGroup组件.
  */
-export default class RadioGroup extends Component{
+export default class CheckboxGroup extends Component{
     //初始化state
     constructor(props, context){
         super(props, context);
 
         this.state = {
-            value: props.value
+            value: props.value || []
         }
 
         this.onChangeHandle = this.onChangeHandle.bind(this);
@@ -25,8 +25,6 @@ export default class RadioGroup extends Component{
         onChange: React.PropTypes.func,
         //是否disabled
         disabled: React.PropTypes.bool,
-        //名称
-        name: React.PropTypes.string,
     }
     //默认props
     static defaultProps = {
@@ -34,34 +32,33 @@ export default class RadioGroup extends Component{
     }
     //radio切换回调函数
     onChangeHandle(event){
-        let value = event.target.value;
+        let { value, checked} = event.target;
         let { onChange } = this.props;
+        let newValue = checked? [...this.state.value, value]: [...this.state.value.filter(item => item !== value)];
+
         this.setState({
-            value
+            value: newValue
         });
-        onChange && onChange(value, event);
+
+        onChange && onChange(newValue, event);
     }
     //渲染
     render(){
-        let { className, name } = this.props;
+        let { className } = this.props;
         let children = this.props.children.map((child, index) => {
             let { value, disabled } = child.props;
-            let options = {
-                name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+            value = value !== undefined? value: child.props.children;
+
+            return React.cloneElement(child, {
                 key: index,
                 onChange: this.onChangeHandle,
-                disabled: disabled || this.props.disabled
-            };
-
-            if(value != undefined || this.state.value != undefined){
-                options.checked = (this.state.value === value);
-            }
-
-            return React.cloneElement(child, options);
+                disabled: disabled || this.props.disabled,
+                checked: this.state.value.indexOf(value) != -1
+            });
         });
 
         return(
-            <div className={classnames('radio-inline', className)}>
+            <div className={classnames('checkbox-inline', className)}>
                 {children}
             </div>
         );
