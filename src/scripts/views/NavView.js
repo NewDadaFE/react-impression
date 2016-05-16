@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavItem, Nav } from '../components';
+import { CommenTable } from '../site';
 
 export default class NavView extends Component{
     selectHandle(selectKey){
@@ -60,6 +61,15 @@ export default class NavView extends Component{
                         </div>
                     </div>
                 </div>
+                <h3>API</h3>
+                <CommenTable
+                    data = {[
+                        ['style', '', '', ''],
+                        ['stacked', '', '', ''],
+                        ['activeKey', '', '', ''],
+                        ['onSelect', '', '', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

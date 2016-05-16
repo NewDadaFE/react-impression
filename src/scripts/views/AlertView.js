@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Alert } from '../components';
+import { CommenTable } from '../site';
 
 export default class AlertView extends Component{
     render(){
@@ -73,6 +74,13 @@ export default class AlertView extends Component{
                           You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
                         </Alert>
                 </div>
+                <h3>API</h3>
+                <CommenTable
+                    data = {[
+                        ['style', '可选参数，设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],
+                        ['closeable', '可选参数，设置是否显示关闭按钮', 'bool', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
