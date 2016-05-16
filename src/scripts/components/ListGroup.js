@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
- * React组件
+ * ListGroup组件.
  */
-export default class ComponentName extends Component{
+export default class ListGroup extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);

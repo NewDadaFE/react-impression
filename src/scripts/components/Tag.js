@@ -2,13 +2,9 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
- *Tag组件
+ * Tag组件
  */
 export default class Tag extends Component{
-    //构造函数
-    constructor(props, context){
-        super(props, context);
-    }
     //默认props
     static defaultProps = {
         style: 'default'
@@ -25,7 +21,6 @@ export default class Tag extends Component{
     //渲染
     render(){
         let { style, shape, className } = this.props;
-
         let tagStyle = style? `tag-${style}` : '';
         let tagShape = shape? `tag-${shape}` : '';
 

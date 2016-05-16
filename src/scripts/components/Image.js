@@ -27,7 +27,7 @@ export default class Image extends Component{
     //渲染
     render(){
         let { fluid, rounded, circle, thumbnail, className } = this.props;
-        const classes = {
+        let classes = {
             'img-fluid': fluid,
             'img-rounded': rounded,
             'img-circle': circle,

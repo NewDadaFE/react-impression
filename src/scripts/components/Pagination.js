@@ -1,7 +1,9 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
-import PaginationButton from './PaginationButton';
 
+/**
+ * Pagination组件.
+ */
 export default class Pagination extends Component{
     //构造函数
     constructor(props, context){
@@ -9,130 +11,116 @@ export default class Pagination extends Component{
         this.state = {
             activePage: this.props.activePage
         };
+
+        //上下文绑定
+        this.prevPageHandle = this.prevPageHandle.bind(this);
+        this.nextPageHandle = this.nextPageHandle.bind(this);
+        this.goPageHandle = this.goPageHandle.bind(this);
     }
     //默认props
     static defaultProps = {
-        items: 1,
         activePage: 1,
-        maxButtons: 5,
+        scope: 2,
+        ellipsis: true,
     }
     //props校验
     static propTypes = {
-        //共有多少页
-        items: React.PropTypes.number,
+        //前后延伸
+        scope: React.PropTypes.number,
         //当前在第几页
         activePage: React.PropTypes.number,
-        //最大展示页数
-        maxButtons: React.PropTypes.number,
+        //总页数
+        totalPage: React.PropTypes.number.isRequired,
+        //是否显示省略号
+        ellipsis: React.PropTypes.bool,
         //自定义样式
         className: React.PropTypes.string,
         //onSelect
         onSelect: React.PropTypes.func,
     }
-    //改变当前active页函数
-    handleChangeActivePage(num){
-        if (num !== this.state.activePage) {
-            this.setState({activePage: num});
-            this.state.activePage && this.props.onSelect(num);
-        }
+    //上一页
+    prevPageHandle(){
+        let { onSelect } = this.props;
+        let activePage = this.state.activePage - 1;
+
+        onSelect && onSelect(activePage);
+        this.state.activePage > 1 && this.setState({
+            activePage
+        });
     }
-    //增大当前active页
-    handleAddActivePage(){
+    //下一页
+    nextPageHandle(){
+        let { onSelect } = this.props;
+        let activePage = this.state.activePage + 1;
+
+        onSelect && onSelect(activePage);
+        this.state.activePage < this.props.totalPage && this.setState({
+            activePage
+        });
+    }
+    //跳转至某页
+    goPageHandle(page){
+        let { onSelect } = this.props;
+
+        onSelect && onSelect(page);
+        this.setState({
+            activePage: page
+        });
+    }
+    //获取显示页码
+    getShowPageArray(){
+        let { scope, totalPage } = this.props;
         let { activePage } = this.state;
-        let {items} = this.props;
+        let result = [];
+        scope = scope < 0? 2: scope;
 
-        if (activePage < items) {
-            this.setState({activePage: activePage+1});
-            this.props.onSelect(activePage+1);
-        }
-    }
-    // 减小当前active页
-    handleSubActivePage(){
-        let { activePage } = this.state;
-
-        if (activePage > 1) {
-            this.setState({activePage: activePage-1});
-            this.props.onSelect(activePage-1);
-        }
-    }
-    //渲染AddButton
-    renderPaginationAddButton(){
-        let { items } = this.props;
-        let { activePage } = this.state;
-
-        let disabledStyle = (activePage === items) ? 'disabled' : '';
-
-        return(
-            <li key='add' className={classnames('page-item', disabledStyle)} onClick={this.handleAddActivePage.bind(this)}>
-                <a className="page-link">›</a>
-            </li>
-        );
-    }
-    //渲染SubButton
-    renderPaginationSubButton(){
-        let { activePage } = this.state;
-
-        let disabledStyle = (activePage === 1) ? 'disabled' : '';
-
-        return(
-            <li key='sub' className={classnames('page-item', disabledStyle)} onClick={this.handleSubActivePage.bind(this)}>
-                <a className="page-link">‹</a>
-            </li>
-        );
-    }
-    //渲染...Button
-    renderEllipsisButton(str){
-        return(
-            <li key={str} className="page-item disabled">
-                <a style={{border: 'none'}} className="page-link">...</a>
-            </li>
-        );
-    }
-    //渲染数字型PageButton
-    renderNumPageButton(num){
-        let pageButtons = [];
-        let { items, maxButtons } = this.props;
-        let { activePage } = this.state;
-
-        maxButtons = maxButtons > items ? items : maxButtons; //防止错误参数的传入
-        let intervalNum = Math.floor((maxButtons - 1)/2);
-        let startPage = activePage - intervalNum;
-        let endPage = activePage + intervalNum;
-
-        if(startPage <= 0){
-            endPage = endPage - startPage + 1;
-            startPage = 1;
-        }
-            
-        if(endPage >= items){
-            startPage = startPage - endPage + items;
-            endPage = items;
+        for(let i=activePage-scope;i<=activePage+scope;i++){
+            if(i > 0 && i <= totalPage){
+                i == activePage - scope && i == 2 && result.push(1);
+                result.push(i);
+                i == activePage + scope && i == (totalPage - 1) && result.push(totalPage);
+            }
         }
 
-        for (let pagenumber = startPage; pagenumber <= endPage; pagenumber++) {
-            pageButtons.push(
-                <PaginationButton 
-                    onChangeActivePage={this.handleChangeActivePage.bind(this)} key={pagenumber} 
-                    item={pagenumber} active={activePage===pagenumber} />
-                );
-        }
-
-        startPage > 1 && pageButtons.unshift(this.renderEllipsisButton('front'));
-        endPage < items && pageButtons.push(this.renderEllipsisButton('back'));
-
-        return(
-            pageButtons
-        );
+        return result;
     }
     //渲染
     render(){
-        let { items, className } = this.props;
+        let { totalPage, className, ellipsis } = this.props;
+        let { activePage } = this.state;
+        let children = this.getShowPageArray();
 
         return(
             <ul className={classnames('Pagination', className)}>
-                {this.renderPaginationSubButton()}
-                {this.renderNumPageButton(items)}
-                {this.renderPaginationAddButton()}
+                <li className={classnames('page-item', {disabled: activePage <= 1})}>
+                    <a className="page-link" href="javascript:void(0);" onClick={this.prevPageHandle}>
+                        <i className="fa fa-angle-left"></i>
+                    </a>
+                </li>
+
+                { ellipsis && children[0] > 1 &&
+                    <li className="page-item disabled">
+                        <i className="fa fa-ellipsis-h"></i>
+                    </li>
+                }
+
+                { children.map((child, index) =>
+                    <li key={index} className={classnames('page-item', {active: child === activePage})}>
+                        <a className="page-link" href="javascript:void(0);" onClick={() => this.goPageHandle(child)}>{child}</a>
+                    </li>
+                )}
+
+                { ellipsis && children[children.length-1] < totalPage &&
+                    <li className="page-item disabled">
+                        <i className="fa fa-ellipsis-h"></i>
+                    </li>
+                }
+
+                <li className={classnames('page-item', {disabled: activePage >= totalPage})}>
+                    <a className="page-link" href="javascript:void(0);" onClick={this.nextPageHandle}>
+                        <i className="fa fa-angle-right"></i>
+                    </a>
+                </li>
             </ul>
         );
     }

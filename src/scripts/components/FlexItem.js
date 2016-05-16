@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
- * FlexItem.
+ * FlexItem组件.
  */
 export default class FlexItem extends Component{
     //默认props

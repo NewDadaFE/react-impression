@@ -161,14 +161,11 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
 
-  @include hover-focus {
+  &:hover{
     color: $link-hover-color;
     text-decoration: $link-decoration;
   }
 
-  &:focus {
-    @include tab-focus();
-  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href).

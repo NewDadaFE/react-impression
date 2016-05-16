@@ -13,20 +13,12 @@ export default class PaginationView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <ul className="pagination">
-                                <li className="page-item">
-                                    <a className="page-link" href="#">‹</a>
-                                </li>
-                                <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                <li className="page-item active"><a className="page-link" href="#">3</a></li>
-                                <li className="page-item"><a className="page-link" href="#">4</a></li>
-                                <li className="page-item disabled"><a className="page-link" href="#">5</a></li>
-                                <li className="page-item">
-                                    <a className="page-link" href="#">›</a>
-                                </li>
-                            </ul>
-                            <Pagination onSelect={this.onSelectHandle} items={10} activePage={5}></Pagination>
+                            <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={10} activePage={4}></Pagination>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={5} activePage={3}></Pagination>
                         </div>
                     </div>
                 </div>

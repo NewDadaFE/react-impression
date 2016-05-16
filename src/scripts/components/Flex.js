@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
- * 布局组件.
+ * Flex布局组件.
  */
 export default class Flex extends Component{
     //默认props

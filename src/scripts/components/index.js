@@ -7,7 +7,6 @@ export Alert from './Alert';
 export ButtonGroup from './ButtonGroup';
 export Tag from './Tag';
 export Pagination from './Pagination';
-export PaginationButton from './PaginationButton';
 export Checkbox from './Checkbox';
 export CheckboxGroup from './CheckboxGroup';
 export Radio from './Radio';
