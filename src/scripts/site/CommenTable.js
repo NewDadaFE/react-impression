@@ -21,9 +21,9 @@ export default class ComponentName extends Component{
     render(){
         let { data } = this.props;
 
-        let rows = data.map(item => {
+        let rows = data.map((item, index) => {
             return (
-                <tr>
+                <tr key={index}>
                     <td style={{fontWeight: 'bold'}}>{item[0]}</td>
                     <td>{item[1]}</td>
                     <td>{item[2]}</td>

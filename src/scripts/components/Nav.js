@@ -11,6 +11,9 @@ export default class Nav extends Component{
         this.state = {
             activeKey: this.props.activeKey,
         };
+
+        //绑定上下文
+        this.onSelectHandle = this.onSelectHandle.bind(this);
     }
     //props校验
     static propTypes ={
@@ -19,31 +22,36 @@ export default class Nav extends Component{
         activeKey: React.PropTypes.number,
         onSelect: React.PropTypes.func,
     }
-    changeActiveHandle(eventKey){
-        this.state.activeKey !== eventKey && this.setState({activeKey: eventKey});
-        this.state.activeKey !== eventKey && this.props.onSelect(eventKey);
+    //选中回调
+    onSelectHandle(eventKey){
+        let { activeKey } = this.state;
+        let { onSelect } = this.props;
+
+        if(activeKey === eventKey){
+            return false;
+        }
+        this.setState({activeKey: eventKey});
+        onSelect(eventKey);
     }
     //渲染
     render(){
         let { style, stacked, className } = this.props;
         let { activeKey } = this.state;
-        let changeActiveHandle = this.changeActiveHandle.bind(this);
-
         let navStacked = stacked ? 'nav-stacked' : null;
         let navStyle = style ? `nav-${style}` : null;
 
-        let rows = this.props.children.map((child, index) => {
+        let children = this.props.children.map((child, index) => {
             return cloneElement(child, {
                 key: index,
-                eventKey: child.props.eventKey || index+1,
-                active: child.props.eventKey === activeKey || index+1 === activeKey,
-                changeActiveHandle
+                eventKey: child.props.eventKey || index + 1,
+                active: child.props.eventKey === activeKey || index + 1 === activeKey,
+                onClick: this.onSelectHandle
             });
         });
 
         return(
             <ul className={classnames('nav', navStacked, navStyle, className)}>
-                {rows}
+                {children}
             </ul>
         );
     }
