@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ListGroup, ListGroupItem } from '../components';
 
 export default class ListGroupView extends Component{
     render(){
@@ -9,20 +10,20 @@ export default class ListGroupView extends Component{
                     <div className="row">
                         <div className="col-sm-4">
                             <h5>Normal</h5>
-                            <ul className="list-group">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item disabled">Morbi leo risus</li>
-                                <li className="list-group-item">Porta ac consectetur ac</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
+                            <ListGroup>
+                                <ListGroupItem>Cras justo odio</ListGroupItem>
+                                <ListGroupItem>Lorem ipsum dolor.</ListGroupItem>
+                                <ListGroupItem>Lorem ipsum dolor sit.</ListGroupItem>
+                                <ListGroupItem disabled>Lorem ipsum.</ListGroupItem>
+                                <ListGroupItem>Lorem ipsum dolor sit.</ListGroupItem>
+                            </ListGroup>
                         </div>
                         <div className="col-sm-4">
                             <h5>Tags</h5>
                             <ul className="list-group">
                                 <li className="list-group-item">
                                     <span className="tag tag-default tag-pill pull-xs-right">1</span>
-                                    Cras justo odio
+                                    lorem
                                 </li>
                                 <li className="list-group-item">
                                     <span className="tag tag-warning tag-pill pull-xs-right">2</span>
@@ -43,13 +44,13 @@ export default class ListGroupView extends Component{
                         </div>
                         <div className="col-sm-4">
                             <h5>Link</h5>
-                            <div className="list-group">
-                                <a href="javascript:void(0)" className="list-group-item list-group-item-action">Cras justo odio</a>
-                                <a href="javascript:void(0)" className="list-group-item list-group-item-action active">Dapibus ac facilisis in</a>
-                                <a href="javascript:void(0)" className="list-group-item list-group-item-action">Morbi leo risus</a>
-                                <a href="javascript:void(0)" className="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                                <a href="javascript:void(0)" className="list-group-item list-group-item-action">Vestibulum at eros</a>
-                            </div>
+                            <ListGroup>
+                                <ListGroupItem href="javascript:void(0)">Lorem ipsum dolor.</ListGroupItem>
+                                <ListGroupItem href="javascript:void(0)">Lorem ipsum dolor sit.</ListGroupItem>
+                                <ListGroupItem href="javascript:void(0)" active>Lorem ipsum dolor sit amet.</ListGroupItem>
+                                <ListGroupItem href="javascript:void(0)">Lorem ipsum dolor.</ListGroupItem>
+                                <ListGroupItem href="javascript:void(0)">Lorem ipsum.</ListGroupItem>
+                            </ListGroup>
                         </div>
                     </div>
                 </div>
