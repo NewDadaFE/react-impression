@@ -26,10 +26,13 @@ export default class Pagination extends Component{
         maxButtons: React.PropTypes.number,
         //自定义样式
         className: React.PropTypes.string,
+        //onSelect
+        onSelect: React.PropTypes.func,
     }
     //改变当前active页函数
     handleChangeActivePage(num){
-        this.setState({activePage: num});
+        num !== this.state.activePage && this.setState({activePage: num});
+        num !== this.state.activePage && this.props.onSelect(num);
     }
     //增大当前active页
     handleAddActivePage(){
@@ -38,6 +41,8 @@ export default class Pagination extends Component{
 
         activePage < items && 
         this.setState({activePage: activePage+1});
+        activePage < items && 
+        this.props.onSelect(activePage+1);
     }
     // 减小当前active页
     handleSubActivePage(){
@@ -45,6 +50,8 @@ export default class Pagination extends Component{
 
         activePage > 1 && 
         this.setState({activePage: activePage-1});
+        activePage > 1 && 
+        this.props.onSelect(activePage-1);
     }
     //渲染AddButton
     renderPaginationAddButton(){
