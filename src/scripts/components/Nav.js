@@ -35,7 +35,8 @@ export default class Nav extends Component{
         let rows = this.props.children.map((child, index) => {
             return cloneElement(child, {
                 key: index,
-                active: child.props.eventKey === activeKey,
+                eventKey: child.props.eventKey || index+1,
+                active: child.props.eventKey === activeKey || index+1 === activeKey,
                 changeActiveHandle
             });
         });

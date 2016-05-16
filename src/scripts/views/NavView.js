@@ -39,10 +39,10 @@ export default class NavView extends Component{
                     <div className="row">
                         <div className="col-sm-12">
                             <Nav activeKey={2} onSelect={this.selectHandle} style="pills">
-                                <NavItem eventKey={1}>Active</NavItem>
-                                <NavItem eventKey={2}>Link</NavItem>
-                                <NavItem eventKey={3}>Anothor link</NavItem>
-                                <NavItem eventKey={4} disabled>Disabled</NavItem>
+                                <NavItem >Active</NavItem>
+                                <NavItem >Link</NavItem>
+                                <NavItem >Anothor link</NavItem>
+                                <NavItem  disabled>Disabled</NavItem>
                             </Nav>
                         </div>
                     </div>
