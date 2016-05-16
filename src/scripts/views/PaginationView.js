@@ -4,7 +4,7 @@ import { Pagination } from '../components';
 
 export default class PaginationView extends Component{
     onSelectHandle(pageNum){
-        console.log(pageNum);
+        // console.log(pageNum);
     }
     render(){
         return (
