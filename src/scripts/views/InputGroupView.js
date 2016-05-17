@@ -1,106 +1,81 @@
 import React, { Component } from 'react';
+import { Card, Row, Col, Button, InputGroup } from '../components';
 
 export default class InputGroupView extends Component{
     render(){
         return (
             <div>
                 <h3>Basic examples</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                              <span className="input-group-addon" id="basic-addon1">@</span>
-                              <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                              <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                              <span className="input-group-addon" id="basic-addon1">@</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                              <span className="input-group-addon" id="basic-addon1">@</span>
-                              <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                              <span className="input-group-addon" id="basic-addon1">@</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Card block>
+                    <Row>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Addon>@</InputGroup.Addon>
+                                <InputGroup.Input placeholder="something"/>
+                            </InputGroup>
+                        </Col>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Addon>@</InputGroup.Addon>
+                            </InputGroup>
+                        </Col>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Addon>@</InputGroup.Addon>
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Addon>@</InputGroup.Addon>
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Button addons</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                                <span className="input-group-btn">
-                                    <button className="btn btn-default" type="button">help</button>
-                                </span>
-                              <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                                <span className="input-group-btn">
-                                    <button className="btn btn-primary" type="button">Go</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                                <span className="input-group-btn">
-                                    <button className="btn btn-primary" type="button">×</button>
-                                </span>
-                                <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                                <span className="input-group-btn">
-                                    <button className="btn btn-secondary" type="button">√</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Card block>
+                    <Row>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Button style="default">help</InputGroup.Button>
+                                <InputGroup.Input placeholder="something"/>
+                            </InputGroup>
+                        </Col>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Button style="primary">Go</InputGroup.Button>
+                            </InputGroup>
+                        </Col>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Button style="default">-</InputGroup.Button>
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Button style="default">+</InputGroup.Button>
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Sizes</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-2">
-                            <div className="input-group input-group-sm">
-                                <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                                <span className="input-group-btn">
-                                    <button className="btn btn-primary" type="button">Go</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                                <span className="input-group-btn">
-                                    <button className="btn btn-primary" type="button">Go</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <div className="input-group input-group-lg">
-                                <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
-                                <span className="input-group-btn">
-                                    <button className="btn btn-primary" type="button">Go</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Card block>
+                    <Row>
+                        <Col col="3">
+                            <InputGroup size="sm">
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Button style="primary">Search</InputGroup.Button>
+                            </InputGroup>
+                        </Col>
+                        <Col col="4">
+                            <InputGroup>
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Button style="primary">Search</InputGroup.Button>
+                            </InputGroup>
+                        </Col>
+                        <Col col="5">
+                            <InputGroup size="lg">
+                                <InputGroup.Input placeholder="something"/>
+                                <InputGroup.Button style="primary">Search</InputGroup.Button>
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                </Card>
             </div>
         );
     }

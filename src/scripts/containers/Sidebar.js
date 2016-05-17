@@ -25,15 +25,15 @@ export default class Sidebar extends Component {
                     <div className="nav-item">
                         COMPONENT
                     </div>
+                    <Link className="nav-link" to="/card"><i className="fa fa-television fa-left"></i>Card</Link>
+                    <Link className="nav-link" to="/breadcrumb"><i className="fa fa-hand-o-right fa-left"></i>Breadcrumb</Link>
                     <Link className="nav-link" to="/tag"><i className="fa fa-tag fa-left"></i>Tag</Link>
                     <Link className="nav-link" to="/alert"><i className="fa fa-info-circle fa-left"></i>Alert<span className="fa-right tag tag-warning">New</span></Link>
+                    <Link className="nav-link" to="/progress"><i className="fa fa-hourglass-start fa-left"></i>Progress</Link>
                     <Link className="nav-link" to="/button-group"><i className="fa fa-th-large fa-left"></i>ButtonGroup</Link>
                     <Link className="nav-link" to="/pagination"><i className="fa fa-angle-double-right fa-left"></i>Pagination</Link>
                     <Link className="nav-link" to="/nav"><i className="fa fa-bars fa-left"></i>Nav</Link>
                     <Link className="nav-link" to="/navbar"><i className="fa fa-tasks fa-left"></i>Navbar</Link>
-                    <Link className="nav-link" to="/breadcrumb"><i className="fa fa-hand-o-right fa-left"></i>Breadcrumb</Link>
-                    <Link className="nav-link" to="/progress"><i className="fa fa-hourglass-start fa-left"></i>Progress</Link>
-                    <Link className="nav-link" to="/card"><i className="fa fa-television fa-left"></i>Card</Link>
                     <Link className="nav-link" to="/input-group"><i className="fa fa-outdent fa-left"></i>InputGroup</Link>
                     <Link className="nav-link" to="/list-group"><i className="fa fa-list fa-left"></i>ListGroup</Link>
                     <div className="nav-collapse">

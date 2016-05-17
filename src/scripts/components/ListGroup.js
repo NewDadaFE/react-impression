@@ -5,10 +5,6 @@ import React, { Component } from 'react';
  * ListGroup组件.
  */
 export default class ListGroup extends Component{
-    //构造函数
-    constructor(props, context){
-        super(props, context);
-    }
     //props校验
     static propTypes = {
         className: React.PropTypes.string,

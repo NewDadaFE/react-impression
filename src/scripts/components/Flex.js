@@ -5,13 +5,13 @@ import React, { Component } from 'react';
  * Flex布局组件.
  */
 export default class Flex extends Component{
-    //默认props
-    static defaultProps = {
-        direction: 'row',
-    }
     //prop type校验
     static propTypes = {
         direction: React.PropTypes.oneOf(['row', 'column'])
+    }
+    //默认props
+    static defaultProps = {
+        direction: 'row',
     }
     //渲染
     render(){
