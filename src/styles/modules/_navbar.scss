@@ -4,6 +4,8 @@
 // other navbar variations.
 
 .navbar {
+  display: flex;
+  align-items: center;
   height: $navbar-height;
   line-height: $navbar-line-height;
   position: relative;

@@ -5,13 +5,13 @@ import { Breadcrumb } from '../components';
 export default class BreadcrumbView extends Component{
     render(){
         let path = [{
-            name: "Home",
-            href: "http://wwww.google.com"
+            name: 'Home',
+            href: 'http://wwww.google.com'
         }, {
-            name: "Library",
-            href: "http://wwww.apple.com"
+            name: 'Library',
+            href: 'http://wwww.apple.com'
         }, {
-            name: "Data"
+            name: 'Data'
         }];
 
         return (

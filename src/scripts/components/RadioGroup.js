@@ -11,7 +11,7 @@ export default class RadioGroup extends Component{
 
         this.state = {
             value: props.value
-        }
+        };
 
         this.onChangeHandle = this.onChangeHandle.bind(this);
     }

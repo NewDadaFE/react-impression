@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
@@ -20,7 +19,6 @@ export default class ComponentName extends Component{
     //渲染
     render(){
         let { data } = this.props;
-
         let rows = data.map((item, index) => {
             return (
                 <tr key={index}>
@@ -29,8 +27,8 @@ export default class ComponentName extends Component{
                     <td>{item[2]}</td>
                     <td>{item[3] || '-'}</td>
                 </tr>
-            )
-        })
+            );
+        });
 
         return(
             <table className="table table-bordered">
