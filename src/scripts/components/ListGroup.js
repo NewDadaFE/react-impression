@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
+import ListGroupItem from './ListGroupItem';
 
 /**
  * ListGroup组件.
@@ -20,3 +21,5 @@ export default class ListGroup extends Component{
         );
     }
 }
+
+ListGroup.Item = ListGroupItem;
