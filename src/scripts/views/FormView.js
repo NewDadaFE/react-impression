@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button } from '../components';
+import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button } from '../components';
 
 export default class FormView extends Component{
     render(){
         return (
             <div>
                 <h3>Checkbox</h3>
-                <div className="row">
-                    <div className="col-xs-6">
-                        <div className="card card-block">
+                <Row>
+                    <Col col="6">
+                        <Card block>
                             <Form type="inline">
                                 <Form.Group>
                                     <label>interest:</label>
@@ -20,10 +20,10 @@ export default class FormView extends Component{
                                     </CheckboxGroup>
                                 </Form.Group>
                             </Form>
-                        </div>
-                    </div>
-                    <div className="col-xs-6">
-                        <div className="card card-block">
+                        </Card>
+                    </Col>
+                    <Col col="6">
+                        <Card block>
                             <Form type="inline">
                                 <Form.Group>
                                     <label>disabled:</label>
@@ -35,13 +35,13 @@ export default class FormView extends Component{
                                     </CheckboxGroup>
                                 </Form.Group>
                             </Form>
-                        </div>
-                    </div>
-                </div>
+                        </Card>
+                    </Col>
+                </Row>
                 <h3>Radio</h3>
-                <div className="row">
-                    <div className="col-xs-6">
-                        <div className="card card-block">
+                <Row>
+                    <Col col="6">
+                        <Card block>
                             <Form>
                                 <Form.Group>
                                     <label>Gender</label>
@@ -51,10 +51,10 @@ export default class FormView extends Component{
                                     </RadioGroup>
                                 </Form.Group>
                             </Form>
-                        </div>
-                    </div>
-                    <div className="col-xs-6">
-                        <div className="card card-block">
+                        </Card>
+                    </Col>
+                    <Col col="6">
+                        <Card block>
                             <Form>
                                 <Form.Group>
                                     <label>Disabled</label>
@@ -64,11 +64,11 @@ export default class FormView extends Component{
                                     </RadioGroup>
                                 </Form.Group>
                             </Form>
-                        </div>
-                    </div>
-                </div>
+                        </Card>
+                    </Col>
+                </Row>
                 <h3>Switch</h3>
-                <div className="card card-block">
+                <Card block>
                     <Form grid>
                         <Form.Group col="6">
                             <label>Mute</label>
@@ -79,9 +79,9 @@ export default class FormView extends Component{
                             <Switch disabled defaultChecked />
                         </Form.Group>
                     </Form>
-                </div>
+                </Card>
                 <h3>Form inline</h3>
-                <div className="card card-block">
+                <Card block>
                     <Form>
                         <Form.Group>
                             <label>Name:</label>
@@ -96,9 +96,9 @@ export default class FormView extends Component{
                         </Form.Group>
                         <Button style="primary">Send</Button>
                     </Form>
-                </div>
+                </Card>
                 <h3>Form horizontal</h3>
-                <div className="card card-block">
+                <Card block>
                     <Form type="horizontal">
                         <Form.Group>
                             <label className="col-sm-2 form-control-label text-xs-right">Email:</label>
@@ -129,7 +129,7 @@ export default class FormView extends Component{
                             </div>
                         </Form.Group>
                     </Form>
-                </div>
+                </Card>
             </div>
         );
     }

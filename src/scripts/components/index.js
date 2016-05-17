@@ -2,6 +2,7 @@ export Flex from './Flex';
 export FlexItem from './FlexItem';
 export Row from './Row';
 export Col from './Col';
+export Card from './Card';
 export Square from './Square';
 export Button from './Button';
 export Image from './Image';

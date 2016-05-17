@@ -1,139 +1,143 @@
 import React, { Component } from 'react';
+import { Card, Row, Col, Button, Image } from  '../components';
 
 export default class CardView extends Component{
     render(){
         return (
             <div>
                 <h3>Examples</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <div className="card">
-                                <div className="card-block">
-                                    <h4 className="card-title">Title</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <img className="card-img-top" src="http://placehold.it/350x200"/>
-                                <div className="card-block">
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3">
-                            <div className="card">
-                                <img className="card-img-top" src="http://placehold.it/350x200"/>
-                                <div className="card-block">
-                                    <h4 className="card-title">Title</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3">
-                            <div className="card">
-                                <div className="card-block">
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <img className="card-img-bottom" src="http://placehold.it/350x200"/>
-                            </div>
-                        </div>
-                        <div className="col-sm-3">
-                            <div className="card">
-                                <div className="card-block">
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Card block>
+                    <Row>
+                        <Col col="3">
+                            <Card>
+                                <Card.Block>
+                                    <h4>Title</h4>
+                                    <div>Some quick example text to build on the card title and make up the bulk of the card's content.</div>
+                                </Card.Block>
+                                <Image fluid src="http://placehold.it/350x200"/>
+                                <Card.Block>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <Button style="primary">More</Button>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                        <Col col="3">
+                            <Card>
+                                <Image fluid src="http://placehold.it/350x200"/>
+                                <Card.Block>
+                                    <h4>Title</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <Button style="primary">Detail</Button>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                        <Col col="3">
+                            <Card>
+                                <Card.Block>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </Card.Block>
+                                <Image fluid src="http://placehold.it/350x200"/>
+                            </Card>
+                        </Col>
+                        <Col col="3">
+                            <Card>
+                                <Card.Block>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <Button style="primary">OK</Button>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Text align</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://placehold.it/350x200"/>
-                                <div className="card-block">
-                                    <h4 className="card-title">Left</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4 text-xs-center">
-                            <div className="card">
-                                <img className="card-img-top" src="http://placehold.it/350x200"/>
-                                <div className="card-block">
-                                    <h4 className="card-title">Center</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                          <div className="card text-xs-right">
-                                <img className="card-img-top" src="http://placehold.it/350x200"/>
-                                <div className="card-block">
-                                    <h4 className="card-title">Right</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Card block>
+                    <Row>
+                        <Col col="4">
+                            <Card>
+                                <Image fluid src="http://placehold.it/350x200"/>
+                                <Card.Block>
+                                    <h4>Left</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#">Card link</a>
+                                    <a href="#" className="offset-spacer-l">Another link</a>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                        <Col col="4">
+                            <Card className="text-center">
+                                <Image fluid src="http://placehold.it/350x200"/>
+                                <Card.Block>
+                                    <h4>Center</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#">Card link</a>
+                                    <a href="#" className="offset-spacer-l">Another link</a>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                        <Col col="4">
+                            <Card className="text-right">
+                                <Image fluid src="http://placehold.it/350x200"/>
+                                <Card.Block>
+                                    <h4>Right</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#">Card link</a>
+                                    <a href="#" className="offset-spacer-l">Another link</a>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Header and footer</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="card">
-                                <div className="card-header">
+                <Card block>
+                    <Row>
+                        <Col col="4">
+                            <Card>
+                                <Card.Header>
                                     Header
-                                </div>
-                                <div className="card-block">
-                                    <h4 className="card-title">Left</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary card-link">ok</a>
-                                    <a href="#" className="btn btn-default card-link">cancel</a>
-                                </div>
-                                <div className="card-footer">
+                                </Card.Header>
+                                <Card.Block>
+                                    <h4>Left</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <Button style="primary">OK</Button>
+                                    <Button style="default" className="offset-spacer-l">Cancel</Button>
+                                </Card.Block>
+                                <Card.Footer>
                                     footer
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="card text-xs-center">
-                                <h4 className="card-header">
-                                    Header
-                                </h4>
-                                <div className="card-block">
-                                    <h4 className="card-title">center</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary card-link">ok</a>
-                                    <a href="#" className="btn btn-default card-link">cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="card text-xs-right">
-                                <div className="card-block">
-                                    <h4 className="card-title">Right</h4>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary card-link">ok</a>
-                                    <a href="#" className="btn btn-default card-link">cancel</a>
-                                </div>
-                                <h5 className="card-footer">
-                                    footer
-                                </h5>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                                </Card.Footer>
+                            </Card>
+                        </Col>
+                        <Col col="4">
+                            <Card>
+                                <Card.Header>
+                                    <h4 className="no-margin">
+                                        Header
+                                    </h4>
+                                </Card.Header>
+                                <Card.Block>
+                                    <h4>center</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <Button style="primary">OK</Button>
+                                    <Button style="default" className="offset-spacer-l">Cancel</Button>
+                                </Card.Block>
+                            </Card>
+                        </Col>
+                        <Col col="4">
+                            <Card>
+                                <Card.Block>
+                                    <h4>Right</h4>
+                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <Button style="primary">OK</Button>
+                                    <Button style="default" className="offset-spacer-l">Cancel</Button>
+                                </Card.Block>
+                                <Card.Footer>
+                                    <h5 className="no-margin">
+                                        footer
+                                    </h5>
+                                </Card.Footer>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Card>
             </div>
         );
     }

@@ -1,14 +1,3 @@
-// Width
-
-.w-100 { width: 100% !important; }
-
-// Margin and Padding
-
-.m-x-auto {
-  margin-right: auto !important;
-  margin-left:  auto !important;
-}
-
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $size, $lengths in $spacers {
     $length-x:   map-get($lengths, x);
@@ -32,12 +21,22 @@
   }
 }
 
-// Positioning
+.offset-spacer-l{
+  margin-left: $spacer-y;
+}
 
-.pos-f-t {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: $zindex-navbar-fixed;
+.offset-spacer-r{
+  margin-right: $spacer-y;
+}
+
+.no-margin{
+  margin: 0 !important;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+
+.no-border{
+  border: 0 !important;
 }
