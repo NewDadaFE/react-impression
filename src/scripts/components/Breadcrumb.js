@@ -20,7 +20,7 @@ export default class Breadcrumb extends Component{
         return (
             <ol className={classnames('breadcrumb', dividerClass)}>
                 { path.map((item, index) =>
-                    <li className={classnames('breadcrumb-item', {active: !item.href})}>
+                    <li key={index} className={classnames('breadcrumb-item', {active: !item.href})}>
                         { item.href && <a href={item.href}>{item.name || item.text}</a> }
                         { !item.href && <span>{item.name || item.text}</span> }
                     </li>

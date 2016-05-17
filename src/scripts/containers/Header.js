@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navbar, Nav, NavItem, Button } from '../components';
 
 
 /**
@@ -7,12 +8,17 @@ import React, { Component } from 'react';
 export default class Header extends Component{
     render(){
         return (
-            <nav className="navbar">
-                <div className="navbar-sidebar-title">
-                    <img style={{maxHeight: '45px'}} src="http://localhost:9016/images/logo.png"/>Impression
-                </div>
-                <button className="btn btn-secondary"><i className="fa fa-bars"></i></button>
-            </nav>
+            <Navbar>
+                <Navbar.SidebarTitle img="http://localhost:9016/images/logo.png">Impression</Navbar.SidebarTitle>
+                <Button style="secondary"><i className="fa fa-bars"></i></Button>
+                <Nav/>
+                <form className="form form-inline pull-xs-right">
+                    <div className="form-group">
+                        <input className="form-control" type="text" placeholder="Search"/>
+                    </div>
+                    <Button style="primary">Search</Button>
+                </form>
+            </Navbar>
         );
     }
 }

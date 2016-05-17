@@ -13,6 +13,25 @@
   border-bottom: 1px solid transparent;
   @include clearfix;
   @include nav-variant($navbar-color, $navbar-bg, $navbar-border-color);
+
+  .nav {
+    flex: 1;
+    .nav-item {
+      float: left;
+    }
+
+    .nav-link {
+      display: block;
+
+      + .nav-link {
+        margin-left: $nav-item-spacer-x;
+      }
+    }
+
+    .nav-item + .nav-item {
+      margin-left: $nav-item-spacer-x;
+    }
+  }
 }
 
 .navbar-primary{
@@ -128,25 +147,3 @@
   }
 }
 
-// Navigation
-//
-// Custom navbar navigation built on the base `.nav` styles.
-
-.navbar-nav {
-  flex: 1;
-  .nav-item {
-    float: left;
-  }
-
-  .nav-link {
-    display: block;
-
-    + .nav-link {
-      margin-left: $nav-item-spacer-x;
-    }
-  }
-
-  .nav-item + .nav-item {
-    margin-left: $nav-item-spacer-x;
-  }
-}

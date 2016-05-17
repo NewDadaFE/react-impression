@@ -22,6 +22,11 @@ export default class Nav extends Component{
         activeKey: React.PropTypes.number,
         onSelect: React.PropTypes.func,
     }
+    //默认props
+    static defaultProps = {
+        type: 'inline',
+        stacked: false,
+    }
     //选中回调
     onSelectHandle(eventKey){
         let { activeKey } = this.state;
@@ -31,7 +36,7 @@ export default class Nav extends Component{
             return false;
         }
         this.setState({activeKey: eventKey});
-        onSelect(eventKey);
+        onSelect && onSelect(eventKey);
     }
     //返回type映射的class
     getTypeClassMap(type){
@@ -45,16 +50,17 @@ export default class Nav extends Component{
     }
     //渲染
     render(){
-        let { type, stacked, className } = this.props;
+        let { type, stacked, className, children } = this.props;
         let { activeKey } = this.state;
         let navStacked = stacked && type=='pill' ? 'nav-stacked' : null;
         let navStyle = this.getTypeClassMap(type);
 
-        let children = this.props.children.map((child, index) => {
+        children = children && children.map((child, index) => {
+            let { eventKey } = child.props;
             return cloneElement(child, {
                 key: index,
-                eventKey: child.props.eventKey || index + 1,
-                active: child.props.eventKey === activeKey || index + 1 === activeKey,
+                eventKey: eventKey || index + 1,
+                active: (eventKey && eventKey === activeKey) || index + 1 === activeKey,
                 onClick: this.onSelectHandle
             });
         });

@@ -52,7 +52,7 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-2">
-                            <div className="card card-block">
+                            <div className="card">
                                 <Nav activeKey={2} onSelect={this.selectHandle} type="pill" stacked>
                                     <NavItem eventKey={1}>Active</NavItem>
                                     <NavItem eventKey={2}>Link</NavItem>
