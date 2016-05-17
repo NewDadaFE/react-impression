@@ -19,7 +19,6 @@ export default class ComponentName extends Component{
     //渲染
     render(){
         let { data } = this.props;
-
         let rows = data.map((item, index) => {
             return (
                 <tr key={index}>

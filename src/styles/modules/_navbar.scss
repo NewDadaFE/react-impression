@@ -4,6 +4,8 @@
 // other navbar variations.
 
 .navbar {
+  display: flex;
+  align-items: center;
   height: $navbar-height;
   line-height: $navbar-line-height;
   position: relative;
@@ -44,7 +46,6 @@
 //
 
 .navbar-brand {
-  float: left;
   margin-right: 1rem;
   font-size: $font-size-lg;
 
@@ -126,14 +127,13 @@
     }
   }
 }
-// scss-lint:enable ImportantRule
-
 
 // Navigation
 //
 // Custom navbar navigation built on the base `.nav` styles.
 
 .navbar-nav {
+  flex: 1;
   .nav-item {
     float: left;
   }

@@ -18,20 +18,22 @@ export default class Sidebar extends Component {
                     <div className="nav-item">
                         BASIC
                     </div>
-                    <Link className="nav-link" to="/image"><i className="fa fa-picture-o fa-left"></i>Image</Link>
-                    <Link className="nav-link" to="/table"><i className="fa fa-table fa-left"></i>Table</Link>
                     <Link className="nav-link" to="/button"><i className="fa fa-hand-pointer-o fa-left"></i>Button</Link>
-                    <Link className="nav-link" to="/button-group"><i className="fa fa-th-large fa-left"></i>Button-Group</Link>
+                    <Link className="nav-link" to="/table"><i className="fa fa-table fa-left"></i>Table</Link>
+                    <Link className="nav-link" to="/form"><i className="fa fa-file-text-o fa-left"></i>Form<span className="fa-right tag tag-danger">Hot</span></Link>
+                    <Link className="nav-link" to="/image"><i className="fa fa-picture-o fa-left"></i>Image</Link>
                     <div className="nav-item">
                         COMPONENT
                     </div>
-                    <Link className="nav-link" to="/input-group"><i className="fa fa-outdent fa-left"></i>Input-Group</Link>
                     <Link className="nav-link" to="/tag"><i className="fa fa-tag fa-left"></i>Tag</Link>
                     <Link className="nav-link" to="/alert"><i className="fa fa-info-circle fa-left"></i>Alert<span className="fa-right tag tag-warning">New</span></Link>
+                    <Link className="nav-link" to="/button-group"><i className="fa fa-th-large fa-left"></i>Button-Group</Link>
+                    <Link className="nav-link" to="/pagination"><i className="fa fa-angle-double-right fa-left"></i>Pagination</Link>
+                    <Link className="nav-link" to="/nav"><i className="fa fa-bars fa-left"></i>Nav</Link>
+                    <Link className="nav-link" to="/input-group"><i className="fa fa-outdent fa-left"></i>Input-Group</Link>
                     <Link className="nav-link" to="/card"><i className="fa fa-television fa-left"></i>Card</Link>
                     <Link className="nav-link" to="/breadcrumb"><i className="fa fa-hand-o-right fa-left"></i>Breadcrumb</Link>
                     <Link className="nav-link" to="/progress"><i className="fa fa-hourglass-start fa-left"></i>Progress</Link>
-                    <Link className="nav-link" to="/pagination"><i className="fa fa-angle-double-right fa-left"></i>Pagination</Link>
                     <Link className="nav-link" to="/list-group"><i className="fa fa-list fa-left"></i>List-Group</Link>
                     <div className="nav-collapse">
                         <div className="nav-link"><i className="fa fa-list fa-left"></i>List-Group<i className="fa fa-angle-right pull-xs-right"></i></div>
@@ -45,9 +47,7 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/modal"><i className="fa fa-file-text fa-left"></i>Modal</Link>
                     <Link className="nav-link" to="/tooltip"><i className="fa fa-commenting-o fa-left"></i>Tooltip</Link>
                     <Link className="nav-link" to="/popover"><i className="fa fa-comments fa-left"></i>Popover</Link>
-                    <Link className="nav-link" to="/nav"><i className="fa fa-bars fa-left"></i>Nav</Link>
                     <Link className="nav-link" to="/navbar"><i className="fa fa-tasks fa-left"></i>Navbar</Link>
-                    <Link className="nav-link" to="/form"><i className="fa fa-file-text-o fa-left"></i>Form<span className="fa-right tag tag-danger">Hot</span></Link>
                     <Link className="nav-link" to="/dropdowns"><i className="fa fa-caret-square-o-down fa-left"></i>Dropdowns</Link>
                 </div>
                 <div className="sidebar-footer">

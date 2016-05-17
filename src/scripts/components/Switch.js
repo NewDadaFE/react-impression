@@ -35,6 +35,7 @@ export default class Switch extends Component{
     //渲染
     render(){
         let { defaultChecked, disabled, classname } = this.props;
+
         return(
             <label className={classnames('switch', classname)}>
                 <input type="checkbox" defaultChecked={defaultChecked} disabled={disabled} ref="main" onChange={this.onChangeHandle}/>

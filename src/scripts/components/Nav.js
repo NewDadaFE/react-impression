@@ -17,7 +17,7 @@ export default class Nav extends Component{
     }
     //props校验
     static propTypes ={
-        style: React.PropTypes.string,
+        type: React.PropTypes.string,
         stacked: React.PropTypes.bool,
         activeKey: React.PropTypes.number,
         onSelect: React.PropTypes.func,
@@ -33,12 +33,22 @@ export default class Nav extends Component{
         this.setState({activeKey: eventKey});
         onSelect(eventKey);
     }
+    //返回type映射的class
+    getTypeClassMap(type){
+        let map = {
+            tab: 'nav-tabs',
+            pill: 'nav-pills',
+            inline: 'nav-inline',
+        };
+
+        return map[type]? map[type]: type;
+    }
     //渲染
     render(){
-        let { style, stacked, className } = this.props;
+        let { type, stacked, className } = this.props;
         let { activeKey } = this.state;
-        let navStacked = stacked ? 'nav-stacked' : null;
-        let navStyle = style ? `nav-${style}` : null;
+        let navStacked = stacked && type=='pill' ? 'nav-stacked' : null;
+        let navStyle = this.getTypeClassMap(type);
 
         let children = this.props.children.map((child, index) => {
             return cloneElement(child, {
