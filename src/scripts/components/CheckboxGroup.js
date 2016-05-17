@@ -11,7 +11,7 @@ export default class CheckboxGroup extends Component{
 
         this.state = {
             value: props.value || []
-        }
+        };
 
         this.onChangeHandle = this.onChangeHandle.bind(this);
     }

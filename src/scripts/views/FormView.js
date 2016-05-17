@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Checkbox, CheckboxGroup, Radio, RadioGroup, Switch } from '../components';
 
 export default class FormView extends Component{

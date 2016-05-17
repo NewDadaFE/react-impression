@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React, { Component } from 'react';
 
 /**
@@ -29,8 +28,8 @@ export default class ComponentName extends Component{
                     <td>{item[2]}</td>
                     <td>{item[3] || '-'}</td>
                 </tr>
-            )
-        })
+            );
+        });
 
         return(
             <table className="table table-bordered">
