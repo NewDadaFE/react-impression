@@ -13,10 +13,6 @@ export default class ListGroup extends Component{
     static propTypes = {
         className: React.PropTypes.string,
     }
-    //默认props
-    static defaultProps = {
-
-    }
     //渲染
     render(){
         let { className } = this.props;
