@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Modal, Button } from '../components';
 
 export default class ModalView extends Component{
     render(){
@@ -8,25 +9,21 @@ export default class ModalView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="modal">
-                                <div className="modal-dialog">
-                                    <div className="modal-content">
-                                        <div className="modal-header">
-                                            <button type="button" className="close">
-                                                &times;
-                                            </button>
-                                            <h5 className="modal-title">Modal title</h5>
-                                        </div>
-                                        <div className="modal-body">
-                                            <p>One fine body&hellip;</p>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-default">Close</button>
-                                            <button type="button" className="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <Modal>
+                                <Modal.Header>
+                                    <button type="button" className="close">
+                                        &times;
+                                    </button>
+                                    <h5 className="modal-title">Modal title</h5>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <p>One fine body&hellip;</p>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button style="default">Close</Button>
+                                    <Button style="primary">Save</Button>
+                                </Modal.Footer>
+                            </Modal>
                         </div>
                     </div>
                 </div>

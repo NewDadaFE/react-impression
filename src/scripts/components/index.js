@@ -24,3 +24,4 @@ export ListGroupItem from './ListGroupItem';
 export ListGroup from './ListGroup';
 export Breadcrumb from './Breadcrumb';
 export Progress from './Progress';
+export Modal from './Modal';
