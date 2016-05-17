@@ -8,6 +8,7 @@ export default class NavItem extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);
+
         this.onClickHandle = this.onClickHandle.bind(this);
     }
     //props校验
@@ -23,23 +24,31 @@ export default class NavItem extends Component{
         disabled: false,
         active: false,
     }
+    //回调函数
     onClickHandle(){
-        let { disabled, onClick, eventKey } = this.props;
-        !disabled && onClick(eventKey);
+        let { disabled, active, onClick, eventKey } = this.props;
+        !disabled && !active && onClick(eventKey);
     }
     //渲染
     render(){
         let { disabled, active, classname, href } = this.props;
-        let classes = {
+        let childClass = {
             disabled,
             active,
         };
 
         return(
             <li className={classnames('nav-item', classname)} onClick={this.onClickHandle}>
-                <a href={href} className={classnames('nav-link', classes)}>
-                    {this.props.children}
-                </a>
+                { href &&
+                    <a href={href} className={classnames('nav-link', childClass)}>
+                        {this.props.children}
+                    </a>
+                }
+                { !href &&
+                    <span className={classnames('nav-link', childClass)}>
+                        {this.props.children}
+                    </span>
+                }
             </li>
         );
     }

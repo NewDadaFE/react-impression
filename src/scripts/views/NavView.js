@@ -13,7 +13,7 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <Nav activeKey={1} onSelect={this.selectHandle} style="inline">
+                            <Nav activeKey={1} onSelect={this.selectHandle} type="inline">
                                 <NavItem eventKey={1}>Active</NavItem>
                                 <NavItem eventKey={2}>Link</NavItem>
                                 <NavItem eventKey={3}>Anothor link</NavItem>
@@ -26,7 +26,7 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <Nav activeKey={2} onSelect={this.selectHandle} style="tabs">
+                            <Nav activeKey={2} onSelect={this.selectHandle} type="tab">
                                 <NavItem eventKey={1}>Active</NavItem>
                                 <NavItem eventKey={2}>Link</NavItem>
                                 <NavItem eventKey={3}>Anothor link</NavItem>
@@ -39,7 +39,7 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-12">
-                            <Nav activeKey={2} onSelect={this.selectHandle} style="pills">
+                            <Nav activeKey={2} onSelect={this.selectHandle} type="pill">
                                 <NavItem >Active</NavItem>
                                 <NavItem >Link</NavItem>
                                 <NavItem >Anothor link</NavItem>
@@ -52,12 +52,14 @@ export default class NavView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-2">
-                            <Nav activeKey={2} onSelect={this.selectHandle} style="pills" stacked>
-                                <NavItem eventKey={1}>Active</NavItem>
-                                <NavItem eventKey={2}>Link</NavItem>
-                                <NavItem eventKey={3}>Anothor link</NavItem>
-                                <NavItem eventKey={4} disabled>Disabled</NavItem>
-                            </Nav>
+                            <div className="card card-block">
+                                <Nav activeKey={2} onSelect={this.selectHandle} type="pill" stacked>
+                                    <NavItem eventKey={1}>Active</NavItem>
+                                    <NavItem eventKey={2}>Link</NavItem>
+                                    <NavItem eventKey={3}>Anothor link</NavItem>
+                                    <NavItem eventKey={4} disabled>Disabled</NavItem>
+                                </Nav>
+                            </div>
                         </div>
                     </div>
                 </div>
