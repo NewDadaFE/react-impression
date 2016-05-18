@@ -14,46 +14,47 @@ export default class Tooltip extends Component{
     static defaultProps = {
         position: 'right',
     }
+    //创建tooltip
     createTooltip(targetRect){
         let { position, content } = this.props;
         let positionClass = `tooltip-${position}`;
-        let TooltipNode = document.createElement('div');
+        let tooltipNode = document.createElement('div');
         let arrowNode = document.createElement('div');
         let innerNode = document.createElement('div');
 
-        TooltipNode.className = `tooltip ${positionClass}`;
+        tooltipNode.className = `tooltip ${positionClass}`;
         arrowNode.className = 'tooltip-arrow';
         innerNode.className = 'tooltip-inner';
 
         innerNode.innerHTML = content;
-        TooltipNode.appendChild(arrowNode);
-        TooltipNode.appendChild(innerNode);
+        tooltipNode.appendChild(arrowNode);
+        tooltipNode.appendChild(innerNode);
 
-        document.body.appendChild(TooltipNode);
-        let tooltipRect = TooltipNode.getBoundingClientRect();
+        document.body.appendChild(tooltipNode);
+        let tooltipRect = tooltipNode.getBoundingClientRect();
 
         //计算left、top
         switch(position){
         case 'top':
-            TooltipNode.style.top = targetRect.top - tooltipRect.height;
-            TooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
+            tooltipNode.style.top = targetRect.top - tooltipRect.height;
+            tooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
             break;
         case 'bottom':
-            TooltipNode.style.top = targetRect.top + tooltipRect.height;
-            TooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
+            tooltipNode.style.top = targetRect.top + tooltipRect.height;
+            tooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
             break;
         case 'left':
-            TooltipNode.style.left = targetRect.left - tooltipRect.width;
-            TooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
+            tooltipNode.style.left = targetRect.left - tooltipRect.width;
+            tooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
             break;
         case 'right':
-            TooltipNode.style.left = targetRect.left + targetRect.width;
-            TooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
+            tooltipNode.style.left = targetRect.left + targetRect.width;
+            tooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
             break;
         }
 
-        TooltipNode.className = `tooltip ${positionClass} in`;
-        this.tooltip = TooltipNode;
+        tooltipNode.className = `tooltip ${positionClass} in`;
+        this.tooltip = tooltipNode;
     }
     //显示tooltip
     onMouseOver(event){

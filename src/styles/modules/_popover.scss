@@ -102,7 +102,7 @@
   color: $popover-title-color;
   padding: $popover-title-padding-y $popover-title-padding-x;
   margin: 0; // reset heading margin
-  font-size: $font-size-base;
+  font-size: $popover-title-font-size;
   background-color: $popover-title-bg;
   border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
   $offset-border-width: ($border-width / $font-size-root);

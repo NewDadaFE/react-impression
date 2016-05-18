@@ -26,3 +26,4 @@ export Breadcrumb from './Breadcrumb';
 export Progress from './Progress';
 export Modal from './Modal';
 export Tooltip from './Tooltip';
+export Popover from './Popover';

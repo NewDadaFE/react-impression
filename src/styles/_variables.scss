@@ -684,10 +684,11 @@ $popover-box-shadow:                  0 2px 6px rgba(0,0,0,.2) !default;
 $popover-title-bg:                    $gray-secondary !default;
 $popover-title-color:                 #fff;
 $popover-title-padding-x:             0.8rem !default;
-$popover-title-padding-y:             0.6rem !default;
+$popover-title-padding-y:             0.4rem !default;
+$popover-title-font-size:             1.1rem;
 
 $popover-content-padding-x:           0.8rem !default;
-$popover-content-padding-y:           0.4rem !default;
+$popover-content-padding-y:           0.6rem !default;
 
 $popover-arrow-width:                 10px !default;
 $popover-arrow-color:                 $popover-bg !default;
