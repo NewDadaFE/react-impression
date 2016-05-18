@@ -1,6 +1,4 @@
-// import classnames from 'classnames';
 import React, { Component } from 'react';
-// import ReactDom from 'react-dom';
 
 /**
  * Tooltip组件.
@@ -19,9 +17,9 @@ export default class Tooltip extends Component{
     createTooltip(targetRect){
         let { position, content } = this.props;
         let positionClass = `tooltip-${position}`;
-        let TooltipNode = document.createElement("div");
-        let arrowNode = document.createElement("div");
-        let innerNode = document.createElement("div");
+        let TooltipNode = document.createElement('div');
+        let arrowNode = document.createElement('div');
+        let innerNode = document.createElement('div');
 
         TooltipNode.className = `tooltip ${positionClass}`;
         arrowNode.className = 'tooltip-arrow';
