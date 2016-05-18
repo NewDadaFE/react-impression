@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Tag } from '../components';
+import { CommenTable } from '../site';
 
 export default class TagView extends Component{
     render(){
@@ -60,6 +61,14 @@ export default class TagView extends Component{
                         </div>
                     </div>
                 </div>
+                <h3>Tag API</h3>
+                <CommenTable
+                    data = {[
+                        ['style', '设置标签样式，可选值为 default、primary、success、info、warning、danger', 'string', ''],
+                        ['shape', '设置标签形状，可选值为 pill', 'string', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

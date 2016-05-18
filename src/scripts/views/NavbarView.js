@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from '../components';
+import { CommenTable } from '../site';
 
 export default class NavbarView extends Component{
     render(){
@@ -59,6 +60,27 @@ export default class NavbarView extends Component{
                         </form>
                     </Navbar>
                 </div>
+                <h3>Navbar API</h3>
+                 <CommenTable
+                     data = {[
+                         ['style', '设置导航条样式，可选值为 pure、primary', 'string', ''],
+                         ['className', '自定义样式', 'string', ''],
+                     ]}
+                 ></CommenTable>
+                 <h3>Navbar.Brand API</h3>
+                 <CommenTable
+                     data = {[
+                         ['href', '设置连接', 'string', ''],
+                         ['className', '自定义样式', 'string', ''],
+                     ]}
+                 ></CommenTable>
+                 <h3>Navbar.SidebarTitle API</h3>
+                 <CommenTable
+                     data = {[
+                         ['img', '设置图片连接', 'string', ''],
+                         ['className', '自定义样式', 'string', ''],
+                     ]}
+                 ></CommenTable>
             </div>
         );
     }

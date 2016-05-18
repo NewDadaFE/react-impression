@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Pagination } from '../components';
-
+import { CommenTable } from '../site';
 
 export default class PaginationView extends Component{
     onSelectHandle(pageNum){
@@ -22,6 +22,17 @@ export default class PaginationView extends Component{
                         </div>
                     </div>
                 </div>
+                <h3>Pagintion API</h3>
+                <CommenTable
+                    data = {[
+                        ['scope', '设置前后延伸几页', 'number', '2'],
+                        ['activePage', '当前在第几页', 'number', '1'],
+                        ['totalPage', '总页数', 'number', ''],
+                        ['ellipsis', '是否显示省略号', 'boolean', 'true'],
+                        ['onSelect', '选中回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

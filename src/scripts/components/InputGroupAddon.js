@@ -7,10 +7,10 @@ import React, { Component } from 'react';
 export default class InputGroupAddon extends Component{
     //渲染
     render(){
-        let { className, children } = this.props;
+        let { className, children, ...others } = this.props;
 
         return(
-            <span className={classnames('input-group-addon', className)}>
+            <span {...others} className={classnames('input-group-addon', className)}>
                 {children}
             </span>
         );

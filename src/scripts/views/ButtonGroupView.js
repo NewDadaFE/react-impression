@@ -75,10 +75,11 @@ export default class ButtonGroupView extends Component{
                 <h3>API</h3>
                 <CommenTable
                     data = {[
-                        ['size', '可选参数，设置按钮组大小，可选值为 lg、sm', 'string', ''],
-                        ['style', '可选参数，设置按钮组主题样式，可选值为 primary、secondary、default', 'string', 'default'],
-                        ['activeKey', '可选参数，激活索引，被选中按钮会额外添加选中样式，为空时不额外添加选中样式', 'any', ''],
-                        ['onSelect', '可选参数，设置按钮选中回调函数', 'function', ''],
+                        ['size', '设置按钮组大小，可选值为 lg、sm', 'string', ''],
+                        ['style', '设置按钮组主题样式，可选值为 primary、secondary、default', 'string', 'default'],
+                        ['activeKey', '激活索引，被选中按钮会额外添加选中样式，为空时不额外添加选中样式', 'any', ''],
+                        ['onSelect', '设置按钮选中回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
             </div>

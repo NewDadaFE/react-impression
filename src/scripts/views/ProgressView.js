@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Progress } from '../components';
-
+import { CommenTable } from '../site';
 
 export default class ProgressView extends Component{
     render(){
@@ -75,6 +75,15 @@ export default class ProgressView extends Component{
                         </div>
                     </div>
                 </div>
+                <h3>Progress API</h3>
+                <CommenTable
+                    data = {[
+                        ['style', '设置进度条样式，可选值为 success、warning、danger', 'string', ''],
+                        ['striped', '是否为斑马线样式', 'boolean', 'false'],
+                        ['value', '进度值，必填', 'string、number', ''],
+                        ['max', '设置最大值', 'string、number', '100'],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

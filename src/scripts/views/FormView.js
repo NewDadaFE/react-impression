@@ -191,7 +191,7 @@ export default class FormView extends Component{
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>FormGroup API</h3>
+                <h3>Form.Group API</h3>
                 <CommenTable
                     data = {[
                         ['col', '设置所占比例', 'string、number', ''],

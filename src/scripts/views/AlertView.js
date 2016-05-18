@@ -77,8 +77,9 @@ export default class AlertView extends Component{
                 <h3>API</h3>
                 <CommenTable
                     data = {[
-                        ['style', '可选参数，设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],
-                        ['closeable', '可选参数，设置是否显示关闭按钮', 'bool', ''],
+                        ['style', '设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],
+                        ['closeable', '设置是否显示关闭按钮', 'boolean', ''],
+                        ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
             </div>

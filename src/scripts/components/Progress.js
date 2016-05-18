@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * 进度条组件.
@@ -8,18 +8,18 @@ export default class Progress extends Component{
     //prop type校验
     static propTypes = {
         //样式
-        style: React.PropTypes.string,
+        style: PropTypes.string,
         //斑马线
-        striped: React.PropTypes.bool,
+        striped: PropTypes.bool,
         //值
-        value:  React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number,
+        value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
         ]).isRequired,
         //最大值
-        max: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number,
+        max: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
         ]),
     }
     //默认props
@@ -29,12 +29,12 @@ export default class Progress extends Component{
     }
     //渲染
     render(){
-        let { style, striped, value, max } = this.props;
+        let { style, striped, value, max, ...others } = this.props;
         let styleClass = style? `progress-${style}`: '';
         let stripedClass = striped? `progress-striped`: '';
 
         return (
-            <progress className={classnames('progress', styleClass, stripedClass)} value={value} max={max}></progress>
+            <progress {...others} className={classnames('progress', styleClass, stripedClass)} value={value} max={max}></progress>
         );
     }
 }

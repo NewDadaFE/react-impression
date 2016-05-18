@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Card, Row, Col } from '../components';
+import { CommenTable } from '../site';
 
 export default class ModalView extends Component{
     //构造函数
@@ -51,6 +52,31 @@ export default class ModalView extends Component{
                         </Modal.Footer>
                     </Modal>
                 }
+                <h3>Modal API</h3>
+                <CommenTable
+                    data = {[
+                        ['size', '设置模态框大小，可选值为 sm、lg', 'string', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Modal.Header API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Modal.Body API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Modal.Footer API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

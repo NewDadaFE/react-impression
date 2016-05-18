@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * NavbarBrand 组件
@@ -7,14 +7,15 @@ import React, { Component } from 'react';
 export default class NavbarBrand extends Component{
     //props校验
     static propTypes ={
-        href: React.PropTypes.string,
+        href: PropTypes.string,
+        className: PropTypes.string,
     }
     //渲染
     render(){
-        let { href, className, children } = this.props;
+        let { href, className, children, ...others } = this.props;
 
         return (
-            <a className={classnames('navbar-brand', className)} href={ href || '#' }>{children}</a>
+            <a {...others} className={classnames('navbar-brand', className)} href={ href || '#' }>{children}</a>
         );
     }
 }

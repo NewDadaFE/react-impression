@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, InputGroup } from '../components';
+import { CommenTable } from '../site';
 
 export default class InputGroupView extends Component{
     render(){
@@ -76,6 +77,34 @@ export default class InputGroupView extends Component{
                         </Col>
                     </Row>
                 </Card>
+                <h3>InputGroup API</h3>
+                <CommenTable
+                    data = {[
+                        ['size', '设置输入框组大小，可选值为 sm、lg', 'string', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>InputGroup.Addon API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>InputGroup.Button API</h3>
+                <CommenTable
+                    data = {[
+                        ['style', '设置输入框组内按钮样式，可选值为 default、primary', 'string', 'primary'],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>InputGroup.Input API</h3>
+                <CommenTable
+                    data = {[
+                        ['type', '设置输入框组内 input 类型，可选值为 text', 'string', 'text'],
+                        ['palceholder', '设置占位符', 'string', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
