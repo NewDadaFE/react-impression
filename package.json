@@ -1,12 +1,12 @@
 {
-  "name": "react-dui",
+  "name": "Impression",
   "version": "0.1.0",
   "description": "react + bootstrap + scss + component",
   "main": "src/scripts/index.js",
   "scripts": {
     "start": "node server.js"
   },
-  "homepage": "https://github.com/shenlq/react-dui",
+  "homepage": "https://github.com/shenlq/Impression",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.0.1",

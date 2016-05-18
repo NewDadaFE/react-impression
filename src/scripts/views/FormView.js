@@ -101,19 +101,19 @@ export default class FormView extends Component{
                 <Card block>
                     <Form type="horizontal">
                         <Form.Group>
-                            <label className="col-sm-2 form-control-label text-xs-right">Email:</label>
+                            <label className="col-sm-2 form-control-label text-right">Email:</label>
                             <div className="col-sm-10">
                                 <input type="email" className="form-control" placeholder="Email"/>
                             </div>
                         </Form.Group>
                         <Form.Group>
-                            <label className="col-sm-2 form-control-label text-xs-right">name:</label>
+                            <label className="col-sm-2 form-control-label text-right">name:</label>
                             <div className="col-sm-10">
                                 <input type="password" className="form-control" placeholder="Password"/>
                             </div>
                         </Form.Group>
                         <Form.Group>
-                            <label className="col-sm-2 text-xs-right">Radios:</label>
+                            <label className="col-sm-2 text-right">Radios:</label>
                             <div className="col-sm-10">
                                 <RadioGroup direction="column">
                                     <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
