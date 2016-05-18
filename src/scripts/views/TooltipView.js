@@ -9,30 +9,31 @@ export default class TooltipView extends Component{
         return (
             <div>
                 <h3>Examples</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <Tooltip position="right" msg="Tooltip right">
+                <Card block>
+                    <Row>
+                        <Col col="3">
+                            <Tooltip position="right" content="Tooltip right">
                                 <Button style="primary" onMouseOver={this.onMouseOver}>Right</Button>
                             </Tooltip>
-                        </div>
-                        <div className="col-sm-3">
-                            <Tooltip position="top" msg="Tooltip top">
+                        </Col>
+                        <Col col="3">
+                            <Tooltip position="top" content="Tooltip top">
                                 <Button style="primary">Top</Button>
                             </Tooltip>
-                        </div>
-                        <div className="col-sm-3">
-                            <Tooltip position="bottom" msg="Tooltip bottom">
+                        </Col>
+                        <Col col="3">
+                            <Tooltip position="bottom" content="Tooltip bottom">
                                 <Button style="primary">Bottom</Button>
                             </Tooltip>
-                        </div>
-                        <div className="col-sm-3">
-                            <Tooltip position="left" msg="Tooltip left">
+                        </Col>
+                        <Col col="3">
+                            <Tooltip position="left" content="Tooltip left">
                                 <Button style="primary">Left</Button>
                             </Tooltip>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
+
             </div>
         );
     }

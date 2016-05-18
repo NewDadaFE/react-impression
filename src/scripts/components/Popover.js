@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
 /**
- * Tooltip组件.
+ * Popover组件.
  */
-export default class Tooltip extends Component{
+export default class Popover extends Component{
     //prop type校验
     static propTypes = {
         position: React.PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+        title: React.PropTypes.string,
         content: React.PropTypes.string,
         children: React.PropTypes.element.isRequired,
     }
