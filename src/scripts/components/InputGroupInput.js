@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
-import InputGroupAddon from './InputGroupAddon';
+// import InputGroupAddon from './InputGroupAddon';
 
 /**
  * InputGroup组件.
@@ -18,7 +18,7 @@ export default class InputGroupInput extends Component{
     }
     //渲染
     render(){
-        let { className, children, placeholder } = this.props;
+        let { className, placeholder } = this.props;
 
         return(
             <input type="text" className={classnames('form-control', className)} placeholder={placeholder} ref="main"/>

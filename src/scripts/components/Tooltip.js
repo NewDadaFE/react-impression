@@ -1,6 +1,6 @@
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
+// import ReactDom from 'react-dom';
 
 /**
  * Tooltip组件.
@@ -36,22 +36,22 @@ export default class Tooltip extends Component{
 
         //计算left、top
         switch(position){
-            case 'top':
-                TooltipNode.style.top = targetRect.top - tooltipRect.height;
-                TooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
-                break;
-            case 'bottom':
-                TooltipNode.style.top = targetRect.top + tooltipRect.height;
-                TooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
-                break;
-            case 'left':
-                TooltipNode.style.left = targetRect.left - tooltipRect.width;
-                TooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
-                break;
-            case 'right':
-                TooltipNode.style.left = targetRect.left + targetRect.width;
-                TooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
-                break;
+        case 'top':
+            TooltipNode.style.top = targetRect.top - tooltipRect.height;
+            TooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
+            break;
+        case 'bottom':
+            TooltipNode.style.top = targetRect.top + tooltipRect.height;
+            TooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
+            break;
+        case 'left':
+            TooltipNode.style.left = targetRect.left - tooltipRect.width;
+            TooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
+            break;
+        case 'right':
+            TooltipNode.style.left = targetRect.left + targetRect.width;
+            TooltipNode.style.top = targetRect.top + (targetRect.height - tooltipRect.height) / 2;
+            break;
         }
 
         TooltipNode.className = `tooltip ${positionClass} in`;

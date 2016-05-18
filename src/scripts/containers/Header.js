@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, Button } from '../components';
+import { Navbar, Nav, Button } from '../components';
 
 
 /**
