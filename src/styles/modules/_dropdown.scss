@@ -76,6 +76,7 @@
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background: none; // For `<button>`s
   border: 0; // For `<button>`s
+  cursor: pointer;
 
   @include hover-focus {
     color: $dropdown-link-hover-color;
@@ -86,10 +87,10 @@
   // Active state
   &.active {
     @include plain-hover-focus {
-      color: $dropdown-link-active-color;
       text-decoration: none;
       background-color: $dropdown-link-active-bg;
       outline: 0;
+      font-weight: bold;
     }
   }
 
