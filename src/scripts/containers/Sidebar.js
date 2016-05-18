@@ -37,7 +37,7 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/input-group"><i className="fa fa-outdent fa-left"></i>InputGroup</Link>
                     <Link className="nav-link" to="/list-group"><i className="fa fa-list fa-left"></i>ListGroup</Link>
                     <div className="nav-collapse">
-                        <div className="nav-link"><i className="fa fa-list fa-left"></i>List-Group<i className="fa fa-angle-right pull-xs-right"></i></div>
+                        <div className="nav-link"><i className="fa fa-list fa-left"></i>List-Group<i className="fa fa-angle-right pull-right"></i></div>
                         <div className="nav-collapse-block">
                             <Link className="nav-link" to="/image">Image</Link>
                             <Link className="nav-link" to="/table">Table</Link>
