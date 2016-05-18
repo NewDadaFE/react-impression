@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Tooltip } from '../components';
+import { Button, Tooltip } from '../components';
 
 
 export default class TooltipView extends Component{

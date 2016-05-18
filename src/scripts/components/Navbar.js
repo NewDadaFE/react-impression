@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import NavbarBrand from './NavbarBrand';
 import NavbarSidebarTitle from './NavbarSidebarTitle';
-import React, { Component, cloneElement } from 'react';
+import React, { Component } from 'react';
 
 /**
  * Navbar 组件
