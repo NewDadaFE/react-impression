@@ -40,7 +40,7 @@ export default class Tooltip extends Component{
             tooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
             break;
         case 'bottom':
-            tooltipNode.style.top = targetRect.top + tooltipRect.height;
+            tooltipNode.style.top = targetRect.top + targetRect.height;
             tooltipNode.style.left = targetRect.left - (tooltipRect.width - targetRect.width)/2;
             break;
         case 'left':

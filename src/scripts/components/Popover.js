@@ -7,7 +7,7 @@ export default class Popover extends Component{
     //prop type校验
     static propTypes = {
         //显示位置
-        position: React.PropTypes.oneOf(['left', 'right']).isRequired,
+        position: React.PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
         //标题
         title: React.PropTypes.string,
         //内容
@@ -49,7 +49,7 @@ export default class Popover extends Component{
             popoverNode.style.left = targetRect.left - (popoverRect.width - targetRect.width)/2;
             break;
         case 'bottom':
-            popoverNode.style.top = targetRect.top + popoverRect.height;
+            popoverNode.style.top = targetRect.top + targetRect.height;
             popoverNode.style.left = targetRect.left - (popoverRect.width - targetRect.width)/2;
             break;
         case 'left':
