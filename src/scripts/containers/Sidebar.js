@@ -28,7 +28,7 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/card"><i className="fa fa-television fa-left"></i>Card</Link>
                     <Link className="nav-link" to="/breadcrumb"><i className="fa fa-hand-o-right fa-left"></i>Breadcrumb</Link>
                     <Link className="nav-link" to="/tag"><i className="fa fa-tag fa-left"></i>Tag</Link>
-                    <Link className="nav-link" to="/alert"><i className="fa fa-info-circle fa-left"></i>Alert<span className="fa-right tag tag-warning">New</span></Link>
+                    <Link className="nav-link" to="/alert"><i className="fa fa-info-circle fa-left"></i>Alert<span className="fa-right tag tag-warning">1/4</span></Link>
                     <Link className="nav-link" to="/progress"><i className="fa fa-hourglass-start fa-left"></i>Progress</Link>
                     <Link className="nav-link" to="/button-group"><i className="fa fa-th-large fa-left"></i>ButtonGroup</Link>
                     <Link className="nav-link" to="/pagination"><i className="fa fa-angle-double-right fa-left"></i>Pagination</Link>
@@ -45,7 +45,7 @@ export default class Sidebar extends Component {
                             <Link className="nav-link" to="/button-group">Button-Group</Link>
                         </div>
                     </div>
-                    <Link className="nav-link" to="/modal"><i className="fa fa-file-text fa-left"></i>Modal</Link>
+                    <Link className="nav-link" to="/modal"><i className="fa fa-file-text fa-left"></i>Modal<span className="fa-right tag tag-success">New</span></Link>
                     <Link className="nav-link" to="/tooltip"><i className="fa fa-commenting-o fa-left"></i>Tooltip</Link>
                     <Link className="nav-link" to="/popover"><i className="fa fa-comments fa-left"></i>Popover</Link>
                     <Link className="nav-link" to="/dropdowns"><i className="fa fa-caret-square-o-down fa-left"></i>Dropdowns</Link>
