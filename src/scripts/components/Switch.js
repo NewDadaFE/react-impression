@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Switch组件.
@@ -13,13 +13,13 @@ export default class Switch extends Component{
     //props校验
     static propTypes = {
         //自定义class
-        classname: React.PropTypes.string,
+        className: PropTypes.string,
         //是否默认选中
-        defaultChecked: React.PropTypes.bool,
+        defaultChecked: PropTypes.bool,
         //是否disabled
-        disabled: React.PropTypes.bool,
+        disabled: PropTypes.bool,
         //状态切换回调
-        onChange: React.PropTypes.func,
+        onChange: PropTypes.func,
     }
     //默认props
     static defaultProps = {
@@ -34,10 +34,10 @@ export default class Switch extends Component{
     }
     //渲染
     render(){
-        let { defaultChecked, disabled, classname } = this.props;
+        let { defaultChecked, disabled, className, ...others } = this.props;
 
         return(
-            <label className={classnames('switch', classname)}>
+            <label {...others} className={classnames('switch', className)}>
                 <input type="checkbox" defaultChecked={defaultChecked} disabled={disabled} ref="main" onChange={this.onChangeHandle}/>
                 <div className="switch-addon"></div>
             </label>

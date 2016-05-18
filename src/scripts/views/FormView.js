@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button } from '../components';
+import { CommenTable } from '../site';
 
 export default class FormView extends Component{
     render(){
@@ -38,6 +39,26 @@ export default class FormView extends Component{
                         </Card>
                     </Col>
                 </Row>
+                <h3>Checkbox API</h3>
+                <CommenTable
+                    data = {[
+                        ['disabled', '设置是否可以点击', 'boolean', 'false'],
+                        ['defaultChecked', '设置是否默认选中', 'boolean', ''],
+                        ['checked', '设置是否选中', 'boolean', ''],
+                        ['onChange', '状态变更回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>CheckboxGroup API</h3>
+                <CommenTable
+                    data = {[
+                        ['vlaue', '设置默认是否选中', 'any', ''],
+                        ['onChange', '状态变化回调函数', 'function', ''],
+                        ['disabled', '是否可以点击', 'boolean', 'false'],
+                        ['direction', '排列方向，可选值为 row、column', 'string', 'row'],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
                 <h3>Radio</h3>
                 <Row>
                     <Col col="6">
@@ -67,6 +88,29 @@ export default class FormView extends Component{
                         </Card>
                     </Col>
                 </Row>
+                <h3>Radio API</h3>
+                <CommenTable
+                    data = {[
+                        ['name', '名称', 'any', ''],
+                        ['value', '返回值', 'any', ''],
+                        ['checked', '是否选中', 'boolean', ''],
+                        ['defaultChecked', '默认是否选中', 'boolean', ''],
+                        ['disable', '是否可以点击', 'boolean', 'false'],
+                        ['onChange', '状态变更回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>RadioGroup API</h3>
+                <CommenTable
+                    data = {[
+                        ['value', '设置默认是否选中', 'any', ''],
+                        ['onChange', '状态变更回调函数', 'function', ''],
+                        ['disabled', '是否可以点击', 'boolean', 'false'],
+                        ['name', '设置名称', 'string', ''],
+                        ['direction', '排列方向，可选值为 row、column', 'string', 'row'],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
                 <h3>Switch</h3>
                 <Card block>
                     <Form grid>
@@ -80,6 +124,15 @@ export default class FormView extends Component{
                         </Form.Group>
                     </Form>
                 </Card>
+                <h3>Switch API</h3>
+                <CommenTable
+                    data = {[
+                        ['defaultChecked', '是否默认选中', 'boolean', ''],
+                        ['disabled', '是否可以点击', 'boolean', ''],
+                        ['onChange', '状态变更回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
                 <h3>Form inline</h3>
                 <Card block>
                     <Form>
@@ -130,6 +183,21 @@ export default class FormView extends Component{
                         </Form.Group>
                     </Form>
                 </Card>
+                <h3>Form API</h3>
+                <CommenTable
+                    data = {[
+                        ['type', '排列方向，可选值为 inline、horizontal', 'string', 'inline'],
+                        ['grid', '是否分列', 'boolean', 'false'],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>FormGroup API</h3>
+                <CommenTable
+                    data = {[
+                        ['col', '设置所占比例', 'string、number', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
