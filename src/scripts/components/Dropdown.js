@@ -18,11 +18,11 @@ export default class Dropdown extends Component{
     static propTypes = {
         // 触发动作
         trigger: PropTypes.oneOf(['click', 'hover']),
-         // menus: PropTypes.arrayOf(PropTypes.object),
+        // menus: PropTypes.arrayOf(PropTypes.object),
         //菜单
         menus: PropTypes.arrayOf((value, index, componentName, location, propFullName) => {
             let callResult = Object.prototype.toString.call(value[index]);
-            if(callResult !== "[object String]" & callResult !== "[object Object]"){
+            if(callResult !== '[object String]' & callResult !== '[object Object]'){
                 return new Error(
                     `Invalid prop '${propFullName}', supplied to '${componentName}', expected 'object' or 'string'.`
                 );
@@ -31,7 +31,7 @@ export default class Dropdown extends Component{
         //回调
         onClick: PropTypes.func,
         //子节点
-        children: React.PropTypes.element.isRequired,
+        children: PropTypes.element.isRequired,
     }
     //默认props
     static defaultProps = {
@@ -53,43 +53,43 @@ export default class Dropdown extends Component{
     }
     //渲染
     render(){
-        let { menus, onClick, trigger, className, children } = this.props;
+        let { menus, trigger, className, children, ...others } = this.props;
         let { open } = this.state;
         let options = {};
 
         switch(trigger){
-            case 'click':
-                options = {
-                    className: `${children.props.className} dropdown-toggle`,
-                    onClick: children.onClick? (event) => {
-                        children.onClick(event);
-                        this.toggleMenuHandle();
-                    }: this.toggleMenuHandle
-                }
-                break;
-            case 'hover':
-                options = {
-                    className: `${children.props.className} dropdown-toggle`,
-                    onMouseOver: children.onMouseOver? (event) => {
-                        children.onMouseOver(event);
-                        this.toggleMenuHandle();
-                    }: this.toggleMenuHandle,
-                    onMouseOut: children.onMouseOut? (event) => {
-                        children.onMouseOut(event);
-                        this.toggleMenuHandle();
-                    }: this.toggleMenuHandle,
-                }
-                break;
+        case 'click':
+            options = {
+                className: `${children.props.className} dropdown-toggle`,
+                onClick: children.onClick ? event => {
+                    children.onClick(event);
+                    this.toggleMenuHandle();
+                }: this.toggleMenuHandle
+            };
+            break;
+        case 'hover':
+            options = {
+                className: `${children.props.className} dropdown-toggle`,
+                onMouseOver: children.onMouseOver ? event => {
+                    children.onMouseOver(event);
+                    this.toggleMenuHandle();
+                }: this.toggleMenuHandle,
+                onMouseOut: children.onMouseOut ? event => {
+                    children.onMouseOut(event);
+                    this.toggleMenuHandle();
+                }: this.toggleMenuHandle,
+            };
+            break;
         }
 
         children = React.cloneElement(children, options);
 
         return(
-            <div className={classnames('dropdown', { open }, className)}>
+            <div {...others} className={classnames('dropdown', { open }, className)}>
                 { children }
                 <div className="dropdown-menu">
                     { menus && menus.map((menu, index) =>
-                        Object.prototype.toString.call(menu) === "[object String]"?
+                        Object.prototype.toString.call(menu) === '[object String]'?
                         <div key={index} className="dropdown-divider"></div>:
                         <a key={index} href={menu.href}
                            className={classnames('dropdown-item', {disabled: menu.disabled, active: menu.active})}

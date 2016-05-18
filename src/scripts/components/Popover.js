@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 
 /**
  * Popover组件.
@@ -7,13 +7,13 @@ export default class Popover extends Component{
     //prop type校验
     static propTypes = {
         //显示位置
-        position: React.PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+        position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
         //标题
-        title: React.PropTypes.string,
+        title: PropTypes.string,
         //内容
-        content: React.PropTypes.string,
+        content: PropTypes.string,
         //子节点
-        children: React.PropTypes.element.isRequired,
+        children: PropTypes.element.isRequired,
     }
     //默认props
     static defaultProps = {

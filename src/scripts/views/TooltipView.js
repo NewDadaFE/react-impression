@@ -38,7 +38,7 @@ export default class TooltipView extends Component{
                     data = {[
                         ['position', '设置提示工具位置，可选值为 left、right、top、bottom', 'string', 'right'],
                         ['content', '提示工具内容', 'string', ''],
-                        ['children', '提示工具内包含的元素', 'element', ''],
+                        ['children', '必填，子节点', 'element', ''],
                     ]}
                 ></CommenTable>
             </div>

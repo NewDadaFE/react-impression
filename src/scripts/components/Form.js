@@ -17,7 +17,7 @@ export default class Form extends Component{
     }
     //默认props
     static defaultProps = {
-        type: "inline",
+        type: 'inline',
         grid: false,
     }
     //渲染
