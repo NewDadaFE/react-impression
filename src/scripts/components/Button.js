@@ -12,10 +12,6 @@ export default class Button extends Component{
             Tag: props.href? 'a': 'button'
         };
     }
-    //默认props
-    static defaultProps = {
-        style: 'primary'
-    }
     //prop type校验
     static propTypes = {
         //样式（primary、default、secondary）
@@ -32,20 +28,27 @@ export default class Button extends Component{
         shape: React.PropTypes.string,
         //链接地址
         href: React.PropTypes.string,
+        //是否关闭按钮
+        close: React.PropTypes.bool,
+    }
+    //默认props
+    static defaultProps = {
+        style: 'primary'
     }
     //渲染
     render(){
-        let { style, outline, size, shape, className, onClick, href} = this.props;
+        let { style, outline, size, shape, className, onClick, href, close} = this.props;
         let { Tag } = this.state;
-
-        let btnStyle = `btn${outline?'-outline':''}-${style}`;
-        let btnSize = size? `btn-${size}` : '';
-        let btnShape = shape? `btn-${shape}` : '';
+        let btnClass = !close? 'btn': null;
+        let styleClass = !close? `btn${outline?'-outline':''}-${style}`: null;
+        let sizeClass = size? `btn-${size}` : '';
+        let shapeClass = shape? `btn-${shape}` : '';
+        let closeClass = close? 'close': null;
 
         return(
             <Tag type={href?null:'button'} onClick={onClick} href={href}
-                    className={classnames('btn', btnStyle, btnSize, btnShape, className)}>
-                    {this.props.children}
+                className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, className)}>
+                {this.props.children}
             </Tag>
         );
     }
