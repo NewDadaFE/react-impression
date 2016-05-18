@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Card, Row, Col, Button, Tooltip } from '../components';
+
 
 export default class TooltipView extends Component{
+    onMouseOver(){
+    }
     render(){
         return (
             <div>
@@ -8,28 +12,24 @@ export default class TooltipView extends Component{
                 <div className="card card-block">
                     <div className="row">
                         <div className="col-sm-3">
-                            <div className="in tooltip tooltip-left">
-                                <div className="tooltip-arrow"></div>
-                                <div className="tooltip-inner">Tooltip left</div>
-                            </div>
+                            <Tooltip position="right" msg="Tooltip right">
+                                <Button style="primary" onMouseOver={this.onMouseOver}>Right</Button>
+                            </Tooltip>
                         </div>
                         <div className="col-sm-3">
-                            <div className="in tooltip tooltip-right">
-                                <div className="tooltip-arrow"></div>
-                                <div className="tooltip-inner">Tooltip right</div>
-                            </div>
+                            <Tooltip position="top" msg="Tooltip top">
+                                <Button style="primary">Top</Button>
+                            </Tooltip>
                         </div>
                         <div className="col-sm-3">
-                            <div className="in tooltip tooltip-top">
-                                <div className="tooltip-arrow"></div>
-                                <div className="tooltip-inner">Tooltip top</div>
-                            </div>
+                            <Tooltip position="bottom" msg="Tooltip bottom">
+                                <Button style="primary">Bottom</Button>
+                            </Tooltip>
                         </div>
                         <div className="col-sm-3">
-                            <div className="in tooltip tooltip-bottom">
-                                <div className="tooltip-arrow"></div>
-                                <div className="tooltip-inner">Tooltip bottom</div>
-                            </div>
+                            <Tooltip position="left" msg="Tooltip left">
+                                <Button style="primary">Left</Button>
+                            </Tooltip>
                         </div>
                     </div>
                 </div>

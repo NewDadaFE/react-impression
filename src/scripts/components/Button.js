@@ -37,7 +37,7 @@ export default class Button extends Component{
     }
     //渲染
     render(){
-        let { style, outline, size, shape, className, onClick, href, close} = this.props;
+        let { style, outline, size, shape, className, onClick, href, close, ...others} = this.props;
         let { Tag } = this.state;
         let btnClass = !close? 'btn': null;
         let styleClass = !close? `btn${outline?'-outline':''}-${style}`: null;
@@ -46,7 +46,7 @@ export default class Button extends Component{
         let closeClass = close? 'close': null;
 
         return(
-            <Tag type={href?null:'button'} onClick={onClick} href={href}
+            <Tag type={href?null:'button'} onClick={onClick} href={href} {...others}
                 className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, className)}>
                 {this.props.children}
             </Tag>
