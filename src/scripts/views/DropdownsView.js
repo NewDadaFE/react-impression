@@ -22,7 +22,7 @@ export default class DropdownsView extends Component{
             <div>
                 <h3>Image fluid</h3>
                 <Card block>
-                    <Dropdown menus={menus}>
+                    <Dropdown menus={menus} trigger="hover">
                         <Button style="primary">Dropdown</Button>
                     </Dropdown>
                 </Card>
