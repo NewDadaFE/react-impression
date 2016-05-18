@@ -60,6 +60,7 @@ export default class Dropdown extends Component{
         switch(trigger){
             case 'click':
                 options = {
+                    className: `${children.props.className} dropdown-toggle`,
                     onClick: children.onClick? (event) => {
                         children.onClick(event);
                         this.toggleMenuHandle();
@@ -68,6 +69,7 @@ export default class Dropdown extends Component{
                 break;
             case 'hover':
                 options = {
+                    className: `${children.props.className} dropdown-toggle`,
                     onMouseOver: children.onMouseOver? (event) => {
                         children.onMouseOver(event);
                         this.toggleMenuHandle();

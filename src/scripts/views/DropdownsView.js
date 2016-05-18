@@ -23,9 +23,7 @@ export default class DropdownsView extends Component{
                 <h3>Image fluid</h3>
                 <Card block>
                     <Dropdown menus={menus}>
-                        <button className="btn btn-primary dropdown-toggle" type="button">
-                            Dropdown
-                        </button>
+                        <Button style="primary">Dropdown</Button>
                     </Dropdown>
                 </Card>
             </div>

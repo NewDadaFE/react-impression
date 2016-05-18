@@ -17,11 +17,18 @@
     border-top: $caret-width solid;
     border-right: $caret-width solid transparent;
     border-left: $caret-width solid transparent;
+    transition: $dropdown-toggle-transition;
   }
 
   // Prevent the focus on the dropdown toggle when closing dropdowns
   &:focus {
     outline: 0;
+  }
+}
+
+.open .dropdown-toggle{
+  &::after{
+    transform: rotate(180deg);
   }
 }
 
