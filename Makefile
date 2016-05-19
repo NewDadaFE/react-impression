@@ -17,7 +17,6 @@ webpack:
 
 deploy:
 	NODE_ENV=production webpack -p --config webpack.prod.config.js
-	grunt uglify
 
 doc:
 	jekyll server -s ./docs -d ./docs/_site

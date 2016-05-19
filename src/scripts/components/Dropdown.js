@@ -46,40 +46,30 @@ export default class Dropdown extends Component{
         onClick && onClick(value, name, index, event);
     }
     //显示/隐藏菜单
-    toggleMenuHandle(){
+    toggleMenuHandle(flag){
         this.setState({
-            open: !this.state.open
+            open: flag === undefined? !this.state.open : flag
         });
     }
     //渲染
     render(){
         let { menus, trigger, className, children, ...others } = this.props;
         let { open } = this.state;
-        let options = {};
+        let options = {
+            className: `${children.props.className} dropdown-toggle`
+        };
 
         switch(trigger){
-        case 'click':
-            options = {
-                className: `${children.props.className} dropdown-toggle`,
-                onClick: children.onClick ? event => {
-                    children.onClick(event);
-                    this.toggleMenuHandle();
-                }: this.toggleMenuHandle
-            };
-            break;
-        case 'hover':
-            options = {
-                className: `${children.props.className} dropdown-toggle`,
-                onMouseOver: children.onMouseOver ? event => {
-                    children.onMouseOver(event);
-                    this.toggleMenuHandle();
-                }: this.toggleMenuHandle,
-                onMouseOut: children.onMouseOut ? event => {
-                    children.onMouseOut(event);
-                    this.toggleMenuHandle();
-                }: this.toggleMenuHandle,
-            };
-            break;
+            case 'click':
+                options.onClick = children.onClick ? event => {
+                        children.onClick(event);
+                        this.toggleMenuHandle();
+                    }: this.toggleMenuHandle;
+                break;
+            case 'hover':
+                others.onMouseOver = () => this.toggleMenuHandle(true);
+                others.onMouseOut = () => this.toggleMenuHandle(false);
+                break;
         }
 
         children = React.cloneElement(children, options);
