@@ -53,7 +53,7 @@ export default class Tooltip extends Component{
             break;
         }
 
-        tooltipNode.className = `tooltip ${positionClass} in`;
+        tooltipNode.classList.add('in');
         this.tooltip = tooltipNode;
     }
     //显示tooltip

@@ -30,9 +30,9 @@ export default class Alert extends Component{
         });
     }
     render(){
-        let { style, className, closeable, ...others } = this.props;
-        let styleClass = `alert-${style}`;
-        let hiddenClass = this.state.show? '' : 'hidden';
+        let { style, className, closeable, ...others } = this.props,
+            styleClass = `alert-${style}`,
+            hiddenClass = this.state.show? '' : 'hidden';
 
         return(
             <div {...others} className={classnames('alert', styleClass, hiddenClass, className)}>

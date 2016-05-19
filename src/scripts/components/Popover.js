@@ -22,7 +22,7 @@ export default class Popover extends Component{
     //创建popover
     createPopover(targetRect){
         let { position, title, content } = this.props;
-        let positionClass = `popover popover-${position}`;
+        let positionClass = `popover-${position}`;
         let popoverNode = document.createElement('div');
         let arrowNode = document.createElement('div');
         let titleNode = document.createElement('div');
@@ -62,7 +62,6 @@ export default class Popover extends Component{
             break;
         }
 
-        popoverNode.className = `popover ${positionClass}`;
         this.popover = popoverNode;
     }
     //显示popover
