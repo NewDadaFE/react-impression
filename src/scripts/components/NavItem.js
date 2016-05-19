@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * NavItem 组件
@@ -13,11 +13,12 @@ export default class NavItem extends Component{
     }
     //props校验
     static propTypes ={
-        disabled: React.PropTypes.bool,
-        active: React.PropTypes.bool,
-        eventKey: React.PropTypes.any,
-        href: React.PropTypes.string,
-        onClick: React.PropTypes.func,
+        disabled: PropTypes.bool,
+        active: PropTypes.bool,
+        eventKey: PropTypes.any,
+        href: PropTypes.string,
+        onClick: PropTypes.func,
+        className: PropTypes.string,
     }
     //默认props
     static defaultProps = {
@@ -31,14 +32,14 @@ export default class NavItem extends Component{
     }
     //渲染
     render(){
-        let { disabled, active, classname, href } = this.props;
+        let { disabled, active, className, href, ...others } = this.props;
         let childClass = {
             disabled,
             active,
         };
 
         return(
-            <li className={classnames('nav-item', classname)} onClick={this.onClickHandle}>
+            <li {...others} className={classnames('nav-item', className)} onClick={this.onClickHandle}>
                 { href &&
                     <a href={href} className={classnames('nav-link', childClass)}>
                         {this.props.children}

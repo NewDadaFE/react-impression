@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Tooltip } from '../components';
-
+import { CommenTable } from '../site';
 
 export default class TooltipView extends Component{
     onMouseOver(){
@@ -33,7 +33,14 @@ export default class TooltipView extends Component{
                         </Col>
                     </Row>
                 </Card>
-
+                <h3>Tooltip API</h3>
+                <CommenTable
+                    data = {[
+                        ['position', '设置提示工具位置，可选值为 left、right、top、bottom', 'string', 'right'],
+                        ['content', '提示工具内容', 'string', ''],
+                        ['children', '必填，子节点', 'element', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

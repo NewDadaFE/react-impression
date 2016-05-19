@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Image组件
@@ -12,10 +12,10 @@ export default class Image extends Component{
     //prop type校验
     static propTypes = {
         //形状（fluid、rounded、circle、thumbnail）
-        fluid: React.PropTypes.bool,
-        rounded: React.PropTypes.bool,
-        circle: React.PropTypes.bool,
-        thumbnail: React.PropTypes.bool,
+        fluid: PropTypes.bool,
+        rounded: PropTypes.bool,
+        circle: PropTypes.bool,
+        thumbnail: PropTypes.bool,
     }
     //默认props
     static defaultProps = {
@@ -26,7 +26,7 @@ export default class Image extends Component{
     }
     //渲染
     render(){
-        let { fluid, rounded, circle, thumbnail, className } = this.props;
+        let { fluid, rounded, circle, thumbnail, className, ...others } = this.props;
         let classes = {
             'img-fluid': fluid,
             'img-rounded': rounded,
@@ -35,7 +35,7 @@ export default class Image extends Component{
         };
 
         return(
-            <img {...this.props} className={classnames(classes, className)}/>
+            <img {...others} {...this.props} className={classnames(classes, className)}/>
         );
     }
  }

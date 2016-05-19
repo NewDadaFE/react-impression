@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import InputGroupAddon from './InputGroupAddon';
 import InputGroupInput from './InputGroupInput';
 import InputGroupButton from './InputGroupButton';
@@ -10,16 +10,16 @@ import InputGroupButton from './InputGroupButton';
 export default class InputGroup extends Component{
     //props校验
     static propTypes ={
-        size: React.PropTypes.oneOf(['sm', 'lg']),
-        className: React.PropTypes.string,
+        size: PropTypes.oneOf(['sm', 'lg']),
+        className: PropTypes.string,
     }
     //渲染
     render(){
-        let { size, className, children } = this.props;
+        let { size, className, children, ...others } = this.props;
         let sizeClass = size? `input-group-${size}`: null;
 
         return(
-            <div className={classnames('input-group', sizeClass, className)}>
+            <div {...others} className={classnames('input-group', sizeClass, className)}>
                 {children}
             </div>
         );

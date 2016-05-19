@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Tooltip组件.
@@ -6,9 +6,9 @@ import React, { Component } from 'react';
 export default class Tooltip extends Component{
     //prop type校验
     static propTypes = {
-        position: React.PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
-        content: React.PropTypes.string,
-        children: React.PropTypes.element.isRequired,
+        position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+        content: PropTypes.string,
+        children: PropTypes.element.isRequired,
     }
     //默认props
     static defaultProps = {

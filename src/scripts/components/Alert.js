@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Alert 组件
@@ -17,9 +17,11 @@ export default class Alert extends Component{
     // props 校验
     static propTypes = {
         //样式（success、primary、warning、danger）
-        style: React.PropTypes.string,
+        style: PropTypes.string,
         //是否可关闭
-        closeable: React.PropTypes.bool,
+        closeable: PropTypes.bool,
+        //自定义样式
+        className: PropTypes.string,
     }
     //关闭
     hideHandle(){
@@ -28,12 +30,12 @@ export default class Alert extends Component{
         });
     }
     render(){
-        let { style, className, closeable } = this.props;
+        let { style, className, closeable, ...others } = this.props;
         let styleClass = `alert-${style}`;
         let hiddenClass = this.state.show? '' : 'hidden';
 
         return(
-            <div className={classnames('alert', styleClass, hiddenClass, className)}>
+            <div {...others} className={classnames('alert', styleClass, hiddenClass, className)}>
                 {this.props.children}
                 { closeable &&
                     <button type="button" className="close" onClick={this.hideHandle}>&times;</button>

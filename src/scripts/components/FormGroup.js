@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * FormGroup 组件.
@@ -8,18 +8,20 @@ export default class FormGroup extends Component{
     //props校验
     static propTypes ={
         //所占比例
-        col: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number
-        ])
+        col: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+        //自定义样式
+        className: PropTypes.string,
     }
     //渲染
     render(){
-        let { col, className, children } = this.props;
+        let { col, className, children, ...others } = this.props;
         let colClass = col? `col-xs-${col}`: null;
 
         return(
-            <div className={classnames('form-group', colClass, className)}>
+            <div {...others} className={classnames('form-group', colClass, className)}>
                 { children }
             </div>
         );

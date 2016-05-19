@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 // import InputGroupAddon from './InputGroupAddon';
 
 /**
@@ -8,9 +8,9 @@ import React, { Component } from 'react';
 export default class InputGroupInput extends Component{
     //props校验
     static propTypes ={
-        type: React.PropTypes.string,
-        placeholder: React.PropTypes.string,
-        className: React.PropTypes.string,
+        type: PropTypes.string,
+        placeholder: PropTypes.string,
+        className: PropTypes.string,
     }
     //默认props
     static defaultProps = {
@@ -18,10 +18,10 @@ export default class InputGroupInput extends Component{
     }
     //渲染
     render(){
-        let { className, placeholder } = this.props;
+        let { className, placeholder, ...others } = this.props;
 
         return(
-            <input type="text" className={classnames('form-control', className)} placeholder={placeholder} ref="main"/>
+            <input {...others} type="text" className={classnames('form-control', className)} placeholder={placeholder} ref="main"/>
         );
     }
 }

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Pagination组件.
@@ -26,17 +26,17 @@ export default class Pagination extends Component{
     //props校验
     static propTypes = {
         //前后延伸
-        scope: React.PropTypes.number,
+        scope: PropTypes.number,
         //当前在第几页
-        activePage: React.PropTypes.number,
+        activePage: PropTypes.number,
         //总页数
-        totalPage: React.PropTypes.number.isRequired,
+        totalPage: PropTypes.number.isRequired,
         //是否显示省略号
-        ellipsis: React.PropTypes.bool,
-        //自定义样式
-        className: React.PropTypes.string,
+        ellipsis: PropTypes.bool,
         //onSelect
-        onSelect: React.PropTypes.func,
+        onSelect: PropTypes.func,
+        //自定义样式
+        className: PropTypes.string,
     }
     //上一页
     prevPageHandle(){
@@ -86,12 +86,12 @@ export default class Pagination extends Component{
     }
     //渲染
     render(){
-        let { totalPage, className, ellipsis } = this.props;
+        let { totalPage, className, ellipsis, ...others } = this.props;
         let { activePage } = this.state;
         let children = this.getShowPageArray();
 
         return(
-            <ul className={classnames('Pagination', className)}>
+            <ul {...others} className={classnames('Pagination', className)}>
                 <li className={classnames('page-item', {disabled: activePage <= 1})}>
                     <a className="page-link" href="javascript:void(0);" onClick={this.prevPageHandle}>
                         <i className="fa fa-angle-left"></i>

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * RadioGroup组件.
@@ -18,17 +18,17 @@ export default class RadioGroup extends Component{
     //props校验
     static propTypes = {
         //自定义样式
-        classname: React.PropTypes.string,
+        className: PropTypes.string,
         //默认是否选中
-        value: React.PropTypes.any,
+        value: PropTypes.any,
         //回调函数
-        onChange: React.PropTypes.func,
+        onChange: PropTypes.func,
         //是否disabled
-        disabled: React.PropTypes.bool,
+        disabled: PropTypes.bool,
         //名称
-        name: React.PropTypes.string,
+        name: PropTypes.string,
         //排列方向
-        direction: React.PropTypes.oneOf(['row', 'column'])
+        direction: PropTypes.oneOf(['row', 'column'])
     }
     //默认props
     static defaultProps = {
@@ -46,7 +46,7 @@ export default class RadioGroup extends Component{
     }
     //渲染
     render(){
-        let { className, name, direction } = this.props;
+        let { className, name, direction, ...others } = this.props;
         let children = this.props.children.map((child, index) => {
             let { value, disabled } = child.props;
             let options = {
@@ -64,7 +64,7 @@ export default class RadioGroup extends Component{
         });
 
         return(
-            <div className={classnames(direction=='row'?'radio-inline': 'radio-vertical', className)}>
+            <div {...others} className={classnames(direction=='row'?'radio-inline': 'radio-vertical', className)}>
                 {children}
             </div>
         );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Breadcrumb } from '../components';
-
+import { CommenTable } from '../site';
 
 export default class BreadcrumbView extends Component{
     render(){
@@ -24,6 +24,13 @@ export default class BreadcrumbView extends Component{
                 <div className="card">
                     <Breadcrumb path={path} divider="arrow"></Breadcrumb>
                 </div>
+                <h3>Breadcrumb API</h3>
+                <CommenTable
+                    data = {[
+                        ['divider', '设置分隔符，可选值为 arrow', 'string', ''],
+                        ['path', '设置路径，必填', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

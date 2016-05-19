@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, ListGroup, Tag } from '../components';
+import { CommenTable } from '../site';
 
 export default class ListGroupView extends Component{
     render(){
@@ -80,6 +81,22 @@ export default class ListGroupView extends Component{
                         </Col>
                     </Row>
                 </Card>
+                <h3>ListGroup API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>ListGroup.item API</h3>
+                <CommenTable
+                    data = {[
+                        ['href', '设置链接', 'string', ''],
+                        ['disabled', '是否可点击', 'boolean', ''],
+                        ['active', '是否处于选中状态', 'boolean', ''],
+                        ['header', '头部信息内容', 'string', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

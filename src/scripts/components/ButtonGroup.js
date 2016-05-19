@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * ButtonGroup组件.
@@ -19,18 +19,20 @@ export default class ButtonGroup extends Component{
     //prop校验
     static propType = {
         //大小（lg、sm）
-        size: React.PropTypes.string,
+        size: PropTypes.string,
         //主题样式(primary、secondary、default)
-        style: React.PropTypes.string,
+        style: PropTypes.string,
         //激活索引（被选中Button会额外添加选中样式，为空时不额外添加选中样式）
-        activeKey: React.PropTypes.any,
+        activeKey: PropTypes.any,
         //选中回调
-        onSelect: React.PropTypes.func,
+        onSelect: PropTypes.func,
+        //自定义样式
+        className: PropTypes.string,
     }
     //渲染
     render(){
         let { activeKey } = this.state;
-        let { style, size, className, onSelect } = this.props;
+        let { style, size, className, onSelect, ...others } = this.props;
         let btnGroupSize = size? `btn-group-${size}` : null;
 
         let children = this.props.children.map((child, index) => {
@@ -50,7 +52,7 @@ export default class ButtonGroup extends Component{
         });
 
         return (
-            <div className={classnames('btn-group', btnGroupSize, className)}>
+            <div {...others} className={classnames('btn-group', btnGroupSize, className)}>
                 {children}
             </div>
         );

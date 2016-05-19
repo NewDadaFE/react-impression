@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, cloneElement } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Nav 组件
@@ -17,10 +17,10 @@ export default class Nav extends Component{
     }
     //props校验
     static propTypes ={
-        type: React.PropTypes.string,
-        stacked: React.PropTypes.bool,
-        activeKey: React.PropTypes.number,
-        onSelect: React.PropTypes.func,
+        type: PropTypes.string,
+        stacked: PropTypes.bool,
+        activeKey: PropTypes.number,
+        onSelect: PropTypes.func,
     }
     //默认props
     static defaultProps = {
@@ -50,14 +50,14 @@ export default class Nav extends Component{
     }
     //渲染
     render(){
-        let { type, stacked, className, children } = this.props;
+        let { type, stacked, className, children, ...others } = this.props;
         let { activeKey } = this.state;
         let navStacked = stacked && type=='pill' ? 'nav-stacked' : null;
         let navStyle = this.getTypeClassMap(type);
 
         children = children && children.map((child, index) => {
             let { eventKey } = child.props;
-            return cloneElement(child, {
+            return React.cloneElement(child, {
                 key: index,
                 eventKey: eventKey || index + 1,
                 active: (eventKey && eventKey === activeKey) || index + 1 === activeKey,
@@ -66,7 +66,7 @@ export default class Nav extends Component{
         });
 
         return(
-            <ul className={classnames('nav', navStacked, navStyle, className)}>
+            <ul {...others} className={classnames('nav', navStacked, navStyle, className)}>
                 {children}
             </ul>
         );

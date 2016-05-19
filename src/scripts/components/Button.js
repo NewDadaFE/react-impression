@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * 按钮组件.
@@ -15,21 +15,21 @@ export default class Button extends Component{
     //prop type校验
     static propTypes = {
         //样式（primary、default、secondary）
-        style: React.PropTypes.string,
+        style: PropTypes.string,
         //自定义样式
-        className: React.PropTypes.string,
+        className: PropTypes.string,
         //click事件
-        onClick: React.PropTypes.func,
+        onClick: PropTypes.func,
         //是否outline
-        outline: React.PropTypes.bool,
+        outline: PropTypes.bool,
         //尺寸
-        size: React.PropTypes.string,
+        size: PropTypes.string,
         //形状
-        shape: React.PropTypes.string,
+        shape: PropTypes.string,
         //链接地址
-        href: React.PropTypes.string,
+        href: PropTypes.string,
         //是否关闭按钮
-        close: React.PropTypes.bool,
+        close: PropTypes.bool,
     }
     //默认props
     static defaultProps = {
@@ -46,7 +46,7 @@ export default class Button extends Component{
         let closeClass = close? 'close': null;
 
         return(
-            <Tag type={href?null:'button'} onClick={onClick} href={href} {...others}
+            <Tag {...others} type={href?null:'button'} onClick={onClick} href={href} 
                 className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, className)}>
                 {this.props.children}
             </Tag>

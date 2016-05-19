@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Button from './Button';
 
 /**
@@ -8,8 +8,8 @@ import Button from './Button';
 export default class InputGroupButton extends Component{
     //props校验
     static propTypes ={
-        style: React.PropTypes.string,
-        className: React.PropTypes.string,
+        style: PropTypes.string,
+        className: PropTypes.string,
     }
     //默认props
     static defaultProps = {
@@ -17,10 +17,10 @@ export default class InputGroupButton extends Component{
     }
     //渲染
     render(){
-        let { style, className, children } = this.props;
+        let { style, className, children, ...others } = this.props;
 
         return(
-            <span className="input-group-btn">
+            <span {...others} className="input-group-btn">
                 <Button style={style} className={classnames(className)}>
                     {children}
                 </Button>

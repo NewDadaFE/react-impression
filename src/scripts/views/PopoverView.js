@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Popover, Button } from '../components';
+import { CommenTable } from '../site';
 
 export default class PopoverView extends Component{
     render(){
@@ -32,6 +33,15 @@ export default class PopoverView extends Component{
                         </Col>
                     </Row>
                 </Card>
+                <h3>Popover API</h3>
+                <CommenTable
+                    data = {[
+                        ['position', '设置弹出框位置，可选值为 left、right、top、bottom', 'string', 'right'],
+                        ['title', '弹出框标题', 'string', ''],
+                        ['content', '弹出框主内容', 'string', ''],
+                        ['children', '必填，子节点', 'element', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

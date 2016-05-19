@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ListGroupItem from './ListGroupItem';
 
 /**
@@ -8,14 +8,14 @@ import ListGroupItem from './ListGroupItem';
 export default class ListGroup extends Component{
     //props校验
     static propTypes = {
-        className: React.PropTypes.string,
+        className: PropTypes.string,
     }
     //渲染
     render(){
-        let { className } = this.props;
+        let { className, ...others } = this.props;
 
         return(
-            <ul className={classnames('list-group', className)}>
+            <ul {...others} className={classnames('list-group', className)}>
                 {this.props.children}
             </ul>
         );

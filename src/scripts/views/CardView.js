@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Image } from  '../components';
+import { CommenTable } from '../site';
 
 export default class CardView extends Component{
     render(){
@@ -138,6 +139,31 @@ export default class CardView extends Component{
                         </Col>
                     </Row>
                 </Card>
+                <h3>Card API</h3>
+                <CommenTable
+                    data = {[
+                        ['block', '是否显示为快级元素', 'boolean', 'false'],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Card.Header API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Card.Block API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Card.Footer API</h3>
+                <CommenTable
+                    data = {[
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

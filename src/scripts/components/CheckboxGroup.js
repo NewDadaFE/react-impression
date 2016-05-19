@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * CheckboxGroup组件.
@@ -18,15 +18,15 @@ export default class CheckboxGroup extends Component{
     //props校验
     static propTypes = {
         //自定义样式
-        classname: React.PropTypes.string,
+        className: PropTypes.string,
         //默认是否选中
-        value: React.PropTypes.any,
+        value: PropTypes.any,
         //回调函数
-        onChange: React.PropTypes.func,
+        onChange: PropTypes.func,
         //是否disabled
-        disabled: React.PropTypes.bool,
+        disabled: PropTypes.bool,
         //排列方向
-        direction: React.PropTypes.oneOf(['row', 'column'])
+        direction: PropTypes.oneOf(['row', 'column'])
     }
     //默认props
     static defaultProps = {
@@ -47,7 +47,7 @@ export default class CheckboxGroup extends Component{
     }
     //渲染
     render(){
-        let { className, direction } = this.props;
+        let { className, direction, ...others } = this.props;
         let children = this.props.children.map((child, index) => {
             let { value, disabled } = child.props;
             value = value !== undefined? value: child.props.children;
@@ -61,7 +61,7 @@ export default class CheckboxGroup extends Component{
         });
 
         return(
-            <div className={classnames(direction=='row'?'checkbox-inline': 'checkbox-vertical', className)}>
+            <div {...others} className={classnames(direction=='row'?'checkbox-inline': 'checkbox-vertical', className)}>
                 {children}
             </div>
         );

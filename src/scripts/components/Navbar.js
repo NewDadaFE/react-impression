@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import NavbarBrand from './NavbarBrand';
 import NavbarSidebarTitle from './NavbarSidebarTitle';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Navbar 组件
@@ -13,15 +13,15 @@ export default class Navbar extends Component{
     }
     //props校验
     static propTypes ={
-        style: React.PropTypes.string,
+        style: PropTypes.string,
     }
     //渲染
     render(){
-        let { style, className, children } = this.props;
+        let { style, className, children, ...others } = this.props;
         let styleClass = `navbar-${style}`;
 
         return(
-            <nav className={classnames('navbar', styleClass, className)}>
+            <nav {...others} className={classnames('navbar', styleClass, className)}>
                 {children}
             </nav>
         );
