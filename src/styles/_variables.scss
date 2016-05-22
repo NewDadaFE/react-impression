@@ -404,6 +404,8 @@ $switch-addon-height:                       $switch-addon-width !default;
 $switch-addon-padding:                      round(($line-height-base - $switch-addon-width) *  $font-size-root / 2) !default;
 $switch-addon-translateX:                   translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
 
+$select-border-color:                       #ddd !default;
+
 $custom-select-padding-x:          .75rem  !default;
 $custom-select-padding-y:          .375rem !default;
 $custom-select-indicator-padding:  1rem !default; // Extra padding to account for the presence of the background-image based indicator

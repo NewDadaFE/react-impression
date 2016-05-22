@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button } from '../components';
+import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button, Select } from '../components';
 import { CommenTable } from '../site';
 
 export default class FormView extends Component{
@@ -8,6 +8,20 @@ export default class FormView extends Component{
             <div>
                 <h3>Checkbox</h3>
                 <Row>
+                    <Col col="6">
+                        <Card block>
+                            <Form type="inline">
+                                <Form.Group>
+                                    <label>interest:</label>
+                                    <Select>
+                                        <Select.Option value="1">First</Select.Option>
+                                        <Select.Option value="2">Second</Select.Option>
+                                        <Select.Option value="3">Third</Select.Option>
+                                    </Select>
+                                </Form.Group>
+                            </Form>
+                        </Card>
+                    </Col>
                     <Col col="6">
                         <Card block>
                             <Form type="inline">
@@ -145,7 +159,7 @@ export default class FormView extends Component{
                             <input type="email" className="form-control" placeholder="jane.doe@example.com"/>
                         </Form.Group>
                         <Form.Group>
-                            <Checkbox checked>Remember me</Checkbox>
+                            <Checkbox defaultChecked>Remember me</Checkbox>
                         </Form.Group>
                         <Button style="primary">Send</Button>
                     </Form>

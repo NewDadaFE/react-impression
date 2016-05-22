@@ -54,20 +54,74 @@
   }
 }
 
-select.form-control {
-  &:not([size]):not([multiple]) {
-    height: $input-height;
+.select{
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.25;
+  border: 1px solid $select-border-color;
+}
+
+.select-selection{
+  display: inline-block;
+  width: 120px;
+  user-select: none;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  &:active,
+  &:focus{
+    outline: none;
+  }
+}
+
+.select-noval .select-selection{
+  color: $input-color-placeholder;
+}
+
+.select-addon{
+  transition: all .2s ease;
+
+  .open &{
+    transform: rotate(180deg);
+  }
+}
+
+.select-options{
+  position: absolute;
+  left: 0;
+  top: 120%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 100;
+  display: none;
+  background: #fff;
+  list-style: none;
+  transition: all .2s ease;
+  box-shadow: 0 0 1px darken($select-border-color, 30%);
+  .open &{
+    display: block;
   }
 
-  &:focus::-ms-value {
-    // Suppress the nested default white text on blue background highlight given to
-    // the selected option text when the (still closed) <select> receives focus
-    // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
-    // match the appearance of the native widget.
-    // See https://github.com/twbs/bootstrap/issues/19398.
-    color: $input-color;
-    background-color: $input-bg;
+}
+
+.select-option{
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  &:hover{
+    background-color: $dropdown-link-hover-bg;
   }
+
+  &.active{
+    color: $brand-primary;
+  }
+
+  &.disabled {
+      color: $dropdown-link-disabled-color;
+    }
 }
 
 // Make file inputs better match text inputs by forcing them to new lines.

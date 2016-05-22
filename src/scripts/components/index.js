@@ -15,6 +15,7 @@ export CheckboxGroup from './CheckboxGroup';
 export Radio from './Radio';
 export RadioGroup from './RadioGroup';
 export Switch from './Switch';
+export Select from './Select';
 export InputGroup from './InputGroup';
 export Form from './Form';
 export Nav from './Nav';
