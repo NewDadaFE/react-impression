@@ -59,14 +59,22 @@
   cursor: pointer;
   white-space: nowrap;
   display: inline-block;
-  padding: 0.5rem 0.75rem;
-  line-height: 1.25;
+  padding: $select-padding;
+  line-height: $select-line-height;
   border: 1px solid $select-border-color;
+
+  &.disabled {
+    &,
+    .select-selection{
+      background: $select-disable-bg;
+      cursor: $cursor-disabled;
+    }
+  }
 }
 
 .select-selection{
   display: inline-block;
-  width: 120px;
+  width: 12rem;
   user-select: none;
   border: 0;
   background: transparent;
@@ -82,7 +90,7 @@
 }
 
 .select-addon{
-  transition: all .2s ease;
+  transition: $select-transition;
 
   .open &{
     transform: rotate(180deg);
@@ -100,7 +108,7 @@
   display: none;
   background: #fff;
   list-style: none;
-  transition: all .2s ease;
+  transition: $select-transition;
   box-shadow: 0 0 1px darken($select-border-color, 30%);
   .open &{
     display: block;
@@ -110,17 +118,17 @@
 
 .select-option{
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  padding: $select-option-padding;
   &:hover{
-    background-color: $dropdown-link-hover-bg;
+    background-color: $select-option-hover-bg;
   }
 
   &.active{
-    color: $brand-primary;
+    color: $select-option-active-color;
   }
 
   &.disabled {
-      color: $dropdown-link-disabled-color;
+      color: $select-option-disable-color;
     }
 }
 

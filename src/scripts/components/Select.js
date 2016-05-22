@@ -21,6 +21,8 @@ export default class Select extends Component{
     static propTypes = {
         //是否不可用
         disabled: React.PropTypes.bool,
+        //style
+        style: React.PropTypes.object,
         //自定义样式
         className: React.PropTypes.string,
         //placeholder
@@ -35,7 +37,7 @@ export default class Select extends Component{
     }
     //显示/隐藏菜单
     toggleOptionsHandle(){
-        this.setState({
+        !this.props.disabled && this.setState({
             open: !this.state.open
         });
     }
@@ -66,7 +68,7 @@ export default class Select extends Component{
     }
     //渲染
     render(){
-        let { placeholder, disabled, className, children } = this.props;
+        let { placeholder, disabled, style, className, children } = this.props;
         let { open, text, value } = this.state;
 
         children = children.map((child, index) => {
@@ -74,12 +76,12 @@ export default class Select extends Component{
             return React.cloneElement(child, {
                 key: index,
                 active: value === this.state.value,
-                onClick: () => this.selectOptionHandle(value, children, index)
+                onClick: () => !disabled && this.selectOptionHandle(value, children, index)
             });
         });
 
         return(
-            <div className={classnames('select', { open }, {'select-noval': !value}, className)} disabled={disabled}  onBlur={this.hideOptionsHandle}>
+            <div style={style} className={classnames('select', { disabled }, { open }, {'select-noval': !value}, className)} disabled={disabled}  onBlur={this.hideOptionsHandle}>
                 <button className={classnames('select-selection')} type="button" onClick={this.toggleOptionsHandle}>
                     {text || placeholder}
                 </button>
