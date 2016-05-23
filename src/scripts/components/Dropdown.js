@@ -60,16 +60,16 @@ export default class Dropdown extends Component{
         };
 
         switch(trigger){
-            case 'click':
-                options.onClick = children.onClick ? event => {
-                        children.onClick(event);
-                        this.toggleMenuHandle();
-                    }: this.toggleMenuHandle;
-                break;
-            case 'hover':
-                others.onMouseOver = () => this.toggleMenuHandle(true);
-                others.onMouseOut = () => this.toggleMenuHandle(false);
-                break;
+        case 'click':
+            options.onClick = children.onClick ? event => {
+                children.onClick(event);
+                this.toggleMenuHandle();
+            }: this.toggleMenuHandle;
+            break;
+        case 'hover':
+            others.onMouseOver = () => this.toggleMenuHandle(true);
+            others.onMouseOut = () => this.toggleMenuHandle(false);
+            break;
         }
 
         children = React.cloneElement(children, options);
