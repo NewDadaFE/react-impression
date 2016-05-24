@@ -29,7 +29,7 @@ export default class Option extends Component{
     }
     //渲染
     render(){
-        let { active, disabled, onClick, className, children, ...others } = this.props;
+        let { active, onClick, className, children, ...others } = this.props;
 
         return(
             <li {...others} className={classnames('select-option', { active, disabled }, className)} onClick={onClick}>
