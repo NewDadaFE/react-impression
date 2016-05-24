@@ -23,7 +23,6 @@ export default class MessageView extends Component{
         Message.error('你好，这是一条error消息！');
     }
     render(){
-        let { show } = this.state;
 
         return (
             <div>

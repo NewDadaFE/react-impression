@@ -13,7 +13,7 @@ export default class MessageItem extends Component{
     }
     //默认props
     static defaultProps = {
-       type: 'info'
+        type: 'info'
     }
     /**
      * 获取信息图标.
@@ -21,10 +21,10 @@ export default class MessageItem extends Component{
      */
     getNotifyItemIcon(){
         return {
-            "message-item-success": "fa-check-circle",
-            "message-item-error": "fa-times-circle",
-            "message-item-info": "fa-info-circle",
-            "message-item-warning": "fa-exclamation-triangle"
+            'message-item-success': 'fa-check-circle',
+            'message-item-error': 'fa-times-circle',
+            'message-item-info': 'fa-info-circle',
+            'message-item-warning': 'fa-exclamation-triangle'
         }[this.props.theme];
     }
     /**
@@ -34,12 +34,12 @@ export default class MessageItem extends Component{
         let { children } = this.props;
 
         return (
-            <div className={classnames(["message-item"])}>
-                <div className="message-item-title">
-                    <i className={classnames(["fa", 'fa-check-circle'])}></i>
+            <div className={classnames(['message-item'])}>
+                <div className='message-item-title'>
+                    <i className={classnames(['fa', 'fa-check-circle'])}></i>
                 </div>
-                <div className="message-item-body">{ children }</div>
+                <div className='message-item-body'>{ children }</div>
             </div>
-        )
+        );
     }
 }
