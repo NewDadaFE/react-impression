@@ -22,6 +22,28 @@
   padding: $message-body-padding;
 }
 
+.message-loading{
+  display: block;
+  width: $message-title-font-size;
+  height: $message-title-font-size;
+  border: 1px solid transparent;
+  border-top-color: $brand-primary;
+  border-radius: 100%;
+  padding-right: 0.5rem;
+  animation: loading-spin .6s infinite linear;
+}
+
+@keyframes loading-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
 // Alternate styles
 .message-primary{ @include message-variant($brand-primary); }
 .message-success{ @include message-variant($brand-success); }

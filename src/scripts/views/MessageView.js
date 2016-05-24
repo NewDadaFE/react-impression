@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import { Card, Row, Col, Button, Message } from '../components';
 
 export default class MessageView extends Component{
-    constructor(props, context){
-        super(props, context);
-        this.state = {
-            show: false
-        };
-
-        this.showInfoMessageHandle = this.showInfoMessageHandle.bind(this);
-    }
     showInfoMessageHandle(){
         Message.info('你好，这是一条info消息！');
     }
@@ -22,12 +14,13 @@ export default class MessageView extends Component{
     showErrorMessageHandle(){
         Message.error('你好，这是一条error消息！');
     }
+    showLoadingMessageHandle(){
+        Message.loading('正在执行中...');
+    }
     render(){
-        let { show } = this.state;
-
         return (
             <div>
-                <h3>Theme tag</h3>
+                <h3>Example</h3>
                 <Card block>
                     <Row>
                         <Col col="2">
@@ -51,7 +44,7 @@ export default class MessageView extends Component{
                            </Button>
                         </Col>
                         <Col col="2">
-                           <Button style="default">
+                           <Button style="default" onClick={this.showLoadingMessageHandle}>
                                 <i className="fa fa-spinner fa-left"></i>Loading
                            </Button>
                         </Col>

@@ -26,7 +26,7 @@ export default class Message extends Component{
     }
     //默认props
     static defaultProps = {
-       style: 'info'
+        style: 'info'
     }
     /**
      * 获取信息图标.
@@ -36,12 +36,13 @@ export default class Message extends Component{
         let { style } = this.state;
 
         return {
-            "info":     "fa-volume-up",
-            "primary":  "fa-volume-up",
-            "success":  "fa-check-circle",
-            "warning":  "fa-exclamation-triangle",
-            "error":    "fa-times-circle",
-            "danger":   "fa-times-circle",
+            info:     ['fa', 'fa-volume-up'],
+            primary:  ['fa', 'fa-volume-up'],
+            success:  ['fa', 'fa-check-circle'],
+            warning:  ['fa', 'fa-exclamation-triangle'],
+            error:    ['fa', 'fa-times-circle'],
+            danger:   ['fa', 'fa-times-circle'],
+            loading:  ['message-loading'],
         }[style];
     }
     /**
@@ -52,12 +53,13 @@ export default class Message extends Component{
         let { style } = this.state;
 
         return {
-            'info':     'message-primary',
-            'primary':  'message-primary',
-            'warning':  'message-warning',
-            'success':  'message-success',
-            'danger':   'message-danger',
-            'error':    'message-danger',
+            info:     'message-primary',
+            primary:  'message-primary',
+            warning:  'message-warning',
+            success:  'message-success',
+            danger:   'message-danger',
+            error:    'message-danger',
+            loading:  'message-primary',
         }[style];
     }
     /**
@@ -72,11 +74,11 @@ export default class Message extends Component{
         return (
             <div className={classnames('message', { 'hidden': !show }, styleClass, className)}>
                 <div className="message-title">
-                    <i className={classnames('fa', iconClass)}></i>
+                    <i className={classnames(iconClass)}></i>
                 </div>
                 <div className="message-body">{ message }</div>
             </div>
-        )
+        );
     }
 }
 
@@ -95,7 +97,7 @@ const showMessage = (style, message, duration=2000) => {
 
     //隐藏消息
     hideMessage(duration);
-}
+};
 
 //隐藏消息
 const hideMessage = duration => {
@@ -104,25 +106,30 @@ const hideMessage = duration => {
             show: false
         });
     }, duration));
-}
+};
 
 //显示info信息
 Message.primary = Message.info = (message, duration) => {
     showMessage('primary', message, duration);
-}
+};
 
 //显示info信息
 Message.success = (message, duration) => {
     showMessage('success', message, duration);
-}
+};
 
 //显示warning信息
 Message.warning = (message, duration) => {
     showMessage('warning', message, duration);
-}
+};
 
 //显示error信息
 Message.danger = Message.error = (message, duration) => {
     showMessage('danger', message, duration);
-}
+};
+
+//显示loading信息
+Message.loading = (message, duration) => {
+    showMessage('loading', message, duration);
+};
 
