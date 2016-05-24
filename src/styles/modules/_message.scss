@@ -22,6 +22,17 @@
   padding: $message-body-padding;
 }
 
+.message-loading{
+  display: block;
+  width: $message-title-font-size;
+  height: $message-title-font-size;
+  border: 1px solid transparent;
+  border-top-color: $brand-primary;
+  border-radius: 100%;
+  padding-right: 0.5rem;
+  animation: spin .6s infinite linear;
+}
+
 // Alternate styles
 .message-primary{ @include message-variant($brand-primary); }
 .message-success{ @include message-variant($brand-success); }

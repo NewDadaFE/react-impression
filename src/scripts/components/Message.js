@@ -36,12 +36,13 @@ export default class Message extends Component{
         let { style } = this.state;
 
         return {
-            'info':     'fa-volume-up',
-            'primary':  'fa-volume-up',
-            'success':  'fa-check-circle',
-            'warning':  'fa-exclamation-triangle',
-            'error':    'fa-times-circle',
-            'danger':   'fa-times-circle',
+            info:     ['fa', 'fa-volume-up'],
+            primary:  ['fa', 'fa-volume-up'],
+            success:  ['fa', 'fa-check-circle'],
+            warning:  ['fa', 'fa-exclamation-triangle'],
+            error:    ['fa', 'fa-times-circle'],
+            danger:   ['fa', 'fa-times-circle'],
+            loading:  ['message-loading'],
         }[style];
     }
     /**
@@ -52,12 +53,13 @@ export default class Message extends Component{
         let { style } = this.state;
 
         return {
-            'info':     'message-primary',
-            'primary':  'message-primary',
-            'warning':  'message-warning',
-            'success':  'message-success',
-            'danger':   'message-danger',
-            'error':    'message-danger',
+            info:     'message-primary',
+            primary:  'message-primary',
+            warning:  'message-warning',
+            success:  'message-success',
+            danger:   'message-danger',
+            error:    'message-danger',
+            loading:  'message-primary',
         }[style];
     }
     /**
@@ -71,8 +73,8 @@ export default class Message extends Component{
 
         return (
             <div className={classnames('message', { 'hidden': !show }, styleClass, className)}>
-                <div className='message-title'>
-                    <i className={classnames('fa', iconClass)}></i>
+                <div className="message-title">
+                    <i className={classnames(iconClass)}></i>
                 </div>
                 <div className='message-body'>{ message }</div>
             </div>
@@ -126,3 +128,7 @@ Message.danger = Message.error = (message, duration) => {
     showMessage('danger', message, duration);
 };
 
+//显示loading信息
+Message.loading = (message, duration) => {
+    showMessage('loading', message, duration);
+};
