@@ -19,7 +19,8 @@ import PopoverView from '../views/PopoverView';
 import NavView from '../views/NavView';
 import NavbarView from '../views/NavbarView';
 import FormView from '../views/FormView';
-import DropdownsView from '../views/DropdownsView';
+import DropdownView from '../views/DropdownView';
+import MessageView from '../views/MessageView';
 
 /**
  * 主应用入口.
@@ -47,7 +48,8 @@ export default class App extends Component {
                     <Route path='nav' component={NavView}/>
                     <Route path='navbar' component={NavbarView}/>
                     <Route path='form' component={FormView}/>
-                    <Route path='dropdowns' component={DropdownsView}/>
+                    <Route path='dropdown' component={DropdownView}/>
+                    <Route path='message' component={MessageView}/>
                 </Route>
             </Router>
         );

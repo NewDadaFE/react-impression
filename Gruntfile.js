@@ -34,6 +34,19 @@ module.exports = function(grunt) {
                     dest: 'build/styles/'
                 }]
             },
+            html: {
+                files: [{
+                    expand: true,
+                    cwd: './',
+                    src: ['*.html'],
+                    dest: 'build/'
+                }],
+                options: {
+                    process: function(content, srcpath) {
+                        return content.replace(/<\/body>/, "<script src='scripts\/app.js'></script></body>");
+                    }
+                }
+            },
             animate: {
                 files: [{
                     expand: true,
@@ -85,9 +98,12 @@ module.exports = function(grunt) {
                     keepSpecialComments: 0,
                     report: "gzip"
                 },
-                files: {
-                  'build/styles/index.css': 'build/styles/index.css'
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'build/styles',
+                    src: ['**/*.css'],
+                    dest: 'build/styles/'
+                }]
             }
         },
         watch: {
@@ -119,4 +135,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['eslint', 'clean', 'copy:img', 'sass', 'copy:font', 'autoprefixer','execute']);
+
+    grunt.registerTask('ready', ['eslint', 'clean']);
+    grunt.registerTask('deploy', ['copy:html', 'copy:img', 'sass', 'copy:font','autoprefixer','cssmin','uglify']);
 };

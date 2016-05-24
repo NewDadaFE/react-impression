@@ -32,7 +32,7 @@ export default class Option extends Component{
         let { active, disabled, onClick, className, children, ...others } = this.props;
 
         return(
-            <li {...others} className={classnames('select-option', { active }, className)} onClick={onClick}>
+            <li {...others} className={classnames('select-option', { active, disabled }, className)} onClick={onClick}>
                 {children}
             </li>
         );

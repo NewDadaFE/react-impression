@@ -3,7 +3,7 @@ import { Card, Button, Dropdown } from  '../components';
 import { CommenTable } from '../site';
 
 
-export default class DropdownsView extends Component{
+export default class DropdownView extends Component{
     render(){
         let menus = [{
             name: 'First menu'

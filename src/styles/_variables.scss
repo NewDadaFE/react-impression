@@ -790,6 +790,15 @@ $alert-danger-bg:             $state-danger-bg !default;
 $alert-danger-text:           $state-danger-text !default;
 $alert-danger-border:         $state-danger-border !default;
 
+// Message
+$message-top:                 ($navbar-height + 20) !default;
+$message-max-width:           500px !default;
+$message-border-radius:       $border-radius-lg !default;
+$message-color:               $text-muted !default;
+
+$message-title-font-size:     $font-size-lg !default;
+$message-title-padding:       0.5rem 0 0.5rem 0.75rem !default;
+$message-body-padding:        0.5rem 1rem 0.5rem 0.75rem !default;
 
 // Progress bars
 

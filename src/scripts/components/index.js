@@ -29,3 +29,4 @@ export Modal from './Modal';
 export Tooltip from './Tooltip';
 export Popover from './Popover';
 export Dropdown from './Dropdown';
+export Message from './Message';

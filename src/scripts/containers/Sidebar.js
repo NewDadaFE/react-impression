@@ -48,7 +48,9 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/modal"><i className="fa fa-file-text fa-left"></i>Modal<span className="fa-right tag tag-success">New</span></Link>
                     <Link className="nav-link" to="/tooltip"><i className="fa fa-commenting-o fa-left"></i>Tooltip</Link>
                     <Link className="nav-link" to="/popover"><i className="fa fa-comments fa-left"></i>Popover</Link>
-                    <Link className="nav-link" to="/dropdowns"><i className="fa fa-caret-square-o-down fa-left"></i>Dropdowns</Link>
+                    <Link className="nav-link" to="/dropdown"><i className="fa fa-caret-square-o-down fa-left"></i>Dropdown</Link>
+                    <Link className="nav-link" to="/message"><i className="fa fa-bell fa-left"></i>Message</Link>
+                    <Link className="nav-link" to="/notification"><i className="fa fa-bullhorn fa-left"></i>Notification</Link>
                 </div>
                 <div className="sidebar-footer">
                     <a href="javascript:void(0)" className="sidebar-footer-item">

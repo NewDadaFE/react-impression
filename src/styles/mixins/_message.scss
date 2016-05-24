@@ -1,0 +1,11 @@
+// Message
+
+@mixin message-variant($color) {
+  background: mix($color, #fff, 2%);
+  box-shadow: 0 1px 6px rgba($color, 0.3);
+  border: 1px solid rgba($color, 0.5);
+
+  .message-title{
+    color: $color;
+  }
+}
