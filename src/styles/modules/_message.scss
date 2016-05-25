@@ -5,15 +5,17 @@
   position: fixed;
   top: $message-top;
   left: 50%;
+  z-index: $zindex-message;
   transform: translateX(-50%);
   color: $message-color;
   max-width: $message-max-width;
+  box-shadow: $message-box-shadow;
   border-radius: $message-border-radius;
 }
 
-.message-title{
-  font-size: $message-title-font-size;
-  padding: $message-title-padding;
+.message-header{
+  font-size: $message-header-font-size;
+  padding: $message-header-padding;
 }
 
 
@@ -24,12 +26,12 @@
 
 .message-loading{
   display: block;
-  width: $message-title-font-size;
-  height: $message-title-font-size;
+  width: $message-header-font-size;
+  height: $message-header-font-size;
   border: 1px solid transparent;
-  border-top-color: $brand-primary;
+  border-top-color: $message-loading-border-color;
   border-radius: 100%;
-  padding-right: 0.5rem;
+  padding: $message-loading-padding;
   animation: spin .6s infinite linear;
 }
 

@@ -22,11 +22,17 @@ export default class Message extends Component{
     //prop type校验
     static propTypes = {
         //类型
-        style: PropTypes.oneOf(['primary', 'info', 'success', 'warning', 'danger', 'error', 'loading']),
+        style: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'loading']),
     }
     //默认props
     static defaultProps = {
         style: 'info'
+    }
+    /**
+     * 移除定时器.
+     */
+    componentWillUnmount() {
+        _timers.forEach(timer => clearTimeout(timer));
     }
     /**
      * 获取信息图标.
@@ -37,10 +43,8 @@ export default class Message extends Component{
 
         return {
             info:     ['fa', 'fa-volume-up'],
-            primary:  ['fa', 'fa-volume-up'],
             success:  ['fa', 'fa-check-circle'],
             warning:  ['fa', 'fa-exclamation-triangle'],
-            error:    ['fa', 'fa-times-circle'],
             danger:   ['fa', 'fa-times-circle'],
             loading:  ['message-loading'],
         }[style];
@@ -54,11 +58,9 @@ export default class Message extends Component{
 
         return {
             info:     'message-primary',
-            primary:  'message-primary',
             warning:  'message-warning',
             success:  'message-success',
             danger:   'message-danger',
-            error:    'message-danger',
             loading:  'message-primary',
         }[style];
     }
@@ -73,7 +75,7 @@ export default class Message extends Component{
 
         return (
             <div className={classnames('message', { 'hidden': !show }, styleClass, className)}>
-                <div className="message-title">
+                <div className="message-header">
                     <i className={classnames(iconClass)}></i>
                 </div>
                 <div className="message-body">{ message }</div>
@@ -109,8 +111,8 @@ const hideMessage = duration => {
 };
 
 //显示info信息
-Message.primary = Message.info = (message, duration) => {
-    showMessage('primary', message, duration);
+Message.info = (message, duration) => {
+    showMessage('info', message, duration);
 };
 
 //显示info信息
@@ -124,7 +126,7 @@ Message.warning = (message, duration) => {
 };
 
 //显示error信息
-Message.danger = Message.error = (message, duration) => {
+Message.error = (message, duration) => {
     showMessage('danger', message, duration);
 };
 
