@@ -78,7 +78,7 @@ export default class Message extends Component{
                 <div className="message-header">
                     <i className={classnames(iconClass)}></i>
                 </div>
-                <div className="message-body">{ message }</div>
+                <div className='message-body'>{ message }</div>
             </div>
         );
     }
@@ -134,4 +134,3 @@ Message.error = (message, duration) => {
 Message.loading = (message, duration) => {
     showMessage('loading', message, duration);
 };
-
