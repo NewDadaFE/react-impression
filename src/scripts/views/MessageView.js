@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Message } from '../components';
+import { CommenTable } from '../site';
 
 export default class MessageView extends Component{
     showInfoMessageHandle(){
@@ -51,6 +52,19 @@ export default class MessageView extends Component{
                     </Row>
                 </Card>
                 <Message/>
+                <h3>API</h3>
+                <ul>
+                    <li><code>Message.info(content)</code></li>
+                    <li><code>Message.success(content)</code></li>
+                    <li><code>Message.warning(content)</code></li>
+                    <li><code>Message.error(content)</code></li>
+                    <li><code>Message.loading(content)</code></li>
+                </ul>
+                <CommenTable
+                    data = {[
+                        ['content', '提示内容', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
