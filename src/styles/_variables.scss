@@ -102,7 +102,7 @@ $border-width: 1px !default;
 // Settings for the `<body>` element.
 
 $body-bg:    #fff !default;
-$body-color: #333 !default;
+$body-color: #666 !default;
 
 $border-color: #e7eaec !default;
 
@@ -525,6 +525,8 @@ $zindex-navbar-fixed:      1030 !default;
 $zindex-navbar-sticky:     1030 !default;
 $zindex-modal-bg:          1040 !default;
 $zindex-modal:             1050 !default;
+$zindex-message:           1060 !default;
+$zindex-notification:      1060 !default;
 
 
 // Navbar
@@ -795,10 +797,30 @@ $message-top:                 ($navbar-height + 20) !default;
 $message-max-width:           500px !default;
 $message-border-radius:       $border-radius-lg !default;
 $message-color:               $text-muted !default;
+$message-box-shadow:          0 2px 6px rgba(0,0,0,.2) !default;
 
-$message-title-font-size:     $font-size-lg !default;
-$message-title-padding:       0.5rem 0 0.5rem 0.75rem !default;
-$message-body-padding:        0.5rem 1rem 0.5rem 0.75rem !default;
+$message-header-font-size:     $font-size-lg !default;
+$message-header-padding:       0.5rem 0 0.5rem 0.75rem !default;
+$message-body-padding:         0.5rem 1rem 0.5rem 0.75rem !default;
+
+$message-loading-padding:     0 0.5rem 0 0 !default;
+$message-loading-border-color:$brand-primary !default;
+
+// Notification
+$notification-width:          300px !default;
+
+$notice-bg:                   #fff !default;
+$notice-border-radius:        $message-border-radius !default;
+$notice-margin-bottom:        $spacer-y !default;
+$notice-box-shadow:           0 2px 6px rgba(0,0,0,.2) !default;
+
+$notice-header-font-size:     $font-size-h2 !default;
+$notice-header-padding:       0.75rem 0 0.75rem 1rem !default;
+
+$notice-title-margin:         0 0 0.2rem 0 !default;
+
+$notice-body-padding:         0.75rem 1rem !default;
+
 
 // Progress bars
 

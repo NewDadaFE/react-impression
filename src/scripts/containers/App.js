@@ -21,6 +21,7 @@ import NavbarView from '../views/NavbarView';
 import FormView from '../views/FormView';
 import DropdownView from '../views/DropdownView';
 import MessageView from '../views/MessageView';
+import NotificationView from '../views/NotificationView';
 
 /**
  * 主应用入口.
@@ -50,6 +51,7 @@ export default class App extends Component {
                     <Route path='form' component={FormView}/>
                     <Route path='dropdown' component={DropdownView}/>
                     <Route path='message' component={MessageView}/>
+                    <Route path='Notification' component={NotificationView}/>
                 </Route>
             </Router>
         );

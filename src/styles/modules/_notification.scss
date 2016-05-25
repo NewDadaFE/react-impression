@@ -1,0 +1,45 @@
+
+.notification{
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: $zindex-notification;
+  width: $notification-width;
+}
+
+.notice{
+  display: flex;
+  align-items: center;
+  background: $notice-bg;
+  border-radius: $notice-border-radius;
+  margin-bottom: $notice-margin-bottom;
+  box-shadow: $notice-box-shadow;
+}
+
+.notice-header{
+  font-size: $notice-header-font-size;
+  padding: $notice-header-padding;
+}
+
+.notice-body{
+  flex: 1;
+  padding: $notice-body-padding;
+
+}
+
+.notice-title{
+  font-weight: bold;
+  margin: $notice-title-margin;
+}
+
+
+.notice-content{
+
+}
+
+
+// Alternate styles
+.notice-info{ @include notice-variant($brand-primary); }
+.notice-success{ @include notice-variant($brand-success); }
+.notice-warning{ @include notice-variant($brand-warning); }
+.notice-danger{ @include notice-variant($brand-danger); }
