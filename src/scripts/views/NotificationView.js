@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Notification } from '../components';
+import { CommenTable } from '../site';
 
 export default class NotificationView extends Component{
     //添加一条
@@ -57,6 +58,20 @@ export default class NotificationView extends Component{
                     </Row>
                 </Card>
                 <Notification/>
+                <h3>Notification API</h3>
+                <ul>
+                    <li><code>Notification.info(title, message, closeable)</code></li>
+                    <li><code>Notification.success(title, message, closeable)</code></li>
+                    <li><code>Notification.warning(title, message, closeable)</code></li>
+                    <li><code>Notification.error(title, message, closeable)</code></li>
+                </ul>
+                <CommenTable
+                    data = {[
+                        ['title', '提示内容标题', 'string', '通知'],
+                        ['message', '提示内容', 'string', ''],
+                        ['closeable', '是否显示关闭按钮', 'boolean', 'true'],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }

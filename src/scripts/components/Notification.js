@@ -108,16 +108,17 @@ export default class Notification extends Component{
      * @param {Number}   options.duration [延时]
      */
     addNotice({ title, message, duration=2000, closeable }, style){
-        let key = this.key++;
+        let key = this.key++,
+            state = { ...this.state };
         closeable = closeable === undefined? this.props.closeable : closeable;
 
-        this.state[key] = {
+        state[key] = {
             title,
             message,
             style,
             closeable,
         };
-        this.setState(this.state);
+        this.setState(state);
         this.timeToRemoveNotice(key, duration);
     }
     /**
