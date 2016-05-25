@@ -22,6 +22,7 @@ import FormView from '../views/FormView';
 import DropdownView from '../views/DropdownView';
 import MessageView from '../views/MessageView';
 import NotificationView from '../views/NotificationView';
+import TimelineView from '../views/TimelineView';
 
 /**
  * 主应用入口.
@@ -51,7 +52,8 @@ export default class App extends Component {
                     <Route path='form' component={FormView}/>
                     <Route path='dropdown' component={DropdownView}/>
                     <Route path='message' component={MessageView}/>
-                    <Route path='Notification' component={NotificationView}/>
+                    <Route path='notification' component={NotificationView}/>
+                    <Route path='timeline' component={TimelineView}/>
                 </Route>
             </Router>
         );
