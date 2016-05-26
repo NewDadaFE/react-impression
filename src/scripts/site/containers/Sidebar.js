@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Icon } from '../../components';
+import { Icon, Tag } from '../../components';
 
 
 /**
@@ -19,7 +19,7 @@ export default class Sidebar extends Component {
                     </div>
                     <Link className="nav-link" to="/button"><Icon type="hand-pointer-o" left/>Button</Link>
                     <Link className="nav-link" to="/table"><Icon type="table" left/>Table</Link>
-                    <Link className="nav-link" to="/form"><Icon type="file-text-o" left/>Form<span className="fa-right tag tag-danger">Hot</span></Link>
+                    <Link className="nav-link" to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     <Link className="nav-link" to="/image"><Icon type="picture-o" left/>Image</Link>
                     <div className="nav-item">
                         COMPONENT
@@ -27,7 +27,7 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/card"><Icon type="television" left/>Card</Link>
                     <Link className="nav-link" to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
                     <Link className="nav-link" to="/tag"><Icon type="tag" left/>Tag</Link>
-                    <Link className="nav-link" to="/alert"><Icon type="info-circle" left/>Alert<span className="fa-right tag tag-warning">1/4</span></Link>
+                    <Link className="nav-link" to="/alert"><Icon type="info-circle" left/>Alert<Tag style="warning" className="fa-right">1/4</Tag></Link>
                     <Link className="nav-link" to="/progress"><Icon type="hourglass-start" left/>Progress</Link>
                     <Link className="nav-link" to="/button-group"><Icon type="th-large" left/>ButtonGroup</Link>
                     <Link className="nav-link" to="/pagination"><Icon type="angle-double-right" left/>Pagination</Link>
@@ -44,7 +44,7 @@ export default class Sidebar extends Component {
                             <Link className="nav-link" to="/button-group">Button-Group</Link>
                         </div>
                     </div>
-                    <Link className="nav-link" to="/modal"><Icon type="file-text" left/>Modal<span className="fa-right tag tag-success">New</span></Link>
+                    <Link className="nav-link" to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
                     <Link className="nav-link" to="/tooltip"><Icon type="commenting-o" left/>Tooltip</Link>
                     <Link className="nav-link" to="/popover"><Icon type="comments" left/>Popover</Link>
                     <Link className="nav-link" to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
