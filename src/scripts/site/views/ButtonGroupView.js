@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup } from '../../components';
+import { Card, Row, Col, Button, ButtonGroup, ButtonToolbar } from '../../components';
 import { CommenTable } from '../components';
 
 export default class ButtonGroupView extends Component{
@@ -10,16 +10,16 @@ export default class ButtonGroupView extends Component{
         return (
             <div>
                 <h3>Examples</h3>
-                <div className="card card-block">
+                <Card block>
                     <ButtonGroup style="default" activeKey="left">
                         <Button eventKey="left">Left</Button>
                         <Button eventKey="middle">Middle</Button>
                         <Button eventKey="right">Right</Button>
                     </ButtonGroup>
-                </div>
+                </Card>
                 <h3>Thems</h3>
-                <div className="card card-block">
-                    <div className="btn-toolbar">
+                <Card block>
+                    <ButtonToolbar>
                         <ButtonGroup style="primary" onSelect={this.btnGroupSelectHandle.bind(this)} activeKey="right">
                             <Button eventKey="left">Left</Button>
                             <Button eventKey="middle">Middle</Button>
@@ -30,11 +30,11 @@ export default class ButtonGroupView extends Component{
                             <Button eventKey="middle">Middle</Button>
                             <Button eventKey="right">Right</Button>
                         </ButtonGroup>
-                    </div>
-                </div>
+                    </ButtonToolbar>
+                </Card>
                 <h3>Button toolbar</h3>
-                <div className="card card-block">
-                    <div className="btn-toolbar">
+                <Card block>
+                    <ButtonToolbar>
                         <ButtonGroup>
                             <Button>1</Button>
                             <Button>2</Button>
@@ -50,11 +50,11 @@ export default class ButtonGroupView extends Component{
                             <Button>8</Button>
                             <Button>9</Button>
                         </ButtonGroup>
-                    </div>
-                </div>
+                    </ButtonToolbar>
+                </Card>
                 <h3>Sizes</h3>
-                <div className="card card-block">
-                    <div className="btn-toolbar">
+                <Card block>
+                    <ButtonToolbar>
                         <ButtonGroup size="lg">
                             <Button>1</Button>
                             <Button>2</Button>
@@ -70,8 +70,8 @@ export default class ButtonGroupView extends Component{
                             <Button>8</Button>
                             <Button>9</Button>
                         </ButtonGroup>
-                    </div>
-                </div>
+                    </ButtonToolbar>
+                </Card>
                 <h3>API</h3>
                 <CommenTable
                     data = {[
