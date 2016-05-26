@@ -18,7 +18,7 @@ export default class Timeline extends Component{
             sizeClass = size? `timeline-${size}` : null;
 
         return(
-            <ul className={classnames('timeline', sizeClass, className)}>
+            <ul {...others} className={classnames('timeline', sizeClass, className)}>
                 {children}
             </ul>
         );
