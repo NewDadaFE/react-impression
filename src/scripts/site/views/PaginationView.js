@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Pagination } from '../../components';
+import { Card, Row, Col, Pagination } from '../../components';
 import { CommenTable } from '../components';
 
 export default class PaginationView extends Component{
@@ -10,18 +10,18 @@ export default class PaginationView extends Component{
         return (
             <div>
                 <h3>Examples</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-12">
+                <Card block>
+                    <Row>
+                        <Col col="12">
                             <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={10} activePage={4}></Pagination>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-12">
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col col="12">
                             <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={5} activePage={3}></Pagination>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Pagintion API</h3>
                 <CommenTable
                     data = {[

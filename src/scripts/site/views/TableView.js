@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Card, Row, Col, Progress } from '../../components';
+
 
 export default class TableView extends Component{
     render(){
         return (
             <div>
                 <h3>Basic table</h3>
-                <div className="card card-block">
+                <Card block>
                     <table className="table">
                         <thead>
                             <tr>
@@ -36,9 +38,9 @@ export default class TableView extends Component{
                             </tr>
                       </tbody>
                     </table>
-                </div>
+                </Card>
                 <h3>Inverse table</h3>
-                <div className="card card-block">
+                <Card block>
                     <table className="table table-inverse">
                         <thead>
                             <tr>
@@ -69,9 +71,9 @@ export default class TableView extends Component{
                             </tr>
                       </tbody>
                     </table>
-                </div>
+                </Card>
                 <h3>Striped table</h3>
-                <div className="card card-block">
+                <Card block>
                     <table className="table table-striped">
                         <thead>
                             <tr>
@@ -102,9 +104,9 @@ export default class TableView extends Component{
                             </tr>
                       </tbody>
                     </table>
-                </div>
+                </Card>
                 <h3>Bordered table</h3>
-                <div className="card card-block">
+                <Card block>
                     <table className="table table-bordered">
                         <thead>
                             <tr>
@@ -135,9 +137,9 @@ export default class TableView extends Component{
                             </tr>
                       </tbody>
                     </table>
-                </div>
+                </Card>
                 <h3>Hoverable table</h3>
-                <div className="card card-block">
+                <Card block>
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -168,9 +170,9 @@ export default class TableView extends Component{
                             </tr>
                       </tbody>
                     </table>
-                </div>
+                </Card>
                 <h3>Small table</h3>
-                <div className="card card-block">
+                <Card block>
                     <table className="table table-sm">
                         <thead>
                             <tr>
@@ -201,7 +203,7 @@ export default class TableView extends Component{
                             </tr>
                       </tbody>
                     </table>
-                </div>
+                </Card>
             </div>
         );
     }

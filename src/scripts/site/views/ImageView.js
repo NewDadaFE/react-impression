@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from '../../components';
+import { Card, Row, Col, Image } from '../../components';
 import { CommenTable } from '../components';
 
 export default class ImageView extends Component{
@@ -7,23 +7,23 @@ export default class ImageView extends Component{
         return (
             <div>
                 <h3>Image fluid</h3>
-                <div className="card card-block">
+                <Card block>
                     <Image fluid src="http://placehold.it/2500x350"/>
-                </div>
+                </Card>
                 <h3>Image shape</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-4">
+                <Card block>
+                    <Row>
+                        <Col col="4">
                             <Image rounded src="http://placehold.it/200x200"/>
-                        </div>
-                        <div className="col-sm-4">
+                        </Col>
+                        <Col col="4">
                             <Image circle src="http://placehold.it/200x200"/>
-                        </div>
-                        <div className="col-sm-4">
+                        </Col>
+                        <Col col="4">
                             <Image thumbnail src="http://placehold.it/200x200"/>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>API</h3>
                 <CommenTable
                     data = {[

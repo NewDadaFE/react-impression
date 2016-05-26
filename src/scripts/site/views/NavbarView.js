@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from '../../components';
+import { Card, Navbar, Nav, NavItem, Form, Button } from '../../components';
 import { CommenTable } from '../components';
 
 export default class NavbarView extends Component{
@@ -7,7 +7,7 @@ export default class NavbarView extends Component{
         return (
             <div>
                 <h3>Default</h3>
-                <div className="card">
+                <Card>
                     <Navbar>
                         <Navbar.Brand>Navbar</Navbar.Brand>
                         <Nav>
@@ -16,16 +16,16 @@ export default class NavbarView extends Component{
                             <NavItem href="#">Pricing</NavItem>
                             <NavItem href="#">About</NavItem>
                         </Nav>
-                        <form className="form form-inline pull-xs-right">
-                            <div className="form-group">
+                        <Form type="inline">
+                            <Form.Group>
                                 <input className="form-control" type="text" placeholder="Search"/>
-                            </div>
-                            <button className="btn btn-primary" type="submit">Search</button>
-                        </form>
+                            </Form.Group>
+                            <Button style="primary">Search</Button>
+                        </Form>
                     </Navbar>
-                </div>
+                </Card>
                 <h3>Primary</h3>
-                <div className="card">
+                <Card>
                     <Navbar style="pure">
                         <Navbar.Brand>Navbar</Navbar.Brand>
                         <Nav>
@@ -34,16 +34,16 @@ export default class NavbarView extends Component{
                             <NavItem href="#">Pricing</NavItem>
                             <NavItem href="#">About</NavItem>
                         </Nav>
-                        <form className="form form-inline pull-xs-right">
-                            <div className="form-group">
+                        <Form>
+                            <Form.Group>
                                 <input className="form-control" type="text" placeholder="Search"/>
-                            </div>
-                            <button className="btn btn-primary" type="submit">Search</button>
-                        </form>
+                            </Form.Group>
+                            <Button style="primary">Search</Button>
+                        </Form>
                     </Navbar>
-                </div>
+                </Card>
                 <h3>Pure</h3>
-                <div className="card">
+                <Card>
                     <Navbar style="primary">
                         <Navbar.Brand>Navbar</Navbar.Brand>
                         <Nav>
@@ -52,14 +52,14 @@ export default class NavbarView extends Component{
                             <NavItem href="#">Pricing</NavItem>
                             <NavItem href="#">About</NavItem>
                         </Nav>
-                        <form className="form form-inline pull-xs-right">
-                            <div className="form-group">
+                        <Form>
+                            <Form.Group>
                                 <input className="form-control" type="text" placeholder="Search"/>
-                            </div>
-                            <button className="btn btn-secondary" type="submit">Search</button>
-                        </form>
+                            </Form.Group>
+                            <Button style="secondary">Search</Button>
+                        </Form>
                     </Navbar>
-                </div>
+                </Card>
                 <h3>Navbar API</h3>
                  <CommenTable
                      data = {[

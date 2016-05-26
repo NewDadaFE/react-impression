@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavItem, Nav } from '../../components';
+import { Card, Row, Col, NavItem, Nav } from '../../components';
 import { CommenTable } from '../components';
 
 export default class NavView extends Component{
@@ -10,59 +10,59 @@ export default class NavView extends Component{
         return (
             <div>
                 <h3>Inline</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-12">
+                <Card block>
+                    <Row>
+                        <Col col="12">
                             <Nav activeKey={1} onSelect={this.selectHandle} type="inline">
                                 <NavItem eventKey={1}>Active</NavItem>
                                 <NavItem eventKey={2}>Link</NavItem>
                                 <NavItem eventKey={3}>Anothor link</NavItem>
                                 <NavItem eventKey={4} disabled>Disabled</NavItem>
                             </Nav>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Tabs</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-12">
+                <Card block>
+                    <Row>
+                        <Col col="12">
                             <Nav activeKey={2} onSelect={this.selectHandle} type="tab">
                                 <NavItem eventKey={1}>Active</NavItem>
                                 <NavItem eventKey={2}>Link</NavItem>
                                 <NavItem eventKey={3}>Anothor link</NavItem>
                                 <NavItem eventKey={4} disabled>Disabled</NavItem>
                             </Nav>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Pills</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-12">
+                <Card block>
+                    <Row>
+                        <Col col="12">
                             <Nav activeKey={2} onSelect={this.selectHandle} type="pill">
                                 <NavItem >Active</NavItem>
                                 <NavItem >Link</NavItem>
                                 <NavItem >Anothor link</NavItem>
                                 <NavItem  disabled>Disabled</NavItem>
                             </Nav>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Stacked pills</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-2">
-                            <div className="card">
+                <Card block>
+                    <Row>
+                        <Col col="12">
+                            <Card>
                                 <Nav activeKey={2} onSelect={this.selectHandle} type="pill" stacked>
                                     <NavItem eventKey={1}>Active</NavItem>
                                     <NavItem eventKey={2}>Link</NavItem>
                                     <NavItem eventKey={3}>Anothor link</NavItem>
                                     <NavItem eventKey={4} disabled>Disabled</NavItem>
                                 </Nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Nav API</h3>
                 <CommenTable
                     data = {[

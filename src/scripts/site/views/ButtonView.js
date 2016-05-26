@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from '../../components';
+import { Card, Row, Col, Button } from '../../components';
 import { CommenTable } from '../components';
 
 export default class ButtonView extends Component{
@@ -9,77 +9,77 @@ export default class ButtonView extends Component{
         return (
             <div>
                 <h3>Examples</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-2">
+                <Card block>
+                    <Row>
+                        <Col col="2">
                             <Button style="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="default">default</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="secondary">secondary</Button>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Outline buttons</h3>
-                <div className="card card-block bg-inverse">
-                    <div className="row">
-                        <div className="col-sm-2">
+                <Card block className="bg-inverse">
+                    <Row>
+                        <Col col="2">
                             <Button style="primary" outline>primary</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="default" outline>default</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="secondary" outline>secondary</Button>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Sizes</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-2">
+                <Card block>
+                    <Row>
+                        <Col col="2">
                             <Button style="primary" size="sm">Sm</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="primary">Normal</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="primary" size="lg">Large</Button>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Pill buttons</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-2">
+                <Card block>
+                    <Row>
+                        <Col col="2">
                             <Button style="primary" shape="pill">primary</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="default" shape="pill">default</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="secondary" shape="pill">secondary</Button>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Link buttons</h3>
-                <div className="card card-block">
-                    <div className="row">
-                        <div className="col-sm-2">
+                <Card block>
+                    <Row>
+                        <Col col="2">
                             <Button style="primary" href="www.github.com">primary</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="default" href="www.github.com">default</Button>
-                        </div>
-                        <div className="col-sm-2">
+                        </Col>
+                        <Col col="2">
                             <Button style="secondary" href="www.github.com">secondary</Button>
-                        </div>
-                    </div>
-                </div>
+                        </Col>
+                    </Row>
+                </Card>
                 <h3>Button API</h3>
-                <CommenTable 
+                <CommenTable
                     data = {[
                         ['style', '设置按钮的样式，可选值为 primary、default、secondary', 'string', 'primary'],
                         ['onClick', 'click 事件的 handler', 'function', ''],
