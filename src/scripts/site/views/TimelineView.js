@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Timeline, Icon } from '../components';
+import { Card, Row, Col, Timeline, Icon } from '../../components';
 
 export default class TimelineView extends Component{
     render(){

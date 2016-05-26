@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, InputGroup, Form } from '../components';
+import { Navbar, Nav, Button, InputGroup, Form } from '../../components';
 
 
 /**

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from '../components';
-import { CommenTable } from '../site';
+import { Navbar, Nav, NavItem } from '../../components';
+import { CommenTable } from '../components';
 
 export default class NavbarView extends Component{
     render(){

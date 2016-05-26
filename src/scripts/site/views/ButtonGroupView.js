@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup } from '../components';
-import { CommenTable } from '../site';
+import { Button, ButtonGroup } from '../../components';
+import { CommenTable } from '../components';
 
 export default class ButtonGroupView extends Component{
     //onSelect

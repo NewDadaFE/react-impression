@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, InputGroup } from '../components';
-import { CommenTable } from '../site';
+import { Card, Row, Col, Button, InputGroup } from '../../components';
+import { CommenTable } from '../components';
 
 export default class InputGroupView extends Component{
     render(){

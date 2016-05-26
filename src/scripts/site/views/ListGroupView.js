@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, ListGroup, Tag } from '../components';
-import { CommenTable } from '../site';
+import { Card, Row, Col, ListGroup, Tag } from '../../components';
+import { CommenTable } from '../components';
 
 export default class ListGroupView extends Component{
     render(){

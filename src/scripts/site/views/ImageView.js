@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image } from '../components';
-import { CommenTable } from '../site';
+import { Image } from '../../components';
+import { CommenTable } from '../components';
 
 export default class ImageView extends Component{
     render(){

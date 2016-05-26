@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Button, Card, Row, Col } from '../components';
-import { CommenTable } from '../site';
+import { Modal, Button, Card, Row, Col } from '../../components';
+import { CommenTable } from '../components';
 
 export default class ModalView extends Component{
     //构造函数

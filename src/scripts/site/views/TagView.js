@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Tag } from '../components';
-import { CommenTable } from '../site';
+import { Tag } from '../../components';
+import { CommenTable } from '../components';
 
 export default class TagView extends Component{
     render(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Image } from  '../components';
-import { CommenTable } from '../site';
+import { Card, Row, Col, Button, Image } from  '../../components';
+import { CommenTable } from '../components';
 
 export default class CardView extends Component{
     render(){

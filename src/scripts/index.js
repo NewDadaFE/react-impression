@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './containers/App';
+import App from './site/containers/App';
 
 const root  = document.getElementById('root');
 
@@ -15,8 +15,8 @@ if (module.hot){
     );
 
     //v3.0.0起支持组件热加载
-    module.hot.accept('./containers/App', () => {
-        let App = require('./containers/App').default;
+    module.hot.accept('./site/containers/App', () => {
+        let App = require('./site/containers/App').default;
         render(
             <AppContainer>
                 <App/>

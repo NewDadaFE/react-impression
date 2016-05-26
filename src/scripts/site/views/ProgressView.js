@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Progress } from '../components';
-import { CommenTable } from '../site';
+import { Progress } from '../../components';
+import { CommenTable } from '../components';
 
 export default class ProgressView extends Component{
     render(){

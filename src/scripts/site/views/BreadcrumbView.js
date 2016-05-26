@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Breadcrumb } from '../components';
-import { CommenTable } from '../site';
+import { Breadcrumb } from '../../components';
+import { CommenTable } from '../components';
 
 export default class BreadcrumbView extends Component{
     render(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from '../components';
-import { CommenTable } from '../site';
+import { Button } from '../../components';
+import { CommenTable } from '../components';
 
 export default class ButtonView extends Component{
     buttonClickHandle(event){

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Content from './Content';
-import { Flex, FlexItem, Square } from '../components';
+import { Flex, FlexItem, Square } from '../../components';
 
 /**
  * 页面布局.

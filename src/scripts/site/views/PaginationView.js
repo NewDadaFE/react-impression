@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Pagination } from '../components';
-import { CommenTable } from '../site';
+import { Pagination } from '../../components';
+import { CommenTable } from '../components';
 
 export default class PaginationView extends Component{
     onSelectHandle(pageNum){

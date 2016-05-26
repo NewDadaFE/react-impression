@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert } from '../components';
-import { CommenTable } from '../site';
+import { Alert } from '../../components';
+import { CommenTable } from '../components';
 
 export default class AlertView extends Component{
     render(){

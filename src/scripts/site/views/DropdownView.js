@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Button, Dropdown } from  '../components';
-import { CommenTable } from '../site';
+import { Card, Button, Dropdown } from  '../../components';
+import { CommenTable } from '../components';
 
 
 export default class DropdownView extends Component{

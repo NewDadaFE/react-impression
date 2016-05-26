@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Router, hashHistory } from 'react-router';
-import Layout from '../containers/Layout';
+import Layout from './Layout';
 import ImageView from '../views/ImageView';
 import TableView from '../views/TableView';
 import ButtonView from '../views/ButtonView';
@@ -23,6 +23,7 @@ import DropdownView from '../views/DropdownView';
 import MessageView from '../views/MessageView';
 import NotificationView from '../views/NotificationView';
 import TimelineView from '../views/TimelineView';
+import DatePickerView from '../views/DatePickerView';
 
 /**
  * 主应用入口.
@@ -54,6 +55,7 @@ export default class App extends Component {
                     <Route path='message' component={MessageView}/>
                     <Route path='notification' component={NotificationView}/>
                     <Route path='timeline' component={TimelineView}/>
+                    <Route path='date-picker' component={DatePickerView}/>
                 </Route>
             </Router>
         );

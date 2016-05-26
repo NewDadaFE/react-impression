@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavItem, Nav } from '../components';
-import { CommenTable } from '../site';
+import { NavItem, Nav } from '../../components';
+import { CommenTable } from '../components';
 
 export default class NavView extends Component{
     selectHandle(selectKey){
