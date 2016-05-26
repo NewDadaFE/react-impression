@@ -19,7 +19,7 @@ export default class TimelineItem extends Component{
             unreachableClass = unreachable? `timeline-item-unreachable` : null;
 
         return(
-            <li className={classnames('timeline-item', unreachableClass, className)}>
+            <li {...others} className={classnames('timeline-item', unreachableClass, className)}>
                 <div className="timeline-item-line"></div>
                 <div className="timeline-item-addon">
                     { dot ? dot : <i className="fa fa-circle-o"></i>}

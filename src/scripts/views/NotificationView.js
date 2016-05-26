@@ -7,26 +7,26 @@ export default class NotificationView extends Component{
     addInfoNotice(){
         Notification.info({
             closeable: false,
-            title: "通知",
-            message: "欢迎，这是一个Info通知。"
+            title: '通知',
+            message: '欢迎，这是一个Info通知。'
         });
     }
     addSuccessNotice(){
         Notification.success({
-            title: "成功",
-            message: "恭喜您，操作成功！"
+            title: '成功',
+            message: '恭喜您，操作成功！'
         });
     }
     addWarningNotice(){
         Notification.warning({
-            title: "警告",
-            message: "请注意，前方有狗熊！"
+            title: '警告',
+            message: '请注意，前方有狗熊！'
         });
     }
     addErrorNotice(){
         Notification.error({
-            title: "错误",
-            message: "很遗憾，您的小四轮爆胎了！"
+            title: '错误',
+            message: '很遗憾，您的小四轮爆胎了！'
         });
     }
     render(){

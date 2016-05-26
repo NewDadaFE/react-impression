@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button } from '../components';
+import { Navbar, Nav, Button, InputGroup, Form } from '../components';
 
 
 /**
@@ -12,12 +12,14 @@ export default class Header extends Component{
                 <Navbar.SidebarTitle img="images/logo.png">Impression</Navbar.SidebarTitle>
                 <Button style="secondary"><i className="fa fa-bars"></i></Button>
                 <Nav/>
-                <form className="form form-inline pull-xs-right">
-                    <div className="form-group">
-                        <input className="form-control" type="text" placeholder="Search"/>
-                    </div>
-                    <Button style="primary">Search</Button>
-                </form>
+                <Form type="inline">
+                    <Form.Group>
+                        <InputGroup>
+                            <InputGroup.Input placeholder="something" style={{width: '220px'}}/>
+                            <InputGroup.Button style="primary">Search</InputGroup.Button>
+                        </InputGroup>
+                    </Form.Group>
+                </Form>
             </Navbar>
         );
     }
