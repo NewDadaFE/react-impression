@@ -1,7 +1,7 @@
 // Message
 
 @mixin notice-variant($color) {
-  border: 1px solid $color;
+  border-color: rgba($color, .6);
   background: mix($color, #fff, 4%);
 
   .notice-header{
