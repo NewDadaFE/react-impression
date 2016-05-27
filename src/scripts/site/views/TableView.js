@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Progress } from '../../components';
+import { Card } from '../../components';
 
 
 export default class TableView extends Component{

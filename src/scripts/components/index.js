@@ -33,4 +33,5 @@ export Popover from './Popover';
 export Dropdown from './Dropdown';
 export Message from './Message';
 export Notification from './Notification';
+export DatePicker from './DatePicker';
 export Timeline from './Timeline';
