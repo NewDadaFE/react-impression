@@ -74,19 +74,23 @@
   border: 1px solid transparent;
   border-radius: 2px;
 
-  &:hover{
+  &:hover:not(.disable):not(.active){
     background: mix($brand-primary, #fff, 20%);
   }
-
 
   &.now{
     border-color: $brand-primary;
   }
 
-  &.checked{
+  &.active{
     color: #fff !important;
     border-color: $brand-primary;
     background: $brand-primary;
+  }
+
+  &.disable{
+    cursor: not-allowed;
+    color: #ddd !important;
   }
 }
 
@@ -116,6 +120,11 @@
   &.active{
     color: #fff;
     background: $brand-primary;
+  }
+
+  &.disable{
+    cursor: not-allowed;
+    color: #ddd !important;
   }
 }
 
