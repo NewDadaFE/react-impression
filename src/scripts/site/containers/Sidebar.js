@@ -50,7 +50,7 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
                     <Link className="nav-link" to="/message"><Icon type="bell" left/>Message</Link>
                     <Link className="nav-link" to="/notification"><Icon type="bullhorn" left/>Notification</Link>
-                    <Link className="nav-link" to="/date-picker"><Icon type="calendar" left/>DatePicker</Link>
+                    <Link className="nav-link" to="/datepicker"><Icon type="calendar" left/>DatePicker</Link>
                     <Link className="nav-link" to="/timeline"><Icon type="clock-o" left/>Timeline</Link>
                 </div>
                 <div className="sidebar-footer">

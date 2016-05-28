@@ -15,6 +15,15 @@
   &[readOnly]{
     cursor: pointer;
     background: #fff;
+    box-shadow: none;
+  }
+  &[disabled]{
+    cursor: not-allowed;
+    background: $input-bg-disabled;
+
+    & + .input-addon{
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -24,15 +33,16 @@
 
 
 .input-addon{
+  cursor: pointer;
   position: absolute;
   right: 0.75rem;
   top: 50%;
+  padding-right: 1px;
   transform:  translateY(-50%);
 }
 
 .input-addon-clear{
   opacity: 0.6;
-  cursor: pointer;
 
   &:hover{
     opacity: 1;

@@ -264,10 +264,14 @@ export default class DatePicker extends Component{
      * 今天.
      */
     selectTodayHandle(){
-        let { onSelect, onChange, format } = this.props,
+        let { onSelect, onChange, minDate, maxDate, format } = this.props,
             { checkedDay } = this.state,
             today = moment(moment().format(FORMAT.DATE)),
             dayFormat = today.format(format);
+
+        if(minDate && today.isBefore(minDate) || maxDate && today.isAfter(maxDate)){
+            return false;
+        }
 
         this.setState({
             checkedDay: today

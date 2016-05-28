@@ -55,7 +55,7 @@ export default class App extends Component {
                     <Route path='message' component={MessageView}/>
                     <Route path='notification' component={NotificationView}/>
                     <Route path='timeline' component={TimelineView}/>
-                    <Route path='date-picker' component={DatePickerView}/>
+                    <Route path='datepicker' component={DatePickerView}/>
                 </Route>
             </Router>
         );

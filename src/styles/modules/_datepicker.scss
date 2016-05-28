@@ -2,11 +2,12 @@
 .datepicker{
   position: absolute;
   left: 0;
-  top: 120%;
+  top: 0%;
   width: 220px;
   border: 1px solid #ddd;
   background: #fff;
   font-size: 0.8rem;
+  z-index: $zindex-datepicker;
   box-shadow: 0 2px 8px rgba(0,0,0,.2) ;
 }
 
