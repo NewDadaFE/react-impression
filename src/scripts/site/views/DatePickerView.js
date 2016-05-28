@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Form, Input, Button } from '../../components';
+import { Card, Row, Col, Form, Input } from '../../components';
 
 export default class DatePickerView extends Component{
     render(){

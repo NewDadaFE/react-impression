@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
 import DatePicker from './DatePicker';
 import * as System from '../utils/system';
 
@@ -78,9 +77,6 @@ export default class Input extends Component{
      * 隐藏候选项.
      */
     hideOptionsHandle(){
-        let { showOption } = this.state,
-            { main } = this.refs;
-
         main.blur();
         this.hasAddon() && this.setState({
             showOption: false,
@@ -137,8 +133,7 @@ export default class Input extends Component{
     }
     //渲染
     render(){
-        let { type, value, defaultValue, disabled, placeholder, clearable, style,
-                children, className, ...others} = this.props,
+        let { type, value, defaultValue, disabled, placeholder, clearable, style, className, ...others} = this.props,
             { showOption, showClear } = this.state;
 
         return (
