@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import FormGroup from './FormGroup';
+import FormControl from './FormControl';
 
 /**
  * Form 组件.
@@ -34,3 +35,4 @@ export default class Form extends Component{
 }
 
 Form.Group = FormGroup;
+Form.Control = FormControl;
