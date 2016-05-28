@@ -71,6 +71,12 @@ export default class Select extends Component{
 
         main.value = text;
     }
+    /**
+     * 清空组件管理.
+     */
+    componentWillUnmount(){
+        System.unmanager(this);
+    }
     //渲染
     render(){
         let { placeholder, disabled, style, className, children } = this.props,
