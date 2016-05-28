@@ -2,18 +2,9 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import DatePicker from './DatePicker';
+import * as System from '../utils/system';
 
-/**
- * 隐藏已弹出DatePicker.
- * @param  {[Event]} event [事件]
- */
-const clearDatePicker = (event) => {
-    document.body._datepickers.map(picker => {
-        if(event.path.indexOf(findDOMNode(picker)) === -1){
-            picker.hideOptionHandle();
-        }
-    });
-}
+
 
 /**
  * Input 组件.
@@ -24,29 +15,18 @@ export default class Input extends Component{
      */
     constructor(props, context){
         super(props, context);
+        System.manager(this);
 
         this.state = {
             showOption: false,
             showClear: false,
         };
 
-        if(!document.body._datepickers){
-            let bodyClick = document.body.onclick;
-            document.body.onclick = event => {
-                bodyClick && bodyClick(event);
-                clearDatePicker(event);
-            };
-
-            document.body._datepickers = []
-        }
-
-        document.body._datepickers.push(this);
-
         this.hasAddon = this.hasAddon.bind(this);
         this.clearInputHandle = this.clearInputHandle.bind(this);
         this.showOptionHandle = this.showOptionHandle.bind(this);
-        this.hideOptionHandle = this.hideOptionHandle.bind(this);
-        this.selectOptionHandle = this.selectOptionHandle.bind(this);
+        this.hideOptionsHandle = this.hideOptionsHandle.bind(this);
+        this.selectOptionsHandle = this.selectOptionsHandle.bind(this);
     }
     //prop type校验
     static propTypes = {
@@ -95,7 +75,7 @@ export default class Input extends Component{
     /**
      * 隐藏候选项.
      */
-    hideOptionHandle(){
+    hideOptionsHandle(){
         let { showOption } = this.state,
             { main } = this.refs;
 
@@ -117,6 +97,7 @@ export default class Input extends Component{
         }
 
         main.value = '';
+        main.blur();
         this.hasAddon() && this.setState({
             showOption: false,
             showClear: false
@@ -126,7 +107,7 @@ export default class Input extends Component{
      * 选中候选项.
      * @param  {[String]} value [候选项值]
      */
-    selectOptionHandle(value){
+    selectOptionsHandle(value){
         let { main } = this.refs;
         main.value = value;
 
@@ -160,7 +141,7 @@ export default class Input extends Component{
                     <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
                 }
                 { showOption && type === 'date' &&
-                    <DatePicker {...others} value={this.refs.main.value} onSelect={this.selectOptionHandle}/>
+                    <DatePicker {...others} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
                 }
             </div>
         );

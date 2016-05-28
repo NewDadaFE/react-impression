@@ -36,3 +36,5 @@ export Message from './Message';
 export Notification from './Notification';
 export DatePicker from './DatePicker';
 export Timeline from './Timeline';
+
+export * as System from '../utils/system';
