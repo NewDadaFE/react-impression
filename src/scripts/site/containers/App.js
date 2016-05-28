@@ -18,6 +18,7 @@ import TooltipView from '../views/TooltipView';
 import PopoverView from '../views/PopoverView';
 import NavView from '../views/NavView';
 import NavbarView from '../views/NavbarView';
+import SelectView from '../views/SelectView';
 import FormView from '../views/FormView';
 import DropdownView from '../views/DropdownView';
 import MessageView from '../views/MessageView';
@@ -38,6 +39,7 @@ export default class App extends Component {
                     <Route path='button' component={ButtonView}/>
                     <Route path='button-group' component={ButtonGroupView}/>
                     <Route path='input-group' component={InputGroupView}/>
+                    <Route path='select' component={SelectView}/>
                     <Route path='tag' component={TagView}/>
                     <Route path='alert' component={AlertView}/>
                     <Route path='card' component={CardView}/>

@@ -18,9 +18,10 @@ export default class Sidebar extends Component {
                         BASIC
                     </div>
                     <Link className="nav-link" to="/button"><Icon type="hand-pointer-o" left/>Button</Link>
-                    <Link className="nav-link" to="/table"><Icon type="table" left/>Table</Link>
+                    <Link className="nav-link" to="/select"><Icon type="angle-down" left/>Select</Link>
                     <Link className="nav-link" to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     <Link className="nav-link" to="/image"><Icon type="picture-o" left/>Image</Link>
+                    <Link className="nav-link" to="/table"><Icon type="table" left/>Table</Link>
                     <div className="nav-item">
                         COMPONENT
                     </div>

@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
 import SelectOption from './SelectOption';
+import * as System from '../utils/system';
 
 /**
  * Select组件.
@@ -9,8 +10,10 @@ export default class Select extends Component{
     //初始state
     constructor(props, context){
         super(props, context);
+        System.manager(this);
+
         this.state = {
-            open: false,
+            showOption: false,
             value: undefined,
         };
 
@@ -38,16 +41,14 @@ export default class Select extends Component{
     //显示/隐藏菜单
     toggleOptionsHandle(){
         !this.props.disabled && this.setState({
-            open: !this.state.open
+            showOption: !this.state.showOption
         });
     }
     //隐藏菜单
     hideOptionsHandle(){
-        setTimeout(() => {
-            this.setState({
-                open: false
-            });
-        }, 200);
+        this.setState({
+            showOption: false
+        });
     }
     /**
      * option选中回调.
@@ -62,14 +63,15 @@ export default class Select extends Component{
         onChange && newValue !== value && onChange(newValue, text, index);
         this.setState({
             text,
-            value: newValue
+            value: newValue,
+            showOption: false
         });
 
     }
     //渲染
     render(){
         let { placeholder, disabled, style, className, children } = this.props;
-        let { open, text, value } = this.state;
+        let { showOption, text, value } = this.state;
 
         children = children.map((child, index) => {
             let { value, children }  = child.props;
@@ -81,10 +83,8 @@ export default class Select extends Component{
         });
 
         return(
-            <div style={style} className={classnames('select', { disabled }, { open }, {'select-noval': !value}, className)} disabled={disabled}  onBlur={this.hideOptionsHandle}>
-                <button className={classnames('select-selection')} type="button" onClick={this.toggleOptionsHandle}>
-                    {text || placeholder}
-                </button>
+            <div style={style} className={classnames('select', { disabled }, { open: showOption }, {'select-noval': !value}, className)} disabled={disabled}>
+                <input type="text" value={text} className={classnames('form-control' ,'select-selection')} placeholder={placeholder} onClick={this.toggleOptionsHandle}/>
                 <i className="fa fa-angle-down select-addon"></i>
                 <ul className="select-options">
                     { children }
