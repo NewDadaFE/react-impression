@@ -74,7 +74,7 @@ export default class Select extends Component{
     //渲染
     render(){
         let { placeholder, disabled, style, className, children } = this.props,
-            { showOption, value } = this.state,
+            { showOption } = this.state,
             text = undefined;
 
         children = children.map((child, index) => {

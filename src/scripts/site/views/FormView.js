@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button, Select } from '../../components';
+import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button } from '../../components';
 import { CommenTable } from '../components';
 
 export default class FormView extends Component{
@@ -133,37 +133,6 @@ export default class FormView extends Component{
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>Select</h3>
-                <Row>
-                    <Col col="6">
-                        <Card block>
-                            <Form type="inline">
-                                <Form.Group>
-                                    <label>interest:</label>
-                                    <Select>
-                                        <Select.Option value="1">First</Select.Option>
-                                        <Select.Option value="2">Second</Select.Option>
-                                        <Select.Option value="3">Third</Select.Option>
-                                    </Select>
-                                </Form.Group>
-                            </Form>
-                        </Card>
-                    </Col>
-                    <Col col="6">
-                        <Card block>
-                            <Form type="inline">
-                                <Form.Group>
-                                    <label>disabled:</label>
-                                    <Select disabled>
-                                        <Select.Option value="1">First</Select.Option>
-                                        <Select.Option value="2">Second</Select.Option>
-                                        <Select.Option value="3">Third</Select.Option>
-                                    </Select>
-                                </Form.Group>
-                            </Form>
-                        </Card>
-                    </Col>
-                </Row>
                 <h3>Form inline</h3>
                 <Card block>
                     <Form>
