@@ -404,6 +404,8 @@ $switch-addon-height:                       $switch-addon-width !default;
 $switch-addon-padding:                      round(($line-height-base - $switch-addon-width) *  $font-size-root / 2) !default;
 $switch-addon-translateX:                   translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
 
+// == 下拉框
+
 $select-line-height:                        $input-line-height !default;
 $select-transition:                         all .2s ease !default;
 $select-bg:                                 #fff !default;
@@ -420,6 +422,44 @@ $select-option-hover-bg:                    #f5f5f5 !default;
 $select-option-active-color:                $brand-primary !default;
 $select-option-disable-color:               $gray-light !default;
 
+//时间空间
+$datepicker-bg:                             #fff !default;
+$datepicker-width:                          15rem !default;
+$datepicker-border:                         1px solid $border-color !default;
+$datepicker-font-size:                      0.8rem !default;
+$datepicker-box-shadow:                     0 2px 8px rgba(0,0,0,.2) !default;
+
+$datepicker-header-padding:                 0 0.5rem !default;
+
+$datepicker-header-btn-scale:               1.5 !default;
+$datepicker-header-btn-padding:             0.75rem 0.5rem !default;
+$datepicker-header-btn-font-size:           1.2rem !default;
+$datepicker-header-btn-transition:          all .18s linear !default;
+$datepicker-header-btn-hover-color:         $brand-primary !default;
+
+$datepicker-caption-padding:                0.75rem 0 !default;
+$datepicker-caption-hover-color:            $brand-primary !default;
+
+$datepicker-weekgroup-padding:              0.5rem !default;
+$datepicker-weekgroup-item-padding:         0 0.5rem !default;
+
+$datepicker-daygroup-padding:               0 0.5rem 0.5rem !default;
+
+$datepicker-daygroup-item-padding:          0.25rem 0 !default;
+$datepicker-daygroup-item-border-radius:    $border-radius !default;
+$datepicker-daygroup-item-hover-bg:         mix($brand-primary, #fff, 20%) !default;
+$datepicker-daygroup-item-active-bg:        $brand-primary !default;
+$datepicker-daygroup-item-active-color:     #fff !default;
+$datepicker-daygroup-item-active-border:    $brand-primary !default;
+$datepicker-daygroup-item-disable-color:    #ddd !default;
+
+$datepicker-yeargroup-height:               14rem !default;
+$datepicker-yeargroup-item-padding:         0.5rem 0 !default;
+$datepicker-yeargroup-item-active-bg:       $brand-primary !default;
+$datepicker-yeargroup-item-active-color:    #fff !default;
+$datepicker-yeargroup-item-disabled-color:  #ddd !default;
+
+$datepicker-footer-padding:                0.75rem 1rem !default;
 
 $custom-select-padding-x:          .75rem  !default;
 $custom-select-padding-y:          .375rem !default;

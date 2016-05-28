@@ -298,8 +298,8 @@ export default class DatePicker extends Component{
         let yearHeight = this._activeYear.getBoundingClientRect().height,
             monthHeight = this._activeMonth.getBoundingClientRect().height;
 
-        this._yeargroupScrollTop = _yeargroup.scrollTop = this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 3;
-        _monthgroup.scrollTop = this._activeMonth.offsetTop - _monthgroup.offsetTop - monthHeight * 3;
+        this._yeargroupScrollTop = _yeargroup.scrollTop = this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 2;
+        _monthgroup.scrollTop = this._activeMonth.offsetTop - _monthgroup.offsetTop - monthHeight * 2;
     }
     componentDidMount(){
         let { currentMoment } = this.state;
