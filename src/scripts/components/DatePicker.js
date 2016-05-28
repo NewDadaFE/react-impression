@@ -319,7 +319,6 @@ export default class DatePicker extends Component{
      */
     scrollYearHandle(event){
         let { years } = this.state,
-            { yearScope } = this.props,
             container = event.target,
             yearHeight = this._activeYear.getBoundingClientRect().height,
             point = container.getBoundingClientRect().height + yearHeight;
