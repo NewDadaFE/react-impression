@@ -77,6 +77,8 @@ export default class Input extends Component{
      * 隐藏候选项.
      */
     hideOptionsHandle(){
+        let { main } = this.refs;
+
         main.blur();
         this.hasAddon() && this.setState({
             showOption: false,
