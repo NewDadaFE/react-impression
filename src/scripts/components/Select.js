@@ -93,7 +93,7 @@ export default class Select extends Component{
                     placeholder={placeholder}  disabled={disabled}
                     className={classnames('form-control' ,'select-selection')}
                     onClick={this.toggleOptionsHandle}/>
-                <i className="fa fa-angle-down select-addon"></i>
+                <i className="fa fa-angle-down select-addon" onClick={this.toggleOptionsHandle}></i>
                 <ul className="select-options">
                     { children }
                 </ul>

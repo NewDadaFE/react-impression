@@ -406,7 +406,14 @@ $switch-addon-translateX:                   translateX(round(($switch-width - $s
 
 $select-line-height:                        $input-line-height !default;
 $select-transition:                         all .2s ease !default;
+$select-bg:                                 #fff !default;
 $select-disable-bg:                         $gray-lighter !default;
+
+$select-addon-margin-left:                  -1.5rem !default;
+$select-selection-padding-right:            2.25rem !default;
+$select-options-top:                        120% !default;
+$select-options-box-shadow:                 0 2px 6px rgba(0,0,0,.2) !default;
+$select-options-border:                     1px solid $input-border-color !default;
 
 $select-option-padding:                     $input-padding-y $input-padding-x !default;
 $select-option-hover-bg:                    #f5f5f5 !default;
@@ -516,6 +523,7 @@ $dropdown-toggle-transition:     all .2s cubic-bezier(0.4, 0, 0.2, 1) !default;
 
 $zindex-dropdown-backdrop:  990 !default;
 $zindex-navbar:            1000 !default;
+$zindex-select:            1000 !default;
 $zindex-dropdown:          1000 !default;
 $zindex-datepicker:        1000 !default;
 $zindex-popover:           1060 !default;

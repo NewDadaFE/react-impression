@@ -20,7 +20,8 @@
   user-select: none;
   text-align: left;
   text-overflow: ellipsis;
-  padding-right: 2.5rem;
+  padding-right: $select-selection-padding-right;
+
   &:active,
   &:focus{
     outline: none;
@@ -30,14 +31,13 @@
   }
 
   &[readOnly]{
-    background: #fff;
+    background: $select-bg;
   }
 }
 
 .select-addon{
   cursor: pointer;
-  padding-right: 1px;
-  margin-left: -1.75rem;
+  margin: $select-addon-margin-left;
   user-select: none;
   transition: $select-transition;
 
@@ -49,17 +49,17 @@
 .select-options{
   position: absolute;
   left: 0;
-  top: 120%;
+  top: $select-options-top;
   width: 100%;
   padding: 0;
   margin: 0;
-  z-index: 100;
+  z-index: $zindex-select;
   display: none;
-  background: #fff;
+  background: $select-bg;
   list-style: none;
   transition: $select-transition;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  border: $select-options-border;
+  box-shadow: $select-options-box-shadow;
 
   .open &{
     display: block;
