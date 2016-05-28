@@ -23,7 +23,7 @@ export default class ButtonView extends Component{
                     </Row>
                 </Card>
                 <h3>Outline buttons</h3>
-                <Card block className="bg-inverse">
+                <Card block>
                     <Row>
                         <Col col="2">
                             <Button style="primary" outline>primary</Button>

@@ -4,6 +4,9 @@ import Layout from './Layout';
 import ImageView from '../views/ImageView';
 import TableView from '../views/TableView';
 import ButtonView from '../views/ButtonView';
+import CheckboxView from '../views/CheckboxView';
+import RadioView from '../views/RadioView';
+import SwitchView from '../views/SwitchView';
 import ButtonGroupView from '../views/ButtonGroupView';
 import InputGroupView from '../views/InputGroupView';
 import TagView from '../views/TagView';
@@ -37,6 +40,9 @@ export default class App extends Component {
                     <Route path='image' component={ImageView}/>
                     <Route path='table' component={TableView}/>
                     <Route path='button' component={ButtonView}/>
+                    <Route path='checkbox' component={CheckboxView}/>
+                    <Route path='radio' component={RadioView}/>
+                    <Route path='switch' component={SwitchView}/>
                     <Route path='button-group' component={ButtonGroupView}/>
                     <Route path='input-group' component={InputGroupView}/>
                     <Route path='select' component={SelectView}/>
