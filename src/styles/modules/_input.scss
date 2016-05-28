@@ -1,0 +1,42 @@
+.input{
+  display: inline-block;
+  position: relative;
+  // &:hover{
+  //   .input-addon-clear{
+  //     display: block;
+  //     & + .input-addon{
+  //       display: none;
+  //     }
+  //   }
+  // }
+}
+
+.input-field{
+  &[readOnly]{
+    cursor: pointer;
+    background: #fff;
+  }
+}
+
+.input-field-addon{
+  padding-right: 0.75rem * 2 + 0.5;
+}
+
+
+.input-addon{
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform:  translateY(-50%);
+}
+
+.input-addon-clear{
+  opacity: 0.6;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 1;
+  }
+}
+
+

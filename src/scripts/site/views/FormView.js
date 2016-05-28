@@ -169,11 +169,15 @@ export default class FormView extends Component{
                     <Form>
                         <Form.Group>
                             <label>Name:</label>
-                            <input type="text" className="form-control" placeholder="Jane Doe"/>
+                            <Form.Control>
+                                <input type="text" placeholder="Jane Doe"/>
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <label>Email</label>
-                            <input type="email" className="form-control" placeholder="jane.doe@example.com"/>
+                            <Form.Control>
+                                <input type="email" placeholder="jane.doe@example.com"/>
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Checkbox defaultChecked>Remember me</Checkbox>

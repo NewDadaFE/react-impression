@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, DatePicker } from '../../components';
+import { Card, Form, Input, Button } from '../../components';
 
 export default class DatePickerView extends Component{
     render(){
@@ -7,7 +7,16 @@ export default class DatePickerView extends Component{
             <div>
                 <h3>Examples</h3>
                 <Card block>
-                    <DatePicker/>
+                    <Form>
+                        <Form.Group>
+                            <label>Name:</label>
+                            <Input defaultValue="2016-05-29"/>
+                        </Form.Group>
+                        <Form.Group>
+                            <label>Name:</label>
+                            <input type="date"/>
+                        </Form.Group>
+                    </Form>
                 </Card>
             </div>
         );

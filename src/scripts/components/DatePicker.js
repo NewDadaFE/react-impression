@@ -16,15 +16,16 @@ export default class DatePicker extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);
-        let { date, minDate, maxDate, format } = props,
+        let { value, minDate, maxDate, format } = props,
             { firstDayOfWeek, weekdays } = this.sortWeekdays(),
-            currentMoment = date? moment(date, format) : moment(),
+            currentMoment = value? moment(value, format) : moment(),
+            checkedDay =  value? moment(value, format) : undefined,
             years = this.getYears(currentMoment);
 
         this.state = {
             currentMoment,//当前时间
             days: [],//日期选择
-            checkedDay: undefined,//选中日期
+            checkedDay,//选中日期
             weekdays,//星期
             firstDayOfWeek,//星期第一天
             panel: 'day',//面板
@@ -49,7 +50,7 @@ export default class DatePicker extends Component{
         //自定义样式
         className: PropTypes.string,
         //日期
-        date: PropTypes.string,
+        value: PropTypes.string,
         //格式
         format: PropTypes.string,
         //星期
@@ -71,6 +72,10 @@ export default class DatePicker extends Component{
             PropTypes.string,
             PropTypes.number,
         ]),
+        //选中时间
+        onSelect: PropTypes.func,
+        //修改选中时间
+        onChange: PropTypes.func,
     }
     //默认props
     static defaultProps = {
@@ -213,10 +218,18 @@ export default class DatePicker extends Component{
     /**
      * 选中时间.
      */
-    selectDateHandle(checkedDay){
+    selectDateHandle(day){
+        let { onSelect, onChange, format } = this.props,
+            { checkedDay } = this.state,
+            dayFormat = day.format(format);
+
         this.setState({
-            checkedDay
+            checkedDay: day
         });
+
+
+        onSelect && onSelect(dayFormat);
+        onChange && (checkedDay !== day) && onChange(dayFormat);
     }
     /**
      * 选中年份.
@@ -251,11 +264,17 @@ export default class DatePicker extends Component{
      * 今天.
      */
     selectTodayHandle(){
-        let today = moment(moment().format(FORMAT.DATE));
+        let { onSelect, onChange, format } = this.props,
+            { checkedDay } = this.state,
+            today = moment(moment().format(FORMAT.DATE)),
+            dayFormat = today.format(format);
+
         this.setState({
             checkedDay: today
         });
-        this.getDate(today);
+
+        onSelect && onSelect(dayFormat);
+        onChange && (checkedDay !== today) && onChange(dayFormat);
     }
     /**
      * 显示年月选择面板.
@@ -275,12 +294,20 @@ export default class DatePicker extends Component{
         let yearHeight = this._activeYear.getBoundingClientRect().height,
             monthHeight = this._activeMonth.getBoundingClientRect().height;
 
-        this._yeargroupScrollTop = _yeargroup.scrollTop = this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 2;
-        _monthgroup.scrollTop = this._activeMonth.offsetTop - _monthgroup.offsetTop - monthHeight * 2;
+        this._yeargroupScrollTop = _yeargroup.scrollTop = this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 3;
+        _monthgroup.scrollTop = this._activeMonth.offsetTop - _monthgroup.offsetTop - monthHeight * 3;
     }
     componentDidMount(){
         let { currentMoment } = this.state;
         this.getDate(currentMoment);
+    }
+    componentWillReceiveProps(nextProps){
+        let { value } = nextProps,
+            { format } = this.props;
+
+        this.setState({
+            checkedDay: value? moment(value, format) : undefined,
+        });
     }
     /**
      * 无限获取年份.
@@ -318,12 +345,12 @@ export default class DatePicker extends Component{
     //渲染
     render(){
         let { panel, currentMoment, days, checkedDay, weekdays, years } = this.state,
-            { showToday, todayText, months, className, ...others } = this.props,
+            { showToday, todayText, months, className } = this.props,
             currentYear = currentMoment.format(FORMAT.YEAR),
             currentMonth = currentMoment.format(FORMAT.MONTH);
 
         return(
-           <div {...others} className={classnames('datepicker', className)}>
+           <div className={classnames('datepicker', className)}>
                 <div className="datepicker-header">
                     <i className="fa datepicker-header-btn fa-angle-double-left" onClick={this.prevYearHandle}></i>
                     <i className="fa datepicker-header-btn fa-angle-left datepicker-month-btn" onClick={this.prevMonthHandle}></i>

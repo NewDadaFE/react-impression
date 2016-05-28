@@ -1,8 +1,13 @@
 
 .datepicker{
-  width: 250px;
+  position: absolute;
+  left: 0;
+  top: 120%;
+  width: 220px;
   border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,.3) ;
+  background: #fff;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2) ;
 }
 
 //头部
@@ -10,14 +15,15 @@
   line-height: 1;
   border-bottom: 1px solid #ddd;
   display: flex;
+  align-items: center;
   font-weight: bold;
   padding: 0 0.5rem;
 }
 
 .datepicker-header-btn{
   cursor: pointer;
-  padding: 1rem 0.5rem;
-  font-size: 1.2rem !important;
+  padding: 0.75rem 0.5rem;
+  font-size: 1.2rem;
   transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover{
@@ -31,7 +37,7 @@
   flex: 1;
   text-align: center;
   cursor: pointer;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
   transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover{
@@ -46,7 +52,7 @@
 //星期
 .datepicker-weekgroup{
   font-weight: bold;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
 }
 
 .datepicker-weekgroup-item{
@@ -58,7 +64,7 @@
 
 //日
 .datepicker-daygroup{
-  padding: 0 0.5rem 1rem;
+  padding: 0 0.5rem 0.5rem;
 }
 
 .datepicker-daygroup-item{
@@ -66,7 +72,7 @@
   display: inline-block;
   width: percentage(1/7);
   text-align: center;
-  padding: 2px;
+  padding: 1px;
 }
 
 .datepicker-daygroup-item-text{
