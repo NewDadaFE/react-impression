@@ -1,0 +1,87 @@
+.select{
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+
+  &.disabled {
+    &,
+    .select-addon,
+    .select-selection{
+      background: $select-disable-bg;
+      cursor: $cursor-disabled;
+    }
+  }
+}
+
+.select-selection{
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  text-align: left;
+  text-overflow: ellipsis;
+  padding-right: 2.5rem;
+  &:active,
+  &:focus{
+    outline: none;
+    &::placeholder{
+        opacity: 1;
+    }
+  }
+
+  &[readOnly]{
+    background: #fff;
+  }
+}
+
+.select-addon{
+  cursor: pointer;
+  padding-right: 1px;
+  margin-left: -1.75rem;
+  user-select: none;
+  transition: $select-transition;
+
+  .open &{
+    transform: rotate(180deg);
+  }
+}
+
+.select-options{
+  position: absolute;
+  left: 0;
+  top: 120%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 100;
+  display: none;
+  background: #fff;
+  list-style: none;
+  transition: $select-transition;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+
+  .open &{
+    display: block;
+  }
+
+}
+
+.select-option{
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: $select-option-padding;
+  &:hover{
+    background-color: $select-option-hover-bg;
+  }
+
+  &.active{
+    color: $select-option-active-color;
+  }
+
+  &.disabled {
+      color: $select-option-disable-color;
+    }
+}

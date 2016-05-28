@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SelectOption from './SelectOption';
 import * as System from '../utils/system';
 
@@ -14,7 +14,7 @@ export default class Select extends Component{
 
         this.state = {
             showOption: false,
-            value: undefined,
+            value: props.value || undefined,
         };
 
         this.toggleOptionsHandle = this.toggleOptionsHandle.bind(this);
@@ -22,16 +22,18 @@ export default class Select extends Component{
     }
     //prop type校验
     static propTypes = {
+        //值
+        value: PropTypes.any,
         //是否不可用
-        disabled: React.PropTypes.bool,
+        disabled: PropTypes.bool,
         //style
-        style: React.PropTypes.object,
+        style: PropTypes.object,
         //自定义样式
-        className: React.PropTypes.string,
+        className: PropTypes.string,
         //placeholder
-        placeholder: React.PropTypes.string,
+        placeholder: PropTypes.string,
         //onChange
-        onChange: React.PropTypes.func,
+        onChange: PropTypes.func,
     }
     //默认props
     static defaultProps = {
@@ -57,24 +59,27 @@ export default class Select extends Component{
      * @param  {[Number]} index    [索引]
      */
     selectOptionHandle(newValue, text, index){
-        let { value } = this.state;
-        let { onChange } = this.props;
+        let { value } = this.state,
+            { onChange } = this.props,
+            { main } = this.refs;
 
         onChange && newValue !== value && onChange(newValue, text, index);
         this.setState({
-            text,
             value: newValue,
             showOption: false
         });
 
+        main.value = text;
     }
     //渲染
     render(){
-        let { placeholder, disabled, style, className, children } = this.props;
-        let { showOption, text, value } = this.state;
+        let { placeholder, disabled, style, className, children } = this.props,
+            { showOption, value } = this.state,
+            text = undefined;
 
         children = children.map((child, index) => {
-            let { value, children }  = child.props;
+            let { value, children, disabled }  = child.props;
+            value === this.state.value && (text = children);
             return React.cloneElement(child, {
                 key: index,
                 active: value === this.state.value,
@@ -83,8 +88,11 @@ export default class Select extends Component{
         });
 
         return(
-            <div style={style} className={classnames('select', { disabled }, { open: showOption }, {'select-noval': !value}, className)} disabled={disabled}>
-                <input type="text" value={text} className={classnames('form-control' ,'select-selection')} placeholder={placeholder} onClick={this.toggleOptionsHandle}/>
+            <div style={style} className={classnames('select', { disabled }, { open: showOption }, className)} disabled={disabled}>
+                <input type="text" defaultValue={text}  readOnly ref="main"
+                    placeholder={placeholder}  disabled={disabled}
+                    className={classnames('form-control' ,'select-selection')}
+                    onClick={this.toggleOptionsHandle}/>
                 <i className="fa fa-angle-down select-addon"></i>
                 <ul className="select-options">
                     { children }

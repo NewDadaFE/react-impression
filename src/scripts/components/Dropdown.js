@@ -38,12 +38,19 @@ export default class Dropdown extends Component{
         trigger: 'click',
     }
     //点击回调
-    menuClickHandle(value, name, index, event){
-        let { onClick } = this.props;
+    menuClickHandle(menu, index, event){
+        let { value, name, text, disabled } = menu,
+            { onClick } = this.props;
+
+        if(disabled){
+            return false;
+        }
+
         this.setState({
             open: false
         });
-        onClick && onClick(value, name, index, event);
+
+        onClick && onClick(value, name || text, index, event);
     }
     //显示/隐藏菜单
     toggleMenuHandle(flag){
@@ -83,7 +90,7 @@ export default class Dropdown extends Component{
                         <div key={index} className="dropdown-divider"></div>:
                         <a key={index} href={menu.href}
                            className={classnames('dropdown-item', {disabled: menu.disabled, active: menu.active})}
-                           onClick={event => this.menuClickHandle(menu.value, menu.name || menu.text, index, event)}>
+                           onClick={event => this.menuClickHandle(menu, index, event)}>
                            {menu.name || menu.text || menu.value}
                         </a>
                     )}

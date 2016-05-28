@@ -404,13 +404,11 @@ $switch-addon-height:                       $switch-addon-width !default;
 $switch-addon-padding:                      round(($line-height-base - $switch-addon-width) *  $font-size-root / 2) !default;
 $switch-addon-translateX:                   translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
 
-$select-border-color:                       #ddd !default;
 $select-line-height:                        $input-line-height !default;
-$select-padding:                            $input-padding-y $input-padding-x !default;
 $select-transition:                         all .2s ease !default;
 $select-disable-bg:                         $gray-lighter !default;
 
-$select-option-padding:                     $select-padding !default;
+$select-option-padding:                     $input-padding-y $input-padding-x !default;
 $select-option-hover-bg:                    #f5f5f5 !default;
 $select-option-active-color:                $brand-primary !default;
 $select-option-disable-color:               $gray-light !default;
