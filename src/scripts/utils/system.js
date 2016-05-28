@@ -28,6 +28,14 @@ init();
  * 管理弹出层组件.
  * @param  {[Component]} component  [组件]
  */
-export const manager = (component) => {
+export const manager = component => {
     document.body._popLayers.push(component);
+}
+
+/**
+ * 取消弹出层组件管理.
+ * @param  {[Component]} component [组件]
+ */
+export const unmanager = component => {
+    document.body._popLayers = document.body._popLayers.filter(item => item !== component)
 }

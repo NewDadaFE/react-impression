@@ -129,6 +129,12 @@ export default class Input extends Component{
             showClear: false,
         });
     }
+    /**
+     * 清空组件管理.
+     */
+    componentWillUnmount(){
+        System.unmanager(this);
+    }
     //渲染
     render(){
         let { type, value, defaultValue, disabled, placeholder, clearable, style,
