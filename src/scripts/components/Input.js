@@ -24,6 +24,8 @@ export default class Input extends Component{
 
         this.hasAddon = this.hasAddon.bind(this);
         this.clearInputHandle = this.clearInputHandle.bind(this);
+        this.showClearHandle = this.showClearHandle.bind(this);
+        this.hideClearHandle = this.hideClearHandle.bind(this);
         this.showOptionHandle = this.showOptionHandle.bind(this);
         this.hideOptionsHandle = this.hideOptionsHandle.bind(this);
         this.selectOptionsHandle = this.selectOptionsHandle.bind(this);
@@ -69,7 +71,7 @@ export default class Input extends Component{
 
         !disabled && this.hasAddon() && this.setState({
             showOption: true,
-            showClear: true
+            showClear: false,
         });
     }
     /**
@@ -82,7 +84,7 @@ export default class Input extends Component{
         main.blur();
         this.hasAddon() && this.setState({
             showOption: false,
-            showClear: false
+            showClear: false,
         });
     }
     /**
@@ -97,11 +99,6 @@ export default class Input extends Component{
         }
 
         main.value = '';
-        main.blur();
-        this.hasAddon() && this.setState({
-            showOption: false,
-            showClear: false
-        });
     }
     /**
      * 选中候选项.
@@ -116,6 +113,22 @@ export default class Input extends Component{
             showClear: false
         });
     }
+    /**
+     * 显示清空按钮.
+     */
+    showClearHandle(){
+        this.setState({
+            showClear: true
+        });
+    }
+    /**
+     * 隐藏清空按钮.
+     */
+    hideClearHandle(){
+        this.setState({
+            showClear: false,
+        });
+    }
     //渲染
     render(){
         let { type, value, defaultValue, disabled, placeholder, clearable, style,
@@ -123,7 +136,9 @@ export default class Input extends Component{
             { showOption, showClear } = this.state;
 
         return (
-            <div className={classnames('input', className)} ref="container">
+            <div className={classnames('input', className)} ref="container"
+                onMouseEnter={this.showClearHandle}
+                onMouseLeave={this.hideClearHandle}>
                 <input type='text' ref="main"
                     value={value} defaultValue={defaultValue}
                     className={classnames('form-control', 'input-field',{
