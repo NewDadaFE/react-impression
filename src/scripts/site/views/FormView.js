@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Switch, Form, Button } from '../../components';
+import { Card, Checkbox, Radio, RadioGroup, Form, Button } from '../../components';
 import { CommenTable } from '../components';
 
 export default class FormView extends Component{
