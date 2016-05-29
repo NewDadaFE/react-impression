@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Form, Select } from '../../components';
+import { CommenTable } from '../components';
 
 export default class FormView extends Component{
     render(){
@@ -63,6 +64,27 @@ export default class FormView extends Component{
                         </Col>
                     </Row>
                 </Card>
+                <h3>Select API</h3>
+                <CommenTable
+                    data = {[
+                        ['value', '值', 'any', ''],
+                        ['disabled', '是否不可用', 'boolean', 'false'],
+                        ['style', '行内样式', 'object', ''],
+                        ['placeholder', '占位文字', 'string', '请选择'],
+                        ['onChange', '状态变更回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
+                <h3>Select.Option API</h3>
+                <CommenTable
+                    data = {[
+                        ['disabled', '是否不可用', 'boolean', 'false'],
+                        ['active', '是否选中', 'boolean', 'false'],
+                        ['value', '必填，值', 'any', ''],
+                        ['onClick', '点击回调函数', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
