@@ -17,7 +17,7 @@ export default class Sidebar extends Component {
                     <div className="nav-item">
                         BASIC
                     </div>
-                    <Link className="nav-link" to="/button"><Icon type="hand-pointer-o" left/>Button</Link>
+                    <Link className="nav-link" to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
                     <Link className="nav-link" to="/select"><Icon type="angle-down" left/>Select</Link>
                     <Link className="nav-link" to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
                     <Link className="nav-link" to="/switch"><Icon type="toggle-on" left/>Switch</Link>
