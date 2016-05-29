@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Form, Input } from '../../components';
+import { CommenTable } from '../components';
 
 export default class DatePickerView extends Component{
     render(){
@@ -92,6 +93,24 @@ export default class DatePickerView extends Component{
                         </Col>
                     </Row>
                 </Card>
+                <h3>Input[type='date'] API</h3>
+                <CommenTable
+                    data = {[
+                        ['value', '日期', 'string', ''],
+                        ['format', '格式', 'string', 'yyyy-MM-dd'],
+                        ['weekdays', '星期', 'array', "['日', '一', '二', '三', '四', '五', '六']"],
+                        ['months', '月份', 'array', "['1月','2月',...,'12月']"],
+                        ['showToday', '是否显示今天', 'boolean', 'true'],
+                        ['todayText', '今天', 'string', '今天'],
+                        ['firstDayOfWeek', '星期第一天', 'string', '日'],
+                        ['minDate', '最小日期', 'string', ''],
+                        ['maxDate', '最大日期', 'string', ''],
+                        ['yearScope', '年份前后默认范围', 'string or number', '5'],
+                        ['onSelect', '选中时间', 'function', ''],
+                        ['onChange', '修改选中时间', 'function', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                ></CommenTable>
             </div>
         );
     }
