@@ -24,7 +24,7 @@ export default class BreadcrumbView extends Component{
                 <div className="card">
                     <Breadcrumb path={path} divider="arrow"></Breadcrumb>
                 </div>
-                <h3>Breadcrumb API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['divider', '设置分隔符，可选值为 arrow', 'string', ''],

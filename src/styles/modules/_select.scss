@@ -1,3 +1,6 @@
+//== 下拉框
+//
+//
 .select{
   position: relative;
   cursor: pointer;
@@ -82,6 +85,7 @@
   }
 
   &.disabled {
+      cursor:  $cursor-disabled;
       color: $select-option-disable-color;
     }
 }

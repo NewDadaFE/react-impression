@@ -81,13 +81,13 @@ export default class ListGroupView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>ListGroup API</h3>
+                <h3 className="text-secondary">ListGroup API</h3>
                 <CommenTable
                     data = {[
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>ListGroup.item API</h3>
+                <h3 className="text-secondary">ListGroup.item API</h3>
                 <CommenTable
                     data = {[
                         ['href', '设置链接', 'string', ''],

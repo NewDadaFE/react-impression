@@ -35,7 +35,7 @@ export default class RadioView extends Component{
                         </Card>
                     </Col>
                 </Row>
-                <h3>Radio API</h3>
+                <h3 className="text-secondary">Radio API</h3>
                 <CommenTable
                     data = {[
                         ['name', '名称', 'any', ''],
@@ -47,7 +47,7 @@ export default class RadioView extends Component{
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>RadioGroup API</h3>
+                <h3 className="text-secondary">RadioGroup API</h3>
                 <CommenTable
                     data = {[
                         ['value', '设置默认是否选中', 'any', ''],

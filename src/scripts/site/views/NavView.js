@@ -63,7 +63,7 @@ export default class NavView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>Nav API</h3>
+                <h3 className="text-secondary">Nav API</h3>
                 <CommenTable
                     data = {[
                         ['type', '导航栏样式，可选值为 tab、pill、inline', 'string', 'inline'],
@@ -72,7 +72,7 @@ export default class NavView extends Component{
                         ['onSelect', '选中回调函数', 'function', ''],
                     ]}
                 ></CommenTable>
-                <h3>NavItem API</h3>
+                <h3 className="text-secondary">NavItem API</h3>
                 <CommenTable
                     data = {[
                         ['disabled', '设置是否可以选中', 'boolean', 'false'],

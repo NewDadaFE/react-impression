@@ -72,7 +72,7 @@ export default class ButtonGroupView extends Component{
                         </ButtonGroup>
                     </ButtonToolbar>
                 </Card>
-                <h3>API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['size', '设置按钮组大小，可选值为 lg、sm', 'string', ''],

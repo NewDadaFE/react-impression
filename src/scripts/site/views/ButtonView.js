@@ -78,7 +78,7 @@ export default class ButtonView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>Button API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['style', '设置按钮的样式，可选值为 primary、default、secondary', 'string', 'primary'],

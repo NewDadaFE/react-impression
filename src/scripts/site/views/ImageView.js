@@ -24,7 +24,7 @@ export default class ImageView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['fluid', '图片是否自适应', 'bool', 'false'],

@@ -74,7 +74,7 @@ export default class AlertView extends Component{
                       You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
                     </Alert>
                 </Card>
-                <h3>API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['style', '设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],

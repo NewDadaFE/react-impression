@@ -60,21 +60,21 @@ export default class NavbarView extends Component{
                         </Form>
                     </Navbar>
                 </Card>
-                <h3>Navbar API</h3>
+                <h3 className="text-secondary">Navbar API</h3>
                  <CommenTable
                      data = {[
                          ['style', '设置导航条样式，可选值为 pure、primary', 'string', ''],
                          ['className', '自定义样式', 'string', ''],
                      ]}
                  ></CommenTable>
-                 <h3>Navbar.Brand API</h3>
+                 <h3 className="text-secondary">Navbar.Brand API</h3>
                  <CommenTable
                      data = {[
                          ['href', '设置连接', 'string', ''],
                          ['className', '自定义样式', 'string', ''],
                      ]}
                  ></CommenTable>
-                 <h3>Navbar.SidebarTitle API</h3>
+                 <h3 className="text-secondary">Navbar.SidebarTitle API</h3>
                  <CommenTable
                      data = {[
                          ['img', '设置图片连接', 'string', ''],

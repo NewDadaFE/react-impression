@@ -60,7 +60,7 @@ export default class FormView extends Component{
                         </Form.Group>
                     </Form>
                 </Card>
-                <h3>Form API</h3>
+                <h3 className="text-secondary">Form API</h3>
                 <CommenTable
                     data = {[
                         ['type', '排列方向，可选值为 inline、horizontal', 'string', 'inline'],
@@ -68,7 +68,7 @@ export default class FormView extends Component{
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>Form.Group API</h3>
+                <h3 className="text-secondary">Form.Group API</h3>
                 <CommenTable
                     data = {[
                         ['col', '设置所占比例', 'string、number', ''],

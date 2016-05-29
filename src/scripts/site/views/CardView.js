@@ -139,26 +139,26 @@ export default class CardView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>Card API</h3>
+                <h3 className="text-secondary">Card API</h3>
                 <CommenTable
                     data = {[
                         ['block', '是否显示为快级元素', 'boolean', 'false'],
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>Card.Header API</h3>
+                <h3 className="text-secondary">Card.Header API</h3>
                 <CommenTable
                     data = {[
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>Card.Block API</h3>
+                <h3 className="text-secondary">Card.Block API</h3>
                 <CommenTable
                     data = {[
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>Card.Footer API</h3>
+                <h3 className="text-secondary">Card.Footer API</h3>
                 <CommenTable
                     data = {[
                         ['className', '自定义样式', 'string', ''],

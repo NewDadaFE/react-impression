@@ -28,6 +28,7 @@ import MessageView from '../views/MessageView';
 import NotificationView from '../views/NotificationView';
 import TimelineView from '../views/TimelineView';
 import DatePickerView from '../views/DatePickerView';
+import LoadingView from '../views/LoadingView';
 
 /**
  * 主应用入口.
@@ -64,6 +65,7 @@ export default class App extends Component {
                     <Route path='notification' component={NotificationView}/>
                     <Route path='timeline' component={TimelineView}/>
                     <Route path='datepicker' component={DatePickerView}/>
+                    <Route path='loading' component={LoadingView}/>
                 </Route>
             </Router>
         );

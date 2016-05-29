@@ -77,27 +77,27 @@ export default class InputGroupView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>InputGroup API</h3>
+                <h3 className="text-secondary">InputGroup API</h3>
                 <CommenTable
                     data = {[
                         ['size', '设置输入框组大小，可选值为 sm、lg', 'string', ''],
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>InputGroup.Addon API</h3>
+                <h3 className="text-secondary">InputGroup.Addon API</h3>
                 <CommenTable
                     data = {[
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>InputGroup.Button API</h3>
+                <h3 className="text-secondary">InputGroup.Button API</h3>
                 <CommenTable
                     data = {[
                         ['style', '设置输入框组内按钮样式，可选值为 default、primary', 'string', 'primary'],
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>InputGroup.Input API</h3>
+                <h3 className="text-secondary">InputGroup.Input API</h3>
                 <CommenTable
                     data = {[
                         ['type', '设置输入框组内 input 类型，可选值为 text', 'string', 'text'],

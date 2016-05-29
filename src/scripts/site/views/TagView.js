@@ -61,7 +61,7 @@ export default class TagView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <h3>Tag API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['style', '设置标签样式，可选值为 default、primary、success、info、warning、danger', 'string', ''],

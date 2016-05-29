@@ -18,10 +18,10 @@ export default class Sidebar extends Component {
                         BASIC
                     </div>
                     <Link className="nav-link" to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
-                    <Link className="nav-link" to="/select"><Icon type="angle-down" left/>Select</Link>
                     <Link className="nav-link" to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
-                    <Link className="nav-link" to="/switch"><Icon type="toggle-on" left/>Switch</Link>
                     <Link className="nav-link" to="/checkbox"><Icon type="check-square" left/>Checkbox</Link>
+                    <Link className="nav-link" to="/switch"><Icon type="toggle-on" left/>Switch</Link>
+                    <Link className="nav-link" to="/select"><Icon type="angle-down" left/>Select</Link>
                     <Link className="nav-link" to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     <Link className="nav-link" to="/image"><Icon type="picture-o" left/>Image</Link>
                     <Link className="nav-link" to="/table"><Icon type="table" left/>Table</Link>
@@ -56,6 +56,7 @@ export default class Sidebar extends Component {
                     <Link className="nav-link" to="/notification"><Icon type="bullhorn" left/>Notification</Link>
                     <Link className="nav-link" to="/datepicker"><Icon type="calendar" left/>DatePicker</Link>
                     <Link className="nav-link" to="/timeline"><Icon type="clock-o" left/>Timeline</Link>
+                    <Link className="nav-link" to="/loading"><Icon type="spinner" left/>Loading</Link>
                 </div>
                 <div className="sidebar-footer">
                     <a href="javascript:void(0)" className="sidebar-footer-item">

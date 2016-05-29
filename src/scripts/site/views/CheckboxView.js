@@ -39,7 +39,7 @@ export default class CheckboxView extends Component{
                         </Card>
                     </Col>
                 </Row>
-                <h3>Checkbox API</h3>
+                <h3 className="text-secondary">Checkbox API</h3>
                 <CommenTable
                     data = {[
                         ['disabled', '设置是否可以点击', 'boolean', 'false'],
@@ -49,7 +49,7 @@ export default class CheckboxView extends Component{
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 ></CommenTable>
-                <h3>CheckboxGroup API</h3>
+                <h3 className="text-secondary">CheckboxGroup API</h3>
                 <CommenTable
                     data = {[
                         ['vlaue', '设置默认是否选中', 'any', ''],

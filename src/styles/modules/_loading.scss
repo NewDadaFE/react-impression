@@ -1,0 +1,199 @@
+//== Loading
+//
+//
+//
+.loading{
+  position: relative;
+}
+
+//== -------------------------------- 喷泉式 -------------------------------- ==
+.loading-fountain{
+  width: 100px;
+  height: 100px;
+
+  > :only-child,
+  &:before,
+  &:after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 100%;
+    animation-fill-mode: both;
+    opacity: 0;
+    animation: fountain 1s linear infinite;
+  }
+
+  &:before{
+    animation-delay: 0.2s;
+  }
+
+  &:after{
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes fountain {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+//== -------------------------------- 波纹式 -------------------------------- ==
+
+.loading-wave{
+  width: 100px;
+  height: 100px;
+
+  > :only-child,
+  &:before,
+  &:after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    animation-fill-mode: both;
+    opacity: 0;
+    animation: fountain 1s linear infinite;
+  }
+
+  &:before{
+    animation-delay: 0.6s;
+  }
+
+  &:after{
+    animation-delay: 0.8s;
+  }
+}
+
+//== -------------------------------- 摆钟式 -------------------------------- ==
+.loading-pendule{
+  > :first-child,
+  > :last-child,
+  &:before,
+  &:after{
+    content: ' ';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #fff;
+    transform: translateX(0%);
+  }
+
+  &:before{
+    animation: pendule-left 1s ease-out infinite;
+  }
+
+  &:after{
+    animation: pendule-right 1s ease-out infinite;
+
+  }
+}
+
+@keyframes pendule-left{
+  25%{
+    transform:translateX(-100%);
+    animation-timing-function:ease-in;
+  }
+  50%{
+    transform:translateX(0%);
+    animation-timing-function:ease-in;
+  }
+}
+
+@keyframes pendule-right{
+  50%{
+    transform:translateX(0%);
+    animation-timing-function:ease-in;
+  }
+  75%{
+    transform:translatex(100%);
+    animation-timing-function:ease-in;
+  }
+}
+
+//== -------------------------------- 旋风式 -------------------------------- ==
+.loading-cyclone{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation: cyclone 1s linear infinite;
+
+
+  &,
+  &:before{
+    border: 2px solid transparent;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-radius: 100%;
+  }
+
+  &:before,
+  &:after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &:before{
+    width: 50%;
+    height: 50%;
+    transform: rotate(90deg);
+    animation: cyclone-inverse 1s linear infinite;
+  }
+
+  &:after{
+    width: 1rem;
+    height: 1rem;
+    background: #fff;
+    border-radius: 100%;
+    animation: fountain 1s linear infinite;
+  }
+}
+
+@keyframes cyclone{
+  0%{
+    transform:rotate(0deg);
+  }
+  50%{
+    transform: rotate(90deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes cyclone-inverse{
+  0%{
+    transform:rotate(90deg);
+  }
+  50%{
+    transform: rotate(-180deg);
+  }
+  100%{
+    transform:rotate(90deg);
+  }
+}

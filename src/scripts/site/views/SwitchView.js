@@ -19,7 +19,7 @@ export default class SwitchView extends Component{
                         </Form.Group>
                     </Form>
                 </Card>
-                <h3>Switch API</h3>
+                <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
                         ['defaultChecked', '是否默认选中', 'boolean', ''],
