@@ -990,7 +990,40 @@ $carousel-caption-color:                      #fff !default;
 
 // Close
 
-$close-font-weight:           normal !default;
-$close-color:                 #000 !default;
-$close-text-shadow:           0 1px 0 #fff !default;
+$close-font-weight:                           normal !default;
+$close-color:                                 #000 !default;
+$close-text-shadow:                           0 1px 0 #fff !default;
+
+// Loading
+
+$loading-width:                               100px !default;
+$loading-height:                              $loading-width !default;
+$loading-animation-duration:                  1s !default;
+
+$loading-fountain-bg:                         #fff !default;
+$loading-fountain-width:                      $loading-width !default;
+$loading-fountain-height:                     $loading-fountain-width !default;
+$loading-fountain-animation-duration:         $loading-animation-duration !default;
+
+$loading-wave-width:                          $loading-width !default;
+$loading-wave-height:                         $loading-wave-width !default;
+$loading-wave-border:                         3px solid #fff !default;
+$loading-wave-animation-duration:             $loading-animation-duration !default;
+
+$loading-pendule-item-bg:                     #fff !default;
+$loading-pendule-item-width:                  20px !default;
+$loading-pendule-item-height:                 $loading-pendule-item-width !default;
+$loading-pendule-animation-duration:          $loading-animation-duration !default;
+
+$loading-cyclone-width:                       $loading-width !default;
+$loading-cyclone-height:                      $loading-cyclone-width !default;
+$loading-cyclone-animation-duration:          $loading-animation-duration !default;
+$loading-cyclone-line-height:                 2px !default;
+$loading-cyclone-line-color:                  #fff !default;
+$loading-cyclone-ball-width:                  1rem !default;
+$loading-cyclone-ball-height:                 $loading-cyclone-ball-width !default;
+$loading-cyclone-ball-color:                  $loading-cyclone-line-color !default;
+
+
+
 

@@ -22,21 +22,21 @@ export default class Loading extends Component{
             typeClass = `loading-${type}`;
 
         switch(type){
-        case 'fountain':
-        case 'wave':
+        case 'fountain'://喷泉
+        case 'wave'://波纹
             return(
                <div {...others} className={classnames('loading', typeClass, className)}>
                     <div></div>
                 </div>
             );
-        case 'pendule':
+        case 'pendule'://摆钟
             return (
                 <div {...others} className={classnames('loading', typeClass, className)}>
                     <div></div>
                     <div></div>
                 </div>
             );
-        case 'cyclone':
+        case 'cyclone'://旋风
             return (
                 <div {...others} className={classnames('loading', typeClass, className)}></div>
             );

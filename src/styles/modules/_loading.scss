@@ -8,8 +8,8 @@
 
 //== -------------------------------- 喷泉式 -------------------------------- ==
 .loading-fountain{
-  width: 100px;
-  height: 100px;
+  width: $loading-fountain-width;
+  height: $loading-fountain-height;
 
   > :only-child,
   &:before,
@@ -22,19 +22,19 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    background-color: #fff;
+    background-color: $loading-fountain-bg;
     border-radius: 100%;
     animation-fill-mode: both;
     opacity: 0;
-    animation: fountain 1s linear infinite;
+    animation: fountain $loading-fountain-animation-duration linear infinite;
   }
 
   &:before{
-    animation-delay: 0.2s;
+    animation-delay: $loading-fountain-animation-duration * 0.2;
   }
 
   &:after{
-    animation-delay: 0.4s;
+    animation-delay: $loading-fountain-animation-duration * 0.4;
   }
 }
 
@@ -53,8 +53,8 @@
 //== -------------------------------- 波纹式 -------------------------------- ==
 
 .loading-wave{
-  width: 100px;
-  height: 100px;
+  width: $loading-wave-width;
+  height: $loading-wave-height;
 
   > :only-child,
   &:before,
@@ -67,19 +67,19 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    border: 3px solid #fff;
+    border: $loading-wave-border;
     border-radius: 100%;
     animation-fill-mode: both;
     opacity: 0;
-    animation: fountain 1s linear infinite;
+    animation: fountain $loading-wave-animation-duration linear infinite;
   }
 
   &:before{
-    animation-delay: 0.6s;
+    animation-delay: $loading-wave-animation-duration * 0.6;
   }
 
   &:after{
-    animation-delay: 0.8s;
+    animation-delay: $loading-wave-animation-duration * 0.8;
   }
 }
 
@@ -91,19 +91,19 @@
   &:after{
     content: ' ';
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: $loading-pendule-item-width;
+    height: $loading-pendule-item-height;
     border-radius: 100%;
-    background-color: #fff;
+    background-color: $loading-pendule-item-bg;
     transform: translateX(0%);
   }
 
   &:before{
-    animation: pendule-left 1s ease-out infinite;
+    animation: pendule-left $loading-pendule-animation-duration ease-out infinite;
   }
 
   &:after{
-    animation: pendule-right 1s ease-out infinite;
+    animation: pendule-right $loading-pendule-animation-duration ease-out infinite;
 
   }
 }
@@ -132,17 +132,17 @@
 
 //== -------------------------------- 旋风式 -------------------------------- ==
 .loading-cyclone{
-  width: 100px;
-  height: 100px;
+  width: $loading-cyclone-width;
+  height: $loading-cyclone-height;
   position: relative;
-  animation: cyclone 1s linear infinite;
+  animation: cyclone $loading-cyclone-animation-duration linear infinite;
 
 
   &,
   &:before{
-    border: 2px solid transparent;
-    border-top-color: #fff;
-    border-bottom-color: #fff;
+    border: $loading-cyclone-line-height solid transparent;
+    border-top-color: $loading-cyclone-line-color;
+    border-bottom-color: $loading-cyclone-line-color;
     border-radius: 100%;
   }
 
@@ -162,15 +162,15 @@
     width: 50%;
     height: 50%;
     transform: rotate(90deg);
-    animation: cyclone-inverse 1s linear infinite;
+    animation: cyclone-inverse $loading-cyclone-animation-duration linear infinite;
   }
 
   &:after{
-    width: 1rem;
-    height: 1rem;
-    background: #fff;
+    width: $loading-cyclone-ball-width;
+    height: $loading-cyclone-ball-height;
+    background: $loading-cyclone-ball-color;
     border-radius: 100%;
-    animation: fountain 1s linear infinite;
+    animation: fountain $loading-cyclone-animation-duration linear infinite;
   }
 }
 
