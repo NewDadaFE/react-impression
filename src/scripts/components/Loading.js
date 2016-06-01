@@ -18,6 +18,8 @@ export default class Loading extends Component{
         this.state = {
             show: false
         };
+
+        this.hideHandle = this.hideHandle.bind(this);
     }
     //props校验
     static propTypes = {
@@ -25,13 +27,23 @@ export default class Loading extends Component{
         className: PropTypes.string,
         //类型
         type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
-        //显示
-        show: PropTypes.bool,
+        //可关闭
+        closeable: PropTypes.bool
     }
     //默认props
     static defaultProps = {
         type: 'cyclone',
-        show: false
+        closeable: false,
+    }
+    /**
+     * 关闭loading.
+     */
+    hideHandle(){
+        let { closeable } = this.props;
+
+        closeable && this.setState({
+            show: false
+        });
     }
     //渲染
     render(){
@@ -39,7 +51,7 @@ export default class Loading extends Component{
             { show } = this.state;
 
         return (
-            <div className={classnames('mask', {hidden: !show})}>
+            <div className={classnames('mask', {hidden: !show})} onClick={this.hideHandle}>
                 <LoadingAddon type={type}/>
             </div>
         );

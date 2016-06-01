@@ -22,29 +22,12 @@ export default class LoadingView extends Component{
         Loading.show();
         setTimeout(() => {
             Loading.hide();
-        }, 3000);
+        }, 5000);
     }
     render(){
         return (
             <div>
-                <h3>LoadingAddon</h3>
-                <Card block className="bg-inverse hidden">
-                    <Row>
-                        <Col col="3">
-                            <Loading.Addon type="fountain"/>
-                        </Col>
-                        <Col col="3">
-                            <Loading.Addon type="wave"/>
-                        </Col>
-                        <Col col="3">
-                            <Loading.Addon type="pendule"/>
-                        </Col>
-                        <Col col="3">
-                            <Loading.Addon type="cyclone"/>
-                        </Col>
-                    </Row>
-                </Card>
-                <h3>LoadingAddon</h3>
+                <h3>Loading</h3>
                 <Card block>
                     <Row>
                         <Col col="3">
@@ -61,7 +44,7 @@ export default class LoadingView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <Loading type={this.state.type}/>
+                <Loading type={this.state.type} closeable={true}/>
             </div>
         );
     }
