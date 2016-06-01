@@ -17,9 +17,12 @@ export default class LoadingView extends Component{
      */
     showLoadingHandle(type){
         this.setState({
-            type,
-            show: true
+            type
         });
+        Loading.show();
+        setTimeout(() => {
+            Loading.hide();
+        }, 3000);
     }
     render(){
         return (
@@ -58,7 +61,7 @@ export default class LoadingView extends Component{
                         </Col>
                     </Row>
                 </Card>
-                <Loading type={this.state.type} show={this.state.show}/>
+                <Loading type={this.state.type}/>
             </div>
         );
     }

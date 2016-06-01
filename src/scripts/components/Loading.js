@@ -2,6 +2,8 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import LoadingAddon from './LoadingAddon';
 
+let _loading = undefined;
+
 /**
  * Loading组件.
  */
@@ -11,6 +13,7 @@ export default class Loading extends Component{
      */
     constructor(props, context){
         super(props, context);
+        _loading = this;
 
         this.state = {
             show: false
@@ -22,16 +25,13 @@ export default class Loading extends Component{
         className: PropTypes.string,
         //类型
         type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
-        //
+        //显示
+        show: PropTypes.bool,
     }
     //默认props
     static defaultProps = {
         type: 'cyclone',
-    }
-    componentWillReceiveProps(nextProps){
-        (nextProps.show !== undefined) && this.setState({
-            show: nextProps.show
-        });
+        show: false
     }
     //渲染
     render(){
@@ -46,5 +46,15 @@ export default class Loading extends Component{
     }
 }
 
-
 Loading.Addon = LoadingAddon;
+Loading.show = () => {
+    _loading.setState({
+        show: true
+    });
+};
+
+Loading.hide = () => {
+    _loading.setState({
+        show: false
+    });
+};

@@ -12,7 +12,7 @@ export default class LoadingAddon extends Component{
         super(props, context);
 
         this.state = {
-            dottedCount: 1
+            dottedCount: 0
         };
 
         this.getLoadingAddon = this.getLoadingAddon.bind(this);
@@ -82,7 +82,7 @@ export default class LoadingAddon extends Component{
 
         this.interval = setInterval(() => {
             dottedCount += 1;
-            dottedCount % 3 !== 0 && (dottedCount = dottedCount % 3);
+            dottedCount > 3 && (dottedCount = 0);
 
             this.setState({
                 dottedCount
