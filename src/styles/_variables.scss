@@ -782,30 +782,29 @@ $tag-pill-border-radius:    10rem !default;
 
 // Modals
 
-// Padding applied to the modal body
-$modal-bg:                    rgba(0, 0, 0, 0.18);
+$modal-bg:                    rgba(0, 0, 0, 0.3) !default;
 $modal-inner-padding:         0.8rem !default;
+$modal-border-radius:         4px !default;
 
 $modal-dialog-margin:         10px !default;
-$modal-dialog-sm-up-margin-y: 30px !default;
+$modal-dialog-sm-up-margin-y: ($navbar-height + 20) !default;
 
 $modal-title-padding:         0.8rem !default;
 $modal-title-line-height:     $line-height-base !default;
 
-$modal-content-bg:               #fff !default;
 $modal-content-border-color:     rgba($gray-secondary, .06) !default;
 $modal-content-border-width:     $border-width !default;
 $modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5) !default;
 $modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5) !default;
-
-$modal-backdrop-bg:           #000 !default;
-$modal-backdrop-opacity:      .5 !default;
 
 $modal-header-bg:             $gray-secondary !default;
 $modal-header-color:          #fff !default;
 $modal-header-border-color:   #e5e5e5 !default;
 $modal-header-border-width:   $modal-content-border-width !default;
 
+$modal-body-bg:               #fff !default;
+
+$modal-footer-bg:             #fff !default;
 $modal-footer-border-color:   $modal-header-border-color !default;
 $modal-footer-border-width:   $modal-header-border-width !default;
 

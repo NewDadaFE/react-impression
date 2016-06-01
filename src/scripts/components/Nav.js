@@ -50,11 +50,12 @@ export default class Nav extends Component{
     }
     //渲染
     render(){
-        let { type, stacked, className, children, ...others } = this.props;
-        let { activeKey } = this.state;
-        let navStacked = stacked && type=='pill' ? 'nav-stacked' : null;
-        let navStyle = this.getTypeClassMap(type);
+        let { type, stacked, className, children, ...others } = this.props,
+            { activeKey } = this.state,
+            navStacked = stacked && type=='pill' ? 'nav-stacked' : null,
+            navStyle = this.getTypeClassMap(type);
 
+        children = React.Children.toArray(children);
         children = children && children.map((child, index) => {
             let { eventKey } = child.props;
             return React.cloneElement(child, {
