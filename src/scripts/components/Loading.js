@@ -52,7 +52,7 @@ export default class Loading extends Component{
 
         return (
             <div className={classnames('mask', {hidden: !show})} onClick={this.hideHandle}>
-                <LoadingAddon type={type}/>
+                <LoadingAddon type={type} show={show} />
             </div>
         );
     }

@@ -17,6 +17,8 @@ export default class LoadingAddon extends Component{
 
         this.getLoadingAddon = this.getLoadingAddon.bind(this);
         this.getDotted = this.getDotted.bind(this);
+        this.setDottedInterval = this.setDottedInterval.bind(this);
+        this.clearDottedInterval = this.clearDottedInterval.bind(this);
     }
     //props校验
     static propTypes = {
@@ -26,11 +28,14 @@ export default class LoadingAddon extends Component{
         type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
         //信息提示
         message: PropTypes.string,
+        //显示
+        show: PropTypes.bool
     }
     //默认props
     static defaultProps = {
         type: 'cyclone',
         message: '加载中',
+        show: false
     }
     /**
      * 根据类型获取loading的addon.
@@ -61,8 +66,8 @@ export default class LoadingAddon extends Component{
         }
     }
     /**
-     * 获取
-     * @return {[type]} [description]
+     * 获取点点数量.
+     * @return {String} [点点]
      */
     getDotted(){
         let { dottedCount } = this.state,
@@ -75,9 +80,9 @@ export default class LoadingAddon extends Component{
         return result.join('');
     }
     /**
-     * loading效果.
+     * 设置定时器.
      */
-    componentDidMount(){
+    setDottedInterval(){
         let { dottedCount } = this.state;
 
         this.interval = setInterval(() => {
@@ -90,10 +95,24 @@ export default class LoadingAddon extends Component{
         },600);
     }
     /**
+     * 清空定时器.
+     */
+    clearDottedInterval(){
+        clearInterval(this.interval);
+    }
+    /**
      * 清除定时器.
      */
     componentWillUnmount(){
-        clearInterval(this.interval);
+        this.clearDottedInterval();
+    }
+    /**
+     * 根据props添加或清空定时器.
+     * @param  {Object} nextprops [新props]
+     */
+    componentWillReceiveProps(nextprops){
+        !nextprops.show && (this.clearDottedInterval());
+        nextprops.show && (this.setDottedInterval());
     }
     //渲染
     render(){
