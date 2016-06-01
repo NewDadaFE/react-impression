@@ -27,14 +27,14 @@ export default class Col extends Component{
     }
     //渲染
     render(){
-        let { col, offset, push, pull } = this.props;
-        let colClass = `col-xs-${col}`;
-        let offsetClass = offset? `offset-xs-${offset}` : null;
-        let pushClass = push? `push-xs-${push}` : null;
-        let pullClass = pull? `pull-xs-${pull}` : null;
+        let { col, offset, push, pull, ...others } = this.props,
+            colClass = `col-xs-${col}`,
+            offsetClass = offset? `offset-xs-${offset}` : null,
+            pushClass = push? `push-xs-${push}` : null,
+            pullClass = pull? `pull-xs-${pull}` : null;
 
         return(
-           <div className={classnames(colClass, offsetClass, pushClass, pullClass)}>
+           <div { ...others } className={classnames(colClass, offsetClass, pushClass, pullClass)}>
                 {this.props.children}
            </div>
         );

@@ -1,47 +1,50 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
+import LoadingAddon from './LoadingAddon';
 
 /**
  * Loading组件.
  */
 export default class Loading extends Component{
-        //props校验
+    /**
+     * 初始信息.
+     */
+    constructor(props, context){
+        super(props, context);
+
+        this.state = {
+            show: false
+        };
+    }
+    //props校验
     static propTypes = {
         //自定义样式
         className: PropTypes.string,
         //类型
         type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
+        //
     }
     //默认props
     static defaultProps = {
         type: 'cyclone',
     }
+    componentWillReceiveProps(nextProps){
+        (nextProps.show !== undefined) && this.setState({
+            show: nextProps.show
+        });
+    }
     //渲染
     render(){
-        let { type, className, others } = this.props,
-            typeClass = `loading-${type}`;
+        let { type } = this.props,
+            { show } = this.state;
 
-        switch(type){
-        case 'fountain'://喷泉
-        case 'wave'://波纹
-            return(
-               <div {...others} className={classnames('loading', typeClass, className)}>
-                    <div></div>
-                </div>
-            );
-        case 'pendule'://摆钟
-            return (
-                <div {...others} className={classnames('loading', typeClass, className)}>
-                    <div></div>
-                    <div></div>
-                </div>
-            );
-        case 'cyclone'://旋风
-            return (
-                <div {...others} className={classnames('loading', typeClass, className)}></div>
-            );
-        }
-
+        return (
+            <div className={classnames('mask', {hidden: !show})}>
+                <LoadingAddon type={type}/>
+            </div>
+        );
     }
 }
 
+
+Loading.Addon = LoadingAddon;

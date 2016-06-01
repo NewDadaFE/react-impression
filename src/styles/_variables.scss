@@ -994,8 +994,13 @@ $close-font-weight:                           normal !default;
 $close-color:                                 #000 !default;
 $close-text-shadow:                           0 1px 0 #fff !default;
 
+// Mask
+
+$mask-bg:                                     rgba(#000, 0.5) !default;
+
 // Loading
 
+$loading-color:                               #fff !default;
 $loading-width:                               100px !default;
 $loading-height:                              $loading-width !default;
 $loading-animation-duration:                  1s !default;
@@ -1003,17 +1008,19 @@ $loading-animation-duration:                  1s !default;
 $loading-fountain-bg:                         #fff !default;
 $loading-fountain-width:                      $loading-width !default;
 $loading-fountain-height:                     $loading-fountain-width !default;
-$loading-fountain-animation-duration:         $loading-animation-duration !default;
+$loading-fountain-animation-duration:         1.6s !default;
 
 $loading-wave-width:                          $loading-width !default;
 $loading-wave-height:                         $loading-wave-width !default;
 $loading-wave-border:                         3px solid #fff !default;
-$loading-wave-animation-duration:             $loading-animation-duration !default;
+$loading-wave-animation-duration:             1.4s !default;
 
 $loading-pendule-item-bg:                     #fff !default;
 $loading-pendule-item-width:                  20px !default;
 $loading-pendule-item-height:                 $loading-pendule-item-width !default;
-$loading-pendule-animation-duration:          $loading-animation-duration !default;
+$loading-pendule-animation-duration:          0.8s !default;
+$loading-pendule-width:                       $loading-pendule-item-width * 4 !default;
+$loading-pendule-height:                      $loading-pendule-width !default;
 
 $loading-cyclone-width:                       $loading-width !default;
 $loading-cyclone-height:                      $loading-cyclone-width !default;
