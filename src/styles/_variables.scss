@@ -994,28 +994,28 @@ $close-font-weight:                           normal !default;
 $close-color:                                 #000 !default;
 $close-text-shadow:                           0 1px 0 #fff !default;
 
-// Mask
-
-$mask-bg:                                     rgba(#000, 0.5) !default;
 
 // Loading
+$loading-mask-bg:                             transparent !default;
 
-$loading-color:                               #fff !default;
+$loading-color:                               $gray-light !default;
 $loading-width:                               100px !default;
 $loading-height:                              $loading-width !default;
 $loading-animation-duration:                  1s !default;
 
+$loading-message-font-size:                   0.8rem !default;
+
 $loading-fountain-bg:                         #fff !default;
 $loading-fountain-width:                      $loading-width !default;
 $loading-fountain-height:                     $loading-fountain-width !default;
-$loading-fountain-animation-duration:         1.6s !default;
+$loading-fountain-animation-duration:         1.2s !default;
 
 $loading-wave-width:                          $loading-width !default;
 $loading-wave-height:                         $loading-wave-width !default;
-$loading-wave-border:                         3px solid #fff !default;
-$loading-wave-animation-duration:             1.4s !default;
+$loading-wave-border:                         3px solid $brand-primary !default;
+$loading-wave-animation-duration:             1.2s !default;
 
-$loading-pendule-item-bg:                     #fff !default;
+$loading-pendule-item-bg:                     $brand-primary !default;
 $loading-pendule-item-width:                  20px !default;
 $loading-pendule-item-height:                 $loading-pendule-item-width !default;
 $loading-pendule-animation-duration:          0.8s !default;
@@ -1026,10 +1026,10 @@ $loading-cyclone-width:                       $loading-width !default;
 $loading-cyclone-height:                      $loading-cyclone-width !default;
 $loading-cyclone-animation-duration:          $loading-animation-duration !default;
 $loading-cyclone-line-height:                 2px !default;
-$loading-cyclone-line-color:                  #fff !default;
+$loading-cyclone-line-color:                  lighten($brand-primary, 6%) !default;
 $loading-cyclone-ball-width:                  1rem !default;
 $loading-cyclone-ball-height:                 $loading-cyclone-ball-width !default;
-$loading-cyclone-ball-color:                  $loading-cyclone-line-color !default;
+$loading-cyclone-ball-color:                  darken($brand-primary, 18%) !default;
 
 
 

@@ -51,7 +51,7 @@ export default class Loading extends Component{
             { show } = this.state;
 
         return (
-            <div className={classnames('mask', {hidden: !show})} onClick={this.hideHandle}>
+            <div className={classnames('loading-mask', {hidden: !show})} onClick={this.hideHandle}>
                 <LoadingAddon type={type} show={show} />
             </div>
         );

@@ -20,9 +20,6 @@ export default class LoadingView extends Component{
             type
         });
         Loading.show();
-        setTimeout(() => {
-            Loading.hide();
-        }, 5000);
     }
     render(){
         return (

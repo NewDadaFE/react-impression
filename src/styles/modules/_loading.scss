@@ -1,14 +1,14 @@
 //== Loading
 //
 //
-.mask{
+.loading-mask{
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
-  background: $mask-bg;
+  background: $loading-mask-bg;
 }
 
 
@@ -33,6 +33,7 @@
   left: 50%;
   top: 50%;
   transform: translateX(-50%);
+  font-size: $loading-message-font-size;
 }
 
 .loading-message-dotted{
@@ -58,7 +59,8 @@
       top: 0;
       bottom: 0;
       margin: auto;
-      background-color: $loading-fountain-bg;
+      // background-color: $loading-fountain-bg;
+      background-color: $brand-primary;
       border-radius: 100%;
       animation-fill-mode: both;
       opacity: 0;
