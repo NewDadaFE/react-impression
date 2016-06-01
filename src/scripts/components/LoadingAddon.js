@@ -27,14 +27,14 @@ export default class LoadingAddon extends Component{
         //类型
         type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
         //信息提示
-        message: PropTypes.string,
+        loadingMsg: PropTypes.string,
         //显示
         show: PropTypes.bool
     }
     //默认props
     static defaultProps = {
         type: 'cyclone',
-        message: '加载中',
+        loadingMsg: '加载中',
         show: false
     }
     /**
@@ -116,7 +116,7 @@ export default class LoadingAddon extends Component{
     }
     //渲染
     render(){
-        let { type, message, className, others } = this.props,
+        let { type, loadingMsg, className, others } = this.props,
             typeClass = `loading-${type}`,
             loadingAddon = this.getLoadingAddon(),
             dotted = this.getDotted();
@@ -125,7 +125,7 @@ export default class LoadingAddon extends Component{
             <div {...others} className={classnames('loading', typeClass, className)}>
                 {loadingAddon}
                 <div className="loading-message">
-                    {message}
+                    {loadingMsg}
                     <span className="loading-message-dotted">{ dotted }</span>
                 </div>
             </div>

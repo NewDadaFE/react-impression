@@ -27,6 +27,8 @@ export default class Loading extends Component{
         className: PropTypes.string,
         //类型
         type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
+        //加载文本
+        loadingMsg: PropTypes.string,
         //可关闭
         closeable: PropTypes.bool
     }
@@ -34,6 +36,7 @@ export default class Loading extends Component{
     static defaultProps = {
         type: 'cyclone',
         closeable: false,
+        loadingMsg: '加载中'
     }
     /**
      * 关闭loading.
@@ -47,12 +50,12 @@ export default class Loading extends Component{
     }
     //渲染
     render(){
-        let { type } = this.props,
+        let { type, loadingMsg } = this.props,
             { show } = this.state;
 
         return (
             <div className={classnames('loading-mask', {hidden: !show})} onClick={this.hideHandle}>
-                <LoadingAddon type={type} show={show} />
+                <LoadingAddon type={type} show={show} loadingMsg={loadingMsg}/>
             </div>
         );
     }
