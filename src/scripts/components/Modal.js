@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
@@ -14,6 +15,18 @@ export default class Modal extends Component{
         className: PropTypes.string,
         //大小
         size: PropTypes.string,
+    }
+    /**
+     * 不可scroll.
+     */
+    componentDidMount(){
+        document.querySelector(".content").style.overflow = 'hidden';
+    }
+    /**
+     * 恢复scroll.
+     */
+    componentWillUnmount(){
+        document.querySelector(".content").style.overflow = 'auto';
     }
     //渲染
     render(){
