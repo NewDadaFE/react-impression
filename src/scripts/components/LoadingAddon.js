@@ -117,7 +117,6 @@ export default class LoadingAddon extends Component{
     //渲染
     render(){
         let { type, message, className, others } = this.props,
-            { dottedCount } = this.state,
             typeClass = `loading-${type}`,
             loadingAddon = this.getLoadingAddon(),
             dotted = this.getDotted();
