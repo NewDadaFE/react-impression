@@ -38,9 +38,9 @@ export default class App extends Component {
         return (
              <Router history={hashHistory}>
                 <Route path='/' component={Layout}>
+                    <Route path='button' component={ButtonView}/>
                     <Route path='image' component={ImageView}/>
                     <Route path='table' component={TableView}/>
-                    <Route path='button' component={ButtonView}/>
                     <Route path='checkbox' component={CheckboxView}/>
                     <Route path='radio' component={RadioView}/>
                     <Route path='switch' component={SwitchView}/>

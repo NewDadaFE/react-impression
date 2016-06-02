@@ -38,7 +38,8 @@
 
     .nav-link{
         cursor: pointer;
-        &:hover{
+        &:hover,
+        &.active{
             color: #fff;
             background: darken($sidebar-bg, 3%);
             border-left-color: $brand-primary;
