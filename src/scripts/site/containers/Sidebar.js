@@ -15,9 +15,7 @@ export default class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <div className="sidebar-nav">
-                    <div className="nav-item">
-                        BASIC
-                    </div>
+                    <div className="nav-item">BASIC</div>
                     <Link activeClassName="active" className='nav-link' to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
                     <Link activeClassName="active" className='nav-link' to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
                     <Link activeClassName="active" className='nav-link' to="/checkbox"><Icon type="check-square" left/>Checkbox</Link>
@@ -26,9 +24,7 @@ export default class Sidebar extends Component {
                     <Link activeClassName="active" className='nav-link' to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     <Link activeClassName="active" className='nav-link' to="/image"><Icon type="picture-o" left/>Image</Link>
                     <Link activeClassName="active" className='nav-link' to="/table"><Icon type="table" left/>Table</Link>
-                    <div className="nav-item">
-                        COMPONENT
-                    </div>
+                    <div className="nav-item">COMPONENT</div>
                     <Link activeClassName="active" className='nav-link' to="/card"><Icon type="television" left/>Card</Link>
                     <Link activeClassName="active" className='nav-link' to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
                     <Link activeClassName="active" className='nav-link' to="/tag"><Icon type="tag" left/>Tag</Link>

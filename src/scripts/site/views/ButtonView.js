@@ -95,3 +95,5 @@ export default class ButtonView extends Component{
         );
     }
 }
+
+ButtonView.title = "Button";

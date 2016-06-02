@@ -109,3 +109,5 @@ export default class InputGroupView extends Component{
         );
     }
 }
+
+InputGroupView.title = "InputGroup";

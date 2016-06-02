@@ -62,3 +62,5 @@ export default class RadioView extends Component{
         );
     }
 }
+
+RadioView.title = "Radio";

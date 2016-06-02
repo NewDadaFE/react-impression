@@ -1,10 +1,7 @@
 .breadcrumb {
-  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+  padding: 0;
   list-style: none;
-  margin-bottom: 0;
   background-color: $breadcrumb-bg;
-  @include border-radius($border-radius);
-  @include clearfix;
 }
 
 .breadcrumb-item {

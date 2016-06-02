@@ -47,3 +47,5 @@ export default class LoadingView extends Component{
         );
     }
 }
+
+LoadingView.title = "Loading";

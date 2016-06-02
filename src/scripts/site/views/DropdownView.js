@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card, Button, Dropdown } from  '../../components';
 import { CommenTable } from '../components';
 
-
 export default class DropdownView extends Component{
     render(){
         let menus = [{
@@ -40,3 +39,5 @@ export default class DropdownView extends Component{
         );
     }
 }
+
+DropdownView.title = "Dropdown";

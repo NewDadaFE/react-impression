@@ -86,3 +86,5 @@ export default class AlertView extends Component{
         );
     }
 }
+
+AlertView.title = "Alert";

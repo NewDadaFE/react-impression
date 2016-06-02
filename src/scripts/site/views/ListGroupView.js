@@ -101,3 +101,5 @@ export default class ListGroupView extends Component{
         );
     }
 }
+
+ListGroupView.title = "ListGroup";

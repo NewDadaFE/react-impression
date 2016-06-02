@@ -87,3 +87,5 @@ export default class NavView extends Component{
         );
     }
 }
+
+NavView.title = "Nav";

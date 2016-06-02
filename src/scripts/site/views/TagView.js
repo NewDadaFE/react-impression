@@ -73,3 +73,5 @@ export default class TagView extends Component{
         );
     }
 }
+
+TagView.title = "Tag";

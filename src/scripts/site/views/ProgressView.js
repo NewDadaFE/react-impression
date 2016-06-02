@@ -88,3 +88,5 @@ export default class ProgressView extends Component{
         );
     }
 }
+
+ProgressView.title = "Progress";

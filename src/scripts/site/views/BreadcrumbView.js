@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
-import { Breadcrumb } from '../../components';
+import { Card, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class BreadcrumbView extends Component{
     render(){
-        let path = [{
-            name: 'Home',
-            href: 'http://wwww.google.com'
+        let routes = [{
+            path: 'Home',
         }, {
-            name: 'Library',
-            href: 'http://wwww.apple.com'
+            path: 'Library',
         }, {
-            name: 'Data'
+            path: 'Data'
         }];
 
         return (
             <div>
                 <h3>Examples</h3>
-                <div className="card">
-                    <Breadcrumb path={path}></Breadcrumb>
-                </div>
+                <Card block>
+                    <Breadcrumb routes={routes}></Breadcrumb>
+                </Card>
                 <h3>Arrow divider</h3>
-                <div className="card">
-                    <Breadcrumb path={path} divider="arrow"></Breadcrumb>
-                </div>
+                <Card block>
+                    <Breadcrumb routes={routes} divider="arrow"></Breadcrumb>
+                </Card>
                 <h3 className="text-secondary">API</h3>
                 <CommenTable
                     data = {[
@@ -35,3 +33,5 @@ export default class BreadcrumbView extends Component{
         );
     }
 }
+
+BreadcrumbView.title = "Breadcrumb";

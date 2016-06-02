@@ -89,3 +89,5 @@ export default class FormView extends Component{
         );
     }
 }
+
+FormView.title = "Form";

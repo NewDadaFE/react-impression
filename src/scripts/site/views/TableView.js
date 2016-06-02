@@ -208,3 +208,5 @@ export default class TableView extends Component{
         );
     }
 }
+
+TableView.title = "Table";

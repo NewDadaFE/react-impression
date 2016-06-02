@@ -90,3 +90,5 @@ export default class TimelineView extends Component{
         );
     }
 }
+
+TimelineView.title = "Timeline";

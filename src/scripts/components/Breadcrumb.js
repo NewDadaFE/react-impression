@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { Link } from 'react-router';
 import React, { Component, PropTypes } from 'react';
 
 /**
@@ -9,20 +10,27 @@ export default class Breadcrumb extends Component{
     static propTypes = {
         //分隔
         divider: PropTypes.string,
-        //路径
-        path: PropTypes.arrayOf(PropTypes.object).isRequired,
+        //路由
+        routes: PropTypes.arrayOf(PropTypes.object).isRequired,
     }
     //渲染
     render(){
-        let { divider, path, ...others } = this.props;
-        let dividerClass = divider? `breadcrumb-${divider}`: '';
+        let { divider, routes, ...others } = this.props,
+            dividerClass = divider? `breadcrumb-${divider}`: '',
+            depth = routes.length - 1;
 
         return (
             <ol {...others} className={classnames('breadcrumb', dividerClass)}>
-                { path.map((item, index) =>
-                    <li key={index} className={classnames('breadcrumb-item', {active: !item.href})}>
-                        { item.href && <a href={item.href}>{item.name || item.text}</a> }
-                        { !item.href && <span>{item.name || item.text}</span> }
+                { routes.map((item, index) =>
+                    <li key={index} className="breadcrumb-item">
+                        { index < depth && item.path &&
+                            <Link to={item.path}>
+                                { item.component && item.component.title || item.path}
+                            </Link>
+                        }
+                        { (index === depth || !item.path) &&
+                            <span>{ item.component && item.component.title || item.path}</span>
+                        }
                     </li>
                 )}
             </ol>
