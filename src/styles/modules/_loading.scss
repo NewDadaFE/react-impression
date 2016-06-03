@@ -2,8 +2,8 @@
 //
 //
 .loading-mask{
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: $sidebar-width;
   right: 0;
   top: 0;
   bottom: 0;

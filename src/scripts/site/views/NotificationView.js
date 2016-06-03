@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Notification } from '../../components';
+import { Card, Row, Col, Button, Notification, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class NotificationView extends Component{
@@ -32,46 +32,49 @@ export default class NotificationView extends Component{
     render(){
         return (
             <div>
-                <h3>Example</h3>
-                <Card block>
-                    <Row>
-                        <Col col="2">
-                            <Button style="default" onClick={this.addInfoNotice}>
-                                <span className="text-primary">信息</span>
-                            </Button>
-                        </Col>
-                        <Col col="2">
-                            <Button style="default" onClick={this.addSuccessNotice}>
-                                <span className="text-success">成功</span>
-                            </Button>
-                        </Col>
-                        <Col col="2">
-                            <Button style="default" onClick={this.addWarningNotice}>
-                                <span className="text-warning">警告</span>
-                            </Button>
-                        </Col>
-                        <Col col="2">
-                           <Button style="default" onClick={this.addErrorNotice}>
-                                <span className="text-danger">错误</span>
-                           </Button>
-                        </Col>
-                    </Row>
+                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Card block noborder>
+                    <h3>Example</h3>
+                    <Card block>
+                        <Row>
+                            <Col col="2">
+                                <Button style="default" onClick={this.addInfoNotice}>
+                                    <span className="text-primary">信息</span>
+                                </Button>
+                            </Col>
+                            <Col col="2">
+                                <Button style="default" onClick={this.addSuccessNotice}>
+                                    <span className="text-success">成功</span>
+                                </Button>
+                            </Col>
+                            <Col col="2">
+                                <Button style="default" onClick={this.addWarningNotice}>
+                                    <span className="text-warning">警告</span>
+                                </Button>
+                            </Col>
+                            <Col col="2">
+                               <Button style="default" onClick={this.addErrorNotice}>
+                                    <span className="text-danger">错误</span>
+                               </Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                    <Notification/>
+                    <h3>Notification API</h3>
+                    <ul>
+                        <li><code>Notification.info(title, message, closeable)</code></li>
+                        <li><code>Notification.success(title, message, closeable)</code></li>
+                        <li><code>Notification.warning(title, message, closeable)</code></li>
+                        <li><code>Notification.error(title, message, closeable)</code></li>
+                    </ul>
+                    <CommenTable
+                        data = {[
+                            ['title', '提示内容标题', 'string', '通知'],
+                            ['message', '提示内容', 'string', ''],
+                            ['closeable', '是否显示关闭按钮', 'boolean', 'true'],
+                        ]}
+                    ></CommenTable>
                 </Card>
-                <Notification/>
-                <h3>Notification API</h3>
-                <ul>
-                    <li><code>Notification.info(title, message, closeable)</code></li>
-                    <li><code>Notification.success(title, message, closeable)</code></li>
-                    <li><code>Notification.warning(title, message, closeable)</code></li>
-                    <li><code>Notification.error(title, message, closeable)</code></li>
-                </ul>
-                <CommenTable
-                    data = {[
-                        ['title', '提示内容标题', 'string', '通知'],
-                        ['message', '提示内容', 'string', ''],
-                        ['closeable', '是否显示关闭按钮', 'boolean', 'true'],
-                    ]}
-                ></CommenTable>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Loading, Button } from '../../components';
+import { Card, Row, Col, Loading, Button, Breadcrumb } from '../../components';
 
 export default class LoadingView extends Component{
     //初始state
@@ -25,24 +25,27 @@ export default class LoadingView extends Component{
     render(){
         return (
             <div>
-                <h3>Loading</h3>
-                <Card block>
-                    <Row>
-                        <Col col="3">
-                            <Button style="default" onClick={() => this.showLoadingHandle('fountain')}>fountain</Button>
-                        </Col>
-                        <Col col="3">
-                            <Button style="default" onClick={() => this.showLoadingHandle('wave')}>wave</Button>
-                        </Col>
-                        <Col col="3">
-                            <Button style="default" onClick={() => this.showLoadingHandle('pendule')}>pendule</Button>
-                        </Col>
-                        <Col col="3">
-                            <Button style="default" onClick={() => this.showLoadingHandle('cyclone')}>cyclone</Button>
-                        </Col>
-                    </Row>
+                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Card block noborder>
+                    <h3>Loading</h3>
+                    <Card block>
+                        <Row>
+                            <Col col="3">
+                                <Button style="default" onClick={() => this.showLoadingHandle('fountain')}>fountain</Button>
+                            </Col>
+                            <Col col="3">
+                                <Button style="default" onClick={() => this.showLoadingHandle('wave')}>wave</Button>
+                            </Col>
+                            <Col col="3">
+                                <Button style="default" onClick={() => this.showLoadingHandle('pendule')}>pendule</Button>
+                            </Col>
+                            <Col col="3">
+                                <Button style="default" onClick={() => this.showLoadingHandle('cyclone')}>cyclone</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                    <Loading type={this.state.type} loadingMsg={this.state.msg} closeable={true}/>
                 </Card>
-                <Loading type={this.state.type} loadingMsg={this.state.msg} closeable={true}/>
             </div>
         );
     }

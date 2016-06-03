@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Card, Row, Col } from '../../components';
+import { Modal, Button, Card, Row, Col, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class ModalView extends Component{
@@ -23,60 +23,63 @@ export default class ModalView extends Component{
     render(){
         return (
             <div>
-                <h3>Examples</h3>
-                <Card block>
-                    <Row>
-                        <Col col="2">
-                            <Button style="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
-                        </Col>
-                        <Col col="2">
-                            <Button style="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
-                        </Col>
-                        <Col col="2">
-                            <Button style="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
-                        </Col>
-                    </Row>
+                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Card block noborder>
+                    <h3>Examples</h3>
+                    <Card block>
+                        <Row>
+                            <Col col="2">
+                                <Button style="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
+                            </Col>
+                            <Col col="2">
+                                <Button style="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
+                            </Col>
+                            <Col col="2">
+                                <Button style="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                    { this.state.show &&
+                        <Modal size={this.state.size}>
+                            <Modal.Header>
+                                <Button close onClick={this.toggleModalHandle}>&times;</Button>
+                                <h5 className="no-margin">Modal title</h5>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <p>One fine body&hellip;</p>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button style="default" onClick={this.toggleModalHandle}>Close</Button>
+                                <Button style="primary">Save</Button>
+                            </Modal.Footer>
+                        </Modal>
+                    }
+                    <h3 className="text-secondary">Modal API</h3>
+                    <CommenTable
+                        data = {[
+                            ['size', '设置模态框大小，可选值为 sm、lg', 'string', ''],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    ></CommenTable>
+                    <h3 className="text-secondary">Modal.Header API</h3>
+                    <CommenTable
+                        data = {[
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    ></CommenTable>
+                    <h3 className="text-secondary">Modal.Body API</h3>
+                    <CommenTable
+                        data = {[
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    ></CommenTable>
+                    <h3 className="text-secondary">Modal.Footer API</h3>
+                    <CommenTable
+                        data = {[
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    ></CommenTable>
                 </Card>
-                { this.state.show &&
-                    <Modal size={this.state.size}>
-                        <Modal.Header>
-                            <Button close onClick={this.toggleModalHandle}>&times;</Button>
-                            <h5 className="no-margin">Modal title</h5>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <p>One fine body&hellip;</p>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button style="default" onClick={this.toggleModalHandle}>Close</Button>
-                            <Button style="primary">Save</Button>
-                        </Modal.Footer>
-                    </Modal>
-                }
-                <h3 className="text-secondary">Modal API</h3>
-                <CommenTable
-                    data = {[
-                        ['size', '设置模态框大小，可选值为 sm、lg', 'string', ''],
-                        ['className', '自定义样式', 'string', ''],
-                    ]}
-                ></CommenTable>
-                <h3 className="text-secondary">Modal.Header API</h3>
-                <CommenTable
-                    data = {[
-                        ['className', '自定义样式', 'string', ''],
-                    ]}
-                ></CommenTable>
-                <h3 className="text-secondary">Modal.Body API</h3>
-                <CommenTable
-                    data = {[
-                        ['className', '自定义样式', 'string', ''],
-                    ]}
-                ></CommenTable>
-                <h3 className="text-secondary">Modal.Footer API</h3>
-                <CommenTable
-                    data = {[
-                        ['className', '自定义样式', 'string', ''],
-                    ]}
-                ></CommenTable>
             </div>
         );
     }

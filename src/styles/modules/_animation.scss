@@ -42,10 +42,9 @@
 
 .zoom-enter {
   position: absolute;
-  left: $nav-item-spacer-x;
-  right: $nav-item-spacer-x;
-  top: 1rem;
-  bottom: 1rem;
+  left: 0;
+  top: 0;
+  width: 100%;
   animation-duration: .6s;
   animation-fill-mode: both;
 }
@@ -77,10 +76,9 @@
 
 .zoom-leave {
   position: absolute;
-  left: $nav-item-spacer-x;
-  right: $nav-item-spacer-x;
-  top: 1rem;
-  bottom: 1rem;
+  left: 0;
+  top: 0;
+  width: 100%;
   animation-duration: .3s;
   animation-fill-mode: both;
 }

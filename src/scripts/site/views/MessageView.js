@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Message } from '../../components';
+import { Card, Row, Col, Button, Message, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class MessageView extends Component{
@@ -21,50 +21,53 @@ export default class MessageView extends Component{
     render(){
         return (
             <div>
-                <h3>Example</h3>
-                <Card block>
-                    <Row>
-                        <Col col="2">
-                            <Button style="default" onClick={this.showInfoMessageHandle}>
-                                <span className="text-primary">信息</span>
-                            </Button>
-                        </Col>
-                        <Col col="2">
-                            <Button style="default" onClick={this.showSuccessMessageHandle}>
-                                <span className="text-success">成功</span>
-                            </Button>
-                        </Col>
-                        <Col col="2">
-                            <Button style="default" onClick={this.showWarningMessageHandle}>
-                                <span className="text-warning">警告</span>
-                            </Button>
-                        </Col>
-                        <Col col="2">
-                           <Button style="default" onClick={this.showErrorMessageHandle}>
-                                <span className="text-danger">错误</span>
-                           </Button>
-                        </Col>
-                        <Col col="2">
-                           <Button style="default" onClick={this.showLoadingMessageHandle}>
-                                <i className="fa fa-spinner fa-left"></i>Loading
-                           </Button>
-                        </Col>
-                    </Row>
+                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Card block noborder>
+                    <h3>Example</h3>
+                    <Card block>
+                        <Row>
+                            <Col col="2">
+                                <Button style="default" onClick={this.showInfoMessageHandle}>
+                                    <span className="text-primary">信息</span>
+                                </Button>
+                            </Col>
+                            <Col col="2">
+                                <Button style="default" onClick={this.showSuccessMessageHandle}>
+                                    <span className="text-success">成功</span>
+                                </Button>
+                            </Col>
+                            <Col col="2">
+                                <Button style="default" onClick={this.showWarningMessageHandle}>
+                                    <span className="text-warning">警告</span>
+                                </Button>
+                            </Col>
+                            <Col col="2">
+                               <Button style="default" onClick={this.showErrorMessageHandle}>
+                                    <span className="text-danger">错误</span>
+                               </Button>
+                            </Col>
+                            <Col col="2">
+                               <Button style="default" onClick={this.showLoadingMessageHandle}>
+                                    <i className="fa fa-spinner fa-left"></i>Loading
+                               </Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                    <Message/>
+                    <h3>API</h3>
+                    <ul>
+                        <li><code>Message.info(content)</code></li>
+                        <li><code>Message.success(content)</code></li>
+                        <li><code>Message.warning(content)</code></li>
+                        <li><code>Message.error(content)</code></li>
+                        <li><code>Message.loading(content)</code></li>
+                    </ul>
+                    <CommenTable
+                        data = {[
+                            ['content', '提示内容', 'string', ''],
+                        ]}
+                    ></CommenTable>
                 </Card>
-                <Message/>
-                <h3>API</h3>
-                <ul>
-                    <li><code>Message.info(content)</code></li>
-                    <li><code>Message.success(content)</code></li>
-                    <li><code>Message.warning(content)</code></li>
-                    <li><code>Message.error(content)</code></li>
-                    <li><code>Message.loading(content)</code></li>
-                </ul>
-                <CommenTable
-                    data = {[
-                        ['content', '提示内容', 'string', ''],
-                    ]}
-                ></CommenTable>
             </div>
         );
     }

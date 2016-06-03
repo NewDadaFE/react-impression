@@ -14,6 +14,7 @@ export default class Layout extends Component {
     render () {
         return (
             <Flex direction="column">
+                {/* 顶部栏 */}
                 <Header/>
                 <FlexItem>
                     <Square>

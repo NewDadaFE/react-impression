@@ -14,11 +14,6 @@ export default class LoadingAddon extends Component{
         this.state = {
             dottedCount: 0
         };
-
-        this.getLoadingAddon = this.getLoadingAddon.bind(this);
-        this.getDotted = this.getDotted.bind(this);
-        this.setDottedInterval = this.setDottedInterval.bind(this);
-        this.clearDottedInterval = this.clearDottedInterval.bind(this);
     }
     //props校验
     static propTypes = {
@@ -112,7 +107,7 @@ export default class LoadingAddon extends Component{
      */
     componentWillReceiveProps(nextprops){
         !nextprops.show && (this.clearDottedInterval());
-        nextprops.show && (this.setDottedInterval());
+        !this.props.show && nextprops.show && (this.setDottedInterval());
     }
     //渲染
     render(){
