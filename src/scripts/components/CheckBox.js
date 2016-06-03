@@ -22,18 +22,32 @@ export default class Checkbox extends Component{
     static defaultProps = {
         disabled: false,
     }
+    shouldComponentUpdate(nextProps, nextState){
+        let currentProps = this.props;
+        Object.keys(nextProps).forEach(key => {
+            if(!currentProps.hasOwnProperty(key) || currentProps[key] !== nextProps[key]){
+                return true;
+            }
+        });
+        return false;
+    }
     //渲染
     render(){
-        let { value, checked, defaultChecked, disabled, className, onChange, ...others } = this.props;
+        let { value, checked, defaultChecked, disabled, className, onChange, children, ...others } = this.props,
+            checkboxProps = {
+                disabled,
+                onChange,
+                value: value || children,
+            };
 
         return(
             <label {...others} className={classnames('checkbox', className)}>
-                <input type="checkbox" value={value || this.props.children} disabled={disabled} defaultChecked={defaultChecked} checked={checked} ref="main" onChange={onChange} />
+                <input type="checkbox" ref="main" {...checkboxProps}/>
                 <div className="checkbox-addon">
                     <i className="fa fa-check"></i>
                 </div>
                 <span className="checkbox-label">
-                    {this.props.children}
+                    {children}
                 </span>
             </label>
         );
