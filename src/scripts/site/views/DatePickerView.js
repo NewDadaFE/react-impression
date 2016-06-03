@@ -119,4 +119,4 @@ export default class DatePickerView extends Component{
     }
 }
 
-DatePickerView.title = "DatePicker";
+DatePickerView.title = 'DatePicker';

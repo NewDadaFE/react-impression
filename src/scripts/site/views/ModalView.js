@@ -85,4 +85,4 @@ export default class ModalView extends Component{
     }
 }
 
-ModalView.title = "Modal";
+ModalView.title = 'Modal';

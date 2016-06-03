@@ -49,4 +49,4 @@ export default class TooltipView extends Component{
     }
 }
 
-TooltipView.title = "Tooltip";
+TooltipView.title = 'Tooltip';

@@ -89,4 +89,4 @@ export default class NavbarView extends Component{
     }
 }
 
-NavbarView.title = "Navbar";
+NavbarView.title = 'Navbar';

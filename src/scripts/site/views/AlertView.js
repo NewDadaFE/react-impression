@@ -85,10 +85,9 @@ export default class AlertView extends Component{
                         ]}
                     ></CommenTable>
                 </Card>
-                
             </div>
         );
     }
 }
 
-AlertView.title = "Alert";
+AlertView.title = 'Alert';

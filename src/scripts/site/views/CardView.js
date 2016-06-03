@@ -172,4 +172,4 @@ export default class CardView extends Component{
     }
 }
 
-CardView.title = "Card";
+CardView.title = 'Card';

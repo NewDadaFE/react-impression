@@ -37,4 +37,4 @@ export default class BreadcrumbView extends Component{
     }
 }
 
-BreadcrumbView.title = "Breadcrumb";
+BreadcrumbView.title = 'Breadcrumb';

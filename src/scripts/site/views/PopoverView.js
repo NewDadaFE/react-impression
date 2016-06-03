@@ -50,4 +50,4 @@ export default class PopoverView extends Component{
     }
 }
 
-PopoverView.title = "Popover";
+PopoverView.title = 'Popover';

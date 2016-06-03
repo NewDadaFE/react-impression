@@ -90,4 +90,4 @@ export default class ButtonGroupView extends Component{
     }
 }
 
-ButtonGroupView.title = "ButtonGroup";
+ButtonGroupView.title = 'ButtonGroup';

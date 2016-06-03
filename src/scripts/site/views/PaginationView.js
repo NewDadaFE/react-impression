@@ -41,4 +41,4 @@ export default class PaginationView extends Component{
     }
 }
 
-PaginationView.title = "Pagination";
+PaginationView.title = 'Pagination';

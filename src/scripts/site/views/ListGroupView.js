@@ -105,4 +105,4 @@ export default class ListGroupView extends Component{
     }
 }
 
-ListGroupView.title = "ListGroup";
+ListGroupView.title = 'ListGroup';

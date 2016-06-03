@@ -5,9 +5,6 @@ import { CommenTable } from '../components';
 export default class ButtonView extends Component{
     buttonClickHandle(event){
     }
-    componentWillEnter(){
-        console.log('enter');
-    }
     render(){
         return (
             <div>
@@ -102,4 +99,4 @@ export default class ButtonView extends Component{
     }
 }
 
-ButtonView.title = "Button";
+ButtonView.title = 'Button';

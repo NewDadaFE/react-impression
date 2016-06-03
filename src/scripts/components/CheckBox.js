@@ -35,6 +35,8 @@ export default class Checkbox extends Component{
     render(){
         let { value, checked, defaultChecked, disabled, className, onChange, children, ...others } = this.props,
             checkboxProps = {
+                checked,
+                defaultChecked,
                 disabled,
                 onChange,
                 value: value || children,

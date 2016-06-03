@@ -80,4 +80,4 @@ export default class NotificationView extends Component{
     }
 }
 
-NotificationView.title = "Notification";
+NotificationView.title = 'Notification';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Router, hashHistory } from 'react-router';
+import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import Layout from './Layout';
 import ImageView from '../views/ImageView';
 import TableView from '../views/TableView';
@@ -38,6 +38,7 @@ export default class App extends Component {
         return (
              <Router history={hashHistory}>
                 <Route path='/' component={Layout}>
+                    <IndexRoute component={ButtonView}/>
                     <Route path='button' component={ButtonView}/>
                     <Route path='image' component={ImageView}/>
                     <Route path='table' component={TableView}/>

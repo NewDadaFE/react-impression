@@ -41,4 +41,4 @@ export default class ImageView extends Component{
     }
 }
 
-ImageView.title = "Image";
+ImageView.title = 'Image';

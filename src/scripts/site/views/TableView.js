@@ -212,4 +212,4 @@ export default class TableView extends Component{
     }
 }
 
-TableView.title = "Table";
+TableView.title = 'Table';

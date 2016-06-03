@@ -43,4 +43,4 @@ export default class DropdownView extends Component{
     }
 }
 
-DropdownView.title = "Dropdown";
+DropdownView.title = 'Dropdown';

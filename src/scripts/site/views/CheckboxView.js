@@ -67,4 +67,4 @@ export default class CheckboxView extends Component{
     }
 }
 
-CheckboxView.title = "Checkbox";
+CheckboxView.title = 'Checkbox';

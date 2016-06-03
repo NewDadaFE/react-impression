@@ -66,4 +66,4 @@ export default class RadioView extends Component{
     }
 }
 
-RadioView.title = "Radio";
+RadioView.title = 'Radio';

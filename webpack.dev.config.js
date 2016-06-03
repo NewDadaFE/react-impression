@@ -21,7 +21,8 @@ module.exports = {
         new webpack.DefinePlugin({
             '__SHOW_DEV_TOOLS__': false,
             '__ENABLE_LOG__': true,
-            'NODE_ENV': 'development'
+            'NODE_ENV': 'development',
+            'process.evn.NODE_ENV': '"development"'
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',

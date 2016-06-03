@@ -77,4 +77,4 @@ export default class TagView extends Component{
     }
 }
 
-TagView.title = "Tag";
+TagView.title = 'Tag';

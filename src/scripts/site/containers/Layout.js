@@ -33,4 +33,4 @@ export default class Layout extends Component {
     }
 }
 
-Layout.title = "Home";
+Layout.title = 'Home';

@@ -36,4 +36,4 @@ export default class SwitchView extends Component{
     }
 }
 
-SwitchView.title = "Switch";
+SwitchView.title = 'Switch';

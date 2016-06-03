@@ -73,4 +73,4 @@ export default class MessageView extends Component{
     }
 }
 
-MessageView.title = "Message";
+MessageView.title = 'Message';

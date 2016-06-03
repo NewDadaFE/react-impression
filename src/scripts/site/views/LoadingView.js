@@ -51,4 +51,4 @@ export default class LoadingView extends Component{
     }
 }
 
-LoadingView.title = "Loading";
+LoadingView.title = 'Loading';
