@@ -1035,7 +1035,7 @@ $loading-cyclone-ball-color:                  darken($brand-primary, 18%) !defau
 //Page transition
 $page-transition-bg:                         #fff !default;
 $page-transition-duration:                   1.2s !default;
-$page-transition-enter-boxshadow:            0 0 8px rgba($brand-primary, .8) !default;
-$page-transition-leave-boxshadow:            0 0 8px rgba($brand-warning, .8) !default;
+$page-transition-enter-boxshadow:            0 0 4px darken($brand-primary, 12%) !default;
+$page-transition-leave-boxshadow:            $page-transition-enter-boxshadow !default;
 
 

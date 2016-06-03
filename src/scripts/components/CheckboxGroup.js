@@ -47,17 +47,18 @@ export default class CheckboxGroup extends Component{
     }
     //渲染
     render(){
-        let { className, direction, ...others } = this.props;
-        let children = this.props.children.map((child, index) => {
-            let { value, disabled } = child.props;
-            value = value !== undefined? value: child.props.children;
+        let { className, direction, ...others } = this.props,
+            children = this.props.children.map((child,index ) => {
+                let { value, disabled, children } = child.props;
+                value = (value !== undefined)? value : `${children}`;
 
-            return React.cloneElement(child, {
-                key: index,
-                onChange: this.onChangeHandle,
-                disabled: disabled || this.props.disabled,
-                checked: this.state.value.indexOf(value) != -1
-            });
+                return React.cloneElement(child, {
+                    value,
+                    key: index,
+                    onChange: this.onChangeHandle,
+                    disabled: disabled || this.props.disabled,
+                    checked: this.state.value.indexOf(value) != -1
+                });
         });
 
         return(

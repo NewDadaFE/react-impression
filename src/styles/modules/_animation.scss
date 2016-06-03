@@ -52,6 +52,7 @@
   animation-duration: $page-transition-duration;
   animation-timing-function: ease;
   animation-fill-mode: both;
+  transition: all 0.6s linear;
 }
 
 .zoom-enter-active{
