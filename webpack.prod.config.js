@@ -15,7 +15,7 @@ module.exports = {
             '__SHOW_DEV_TOOLS__': false,
             '__ENABLE_LOG__': false,
             'NODE_ENV': 'production',
-            'process.evn.NODE_ENV': '"production"'
+            'process.en.NODE_ENV': '"production"'
         })
     ],
     resolve: {

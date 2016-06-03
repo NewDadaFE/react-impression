@@ -22,7 +22,7 @@ module.exports = {
             '__SHOW_DEV_TOOLS__': false,
             '__ENABLE_LOG__': true,
             'NODE_ENV': 'development',
-            'process.evn.NODE_ENV': '"development"'
+            'process.env.NODE_ENV': '"development"'
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
