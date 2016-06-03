@@ -20,7 +20,7 @@ export default class Content extends Component {
 
         return (
             <div className="content">
-                <ReactCSSTransitionGroup componentDidLeave={this.componentDidLeave} component="div" transitionName="zoom" transitionEnterTimeout={600} transitionLeaveTimeout={300}>
+                <ReactCSSTransitionGroup componentDidLeave={this.componentDidLeave} component="div" transitionName="zoom" transitionEnterTimeout={1200} transitionLeaveTimeout={1200}>
                     {children}
                 </ReactCSSTransitionGroup>
             </div>

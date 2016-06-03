@@ -37,15 +37,20 @@
 }
 
 
-
-
-
-.zoom-enter {
+.zoom-enter,
+.zoom-leave {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
-  animation-duration: .6s;
+  height: 100%;
+  overflow-y: auto;
+  background: $page-transition-bg;
+  z-index: $page-transition-z-index;
+  box-shadow: $page-transition-enter-boxshadow;
+  transform-origin: 50% 50%;
+  animation-duration: $page-transition-duration;
+  animation-timing-function: ease;
   animation-fill-mode: both;
 }
 
@@ -53,36 +58,40 @@
   animation-name: zoomIn;
 }
 
+
 @keyframes zoomIn {
-    0% {
-    transform: translateX(-40%);
+  0% {
+    opacity: 0;
+    transform: translateX(200%) scale(0.8);
   }
 
-  100% {
-    transform: translateX(0);
+  25%{
+    transform: translateX(100%) scale(0.8);
+  }
 
+  75% {
+    opacity: 0.8;
+    transform: translateX(0) scale(0.8);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes zoomOut {
-    0% {
-    transform: translateX(60%);
+  25% {
+    opacity: 0.8;
+    transform: scale(0.8);
   }
-
   100% {
-    transform: translateX(100%);
+    opacity: 0;
+    transform: translateX(-100%) scale(0.8);
   }
 }
 
 .zoom-leave {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  animation-duration: .3s;
-  animation-fill-mode: both;
-}
-
-.zoom-leave-active{
   animation-name: zoomOut;
+  box-shadow: $page-transition-leave-boxshadow;
 }

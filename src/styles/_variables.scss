@@ -561,19 +561,21 @@ $dropdown-toggle-transition:     all .2s cubic-bezier(0.4, 0, 0.2, 1) !default;
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
-$zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:            1000 !default;
-$zindex-select:            1000 !default;
-$zindex-dropdown:          1000 !default;
-$zindex-datepicker:        1000 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
-$zindex-navbar-fixed:      1030 !default;
-$zindex-navbar-sticky:     1030 !default;
-$zindex-modal-bg:          1040 !default;
-$zindex-modal:             1050 !default;
-$zindex-message:           1060 !default;
-$zindex-notification:      1060 !default;
+$zindex-dropdown-backdrop:         990 !default;
+$zindex-navbar:                   1000 !default;
+$zindex-select:                   1000 !default;
+$zindex-dropdown:                 1000 !default;
+$zindex-datepicker:               1000 !default;
+$page-transition-z-index:         1000 !default;
+
+$zindex-navbar-fixed:             1030 !default;
+$zindex-navbar-sticky:            1030 !default;
+$zindex-modal-bg:                 1040 !default;
+$zindex-modal:                    1050 !default;
+$zindex-message:                  1060 !default;
+$zindex-notification:             1060 !default;
+$zindex-popover:                  1060 !default;
+$zindex-tooltip:                  1060 !default;
 
 
 // Navbar
@@ -1030,6 +1032,10 @@ $loading-cyclone-ball-width:                  1rem !default;
 $loading-cyclone-ball-height:                 $loading-cyclone-ball-width !default;
 $loading-cyclone-ball-color:                  darken($brand-primary, 18%) !default;
 
-
+//Page transition
+$page-transition-bg:                         #fff !default;
+$page-transition-duration:                   1.2s !default;
+$page-transition-enter-boxshadow:            0 0 8px rgba($brand-primary, .8) !default;
+$page-transition-leave-boxshadow:            0 0 8px rgba($brand-warning, .8) !default;
 
 
