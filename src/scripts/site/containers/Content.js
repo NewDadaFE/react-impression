@@ -11,15 +11,14 @@ import { Breadcrumb } from '../../components';
 export default class Content extends Component {
     render() {
         let { children } = this.props;
-        children = React.cloneElement(children, {
-            key: children.props.location.pathname
-        });
 
         return (
             <div className="content">
-                <ReactCSSTransitionGroup component="div" transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-                    <Breadcrumb divider="arrow" routes={children.props.routes}/>
-                    {children}
+                <ReactCSSTransitionGroup component="div" transitionName="zoom" transitionEnterTimeout={600} transitionLeaveTimeout={300}>
+                    <div key={children.props.location.pathname}>
+                        <Breadcrumb divider="arrow" routes={children.props.routes}/>
+                        {children}
+                    </div>
                 </ReactCSSTransitionGroup>
             </div>
         );

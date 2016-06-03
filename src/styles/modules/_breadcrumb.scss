@@ -2,6 +2,7 @@
   padding: 0;
   list-style: none;
   background-color: $breadcrumb-bg;
+  @include clearfix;
 }
 
 .breadcrumb-item {

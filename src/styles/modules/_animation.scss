@@ -35,3 +35,56 @@
     transform: rotate(359deg);
   }
 }
+
+
+
+
+
+.zoom-enter {
+  position: absolute;
+  left: $nav-item-spacer-x;
+  right: $nav-item-spacer-x;
+  top: 1rem;
+  bottom: 1rem;
+  animation-duration: .6s;
+  animation-fill-mode: both;
+}
+
+.zoom-enter-active{
+  animation-name: zoomIn;
+}
+
+@keyframes zoomIn {
+    0% {
+    transform: translateX(-40%);
+  }
+
+  100% {
+    transform: translateX(0);
+
+  }
+}
+
+@keyframes zoomOut {
+    0% {
+    transform: translateX(60%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.zoom-leave {
+  position: absolute;
+  left: $nav-item-spacer-x;
+  right: $nav-item-spacer-x;
+  top: 1rem;
+  bottom: 1rem;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+}
+
+.zoom-leave-active{
+  animation-name: zoomOut;
+}
