@@ -854,6 +854,9 @@ $message-body-padding:         0.5rem 1rem 0.5rem 0.75rem !default;
 $message-loading-padding:     0 0.5rem 0 0 !default;
 $message-loading-border-color:$brand-primary !default;
 
+$message-enter-duration:      0.24s !default;
+$message-leave-duration:      0.36s !default;
+
 // Notification
 $notification-width:          300px !default;
 
@@ -868,6 +871,9 @@ $notice-header-padding:       0.75rem 0 0.75rem 1rem !default;
 $notice-title-margin:         0 0 0.2rem 0 !default;
 
 $notice-body-padding:         0.75rem 1rem !default;
+
+$notice-enter-duration:      0.2s !default;
+$notice-leave-duration:      0.8s !default;
 
 // Timeline
 $timeline-item-padding-bottom:             2rem !default;
@@ -1035,7 +1041,7 @@ $loading-cyclone-ball-color:                  darken($brand-primary, 18%) !defau
 //Page transition
 $page-transition-bg:                         #fff !default;
 $page-transition-duration:                   1.2s !default;
-$page-transition-enter-boxshadow:            0 0 4px darken($brand-primary, 12%) !default;
+$page-transition-enter-boxshadow:            0 0 2px darken($brand-primary, 12%) !default;
 $page-transition-leave-boxshadow:            $page-transition-enter-boxshadow !default;
 
 

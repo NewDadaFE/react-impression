@@ -15,6 +15,9 @@
   margin-bottom: $notice-margin-bottom;
   box-shadow: $notice-box-shadow;
   border: 1px solid transparent;
+  animation-duration: $notice-enter-duration;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
 }
 
 .notice-header{
@@ -44,3 +47,37 @@
 .notice-success{ @include notice-variant($brand-success); }
 .notice-warning{ @include notice-variant($brand-warning); }
 .notice-danger{ @include notice-variant($brand-danger); }
+
+
+//Animation
+.notice-enter{
+  animation-name: slideInRight;
+}
+
+.notice-leave{
+  animation-duration: $notice-leave-duration;
+  animation-name: slideOutRight;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+}

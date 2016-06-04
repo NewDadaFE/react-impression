@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //Message组件引用
 let _message = undefined;
@@ -74,11 +75,17 @@ export default class Message extends Component{
         let iconClass = this.getTitleIcon();
 
         return (
-            <div className={classnames('message', { 'hidden': !show }, styleClass, className)}>
-                <div className="message-header">
-                    <i className={classnames(iconClass)}></i>
-                </div>
-                <div className='message-body'>{ message }</div>
+            <div>
+                <ReactCSSTransitionGroup component="div" transitionName="message" transitionEnterTimeout={240} transitionLeaveTimeout={360}>
+                    { show &&
+                        <div className={classnames('message', styleClass, className)}>
+                            <div className="message-header">
+                                <i className={classnames(iconClass)}></i>
+                            </div>
+                            <div className='message-body'>{ message }</div>
+                        </div>
+                    }
+                </ReactCSSTransitionGroup>
             </div>
         );
     }

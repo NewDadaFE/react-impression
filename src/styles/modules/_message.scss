@@ -3,14 +3,17 @@
   display: flex;
   align-items: center;
   position: fixed;
-  top: $message-top;
   left: 50%;
+  top: $message-top;
   z-index: $zindex-message;
   transform: translateX(-50%);
   color: $message-color;
   max-width: $message-max-width;
   box-shadow: $message-box-shadow;
   border-radius: $message-border-radius;
+  animation-duration: $message-enter-duration;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
 }
 
 .message-header{
@@ -40,3 +43,35 @@
 .message-success{ @include message-variant($brand-success); }
 .message-warning{ @include message-variant($brand-warning); }
 .message-danger{ @include message-variant($brand-danger); }
+
+// Animation
+.message-enter{
+  animation-name: slideInDown;
+}
+
+.message-leave{
+  animation-duration: $message-leave-duration;
+  animation-name: slideOutUp;
+}
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%)  translateY(-100px);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slideOutUp {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100px);
+  }
+}

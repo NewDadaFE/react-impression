@@ -1,6 +1,8 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import Notice from './Notice';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 //Notification组件引用
 let _notification = undefined;
@@ -85,14 +87,16 @@ export default class Notification extends Component{
 
         return (
             <div className={classnames('notification', className)}>
-                { Object.keys(this.state).map(key =>
-                  <Notice key={key} style={this.state[key].style}
-                  closeable={this.state[key].closeable}
-                  title={this.state[key].title}
-                  close={() => this.removeNotice(key)}>
-                        {this.state[key].message}
-                  </Notice>
-                )}
+                <ReactCSSTransitionGroup component="div" transitionName="notice" transitionEnterTimeout={200} transitionLeaveTimeout={800}>
+                    { Object.keys(this.state).map(key =>
+                      <Notice key={key} style={this.state[key].style}
+                      closeable={this.state[key].closeable}
+                      title={this.state[key].title}
+                      close={() => this.removeNotice(key)}>
+                            {this.state[key].message}
+                      </Notice>
+                    )}
+                </ReactCSSTransitionGroup>
             </div>
         );
     }
