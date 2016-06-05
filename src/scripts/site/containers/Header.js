@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, InputGroup, Form } from '../../components';
+import { Navbar, Nav, Button, InputGroup, Form, Icon } from '../../components';
 
 
 /**
@@ -19,6 +19,7 @@ export default class Header extends Component{
                             <InputGroup.Button style="primary">Search</InputGroup.Button>
                         </InputGroup>
                     </Form.Group>
+                    <Button href="https://github.com/shenlq/impression" style="default"><Icon type="github"/> star</Button>
                 </Form>
             </Navbar>
         );

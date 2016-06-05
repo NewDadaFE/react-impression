@@ -35,7 +35,7 @@ export default class Sidebar extends Component {
                     <Link activeClassName="active" className='nav-link' to="/navbar"><Icon type="tasks" left/>Navbar</Link>
                     <Link activeClassName="active" className='nav-link' to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
                     <Link activeClassName="active" className='nav-link' to="/list-group"><Icon type="list" left/>ListGroup</Link>
-                    <div className="nav-collapse">
+                    <div className="nav-collapse hidden">
                         <div className='nav-link'><Icon type="list" left/>List-Group<Icon type="angle-right" className="pull-right"/></div>
                         <div className="nav-collapse-block">
                             <Link activeClassName="active" className='nav-link' to="/image">Image</Link>

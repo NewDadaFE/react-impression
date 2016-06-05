@@ -15,6 +15,7 @@
   border: $popover-border-width solid $popover-border-color;
   @include border-radius($border-radius-lg);
   @include box-shadow($popover-box-shadow);
+  animation: popoverFadeIn 0.6s ease;
 
 
   // Popover directions
@@ -135,4 +136,15 @@
 .popover-arrow::after {
   content: "";
   border-width: $popover-arrow-width;
+}
+
+//Animation
+@keyframes popoverFadeIn{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

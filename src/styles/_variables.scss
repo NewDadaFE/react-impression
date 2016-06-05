@@ -737,6 +737,7 @@ $tooltip-border-radius:       2px !default;
 $tooltip-arrow-width:         0.5rem !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
+$tooltip-transition:          all 0.36s cubic-bezier(0.4, 0, 0.2, 1) !default;
 
 // Popovers
 

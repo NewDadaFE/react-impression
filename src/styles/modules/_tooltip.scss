@@ -9,8 +9,11 @@
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
   opacity: 0;
+  transition: $tooltip-transition;
 
-  &.in { opacity: $tooltip-opacity; }
+  &.in {
+    opacity: $tooltip-opacity;
+  }
 
   &.tooltip-top {
     padding: $tooltip-arrow-width 0;
@@ -80,3 +83,4 @@
   border-color: transparent;
   border-style: solid;
 }
+
