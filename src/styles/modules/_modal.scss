@@ -10,6 +10,7 @@
   overflow: hidden;
   outline: 0;
   -webkit-overflow-scrolling: touch;
+  animation: fadeIn $modal-animation-duration ease;
 }
 
 // Shell div to position the modal with bottom padding
@@ -18,6 +19,7 @@
   width: auto;
   margin: $modal-dialog-margin;
   border-radius: $modal-border-radius;
+  animation: slideInDown $modal-animation-duration ease;
 }
 
 // Actual modal
@@ -90,3 +92,26 @@
 @include media-breakpoint-up(lg) {
   .modal-lg { max-width: $modal-lg; }
 }
+
+//Animation
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+

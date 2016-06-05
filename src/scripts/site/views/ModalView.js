@@ -39,21 +39,6 @@ export default class ModalView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    { this.state.show &&
-                        <Modal size={this.state.size}>
-                            <Modal.Header>
-                                <Button close onClick={this.toggleModalHandle}>&times;</Button>
-                                <h5 className="no-margin">Modal title</h5>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <p>One fine body&hellip;</p>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button style="default" onClick={this.toggleModalHandle}>Close</Button>
-                                <Button style="primary">Save</Button>
-                            </Modal.Footer>
-                        </Modal>
-                    }
                     <h3 className="text-secondary">Modal API</h3>
                     <CommenTable
                         data = {[
@@ -80,6 +65,21 @@ export default class ModalView extends Component{
                         ]}
                     ></CommenTable>
                 </Card>
+                { this.state.show &&
+                    <Modal size={this.state.size}>
+                        <Modal.Header>
+                            <Button close onClick={this.toggleModalHandle}>&times;</Button>
+                            <h5 className="no-margin">Modal title</h5>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>One fine body&hellip;</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button style="default" onClick={this.toggleModalHandle}>Close</Button>
+                            <Button style="primary">Save</Button>
+                        </Modal.Footer>
+                    </Modal>
+                }
             </div>
         );
     }
