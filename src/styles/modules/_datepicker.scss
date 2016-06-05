@@ -9,6 +9,8 @@
   font-size: $datepicker-font-size;
   z-index: $zindex-datepicker;
   box-shadow: $datepicker-box-shadow;
+  animation: scaleIn 0.36s ease;
+  transform-origin: center 0;
 }
 
 //头部
@@ -141,4 +143,15 @@
   text-align: center;
   padding: $datepicker-footer-padding;
   border-top: $datepicker-border;
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

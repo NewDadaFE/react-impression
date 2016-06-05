@@ -63,6 +63,8 @@
   transition: $select-transition;
   border: $select-options-border;
   box-shadow: $select-options-box-shadow;
+    animation: scaleIn 0.36s ease;
+  transform-origin: center 0;
 
   .open &{
     display: block;
