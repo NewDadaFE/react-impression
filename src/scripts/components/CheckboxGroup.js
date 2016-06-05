@@ -59,7 +59,7 @@ export default class CheckboxGroup extends Component{
                     disabled: disabled || this.props.disabled,
                     checked: this.state.value.indexOf(value) != -1
                 });
-        });
+            });
 
         return(
             <div {...others} className={classnames(direction=='row'?'checkbox-inline': 'checkbox-vertical', className)}>
