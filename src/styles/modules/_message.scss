@@ -46,15 +46,15 @@
 
 // Animation
 .message-enter{
-  animation-name: slideInDown;
+  animation-name: messageSlideInDown;
 }
 
 .message-leave{
   animation-duration: $message-leave-duration;
-  animation-name: slideOutUp;
+  animation-name: messageSlideOutUp;
 }
 
-@keyframes slideInDown {
+@keyframes messageSlideInDown {
   0% {
     opacity: 0;
     transform: translateX(-50%)  translateY(-100px);
@@ -65,7 +65,7 @@
   }
 }
 
-@keyframes slideOutUp {
+@keyframes messageSlideOutUp {
   0% {
     transform: translateX(-50%) translateY(0);
   }

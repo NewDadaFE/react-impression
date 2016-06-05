@@ -12,15 +12,17 @@ export default class Breadcrumb extends Component{
         divider: PropTypes.string,
         //路由
         routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+        //自定义样式
+        className: PropTypes.string,
     }
     //渲染
     render(){
-        let { divider, routes, ...others } = this.props,
+        let { divider, routes, className, ...others } = this.props,
             dividerClass = divider? `breadcrumb-${divider}`: '',
             depth = routes.length - 1;
 
         return (
-            <ol {...others} className={classnames('breadcrumb', dividerClass)}>
+            <ol {...others} className={classnames('breadcrumb', className, dividerClass)}>
                 { routes.map((item, index) =>
                     <li key={index} className="breadcrumb-item">
                         { index < depth && item.path &&

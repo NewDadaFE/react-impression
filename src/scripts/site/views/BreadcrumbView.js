@@ -18,11 +18,11 @@ export default class BreadcrumbView extends Component{
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card block>
-                        <Breadcrumb routes={routes}></Breadcrumb>
+                        <Breadcrumb className="no-padding" routes={routes}></Breadcrumb>
                     </Card>
                     <h3>Arrow divider</h3>
                     <Card block>
-                        <Breadcrumb routes={routes} divider="arrow"></Breadcrumb>
+                        <Breadcrumb className="no-padding" routes={routes} divider="arrow"></Breadcrumb>
                     </Card>
                     <h3 className="text-secondary">API</h3>
                     <CommenTable
