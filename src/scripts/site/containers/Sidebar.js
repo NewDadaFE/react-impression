@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Icon, Tag, Nav } from '../../components';
+import { Icon, Tag, Sidebar, Nav } from '../../components';
 
 
 /**
  * 侧边栏Sidebar.
  */
-export default class Sidebar extends Component {
+export default class AppSidebar extends Component {
     /**
      * 组件渲染.
      */
     render() {
         return (
-            <div className="sidebar">
+            <Sidebar>
                 <Nav>
                     <Nav.Title>BASIC</Nav.Title>
                     <Nav.Link>
@@ -118,15 +118,15 @@ export default class Sidebar extends Component {
                         <Link to="/loading"><Icon type="spinner" left/>Loading</Link>
                     </Nav.Link>
                 </Nav>
-                <div className="sidebar-footer">
-                    <a href="javascript:void(0)" className="sidebar-footer-item">
+                <Sidebar.Footer>
+                    <Link to="/timeline">
                         <Icon type="question-circle" size="lg" left/>帮助
-                    </a>
-                    <a href="javascript:void(0)" className="sidebar-footer-item">
+                    </Link>
+                    <Link to="/timeline">
                         <Icon type="power-off" size="lg" left/>登出
-                    </a>
-                </div>
-            </div>
+                    </Link>
+                </Sidebar.Footer>
+            </Sidebar>
         );
     }
 }

@@ -23,6 +23,7 @@ export InputGroup from './InputGroup';
 export Form from './Form';
 export Nav from './Nav';
 export Navbar from './Navbar';
+export Sidebar from './Sidebar';
 export ListGroupItem from './ListGroupItem';
 export ListGroup from './ListGroup';
 export Breadcrumb from './Breadcrumb';

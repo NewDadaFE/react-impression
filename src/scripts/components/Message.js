@@ -69,10 +69,10 @@ export default class Message extends Component{
      * 渲染.
      */
     render() {
-        let { className } = this.props;
-        let { message, show } = this.state;
-        let styleClass = this.getStyleClass();
-        let iconClass = this.getTitleIcon();
+        let { className } = this.props,
+            { message, show } = this.state,
+            styleClass = this.getStyleClass(),
+            iconClass = this.getTitleIcon();
 
         return (
             <div>
