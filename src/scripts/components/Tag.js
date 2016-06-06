@@ -21,8 +21,8 @@ export default class Tag extends Component{
     //渲染
     render(){
         let { style, shape, children, className, ...others } = this.props,
-        tagStyle = style? `tag-${style}` : '',
-        tagShape = shape? `tag-${shape}` : '';
+            tagStyle = style? `tag-${style}` : '',
+            tagShape = shape? `tag-${shape}` : '';
 
         return (
             <span {...others} className = {classnames('tag', tagStyle, tagShape, className)}>

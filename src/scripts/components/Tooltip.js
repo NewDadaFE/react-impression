@@ -17,10 +17,10 @@ export default class Tooltip extends Component{
     //创建tooltip
     createTooltip(targetRect){
         let { position, content } = this.props,
-        positionClass = `tooltip-${position}`,
-        tooltipNode = document.createElement('div'),
-        arrowNode = document.createElement('div'),
-        innerNode = document.createElement('div');
+            positionClass = `tooltip-${position}`,
+            tooltipNode = document.createElement('div'),
+            arrowNode = document.createElement('div'),
+            innerNode = document.createElement('div');
 
         tooltipNode.className = `tooltip ${positionClass}`;
         arrowNode.className = 'tooltip-arrow';
@@ -68,7 +68,7 @@ export default class Tooltip extends Component{
     //渲染
     render(){
         let { children } = this.props,
-        { onMouseOver, onMouseOut } = children.props;
+            { onMouseOver, onMouseOut } = children.props;
 
         children = React.cloneElement(children, {
             onMouseOver: onMouseOver? event => {

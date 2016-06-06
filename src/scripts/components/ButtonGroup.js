@@ -32,8 +32,8 @@ export default class ButtonGroup extends Component{
     //渲染
     render(){
         let { activeKey } = this.state,
-        { style, size, className, onSelect, children, ...others } = this.props,
-        btnGroupSize = size? `btn-group-${size}` : null;
+            { style, size, className, onSelect, children, ...others } = this.props,
+            btnGroupSize = size? `btn-group-${size}` : null;
 
         children = children.map((child, index) => {
             let { eventKey } = child.props;

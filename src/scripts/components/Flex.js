@@ -17,7 +17,7 @@ export default class Flex extends Component{
     //渲染
     render(){
         let { direction, children, className, ...others } = this.props,
-        directionClass = direction === 'row'? '' : 'flex-vertical';
+            directionClass = direction === 'row'? '' : 'flex-vertical';
 
         return(
            <div {...others} className={classnames('flex', directionClass, className)}>

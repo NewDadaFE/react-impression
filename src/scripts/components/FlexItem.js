@@ -16,7 +16,7 @@ export default class FlexItem extends Component{
     //渲染
     render(){
         let { flex, children, className, ...others } = this.props,
-        flexClass = `flex-item${flex > 1? ('-' + flex) : ''}`;
+            flexClass = `flex-item${flex > 1? ('-' + flex) : ''}`;
 
         return(
            <div {...others} className={classnames(flexClass, className)}>

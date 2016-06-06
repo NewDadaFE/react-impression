@@ -16,7 +16,7 @@ export default class InputGroup extends Component{
     //渲染
     render(){
         let { size, className, children, ...others } = this.props,
-        sizeClass = size? `input-group-${size}`: null;
+            sizeClass = size? `input-group-${size}`: null;
 
         return(
             <div {...others} className={classnames('input-group', sizeClass, className)}>

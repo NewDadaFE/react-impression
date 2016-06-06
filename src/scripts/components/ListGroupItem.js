@@ -23,10 +23,10 @@ export default class ListGroupItem extends Component{
     //渲染
     render(){
         let { href, disabled, active, children, className, ...others } = this.props,
-        { Tag } = this.state,
-        disabledStyle = disabled ? 'disabled' : null,
-        activeStyle = active ? 'active' : null,
-        actionStyle = href ? 'list-group-item-action' : null;
+            { Tag } = this.state,
+            disabledStyle = disabled ? 'disabled' : null,
+            activeStyle = active ? 'active' : null,
+            actionStyle = href ? 'list-group-item-action' : null;
 
         return(
             <Tag {...others} href={href} className={classnames('list-group-item', activeStyle, disabledStyle, actionStyle, className )}>

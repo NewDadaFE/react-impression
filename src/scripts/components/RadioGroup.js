@@ -37,8 +37,8 @@ export default class RadioGroup extends Component{
     }
     //radio切换回调函数
     onChangeHandle(event){
-        let value = event.target.value;
-        let { onChange } = this.props;
+        let value = event.target.value,
+            { onChange } = this.props;
         value !== 'on' && this.setState({
             value
         });
@@ -47,21 +47,21 @@ export default class RadioGroup extends Component{
     //渲染
     render(){
         let { className, name, direction, ...others } = this.props,
-        children = this.props.children.map((child, index) => {
-            let { value, disabled } = child.props,
-            options = {
-                name: name || `radio_${this._reactInternalInstance._mountOrder}`,
-                key: index,
-                onChange: this.onChangeHandle,
-                disabled: disabled || this.props.disabled
-            };
+            children = this.props.children.map((child, index) => {
+                let { value, disabled } = child.props,
+                    options = {
+                        name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+                        key: index,
+                        onChange: this.onChangeHandle,
+                        disabled: disabled || this.props.disabled
+                    };
 
-            if((value !== undefined) || this.state.value !== undefined){
-                options.checked = (this.state.value === value);
-            }
+                if((value !== undefined) || this.state.value !== undefined){
+                    options.checked = (this.state.value === value);
+                }
 
-            return React.cloneElement(child, options);
-        });
+                return React.cloneElement(child, options);
+            });
 
         return(
             <div {...others} className={classnames(direction=='row'?'radio-inline': 'radio-vertical', className)}>

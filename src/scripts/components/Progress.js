@@ -30,8 +30,8 @@ export default class Progress extends Component{
     //渲染
     render(){
         let { style, striped, value, max, className, ...others } = this.props,
-        styleClass = style? `progress-${style}`: '',
-        stripedClass = striped? `progress-striped`: '';
+            styleClass = style? `progress-${style}`: '',
+            stripedClass = striped? `progress-striped`: '';
 
         return (
             <progress {...others} className={classnames('progress', styleClass, stripedClass, className)} value={value} max={max}></progress>

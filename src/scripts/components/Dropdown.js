@@ -61,10 +61,10 @@ export default class Dropdown extends Component{
     //渲染
     render(){
         let { menus, trigger, className, children, ...others } = this.props,
-        { open } = this.state,
-        options = {
-            className: `${children.props.className} dropdown-toggle`
-        };
+            { open } = this.state,
+            options = {
+                className: `${children.props.className} dropdown-toggle`
+            };
 
         switch(trigger){
         case 'click':

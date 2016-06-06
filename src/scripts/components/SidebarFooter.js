@@ -22,7 +22,7 @@ export default class SidebarFooter extends Component{
         });
 
         return(
-            <div className={classnames('sidebar-footer', className)}>
+            <div {...others} className={classnames('sidebar-footer', className)}>
                 {children}
             </div>
         );
