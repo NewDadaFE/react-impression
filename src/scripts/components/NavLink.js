@@ -14,7 +14,8 @@ export default class NavLink extends Component{
     render(){
         let { children, className, ...others } = this.props;
         children = React.cloneElement(children, {
-            className: classnames('nav-link', children.props.className)
+            className: classnames('nav-link', children.props.className),
+            activeClassName: children.type.displayName === 'Link' ? 'active' : null
         });
 
         return(

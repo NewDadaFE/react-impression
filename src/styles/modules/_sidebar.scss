@@ -6,18 +6,19 @@
     color: $sidebar-color;
     background-color: $sidebar-bg;
     padding-bottom: $sidebar-footer-height;
-}
 
-.sidebar-nav{
-    padding-bottom: $sidebar-nav-padding-bottom;
-    list-style: none;
-    margin-bottom: 0;
-    overflow: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: $sidebar-footer-height;
+    .nav{
+        height: 100%;
+        overflow-y: auto;
+        padding-bottom: $sidebar-nav-padding-bottom;
+    }
+
+    .nav-item{
+        display: block;
+        & + .nav-item{
+            margin-left: 0;
+        }
+    }
 
     .nav-link,
     .nav-collapse-title{
