@@ -30,13 +30,13 @@ export default class Alert extends Component{
         });
     }
     render(){
-        let { style, className, closeable, ...others } = this.props,
+        let { style, className, closeable, children, ...others } = this.props,
             styleClass = `alert-${style}`,
             hiddenClass = this.state.show? '' : 'hidden';
 
         return(
             <div {...others} className={classnames('alert', styleClass, hiddenClass, className)}>
-                {this.props.children}
+                {children}
                 { closeable &&
                     <button type="button" className="close" onClick={this.hideHandle}>&times;</button>
                 }

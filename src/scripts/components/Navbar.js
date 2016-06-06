@@ -17,8 +17,8 @@ export default class Navbar extends Component{
     }
     //渲染
     render(){
-        let { style, className, children, ...others } = this.props;
-        let styleClass = `navbar-${style}`;
+        let { style, className, children, ...others } = this.props,
+        styleClass = `navbar-${style}`;
 
         return(
             <nav {...others} className={classnames('navbar', styleClass, className)}>

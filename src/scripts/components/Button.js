@@ -37,18 +37,18 @@ export default class Button extends Component{
     }
     //渲染
     render(){
-        let { style, outline, size, shape, className, onClick, href, close, ...others} = this.props;
-        let { Tag } = this.state;
-        let btnClass = !close? 'btn': null;
-        let styleClass = !close? `btn${outline?'-outline':''}-${style}`: null;
-        let sizeClass = size? `btn-${size}` : '';
-        let shapeClass = shape? `btn-${shape}` : '';
-        let closeClass = close? 'close': null;
+        let { style, outline, size, shape, className, onClick, href, close, children, ...others} = this.props,
+        { Tag } = this.state,
+        btnClass = !close? 'btn' : null,
+        styleClass = !close? `btn${outline?'-outline':''}-${style}` : null,
+        sizeClass = size? `btn-${size}` : '',
+        shapeClass = shape? `btn-${shape}` : '',
+        closeClass = close? 'close' : null;
 
         return(
-            <Tag {...others} type={href?null:'button'} onClick={onClick} href={href} 
+            <Tag {...others} type={href?null:'button'} onClick={onClick} href={href}
                 className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, className)}>
-                {this.props.children}
+                {children}
             </Tag>
         );
     }

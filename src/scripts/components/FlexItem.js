@@ -15,12 +15,12 @@ export default class FlexItem extends Component{
     }
     //渲染
     render(){
-        let { flex } = this.props;
-        let flexClass = `flex-item${flex > 1? ('-' + flex) : ''}`;
+        let { flex, children, className, ...others } = this.props,
+        flexClass = `flex-item${flex > 1? ('-' + flex) : ''}`;
 
         return(
-           <div className={classnames(flexClass)}>
-                {this.props.children}
+           <div {...others} className={classnames(flexClass, className)}>
+                {children}
            </div>
         );
     }

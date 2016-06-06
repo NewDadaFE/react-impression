@@ -27,7 +27,7 @@ export default class Col extends Component{
     }
     //渲染
     render(){
-        let { col, offset, push, pull, ...others } = this.props,
+        let { col, offset, push, pull, children, ...others } = this.props,
             colClass = `col-xs-${col}`,
             offsetClass = offset? `offset-xs-${offset}` : null,
             pushClass = push? `push-xs-${push}` : null,
@@ -35,7 +35,7 @@ export default class Col extends Component{
 
         return(
            <div { ...others } className={classnames(colClass, offsetClass, pushClass, pullClass)}>
-                {this.props.children}
+                {children}
            </div>
         );
     }

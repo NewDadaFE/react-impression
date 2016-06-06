@@ -40,8 +40,8 @@ export default class Pagination extends Component{
     }
     //上一页
     prevPageHandle(){
-        let { onSelect } = this.props;
-        let activePage = this.state.activePage - 1;
+        let { onSelect } = this.props,
+        activePage = this.state.activePage - 1;
 
         onSelect && onSelect(activePage);
         this.state.activePage > 1 && this.setState({
@@ -50,8 +50,8 @@ export default class Pagination extends Component{
     }
     //下一页
     nextPageHandle(){
-        let { onSelect } = this.props;
-        let activePage = this.state.activePage + 1;
+        let { onSelect } = this.props,
+        activePage = this.state.activePage + 1;
 
         onSelect && onSelect(activePage);
         this.state.activePage < this.props.totalPage && this.setState({
@@ -69,9 +69,9 @@ export default class Pagination extends Component{
     }
     //获取显示页码
     getShowPageArray(){
-        let { scope, totalPage } = this.props;
-        let { activePage } = this.state;
-        let result = [];
+        let { scope, totalPage } = this.props,
+        { activePage } = this.state,
+        result = [];
         scope = scope < 0? 2: scope;
 
         for(let i=activePage-scope;i<=activePage+scope;i++){
@@ -86,9 +86,9 @@ export default class Pagination extends Component{
     }
     //渲染
     render(){
-        let { totalPage, className, ellipsis, ...others } = this.props;
-        let { activePage } = this.state;
-        let children = this.getShowPageArray();
+        let { totalPage, className, ellipsis, ...others } = this.props,
+        { activePage } = this.state,
+        children = this.getShowPageArray();
 
         return(
             <ul {...others} className={classnames('Pagination', className)}>

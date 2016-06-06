@@ -30,8 +30,8 @@ export default class Modal extends Component{
     }
     //渲染
     render(){
-        let { size, className, children, ...others } = this.props;
-        let sizeClass = size? `modal-${size}` : null;
+        let { size, className, children, ...others } = this.props,
+        sizeClass = size? `modal-${size}` : null;
 
         return(
             <div {...others} className={classnames('modal', className)}>

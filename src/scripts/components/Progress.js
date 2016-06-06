@@ -29,12 +29,12 @@ export default class Progress extends Component{
     }
     //渲染
     render(){
-        let { style, striped, value, max, ...others } = this.props;
-        let styleClass = style? `progress-${style}`: '';
-        let stripedClass = striped? `progress-striped`: '';
+        let { style, striped, value, max, className, ...others } = this.props,
+        styleClass = style? `progress-${style}`: '',
+        stripedClass = striped? `progress-striped`: '';
 
         return (
-            <progress {...others} className={classnames('progress', styleClass, stripedClass)} value={value} max={max}></progress>
+            <progress {...others} className={classnames('progress', styleClass, stripedClass, className)} value={value} max={max}></progress>
         );
     }
 }

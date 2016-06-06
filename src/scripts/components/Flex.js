@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
+import FlexItem from './FlexItem';
 
 /**
  * Flex布局组件.
@@ -15,14 +16,15 @@ export default class Flex extends Component{
     }
     //渲染
     render(){
-        let { direction } = this.props;
-        let directionClass = direction === 'row'? '' : 'flex-vertical';
+        let { direction, children, className, ...others } = this.props,
+        directionClass = direction === 'row'? '' : 'flex-vertical';
 
         return(
-           <div className={classnames('flex', directionClass)}>
-                {this.props.children}
+           <div {...others} className={classnames('flex', directionClass, className)}>
+                {children}
            </div>
         );
     }
-
 }
+
+Flex.Item = FlexItem;

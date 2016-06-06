@@ -21,12 +21,12 @@ export default class Popover extends Component{
     }
     //创建popover
     createPopover(targetRect){
-        let { position, title, content } = this.props;
-        let positionClass = `popover-${position}`;
-        let popoverNode = document.createElement('div');
-        let arrowNode = document.createElement('div');
-        let titleNode = document.createElement('div');
-        let contentNode = document.createElement('div');
+        let { position, title, content } = this.props,
+        positionClass = `popover-${position}`,
+        popoverNode = document.createElement('div'),
+        arrowNode = document.createElement('div'),
+        titleNode = document.createElement('div'),
+        contentNode = document.createElement('div');
 
         popoverNode.className = `popover ${positionClass}`;
         arrowNode.className = 'popover-arrow';
@@ -75,8 +75,8 @@ export default class Popover extends Component{
     }
     //渲染
     render(){
-        let { children } = this.props;
-        let { onMouseOver, onMouseOut } = children.props;
+        let { children } = this.props,
+        { onMouseOver, onMouseOut } = children.props;
 
         children = React.cloneElement(children, {
             onMouseOver: onMouseOver? event => {

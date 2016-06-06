@@ -33,9 +33,9 @@ export default class NavItem extends Component{
     render(){
         let { disabled, active, eventKey, className, children, ...others } = this.props,
             childClass = {
-            disabled,
-            active,
-        };
+                disabled,
+                active,
+            };
 
         return(
             eventKey !== undefined?

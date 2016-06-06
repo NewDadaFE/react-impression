@@ -17,8 +17,8 @@ export default class FormGroup extends Component{
     }
     //渲染
     render(){
-        let { col, className, children, ...others } = this.props;
-        let colClass = col? `col-xs-${col}`: null;
+        let { col, className, children, ...others } = this.props,
+        colClass = col? `col-xs-${col}`: null;
 
         return(
             <div {...others} className={classnames('form-group', colClass, className)}>

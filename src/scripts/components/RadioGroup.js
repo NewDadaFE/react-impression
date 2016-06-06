@@ -46,10 +46,10 @@ export default class RadioGroup extends Component{
     }
     //渲染
     render(){
-        let { className, name, direction, ...others } = this.props;
-        let children = this.props.children.map((child, index) => {
-            let { value, disabled } = child.props;
-            let options = {
+        let { className, name, direction, ...others } = this.props,
+        children = this.props.children.map((child, index) => {
+            let { value, disabled } = child.props,
+            options = {
                 name: name || `radio_${this._reactInternalInstance._mountOrder}`,
                 key: index,
                 onChange: this.onChangeHandle,

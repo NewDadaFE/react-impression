@@ -27,8 +27,8 @@ export default class Switch extends Component{
     }
     //状态切换回调
     onChangeHandle(event){
-        let { onChange } = this.props;
-        let { checked } = event.target;
+        let { onChange } = this.props,
+        { checked } = event.target;
 
         onChange && onChange(checked, event);
     }

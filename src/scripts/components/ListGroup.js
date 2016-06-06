@@ -12,11 +12,11 @@ export default class ListGroup extends Component{
     }
     //渲染
     render(){
-        let { className, ...others } = this.props;
+        let { className, children, ...others } = this.props;
 
         return(
             <ul {...others} className={classnames('list-group', className)}>
-                {this.props.children}
+                {children}
             </ul>
         );
     }

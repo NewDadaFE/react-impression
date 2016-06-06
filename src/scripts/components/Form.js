@@ -23,8 +23,8 @@ export default class Form extends Component{
     }
     //渲染
     render(){
-        let { type, grid, className, children, ...others } = this.props;
-        let typeClass = type? `form-${type}`: null;
+        let { type, grid, className, children, ...others } = this.props,
+        typeClass = type? `form-${type}`: null;
 
         return(
             <form {...others} className={classnames(typeClass, {row: grid}, className)}>

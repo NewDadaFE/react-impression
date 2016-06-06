@@ -14,10 +14,23 @@ export default class AppSidebar extends Component {
         return (
             <Sidebar>
                 <Nav>
-                    <Nav.Title>BASIC</Nav.Title>
+                    <Nav.Title>Basic</Nav.Title>
                     <Nav.Link>
                         <Link to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
                     </Nav.Link>
+                    <Nav.Link>
+                        <a href="http://fontawesome.io/icons/" target="_blank"><Icon type="flag" left/>Icon</a>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/image"><Icon type="picture-o" left/>Image</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/table"><Icon type="table" left/>Table</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/layout"><Icon type="columns" left/>Layout</Link>
+                    </Nav.Link>
+                    <Nav.Title>Form Control</Nav.Title>
                     <Nav.Link>
                         <Link to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
                     </Nav.Link>
@@ -32,12 +45,6 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <Link to="/image"><Icon type="picture-o" left/>Image</Link>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <Link to="/table"><Icon type="table" left/>Table</Link>
                     </Nav.Link>
                     <Nav.Title>COMPONENT</Nav.Title>
                     <Nav.Link>

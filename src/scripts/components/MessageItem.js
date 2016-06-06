@@ -31,10 +31,10 @@ export default class MessageItem extends Component{
      * 渲染.
      */
     render() {
-        let { children } = this.props;
+        let { children, className } = this.props;
 
         return (
-            <div className={classnames(['message-item'])}>
+            <div className={classnames('message-item', className)}>
                 <div className='message-item-title'>
                     <i className={classnames(['fa', 'fa-check-circle'])}></i>
                 </div>

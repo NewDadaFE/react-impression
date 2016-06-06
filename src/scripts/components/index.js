@@ -1,5 +1,4 @@
 export Flex from './Flex';
-export FlexItem from './FlexItem';
 export Row from './Row';
 export Col from './Col';
 export Card from './Card';
@@ -24,7 +23,6 @@ export Form from './Form';
 export Nav from './Nav';
 export Navbar from './Navbar';
 export Sidebar from './Sidebar';
-export ListGroupItem from './ListGroupItem';
 export ListGroup from './ListGroup';
 export Breadcrumb from './Breadcrumb';
 export Progress from './Progress';

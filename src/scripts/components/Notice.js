@@ -39,9 +39,9 @@ export default class Notice extends Component{
      * 渲染.
      */
     render() {
-        let { title, message, style, closeable, close, children, className } = this.props;
-        let styleClass = `notice-${style}`;
-        let iconClass = this.getTitleIcon();
+        let { title, message, style, closeable, close, children, className } = this.props,
+        styleClass = `notice-${style}`,
+        iconClass = this.getTitleIcon();
 
         return (
             <div className={classnames('notice', styleClass, className)}>
