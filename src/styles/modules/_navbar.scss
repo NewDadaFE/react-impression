@@ -22,6 +22,7 @@
 
     .nav-link {
       display: block;
+      padding: 0 $nav-item-spacer-x;
 
       + .nav-link {
         margin-left: $nav-item-spacer-x;

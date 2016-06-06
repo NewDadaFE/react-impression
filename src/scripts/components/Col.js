@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Col布局组件.
@@ -8,21 +8,21 @@ export default class Col extends Component{
     //prop type校验
     static propTypes = {
         //所占比例
-        col: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number
+        col: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
         ]).isRequired,
-        offset: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number
+        offset: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
         ]),
-        push: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number
+        push: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
         ]),
-        pull: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number
+        pull: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
         ]),
     }
     //渲染

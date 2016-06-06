@@ -16,7 +16,6 @@ export default class NavItem extends Component{
         disabled: PropTypes.bool,
         active: PropTypes.bool,
         eventKey: PropTypes.any,
-        href: PropTypes.string,
         onClick: PropTypes.func,
         className: PropTypes.string,
     }
@@ -32,25 +31,22 @@ export default class NavItem extends Component{
     }
     //渲染
     render(){
-        let { disabled, active, className, href, ...others } = this.props;
-        let childClass = {
+        let { disabled, active, eventKey, className, children, ...others } = this.props,
+            childClass = {
             disabled,
             active,
         };
 
         return(
+            eventKey !== undefined?
             <li {...others} className={classnames('nav-item', className)} onClick={this.onClickHandle}>
-                { href &&
-                    <a href={href} className={classnames('nav-link', childClass)}>
-                        {this.props.children}
-                    </a>
-                }
-                { !href &&
-                    <span className={classnames('nav-link', childClass)}>
-                        {this.props.children}
-                    </span>
-                }
-            </li>
+                <span className={classnames('nav-link', childClass)}>
+                    {children}
+                </span>
+            </li>:
+            <div {...others} className={classnames('nav-item', className)}>
+                {children}
+            </div>
         );
     }
 }

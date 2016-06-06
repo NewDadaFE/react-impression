@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Navbar, Nav, NavItem, Form, Button, Breadcrumb } from '../../components';
+import { Card, Navbar, Nav, Form, Button, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class NavbarView extends Component{
@@ -13,10 +13,18 @@ export default class NavbarView extends Component{
                         <Navbar>
                             <Navbar.Brand>Navbar</Navbar.Brand>
                             <Nav>
-                                <NavItem href="#">Home</NavItem>
-                                <NavItem href="#">Features</NavItem>
-                                <NavItem href="#">Pricing</NavItem>
-                                <NavItem href="#">About</NavItem>
+                                <Nav.Link>
+                                    <a href="#">Home</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">Features</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">Pricing</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">About</a>
+                                </Nav.Link>
                             </Nav>
                             <Form type="inline">
                                 <Form.Group>
@@ -31,10 +39,18 @@ export default class NavbarView extends Component{
                         <Navbar style="pure">
                             <Navbar.Brand>Navbar</Navbar.Brand>
                             <Nav>
-                                <NavItem href="#">Home</NavItem>
-                                <NavItem href="#">Features</NavItem>
-                                <NavItem href="#">Pricing</NavItem>
-                                <NavItem href="#">About</NavItem>
+                                <Nav.Link>
+                                    <a href="#">Home</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">Features</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">Pricing</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">About</a>
+                                </Nav.Link>
                             </Nav>
                             <Form>
                                 <Form.Group>
@@ -49,10 +65,18 @@ export default class NavbarView extends Component{
                         <Navbar style="primary">
                             <Navbar.Brand>Navbar</Navbar.Brand>
                             <Nav>
-                                <NavItem href="#">Home</NavItem>
-                                <NavItem href="#">Features</NavItem>
-                                <NavItem href="#">Pricing</NavItem>
-                                <NavItem href="#">About</NavItem>
+                                <Nav.Link>
+                                    <a href="#">Home</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">Features</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">Pricing</a>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <a href="#">About</a>
+                                </Nav.Link>
                             </Nav>
                             <Form>
                                 <Form.Group>

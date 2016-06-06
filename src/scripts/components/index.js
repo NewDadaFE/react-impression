@@ -22,7 +22,6 @@ export Input from './Input';
 export InputGroup from './InputGroup';
 export Form from './Form';
 export Nav from './Nav';
-export NavItem from './NavItem';
 export Navbar from './Navbar';
 export ListGroupItem from './ListGroupItem';
 export ListGroup from './ListGroup';

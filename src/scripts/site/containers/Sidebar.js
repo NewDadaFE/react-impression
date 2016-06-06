@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Icon, Tag } from '../../components';
+import { Icon, Tag, Nav } from '../../components';
 
 
 /**
@@ -14,45 +14,109 @@ export default class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <div className="sidebar-nav">
-                    <div className="nav-item">BASIC</div>
-                    <Link activeClassName="active" className='nav-link' to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
-                    <Link activeClassName="active" className='nav-link' to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
-                    <Link activeClassName="active" className='nav-link' to="/checkbox"><Icon type="check-square" left/>Checkbox</Link>
-                    <Link activeClassName="active" className='nav-link' to="/switch"><Icon type="toggle-on" left/>Switch</Link>
-                    <Link activeClassName="active" className='nav-link' to="/select"><Icon type="angle-down" left/>Select</Link>
-                    <Link activeClassName="active" className='nav-link' to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
-                    <Link activeClassName="active" className='nav-link' to="/image"><Icon type="picture-o" left/>Image</Link>
-                    <Link activeClassName="active" className='nav-link' to="/table"><Icon type="table" left/>Table</Link>
-                    <div className="nav-item">COMPONENT</div>
-                    <Link activeClassName="active" className='nav-link' to="/card"><Icon type="television" left/>Card</Link>
-                    <Link activeClassName="active" className='nav-link' to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
-                    <Link activeClassName="active" className='nav-link' to="/tag"><Icon type="tag" left/>Tag</Link>
-                    <Link activeClassName="active" className='nav-link' to="/alert"><Icon type="info-circle" left/>Alert<Tag style="warning" className="fa-right">1/4</Tag></Link>
-                    <Link activeClassName="active" className='nav-link' to="/progress"><Icon type="hourglass-start" left/>Progress</Link>
-                    <Link activeClassName="active" className='nav-link' to="/button-group"><Icon type="th-large" left/>ButtonGroup</Link>
-                    <Link activeClassName="active" className='nav-link' to="/pagination"><Icon type="angle-double-right" left/>Pagination</Link>
-                    <Link activeClassName="active" className='nav-link' to="/nav"><Icon type="bars" left/>Nav</Link>
-                    <Link activeClassName="active" className='nav-link' to="/navbar"><Icon type="tasks" left/>Navbar</Link>
-                    <Link activeClassName="active" className='nav-link' to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
-                    <Link activeClassName="active" className='nav-link' to="/list-group"><Icon type="list" left/>ListGroup</Link>
+                    <Nav.Title>BASIC</Nav.Title>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/checkbox"><Icon type="check-square" left/>Checkbox</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/switch"><Icon type="toggle-on" left/>Switch</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/select"><Icon type="angle-down" left/>Select</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/image"><Icon type="picture-o" left/>Image</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/table"><Icon type="table" left/>Table</Link>
+                    </Nav.Link>
+                    <Nav.Title>COMPONENT</Nav.Title>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/card"><Icon type="television" left/>Card</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/tag"><Icon type="tag" left/>Tag</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/alert"><Icon type="info-circle" left/>Alert<Tag style="warning" className="fa-right">1/4</Tag></Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/progress"><Icon type="hourglass-start" left/>Progress</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/button-group"><Icon type="th-large" left/>ButtonGroup</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/pagination"><Icon type="angle-double-right" left/>Pagination</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/nav"><Icon type="bars" left/>Nav</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/navbar"><Icon type="tasks" left/>Navbar</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/list-group"><Icon type="list" left/>ListGroup</Link>
+                    </Nav.Link>
                     <div className="nav-collapse hidden">
-                        <div className='nav-link'><Icon type="list" left/>List-Group<Icon type="angle-right" className="pull-right"/></div>
+                        <div><Icon type="list" left/>List-Group<Icon type="angle-right" className="pull-right"/></div>
                         <div className="nav-collapse-block">
-                            <Link activeClassName="active" className='nav-link' to="/image">Image</Link>
-                            <Link activeClassName="active" className='nav-link' to="/table">Table</Link>
-                            <Link activeClassName="active" className='nav-link' to="/button">Button</Link>
-                            <Link activeClassName="active" className='nav-link' to="/button-group">Button-Group</Link>
+                            <Nav.Link>
+                                <Link activeClassName="active" to="/image">Image</Link>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <Link activeClassName="active" to="/table">Table</Link>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <Link activeClassName="active" to="/button">Button</Link>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <Link activeClassName="active" to="/button-group">Button-Group</Link>
+                            </Nav.Link>
                         </div>
                     </div>
-                    <Link activeClassName="active" className='nav-link' to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
-                    <Link activeClassName="active" className='nav-link' to="/tooltip"><Icon type="commenting-o" left/>Tooltip</Link>
-                    <Link activeClassName="active" className='nav-link' to="/popover"><Icon type="comments" left/>Popover</Link>
-                    <Link activeClassName="active" className='nav-link' to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
-                    <Link activeClassName="active" className='nav-link' to="/message"><Icon type="bell" left/>Message</Link>
-                    <Link activeClassName="active" className='nav-link' to="/notification"><Icon type="bullhorn" left/>Notification</Link>
-                    <Link activeClassName="active" className='nav-link' to="/datepicker"><Icon type="calendar" left/>DatePicker</Link>
-                    <Link activeClassName="active" className='nav-link' to="/timeline"><Icon type="clock-o" left/>Timeline</Link>
-                    <Link activeClassName="active" className='nav-link' to="/loading"><Icon type="spinner" left/>Loading</Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/tooltip"><Icon type="commenting-o" left/>Tooltip</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/popover"><Icon type="comments" left/>Popover</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/message"><Icon type="bell" left/>Message</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/notification"><Icon type="bullhorn" left/>Notification</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/datepicker"><Icon type="calendar" left/>DatePicker</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/timeline"><Icon type="clock-o" left/>Timeline</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link activeClassName="active" to="/loading"><Icon type="spinner" left/>Loading</Link>
+                    </Nav.Link>
                 </div>
                 <div className="sidebar-footer">
                     <a href="javascript:void(0)" className="sidebar-footer-item">

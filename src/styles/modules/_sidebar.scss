@@ -9,7 +9,7 @@
 }
 
 .sidebar-nav{
-    padding: 0;
+    padding-bottom: $sidebar-nav-padding-bottom;
     list-style: none;
     margin-bottom: 0;
     overflow: auto;
@@ -19,37 +19,36 @@
     top: 0;
     bottom: $sidebar-footer-height;
 
-    .nav-item,
     .nav-link,
     .nav-collapse-title{
         display: block;
-        color: #a7b1c2;
-        padding: 0.6rem 1.6rem;
-        border-left: 2px solid transparent;
-        border-right: 2px solid transparent;
-    }
-
-    .nav-item{
-        padding: 1rem 0.6rem 0.3rem 0.6rem;
-        color: #fff;
-        font-size: $font-size-sm;
-
+        color: $sidebar-nav-link-color;
+        padding: $sidebar-nav-link-padding;
+        border-left: $sidebar-nav-link-border-width solid transparent;
+        border-right: $sidebar-nav-link-border-width solid transparent;
     }
 
     .nav-link{
         cursor: pointer;
         &:hover,
         &.active{
-            color: #fff;
-            background: darken($sidebar-bg, 3%);
-            border-left-color: $brand-primary;
-            box-shadow: inset 0 0 3rem darken($sidebar-bg, 4%);
+            color: $sidebar-nav-link-active-color;
+            background: $sidebar-nav-link-active-bg;
+            border-left-color: $sidebar-nav-link-active-border-color;
+            box-shadow: $sidebar-nav-link-active-box-shadow;
         }
 
         .pull-right{
             line-height: $line-height-base;
         }
     }
+}
+
+.nav-title{
+    padding: $nav-title-padding;
+    color: $nav-title-color;
+    font-size: $nav-title-font-size;
+    font-style: $nav-title-font-style;
 }
 
 .nav-collapse{
@@ -78,10 +77,10 @@
 .sidebar-footer-item{
     flex: 1;
     text-align: center;
-    color: #a7b1c2;
-    border-top: 2px solid transparent;
+    color: $sidebar-nav-link-color;
+    border-top: $sidebar-nav-link-border-width solid transparent;
     &:hover{
-        color: #fff;
-        border-top-color: $brand-primary;
+        color: $sidebar-nav-link-active-color;
+        border-top-color: $sidebar-nav-link-active-border-color;
     }
 }

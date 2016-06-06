@@ -599,21 +599,38 @@ $navbar-pure-border-color:          $navbar-pure-bg !default;
 
 
 //Sidebar
-$sidebar-width:               12rem !default;
-$sidebar-color:               $gray-light !default;
-$sidebar-bg:                  $gray-secondary !default;
+$sidebar-width:                     12rem !default;
+$sidebar-color:                     $gray-light !default;
+$sidebar-bg:                        $gray-secondary !default;
 
-$sidebar-footer-bg:           darken($sidebar-bg, 3%) !default;
-$sidebar-footer-font-size:    $font-size-sm !default;
-$sidebar-footer-height:       35px !default;
+$sidebar-footer-bg:                 darken($sidebar-bg, 3%) !default;
+$sidebar-footer-font-size:          $font-size-sm !default;
+$sidebar-footer-height:             35px !default;
+
+$sidebar-nav-padding-bottom:        3rem !default;
+
+$sidebar-nav-link-color:                        #a7b1c2 !default;
+$sidebar-nav-link-padding:                      0.8rem 1.6rem !default;
+$sidebar-nav-link-border-width:                 2px !default;
+$sidebar-nav-link-active-bg:                    darken($sidebar-bg, 3%) !default;
+$sidebar-nav-link-active-color:                 #fff !default;
+$sidebar-nav-link-active-border-color:          $brand-primary !default;
+$sidebar-nav-link-active-box-shadow:            inset 0 0 3rem darken($sidebar-bg, 4%) !default;
 
 // Navs
 $nav-item-margin:               .2rem !default;
 $nav-item-spacer-x:             1rem !default;
 $nav-item-inline-spacer:        1rem !default;
+
+$nav-title-color:               #fff !default;
+$nav-title-padding:             1rem 0.5rem !default;
+$nav-title-font-size:           $font-size-sm !default;
+$nav-title-font-style:          italic !default;
+
 $nav-link-padding:              .5em 1em !default;
 $nav-link-active-color:         $brand-primary !default;
 $nav-link-hover-bg:             $gray-lighter !default;
+
 $nav-disabled-link-color:       $gray-light !default;
 $nav-disabled-link-hover-color: $gray-light !default;
 $nav-disabled-link-hover-bg:    transparent !default;
@@ -643,7 +660,7 @@ $nav-tabs-justified-active-link-border-color: $body-bg !default;
 $nav-pills-color:             $nav-tabs-link-color !default;
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;
-$nav-pills-active-link-bg:    $component-active-bg !default;
+$nav-pills-active-link-bg:    $brand-primary !default;
 
 
 // Pagination
