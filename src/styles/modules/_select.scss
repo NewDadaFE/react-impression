@@ -40,8 +40,12 @@
 
 .select-addon{
   cursor: pointer;
-  margin: $select-addon-margin-left;
   user-select: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: $select-line-height;
+  padding: $input-padding-y $input-padding-x;
   transition: $select-transition;
 
   .open &{
