@@ -3,6 +3,7 @@ export Row from './Row';
 export Col from './Col';
 export Card from './Card';
 export Square from './Square';
+export Content from './Content';
 export Icon from './Icon';
 export Button from './Button';
 export ButtonGroup from './ButtonGroup';

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
-
 /**
- * 主内容区.
+ * 主内容区 组件.
  */
 export default class Content extends Component {
     render() {
