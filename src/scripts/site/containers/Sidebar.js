@@ -46,7 +46,7 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     </Nav.Link>
-                    <Nav.Title>COMPONENT</Nav.Title>
+                    <Nav.Title>Components</Nav.Title>
                     <Nav.Link>
                         <Link to="/card"><Icon type="television" left/>Card</Link>
                     </Nav.Link>

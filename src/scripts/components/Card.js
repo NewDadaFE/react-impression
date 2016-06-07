@@ -8,7 +8,7 @@ import CardFooter from './CardFooter';
  * Card组件.
  */
 export default class Card extends Component{
-        //props校验
+    //props校验
     static propTypes = {
         //自定义样式
         className: PropTypes.string,
