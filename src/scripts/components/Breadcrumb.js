@@ -15,11 +15,22 @@ export default class Breadcrumb extends Component{
         //自定义样式
         className: PropTypes.string,
     }
+    /**
+     * 设置浏览器title.
+     */
+    setDocumentTitle(){
+        let { routes } = this.props,
+            leafRoute = routes[routes.length - 1];
+
+        document.title = leafRoute.component && leafRoute.component.title || leafRoute.path;
+    }
     //渲染
     render(){
         let { divider, routes, className, ...others } = this.props,
             dividerClass = divider? `breadcrumb-${divider}`: '',
             depth = routes.length - 1;
+
+        this.setDocumentTitle();
 
         return (
             <ol {...others} className={classnames('breadcrumb', className, dividerClass)}>
