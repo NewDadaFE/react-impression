@@ -28,13 +28,13 @@ export default class ModalView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="2">
+                            <Col>
                                 <Button style="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                 <Button style="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                 <Button style="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
                             </Col>
                         </Row>

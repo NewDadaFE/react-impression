@@ -42,8 +42,8 @@
   cursor: pointer;
   user-select: none;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 1px;
+  top: 1px;
   line-height: $select-line-height;
   padding: $input-padding-y $input-padding-x;
   transition: $select-transition;

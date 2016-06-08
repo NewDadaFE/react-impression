@@ -37,22 +37,22 @@ export default class NotificationView extends Component{
                     <h3>Example</h3>
                     <Card block>
                         <Row>
-                            <Col col="2">
+                            <Col>
                                 <Button style="default" onClick={this.addInfoNotice}>
                                     <span className="text-primary">信息</span>
                                 </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                 <Button style="default" onClick={this.addSuccessNotice}>
                                     <span className="text-success">成功</span>
                                 </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                 <Button style="default" onClick={this.addWarningNotice}>
                                     <span className="text-warning">警告</span>
                                 </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                <Button style="default" onClick={this.addErrorNotice}>
                                     <span className="text-danger">错误</span>
                                </Button>

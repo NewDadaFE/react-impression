@@ -5,13 +5,13 @@ import React, { Component } from 'react';
  * FlexItem组件.
  */
 export default class FlexItem extends Component{
-    //默认props
-    static defaultProps = {
-        flex: 1,
-    }
     //prop type校验
     static propTypes = {
         flex: React.PropTypes.number
+    }
+    //默认props
+    static defaultProps = {
+        flex: 1,
     }
     //渲染
     render(){

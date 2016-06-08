@@ -11,19 +11,19 @@ export default class InputGroupView extends Component{
                     <h3>Basic examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <InputGroup>
                                     <InputGroup.Addon>@</InputGroup.Addon>
                                     <InputGroup.Input placeholder="something"/>
                                 </InputGroup>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <InputGroup>
                                     <InputGroup.Input placeholder="something"/>
                                     <InputGroup.Addon>@</InputGroup.Addon>
                                 </InputGroup>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <InputGroup>
                                     <InputGroup.Addon>@</InputGroup.Addon>
                                     <InputGroup.Input placeholder="something"/>
@@ -35,19 +35,19 @@ export default class InputGroupView extends Component{
                     <h3>Button addons</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <InputGroup>
                                     <InputGroup.Button style="default">help</InputGroup.Button>
                                     <InputGroup.Input placeholder="something"/>
                                 </InputGroup>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <InputGroup>
                                     <InputGroup.Input placeholder="something"/>
                                     <InputGroup.Button style="primary">Go</InputGroup.Button>
                                 </InputGroup>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <InputGroup>
                                     <InputGroup.Button style="default">-</InputGroup.Button>
                                     <InputGroup.Input placeholder="something"/>

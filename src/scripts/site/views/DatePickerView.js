@@ -11,26 +11,26 @@ export default class DatePickerView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>时间:</label>
+                                        <label>default:</label>
                                         <Input type="date"/>
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>默认时间:</label>
+                                        <label>默认:</label>
                                         <Input type="date" defaultValue="2016-05-29"/>
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>不可选:</label>
+                                        <label>只读:</label>
                                         <Input type="date" defaultValue="2016-05-29" disabled/>
                                     </Form.Group>
                                 </Form>
@@ -40,26 +40,26 @@ export default class DatePickerView extends Component{
                     <h3>时间限制</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>最小时间:</label>
+                                        <label>min:</label>
                                         <Input type="date" defaultValue="2016-05-29" minDate="2016-05-15"/>
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>最大时间:</label>
+                                        <label>max:</label>
                                         <Input type="date" defaultValue="2016-05-29" maxDate="2016-05-31"/>
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>第一天:</label>
+                                        <label>first day:</label>
                                         <Input type="date" defaultValue="2016-05-29" firstDayOfWeek="一"/>
                                     </Form.Group>
                                 </Form>
@@ -69,7 +69,7 @@ export default class DatePickerView extends Component{
                     <h3>时间格式</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
                                         <label>Y-M-D:</label>
@@ -77,15 +77,15 @@ export default class DatePickerView extends Component{
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>YYYY/MM/DD:</label>
+                                        <label>Y/MM/DD:</label>
                                         <Input type="date" defaultValue="2016/05/29" format="YYYY/MM/DD"/>
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Form>
                                     <Form.Group>
                                         <label>年月日:</label>

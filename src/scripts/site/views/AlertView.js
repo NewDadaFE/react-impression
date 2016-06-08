@@ -11,21 +11,21 @@ export default class AlertView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="success">
                                     <strong>Well done!</strong> You successfully read this important alert message.
                                 </Alert>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="primary">
                                     <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
                                 </Alert>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="warning">
                                     <strong>Warning!</strong> Better check yourself, you're not looking too good.
                                 </Alert>
@@ -42,28 +42,28 @@ export default class AlertView extends Component{
                     <h3>Link color</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="success">
                                   You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
                                 </Alert>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="primary">
                                   This alert needs your attention, but it's not super important<a href="#" className="alert-link"> click here</a>.
                                 </Alert>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="warning">
                                   Better check yourself, you're not looking too good<a href="#" className="alert-link"> click here</a>.
                                 </Alert>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Alert style="danger">
                                   Change a few things up and try submitting again<a href="#" className="alert-link"> click here</a>.
                                 </Alert>

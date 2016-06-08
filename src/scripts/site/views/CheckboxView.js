@@ -10,7 +10,7 @@ export default class CheckboxView extends Component{
                 <Card block noborder>
                     <h3>Checkbox</h3>
                     <Row>
-                        <Col col="6">
+                        <Col>
                             <Card block>
                                 <Form type="inline">
                                     <Form.Group>
@@ -25,7 +25,7 @@ export default class CheckboxView extends Component{
                                 </Form>
                             </Card>
                         </Col>
-                        <Col col="6">
+                        <Col>
                             <Card block>
                                 <Form type="inline">
                                     <Form.Group>

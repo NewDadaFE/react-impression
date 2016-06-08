@@ -15,13 +15,13 @@ export default class ImageView extends Component{
                     <h3>Image shape</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <Image rounded src="http://placehold.it/200x200"/>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Image circle src="http://placehold.it/200x200"/>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Image thumbnail src="http://placehold.it/200x200"/>
                             </Col>
                         </Row>

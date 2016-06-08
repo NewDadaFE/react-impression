@@ -10,7 +10,7 @@ export default class TimelineView extends Component{
                 <Card block noborder>
                     <h3>Timeline</h3>
                     <Row>
-                        <Col col="6">
+                        <Col>
                             <Card>
                                 <Card.Header>
                                     Default
@@ -41,7 +41,7 @@ export default class TimelineView extends Component{
                                 </Card.Block>
                             </Card>
                         </Col>
-                        <Col col="6">
+                        <Col>
                             <Card>
                                 <Card.Header>
                                     Large

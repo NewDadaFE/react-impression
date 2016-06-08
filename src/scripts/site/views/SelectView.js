@@ -11,7 +11,7 @@ export default class FormView extends Component{
                     <h3>Select</h3>
                     <Card block>
                         <Row>
-                            <Col col="6">
+                            <Col>
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>请选择:</label>
@@ -23,7 +23,7 @@ export default class FormView extends Component{
                                         </Form.Group>
                                     </Form>
                             </Col>
-                            <Col col="6">
+                            <Col>
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>默认值:</label>
@@ -40,7 +40,7 @@ export default class FormView extends Component{
                     <h3>Disabled</h3>
                     <Card block>
                         <Row>
-                            <Col col="6">
+                            <Col>
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>disabled:</label>
@@ -52,7 +52,7 @@ export default class FormView extends Component{
                                         </Form.Group>
                                     </Form>
                             </Col>
-                            <Col col="6">
+                            <Col>
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>option disabled:</label>

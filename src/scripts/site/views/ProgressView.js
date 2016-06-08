@@ -11,22 +11,22 @@ export default class ProgressView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="1"/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="25"/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50"/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="75"/>
                             </Col>
                         </Row>
@@ -34,22 +34,22 @@ export default class ProgressView extends Component{
                     <h3>Theme</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50"/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" style="success"/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" style="warning"/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" style="danger"/>
                             </Col>
                         </Row>
@@ -57,22 +57,22 @@ export default class ProgressView extends Component{
                     <h3>Striped</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" striped/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" style="success" striped/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" style="warning" striped/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Progress value="50" style="danger" striped/>
                             </Col>
                         </Row>

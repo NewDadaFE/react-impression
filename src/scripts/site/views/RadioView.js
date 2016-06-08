@@ -10,7 +10,7 @@ export default class RadioView extends Component{
                 <Card block noborder>
                     <h3>Radio</h3>
                     <Row>
-                        <Col col="6">
+                        <Col>
                             <Card block>
                                 <Form>
                                     <Form.Group>
@@ -23,7 +23,7 @@ export default class RadioView extends Component{
                                 </Form>
                             </Card>
                         </Col>
-                        <Col col="6">
+                        <Col>
                             <Card block>
                                 <Form>
                                     <Form.Group>

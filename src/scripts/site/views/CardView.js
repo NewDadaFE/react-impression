@@ -11,7 +11,7 @@ export default class CardView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="3">
+                            <Col>
                                 <Card>
                                     <Card.Block>
                                         <h4>Title</h4>
@@ -24,7 +24,7 @@ export default class CardView extends Component{
                                     </Card.Block>
                                 </Card>
                             </Col>
-                            <Col col="3">
+                            <Col>
                                 <Card>
                                     <Image fluid src="http://placehold.it/350x200"/>
                                     <Card.Block>
@@ -34,7 +34,7 @@ export default class CardView extends Component{
                                     </Card.Block>
                                 </Card>
                             </Col>
-                            <Col col="3">
+                            <Col>
                                 <Card>
                                     <Card.Block>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -42,7 +42,7 @@ export default class CardView extends Component{
                                     <Image fluid src="http://placehold.it/350x200"/>
                                 </Card>
                             </Col>
-                            <Col col="3">
+                            <Col>
                                 <Card>
                                     <Card.Block>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -55,7 +55,7 @@ export default class CardView extends Component{
                     <h3>Text align</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <Card>
                                     <Image fluid src="http://placehold.it/350x200"/>
                                     <Card.Block>
@@ -66,7 +66,7 @@ export default class CardView extends Component{
                                     </Card.Block>
                                 </Card>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Card className="text-center">
                                     <Image fluid src="http://placehold.it/350x200"/>
                                     <Card.Block>
@@ -77,7 +77,7 @@ export default class CardView extends Component{
                                     </Card.Block>
                                 </Card>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Card className="text-right">
                                     <Image fluid src="http://placehold.it/350x200"/>
                                     <Card.Block>
@@ -93,7 +93,7 @@ export default class CardView extends Component{
                     <h3>Header and footer</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <Card>
                                     <Card.Header>
                                         Header
@@ -109,7 +109,7 @@ export default class CardView extends Component{
                                     </Card.Footer>
                                 </Card>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Card>
                                     <Card.Header>
                                         <h4 className="no-margin">
@@ -124,7 +124,7 @@ export default class CardView extends Component{
                                     </Card.Block>
                                 </Card>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <Card>
                                     <Card.Block>
                                         <h4>Right</h4>

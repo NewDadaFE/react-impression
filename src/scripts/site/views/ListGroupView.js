@@ -11,7 +11,7 @@ export default class ListGroupView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="4">
+                            <Col>
                                 <h5>Normal</h5>
                                 <ListGroup>
                                     <ListGroup.Item>Cras justo odio</ListGroup.Item>
@@ -21,7 +21,7 @@ export default class ListGroupView extends Component{
                                     <ListGroup.Item>Lorem ipsum dolor sit.</ListGroup.Item>
                                 </ListGroup>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <h5>Tags</h5>
                                 <ListGroup>
                                     <ListGroup.Item>
@@ -46,7 +46,7 @@ export default class ListGroupView extends Component{
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Col>
-                            <Col col="4">
+                            <Col>
                                 <h5>Link</h5>
                                 <ListGroup>
                                     <ListGroup.Item href="javascript:void(0)">Lorem ipsum dolor.</ListGroup.Item>

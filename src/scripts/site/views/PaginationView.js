@@ -14,12 +14,12 @@ export default class PaginationView extends Component{
                     <h3>Examples</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={10} activePage={4}></Pagination>
                             </Col>
                         </Row>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={5} activePage={3}></Pagination>
                             </Col>
                         </Row>

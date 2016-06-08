@@ -14,7 +14,7 @@ export default class NavView extends Component{
                     <h3>Inline</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Nav activeKey={1} onSelect={this.selectHandle} type="inline">
                                     <Nav.Item eventKey={1}>Active</Nav.Item>
                                     <Nav.Item eventKey={2}>Link</Nav.Item>
@@ -27,7 +27,7 @@ export default class NavView extends Component{
                     <h3>Tabs</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Nav activeKey={1} onSelect={this.selectHandle} type="tab">
                                     <Nav.Item eventKey={1}>Active</Nav.Item>
                                     <Nav.Item eventKey={2}>Link</Nav.Item>
@@ -40,7 +40,7 @@ export default class NavView extends Component{
                     <h3>Pills</h3>
                     <Card block>
                         <Row>
-                            <Col col="12">
+                            <Col>
                                 <Nav activeKey={1} onSelect={this.selectHandle} type="pill">
                                     <Nav.Item>Active</Nav.Item>
                                     <Nav.Item>Link</Nav.Item>

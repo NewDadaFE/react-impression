@@ -30,16 +30,16 @@ export default class LoadingView extends Component{
                     <h3>Loading</h3>
                     <Card block>
                         <Row>
-                            <Col col="3">
+                            <Col>
                                 <Button style="default" onClick={() => this.showLoadingHandle('fountain')}>fountain</Button>
                             </Col>
-                            <Col col="3">
+                            <Col>
                                 <Button style="default" onClick={() => this.showLoadingHandle('wave')}>wave</Button>
                             </Col>
-                            <Col col="3">
+                            <Col>
                                 <Button style="default" onClick={() => this.showLoadingHandle('pendule')}>pendule</Button>
                             </Col>
-                            <Col col="3">
+                            <Col>
                                 <Button style="default" onClick={() => this.showLoadingHandle('cyclone')}>cyclone</Button>
                             </Col>
                         </Row>

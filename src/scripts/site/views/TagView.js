@@ -20,22 +20,22 @@ export default class TagView extends Component{
                     <h3>Theme tag</h3>
                     <Card block>
                         <Row>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="default">default</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="primary">primary</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="success">success</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="info">info</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="warning">warning</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="danger">danger</Tag>
                             </Col>
                         </Row>
@@ -43,22 +43,22 @@ export default class TagView extends Component{
                     <h3>Pill tag</h3>
                     <Card block>
                         <Row>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="default" shape="pill">default</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="primary" shape="pill">primary</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="success" shape="pill">success</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="info" shape="pill">info</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="warning" shape="pill">warning</Tag>
                             </Col>
-                            <Col col="1">
+                            <Col>
                                 <Tag style="danger" shape="pill">danger</Tag>
                             </Col>
                         </Row>

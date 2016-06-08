@@ -11,7 +11,7 @@ export default class Col extends Component{
         col: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
-        ]).isRequired,
+        ]),
         offset: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number

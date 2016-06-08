@@ -26,27 +26,27 @@ export default class MessageView extends Component{
                     <h3>Example</h3>
                     <Card block>
                         <Row>
-                            <Col col="2">
+                            <Col>
                                 <Button style="default" onClick={this.showInfoMessageHandle}>
                                     <span className="text-primary">信息</span>
                                 </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                 <Button style="default" onClick={this.showSuccessMessageHandle}>
                                     <span className="text-success">成功</span>
                                 </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                 <Button style="default" onClick={this.showWarningMessageHandle}>
                                     <span className="text-warning">警告</span>
                                 </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                <Button style="default" onClick={this.showErrorMessageHandle}>
                                     <span className="text-danger">错误</span>
                                </Button>
                             </Col>
-                            <Col col="2">
+                            <Col>
                                <Button style="default" onClick={this.showLoadingMessageHandle}>
                                     <i className="fa fa-spinner fa-left"></i>Loading
                                </Button>
