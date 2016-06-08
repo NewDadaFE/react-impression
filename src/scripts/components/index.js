@@ -11,6 +11,7 @@ export ButtonToolbar from './ButtonToolbar';
 export Image from './Image';
 export Alert from './Alert';
 export Tag from './Tag';
+export Badge from './Badge';
 export Pagination from './Pagination';
 export Checkbox from './Checkbox';
 export CheckboxGroup from './CheckboxGroup';

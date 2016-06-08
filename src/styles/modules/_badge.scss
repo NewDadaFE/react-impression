@@ -1,0 +1,30 @@
+.badge{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    &,
+    > .fa{
+        line-height: 1;
+    }
+}
+
+
+.badge-addon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: $badge-min-width;
+    color: $badge-color;
+    border: 1px solid transparent;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: $badge-box-shadow;
+    padding: $badge-padding;
+    font-size: $badge-font-size;
+    transform: translateX(50%) translateY(-50%);
+
+    &:not(:empty){
+        min-width: $badge-min-width;
+    }
+}

@@ -13,6 +13,10 @@
   background-color: $gray-lightest;
 }
 
+.bg-default {
+  background-color: $gray-lighter;
+}
+
 @include bg-variant('.bg-primary', $brand-primary);
 
 @include bg-variant('.bg-success', $brand-success);

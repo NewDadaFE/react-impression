@@ -5,10 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * Tag组件
  */
 export default class Tag extends Component{
-    //默认props
-    static defaultProps = {
-        style: 'default'
-    }
     //props校验
     static propTypes = {
         //样式（default、primary、success、info、warning、danger）
@@ -17,6 +13,10 @@ export default class Tag extends Component{
         shape: PropTypes.string,
         //自定义样式
         className: PropTypes.string,
+    }
+    //默认props
+    static defaultProps = {
+        style: 'default'
     }
     //渲染
     render(){

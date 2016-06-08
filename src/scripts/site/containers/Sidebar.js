@@ -57,6 +57,9 @@ export default class AppSidebar extends Component {
                         <Link to="/tag"><Icon type="tag" left/>Tag</Link>
                     </Nav.Link>
                     <Nav.Link>
+                        <Link to="/badge"><Icon type="circle" left/>Badge</Link>
+                    </Nav.Link>
+                    <Nav.Link>
                         <Link to="/alert"><Icon type="info-circle" left/>Alert<Tag style="warning" className="fa-right">1/4</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>

@@ -798,6 +798,13 @@ $tag-border-radius:         $border-radius-sm;
 $tag-pill-padding-x:        .6em !default;
 $tag-pill-border-radius:    10rem !default;
 
+// Badge
+$badge-color:                   #fff !default;
+$badge-padding:                 3px !default;
+$badge-font-size:               $font-size-sm !default;
+$badge-box-shadow:              0 0 0 1px #fff !default;
+$badge-min-width:               20px !default;
+
 // Modals
 
 $modal-bg:                    rgba(0, 0, 0, 0.3) !default;

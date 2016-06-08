@@ -10,6 +10,7 @@ import SwitchView from '../views/SwitchView';
 import ButtonGroupView from '../views/ButtonGroupView';
 import InputGroupView from '../views/InputGroupView';
 import TagView from '../views/TagView';
+import BadgeView from '../views/BadgeView';
 import AlertView from '../views/AlertView';
 import CardView from '../views/CardView';
 import BreadcrumbView from '../views/BreadcrumbView';
@@ -49,6 +50,7 @@ export default class App extends Component {
                     <Route path='input-group' component={InputGroupView}/>
                     <Route path='select' component={SelectView}/>
                     <Route path='tag' component={TagView}/>
+                    <Route path='badge' component={BadgeView}/>
                     <Route path='alert' component={AlertView}/>
                     <Route path='card' component={CardView}/>
                     <Route path='breadcrumb' component={BreadcrumbView}/>
