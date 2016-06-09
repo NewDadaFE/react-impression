@@ -115,7 +115,9 @@ export default class Input extends Component{
      * 显示清空按钮.
      */
     showClearHandle(){
-        this.refs.main.value && this.setState({
+        !this.props.disabled
+        && this.refs.main.value
+        && this.setState({
             showClear: true
         });
     }
