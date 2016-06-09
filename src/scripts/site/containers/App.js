@@ -3,6 +3,7 @@ import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import Layout from './Layout';
 import ImageView from '../views/ImageView';
 import TableView from '../views/TableView';
+import LayoutView from '../views/LayoutView';
 import ButtonView from '../views/ButtonView';
 import CheckboxView from '../views/CheckboxView';
 import RadioView from '../views/RadioView';
@@ -43,6 +44,7 @@ export default class App extends Component {
                     <Route path='button' component={ButtonView}/>
                     <Route path='image' component={ImageView}/>
                     <Route path='table' component={TableView}/>
+                    <Route path='layout' component={LayoutView}/>
                     <Route path='checkbox' component={CheckboxView}/>
                     <Route path='radio' component={RadioView}/>
                     <Route path='switch' component={SwitchView}/>
