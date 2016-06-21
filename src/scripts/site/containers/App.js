@@ -31,6 +31,7 @@ import NotificationView from '../views/NotificationView';
 import TimelineView from '../views/TimelineView';
 import DatePickerView from '../views/DatePickerView';
 import LoadingView from '../views/LoadingView';
+import CalendarView from '../views/CalendarView';
 
 /**
  * 主应用入口.
@@ -71,6 +72,7 @@ export default class App extends Component {
                     <Route path='timeline' component={TimelineView}/>
                     <Route path='datepicker' component={DatePickerView}/>
                     <Route path='loading' component={LoadingView}/>
+                    <Route path='calendar' component={CalendarView}/>
                 </Route>
             </Router>
         );

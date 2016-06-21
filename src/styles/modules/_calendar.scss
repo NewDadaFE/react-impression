@@ -1,0 +1,69 @@
+
+.calendar{
+    width: 100%;
+}
+
+//头部栏
+.calendar-header{
+    padding: 0.6rem 0;
+    font-size: 1.2rem;
+    display: flex;
+}
+
+.calendar-header-caption{
+    flex: 1;
+    text-align: center;
+}
+
+.calendar-body{
+}
+
+//星期
+.calendar-weekgroup{
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    background: #f8f8f8;
+}
+
+
+.calendar-weekgroup-item{
+    width: percentage(1/7);
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.4rem 0;
+
+    &:not(:last-child){
+        border-right: 1px solid #ddd;
+    }
+}
+
+.calendar-daygroup{
+    border: 1px solid #ddd;
+    border-bottom: 0;
+}
+
+.calendar-daygroup-item{
+    cursor: pointer;
+    display: inline-block;
+    width: percentage(1/7);
+    height: 8rem;
+    padding: 0.4rem;
+    border-bottom: 1px solid #ddd;
+    &:not(:nth-child(7n)){
+        border-right: 1px solid #ddd;
+    }
+}
+
+.calendar-daygroup-item-header{
+    text-align: right;
+    font-weight: bold;
+}
+
+.disabled {
+    cursor: initial;
+
+    > .calendar-daygroup-item-header{
+        opacity: 0.4;
+    }
+}

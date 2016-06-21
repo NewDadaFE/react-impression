@@ -37,5 +37,6 @@ export Notification from './Notification';
 export DatePicker from './DatePicker';
 export Timeline from './Timeline';
 export Loading from './Loading';
+export Calendar from './Calendar';
 
 export * as System from '../utils/system';

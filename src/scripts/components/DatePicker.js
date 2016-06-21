@@ -1,6 +1,6 @@
+import moment from 'moment';
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import moment from 'moment';
 
 //时间格式
 const FORMAT = {

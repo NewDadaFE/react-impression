@@ -127,6 +127,9 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/loading"><Icon type="spinner" left/>Loading</Link>
                     </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/calendar"><Icon type="calendar-check-o" left/>Calendar</Link>
+                    </Nav.Link>
                 </Nav>
                 <Sidebar.Footer>
                     <Link to="/timeline">
