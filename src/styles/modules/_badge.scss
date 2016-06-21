@@ -28,3 +28,14 @@
         min-width: $badge-min-width;
     }
 }
+
+//徽章类型
+.badge-legend{
+    margin-right: $badge-legend-margin-right;
+    .badge-addon{
+        position: static;
+        display: inline-block;
+        margin-right: $badge-legend-addon-margin-right;
+        vertical-align: sub;
+    }
+}

@@ -68,6 +68,23 @@ export default class BadgeView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3>legend</h3>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Badge type="legend">primary</Badge>
+                            </Col>
+                            <Col>
+                                <Badge type="legend" style="danger">danger</Badge>
+                            </Col>
+                            <Col>
+                                <Badge type="legend" style="warning">warning</Badge>
+                            </Col>
+                            <Col>
+                                <Badge type="legend" style="success">success</Badge>
+                            </Col>
+                        </Row>
+                    </Card>
                 </Card>
             </div>
         );
