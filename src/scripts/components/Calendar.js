@@ -31,19 +31,31 @@ export default class Calendar extends Component{
         this.nextMonthHandle = this.nextMonthHandle.bind(this);
     }
     static propTypes = {
+        //时间
+        date: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
         //时间格式
         format: PropTypes.string,
+        //头部显示格式
+        captionFormat: PropTypes.string,
         //周几
         weekdays: PropTypes.arrayOf(PropTypes.string),
         //月份
         months: PropTypes.arrayOf(PropTypes.string),
         //是否显示工具栏
         showToolbar: PropTypes.bool,
+        //是否显示头部
+        showHeader: PropTypes.bool,
+        //自定义内容
+        dateCellRender: PropTypes.func,
+        //时间单元格点击
+        dateCellClick: PropTypes.func,
     }
     //默认props
     static defaultProps = {
         format: FORMAT.DATE,
+        captionFormat: 'YYYY年MM月',
         showToolbar: true,
+        showHeader: true,
         firstDayOfWeek: 1,
         weekdays: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         months: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
@@ -53,8 +65,11 @@ export default class Calendar extends Component{
      */
     prevMonthHandle(){
         let { currentMoment } = this.state,
-            nextMonthMoment = moment(currentMoment).subtract(1,'months');
-        this.getDate(nextMonthMoment);
+            prevMonthMoment = moment(currentMoment).subtract(1,'months');
+
+        this.setState({
+            currentMoment: prevMonthMoment
+        });
     }
     /**
      * 下一个月.
@@ -62,15 +77,19 @@ export default class Calendar extends Component{
     nextMonthHandle(){
         let { currentMoment } = this.state,
             nextMonthMoment = moment(currentMoment).add(1,'months');
-        this.getDate(nextMonthMoment);
+
+        this.setState({
+            currentMoment: nextMonthMoment
+        });
     }
     /**
      * 获取日期项.
-     * @param  {[Moment]} currentMoment [日期]
      */
-    getDate(currentMoment){
+    getDate(){
         let { firstDayOfWeek } = this.props,
+            { currentMoment } = this.state,
             days = [],
+            today = moment().format(FORMAT.DATE),
             prevMonth = moment(currentMoment).subtract(1,'months'),
             nextMonth = moment(currentMoment).add(1,'months');
 
@@ -87,6 +106,7 @@ export default class Calendar extends Component{
                 text: i,
                 date: dayMoment,
                 inMonth: true,
+                isToday: dayMoment.isSame(today),
             });
         }
         //上个月天数
@@ -103,6 +123,7 @@ export default class Calendar extends Component{
             days.unshift({
                 text: prevMonthDaysLength - i,
                 date: dayMoment,
+                isToday: dayMoment.isSame(today),
             });
         }
         //下个月天数
@@ -118,41 +139,48 @@ export default class Calendar extends Component{
             days.push({
                 text: i,
                 date: dayMoment,
+                isToday: dayMoment.isSame(today),
             });
         }
 
+        return days;
+    }
+    componentWillReceiveProps(nextProps){
+        let { format } = this.props,
+            { currentMoment } = this.state,
+            { date } = nextProps;
+
+        currentMoment.format(format) != date &&
         this.setState({
-            days,
-            currentMoment,
+            currentMoment: moment(date, format)
         });
     }
-    componentDidMount(){
-        let { currentMoment } = this.state;
-        this.getDate(currentMoment);
-    }
     render(){
-        let { weekdays, firstDayOfWeek, showToolbar, className } = this.props,
-            { days } = this.state;
+        let { format, weekdays, firstDayOfWeek, showHeader, showToolbar, captionFormat, dateCellRender, dateCellClick, className } = this.props,
+            { currentMoment } = this.state,
+            days = this.getDate();
 
         return (
            <div className={classnames('calendar', className)}>
-                <div className="calendar-header">
-                    <div className="calendar-header-caption">
-                        2016年6月
-                    </div>
-                    { showToolbar &&
-                        <div className="calendar-header-toolbar">
-                            <ButtonGroup>
-                                <Button onClick={this.prevMonthHandle}>
-                                    <Icon type="angle-left"/>
-                                </Button>
-                                <Button onClick={this.nextMonthHandle}>
-                                    <Icon type="angle-right"/>
-                                </Button>
-                            </ButtonGroup>
+                { showHeader &&
+                    <div className="calendar-header">
+                        <div className="calendar-header-caption">
+                            {currentMoment.format(captionFormat)}
                         </div>
-                    }
-                </div>
+                        { showToolbar &&
+                            <div className="calendar-header-toolbar">
+                                <ButtonGroup>
+                                    <Button onClick={this.prevMonthHandle}>
+                                        <Icon type="angle-left"/>
+                                    </Button>
+                                    <Button onClick={this.nextMonthHandle}>
+                                        <Icon type="angle-right"/>
+                                    </Button>
+                                </ButtonGroup>
+                            </div>
+                        }
+                    </div>
+                }
                 <div className="calendar-body">
                     <div className="calendar-weekgroup">
                         { weekdays.map((weekday, index) =>
@@ -162,11 +190,27 @@ export default class Calendar extends Component{
                     </div>
                     <div className="calendar-daygroup">
                         { days.map((day, index) =>
-                            <div key={index} className={classnames('calendar-daygroup-item', day.inMonth?'':'disabled')}>
+                            <div key={index} onClick={() => dateCellClick({
+                                    day: day.text,
+                                    year: day.date.format(FORMAT.YEAR),
+                                    month: day.date.format(FORMAT.MONTH),
+                                    date: day.date.format(format),
+                                    inMonth: day.inMonth,
+                                    isToday: day.isToday
+                                })}
+                                className={classnames('calendar-daygroup-item', {disabled: !day.inMonth, active: day.isToday})}>
                                 <div className={classnames('calendar-daygroup-item-header', {
                                     'text-secondary': (index + firstDayOfWeek) % 7 === 0 || (index + firstDayOfWeek + 1) % 7 === 0
-                                })}>
-                                    {day.text}
+                                })}>{day.text}</div>
+                                <div className="calendar-daygroup-item-body">
+                                    { dateCellRender && dateCellRender({
+                                        day: day.text,
+                                        year: day.date.format(FORMAT.YEAR),
+                                        month: day.date.format(FORMAT.MONTH),
+                                        date: day.date.format(format),
+                                        inMonth: day.inMonth,
+                                        isToday: day.isToday
+                                    })}
                                 </div>
                             </div>
                         )}

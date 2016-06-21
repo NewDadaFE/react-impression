@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
+import { withRouter } from 'react-router';
 
-export default class ButtonView extends Component{
+
+class ButtonView extends Component{
     buttonClickHandle(event){
+        this.props.router.push('/layout');
     }
     render(){
         return (
@@ -14,7 +17,7 @@ export default class ButtonView extends Component{
                     <Card block>
                         <Row>
                             <Col col="2">
-                                <Button style="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
+                                <Button type="button" style="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
                             </Col>
                             <Col col="2">
                                 <Button style="default">default</Button>
@@ -100,3 +103,6 @@ export default class ButtonView extends Component{
 }
 
 ButtonView.title = 'Button';
+
+
+export default withRouter(ButtonView);

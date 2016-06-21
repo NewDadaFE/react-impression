@@ -5,8 +5,8 @@
 
 //头部栏
 .calendar-header{
-    padding: 0.6rem 0;
-    font-size: 1.2rem;
+    padding: $calendar-header-padding;
+    font-size: $calendar-header-font-size;
     display: flex;
 }
 
@@ -16,13 +16,14 @@
 }
 
 .calendar-body{
+    background: $calendar-body-bg;
 }
 
 //星期
 .calendar-weekgroup{
-    border: 1px solid #ddd;
+    border: 1px solid $calendar-border-color;
     border-bottom: 0;
-    background: #f8f8f8;
+    background: $calendar-weekgroup-bg;
 }
 
 
@@ -31,15 +32,17 @@
     display: inline-block;
     font-weight: bold;
     text-align: center;
-    padding: 0.4rem 0;
+    padding: $calendar-weekgroup-item-padding;
+
+    j
 
     &:not(:last-child){
-        border-right: 1px solid #ddd;
+        border-right: 1px solid $calendar-border-color;
     }
 }
 
 .calendar-daygroup{
-    border: 1px solid #ddd;
+    border: 1px solid $calendar-border-color;
     border-bottom: 0;
 }
 
@@ -47,23 +50,32 @@
     cursor: pointer;
     display: inline-block;
     width: percentage(1/7);
-    height: 8rem;
-    padding: 0.4rem;
-    border-bottom: 1px solid #ddd;
+    height: $calendar-daygroup-item-height;
+    padding: $calendar-daygroup-item-padding;
+    overflow: auto;
+    border-bottom: 1px solid $calendar-border-color;
     &:not(:nth-child(7n)){
-        border-right: 1px solid #ddd;
+        border-right: 1px solid $calendar-border-color;
+    }
+
+    &.active{
+        background: $calendar-daygroup-item-active-bg;
+
+        > .calendar-daygroup-item-header{
+            color: $brand-primary;
+            font-weight: bold;
+        }
     }
 }
 
 .calendar-daygroup-item-header{
     text-align: right;
-    font-weight: bold;
 }
 
 .disabled {
     cursor: initial;
 
     > .calendar-daygroup-item-header{
-        opacity: 0.4;
+        opacity: $calendar-daygroup-item-disable-opacity;
     }
 }

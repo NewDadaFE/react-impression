@@ -805,6 +805,9 @@ $badge-font-size:               $font-size-sm !default;
 $badge-box-shadow:              0 0 0 1px #fff !default;
 $badge-min-width:               20px !default;
 
+$badge-legend-margin-right:             $spacer-y;
+$badge-legend-addon-margin-right:       $spacer-y / 2;
+
 // Modals
 
 $modal-bg:                    rgba(0, 0, 0, 0.3) !default;
@@ -1062,6 +1065,21 @@ $loading-cyclone-line-color:                  lighten($brand-primary, 6%) !defau
 $loading-cyclone-ball-width:                  1rem !default;
 $loading-cyclone-ball-height:                 $loading-cyclone-ball-width !default;
 $loading-cyclone-ball-color:                  darken($brand-primary, 18%) !default;
+
+//Calendar
+$calendar-border-color:                       $border-color !default;
+
+$calendar-header-padding:                     0.6rem 0 !default;
+$calendar-header-font-size:                   $font-size-lg !default;
+
+$calendar-body-bg:                            #fff !default;
+
+$calendar-weekgroup-bg:                      $gray-lightest !default;
+$calendar-weekgroup-item-padding:            0.4rem 0 !default;
+$calendar-daygroup-item-height:              8rem !default;
+$calendar-daygroup-item-padding:             0.4rem !default;
+$calendar-daygroup-item-active-bg:           rgba($brand-primary, 0.1) !default;
+$calendar-daygroup-item-disable-opacity:     0.4 !default;
 
 //Page transition
 $page-transition-bg:                         #fff !default;
