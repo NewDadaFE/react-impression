@@ -191,14 +191,14 @@ export default class Calendar extends Component{
                     <div className="calendar-daygroup">
                         { days.map((day, index) =>
                             <div key={index} onClick={() => dateCellClick({
-                                    day: day.text,
-                                    year: day.date.format(FORMAT.YEAR),
-                                    month: day.date.format(FORMAT.MONTH),
-                                    date: day.date.format(format),
-                                    inMonth: day.inMonth,
-                                    isToday: day.isToday
-                                })}
-                                className={classnames('calendar-daygroup-item', {disabled: !day.inMonth, active: day.isToday})}>
+                                day: day.text,
+                                year: day.date.format(FORMAT.YEAR),
+                                month: day.date.format(FORMAT.MONTH),
+                                date: day.date.format(format),
+                                inMonth: day.inMonth,
+                                isToday: day.isToday
+                            })}
+                            className={classnames('calendar-daygroup-item', {disabled: !day.inMonth, active: day.isToday})}>
                                 <div className={classnames('calendar-daygroup-item-header', {
                                     'text-secondary': (index + firstDayOfWeek) % 7 === 0 || (index + firstDayOfWeek + 1) % 7 === 0
                                 })}>{day.text}</div>

@@ -4,14 +4,14 @@ import { Card, Calendar, Breadcrumb,Badge } from '../../components';
 export default class CalendarView extends Component{
     dateCellRender(date){
         switch(date.day){
-            case 1:
-            case 2:
-            case 3:
-                return <Badge type="legend" style="success">{date.day}</Badge>;
-            case 21:
-            case 22:
-            case 23:
-                return <Badge type="legend" style="danger">{date.day}</Badge>;
+        case 1:
+        case 2:
+        case 3:
+            return <Badge type="legend" style="success">{date.day}</Badge>;
+        case 21:
+        case 22:
+        case 23:
+            return <Badge type="legend" style="danger">{date.day}</Badge>;
         }
     }
     render(){
