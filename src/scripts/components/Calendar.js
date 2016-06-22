@@ -20,11 +20,13 @@ export default class Calendar extends Component{
     constructor(props, context){
         super(props, context);
         let { date, format } = props,
+            weekdays = this.getSortWeekdays(),
             currentMoment = date ? moment(date, format) : moment();
 
         this.state = {
             currentMoment,//当前时间
             days: [],//日期选择
+            weekdays,
         };
 
         this.prevMonthHandle = this.prevMonthHandle.bind(this);
@@ -61,8 +63,17 @@ export default class Calendar extends Component{
         showToolbar: true,
         showHeader: true,
         firstDayOfWeek: 1,
-        weekdays: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        weekdays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
         months: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+    }
+    /**
+     * 获取排序后的星期.
+     * @return {[Array]} [星期数组]
+     */
+    getSortWeekdays(){
+        let { firstDayOfWeek, weekdays } = this.props;
+
+        return firstDayOfWeek === 0? weekdays : [...weekdays.slice(firstDayOfWeek, weekdays.length), ...weekdays.slice(0, firstDayOfWeek)];
     }
     /**
      * 前一个月.
@@ -160,8 +171,8 @@ export default class Calendar extends Component{
         });
     }
     render(){
-        let { size, format, weekdays, firstDayOfWeek, showHeader, showToolbar, captionFormat, dateCellRender, onDateCellClick, className } = this.props,
-            { currentMoment } = this.state,
+        let { size, format, firstDayOfWeek, showHeader, showToolbar, captionFormat, dateCellRender, onDateCellClick, className } = this.props,
+            { currentMoment, weekdays } = this.state,
             sizeClass = size? `calendar-${size}` : '',
             days = this.getDate();
 

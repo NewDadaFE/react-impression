@@ -17,7 +17,7 @@ export default class DatePicker extends Component{
     constructor(props, context){
         super(props, context);
         let { value, minDate, maxDate, format } = props,
-            { firstDayOfWeek, weekdays } = this.sortWeekdays(),
+            weekdays = this.getSortWeekdays(),
             currentMoment = value? moment(value, format) : moment(),
             checkedDay =  value? moment(value, format) : undefined,
             years = this.getYears(currentMoment);
@@ -25,9 +25,8 @@ export default class DatePicker extends Component{
         this.state = {
             currentMoment,//当前时间
             days: [],//日期选择
+            weekdays,
             checkedDay,//选中日期
-            weekdays,//星期
-            firstDayOfWeek,//星期第一天
             panel: 'day',//面板
             years,//年份
             minDate: minDate? moment(minDate, format) : undefined,//最小日期
@@ -62,7 +61,7 @@ export default class DatePicker extends Component{
         //今天
         todayText: PropTypes.string,
         //星期第一天
-        firstDayOfWeek: PropTypes.string,
+        firstDayOfWeek: PropTypes.number,
         //最小日期
         minDate: PropTypes.string,
         //最大日期
@@ -83,31 +82,26 @@ export default class DatePicker extends Component{
         weekdays: ['日', '一', '二', '三', '四', '五', '六'],
         showToday: true,
         todayText: '今天',
-        firstDayOfWeek: '日',
+        firstDayOfWeek: 0,
         yearScope: 5,
         months: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
     }
     /**
-     * 星期第一天排序.
+     * 获取排序后的星期.
+     * @return {[Array]} [星期数组]
      */
-    sortWeekdays(){
-        let { weekdays, firstDayOfWeek } = this.props,
-            index = weekdays.indexOf(firstDayOfWeek),
-            length = weekdays.length,
-            result = undefined;
+    getSortWeekdays(){
+        let { firstDayOfWeek, weekdays } = this.props;
 
-        result = index !== -1 ? [...weekdays.slice(index, length), ...weekdays.slice(0, index)] : weekdays;
-        return {
-            weekdays: result,
-            firstDayOfWeek: index,
-        };
+        return firstDayOfWeek === 0? weekdays : [...weekdays.slice(firstDayOfWeek, weekdays.length), ...weekdays.slice(0, firstDayOfWeek)];
     }
     /**
      * 获取日期数据.
      * @param  {[Moment]} currentMoment [当前日期]
      */
     getDate(currentMoment){
-        let { firstDayOfWeek, minDate, maxDate } = this.state,
+        let { minDate, maxDate } = this.state,
+            { firstDayOfWeek } = this.props,
             days = [],
             today = moment().format(FORMAT.DATE),
             prevMonth = moment(currentMoment).subtract(1,'months'),
@@ -347,7 +341,7 @@ export default class DatePicker extends Component{
     }
     //渲染
     render(){
-        let { panel, currentMoment, days, checkedDay, weekdays, years } = this.state,
+        let { panel, currentMoment, weekdays, days, checkedDay, years } = this.state,
             { showToday, todayText, months, className } = this.props,
             currentYear = currentMoment.format(FORMAT.YEAR),
             currentMonth = currentMoment.format(FORMAT.MONTH);

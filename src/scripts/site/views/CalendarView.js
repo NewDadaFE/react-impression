@@ -30,11 +30,11 @@ export default class CalendarView extends Component{
                                 <Calendar size="sm"></Calendar>
                             </Col>
                             <Col>
-                                <Calendar firstDayOfWeek={0} weekdays={['星期日','星期一','星期二','星期三','星期四','星期五','星期六']} size="sm"></Calendar>
+                                <Calendar firstDayOfWeek={0} size="sm"></Calendar>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Custom</h3>
+                    <h3>Custom date cell content</h3>
                     <Card block>
                         <Calendar dateCellRender={this.dateCellRender}></Calendar>
                     </Card>

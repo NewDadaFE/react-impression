@@ -60,7 +60,7 @@ export default class DatePickerView extends Component{
                                 <Form>
                                     <Form.Group>
                                         <label>first day:</label>
-                                        <Input type="date" defaultValue="2016-05-29" firstDayOfWeek="一"/>
+                                        <Input type="date" defaultValue="2016-05-29" firstDayOfWeek={1}/>
                                     </Form.Group>
                                 </Form>
                             </Col>
