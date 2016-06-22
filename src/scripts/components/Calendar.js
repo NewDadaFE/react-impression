@@ -31,8 +31,10 @@ export default class Calendar extends Component{
         this.nextMonthHandle = this.nextMonthHandle.bind(this);
     }
     static propTypes = {
+        //尺寸
+        size: PropTypes.oneOf(['sm', 'lg']),
         //时间
-        date: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+        date: PropTypes.string,
         //时间格式
         format: PropTypes.string,
         //头部显示格式
@@ -48,7 +50,7 @@ export default class Calendar extends Component{
         //自定义内容
         dateCellRender: PropTypes.func,
         //时间单元格点击
-        dateCellClick: PropTypes.func,
+        onDateCellClick: PropTypes.func,
     }
     //默认props
     static defaultProps = {
@@ -156,12 +158,13 @@ export default class Calendar extends Component{
         });
     }
     render(){
-        let { format, weekdays, firstDayOfWeek, showHeader, showToolbar, captionFormat, dateCellRender, dateCellClick, className } = this.props,
+        let { size, format, weekdays, firstDayOfWeek, showHeader, showToolbar, captionFormat, dateCellRender, onDateCellClick, className } = this.props,
             { currentMoment } = this.state,
+            sizeClass = size? `calendar-${size}` : '',
             days = this.getDate();
 
         return (
-           <div className={classnames('calendar', className)}>
+           <div className={classnames('calendar', sizeClass, className)}>
                 { showHeader &&
                     <div className="calendar-header">
                         <div className="calendar-header-caption">
@@ -169,7 +172,7 @@ export default class Calendar extends Component{
                         </div>
                         { showToolbar &&
                             <div className="calendar-header-toolbar">
-                                <ButtonGroup>
+                                <ButtonGroup size={size}>
                                     <Button onClick={this.prevMonthHandle}>
                                         <Icon type="angle-left"/>
                                     </Button>
@@ -190,7 +193,7 @@ export default class Calendar extends Component{
                     </div>
                     <div className="calendar-daygroup">
                         { days.map((day, index) =>
-                            <div key={index} onClick={() => dateCellClick({
+                            <div key={index} onClick={() => onDateCellClick && onDateCellClick({
                                 day: day.text,
                                 year: day.date.format(FORMAT.YEAR),
                                 month: day.date.format(FORMAT.MONTH),

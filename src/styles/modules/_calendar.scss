@@ -79,3 +79,22 @@
         opacity: $calendar-daygroup-item-disable-opacity;
     }
 }
+
+
+// Size
+.calendar-sm{
+    .calendar-header{
+        font-size: $calendar-sm-header-font-size;
+        padding: $calendar-sm-header-padding;
+    }
+
+    .calendar-daygroup-item-header,
+    .calendar-weekgroup-item{
+        font-weight: initial;
+        font-size: $calendar-sm-weekgroup-item-font-size;
+    }
+
+    .calendar-daygroup-item{
+        height:  $calendar-sm-daygroup-item-height;
+    }
+}

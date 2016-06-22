@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Calendar, Breadcrumb,Badge } from '../../components';
+import { Card, Row, Col, Calendar, Breadcrumb, Badge } from '../../components';
 
 export default class CalendarView extends Component{
     dateCellRender(date){
@@ -22,6 +22,17 @@ export default class CalendarView extends Component{
                     <h3>Basic</h3>
                     <Card block>
                         <Calendar></Calendar>
+                    </Card>
+                    <h3>Size</h3>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Calendar size="sm"></Calendar>
+                            </Col>
+                            <Col>
+                                <Calendar size="sm"></Calendar>
+                            </Col>
+                        </Row>
                     </Card>
                     <h3>Custom</h3>
                     <Card block>
