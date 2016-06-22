@@ -11,22 +11,31 @@ export default class Tag extends Component{
         style: PropTypes.string,
         //形状（pill）
         shape: PropTypes.string,
+        //是否可删除
+        closable: PropTypes.bool,
+        //删除回调
+        onClose: PropTypes.func,
         //自定义样式
         className: PropTypes.string,
+
     }
     //默认props
     static defaultProps = {
-        style: 'default'
+        style: 'default',
+        closable: false,
     }
     //渲染
     render(){
-        let { style, shape, children, className, ...others } = this.props,
+        let { style, closeable, onClose, shape, children, className, ...others } = this.props,
             tagStyle = style? `tag-${style}` : '',
             tagShape = shape? `tag-${shape}` : '';
 
         return (
             <span {...others} className = {classnames('tag', tagStyle, tagShape, className)}>
                 {children}
+                { closeable &&
+                    <span className="tag-close" onClick={onClose}>&times;</span>
+                }
             </span>
         );
     }

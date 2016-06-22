@@ -75,3 +75,14 @@ a.tag {
 .tag-danger {
   @include tag-variant($tag-danger-bg);
 }
+
+// Close
+.tag-close {
+  cursor: pointer;
+  margin-left: $tag-close-margin-right;
+  opacity: 0.6;
+
+  &:hover{
+    opacity: 1;
+  }
+}

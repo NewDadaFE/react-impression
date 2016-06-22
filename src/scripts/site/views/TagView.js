@@ -3,6 +3,9 @@ import { Card, Row, Col, Tag, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class TagView extends Component{
+    closeTagHandle(event){
+        // console.log(event.target);
+    }
     render(){
         return (
             <div>
@@ -37,6 +40,29 @@ export default class TagView extends Component{
                             </Col>
                             <Col>
                                 <Tag style="danger">danger</Tag>
+                            </Col>
+                        </Row>
+                    </Card>
+                    <h3>Closeable</h3>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Tag closeable={true} onClose={this.closeTagHandle} style="default">default</Tag>
+                            </Col>
+                            <Col>
+                                <Tag closeable={true} onClose={this.closeTagHandle} style="primary">primary</Tag>
+                            </Col>
+                            <Col>
+                                <Tag closeable={true} onClose={this.closeTagHandle} style="success">success</Tag>
+                            </Col>
+                            <Col>
+                                <Tag closeable={true} onClose={this.closeTagHandle} style="info">info</Tag>
+                            </Col>
+                            <Col>
+                                <Tag closeable={true} onClose={this.closeTagHandle} style="warning">warning</Tag>
+                            </Col>
+                            <Col>
+                                <Tag closeable={true} onClose={this.closeTagHandle} style="danger">danger</Tag>
                             </Col>
                         </Row>
                     </Card>
