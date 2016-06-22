@@ -66,32 +66,22 @@ export default class TagView extends Component{
                         <Row>
                             <Col>
                                 { shows[0] &&
-                                    <Tag closeable={true} onClose={() => this.closeTagHandle(0)} style="default">default</Tag>
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(0)} style="default" className="fa-left">apple</Tag>
                                 }
-                            </Col>
-                            <Col>
                                 { shows[1] &&
-                                    <Tag closeable={true} onClose={() => this.closeTagHandle(1)} style="primary">primary</Tag>
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(1)} style="default" className="fa-left">orange</Tag>
                                 }
-                            </Col>
-                            <Col>
                                 { shows[2] &&
-                                    <Tag closeable={true} onClose={() => this.closeTagHandle(2)} style="success">success</Tag>
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(2)} style="default" className="fa-left">banana</Tag>
                                 }
-                            </Col>
-                            <Col>
                                 { shows[3] &&
-                                    <Tag closeable={true} onClose={() => this.closeTagHandle(3)} style="info">info</Tag>
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(3)} style="default" className="fa-left">pear</Tag>
                                 }
-                            </Col>
-                            <Col>
                                 { shows[4] &&
-                                    <Tag closeable={true} onClose={() => this.closeTagHandle(4)} style="warning">warning</Tag>
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(4)} style="default" className="fa-left">watermelon</Tag>
                                 }
-                            </Col>
-                            <Col>
                                 { shows[5] &&
-                                    <Tag closeable={true} onClose={() => this.closeTagHandle(5)} style="danger">danger</Tag>
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(5)} style="default" className="fa-left">peach</Tag>
                                 }
                             </Col>
                         </Row>
