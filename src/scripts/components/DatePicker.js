@@ -6,6 +6,7 @@ import React, { Component, PropTypes } from 'react';
 const FORMAT = {
     YEAR: 'YYYY',
     MONTH: 'MM',
+    YEAR_MONTH: 'YYYY-MM',
     DATE: 'YYYY-MM-DD'
 };
 
@@ -16,22 +17,34 @@ export default class DatePicker extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);
-        let { value, minDate, maxDate, format } = props,
+        let { type, value, minDate, maxDate, format } = props,
             weekdays = this.getSortWeekdays(),
             currentMoment = value? moment(value, format) : moment(),
             checkedDay =  value? moment(value, format) : undefined,
             years = this.getYears(currentMoment);
 
-        this.state = {
+        let state = {
             currentMoment,//当前时间
             days: [],//日期选择
             weekdays,
             checkedDay,//选中日期
-            panel: 'day',//面板
             years,//年份
-            minDate: minDate? moment(minDate, format) : undefined,//最小日期
-            maxDate: maxDate? moment(maxDate, format) : undefined,//最大日期
         };
+
+        switch(type){
+            case 'date':
+                state.format = format? format : FORMAT.DATE;
+                state.panel = 'day';
+                break;
+            case 'month':
+                state.format = format? format : FORMAT.YEAR_MONTH;
+                state.panel = 'month';
+                break;
+        }
+
+        state.minDate = minDate? moment(minDate, state.format) : undefined;
+        state.maxDate = maxDate? moment(maxDate, state.format) : undefined;
+        this.state = state;
 
         this.prevMonthHandle = this.prevMonthHandle.bind(this);
         this.nextMonthHandle = this.nextMonthHandle.bind(this);
@@ -43,9 +56,12 @@ export default class DatePicker extends Component{
         this.selectMonthHandle = this.selectMonthHandle.bind(this);
         this.showMonthPanelHandle = this.showMonthPanelHandle.bind(this);
         this.scrollYearHandle = this.scrollYearHandle.bind(this);
+        this.onAnimationEndHandle = this.onAnimationEndHandle.bind(this);
     }
     //prop type校验
     static propTypes = {
+        //类型
+        type: PropTypes.oneOf(['date', 'month']),
         //自定义样式
         className: PropTypes.string,
         //日期
@@ -78,7 +94,7 @@ export default class DatePicker extends Component{
     }
     //默认props
     static defaultProps = {
-        format: FORMAT.DATE,
+        type: 'date',
         weekdays: ['日', '一', '二', '三', '四', '五', '六'],
         showToday: true,
         todayText: '今天',
@@ -213,8 +229,8 @@ export default class DatePicker extends Component{
      * 选中时间.
      */
     selectDateHandle(day){
-        let { onSelect, onChange, format } = this.props,
-            { checkedDay } = this.state,
+        let { onSelect, onChange } = this.props,
+            { checkedDay, format } = this.state,
             dayFormat = day.format(format);
 
         this.setState({
@@ -244,22 +260,32 @@ export default class DatePicker extends Component{
      * @param  {[String]} month [月份]
      */
     selectMonthHandle(month){
-        let { currentMoment } = this.state,
+        let { currentMoment, format } = this.state,
+            { type, onSelect, onChange } = this.props,
             newMoment = moment(currentMoment).month(month);
 
-        this.setState({
-            panel: 'day',
-            checkedDay: undefined,
-            currentMoment: newMoment
-        });
-        this.getDate(newMoment);
+        switch(type){
+        case 'date':
+            this.setState({
+                panel: 'day',
+                checkedDay: undefined,
+                currentMoment: newMoment
+            });
+            this.getDate(newMoment);
+            break;
+        case 'month':
+            newMoment = newMoment.format(format);
+            onSelect && onSelect(newMoment);
+            onChange && onChange(newMoment);
+            break;
+        }
     }
     /**
      * 今天.
      */
     selectTodayHandle(){
-        let { onSelect, onChange, minDate, maxDate, format } = this.props,
-            { checkedDay } = this.state,
+        let { onSelect, onChange, minDate, maxDate } = this.props,
+            { checkedDay, format } = this.state,
             today = moment(moment().format(FORMAT.DATE)),
             dayFormat = today.format(format);
 
@@ -283,7 +309,17 @@ export default class DatePicker extends Component{
             panel: panel === 'month'? 'day' : 'month'
         });
     }
+    /**
+     * 更正month面板滚动条位置.
+     */
     componentDidUpdate(){
+        let { type } = this.props;
+        type === 'date' && this.onAnimationEndHandle();
+    }
+    /**
+     * 修改month面板的滚动条位置.
+     */
+    onAnimationEndHandle(){
         let { _yeargroup, _monthgroup } = this.refs;
         if(!this._activeYear || !this._activeMonth || _yeargroup.scrollTop !== 0 || _monthgroup.scrollTop !== 0 ){
             return false;
@@ -301,7 +337,7 @@ export default class DatePicker extends Component{
     }
     componentWillReceiveProps(nextProps){
         let { value } = nextProps,
-            { format } = this.props;
+            { format } = this.state;
 
         this.setState({
             checkedDay: value? moment(value, format) : undefined,
@@ -347,7 +383,7 @@ export default class DatePicker extends Component{
             currentMonth = currentMoment.format(FORMAT.MONTH);
 
         return(
-           <div className={classnames('datepicker', className)}>
+           <div className={classnames('datepicker', className)} onAnimationEnd={this.onAnimationEndHandle}>
                 <div className="datepicker-header">
                     <i className="fa datepicker-header-btn fa-angle-double-left" onClick={this.prevYearHandle}></i>
                     <i className="fa datepicker-header-btn fa-angle-left datepicker-month-btn" onClick={this.prevMonthHandle}></i>

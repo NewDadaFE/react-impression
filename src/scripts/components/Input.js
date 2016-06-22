@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import DatePicker from './DatePicker';
 import * as System from '../utils/system';
 
-
+const ADDON_TYPES = ['date', 'month'];
 
 /**
  * Input 组件.
@@ -34,7 +34,7 @@ export default class Input extends Component{
         //自定义样式
         className: PropTypes.string,
         //类型
-        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile']),
+        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month']),
         //提示
         placeholder: PropTypes.string,
         //值
@@ -57,10 +57,9 @@ export default class Input extends Component{
      * @return {Boolean} [是否包含addon]
      */
     hasAddon(){
-        let { type, clearable} = this.props,
-            types = ['date'];
+        let { type, clearable} = this.props;
 
-        return clearable || types.indexOf(type) !== -1;
+        return clearable || ADDON_TYPES.indexOf(type) !== -1;
     }
     /**
      * 显示候选项.
@@ -154,14 +153,17 @@ export default class Input extends Component{
                     placeholder={placeholder}
                     onClick={this.showOptionHandle}
                     style={style}/>
+
                 { clearable && showClear &&
                     <i className="fa fa-times input-addon input-addon-clear" onClick={this.clearInputHandle}></i>
                 }
-                { (!showClear || !clearable) &&
+
+                { (!showClear || !clearable) && (type === 'date' || type === 'month') &&
                     <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
                 }
-                { showOption && type === 'date' &&
-                    <DatePicker {...others} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
+
+                { showOption && (type === 'date' || type === 'month') &&
+                    <DatePicker {...others} type={type} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
                 }
             </div>
         );

@@ -95,6 +95,19 @@ export default class DatePickerView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3>Month</h3>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Form>
+                                    <Form.Group>
+                                        <label>年月:</label>
+                                        <Input type="month"/>
+                                    </Form.Group>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Card>
                     <h3>Input[type='date'] API</h3>
                     <CommenTable
                         data = {[
