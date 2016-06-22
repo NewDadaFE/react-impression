@@ -30,7 +30,7 @@ export default class CalendarView extends Component{
                                 <Calendar size="sm"></Calendar>
                             </Col>
                             <Col>
-                                <Calendar size="sm"></Calendar>
+                                <Calendar firstDayOfWeek={0} weekdays={['星期日','星期一','星期二','星期三','星期四','星期五','星期六']} size="sm"></Calendar>
                             </Col>
                         </Row>
                     </Card>

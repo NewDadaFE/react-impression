@@ -39,6 +39,8 @@ export default class Calendar extends Component{
         format: PropTypes.string,
         //头部显示格式
         captionFormat: PropTypes.string,
+        //一周第一天
+        firstDayOfWeek: PropTypes.number,
         //周几
         weekdays: PropTypes.arrayOf(PropTypes.string),
         //月份
