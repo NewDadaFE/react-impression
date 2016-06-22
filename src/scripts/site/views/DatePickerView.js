@@ -14,7 +14,7 @@ export default class DatePickerView extends Component{
                             <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>default:</label>
+                                        <label>basic:</label>
                                         <Input type="date"/>
                                     </Form.Group>
                                 </Form>
@@ -22,7 +22,7 @@ export default class DatePickerView extends Component{
                             <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>默认:</label>
+                                        <label>defaultValue:</label>
                                         <Input type="date" defaultValue="2016-05-29"/>
                                     </Form.Group>
                                 </Form>
@@ -30,14 +30,14 @@ export default class DatePickerView extends Component{
                             <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>只读:</label>
+                                        <label>readOnly:</label>
                                         <Input type="date" defaultValue="2016-05-29" disabled/>
                                     </Form.Group>
                                 </Form>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>时间限制</h3>
+                    <h3>Limit</h3>
                     <Card block>
                         <Row>
                             <Col>
@@ -66,7 +66,7 @@ export default class DatePickerView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>时间格式</h3>
+                    <h3>Format</h3>
                     <Card block>
                         <Row>
                             <Col>
