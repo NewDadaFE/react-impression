@@ -32,14 +32,14 @@ export default class DatePicker extends Component{
         };
 
         switch(type){
-            case 'date':
-                state.format = format? format : FORMAT.DATE;
-                state.panel = 'day';
-                break;
-            case 'month':
-                state.format = format? format : FORMAT.YEAR_MONTH;
-                state.panel = 'month';
-                break;
+        case 'date':
+            state.format = format? format : FORMAT.DATE;
+            state.panel = 'day';
+            break;
+        case 'month':
+            state.format = format? format : FORMAT.YEAR_MONTH;
+            state.panel = 'month';
+            break;
         }
 
         state.minDate = minDate? moment(minDate, state.format) : undefined;

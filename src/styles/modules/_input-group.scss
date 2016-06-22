@@ -7,7 +7,7 @@
   width: 100%;
 
   @if $enable-flex {
-    display: flex;
+    display: inline-flex;
   } @else {
     display: table;
     // Prevent input groups from inheriting border styles from table cells when

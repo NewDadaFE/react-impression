@@ -17,6 +17,10 @@
   background-color: $gray-lighter;
 }
 
+.bg-pure {
+    background-color: transparent !important;
+}
+
 @include bg-variant('.bg-primary', $brand-primary);
 
 @include bg-variant('.bg-success', $brand-success);
