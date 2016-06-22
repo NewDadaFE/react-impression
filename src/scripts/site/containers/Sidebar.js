@@ -46,6 +46,9 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
+                    </Nav.Link>
                     <Nav.Title>Navigation</Nav.Title>
                     <Nav.Link>
                         <Link to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
@@ -93,9 +96,6 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/button-group"><Icon type="th-large" left/>ButtonGroup</Link>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <Link to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/list-group"><Icon type="list" left/>ListGroup</Link>
