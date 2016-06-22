@@ -3,10 +3,28 @@ import { Card, Row, Col, Tag, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class TagView extends Component{
-    closeTagHandle(event){
-        // console.log(event.target);
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            shows: [true, true, true, true, true, true]
+        };
+
+        this.closeTagHandle = this.closeTagHandle.bind(this);
+    }
+    /**
+     * 隐藏Tag.
+     * @param  {[Number]} index [索引]
+     */
+    closeTagHandle(index){
+        this.setState({
+            shows: this.state.shows.map((item, indx) => {
+                return indx === index ? false : item;
+            })
+        });
     }
     render(){
+        let { shows } = this.state;
+
         return (
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
@@ -47,22 +65,34 @@ export default class TagView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Tag closeable={true} onClose={this.closeTagHandle} style="default">default</Tag>
+                                { shows[0] &&
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(0)} style="default">default</Tag>
+                                }
                             </Col>
                             <Col>
-                                <Tag closeable={true} onClose={this.closeTagHandle} style="primary">primary</Tag>
+                                { shows[1] &&
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(1)} style="primary">primary</Tag>
+                                }
                             </Col>
                             <Col>
-                                <Tag closeable={true} onClose={this.closeTagHandle} style="success">success</Tag>
+                                { shows[2] &&
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(2)} style="success">success</Tag>
+                                }
                             </Col>
                             <Col>
-                                <Tag closeable={true} onClose={this.closeTagHandle} style="info">info</Tag>
+                                { shows[3] &&
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(3)} style="info">info</Tag>
+                                }
                             </Col>
                             <Col>
-                                <Tag closeable={true} onClose={this.closeTagHandle} style="warning">warning</Tag>
+                                { shows[4] &&
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(4)} style="warning">warning</Tag>
+                                }
                             </Col>
                             <Col>
-                                <Tag closeable={true} onClose={this.closeTagHandle} style="danger">danger</Tag>
+                                { shows[5] &&
+                                    <Tag closeable={true} onClose={() => this.closeTagHandle(5)} style="danger">danger</Tag>
+                                }
                             </Col>
                         </Row>
                     </Card>
