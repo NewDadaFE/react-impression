@@ -56,7 +56,7 @@ export default class DatePicker extends Component{
         this.selectMonthHandle = this.selectMonthHandle.bind(this);
         this.showMonthPanelHandle = this.showMonthPanelHandle.bind(this);
         this.scrollYearHandle = this.scrollYearHandle.bind(this);
-        this.onAnimationEndHandle = this.onAnimationEndHandle.bind(this);
+        this.resetMonthPanelScroll = this.resetMonthPanelScroll.bind(this);
     }
     //prop type校验
     static propTypes = {
@@ -201,29 +201,33 @@ export default class DatePicker extends Component{
      * 上个月.
      */
     prevMonthHandle(){
-        let { currentMoment } = this.state;
+        let { currentMoment, panel } = this.state;
         this.getDate(moment(currentMoment).subtract(1,'months'));
+        panel === 'month' && this.resetMonthPanelScroll();
     }
     /**
      * 下个月.
      */
     nextMonthHandle(){
-        let { currentMoment } = this.state;
+        let { currentMoment, panel } = this.state;
         this.getDate(moment(currentMoment).add(1,'months'));
+        panel === 'month' && this.resetMonthPanelScroll();
     }
     /**
      * 上一年.
      */
     prevYearHandle(){
-        let { currentMoment } = this.state;
+        let { currentMoment, panel } = this.state;
         this.getDate(moment(currentMoment).subtract(1,'years'));
+        panel === 'month' && this.resetMonthPanelScroll();
     }
     /**
      * 下一年.
      */
     nextYearHandle(){
-        let { currentMoment } = this.state;
+        let { currentMoment, panel } = this.state;
         this.getDate(moment(currentMoment).add(1,'years'));
+        panel === 'month' && this.resetMonthPanelScroll();
     }
     /**
      * 选中时间.
@@ -314,14 +318,14 @@ export default class DatePicker extends Component{
      */
     componentDidUpdate(){
         let { type } = this.props;
-        type === 'date' && this.onAnimationEndHandle();
+        type === 'date' && this.resetMonthPanelScroll();
     }
     /**
      * 修改month面板的滚动条位置.
      */
-    onAnimationEndHandle(){
+    resetMonthPanelScroll(){
         let { _yeargroup, _monthgroup } = this.refs;
-        if(!this._activeYear || !this._activeMonth || _yeargroup.scrollTop !== 0 || _monthgroup.scrollTop !== 0 ){
+        if(!this._activeYear || !this._activeMonth){
             return false;
         }
 
@@ -383,7 +387,7 @@ export default class DatePicker extends Component{
             currentMonth = currentMoment.format(FORMAT.MONTH);
 
         return(
-           <div className={classnames('datepicker', className)} onAnimationEnd={this.onAnimationEndHandle}>
+           <div className={classnames('datepicker', className)} onAnimationEnd={this.resetMonthPanelScroll}>
                 <div className="datepicker-header">
                     <i className="fa datepicker-header-btn fa-angle-double-left" onClick={this.prevYearHandle}></i>
                     <i className="fa datepicker-header-btn fa-angle-left datepicker-month-btn" onClick={this.prevMonthHandle}></i>
