@@ -35,6 +35,9 @@ export default class CalendarView extends Component{
     }
     checkDateClickHandle(date){
         let { days } = this.state;
+        if(!date.inMonth){
+            return false;
+        }
 
         //选中
         if(days.indexOf(date.day) === -1){
