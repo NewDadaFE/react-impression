@@ -131,7 +131,19 @@ module.exports = function(grunt) {
         },
         eslint: {
             target: ['src/scripts/**/*.js']
-        }
+        },
+        scsslint: {
+            allFiles: [
+                'src/styles/**/*.scss',
+            ],
+            options: {
+                exclude: ['src/styles/font-awesome/**'],
+                // bundleExec: true,
+                config: '.scss-lint.yml',
+                reporterOutput: 'scss-lint-report.xml',
+                colorizeOutput: true
+            }
+        },
     });
 
     grunt.registerTask('default', ['eslint', 'clean', 'copy:img', 'sass', 'copy:font', 'autoprefixer','execute']);

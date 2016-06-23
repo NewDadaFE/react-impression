@@ -43,6 +43,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-eslint": "^18.1.0",
     "grunt-execute": "^0.2.2",
+    "grunt-scss-lint": "^0.3.8",
     "html-webpack-plugin": "^2.16.0",
     "json-loader": "^0.5.4",
     "load-grunt-tasks": "^3.5.0",

@@ -9,3 +9,4 @@
 /.sass-cache
 /bower_components
 Makefile
+scss-lint-report.xml
