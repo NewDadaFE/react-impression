@@ -30,6 +30,12 @@ export default class InputGroupView extends Component{
                                     <InputGroup.Addon>@</InputGroup.Addon>
                                 </InputGroup>
                             </Col>
+                            <Col>
+                                <InputGroup>
+                                    <InputGroup.Addon pure>+86</InputGroup.Addon>
+                                    <InputGroup.Input placeholder="phone"/>
+                                </InputGroup>
+                            </Col>
                         </Row>
                     </Card>
                     <h3>Button addons</h3>
