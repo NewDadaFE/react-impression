@@ -47,12 +47,13 @@
 }
 
 .calendar-daygroup-item{
+    display: inline-flex;
+    flex-direction: column;
     cursor: pointer;
-    display: inline-block;
     width: percentage(1/7);
     height: $calendar-daygroup-item-height;
     padding: $calendar-daygroup-item-padding;
-    overflow: auto;
+    overflow: hidden;
     border-bottom: 1px solid $calendar-border-color;
     &:not(:nth-child(7n)){
         border-right: 1px solid $calendar-border-color;
@@ -70,6 +71,11 @@
 
 .calendar-daygroup-item-header{
     text-align: right;
+}
+
+.calendar-daygroup-item-body{
+    flex: 1;
+    overflow: auto;
 }
 
 .disabled {

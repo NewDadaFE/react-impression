@@ -13,11 +13,33 @@ export default class CalendarView extends Component{
         this.checkDateClickHandle = this.checkDateClickHandle.bind(this);
     }
     customDateCellRender(date){
+        if(!date.inMonth){
+            return false;
+        }
+
         switch(date.day){
         case 1:
         case 2:
         case 3:
-            return <Badge type="legend" style="success">{date.day}</Badge>;
+            return (
+                <div>
+                    <div><Badge type="legend" style="success">{date.day}</Badge></div>
+                    <div><Badge type="legend" style="warning">{date.day}</Badge></div>
+                    <div><Badge type="legend" style="danger">{date.day}</Badge></div>
+                </div>
+            );
+        case 11:
+        case 12:
+        case 13:
+            return (
+                <div>
+                    <div><Badge type="legend" style="success">{date.day}</Badge></div>
+                    <div>自定义内容1</div>
+                    <div>自定义内容2</div>
+                    <div>自定义内容3</div>
+                    <div>自定义内容4</div>
+                </div>
+            );
         case 21:
         case 22:
         case 23:
@@ -65,10 +87,10 @@ export default class CalendarView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Calendar onDateCellClick={this.checkDateClickHandle} dateCellRender={this.checkDateCellRender} size="sm"></Calendar>
+                                <Calendar size="sm"></Calendar>
                             </Col>
                             <Col>
-                                <Calendar firstDayOfWeek={0} size="sm"></Calendar>
+                                <Calendar onDateCellClick={this.checkDateClickHandle} dateCellRender={this.checkDateCellRender} firstDayOfWeek={0} size="sm"></Calendar>
                             </Col>
                         </Row>
                     </Card>
