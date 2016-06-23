@@ -2,7 +2,7 @@
   "name": "Impression",
   "version": "0.1.0",
   "description": "react + bootstrap + scss + component",
-  "main": "src/scripts/index.js",
+  "main": "src/scripts/components/index.js",
   "scripts": {
     "start": "node server.js"
   },
