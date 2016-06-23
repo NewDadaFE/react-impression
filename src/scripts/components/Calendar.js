@@ -165,7 +165,7 @@ export default class Calendar extends Component{
             { currentMoment } = this.state,
             { date } = nextProps;
 
-        currentMoment.format(format) != date &&
+        date && currentMoment.format(format) != date &&
         this.setState({
             currentMoment: moment(date, format)
         });
