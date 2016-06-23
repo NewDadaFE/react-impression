@@ -9,7 +9,7 @@ export default class BreadcrumbView extends Component{
         }, {
             path: 'Library',
         }, {
-            path: 'Data'
+            path: 'Breadcrumb'
         }];
 
         return (

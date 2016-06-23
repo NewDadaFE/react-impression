@@ -103,3 +103,5 @@ export default class CalendarView extends Component{
         );
     }
 }
+
+CalendarView.title = 'Calendar';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Card, Form, Select, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
-export default class FormView extends Component{
+export default class SelectView extends Component{
     render(){
         return (
             <div>
@@ -93,4 +93,4 @@ export default class FormView extends Component{
     }
 }
 
-FormView.title = 'Form';
+SelectView.title = 'Select';
