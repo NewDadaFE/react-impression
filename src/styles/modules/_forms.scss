@@ -385,7 +385,7 @@ input[type="month"] {
 .form-inline {
   margin: 0;
   > :not(:last-child){
-    margin-right: $spacer-x;
+    margin-right: $spacer-x * 1.5;
   }
   // Kick in the inline
   // Inline-block all the things for "inline"
@@ -395,7 +395,7 @@ input[type="month"] {
     vertical-align: middle;
 
     > label{
-      margin-right: $spacer-x;
+      margin-right: $spacer-x / 2;
     }
   }
 

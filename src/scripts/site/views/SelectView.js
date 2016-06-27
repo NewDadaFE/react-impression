@@ -12,28 +12,28 @@ export default class SelectView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                    <Form type="inline">
-                                        <Form.Group>
-                                            <label>请选择:</label>
-                                            <Select>
-                                                <Select.Option value="1">First</Select.Option>
-                                                <Select.Option value="2">Second</Select.Option>
-                                                <Select.Option value="3">Third</Select.Option>
-                                            </Select>
-                                        </Form.Group>
-                                    </Form>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>请选择:</label>
+                                        <Select>
+                                            <Select.Option value="1">First</Select.Option>
+                                            <Select.Option value="2">Second</Select.Option>
+                                            <Select.Option value="3">Third</Select.Option>
+                                        </Select>
+                                    </Form.Group>
+                                </Form>
                             </Col>
                             <Col>
-                                    <Form type="inline">
-                                        <Form.Group>
-                                            <label>默认值:</label>
-                                            <Select value="3">
-                                                <Select.Option value="1">First</Select.Option>
-                                                <Select.Option value="2">Second</Select.Option>
-                                                <Select.Option value="3">Third</Select.Option>
-                                            </Select>
-                                        </Form.Group>
-                                    </Form>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>默认值:</label>
+                                        <Select value="3">
+                                            <Select.Option value="1">First</Select.Option>
+                                            <Select.Option value="2">Second</Select.Option>
+                                            <Select.Option value="3">Third</Select.Option>
+                                        </Select>
+                                    </Form.Group>
+                                </Form>
                             </Col>
                         </Row>
                     </Card>
@@ -41,28 +41,28 @@ export default class SelectView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                    <Form type="inline">
-                                        <Form.Group>
-                                            <label>disabled:</label>
-                                            <Select disabled>
-                                                <Select.Option value="1">FirstFirstFirstFirstFirstFirstFirstFirst</Select.Option>
-                                                <Select.Option value="2">Second</Select.Option>
-                                                <Select.Option value="3">Third</Select.Option>
-                                            </Select>
-                                        </Form.Group>
-                                    </Form>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>disabled:</label>
+                                        <Select disabled>
+                                            <Select.Option value="1">FirstFirstFirstFirstFirstFirstFirstFirst</Select.Option>
+                                            <Select.Option value="2">Second</Select.Option>
+                                            <Select.Option value="3">Third</Select.Option>
+                                        </Select>
+                                    </Form.Group>
+                                </Form>
                             </Col>
                             <Col>
-                                    <Form type="inline">
-                                        <Form.Group>
-                                            <label>option disabled:</label>
-                                            <Select>
-                                                <Select.Option value="1">First</Select.Option>
-                                                <Select.Option value="2" disabled>Second</Select.Option>
-                                                <Select.Option value="3">Third</Select.Option>
-                                            </Select>
-                                        </Form.Group>
-                                    </Form>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>option disabled:</label>
+                                        <Select>
+                                            <Select.Option value="1">First</Select.Option>
+                                            <Select.Option value="2" disabled>Second</Select.Option>
+                                            <Select.Option value="3">Third</Select.Option>
+                                        </Select>
+                                    </Form.Group>
+                                </Form>
                             </Col>
                         </Row>
                     </Card>
