@@ -34,7 +34,7 @@ export default class Input extends Component{
         //自定义样式
         className: PropTypes.string,
         //类型
-        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month']),
+        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month', 'search']),
         //提示
         placeholder: PropTypes.string,
         //值
@@ -45,6 +45,8 @@ export default class Input extends Component{
         clearable: PropTypes.bool,
         //是否不可选
         disabled: PropTypes.bool,
+        //子元素只能为节点
+        children: PropTypes.element
     }
     //默认props
     static defaultProps = {
@@ -136,36 +138,68 @@ export default class Input extends Component{
     }
     //渲染
     render(){
-        let { type, value, defaultValue, disabled, placeholder, clearable, style, className, ...others} = this.props,
+        let { type, value, defaultValue, disabled, placeholder, clearable, style, onClick, className, children, ...others} = this.props,
             { showOption, showClear } = this.state;
 
-        return (
-            <div className={classnames('input', className)} ref="container"
-                onMouseEnter={this.showClearHandle}
-                onMouseLeave={this.hideClearHandle}>
-                <input type='text' ref="main"
-                    value={value} defaultValue={defaultValue}
-                    className={classnames('form-control', 'input-field',{
-                        'input-field-addon': this.hasAddon()
-                    })}
-                    readOnly={this.hasAddon()}
-                    disabled={disabled}
-                    placeholder={placeholder}
-                    onClick={this.showOptionHandle}
-                    style={style}/>
 
-                { clearable && showClear &&
-                    <i className="fa fa-times input-addon input-addon-clear" onClick={this.clearInputHandle}></i>
-                }
+        switch(type){
+            case 'date':
+            case 'month':
+                return (
+                    <div className={classnames('input', className)} ref="container"
+                        onMouseEnter={this.showClearHandle}
+                        onMouseLeave={this.hideClearHandle}>
+                        <input type='text'
+                            ref="main"
+                            value={value}
+                            defaultValue={defaultValue}
+                            className={classnames('form-control', 'input-field',{
+                                'input-field-addon': this.hasAddon()
+                            })}
+                            readOnly={this.hasAddon()}
+                            disabled={disabled}
+                            placeholder={placeholder}
+                            onClick={this.showOptionHandle}
+                            style={style}/>
 
-                { (!showClear || !clearable) && (type === 'date' || type === 'month') &&
-                    <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
-                }
+                        { clearable && showClear &&
+                            <i className="fa fa-times input-addon input-addon-clear" onClick={this.clearInputHandle}></i>
+                        }
 
-                { showOption && (type === 'date' || type === 'month') &&
-                    <DatePicker {...others} type={type} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
-                }
-            </div>
-        );
+                        { (!showClear || !clearable) &&
+                            <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
+                        }
+
+                        { showOption &&
+                            <DatePicker {...others} type={type} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
+                        }
+                    </div>
+                );
+            case 'search':
+                children && (children = React.cloneElement(children, {
+                    className: classnames('input-addon', children.props.className)
+                }));
+
+                return (
+                    <div className={classnames('input', className)} ref="container">
+                        <input type='text'
+                            ref="main"
+                            value={value}
+                            className={classnames('form-control', 'input-field',{
+                                'input-field-addon': this.hasAddon()
+                            })}
+                            readOnly={this.hasAddon()}
+                            onClick={onClick}
+                            disabled={disabled}
+                            placeholder={placeholder}
+                            style={style}/>
+                        { children }
+                        { !children &&
+                            <i className="fa fa-search input-addon" onClick={onClick}></i>
+                        }
+                    </div>
+                );
+        }
+
     }
 }

@@ -30,7 +30,7 @@ export default class DatePickerView extends Component{
                             <Col>
                                 <Form>
                                     <Form.Group>
-                                        <label>readOnly:</label>
+                                        <label>disabled:</label>
                                         <Input type="date" defaultValue="2016-05-29" disabled/>
                                     </Form.Group>
                                 </Form>

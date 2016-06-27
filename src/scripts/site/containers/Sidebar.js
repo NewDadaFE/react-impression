@@ -124,6 +124,9 @@ export default class AppSidebar extends Component {
                         <Link to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
                     </Nav.Link>
                     <Nav.Link>
+                        <Link to="/search"><Icon type="search" left/>Search</Link>
+                    </Nav.Link>
+                    <Nav.Link>
                         <Link to="/datepicker"><Icon type="calendar" left/>DatePicker</Link>
                     </Nav.Link>
                     <Nav.Link>

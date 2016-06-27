@@ -32,6 +32,7 @@ import TimelineView from '../views/TimelineView';
 import DatePickerView from '../views/DatePickerView';
 import LoadingView from '../views/LoadingView';
 import CalendarView from '../views/CalendarView';
+import SearchView from '../views/SearchView';
 
 /**
  * 主应用入口.
@@ -73,6 +74,7 @@ export default class App extends Component {
                     <Route path='datepicker' component={DatePickerView}/>
                     <Route path='loading' component={LoadingView}/>
                     <Route path='calendar' component={CalendarView}/>
+                    <Route path='search' component={SearchView}/>
                 </Route>
             </Router>
         );
