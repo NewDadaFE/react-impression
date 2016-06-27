@@ -60,6 +60,10 @@ a.tag {
   @include tag-variant($tag-primary-bg);
 }
 
+.tag-secondary {
+  @include tag-variant($tag-secondary-bg);
+}
+
 .tag-success {
   @include tag-variant($tag-success-bg);
 }
