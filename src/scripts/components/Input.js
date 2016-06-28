@@ -143,62 +143,62 @@ export default class Input extends Component{
 
 
         switch(type){
-            case 'date':
-            case 'month':
-                return (
-                    <div className={classnames('input', className)} ref="container"
-                        onMouseEnter={this.showClearHandle}
-                        onMouseLeave={this.hideClearHandle}>
-                        <input type='text'
-                            ref="main"
-                            value={value}
-                            defaultValue={defaultValue}
-                            className={classnames('form-control', 'input-field',{
-                                'input-field-addon': this.hasAddon()
-                            })}
-                            readOnly={this.hasAddon()}
-                            disabled={disabled}
-                            placeholder={placeholder}
-                            onClick={this.showOptionHandle}
-                            style={style}/>
+        case 'date':
+        case 'month':
+            return (
+                <div className={classnames('input', className)} ref="container"
+                    onMouseEnter={this.showClearHandle}
+                    onMouseLeave={this.hideClearHandle}>
+                    <input type='text'
+                        ref="main"
+                        value={value}
+                        defaultValue={defaultValue}
+                        className={classnames('form-control', 'input-field',{
+                            'input-field-addon': this.hasAddon()
+                        })}
+                        readOnly={this.hasAddon()}
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        onClick={this.showOptionHandle}
+                        style={style}/>
 
-                        { clearable && showClear &&
-                            <i className="fa fa-times input-addon input-addon-clear" onClick={this.clearInputHandle}></i>
-                        }
+                    { clearable && showClear &&
+                        <i className="fa fa-times input-addon input-addon-clear" onClick={this.clearInputHandle}></i>
+                    }
 
-                        { (!showClear || !clearable) &&
-                            <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
-                        }
+                    { (!showClear || !clearable) &&
+                        <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
+                    }
 
-                        { showOption &&
-                            <DatePicker {...others} type={type} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
-                        }
-                    </div>
-                );
-            case 'search':
-                children && (children = React.cloneElement(children, {
-                    className: classnames('input-addon', children.props.className)
-                }));
+                    { showOption &&
+                        <DatePicker {...others} type={type} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
+                    }
+                </div>
+            );
+        case 'search':
+            children && (children = React.cloneElement(children, {
+                className: classnames('input-addon', children.props.className)
+            }));
 
-                return (
-                    <div className={classnames('input', className)} ref="container">
-                        <input type='text'
-                            ref="main"
-                            value={value}
-                            className={classnames('form-control', 'input-field',{
-                                'input-field-addon': this.hasAddon()
-                            })}
-                            readOnly={this.hasAddon()}
-                            onClick={onClick}
-                            disabled={disabled}
-                            placeholder={placeholder}
-                            style={style}/>
-                        { children }
-                        { !children &&
-                            <i className="fa fa-search input-addon" onClick={onClick}></i>
-                        }
-                    </div>
-                );
+            return (
+                <div className={classnames('input', className)} ref="container">
+                    <input type='text'
+                        ref="main"
+                        value={value}
+                        className={classnames('form-control', 'input-field',{
+                            'input-field-addon': this.hasAddon()
+                        })}
+                        readOnly={this.hasAddon()}
+                        onClick={onClick}
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        style={style}/>
+                    { children }
+                    { !children &&
+                        <i className="fa fa-search input-addon" onClick={onClick}></i>
+                    }
+                </div>
+            );
         }
 
     }

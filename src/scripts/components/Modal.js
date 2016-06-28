@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { findDOMNode } from 'react-dom';
 import React, { Component, PropTypes } from 'react';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
@@ -25,7 +24,7 @@ export default class Modal extends Component{
         document.querySelector('.content').onmousewheel = event => {
             event.preventDefault();
             return false;
-        }
+        };
     }
     /**
      * 恢复scroll.
