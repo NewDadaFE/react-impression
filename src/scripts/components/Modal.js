@@ -30,9 +30,10 @@ export default class Modal extends Component{
     /**
      * 恢复scroll.
      */
-    // componentWillUnmount(){
+    componentWillUnmount(){
         // document.querySelector('.content').style.overflow = 'auto';
-    // }
+        document.querySelector('.content').onmousewheel = null;
+    }
     //渲染
     render(){
         let { size, className, children, ...others } = this.props,
