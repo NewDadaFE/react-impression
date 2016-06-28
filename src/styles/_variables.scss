@@ -722,8 +722,9 @@ $state-danger-border:            darken($state-danger-bg, 6%) !default;
 
 
 // Cards
-$card-spacer-x:            1.25rem !default;
-$card-spacer-y:            .75rem !default;
+$card-padding:             1.25rem !default;
+$card-spacer-x:            0.75rem !default;
+$card-spacer-y:            $card-padding !default;
 $card-border-width:        1px !default;
 $card-border-radius:       $border-radius-sm !default;
 $card-border-color:        rgba(0,0,0,.125) !default;
@@ -813,12 +814,14 @@ $badge-legend-addon-margin-right:       $spacer-y / 2 !default;
 
 // Modals
 
-$modal-bg:                    rgba(0, 0, 0, 0.18) !default;
+$modal-bg:                    rgba(0, 0, 0, 0.3) !default;
+$modal-left:                  $sidebar-width !default;
+$modal-top:                   $navbar-height !default;
 $modal-inner-padding:         0.8rem !default;
 $modal-border-radius:         4px !default;
 
 $modal-dialog-margin:         10px !default;
-$modal-dialog-sm-up-margin-y: ($navbar-height + 20) !default;
+$modal-dialog-sm-up-margin-y: $navbar-height !default;
 
 $modal-title-padding:         0.8rem !default;
 $modal-title-line-height:     $line-height-base !default;
@@ -985,8 +988,7 @@ $figure-caption-font-size: 90% !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-y:          .75rem !default;
-$breadcrumb-padding-x:          1rem !default;
+$breadcrumb-padding:            $card-padding !default;
 $breadcrumb-item-padding:       .5rem !default;
 
 $breadcrumb-bg:                 transparent !default;

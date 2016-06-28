@@ -1,10 +1,10 @@
 // Container that the modal scrolls within
 .modal {
   position: fixed;
-  top: 0;
+  top: $modal-top;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: $modal-left;
   background: $modal-bg;
   z-index: $zindex-modal;
   overflow: hidden;

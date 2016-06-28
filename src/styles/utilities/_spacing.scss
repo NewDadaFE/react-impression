@@ -22,11 +22,35 @@
 }
 
 .offset-spacer-l{
-  margin-left: $spacer-y;
+  margin-left: $spacer-x;
 }
 
 .offset-spacer-r{
-  margin-right: $spacer-y;
+  margin-right: $spacer-x;
+}
+
+.offset-spacer-t{
+  margin-top: $spacer-y;
+}
+
+.offset-spacer-b{
+  margin-bottom: $spacer-y;
+}
+
+.fa-left{
+    margin-right: $spacer-x / 2;
+}
+
+.fa-left-lg{
+    margin-right: $spacer-x;
+}
+
+.fa-right{
+    margin-left: $spacer-x / 2;
+}
+
+.fa-right-lg{
+    margin-left: $spacer-x;
 }
 
 .no-margin{

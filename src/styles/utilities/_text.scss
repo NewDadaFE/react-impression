@@ -25,6 +25,9 @@
 .font-weight-bold    { font-weight: bold; }
 .font-italic         { font-style: italic; }
 
+.vertical-middle { vertical-align: middle !important; }
+
+
 // Contextual colors
 
 @include text-emphasis-variant('.text-muted', $text-muted);
