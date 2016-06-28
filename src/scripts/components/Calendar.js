@@ -55,6 +55,8 @@ export default class Calendar extends Component{
         dateCellRender: PropTypes.func,
         //时间单元格点击
         onDateCellClick: PropTypes.func,
+        //日历时间切换
+        onDateChange: PropTypes.func,
     }
     //默认props
     static defaultProps = {
@@ -80,22 +82,28 @@ export default class Calendar extends Component{
      */
     prevMonthHandle(){
         let { currentMoment } = this.state,
+            { onDateChange } = this.props,
             prevMonthMoment = moment(currentMoment).subtract(1,'months');
 
         this.setState({
             currentMoment: prevMonthMoment
         });
+
+        onDateChange && onDateChange(prevMonthMoment);
     }
     /**
      * 下一个月.
      */
     nextMonthHandle(){
         let { currentMoment } = this.state,
+            { onDateChange } = this.props,
             nextMonthMoment = moment(currentMoment).add(1,'months');
 
         this.setState({
             currentMoment: nextMonthMoment
         });
+
+        onDateChange && onDateChange(nextMonthMoment);
     }
     /**
      * 获取日期项.
