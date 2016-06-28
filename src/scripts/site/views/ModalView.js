@@ -64,6 +64,20 @@ export default class ModalView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Button style="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
+                            </Col>
+                            <Col>
+                                <Button style="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
+                            </Col>
+                            <Col>
+                                <Button style="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+
                 </Card>
                 { this.state.show &&
                     <Modal size={this.state.size}>
