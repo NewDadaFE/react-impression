@@ -82,28 +82,28 @@ export default class Calendar extends Component{
      */
     prevMonthHandle(){
         let { currentMoment } = this.state,
-            { onDateChange } = this.props,
+            { format, onDateChange } = this.props,
             prevMonthMoment = moment(currentMoment).subtract(1,'months');
 
         this.setState({
             currentMoment: prevMonthMoment
         });
 
-        onDateChange && onDateChange(prevMonthMoment);
+        onDateChange && onDateChange(prevMonthMoment.format(format));
     }
     /**
      * 下一个月.
      */
     nextMonthHandle(){
         let { currentMoment } = this.state,
-            { onDateChange } = this.props,
+            { format, onDateChange } = this.props,
             nextMonthMoment = moment(currentMoment).add(1,'months');
 
         this.setState({
             currentMoment: nextMonthMoment
         });
 
-        onDateChange && onDateChange(nextMonthMoment);
+        onDateChange && onDateChange(nextMonthMoment.format(format));
     }
     /**
      * 获取日期项.
