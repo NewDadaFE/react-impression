@@ -86,7 +86,7 @@ export default class Select extends Component{
         children = children.map((child, index) => {
             let { value, children, disabled }  = child.props;
             value === this.state.value && (text = children);
-            value === this.state.value && !disabled && (this.refs.main.value = children);
+            value === this.state.value && !disabled && this.refs.main && (this.refs.main.value = children);
             return React.cloneElement(child, {
                 key: index,
                 active: value === this.state.value,

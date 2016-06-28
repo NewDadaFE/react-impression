@@ -253,10 +253,10 @@ $table-bg-accent:               #f9f9f9 !default;
 $table-bg-hover:                #f5f5f5 !default;
 $table-bg-active:               $table-bg-hover !default;
 
-$table-thead-bg:                $gray-lighter !default;
+$table-thead-bg:                $gray-lightest !default;
 
 $table-border-width:            $border-width !default;
-$table-border-color:            $gray-lighter !default;
+$table-border-color:            $border-color !default;
 
 $table-inverse-bg:              $gray-dark;
 $table-inverse-color:           $gray-lighter;
@@ -892,19 +892,24 @@ $message-enter-duration:      0.24s !default;
 $message-leave-duration:      0.36s !default;
 
 // Notification
-$notification-width:          300px !default;
-
-$notice-bg:                   #fff !default;
+$notification-width:          20rem !default;
+$notification-top:            $navbar-height + 10 !default;
+$notice-color:                #fff !default;
+$notice-border-width:         2px !default;
 $notice-border-radius:        $border-radius !default;
 $notice-margin-bottom:        $spacer-y !default;
 $notice-box-shadow:           0 2px 6px rgba(0,0,0,.2) !default;
 
 $notice-header-font-size:     $font-size-h2 !default;
 $notice-header-padding:       0.75rem 0 0.75rem 1rem !default;
-
 $notice-title-margin:         0 0 0.2rem 0 !default;
-
 $notice-body-padding:         0.75rem 1rem !default;
+
+$notice-primary-bg:           mix($brand-primary, #fff, 68%) !default;
+$notice-success-bg:           mix($brand-success, #fff, 68%) !default;
+$notice-warning-bg:           mix($brand-warning, #fff, 68%) !default;
+$notice-danger-bg:            mix($brand-danger, #fff, 68%) !default;
+
 
 $notice-enter-duration:      0.2s !default;
 $notice-leave-duration:      0.8s !default;

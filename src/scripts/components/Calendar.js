@@ -89,7 +89,7 @@ export default class Calendar extends Component{
             currentMoment: prevMonthMoment
         });
 
-        onDateChange && onDateChange(prevMonthMoment.format(format));
+        onDateChange && onDateChange(prevMonthMoment);
     }
     /**
      * 下一个月.
@@ -103,7 +103,7 @@ export default class Calendar extends Component{
             currentMoment: nextMonthMoment
         });
 
-        onDateChange && onDateChange(nextMonthMoment.format(format));
+        onDateChange && onDateChange(nextMonthMoment);
     }
     /**
      * 获取日期项.

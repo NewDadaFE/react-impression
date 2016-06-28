@@ -23,7 +23,7 @@
 
 
   tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+    border-top: $table-border-width solid $table-border-color;
   }
 }
 
@@ -55,7 +55,7 @@
   thead {
     th,
     td {
-      border-bottom-width: (2 * $table-border-width);
+      border-bottom-width: $table-border-width;
     }
   }
 }
