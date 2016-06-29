@@ -46,7 +46,9 @@ export default class Input extends Component{
         //是否不可选
         disabled: PropTypes.bool,
         //子元素只能为节点
-        children: PropTypes.element
+        children: PropTypes.element,
+        //是否椭圆形
+        pill: PropTypes.bool,
     }
     //默认props
     static defaultProps = {
@@ -138,8 +140,9 @@ export default class Input extends Component{
     }
     //渲染
     render(){
-        let { type, value, defaultValue, disabled, placeholder, clearable, style, onClick, className, children, ...others} = this.props,
-            { showOption, showClear } = this.state;
+        let { type, value, defaultValue, disabled, placeholder, clearable, style, pill, onClick, className, children, ...others} = this.props,
+            { showOption, showClear } = this.state,
+            pillClass = pill? 'input-pill' : null;
 
 
         switch(type){
@@ -153,7 +156,9 @@ export default class Input extends Component{
                         ref="main"
                         value={value}
                         defaultValue={defaultValue}
-                        className={classnames('form-control', 'input-field',{
+                        className={classnames('form-control',
+                            pillClass,
+                            'input-field',{
                             'input-field-addon': this.hasAddon()
                         })}
                         readOnly={this.hasAddon()}
@@ -185,7 +190,9 @@ export default class Input extends Component{
                     <input type='text'
                         ref="main"
                         value={value}
-                        className={classnames('form-control', 'input-field',{
+                        className={classnames('form-control',
+                            pillClass,
+                            'input-field',{
                             'input-field-addon': this.hasAddon()
                         })}
                         readOnly={this.hasAddon()}

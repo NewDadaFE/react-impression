@@ -20,18 +20,16 @@ export default class Modal extends Component{
      * 不可scroll.
      */
     componentDidMount(){
-        // document.querySelector('.content').style.overflow = 'hidden';
-        document.querySelector('.content').onmousewheel = event => {
-            event.preventDefault();
-            return false;
-        };
+        // document.querySelector('.content').onmousewheel = event => {
+        //     event.preventDefault();
+        //     return false;
+        // };
     }
     /**
      * 恢复scroll.
      */
     componentWillUnmount(){
-        // document.querySelector('.content').style.overflow = 'auto';
-        document.querySelector('.content').onmousewheel = null;
+        // document.querySelector('.content').onmousewheel = null;
     }
     //渲染
     render(){
