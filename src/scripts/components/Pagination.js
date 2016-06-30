@@ -8,9 +8,6 @@ export default class Pagination extends Component{
     //构造函数
     constructor(props, context){
         super(props, context);
-        this.state = {
-            activePage: this.props.activePage
-        };
 
         //上下文绑定
         this.prevPageHandle = this.prevPageHandle.bind(this);
@@ -40,37 +37,27 @@ export default class Pagination extends Component{
     }
     //上一页
     prevPageHandle(){
-        let { onSelect } = this.props,
-            activePage = this.state.activePage - 1;
+        let { onSelect, activePage } = this.props;
+        activePage -= 1;
 
-        onSelect && onSelect(activePage);
-        this.state.activePage > 1 && this.setState({
-            activePage
-        });
+        activePage >= 1 && onSelect && onSelect(activePage);
     }
     //下一页
     nextPageHandle(){
-        let { onSelect } = this.props,
-            activePage = this.state.activePage + 1;
+        let { onSelect, activePage, totalPage } = this.props;
+        activePage += 1;
 
-        onSelect && onSelect(activePage);
-        this.state.activePage < this.props.totalPage && this.setState({
-            activePage
-        });
+        activePage <= totalPage && onSelect && onSelect(activePage);
     }
     //跳转至某页
     goPageHandle(page){
         let { onSelect } = this.props;
 
         onSelect && onSelect(page);
-        this.setState({
-            activePage: page
-        });
     }
     //获取显示页码
     getShowPageArray(){
-        let { scope, totalPage } = this.props,
-            { activePage } = this.state,
+        let { scope, totalPage, activePage } = this.props,
             result = [];
         scope = scope < 0? 2 : scope;
 
@@ -86,8 +73,7 @@ export default class Pagination extends Component{
     }
     //渲染
     render(){
-        let { totalPage, className, ellipsis, ...others } = this.props,
-            { activePage } = this.state,
+        let { totalPage, className, ellipsis, activePage, ...others } = this.props,
             children = this.getShowPageArray();
 
         return(

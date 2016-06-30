@@ -9,7 +9,7 @@ export default class Header extends Component{
     render(){
         return (
             <Navbar>
-                <Navbar.SidebarTitle img="images/logo.png">Impression</Navbar.SidebarTitle>
+                <Navbar.SidebarTitle>Impression</Navbar.SidebarTitle>
                 <Button style="secondary"><i className="fa fa-bars"></i></Button>
                 <Nav/>
                 <Form type="inline">

@@ -3,10 +3,32 @@ import { Card, Row, Col, Pagination, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
 export default class PaginationView extends Component{
-    onSelectHandle(pageNum){
-        // console.log(pageNum);
+    constructor(prop, context){
+        super(prop, context);
+
+        this.state = {
+            totalPage: 10,
+            activePage: 4,
+            totalPage2: 5,
+            activePage2: 3
+        };
+
+        this.onSelectHandle = this.onSelectHandle.bind(this);
+        this.onSelectHandle2 = this.onSelectHandle2.bind(this);
+    }
+    onSelectHandle(activePage){
+        this.setState({
+            activePage
+        });
+    }
+    onSelectHandle2(activePage2){
+        this.setState({
+            activePage2
+        });
     }
     render(){
+        let { totalPage, activePage, totalPage2, activePage2 } = this.state;
+
         return (
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
@@ -15,12 +37,12 @@ export default class PaginationView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={10} activePage={4}></Pagination>
+                                <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={totalPage} activePage={activePage}></Pagination>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={5} activePage={3}></Pagination>
+                                <Pagination onSelect={this.onSelectHandle2} scope={2} totalPage={totalPage2} activePage={activePage2}></Pagination>
                             </Col>
                         </Row>
                     </Card>

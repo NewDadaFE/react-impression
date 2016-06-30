@@ -86,7 +86,9 @@
   color: $navbar-sidebar-title-color;
   width: $navbar-sidebar-title-width;
   background: $navbar-sidebar-title-bg;
+  background-size: contain;
   margin: $navbar-sidebar-title-margin;
+  box-shadow: $navbar-sidebar-box-shadow;
 
   img{
     max-height: $navbar-height;

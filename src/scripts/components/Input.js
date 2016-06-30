@@ -157,8 +157,8 @@ export default class Input extends Component{
                         value={value}
                         defaultValue={defaultValue}
                         className={classnames('form-control',
-                            pillClass,
-                            'input-field',{
+                        pillClass,
+                        'input-field',{
                             'input-field-addon': this.hasAddon()
                         })}
                         readOnly={this.hasAddon()}
@@ -191,8 +191,8 @@ export default class Input extends Component{
                         ref="main"
                         value={value}
                         className={classnames('form-control',
-                            pillClass,
-                            'input-field',{
+                        pillClass,
+                        'input-field',{
                             'input-field-addon': this.hasAddon()
                         })}
                         readOnly={this.hasAddon()}

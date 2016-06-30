@@ -82,7 +82,7 @@ export default class Calendar extends Component{
      */
     prevMonthHandle(){
         let { currentMoment } = this.state,
-            { format, onDateChange } = this.props,
+            { onDateChange } = this.props,
             prevMonthMoment = moment(currentMoment).subtract(1,'months');
 
         this.setState({
@@ -96,7 +96,7 @@ export default class Calendar extends Component{
      */
     nextMonthHandle(){
         let { currentMoment } = this.state,
-            { format, onDateChange } = this.props,
+            { onDateChange } = this.props,
             nextMonthMoment = moment(currentMoment).add(1,'months');
 
         this.setState({
