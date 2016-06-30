@@ -22,7 +22,7 @@ export default class Breadcrumb extends Component{
         let { routes } = this.props,
             leafRoute = routes[routes.length - 1];
 
-        document.title = leafRoute.component && leafRoute.component.title || leafRoute.path;
+        document.title = leafRoute.name || leafRoute.component && leafRoute.component.title || leafRoute.path;
     }
     //渲染
     render(){
