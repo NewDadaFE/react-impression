@@ -33,6 +33,7 @@ import DatePickerView from '../views/DatePickerView';
 import LoadingView from '../views/LoadingView';
 import CalendarView from '../views/CalendarView';
 import SearchView from '../views/SearchView';
+import InlineSelectView from '../views/InlineSelectView';
 
 /**
  * 主应用入口.
@@ -75,6 +76,7 @@ export default class App extends Component {
                     <Route path='loading' component={LoadingView}/>
                     <Route path='calendar' component={CalendarView}/>
                     <Route path='search' component={SearchView}/>
+                    <Route path='inline-select' component={InlineSelectView}/>
                 </Route>
             </Router>
         );

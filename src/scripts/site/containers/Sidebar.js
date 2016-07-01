@@ -51,16 +51,19 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Title>Navigation</Nav.Title>
                     <Nav.Link>
-                        <Link to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
-                    </Nav.Link>
-                    <Nav.Link>
                         <Link to="/nav"><Icon type="bars" left/>Nav</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/navbar"><Icon type="tasks" left/>Navbar</Link>
                     </Nav.Link>
                     <Nav.Link>
+                        <Link to="/breadcrumb"><Icon type="hand-o-right" left/>Breadcrumb</Link>
+                    </Nav.Link>
+                    <Nav.Link>
                         <Link to="/pagination"><Icon type="angle-double-right" left/>Pagination</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/inline-select"><Icon type="th" left/>InlineSelect</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/timeline"><Icon type="clock-o" left/>Timeline</Link>
@@ -138,10 +141,10 @@ export default class AppSidebar extends Component {
                 </Nav>
                 <Sidebar.Footer>
                     <Link to="/timeline">
-                        <Icon type="question-circle" size="lg" left/>帮助
+                        <Icon type="question-circle" size="lg" left/>help
                     </Link>
                     <Link to="/timeline">
-                        <Icon type="power-off" size="lg" left/>登出
+                        <Icon type="power-off" size="lg" left/>logout
                     </Link>
                 </Sidebar.Footer>
             </Sidebar>

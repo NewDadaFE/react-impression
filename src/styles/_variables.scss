@@ -1097,11 +1097,24 @@ $calendar-daygroup-item-padding:             0.4rem !default;
 $calendar-daygroup-item-active-bg:           rgba($brand-primary, 0.1) !default;
 $calendar-daygroup-item-disable-opacity:     0.4 !default;
 
+//InlineSelect
+$inline-select-margin-bottom:                -0.5rem !default;
+$inline-select-option-color:                 $text-muted !default;
+$inline-select-option-padding:               .2rem .6rem !default;
+$inline-select-option-border-radius:         $border-radius-sm !default;
+$inline-select-option-margin:                0 0.5rem 0.5rem 0 !default;
+$inline-select-option-transition:            all .2s ease !default;
+$inline-select-option-active-color:          #fff !default;
+$inline-select-option-active-bg:             $brand-primary !default;
+
+
 
 //Page transition
 $page-transition-bg:                         #fff !default;
 $page-transition-duration:                   1.2s !default;
 $page-transition-enter-boxshadow:            0 0 2px darken($brand-primary, 12%) !default;
 $page-transition-leave-boxshadow:            $page-transition-enter-boxshadow !default;
+
+
 
 
