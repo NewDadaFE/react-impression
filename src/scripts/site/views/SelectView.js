@@ -14,11 +14,18 @@ export default class SelectView extends Component{
                             <Col>
                                 <Form type="inline">
                                     <Form.Group>
-                                        <label>请选择:</label>
+                                        <label>basic:</label>
                                         <Select>
                                             <Select.Option value="1">First</Select.Option>
                                             <Select.Option value="2">Second</Select.Option>
                                             <Select.Option value="3">Third</Select.Option>
+                                            <Select.Option value="4">Four</Select.Option>
+                                            <Select.Option value="5">Five</Select.Option>
+                                            <Select.Option value="6">Six</Select.Option>
+                                            <Select.Option value="7">Seven</Select.Option>
+                                            <Select.Option value="8">Eight</Select.Option>
+                                            <Select.Option value="9">Nine</Select.Option>
+                                            <Select.Option value="10">Ten</Select.Option>
                                         </Select>
                                     </Form.Group>
                                 </Form>
@@ -26,7 +33,7 @@ export default class SelectView extends Component{
                             <Col>
                                 <Form type="inline">
                                     <Form.Group>
-                                        <label>默认值:</label>
+                                        <label>defaultValue:</label>
                                         <Select value="3">
                                             <Select.Option value="1">First</Select.Option>
                                             <Select.Option value="2">Second</Select.Option>

@@ -64,10 +64,12 @@
   display: none;
   background: $select-bg;
   list-style: none;
+  overflow-y: auto;
+  max-height: $select-selection-max-height;
   transition: $select-transition;
   border: $select-options-border;
   box-shadow: $select-options-box-shadow;
-    animation: scaleIn 0.36s ease;
+  animation: scaleIn 0.36s ease;
   transform-origin: center 0;
 
   .open &{
