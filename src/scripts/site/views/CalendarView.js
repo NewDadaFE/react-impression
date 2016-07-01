@@ -47,7 +47,6 @@ export default class CalendarView extends Component{
             );
         case 21:
         case 22:
-        case 23:
             return <Badge type="legend" style="danger">{date.day}</Badge>;
         }
     }
