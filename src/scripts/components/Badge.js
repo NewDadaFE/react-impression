@@ -15,19 +15,22 @@ export default class Badge extends Component{
         style: PropTypes.string,
         //类型
         type: PropTypes.string,
+        //addon尺寸
+        size: PropTypes.string,
     }
     //默认props
     static defaultProps = {
         style: 'primary'
     }
     render(){
-        let { content, children, style, type, className } = this.props,
+        let { content, children, style, type, size, className } = this.props,
             styleClass = `bg-${style}`,
-            typeClass = `badge-${type}`;
+            typeClass = `badge-${type}`,
+            badgeSizeClass = size? `badge-addon-${size}` : null;
 
         return (
             <span className={classnames('badge', typeClass, className)}>
-                <div className={classnames('badge-addon', styleClass)}>{content}</div>
+                <div className={classnames('badge-addon', badgeSizeClass, styleClass)}>{content}</div>
                 { children }
             </span>
         );

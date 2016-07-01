@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, InputGroup, Form, Icon } from '../../components';
+import { Navbar, Nav, Button, InputGroup, Form, Icon, Badge } from '../../components';
 
 
 /**
@@ -13,13 +13,20 @@ export default class Header extends Component{
                 <Button style="secondary"><i className="fa fa-bars"></i></Button>
                 <Nav/>
                 <Form type="inline">
-                    <Form.Group>
-                        <InputGroup>
-                            <InputGroup.Input placeholder="something" style={{width: '220px'}}/>
-                            <InputGroup.Button style="primary">Search</InputGroup.Button>
-                        </InputGroup>
-                    </Form.Group>
-                    <Button href="https://github.com/shenlq/impression" style="default"><Icon type="github"/> star</Button>
+                    <span>
+                        Welcome to Impression React components.
+                    </span>
+                    <a href="https://github.com/shenlq/impression" className="text-muted"><Icon size="lg" type="github"/></a>
+                    <a href="javascript:void(0);" className="text-muted">
+                        <Badge style="danger">
+                            <Icon size="lg" type="bell"/>
+                        </Badge>
+                    </a>
+                    <a href="javascript:void(0);" className="text-muted">
+                        <Badge content="3" size="sm">
+                            <Icon size="lg" type="envelope-o"/>
+                        </Badge>
+                    </a>
                 </Form>
             </Navbar>
         );
