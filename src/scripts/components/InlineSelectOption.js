@@ -15,6 +15,6 @@ export default class InlineSelectdOption extends Component{
     render(){
         let { active, className, children, ...others } = this.props;
 
-        return <div {...others} className={classnames('inline-select-option', {active}, className)}>{children}</div>
+        return <div {...others} className={classnames('inline-select-option', {active}, className)}>{children}</div>;
     }
 }

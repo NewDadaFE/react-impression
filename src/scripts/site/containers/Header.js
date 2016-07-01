@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, InputGroup, Form, Icon, Badge, Input } from '../../components';
+import { Navbar, Nav, Button, Form, Icon, Badge, Input, Image } from '../../components';
 
 
 /**
@@ -30,6 +30,10 @@ export default class Header extends Component{
                             <Icon size="lg" type="envelope-o"/>
                         </Badge>
                     </a>
+                    <span className="fa-right-lg">
+                        <Image circle src="../images/user.jpg" style={{width: '30px'}}/>
+                        <span className="fa-right">Peter</span>
+                    </span>
                 </Form>
             </Navbar>
         );
