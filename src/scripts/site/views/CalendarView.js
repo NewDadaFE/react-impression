@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Calendar, Breadcrumb, Badge, Icon } from '../../components';
+import { Card, Row, Col, Calendar, Breadcrumb, Badge, Icon, Image } from '../../components';
 
 export default class CalendarView extends Component{
     constructor(prop, context){
@@ -28,6 +28,11 @@ export default class CalendarView extends Component{
                     <div><Badge type="legend" style="danger">{date.day}</Badge></div>
                 </div>
             );
+        case 5:
+        case 14:
+        case 23:
+        case 27:
+            return <div className="text-center"><Image circle src="images/user.jpg" style={{width: '70px'}}/></div>;
         case 11:
         case 12:
         case 13:
