@@ -13,7 +13,7 @@ export default class ButtonGroupView extends Component{
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card block>
-                        <ButtonGroup style="default" activeKey="left">
+                        <ButtonGroup style="default" activeKey="left" onSelect={this.btnGroupSelectHandle.bind(this)}>
                             <Button eventKey="left">Left</Button>
                             <Button eventKey="middle">Middle</Button>
                             <Button eventKey="right">Right</Button>
@@ -27,7 +27,7 @@ export default class ButtonGroupView extends Component{
                                 <Button eventKey="middle">Middle</Button>
                                 <Button eventKey="right">Right</Button>
                             </ButtonGroup>
-                            <ButtonGroup style="secondary" activeKey="middle">
+                            <ButtonGroup style="secondary" activeKey="middle" onSelect={this.btnGroupSelectHandle.bind(this)}>
                                 <Button eventKey="left">Left</Button>
                                 <Button eventKey="middle">Middle</Button>
                                 <Button eventKey="right">Right</Button>

@@ -15,7 +15,6 @@ export default class ButtonGroup extends Component{
     //默认props
     static defaultProps = {
         style: 'default',
-        isCheckbox: false,
     }
     //prop校验
     static propType = {
@@ -29,13 +28,11 @@ export default class ButtonGroup extends Component{
         onSelect: PropTypes.func,
         //自定义样式
         className: PropTypes.string,
-        //是否checkbox
-        isCheckbox: PropTypes.bool,
     }
     //渲染
     render(){
         let { activeKey } = this.state,
-            { style, size, isCheckbox, className, onSelect, children, ...others } = this.props,
+            { style, size, className, onSelect, children, ...others } = this.props,
             btnGroupSize = size? `btn-group-${size}` : null;
 
         children = children.map((child, index) => {
@@ -43,9 +40,9 @@ export default class ButtonGroup extends Component{
 
             return React.cloneElement(child, {
                 key: index,
-                outline: style !== 'default' && (!activeKey || !eventKey || activeKey !== eventKey),
-                style: style === 'default'? (activeKey !== undefined && activeKey === eventKey? 'primary': style) : style,
-                onClick: isCheckbox? event => {
+                outline: style !== 'default' && (!onSelect || activeKey !== eventKey),
+                style: style === 'default' && onSelect && activeKey === eventKey ? 'primary' : style,
+                onClick: onSelect? event => {
                     this.setState({
                         activeKey: eventKey
                     });
