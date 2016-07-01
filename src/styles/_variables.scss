@@ -585,7 +585,7 @@ $navbar-padding-x:                  3rem !default;
 $navbar-padding-y:                  0 !default;
 $navbar-brand-padding-y:            .25rem !default;
 
-$navbar-bg:                         $gray-lightest !default;
+$navbar-bg:                         mix($gray-lightest, $brand-primary, 99%) !default;
 $navbar-color:                      $gray-light !default;
 $navbar-border-color:               $border-color !default;
 
@@ -623,8 +623,8 @@ $nav-item-spacer-x:                             1rem !default;
 $nav-item-inline-spacer:                        1rem !default;
 
 $nav-title-color:                               #fff !default;
-$nav-title-padding:                             1rem 0.5rem !default;
-$nav-title-font-size:                           $font-size-sm !default;
+$nav-title-padding:                             0.5rem !default;
+$nav-title-font-size:                           1.1rem !default;
 
 $nav-link-padding:                              .5em 1em !default;
 $nav-link-active-color:                         $brand-primary !default;

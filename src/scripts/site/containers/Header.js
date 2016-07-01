@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, InputGroup, Form, Icon, Badge } from '../../components';
+import { Navbar, Nav, Button, InputGroup, Form, Icon, Badge, Input } from '../../components';
 
 
 /**
@@ -9,8 +9,11 @@ export default class Header extends Component{
     render(){
         return (
             <Navbar>
-                <Navbar.SidebarTitle>Impression</Navbar.SidebarTitle>
-                <Button style="secondary"><i className="fa fa-bars"></i></Button>
+                <Navbar.SidebarTitle><div style={{opacity: 0.6}}>Impression</div></Navbar.SidebarTitle>
+                <Form type="inline">
+                    <Button style="secondary"><i className="fa fa-bars"></i></Button>
+                    <Input type="search" pill style={{width: '220px'}}/>
+                </Form>
                 <Nav/>
                 <Form type="inline">
                     <span>
