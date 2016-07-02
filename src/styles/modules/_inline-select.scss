@@ -14,7 +14,6 @@
 
     &.active,
     &:hover{
-        font-weight: bold;
         color: $inline-select-option-active-color;
         background: $inline-select-option-active-bg;
     }
