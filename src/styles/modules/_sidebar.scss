@@ -35,8 +35,11 @@
         &.active{
             color: $sidebar-nav-link-active-color;
             background: $sidebar-nav-link-active-bg;
-            border-left-color: $sidebar-nav-link-active-border-color;
             box-shadow: $sidebar-nav-link-active-box-shadow;
+        }
+
+        &.active{
+            border-left-color: $sidebar-nav-link-active-border-color;
         }
 
         .pull-right{
