@@ -48,7 +48,7 @@
   background: $page-transition-bg;
   z-index: $page-transition-z-index;
   box-shadow: $page-transition-enter-boxshadow;
-  transform-origin: 50% 50%;
+  transform-origin: center center;
   animation-duration: $page-transition-duration;
   animation-timing-function: ease;
   animation-fill-mode: both;

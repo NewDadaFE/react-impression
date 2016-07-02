@@ -3,10 +3,12 @@
   display: flex;
   align-items: center;
   position: fixed;
-  left: 50%;
+  left: $message-left;
+  right: 0;
+  margin: 0 auto;
   top: $message-top;
   z-index: $zindex-message;
-  transform: translateX(-50%);
+  // transform: translateX(-50%);
   color: $message-color;
   max-width: $message-max-width;
   box-shadow: $message-box-shadow;
@@ -57,21 +59,21 @@
 @keyframes messageSlideInDown {
   0% {
     opacity: 0;
-    transform: translateX(-50%)  translateY(-100px);
+    transform:  translateY(-100px);
   }
 
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes messageSlideOutUp {
   0% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 
   100% {
     opacity: 0;
-    transform: translateX(-50%) translateY(-100px);
+    transform: translateY(-100px);
   }
 }

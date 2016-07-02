@@ -87,7 +87,7 @@ export default class CalendarView extends Component{
                     <Card block>
                         <Calendar></Calendar>
                     </Card>
-                    <h3>Size</h3>
+                    <h3>Small</h3>
                     <Card block>
                         <Row>
                             <Col>
