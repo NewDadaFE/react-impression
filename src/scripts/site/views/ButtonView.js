@@ -92,10 +92,15 @@ class ButtonView extends Component{
                             ['size', '设置按钮大小，可选值为 sm、normal、large', 'string', ''],
                             ['shape', '设置按钮形状，可选值为 pill', 'string', ''],
                             ['href', '设置按钮链接', 'string', ''],
-                            ['close', '设置是否关闭按钮样式', 'string', ''],
+                            ['close', '设置是否关闭按钮样式', 'boolean', ''],
                             ['classname', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
+                    <h3 className="text-secondary">组件应用扩展</h3>
+                    <ul>
+                        <li>style、size、shape 可自行扩展，样式改变本质是字符串拼接。</li>
+                        <li>为 Button 设置路由跳转可在 onClick 事件函数内添加路由跳转。</li>
+                    </ul>
                 </Card>
             </div>
         );
