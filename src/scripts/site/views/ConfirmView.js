@@ -34,10 +34,10 @@ export default class ConfirmView extends Component{
                     <Card block>
                        <Row>
                            <Col>
-                               <Button style="default" onClick={this.toggleConfirm1Handle}>删除</Button>
+                               <Button style="secondary" outline onClick={this.toggleConfirm1Handle}>warning</Button>
                            </Col>
                             <Col>
-                               <Button style="default" onClick={this.toggleConfirm2Handle}>订票</Button>
+                               <Button style="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
                            </Col>
                        </Row>
                     </Card>

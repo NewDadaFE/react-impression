@@ -24,6 +24,7 @@
     background: $confirm-dialog-bg;
     padding: $confirm-dialog-padding;
     border-radius: $confirm-dialog-border-radius;
+    animation: bounceIn $confirm-animation-duration ease-in-out;
 }
 
 .confirm-addon{
