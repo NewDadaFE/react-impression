@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Alert, Breadcrumb } from '../../components';
+import { Card, Row, Col, Attention, Breadcrumb } from '../../components';
 import { CommenTable } from '../components';
 
-export default class AlertView extends Component{
+export default class AttentionView extends Component{
     render(){
         return (
             <div>
@@ -12,30 +12,30 @@ export default class AlertView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Alert style="success">
-                                    <strong>Well done!</strong> You successfully read this important alert message.
-                                </Alert>
+                                <Attention style="success">
+                                    <strong>Well done!</strong> You successfully read this important attention message.
+                                </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Alert style="primary">
-                                    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                                </Alert>
+                                <Attention style="primary">
+                                    <strong>Heads up!</strong> This attention needs your attention, but it's not super important.
+                                </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Alert style="warning">
+                                <Attention style="warning">
                                     <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                                </Alert>
+                                </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col col="12">
-                                <Alert style="danger">
+                                <Attention style="danger">
                                     <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                                </Alert>
+                                </Attention>
                             </Col>
                         </Row>
                     </Card>
@@ -43,38 +43,43 @@ export default class AlertView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Alert style="success">
-                                  You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
-                                </Alert>
+                                <Attention style="success">
+                                    You successfully read this important attention message
+                                    <Attention.Link href="#"> click here</Attention.Link>.
+                                </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Alert style="primary">
-                                  This alert needs your attention, but it's not super important<a href="#" className="alert-link"> click here</a>.
-                                </Alert>
+                                <Attention style="primary">
+                                    This attention needs your attention, but it's not super important
+                                    <Attention.Link href="#"> click here</Attention.Link>.
+                                </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Alert style="warning">
-                                  Better check yourself, you're not looking too good<a href="#" className="alert-link"> click here</a>.
-                                </Alert>
+                                <Attention style="warning">
+                                    Better check yourself, you're not looking too good
+                                    <Attention.Link href="#"> click here</Attention.Link>.
+                                </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Alert style="danger">
-                                  Change a few things up and try submitting again<a href="#" className="alert-link"> click here</a>.
-                                </Alert>
+                                <Attention style="danger">
+                                    Change a few things up and try submitting again
+                                    <Attention.Link href="#"> click here</Attention.Link>.
+                                </Attention>
                             </Col>
                         </Row>
                     </Card>
                     <h3>Dismissible</h3>
                     <Card block>
-                        <Alert style="success" closeable>
-                          You successfully read this important alert message<a href="#" className="alert-link"> click here</a>.
-                        </Alert>
+                        <Attention style="success" closeable>
+                            You successfully read this important attention message
+                            <Attention.Link href="#"> click here</Attention.Link>.
+                        </Attention>
                     </Card>
                     <h3 className="text-secondary">API</h3>
                     <CommenTable
@@ -90,4 +95,4 @@ export default class AlertView extends Component{
     }
 }
 
-AlertView.title = 'Alert';
+AttentionView.title = 'Attention';

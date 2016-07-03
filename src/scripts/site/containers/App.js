@@ -12,7 +12,7 @@ import ButtonGroupView from '../views/ButtonGroupView';
 import InputGroupView from '../views/InputGroupView';
 import TagView from '../views/TagView';
 import BadgeView from '../views/BadgeView';
-import AlertView from '../views/AlertView';
+import AttentionView from '../views/AttentionView';
 import CardView from '../views/CardView';
 import BreadcrumbView from '../views/BreadcrumbView';
 import ProgressView from '../views/ProgressView';
@@ -57,7 +57,7 @@ export default class App extends Component {
                     <Route path='select' component={SelectView}/>
                     <Route path='tag' component={TagView}/>
                     <Route path='badge' component={BadgeView}/>
-                    <Route path='alert' component={AlertView}/>
+                    <Route path='attention' component={AttentionView}/>
                     <Route path='card' component={CardView}/>
                     <Route path='breadcrumb' component={BreadcrumbView}/>
                     <Route path='progress' component={ProgressView}/>

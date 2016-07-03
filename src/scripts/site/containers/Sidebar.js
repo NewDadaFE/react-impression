@@ -70,7 +70,7 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Title>Prompt</Nav.Title>
                     <Nav.Link>
-                        <Link to="/alert"><Icon type="info-circle" left/>Alert<Tag style="warning" className="fa-right">1/4</Tag></Link>
+                        <Link to="/attention"><Icon type="info-circle" left/>Attention<Tag style="warning" className="fa-right">1/4</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/tooltip"><Icon type="commenting-o" left/>Tooltip</Link>

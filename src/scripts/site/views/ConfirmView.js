@@ -6,7 +6,7 @@ export default class ConfirmView extends Component{
         super(props, context);
 
         this.state = {
-            showConfirm1: false,
+            showConfirm1: true,
             showConfirm2: false
         };
 

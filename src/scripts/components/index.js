@@ -9,7 +9,7 @@ export Button from './Button';
 export ButtonGroup from './ButtonGroup';
 export ButtonToolbar from './ButtonToolbar';
 export Image from './Image';
-export Alert from './Alert';
+export Attention from './Attention';
 export Tag from './Tag';
 export Badge from './Badge';
 export Pagination from './Pagination';
