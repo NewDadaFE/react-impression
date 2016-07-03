@@ -26,7 +26,7 @@
 @import "modules/tag";
 @import "modules/badge";
 @import "modules/jumbotron";
-@import "modules/alert";
+@import "modules/attention";
 @import "modules/progress";
 @import "modules/media";
 @import "modules/list-group";
@@ -39,10 +39,8 @@
 @import "modules/loading";
 @import "modules/calendar";
 @import "modules/inline-select";
-
-
-// Components w/ JavaScript
 @import "modules/modal";
+@import "modules/confirm";
 @import "modules/tooltip";
 @import "modules/popover";
 @import "modules/carousel";

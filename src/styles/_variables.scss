@@ -572,7 +572,9 @@ $zindex-navbar-fixed:             1030 !default;
 $zindex-navbar-sticky:            1030 !default;
 $zindex-modal-bg:                 1040 !default;
 $zindex-modal:                    1050 !default;
+$zindex-confirm:                  1050 !default;
 $zindex-message:                  1060 !default;
+$zindex-notification:             1060 !default;
 $zindex-notification:             1060 !default;
 $zindex-popover:                  1060 !default;
 $zindex-tooltip:                  1060 !default;
@@ -855,30 +857,52 @@ $modal-sm:                    300px !default;
 $modal-animation-duration:    0.36s !default;
 
 
-// Alerts
+// Confirm
+$confirm-top:                       $modal-top !default;
+$confirm-left:                      $modal-left !default;
+$confirm-bg:                        $modal-bg !default;
+
+$confirm-dialog-bg:                 #fff !default;
+$confirm-dialog-width:              240px !default;
+$confirm-dialog-height:             150px !default;
+$confirm-dialog-padding:            1rem !default;
+$confirm-dialog-border-radius:      6px !default;
+
+$confirm-addon-font-size:           3rem !default;
+$confirm-body-padding:              1rem 0 !default;
+$confirm-footer-border-color:       $border-color !default;
+
+$confirm-btn-padding:               0.8rem !default;
+$confirm-btn-hover-bg:              $gray-lighter !default;
+$confirm-btn-primary-color:         $brand-primary !default;
+
+$confirm-animation-duration:        0.36s !default;
+
+
+// Attentions
 //
 // Define alert colors, border radius, and padding.
 
-$alert-padding:               15px !default;
-$alert-border-radius:         $border-radius !default;
-$alert-link-font-weight:      bold !default;
-$alert-border-width:          $border-width !default;
+$attention-padding:               15px !default;
+$attention-border-radius:         $border-radius !default;
+$attention-link-font-weight:      bold !default;
+$attention-border-width:          $border-width !default;
 
-$alert-success-bg:            $state-success-bg !default;
-$alert-success-text:          $state-success-text !default;
-$alert-success-border:        $state-success-border !default;
+$attention-success-bg:            $state-success-bg !default;
+$attention-success-text:          $state-success-text !default;
+$attention-success-border:        $state-success-border !default;
 
-$alert-primary-bg:            $state-primary-bg !default;
-$alert-primary-text:          $state-primary-text !default;
-$alert-primary-border:        $state-primary-border !default;
+$attention-primary-bg:            $state-primary-bg !default;
+$attention-primary-text:          $state-primary-text !default;
+$attention-primary-border:        $state-primary-border !default;
 
-$alert-warning-bg:            $state-warning-bg !default;
-$alert-warning-text:          $state-warning-text !default;
-$alert-warning-border:        $state-warning-border !default;
+$attention-warning-bg:            $state-warning-bg !default;
+$attention-warning-text:          $state-warning-text !default;
+$attention-warning-border:        $state-warning-border !default;
 
-$alert-danger-bg:             $state-danger-bg !default;
-$alert-danger-text:           $state-danger-text !default;
-$alert-danger-border:         $state-danger-border !default;
+$attention-danger-bg:             $state-danger-bg !default;
+$attention-danger-text:           $state-danger-text !default;
+$attention-danger-border:         $state-danger-border !default;
 
 // Message
 $message-left:                $sidebar-width !default;

@@ -70,13 +70,16 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Title>Prompt</Nav.Title>
                     <Nav.Link>
-                        <Link to="/alert"><Icon type="info-circle" left/>Alert<Tag style="warning" className="fa-right">1/4</Tag></Link>
+                        <Link to="/attention"><Icon type="info-circle" left/>Attention<Tag style="warning" className="fa-right">1/4</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/tooltip"><Icon type="commenting-o" left/>Tooltip</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/popover"><Icon type="comments" left/>Popover</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/alert"><Icon type="exclamation-triangle" left/>Alert</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/message"><Icon type="bell" left/>Message</Link>
@@ -122,6 +125,9 @@ export default class AppSidebar extends Component {
                     </div>
                     <Nav.Link>
                         <Link to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/confirm"><Icon type="question-circle" left/>Confirm</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>

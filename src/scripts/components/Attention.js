@@ -1,10 +1,11 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
+import AttentionLink from './AttentionLink';
 
 /**
- * Alert 组件
+ * Attention 组件
  */
-export default class Alert extends Component{
+export default class Attention extends Component{
     //初始state
     constructor(props, context){
         super(props, context);
@@ -31,11 +32,11 @@ export default class Alert extends Component{
     }
     render(){
         let { style, className, closeable, children, ...others } = this.props,
-            styleClass = `alert-${style}`,
+            styleClass = `attention-${style}`,
             hiddenClass = this.state.show? '' : 'hidden';
 
         return(
-            <div {...others} className={classnames('alert', styleClass, hiddenClass, className)}>
+            <div {...others} className={classnames('attention', styleClass, hiddenClass, className)}>
                 {children}
                 { closeable &&
                     <button type="button" className="close" onClick={this.hideHandle}>&times;</button>
@@ -44,3 +45,5 @@ export default class Alert extends Component{
         );
     }
 }
+
+Attention.Link = AttentionLink;

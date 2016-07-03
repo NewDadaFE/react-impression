@@ -25,7 +25,7 @@ export default class Content extends Component {
     }
     //默认props
     static defaultProps = {
-        transitionName: 'zoom',
+        transitionName: 'zoom-slide',
         component: 'div',
         transitionEnterTimeout: 1200,
         transitionLeaveTimeout: 1200,
