@@ -124,6 +124,9 @@ export default class AppSidebar extends Component {
                         <Link to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
+                        <Link to="/confirm"><Icon type="exclamation-triangle" left/>Confirm</Link>
+                    </Nav.Link>
+                    <Nav.Link>
                         <Link to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
                     </Nav.Link>
                     <Nav.Link>

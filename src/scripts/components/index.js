@@ -29,6 +29,7 @@ export ListGroup from './ListGroup';
 export Breadcrumb from './Breadcrumb';
 export Progress from './Progress';
 export Modal from './Modal';
+export Confirm from './Confirm';
 export Tooltip from './Tooltip';
 export Popover from './Popover';
 export Dropdown from './Dropdown';
