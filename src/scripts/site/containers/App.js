@@ -35,6 +35,7 @@ import CalendarView from '../views/CalendarView';
 import SearchView from '../views/SearchView';
 import InlineSelectView from '../views/InlineSelectView';
 import ConfirmView from '../views/ConfirmView';
+import AlertView from '../views/AlertView';
 
 /**
  * 主应用入口.
@@ -79,6 +80,7 @@ export default class App extends Component {
                     <Route path='search' component={SearchView}/>
                     <Route path='inline-select' component={InlineSelectView}/>
                     <Route path='confirm' component={ConfirmView}/>
+                    <Route path='alert' component={AlertView}/>
                 </Route>
             </Router>
         );

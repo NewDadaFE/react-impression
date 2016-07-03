@@ -79,6 +79,9 @@ export default class AppSidebar extends Component {
                         <Link to="/popover"><Icon type="comments" left/>Popover</Link>
                     </Nav.Link>
                     <Nav.Link>
+                        <Link to="/alert"><Icon type="exclamation-triangle" left/>Alert</Link>
+                    </Nav.Link>
+                    <Nav.Link>
                         <Link to="/message"><Icon type="bell" left/>Message</Link>
                     </Nav.Link>
                     <Nav.Link>
@@ -124,7 +127,7 @@ export default class AppSidebar extends Component {
                         <Link to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to="/confirm"><Icon type="exclamation-triangle" left/>Confirm</Link>
+                        <Link to="/confirm"><Icon type="question-circle" left/>Confirm</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
