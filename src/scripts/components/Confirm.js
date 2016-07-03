@@ -1,7 +1,5 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import ConfirmFooter from './ConfirmFooter';
-import ConfirmBody from './ConfirmBody';
 
 /**
  * Confirm组件.
@@ -18,10 +16,20 @@ export default class Confirm extends Component{
         className: PropTypes.string,
         //类型
         type: PropTypes.string,
+        //确定按钮
+        okText: PropTypes.string,
+        //取消按钮
+        cancelText: PropTypes.string,
+        //确定按钮点击
+        onOkClick: PropTypes.func,
+        //取消按钮点击
+        onCancelClick: PropTypes.func,
     }
     //默认props
     static defaultProps = {
-        type: 'warning'
+        type: 'warning',
+        okText: '确定',
+        cancelText: '取消',
     }
     /**
      * 根据类型获取Icon.
@@ -29,13 +37,15 @@ export default class Confirm extends Component{
      */
     getAddonByType(type){
         switch(type){
+        case 'question':
+            return 'fa-question-circle text-primary';
         default:
             return 'fa-exclamation-circle text-warning';
         }
     }
     //渲染
     render(){
-        let { type, className, children, ...others } = this.props,
+        let { type, okText, cancelText, onOkClick, onCancelClick, className, children, ...others } = this.props,
             iconTypeClass = this.getAddonByType(type);
 
         return(
@@ -44,17 +54,15 @@ export default class Confirm extends Component{
                     <div className="confirm-addon">
                         <i className={classnames('fa', iconTypeClass)}></i>
                     </div>
-                    {children}
-                    <div className="confirm-title">你确定？</div>
+                    <div className="confirm-body">
+                        {children}
+                    </div>
                     <div className="confirm-footer">
-                        <div className="confirm-btn-sure">确定</div>
-                        <div className="confirm-btn-cancel">取消</div>
+                        <div className="confirm-btn-sure" onClick={onOkClick}>{okText}</div>
+                        <div className="confirm-btn-cancel" onClick={onCancelClick}>{cancelText}</div>
                     </div>
                 </div>
             </div>
         );
     }
 }
-
-Confirm.Body   = ConfirmBody;
-Confirm.Footer = ConfirmFooter;

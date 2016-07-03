@@ -2,20 +2,56 @@ import React, { Component } from 'react';
 import { Card, Row, Col, Confirm, Breadcrumb, Button } from '../../components';
 
 export default class ConfirmView extends Component{
+    constructor(props, context){
+        super(props, context);
+
+        this.state = {
+            showConfirm1: false,
+            showConfirm2: false
+        };
+
+        this.toggleConfirm1Handle = this.toggleConfirm1Handle.bind(this);
+        this.toggleConfirm2Handle = this.toggleConfirm2Handle.bind(this);
+    }
+    toggleConfirm1Handle(){
+        this.setState({
+            showConfirm1: !this.state.showConfirm1
+        });
+    }
+    toggleConfirm2Handle(){
+        this.setState({
+            showConfirm2: !this.state.showConfirm2
+        });
+    }
     render(){
+        let { showConfirm1, showConfirm2 } = this.state;
+
         return (
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Basic</h3>
                     <Card block>
-                       <Confirm>
-                            <Confirm.Body>
-                                删除记录将不可恢复
-                            </Confirm.Body>
-                       </Confirm>
+                       <Row>
+                           <Col>
+                               <Button style="default" onClick={this.toggleConfirm1Handle}>删除</Button>
+                           </Col>
+                            <Col>
+                               <Button style="default" onClick={this.toggleConfirm2Handle}>订票</Button>
+                           </Col>
+                       </Row>
                     </Card>
                 </Card>
+                { showConfirm1 &&
+                    <Confirm onOkClick={this.toggleConfirm1Handle} onCancelClick={this.toggleConfirm1Handle}>
+                        您确定删除消费记录？
+                    </Confirm>
+                }
+                { showConfirm2 &&
+                    <Confirm type="question" onOkClick={this.toggleConfirm2Handle} onCancelClick={this.toggleConfirm2Handle}>
+                        您确定购买该航班机票？
+                    </Confirm>
+                }
             </div>
         );
     }

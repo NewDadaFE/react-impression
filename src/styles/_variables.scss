@@ -572,7 +572,9 @@ $zindex-navbar-fixed:             1030 !default;
 $zindex-navbar-sticky:            1030 !default;
 $zindex-modal-bg:                 1040 !default;
 $zindex-modal:                    1050 !default;
+$zindex-confirm:                  1050 !default;
 $zindex-message:                  1060 !default;
+$zindex-notification:             1060 !default;
 $zindex-notification:             1060 !default;
 $zindex-popover:                  1060 !default;
 $zindex-tooltip:                  1060 !default;
@@ -853,6 +855,26 @@ $modal-md:                    600px !default;
 $modal-sm:                    300px !default;
 
 $modal-animation-duration:    0.36s !default;
+
+
+// Confirm
+$confirm-top:                       $modal-top !default;
+$confirm-left:                      $modal-left !default;
+$confirm-bg:                        $modal-bg !default;
+
+$confirm-dialog-bg:                 #fff !default;
+$confirm-dialog-width:              240px !default;
+$confirm-dialog-height:             150px !default;
+$confirm-dialog-padding:            1rem !default;
+$confirm-dialog-border-radius:      6px !default;
+
+$confirm-addon-font-size:           3rem !default;
+$confirm-body-padding:              1rem 0 !default;
+$confirm-footer-border-color:       $border-color !default;
+
+$confirm-btn-padding:               0.8rem !default;
+$confirm-btn-hover-bg:              $gray-lighter !default;
+$confirm-btn-primary-color:         $brand-primary !default;
 
 
 // Alerts
