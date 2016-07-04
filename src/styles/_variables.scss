@@ -821,39 +821,40 @@ $badge-legend-addon-margin-right:       $spacer-y / 2 !default;
 
 // Modals
 
-$modal-bg:                    rgba(0, 0, 0, 0.3) !default;
-$modal-left:                  $sidebar-width !default;
-$modal-top:                   $navbar-height !default;
-$modal-inner-padding:         0.8rem !default;
-$modal-border-radius:         $border-radius !default;
+$modal-bg:                              rgba(0, 0, 0, 0.3) !default;
+$modal-left:                            $sidebar-width !default;
+$modal-top:                             $navbar-height !default;
+$modal-inner-padding:                   0.8rem !default;
+$modal-inner-padding-sm:                0.6rem !default;
+$modal-border-radius:                   $border-radius !default;
 
-$modal-dialog-margin:         10px !default;
-$modal-dialog-sm-up-margin-y: $navbar-height !default;
+$modal-dialog-margin:                   10px !default;
+$modal-dialog-sm-up-margin-y:           $navbar-height !default;
 
-$modal-title-padding:         0.8rem !default;
-$modal-title-line-height:     $line-height-base !default;
+$modal-title-padding:                   0.8rem !default;
+$modal-title-line-height:               $line-height-base !default;
 
-$modal-content-border-color:     rgba($gray-secondary, .06) !default;
-$modal-content-border-width:     $border-width !default;
-$modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5) !default;
-$modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5) !default;
+$modal-content-border-color:            rgba($gray-secondary, .06) !default;
+$modal-content-border-width:            $border-width !default;
+$modal-content-xs-box-shadow:           0 3px 9px rgba(0,0,0,.5) !default;
+$modal-content-sm-up-box-shadow:        0 5px 15px rgba(0,0,0,.5) !default;
 
-$modal-header-bg:             $gray-secondary !default;
-$modal-header-color:          #fff !default;
-$modal-header-border-color:   #e5e5e5 !default;
-$modal-header-border-width:   $modal-content-border-width !default;
+$modal-header-bg:                       $gray-secondary !default;
+$modal-header-color:                    #fff !default;
+$modal-header-border-color:             #e5e5e5 !default;
+$modal-header-border-width:             $modal-content-border-width !default;
 
-$modal-body-bg:               #fff !default;
+$modal-body-bg:                         #fff !default;
 
-$modal-footer-bg:             #fff !default;
-$modal-footer-border-color:   $modal-header-border-color !default;
-$modal-footer-border-width:   $modal-header-border-width !default;
+$modal-footer-bg:                       #fff !default;
+$modal-footer-border-color:             $modal-header-border-color !default;
+$modal-footer-border-width:             $modal-header-border-width !default;
 
-$modal-lg:                    900px !default;
-$modal-md:                    600px !default;
-$modal-sm:                    300px !default;
+$modal-lg:                              900px !default;
+$modal-md:                              600px !default;
+$modal-sm:                              300px !default;
 
-$modal-animation-duration:    0.36s !default;
+$modal-animation-duration:              0.36s !default;
 
 
 // Confirm

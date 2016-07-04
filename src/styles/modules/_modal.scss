@@ -93,10 +93,12 @@
     }
 
     .modal-header{
+      padding: $modal-inner-padding-sm;
       border-radius: $border-radius-sm $border-radius-sm 0 0 ;
     }
 
     .modal-footer{
+      padding: $modal-inner-padding-sm;
       border-radius: 0 0 $border-radius-sm $border-radius-sm;
     }
   }

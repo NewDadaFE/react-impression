@@ -35,10 +35,10 @@ export default class AttentionView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Button onClick={this.toggleAlert1Handle}>default</Button>
+                                <Button style="primary" outline onClick={this.toggleAlert1Handle}>default</Button>
                             </Col>
                             <Col>
-                                <Button onClick={this.toggleAlert2Handle}>danger</Button>
+                                <Button style="secondary" outline onClick={this.toggleAlert2Handle}>danger</Button>
                             </Col>
                         </Row>
                     </Card>
