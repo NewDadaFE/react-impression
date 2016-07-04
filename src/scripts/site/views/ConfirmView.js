@@ -7,11 +7,13 @@ export default class ConfirmView extends Component{
 
         this.state = {
             showConfirm1: true,
-            showConfirm2: false
+            showConfirm2: false,
+            showConfirm3: false,
         };
 
         this.toggleConfirm1Handle = this.toggleConfirm1Handle.bind(this);
         this.toggleConfirm2Handle = this.toggleConfirm2Handle.bind(this);
+        this.toggleConfirm3Handle = this.toggleConfirm3Handle.bind(this);
     }
     toggleConfirm1Handle(){
         this.setState({
@@ -23,8 +25,13 @@ export default class ConfirmView extends Component{
             showConfirm2: !this.state.showConfirm2
         });
     }
+    toggleConfirm3Handle(){
+        this.setState({
+            showConfirm3: !this.state.showConfirm3
+        });
+    }
     render(){
-        let { showConfirm1, showConfirm2 } = this.state;
+        let { showConfirm1, showConfirm2, showConfirm3 } = this.state;
 
         return (
             <div>
@@ -39,6 +46,9 @@ export default class ConfirmView extends Component{
                             <Col>
                                <Button style="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
                            </Col>
+                            <Col>
+                               <Button style="default" outline onClick={this.toggleConfirm3Handle}>danger</Button>
+                           </Col>
                        </Row>
                     </Card>
                 </Card>
@@ -48,8 +58,13 @@ export default class ConfirmView extends Component{
                     </Confirm>
                 }
                 { showConfirm2 &&
-                    <Confirm type="question" onOkClick={this.toggleConfirm2Handle} onCancelClick={this.toggleConfirm2Handle}>
+                    <Confirm type="info" onOkClick={this.toggleConfirm2Handle} onCancelClick={this.toggleConfirm2Handle}>
                         您确定购买该航班机票？
+                    </Confirm>
+                }
+                { showConfirm3 &&
+                    <Confirm type="danger" onOkClick={this.toggleConfirm3Handle} onCancelClick={this.toggleConfirm3Handle}>
+                        您确定注销该银行卡？
                     </Confirm>
                 }
             </div>

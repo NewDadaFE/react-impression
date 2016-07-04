@@ -37,8 +37,10 @@ export default class Confirm extends Component{
      */
     getAddonByType(type){
         switch(type){
-        case 'question':
+        case 'info':
             return 'fa-question-circle text-primary';
+        case 'danger':
+            return 'fa-exclamation-circle text-danger';
         default:
             return 'fa-exclamation-circle text-warning';
         }
