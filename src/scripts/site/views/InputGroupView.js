@@ -113,6 +113,10 @@ export default class InputGroupView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
+                    <h3>使用注意事项</h3>
+                    <ul>
+                        <li>区分 defaultValue 和 value 区别，defaultValue 只能初始化一次，后面在改变就没有效果了；设置 value 后组件变为受限组件，值的改变需要通过设置 state 值实现。</li>
+                    </ul>
                 </Card>
             </div>
         );
