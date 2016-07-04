@@ -230,9 +230,9 @@ $list-inline-padding: 5px !default;
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
 
-$border-radius:          2px !default;
-$border-radius-lg:       4px !default;
-$border-radius-sm:       1px !default;
+$border-radius:          4px !default;
+$border-radius-lg:       6px !default;
+$border-radius-sm:       2px !default;
 
 $component-active-color: #fff !default;
 $component-active-bg:    mix(#fff, $brand-primary, 60%) !default;
@@ -305,7 +305,7 @@ $split-btn-dropdown-toggle-padding-x:     8px !default;
 $split-btn-lg-dropdown-toggle-padding-x: 12px !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:              $border-radius !default;
+$btn-border-radius:              $border-radius-sm !default;
 $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
@@ -826,7 +826,7 @@ $modal-bg:                    rgba(0, 0, 0, 0.3) !default;
 $modal-left:                  $sidebar-width !default;
 $modal-top:                   $navbar-height !default;
 $modal-inner-padding:         0.8rem !default;
-$modal-border-radius:         4px !default;
+$modal-border-radius:         $border-radius !default;
 
 $modal-dialog-margin:         10px !default;
 $modal-dialog-sm-up-margin-y: $navbar-height !default;
@@ -866,7 +866,7 @@ $confirm-dialog-bg:                 #fff !default;
 $confirm-dialog-width:              240px !default;
 $confirm-dialog-height:             150px !default;
 $confirm-dialog-padding:            1rem !default;
-$confirm-dialog-border-radius:      6px !default;
+$confirm-dialog-border-radius:      $border-radius !default;
 
 $confirm-addon-font-size:           3rem !default;
 $confirm-body-padding:              1rem 0 !default;

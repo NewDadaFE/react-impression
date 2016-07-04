@@ -47,7 +47,7 @@ export default class ConfirmView extends Component{
                                <Button style="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
                            </Col>
                             <Col>
-                               <Button style="default" outline onClick={this.toggleConfirm3Handle}>danger</Button>
+                               <Button style="default" onClick={this.toggleConfirm3Handle}>danger</Button>
                            </Col>
                        </Row>
                     </Card>

@@ -27,8 +27,7 @@
   position: relative;
   background-clip: padding-box;
   border: 1px solid $modal-content-border-color;
-  @include border-radius($border-radius-sm);
-  // Remove focus outline from opened modal
+  border-radius: $modal-border-radius;
   outline: 0;
 }
 
@@ -80,38 +79,44 @@
 
 // Scale up the modal
 @include media-breakpoint-up(sm) {
-  // Automatically set modal's width for larger viewports
-  .modal-dialog {
-    max-width: $modal-md;
-    margin: $modal-dialog-sm-up-margin-y auto;
-  }
+    .modal-dialog {
+      max-width: $modal-md;
+      margin: $modal-dialog-sm-up-margin-y auto;
+    }
 
-  .modal-sm { max-width: $modal-sm; }
+  .modal-sm {
+    max-width: $modal-sm;
+
+
+    .modal-content{
+      border-radius: $border-radius-sm;
+    }
+
+    .modal-header{
+      border-radius: $border-radius-sm $border-radius-sm 0 0 ;
+    }
+
+    .modal-footer{
+      border-radius: 0 0 $border-radius-sm $border-radius-sm;
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {
-  .modal-lg { max-width: $modal-lg; }
-}
+  .modal-lg {
+    max-width: $modal-lg;
+    .modal-content{
+      border-radius: $border-radius-lg;
+    }
 
-//Animation
-@keyframes slideInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
+    .modal-header{
+      border-radius: $border-radius-lg $border-radius-lg 0 0;
+    }
 
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+    .modal-footer{
+      border-radius: 0 0 $border-radius-lg $border-radius-lg;
+    }
   }
 }
+
 
