@@ -40,5 +40,6 @@ export Timeline from './Timeline';
 export Loading from './Loading';
 export Calendar from './Calendar';
 export InlineSelect from './InlineSelect';
+export Alert from './Alert';
 
 export * as System from '../utils/system';

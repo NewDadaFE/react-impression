@@ -573,6 +573,7 @@ $zindex-navbar-sticky:            1030 !default;
 $zindex-modal-bg:                 1040 !default;
 $zindex-modal:                    1050 !default;
 $zindex-confirm:                  1050 !default;
+$zindex-alert:                    1050 !default;
 $zindex-message:                  1060 !default;
 $zindex-notification:             1060 !default;
 $zindex-notification:             1060 !default;
@@ -702,8 +703,6 @@ $jumbotron-padding:              2rem !default;
 $jumbotron-bg:                   $gray-lighter !default;
 
 
-// Form states and alerts
-//
 // Define colors for form feedback states and, by default, alerts.
 
 $state-success-text:             darken($brand-success, 3%) !default;
@@ -866,7 +865,7 @@ $confirm-dialog-bg:                 #fff !default;
 $confirm-dialog-width:              240px !default;
 $confirm-dialog-height:             150px !default;
 $confirm-dialog-padding:            1rem !default;
-$confirm-dialog-border-radius:      $border-radius !default;
+$confirm-dialog-border-radius:      $border-radius-lg !default;
 
 $confirm-addon-font-size:           3rem !default;
 $confirm-body-padding:              1rem 0 !default;
@@ -877,6 +876,25 @@ $confirm-btn-hover-bg:              $gray-lighter !default;
 $confirm-btn-primary-color:         $brand-primary !default;
 
 $confirm-animation-duration:        0.36s !default;
+
+// Alert
+$alert-top:                         $modal-top !default;
+$alert-left:                        $modal-left !default;
+$alert-bg:                          $modal-bg !default;
+
+$alert-dialog-bg:                   #fff !default;
+$alert-dialog-width:                240px !default;
+$alert-dialog-height:               150px !default;
+$alert-dialog-padding:              1rem !default;
+$alert-dialog-border-radius:        $border-radius-lg !default;
+
+$alert-addon-font-size:             3rem !default;
+$alert-body-padding:                1rem 0 !default;
+$alert-footer-border-color:         $border-color !default;
+$alert-btn-color:                   $brand-primary !default;
+$alert-btn-hover-bg:                $gray-lighter !default;
+
+$alert-animation-duration:          0.36s !default;
 
 
 // Attentions
