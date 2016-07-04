@@ -30,6 +30,26 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/layout"><Icon type="columns" left/>Layout</Link>
                     </Nav.Link>
+                    <Nav.Collapse>
+                        <Nav.Collapse.Title>
+                            <Icon type="bars" left/>Collapse
+                        </Nav.Collapse.Title>
+                        <Nav.Link>
+                            <Link to="/button">Button</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <a href="http://fontawesome.io/icons/" target="_blank">Icon</a>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/image">Image</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/table">Table</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/layout">Layout</Link>
+                        </Nav.Link>
+                    </Nav.Collapse>
                     <Nav.Title>Form Control</Nav.Title>
                     <Nav.Link>
                         <Link to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
@@ -106,23 +126,6 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/list-group"><Icon type="list" left/>ListGroup</Link>
                     </Nav.Link>
-                    <div className="nav-collapse hidden">
-                        <div><Icon type="list" left/>List-Group<Icon type="angle-right" className="pull-right"/></div>
-                        <div className="nav-collapse-block">
-                            <Nav.Link>
-                                <Link to="/image">Image</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/table">Table</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/button">Button</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/button-group">Button-Group</Link>
-                            </Nav.Link>
-                        </div>
-                    </div>
                     <Nav.Link>
                         <Link to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
                     </Nav.Link>

@@ -21,7 +21,8 @@
     }
 
     .nav-link,
-    .nav-collapse-title{
+    .nav-collapse-title,
+    .nav-collapse-item{
         display: block;
         color: $sidebar-nav-link-color;
         padding: $sidebar-nav-link-padding;
@@ -29,7 +30,8 @@
         border-right: $sidebar-nav-link-border-width solid transparent;
     }
 
-    .nav-link{
+    .nav-link,
+    .nav-collapse-title{
         cursor: pointer;
         &:hover,
         &.active{
@@ -55,14 +57,47 @@
 }
 
 .nav-collapse{
+    transition: all .18s ease-in-out;
 
+    &.active{
+        box-shadow: inset 0 0 1px darken($sidebar-nav-link-active-bg, 12%);
+        background: lighten($sidebar-bg, 4%);
+        .nav-collapse-title{
+            font-weight: bold;
+            color: $sidebar-nav-link-active-color;
+            border-bottom: 1px dashed darken($sidebar-bg, 2%);
+        }
+
+        .nav-collapse-title-addon{
+            transform-origin: center center;
+            transform: rotate(90deg);
+        }
+
+        .nav-collapse-items{
+            height: auto;
+            animation: scaleIn 0.36s ease;
+        }
+
+
+    }
 }
 
-.nav-collapse-block{
-    box-shadow: inset 0 0 1px darken($sidebar-bg, 12%), inset 0 0 100rem lighten($sidebar-bg, 6%);
-    .nav-link{
-        text-indent: 1.5rem;
-    }
+.nav-collapse-title{
+    margin-bottom: 5px;
+    transition: all .18s ease-in-out;
+}
+
+.nav-collapse-title-addon{
+    float: right;
+    line-height: $line-height-base;
+    transition: all .18s ease-in-out;
+}
+
+.nav-collapse-items{
+    height: 0;
+    overflow: hidden;
+    text-indent: 1.5rem;
+    transform-origin: center 0;
 }
 
 .sidebar-footer{

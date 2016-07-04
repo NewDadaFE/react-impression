@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import Button from './Button';
 
 /**
  * Alert 组件

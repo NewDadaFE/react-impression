@@ -615,10 +615,10 @@ $sidebar-nav-padding-bottom:                    2rem !default;
 $sidebar-nav-link-color:                        #a7b1c2 !default;
 $sidebar-nav-link-padding:                      0.6rem 1.2rem !default;
 $sidebar-nav-link-border-width:                 2px !default;
-$sidebar-nav-link-active-bg:                    darken($sidebar-bg, 3%) !default;
+$sidebar-nav-link-active-bg:                    darken($sidebar-bg, 4%) !default;
 $sidebar-nav-link-active-color:                 #fff !default;
 $sidebar-nav-link-active-border-color:          $brand-primary !default;
-$sidebar-nav-link-active-box-shadow:            inset 0 0 3rem darken($sidebar-bg, 4%) !default;
+$sidebar-nav-link-active-box-shadow:            inset 0 0 1px darken($sidebar-nav-link-active-bg, 2%) !default;
 
 // Navs
 $nav-item-margin:                               .2rem !default;
@@ -784,36 +784,36 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .2) !defaul
 
 // Tags
 
-$tag-default-bg:            #ccc !default;
-$tag-primary-bg:            $brand-primary !default;
-$tag-secondary-bg:          $brand-secondary !default;
-$tag-success-bg:            $brand-success !default;
-$tag-info-bg:               $brand-info !default;
-$tag-warning-bg:            $brand-warning !default;
-$tag-danger-bg:             $brand-danger !default;
+$tag-default-bg:                        #ccc !default;
+$tag-primary-bg:                        $brand-primary !default;
+$tag-secondary-bg:                      $brand-secondary !default;
+$tag-success-bg:                        $brand-success !default;
+$tag-info-bg:                           $brand-info !default;
+$tag-warning-bg:                        $brand-warning !default;
+$tag-danger-bg:                         $brand-danger !default;
 
-$tag-color:                 #fff !default;
-$tag-link-hover-color:      #fff !default;
-$tag-font-size:             75% !default;
-$tag-font-weight:           bold !default;
-$tag-padding-x:             .8em !default;
-$tag-padding-y:             .4em !default;
-$tag-border-radius:         $border-radius-sm;
+$tag-color:                             #fff !default;
+$tag-link-hover-color:                  #fff !default;
+$tag-font-size:                         75% !default;
+$tag-font-weight:                       bold !default;
+$tag-padding-x:                         .8em !default;
+$tag-padding-y:                         .4em !default;
+$tag-border-radius:                     $border-radius-sm;
 
-$tag-pill-padding-x:        .6em !default;
-$tag-pill-border-radius:    10rem !default;
+$tag-pill-padding-x:                    .6em !default;
+$tag-pill-border-radius:                10rem !default;
 
-$tag-close-margin-right:    $tag-padding-x !default;
+$tag-close-margin-right:                $tag-padding-x !default;
 
 // Badge
-$badge-color:                      #fff !default;
-$badge-padding:                    3px !default;
-$badge-font-size:                  $font-size-sm !default;
-$badge-box-shadow:                 0 0 0 1px #fff !default;
-$badge-min-width:                  20px !default;
+$badge-color:                           #fff !default;
+$badge-padding:                         3px !default;
+$badge-font-size:                       $font-size-sm !default;
+$badge-box-shadow:                      0 0 0 1px #fff !default;
+$badge-min-width:                       20px !default;
 
-$badge-min-width-sm:               1rem !default;
-$badge-font-size-sm:               75% !default;
+$badge-min-width-sm:                    1rem !default;
+$badge-font-size-sm:                    75% !default;
 
 
 $badge-legend-margin-right:             0 !default;
@@ -858,44 +858,44 @@ $modal-animation-duration:              0.36s !default;
 
 
 // Confirm
-$confirm-top:                       $modal-top !default;
-$confirm-left:                      $modal-left !default;
-$confirm-bg:                        $modal-bg !default;
+$confirm-top:                           $modal-top !default;
+$confirm-left:                          $modal-left !default;
+$confirm-bg:                            $modal-bg !default;
 
-$confirm-dialog-bg:                 #fff !default;
-$confirm-dialog-width:              240px !default;
-$confirm-dialog-height:             150px !default;
-$confirm-dialog-padding:            1rem !default;
-$confirm-dialog-border-radius:      $border-radius-lg !default;
+$confirm-dialog-bg:                     #fff !default;
+$confirm-dialog-width:                  240px !default;
+$confirm-dialog-height:                 150px !default;
+$confirm-dialog-padding:                1rem !default;
+$confirm-dialog-border-radius:          $border-radius-lg !default;
 
-$confirm-addon-font-size:           3rem !default;
-$confirm-body-padding:              1rem 0 !default;
-$confirm-footer-border-color:       $border-color !default;
+$confirm-addon-font-size:               3rem !default;
+$confirm-body-padding:                  1rem 0 !default;
+$confirm-footer-border-color:           $border-color !default;
 
-$confirm-btn-padding:               0.8rem !default;
-$confirm-btn-hover-bg:              $gray-lighter !default;
-$confirm-btn-primary-color:         $brand-primary !default;
+$confirm-btn-padding:                   0.8rem !default;
+$confirm-btn-hover-bg:                  $gray-lighter !default;
+$confirm-btn-primary-color:             $brand-primary !default;
 
-$confirm-animation-duration:        0.36s !default;
+$confirm-animation-duration:            0.36s !default;
 
 // Alert
-$alert-top:                         $modal-top !default;
-$alert-left:                        $modal-left !default;
-$alert-bg:                          $modal-bg !default;
+$alert-top:                             $modal-top !default;
+$alert-left:                            $modal-left !default;
+$alert-bg:                              $modal-bg !default;
 
-$alert-dialog-bg:                   #fff !default;
-$alert-dialog-width:                240px !default;
-$alert-dialog-height:               150px !default;
-$alert-dialog-padding:              1rem !default;
-$alert-dialog-border-radius:        $border-radius-lg !default;
+$alert-dialog-bg:                       #fff !default;
+$alert-dialog-width:                    240px !default;
+$alert-dialog-height:                   150px !default;
+$alert-dialog-padding:                  1rem !default;
+$alert-dialog-border-radius:            $border-radius-lg !default;
 
-$alert-addon-font-size:             3rem !default;
-$alert-body-padding:                1rem 0 !default;
-$alert-footer-border-color:         $border-color !default;
-$alert-btn-color:                   $brand-primary !default;
-$alert-btn-hover-bg:                $gray-lighter !default;
+$alert-addon-font-size:                 3rem !default;
+$alert-body-padding:                    1rem 0 !default;
+$alert-footer-border-color:             $border-color !default;
+$alert-btn-color:                       $brand-primary !default;
+$alert-btn-hover-bg:                    $gray-lighter !default;
 
-$alert-animation-duration:          0.36s !default;
+$alert-animation-duration:              0.36s !default;
 
 
 // Attentions

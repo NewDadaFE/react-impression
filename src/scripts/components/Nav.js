@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import NavItem from './NavItem';
 import NavLink from './NavLink';
 import NavTitle from './NavTitle';
+import NavCollapse from './NavCollapse';
 
 /**
  * Nav 组件
@@ -27,7 +28,6 @@ export default class Nav extends Component{
     }
     //默认props
     static defaultProps = {
-        type: 'inline',
         stacked: false,
     }
     //选中回调
@@ -59,7 +59,7 @@ export default class Nav extends Component{
             navStyle = this.getTypeClassMap(type);
 
         children = React.Children.toArray(children);
-        children = children && children.map((child, index) => {
+        type && (children = children && children.map((child, index) => {
             let { eventKey } = child.props;
             return React.cloneElement(child, {
                 key: index,
@@ -67,7 +67,7 @@ export default class Nav extends Component{
                 active: (eventKey && eventKey === activeKey) || index + 1 === activeKey,
                 onClick: this.onSelectHandle
             });
-        });
+        }));
 
         return(
             <ul {...others} className={classnames('nav', navStacked, navStyle, className)}>
@@ -80,3 +80,4 @@ export default class Nav extends Component{
 Nav.Item = NavItem;
 Nav.Link = NavLink;
 Nav.Title = NavTitle;
+Nav.Collapse = NavCollapse;
