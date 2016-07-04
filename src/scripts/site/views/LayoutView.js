@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Breadcrumb } from '../../components';
+import { CommenTable } from '../components/';
 
 export default class LayoutView extends Component{
     render(){
@@ -105,6 +106,20 @@ export default class LayoutView extends Component{
                                    <div className="bg-primary text-center">12</div>
                                </Col>
                            </Row>
+                           <h3 className="text-secondary">Col API</h3>
+                           <CommenTable
+                               data = {[
+                                   ['col', '所占比例', 'number、string', ''],
+                                   ['offset', '向左偏移（margin）', 'number、string', ''],
+                                   ['push', '向左偏移', 'number、string', ''],
+                                   ['pull', '向右偏移', 'number、string', ''],
+                               ]}
+                           ></CommenTable>
+                           <h3 className="text-secondary">组件应用扩展</h3>
+                           <ul>
+                               <li>col 应配合 Row 使用，很方便实现栅格布局。</li>
+                               <li>若要实现五等分，要自定义样式，flex 属性值为 0 0 20%，max-width 设置为20%。</li>
+                           </ul>
                     </Card>
                 </Card>
             </div>

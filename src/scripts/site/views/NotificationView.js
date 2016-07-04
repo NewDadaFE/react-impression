@@ -74,6 +74,8 @@ export default class NotificationView extends Component{
                             ['closeable', '是否显示关闭按钮', 'boolean', 'true'],
                         ]}
                     ></CommenTable>
+                    <h3>使用注意事项</h3>
+                    使用时应在合适位置插入 <Notification/> 标签，
                 </Card>
             </div>
         );

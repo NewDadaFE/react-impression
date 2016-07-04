@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Badge, Breadcrumb, Icon } from '../../components';
+import { CommenTable } from '../components/';
 
 export default class BadgeView extends Component{
     render(){
@@ -85,6 +86,15 @@ export default class BadgeView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3 className="text-secondary">Badge API</h3>
+                    <CommenTable
+                        data = {[
+                            ['content', '内容', 'string', ''],
+                            ['style', '样式，可选值为 primary、secondary、danger、success、inverse', 'string', 'primary'],
+                            ['type', '类型，可选值为 legend', 'string', ''],
+                            ['size', '尺寸，可选值为 lg、sm', 'string', ''],
+                        ]}
+                    ></CommenTable>
                 </Card>
             </div>
         );

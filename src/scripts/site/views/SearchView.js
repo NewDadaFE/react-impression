@@ -74,6 +74,10 @@ export default class SearchView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3>使用注意事项</h3>
+                    <ul>
+                        <li>Input 配合 Modal 实现模态框选择内容，适用于选择项较多的应用场景。</li>
+                    </ul>
                 </Card>
                 { this.state.show &&
                     <Modal size={this.state.size}>
