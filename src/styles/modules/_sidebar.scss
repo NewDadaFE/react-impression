@@ -57,15 +57,13 @@
 }
 
 .nav-collapse{
-    transition: all .18s ease-in-out;
+    transition: $sidebar-collapse-transition;
 
     &.active{
-        box-shadow: inset 0 0 1px darken($sidebar-nav-link-active-bg, 12%);
-        background: lighten($sidebar-bg, 4%);
+        box-shadow: $sidebar-collapse-active-shadow;
+
         .nav-collapse-title{
-            font-weight: bold;
             color: $sidebar-nav-link-active-color;
-            border-bottom: 1px dashed darken($sidebar-bg, 2%);
         }
 
         .nav-collapse-title-addon{
@@ -75,7 +73,8 @@
 
         .nav-collapse-items{
             height: auto;
-            animation: scaleIn 0.36s ease;
+            animation: $sidebar-collapse-animation;
+            background: $sidebar-collapse-active-bg;
         }
 
 
@@ -83,21 +82,21 @@
 }
 
 .nav-collapse-title{
-    margin-bottom: 5px;
-    transition: all .18s ease-in-out;
+    transition: $sidebar-collapse-transition;
 }
 
 .nav-collapse-title-addon{
     float: right;
     line-height: $line-height-base;
-    transition: all .18s ease-in-out;
+    transition: $sidebar-collapse-transition;
 }
 
 .nav-collapse-items{
     height: 0;
     overflow: hidden;
-    text-indent: 1.5rem;
+    text-indent: $sidebar-collapse-text-indent;
     transform-origin: center 0;
+    font-size: $sidebar-collapse-font-size;
 }
 
 .sidebar-footer{

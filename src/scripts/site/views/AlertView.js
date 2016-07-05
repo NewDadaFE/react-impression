@@ -46,7 +46,7 @@ export default class AttentionView extends Component{
                     <Alert onClick={this.toggleAlert1Handle}>姓名不能为空！</Alert>
                 }
                 { showAlert2 &&
-                    <Alert onClick={this.toggleAlert2Handle} type="danger">请先选择所属城市！</Alert>
+                    <Alert btnText="关闭" onClick={this.toggleAlert2Handle} type="danger">请先选择所属城市！</Alert>
                 }
             </div>
         );

@@ -30,26 +30,6 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/layout"><Icon type="columns" left/>Layout</Link>
                     </Nav.Link>
-                    <Nav.Collapse>
-                        <Nav.Collapse.Title>
-                            <Icon type="bars" left/>Collapse
-                        </Nav.Collapse.Title>
-                        <Nav.Link>
-                            <Link to="/button">Button</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <a href="http://fontawesome.io/icons/" target="_blank">Icon</a>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link to="/image">Image</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link to="/table">Table</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link to="/layout">Layout</Link>
-                        </Nav.Link>
-                    </Nav.Collapse>
                     <Nav.Title>Form Control</Nav.Title>
                     <Nav.Link>
                         <Link to="/radio"><Icon type="dot-circle-o" left/>Radio</Link>
@@ -147,6 +127,27 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/loading"><Icon type="spinner" left/>Loading</Link>
                     </Nav.Link>
+                    <Nav.Title>Others</Nav.Title>
+                    <Nav.Collapse>
+                        <Nav.Collapse.Title>
+                            <Icon type="bars" left/>Other Pages
+                        </Nav.Collapse.Title>
+                        <Nav.Link>
+                            <Link to="/button">Button</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <a href="http://fontawesome.io/icons/" target="_blank">Icon</a>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/image">Image</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/table">Table</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/layout">Layout</Link>
+                        </Nav.Link>
+                    </Nav.Collapse>
                 </Nav>
                 <Sidebar.Footer>
                     <Link to="/timeline">
