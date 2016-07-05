@@ -206,6 +206,18 @@ export default class Input extends Component{
                     }
                 </div>
             );
+        default:
+            return (
+                <div className={classnames('input', className)} ref="container">
+                    <input type='text'
+                        ref="main"
+                        value={value}
+                        className="form-control"
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        style={style}/>
+                </div>
+            );
         }
 
     }
