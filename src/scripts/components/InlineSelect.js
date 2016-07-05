@@ -29,6 +29,7 @@ export default class InlineSelect extends Component{
     render(){
         let { value, className, children, ...others } = this.props;
 
+        children = React.Children.toArray(children);
         children && (children = children.map((child, index) => {
             return React.cloneElement(child, {
                 key: index,
