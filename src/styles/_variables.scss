@@ -1109,6 +1109,8 @@ $loading-color:                               $gray-light !default;
 $loading-width:                               100px !default;
 $loading-height:                              $loading-width !default;
 $loading-animation-duration:                  1s !default;
+$loading-transition:                          all 0.12s ease-in-out !default;
+
 
 $loading-message-font-size:                   0.8rem !default;
 
