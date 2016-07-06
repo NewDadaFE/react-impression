@@ -15,6 +15,8 @@
 
     .nav-item{
         display: block;
+        text-indent: $sidebar-nav-item-indent;
+
         & + .nav-item{
             margin-left: 0;
         }
