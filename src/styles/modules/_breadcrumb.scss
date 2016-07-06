@@ -41,3 +41,8 @@
     color: $breadcrumb-active-color;
   }
 }
+
+.breadcrumb-item-addon{
+    margin-right: $breadcrumb-item-addon-spacer;
+    font-size: $breadcrumb-item-addon-font-size;
+}

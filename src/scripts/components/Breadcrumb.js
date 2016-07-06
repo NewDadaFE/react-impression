@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import { Link } from 'react-router';
 import React, { Component, PropTypes } from 'react';
+import Icon from './Icon';
 
 /**
  * 面包屑组件.
@@ -38,11 +39,20 @@ export default class Breadcrumb extends Component{
                     <li key={index} className="breadcrumb-item">
                         { index < depth && item.path && item.clickable &&
                             <Link to={item.path}>
+                                {item.component && item.component.icon &&
+                                    <Icon className="breadcrumb-item-addon" type={item.component.icon}/>
+                                }
                                 { item.component && item.component.title || item.path}
                             </Link>
                         }
                         { (index === depth || !item.path || !item.clickable) &&
-                            <span>{ item.component && item.component.title || item.path}</span>
+                            <span>
+                                {item.component && item.component.icon &&
+                                    <Icon className="breadcrumb-item-addon" type={item.component.icon}/>
+                                }
+                                {item.icon}
+                                { item.component && item.component.title || item.path}
+                            </span>
                         }
                     </li>
                 )}

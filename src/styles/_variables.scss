@@ -636,7 +636,7 @@ $nav-item-inline-spacer:                        1rem !default;
 
 $nav-title-color:                               #fff !default;
 $nav-title-padding:                             1rem !default;
-$nav-title-font-size:                           1.2rem !default;
+$nav-title-font-size:                           1.1rem !default;
 
 $nav-link-padding:                              .5em 1em !default;
 $nav-link-active-color:                         $brand-primary !default;
@@ -1051,16 +1051,19 @@ $figure-caption-font-size: 90% !default;
 
 
 // Breadcrumbs
-$breadcrumb-color:              #777 !default;
-$breadcrumb-padding:            $card-padding !default;
-$breadcrumb-item-padding:       .5rem !default;
+$breadcrumb-color:                  #777 !default;
+$breadcrumb-padding:                $card-padding !default;
+$breadcrumb-bg:                     transparent !default;
 
-$breadcrumb-bg:                 transparent !default;
-$breadcrumb-divider-color:      $gray-light !default;
-$breadcrumb-active-color:       $gray-light !default;
+$breadcrumb-divider-color:          $gray-light !default;
+$breadcrumb-active-color:           $gray-light !default;
 
-$breadcrumb-divider:            "/" !default;
-$breadcrumb-arrow-divider:      ">" !default;
+$breadcrumb-divider:                "/" !default;
+$breadcrumb-arrow-divider:          ">" !default;
+
+$breadcrumb-item-padding:            .5rem !default;
+$breadcrumb-item-addon-spacer:       5px !default;
+$breadcrumb-item-addon-font-size:    1.2rem !default;
 
 
 // Media objects
