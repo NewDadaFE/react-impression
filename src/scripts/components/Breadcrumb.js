@@ -36,12 +36,12 @@ export default class Breadcrumb extends Component{
             <ol {...others} className={classnames('breadcrumb', className, dividerClass)}>
                 { routes.map((item, index) =>
                     <li key={index} className="breadcrumb-item">
-                        { index < depth && item.path &&
+                        { index < depth && item.path && item.clickable &&
                             <Link to={item.path}>
                                 { item.component && item.component.title || item.path}
                             </Link>
                         }
-                        { (index === depth || !item.path) &&
+                        { (index === depth || !item.path || !item.clickable) &&
                             <span>{ item.component && item.component.title || item.path}</span>
                         }
                     </li>
