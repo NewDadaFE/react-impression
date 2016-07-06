@@ -38,6 +38,7 @@
   padding: $modal-title-padding;
   background: $modal-header-bg;
   border-radius: $modal-border-radius $modal-border-radius 0 0;
+  border-bottom: 1px solid $modal-header-border-color;
   @include clearfix;
 
   .close{
@@ -64,6 +65,9 @@
   &:last-child{
     border-radius: 0 0 $modal-border-radius $modal-border-radius;
   }
+
+  max-height: 75%;
+  overflow-y: auto;
 }
 
 // Footer (for actions)
