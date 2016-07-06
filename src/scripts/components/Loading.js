@@ -2,7 +2,10 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import LoadingAddon from './LoadingAddon';
 
-let _loading = undefined;
+let _loading = undefined,
+    _startDate = undefined,
+    _endDate = undefined,
+    _duration = 1000;
 
 /**
  * Loading组件.
@@ -15,6 +18,7 @@ export default class Loading extends Component{
         super(props, context);
         _loading = this;
 
+        props.duration && (_duration = props.duration);
         this.state = {
             show: false
         };
@@ -63,13 +67,19 @@ export default class Loading extends Component{
 
 Loading.Addon = LoadingAddon;
 Loading.show = () => {
+    _startDate = new Date();
     _loading.setState({
         show: true
     });
 };
 
 Loading.hide = () => {
-    _loading.setState({
-        show: false
-    });
+    _endDate = new Date();
+    if(_endDate - _startDate < _duration){
+        setTimeout(() => {
+            _loading.setState({
+                show: false
+            });
+        }, (_duration - _endDate + _startDate));
+    }
 };
