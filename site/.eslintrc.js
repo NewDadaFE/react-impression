@@ -62,8 +62,6 @@ module.exports = {
         ],
         "no-mixed-spaces-and-tabs": [
             "off"
-        ],
-        "no-console": 2,
-        "no-alert": 2,
+        ]
     }
 };
