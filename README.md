@@ -1,6 +1,6 @@
 # Impression [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
 
-[Bootstrap 4][bootstrap] components built with [React][react].
+An enterprise-class UI design language and React-based implementation.
 
 ## Docs
 

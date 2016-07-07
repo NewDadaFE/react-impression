@@ -1,7 +1,6 @@
 {
   "name": "impression-react",
-  "version": "0.0.9",
-  "author": "peter.shenlq",
+  "version": "0.0.8",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
   "scripts": {
@@ -14,11 +13,12 @@
   },
   "homepage": "https://github.com/shenlq/Impression",
   "dependencies": {
-    "classnames": ">=2.2.0",
-    "moment": ">=2.0.0",
-    "react": ">=15.0.0",
-    "react-addons-css-transition-group": ">=15.0.0",
-    "react-dom": ">=15.0.0"
+    "classnames": "^2.2.5",
+    "moment": "^2.13.0",
+    "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.5.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",

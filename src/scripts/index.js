@@ -42,4 +42,4 @@ export Calendar from './Calendar';
 export InlineSelect from './InlineSelect';
 export Alert from './Alert';
 
-export * as System from '../utils/system';
+export * as System from './utils/system';
