@@ -133,19 +133,16 @@ export default class AppSidebar extends Component {
                             <Icon type="bars" left/>Other Pages
                         </Nav.Collapse.Title>
                         <Nav.Link>
-                            <Link to="/button">Button</Link>
+                            <Link to="/button">Login</Link>
                         </Nav.Link>
                         <Nav.Link>
-                            <a href="http://fontawesome.io/icons/" target="_blank">Icon</a>
+                            <a href="http://fontawesome.io/icons/" target="_blank">500</a>
                         </Nav.Link>
                         <Nav.Link>
-                            <Link to="/image">Image</Link>
+                            <Link to="/image">404</Link>
                         </Nav.Link>
                         <Nav.Link>
-                            <Link to="/table">Table</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link to="/layout">Layout</Link>
+                            <Link to="/table">Lock</Link>
                         </Nav.Link>
                     </Nav.Collapse>
                 </Nav>

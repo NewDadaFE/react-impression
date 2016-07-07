@@ -87,7 +87,7 @@
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
-  @include border-radius($border-radius);
+  border-radius: $input-border-radius;
 
   // Sizing
   &.form-control-sm {
