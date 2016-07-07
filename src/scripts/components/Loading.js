@@ -80,6 +80,12 @@ Loading.hide = () => {
             _loading.setState({
                 show: false
             });
-        }, (_duration - _endDate + _startDate));
+        }, (_duration - (_endDate - _startDate)));
+
+        return false;
     }
+
+    _loading.setState({
+        show: false
+    });
 };
