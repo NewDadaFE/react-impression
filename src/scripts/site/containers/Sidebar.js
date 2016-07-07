@@ -16,7 +16,7 @@ export default class AppSidebar extends Component {
                 <Nav>
                     <Nav.Title>Basic</Nav.Title>
                     <Nav.Link>
-                        <Link to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="fa-right">3</Tag></Link>
+                        <Link to="/button"><Icon type="hand-pointer-o" left/>Button<Tag style="primary" className="offset-r">3</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
                         <a href="http://fontawesome.io/icons/" target="_blank"><Icon type="flag" left/>Icon</a>
@@ -47,7 +47,7 @@ export default class AppSidebar extends Component {
                         <Link to="/input"><Icon type="search" left/>Input</Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
+                        <Link to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="offset-r">Hot</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
@@ -73,7 +73,7 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Title>Prompt</Nav.Title>
                     <Nav.Link>
-                        <Link to="/attention"><Icon type="info-circle" left/>Attention<Tag style="warning" className="fa-right">1/4</Tag></Link>
+                        <Link to="/attention"><Icon type="info-circle" left/>Attention<Tag style="warning" className="offset-r">1/4</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/tooltip"><Icon type="commenting-o" left/>Tooltip</Link>
@@ -110,7 +110,7 @@ export default class AppSidebar extends Component {
                         <Link to="/list-group"><Icon type="list" left/>ListGroup</Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="fa-right">New</Tag></Link>
+                        <Link to="/modal"><Icon type="file-text" left/>Modal<Tag style="success" className="offset-r">New</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/confirm"><Icon type="question-circle" left/>Confirm</Link>

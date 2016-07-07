@@ -48,7 +48,7 @@ export default class MessageView extends Component{
                             </Col>
                             <Col>
                                <Button style="default" onClick={this.showLoadingMessageHandle}>
-                                    <i className="fa fa-spinner fa-left"></i>Loading
+                                    <i className="fa fa-spinner offset-l"></i>Loading
                                </Button>
                             </Col>
                         </Row>

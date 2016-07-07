@@ -28,8 +28,8 @@ export default class Icon extends Component{
         let { type, size, left, right, className, ...others } = this.props,
             typeClass = `fa-${type}`,
             sizeClass = size? `fa-${size}` : null,
-            leftClass = left? 'fa-left' : null,
-            rightClass = right? 'fa-right' : null;
+            leftClass = left? 'offset-l' : null,
+            rightClass = right? 'offset-r' : null;
 
         return(
            <i {...others} className={classnames('fa', typeClass, sizeClass, leftClass, rightClass, className)}></i>

@@ -32,9 +32,9 @@ export default class Header extends Component{
                             <Icon size="lg" type="envelope-o"/>
                         </Badge>
                     </a>
-                    <span className="fa-right-lg">
+                    <span className="offset-r-lg">
                         <Image circle src="images/user.jpg" style={{width: '30px'}}/>
-                        <span className="fa-right">Peter</span>
+                        <span className="offset-r">Peter</span>
                     </span>
                 </Form>
             </Navbar>
