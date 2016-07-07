@@ -32,7 +32,7 @@ import TimelineView from '../views/TimelineView';
 import DatePickerView from '../views/DatePickerView';
 import LoadingView from '../views/LoadingView';
 import CalendarView from '../views/CalendarView';
-import SearchView from '../views/SearchView';
+import InputView from '../views/InputView';
 import InlineSelectView from '../views/InlineSelectView';
 import ConfirmView from '../views/ConfirmView';
 import AlertView from '../views/AlertView';
@@ -77,7 +77,7 @@ export default class App extends Component {
                     <Route path='datepicker' component={DatePickerView}/>
                     <Route path='loading' component={LoadingView}/>
                     <Route path='calendar' component={CalendarView}/>
-                    <Route path='search' component={SearchView}/>
+                    <Route path='input' component={InputView}/>
                     <Route path='inline-select' component={InlineSelectView}/>
                     <Route path='confirm' component={ConfirmView}/>
                     <Route path='alert' component={AlertView}/>

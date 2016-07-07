@@ -12,7 +12,9 @@ export default class Header extends Component{
                 <Navbar.SidebarTitle><div style={{opacity: 0.6}}>Impression</div></Navbar.SidebarTitle>
                 <Form type="inline">
                     <Button style="secondary"><i className="fa fa-bars"></i></Button>
-                    <Input type="search" pill style={{width: '220px'}}/>
+                    <Input type="text" pill style={{width: '220px'}}>
+                        <Icon type="search"/>
+                    </Input>
                 </Form>
                 <Nav/>
                 <Form type="inline">

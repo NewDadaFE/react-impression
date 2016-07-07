@@ -3,8 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import DatePicker from './DatePicker';
 import * as System from '../utils/system';
 
-const ADDON_TYPES = ['date', 'month'];
-
 /**
  * Input 组件.
  */
@@ -21,7 +19,6 @@ export default class Input extends Component{
             showClear: false,
         };
 
-        this.hasAddon = this.hasAddon.bind(this);
         this.clearInputHandle = this.clearInputHandle.bind(this);
         this.showClearHandle = this.showClearHandle.bind(this);
         this.hideClearHandle = this.hideClearHandle.bind(this);
@@ -57,21 +54,12 @@ export default class Input extends Component{
         disabled: false,
     }
     /**
-     * 是否包含addon判断.
-     * @return {Boolean} [是否包含addon]
-     */
-    hasAddon(){
-        let { type, clearable} = this.props;
-
-        return clearable || ADDON_TYPES.indexOf(type) !== -1;
-    }
-    /**
      * 显示候选项.
      */
     showOptionHandle(){
         let { disabled } = this.props;
 
-        !disabled && this.hasAddon() && this.setState({
+        !disabled && this.setState({
             showOption: true,
             showClear: false,
         });
@@ -83,7 +71,7 @@ export default class Input extends Component{
         let { main } = this.refs;
 
         main.blur();
-        this.hasAddon() && this.setState({
+        this.setState({
             showOption: false,
             showClear: false,
         });
@@ -144,6 +132,9 @@ export default class Input extends Component{
             { showOption, showClear } = this.state,
             pillClass = pill? 'input-pill' : null;
 
+        children && (children = React.cloneElement(children, {
+            className: classnames('input-addon', children.props.className)
+        }));
 
         switch(type){
         case 'date':
@@ -158,17 +149,16 @@ export default class Input extends Component{
                         defaultValue={defaultValue}
                         className={classnames('form-control',
                         pillClass,
-                        'input-field',{
-                            'input-field-addon': this.hasAddon()
-                        })}
-                        readOnly={this.hasAddon()}
+                        'input-field',
+                        'input-field-addon')}
+                        readOnly
                         disabled={disabled}
                         placeholder={placeholder}
                         onClick={this.showOptionHandle}
                         style={style}/>
 
                     { clearable && showClear &&
-                        <i className="fa fa-times input-addon input-addon-clear" onClick={this.clearInputHandle}></i>
+                        <i className="fa fa-times input-addon" onClick={this.clearInputHandle}></i>
                     }
 
                     { (!showClear || !clearable) &&
@@ -181,9 +171,6 @@ export default class Input extends Component{
                 </div>
             );
         case 'search':
-            children && (children = React.cloneElement(children, {
-                className: classnames('input-addon', children.props.className)
-            }));
 
             return (
                 <div className={classnames('input', className)} ref="container">
@@ -192,10 +179,9 @@ export default class Input extends Component{
                         value={value}
                         className={classnames('form-control',
                         pillClass,
-                        'input-field',{
-                            'input-field-addon': this.hasAddon()
-                        })}
-                        readOnly={this.hasAddon()}
+                        'input-field',
+                        'input-field-addon')}
+                        readOnly
                         onClick={onClick}
                         disabled={disabled}
                         placeholder={placeholder}
@@ -212,10 +198,16 @@ export default class Input extends Component{
                     <input type='text'
                         ref="main"
                         value={value}
-                        className="form-control"
+                        defaultValue={defaultValue}
+                        className={classnames('form-control',
+                        pillClass,
+                        'input-field',{
+                            'input-field-addon': children
+                        })}
                         disabled={disabled}
                         placeholder={placeholder}
                         style={style}/>
+                    { children }
                 </div>
             );
         }

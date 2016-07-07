@@ -44,6 +44,9 @@ export default class AppSidebar extends Component {
                         <Link to="/select"><Icon type="angle-down" left/>Select</Link>
                     </Nav.Link>
                     <Nav.Link>
+                        <Link to="/input"><Icon type="search" left/>Input</Link>
+                    </Nav.Link>
+                    <Nav.Link>
                         <Link to="/form"><Icon type="file-text-o" left/>Form<Tag style="danger" className="fa-right">Hot</Tag></Link>
                     </Nav.Link>
                     <Nav.Link>
@@ -114,9 +117,6 @@ export default class AppSidebar extends Component {
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/dropdown"><Icon type="caret-square-o-down" left/>Dropdown</Link>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <Link to="/search"><Icon type="search" left/>Search</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/datepicker"><Icon type="calendar" left/>DatePicker</Link>
