@@ -646,8 +646,9 @@ $nav-disabled-link-color:                       $gray-light !default;
 $nav-disabled-link-hover-color:                 $gray-light !default;
 $nav-disabled-link-hover-bg:                    transparent !default;
 
-$navbar-sidebar-title-bg:                       url(../images/logo.png) center center no-repeat mix($sidebar-bg, $navbar-primary-bg, 90%);
-$navbar-sidebar-box-shadow:                     0 1px 0 darken($sidebar-bg, 7%) !default;
+$navbar-sidebar-title-bg:                       url(../images/logo.png) center center no-repeat;
+$navbar-sidebar-title-bg-color:                 mix($sidebar-bg, $navbar-primary-bg, 90%);
+$navbar-sidebar-box-shadow:                     0 1px 0 darken($navbar-sidebar-title-bg-color, 6%) !default;
 $navbar-sidebar-title-font-size:                $font-size-lg !default;
 $navbar-sidebar-title-color:                    $gray-lighter !default;
 $navbar-sidebar-title-width:                    $sidebar-width !default;
