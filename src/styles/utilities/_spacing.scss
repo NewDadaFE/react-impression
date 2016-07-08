@@ -22,27 +22,27 @@
 }
 
 .offset-l-lg{
-  margin-left: $spacer-x;
+  margin-left: $spacer-x !important;
 }
 
 .offset-r-lg{
-  margin-right: $spacer-x;
+  margin-right: $spacer-x !important;
 }
 
 .offset-t{
-  margin-top: $spacer-y;
+  margin-top: $spacer-y !important;
 }
 
 .offset-b{
-  margin-bottom: $spacer-y;
+  margin-bottom: $spacer-y !important;
 }
 
 .offset-l{
-    margin-right: $spacer-x / 2;
+    margin-right: $spacer-x / 2 !important;
 }
 
 .offset-r{
-    margin-left: $spacer-x / 2;
+    margin-left: $spacer-x / 2 !important;
 }
 
 
