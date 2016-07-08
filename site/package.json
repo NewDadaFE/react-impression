@@ -1,11 +1,10 @@
 {
-  "name": "impression-react",
+  "name": "impression-react-site",
   "version": "0.0.8",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
   "scripts": {
-    "start": "node server.js",
-    "babel": "babel -d lib/ src/scripts/components/"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -14,7 +13,7 @@
   "homepage": "https://github.com/shenlq/Impression",
   "dependencies": {
     "classnames": "^2.2.5",
-    "moment": "^2.13.0",
+    "impression-react": "^0.1.0",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-dom": "^15.1.0",

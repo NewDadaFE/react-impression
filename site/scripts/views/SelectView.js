@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Form, Select, Breadcrumb } from '../../components';
+import { Row, Col, Card, Form, Select, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class SelectView extends Component{

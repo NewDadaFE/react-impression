@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Breadcrumb } from '../../components';
+import { Card, Row, Col, Button, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 import { withRouter } from 'react-router';
 

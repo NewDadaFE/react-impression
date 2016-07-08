@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Attention, Breadcrumb } from '../../components';
+import { Card, Row, Col, Attention, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class AttentionView extends Component{

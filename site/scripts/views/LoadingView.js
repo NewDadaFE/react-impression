@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Loading, Button, Breadcrumb } from '../../components';
+import { Card, Row, Col, Loading, Button, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components/';
 
 export default class LoadingView extends Component{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Calendar, Breadcrumb, Badge, Icon, Image } from '../../components';
+import { Card, Row, Col, Calendar, Breadcrumb, Badge, Icon, Image } from 'impression-react';
 
 export default class CalendarView extends Component{
     constructor(prop, context){

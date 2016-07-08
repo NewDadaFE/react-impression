@@ -1,4 +1,7 @@
 /node_modules
+/site/build
+/site/node_modules
+/site/.sass-cache
 /bower_components
 /local
 /build

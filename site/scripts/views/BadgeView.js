@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Badge, Breadcrumb, Icon } from '../../components';
+import { Card, Row, Col, Badge, Breadcrumb, Icon } from 'impression-react';
 import { CommenTable } from '../components/';
 
 export default class BadgeView extends Component{

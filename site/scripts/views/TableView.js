@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Breadcrumb } from '../../components';
+import { Card, Breadcrumb } from 'impression-react';
 
 
 export default class TableView extends Component{

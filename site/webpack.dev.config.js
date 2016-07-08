@@ -1,15 +1,17 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var port  = 9016;
 
 
 module.exports = {
+    PORT: port,
     devtool: 'source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:9016',
+        'webpack-dev-server/client?http://localhost:' + port,
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        './src/scripts/site/index'
+        './scripts/index'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -34,8 +36,7 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             loaders: ['babel'],
-            exclude: /node_modules/,
-            include: path.join(__dirname, 'src')
+            exclude: /node_modules/
         }]
     }
 };

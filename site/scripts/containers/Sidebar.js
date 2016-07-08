@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Icon, Tag, Sidebar, Nav } from '../../components';
+import { Icon, Tag, Sidebar, Nav } from 'impression-react';
 
 
 /**

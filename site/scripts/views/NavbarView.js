@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Navbar, Nav, Form, Button, Breadcrumb } from '../../components';
+import { Card, Navbar, Nav, Form, Button, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class NavbarView extends Component{

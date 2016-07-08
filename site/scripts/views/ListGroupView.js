@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, ListGroup, Tag, Breadcrumb } from '../../components';
+import { Card, Row, Col, ListGroup, Tag, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class ListGroupView extends Component{

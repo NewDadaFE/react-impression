@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             img: {
                 files: [{
                     expand: true,
-                    cwd: 'src/images',
+                    cwd: 'images',
                     src: ['**/*'],
                     dest: 'build/images/'
                 }]
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             font: {
                 files: [{
                     expand: true,
-                    cwd: 'src/styles/font-awesome',
+                    cwd: '../src/styles/font-awesome',
                     src: ['fonts/*'],
                     dest: 'build/styles/'
                 }]
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
             animate: {
                 files: [{
                     expand: true,
-                    cwd: 'src/styles/animate',
+                    cwd: '../src/styles/animate',
                     src: ['*.css'],
                     dest: 'build/styles/animate'
                 }]
@@ -68,13 +68,13 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'src/styles/',
+                    cwd: '../src/styles/',
                     src: 'index.scss',
                     dest: 'build/styles/',
                     ext: '.css'
                 }, {
                     expand: true,
-                    cwd: 'src/styles',
+                    cwd: '../src/styles',
                     src: 'font-awesome/index.scss',
                     dest: 'build/styles/',
                     ext: '.css'
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
         },
         watch: {
             less: {
-                files: 'src/styles/**/*.scss',
+                files: '../src/styles/**/*.scss',
                 tasks: ['sass', 'autoprefixer']
             }
         },
@@ -130,14 +130,15 @@ module.exports = function(grunt) {
             }
         },
         eslint: {
-            target: ['src/scripts/**/*.js']
+            target: ['../src/scripts/**/*.js', 'scripts/**/*.js']
         },
         scsslint: {
             allFiles: [
-                'src/styles/**/*.scss',
+                '../src/styles/**/*.scss',
+                'styles/**/*.scss',
             ],
             options: {
-                exclude: ['src/styles/font-awesome/**'],
+                exclude: ['../src/styles/font-awesome/**'],
                 // bundleExec: true,
                 config: '.scss-lint.yml',
                 reporterOutput: 'scss-lint-report.xml',

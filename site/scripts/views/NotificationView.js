@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Notification, Breadcrumb } from '../../components';
+import { Card, Row, Col, Button, Notification, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class NotificationView extends Component{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Image, Breadcrumb } from '../../components';
+import { Card, Row, Col, Image, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class ImageView extends Component{

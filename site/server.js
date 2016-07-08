@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.dev.config');
-var port  = 9016;
 
 
 new WebpackDevServer(webpack(config), {
@@ -12,10 +11,10 @@ new WebpackDevServer(webpack(config), {
     stats: {
       colors: true
     }
-}).listen(port, 'localhost', function (err) {
+}).listen(config.PORT, 'localhost', function (err) {
     if (err) {
         console.log(err);
     }
 
-    console.log('🌎  Server is listening at localhost:' + port);
+    console.log('🌎  Server is listening at localhost:' + config.PORT);
 });

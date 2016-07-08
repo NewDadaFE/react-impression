@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Checkbox, CheckboxGroup, Form,Breadcrumb } from '../../components';
+import { Row, Col, Card, Checkbox, CheckboxGroup, Form,Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class CheckboxView extends Component{

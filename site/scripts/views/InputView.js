@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from '../../components';
+import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from 'impression-react';
 
 export default class InputView extends Component{
     constructor(props, context){
@@ -8,7 +8,7 @@ export default class InputView extends Component{
             show: false,
             city: {
                 name: '上海',
-                id: "1"
+                id: '1'
             }
         };
 

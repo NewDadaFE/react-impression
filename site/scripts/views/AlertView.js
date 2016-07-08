@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Breadcrumb, Alert } from '../../components';
+import { Card, Row, Col, Button, Breadcrumb, Alert } from 'impression-react';
 
 export default class AttentionView extends Component{
     constructor(props, context){

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Card, Row, Col, Breadcrumb } from '../../components';
+import { Modal, Button, Card, Row, Col, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class ModalView extends Component{

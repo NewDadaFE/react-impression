@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Pagination, Breadcrumb } from '../../components';
+import { Card, Row, Col, Pagination, Breadcrumb } from 'impression-react';
 import { CommenTable } from '../components';
 
 export default class PaginationView extends Component{

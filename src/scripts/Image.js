@@ -35,7 +35,7 @@ export default class Image extends Component{
         };
 
         return(
-            <img {...others} {...this.props} className={classnames(classes, className)}/>
+            <img {...others} className={classnames(classes, className)}/>
         );
     }
  }
