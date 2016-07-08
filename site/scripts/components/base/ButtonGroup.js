@@ -35,6 +35,7 @@ export default class ButtonGroup extends Component{
             { style, size, className, onSelect, children, ...others } = this.props,
             btnGroupSize = size? `btn-group-${size}` : null;
 
+        delete others.activeKey;
         children = children.map((child, index) => {
             let { eventKey, onClick } = child.props;
 

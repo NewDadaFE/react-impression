@@ -45,6 +45,8 @@ export default class Button extends Component{
             shapeClass = shape? `btn-${shape}` : '',
             closeClass = close? 'close' : null;
 
+        delete others.eventKey;
+
         return(
             <Tag {...others} type={href?null:'button'} onClick={onClick} href={href}
                 className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, className)}>

@@ -58,6 +58,7 @@ export default class Nav extends Component{
             navStacked = stacked && type=='pill' ? 'nav-stacked' : null,
             navStyle = this.getTypeClassMap(type);
 
+        delete others.activeKey;
         children = React.Children.toArray(children);
         type && (children = children && children.map((child, index) => {
             let { eventKey } = child.props;

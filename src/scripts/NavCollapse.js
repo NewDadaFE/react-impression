@@ -36,6 +36,7 @@ export default class NavCollapse extends Component{
             { active } = this.state,
             collapseTitle = null;
 
+        delete others.active;
         children = React.Children.toArray(children);
         children = children.filter((child, index) => {
             if(child.type && child.type.name === 'NavCollapseTitle'){

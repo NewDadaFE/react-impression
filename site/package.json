@@ -14,9 +14,9 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "impression-react": "^0.1.0",
-    "react": "^15.1.0",
-    "react-addons-css-transition-group": "^15.1.0",
-    "react-dom": "^15.1.0",
+    "react": "^15.2.0",
+    "react-addons-css-transition-group": "^15.2.0",
+    "react-dom": "^15.2.0",
     "react-router": "^2.5.0"
   },
   "devDependencies": {

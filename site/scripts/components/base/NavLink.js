@@ -12,11 +12,13 @@ export default class NavLink extends Component{
     }
     //渲染
     render(){
-        let { children, className, ...others } = this.props;
-        children = React.cloneElement(children, {
-            className: classnames('nav-link', children.props.className),
-            activeClassName: children.type.displayName === 'Link' ? 'active' : null
-        });
+        let { children, className, ...others } = this.props,
+            childrenProps = {
+                className: classnames('nav-link', children.props.className),
+            };
+
+        children.type.displayName === 'Link' && (childrenProps.activeClassName = 'active');
+        children = React.cloneElement(children, childrenProps);
 
         return(
             <li {...others} className={classnames('nav-item', className)}>
