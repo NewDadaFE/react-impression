@@ -143,4 +143,8 @@
   text-align: center;
   padding: $datepicker-footer-padding;
   border-top: $datepicker-border;
+
+  a:hover{
+    text-decoration: none;
+  }
 }
