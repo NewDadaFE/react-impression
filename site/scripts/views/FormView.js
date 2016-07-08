@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Checkbox, Radio, RadioGroup, Form, Button, Breadcrumb } from 'impression-react';
+import { Card, Checkbox, Radio, RadioGroup, Form, Button, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class FormView extends Component{

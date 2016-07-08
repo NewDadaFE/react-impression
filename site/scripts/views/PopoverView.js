@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Popover, Button, Breadcrumb } from 'impression-react';
+import { Card, Row, Col, Popover, Button, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class PopoverView extends Component{

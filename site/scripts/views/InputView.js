@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from 'impression-react';
+import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from '../components/base';
 
 export default class InputView extends Component{
     constructor(props, context){

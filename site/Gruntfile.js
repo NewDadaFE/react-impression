@@ -18,6 +18,14 @@ module.exports = function(grunt) {
             }
         },
         copy: {
+            impression: {
+                files: [{
+                    expand: true,
+                    cwd: '../src/scripts',
+                    src: ['**/*'],
+                    dest: 'scripts/components/base/'
+                }]
+            },
             img: {
                 files: [{
                     expand: true,
@@ -107,9 +115,13 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            less: {
+            sass: {
                 files: '../src/styles/**/*.scss',
                 tasks: ['sass', 'autoprefixer']
+            },
+            impression: {
+                files: '../src/scripts/**/*.js',
+                tasks: ['copy:impression']
             }
         },
         uglify: {

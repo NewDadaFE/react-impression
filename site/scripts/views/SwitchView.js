@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Switch, Form, Breadcrumb } from 'impression-react';
+import { Card, Switch, Form, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class SwitchView extends Component{

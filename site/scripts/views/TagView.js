@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Tag, Breadcrumb } from 'impression-react';
+import { Card, Row, Col, Tag, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class TagView extends Component{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Tooltip, Breadcrumb } from 'impression-react';
+import { Card, Row, Col, Button, Tooltip, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class TooltipView extends Component{

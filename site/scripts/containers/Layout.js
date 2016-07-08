@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import { Flex, Square, Content } from 'impression-react';
+import { Flex, Square, Content } from '../components/base';
 
 /**
  * 页面布局.

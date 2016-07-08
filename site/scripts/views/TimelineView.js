@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Timeline, Icon, Breadcrumb } from 'impression-react';
+import { Card, Row, Col, Timeline, Icon, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class TimelineView extends Component{

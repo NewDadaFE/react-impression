@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Breadcrumb, InlineSelect } from 'impression-react';
+import { Card, Row, Col, Breadcrumb, InlineSelect } from '../components/base';
 
 export default class InlineSelectView extends Component{
     //初始state

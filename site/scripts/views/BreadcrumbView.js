@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Breadcrumb } from 'impression-react';
+import { Card, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class BreadcrumbView extends Component{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Dropdown, Breadcrumb } from  'impression-react';
+import { Card, Button, Dropdown, Breadcrumb } from  '../components/base';
 import { CommenTable } from '../components';
 
 export default class DropdownView extends Component{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, ButtonGroup, ButtonToolbar, Breadcrumb } from 'impression-react';
+import { Card, Button, ButtonGroup, ButtonToolbar, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class ButtonGroupView extends Component{

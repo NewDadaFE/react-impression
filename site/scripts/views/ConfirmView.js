@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Confirm, Breadcrumb, Button } from 'impression-react';
+import { Card, Row, Col, Confirm, Breadcrumb, Button } from '../components/base';
 
 export default class ConfirmView extends Component{
     constructor(props, context){
