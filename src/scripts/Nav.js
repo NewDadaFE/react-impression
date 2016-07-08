@@ -23,7 +23,7 @@ export default class Nav extends Component{
     static propTypes ={
         type: PropTypes.string,
         stacked: PropTypes.bool,
-        activeKey: PropTypes.number,
+        activeKey: PropTypes.any,
         onSelect: PropTypes.func,
     }
     //默认props
