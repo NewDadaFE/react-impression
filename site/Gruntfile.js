@@ -159,7 +159,7 @@ module.exports = function(grunt) {
         },
     });
 
-    grunt.registerTask('default', ['eslint', 'clean', 'copy:img', 'sass', 'copy:font', 'autoprefixer','execute']);
+    grunt.registerTask('default', ['eslint', 'clean', 'copy:img', 'copy:impression', 'sass', 'copy:font', 'autoprefixer','execute']);
 
     grunt.registerTask('ready', ['eslint', 'clean']);
     grunt.registerTask('deploy', ['copy:html', 'copy:img', 'sass', 'copy:font','autoprefixer','cssmin','uglify']);
