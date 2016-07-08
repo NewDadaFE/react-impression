@@ -15,7 +15,7 @@
   "dependencies": {
     "classnames": ">=2.2.0",
     "moment": ">=2.0.0",
-    "react-addons-css-transition-group": ">=15.0.0",
+    "react-addons-css-transition-group": ">=15.0.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
