@@ -9,6 +9,7 @@
   bottom: 0;
   margin: auto;
   background: $loading-mask-bg;
+  z-index: $zindex-loading;
 }
 
 
