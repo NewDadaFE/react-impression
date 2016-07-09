@@ -33,7 +33,7 @@ export default class InlineSelect extends Component{
         children && (children = children.map((child, index) => {
             return React.cloneElement(child, {
                 key: index,
-                active: value && value === child.props.value,
+                active: value !== undefined && value === child.props.value,
                 onClick: () => this.selectOptionHandle(child.props.value, child.props.children, index)
             });
         }));
