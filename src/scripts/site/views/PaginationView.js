@@ -46,7 +46,7 @@ export default class PaginationView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Pagintion API</h3>
+                    <h3>Pagination API</h3>
                     <CommenTable
                         data = {[
                             ['scope', '设置前后延伸几页', 'number', '2'],
