@@ -15,13 +15,16 @@
 
     .nav-item{
         display: block;
+        text-indent: $sidebar-nav-item-indent;
+
         & + .nav-item{
             margin-left: 0;
         }
     }
 
     .nav-link,
-    .nav-collapse-title{
+    .nav-collapse-title,
+    .nav-collapse-item{
         display: block;
         color: $sidebar-nav-link-color;
         padding: $sidebar-nav-link-padding;
@@ -29,7 +32,8 @@
         border-right: $sidebar-nav-link-border-width solid transparent;
     }
 
-    .nav-link{
+    .nav-link,
+    .nav-collapse-title{
         cursor: pointer;
         &:hover,
         &.active{
@@ -55,14 +59,46 @@
 }
 
 .nav-collapse{
+    transition: $sidebar-collapse-transition;
 
+    &.active{
+        box-shadow: $sidebar-collapse-active-shadow;
+
+        .nav-collapse-title{
+            color: $sidebar-nav-link-active-color;
+        }
+
+        .nav-collapse-title-addon{
+            transform-origin: center center;
+            transform: rotate(90deg);
+        }
+
+        .nav-collapse-items{
+            height: auto;
+            animation: $sidebar-collapse-animation;
+            background: $sidebar-collapse-active-bg;
+        }
+
+
+    }
 }
 
-.nav-collapse-block{
-    box-shadow: inset 0 0 1px darken($sidebar-bg, 12%), inset 0 0 100rem lighten($sidebar-bg, 6%);
-    .nav-link{
-        text-indent: 1.5rem;
-    }
+.nav-collapse-title{
+    transition: $sidebar-collapse-transition;
+}
+
+.nav-collapse-title-addon{
+    float: right;
+    line-height: $line-height-base;
+    transition: $sidebar-collapse-transition;
+}
+
+.nav-collapse-items{
+    height: 0;
+    overflow: hidden;
+    text-indent: $sidebar-collapse-text-indent;
+    transform-origin: center 0;
+    font-size: $sidebar-collapse-font-size;
 }
 
 .sidebar-footer{

@@ -1,6 +1,7 @@
 .breadcrumb {
   margin: 0;
   list-style: none;
+  color: $breadcrumb-color;
   padding: $breadcrumb-padding;
   padding-bottom: 0;
   background-color: $breadcrumb-bg;
@@ -39,4 +40,9 @@
   &.active {
     color: $breadcrumb-active-color;
   }
+}
+
+.breadcrumb-item-addon{
+    margin-right: $breadcrumb-item-addon-spacer;
+    font-size: $breadcrumb-item-addon-font-size;
 }

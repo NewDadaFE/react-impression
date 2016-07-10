@@ -36,6 +36,17 @@
   }
 }
 
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 
 .zoom-slide-enter,
 .zoom-slide-leave {
@@ -127,5 +138,26 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

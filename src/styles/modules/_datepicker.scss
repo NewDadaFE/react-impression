@@ -143,15 +143,8 @@
   text-align: center;
   padding: $datepicker-footer-padding;
   border-top: $datepicker-border;
-}
 
-@keyframes scaleIn {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
+  a:hover{
+    text-decoration: none;
   }
 }

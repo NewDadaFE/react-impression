@@ -230,9 +230,9 @@ $list-inline-padding: 5px !default;
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
 
-$border-radius:          2px !default;
-$border-radius-lg:       4px !default;
-$border-radius-sm:       1px !default;
+$border-radius:          4px !default;
+$border-radius-lg:       6px !default;
+$border-radius-sm:       2px !default;
 
 $component-active-color: #fff !default;
 $component-active-bg:    mix(#fff, $brand-primary, 60%) !default;
@@ -305,7 +305,7 @@ $split-btn-dropdown-toggle-padding-x:     8px !default;
 $split-btn-lg-dropdown-toggle-padding-x: 12px !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:              $border-radius !default;
+$btn-border-radius:              $border-radius-sm !default;
 $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
@@ -327,9 +327,9 @@ $input-border-color:             #ddd !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075) !default;
 
-$input-border-radius:            $border-radius !default;
-$input-border-radius-lg:         $border-radius-lg !default;
-$input-border-radius-sm:         $border-radius-sm !default;
+$input-border-radius:            0 !default;
+$input-border-radius-lg:         $border-radius !default;
+$input-border-radius-sm:         0 !default;
 
 $input-border-focus:             lighten($brand-primary, 12%) !default;
 $input-box-shadow-focus:         rgba($input-border-focus, .8) !default;
@@ -386,7 +386,7 @@ $checkbox-addon-width:                      1 !default;
 $checkbox-addon-height:                     $checkbox-addon-width !default;
 $checkbox-addon-padding:                    round(($line-height-base - $checkbox-addon-width) * $font-size-root / 2) !default;
 $checkbox-addon-border-color:               #ddd !default;
-$checkbox-addon-border-radius:              $border-radius !default;
+$checkbox-addon-border-radius:              $border-radius-sm !default;
 $checkbox-addon-checked-color:              $brand-primary !default;
 $checkbox-addon-transtion:                  all .2s ease !default;
 $checkbox-addon-disabled-bg:                $gray-lighter !default;
@@ -573,6 +573,8 @@ $zindex-navbar-sticky:            1030 !default;
 $zindex-modal-bg:                 1040 !default;
 $zindex-modal:                    1050 !default;
 $zindex-confirm:                  1050 !default;
+$zindex-alert:                    1050 !default;
+$zindex-loading:                  1050 !default;
 $zindex-message:                  1060 !default;
 $zindex-notification:             1060 !default;
 $zindex-notification:             1060 !default;
@@ -611,13 +613,22 @@ $sidebar-footer-height:                         35px !default;
 
 $sidebar-nav-padding-bottom:                    2rem !default;
 
+$sidebar-nav-item-indent:                       0 !default;
 $sidebar-nav-link-color:                        #a7b1c2 !default;
 $sidebar-nav-link-padding:                      0.6rem 1.2rem !default;
 $sidebar-nav-link-border-width:                 2px !default;
-$sidebar-nav-link-active-bg:                    darken($sidebar-bg, 3%) !default;
+$sidebar-nav-link-active-bg:                    darken($sidebar-bg, 4%) !default;
 $sidebar-nav-link-active-color:                 #fff !default;
 $sidebar-nav-link-active-border-color:          $brand-primary !default;
-$sidebar-nav-link-active-box-shadow:            inset 0 0 3rem darken($sidebar-bg, 4%) !default;
+$sidebar-nav-link-active-box-shadow:            inset 0 0 1px darken($sidebar-nav-link-active-bg, 2%) !default;
+
+
+$sidebar-collapse-transition:                   all .18s ease-in-out !default;
+$sidebar-collapse-active-bg:                    lighten($sidebar-bg, 4%) !default;
+$sidebar-collapse-animation:                    scaleIn 0.36s ease-in-out !default;
+$sidebar-collapse-active-shadow:                0 0 1px darken($sidebar-color, 4%) !default;
+$sidebar-collapse-font-size:                    0.8em !default;
+$sidebar-collapse-text-indent:                  1.5rem !default;
 
 // Navs
 $nav-item-margin:                               .2rem !default;
@@ -625,7 +636,7 @@ $nav-item-spacer-x:                             1rem !default;
 $nav-item-inline-spacer:                        1rem !default;
 
 $nav-title-color:                               #fff !default;
-$nav-title-padding:                             0.5rem !default;
+$nav-title-padding:                             1rem !default;
 $nav-title-font-size:                           1.1rem !default;
 
 $nav-link-padding:                              .5em 1em !default;
@@ -636,8 +647,9 @@ $nav-disabled-link-color:                       $gray-light !default;
 $nav-disabled-link-hover-color:                 $gray-light !default;
 $nav-disabled-link-hover-bg:                    transparent !default;
 
-$navbar-sidebar-title-bg:                       url(../images/logo.png) center center no-repeat darken($sidebar-bg, 3%) !default;
-$navbar-sidebar-box-shadow:                     0 1px 0 darken($sidebar-bg, 7%) !default;
+$navbar-sidebar-title-bg:                       url(../images/logo.png) center center no-repeat;
+$navbar-sidebar-title-bg-color:                 mix($sidebar-bg, $navbar-primary-bg, 90%);
+$navbar-sidebar-box-shadow:                     0 1px 0 darken($navbar-sidebar-title-bg-color, 6%) !default;
 $navbar-sidebar-title-font-size:                $font-size-lg !default;
 $navbar-sidebar-title-color:                    $gray-lighter !default;
 $navbar-sidebar-title-width:                    $sidebar-width !default;
@@ -702,8 +714,6 @@ $jumbotron-padding:              2rem !default;
 $jumbotron-bg:                   $gray-lighter !default;
 
 
-// Form states and alerts
-//
 // Define colors for form feedback states and, by default, alerts.
 
 $state-success-text:             darken($brand-success, 3%) !default;
@@ -785,36 +795,36 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .2) !defaul
 
 // Tags
 
-$tag-default-bg:            #ccc !default;
-$tag-primary-bg:            $brand-primary !default;
-$tag-secondary-bg:          $brand-secondary !default;
-$tag-success-bg:            $brand-success !default;
-$tag-info-bg:               $brand-info !default;
-$tag-warning-bg:            $brand-warning !default;
-$tag-danger-bg:             $brand-danger !default;
+$tag-default-bg:                        #ccc !default;
+$tag-primary-bg:                        $brand-primary !default;
+$tag-secondary-bg:                      $brand-secondary !default;
+$tag-success-bg:                        $brand-success !default;
+$tag-info-bg:                           $brand-info !default;
+$tag-warning-bg:                        $brand-warning !default;
+$tag-danger-bg:                         $brand-danger !default;
 
-$tag-color:                 #fff !default;
-$tag-link-hover-color:      #fff !default;
-$tag-font-size:             75% !default;
-$tag-font-weight:           bold !default;
-$tag-padding-x:             .8em !default;
-$tag-padding-y:             .4em !default;
-$tag-border-radius:         $border-radius-sm;
+$tag-color:                             #fff !default;
+$tag-link-hover-color:                  #fff !default;
+$tag-font-size:                         75% !default;
+$tag-font-weight:                       bold !default;
+$tag-padding-x:                         .8em !default;
+$tag-padding-y:                         .4em !default;
+$tag-border-radius:                     $border-radius-sm;
 
-$tag-pill-padding-x:        .6em !default;
-$tag-pill-border-radius:    10rem !default;
+$tag-pill-padding-x:                    .6em !default;
+$tag-pill-border-radius:                10rem !default;
 
-$tag-close-margin-right:    $tag-padding-x !default;
+$tag-close-margin-right:                $tag-padding-x !default;
 
 // Badge
-$badge-color:                      #fff !default;
-$badge-padding:                    3px !default;
-$badge-font-size:                  $font-size-sm !default;
-$badge-box-shadow:                 0 0 0 1px #fff !default;
-$badge-min-width:                  20px !default;
+$badge-color:                           #fff !default;
+$badge-padding:                         3px !default;
+$badge-font-size:                       $font-size-sm !default;
+$badge-box-shadow:                      0 0 0 1px #fff !default;
+$badge-min-width:                       20px !default;
 
-$badge-min-width-sm:               1rem !default;
-$badge-font-size-sm:               75% !default;
+$badge-min-width-sm:                    1rem !default;
+$badge-font-size-sm:                    75% !default;
 
 
 $badge-legend-margin-right:             0 !default;
@@ -822,61 +832,81 @@ $badge-legend-addon-margin-right:       $spacer-y / 2 !default;
 
 // Modals
 
-$modal-bg:                    rgba(0, 0, 0, 0.3) !default;
-$modal-left:                  $sidebar-width !default;
-$modal-top:                   $navbar-height !default;
-$modal-inner-padding:         0.8rem !default;
-$modal-border-radius:         4px !default;
+$modal-bg:                              rgba(0, 0, 0, 0.3) !default;
+$modal-left:                            $sidebar-width !default;
+$modal-top:                             $navbar-height !default;
+$modal-inner-padding:                   0.8rem !default;
+$modal-inner-padding-sm:                0.6rem !default;
+$modal-border-radius:                   $border-radius !default;
 
-$modal-dialog-margin:         10px !default;
-$modal-dialog-sm-up-margin-y: $navbar-height !default;
+$modal-dialog-margin:                   10px !default;
+$modal-dialog-sm-up-margin-y:           $navbar-height !default;
 
-$modal-title-padding:         0.8rem !default;
-$modal-title-line-height:     $line-height-base !default;
+$modal-title-padding:                   0.8rem !default;
+$modal-title-line-height:               $line-height-base !default;
 
-$modal-content-border-color:     rgba($gray-secondary, .06) !default;
-$modal-content-border-width:     $border-width !default;
-$modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5) !default;
-$modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5) !default;
+$modal-content-border-color:            rgba($gray-secondary, .06) !default;
+$modal-content-border-width:            $border-width !default;
+$modal-content-xs-box-shadow:           0 3px 9px rgba(0,0,0,.5) !default;
+$modal-content-sm-up-box-shadow:        0 5px 15px rgba(0,0,0,.5) !default;
 
-$modal-header-bg:             $gray-secondary !default;
-$modal-header-color:          #fff !default;
-$modal-header-border-color:   #e5e5e5 !default;
-$modal-header-border-width:   $modal-content-border-width !default;
+$modal-header-bg:                       #fff !default;
+$modal-header-color:                    $body-color !default;
+$modal-header-border-color:             #e5e5e5 !default;
+$modal-header-border-width:             $modal-content-border-width !default;
 
-$modal-body-bg:               #fff !default;
+$modal-body-bg:                         #fff !default;
 
-$modal-footer-bg:             #fff !default;
-$modal-footer-border-color:   $modal-header-border-color !default;
-$modal-footer-border-width:   $modal-header-border-width !default;
+$modal-footer-bg:                       #fff !default;
+$modal-footer-border-color:             $modal-header-border-color !default;
+$modal-footer-border-width:             $modal-header-border-width !default;
 
-$modal-lg:                    900px !default;
-$modal-md:                    600px !default;
-$modal-sm:                    300px !default;
+$modal-lg:                              900px !default;
+$modal-md:                              600px !default;
+$modal-sm:                              300px !default;
 
-$modal-animation-duration:    0.36s !default;
+$modal-animation-duration:              0.36s !default;
 
 
 // Confirm
-$confirm-top:                       $modal-top !default;
-$confirm-left:                      $modal-left !default;
-$confirm-bg:                        $modal-bg !default;
+$confirm-top:                           $modal-top !default;
+$confirm-left:                          $modal-left !default;
+$confirm-bg:                            $modal-bg !default;
 
-$confirm-dialog-bg:                 #fff !default;
-$confirm-dialog-width:              240px !default;
-$confirm-dialog-height:             150px !default;
-$confirm-dialog-padding:            1rem !default;
-$confirm-dialog-border-radius:      6px !default;
+$confirm-dialog-bg:                     #fff !default;
+$confirm-dialog-width:                  240px !default;
+$confirm-dialog-height:                 150px !default;
+$confirm-dialog-padding:                1rem !default;
+$confirm-dialog-border-radius:          $border-radius-lg !default;
 
-$confirm-addon-font-size:           3rem !default;
-$confirm-body-padding:              1rem 0 !default;
-$confirm-footer-border-color:       $border-color !default;
+$confirm-addon-font-size:               3rem !default;
+$confirm-body-padding:                  1rem 0 !default;
+$confirm-footer-border-color:           $border-color !default;
 
-$confirm-btn-padding:               0.8rem !default;
-$confirm-btn-hover-bg:              $gray-lighter !default;
-$confirm-btn-primary-color:         $brand-primary !default;
+$confirm-btn-padding:                   0.8rem !default;
+$confirm-btn-hover-bg:                  $gray-lighter !default;
+$confirm-btn-primary-color:             $brand-primary !default;
 
-$confirm-animation-duration:        0.36s !default;
+$confirm-animation-duration:            0.36s !default;
+
+// Alert
+$alert-top:                             $modal-top !default;
+$alert-left:                            $modal-left !default;
+$alert-bg:                              $modal-bg !default;
+
+$alert-dialog-bg:                       #fff !default;
+$alert-dialog-width:                    240px !default;
+$alert-dialog-height:                   150px !default;
+$alert-dialog-padding:                  1rem !default;
+$alert-dialog-border-radius:            $border-radius-lg !default;
+
+$alert-addon-font-size:                 3rem !default;
+$alert-body-padding:                    1rem 0 !default;
+$alert-footer-border-color:             $border-color !default;
+$alert-btn-color:                       $brand-primary !default;
+$alert-btn-hover-bg:                    $gray-lighter !default;
+
+$alert-animation-duration:              0.36s !default;
 
 
 // Attentions
@@ -1023,16 +1053,19 @@ $figure-caption-font-size: 90% !default;
 
 
 // Breadcrumbs
+$breadcrumb-color:                  #777 !default;
+$breadcrumb-padding:                $card-padding !default;
+$breadcrumb-bg:                     transparent !default;
 
-$breadcrumb-padding:            $card-padding !default;
-$breadcrumb-item-padding:       .5rem !default;
+$breadcrumb-divider-color:          $gray-light !default;
+$breadcrumb-active-color:           $gray-light !default;
 
-$breadcrumb-bg:                 transparent !default;
-$breadcrumb-divider-color:      $gray-light !default;
-$breadcrumb-active-color:       $gray-light !default;
+$breadcrumb-divider:                "/" !default;
+$breadcrumb-arrow-divider:          ">" !default;
 
-$breadcrumb-divider:            "/" !default;
-$breadcrumb-arrow-divider:      ">" !default;
+$breadcrumb-item-padding:            .5rem !default;
+$breadcrumb-item-addon-spacer:       5px !default;
+$breadcrumb-item-addon-font-size:    1.2rem !default;
 
 
 // Media objects
@@ -1078,8 +1111,10 @@ $loading-color:                               $gray-light !default;
 $loading-width:                               100px !default;
 $loading-height:                              $loading-width !default;
 $loading-animation-duration:                  1s !default;
+$loading-transition:                          none;
 
-$loading-message-font-size:                   0.8rem !default;
+
+$loading-message-font-size:                   1rem !default;
 
 $loading-fountain-bg:                         #fff !default;
 $loading-fountain-width:                      $loading-width !default;
