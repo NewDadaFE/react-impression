@@ -41,3 +41,4 @@ export Loading from './components/Loading';
 export Calendar from './components/Calendar';
 export InlineSelect from './components/InlineSelect';
 export Alert from './components/Alert';
+export Split from './components/Split';

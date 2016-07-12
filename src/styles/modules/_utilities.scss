@@ -6,3 +6,9 @@
 @import "../utilities/text";
 @import "../utilities/visibility";
 @import "../utilities/border";
+
+
+.split{
+    margin: 0 $spacer-x / 2;
+    color: $text-muted;
+}

@@ -3,6 +3,7 @@
 /site/node_modules
 /site/.sass-cache
 /site/Makefile
+/site/scripts
 /bower_components
 /local
 /build

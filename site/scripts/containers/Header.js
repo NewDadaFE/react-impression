@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, Form, Icon, Badge, Input, Image } from '../components/base';
+import { Navbar, Nav, Button, Form, Icon, Badge, Input, Image, Split } from '../components/base';
 
 
 /**
@@ -35,6 +35,8 @@ export default class Header extends Component{
                     <span className="offset-r-lg">
                         <Image circle src="images/user.jpg" style={{width: '30px'}}/>
                         <span className="offset-r">Peter</span>
+                        <Split/>
+                        <span>logout</span>
                     </span>
                 </Form>
             </Navbar>
