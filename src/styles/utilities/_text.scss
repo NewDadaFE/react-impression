@@ -44,6 +44,9 @@
 
 @include text-emphasis-variant('.text-secondary', $brand-secondary);
 
+@include text-emphasis-variant('.text-pure', #fff);
+
+
 // Misc
 
 .text-hide {
