@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import DatePicker from './DatePicker';
-import * as System from './utils/system';
+import * as System from '../utils/system';
 
 /**
  * Input 组件.
