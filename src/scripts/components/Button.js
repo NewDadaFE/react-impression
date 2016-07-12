@@ -30,6 +30,8 @@ export default class Button extends Component{
         href: PropTypes.string,
         //是否关闭按钮
         close: PropTypes.bool,
+        //是否block
+        block: PropTypes.bool,
     }
     //默认props
     static defaultProps = {
@@ -37,19 +39,20 @@ export default class Button extends Component{
     }
     //渲染
     render(){
-        let { style, outline, size, shape, className, onClick, href, close, children, ...others} = this.props,
+        let { style, outline, size, shape, className, onClick, href, close, block, children, ...others} = this.props,
             { Tag } = this.state,
             btnClass = !close? 'btn' : null,
             styleClass = !close? `btn${outline?'-outline':''}-${style}` : null,
             sizeClass = size? `btn-${size}` : '',
             shapeClass = shape? `btn-${shape}` : '',
-            closeClass = close? 'close' : null;
+            closeClass = close? 'close' : null,
+            blockClass = block? 'btn-block' : null;
 
         delete others.eventKey;
 
         return(
             <Tag {...others} type={href?null:'button'} onClick={onClick} href={href}
-                className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, className)}>
+                className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, blockClass, className)}>
                 {children}
             </Tag>
         );

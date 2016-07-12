@@ -17,7 +17,7 @@
   .nav {
     flex: 1;
     .nav-item {
-      float: left;
+      display: inline-block;
     }
 
     .nav-link {
