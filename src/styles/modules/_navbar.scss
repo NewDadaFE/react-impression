@@ -39,6 +39,10 @@
   @include nav-variant($navbar-primary-color, $navbar-primary-bg, $navbar-primary-border-color);
 }
 
+.navbar-inverse{
+  @include nav-variant($navbar-inverse-color, $navbar-inverse-bg, $navbar-inverse-border-color);
+}
+
 .navbar-pure{
   @include nav-variant($navbar-pure-color, $navbar-pure-bg, $navbar-pure-border-color);
 }
