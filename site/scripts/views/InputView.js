@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from '../components/base';
+import { CommenTable } from '../components';
 
 export default class InputView extends Component{
     constructor(props, context){
@@ -143,9 +144,22 @@ export default class InputView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3>Input API</h3>
+                    <CommenTable
+                        data = {[
+                            ['type', '设置输入框类型，可选值为text、password、file、date、emaile、mouth、search', 'string', 'text'],
+                            ['placeholder', '输入框提示信息', 'string', ''],
+                            ['value', '输入框的值', 'any', ''],
+                            ['defaultValue', '输入框默认值', 'any', ''],
+                            ['clearable', '是否可清除', 'boolean', 'true'],
+                            ['pill', '样式是否椭圆形', 'boolean', ''],
+                            ['disabled', '是否不可选', 'boolean', 'false'],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    ></CommenTable>
                     <h3>注意:</h3>
                     <ul>
-                        <li>Input 配合 Modal 实现模态框选择内容，适用于选择项较多的应用场景。</li>
+                        <li>Input type=‘search’配合 Modal 实现模态框选择内容，适用于选择项较多的应用场景。</li>
                     </ul>
                 </Card>
                 { this.state.show &&
