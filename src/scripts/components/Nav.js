@@ -47,6 +47,7 @@ export default class Nav extends Component{
             tab: 'nav-tabs',
             pill: 'nav-pills',
             inline: 'nav-inline',
+            'inline-bordered': 'nav-inline nav-inline-bordered',
         };
 
         return map[type]? map[type]: type;

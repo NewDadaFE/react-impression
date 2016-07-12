@@ -603,7 +603,7 @@ $navbar-inverse-border-color:       $navbar-inverse-bg !default;
 
 $navbar-pure-bg:                    #fff !default;
 $navbar-pure-color:                 $body-color !default;
-$navbar-pure-border-color:          $navbar-pure-bg !default;
+$navbar-pure-border-color:          $border-color !default;
 
 
 //Sidebar
@@ -681,6 +681,7 @@ $nav-pills-active-link-color:                    $component-active-color !defaul
 $nav-pills-active-link-bg:                       $brand-primary !default;
 
 $nav-stacked-items-padding:                      0.75rem 1rem !default;
+
 
 
 // Pagination

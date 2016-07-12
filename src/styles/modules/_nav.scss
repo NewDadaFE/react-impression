@@ -48,6 +48,14 @@
   }
 }
 
+.nav-inline-bordered{
+    .nav-link{
+        &.active{
+          border-bottom: 2px solid $nav-link-active-color;
+        }
+      }
+}
+
 
 //
 // Tabs
