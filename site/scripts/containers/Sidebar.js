@@ -127,6 +127,9 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/loading"><Icon type="spinner" left/>Loading</Link>
                     </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/utilsClass"><Icon type="eye" left/>UtilsClass</Link>
+                    </Nav.Link>
                     <Nav.Title>Others</Nav.Title>
                     <Nav.Collapse>
                         <Nav.Collapse.Title>
