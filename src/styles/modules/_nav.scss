@@ -152,13 +152,14 @@
     cursor: pointer;
 
     + .nav-item {
-      margin-top: $nav-item-margin;
+      // margin-top: $nav-item-margin;
       margin-left: 0;
     }
   }
 
   .nav-link{
     border-radius: 0;
+    padding: $nav-stacked-items-padding;
   }
 }
 

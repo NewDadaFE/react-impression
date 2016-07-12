@@ -637,7 +637,7 @@ $sidebar-collapse-text-indent:                  1.5rem !default;
 // Navs
 $nav-item-margin:                               .2rem !default;
 $nav-item-spacer-x:                             1rem !default;
-$nav-item-inline-spacer:                        1rem !default;
+$nav-item-inline-spacer:                        $nav-item-spacer-x * 2 !default;
 
 $nav-title-color:                               #fff !default;
 $nav-title-padding:                             1rem !default;
@@ -679,6 +679,8 @@ $nav-pills-color:                                $nav-tabs-link-color !default;
 $nav-pills-border-radius:                        $border-radius !default;
 $nav-pills-active-link-color:                    $component-active-color !default;
 $nav-pills-active-link-bg:                       $brand-primary !default;
+
+$nav-stacked-items-padding:                      0.75rem 1rem !default;
 
 
 // Pagination

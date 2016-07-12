@@ -16,22 +16,8 @@
 
   .nav {
     flex: 1;
-    .nav-item {
-      display: inline-block;
-    }
 
-    .nav-link {
-      display: block;
-      padding: 0 $nav-item-spacer-x;
-
-      + .nav-link {
-        margin-left: $nav-item-spacer-x;
-      }
-    }
-
-    .nav-item + .nav-item {
-      margin-left: $nav-item-spacer-x;
-    }
+    @extend .nav-inline;
   }
 }
 
