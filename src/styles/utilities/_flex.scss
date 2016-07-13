@@ -32,3 +32,37 @@
     .flex-items-#{$breakpoint}-between { justify-content: space-between; }
   }
 }
+
+//容器
+.flex{
+    overflow: hidden;
+    display: flex;
+}
+
+.flex-vertical{
+    height: 100%;
+    flex-direction: column;
+}
+
+.flex-item{
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+.flex-item-2{
+    flex: 2;
+    overflow: auto;
+    position: relative;
+}
+
+.flex-item-3{
+    flex: 3;
+    overflow: auto;
+    position: relative;
+}
+
+
+.flex-items-top { align-items: flex-start; }
+.flex-items-middle { align-items: center; }
+.flex-items-bottom { align-items: flex-end; }

@@ -460,6 +460,8 @@ input[type="month"] {
 .form-horizontal{
   .form-group{
     @include make-row();
+    margin-left: 0;
+    margin-right: 0;
     > label{
       padding-left: $input-padding-x;
       padding-right: $input-padding-x;

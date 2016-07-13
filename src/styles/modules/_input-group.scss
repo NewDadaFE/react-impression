@@ -54,6 +54,10 @@
   }
   white-space: nowrap;
   vertical-align: middle; // Match the inputs
+
+  .fa{
+    line-height: $line-height-base;
+  }
 }
 
 

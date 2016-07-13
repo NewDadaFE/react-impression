@@ -1,8 +1,3 @@
-// scss-lint:disable ImportantRule
-
-//
-// Visibility utilities
-//
 
 .invisible {
   visibility: hidden !important;
@@ -10,20 +5,5 @@
 
 .hidden{
   display: none !important;
-}
-
-// Responsive visibility utilities
-
-@each $bp in map-keys($grid-breakpoints) {
-  .hidden-#{$bp}-up {
-    @include media-breakpoint-up($bp) {
-      display: none !important;
-    }
-  }
-  .hidden-#{$bp}-down {
-    @include media-breakpoint-down($bp) {
-      display: none !important;
-    }
-  }
 }
 

@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import SelectOption from './SelectOption';
-import * as System from './utils/system';
+import * as System from '../utils/system';
 
 /**
  * Select组件.

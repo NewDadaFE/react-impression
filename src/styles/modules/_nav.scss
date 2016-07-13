@@ -48,6 +48,14 @@
   }
 }
 
+.nav-inline-bordered{
+    .nav-link{
+        &.active{
+          border-bottom: 2px solid $nav-link-active-color;
+        }
+      }
+}
+
 
 //
 // Tabs
@@ -152,13 +160,14 @@
     cursor: pointer;
 
     + .nav-item {
-      margin-top: $nav-item-margin;
+      // margin-top: $nav-item-margin;
       margin-left: 0;
     }
   }
 
   .nav-link{
     border-radius: 0;
+    padding: $nav-stacked-items-padding;
   }
 }
 

@@ -47,6 +47,7 @@ export default class Nav extends Component{
             tab: 'nav-tabs',
             pill: 'nav-pills',
             inline: 'nav-inline',
+            'inline-bordered': 'nav-inline nav-inline-bordered',
         };
 
         return map[type]? map[type]: type;
@@ -61,13 +62,18 @@ export default class Nav extends Component{
         delete others.activeKey;
         children = React.Children.toArray(children);
         type && (children = children && children.map((child, index) => {
-            let { eventKey } = child.props;
-            return React.cloneElement(child, {
-                key: index,
-                eventKey: eventKey || index + 1,
-                active: (eventKey && eventKey === activeKey) || index + 1 === activeKey,
-                onClick: this.onSelectHandle
-            });
+            let { eventKey } = child.props,
+                options = {
+                    key: index,
+                    onClick: this.onSelectHandle
+                };
+
+            if(eventKey !== undefined){
+                options.eventKey = eventKey;
+                options.active = eventKey === activeKey;
+            }
+
+            return React.cloneElement(child, options);
         }));
 
         return(

@@ -3,6 +3,12 @@
   position: relative;
 }
 
+.form-horizontal {
+  .input{
+    display: block;
+  }
+}
+
 .input-field{
   &[readOnly]{
     cursor: pointer;
