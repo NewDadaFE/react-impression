@@ -128,6 +128,6 @@ export default class UtilsClassView extends Component{
                     <li>.hidden-*-down</li>
                 </ul>
             </Card>
-        )
+        );
     }
 }
