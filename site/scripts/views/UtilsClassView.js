@@ -67,13 +67,13 @@ export default class UtilsClassView extends Component{
                 <h3>spacing</h3>
                 <ul>
                     <h5>*为0、1、2、3</h5>
-                    <li>.padding-a-*</li>
-                    <li>.padding-t-*</li>
-                    <li>.padding-r-*</li>
-                    <li>.padding-b-*</li>
-                    <li>.padding-l-*</li>
-                    <li>.padding-x-*</li>
-                    <li>.padding-y-*</li>
+                    <li>.p-a-*</li>
+                    <li>.p-t-*</li>
+                    <li>.p-r-*</li>
+                    <li>.p-b-*</li>
+                    <li>.p-l-*</li>
+                    <li>.p-x-*</li>
+                    <li>.p-y-*</li>
                     <li>.offset-l-lg</li>
                     <li>.offset-r-lg</li>
                     <li>.offset-t</li>
