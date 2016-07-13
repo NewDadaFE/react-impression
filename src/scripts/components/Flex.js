@@ -8,7 +8,8 @@ import FlexItem from './FlexItem';
 export default class Flex extends Component{
     //prop type校验
     static propTypes = {
-        direction: React.PropTypes.oneOf(['row', 'column'])
+        align: React.PropTypes.oneOf(['top', 'middle', 'bottom']),
+        direction: React.PropTypes.oneOf(['row', 'column']),
     }
     //默认props
     static defaultProps = {
@@ -16,11 +17,12 @@ export default class Flex extends Component{
     }
     //渲染
     render(){
-        let { direction, children, className, ...others } = this.props,
-            directionClass = direction === 'row'? '' : 'flex-vertical';
+        let { direction, align, children, className, ...others } = this.props,
+            directionClass = direction === 'row'? '' : 'flex-vertical',
+            alignClass = align? `flex-items-${align}` : null;
 
         return(
-           <div {...others} className={classnames('flex', directionClass, className)}>
+           <div {...others} className={classnames('flex', directionClass, alignClass, className)}>
                 {children}
            </div>
         );

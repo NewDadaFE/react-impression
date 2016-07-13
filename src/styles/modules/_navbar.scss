@@ -4,8 +4,6 @@
 // other navbar variations.
 
 .navbar {
-  display: flex;
-  align-items: center;
   height: $navbar-height;
   line-height: $navbar-line-height;
   position: relative;
@@ -13,12 +11,6 @@
   border-bottom: 1px solid transparent;
   @include clearfix;
   @include nav-variant($navbar-color, $navbar-bg, $navbar-border-color);
-
-  .nav {
-    flex: 1;
-
-    @extend .nav-inline;
-  }
 }
 
 .navbar-primary{
@@ -31,23 +23,6 @@
 
 .navbar-pure{
   @include nav-variant($navbar-pure-color, $navbar-pure-bg, $navbar-pure-border-color);
-}
-
-
-// Fix the top/bottom navbars when screen real estate supports it
-.navbar-fixed-top {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  z-index: $zindex-navbar-fixed;
-}
-
-.navbar-sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: $zindex-navbar-sticky;
-  width: 100%;
 }
 
 
@@ -102,43 +77,3 @@
     content: "\00a0";
   }
 }
-
-
-// Navbar toggle
-//
-// Custom button for toggling the `.navbar-collapse`, powered by the collapse
-// Bootstrap JavaScript plugin.
-
-.navbar-toggler {
-  padding: .5rem .75rem;
-  font-size: $font-size-lg;
-  line-height: 1;
-  background: none;
-  border: $border-width solid transparent;
-  @include border-radius($btn-border-radius);
-
-  @include hover-focus {
-    text-decoration: none;
-  }
-}
-
-// scss-lint:disable ImportantRule
-// Custom override for
-.navbar-toggleable {
-  &-xs {
-    @include media-breakpoint-up(sm) {
-      display: block !important;
-    }
-  }
-  &-sm {
-    @include media-breakpoint-up(md) {
-      display: block !important;
-    }
-  }
-  &-md {
-    @include media-breakpoint-up(lg) {
-      display: block !important;
-    }
-  }
-}
-

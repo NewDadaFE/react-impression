@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Navbar, Nav, Form, Button, Breadcrumb } from '../components/base';
+import { Card, Navbar, Nav, Form, Button, Breadcrumb, Container, Flex } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class NavbarView extends Component{
@@ -11,79 +11,91 @@ export default class NavbarView extends Component{
                     <h3>Default</h3>
                     <Card>
                         <Navbar>
-                            <Navbar.Brand>Navbar</Navbar.Brand>
-                            <Nav>
-                                <Nav.Link>
-                                    <a href="#">Home</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">Features</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">Pricing</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">About</a>
-                                </Nav.Link>
-                            </Nav>
-                            <Form type="inline">
-                                <Form.Group>
-                                    <input className="form-control" type="text" placeholder="Search"/>
-                                </Form.Group>
-                                <Button style="primary">Search</Button>
-                            </Form>
+                            <Flex align="middle">
+                                <Navbar.Brand>Navbar</Navbar.Brand>
+                                <Flex.Item>
+                                    <Nav type="inline">
+                                        <Nav.Link>
+                                            <a href="#">Home</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">Features</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">Pricing</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">About</a>
+                                        </Nav.Link>
+                                    </Nav>
+                                </Flex.Item>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <input className="form-control" type="text" placeholder="Search"/>
+                                    </Form.Group>
+                                    <Button style="primary">Search</Button>
+                                </Form>
+                            </Flex>
                         </Navbar>
                     </Card>
                     <h3>Primary</h3>
                     <Card>
                         <Navbar style="pure">
-                            <Navbar.Brand>Navbar</Navbar.Brand>
-                            <Nav>
-                                <Nav.Link>
-                                    <a href="#">Home</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">Features</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">Pricing</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">About</a>
-                                </Nav.Link>
-                            </Nav>
-                            <Form>
-                                <Form.Group>
-                                    <input className="form-control" type="text" placeholder="Search"/>
-                                </Form.Group>
-                                <Button style="primary">Search</Button>
-                            </Form>
+                            <Flex align="middle">
+                                <Navbar.Brand>Navbar</Navbar.Brand>
+                                <Flex.Item>
+                                    <Nav type="inline">
+                                        <Nav.Link>
+                                            <a href="#">Home</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">Features</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">Pricing</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">About</a>
+                                        </Nav.Link>
+                                    </Nav>
+                                </Flex.Item>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <input className="form-control" type="text" placeholder="Search"/>
+                                    </Form.Group>
+                                    <Button style="primary">Search</Button>
+                                </Form>
+                            </Flex>
                         </Navbar>
                     </Card>
                     <h3>Pure</h3>
                     <Card>
                         <Navbar style="primary">
-                            <Navbar.Brand>Navbar</Navbar.Brand>
-                            <Nav>
-                                <Nav.Link>
-                                    <a href="#">Home</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">Features</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">Pricing</a>
-                                </Nav.Link>
-                                <Nav.Link>
-                                    <a href="#">About</a>
-                                </Nav.Link>
-                            </Nav>
-                            <Form>
-                                <Form.Group>
-                                    <input className="form-control" type="text" placeholder="Search"/>
-                                </Form.Group>
-                                <Button style="secondary">Search</Button>
-                            </Form>
+                            <Flex align="middle">
+                                <Navbar.Brand>Navbar</Navbar.Brand>
+                                <Flex.Item>
+                                    <Nav type="inline">
+                                        <Nav.Link>
+                                            <a href="#">Home</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">Features</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">Pricing</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="#">About</a>
+                                        </Nav.Link>
+                                    </Nav>
+                                </Flex.Item>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <input className="form-control" type="text" placeholder="Search"/>
+                                    </Form.Group>
+                                    <Button style="secondary">Search</Button>
+                                </Form>
+                            </Flex>
                         </Navbar>
                     </Card>
                     <h3 className="text-secondary">Navbar API</h3>
