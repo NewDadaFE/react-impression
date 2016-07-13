@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Card, Navbar, Nav, Form, Button, Breadcrumb, Flex } from '../components/base';
-=======
-import { Card, Navbar, Nav, Form, Button, Breadcrumb, Container, Flex } from '../components/base';
->>>>>>> 307d92bd479572d74c96544f90be193129a1d2b5
 import { CommenTable } from '../components';
 
 export default class NavbarView extends Component{
