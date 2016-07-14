@@ -9,3 +9,64 @@
         background: #fff;
     }
 }
+
+
+.upload-preview{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid $border-color;
+    background: #f2f2f2;
+    position: relative;
+    color: $text-muted;
+    cursor: pointer;
+    transition: all 0.18s ease-in-out;
+
+    &:hover{
+        color: $body-color;
+        border-color: $input-border-focus;
+        @include box-shadow($input-box-focus-shadow);
+    }
+
+    input[type="file"]{
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+}
+
+.upload-preview-addon{
+    font-size: 3rem;
+    line-height: 100px;
+}
+
+.upload-preview-text{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    font-size: 0.8rem;
+}
+
+.upload-preview-img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #f2f2f2;
+    padding: 5px;
+
+    img{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        max-width: 100%;
+    }
+}
