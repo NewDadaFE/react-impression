@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import DatePicker from './DatePicker';
+import Upload from './Upload';
 import * as System from '../utils/system';
 
 /**
@@ -69,6 +70,9 @@ export default class Input extends Component{
      */
     hideOptionsHandle(){
         let { main } = this.refs;
+        if(!main){
+            return false;
+        }
 
         main.blur();
         this.setState({
@@ -171,7 +175,6 @@ export default class Input extends Component{
                 </div>
             );
         case 'search':
-
             return (
                 <div className={classnames('input', className)} ref="container">
                     <input type='text'
@@ -192,6 +195,8 @@ export default class Input extends Component{
                     }
                 </div>
             );
+        case 'file':
+            return <Upload {...others} className={className} placeholder={placeholder}/>;
         default:
             return (
                 <div className={classnames('input', className)} ref="container">

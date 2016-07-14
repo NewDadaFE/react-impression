@@ -20,7 +20,6 @@
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
-    z-index: 6;
 
     @if $enable-flex {
       flex: 1;
@@ -32,6 +31,10 @@
       width: 100%;
     }
     margin-bottom: 0;
+
+    &:focus{
+        z-index: 6;
+    }
   }
 }
 

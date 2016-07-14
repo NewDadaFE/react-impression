@@ -52,6 +52,9 @@ export default class AppSidebar extends Component {
                     <Nav.Link>
                         <Link to="/input-group"><Icon type="outdent" left/>InputGroup</Link>
                     </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/upload"><Icon type="cloud-upload" left/>Upload</Link>
+                    </Nav.Link>
                     <Nav.Title>Navigation</Nav.Title>
                     <Nav.Link>
                         <Link to="/nav"><Icon type="bars" left/>Nav</Link>

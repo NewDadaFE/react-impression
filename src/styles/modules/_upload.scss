@@ -1,0 +1,11 @@
+.input-group-upload{
+    input[type="file"]{
+        position: absolute;
+        opacity: 0;
+    }
+
+    .form-control[disabled]{
+        cursor: default;
+        background: #fff;
+    }
+}

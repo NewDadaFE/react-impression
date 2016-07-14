@@ -43,3 +43,4 @@ export InlineSelect from './components/InlineSelect';
 export Alert from './components/Alert';
 export Split from './components/Split';
 export Container from './components/Container';
+export Upload from './components/Upload';

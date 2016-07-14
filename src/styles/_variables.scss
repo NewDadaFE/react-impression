@@ -280,9 +280,9 @@ $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
-$btn-default-color:            $gray-dark !default;
-$btn-default-bg:               #fff !default;
-$btn-default-border:           #ccc !default;
+$btn-default-color:                 #666 !default;
+$btn-default-bg:                    #fff !default;
+$btn-default-border:                #ccc !default;
 
 $btn-secondary-color:              #fff !default;
 $btn-secondary-bg:                 $brand-secondary !default;
@@ -306,7 +306,7 @@ $split-btn-lg-dropdown-toggle-padding-x: 12px !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius-sm !default;
-$btn-border-radius-lg:           $border-radius-lg !default;
+$btn-border-radius-lg:           $border-radius !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
 
