@@ -6,22 +6,22 @@
 
     .form-control[disabled]{
         cursor: default;
-        background: #fff;
+        background: $input-bg;
     }
 }
 
 
 .upload-preview{
     display: inline-block;
-    width: 100px;
-    height: 100px;
     text-align: center;
-    border: 1px solid $border-color;
-    background: #f2f2f2;
     position: relative;
-    color: $text-muted;
     cursor: pointer;
-    transition: all 0.18s ease-in-out;
+    width: $upload-preview-width;
+    height: $upload-preview-height;
+    border: 1px solid $upload-preview-border-color;
+    background: $upload-preview-bg;
+    color: $upload-preview-color;
+    transition: $upload-preview-transition;
 
     &:hover{
         color: $body-color;
@@ -33,21 +33,22 @@
         position: absolute;
         left: 0;
         top: 0;
+        width: 0;
         opacity: 0;
     }
 }
 
 .upload-preview-addon{
-    font-size: 3rem;
-    line-height: 100px;
+    line-height: $upload-preview-height;
+    font-size: $upload-preview-addon-font-size;
 }
 
 .upload-preview-text{
     position: absolute;
-    bottom: 5px;
     left: 0;
     right: 0;
-    font-size: 0.8rem;
+    bottom: $upload-preview-text-bottom;
+    font-size: $upload-preview-text-font-size;
 }
 
 .upload-preview-img{
@@ -57,8 +58,8 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    background: #f2f2f2;
-    padding: 5px;
+    background: $upload-preview-bg;
+    padding: $upload-preview-img-padding;
 
     img{
         position: absolute;
