@@ -144,6 +144,20 @@ export default class InputView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3>File</h3>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Input type="file"/>
+                            </Col>
+                            <Col>
+                                <Input type="file" placeholder="请选择要上传的证书图片"/>
+                            </Col>
+                            <Col>
+                                <Input type="file" btnStyle="primary"/>
+                            </Col>
+                        </Row>
+                    </Card>
                     <h3>Input API</h3>
                     <CommenTable
                         data = {[
