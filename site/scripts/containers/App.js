@@ -37,6 +37,7 @@ import InlineSelectView from '../views/InlineSelectView';
 import ConfirmView from '../views/ConfirmView';
 import AlertView from '../views/AlertView';
 import UploadView from '../views/UploadView';
+import UtilsClassView from '../views/UtilsClassView';
 
 /**
  * 主应用入口.
@@ -83,6 +84,7 @@ export default class App extends Component {
                     <Route path='confirm' component={ConfirmView}/>
                     <Route path='alert' component={AlertView}/>
                     <Route path='upload' component={UploadView}/>
+                    <Route path='utilsClass' component={UtilsClassView}/>
                 </Route>
             </Router>
         );
