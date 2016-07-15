@@ -57,7 +57,7 @@ export default class Upload extends Component{
                 this.setState({
                     previewImageUrl: e.currentTarget.result
                 });
-            }
+            };
         }
 
         reader.readAsDataURL(file);
