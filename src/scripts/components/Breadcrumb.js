@@ -51,7 +51,7 @@ export default class Breadcrumb extends Component{
                                     <Icon className="breadcrumb-item-addon" type={item.component.icon}/>
                                 }
                                 {item.icon}
-                                { item.component && item.component.title || item.path}
+                                { item.component && item.component.title || item.name}
                             </span>
                         }
                     </li>
