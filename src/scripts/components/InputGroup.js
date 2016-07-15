@@ -26,6 +26,6 @@ export default class InputGroup extends Component{
     }
 }
 
-InputGroup.Addon  = InputGroupAddon;
-InputGroup.Input  = InputGroupInput;
+InputGroup.Addon = InputGroupAddon;
+InputGroup.Input = InputGroupInput;
 InputGroup.Button = InputGroupButton;

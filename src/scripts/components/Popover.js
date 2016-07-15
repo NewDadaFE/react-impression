@@ -67,6 +67,7 @@ export default class Popover extends Component{
     //显示popover
     onMouseOver(event){
         let rect = event.target.getBoundingClientRect();
+
         this.createPopover(rect);
     }
     //移除popover

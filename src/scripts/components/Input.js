@@ -70,6 +70,7 @@ export default class Input extends Component{
      */
     hideOptionsHandle(){
         let { main } = this.refs;
+
         if(!main){
             return false;
         }
@@ -99,6 +100,7 @@ export default class Input extends Component{
      */
     selectOptionsHandle(value){
         let { main } = this.refs;
+
         main.value = value;
 
         this.setState({

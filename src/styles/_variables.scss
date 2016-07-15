@@ -1,21 +1,4 @@
 // Variables
-//
-// Copy settings from this file into the provided `_custom.scss` to override
-// the Bootstrap defaults without modifying key, versioned files.
-
-
-// Table of Contents
-//
-// Colors
-// Options
-// Spacing
-// Body
-// Links
-// Grid breakpoints
-// Grid containers
-// Grid columns
-// Fonts
-// Components
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -29,15 +12,7 @@
   }
 }
 
-// General variable structure
-//
-// Variable format should follow the `$component-modifier-state-property` order.
-
-
 // Colors
-//
-// Grayscale and brand colors for use across Bootstrap.
-
 $gray-dark:                 #373a3c !default;
 $gray:                      #55595c !default;
 $gray-light:                #999 !default;
@@ -55,9 +30,6 @@ $brand-pure:                #fff !default;
 $gray-secondary:            mix($brand-primary, $gray-dark, 20%) !default;
 
 // Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-
 $enable-flex:               true !default;
 $enable-rounded:            true !default;
 $enable-shadows:            true !default;
@@ -67,13 +39,7 @@ $enable-hover-media-query:  true !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
-
 // Spacing
-//
-// Control the default styling of most Bootstrap elements by modifying these
-// variables. Mostly focused on spacing.
-// You can add more entries to the $spacers map, should you need more variation.
-
 $spacer:   1rem !default;
 $spacer-x: $spacer !default;
 $spacer-y: $spacer !default;
@@ -100,29 +66,20 @@ $border-width: 1px !default;
 
 // Body
 //
-// Settings for the `<body>` element.
-
-$body-bg:    $brand-pure !default;
-$body-color: #666 !default;
-
-$border-color: #e7eaec !default;
+$body-bg:                       $brand-pure !default;
+$body-color:                    #666 !default;
+$border-color:                  #e7eaec !default;
+$text-muted:                    $gray-light !default;
 
 
 // Links
-//
-// Style anchor elements.
-
-$link-color:            $brand-primary !default;
-$link-decoration:       none !default;
-$link-hover-color:      darken($link-color, 15%) !default;
-$link-hover-decoration: underline !default;
+$link-color:                    $brand-primary !default;
+$link-decoration:               none !default;
+$link-hover-color:              darken($link-color, 15%) !default;
+$link-hover-decoration:         underline !default;
 
 
 // Grid breakpoints
-//
-// Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
-
 $grid-breakpoints: (
   xs: 0,
   sm: 544px,
@@ -134,9 +91,6 @@ $grid-breakpoints: (
 
 
 // Grid containers
-//
-// Define the maximum width of `.container` for different screen sizes.
-
 $container-max-widths: (
   sm: 576px,
   md: 720px,
@@ -147,17 +101,11 @@ $container-max-widths: (
 
 
 // Grid columns
-//
-// Set the number of columns and specify the width of the gutters.
-
-$grid-columns:      12 !default;
-$grid-gutter-width: 30px !default;
+$grid-columns:              12 !default;
+$grid-gutter-width:         30px !default;
 
 
 // Typography
-//
-// Font, line-height, and color for body text, headings, and more.
-
 $font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "WenQuanYi Micro Hei", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -165,31 +113,30 @@ $font-family-base:        $font-family-sans-serif !default;
 
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
-$font-size-root: 14px !default;
+$font-size-root:    14px !default;
+$font-size-base:    1rem !default;
+$font-size-lg:      1.25rem !default;
+$font-size-sm:      .875rem !default;
+$font-size-xs:      .75rem !default;
 
-$font-size-base: 1rem !default;
-$font-size-lg:   1.25rem !default;
-$font-size-sm:   .875rem !default;
-$font-size-xs:   .75rem !default;
+$line-height-base:  1.43 !default;
 
-$line-height-base: 1.43 !default;
+$font-size-h1:      2.5rem !default;
+$font-size-h2:      2rem !default;
+$font-size-h3:      1.75rem !default;
+$font-size-h4:      1.5rem !default;
+$font-size-h5:      1.25rem !default;
+$font-size-h6:      1rem !default;
 
-$font-size-h1: 2.5rem !default;
-$font-size-h2: 2rem !default;
-$font-size-h3: 1.75rem !default;
-$font-size-h4: 1.5rem !default;
-$font-size-h5: 1.25rem !default;
-$font-size-h6: 1rem !default;
+$display1-size:     6rem !default;
+$display2-size:     5.5rem !default;
+$display3-size:     4.5rem !default;
+$display4-size:     3.5rem !default;
 
-$display1-size: 6rem !default;
-$display2-size: 5.5rem !default;
-$display3-size: 4.5rem !default;
-$display4-size: 3.5rem !default;
-
-$display1-weight: 300 !default;
-$display2-weight: 300 !default;
-$display3-weight: 300 !default;
-$display4-weight: 300 !default;
+$display1-weight:   300 !default;
+$display2-weight:   300 !default;
+$display3-weight:   300 !default;
+$display4-weight:   300 !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
@@ -197,19 +144,8 @@ $headings-font-weight:   500 !default;
 $headings-line-height:   1.1 !default;
 $headings-color:         inherit !default;
 
-$lead-font-size:   1.25rem !default;
-$lead-font-weight: 300 !default;
+$small-font-size:        80% !default;
 
-$small-font-size: 80% !default;
-
-$text-muted: $gray-light !default;
-
-$abbr-border-color: $gray-light !default;
-
-$blockquote-small-color:  $gray-light !default;
-$blockquote-font-size:    ($font-size-base * 1.25) !default;
-$blockquote-border-color: $gray-lighter !default;
-$blockquote-border-width: .25rem !default;
 
 $hr-border-color: rgba(0, 0, 0, .1) !default;
 $hr-border-width: $border-width !default;

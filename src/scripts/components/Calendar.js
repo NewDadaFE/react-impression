@@ -114,10 +114,9 @@ export default class Calendar extends Component{
             days = [],
             today = moment().format(FORMAT.DATE),
             prevMonth = moment(currentMoment).subtract(1,'months'),
-            nextMonth = moment(currentMoment).add(1,'months');
-
-        //当月天数
-        let currentYear = currentMoment.format(FORMAT.YEAR),
+            nextMonth = moment(currentMoment).add(1,'months'),
+            //当月天数
+            currentYear = currentMoment.format(FORMAT.YEAR),
             currentMonth = currentMoment.format(FORMAT.MONTH),
             daysLength = currentMoment.daysInMonth();
 
@@ -173,7 +172,7 @@ export default class Calendar extends Component{
             { currentMoment } = this.state,
             { date } = nextProps;
 
-        date && currentMoment.format(format) != date &&
+        date && currentMoment.format(format) !== date &&
         this.setState({
             currentMoment: moment(date, format)
         });

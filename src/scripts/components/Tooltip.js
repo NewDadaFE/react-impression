@@ -31,6 +31,7 @@ export default class Tooltip extends Component{
         tooltipNode.appendChild(innerNode);
 
         document.body.appendChild(tooltipNode);
+
         let tooltipRect = tooltipNode.getBoundingClientRect();
 
         //计算left、top
@@ -59,6 +60,7 @@ export default class Tooltip extends Component{
     //显示tooltip
     onMouseOver(event){
         let rect = event.target.getBoundingClientRect();
+
         this.createTooltip(rect);
     }
     //移除tooltip

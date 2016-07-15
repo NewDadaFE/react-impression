@@ -35,9 +35,9 @@ export default class CheckboxGroup extends Component{
     }
     //radio切换回调函数
     onChangeHandle(event){
-        let { value, checked} = event.target;
-        let { onChange } = this.props;
-        let newValue = checked? [...this.state.value, value]: [...this.state.value.filter(item => item !== value)];
+        let { value, checked} = event.target,
+            { onChange } = this.props,
+            newValue = checked? [...this.state.value, value]: [...this.state.value.filter(item => item !== value)];
 
         this.setState({
             value: newValue
@@ -48,8 +48,10 @@ export default class CheckboxGroup extends Component{
     //渲染
     render(){
         let { className, direction, children, ...others } = this.props;
+
         children = children.map((child,index ) => {
             let { value, disabled, children } = child.props;
+
             value = (value !== undefined)? value : `${children}`;
 
             return React.cloneElement(child, {
@@ -57,12 +59,12 @@ export default class CheckboxGroup extends Component{
                 key: index,
                 onChange: this.onChangeHandle,
                 disabled: disabled || this.props.disabled,
-                checked: this.state.value.indexOf(value) != -1
+                checked: this.state.value.indexOf(value) !== -1
             });
         });
 
         return(
-            <div {...others} className={classnames(direction=='row'?'checkbox-inline': 'checkbox-vertical', className)}>
+            <div {...others} className={classnames(direction === 'row'?'checkbox-inline': 'checkbox-vertical', className)}>
                 {children}
             </div>
         );

@@ -22,6 +22,7 @@ export default class Dropdown extends Component{
         //菜单
         menus: PropTypes.arrayOf((value, index, componentName, location, propFullName) => {
             let callResult = Object.prototype.toString.call(value[index]);
+
             if(callResult !== '[object String]' & callResult !== '[object Object]'){
                 return new Error(
                     `Invalid prop '${propFullName}', supplied to '${componentName}', expected 'object' or 'string'.`

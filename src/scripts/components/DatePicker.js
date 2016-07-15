@@ -20,16 +20,15 @@ export default class DatePicker extends Component{
         let { type, value, minDate, maxDate, format } = props,
             weekdays = this.getSortWeekdays(),
             currentMoment = value? moment(value, format) : moment(),
-            checkedDay =  value? moment(value, format) : undefined,
-            years = this.getYears(currentMoment);
-
-        let state = {
-            currentMoment,//当前时间
-            days: [],//日期选择
-            weekdays,
-            checkedDay,//选中日期
-            years,//年份
-        };
+            checkedDay = value? moment(value, format) : undefined,
+            years = this.getYears(currentMoment),
+            state = {
+                currentMoment,//当前时间
+                days: [],//日期选择
+                weekdays,
+                checkedDay,//选中日期
+                years,//年份
+            };
 
         switch(type){
         case 'date':
@@ -121,10 +120,9 @@ export default class DatePicker extends Component{
             days = [],
             today = moment().format(FORMAT.DATE),
             prevMonth = moment(currentMoment).subtract(1,'months'),
-            nextMonth = moment(currentMoment).add(1,'months');
-
-        //当月天数
-        let currentYear = currentMoment.format(FORMAT.YEAR),
+            nextMonth = moment(currentMoment).add(1,'months'),
+            //当月天数
+            currentYear = currentMoment.format(FORMAT.YEAR),
             currentMonth = currentMoment.format(FORMAT.MONTH),
             daysLength = currentMoment.daysInMonth();
 
@@ -202,6 +200,7 @@ export default class DatePicker extends Component{
      */
     prevMonthHandle(){
         let { currentMoment, panel } = this.state;
+
         this.getDate(moment(currentMoment).subtract(1,'months'));
         panel === 'month' && this.resetMonthPanelScroll();
     }
@@ -210,6 +209,7 @@ export default class DatePicker extends Component{
      */
     nextMonthHandle(){
         let { currentMoment, panel } = this.state;
+
         this.getDate(moment(currentMoment).add(1,'months'));
         panel === 'month' && this.resetMonthPanelScroll();
     }
@@ -218,6 +218,7 @@ export default class DatePicker extends Component{
      */
     prevYearHandle(){
         let { currentMoment, panel } = this.state;
+
         this.getDate(moment(currentMoment).subtract(1,'years'));
         panel === 'month' && this.resetMonthPanelScroll();
     }
@@ -226,6 +227,7 @@ export default class DatePicker extends Component{
      */
     nextYearHandle(){
         let { currentMoment, panel } = this.state;
+
         this.getDate(moment(currentMoment).add(1,'years'));
         panel === 'month' && this.resetMonthPanelScroll();
     }
@@ -309,6 +311,7 @@ export default class DatePicker extends Component{
      */
     showMonthPanelHandle(){
         let { panel } = this.state;
+
         this.setState({
             panel: panel === 'month'? 'day' : 'month'
         });
@@ -318,6 +321,7 @@ export default class DatePicker extends Component{
      */
     componentDidUpdate(){
         let { type } = this.props;
+
         type === 'date' && this.resetMonthPanelScroll();
     }
     /**
@@ -325,6 +329,7 @@ export default class DatePicker extends Component{
      */
     resetMonthPanelScroll(){
         let { _yeargroup, _monthgroup } = this.refs;
+
         if(!this._activeYear || !this._activeMonth){
             return false;
         }
@@ -337,6 +342,7 @@ export default class DatePicker extends Component{
     }
     componentDidMount(){
         let { currentMoment } = this.state;
+
         this.getDate(currentMoment);
     }
     componentWillReceiveProps(nextProps){
@@ -362,6 +368,7 @@ export default class DatePicker extends Component{
             this._yeargroupScrollTop = container.scrollTop;
             if(container.scrollTop < yearHeight){
                 let prevYear = years[0] - 1;
+
                 this.setState({
                     years: [prevYear, ...years]
                 });
@@ -372,6 +379,7 @@ export default class DatePicker extends Component{
             this._yeargroupScrollTop = container.scrollTop;
             if(container.scrollHeight - container.scrollTop < point){
                 let nextYear = years[years.length - 1] + 1;
+
                 this.setState({
                     years: [...years, nextYear]
                 });
@@ -427,8 +435,8 @@ export default class DatePicker extends Component{
                         <div className="datepicker-yeargroup" ref="_yeargroup" onScroll={this.scrollYearHandle}>
                             { years.map((year, index) =>
                                 <div key={index} onClick={() => this.selectYearHandle(year)}
-                                ref={dom => (year == currentYear) && (this._activeYear=dom)}
-                                className={classnames('datepicker-yeargroup-item', {active: year == currentYear})}>
+                                ref={dom => (year === currentYear) && (this._activeYear=dom)}
+                                className={classnames('datepicker-yeargroup-item', {active: year === currentYear})}>
                                     {year}
                                 </div>
                             )}
@@ -436,8 +444,8 @@ export default class DatePicker extends Component{
                         <div className="datepicker-monthgroup" ref="_monthgroup">
                             { months.map((month, index) =>
                                 <div key={index} onClick={() => this.selectMonthHandle(index)}
-                                ref={dom => (index == currentMonth - 1) && (this._activeMonth=dom)}
-                                className={classnames('datepicker-monthgroup-item', {active: index == currentMonth - 1})}>
+                                ref={dom => (index === currentMonth - 1) && (this._activeMonth=dom)}
+                                className={classnames('datepicker-monthgroup-item', {active: index === currentMonth - 1})}>
                                     {month}
                                 </div>
                             )}

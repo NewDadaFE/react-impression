@@ -5,10 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * Image组件
  */
 export default class Image extends Component{
-    //构造函数
-    constructor(props, context){
-        super(props, context);
-    }
     //prop type校验
     static propTypes = {
         //形状（fluid、rounded、circle、thumbnail）
@@ -26,13 +22,13 @@ export default class Image extends Component{
     }
     //渲染
     render(){
-        let { fluid, rounded, circle, thumbnail, className, ...others } = this.props;
-        let classes = {
-            'img-fluid': fluid,
-            'img-rounded': rounded,
-            'img-circle': circle,
-            'img-thumbnail': thumbnail,
-        };
+        let { fluid, rounded, circle, thumbnail, className, ...others } = this.props,
+            classes = {
+                'img-fluid': fluid,
+                'img-rounded': rounded,
+                'img-circle': circle,
+                'img-thumbnail': thumbnail,
+            };
 
         return(
             <img {...others} className={classnames(classes, className)}/>

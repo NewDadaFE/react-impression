@@ -27,6 +27,7 @@ export default class NavItem extends Component{
     //回调函数
     onClickHandle(){
         let { disabled, active, onClick, eventKey } = this.props;
+
         !disabled && !active && onClick(eventKey);
     }
     //渲染

@@ -36,6 +36,6 @@ export default class Card extends Component{
     }
 }
 
-Card.Block  = CardBlock;
+Card.Block = CardBlock;
 Card.Header = CardHeader;
 Card.Footer = CardFooter;

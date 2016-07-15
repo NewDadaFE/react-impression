@@ -32,8 +32,8 @@ export default class Nav extends Component{
     }
     //选中回调
     onSelectHandle(eventKey){
-        let { activeKey } = this.state;
-        let { onSelect } = this.props;
+        let { activeKey } = this.state,
+            { onSelect } = this.props;
 
         if(activeKey === eventKey){
             return false;
@@ -56,7 +56,7 @@ export default class Nav extends Component{
     render(){
         let { type, stacked, className, children, ...others } = this.props,
             { activeKey } = this.state,
-            navStacked = stacked && type=='pill' ? 'nav-stacked' : null,
+            navStacked = stacked && type === 'pill' ? 'nav-stacked' : null,
             navStyle = this.getTypeClassMap(type);
 
         delete others.activeKey;
