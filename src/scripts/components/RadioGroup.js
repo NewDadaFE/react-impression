@@ -12,8 +12,6 @@ export default class RadioGroup extends Component{
         this.state = {
             value: props.value
         };
-
-        this.onChangeHandle = this.onChangeHandle.bind(this);
     }
     //props校验
     static propTypes = {
@@ -36,9 +34,10 @@ export default class RadioGroup extends Component{
         direction: 'row'
     }
     //radio切换回调函数
-    onChangeHandle(event){
+    onChangeHandle = event => {
         let value = event.target.value,
             { onChange } = this.props;
+
         value !== 'on' && this.setState({
             value
         });
@@ -46,13 +45,13 @@ export default class RadioGroup extends Component{
     }
     //渲染
     render(){
-        let { className, name, direction, ...others } = this.props,
+        let { className, name, direction, onChange, ...others } = this.props,
             children = this.props.children.map((child, index) => {
                 let { value, disabled } = child.props,
                     options = {
                         name: name || `radio_${this._reactInternalInstance._mountOrder}`,
                         key: index,
-                        onChange: this.onChangeHandle,
+                        onChange:  onChange && this.onChangeHandle,
                         disabled: disabled || this.props.disabled
                     };
 

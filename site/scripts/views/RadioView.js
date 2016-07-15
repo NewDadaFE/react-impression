@@ -3,6 +3,9 @@ import { Row, Col, Card, Radio, RadioGroup, Form, Breadcrumb } from '../componen
 import { CommenTable } from '../components';
 
 export default class RadioView extends Component{
+    onChangeHandle(value, event){
+        // console.log(value);
+    }
     render(){
         return (
             <div>
@@ -15,9 +18,10 @@ export default class RadioView extends Component{
                                 <Form>
                                     <Form.Group>
                                         <label>Gender</label>
-                                        <RadioGroup value="1">
-                                            <Radio value="1">Male</Radio>
-                                            <Radio value="0">Female</Radio>
+                                        <RadioGroup value="100" onChange={this.onChangeHandle}>
+                                            <Radio value="100">First</Radio>
+                                            <Radio value="101">Second</Radio>
+                                            <Radio value="102">Third</Radio>
                                         </RadioGroup>
                                     </Form.Group>
                                 </Form>
