@@ -50,8 +50,8 @@ export default class Notification extends Component{
     addNotice({ title, message, duration=2000, closeable }, style){
         let key = this.key++,
             state = { ...this.state };
-        closeable = closeable === undefined? this.props.closeable : closeable;
 
+        closeable = closeable === undefined? this.props.closeable : closeable;
         state[key] = {
             title,
             message,

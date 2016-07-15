@@ -38,15 +38,15 @@ export default class Pagination extends Component{
     //上一页
     prevPageHandle(){
         let { onSelect, activePage } = this.props;
-        activePage -= 1;
 
+        activePage -= 1;
         activePage >= 1 && onSelect && onSelect(activePage);
     }
     //下一页
     nextPageHandle(){
         let { onSelect, activePage, totalPage } = this.props;
-        activePage += 1;
 
+        activePage += 1;
         activePage <= totalPage && onSelect && onSelect(activePage);
     }
     //跳转至某页
@@ -59,13 +59,13 @@ export default class Pagination extends Component{
     getShowPageArray(){
         let { scope, totalPage, activePage } = this.props,
             result = [];
-        scope = scope < 0? 2 : scope;
 
-        for(let i=activePage-scope;i<=activePage+scope;i++){
+        scope = scope < 0? 2 : scope;
+        for(let i = activePage-scope; i <= activePage+scope; i++){
             if(i > 0 && i <= totalPage){
-                i == activePage - scope && i == 2 && result.push(1);
+                i === activePage - scope && i === 2 && result.push(1);
                 result.push(i);
-                i == activePage + scope && i == (totalPage - 1) && result.push(totalPage);
+                i === activePage + scope && i === (totalPage - 1) && result.push(totalPage);
             }
         }
 

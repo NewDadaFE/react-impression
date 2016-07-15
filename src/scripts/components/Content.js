@@ -32,6 +32,7 @@ export default class Content extends Component {
     }
     render() {
         let { transitionName, transitionEnterTimeout, transitionLeaveTimeout, component, className, children } = this.props;
+
         children && (children = React.cloneElement(children, {
             key: children.props.location.pathname
         }));

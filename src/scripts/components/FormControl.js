@@ -15,6 +15,7 @@ export default class FormControl extends Component{
     render(){
         let { children } = this.props,
             { className } = children;
+
         children = React.cloneElement(children, {
             className: classnames(className, 'form-control')
         });

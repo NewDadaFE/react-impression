@@ -85,7 +85,8 @@ export default class Select extends Component{
 
         children = React.Children.toArray(children);
         children = children.map((child, index) => {
-            let { value, children, disabled }  = child.props;
+            let { value, children, disabled } = child.props;
+
             value === this.state.value && (text = children);
             value === this.state.value && !disabled && this.refs.main && (this.refs.main.value = children);
             return React.cloneElement(child, {
@@ -97,8 +98,8 @@ export default class Select extends Component{
 
         return(
             <div style={style} className={classnames('select', { disabled }, { open: showOption }, className)} disabled={disabled}>
-                <input type="text" defaultValue={text}  readOnly ref="main"
-                    placeholder={placeholder}  disabled={disabled}
+                <input type="text" defaultValue={text} readOnly ref="main"
+                    placeholder={placeholder} disabled={disabled}
                     className={classnames('form-control' ,'select-selection')}
                     onClick={this.toggleOptionsHandle}/>
                 <i className="fa fa-angle-down select-addon" onClick={this.toggleOptionsHandle}></i>

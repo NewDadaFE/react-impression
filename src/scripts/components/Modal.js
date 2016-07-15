@@ -49,5 +49,5 @@ export default class Modal extends Component{
 }
 
 Modal.Header = ModalHeader;
-Modal.Body   = ModalBody;
+Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;

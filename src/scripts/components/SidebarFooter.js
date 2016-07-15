@@ -16,6 +16,7 @@ export default class SidebarFooter extends Component{
         children = React.Children.toArray(children);
         children = children && children.map((child, index) => {
             let { className } = child.props;
+
             return React.cloneElement(child, {
                 className: classnames('sidebar-footer-item', className)
             });

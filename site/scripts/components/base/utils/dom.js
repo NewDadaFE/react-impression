@@ -6,6 +6,7 @@
  */
 export const isDescendentNode = (ancestor, descendent) => {
     let parentNode = descendent.parentNode;
+
     while(parentNode){
         if(ancestor === parentNode){
             return true;

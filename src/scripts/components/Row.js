@@ -20,6 +20,7 @@ export default class Row extends Component{
         let { children } = this.props,
             count = 0,
             allocation = 0;
+
         children = React.Children.toArray(children);
         children.forEach(({ props }) => {
             if(props.hasOwnProperty('col')){
@@ -30,8 +31,10 @@ export default class Row extends Component{
         });
 
         let surplus = 12 - count;
+
         return children.map(child => {
             let { col } = child.props;
+
             return React.cloneElement(child, {
                 col: col || Number.parseInt(surplus / allocation),
             });
@@ -40,8 +43,8 @@ export default class Row extends Component{
     //渲染
     render(){
         let { className, children, ...others } = this.props;
-        children = this.getChildren();
 
+        children = this.getChildren();
         return(
            <div {...others} className={classnames('row', className)}>
                 {children}

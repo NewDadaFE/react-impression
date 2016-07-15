@@ -63,7 +63,7 @@ export default class RadioGroup extends Component{
             });
 
         return(
-            <div {...others} className={classnames(direction=='row'?'radio-inline': 'radio-vertical', className)}>
+            <div {...others} className={classnames(direction==='row'?'radio-inline': 'radio-vertical', className)}>
                 {children}
             </div>
         );
