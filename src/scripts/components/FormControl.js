@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
+import Label from './FormControlLabel';
 
 /**
  * FormControl 组件.
@@ -21,3 +22,5 @@ export default class FormControl extends Component{
         return children;
     }
 }
+
+FormControl.Label = Label;

@@ -17,7 +17,7 @@ export default class RadioView extends Component{
                             <Card block>
                                 <Form>
                                     <Form.Group>
-                                        <label>Gender</label>
+                                        <label>Radio</label>
                                         <RadioGroup value="100" onChange={this.onChangeHandle}>
                                             <Radio value="100">First</Radio>
                                             <Radio value="101">Second</Radio>

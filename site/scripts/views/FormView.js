@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Checkbox, Radio, RadioGroup, Form, Button, Breadcrumb } from '../components/base';
+import { Card, Col, Checkbox, Radio, RadioGroup, Form, Input, Button, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class FormView extends Component{
@@ -13,52 +13,57 @@ export default class FormView extends Component{
                         <Form>
                             <Form.Group>
                                 <label>Name:</label>
-                                <Form.Control>
-                                    <input type="text" placeholder="Jane Doe"/>
-                                </Form.Control>
+                                <Input type="text" placeholder="Jane Doe"/>
                             </Form.Group>
                             <Form.Group>
                                 <label>Email</label>
-                                <Form.Control>
-                                    <input type="email" placeholder="jane.doe@example.com"/>
-                                </Form.Control>
+                                <Input type="text" placeholder="hello@example.com"/>
                             </Form.Group>
                             <Form.Group>
                                 <Checkbox defaultChecked>Remember me</Checkbox>
                             </Form.Group>
-                            <Button style="primary">Send</Button>
+                            <Button style="primary">Search</Button>
                         </Form>
                     </Card>
                     <h3>Form horizontal</h3>
                     <Card block>
                         <Form type="horizontal">
                             <Form.Group>
-                                <label className="col-sm-2 form-control-label text-right">Email:</label>
-                                <div className="col-sm-10">
-                                    <input type="email" className="form-control" placeholder="Email"/>
-                                </div>
+                                <Col col="2" className="text-right">
+                                    <Form.Control.Label>Email:</Form.Control.Label>
+                                </Col>
+                                <Col col="10">
+                                    <Input type="text" placeholder="Email"/>
+                                </Col>
                             </Form.Group>
                             <Form.Group>
-                                <label className="col-sm-2 form-control-label text-right">name:</label>
-                                <div className="col-sm-10">
-                                    <input type="password" className="form-control" placeholder="Password"/>
-                                </div>
+                                <Col col="2" className="text-right">
+                                    <Form.Control.Label>name:</Form.Control.Label>
+                                </Col>
+                                <Col col="10">
+                                    <Input type="password"/>
+                                </Col>
                             </Form.Group>
-                            <Form.Group>
-                                <label className="col-sm-2 text-right">Radios:</label>
-                                <div className="col-sm-10">
+                            <Form.Group className="offset-b-lg">
+                                <Col col="2" className="text-right">
+                                    <Form.Control.Label>Radios:</Form.Control.Label>
+                                </Col>
+                                <Col col="10">
                                     <RadioGroup direction="column">
                                         <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
                                         <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
                                         <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
                                         <Radio>Option one is this and that&mdash;be sure to include why it's great</Radio>
                                     </RadioGroup>
-                                </div>
+                                </Col>
                             </Form.Group>
                             <Form.Group>
-                                <div className="offset-sm-2 col-sm-2">
-                                    <button type="submit" className="btn btn-primary">Sign in</button>
-                                </div>
+                                <Col col="2" offset="2">
+                                    <Button style="primary">Sign in</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="default">Cancel</Button>
+                                </Col>
                             </Form.Group>
                         </Form>
                     </Card>

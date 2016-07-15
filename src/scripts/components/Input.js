@@ -200,7 +200,7 @@ export default class Input extends Component{
         default:
             return (
                 <div className={classnames('input', className)} ref="container">
-                    <input type='text'
+                    <input type={type}
                         ref="main"
                         value={value}
                         defaultValue={defaultValue}
