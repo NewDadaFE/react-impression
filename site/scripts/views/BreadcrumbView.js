@@ -6,8 +6,10 @@ export default class BreadcrumbView extends Component{
     render(){
         let routes = [{
             name: 'Home',
+            path: '/'
         }, {
             name: 'Library',
+            path: '/'
         }, {
             name: 'Breadcrumb'
         }];

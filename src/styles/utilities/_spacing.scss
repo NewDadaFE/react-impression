@@ -1,5 +1,13 @@
+.offset-l{
+  margin-left: $spacer-x / 2!important;
+}
+
 .offset-l-lg{
   margin-left: $spacer-x !important;
+}
+
+.offset-r{
+  margin-right: $spacer-x / 2 !important;
 }
 
 .offset-r-lg{
@@ -17,15 +25,6 @@
 .offset-b-lg{
   margin-bottom: $spacer-y * 2 !important;
 }
-
-.offset-l{
-    margin-right: $spacer-x / 2 !important;
-}
-
-.offset-r{
-    margin-left: $spacer-x / 2 !important;
-}
-
 
 .no-margin{
   margin: 0 !important;
