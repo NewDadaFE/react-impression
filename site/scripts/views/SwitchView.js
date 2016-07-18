@@ -12,7 +12,7 @@ export default class SwitchView extends Component{
                     <Card block>
                         <Form grid>
                             <Form.Group col="6">
-                                <label>Mute</label>
+                                <label>Default</label>
                                 <Switch defaultChecked/>
                             </Form.Group>
                             <Form.Group>

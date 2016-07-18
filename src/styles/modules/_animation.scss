@@ -57,7 +57,7 @@
   height: 100%;
   overflow-y: auto;
   background: $page-transition-bg;
-  z-index: $page-transition-z-index;
+  z-index: $zindex-page-transition;
   box-shadow: $page-transition-enter-boxshadow;
   transform-origin: center center;
   animation-duration: $page-transition-duration;
