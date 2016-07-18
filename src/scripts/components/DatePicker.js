@@ -312,7 +312,7 @@ export default class DatePicker extends Component{
     showMonthPanelHandle(){
         let { panel } = this.state;
 
-        this.setState({
+        type === 'date' && this.setState({
             panel: panel === 'month'? 'day' : 'month'
         });
     }
@@ -436,7 +436,7 @@ export default class DatePicker extends Component{
                             { years.map((year, index) =>
                                 <div key={index} onClick={() => this.selectYearHandle(year)}
                                 ref={dom => (year === currentYear) && (this._activeYear=dom)}
-                                className={classnames('datepicker-yeargroup-item', {active: year === currentYear})}>
+                                className={classnames('datepicker-yeargroup-item', {active: Number(year) === Number(currentYear)})}>
                                     {year}
                                 </div>
                             )}
