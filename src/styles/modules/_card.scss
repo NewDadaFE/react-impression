@@ -3,39 +3,31 @@
 //
 
 .card {
-  position: relative;
-  display: block;
-  margin-bottom: $card-spacer-y;
-  background-color: $card-bg;
-  border: $card-border-width solid $card-border-color;
-  border-radius: $card-border-radius;
+    position: relative;
+    display: block;
+    margin-bottom: $card-spacer-y;
+    background-color: $card-bg;
+    border: $card-border-width solid $card-border-color;
+    border-radius: $card-border-radius;
 }
 
 .card-block {
-  @include clearfix;
-  padding: $card-padding;
+    @include clearfix;
+    padding: $card-padding;
 }
 
 .card-title {
-  margin-bottom: $card-spacer-y;
+    margin-bottom: $card-spacer-y;
 }
 
 .card-subtitle {
-  margin-top: -($card-spacer-y / 2);
-  margin-bottom: 0;
+    margin-top: -($card-spacer-y / 2);
+    margin-bottom: 0;
 }
 
 .card-text:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
-
-// .card-actions {
-//   padding: $card-spacer-y $card-spacer-x;
-
-//   .card-link + .card-link {
-//     margin-left: $card-spacer-x;
-//   }
-// }
 
 .card-link {
   + .card-link {
@@ -48,27 +40,27 @@
 //
 
 .card-header {
-  @include clearfix;
-  margin: 0;
-  padding: $card-spacer-y $card-spacer-x;
-  background-color: $card-cap-bg;
-  border-bottom: $card-border-width solid $card-border-color;
+    @include clearfix;
+    margin: 0;
+    padding: $card-spacer-y $card-spacer-x;
+    background-color: $card-cap-bg;
+    border-bottom: $card-border-width solid $card-border-color;
 
-  &:first-child {
-    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
-  }
+    &:first-child {
+        @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    }
 }
 
 .card-footer {
-  @include clearfix;
-  margin: 0;
-  padding: $card-spacer-y $card-spacer-x;
-  background-color: $card-cap-bg;
-  border-top: $card-border-width solid $card-border-color;
+    @include clearfix;
+    margin: 0;
+    padding: $card-spacer-y $card-spacer-x;
+    background-color: $card-cap-bg;
+    border-top: $card-border-width solid $card-border-color;
 
-  &:last-child {
-    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
-  }
+    &:last-child {
+        @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    }
 }
 
 
@@ -77,61 +69,53 @@
 //
 
 .card-header-tabs {
-  margin-right: -($card-spacer-x / 2);
-  margin-bottom: -$card-spacer-y;
-  margin-left: -($card-spacer-x / 2);
-  border-bottom: 0;
+    margin-right: -($card-spacer-x / 2);
+    margin-bottom: -$card-spacer-y;
+    margin-left: -($card-spacer-x / 2);
+    border-bottom: 0;
 
-  .nav-item {
-    margin-bottom: 0;
-  }
+    .nav-item {
+        margin-bottom: 0;
+    }
 }
 
 .card-header-pills {
-  margin-right: -($card-spacer-x / 2);
-  margin-left: -($card-spacer-x / 2);
+    margin-right: -($card-spacer-x / 2);
+    margin-left: -($card-spacer-x / 2);
 }
 
 
 // Remove all backgrounds
 .card-outline-primary {
-  @include card-outline-variant($btn-primary-bg);
+    @include card-outline-variant($btn-primary-bg);
 }
 .card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border);
+    @include card-outline-variant($btn-secondary-border);
 }
 
-//
-// Inverse text within a card for use with dark backgrounds
-//
-
-.card-inverse {
-  @include card-inverse;
-}
 
 //
 // Blockquote
 //
 
 .card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
+    padding: 0;
+    margin-bottom: 0;
+    border-left: 0;
 }
 
 // Card image
 .card-img {
-  max-width: 100%;
-  // margin: -1.325rem;
-  @include border-radius(.25rem);
+    max-width: 100%;
+    @include border-radius(.25rem);
 }
 .card-img-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1.25rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
 }
 
 

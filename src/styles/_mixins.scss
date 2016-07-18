@@ -19,12 +19,8 @@
 @import 'mixins/hover';
 @import 'mixins/image';
 @import 'mixins/tag';
-@import 'mixins/reset-filter';
 @import 'mixins/resize';
-@import 'mixins/screen-reader';
-@import 'mixins/size';
 @import 'mixins/tab-focus';
-@import 'mixins/reset-text';
 @import 'mixins/text-emphasis';
 @import 'mixins/text-hide';
 @import 'mixins/text-truncate';
@@ -47,11 +43,9 @@
 // // Skins
 @import 'mixins/background-variant';
 @import 'mixins/border-radius';
-@import 'mixins/gradients';
 
 // // Layout
 @import 'mixins/clearfix';
 // @import 'mixins/navbar-align';
 @import 'mixins/grid-framework';
 @import 'mixins/grid';
-@import 'mixins/pulls';

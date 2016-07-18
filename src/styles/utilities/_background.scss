@@ -1,20 +1,17 @@
 //
 // Contextual backgrounds
 //
-
-// Inverse
-// TODO: redo this as a proper class
 .bg-inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
+    color: $gray-lighter;
+    background-color: $gray-dark;
 }
 
 .bg-faded {
-  background-color: $gray-lightest;
+    background-color: $gray-lightest;
 }
 
 .bg-default {
-  background-color: $gray-lighter;
+    background-color: $gray-lighter;
 }
 
 .bg-pure {
