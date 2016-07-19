@@ -114,7 +114,6 @@
       cursor: $cursor-disabled;
       background-color: transparent;
       background-image: none; // Remove CSS gradient
-      @include reset-filter();
     }
   }
 }

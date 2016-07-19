@@ -34,11 +34,11 @@ export default class Switch extends Component{
     }
     //渲染
     render(){
-        let { defaultChecked, disabled, className, ...others } = this.props;
+        let { defaultChecked, onChange, disabled, className, ...others } = this.props;
 
         return(
             <label {...others} className={classnames('switch', className)}>
-                <input type="checkbox" defaultChecked={defaultChecked} disabled={disabled} ref="main" onChange={this.onChangeHandle}/>
+                <input type="checkbox" defaultChecked={defaultChecked} disabled={disabled} ref="main" onChange={onChange && this.onChangeHandle}/>
                 <div className="switch-addon"></div>
             </label>
         );

@@ -1,15 +1,15 @@
 // Variables
 
 @mixin _assert-ascending($map, $map-name) {
-  $prev-key: null;
-  $prev-num: null;
-  @each $key, $num in $map {
-    @if $prev-num != null and $prev-num >= $num {
-      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    $prev-key: null;
+    $prev-num: null;
+    @each $key, $num in $map {
+        @if $prev-num != null and $prev-num >= $num {
+            @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+        }
+        $prev-key: $key;
+        $prev-num: $num;
     }
-    $prev-key: $key;
-    $prev-num: $num;
-  }
 }
 
 // Colors
@@ -37,7 +37,10 @@ $enable-gradients:          true !default;
 $enable-transitions:        true !default;
 $enable-hover-media-query:  true !default;
 $enable-grid-classes:       true !default;
+<<<<<<< HEAD
 $enable-print-styles:       true !default;
+=======
+>>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 
 // Spacing
 $spacer:   1rem !default;
@@ -63,9 +66,19 @@ $spacers: (
 ) !default;
 $border-width: 1px !default;
 
+// Inverse level
+$inverse-level-1:               rgba(0, 0, 0, .18) !default;
+$inverse-level-2:               rgba(0, 0, 0, .24) !default;
+$inverse-level-3:               rgba(0, 0, 0, .3) !default;
+$inverse-level-6:               rgba(0, 0, 0, .6) !default;
 
+<<<<<<< HEAD
 // Body
 //
+=======
+
+// Body
+>>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 $body-bg:                       $brand-pure !default;
 $body-color:                    #666 !default;
 $border-color:                  #e7eaec !default;
@@ -119,8 +132,11 @@ $font-size-lg:      1.25rem !default;
 $font-size-sm:      .875rem !default;
 $font-size-xs:      .75rem !default;
 
+<<<<<<< HEAD
 $line-height-base:  1.43 !default;
 
+=======
+>>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 $font-size-h1:      2.5rem !default;
 $font-size-h2:      2rem !default;
 $font-size-h3:      1.75rem !default;
@@ -145,9 +161,15 @@ $headings-line-height:   1.1 !default;
 $headings-color:         inherit !default;
 
 $small-font-size:        80% !default;
+<<<<<<< HEAD
 
 
 $hr-border-color: rgba(0, 0, 0, .1) !default;
+=======
+
+
+$hr-border-color: $border-color !default;
+>>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 $hr-border-width: $border-width !default;
 
 $mark-padding: .2em !default;
@@ -156,11 +178,13 @@ $dt-font-weight: bold !default;
 
 $list-inline-padding: 5px !default;
 
+$cursor-disabled:                not-allowed !default;
+$cursor-pointer:                 pointer !default;
 
 // Components
 //
 // Define common padding and border radius sizes and more.
-
+$line-height-base:       1.43 !default;
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
 
@@ -198,16 +222,12 @@ $table-inverse-thead-color:     $brand-pure;
 $table-inverse-border-color:    $gray;
 
 
-
 // Buttons
 //
-// For each of Bootstrap's buttons, define text, background and border color.
-
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .5rem !default;
 $btn-line-height:                1.25 !default;
-$btn-box-shadow:                 inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075) !default;
-$btn-active-box-shadow:          0 2px 6px rgba(0, 0, 0, .24), 0 1px 6px rgba(0, 0, 0, .24) !default;
+$btn-active-box-shadow:          0 2px 6px $inverse-level-2, 0 1px 6px $inverse-level-2 !default;
 $btn-transition:                 all .2s cubic-bezier(.4, 0, .2, 1) !default;
 
 $btn-primary-color:              $brand-pure !default;
@@ -227,7 +247,7 @@ $btn-link-disabled-color:        $gray-light !default;
 
 $btn-padding-x-sm:               .5rem !default;
 $btn-padding-y-sm:               .25rem !default;
-$btn-font-size-sm:               .8rem;
+$btn-font-size-sm:               .8rem !default;
 
 $btn-padding-x-lg:               1.5rem !default;
 $btn-padding-y-lg:               .75rem !default;
@@ -238,17 +258,14 @@ $btn-toolbar-margin:             15px !default;
 $split-btn-dropdown-toggle-padding-x:     8px !default;
 $split-btn-lg-dropdown-toggle-padding-x: 12px !default;
 
-// Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius-sm !default;
 $btn-border-radius-lg:           $border-radius !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
-
-$btn-group-active-box-shadow:    2px 2px 6px rgba(0, 0, 0, .18), -1px -1px 6px rgba(0, 0, 0, .18) !default;
+$btn-group-active-box-shadow:    2px 2px 6px $inverse-level-1, -1px -1px 6px $inverse-level-1 !default;
 
 
 // Forms
-
 $input-padding-x:                .75rem !default;
 $input-padding-y:                .5rem !default;
 $input-line-height:              1.25 !default;
@@ -259,7 +276,6 @@ $input-bg-disabled:              $gray-lighter !default;
 $input-color:                    $gray !default;
 $input-border-color:             #ddd !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
-$input-box-shadow:               inset 0 1px 1px rgba(0, 0, 0, .075) !default;
 
 $input-border-radius:            0 !default;
 $input-border-radius-lg:         $border-radius !default;
@@ -286,33 +302,7 @@ $form-group-margin-bottom:       $spacer-y !default;
 $input-group-addon-bg:           $input-border-color !default;
 $input-group-addon-border-color: $input-border-color !default;
 
-$cursor-disabled:                not-allowed !default;
-$cursor-pointer:                 pointer !default;
-
-$custom-control-gutter:   1.5rem !default;
-$custom-control-spacer-x: 1rem !default;
-$custom-control-spacer-y: .25rem !default;
-
-$custom-control-indicator-size:       1rem !default;
-$custom-control-indicator-bg:         #ddd !default;
-$custom-control-indicator-bg-size:    50% 50% !default;
-$custom-control-indicator-box-shadow: inset 0 .25rem .25rem rgba(0, 0, 0, .1) !default;
-
-$custom-control-disabled-cursor:             $cursor-disabled !default;
-$custom-control-disabled-indicator-bg:       #eee !default;
-$custom-control-disabled-description-color:  #767676 !default;
-
-$custom-control-checked-indicator-color:      $brand-pure !default;
-$custom-control-checked-indicator-bg:         #0074d9 !default;
-$custom-control-checked-indicator-box-shadow: none !default;
-
-$custom-control-focus-indicator-box-shadow: 0 0 0 .075rem $brand-pure, 0 0 0 .2rem #0074d9 !default;
-
-$custom-control-active-indicator-color:      $brand-pure !default;
-$custom-control-active-indicator-bg:         #84c6ff !default;
-$custom-control-active-indicator-box-shadow: none !default;
-
-
+//== Checkbox
 $checkbox-label-space-x:                    $spacer-y / 2 !default;
 $checkbox-space-x:                          $spacer-y !default;
 $checkbox-space-y:                          $spacer-y !default;
@@ -326,10 +316,12 @@ $checkbox-addon-transtion:                  all .2s ease !default;
 $checkbox-addon-disabled-bg:                $gray-lighter !default;
 $checkbox-addon-active-box-shadow:          inset 0 0 2rem rgba($checkbox-addon-border-color, .8) !default;
 
+//== Radio
 $radio-addon-width:                         .6 !default;
 $radio-addon-height:                        $radio-addon-width !default;
 $radio-addon-padding:                       round(($line-height-base - $radio-addon-width) * $font-size-root / 2) !default;
 
+//== Switch
 $switch-width:                              3 !default;
 $switch-bg:                                 $border-color !default;
 $switch-addon-bg:                           $brand-pure !default;
@@ -338,8 +330,7 @@ $switch-addon-height:                       $switch-addon-width !default;
 $switch-addon-padding:                      round(($line-height-base - $switch-addon-width) * $font-size-root / 2) !default;
 $switch-addon-translate-x:                  translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
 
-// == 下拉框
-
+//== Select
 $select-line-height:                        $input-line-height !default;
 $select-transition:                         all .2s ease !default;
 $select-bg:                                 $brand-pure !default;
@@ -348,7 +339,7 @@ $select-disable-bg:                         $gray-lighter !default;
 $select-selection-padding-right:            2.25rem !default;
 $select-selection-max-height:               20rem !default;
 $select-options-top:                        120% !default;
-$select-options-box-shadow:                 0 2px 6px rgba(0, 0, 0, .2) !default;
+$select-options-box-shadow:                 0 2px 6px $inverse-level-2 !default;
 $select-options-border:                     1px solid $input-border-color !default;
 
 $select-option-padding:                     $input-padding-y $input-padding-x !default;
@@ -361,7 +352,7 @@ $datepicker-bg:                             $brand-pure !default;
 $datepicker-width:                          15rem !default;
 $datepicker-border:                         1px solid $border-color !default;
 $datepicker-font-size:                      .8rem !default;
-$datepicker-box-shadow:                     0 2px 8px rgba(0, 0, 0, .2) !default;
+$datepicker-box-shadow:                     0 2px 8px $inverse-level-2 !default;
 
 $datepicker-header-padding:                 0 .5rem !default;
 
@@ -397,21 +388,20 @@ $datepicker-footer-padding:                .75rem 1rem !default;
 
 
 // Switch
-$switch-width:                  3rem !default;
-$switch-toggle-bg:              #ccc !default;
-$switch-toggle-active-bg:       $brand-primary;
-$switch-toggle-padding:         2px !default;
+$switch-width:                          3rem !default;
+$switch-toggle-bg:                      #ccc !default;
+$switch-toggle-active-bg:               $brand-primary;
+$switch-toggle-padding:                 2px !default;
 
-$switch-toggle-addon-bg:        #fdfdfd;
-$switch-toggle-addon-width:     1rem;
-$switch-toggle-addon-height:    $switch-toggle-addon-width;
-$switch-toggle-addon-translateX: $switch-width - $switch-toggle-addon-width - .4rem;
+$switch-toggle-addon-bg:                #fdfdfd;
+$switch-toggle-addon-width:             1rem;
+$switch-toggle-addon-height:            $switch-toggle-addon-width;
 
-$checkbox-height:               round(1.4 * $font-size-root);
-$checkbox-width:                round(1.4 * $font-size-root);
+$checkbox-height:                       round(1.4 * $font-size-root);
+$checkbox-width:                        round(1.4 * $font-size-root);
 
-$radio-height:                  round(1.5 * $font-size-root);
-$radio-width:                   round(1.5 * $font-size-root);
+$radio-height:                          round(1.5 * $font-size-root);
+$radio-width:                           round(1.5 * $font-size-root);
 
 //Upload
 
@@ -438,7 +428,7 @@ $dropdown-bg:                    $brand-pure !default;
 $dropdown-border-color:          rgba($gray-secondary, .2) !default;
 $dropdown-border-width:          $border-width !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
-$dropdown-box-shadow:            0 2px 6px rgba(0, 0, 0, .2) !default;
+$dropdown-box-shadow:            0 2px 6px $inverse-level-2 !default;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
@@ -467,7 +457,7 @@ $zindex-navbar:                   1000 !default;
 $zindex-select:                   1000 !default;
 $zindex-dropdown:                 1000 !default;
 $zindex-datepicker:               1000 !default;
-$page-transition-z-index:         1000 !default;
+$zindex-page-transition:          1000 !default;
 
 $zindex-navbar-fixed:             1030 !default;
 $zindex-navbar-sticky:            1030 !default;
@@ -586,7 +576,6 @@ $nav-stacked-items-padding:                      .75rem 1rem !default;
 
 
 // Pagination
-
 $pagination-padding-x:                .8rem !default;
 $pagination-padding-y:                .4rem !default;
 $pagination-padding-x-sm:             .75rem !default;
@@ -649,7 +638,7 @@ $card-spacer-x:            .75rem !default;
 $card-spacer-y:            $card-padding !default;
 $card-border-width:        1px !default;
 $card-border-radius:       $border-radius-sm !default;
-$card-border-color:        rgba(0, 0, 0, .125) !default;
+$card-border-color:        $border-color !default;
 $card-border-radius-inner: $card-border-radius !default;
 $card-cap-bg:              #f5f5f5 !default;
 $card-bg:                  $brand-pure !default;
@@ -683,7 +672,7 @@ $popover-bg:                          $brand-pure !default;
 $popover-max-width:                   276px !default;
 $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba($gray-secondary, .2) !default;
-$popover-box-shadow:                  0 2px 6px rgba(0, 0, 0, .2) !default;
+$popover-box-shadow:                  0 2px 6px $inverse-level-2 !default;
 
 $popover-title-bg:                    $gray-secondary !default;
 $popover-title-color:                 $brand-pure;
@@ -740,7 +729,7 @@ $badge-legend-addon-margin-right:       $spacer-y / 2 !default;
 
 // Modals
 
-$modal-bg:                              rgba(0, 0, 0, .3) !default;
+$modal-bg:                              $inverse-level-3 !default;
 $modal-left:                            $sidebar-width !default;
 $modal-top:                             $navbar-height !default;
 $modal-inner-padding:                   .8rem !default;
@@ -755,8 +744,6 @@ $modal-title-line-height:               $line-height-base !default;
 
 $modal-content-border-color:            rgba($gray-secondary, .06) !default;
 $modal-content-border-width:            $border-width !default;
-$modal-content-xs-box-shadow:           0 3px 9px rgba(0, 0, 0, .5) !default;
-$modal-content-sm-up-box-shadow:        0 5px 15px rgba(0, 0, 0, .5) !default;
 
 $modal-header-bg:                       $brand-pure !default;
 $modal-header-color:                    $body-color !default;
@@ -848,7 +835,7 @@ $message-top:                 ($navbar-height + 20) !default;
 $message-max-width:           250px !default;
 $message-border-radius:       $border-radius-lg !default;
 $message-color:               $text-muted !default;
-$message-box-shadow:          0 2px 6px rgba(0, 0, 0, .2) !default;
+$message-box-shadow:          0 2px 6px $inverse-level-2 !default;
 
 $message-header-font-size:     $font-size-lg !default;
 $message-header-padding:       .5rem 0 .5rem .75rem !default;
@@ -867,7 +854,7 @@ $notice-color:                $brand-pure !default;
 $notice-border-width:         2px !default;
 $notice-border-radius:        $border-radius !default;
 $notice-margin-bottom:        $spacer-y !default;
-$notice-box-shadow:           0 2px 6px rgba(0, 0, 0, .2) !default;
+$notice-box-shadow:           0 2px 6px $inverse-level-2 !default;
 
 $notice-header-font-size:     $font-size-h2 !default;
 $notice-header-padding:       .75rem 0 .75rem 1rem !default;
@@ -910,7 +897,7 @@ $timeline-lg-item-body-padding-right:      2.5rem !default;
 $progress-bg:                 #eee !default;
 $progress-bar-color:          #0074d9 !default;
 $progress-border-radius:      $border-radius !default;
-$progress-box-shadow:         inset 0 .1rem .1rem rgba(0, 0, 0, .1) !default;
+$progress-box-shadow:         inset 0 .1rem .1rem $inverse-level-1 !default;
 
 $progress-bar-bg:             $brand-primary !default;
 $progress-bar-success-bg:     $brand-success !default;
@@ -947,17 +934,16 @@ $list-group-item-heading-margin-bottom: 5px !default;
 
 // Image thumbnails
 
-$thumbnail-padding:           .25rem !default;
-$thumbnail-bg:                $body-bg !default;
-$thumbnail-border-width:      $border-width !default;
-$thumbnail-border-color:      #ddd !default;
-$thumbnail-border-radius:     $border-radius !default;
-$thumbnail-box-shadow:        0 1px 2px rgba(0, 0, 0, .075) !default;
+$thumbnail-padding:                 .25rem !default;
+$thumbnail-bg:                      $body-bg !default;
+$thumbnail-border-width:            $border-width !default;
+$thumbnail-border-color:            $border-color !default;
+$thumbnail-border-radius:           $border-radius !default;
 
 
 // Figures
 
-$figure-caption-font-size: 90% !default;
+$figure-caption-font-size:          90% !default;
 
 
 // Breadcrumbs
@@ -985,7 +971,7 @@ $media-alignment-padding-x:   10px !default;
 
 // Carousel
 
-$carousel-text-shadow:                        0 1px 2px rgba(0, 0, 0, .6) !default;
+$carousel-text-shadow:                        0 1px 2px $inverse-level-6 !default;
 
 $carousel-control-color:                      $brand-pure !default;
 $carousel-control-width:                      15% !default;

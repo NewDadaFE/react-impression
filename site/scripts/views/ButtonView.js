@@ -28,7 +28,7 @@ class ButtonView extends Component{
                         </Row>
                     </Card>
                     <h3>Outline buttons</h3>
-                    <Card block>
+                    <Card block className="bg-inverse">
                         <Row>
                             <Col col="2">
                                 <Button style="primary" outline>primary</Button>

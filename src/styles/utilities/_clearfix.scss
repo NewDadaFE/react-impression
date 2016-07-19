@@ -1,14 +1,15 @@
 .clearfix {
-  @include clearfix();
+    @include clearfix();
 }
-
 
 .pull-left {
-  @include pull-left();
+    float: left !important;
 }
+
 .pull-right {
-  @include pull-right();
+    float: right !important;
 }
+
 .pull-none {
-  float: none !important;
+    float: none !important;
 }

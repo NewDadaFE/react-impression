@@ -88,21 +88,21 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
 //
 
 .progress-striped[value]::-webkit-progress-value {
-  @include gradient-striped();
+  // @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
 .progress-striped[value]::-moz-progress-bar {
-  @include gradient-striped();
+  // @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
 .progress-striped[value]::-ms-fill {
-  @include gradient-striped();
+  // @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
 // IE9
 @media screen and (min-width:0\0) {
   .progress-bar-striped {
-    @include gradient-striped();
+    // @include gradient-striped();
     background-size: $spacer-y $spacer-y;
   }
 }
