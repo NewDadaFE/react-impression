@@ -5,13 +5,11 @@ import { CommenTable } from '../components';
 export default class BreadcrumbView extends Component{
     render(){
         let routes = [{
-            name: 'Home',
-            path: '/'
+            path: 'Home'
         }, {
-            name: 'Library',
-            path: '/'
+            path: 'library'
         }, {
-            name: 'Breadcrumb'
+            path: 'Breadcrumb'
         }];
 
         return (
@@ -30,7 +28,8 @@ export default class BreadcrumbView extends Component{
                     <CommenTable
                         data = {[
                             ['divider', '设置分隔符，可选值为 arrow', 'string', ''],
-                            ['path', '设置路径，必填', 'string', ''],
+                            ['routes', '设置路径，必填，key 值为 path(路径) 和 clickable(是否可点击)', 'arrayOf(object)', ''],
+                            ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
                 </Card>
