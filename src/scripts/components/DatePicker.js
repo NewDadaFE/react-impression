@@ -436,11 +436,7 @@ export default class DatePicker extends Component{
                             { years.map((year, index) =>
                                 <div key={index} onClick={() => this.selectYearHandle(year)}
                                 ref={dom => (year === currentYear) && (this._activeYear=dom)}
-<<<<<<< HEAD
-                                className={classnames('datepicker-yeargroup-item', {active: year === currentYear})}>
-=======
                                 className={classnames('datepicker-yeargroup-item', {active: Number(year) === Number(currentYear)})}>
->>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
                                     {year}
                                 </div>
                             )}

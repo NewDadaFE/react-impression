@@ -37,10 +37,6 @@ $enable-gradients:          true !default;
 $enable-transitions:        true !default;
 $enable-hover-media-query:  true !default;
 $enable-grid-classes:       true !default;
-<<<<<<< HEAD
-$enable-print-styles:       true !default;
-=======
->>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 
 // Spacing
 $spacer:   1rem !default;
@@ -72,13 +68,7 @@ $inverse-level-2:               rgba(0, 0, 0, .24) !default;
 $inverse-level-3:               rgba(0, 0, 0, .3) !default;
 $inverse-level-6:               rgba(0, 0, 0, .6) !default;
 
-<<<<<<< HEAD
 // Body
-//
-=======
-
-// Body
->>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 $body-bg:                       $brand-pure !default;
 $body-color:                    #666 !default;
 $border-color:                  #e7eaec !default;
@@ -132,11 +122,7 @@ $font-size-lg:      1.25rem !default;
 $font-size-sm:      .875rem !default;
 $font-size-xs:      .75rem !default;
 
-<<<<<<< HEAD
-$line-height-base:  1.43 !default;
 
-=======
->>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 $font-size-h1:      2.5rem !default;
 $font-size-h2:      2rem !default;
 $font-size-h3:      1.75rem !default;
@@ -161,15 +147,9 @@ $headings-line-height:   1.1 !default;
 $headings-color:         inherit !default;
 
 $small-font-size:        80% !default;
-<<<<<<< HEAD
-
-
-$hr-border-color: rgba(0, 0, 0, .1) !default;
-=======
 
 
 $hr-border-color: $border-color !default;
->>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
 $hr-border-width: $border-width !default;
 
 $mark-padding: .2em !default;
