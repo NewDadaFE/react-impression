@@ -1,18 +1,18 @@
 {
   "name": "impression-react",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "author": "peter.shenlq",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
   "scripts": {
     "eslint": "eslint ./src/scripts/",
-    "scss-lint": "scss-lint src/styles/modules/*.scss",
+    "scss-lint": "scss-lint src/styles/**/*.scss",
     "clean": "rimraf ./lib && mkdir lib",
     "copy": "cp -a src/styles lib/styles",
     "compile-js": "node_modules/babel-cli/bin/babel.js src/scripts --out-dir lib",
     "compile-scss": "sass src/styles/index.scss lib/index.css",
     "compile-min-scss": "sass --style compressed src/styles/index.scss lib/index.min.css",
-    "deploy": "npm run eslint && npm run clean && npm run compile-js && npm run compile-scss && npm run compile-min-scss && npm run copy && npm publish"
+    "deploy": "npm run eslint && npm run scss-lint && npm run clean && npm run compile-js && npm run compile-scss && npm run compile-min-scss && npm run copy && npm publish"
   },
   "repository": {
     "type": "git",
