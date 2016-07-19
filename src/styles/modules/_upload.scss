@@ -1,17 +1,17 @@
-.input-group-upload{
-    input[type="file"]{
+.input-group-upload {
+    input[type="file"] {
         position: absolute;
         opacity: 0;
     }
 
-    .form-control[disabled]{
+    .form-control[disabled] {
         cursor: default;
         background: $input-bg;
     }
 }
 
 
-.upload-preview{
+.upload-preview {
     display: inline-block;
     text-align: center;
     position: relative;
@@ -23,13 +23,14 @@
     color: $upload-preview-color;
     transition: $upload-preview-transition;
 
-    &:hover{
+    &:hover {
         color: $body-color;
         border-color: $input-border-focus;
+
         @include box-shadow($input-box-focus-shadow);
     }
 
-    input[type="file"]{
+    input[type="file"] {
         position: absolute;
         left: 0;
         top: 0;
@@ -38,12 +39,12 @@
     }
 }
 
-.upload-preview-addon{
+.upload-preview-addon {
     line-height: $upload-preview-height;
     font-size: $upload-preview-addon-font-size;
 }
 
-.upload-preview-text{
+.upload-preview-text {
     position: absolute;
     left: 0;
     right: 0;
@@ -51,7 +52,7 @@
     font-size: $upload-preview-text-font-size;
 }
 
-.upload-preview-img{
+.upload-preview-img {
     position: absolute;
     left: 0;
     right: 0;
@@ -61,7 +62,7 @@
     background: $upload-preview-bg;
     padding: $upload-preview-img-padding;
 
-    img{
+    img {
         position: absolute;
         left: 0;
         right: 0;

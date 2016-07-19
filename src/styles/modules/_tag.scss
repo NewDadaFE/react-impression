@@ -4,48 +4,46 @@
 // `background-color`.
 
 .tag {
-  display: inline-block;
-  padding: $tag-padding-y $tag-padding-x;
-  font-size: $tag-font-size;
-  font-weight: $tag-font-weight;
-  line-height: 1;
-  color: $tag-color;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: $tag-border-radius;
+    display: inline-block;
+    padding: $tag-padding-y $tag-padding-x;
+    font-size: $tag-font-size;
+    font-weight: $tag-font-weight;
+    line-height: 1;
+    color: $tag-color;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: $tag-border-radius;
 
-  // Empty tags collapse automatically
-  &:empty {
-    display: none;
-  }
+    // Empty tags collapse automatically
+    &:empty {
+        display: none;
+    }
 }
 
 // Quick fix for tags in buttons
 .btn .tag {
-  position: relative;
-  top: -1px;
+    position: relative;
+    top: -1px;
 }
 
-// scss-lint:disable QualifyingElement
 // Add hover effects, but only for links
 a.tag {
-  @include hover-focus {
-    color: $tag-link-hover-color;
-    text-decoration: none;
-    cursor: pointer;
-  }
+    @include hover-focus {
+        color: $tag-link-hover-color;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }
-// scss-lint:enable QualifyingElement
 
 // Pill tags
 //
 // Make them extra rounded with a modifier to replace v3's badges.
 
 .tag-pill {
-  padding-right: $tag-pill-padding-x;
-  padding-left: $tag-pill-padding-x;
-  border-radius: $tag-pill-border-radius;
+    padding-right: $tag-pill-padding-x;
+    padding-left: $tag-pill-padding-x;
+    border-radius: $tag-pill-border-radius;
 }
 
 // Colors
@@ -53,40 +51,40 @@ a.tag {
 // Contextual variations (linked tags get darker on :hover).
 
 .tag-default {
-  @include tag-variant($tag-default-bg);
+    @include tag-variant($tag-default-bg);
 }
 
 .tag-primary {
-  @include tag-variant($tag-primary-bg);
+    @include tag-variant($tag-primary-bg);
 }
 
 .tag-secondary {
-  @include tag-variant($tag-secondary-bg);
+    @include tag-variant($tag-secondary-bg);
 }
 
 .tag-success {
-  @include tag-variant($tag-success-bg);
+    @include tag-variant($tag-success-bg);
 }
 
 .tag-info {
-  @include tag-variant($tag-info-bg);
+    @include tag-variant($tag-info-bg);
 }
 
 .tag-warning {
-  @include tag-variant($tag-warning-bg);
+    @include tag-variant($tag-warning-bg);
 }
 
 .tag-danger {
-  @include tag-variant($tag-danger-bg);
+    @include tag-variant($tag-danger-bg);
 }
 
 // Close
 .tag-close {
-  cursor: pointer;
-  margin-left: $tag-close-margin-right;
-  opacity: 0.6;
+    cursor: pointer;
+    margin-left: $tag-close-margin-right;
+    opacity: .6;
 
-  &:hover{
-    opacity: 1;
-  }
+    &:hover {
+        opacity: 1;
+    }
 }

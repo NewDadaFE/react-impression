@@ -1,5 +1,5 @@
 //侧边栏
-.sidebar{
+.sidebar {
     position: relative;
     height: 100%;
     width: $sidebar-width;
@@ -7,24 +7,24 @@
     background-color: $sidebar-bg;
     padding-bottom: $sidebar-footer-height;
 
-    .nav{
+    .nav {
         height: 100%;
         overflow-y: auto;
         padding-bottom: $sidebar-nav-padding-bottom;
     }
 
-    .nav-item{
+    .nav-item {
         display: block;
         text-indent: $sidebar-nav-item-indent;
 
-        & + .nav-item{
+        + .nav-item {
             margin-left: 0;
         }
     }
 
     .nav-link,
     .nav-collapse-title,
-    .nav-collapse-item{
+    .nav-collapse-item {
         display: block;
         color: $sidebar-nav-link-color;
         padding: $sidebar-nav-link-padding;
@@ -33,47 +33,48 @@
     }
 
     .nav-link,
-    .nav-collapse-title{
+    .nav-collapse-title {
         cursor: pointer;
+
         &:hover,
-        &.active{
+        &.active {
             color: $sidebar-nav-link-active-color;
             background: $sidebar-nav-link-active-bg;
             box-shadow: $sidebar-nav-link-active-box-shadow;
         }
 
-        &.active{
+        &.active {
             border-left-color: $sidebar-nav-link-active-border-color;
         }
 
-        .pull-right{
+        .pull-right {
             line-height: $line-height-base;
         }
     }
 }
 
-.nav-title{
+.nav-title {
     padding: $nav-title-padding;
     color: $nav-title-color;
     font-size: $nav-title-font-size;
 }
 
-.nav-collapse{
+.nav-collapse {
     transition: $sidebar-collapse-transition;
 
-    &.active{
+    &.active {
         box-shadow: $sidebar-collapse-active-shadow;
 
-        .nav-collapse-title{
+        .nav-collapse-title {
             color: $sidebar-nav-link-active-color;
         }
 
-        .nav-collapse-title-addon{
+        .nav-collapse-title-addon {
             transform-origin: center center;
             transform: rotate(90deg);
         }
 
-        .nav-collapse-items{
+        .nav-collapse-items {
             height: auto;
             animation: $sidebar-collapse-animation;
             background: $sidebar-collapse-active-bg;
@@ -83,17 +84,17 @@
     }
 }
 
-.nav-collapse-title{
+.nav-collapse-title {
     transition: $sidebar-collapse-transition;
 }
 
-.nav-collapse-title-addon{
+.nav-collapse-title-addon {
     float: right;
     line-height: $line-height-base;
     transition: $sidebar-collapse-transition;
 }
 
-.nav-collapse-items{
+.nav-collapse-items {
     height: 0;
     overflow: hidden;
     text-indent: $sidebar-collapse-text-indent;
@@ -101,7 +102,7 @@
     font-size: $sidebar-collapse-font-size;
 }
 
-.sidebar-footer{
+.sidebar-footer {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -113,12 +114,13 @@
     display: flex;
 }
 
-.sidebar-footer-item{
+.sidebar-footer-item {
     flex: 1;
     text-align: center;
     color: $sidebar-nav-link-color;
     border-top: $sidebar-nav-link-border-width solid transparent;
-    &:hover{
+
+    &:hover {
         color: $sidebar-nav-link-active-color;
         border-top-color: $sidebar-nav-link-active-border-color;
     }

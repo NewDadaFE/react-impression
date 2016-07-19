@@ -1,6 +1,6 @@
 .checkbox,
 .radio,
-.switch{
+.switch {
     margin: 0;
     cursor: pointer;
     user-select: none;
@@ -8,7 +8,7 @@
     vertical-align: middle;
     position: relative;
 
-    input{
+    input {
         visibility: hidden;
     }
 
@@ -16,67 +16,68 @@
 }
 
 .checkbox-label,
-.radio-label{
+.radio-label {
     user-select: none;
     vertical-align: middle;
-    &:not(:empty){
+
+    &:not(:empty) {
         margin-left: $checkbox-label-space-x;
     }
 }
 
 .checkbox-inline,
-.radio-inline{
+.radio-inline {
     user-select: none;
     display: inline-block;
 
     .checkbox:not(:last-child),
-    .radio:not(:last-child){
+    .radio:not(:last-child) {
         margin-right: $checkbox-space-x;
     }
 }
 
 .checkbox-vertical,
-.radio-vertical{
+.radio-vertical {
     user-select: none;
     display: block;
 
     .checkbox:not(:last-child),
-    .radio:not(:last-child){
+    .radio:not(:last-child) {
         display: block;
         margin-bottom: $checkbox-space-x;
     }
 }
 
-.checkbox{
-    input{
+.checkbox {
+    input {
         position: absolute;
         left: 0;
         top: 0;
         z-index: -1;
 
-        &:checked{
-            & + .checkbox-addon i{
+        &:checked {
+            + .checkbox-addon i {
                 color: $checkbox-addon-checked-color;
             }
         }
 
-        &:not(:disabled):not(.disabled){
-            &:active{
-                & + .checkbox-addon {
+        &:not(:disabled):not(.disabled) {
+            &:active {
+                + .checkbox-addon {
                     box-shadow: $checkbox-addon-active-box-shadow;
                 }
             }
         }
 
         &:disabled + .checkbox-addon,
-        &.disabled + .checkbox-addon{
+        &.disabled + .checkbox-addon {
             opacity: .6;
             background: $checkbox-addon-disabled-bg;
         }
     }
 }
 
-.checkbox-addon{
+.checkbox-addon {
     padding: $checkbox-addon-padding;
     display: inline-block;
     border: 1px solid $checkbox-addon-border-color;
@@ -85,7 +86,7 @@
     transition: $checkbox-addon-transtion;
 
 
-    i{
+    i {
         color: transparent;
         width: round($checkbox-addon-width * $font-size-root);
         height: round($checkbox-addon-height * $font-size-root);
@@ -95,22 +96,22 @@
 
 
 //radio
-.radio{
+.radio {
     input {
         position: absolute;
         left: 0;
         top: 0;
         z-index: -1;
 
-        &:checked{
-            & + .radio-addon i{
+        &:checked {
+            + .radio-addon i {
                 background: $checkbox-addon-checked-color;
             }
         }
 
-        &:not(:checked):not(:disabled):not(.disabled){
-            &:active{
-                & + .radio-addon{
+        &:not(:checked):not(:disabled):not(.disabled) {
+            &:active {
+                + .radio-addon {
                     box-shadow: $checkbox-addon-active-box-shadow;
                 }
             }
@@ -118,26 +119,25 @@
 
 
         &:disabled + .radio-addon,
-        &.disabled + .radio-addon{
+        &.disabled + .radio-addon {
             opacity: .6;
             background: $checkbox-addon-disabled-bg;
         }
     }
 }
 
-.radio-addon{
+.radio-addon {
     position: relative;
     padding: $radio-addon-padding;
     border: 1px solid $checkbox-addon-border-color;
-    border-radius: $checkbox-addon-border-radius;
-    display: inline-block;
     border-radius: 50%;
+    display: inline-block;
     vertical-align: middle;
     transition: $checkbox-addon-transtion;
 
     i {
         display: inline-block;
-        content: " ";
+        content: '';
         width: round($radio-addon-width * $font-size-root);
         height: round($radio-addon-height * $font-size-root);
         background: transparent;
@@ -147,7 +147,7 @@
 }
 
 
-.switch{
+.switch {
     display: inline-block;
     position: relative;
 
@@ -157,23 +157,23 @@
         top: 0;
         z-index: -1;
 
-        &:checked + .switch-addon{
+        &:checked + .switch-addon {
             border-color: $checkbox-addon-checked-color;
-            background:  $checkbox-addon-checked-color;
+            background: $checkbox-addon-checked-color;
 
-            &:before{
+            &::before {
                 transform: $switch-addon-translate-x;
             }
         }
 
         &:disabled + .switch-addon,
-        &.disabled + .switch-addon{
+        &.disabled + .switch-addon {
             opacity: .6;
         }
     }
 }
 
-.switch-addon{
+.switch-addon {
     display: inline-block;
     background: $switch-bg;
     width: round($switch-width * $font-size-root);
@@ -182,13 +182,13 @@
     transition: $checkbox-addon-transtion;
 
 
-    &:before{
-        content: " ";
+    &::before {
+        content: '';
         display: inline-block;
         width: round($switch-addon-width * $font-size-root);
         height: round($switch-addon-height * $font-size-root);
         border-radius: 50%;
-        background: $switch-addon-bg;;
+        background: $switch-addon-bg;
         transition: $checkbox-addon-transtion;
     }
 }

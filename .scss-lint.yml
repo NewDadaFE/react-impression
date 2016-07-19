@@ -1,5 +1,5 @@
 scss_files: "src/styles/**/*.scss"
-exclude: 'src/styles/font-awesome/**'
+exclude: ['src/styles/font-awesome/**', 'src/styles/modules/_normalize.scss', 'src/styles/modules/_reboot.scss']
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already
@@ -109,11 +109,11 @@ linters:
 
   NestingDepth:
     enabled: true
-    max_depth: 3
+    max_depth: 6
     ignore_parent_selectors: false
 
   PlaceholderInExtend:
-    enabled: true
+    enabled: false
 
   PrivateNamingConvention:
     enabled: false
@@ -152,14 +152,14 @@ linters:
     enabled: true
 
   QualifyingElement:
-    enabled: true
+    enabled: false
     allow_element_with_attribute: false
     allow_element_with_class: false
     allow_element_with_id: false
 
   SelectorDepth:
     enabled: true
-    max_depth: 3
+    max_depth: 4
 
   SelectorFormat:
     enabled: true

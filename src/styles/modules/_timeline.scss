@@ -1,60 +1,61 @@
-.timeline{
+.timeline {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.timeline-lg{
-    .timeline-item{
+.timeline-lg {
+    .timeline-item {
         padding-bottom: $timeline-lg-item-padding-bottom;
     }
 
-    .timeline-item-unreachable{
+    .timeline-item-unreachable {
         padding-bottom: $timeline-lg-item-padding-bottom * 2;
 
-        .timeline-item-line{
+        .timeline-item-line {
             border-left-style: dotted;
         }
 
     }
 
-    .timeline-item-line{
+    .timeline-item-line {
         left: $timeline-lg-item-line-left;
     }
 
-    .timeline-item-addon{
+    .timeline-item-addon {
         padding: $timeline-lg-item-addon-padding;
         font-size: $timeline-lg-item-addon-font-size;
     }
 
-    .timeline-item-body{
+    .timeline-item-body {
         padding-left: $timeline-lg-item-body-padding-right;
         line-height: $timeline-lg-item-body-line-height;
     }
 }
 
-.timeline-item{
+.timeline-item {
     position: relative;
     padding-bottom: $timeline-item-padding-bottom;
 
-    &:last-child{
+    &:last-child {
         padding-bottom: 0;
-        .timeline-item-line{
+
+        .timeline-item-line {
             display: none;
         }
     }
 }
 
-.timeline-item-unreachable{
+.timeline-item-unreachable {
     padding-bottom: $timeline-item-padding-bottom * 2;
 
-    .timeline-item-line{
+    .timeline-item-line {
         border-left-style: dotted;
     }
 
 }
 
-.timeline-item-line{
+.timeline-item-line {
     position: absolute;
     left: $timeline-item-line-left;
     top: 0;
@@ -62,7 +63,7 @@
     border-left: $timeline-item-line-border;
 }
 
-.timeline-item-addon{
+.timeline-item-addon {
     position: absolute;
     left: 0;
     top: 0;
@@ -74,7 +75,7 @@
 }
 
 
-.timeline-item-body{
+.timeline-item-body {
     line-height: $timeline-item-body-line-height;
     vertical-align: top;
     display: inline-block;

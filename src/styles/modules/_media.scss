@@ -1,44 +1,52 @@
 @if $enable-flex {
-  .media {
-    display: flex;
-    margin-bottom: $spacer;
-  }
-  .media-body {
-    flex: 1;
-  }
-  .media-middle {
-    align-self: center;
-  }
-  .media-bottom {
-    align-self: flex-end;
-  }
-} @else {
-  .media {
-    margin-top: $media-margin-top;
-
-    &:first-child {
-      margin-top: 0;
+    .media {
+        display: flex;
+        margin-bottom: $spacer;
     }
-  }
-  .media,
-  .media-body {
-    overflow: hidden;
-  }
-  .media-body {
-    width: 10000px;
-  }
-  .media-left,
-  .media-right,
-  .media-body {
-    display: table-cell;
-    vertical-align: top;
-  }
-  .media-middle {
-    vertical-align: middle;
-  }
-  .media-bottom {
-    vertical-align: bottom;
-  }
+
+    .media-body {
+        flex: 1;
+    }
+
+    .media-middle {
+        align-self: center;
+    }
+
+    .media-bottom {
+        align-self: flex-end;
+    }
+} @else {
+    .media {
+        margin-top: $media-margin-top;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .media,
+    .media-body {
+        overflow: hidden;
+    }
+
+    .media-body {
+        width: 10000px;
+    }
+
+    .media-left,
+    .media-right,
+    .media-body {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .media-middle {
+        vertical-align: middle;
+    }
+
+    .media-bottom {
+        vertical-align: bottom;
+    }
 }
 
 
@@ -47,12 +55,12 @@
 //
 
 .media-object {
-  display: block;
+    display: block;
 
-  // Fix collapse in webkit from max-width: 100% and display: table-cell.
-  &.img-thumbnail {
-    max-width: none;
-  }
+    // Fix collapse in webkit from max-width: 100% and display: table-cell.
+    &.img-thumbnail {
+        max-width: none;
+    }
 }
 
 
@@ -61,11 +69,11 @@
 //
 
 .media-right {
-  padding-left: $media-alignment-padding-x;
+    padding-left: $media-alignment-padding-x;
 }
 
 .media-left {
-  padding-right: $media-alignment-padding-x;
+    padding-right: $media-alignment-padding-x;
 }
 
 
@@ -74,8 +82,8 @@
 //
 
 .media-heading {
-  margin-top: 0;
-  margin-bottom: $media-heading-margin-bottom;
+    margin-top: 0;
+    margin-bottom: $media-heading-margin-bottom;
 }
 
 
@@ -84,6 +92,6 @@
 //
 
 .media-list {
-  padding-left: 0;
-  list-style: none;
+    padding-left: 0;
+    list-style: none;
 }

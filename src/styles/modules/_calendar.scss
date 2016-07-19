@@ -1,34 +1,34 @@
 
-.calendar{
+.calendar {
     width: 100%;
 }
 
 //头部栏
-.calendar-header{
+.calendar-header {
     padding: $calendar-header-padding;
     font-size: $calendar-header-font-size;
     display: flex;
 }
 
-.calendar-header-caption{
+.calendar-header-caption {
     flex: 1;
     text-align: center;
 }
 
-.calendar-body{
+.calendar-body {
     background: $calendar-body-bg;
 }
 
 //星期
-.calendar-weekgroup{
+.calendar-weekgroup {
     border: 1px solid $calendar-border-color;
     border-bottom: 0;
     background: $calendar-weekgroup-bg;
 }
 
 
-.calendar-weekgroup-item{
-    width: percentage(1/7);
+.calendar-weekgroup-item {
+    width: percentage(1 / 7);
     display: inline-block;
     font-weight: bold;
     text-align: center;
@@ -36,44 +36,45 @@
 
     j
 
-    &:not(:last-child){
+    &:not(:last-child) {
         border-right: 1px solid $calendar-border-color;
     }
 }
 
-.calendar-daygroup{
+.calendar-daygroup {
     border: 1px solid $calendar-border-color;
     border-bottom: 0;
 }
 
-.calendar-daygroup-item{
+.calendar-daygroup-item {
     display: inline-flex;
     flex-direction: column;
     cursor: pointer;
-    width: percentage(1/7);
+    width: percentage(1 / 7);
     height: $calendar-daygroup-item-height;
     padding: $calendar-daygroup-item-padding;
     overflow: hidden;
     border-bottom: 1px solid $calendar-border-color;
-    &:not(:nth-child(7n)){
+
+    &:not(:nth-child(7n)) {
         border-right: 1px solid $calendar-border-color;
     }
 
-    &.active{
+    &.active {
         background: $calendar-daygroup-item-active-bg;
 
-        > .calendar-daygroup-item-header{
+        > .calendar-daygroup-item-header {
             color: $brand-primary;
             font-weight: bold;
         }
     }
 }
 
-.calendar-daygroup-item-header{
+.calendar-daygroup-item-header {
     text-align: right;
 }
 
-.calendar-daygroup-item-body{
+.calendar-daygroup-item-body {
     flex: 1;
     overflow: auto;
 }
@@ -81,26 +82,26 @@
 .disabled {
     cursor: initial;
 
-    > .calendar-daygroup-item-header{
+    > .calendar-daygroup-item-header {
         opacity: $calendar-daygroup-item-disable-opacity;
     }
 }
 
 
 // Size
-.calendar-sm{
-    .calendar-header{
+.calendar-sm {
+    .calendar-header {
         font-size: $calendar-sm-header-font-size;
         padding: $calendar-sm-header-padding;
     }
 
     .calendar-daygroup-item-header,
-    .calendar-weekgroup-item{
+    .calendar-weekgroup-item {
         font-weight: initial;
         font-size: $calendar-sm-weekgroup-item-font-size;
     }
 
-    .calendar-daygroup-item{
-        height:  $calendar-sm-daygroup-item-height;
+    .calendar-daygroup-item {
+        height: $calendar-sm-daygroup-item-height;
     }
 }

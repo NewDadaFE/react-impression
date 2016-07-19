@@ -1,92 +1,86 @@
 
-.notification{
-  position: fixed;
-  top: $notification-top;
-  right: 1rem;
-  z-index: $zindex-notification;
-  width: $notification-width;
+.notification {
+    position: fixed;
+    top: $notification-top;
+    right: 1rem;
+    z-index: $zindex-notification;
+    width: $notification-width;
 }
 
-.notice{
-  display: flex;
-  align-items: center;
-  color: $notice-color;
-  border-radius: $notice-border-radius;
-  margin-bottom: $notice-margin-bottom;
-  box-shadow: $notice-box-shadow;
-  border: $notice-border-width solid transparent;
-  animation-duration: $notice-enter-duration;
-  animation-timing-function: ease;
-  animation-fill-mode: both;
-
-  .close{
+.notice {
+    display: flex;
+    align-items: center;
     color: $notice-color;
-    opacity: 0.6;
+    border-radius: $notice-border-radius;
+    margin-bottom: $notice-margin-bottom;
+    box-shadow: $notice-box-shadow;
+    border: $notice-border-width solid transparent;
+    animation-duration: $notice-enter-duration;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
 
-    &:hover{
-      opacity: 1;
+    .close {
+        color: $notice-color;
+        opacity: .6;
+
+        &:hover {
+            opacity: 1;
+        }
     }
-  }
 }
 
-.notice-header{
-  font-size: $notice-header-font-size;
-  padding: $notice-header-padding;
+.notice-header {
+    font-size: $notice-header-font-size;
+    padding: $notice-header-padding;
 }
 
-.notice-body{
-  flex: 1;
-  padding: $notice-body-padding;
-
+.notice-body {
+    flex: 1;
+    padding: $notice-body-padding;
 }
 
-.notice-title{
-  font-weight: bold;
-  margin: $notice-title-margin;
-}
-
-
-.notice-content{
-
+.notice-title {
+    font-weight: bold;
+    margin: $notice-title-margin;
 }
 
 
 // Alternate styles
-.notice-info{ @include notice-variant($notice-primary-bg); }
-.notice-success{ @include notice-variant($notice-success-bg); }
-.notice-warning{ @include notice-variant($notice-warning-bg); }
-.notice-danger{ @include notice-variant($notice-danger-bg); }
+.notice-info { @include notice-variant($notice-primary-bg); }
+.notice-success { @include notice-variant($notice-success-bg); }
+.notice-warning { @include notice-variant($notice-warning-bg); }
+.notice-danger { @include notice-variant($notice-danger-bg); }
 
 
 //Animation
-.notice-enter{
-  animation-name: slideInRight;
+.notice-enter {
+    animation-name: slideInRight;
 }
 
-.notice-leave{
-  animation-duration: $notice-leave-duration;
-  animation-name: slideOutRight;
+.notice-leave {
+    animation-duration: $notice-leave-duration;
+    animation-name: slideOutRight;
 }
 
 @keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(500px);
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(500px);
+    }
 
-  100% {
-    transform: translateX(0);
-  }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 
 @keyframes slideOutRight {
-  0% {
-    transform: translateX(0);
-  }
+    0% {
+        transform: translateX(0);
+    }
 
-  100% {
-    opacity: 0;
-    transform: translateX(500px);
-  }
+    100% {
+        opacity: 0;
+        transform: translateX(500px);
+    }
 }

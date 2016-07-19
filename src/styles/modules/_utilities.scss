@@ -1,14 +1,14 @@
-@import "../utilities/background";
-@import "../utilities/clearfix";
-@import "../utilities/display";
-@import "../utilities/flex";
-@import "../utilities/spacing";
-@import "../utilities/text";
-@import "../utilities/visibility";
-@import "../utilities/border";
+@import '../utilities/background';
+@import '../utilities/clearfix';
+@import '../utilities/display';
+@import '../utilities/flex';
+@import '../utilities/spacing';
+@import '../utilities/text';
+@import '../utilities/visibility';
+@import '../utilities/border';
 
 
-.split{
+.split {
     margin: 0 $spacer-x / 2;
     color: $text-muted;
 }

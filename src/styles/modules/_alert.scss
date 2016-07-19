@@ -1,4 +1,4 @@
-.alert{
+.alert {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -11,7 +11,7 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.alert-dialog{
+.alert-dialog {
     position: absolute;
     left: 0;
     right: 0;
@@ -27,29 +27,29 @@
     animation: bounceIn $alert-animation-duration ease-in-out;
 }
 
-.alert-addon{
+.alert-addon {
     font-size: $alert-addon-font-size;
 }
 
-.alert-body{
+.alert-body {
     padding: $alert-body-padding;
 }
 
 
-.alert-footer{
+.alert-footer {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     display: flex;
-    padding: 0.8rem;
+    padding: .8rem;
     justify-content: space-around;
     border-top: 1px solid $alert-footer-border-color;
     border-radius: 0 0 $alert-dialog-border-radius $alert-dialog-border-radius;
     cursor: pointer;
     color: $alert-btn-color;
 
-    &:hover{
+    &:hover {
         background: $alert-btn-hover-bg;
     }
 }

@@ -1,99 +1,101 @@
 //== 下拉框
 //
 //
-.select{
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-  display: inline-block;
+.select {
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
 
-  &.disabled {
-    &,
-    .select-addon,
-    .select-selection{
-      background: $select-disable-bg;
-      cursor: $cursor-disabled;
+    &.disabled {
+        &,
+        .select-addon,
+        .select-selection {
+            background: $select-disable-bg;
+            cursor: $cursor-disabled;
+        }
     }
-  }
 }
 
-.select-selection{
-  cursor: pointer;
-  display: inline-block;
-  user-select: none;
-  text-align: left;
-  text-overflow: ellipsis;
-  padding-right: $select-selection-padding-right;
+.select-selection {
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+    text-align: left;
+    text-overflow: ellipsis;
+    padding-right: $select-selection-padding-right;
 
-  &:active,
-  &:focus{
-    outline: none;
-    &::placeholder{
-      opacity: 1;
+    &:active,
+    &:focus {
+        outline: none;
+
+        &::placeholder {
+            opacity: 1;
+        }
     }
-  }
 
-  &[readOnly]{
+    &[readonly] {
+        background: $select-bg;
+    }
+}
+
+.select-addon {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    line-height: $select-line-height;
+    padding: $input-padding-y $input-padding-x;
+    transition: $select-transition;
+
+    .open & {
+        transform: rotate(180deg);
+    }
+}
+
+.select-options {
+    position: absolute;
+    left: 0;
+    top: $select-options-top;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: $zindex-select;
+    display: none;
     background: $select-bg;
-  }
-}
+    list-style: none;
+    overflow-y: auto;
+    max-height: $select-selection-max-height;
+    transition: $select-transition;
+    border: $select-options-border;
+    box-shadow: $select-options-box-shadow;
+    animation: scaleIn .36s ease;
+    transform-origin: center 0;
 
-.select-addon{
-  cursor: pointer;
-  user-select: none;
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  line-height: $select-line-height;
-  padding: $input-padding-y $input-padding-x;
-  transition: $select-transition;
-
-  .open &{
-    transform: rotate(180deg);
-  }
-}
-
-.select-options{
-  position: absolute;
-  left: 0;
-  top: $select-options-top;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  z-index: $zindex-select;
-  display: none;
-  background: $select-bg;
-  list-style: none;
-  overflow-y: auto;
-  max-height: $select-selection-max-height;
-  transition: $select-transition;
-  border: $select-options-border;
-  box-shadow: $select-options-box-shadow;
-  animation: scaleIn 0.36s ease;
-  transform-origin: center 0;
-
-  .open &{
-    display: block;
-  }
+    .open & {
+        display: block;
+    }
 
 }
 
-.select-option{
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: $select-option-padding;
-  &:hover{
-    background-color: $select-option-hover-bg;
-  }
+.select-option {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: $select-option-padding;
 
-  &.active{
-    color: $select-option-active-color;
-  }
+    &:hover {
+        background-color: $select-option-hover-bg;
+    }
 
-  &.disabled {
-      cursor:  $cursor-disabled;
-      color: $select-option-disable-color;
+    &.active {
+        color: $select-option-active-color;
+    }
+
+    &.disabled {
+        cursor: $cursor-disabled;
+        color: $select-option-disable-color;
     }
 }

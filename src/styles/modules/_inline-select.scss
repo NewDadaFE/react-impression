@@ -1,8 +1,8 @@
-.inline-select{
+.inline-select {
     margin-bottom: $inline-select-margin-bottom;
 }
 
-.inline-select-option{
+.inline-select-option {
     cursor: pointer;
     vertical-align: top;
     display: inline-block;
@@ -13,7 +13,7 @@
     transition: $inline-select-option-transition;
 
     &.active,
-    &:hover{
+    &:hover {
         color: $inline-select-option-active-color;
         background: $inline-select-option-active-bg;
     }
