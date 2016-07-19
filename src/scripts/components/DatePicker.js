@@ -312,11 +312,7 @@ export default class DatePicker extends Component{
     showMonthPanelHandle(){
         let { panel } = this.state;
 
-<<<<<<< HEAD
-        this.setState({
-=======
         type === 'date' && this.setState({
->>>>>>> e392cf93542809d6c3ef7bdbfb90d1a44f679eae
             panel: panel === 'month'? 'day' : 'month'
         });
     }
