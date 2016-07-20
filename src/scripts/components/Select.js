@@ -14,7 +14,7 @@ export default class Select extends Component{
 
         this.state = {
             showOption: false,
-            value: props.value || undefined,
+            value: props.value !== undefined? props.value : undefined,
         };
 
         this.toggleOptionsHandle = this.toggleOptionsHandle.bind(this);

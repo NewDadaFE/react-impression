@@ -34,10 +34,10 @@ export default class SelectView extends Component{
                                 <Form type="inline">
                                     <Form.Group>
                                         <label>defaultValue:</label>
-                                        <Select value="3">
-                                            <Select.Option value="1">First</Select.Option>
-                                            <Select.Option value="2">Second</Select.Option>
-                                            <Select.Option value="3">Third</Select.Option>
+                                        <Select value={0}>
+                                            <Select.Option value={0}>First</Select.Option>
+                                            <Select.Option value={1}>Second</Select.Option>
+                                            <Select.Option value={2}>Third</Select.Option>
                                         </Select>
                                     </Form.Group>
                                 </Form>
