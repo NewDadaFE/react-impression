@@ -26,6 +26,22 @@
     margin-bottom: $spacer-y * 2 !important;
 }
 
+.padding-t {
+    padding-top: $spacer-y / 2 !important;
+}
+
+.padding-b {
+    padding-bottom: $spacer-y / 2 !important;
+}
+
+.padding-l {
+    padding-left: $spacer-x / 2 !important;
+}
+
+.padding-r {
+    padding-right: $spacer-x / 2 !important;
+}
+
 .no-margin {
     margin: 0 !important;
 }

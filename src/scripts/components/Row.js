@@ -5,13 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * Row组件.
  */
 export default class Row extends Component{
-    static propTypes = {
-        //子节点
-        children: PropTypes.oneOfType([
-            PropTypes.object,
-            PropTypes.arrayOf(PropTypes.object),
-        ])
-    }
     /**
      * 自动计算col属性.
      * @return {[Array]} [子元素]

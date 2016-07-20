@@ -1,6 +1,6 @@
 {
   "name": "impression-react-site",
-  "version": "0.0.8",
+  "version": "0.1.13",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
   "scripts": {
