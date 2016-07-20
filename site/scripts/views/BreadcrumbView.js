@@ -5,11 +5,12 @@ import { CommenTable } from '../components';
 export default class BreadcrumbView extends Component{
     render(){
         let routes = [{
-            path: 'Home'
+            name: 'Home',
+            path: '/'
         }, {
-            path: 'library'
+            name: 'library'
         }, {
-            path: 'Breadcrumb'
+            name: 'Breadcrumb'
         }];
 
         return (

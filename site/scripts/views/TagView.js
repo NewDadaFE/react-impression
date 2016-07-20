@@ -109,6 +109,29 @@ export default class TagView extends Component{
                             </Col>
                         </Row>
                     </Card>
+                    <h3>Outline tag</h3>
+                    <Card block>
+                        <Row>
+                            <Col>
+                                <Tag style="default" outline>default</Tag>
+                            </Col>
+                            <Col>
+                                <Tag style="primary" outline>primary</Tag>
+                            </Col>
+                            <Col>
+                                <Tag style="success" outline>success</Tag>
+                            </Col>
+                            <Col>
+                                <Tag style="info" outline>info</Tag>
+                            </Col>
+                            <Col>
+                                <Tag style="warning" outline>warning</Tag>
+                            </Col>
+                            <Col>
+                                <Tag style="danger" outline>danger</Tag>
+                            </Col>
+                        </Row>
+                    </Card>
                     <h3 className="text-secondary">API</h3>
                     <CommenTable
                         data = {[

@@ -672,13 +672,13 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .2) !defaul
 
 // Tags
 
-$tag-default-bg:                        #ccc !default;
-$tag-primary-bg:                        $brand-primary !default;
-$tag-secondary-bg:                      $brand-secondary !default;
-$tag-success-bg:                        $brand-success !default;
-$tag-info-bg:                           $brand-info !default;
-$tag-warning-bg:                        $brand-warning !default;
-$tag-danger-bg:                         $brand-danger !default;
+$tag-default:                           #ccc !default;
+$tag-primary:                           $brand-primary !default;
+$tag-secondary:                         $brand-secondary !default;
+$tag-success:                           $brand-success !default;
+$tag-info:                              $brand-info !default;
+$tag-warning:                           $brand-warning !default;
+$tag-danger:                            $brand-danger !default;
 
 $tag-color:                             $brand-pure !default;
 $tag-link-hover-color:                  $brand-pure !default;

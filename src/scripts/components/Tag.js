@@ -11,6 +11,8 @@ export default class Tag extends Component{
         style: PropTypes.string,
         //形状（pill）
         shape: PropTypes.string,
+        //是否outline
+        outline: PropTypes.bool,
         //是否可删除
         closable: PropTypes.bool,
         //删除回调
@@ -23,11 +25,12 @@ export default class Tag extends Component{
     static defaultProps = {
         style: 'default',
         closable: false,
+        outline: false,
     }
     //渲染
     render(){
-        let { style, closable, onClose, shape, children, className, ...others } = this.props,
-            tagStyle = style? `tag-${style}` : '',
+        let { style, closable, onClose, shape, outline, children, className, ...others } = this.props,
+            tagStyle = outline? `tag-outline-${style}` : `tag-${style}`,
             tagShape = shape? `tag-${shape}` : '';
 
         return (
