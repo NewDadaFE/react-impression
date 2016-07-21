@@ -310,7 +310,8 @@ export default class DatePicker extends Component{
      * 显示年月选择面板.
      */
     showMonthPanelHandle(){
-        let { panel } = this.state;
+        let { panel } = this.state,
+            { type } = this.props;
 
         type === 'date' && this.setState({
             panel: panel === 'month'? 'day' : 'month'
@@ -320,9 +321,11 @@ export default class DatePicker extends Component{
      * 更正month面板滚动条位置.
      */
     componentDidUpdate(){
-        let { type } = this.props;
+        let { type } = this.props,
+            { _yeargroup } = this.refs;
 
-        type === 'date' && this.resetMonthPanelScroll();
+
+        type === 'date' &&  _yeargroup && _yeargroup.scrollTop === 0 && this.resetMonthPanelScroll();
     }
     /**
      * 修改month面板的滚动条位置.
@@ -331,7 +334,7 @@ export default class DatePicker extends Component{
         let { _yeargroup, _monthgroup } = this.refs;
 
         if(!this._activeYear || !this._activeMonth){
-            return false;
+            return true;
         }
 
         let yearHeight = this._activeYear.getBoundingClientRect().height,
@@ -339,6 +342,8 @@ export default class DatePicker extends Component{
 
         this._yeargroupScrollTop = _yeargroup.scrollTop = this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 2;
         _monthgroup.scrollTop = this._activeMonth.offsetTop - _monthgroup.offsetTop - monthHeight * 2;
+
+        return true;
     }
     componentDidMount(){
         let { currentMoment } = this.state;
@@ -358,6 +363,10 @@ export default class DatePicker extends Component{
      * @param  {[Event]} event [事件]
      */
     scrollYearHandle(event){
+        if(!this._activeYear){
+            return false;
+        }
+
         let { years } = this.state,
             container = event.target,
             yearHeight = this._activeYear.getBoundingClientRect().height,
@@ -435,7 +444,7 @@ export default class DatePicker extends Component{
                         <div className="datepicker-yeargroup" ref="_yeargroup" onScroll={this.scrollYearHandle}>
                             { years.map((year, index) =>
                                 <div key={index} onClick={() => this.selectYearHandle(year)}
-                                ref={dom => (year === currentYear) && (this._activeYear=dom)}
+                                ref={dom => (Number(year) === Number(currentYear)) && (this._activeYear=dom)}
                                 className={classnames('datepicker-yeargroup-item', {active: Number(year) === Number(currentYear)})}>
                                     {year}
                                 </div>
