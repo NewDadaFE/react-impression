@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ul, li, Card } from '../components/base';
-import { CommenTable } from '../components';
 
 export default class UtilsClassView extends Component{
     render(){
