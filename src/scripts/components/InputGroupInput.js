@@ -18,10 +18,10 @@ export default class InputGroupInput extends Component{
     }
     //渲染
     render(){
-        let { className, placeholder, ...others } = this.props;
+        let { type ,className, placeholder, ...others } = this.props;
 
         return(
-            <input {...others} type="text" className={classnames('form-control', className)} placeholder={placeholder} ref="main"/>
+            <input {...others} type={type} className={classnames('form-control', className)} placeholder={placeholder} ref="main"/>
         );
     }
 }
