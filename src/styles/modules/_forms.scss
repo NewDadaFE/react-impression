@@ -4,6 +4,10 @@
 // Textual form controls
 //
 
+form{
+    margin: 0;
+}
+
 .form-control {
     display: block;
     width: 100%;
@@ -235,6 +239,10 @@ input[type="month"] {
         > label {
             padding-left: $input-padding-x;
             padding-right: $input-padding-x;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }
