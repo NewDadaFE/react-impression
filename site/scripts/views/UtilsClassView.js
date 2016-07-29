@@ -57,6 +57,13 @@ export default class UtilsClassView extends Component{
                     <li>.flex-items-*-around</li>
                     <li>.flex-items-*-between</li>
 
+                    <h5>容器</h5>
+                    <li>.flex</li>
+                    <li>.flex-vertical</li>
+                    <li>.flex-item</li>
+                    <li>.flex-item-2</li>
+                    <li>.flex-item-3</li>
+
                     <h5>*为xs、sm、md、lg、xl</h5>
                 </ul>
                 <h3>screenrenders</h3>
@@ -66,20 +73,17 @@ export default class UtilsClassView extends Component{
                 </ul>
                 <h3>spacing</h3>
                 <ul>
-                    <h5>*为0、1、2、3</h5>
-                    <li>.p-a-*</li>
-                    <li>.p-t-*</li>
-                    <li>.p-r-*</li>
-                    <li>.p-b-*</li>
-                    <li>.p-l-*</li>
-                    <li>.p-x-*</li>
-                    <li>.p-y-*</li>
+                    <li>.offset-l</li>
                     <li>.offset-l-lg</li>
+                    <li>.offset-r</li>
                     <li>.offset-r-lg</li>
                     <li>.offset-t</li>
                     <li>.offset-b</li>
-                    <li>.offset-l</li>
-                    <li>.offset-r</li>
+                    <li>.offset-b-lg</li>
+                    <li>padding-t</li>
+                    <li>padding-b</li>
+                    <li>padding-l</li>
+                    <li>padding-r</li>
                     <li>.no-margin</li>
                     <li>.no-padding</li>
                     <li>.no-padding-l</li>
@@ -121,11 +125,8 @@ export default class UtilsClassView extends Component{
                 </ul>
                 <h2>visibility</h2>
                 <ul>
-                    <h5>*为xs、sm、md、lg、xl</h5>
                     <li>.invisible</li>
                     <li>.hidden</li>
-                    <li>.hidden-*-up</li>
-                    <li>.hidden-*-down</li>
                 </ul>
             </Card>
         );
