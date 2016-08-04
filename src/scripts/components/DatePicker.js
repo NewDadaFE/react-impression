@@ -325,7 +325,7 @@ export default class DatePicker extends Component{
             { _yeargroup } = this.refs;
 
 
-        type === 'date' &&  _yeargroup && _yeargroup.scrollTop === 0 && this.resetMonthPanelScroll();
+        type === 'date' && _yeargroup && _yeargroup.scrollTop === 0 && this.resetMonthPanelScroll();
     }
     /**
      * 修改month面板的滚动条位置.
