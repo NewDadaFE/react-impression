@@ -65,7 +65,8 @@ export default class MessageView extends Component{
                         <li><code>Message.success(message, duration)</code></li>
                         <li><code>Message.warning(message, duration)</code></li>
                         <li><code>Message.error(message, duration)</code></li>
-                        <li><code>Message.loading(message, duration)</code></li>
+                        <li><code>Message.loading(message)</code></li>
+                        <li><code>Message.hideMessage()</code></li>
                     </ul>
                     <CommenTable
                         data = {[
