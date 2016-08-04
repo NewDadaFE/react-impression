@@ -1,6 +1,6 @@
 {
   "name": "impression-react",
-  "version": "0.1.17",
+  "version": "0.2.1",
   "author": "peter.shenlq",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",

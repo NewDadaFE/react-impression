@@ -47,23 +47,23 @@ export default class RadioGroup extends Component{
     render(){
         let { className, name, direction, onChange, children, ...others } = this.props;
 
-            children = React.Children.toArray(children);
-            children = children.map((child, index) => {
-                let { value, disabled } = child.props,
-                    options = {
-                        name: name || `radio_${this._reactInternalInstance._mountOrder}`,
-                        key: index,
-                        onChange:  onChange && this.onChangeHandle,
-                        disabled: disabled || this.props.disabled
-                    };
+        children = React.Children.toArray(children);
+        children = children.map((child, index) => {
+            let { value, disabled } = child.props,
+                options = {
+                    name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+                    key: index,
+                    onChange:  onChange && this.onChangeHandle,
+                    disabled: disabled || this.props.disabled
+                };
 
-                //是否选中
-                if((value !== undefined) || this.state.value !== undefined){
-                    options.checked = (this.state.value === value);
-                }
+            //是否选中
+            if((value !== undefined) || this.state.value !== undefined){
+                options.checked = (this.state.value === value);
+            }
 
-                return React.cloneElement(child, options);
-            });
+            return React.cloneElement(child, options);
+        });
 
         return(
             <div {...others} className={classnames(direction==='row'?'radio-inline': 'radio-vertical', className)}>

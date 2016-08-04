@@ -10,17 +10,15 @@ export default class CheckboxGroup extends Component{
         super(props, context);
 
         this.state = {
-            value: props.value || []
+            value: props.defaultValue || []
         };
-
-        this.onChangeHandle = this.onChangeHandle.bind(this);
     }
     //props校验
     static propTypes = {
         //自定义样式
         className: PropTypes.string,
         //默认是否选中
-        value: PropTypes.any,
+        defaultValue: PropTypes.any,
         //回调函数
         onChange: PropTypes.func,
         //是否disabled
@@ -33,9 +31,9 @@ export default class CheckboxGroup extends Component{
         disabled: false,
         direction: 'row'
     }
-    //radio切换回调函数
-    onChangeHandle(event){
-        let { value, checked} = event.target,
+    //checkbox选中回调函数
+    onChangeHandle = (event, value) => {
+        let { checked} = event.target,
             { onChange } = this.props,
             newValue = checked? [...this.state.value, value]: [...this.state.value.filter(item => item !== value)];
 
@@ -49,6 +47,7 @@ export default class CheckboxGroup extends Component{
     render(){
         let { className, direction, children, ...others } = this.props;
 
+        children = React.Children.toArray(children);
         children = children.map((child,index ) => {
             let { value, disabled, children } = child.props;
 

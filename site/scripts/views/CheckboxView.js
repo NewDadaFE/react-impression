@@ -15,7 +15,7 @@ export default class CheckboxView extends Component{
                                 <Form type="inline">
                                     <Form.Group>
                                         <label>interest:</label>
-                                        <CheckboxGroup value={['basketball', 'football']}>
+                                        <CheckboxGroup defaultValue={['basketball', 'football']}>
                                             <Checkbox>basketball</Checkbox>
                                             <Checkbox>football</Checkbox>
                                             <Checkbox>volleyball</Checkbox>
@@ -30,7 +30,7 @@ export default class CheckboxView extends Component{
                                 <Form type="inline">
                                     <Form.Group>
                                         <label>disabled:</label>
-                                        <CheckboxGroup value={['basketball', 'football']} disabled>
+                                        <CheckboxGroup defaultValue={['basketball', 'football']} disabled>
                                             <Checkbox>basketball</Checkbox>
                                             <Checkbox>football</Checkbox>
                                             <Checkbox>volleyball</Checkbox>
