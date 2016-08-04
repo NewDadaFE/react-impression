@@ -105,7 +105,7 @@ const showMessage = (style, message, duration=2000) => {
     });
 
     //隐藏消息
-    hideMessage(duration);
+    duration > 0 && hideMessage(duration);
 };
 
 //隐藏消息
@@ -138,6 +138,11 @@ Message.error = (message, duration) => {
 };
 
 //显示loading信息
-Message.loading = (message, duration) => {
-    showMessage('loading', message, duration);
+Message.loading = message => {
+    showMessage('loading', message, 0);
+};
+
+//隐藏信息
+Message.hideMessage = () => {
+    hideMessage(0);
 };

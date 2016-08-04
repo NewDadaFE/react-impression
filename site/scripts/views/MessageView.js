@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Message, Breadcrumb } from '../components/base';
+import { Card, Row, Col, Button, Message, Icon, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class MessageView extends Component{
@@ -16,7 +16,12 @@ export default class MessageView extends Component{
         Message.error('你好，这是一条error消息！');
     }
     showLoadingMessageHandle(){
-        Message.loading('正在执行中...');
+        Message.loading('正在执行中...', 0);
+
+        //5秒后关闭
+        setTimeout(() => {
+            Message.hideMessage();
+        }, 5000);
     }
     render(){
         return (
@@ -27,8 +32,8 @@ export default class MessageView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Button style="default" onClick={this.showInfoMessageHandle}>
-                                    <span className="text-primary">信息</span>
+                                <Button style="primary" outline onClick={this.showInfoMessageHandle}>
+                                    信息
                                 </Button>
                             </Col>
                             <Col>
@@ -37,8 +42,8 @@ export default class MessageView extends Component{
                                 </Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={this.showWarningMessageHandle}>
-                                    <span className="text-warning">警告</span>
+                                <Button style="secondary" outline onClick={this.showWarningMessageHandle}>
+                                    警告
                                 </Button>
                             </Col>
                             <Col>
@@ -47,8 +52,8 @@ export default class MessageView extends Component{
                                </Button>
                             </Col>
                             <Col>
-                               <Button style="default" onClick={this.showLoadingMessageHandle}>
-                                    <i className="fa fa-spinner offset-l"></i>Loading
+                               <Button style="primary" outline onClick={this.showLoadingMessageHandle}>
+                                    <Icon type="spinner" left/>Loading
                                </Button>
                             </Col>
                         </Row>
