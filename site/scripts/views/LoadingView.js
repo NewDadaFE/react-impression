@@ -47,6 +47,10 @@ export default class LoadingView extends Component{
                     </Card>
                     <Loading type={this.state.type} loadingMsg={this.state.msg} closeable={true}/>
                     <h3>Loading API</h3>
+                    <ul>
+                        <li><code>Loading.show()</code></li>
+                        <li><code>Loading.hide()</code></li>
+                    </ul>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Confirm, Breadcrumb, Button } from '../components/base';
+import { CommenTable } from '../components/';
 
 export default class ConfirmView extends Component{
     constructor(props, context){
@@ -51,6 +52,17 @@ export default class ConfirmView extends Component{
                            </Col>
                        </Row>
                     </Card>
+                    <h3>API</h3>
+                    <CommenTable
+                        data = {[
+                            ['onOkClick', '点击确认回调函数', 'function', ''],
+                            ['onCancelClick', '点击取消回调函数', 'function', ''],
+                            ['okText', '确认按钮显示文本', 'string', '确认'],
+                            ['cancleText', '取消按钮显示文本', 'string', '取消'],
+                            ['type', '弹框类型，可选值为 info、danger、warning', 'string', 'warning'],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
                 </Card>
                 { showConfirm1 &&
                     <Confirm onOkClick={this.toggleConfirm1Handle} onCancelClick={this.toggleConfirm1Handle}>
