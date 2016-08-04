@@ -32,7 +32,7 @@ export default class Radio extends Component{
 
         return(
             <label {...others} className={classnames('radio', className)}>
-                <input type="radio" value={value} name={name} checked={checked} defaultChecked={defaultChecked} disabled={disabled} onChange={onChange}/>
+                <input type="radio" name={name} checked={checked} defaultChecked={defaultChecked} disabled={disabled} onChange={event => onChange(event, value)}/>
                 <div className="radio-addon">
                     <i></i>
                 </div>

@@ -10,7 +10,7 @@ export default class RadioGroup extends Component{
         super(props, context);
 
         this.state = {
-            value: props.value
+            value: props.defaultValue
         };
     }
     //props校验
@@ -18,7 +18,7 @@ export default class RadioGroup extends Component{
         //自定义样式
         className: PropTypes.string,
         //默认是否选中
-        value: PropTypes.any,
+        defaultValue: PropTypes.any,
         //回调函数
         onChange: PropTypes.func,
         //是否disabled
@@ -34,33 +34,36 @@ export default class RadioGroup extends Component{
         direction: 'row'
     }
     //radio切换回调函数
-    onChangeHandle = event => {
-        let value = event.target.value,
-            { onChange } = this.props;
+    onChangeHandle = (event, value) => {
+        let { onChange } = this.props;
 
-        value !== 'on' && this.setState({
+        this.setState({
             value
         });
+
         onChange && onChange(value, event);
     }
     //渲染
     render(){
-        let { className, name, direction, onChange, ...others } = this.props,
-            children = this.props.children.map((child, index) => {
-                let { value, disabled } = child.props,
-                    options = {
-                        name: name || `radio_${this._reactInternalInstance._mountOrder}`,
-                        key: index,
-                        onChange:  onChange && this.onChangeHandle,
-                        disabled: disabled || this.props.disabled
-                    };
+        let { className, name, direction, onChange, children, ...others } = this.props;
 
-                if((value !== undefined) || this.state.value !== undefined){
-                    options.checked = (this.state.value === value);
-                }
+        children = React.Children.toArray(children);
+        children = children.map((child, index) => {
+            let { value, disabled } = child.props,
+                options = {
+                    name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+                    key: index,
+                    onChange:  onChange && this.onChangeHandle,
+                    disabled: disabled || this.props.disabled
+                };
 
-                return React.cloneElement(child, options);
-            });
+            //是否选中
+            if((value !== undefined) || this.state.value !== undefined){
+                options.checked = (this.state.value === value);
+            }
+
+            return React.cloneElement(child, options);
+        });
 
         return(
             <div {...others} className={classnames(direction==='row'?'radio-inline': 'radio-vertical', className)}>

@@ -29,8 +29,7 @@ export default class Checkbox extends Component{
         return(
             <label {...others} className={classnames('checkbox', className)}>
                 <input type="checkbox" ref="main"
-                    value={value}
-                    onChange={onChange}
+                    onChange={event => onChange(event, value)}
                     disabled={disabled}
                     checked={checked}
                     defaultChecked={defaultChecked} />

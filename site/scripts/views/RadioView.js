@@ -7,6 +7,17 @@ export default class RadioView extends Component{
         // console.log(value);
     }
     render(){
+        let radioArray = [{
+            id: 1,
+            name: 'First'
+        }, {
+            id: 2,
+            name: 'Second'
+        }, {
+            id: 3,
+            name: 'Third'
+        }];
+
         return (
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
@@ -18,10 +29,10 @@ export default class RadioView extends Component{
                                 <Form>
                                     <Form.Group>
                                         <label>Radio</label>
-                                        <RadioGroup value="100" onChange={this.onChangeHandle}>
-                                            <Radio value="100">First</Radio>
-                                            <Radio value="101">Second</Radio>
-                                            <Radio value="102">Third</Radio>
+                                        <RadioGroup defaultValue={1} onChange={this.onChangeHandle}>
+                                           { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                <Radio key={index} value={item.id}>{item.name}</Radio>
+                                            )}
                                         </RadioGroup>
                                     </Form.Group>
                                 </Form>
