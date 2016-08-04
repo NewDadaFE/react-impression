@@ -56,15 +56,16 @@ export default class MessageView extends Component{
                     <Message/>
                     <h3>API</h3>
                     <ul>
-                        <li><code>Message.info(content)</code></li>
-                        <li><code>Message.success(content)</code></li>
-                        <li><code>Message.warning(content)</code></li>
-                        <li><code>Message.error(content)</code></li>
-                        <li><code>Message.loading(content)</code></li>
+                        <li><code>Message.info(message, duration)</code></li>
+                        <li><code>Message.success(message, duration)</code></li>
+                        <li><code>Message.warning(message, duration)</code></li>
+                        <li><code>Message.error(message, duration)</code></li>
+                        <li><code>Message.loading(message, duration)</code></li>
                     </ul>
                     <CommenTable
                         data = {[
-                            ['content', '提示内容', 'string', ''],
+                            ['message', '提示内容', 'string', ''],
+                            ['duration', '停留时间（ms）', 'number', '2000'],
                         ]}
                     ></CommenTable>
                 </Card>
