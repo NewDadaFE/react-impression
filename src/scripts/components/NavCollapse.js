@@ -39,7 +39,7 @@ export default class NavCollapse extends Component{
         delete others.active;
         children = React.Children.toArray(children);
         children = children.filter((child, index) => {
-            if(child.type && child.type.name === 'NavCollapseTitle'){
+            if(child.type && child.type.nowrap){
                 collapseTitle = React.cloneElement(child, {
                     onClick: this.toggleItemsHandle
                 });

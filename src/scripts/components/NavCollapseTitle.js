@@ -22,3 +22,5 @@ export default class NavCollapseTitle extends Component{
     }
 }
 
+NavCollapseTitle.nowrap = true;
+
