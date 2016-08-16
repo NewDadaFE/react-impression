@@ -120,6 +120,19 @@ export default class LayoutView extends Component{
                                <li>col 应配合 Row 使用，很方便实现栅格布局。</li>
                                <li>若要实现五等分，要自定义样式，flex 属性值为 0 0 20%，max-width 设置为20%。</li>
                            </ul>
+                           <h3 className="text-secondary">Flex API</h3>
+                           <CommenTable
+                               data = {[
+                                   ['align', '对其方式，可选值为top、middle、bottom', 'string', ''],
+                                   ['direction', '布局方向，可选值为row、column', 'string', 'row'],
+                               ]}
+                           ></CommenTable>
+                           <h3 className="text-secondary">Flex.Item API</h3>
+                           <CommenTable
+                               data = {[
+                                   ['flex', 'item 占比', 'number', '1'],
+                               ]}
+                           ></CommenTable>
                     </Card>
                 </Card>
             </div>
