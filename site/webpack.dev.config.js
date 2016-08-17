@@ -21,9 +21,6 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
-            '__SHOW_DEV_TOOLS__': false,
-            '__ENABLE_LOG__': true,
-            'NODE_ENV': 'development',
             'process.env.NODE_ENV': '"development"'
         }),
         new HtmlWebpackPlugin({

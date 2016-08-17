@@ -5,7 +5,10 @@
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
   "license": "MIT",
-  "repository": "https://github.com/shenlq/impression.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shenlq/impression.git"
+  },
   "scripts": {
     "eslint": "eslint ./src/scripts/",
     "scsslint": "scss-lint src/styles/**/*.scss",
@@ -16,15 +19,10 @@
     "compileminscss": "sass --style compressed src/styles/index.scss lib/index.min.css",
     "deploy": "npm run eslint && npm run scsslint && npm run clean && npm run compilejs && npm run compilescss && npm run compileminscss && npm run copy && npm publish"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shenlq/impression.git"
-  },
   "homepage": "https://github.com/shenlq/impression",
   "dependencies": {
-    "classnames": ">=2.2.0",
-    "moment": ">=2.0.0",
-    "react-addons-css-transition-group": ">=15.0.0"
+    "classnames": "^2.2.0",
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -32,6 +30,7 @@
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.4",
     "babel-plugin-transform-class-properties": "^6.8.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-runtime": "^6.8.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
@@ -42,3 +41,4 @@
     "eslint-plugin-react": "^5.0.1"
   }
 }
+

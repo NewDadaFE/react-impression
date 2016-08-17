@@ -22,6 +22,7 @@ export default class InputView extends Component{
      */
     toggleModalHandle(){
         let { show } = this.state;
+
         this.setState({
             show: !show
         });

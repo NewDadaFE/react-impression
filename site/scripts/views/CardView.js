@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Image, Breadcrumb } from  '../components/base';
+import { Card, Row, Col, Button, Image, Breadcrumb } from '../components/base';
 import { CommenTable } from '../components';
 
 export default class CardView extends Component{

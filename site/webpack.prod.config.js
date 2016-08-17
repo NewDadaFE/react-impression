@@ -12,10 +12,14 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            '__SHOW_DEV_TOOLS__': false,
-            '__ENABLE_LOG__': false,
-            'NODE_ENV': 'production',
             'process.env.NODE_ENV': '"production"'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: true,
+            comments: false,
+            mangle: {
+                except: ['$super', '$', 'exports', 'require', 'module']
+            }
         })
     ],
     resolve: {
@@ -26,15 +30,9 @@ module.exports = {
             test: /\.js$/,
             loaders: ['babel'],
             exclude: /node_modules/
-        }, {
-            test: /\.scss$/,
-            loader: 'style!css!sass'
         },{
             test: /\.(png|jpg)$/,
             loader: 'url'
-        }, {
-            test: /\.json$/,
-            loader: "json"
         }]
     }
 };
