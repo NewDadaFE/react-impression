@@ -1,6 +1,6 @@
 {
   "name": "impression-react",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "peter.shenlq",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
@@ -17,7 +17,9 @@
     "compilejs": "node_modules/babel-cli/bin/babel.js src/scripts --out-dir lib",
     "compilescss": "sass src/styles/index.scss lib/index.css",
     "compileminscss": "sass --style compressed src/styles/index.scss lib/index.min.css",
-    "deploy": "npm run eslint && npm run scsslint && npm run clean && npm run compilejs && npm run compilescss && npm run compileminscss && npm run copy && npm publish"
+    "prebuild": "npm run eslint && npm run scsslint && npm run clean",
+    "build": "npm run compilejs && npm run compilescss && npm run compileminscss",
+    "postbuild": "npm run copy && npm publish"
   },
   "homepage": "https://github.com/shenlq/impression",
   "dependencies": {
