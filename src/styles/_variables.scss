@@ -456,7 +456,7 @@ $zindex-tooltip:                  1060 !default;
 // Navbar
 $navbar-height:                     60px !default;
 $navbar-line-height:                $navbar-height !default;
-$navbar-padding-x:                  3rem !default;
+$navbar-padding-x:                  1.25rem !default;
 $navbar-padding-y:                  0 !default;
 $navbar-brand-padding-y:            .25rem !default;
 
@@ -481,6 +481,12 @@ $navbar-pure-border-color:          $border-color !default;
 $sidebar-width:                                 14rem !default;
 $sidebar-color:                                 $gray-light !default;
 $sidebar-bg:                                    $gray-secondary !default;
+
+$sidebar-header-bg:                             url(../images/logo.png) center center no-repeat;
+$sidebar-header-bg-color:                       mix($sidebar-bg, $navbar-primary-bg, 90%);
+$sidebar-header-box-shadow:                     0 1px 0 darken($sidebar-header-bg-color, 6%) !default;
+$sidebar-header-font-size:                      $font-size-lg !default;
+$sidebar-header-color:                          $gray-lighter !default;
 
 $sidebar-footer-bg:                             darken($sidebar-bg, 3%) !default;
 $sidebar-footer-font-size:                      $font-size-sm !default;
@@ -521,14 +527,6 @@ $nav-link-hover-bg:                             $gray-lighter !default;
 $nav-disabled-link-color:                       $gray-light !default;
 $nav-disabled-link-hover-color:                 $gray-light !default;
 $nav-disabled-link-hover-bg:                    transparent !default;
-
-$navbar-sidebar-title-bg:                       url(../images/logo.png) center center no-repeat;
-$navbar-sidebar-title-bg-color:                 mix($sidebar-bg, $navbar-primary-bg, 90%);
-$navbar-sidebar-box-shadow:                     0 1px 0 darken($navbar-sidebar-title-bg-color, 6%) !default;
-$navbar-sidebar-title-font-size:                $font-size-lg !default;
-$navbar-sidebar-title-color:                    $gray-lighter !default;
-$navbar-sidebar-title-width:                    $sidebar-width !default;
-$navbar-sidebar-title-margin:                   0  $nav-item-spacer-x 0 $navbar-padding-x / -1 !default;
 
 
 $nav-tabs-link-color:                           $gray !default;

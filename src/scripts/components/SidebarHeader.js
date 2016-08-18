@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 
 /**
- * NavbarSidebarTitle 组件
+ * SidebarHeader 组件
  */
-export default class NavbarSidebarTitle extends Component{
+export default class SidebarHeader extends Component{
     //props校验
     static propTypes ={
         img: PropTypes.string,
@@ -15,7 +15,7 @@ export default class NavbarSidebarTitle extends Component{
         let { img, className, children, ...others } = this.props;
 
         return (
-            <div {...others} className={classnames('navbar-sidebar-title', className)}>
+            <div {...others} className={classnames('sidebar-header', className)}>
                 { img && <img src={img}/> }
                 { children }
             </div>

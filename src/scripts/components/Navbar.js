@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import NavbarBrand from './NavbarBrand';
-import NavbarSidebarTitle from './NavbarSidebarTitle';
 import React, { Component, PropTypes } from 'react';
 
 /**
@@ -29,4 +28,3 @@ export default class Navbar extends Component{
 }
 
 Navbar.Brand = NavbarBrand;
-Navbar.SidebarTitle = NavbarSidebarTitle;

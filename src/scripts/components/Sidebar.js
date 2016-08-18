@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import SidebarFooter from './SidebarFooter';
+import SidebarHeader from './SidebarHeader';
 
 /**
  * Sidebar 组件
@@ -22,4 +23,5 @@ export default class Sidebar extends Component{
     }
 }
 
+Sidebar.Header = SidebarHeader;
 Sidebar.Footer = SidebarFooter;

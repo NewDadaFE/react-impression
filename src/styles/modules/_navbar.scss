@@ -28,7 +28,7 @@
 
 
 //
-// Brand/project name
+// Brand
 //
 
 .navbar-brand {
@@ -41,26 +41,6 @@
 
     > img {
         display: block;
-    }
-}
-
-
-.navbar-sidebar-title {
-    height: 100%;
-    text-align: center;
-    display: inline-block;
-    font-size: $navbar-sidebar-title-font-size;
-    color: $navbar-sidebar-title-color;
-    width: $navbar-sidebar-title-width;
-    background: $navbar-sidebar-title-bg;
-    background-color: $navbar-sidebar-title-bg-color;
-    background-size: contain;
-    margin: $navbar-sidebar-title-margin;
-    box-shadow: $navbar-sidebar-box-shadow;
-
-    img {
-        max-height: $navbar-height;
-        max-width: $navbar-sidebar-title-width;
     }
 }
 

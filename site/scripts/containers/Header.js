@@ -9,7 +9,6 @@ export default class Header extends Component{
     render(){
         return (
             <Navbar>
-                <Navbar.SidebarTitle className="pull-left"><div style={{opacity: 0.6}}>Impression</div></Navbar.SidebarTitle>
                 <Flex align="middle">
                     <Flex.Item>
                         <Form type="inline">

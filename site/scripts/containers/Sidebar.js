@@ -13,6 +13,7 @@ export default class AppSidebar extends Component {
     render() {
         return (
             <Sidebar>
+                <Sidebar.Header>Impression</Sidebar.Header>
                 <Nav>
                     <Nav.Title>Basic</Nav.Title>
                     <Nav.Link>

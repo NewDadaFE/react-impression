@@ -102,6 +102,26 @@
     font-size: $sidebar-collapse-font-size;
 }
 
+
+//头部
+.sidebar-header {
+    text-align: center;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    font-size: $sidebar-header-font-size;
+    color: $sidebar-header-color;
+    background: $sidebar-header-bg;
+    background-color: $sidebar-header-bg-color;
+    background-size: contain;
+    box-shadow: $sidebar-header-box-shadow;
+
+    img {
+        max-height: $navbar-height;
+        max-width: $sidebar-width;
+    }
+}
+
+//底部
 .sidebar-footer {
     position: absolute;
     left: 0;
