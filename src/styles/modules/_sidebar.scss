@@ -1,16 +1,15 @@
 //侧边栏
 .sidebar {
-    position: relative;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     width: $sidebar-width;
     color: $sidebar-color;
     background-color: $sidebar-bg;
-    padding-bottom: $sidebar-footer-height;
 
     .nav {
-        height: 100%;
+        flex: 1;
         overflow-y: auto;
-        padding-bottom: $sidebar-nav-padding-bottom;
     }
 
     .nav-item {
@@ -123,15 +122,12 @@
 
 //底部
 .sidebar-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    display: flex;
     background: $sidebar-footer-bg;
     height: $sidebar-footer-height;
     line-height: $sidebar-footer-height;
     font-size: $sidebar-footer-font-size;
-    display: flex;
+    box-shadow: $sidebar-footer-box-shadow;
 }
 
 .sidebar-footer-item {

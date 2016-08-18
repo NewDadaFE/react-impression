@@ -488,11 +488,10 @@ $sidebar-header-box-shadow:                     0 1px 0 darken($sidebar-header-b
 $sidebar-header-font-size:                      $font-size-lg !default;
 $sidebar-header-color:                          $gray-lighter !default;
 
+$sidebar-footer-height:                         3rem !default;
 $sidebar-footer-bg:                             darken($sidebar-bg, 3%) !default;
+$sidebar-footer-box-shadow:                     0 -1px 0 darken($sidebar-footer-bg, 3%) !default;
 $sidebar-footer-font-size:                      $font-size-sm !default;
-$sidebar-footer-height:                         35px !default;
-
-$sidebar-nav-padding-bottom:                    2rem !default;
 
 $sidebar-nav-item-indent:                       0 !default;
 $sidebar-nav-link-color:                        #a7b1c2 !default;

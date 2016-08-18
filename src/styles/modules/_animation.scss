@@ -48,24 +48,14 @@
     }
 }
 
+.zoom-slide-leave,
 .zoom-slide-enter{
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
-    background: $page-transition-bg;
-    z-index: $zindex-page-transition;
-    box-shadow: $page-transition-enter-boxshadow;
-    transform-origin: center;
-    animation-duration: $page-transition-duration;
-    animation-timing-function: ease;
-    transition: opacity .6s linear;
-}
-
-.zoom-slide-leave {
-    overflow-y: auto;
+    overflow: hidden;
     background: $page-transition-bg;
     z-index: $zindex-page-transition;
     box-shadow: $page-transition-enter-boxshadow;
