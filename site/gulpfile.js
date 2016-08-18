@@ -46,7 +46,7 @@ gulp.task('sass-index', function(){
 gulp.task('sass-fontawesome', function(){
     return gulp.src('styles/font-awesome/index.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({browsers: ['last 30 version', '> 90%']}))
+    .pipe(autoprefixer({browsers: ['last 100 version', '> 99%']}))
     .pipe(cssmin())
     .pipe(gulp.dest('build/styles/font-awesome'));
 });

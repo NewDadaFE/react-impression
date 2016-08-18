@@ -48,9 +48,7 @@
     }
 }
 
-
-.zoom-slide-enter,
-.zoom-slide-leave {
+.zoom-slide-enter{
     position: absolute;
     left: 0;
     top: 0;
@@ -60,15 +58,30 @@
     background: $page-transition-bg;
     z-index: $zindex-page-transition;
     box-shadow: $page-transition-enter-boxshadow;
-    transform-origin: center center;
+    transform-origin: center;
     animation-duration: $page-transition-duration;
     animation-timing-function: ease;
-    animation-fill-mode: both;
-    transition: all .6s linear;
+    transition: opacity .6s linear;
 }
 
-.zoom-slide-enter-active {
+.zoom-slide-leave {
+    overflow-y: auto;
+    background: $page-transition-bg;
+    z-index: $zindex-page-transition;
+    box-shadow: $page-transition-enter-boxshadow;
+    transform-origin: center;
+    animation-duration: $page-transition-duration;
+    animation-timing-function: ease;
+    transition: opacity .6s linear;
+}
+
+.zoom-slide-enter.zoom-slide-enter-active {
     animation-name: zoomSlideIn;
+}
+
+.zoom-slide-leave.zoom-slide-leave-active {
+    animation-name: zoomSlideOut;
+    box-shadow: $page-transition-leave-boxshadow;
 }
 
 
@@ -95,7 +108,7 @@
 
 @keyframes zoomSlideOut {
     25% {
-        opacity: .8;
+        opacity: 1;
         transform: scale(.8);
     }
 
@@ -103,11 +116,6 @@
         opacity: 0;
         transform: translateX(-100%) scale(.8);
     }
-}
-
-.zoom-slide-leave {
-    animation-name: zoomSlideOut;
-    box-shadow: $page-transition-leave-boxshadow;
 }
 
 
@@ -162,4 +170,23 @@
     100% {
         opacity: 1;
     }
+}
+
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
