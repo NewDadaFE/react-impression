@@ -1,6 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    DashboardPlugin = require('webpack-dashboard/plugin');
+
 
 
 module.exports = {

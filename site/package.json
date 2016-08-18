@@ -6,7 +6,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "eslint": "eslint ./scripts/",
-    "start": "npm run eslint && gulp build && node server.js",
+    "start": "npm run eslint && gulp build && webpack-dashboard -- node server.js",
     "watch": "gulp watch",
     "copy-impression-css": "cp -R ../src/styles/** styles",
     "copy-impression-js": "cp -R ../src/scripts/** scripts/components/base",
@@ -64,6 +64,7 @@
     "react-hot-loader": "^3.0.0-beta.2",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
+    "webpack-dashboard": "^0.1.1",
     "webpack-dev-server": "^1.14.1"
   }
 }

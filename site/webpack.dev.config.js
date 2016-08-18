@@ -1,7 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var port  = 9016;
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    DashboardPlugin = require('webpack-dashboard/plugin'),
+    port  = 9016;
 
 
 module.exports = {
@@ -27,7 +28,8 @@ module.exports = {
             filename: 'index.html',
             template: './index.html',
             inject: true
-        })
+        }),
+        new DashboardPlugin()
     ],
     module: {
         loaders: [{
