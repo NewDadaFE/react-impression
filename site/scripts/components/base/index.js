@@ -2,7 +2,6 @@ export Flex from './components/Flex';
 export Row from './components/Row';
 export Col from './components/Col';
 export Card from './components/Card';
-export Square from './components/Square';
 export Content from './components/Content';
 export Icon from './components/Icon';
 export Button from './components/Button';

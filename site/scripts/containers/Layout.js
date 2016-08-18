@@ -14,7 +14,7 @@ export default class Layout extends Component {
         let { children } = this.props;
 
         return (
-            <Flex className="square">
+            <Flex className="layout">
                 {/* 侧边栏 */}
                 <Sidebar/>
                 {/* 内容区 */}
