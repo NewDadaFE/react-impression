@@ -24,6 +24,7 @@
   "homepage": "https://github.com/shenlq/impression",
   "dependencies": {
     "classnames": "^2.2.0",
+    "highlight.js": "^9.6.0",
     "moment": "^2.14.1"
   },
   "devDependencies": {

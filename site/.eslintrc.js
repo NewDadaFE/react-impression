@@ -7,7 +7,7 @@ module.exports = {
     "settings": {
         "react": {
             "pragma": "React",
-            "version": "15.0"
+            "version": "15.0",
         }
     },
     "parser": "babel-eslint",
@@ -27,6 +27,8 @@ module.exports = {
         "no-var": 2,
         "react/jsx-uses-react": 1,
         "react/jsx-no-undef": 2,
+        "react/no-danger": 1,
+        "react/jsx-uses-vars": "error",
         "react/wrap-multilines": 2,
         "react/prop-types": 0,
         "arrow-parens": [2, "as-needed"],

@@ -12,7 +12,7 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:' + port,
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        './scripts/index'
+        './src/scripts/index'
     ],
     output: {
         path: path.join(__dirname, 'dist'),

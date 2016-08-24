@@ -1,0 +1,24 @@
+// Tags
+
+@mixin tag-variant($color) {
+    background-color: $color;
+
+    &[href] {
+        @include hover-focus {
+            background-color: darken($color, 10%);
+        }
+    }
+}
+
+
+@mixin tag-outline-variant($color) {
+    color: $color;
+    border: 1px solid $color;
+
+    &[href] {
+        @include hover-focus {
+            color: darken($color, 6%);
+            border-color: darken($color, 6%);
+        }
+    }
+}

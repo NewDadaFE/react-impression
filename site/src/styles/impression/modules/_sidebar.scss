@@ -1,0 +1,143 @@
+//侧边栏
+.sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: $sidebar-width;
+    color: $sidebar-color;
+    background-color: $sidebar-bg;
+
+    .nav {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .nav-item {
+        display: block;
+        text-indent: $sidebar-nav-item-indent;
+
+        + .nav-item {
+            margin-left: 0;
+        }
+    }
+
+    .nav-link,
+    .nav-collapse-title,
+    .nav-collapse-item {
+        display: block;
+        color: $sidebar-nav-link-color;
+        padding: $sidebar-nav-link-padding;
+        border-left: $sidebar-nav-link-border-width solid transparent;
+        border-right: $sidebar-nav-link-border-width solid transparent;
+    }
+
+    .nav-link,
+    .nav-collapse-title {
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+            color: $sidebar-nav-link-active-color;
+            background: $sidebar-nav-link-active-bg;
+            box-shadow: $sidebar-nav-link-active-box-shadow;
+        }
+
+        &.active {
+            border-left-color: $sidebar-nav-link-active-border-color;
+        }
+
+        .pull-right {
+            line-height: $line-height-base;
+        }
+    }
+}
+
+.nav-title {
+    padding: $nav-title-padding;
+    color: $nav-title-color;
+    font-size: $nav-title-font-size;
+}
+
+.nav-collapse {
+    transition: $sidebar-collapse-transition;
+
+    &.active {
+        box-shadow: $sidebar-collapse-active-shadow;
+
+        .nav-collapse-title {
+            color: $sidebar-nav-link-active-color;
+        }
+
+        .nav-collapse-title-addon {
+            transform-origin: center center;
+            transform: rotate(90deg);
+        }
+
+        .nav-collapse-items {
+            height: auto;
+            animation: $sidebar-collapse-animation;
+            background: $sidebar-collapse-active-bg;
+        }
+
+
+    }
+}
+
+.nav-collapse-title {
+    transition: $sidebar-collapse-transition;
+}
+
+.nav-collapse-title-addon {
+    float: right;
+    line-height: $line-height-base;
+    transition: $sidebar-collapse-transition;
+}
+
+.nav-collapse-items {
+    height: 0;
+    overflow: hidden;
+    text-indent: $sidebar-collapse-text-indent;
+    transform-origin: center 0;
+    font-size: $sidebar-collapse-font-size;
+}
+
+
+//头部
+.sidebar-header {
+    text-align: center;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    font-size: $sidebar-header-font-size;
+    color: $sidebar-header-color;
+    background: $sidebar-header-bg;
+    background-color: $sidebar-header-bg-color;
+    background-size: contain;
+    box-shadow: $sidebar-header-box-shadow;
+
+    img {
+        max-height: $navbar-height;
+        max-width: $sidebar-width;
+    }
+}
+
+//底部
+.sidebar-footer {
+    display: flex;
+    background: $sidebar-footer-bg;
+    height: $sidebar-footer-height;
+    line-height: $sidebar-footer-height;
+    font-size: $sidebar-footer-font-size;
+    box-shadow: $sidebar-footer-box-shadow;
+}
+
+.sidebar-footer-item {
+    flex: 1;
+    text-align: center;
+    color: $sidebar-nav-link-color;
+    border-top: $sidebar-nav-link-border-width solid transparent;
+
+    &:hover {
+        color: $sidebar-nav-link-active-color;
+        border-top-color: $sidebar-nav-link-active-border-color;
+    }
+}

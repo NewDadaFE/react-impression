@@ -1,1 +1,0 @@
-export CommenTable from './CommenTable';
