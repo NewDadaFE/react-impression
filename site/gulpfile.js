@@ -15,26 +15,26 @@ gulp.task('clean', function(){
 });
 
 //复制图片
-gulp.task('copy-image', function(){
+gulp.task('copy:image', function(){
     return gulp.src('images/*.*')
     .pipe(imagemin({verbose: true}))
     .pipe(gulp.dest('build/images'));
 });
 
 //复制字体
-gulp.task('copy-font', function(){
+gulp.task('copy:font', function(){
     return gulp.src('styles/font-awesome/fonts/**')
     .pipe(gulp.dest('build/styles/fonts'));
 });
 
 //复制HTML
-gulp.task('copy-html', function(){
+gulp.task('copy:html', function(){
     return gulp.src('index.html')
     .pipe(gulp.dest('build'));
 });
 
 //编译impress
-gulp.task('sass-index', function(){
+gulp.task('sass:index', function(){
     return gulp.src('styles/index.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({browsers: ['last 30 version', '> 90%']}))
@@ -43,7 +43,7 @@ gulp.task('sass-index', function(){
 });
 
 //编译font-awesome
-gulp.task('sass-fontawesome', function(){
+gulp.task('sass:fontawesome', function(){
     return gulp.src('styles/font-awesome/index.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({browsers: ['last 100 version', '> 99%']}))
@@ -53,11 +53,11 @@ gulp.task('sass-fontawesome', function(){
 
 //监听
 gulp.task('watch', function(){
-    gulp.watch('styles/**/*.scss', ['sass-index']);
+    gulp.watch('styles/**/*.scss', ['sass:index']);
 });
 
 
 //本地启动
 gulp.task('build', function(cb) {
-    sequence('clean', ['copy-html', 'copy-image', 'copy-font'], ['sass-index', 'sass-fontawesome'], cb);
+    sequence('clean', ['copy:html', 'copy:image', 'copy:font'], ['sass:index', 'sass:fontawesome'], cb);
 });
