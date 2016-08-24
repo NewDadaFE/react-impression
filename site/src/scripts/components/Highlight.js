@@ -62,7 +62,7 @@ export default class Highlight extends Component {
         }
 
         return (
-            <div style={{marginTop: '-24px'}}>
+            <div style={{marginTop: '-20px'}}>
                 <div className="text-right">
                     <Button onClick={this.toggleCodeHandle} className="btn-code-toggle" style="default" size="sm">
                         <Icon type={show?'angle-double-up':'angle-double-down'}/>

@@ -34,32 +34,42 @@ class ButtonView extends Component{
                         </Highlight>
                     </Card>
                     <h5>Outline buttons</h5>
-                    <Card block className="bg-inverse">
-                        <Row>
-                            <Col col="2">
-                                <Button style="primary" outline>primary</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="default" outline>default</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="secondary" outline>secondary</Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block className="bg-inverse">
+                            <Row>
+                                <Col col="2">
+                                    <Button style="primary" outline>primary</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="default" outline>default</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="secondary" outline>secondary</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Button outline style="primary">primary</Button>\n<Button outline style="default">primary</Button>\n<Button outline style="secondary">primary</Button>`}
+                        </Highlight>
                     </Card>
                     <h5>Sizes</h5>
-                    <Card block>
-                        <Row>
-                            <Col col="2">
-                                <Button style="primary" size="sm">Sm</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="primary">Normal</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="primary" size="lg">Large</Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="2">
+                                    <Button style="primary" size="sm">Sm</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="primary">Normal</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="primary" size="lg">Large</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Button size="sm" style="primary">sm</Button>\n<Button style="primary">Normal</Button>\n<Button size="lg" style="primary">Large</Button>`}
+                        </Highlight>
                     </Card>
                     <h5>Pill buttons</h5>
                     <Card block>
