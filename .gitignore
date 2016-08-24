@@ -2,12 +2,8 @@
 /site/build
 /site/node_modules
 /site/.sass-cache
-/site/Makefile
-/site/scripts/components/base
-/site/styles/*.scss
-/site/styles/mixins
-/site/styles/modules
-/site/styles/utilities
+/site/src/scripts/components/impression
+/site/src/styles/impression
 /build
 /cache
 /app
