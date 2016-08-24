@@ -1,11 +1,20 @@
+import classnames from 'classnames';
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import hljs from 'highlight.js';
+import { Card, Button, Icon } from './impression'
 
 /**
  * 代码展示组件.
  */
 export default class Highlight extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            show: undefined !== props.show? props.show : false
+        };
+    }
     static propTypes = {
         innerHTML: PropTypes.bool,
         className: PropTypes.string,
@@ -33,8 +42,16 @@ export default class Highlight extends Component {
             }
         }
     }
+    toggleCodeHandle = () => {
+        let { show } = this.state;
+
+        this.setState({
+            show: !show
+        });
+    }
     render() {
-        const { innerHTML, children, className } = this.props;
+        let { innerHTML, children, className } = this.props,
+            { show } = this.state;
 
         if (innerHTML) {
             return (
@@ -45,9 +62,18 @@ export default class Highlight extends Component {
         }
 
         return (
-            <pre>
-                <code className={className}>{children}</code>
-            </pre>
+            <div style={{marginTop: '-24px'}}>
+                <div className="text-right">
+                    <Button onClick={this.toggleCodeHandle} className="btn-code-toggle" style="default" size="sm">
+                        <Icon type={show?'angle-double-up':'angle-double-down'}/>
+                    </Button>
+                </div>
+                <Card className={classnames('no-margin', {hidden: !show})} noborder>
+                    <pre className="no-margin">
+                        <code className={className}>{children}</code>
+                    </pre>
+                </Card>
+            </div>
         );
     }
 }

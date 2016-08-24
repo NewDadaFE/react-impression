@@ -9,35 +9,30 @@ class ButtonView extends Component{
         this.props.router.push('/layout');
     }
     render(){
-        let code = `<LineChart width={500} height={300} data={data}>
-    <XAxis dataKey="name"/>
-    <YAxis/>
-    <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-    <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
-  </LineChart>`;
 
         return (
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Basic</h5>
-                    <Card block>
-                        <Row>
-                            <Col col="2">
-                                <Button type="button" style="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="default">default</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="secondary">secondary</Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="2">
+                                    <Button type="button" style="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="default">default</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button style="secondary">secondary</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Button } from 'impression-react';\n\n<Button style="primary">primary</Button>\n<Button style="default">primary</Button>\n<Button style="secondary">primary</Button>`}
+                        </Highlight>
                     </Card>
-                    <Highlight>
-                        {code}
-                    </Highlight>
                     <h5>Outline buttons</h5>
                     <Card block className="bg-inverse">
                         <Row>
