@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Checkbox, CheckboxGroup, Form,Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class CheckboxView extends Component{
     render(){
@@ -9,38 +9,45 @@ export default class CheckboxView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Checkbox</h5>
-                    <Row>
-                        <Col>
-                            <Card block>
-                                <Form type="inline">
-                                    <Form.Group>
-                                        <label>interest:</label>
-                                        <CheckboxGroup defaultValue={['basketball', 'football']}>
-                                            <Checkbox>basketball</Checkbox>
-                                            <Checkbox>football</Checkbox>
-                                            <Checkbox>volleyball</Checkbox>
-                                            <Checkbox>ping-pong</Checkbox>
-                                        </CheckboxGroup>
-                                    </Form.Group>
-                                </Form>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card block>
-                                <Form type="inline">
-                                    <Form.Group>
-                                        <label>disabled:</label>
-                                        <CheckboxGroup defaultValue={['basketball', 'football']} disabled>
-                                            <Checkbox>basketball</Checkbox>
-                                            <Checkbox>football</Checkbox>
-                                            <Checkbox>volleyball</Checkbox>
-                                            <Checkbox>ping-pong</Checkbox>
-                                        </CheckboxGroup>
-                                    </Form.Group>
-                                </Form>
-                            </Card>
-                        </Col>
-                    </Row>
+                    <Card >
+                        <Card block noborder>
+                            <Row>
+                                <Col>
+                                    <Card block>
+                                        <Form type="inline">
+                                            <Form.Group>
+                                                <label>interest:</label>
+                                                <CheckboxGroup defaultValue={['basketball', 'football']}>
+                                                    <Checkbox>basketball</Checkbox>
+                                                    <Checkbox>football</Checkbox>
+                                                    <Checkbox>volleyball</Checkbox>
+                                                    <Checkbox>ping-pong</Checkbox>
+                                                </CheckboxGroup>
+                                            </Form.Group>
+                                        </Form>
+                                    </Card>
+                                </Col>
+                                <Col>
+                                    <Card block>
+                                        <Form type="inline">
+                                            <Form.Group>
+                                                <label>disabled:</label>
+                                                <CheckboxGroup defaultValue={['basketball', 'football']} disabled>
+                                                    <Checkbox>basketball</Checkbox>
+                                                    <Checkbox>football</Checkbox>
+                                                    <Checkbox>volleyball</Checkbox>
+                                                    <Checkbox>ping-pong</Checkbox>
+                                                </CheckboxGroup>
+                                            </Form.Group>
+                                        </Form>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Card>
+                        <Highlight>
+                            {`import { Checkbox, CheckboxGroup } from 'impression-react';\n\n<CheckboxGroup defaultValue={['basketball', ...]}><Checkbox>basketball</Checkbox>...</CheckboxGroup>\n<CheckboxGroup defaultValue={['basketball', ...]} disabled> ...</CheckboxGroup>`}
+                        </Highlight>
+                    </Card>
                     <h5 className="text-secondary">Checkbox API</h5>
                     <CommenTable
                         data = {[
