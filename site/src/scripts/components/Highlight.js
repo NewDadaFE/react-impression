@@ -16,32 +16,17 @@ export default class Highlight extends Component {
         };
     }
     static propTypes = {
-        innerHTML: PropTypes.bool,
-        className: PropTypes.string,
-        children: PropTypes.node,
+        innerHTML: PropTypes.string,
+        children: PropTypes.string,
     };
+    //格式化代码
+    highlightCode(){
+        let domNode = ReactDOM.findDOMNode(this),
+            nodes = domNode.querySelectorAll('pre code');
 
-    static defaultProps = {
-        innerHTML: false,
-        className: null,
-    };
-    componentDidMount(){
-        this.highlightCode();
+        nodes.forEach(node => hljs.highlightBlock(node));
     }
-
-    componentDidUpdate(){
-        this.highlightCode();
-    }
-    highlightCode() {
-        const domNode = ReactDOM.findDOMNode(this);
-        const nodes = domNode.querySelectorAll('pre code');
-
-        if (nodes.length > 0) {
-            for (let i = 0; i < nodes.length; i++) {
-                hljs.highlightBlock(nodes[i]);
-            }
-        }
-    }
+    //显示/隐藏代码
     toggleCodeHandle = () => {
         let { show } = this.state;
 
@@ -49,28 +34,36 @@ export default class Highlight extends Component {
             show: !show
         });
     }
+    componentDidMount(){
+        this.highlightCode();
+    }
+    componentDidUpdate(){
+        this.highlightCode();
+    }
     render() {
-        let { innerHTML, children, className } = this.props,
+        let { innerHTML, children, ...others } = this.props,
             { show } = this.state;
 
         if (innerHTML) {
+            innerHTML = innerHTML.trim();
+
             return (
                 <div
-                    dangerouslySetInnerHTML={{ __html: children }}
-                    className={className || null}></div>
+                    dangerouslySetInnerHTML={{ __html: innerHTML }}
+                    {...others}></div>
             );
         }
 
         return (
-            <div style={{marginTop: '-20px'}}>
+            <div style={{marginTop: '-20px'}} {...others}>
                 <div className="text-right">
-                    <Button onClick={this.toggleCodeHandle} className="btn-code-toggle" style="default" size="sm">
-                        <Icon type={show?'angle-double-up':'angle-double-down'}/>
+                    <Button onClick={this.toggleCodeHandle} className="btn-code-toggle" theme="default" size="sm">
+                        <Icon type={show?'angle-double-up':'code'}/>
                     </Button>
                 </div>
                 <Card className={classnames('no-margin', {hidden: !show})} noborder>
                     <pre className="no-margin">
-                        <code className={className}>{children}</code>
+                        <code>{children}</code>
                     </pre>
                 </Card>
             </div>

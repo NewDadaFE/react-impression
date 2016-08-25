@@ -19,37 +19,37 @@ class ButtonView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col col="2">
-                                    <Button type="button" style="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
+                                    <Button type="button" theme="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
                                 </Col>
                                 <Col col="2">
-                                    <Button style="default">default</Button>
+                                    <Button theme="default">default</Button>
                                 </Col>
                                 <Col col="2">
-                                    <Button style="secondary">secondary</Button>
+                                    <Button theme="secondary">secondary</Button>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Button } from 'impression-react';\n\n<Button style="primary">primary</Button>\n<Button style="default">primary</Button>\n<Button style="secondary">primary</Button>`}
+                            {`import { Button } from 'impression-react';\n\n<Button theme="primary">primary</Button>\n<Button theme="default">primary</Button>\n<Button theme="secondary">primary</Button>`}
                         </Highlight>
                     </Card>
-                    <h5>Outline buttons</h5>
+                    <h5>Outline</h5>
                     <Card>
                         <Card.Block className="bg-inverse">
                             <Row>
                                 <Col col="2">
-                                    <Button style="primary" outline>primary</Button>
+                                    <Button theme="primary" outline>primary</Button>
                                 </Col>
                                 <Col col="2">
-                                    <Button style="default" outline>default</Button>
+                                    <Button theme="default" outline>default</Button>
                                 </Col>
                                 <Col col="2">
-                                    <Button style="secondary" outline>secondary</Button>
+                                    <Button theme="secondary" outline>secondary</Button>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Button outline style="primary">primary</Button>\n<Button outline style="default">primary</Button>\n<Button outline style="secondary">primary</Button>`}
+                            {`<Button outline theme="primary">primary</Button>\n<Button outline theme="default">primary</Button>\n<Button outline theme="secondary">primary</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Sizes</h5>
@@ -57,52 +57,62 @@ class ButtonView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col col="2">
-                                    <Button style="primary" size="sm">Sm</Button>
+                                    <Button theme="primary" size="sm">Sm</Button>
                                 </Col>
                                 <Col col="2">
-                                    <Button style="primary">Normal</Button>
+                                    <Button theme="primary">Normal</Button>
                                 </Col>
                                 <Col col="2">
-                                    <Button style="primary" size="lg">Large</Button>
+                                    <Button theme="primary" size="lg">Large</Button>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Button size="sm" style="primary">sm</Button>\n<Button style="primary">Normal</Button>\n<Button size="lg" style="primary">Large</Button>`}
+                            {`<Button size="sm" theme="primary">sm</Button>\n<Button theme="primary">Normal</Button>\n<Button size="lg" theme="primary">Large</Button>`}
                         </Highlight>
                     </Card>
-                    <h5>Pill buttons</h5>
-                    <Card block>
-                        <Row>
-                            <Col col="2">
-                                <Button style="primary" shape="pill">primary</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="default" shape="pill">default</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="secondary" shape="pill">secondary</Button>
-                            </Col>
-                        </Row>
+                    <h5>Pill</h5>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="2">
+                                    <Button theme="primary" shape="pill">primary</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button theme="default" shape="pill">default</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button theme="secondary" shape="pill">secondary</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Button theme="primary" shape="pill">primary</Button>\n<Button theme="default" shape="pill">default</Button>\n<Button theme="secondary" shape="pill">secondary</Button>`}
+                        </Highlight>
                     </Card>
-                    <h5>Link buttons</h5>
-                    <Card block>
-                        <Row>
-                            <Col col="2">
-                                <Button style="primary" href="www.github.com">primary</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="default" href="www.github.com">default</Button>
-                            </Col>
-                            <Col col="2">
-                                <Button style="secondary" href="www.github.com">secondary</Button>
-                            </Col>
-                        </Row>
+                    <h5>Link</h5>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="2">
+                                    <Button theme="primary" href="www.github.com">primary</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button theme="default" href="www.github.com">default</Button>
+                                </Col>
+                                <Col col="2">
+                                    <Button theme="secondary" href="www.github.com">secondary</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Button theme="primary" href="www.github.com">primary</Button>\n<Button theme="default" href="www.github.com">default</Button>\n<Button theme="secondary" href="www.github.com">secondary</Button>`}
+                        </Highlight>
                     </Card>
-                    <h5 className="text-secondary">API</h5>
+                    <h5>API</h5>
                     <CommenTable
                         data = {[
-                            ['style', '设置按钮的样式，可选值为 primary、default、secondary', 'string', 'primary'],
+                            ['theme', '设置按钮的样式，可选值为 primary、default、secondary', 'string', 'primary'],
                             ['onClick', 'click 事件的 handler', 'function', ''],
                             ['outline', '设置按钮样式是否有外边线', 'boolean', 'false'],
                             ['size', '设置按钮大小，可选值为 sm、normal、large', 'string', ''],
@@ -112,11 +122,6 @@ class ButtonView extends Component{
                             ['classname', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h5 className="text-secondary">组件应用扩展</h5>
-                    <ul>
-                        <li>style、size、shape 可自行扩展，样式改变本质是字符串拼接。</li>
-                        <li>为 Button 设置路由跳转可在 onClick 事件函数内添加路由跳转。</li>
-                    </ul>
                 </Card>
             </div>
         );

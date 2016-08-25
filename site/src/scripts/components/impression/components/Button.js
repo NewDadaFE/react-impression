@@ -15,7 +15,7 @@ export default class Button extends Component{
     //prop type校验
     static propTypes = {
         //样式（primary、default、secondary）
-        style: PropTypes.string,
+        theme: PropTypes.string,
         //自定义样式
         className: PropTypes.string,
         //click事件
@@ -35,16 +35,16 @@ export default class Button extends Component{
     }
     //默认props
     static defaultProps = {
-        style: 'primary'
+        theme: 'primary'
     }
     //渲染
     render(){
-        let { style, outline, size, shape, className, onClick, href, close, block, children, ...others} = this.props,
+        let { theme, outline, size, shape, className, onClick, href, close, block, children, ...others} = this.props,
             { Tag } = this.state,
             btnClass = !close? 'btn' : null,
-            styleClass = !close? `btn${outline?'-outline':''}-${style}` : null,
-            sizeClass = size? `btn-${size}` : '',
-            shapeClass = shape? `btn-${shape}` : '',
+            styleClass = !close? `btn${outline?'-outline':''}-${theme}` : null,
+            sizeClass = size? `btn-${size}` : null,
+            shapeClass = shape? `btn-${shape}` : null,
             closeClass = close? 'close' : null,
             blockClass = block? 'btn-block' : null;
 

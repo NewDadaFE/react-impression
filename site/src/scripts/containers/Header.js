@@ -12,7 +12,7 @@ export default class Header extends Component{
                 <Flex align="middle">
                     <Flex.Item>
                         <Form type="inline">
-                            <Button style="secondary"><i className="fa fa-bars"></i></Button>
+                            <Button theme="secondary"><i className="fa fa-bars"></i></Button>
                             <Input type="text" pill style={{width: '220px'}}>
                                 <Icon type="search"/>
                             </Input>
