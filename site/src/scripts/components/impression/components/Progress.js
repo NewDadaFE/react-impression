@@ -8,7 +8,7 @@ export default class Progress extends Component{
     //prop type校验
     static propTypes = {
         //样式
-        style: PropTypes.string,
+        theme: PropTypes.string,
         //斑马线
         striped: PropTypes.bool,
         //值
@@ -29,12 +29,10 @@ export default class Progress extends Component{
     }
     //渲染
     render(){
-        let { style, striped, value, max, className, ...others } = this.props,
-            styleClass = style? `progress-${style}`: '',
+        let { theme, striped, value, max, className, ...others } = this.props,
+            themeClass = theme? `progress-${theme}`: '',
             stripedClass = striped? `progress-striped`: '';
 
-        return (
-            <progress {...others} className={classnames('progress', styleClass, stripedClass, className)} value={value} max={max}></progress>
-        );
+        return <progress {...others} className={classnames('progress', themeClass, stripedClass, className)} value={value} max={max}></progress>;
     }
 }

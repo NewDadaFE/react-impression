@@ -484,7 +484,7 @@ $sidebar-bg:                                    $gray-secondary !default;
 
 $sidebar-header-bg:                             url(../images/logo.png) center center no-repeat;
 $sidebar-header-bg-color:                       mix($sidebar-bg, $navbar-primary-bg, 90%);
-$sidebar-header-box-shadow:                     0 1px 0 darken($sidebar-header-bg-color, 6%) !default;
+$sidebar-header-border:                         darken($sidebar-header-bg-color, 6%) !default;
 $sidebar-header-font-size:                      $font-size-lg !default;
 $sidebar-header-color:                          $gray-lighter !default;
 

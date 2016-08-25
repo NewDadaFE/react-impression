@@ -8,7 +8,7 @@ export default class Tag extends Component{
     //props校验
     static propTypes = {
         //样式（default、primary、success、info、warning、danger）
-        style: PropTypes.string,
+        theme: PropTypes.string,
         //形状（pill）
         shape: PropTypes.string,
         //是否outline
@@ -23,14 +23,14 @@ export default class Tag extends Component{
     }
     //默认props
     static defaultProps = {
-        style: 'default',
+        theme: 'default',
         closable: false,
         outline: false,
     }
     //渲染
     render(){
-        let { style, closable, onClose, shape, outline, children, className, ...others } = this.props,
-            tagStyle = outline? `tag-outline-${style}` : `tag-${style}`,
+        let { theme, closable, onClose, shape, outline, children, className, ...others } = this.props,
+            tagStyle = outline? `tag-outline-${theme}` : `tag-${theme}`,
             tagShape = shape? `tag-${shape}` : '';
 
         return (

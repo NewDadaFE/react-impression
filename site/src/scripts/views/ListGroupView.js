@@ -25,23 +25,23 @@ export default class ListGroupView extends Component{
                                 <h5>Tags</h5>
                                 <ListGroup>
                                     <ListGroup.Item>
-                                        <Tag style="default" className="pull-right" shape="pill">1</Tag>
+                                        <Tag theme="default" className="pull-right" shape="pill">1</Tag>
                                         lorem
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Tag style="warning" className="pull-right" shape="pill">2</Tag>
+                                        <Tag theme="warning" className="pull-right" shape="pill">2</Tag>
                                         Dapibus ac facilisis in
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Tag style="danger" className="pull-right" shape="pill">3</Tag>
+                                        <Tag theme="danger" className="pull-right" shape="pill">3</Tag>
                                         Morbi leo risus
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Tag style="success" className="pull-right" shape="pill">4</Tag>
+                                        <Tag theme="success" className="pull-right" shape="pill">4</Tag>
                                         Porta ac consectetur ac
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Tag style="primary" className="pull-right" shape="pill">5</Tag>
+                                        <Tag theme="primary" className="pull-right" shape="pill">5</Tag>
                                         Vestibulum at eros
                                     </ListGroup.Item>
                                 </ListGroup>

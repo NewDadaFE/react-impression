@@ -40,17 +40,17 @@ export default class ProgressView extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <Progress value="50" style="success"/>
+                                <Progress value="50" theme="success"/>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Progress value="50" style="warning"/>
+                                <Progress value="50" theme="warning"/>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Progress value="50" style="danger"/>
+                                <Progress value="50" theme="danger"/>
                             </Col>
                         </Row>
                     </Card>
@@ -63,24 +63,24 @@ export default class ProgressView extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <Progress value="50" style="success" striped/>
+                                <Progress value="50" theme="success" striped/>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Progress value="50" style="warning" striped/>
+                                <Progress value="50" theme="warning" striped/>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Progress value="50" style="danger" striped/>
+                                <Progress value="50" theme="danger" striped/>
                             </Col>
                         </Row>
                     </Card>
                     <h3 className="text-secondary">API</h3>
                     <CommenTable
                         data = {[
-                            ['style', '设置进度条样式，可选值为 success、warning、danger', 'string', ''],
+                            ['theme', '设置进度条样式，可选值为 success、warning、danger', 'string', ''],
                             ['striped', '是否为斑马线样式', 'boolean', 'false'],
                             ['value', '进度值，必填', 'string、number', ''],
                             ['max', '设置最大值', 'string、number', '100'],

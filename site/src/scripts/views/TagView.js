@@ -29,113 +29,113 @@ export default class TagView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Examples</h3>
+                    <h5>Examples</h5>
                     <Card block>
                         <h1>Example heading <Tag>tag</Tag></h1>
                         <h2>Example heading <Tag>tag</Tag></h2>
-                        <h3>Example heading <Tag>tag</Tag></h3>
+                        <h5>Example heading <Tag>tag</Tag></h5>
                         <h4>Example heading <Tag>tag</Tag></h4>
                         <h5>Example heading <Tag>tag</Tag></h5>
                         <h6>Example heading <Tag>tag</Tag></h6>
                     </Card>
-                    <h3>Theme tag</h3>
+                    <h5>Theme tag</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Tag style="default">default</Tag>
+                                <Tag theme="default">default</Tag>
                             </Col>
                             <Col>
-                                <Tag style="primary">primary</Tag>
+                                <Tag theme="primary">primary</Tag>
                             </Col>
                             <Col>
-                                <Tag style="success">success</Tag>
+                                <Tag theme="success">success</Tag>
                             </Col>
                             <Col>
-                                <Tag style="info">info</Tag>
+                                <Tag theme="info">info</Tag>
                             </Col>
                             <Col>
-                                <Tag style="warning">warning</Tag>
+                                <Tag theme="warning">warning</Tag>
                             </Col>
                             <Col>
-                                <Tag style="danger">danger</Tag>
+                                <Tag theme="danger">danger</Tag>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Closeable</h3>
+                    <h5>Closeable</h5>
                     <Card block>
                         <Row>
                             <Col>
                                 { shows[0] &&
-                                    <Tag closable onClose={() => this.closeTagHandle(0)} style="default" className="offset-l">apple</Tag>
+                                    <Tag closable onClose={() => this.closeTagHandle(0)} theme="default" className="offset-l">apple</Tag>
                                 }
                                 { shows[1] &&
-                                    <Tag closable onClose={() => this.closeTagHandle(1)} style="default" className="offset-l">orange</Tag>
+                                    <Tag closable onClose={() => this.closeTagHandle(1)} theme="default" className="offset-l">orange</Tag>
                                 }
                                 { shows[2] &&
-                                    <Tag closable onClose={() => this.closeTagHandle(2)} style="default" className="offset-l">banana</Tag>
+                                    <Tag closable onClose={() => this.closeTagHandle(2)} theme="default" className="offset-l">banana</Tag>
                                 }
                                 { shows[3] &&
-                                    <Tag closable onClose={() => this.closeTagHandle(3)} style="default" className="offset-l">pear</Tag>
+                                    <Tag closable onClose={() => this.closeTagHandle(3)} theme="default" className="offset-l">pear</Tag>
                                 }
                                 { shows[4] &&
-                                    <Tag closable onClose={() => this.closeTagHandle(4)} style="default" className="offset-l">watermelon</Tag>
+                                    <Tag closable onClose={() => this.closeTagHandle(4)} theme="default" className="offset-l">watermelon</Tag>
                                 }
                                 { shows[5] &&
-                                    <Tag closable onClose={() => this.closeTagHandle(5)} style="default" className="offset-l">peach</Tag>
+                                    <Tag closable onClose={() => this.closeTagHandle(5)} theme="default" className="offset-l">peach</Tag>
                                 }
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Pill tag</h3>
+                    <h5>Pill tag</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Tag style="default" shape="pill">default</Tag>
+                                <Tag theme="default" shape="pill">default</Tag>
                             </Col>
                             <Col>
-                                <Tag style="primary" shape="pill">primary</Tag>
+                                <Tag theme="primary" shape="pill">primary</Tag>
                             </Col>
                             <Col>
-                                <Tag style="success" shape="pill">success</Tag>
+                                <Tag theme="success" shape="pill">success</Tag>
                             </Col>
                             <Col>
-                                <Tag style="info" shape="pill">info</Tag>
+                                <Tag theme="info" shape="pill">info</Tag>
                             </Col>
                             <Col>
-                                <Tag style="warning" shape="pill">warning</Tag>
+                                <Tag theme="warning" shape="pill">warning</Tag>
                             </Col>
                             <Col>
-                                <Tag style="danger" shape="pill">danger</Tag>
+                                <Tag theme="danger" shape="pill">danger</Tag>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Outline tag</h3>
+                    <h5>Outline tag</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Tag style="default" outline>default</Tag>
+                                <Tag theme="default" outline>default</Tag>
                             </Col>
                             <Col>
-                                <Tag style="primary" outline>primary</Tag>
+                                <Tag theme="primary" outline>primary</Tag>
                             </Col>
                             <Col>
-                                <Tag style="success" outline>success</Tag>
+                                <Tag theme="success" outline>success</Tag>
                             </Col>
                             <Col>
-                                <Tag style="info" outline>info</Tag>
+                                <Tag theme="info" outline>info</Tag>
                             </Col>
                             <Col>
-                                <Tag style="warning" outline>warning</Tag>
+                                <Tag theme="warning" outline>warning</Tag>
                             </Col>
                             <Col>
-                                <Tag style="danger" outline>danger</Tag>
+                                <Tag theme="danger" outline>danger</Tag>
                             </Col>
                         </Row>
                     </Card>
-                    <h3 className="text-secondary">API</h3>
+                    <h5 className="text-secondary">API</h5>
                     <CommenTable
                         data = {[
-                            ['style', '设置标签样式，可选值为 default、primary、success、info、warning、danger', 'string', ''],
+                            ['theme', '设置标签样式，可选值为 default、primary、success、info、warning、danger', 'string', ''],
                             ['shape', '设置标签形状，可选值为 pill', 'string', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
