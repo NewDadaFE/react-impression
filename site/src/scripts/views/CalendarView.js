@@ -23,9 +23,9 @@ export default class CalendarView extends Component{
         case 3:
             return (
                 <div>
-                    <div><Badge type="legend" style="success">{date.day}</Badge></div>
-                    <div><Badge type="legend" style="warning">{date.day}</Badge></div>
-                    <div><Badge type="legend" style="danger">{date.day}</Badge></div>
+                    <div><Badge type="legend" theme="success">{date.day}</Badge></div>
+                    <div><Badge type="legend" theme="warning">{date.day}</Badge></div>
+                    <div><Badge type="legend" theme="danger">{date.day}</Badge></div>
                 </div>
             );
         case 5:
@@ -38,7 +38,7 @@ export default class CalendarView extends Component{
         case 13:
             return (
                 <div>
-                    <div><Badge type="legend" style="success">{date.day}</Badge></div>
+                    <div><Badge type="legend" theme="success">{date.day}</Badge></div>
                     <div>自定义内容1</div>
                     <div>自定义内容2</div>
                     <div>自定义内容3</div>
@@ -47,7 +47,7 @@ export default class CalendarView extends Component{
             );
         case 21:
         case 22:
-            return <Badge type="legend" style="danger">{date.day}</Badge>;
+            return <Badge type="legend" theme="danger">{date.day}</Badge>;
         }
     }
     checkDateCellRender(date){

@@ -42,7 +42,7 @@ export default class Button extends Component{
         let { theme, outline, size, shape, className, onClick, href, close, block, children, ...others} = this.props,
             { Tag } = this.state,
             btnClass = !close? 'btn' : null,
-            styleClass = !close? `btn${outline?'-outline':''}-${theme}` : null,
+            themeClass = !close? `btn${outline?'-outline':''}-${theme}` : null,
             sizeClass = size? `btn-${size}` : null,
             shapeClass = shape? `btn-${shape}` : null,
             closeClass = close? 'close' : null,
@@ -52,7 +52,7 @@ export default class Button extends Component{
 
         return(
             <Tag {...others} type={href?null:'button'} onClick={onClick} href={href}
-                className={classnames(btnClass, styleClass, sizeClass, shapeClass, closeClass, blockClass, className)}>
+                className={classnames(btnClass, themeClass, sizeClass, shapeClass, closeClass, blockClass, className)}>
                 {children}
             </Tag>
         );

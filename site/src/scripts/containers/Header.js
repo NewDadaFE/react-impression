@@ -25,7 +25,7 @@ export default class Header extends Component{
                         </span>
                         <a href="https://github.com/shenlq/impression" className="text-muted"><Icon size="lg" type="github"/></a>
                         <a href="javascript:void(0);" className="text-muted">
-                            <Badge style="danger">
+                            <Badge theme="danger">
                                 <Icon size="lg" type="bell"/>
                             </Badge>
                         </a>

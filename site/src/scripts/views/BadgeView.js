@@ -19,25 +19,25 @@ export default class BadgeView extends Component{
                                 <p className="text-primary">primary</p>
                             </Col>
                             <Col>
-                                <Badge content="16" style="secondary">
+                                <Badge content="16" theme="secondary">
                                     <div className="bg-default" style={{width: '50px', height: '50px'}}></div>
                                 </Badge>
                                 <p className="text-secondary">secondary</p>
                             </Col>
                             <Col>
-                                <Badge content="25" style="danger">
+                                <Badge content="25" theme="danger">
                                     <div className="bg-default" style={{width: '50px', height: '50px'}}></div>
                                 </Badge>
                                 <p className="text-danger">danger</p>
                             </Col>
                             <Col>
-                                <Badge content="33" style="success">
+                                <Badge content="33" theme="success">
                                     <div className="bg-default" style={{width: '50px', height: '50px'}}></div>
                                 </Badge>
                                 <p className="text-success">success</p>
                             </Col>
                             <Col>
-                                <Badge content="99+" style="inverse">
+                                <Badge content="99+" theme="inverse">
                                     <div className="bg-default" style={{width: '50px', height: '50px'}}></div>
                                 </Badge>
                                 <p>inverse</p>
@@ -53,17 +53,17 @@ export default class BadgeView extends Component{
                                 </Badge>
                             </Col>
                             <Col>
-                                <Badge style="danger">
+                                <Badge theme="danger">
                                     <Icon size="lg" type="bell-o"/>
                                 </Badge>
                             </Col>
                             <Col>
-                                <Badge style="danger">
+                                <Badge theme="danger">
                                     <Icon size="lg" type="envelope-o"/>
                                 </Badge>
                             </Col>
                             <Col>
-                                <Badge style="danger">
+                                <Badge theme="danger">
                                     <Icon size="lg" type="bullhorn"/>
                                 </Badge>
                             </Col>
@@ -76,13 +76,13 @@ export default class BadgeView extends Component{
                                 <Badge type="legend">primary</Badge>
                             </Col>
                             <Col>
-                                <Badge type="legend" style="danger">danger</Badge>
+                                <Badge type="legend" theme="danger">danger</Badge>
                             </Col>
                             <Col>
-                                <Badge type="legend" style="warning">warning</Badge>
+                                <Badge type="legend" theme="warning">warning</Badge>
                             </Col>
                             <Col>
-                                <Badge type="legend" style="success">success</Badge>
+                                <Badge type="legend" theme="success">success</Badge>
                             </Col>
                         </Row>
                     </Card>
@@ -90,7 +90,7 @@ export default class BadgeView extends Component{
                     <CommenTable
                         data = {[
                             ['content', '内容', 'string', ''],
-                            ['style', '样式，可选值为 primary、secondary、danger、success、inverse', 'string', 'primary'],
+                            ['theme', '样式，可选值为 primary、secondary、danger、success、inverse', 'string', 'primary'],
                             ['type', '类型，可选值为 legend', 'string', ''],
                             ['size', '尺寸，可选值为 lg、sm', 'string', ''],
                         ]}
