@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 
 /**
- * SidebarHeader 组件
+ * Sidebar 顶部组件
  */
 export default class SidebarHeader extends Component{
     //props校验

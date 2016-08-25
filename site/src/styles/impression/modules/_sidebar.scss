@@ -8,10 +8,6 @@
     color: $sidebar-color;
     background-color: $sidebar-bg;
 
-    .nav {
-        flex: 1;
-        overflow-y: auto;
-    }
 
     .nav-item {
         display: block;
@@ -118,6 +114,16 @@
     img {
         max-height: $navbar-height;
         max-width: $sidebar-width;
+    }
+}
+
+//主内容
+.sidebar-body {
+    flex: 1;
+    overflow-y: auto;
+
+    .nav {
+        margin-bottom: $sidebar-body-padding-bottom;
     }
 }
 
