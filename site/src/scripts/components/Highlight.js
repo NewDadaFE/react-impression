@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import hljs from 'highlight.js';
-import { Card, Button, Icon } from './impression'
+import { Card, Button, Icon } from './impression';
 
 /**
  * 代码展示组件.
