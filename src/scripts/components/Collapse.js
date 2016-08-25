@@ -34,8 +34,7 @@ export default class Collapse extends Component{
     //渲染
     render(){
         let { children, className, ...others } = this.props,
-            { active } = this.state,
-            collapseTitle = null;
+            { active } = this.state;
 
         delete others.active;
         children = React.Children.toArray(children);
