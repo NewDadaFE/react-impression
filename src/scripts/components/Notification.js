@@ -47,7 +47,7 @@ export default class Notification extends Component{
      * @param {[String]} options.message  [内容]
      * @param {Number}   options.duration [延时]
      */
-    addNotice({ title, message, duration=2000, closeable }, style){
+    addNotice({ title, message, duration=2000, closeable }, theme){
         let key = this.key++,
             state = { ...this.state };
 
@@ -55,7 +55,7 @@ export default class Notification extends Component{
         state[key] = {
             title,
             message,
-            style,
+            theme,
             closeable,
         };
         this.setState(state);
@@ -89,12 +89,12 @@ export default class Notification extends Component{
             <div className={classnames('notification', className)}>
                 <ReactCSSTransitionGroup component="div" transitionName="notice" transitionEnterTimeout={200} transitionLeaveTimeout={800}>
                     { Object.keys(this.state).map(key =>
-                      <Notice key={key} style={this.state[key].style}
-                      closeable={this.state[key].closeable}
-                      title={this.state[key].title}
-                      close={() => this.removeNotice(key)}>
-                            {this.state[key].message}
-                      </Notice>
+                        <Notice key={key} theme={this.state[key].theme}
+                            closeable={this.state[key].closeable}
+                            title={this.state[key].title}
+                            close={() => this.removeNotice(key)}>
+                                {this.state[key].message}
+                        </Notice>
                     )}
                 </ReactCSSTransitionGroup>
             </div>

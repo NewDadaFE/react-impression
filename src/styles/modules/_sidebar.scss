@@ -112,7 +112,7 @@
     background: $sidebar-header-bg;
     background-color: $sidebar-header-bg-color;
     background-size: contain;
-    box-shadow: $sidebar-header-box-shadow;
+    border-bottom: 1px solid $sidebar-header-border;
 
     img {
         max-height: $navbar-height;

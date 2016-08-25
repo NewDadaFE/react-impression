@@ -8,20 +8,20 @@ import Button from './Button';
 export default class InputGroupButton extends Component{
     //props校验
     static propTypes ={
-        style: PropTypes.string,
+        theme: PropTypes.string,
         className: PropTypes.string,
     }
     //默认props
     static defaultProps = {
-        style: 'primary',
+        theme: 'primary',
     }
     //渲染
     render(){
-        let { style, className, children, ...others } = this.props;
+        let { theme, className, children, ...others } = this.props;
 
         return(
             <span {...others} className="input-group-btn">
-                <Button style={style} className={classnames(className)}>
+                <Button theme={theme} className={classnames(className)}>
                     {children}
                 </Button>
             </span>

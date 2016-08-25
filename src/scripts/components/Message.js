@@ -17,17 +17,17 @@ export default class Message extends Component{
         this.state = {
             show: props.show || false,
             message: null,
-            style: props.style,
+            theme: props.theme,
         };
     }
     //prop type校验
     static propTypes = {
         //类型
-        style: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'loading']),
+        theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'loading']),
     }
     //默认props
     static defaultProps = {
-        style: 'info'
+        theme: 'info'
     }
     /**
      * 移除定时器.
@@ -40,7 +40,7 @@ export default class Message extends Component{
      * @return {[type]} [description]
      */
     getTitleIcon(){
-        let { style } = this.state;
+        let { theme } = this.state;
 
         return {
             info:     ['fa', 'fa-volume-up'],
@@ -48,14 +48,14 @@ export default class Message extends Component{
             warning:  ['fa', 'fa-exclamation-triangle'],
             danger:   ['fa', 'fa-times-circle'],
             loading:  ['message-loading'],
-        }[style];
+        }[theme];
     }
     /**
      * [获取主题样式]
      * @return {[String]} [主题样式类名]
      */
     getStyleClass(){
-        let { style } = this.state;
+        let { theme } = this.state;
 
         return {
             info:     'message-primary',
@@ -63,7 +63,7 @@ export default class Message extends Component{
             success:  'message-success',
             danger:   'message-danger',
             loading:  'message-primary',
-        }[style];
+        }[theme];
     }
     /**
      * 渲染.
@@ -71,14 +71,14 @@ export default class Message extends Component{
     render() {
         let { className } = this.props,
             { message, show } = this.state,
-            styleClass = this.getStyleClass(),
+            themeClass = this.getStyleClass(),
             iconClass = this.getTitleIcon();
 
         return (
             <div>
                 <ReactCSSTransitionGroup component="div" transitionName="message" transitionEnterTimeout={240} transitionLeaveTimeout={360}>
                     { show &&
-                        <div className={classnames('message', styleClass, className)}>
+                        <div className={classnames('message', themeClass, className)}>
                             <div className="message-header">
                                 <i className={classnames(iconClass)}></i>
                             </div>
@@ -92,14 +92,14 @@ export default class Message extends Component{
 }
 
 //显示消息
-const showMessage = (style, message, duration=2000) => {
+const showMessage = (theme, message, duration=2000) => {
     //清空隐藏消息定时器
     _timers.forEach(timer => clearTimeout(timer));
     _timers = [];
 
     _message.setState({
         show: true,
-        style,
+        theme,
         message,
         duration,
     });
