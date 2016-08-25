@@ -13,7 +13,7 @@ export default class ButtonGroupView extends Component{
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card block>
-                        <ButtonGroup style="default" activeKey="left" onSelect={this.btnGroupSelectHandle.bind(this)}>
+                        <ButtonGroup theme="default" activeKey="left" onSelect={this.btnGroupSelectHandle.bind(this)}>
                             <Button eventKey="left">Left</Button>
                             <Button eventKey="middle">Middle</Button>
                             <Button eventKey="right">Right</Button>
@@ -22,12 +22,12 @@ export default class ButtonGroupView extends Component{
                     <h3>Thems</h3>
                     <Card block>
                         <ButtonToolbar>
-                            <ButtonGroup style="primary" onSelect={this.btnGroupSelectHandle.bind(this)} activeKey="right">
+                            <ButtonGroup theme="primary" onSelect={this.btnGroupSelectHandle.bind(this)} activeKey="right">
                                 <Button eventKey="left">Left</Button>
                                 <Button eventKey="middle">Middle</Button>
                                 <Button eventKey="right">Right</Button>
                             </ButtonGroup>
-                            <ButtonGroup style="secondary" activeKey="middle" onSelect={this.btnGroupSelectHandle.bind(this)}>
+                            <ButtonGroup theme="secondary" activeKey="middle" onSelect={this.btnGroupSelectHandle.bind(this)}>
                                 <Button eventKey="left">Left</Button>
                                 <Button eventKey="middle">Middle</Button>
                                 <Button eventKey="right">Right</Button>
@@ -78,7 +78,7 @@ export default class ButtonGroupView extends Component{
                     <CommenTable
                         data = {[
                             ['size', '设置按钮组大小，可选值为 lg、sm', 'string', ''],
-                            ['style', '设置按钮组主题样式，可选值为 primary、secondary、default', 'string', 'default'],
+                            ['theme', '设置按钮组主题样式，可选值为 primary、secondary、default', 'string', 'default'],
                             ['activeKey', '激活索引，被选中按钮会额外添加选中样式，为空时不额外添加选中样式', 'any', ''],
                             ['onSelect', '设置按钮选中回调函数', 'function', ''],
                             ['className', '自定义样式', 'string', ''],

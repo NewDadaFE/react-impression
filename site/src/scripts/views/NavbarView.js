@@ -8,7 +8,7 @@ export default class NavbarView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Default</h3>
+                    <h5>Default</h5>
                     <Card>
                         <Navbar>
                             <Flex align="middle">
@@ -33,12 +33,12 @@ export default class NavbarView extends Component{
                                     <Form.Group>
                                         <input className="form-control" type="text" placeholder="Search"/>
                                     </Form.Group>
-                                    <Button style="primary">Search</Button>
+                                    <Button theme="primary">Search</Button>
                                 </Form>
                             </Flex>
                         </Navbar>
                     </Card>
-                    <h3>Primary</h3>
+                    <h5>Primary</h5>
                     <Card>
                         <Navbar style="pure">
                             <Flex align="middle">
@@ -63,12 +63,12 @@ export default class NavbarView extends Component{
                                     <Form.Group>
                                         <input className="form-control" type="text" placeholder="Search"/>
                                     </Form.Group>
-                                    <Button style="primary">Search</Button>
+                                    <Button theme="primary">Search</Button>
                                 </Form>
                             </Flex>
                         </Navbar>
                     </Card>
-                    <h3>Pure</h3>
+                    <h5>Pure</h5>
                     <Card>
                         <Navbar style="primary">
                             <Flex align="middle">
@@ -93,26 +93,26 @@ export default class NavbarView extends Component{
                                     <Form.Group>
                                         <input className="form-control" type="text" placeholder="Search"/>
                                     </Form.Group>
-                                    <Button style="secondary">Search</Button>
+                                    <Button theme="secondary">Search</Button>
                                 </Form>
                             </Flex>
                         </Navbar>
                     </Card>
-                    <h3 className="text-secondary">Navbar API</h3>
+                    <h5 className="text-secondary">Navbar API</h5>
                      <CommenTable
                          data = {[
                              ['style', '设置导航条样式，可选值为 pure、primary', 'string', ''],
                              ['className', '自定义样式', 'string', ''],
                          ]}
                      ></CommenTable>
-                     <h3 className="text-secondary">Navbar.Brand API</h3>
+                     <h5 className="text-secondary">Navbar.Brand API</h5>
                      <CommenTable
                          data = {[
                              ['href', '设置连接', 'string', ''],
                              ['className', '自定义样式', 'string', ''],
                          ]}
                      ></CommenTable>
-                     <h3 className="text-secondary">Navbar.SidebarTitle API</h3>
+                     <h5 className="text-secondary">Navbar.SidebarTitle API</h5>
                      <CommenTable
                          data = {[
                              ['img', '设置图片连接', 'string', ''],

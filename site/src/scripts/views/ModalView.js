@@ -25,40 +25,40 @@ export default class ModalView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Examples</h3>
+                    <h5>Examples</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Button style="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
+                                <Button theme="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
                             </Col>
                             <Col>
-                                <Button style="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
+                                <Button theme="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
                             </Col>
                             <Col>
-                                <Button style="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
+                                <Button theme="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
                             </Col>
                         </Row>
                     </Card>
-                    <h3 className="text-secondary">Modal API</h3>
+                    <h5 className="text-secondary">Modal API</h5>
                     <CommenTable
                         data = {[
                             ['size', '设置模态框大小，可选值为 sm、lg', 'string', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">Modal.Header API</h3>
+                    <h5 className="text-secondary">Modal.Header API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">Modal.Body API</h3>
+                    <h5 className="text-secondary">Modal.Body API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">Modal.Footer API</h3>
+                    <h5 className="text-secondary">Modal.Footer API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],
@@ -75,8 +75,8 @@ export default class ModalView extends Component{
                             <p>One fine body&hellip;</p>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button style="default" onClick={this.toggleModalHandle}>Close</Button>
-                            <Button style="primary">Save</Button>
+                            <Button theme="default" onClick={this.toggleModalHandle}>Close</Button>
+                            <Button theme="primary">Save</Button>
                         </Modal.Footer>
                     </Modal>
                 }

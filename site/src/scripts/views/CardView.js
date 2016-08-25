@@ -8,7 +8,7 @@ export default class CardView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Examples</h3>
+                    <h5>Examples</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -20,7 +20,7 @@ export default class CardView extends Component{
                                     <Image fluid src="http://placehold.it/350x200"/>
                                     <Card.Block>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button style="primary">More</Button>
+                                        <Button theme="primary">More</Button>
                                     </Card.Block>
                                 </Card>
                             </Col>
@@ -30,7 +30,7 @@ export default class CardView extends Component{
                                     <Card.Block>
                                         <h4>Title</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button style="primary">Detail</Button>
+                                        <Button theme="primary">Detail</Button>
                                     </Card.Block>
                                 </Card>
                             </Col>
@@ -46,13 +46,13 @@ export default class CardView extends Component{
                                 <Card>
                                     <Card.Block>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button style="primary">OK</Button>
+                                        <Button theme="primary">OK</Button>
                                     </Card.Block>
                                 </Card>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Text align</h3>
+                    <h5>Text align</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -90,7 +90,7 @@ export default class CardView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Header and footer</h3>
+                    <h5>Header and footer</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -101,8 +101,8 @@ export default class CardView extends Component{
                                     <Card.Block>
                                         <h4>Left</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button style="primary">OK</Button>
-                                        <Button style="default" className="offset-spacer-l">Cancel</Button>
+                                        <Button theme="primary">OK</Button>
+                                        <Button theme="default" className="offset-spacer-l">Cancel</Button>
                                     </Card.Block>
                                     <Card.Footer>
                                         footer
@@ -119,8 +119,8 @@ export default class CardView extends Component{
                                     <Card.Block>
                                         <h4>center</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button style="primary">OK</Button>
-                                        <Button style="default" className="offset-spacer-l">Cancel</Button>
+                                        <Button theme="primary">OK</Button>
+                                        <Button theme="default" className="offset-spacer-l">Cancel</Button>
                                     </Card.Block>
                                 </Card>
                             </Col>
@@ -129,8 +129,8 @@ export default class CardView extends Component{
                                     <Card.Block>
                                         <h4>Right</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button style="primary">OK</Button>
-                                        <Button style="default" className="offset-spacer-l">Cancel</Button>
+                                        <Button theme="primary">OK</Button>
+                                        <Button theme="default" className="offset-spacer-l">Cancel</Button>
                                     </Card.Block>
                                     <Card.Footer>
                                         <h5 className="no-margin">
@@ -141,26 +141,26 @@ export default class CardView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3 className="text-secondary">Card API</h3>
+                    <h5 className="text-secondary">Card API</h5>
                     <CommenTable
                         data = {[
                             ['block', '是否显示为快级元素', 'boolean', 'false'],
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">Card.Header API</h3>
+                    <h5 className="text-secondary">Card.Header API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">Card.Block API</h3>
+                    <h5 className="text-secondary">Card.Block API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">Card.Footer API</h3>
+                    <h5 className="text-secondary">Card.Footer API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],

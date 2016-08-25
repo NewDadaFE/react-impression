@@ -52,7 +52,7 @@ export default class InputView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Text</h3>
+                    <h5>Text</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -85,7 +85,7 @@ export default class InputView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                     <h3>Date</h3>
+                     <h5>Date</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -114,7 +114,7 @@ export default class InputView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Search</h3>
+                    <h5>Search</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -145,7 +145,7 @@ export default class InputView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>File</h3>
+                    <h5>File</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -159,7 +159,7 @@ export default class InputView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Input API</h3>
+                    <h5>Input API</h5>
                     <CommenTable
                         data = {[
                             ['type', '设置输入框类型，可选值为text、password、file、date、emaile、mouth、search', 'string', 'text'],
@@ -172,7 +172,7 @@ export default class InputView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3>注意</h3>
+                    <h5>注意</h5>
                     <ul>
                         <li><textarea value="<Input type='search'/>"></textarea> 配合 Modal 实现模态框选择内容，适用于选择项较多的应用场景。</li>
                     </ul>
@@ -222,7 +222,7 @@ export default class InputView extends Component{
                             </Row>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button style="default" onClick={this.toggleModalHandle}>Close</Button>
+                            <Button theme="default" onClick={this.toggleModalHandle}>Close</Button>
                         </Modal.Footer>
                     </Modal>
                 }

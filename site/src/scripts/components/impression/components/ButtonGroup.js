@@ -14,14 +14,14 @@ export default class ButtonGroup extends Component{
     }
     //默认props
     static defaultProps = {
-        style: 'default',
+        theme: 'default',
     }
     //prop校验
     static propType = {
         //大小（lg、sm）
         size: PropTypes.string,
         //主题样式(primary、secondary、default)
-        style: PropTypes.string,
+        theme: PropTypes.string,
         //激活索引（被选中Button会额外添加选中样式，为空时不额外添加选中样式）
         activeKey: PropTypes.any,
         //选中回调
@@ -32,7 +32,7 @@ export default class ButtonGroup extends Component{
     //渲染
     render(){
         let { activeKey } = this.state,
-            { style, size, className, onSelect, children, ...others } = this.props,
+            { theme, size, className, onSelect, children, ...others } = this.props,
             btnGroupSize = size? `btn-group-${size}` : null;
 
         delete others.activeKey;
@@ -41,8 +41,8 @@ export default class ButtonGroup extends Component{
 
             return React.cloneElement(child, {
                 key: index,
-                outline: style !== 'default' && (!onSelect || activeKey !== eventKey),
-                style: style === 'default' && onSelect && activeKey === eventKey ? 'primary' : style,
+                outline: theme !== 'default' && (!onSelect || activeKey !== eventKey),
+                theme: theme === 'default' && onSelect && activeKey === eventKey ? 'primary' : theme,
                 onClick: onSelect? event => {
                     this.setState({
                         activeKey: eventKey

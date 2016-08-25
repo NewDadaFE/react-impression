@@ -10,32 +10,32 @@ export default class TooltipView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Examples</h3>
+                    <h5>Examples</h5>
                     <Card block>
                         <Row>
                             <Col>
                                 <Tooltip position="right" content="Tooltip right">
-                                    <Button style="primary" onMouseOver={this.onMouseOver}>Right</Button>
+                                    <Button theme="primary" onMouseOver={this.onMouseOver}>Right</Button>
                                 </Tooltip>
                             </Col>
                             <Col>
                                 <Tooltip position="top" content="Tooltip top">
-                                    <Button style="primary">Top</Button>
+                                    <Button theme="primary">Top</Button>
                                 </Tooltip>
                             </Col>
                             <Col>
                                 <Tooltip position="bottom" content="Tooltip bottom">
-                                    <Button style="primary">Bottom</Button>
+                                    <Button theme="primary">Bottom</Button>
                                 </Tooltip>
                             </Col>
                             <Col>
                                 <Tooltip position="left" content="Tooltip left">
-                                    <Button style="primary">Left</Button>
+                                    <Button theme="primary">Left</Button>
                                 </Tooltip>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Tooltip API</h3>
+                    <h5>Tooltip API</h5>
                     <CommenTable
                         data = {[
                             ['position', '设置提示工具位置，可选值为 left、right、top、bottom', 'string', 'right'],

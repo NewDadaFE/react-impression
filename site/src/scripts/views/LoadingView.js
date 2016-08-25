@@ -28,25 +28,25 @@ export default class LoadingView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Loading</h3>
+                    <h5>Loading</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Button style="default" onClick={() => this.showLoadingHandle('fountain')}>fountain</Button>
+                                <Button theme="default" onClick={() => this.showLoadingHandle('fountain')}>fountain</Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={() => this.showLoadingHandle('wave')}>wave</Button>
+                                <Button theme="default" onClick={() => this.showLoadingHandle('wave')}>wave</Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={() => this.showLoadingHandle('pendule')}>pendule</Button>
+                                <Button theme="default" onClick={() => this.showLoadingHandle('pendule')}>pendule</Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={() => this.showLoadingHandle('cyclone')}>cyclone</Button>
+                                <Button theme="default" onClick={() => this.showLoadingHandle('cyclone')}>cyclone</Button>
                             </Col>
                         </Row>
                     </Card>
                     <Loading type={this.state.type} loadingMsg={this.state.msg} closeable={true}/>
-                    <h3>Loading API</h3>
+                    <h5>Loading API</h5>
                     <ul>
                         <li><code>Loading.show()</code></li>
                         <li><code>Loading.hide()</code></li>

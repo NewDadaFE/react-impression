@@ -22,13 +22,13 @@ export default class DropdownView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Example</h3>
+                    <h5>Basic</h5>
                     <Card block>
                         <Dropdown menus={menus} trigger="hover">
-                            <Button style="primary">Dropdown</Button>
+                            <Button theme="primary">Dropdown</Button>
                         </Dropdown>
                     </Card>
-                    <h3>Dropdown API</h3>
+                    <h5>Dropdown API</h5>
                     <CommenTable
                         data = {[
                             ['trigger', '设置触发动作，可选值为 click、hover', 'string', 'click'],

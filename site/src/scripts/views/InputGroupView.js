@@ -8,7 +8,7 @@ export default class InputGroupView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Basic examples</h3>
+                    <h5>Basic</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -38,74 +38,74 @@ export default class InputGroupView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Button addons</h3>
+                    <h5>Addons</h5>
                     <Card block>
                         <Row>
                             <Col>
                                 <InputGroup>
-                                    <InputGroup.Button style="default">help</InputGroup.Button>
+                                    <InputGroup.Button theme="default">help</InputGroup.Button>
                                     <InputGroup.Input placeholder="something"/>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <InputGroup>
                                     <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button style="primary">Go</InputGroup.Button>
+                                    <InputGroup.Button theme="primary">Go</InputGroup.Button>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <InputGroup>
-                                    <InputGroup.Button style="default">-</InputGroup.Button>
+                                    <InputGroup.Button theme="default">-</InputGroup.Button>
                                     <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button style="default">+</InputGroup.Button>
+                                    <InputGroup.Button theme="default">+</InputGroup.Button>
                                 </InputGroup>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Sizes</h3>
+                    <h5>Sizes</h5>
                     <Card block>
                         <Row>
                             <Col col="3">
                                 <InputGroup size="sm">
                                     <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button style="primary">Search</InputGroup.Button>
+                                    <InputGroup.Button theme="primary">Search</InputGroup.Button>
                                 </InputGroup>
                             </Col>
                             <Col col="4">
                                 <InputGroup>
                                     <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button style="primary">Search</InputGroup.Button>
+                                    <InputGroup.Button theme="primary">Search</InputGroup.Button>
                                 </InputGroup>
                             </Col>
                             <Col col="5">
                                 <InputGroup size="lg">
                                     <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button style="primary">Search</InputGroup.Button>
+                                    <InputGroup.Button theme="primary">Search</InputGroup.Button>
                                 </InputGroup>
                             </Col>
                         </Row>
                     </Card>
-                    <h3 className="text-secondary">InputGroup API</h3>
+                    <h5 className="text-secondary">InputGroup API</h5>
                     <CommenTable
                         data = {[
                             ['size', '设置输入框组大小，可选值为 sm、lg', 'string', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">InputGroup.Addon API</h3>
+                    <h5 className="text-secondary">InputGroup.Addon API</h5>
                     <CommenTable
                         data = {[
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">InputGroup.Button API</h3>
+                    <h5 className="text-secondary">InputGroup.Button API</h5>
                     <CommenTable
                         data = {[
-                            ['style', '设置输入框组内按钮样式，可选值为 default、primary', 'string', 'primary'],
+                            ['theme', '设置输入框组内按钮样式，可选值为 default、primary', 'string', 'primary'],
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">InputGroup.Input API</h3>
+                    <h5 className="text-secondary">InputGroup.Input API</h5>
                     <CommenTable
                         data = {[
                             ['type', '设置输入框组内 input 类型，可选值为 text', 'string', 'text'],
@@ -113,10 +113,6 @@ export default class InputGroupView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3>使用注意事项</h3>
-                    <ul>
-                        <li>区分 defaultValue 和 value 区别，defaultValue 只能初始化一次，后面在改变就没有效果了；设置 value 后组件变为受限组件，值的改变需要通过设置 state 值实现。</li>
-                    </ul>
                 </Card>
             </div>
         );

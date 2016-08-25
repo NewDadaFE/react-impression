@@ -8,34 +8,34 @@ export default class PopoverView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Examples</h3>
+                    <h5>Examples</h5>
                     <Card block>
                         <Row>
                             <Col col="8">
                                 <Popover position="right" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button style="primary">Right</Button>
+                                    <Button theme="primary">Right</Button>
                                 </Popover>
                             </Col>
                             <Col col="4">
                                 <Popover position="left" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button style="primary">Left</Button>
+                                    <Button theme="primary">Left</Button>
                                 </Popover>
                             </Col>
                         </Row>
                         <Row>
                             <Col col="8">
                                 <Popover position="top" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button style="primary">Top</Button>
+                                    <Button theme="primary">Top</Button>
                                 </Popover>
                             </Col>
                             <Col col="4">
                                 <Popover position="bottom" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button style="primary">Bottom</Button>
+                                    <Button theme="primary">Bottom</Button>
                                 </Popover>
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Popover API</h3>
+                    <h5>Popover API</h5>
                     <CommenTable
                         data = {[
                             ['position', '设置弹出框位置，可选值为 left、right、top、bottom', 'string', 'right'],

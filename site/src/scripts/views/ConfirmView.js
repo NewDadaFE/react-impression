@@ -38,21 +38,21 @@ export default class ConfirmView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Basic</h3>
+                    <h5>Basic</h5>
                     <Card block>
                        <Row>
                            <Col>
-                               <Button style="secondary" outline onClick={this.toggleConfirm1Handle}>warning</Button>
+                               <Button theme="secondary" outline onClick={this.toggleConfirm1Handle}>warning</Button>
                            </Col>
                             <Col>
-                               <Button style="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
+                               <Button theme="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
                            </Col>
                             <Col>
-                               <Button style="default" onClick={this.toggleConfirm3Handle}>danger</Button>
+                               <Button theme="default" onClick={this.toggleConfirm3Handle}>danger</Button>
                            </Col>
                        </Row>
                     </Card>
-                    <h3>API</h3>
+                    <h5>API</h5>
                     <CommenTable
                         data = {[
                             ['onOkClick', '点击确认回调函数', 'function', ''],

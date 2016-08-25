@@ -28,38 +28,38 @@ export default class MessageView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Example</h3>
+                    <h5>Example</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Button style="primary" outline onClick={this.showInfoMessageHandle}>
+                                <Button theme="primary" outline onClick={this.showInfoMessageHandle}>
                                     信息
                                 </Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={this.showSuccessMessageHandle}>
+                                <Button theme="default" onClick={this.showSuccessMessageHandle}>
                                     <span className="text-success">成功</span>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button style="secondary" outline onClick={this.showWarningMessageHandle}>
+                                <Button theme="secondary" outline onClick={this.showWarningMessageHandle}>
                                     警告
                                 </Button>
                             </Col>
                             <Col>
-                               <Button style="default" onClick={this.showErrorMessageHandle}>
+                               <Button theme="default" onClick={this.showErrorMessageHandle}>
                                     <span className="text-danger">错误</span>
                                </Button>
                             </Col>
                             <Col>
-                               <Button style="primary" outline onClick={this.showLoadingMessageHandle}>
+                               <Button theme="primary" outline onClick={this.showLoadingMessageHandle}>
                                     <Icon type="spinner" left/>Loading
                                </Button>
                             </Col>
                         </Row>
                     </Card>
                     <Message/>
-                    <h3>API</h3>
+                    <h5>API</h5>
                     <ul>
                         <li><code>Message.info(message, duration)</code></li>
                         <li><code>Message.success(message, duration)</code></li>

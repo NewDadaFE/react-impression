@@ -34,33 +34,33 @@ export default class NotificationView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Example</h3>
+                    <h5>Example</h5>
                     <Card block>
                         <Row>
                             <Col>
-                                <Button style="default" onClick={this.addInfoNotice}>
+                                <Button theme="default" onClick={this.addInfoNotice}>
                                     <span className="text-primary">信息</span>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={this.addSuccessNotice}>
+                                <Button theme="default" onClick={this.addSuccessNotice}>
                                     <span className="text-success">成功</span>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button style="default" onClick={this.addWarningNotice}>
+                                <Button theme="default" onClick={this.addWarningNotice}>
                                     <span className="text-warning">警告</span>
                                 </Button>
                             </Col>
                             <Col>
-                               <Button style="default" onClick={this.addErrorNotice}>
+                               <Button theme="default" onClick={this.addErrorNotice}>
                                     <span className="text-danger">错误</span>
                                </Button>
                             </Col>
                         </Row>
                     </Card>
                     <Notification/>
-                    <h3>Notification API</h3>
+                    <h5>Notification API</h5>
                     <ul>
                         <li><code>Notification.info(title, message, closeable)</code></li>
                         <li><code>Notification.success(title, message, closeable)</code></li>
@@ -74,7 +74,7 @@ export default class NotificationView extends Component{
                             ['closeable', '是否显示关闭按钮', 'boolean', 'true'],
                         ]}
                     ></CommenTable>
-                    <h3>使用注意事项</h3>
+                    <h5>使用注意事项</h5>
                     使用时应在合适位置插入 <Notification/> 标签，
                 </Card>
             </div>
