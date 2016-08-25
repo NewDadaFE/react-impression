@@ -113,13 +113,12 @@ class ButtonView extends Component{
                     <CommenTable
                         data = {[
                             ['theme', '设置按钮的样式，可选值为 primary、default、secondary', 'string', 'primary'],
-                            ['onClick', 'click 事件的 handler', 'function', ''],
+                            ['onClick', 'click 事件回调', 'function', ''],
                             ['outline', '设置按钮样式是否有外边线', 'boolean', 'false'],
-                            ['size', '设置按钮大小，可选值为 sm、normal、large', 'string', ''],
+                            ['size', '设置按钮大小，可选值为 sm、lg', 'string', ''],
                             ['shape', '设置按钮形状，可选值为 pill', 'string', ''],
                             ['href', '设置按钮链接', 'string', ''],
-                            ['close', '设置是否关闭按钮样式', 'boolean', ''],
-                            ['classname', '自定义样式', 'string', ''],
+                            ['close', '设置是否关闭按钮样式', 'boolean', '']
                         ]}
                     ></CommenTable>
                 </Card>
