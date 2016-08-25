@@ -138,6 +138,7 @@
     border-top: $sidebar-nav-link-border-width solid transparent;
 
     &:hover {
+        text-decoration: none;
         color: $sidebar-nav-link-active-color;
         border-top-color: $sidebar-nav-link-active-border-color;
     }
