@@ -12,28 +12,28 @@ export default class AttentionView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Attention style="success">
+                                <Attention theme="success">
                                     <strong>Well done!</strong> You successfully read this important attention message.
                                 </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Attention style="primary">
+                                <Attention theme="primary">
                                     <strong>Heads up!</strong> This attention needs your attention, but it's not super important.
                                 </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Attention style="warning">
+                                <Attention theme="warning">
                                     <strong>Warning!</strong> Better check yourself, you're not looking too good.
                                 </Attention>
                             </Col>
                         </Row>
                         <Row>
                             <Col col="12">
-                                <Attention style="danger">
+                                <Attention theme="danger">
                                     <strong>Oh snap!</strong> Change a few things up and try submitting again.
                                 </Attention>
                             </Col>
@@ -43,7 +43,7 @@ export default class AttentionView extends Component{
                     <Card block>
                         <Row>
                             <Col>
-                                <Attention style="success">
+                                <Attention theme="success">
                                     You successfully read this important attention message
                                     <Attention.Link href="#"> click here</Attention.Link>.
                                 </Attention>
@@ -51,7 +51,7 @@ export default class AttentionView extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <Attention style="primary">
+                                <Attention theme="primary">
                                     This attention needs your attention, but it's not super important
                                     <Attention.Link href="#"> click here</Attention.Link>.
                                 </Attention>
@@ -59,7 +59,7 @@ export default class AttentionView extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <Attention style="warning">
+                                <Attention theme="warning">
                                     Better check yourself, you're not looking too good
                                     <Attention.Link href="#"> click here</Attention.Link>.
                                 </Attention>
@@ -67,7 +67,7 @@ export default class AttentionView extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <Attention style="danger">
+                                <Attention theme="danger">
                                     Change a few things up and try submitting again
                                     <Attention.Link href="#"> click here</Attention.Link>.
                                 </Attention>
@@ -76,7 +76,7 @@ export default class AttentionView extends Component{
                     </Card>
                     <h3>Dismissible</h3>
                     <Card block>
-                        <Attention style="success" closeable>
+                        <Attention theme="success" closeable>
                             You successfully read this important attention message
                             <Attention.Link href="#"> click here</Attention.Link>.
                         </Attention>
@@ -84,7 +84,7 @@ export default class AttentionView extends Component{
                     <h3 className="text-secondary">API</h3>
                     <CommenTable
                         data = {[
-                            ['style', '设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],
+                            ['theme', '设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],
                             ['closeable', '设置是否显示关闭按钮', 'boolean', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}

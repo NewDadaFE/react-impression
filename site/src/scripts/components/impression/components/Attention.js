@@ -18,7 +18,7 @@ export default class Attention extends Component{
     // props 校验
     static propTypes = {
         //样式（success、primary、warning、danger）
-        style: PropTypes.string,
+        theme: PropTypes.string,
         //是否可关闭
         closeable: PropTypes.bool,
         //自定义样式
@@ -31,12 +31,12 @@ export default class Attention extends Component{
         });
     }
     render(){
-        let { style, className, closeable, children, ...others } = this.props,
-            styleClass = `attention-${style}`,
+        let { theme, className, closeable, children, ...others } = this.props,
+            themeClass = `attention-${theme}`,
             hiddenClass = this.state.show? '' : 'hidden';
 
         return(
-            <div {...others} className={classnames('attention', styleClass, hiddenClass, className)}>
+            <div {...others} className={classnames('attention', themeClass, hiddenClass, className)}>
                 {children}
                 { closeable &&
                     <button type="button" className="close" onClick={this.hideHandle}>&times;</button>

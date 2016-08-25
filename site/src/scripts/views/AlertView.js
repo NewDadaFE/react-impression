@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Breadcrumb, Alert } from '../components/impression';
 
-export default class AttentionView extends Component{
+export default class AlertView extends Component{
     constructor(props, context){
         super(props, context);
 
@@ -53,4 +53,4 @@ export default class AttentionView extends Component{
     }
 }
 
-AttentionView.title = 'Attention';
+AlertView.title = 'Alert';
