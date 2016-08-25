@@ -12,15 +12,15 @@ export default class Navbar extends Component{
     }
     //props校验
     static propTypes ={
-        style: PropTypes.string,
+        theme: PropTypes.string,
     }
     //渲染
     render(){
-        let { style, className, children, ...others } = this.props,
-            styleClass = `navbar-${style}`;
+        let { theme, className, children, ...others } = this.props,
+            themeClass = `navbar-${theme}`;
 
         return(
-            <nav {...others} className={classnames('navbar', styleClass, className)}>
+            <nav {...others} className={classnames('navbar', themeClass, className)}>
                 {children}
             </nav>
         );

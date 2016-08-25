@@ -8,7 +8,7 @@ export default class Notice extends Component{
     //prop type校验
     static propTypes = {
         //类型
-        style: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
+        theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
         //标题
         title: PropTypes.string,
         //内容
@@ -18,7 +18,7 @@ export default class Notice extends Component{
     }
     //默认props
     static defaultProps = {
-        style: 'info',
+        theme: 'info',
         title: '通知',
     }
     /**
@@ -26,25 +26,25 @@ export default class Notice extends Component{
      * @return {[type]} [description]
      */
     getTitleIcon(){
-        let { style } = this.props;
+        let { theme } = this.props;
 
         return {
             info:     ['fa', 'fa-volume-up'],
             success:  ['fa', 'fa-check-circle'],
             warning:  ['fa', 'fa-exclamation-triangle'],
             danger:   ['fa', 'fa-times-circle'],
-        }[style];
+        }[theme];
     }
     /**
      * 渲染.
      */
     render() {
-        let { title, message, style, closeable, close, children, className } = this.props,
-            styleClass = `notice-${style}`,
+        let { title, message, theme, closeable, close, children, className } = this.props,
+            themeClass = `notice-${theme}`,
             iconClass = this.getTitleIcon();
 
         return (
-            <div className={classnames('notice', styleClass, className)}>
+            <div className={classnames('notice', themeClass, className)}>
                 <div className="notice-header">
                     <i className={classnames(iconClass)}></i>
                 </div>

@@ -40,7 +40,7 @@ export default class NavbarView extends Component{
                     </Card>
                     <h5>Primary</h5>
                     <Card>
-                        <Navbar style="pure">
+                        <Navbar theme="pure">
                             <Flex align="middle">
                                 <Navbar.Brand>Navbar</Navbar.Brand>
                                 <Flex.Item>
@@ -70,7 +70,7 @@ export default class NavbarView extends Component{
                     </Card>
                     <h5>Pure</h5>
                     <Card>
-                        <Navbar style="primary">
+                        <Navbar theme="primary">
                             <Flex align="middle">
                                 <Navbar.Brand>Navbar</Navbar.Brand>
                                 <Flex.Item>
@@ -101,7 +101,7 @@ export default class NavbarView extends Component{
                     <h5 className="text-secondary">Navbar API</h5>
                      <CommenTable
                          data = {[
-                             ['style', '设置导航条样式，可选值为 pure、primary', 'string', ''],
+                             ['theme', '设置导航条样式，可选值为 pure、primary', 'string', ''],
                              ['className', '自定义样式', 'string', ''],
                          ]}
                      ></CommenTable>
