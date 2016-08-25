@@ -24,7 +24,9 @@ export default class Highlight extends Component {
         let domNode = ReactDOM.findDOMNode(this),
             nodes = domNode.querySelectorAll('pre code');
 
-        nodes.forEach(node => hljs.highlightBlock(node));
+        for(let i=0; i<nodes.length; i++){
+            hljs.highlightBlock(nodes[i]);
+        }
     }
     //显示/隐藏代码
     toggleCodeHandle = () => {
