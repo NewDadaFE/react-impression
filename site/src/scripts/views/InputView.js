@@ -172,10 +172,6 @@ export default class InputView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h5>注意</h5>
-                    <ul>
-                        <li><textarea value="<Input type='search'/>"></textarea> 配合 Modal 实现模态框选择内容，适用于选择项较多的应用场景。</li>
-                    </ul>
                 </Card>
                 { this.state.show &&
                     <Modal size={this.state.size}>

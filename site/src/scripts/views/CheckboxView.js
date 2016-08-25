@@ -8,7 +8,7 @@ export default class CheckboxView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Checkbox</h3>
+                    <h5>Checkbox</h5>
                     <Row>
                         <Col>
                             <Card block>
@@ -41,7 +41,7 @@ export default class CheckboxView extends Component{
                             </Card>
                         </Col>
                     </Row>
-                    <h3 className="text-secondary">Checkbox API</h3>
+                    <h5 className="text-secondary">Checkbox API</h5>
                     <CommenTable
                         data = {[
                             ['disabled', '设置是否可以点击', 'boolean', 'false'],
@@ -51,7 +51,7 @@ export default class CheckboxView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">CheckboxGroup API</h3>
+                    <h5 className="text-secondary">CheckboxGroup API</h5>
                     <CommenTable
                         data = {[
                             ['vlaue', '设置默认是否选中', 'any', ''],

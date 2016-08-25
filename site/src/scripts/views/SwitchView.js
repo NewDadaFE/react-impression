@@ -8,7 +8,7 @@ export default class SwitchView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Switch</h3>
+                    <h5>Switch</h5>
                     <Card block>
                         <Form grid>
                             <Form.Group col="6">
@@ -21,7 +21,7 @@ export default class SwitchView extends Component{
                             </Form.Group>
                         </Form>
                     </Card>
-                    <h3 className="text-secondary">API</h3>
+                    <h5 className="text-secondary">API</h5>
                     <CommenTable
                         data = {[
                             ['defaultChecked', '是否默认选中', 'boolean', ''],

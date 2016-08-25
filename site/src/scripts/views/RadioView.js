@@ -22,7 +22,7 @@ export default class RadioView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Radio</h3>
+                    <h5>Radio</h5>
                     <Row>
                         <Col>
                             <Card block>
@@ -52,7 +52,7 @@ export default class RadioView extends Component{
                             </Card>
                         </Col>
                     </Row>
-                    <h3 className="text-secondary">Radio API</h3>
+                    <h5 className="text-secondary">Radio API</h5>
                     <CommenTable
                         data = {[
                             ['name', '名称', 'any', ''],
@@ -64,7 +64,7 @@ export default class RadioView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3 className="text-secondary">RadioGroup API</h3>
+                    <h5 className="text-secondary">RadioGroup API</h5>
                     <CommenTable
                         data = {[
                             ['value', '设置默认是否选中', 'any', ''],

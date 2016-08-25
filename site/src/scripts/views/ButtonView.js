@@ -30,7 +30,7 @@ class ButtonView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Button } from 'impression-react';\n\n<Button theme="primary">primary</Button>\n<Button theme="default">primary</Button>\n<Button theme="secondary">primary</Button>`}
+                            {`import { Button } from 'impression-react';\n\n<Button type="button" theme="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>\n<Button theme="default">default</Button>\n<Button theme="secondary">secondary</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Outline</h5>
@@ -49,7 +49,7 @@ class ButtonView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Button outline theme="primary">primary</Button>\n<Button outline theme="default">primary</Button>\n<Button outline theme="secondary">primary</Button>`}
+                            {`<Button theme="primary" outline>primary</Button>\n<Button theme="default" outline>default</Button>\n<Button theme="secondary" outline>secondary</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Sizes</h5>

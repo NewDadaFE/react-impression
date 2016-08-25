@@ -3,7 +3,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    width: $sidebar-width;
+    width: 14%;
+    min-width: $sidebar-width;
     color: $sidebar-color;
     background-color: $sidebar-bg;
 
