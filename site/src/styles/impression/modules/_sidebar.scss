@@ -19,8 +19,8 @@
     }
 
     .nav-link,
-    .nav-collapse-title,
-    .nav-collapse-item {
+    .collapse-title,
+    .collapse-item {
         display: block;
         color: $sidebar-nav-link-color;
         padding: $sidebar-nav-link-padding;
@@ -29,7 +29,7 @@
     }
 
     .nav-link,
-    .nav-collapse-title {
+    .collapse-title {
         cursor: pointer;
 
         &:hover,
@@ -53,49 +53,6 @@
     padding: $nav-title-padding;
     color: $nav-title-color;
     font-size: $nav-title-font-size;
-}
-
-.nav-collapse {
-    transition: $sidebar-collapse-transition;
-
-    &.active {
-        box-shadow: $sidebar-collapse-active-shadow;
-
-        .nav-collapse-title {
-            color: $sidebar-nav-link-active-color;
-        }
-
-        .nav-collapse-title-addon {
-            transform-origin: center center;
-            transform: rotate(90deg);
-        }
-
-        .nav-collapse-items {
-            height: auto;
-            animation: $sidebar-collapse-animation;
-            background: $sidebar-collapse-active-bg;
-        }
-
-
-    }
-}
-
-.nav-collapse-title {
-    transition: $sidebar-collapse-transition;
-}
-
-.nav-collapse-title-addon {
-    float: right;
-    line-height: $line-height-base;
-    transition: $sidebar-collapse-transition;
-}
-
-.nav-collapse-items {
-    height: 0;
-    overflow: hidden;
-    text-indent: $sidebar-collapse-text-indent;
-    transform-origin: center 0;
-    font-size: $sidebar-collapse-font-size;
 }
 
 

@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 
 /**
- * NavCollapseTitle 组件
+ * CollapseTitle 组件
  */
-export default class NavCollapseTitle extends Component{
+export default class CollapseTitle extends Component{
     //props校验
     static propTypes ={
         className: PropTypes.string,
@@ -14,11 +14,10 @@ export default class NavCollapseTitle extends Component{
         let { onClick, children, className, ...others } = this.props;
 
         return(
-            <div onClick={onClick} {...others} className={classnames('nav-collapse-title', className)}>
+            <div onClick={onClick} {...others} className={classnames('collapse-title', className)}>
                 {children}
-                <i className="fa fa-angle-right nav-collapse-title-addon"></i>
+                <i className="fa fa-angle-right collapse-title-addon"></i>
             </div>
         );
     }
 }
-

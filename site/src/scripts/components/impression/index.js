@@ -34,6 +34,7 @@ export Popover from './components/Popover';
 export Dropdown from './components/Dropdown';
 export Message from './components/Message';
 export Notification from './components/Notification';
+export Collapse from './components/Collapse';
 export DatePicker from './components/DatePicker';
 export Timeline from './components/Timeline';
 export Loading from './components/Loading';

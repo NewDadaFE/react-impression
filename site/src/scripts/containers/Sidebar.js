@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Icon, Tag, Sidebar, Nav } from '../components/impression';
+import { Icon, Tag, Sidebar, Nav, Collapse } from '../components/impression';
 
 
 /**
@@ -136,23 +136,27 @@ export default class AppSidebar extends Component {
                             <Link to="/utilsClass"><Icon type="eye" left/>UtilsClass</Link>
                         </Nav.Link>
                         <Nav.Title>Others</Nav.Title>
-                        <Nav.Collapse>
-                            <Nav.Collapse.Title>
-                                <Icon type="bars" left/>Other Pages
-                            </Nav.Collapse.Title>
-                            <Nav.Link>
-                                <Link to="/button">Login</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <a href="http://fontawesome.io/icons/" target="_blank">500</a>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/image">404</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/table">Lock</Link>
-                            </Nav.Link>
-                        </Nav.Collapse>
+                        <Collapse>
+                            <Collapse.Title>
+                                <Icon type="bars" left/>Common Pages
+                            </Collapse.Title>
+                            <Collapse.Body>
+                                <Nav>
+                                    <Nav.Link>
+                                        <Link to="/button">Login</Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <a href="http://fontawesome.io/icons/" target="_blank">500</a>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link to="/image">404</Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link to="/table">Lock</Link>
+                                    </Nav.Link>
+                                </Nav>
+                            </Collapse.Body>
+                        </Collapse>
                     </Nav>
                 </Sidebar.Body>
                 <Sidebar.Footer>

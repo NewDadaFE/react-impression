@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import NavItem from './NavItem';
 import NavLink from './NavLink';
 import NavTitle from './NavTitle';
-import NavCollapse from './NavCollapse';
 
 /**
  * Nav 组件
@@ -87,4 +86,3 @@ export default class Nav extends Component{
 Nav.Item = NavItem;
 Nav.Link = NavLink;
 Nav.Title = NavTitle;
-Nav.Collapse = NavCollapse;

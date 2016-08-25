@@ -505,13 +505,6 @@ $sidebar-nav-link-active-border-color:          $brand-primary !default;
 $sidebar-nav-link-active-box-shadow:            inset 0 0 1px darken($sidebar-nav-link-active-bg, 2%) !default;
 
 
-$sidebar-collapse-transition:                   all .18s ease-in-out !default;
-$sidebar-collapse-active-bg:                    lighten($sidebar-bg, 4%) !default;
-$sidebar-collapse-animation:                    scaleIn .36s ease-in-out !default;
-$sidebar-collapse-active-shadow:                0 0 1px darken($sidebar-color, 4%) !default;
-$sidebar-collapse-font-size:                    .8em !default;
-$sidebar-collapse-text-indent:                  1.5rem !default;
-
 // Navs
 $nav-item-margin:                               .2rem !default;
 $nav-item-spacer-x:                             1rem !default;
@@ -848,6 +841,12 @@ $notice-danger-bg:            mix($brand-danger, $brand-pure, 68%) !default;
 
 $notice-enter-duration:      .2s !default;
 $notice-leave-duration:      .8s !default;
+
+// Collapse
+$collapse-transition:                   all .18s ease-in-out !default;
+$collapse-animation:                    scaleIn .36s ease-in-out !default;
+$collapse-font-size:                    .8em !default;
+$collapse-text-indent:                  1.5rem !default;
 
 // Timeline
 $timeline-item-padding-bottom:             2rem !default;

@@ -1,12 +1,13 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import NavCollapseTitle from './NavCollapseTitle';
+import CollapseTitle from './CollapseTitle';
+import CollapseBody from './CollapseBody';
 
 
 /**
- * NavCollapse 组件
+ * Collapse 组件
  */
-export default class NavCollapse extends Component{
+export default class Collapse extends Component{
     constructor(props, context){
         super(props, context);
 
@@ -38,25 +39,20 @@ export default class NavCollapse extends Component{
 
         delete others.active;
         children = React.Children.toArray(children);
-        children = children.filter((child, index) => {
-            if(child.type && child.type.nowrap){
-                collapseTitle = React.cloneElement(child, {
-                    onClick: this.toggleItemsHandle
-                });
-                return false;
-            }
-            return true;
+        children = children.map((child, index) => {
+
+            return React.cloneElement(child, {
+                onClick: this.toggleItemsHandle
+            });
         });
 
         return(
-            <div {...others} className={classnames('nav-collapse', {active: active}, className)}>
-                {collapseTitle}
-                <div className="nav-collapse-items">
-                    {children}
-                </div>
+            <div {...others} className={classnames('collapse', {active: active}, className)}>
+                {children}
             </div>
         );
     }
 }
 
-NavCollapse.Title = NavCollapseTitle;
+Collapse.Title = CollapseTitle;
+Collapse.Body = CollapseBody;
