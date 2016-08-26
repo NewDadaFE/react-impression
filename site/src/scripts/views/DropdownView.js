@@ -24,8 +24,19 @@ export default class DropdownView extends Component{
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card block>
-                        <Dropdown menus={menus} trigger="click">
-                            <Button theme="primary">Dropdown</Button>
+                        <Dropdown>
+                            <Dropdown.Trigger trigger="click">
+                                <Button theme="primary">Dropdown</Button>
+                            </Dropdown.Trigger>
+                            <Dropdown.Menu>
+                                <Dropdown.MenuItem>菜单一</Dropdown.MenuItem>
+                                <Dropdown.MenuItem>菜单二</Dropdown.MenuItem>
+                                <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                <Dropdown.MenuDivider/>
+                                <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                <Dropdown.MenuItem>菜单四</Dropdown.MenuItem>
+                                <Dropdown.MenuItem>菜单五</Dropdown.MenuItem>
+                            </Dropdown.Menu>
                         </Dropdown>
                     </Card>
                     <h5>Dropdown API</h5>
