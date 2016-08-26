@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Radio, RadioGroup, Form, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class RadioView extends Component{
     onChangeHandle(value, event){
@@ -23,35 +23,42 @@ export default class RadioView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Radio</h5>
-                    <Row>
-                        <Col>
-                            <Card block>
-                                <Form>
-                                    <Form.Group>
-                                        <label>Radio</label>
-                                        <RadioGroup defaultValue={1} onChange={this.onChangeHandle}>
-                                           { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                <Radio key={index} value={item.id}>{item.name}</Radio>
-                                            )}
-                                        </RadioGroup>
-                                    </Form.Group>
-                                </Form>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card block>
-                                <Form>
-                                    <Form.Group>
-                                        <label>Disabled</label>
-                                        <RadioGroup disabled>
-                                            <Radio defaultChecked>Yes</Radio>
-                                            <Radio>No</Radio>
-                                        </RadioGroup>
-                                    </Form.Group>
-                                </Form>
-                            </Card>
-                        </Col>
-                    </Row>
+                    <Card>
+                       <Card block noborder>
+                        <Row>
+                            <Col>
+                                <Card block>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>Radio</label>
+                                            <RadioGroup defaultValue={1} onChange={this.onChangeHandle}>
+                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                )}
+                                            </RadioGroup>
+                                        </Form.Group>
+                                    </Form>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card block>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>Disabled</label>
+                                            <RadioGroup disabled>
+                                                <Radio defaultChecked>Yes</Radio>
+                                                <Radio>No</Radio>
+                                            </RadioGroup>
+                                        </Form.Group>
+                                    </Form>
+                                </Card>
+                            </Col>
+                        </Row>
+                        </Card>
+                        <Highlight>
+                            {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} ><Radio value={1}>First</Radio>...</RadioGroup>\n<RadioGroup disabled><Radio defaultChecked>Yes</Radio>...</RadioGroup> `}
+                        </Highlight>
+                    </Card>
                     <h5 className="text-secondary">Radio API</h5>
                     <CommenTable
                         data = {[

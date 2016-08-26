@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class InputView extends Component{
     constructor(props, context){
@@ -53,111 +53,131 @@ export default class InputView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Text</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>basic:</label>
-                                        <Input type="text"/>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>addon:</label>
-                                        <Input type="text" ref="clearInput" defaultValue="text">
-                                            <Icon type="times" onClick={this.clearInputHandle}></Icon>
-                                        </Input>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>pill shape:</label>
-                                        <Input type="text" defaultValue="something" pill>
-                                            <Icon type="search"></Icon>
-                                        </Input>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Card>
+                        <Card>
+                            <Card block noborder>
+                                <Row>
+                                    <Col>
+                                        <Form>
+                                            <Form.Group>
+                                                <label>basic:</label>
+                                                <Input type="text"/>
+                                            </Form.Group>
+                                        </Form>
+                                    </Col>
+                                    <Col>
+                                        <Form>
+                                            <Form.Group>
+                                                <label>addon:</label>
+                                                <Input type="text" ref="clearInput" defaultValue="text">
+                                                    <Icon type="times" onClick={this.clearInputHandle}></Icon>
+                                                </Input>
+                                            </Form.Group>
+                                        </Form>
+                                    </Col>
+                                    <Col>
+                                        <Form>
+                                            <Form.Group>
+                                                <label>pill shape:</label>
+                                                <Input type="text" defaultValue="something" pill>
+                                                    <Icon type="search"></Icon>
+                                                </Input>
+                                            </Form.Group>
+                                        </Form>
+                                    </Col>
+                                </Row>
+                            </Card>
+                            <Highlight>
+                                {`import { Input } from 'impression-react';\n\n<Input type="text"/>\n<Input type="text" ref="clearInput" defaultValue="text"><Icon type="times" onClick={...}></Icon></Input>\n<Input type="text" defaultValue="something" pill>...</Input>`}
+                            </Highlight>
+                        </Card>
                      <h5>Date</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>basic:</label>
-                                        <Input type="date"/>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>defaultValue:</label>
-                                        <Input type="date" defaultValue="2016-05-29"/>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>disabled:</label>
-                                        <Input type="date" defaultValue="2016-05-29" disabled/>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card block noborder>
+                            <Row>
+                                <Col>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>basic:</label>
+                                            <Input type="date"/>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                                <Col>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>defaultValue:</label>
+                                            <Input type="date" defaultValue="2016-05-29"/>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                                <Col>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>disabled:</label>
+                                            <Input type="date" defaultValue="2016-05-29" disabled/>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                            </Row>
+                        </Card>
+                        <Highlight>
+                        {`<Input type="date"/>\n<Input type="date" defaultValue="2016-05-29"/>\n<Input type="date" defaultValue="2016-05-29" disabled/>`}
+                        </Highlight>
                     </Card>
                     <h5>Search</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>basic:</label>
-                                        <Input type="search" onClick={this.toggleModalHandle} value={this.state.city.name}/>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>addon:</label>
-                                        <Input type="search" onClick={this.toggleModalHandle} value={this.state.city.name}>
-                                            <Icon type="map-marker"></Icon>
-                                        </Input>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                            <Col>
-                                <Form>
-                                    <Form.Group>
-                                        <label>disabled:</label>
-                                        <Input type="search" value="上海" disabled/>
-                                    </Form.Group>
-                                </Form>
-                            </Col>
-                        </Row>
+                    <Card >
+                        <Card block noborder>
+                            <Row>
+                                <Col>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>basic:</label>
+                                            <Input type="search" onClick={this.toggleModalHandle} value={this.state.city.name}/>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                                <Col>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>addon:</label>
+                                            <Input type="search" onClick={this.toggleModalHandle} value={this.state.city.name}>
+                                                <Icon type="map-marker"></Icon>
+                                            </Input>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                                <Col>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>disabled:</label>
+                                            <Input type="search" value="上海" disabled/>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                            </Row>
+                        </Card>
+                        <Highlight>
+                            {`<Input type="search" onClick={...} value="..."/>\n<Input type="search" value="..." disabled/>`}
+                        </Highlight>
                     </Card>
                     <h5>File</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Input type="file"/>
-                            </Col>
-                            <Col>
-                                <Input type="file" placeholder="请选择要上传的证书图片"/>
-                            </Col>
-                            <Col>
-                                <Input type="file" btnStyle="primary"/>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card block noborder>
+                            <Row>
+                                <Col>
+                                    <Input type="file"/>
+                                </Col>
+                                <Col>
+                                    <Input type="file" placeholder="请选择要上传的证书图片"/>
+                                </Col>
+                                <Col>
+                                    <Input type="file" btnStyle="primary"/>
+                                </Col>
+                            </Row>
+                        </Card>
+                        <Highlight>
+                            {` <Input type="file"/>\n<Input type="file" placeholder="请选择要上传的证书图片"/>\n<Input type="file" btnStyle="primary"/>`}
+                        </Highlight>
                     </Card>
                     <h5>Input API</h5>
                     <CommenTable

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Switch, Form, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class SwitchView extends Component{
     render(){
@@ -9,17 +9,22 @@ export default class SwitchView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Switch</h5>
-                    <Card block>
-                        <Form grid>
-                            <Form.Group col="6">
-                                <label>Default</label>
-                                <Switch defaultChecked/>
-                            </Form.Group>
-                            <Form.Group>
-                                <label>Disabled</label>
-                                <Switch disabled defaultChecked />
-                            </Form.Group>
-                        </Form>
+                    <Card>
+                        <Card block noborder>
+                            <Form grid>
+                                <Form.Group col="6">
+                                    <label>Default</label>
+                                    <Switch defaultChecked/>
+                                </Form.Group>
+                                <Form.Group>
+                                    <label>Disabled</label>
+                                    <Switch disabled defaultChecked />
+                                </Form.Group>
+                            </Form>
+                        </Card>
+                        <Highlight>
+                            {`import { Switch } from 'impression-react';\n\n<Switch defaultChecked/>\n<Switch disabled defaultChecked /> `}
+                        </Highlight>
                     </Card>
                     <h5 className="text-secondary">API</h5>
                     <CommenTable
