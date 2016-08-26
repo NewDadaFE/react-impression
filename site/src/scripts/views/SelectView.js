@@ -8,7 +8,7 @@ export default class SelectView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Select</h3>
+                    <h5>Select</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -44,7 +44,7 @@ export default class SelectView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Disabled</h3>
+                    <h5>Disabled</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -73,7 +73,7 @@ export default class SelectView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Select API</h3>
+                    <h5>Select API</h5>
                     <CommenTable
                         data = {[
                             ['value', '值', 'any', ''],
@@ -84,7 +84,7 @@ export default class SelectView extends Component{
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     ></CommenTable>
-                    <h3>Select.Option API</h3>
+                    <h5>Select.Option API</h5>
                     <CommenTable
                         data = {[
                             ['disabled', '是否不可用', 'boolean', 'false'],

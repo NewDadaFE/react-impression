@@ -33,7 +33,7 @@ export default class PaginationView extends Component{
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
-                    <h3>Examples</h3>
+                    <h5>Examples</h5>
                     <Card block>
                         <Row>
                             <Col>
@@ -46,7 +46,7 @@ export default class PaginationView extends Component{
                             </Col>
                         </Row>
                     </Card>
-                    <h3>Pagination API</h3>
+                    <h5>Pagination API</h5>
                     <CommenTable
                         data = {[
                             ['scope', '设置前后延伸几页', 'number', '2'],

@@ -24,7 +24,7 @@ export default class DropdownView extends Component{
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card block>
-                        <Dropdown menus={menus} trigger="hover">
+                        <Dropdown menus={menus} trigger="click">
                             <Button theme="primary">Dropdown</Button>
                         </Dropdown>
                     </Card>
