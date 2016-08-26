@@ -420,6 +420,8 @@ $dropdown-link-disabled-color:   $gray-light !default;
 $dropdown-item-padding-x:        1.5rem !default;
 $dropdown-item-padding-y:        .5rem !default;
 
+$dropdown-caret-transition:      all .36s ease !default;
+
 // Z-index master list
 $zindex-dropdown-backdrop:         990 !default;
 $zindex-navbar:                   1000 !default;

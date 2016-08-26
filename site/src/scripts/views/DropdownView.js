@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Dropdown, Breadcrumb } from '../components/impression';
+import { Card, Button, Dropdown, Breadcrumb, Row, Col, Icon } from '../components/impression';
 import { CommenTable } from '../components';
 
 export default class DropdownView extends Component{
@@ -24,20 +24,40 @@ export default class DropdownView extends Component{
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card block>
-                        <Dropdown>
-                            <Dropdown.Trigger trigger="click">
-                                <Button theme="primary">Dropdown</Button>
-                            </Dropdown.Trigger>
-                            <Dropdown.Menu>
-                                <Dropdown.MenuItem>菜单一</Dropdown.MenuItem>
-                                <Dropdown.MenuItem>菜单二</Dropdown.MenuItem>
-                                <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
-                                <Dropdown.MenuDivider/>
-                                <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
-                                <Dropdown.MenuItem>菜单四</Dropdown.MenuItem>
-                                <Dropdown.MenuItem>菜单五</Dropdown.MenuItem>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        <Row>
+                            <Col>
+                                <Dropdown>
+                                    <Dropdown.Trigger trigger="click">
+                                        <Button theme="primary">Dropdown</Button>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Menu>
+                                        <Dropdown.MenuItem>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuDivider/>
+                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单五</Dropdown.MenuItem>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                            <Col>
+                                <Dropdown>
+                                    <Dropdown.Trigger trigger="click">
+                                        <a href="javascript:void(0);">下拉菜单</a>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Menu>
+                                        <Dropdown.MenuItem>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuDivider/>
+                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem>菜单五</Dropdown.MenuItem>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                        </Row>
                     </Card>
                     <h5>Dropdown API</h5>
                     <CommenTable

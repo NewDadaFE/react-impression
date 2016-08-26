@@ -17,6 +17,10 @@
     > a {
         outline: 0;
     }
+
+    .dropdown-caret {
+        transform: rotate(180deg);
+    }
 }
 
 // The dropdown menu
@@ -71,10 +75,6 @@
             color: $dropdown-link-disabled-color;
         }
     }
-
-    > * {
-        display: block;
-    }
 }
 
 
@@ -82,4 +82,9 @@
 .dropdown-menu-right {
     right: 0;
     left: auto;
+}
+
+// Caret
+.dropdown-caret {
+    transition: $dropdown-caret-transition;
 }
