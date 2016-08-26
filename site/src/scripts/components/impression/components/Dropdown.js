@@ -4,6 +4,8 @@ import DropdownTrigger from './DropdownTrigger';
 import DropdownMenu from './DropdownMenu';
 import DropdownMenuItem from './DropdownMenuItem';
 import DropdownMenuDivider from './DropdownMenuDivider';
+import * as System from '../utils/system';
+
 
 /**
  * Dropdown组件.
@@ -11,6 +13,7 @@ import DropdownMenuDivider from './DropdownMenuDivider';
 export default class Dropdown extends Component{
     constructor(props, context){
         super(props, context);
+        System.manager(this);
 
         this.state = {
             active:  undefined === props.active?  false : props.active,
@@ -31,12 +34,22 @@ export default class Dropdown extends Component{
         trigger: 'click',
     }
     //显示/隐藏菜单
-    toggleMenuHandle = flag => {
+    toggleOptionsHandle = flag => {
         let { active } = this.state;
 
         this.setState({
             active: typeof flag === 'boolean'? flag : !active
         });
+    }
+    //隐藏菜单
+    hideOptionsHandle = () => {
+        this.setState({
+            active: false
+        });
+    }
+    //清空组件管理.
+    componentWillUnmount(){
+        System.unmanager(this);
     }
     //渲染
     render(){
@@ -47,13 +60,13 @@ export default class Dropdown extends Component{
         children = children.map((child, index) => {
             return React.cloneElement(child, {
                 trigger,
-                toggleMenu: this.toggleMenuHandle
+                toggleMenu: this.toggleOptionsHandle
             });
         });
 
         if(trigger === 'hover'){
-            others.onMouseOver = () => this.toggleMenuHandle(true);
-            others.onMouseOut = () => this.toggleMenuHandle(false);
+            others.onMouseOver = () => this.toggleOptionsHandle(true);
+            others.onMouseOut = () => this.toggleOptionsHandle(false);
         }
 
         delete others.active;
