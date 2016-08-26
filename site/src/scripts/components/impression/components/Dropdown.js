@@ -18,33 +18,43 @@ export default class Dropdown extends Component{
     }
     //prop type校验
     static propTypes = {
+        //是否激活
         active: PropTypes.bool,
+        //触发动作
+        trigger: PropTypes.oneOf(['click', 'hover']),
         //子节点
         children: PropTypes.array.isRequired,
     }
     //默认props
     static defaultProps = {
         active: false,
+        trigger: 'click',
     }
     //显示/隐藏菜单
-    toggleMenuHandle = () => {
+    toggleMenuHandle = flag => {
         let { active } = this.state;
 
         this.setState({
-            active: !active
+            active: typeof flag === 'boolean'? flag : !active
         });
     }
     //渲染
     render(){
-        let { className, children, ...others } = this.props,
+        let { trigger, className, children, ...others } = this.props,
             { active } = this.state;
 
         children = React.Children.toArray(children);
         children = children.map((child, index) => {
             return React.cloneElement(child, {
+                trigger,
                 toggleMenu: this.toggleMenuHandle
             });
         });
+
+        if(trigger === 'hover'){
+            others.onMouseOver = () => this.toggleMenuHandle(true);
+            others.onMouseOut = () => this.toggleMenuHandle(false);
+        }
 
         delete others.active;
 

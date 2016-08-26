@@ -10,7 +10,7 @@
 }
 
 .active {
-    > .dropdown-menu {
+    > .dropdown-picker {
         display: block;
     }
 
@@ -23,15 +23,19 @@
     }
 }
 
-// The dropdown menu
-.dropdown-menu {
+.dropdown-picker {
     position: absolute;
     top: 100%;
     left: 0;
     z-index: $zindex-dropdown;
     display: none;
     min-width: $dropdown-min-width;
-    margin-top: $dropdown-margin-top;
+    transform-origin: center 0;
+    animation: scaleIn .36s ease;
+}
+
+//menu
+.dropdown-menu {
     text-align: left;
     list-style: none;
     padding: 0;
@@ -39,6 +43,11 @@
     border: $dropdown-border-width solid $dropdown-border-color;
     border-radius: $dropdown-border-radius;
     box-shadow: $dropdown-box-shadow;
+}
+
+// Gap
+.dropdown-gap {
+    height: $dropdown-margin-top;
 }
 
 // Dividers
@@ -66,6 +75,7 @@
 
     // Disabled
     &.disabled {
+        color: $dropdown-link-disabled-color;
 
         &:hover {
             text-decoration: none;

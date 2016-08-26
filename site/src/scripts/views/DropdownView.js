@@ -1,64 +1,138 @@
 import React, { Component } from 'react';
-import { Card, Button, Dropdown, Breadcrumb, Row, Col, Icon } from '../components/impression';
+import { Card, Button, Dropdown, Breadcrumb, Row, Col, Icon, Notification } from '../components/impression';
 import { CommenTable } from '../components';
 
 export default class DropdownView extends Component{
+    //菜单点击提醒
+    menuClickHandle(message){
+        Notification.info({
+            closeable: false,
+            title: '菜单点击',
+            message: `${message}被点击了！！！`
+        });
+    }
     render(){
-        let menus = [{
-            name: 'First menu'
-        }, {
-            name: 'Second menu'
-
-        },{
-            name: 'Third menu',
-            active: true
-
-        },'-', {
-            disabled: true,
-            name: 'Fourth menu'
-        }];
-
         return (
             <div>
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Basic</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
+                    <Row>
+                        <Col>
+                            <Card block>
                                 <Dropdown>
-                                    <Dropdown.Trigger trigger="click">
+                                    <Dropdown.Trigger>
                                         <Button theme="primary">Dropdown</Button>
                                     </Dropdown.Trigger>
                                     <Dropdown.Menu>
-                                        <Dropdown.MenuItem>菜单一</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单二</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单一')}>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单二')}>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单三')}>菜单三</Dropdown.MenuItem>
                                         <Dropdown.MenuDivider/>
-                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单四</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单四')}>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单五')}>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单六')}>菜单六</Dropdown.MenuItem>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                            </Col>
-                            <Col>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card block>
                                 <Dropdown>
-                                    <Dropdown.Trigger trigger="click">
+                                    <Dropdown.Trigger>
                                         <a href="javascript:void(0);">下拉菜单</a>
                                     </Dropdown.Trigger>
                                     <Dropdown.Menu>
-                                        <Dropdown.MenuItem>菜单一</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单二</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单一')}>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单二')}>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单三')}>菜单三</Dropdown.MenuItem>
                                         <Dropdown.MenuDivider/>
-                                        <Dropdown.MenuItem>菜单三</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单四</Dropdown.MenuItem>
-                                        <Dropdown.MenuItem>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单四')}>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单五')}>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单六')}>菜单六</Dropdown.MenuItem>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                            </Col>
-                        </Row>
-                    </Card>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <h5>Disabled</h5>
+                    <Row>
+                        <Col>
+                            <Card block>
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <Button theme="primary">Dropdown</Button>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Menu>
+                                        <Dropdown.MenuItem disabled onClick={() => this.menuClickHandle('菜单一')}>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem disabled onClick={() => this.menuClickHandle('菜单二')}>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem disabled onClick={() => this.menuClickHandle('菜单三')}>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuDivider/>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单四')}>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单五')}>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单六')}>菜单六</Dropdown.MenuItem>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card block>
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <a href="javascript:void(0);">下拉菜单</a>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Menu>
+                                        <Dropdown.MenuItem disabled onClick={() => this.menuClickHandle('菜单一')}>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem disabled onClick={() => this.menuClickHandle('菜单二')}>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem disabled onClick={() => this.menuClickHandle('菜单三')}>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuDivider/>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单四')}>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单五')}>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单六')}>菜单六</Dropdown.MenuItem>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <h5>Trigger</h5>
+                    <Row>
+                        <Col>
+                            <Card block>
+                                <Dropdown trigger="hover">
+                                    <Dropdown.Trigger>
+                                        <Button theme="primary">Dropdown</Button>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Menu>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单一')}>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单二')}>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单三')}>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuDivider/>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单四')}>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单五')}>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单六')}>菜单六</Dropdown.MenuItem>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card block>
+                                <Dropdown trigger="hover">
+                                    <Dropdown.Trigger>
+                                        <a href="javascript:void(0);">下拉菜单</a>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Menu>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单一')}>菜单一</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单二')}>菜单二</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单三')}>菜单三</Dropdown.MenuItem>
+                                        <Dropdown.MenuDivider/>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单四')}>菜单四</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单五')}>菜单五</Dropdown.MenuItem>
+                                        <Dropdown.MenuItem onClick={() => this.menuClickHandle('菜单六')}>菜单六</Dropdown.MenuItem>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Card>
+                        </Col>
+                    </Row>
                     <h5>Dropdown API</h5>
                     <CommenTable
                         data = {[
@@ -69,6 +143,7 @@ export default class DropdownView extends Component{
                         ]}
                     ></CommenTable>
                 </Card>
+                <Notification/>
             </div>
         );
     }
