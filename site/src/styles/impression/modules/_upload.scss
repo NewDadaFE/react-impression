@@ -26,8 +26,7 @@
     &:hover {
         color: $body-color;
         border-color: $input-border-focus;
-
-        @include box-shadow($input-box-focus-shadow);
+        box-shadow: $input-box-focus-shadow;
     }
 
     input[type="file"] {

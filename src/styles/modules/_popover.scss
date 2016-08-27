@@ -10,9 +10,8 @@
     background-color: $popover-bg;
     background-clip: padding-box;
     border: $popover-border-width solid $popover-border-color;
-
-    @include border-radius($border-radius-lg);
-    @include box-shadow($popover-box-shadow);
+    border-radius: $border-radius-lg;
+    box-shadow: $popover-box-shadow;
     animation: popoverFadeIn .6s ease;
 
 
@@ -108,8 +107,7 @@
     background-color: $popover-title-bg;
     border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
     $offset-border-width: ($border-width / $font-size-root);
-
-    @include border-radius(($border-radius-lg - $offset-border-width) ($border-radius-lg - $offset-border-width) 0 0);
+    border-radius: ($border-radius-lg - $offset-border-width) ($border-radius-lg - $offset-border-width) 0 0;
 }
 
 .popover-content {

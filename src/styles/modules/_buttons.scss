@@ -99,8 +99,7 @@ fieldset[disabled] a.btn {
     &.active,
     &:disabled {
         background-color: transparent;
-
-        @include box-shadow(none);
+        box-shadow: none;
     }
 
     &,

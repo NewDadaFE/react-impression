@@ -52,7 +52,7 @@
     &:focus {
         border-color: $input-border-focus;
         outline: none;
-        @include box-shadow($input-box-focus-shadow);
+        box-shadow: $input-box-focus-shadow;
         &::placeholder {
             opacity: 0;
         }

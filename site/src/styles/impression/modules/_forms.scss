@@ -19,7 +19,7 @@ form {
     background-image: none;
     background-clip: padding-box;
     border: $input-btn-border-width solid $input-border-color;
-    @include transition(border-color ease-in-out .18s, box-shadow ease-in-out .18s);
+    transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
 
     &::-ms-expand {
         background-color: transparent;
