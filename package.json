@@ -24,7 +24,8 @@
   "homepage": "https://github.com/shenlq/impression",
   "dependencies": {
     "classnames": "^2.2.0",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "perfect-scrollbar": "^0.6.12"
   },
   "devDependencies": {
     "babel": "^6.5.2",

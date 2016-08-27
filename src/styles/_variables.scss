@@ -327,7 +327,7 @@ $select-option-hover-bg:                    #f5f5f5 !default;
 $select-option-active-color:                $brand-primary !default;
 $select-option-disable-color:               $gray-light !default;
 
-//时间空间
+//时间控件
 $datepicker-bg:                             $brand-pure !default;
 $datepicker-width:                          15rem !default;
 $datepicker-border:                         1px solid $border-color !default;
@@ -399,19 +399,17 @@ $upload-preview-img-padding:            2px !default;
 
 // Dropdowns
 //
-// Dropdown menu container and contents.
-
-$dropdown-min-width:             160px !default;
+$dropdown-min-width:             120px !default;
 $dropdown-padding-y:             .5rem !default;
-$dropdown-margin-top:            2px !default;
+$dropdown-margin-top:            4px !default;
 $dropdown-bg:                    $brand-pure !default;
 $dropdown-border-color:          rgba($gray-secondary, .2) !default;
 $dropdown-border-width:          $border-width !default;
+$dropdown-border-radius:         $border-radius-sm;
 $dropdown-divider-bg:            #e5e5e5 !default;
-$dropdown-box-shadow:            0 2px 6px $inverse-level-2 !default;
+$dropdown-box-shadow:            0 1px 8px $inverse-level-2 !default;
 
-$dropdown-link-color:            $gray-dark !default;
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-color:      lighten($brand-primary, 6%) !default;
 $dropdown-link-hover-bg:         #f5f5f5 !default;
 
 $dropdown-link-active-color:     $gray-light !default;
@@ -422,16 +420,9 @@ $dropdown-link-disabled-color:   $gray-light !default;
 $dropdown-item-padding-x:        1.5rem !default;
 $dropdown-item-padding-y:        .5rem !default;
 
-$dropdown-header-color:          $gray-light !default;
-
-$dropdown-toggle-transition:     all .2s cubic-bezier(.4, 0, .2, 1) !default;
-
+$dropdown-caret-transition:      all .36s ease !default;
 
 // Z-index master list
-//
-// Warning: Avoid customizing these values. They're used for a bird's eye view
-// of components dependent on the z-axis and are designed to all work together.
-
 $zindex-dropdown-backdrop:         990 !default;
 $zindex-navbar:                   1000 !default;
 $zindex-select:                   1000 !default;
@@ -478,7 +469,7 @@ $navbar-pure-border-color:          $border-color !default;
 
 
 //Sidebar
-$sidebar-width:                                 14rem !default;
+$sidebar-width:                                 16% !default;
 $sidebar-color:                                 $gray-light !default;
 $sidebar-bg:                                    $gray-secondary !default;
 
