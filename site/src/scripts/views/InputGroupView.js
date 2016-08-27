@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, InputGroup, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class InputGroupView extends Component{
     render(){
@@ -9,81 +9,96 @@ export default class InputGroupView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Basic</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Addon>@</InputGroup.Addon>
-                                    <InputGroup.Input placeholder="something"/>
-                                </InputGroup>
-                            </Col>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Addon>@</InputGroup.Addon>
-                                </InputGroup>
-                            </Col>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Addon>@</InputGroup.Addon>
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Addon>@</InputGroup.Addon>
-                                </InputGroup>
-                            </Col>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Addon pure>+86</InputGroup.Addon>
-                                    <InputGroup.Input placeholder="phone"/>
-                                </InputGroup>
-                            </Col>
-                        </Row>
+                    <Card >
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Addon>@</InputGroup.Addon>
+                                        <InputGroup.Input placeholder="something"/>
+                                    </InputGroup>
+                                </Col>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Addon>@</InputGroup.Addon>
+                                    </InputGroup>
+                                </Col>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Addon>@</InputGroup.Addon>
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Addon>@</InputGroup.Addon>
+                                    </InputGroup>
+                                </Col>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Addon pure>+86</InputGroup.Addon>
+                                        <InputGroup.Input placeholder="phone"/>
+                                    </InputGroup>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { InputGroup } from 'impression-react';\n\n<InputGroup><InputGroup.Addon>@</InputGroup.Addon><InputGroup.Input placeholder="something"/></InputGroup>\n...\n<InputGroup><InputGroup.Addon pure>+86</InputGroup.Addon><InputGroup.Input placeholder="phone"/></InputGroup>`}
+                        </Highlight>
                     </Card>
                     <h5>Addons</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Button theme="default">help</InputGroup.Button>
-                                    <InputGroup.Input placeholder="something"/>
-                                </InputGroup>
-                            </Col>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button theme="primary">Go</InputGroup.Button>
-                                </InputGroup>
-                            </Col>
-                            <Col>
-                                <InputGroup>
-                                    <InputGroup.Button theme="default">-</InputGroup.Button>
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button theme="default">+</InputGroup.Button>
-                                </InputGroup>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Button theme="default">help</InputGroup.Button>
+                                        <InputGroup.Input placeholder="something"/>
+                                    </InputGroup>
+                                </Col>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Button theme="primary">Go</InputGroup.Button>
+                                    </InputGroup>
+                                </Col>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Button theme="default">-</InputGroup.Button>
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Button theme="default">+</InputGroup.Button>
+                                    </InputGroup>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<InputGroup>\n  <InputGroup.Button theme="default">help</InputGroup.Button>\n  <InputGroup.Input placeholder="something"/>\n</InputGroup>`}
+                        </Highlight>
                     </Card>
                     <h5>Sizes</h5>
-                    <Card block>
-                        <Row>
-                            <Col col="3">
-                                <InputGroup size="sm">
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button theme="primary">Search</InputGroup.Button>
-                                </InputGroup>
-                            </Col>
-                            <Col col="4">
-                                <InputGroup>
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button theme="primary">Search</InputGroup.Button>
-                                </InputGroup>
-                            </Col>
-                            <Col col="5">
-                                <InputGroup size="lg">
-                                    <InputGroup.Input placeholder="something"/>
-                                    <InputGroup.Button theme="primary">Search</InputGroup.Button>
-                                </InputGroup>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="3">
+                                    <InputGroup size="sm">
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Button theme="primary">Search</InputGroup.Button>
+                                    </InputGroup>
+                                </Col>
+                                <Col col="4">
+                                    <InputGroup>
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Button theme="primary">Search</InputGroup.Button>
+                                    </InputGroup>
+                                </Col>
+                                <Col col="5">
+                                    <InputGroup size="lg">
+                                        <InputGroup.Input placeholder="something"/>
+                                        <InputGroup.Button theme="primary">Search</InputGroup.Button>
+                                    </InputGroup>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<InputGroup size="sm"><InputGroup.Input placeholder="something"/><InputGroup.Button theme="primary">Search</InputGroup.Button></InputGroup>\n<InputGroup>...</InputGroup>\n<InputGroup size="lg">...</InputGroup>`}
+                        </Highlight>
                     </Card>
                     <h5 className="text-secondary">InputGroup API</h5>
                     <CommenTable

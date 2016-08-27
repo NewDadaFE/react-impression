@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import DropdownTrigger from './DropdownTrigger';
 
 /**
  * Dropdown组件.
@@ -81,7 +80,6 @@ export default class Dropdown extends Component{
             break;
         }
 
-        console.log(children);
         children = React.cloneElement(children, options);
 
         return(
@@ -101,6 +99,5 @@ export default class Dropdown extends Component{
             </div>
         );
     }
-}
 
-Dropdown.Trigger = DropdownTrigger;
+}

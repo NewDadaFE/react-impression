@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Tooltip, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class TooltipView extends Component{
     onMouseOver(){
@@ -11,29 +11,34 @@ export default class TooltipView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Examples</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Tooltip position="right" content="Tooltip right">
-                                    <Button theme="primary" onMouseOver={this.onMouseOver}>Right</Button>
-                                </Tooltip>
-                            </Col>
-                            <Col>
-                                <Tooltip position="top" content="Tooltip top">
-                                    <Button theme="primary">Top</Button>
-                                </Tooltip>
-                            </Col>
-                            <Col>
-                                <Tooltip position="bottom" content="Tooltip bottom">
-                                    <Button theme="primary">Bottom</Button>
-                                </Tooltip>
-                            </Col>
-                            <Col>
-                                <Tooltip position="left" content="Tooltip left">
-                                    <Button theme="primary">Left</Button>
-                                </Tooltip>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Tooltip position="right" content="Tooltip right">
+                                        <Button theme="primary" onMouseOver={this.onMouseOver}>Right</Button>
+                                    </Tooltip>
+                                </Col>
+                                <Col>
+                                    <Tooltip position="top" content="Tooltip top">
+                                        <Button theme="primary">Top</Button>
+                                    </Tooltip>
+                                </Col>
+                                <Col>
+                                    <Tooltip position="bottom" content="Tooltip bottom">
+                                        <Button theme="primary">Bottom</Button>
+                                    </Tooltip>
+                                </Col>
+                                <Col>
+                                    <Tooltip position="left" content="Tooltip left">
+                                        <Button theme="primary">Left</Button>
+                                    </Tooltip>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Tooltip } from 'impression-react';\n\n<Tooltip position="right" content="Tooltip right">...</Tooltip>\n<Tooltip position="top" content="Tooltip top">..</Tooltip>\n<Tooltip position="bottom" content="Tooltip bottom">...</Tooltip>\n<Tooltip position="left" content="Tooltip left">...</Tooltip>`}
+                        </Highlight>
                     </Card>
                     <h5>Tooltip API</h5>
                     <CommenTable

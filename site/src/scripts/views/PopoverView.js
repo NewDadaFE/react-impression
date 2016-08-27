@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Popover, Button, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class PopoverView extends Component{
     render(){
@@ -9,31 +9,36 @@ export default class PopoverView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Examples</h5>
-                    <Card block>
-                        <Row>
-                            <Col col="8">
-                                <Popover position="right" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button theme="primary">Right</Button>
-                                </Popover>
-                            </Col>
-                            <Col col="4">
-                                <Popover position="left" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button theme="primary">Left</Button>
-                                </Popover>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col col="8">
-                                <Popover position="top" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button theme="primary">Top</Button>
-                                </Popover>
-                            </Col>
-                            <Col col="4">
-                                <Popover position="bottom" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
-                                    <Button theme="primary">Bottom</Button>
-                                </Popover>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="8">
+                                    <Popover position="right" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
+                                        <Button theme="primary">Right</Button>
+                                    </Popover>
+                                </Col>
+                                <Col col="4">
+                                    <Popover position="left" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
+                                        <Button theme="primary">Left</Button>
+                                    </Popover>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col col="8">
+                                    <Popover position="top" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
+                                        <Button theme="primary">Top</Button>
+                                    </Popover>
+                                </Col>
+                                <Col col="4">
+                                    <Popover position="bottom" title="popover" content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">
+                                        <Button theme="primary">Bottom</Button>
+                                    </Popover>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Popover } from 'impression-react';\n\n<Popover position="right" title="popover" content="...">...</Popover>\n<Popover position="left" title="popover" content="...">...</Popover>\n<Popover position="top" title="popover" content="...">...</Popover>\n<Popover position="bottom" title="popover" content="...">...</Popover>`}
+                        </Highlight>
                     </Card>
                     <h5>Popover API</h5>
                     <CommenTable

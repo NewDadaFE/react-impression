@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class BreadcrumbView extends Component{
     render(){
@@ -18,12 +18,22 @@ export default class BreadcrumbView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Examples</h3>
-                    <Card block>
-                        <Breadcrumb className="no-padding" routes={routes}></Breadcrumb>
+                    <Card>
+                        <Card.Block>
+                            <Breadcrumb className="no-padding" routes={routes}></Breadcrumb>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Breadcrumb } from 'impression-react';\n\nlet routes = [{name: 'Home', path: '/'}, {name: 'library'}, {name: 'Breadcrumb'}];\n<Breadcrumb className="no-padding" routes={routes}></Breadcrumb>`}
+                        </Highlight>
                     </Card>
                     <h3>Arrow divider</h3>
-                    <Card block>
-                        <Breadcrumb className="no-padding" routes={routes} divider="arrow"></Breadcrumb>
+                    <Card>
+                        <Card.Block>
+                            <Breadcrumb className="no-padding" routes={routes} divider="arrow"></Breadcrumb>
+                        </Card.Block>
+                        <Highlight>
+                            {`let routes = ...;\n<Breadcrumb className="no-padding" routes={routes} divider="arrow"></Breadcrumb>`}
+                        </Highlight>
                     </Card>
                     <h3 className="text-secondary">API</h3>
                     <CommenTable

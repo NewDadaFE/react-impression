@@ -10,7 +10,7 @@ export default class FormView extends Component{
                 <Card block noborder>
                     <h5>Inline</h5>
                     <Card>
-                        <Card block noborder>
+                        <Card.Block>
                             <Form>
                                 <Form.Group>
                                     <label>Name:</label>
@@ -25,14 +25,14 @@ export default class FormView extends Component{
                                 </Form.Group>
                                 <Button theme="primary">Search</Button>
                             </Form>
-                        </Card>
+                        </Card.Block>
                         <Highlight>
                             {`import { Form } from 'impression-react';\n\n<Form><Form.Group><label>Name:</label><Input type="text" placeholder="Jane Doe"/>...</Form.Group>`}
                         </Highlight>
                     </Card>
                     <h5>Horizontal</h5>
                     <Card>
-                        <Card block noborder>
+                        <Card.Block>
                             <Form type="horizontal">
                                 <Form.Group>
                                     <Col col="2" className="text-right">
@@ -72,9 +72,9 @@ export default class FormView extends Component{
                                     </Col>
                                 </Form.Group>
                             </Form>
-                        </Card>
+                        </Card.Block>
                         <Highlight>
-                            {`<Form type="horizontal"><Form.Group><Col col="2" className="text-right"><Form.Control.Label>Email:</Form.Control.Label></Col><Col col="10"><Input type="text" placeholder="Email"/></Col></Form.Group>...</Form>`}
+                            {`<Form type="horizontal">\n  <Form.Group>\n    <Col col="2" className="text-right"><Form.Control.Label>Email:</Form.Control.Label></Col>\n    <Col col="10"><Input type="text" placeholder="Email"/></Col>\n  </Form.Group>\n  ...\n</Form>`}
                         </Highlight>
                     </Card>
                     <h5 className="text-secondary">Form API</h5>
