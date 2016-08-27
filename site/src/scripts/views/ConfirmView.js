@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Confirm, Breadcrumb, Button } from '../components/impression';
-import { CommenTable } from '../components/';
+import { CommenTable, Highlight } from '../components/';
 
 export default class ConfirmView extends Component{
     constructor(props, context){
@@ -39,18 +39,23 @@ export default class ConfirmView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Basic</h5>
-                    <Card block>
-                       <Row>
-                           <Col>
-                               <Button theme="secondary" outline onClick={this.toggleConfirm1Handle}>warning</Button>
-                           </Col>
-                            <Col>
-                               <Button theme="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
-                           </Col>
-                            <Col>
-                               <Button theme="default" onClick={this.toggleConfirm3Handle}>danger</Button>
-                           </Col>
-                       </Row>
+                    <Card>
+                        <Card.Block>
+                           <Row>
+                               <Col>
+                                   <Button theme="secondary" outline onClick={this.toggleConfirm1Handle}>warning</Button>
+                               </Col>
+                                <Col>
+                                   <Button theme="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
+                               </Col>
+                                <Col>
+                                   <Button theme="default" onClick={this.toggleConfirm3Handle}>danger</Button>
+                               </Col>
+                           </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Notification } from 'impression-react';\n\n<Confirm >您确定删除消费记录？</Confirm>\n<Confirm type="info">您确定购买该航班机票？</Confirm>\n<Confirm type="danger">您确定注销该银行卡？</Confirm>`}
+                        </Highlight>
                     </Card>
                     <h5>API</h5>
                     <CommenTable

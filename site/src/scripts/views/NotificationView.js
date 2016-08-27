@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Notification, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class NotificationView extends Component{
     //添加一条
@@ -35,29 +35,34 @@ export default class NotificationView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Example</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Button theme="default" onClick={this.addInfoNotice}>
-                                    <span className="text-primary">信息</span>
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button theme="default" onClick={this.addSuccessNotice}>
-                                    <span className="text-success">成功</span>
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button theme="default" onClick={this.addWarningNotice}>
-                                    <span className="text-warning">警告</span>
-                                </Button>
-                            </Col>
-                            <Col>
-                               <Button theme="default" onClick={this.addErrorNotice}>
-                                    <span className="text-danger">错误</span>
-                               </Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Button theme="default" onClick={this.addInfoNotice}>
+                                        <span className="text-primary">信息</span>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="default" onClick={this.addSuccessNotice}>
+                                        <span className="text-success">成功</span>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="default" onClick={this.addWarningNotice}>
+                                        <span className="text-warning">警告</span>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                   <Button theme="default" onClick={this.addErrorNotice}>
+                                        <span className="text-danger">错误</span>
+                                   </Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Notification } from 'impression-react';\n\nNotification.info(title, message, closeable)\nNotification.success(title, message, closeable)\nNotification.warning(title, message, closeable)\nNotification.error(title, message, closeable)`}
+                        </Highlight>
                     </Card>
                     <Notification/>
                     <h5>Notification API</h5>

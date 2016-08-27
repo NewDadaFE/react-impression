@@ -26,7 +26,7 @@ export default class CheckboxView extends Component{
                                 </Form>
                             </Card.Block>
                             <Highlight>
-                                {`import { Checkbox, CheckboxGroup } from 'impression-react';\n\n<CheckboxGroup defaultValue={['basketball', ...]}><Checkbox>basketball</Checkbox>...</CheckboxGroup>`}
+                                {`import { Checkbox, CheckboxGroup } from 'impression-react';\n\n<CheckboxGroup defaultValue={['basketball', ...]}>\n  <Checkbox>basketball</Checkbox>\n  ...\n</CheckboxGroup>`}
                             </Highlight>
                             </Card>
                         </Col>
@@ -46,7 +46,7 @@ export default class CheckboxView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<CheckboxGroup defaultValue={['basketball', ...]} disabled> ...</CheckboxGroup>`}
+                                    {`<CheckboxGroup defaultValue={['basketball', ...]} disabled>\n  ...\n</CheckboxGroup>`}
                                 </Highlight>
                             </Card>
                         </Col>

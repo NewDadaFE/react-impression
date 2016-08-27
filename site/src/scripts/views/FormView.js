@@ -27,7 +27,7 @@ export default class FormView extends Component{
                             </Form>
                         </Card.Block>
                         <Highlight>
-                            {`import { Form } from 'impression-react';\n\n<Form><Form.Group><label>Name:</label><Input type="text" placeholder="Jane Doe"/>...</Form.Group>`}
+                            {`import { Form } from 'impression-react';\n\n<Form>\n  <Form.Group>\n    <label>Name:</label>\n    <Input type="text" placeholder="Jane Doe"/>\n     ...\n  </Form.Group>\n</Form>`}
                         </Highlight>
                     </Card>
                     <h5>Horizontal</h5>

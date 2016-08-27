@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Message, Icon, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class MessageView extends Component{
     showInfoMessageHandle(){
@@ -29,34 +29,39 @@ export default class MessageView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Example</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Button theme="primary" outline onClick={this.showInfoMessageHandle}>
-                                    信息
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button theme="default" onClick={this.showSuccessMessageHandle}>
-                                    <span className="text-success">成功</span>
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button theme="secondary" outline onClick={this.showWarningMessageHandle}>
-                                    警告
-                                </Button>
-                            </Col>
-                            <Col>
-                               <Button theme="default" onClick={this.showErrorMessageHandle}>
-                                    <span className="text-danger">错误</span>
-                               </Button>
-                            </Col>
-                            <Col>
-                               <Button theme="primary" outline onClick={this.showLoadingMessageHandle}>
-                                    <Icon type="spinner" left/>Loading
-                               </Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Button theme="primary" outline onClick={this.showInfoMessageHandle}>
+                                        信息
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="default" onClick={this.showSuccessMessageHandle}>
+                                        <span className="text-success">成功</span>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="secondary" outline onClick={this.showWarningMessageHandle}>
+                                        警告
+                                    </Button>
+                                </Col>
+                                <Col>
+                                   <Button theme="default" onClick={this.showErrorMessageHandle}>
+                                        <span className="text-danger">错误</span>
+                                   </Button>
+                                </Col>
+                                <Col>
+                                   <Button theme="primary" outline onClick={this.showLoadingMessageHandle}>
+                                        <Icon type="spinner" left/>Loading
+                                   </Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Message } from 'impression-react';\n\nMessage.info('你好，这是一条info消息！');\nMessage.success('你好，这是一条success消息！');\nMessage.warning('你好，这是一条warning消息！');\nMessage.error('你好，这是一条error消息！');\nMessage.loading('正在执行中...', 0);`}
+                        </Highlight>
                     </Card>
                     <Message/>
                     <h5>API</h5>

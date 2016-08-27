@@ -40,7 +40,7 @@ export default class InputGroupView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { InputGroup } from 'impression-react';\n\n<InputGroup><InputGroup.Addon>@</InputGroup.Addon><InputGroup.Input placeholder="something"/></InputGroup>\n...\n<InputGroup><InputGroup.Addon pure>+86</InputGroup.Addon><InputGroup.Input placeholder="phone"/></InputGroup>`}
+                            {`import { InputGroup } from 'impression-react';\n\n<InputGroup>\n  <InputGroup.Addon>@</InputGroup.Addon>\n  <InputGroup.Input placeholder="something"/>\n</InputGroup>\n...\n<InputGroup>\n  <InputGroup.Addon pure>+86</InputGroup.Addon>\n  <InputGroup.Input placeholder="phone"/>\n</InputGroup>`}
                         </Highlight>
                     </Card>
                     <h5>Addons</h5>
@@ -97,7 +97,7 @@ export default class InputGroupView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<InputGroup size="sm"><InputGroup.Input placeholder="something"/><InputGroup.Button theme="primary">Search</InputGroup.Button></InputGroup>\n<InputGroup>...</InputGroup>\n<InputGroup size="lg">...</InputGroup>`}
+                            {`<InputGroup size="sm">\n  <InputGroup.Input placeholder="something"/>\n  <InputGroup.Button theme="primary">Search</InputGroup.Button>\n</InputGroup>\n<InputGroup>...</InputGroup>\n<InputGroup size="lg">...</InputGroup>`}
                         </Highlight>
                     </Card>
                     <h5 className="text-secondary">InputGroup API</h5>

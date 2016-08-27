@@ -39,7 +39,7 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} ><Radio value={1}>First</Radio>...</RadioGroup>`}
+                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} >\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
                                 </Highlight>
                             </Card>
                         </Col>
@@ -57,7 +57,7 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<RadioGroup disabled><Radio defaultChecked>Yes</Radio>...</RadioGroup> `}
+                                    {`<RadioGroup disabled>\n  <Radio defaultChecked>Yes</Radio>\n  ...\n</RadioGroup> `}
                                 </Highlight>
                             </Card>
                         </Col>

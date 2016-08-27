@@ -41,6 +41,7 @@ export default class ModalView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
+                            {`import { Modal } from 'impression-react';\n\n<Modal>\n  <Modal.Header>...</Modal.Header>\n  <Modal.Body>...</Modal.Body>\n  <Modal.Footer>...</Modal.Footer>\n</Modal>\n<Modal size="sm">\n  ...\n</Modal>\n<Modal size="lg">\n  ...\n</Modal>`}
                         </Highlight>
                     </Card>
                     <h5 className="text-secondary">Modal API</h5>

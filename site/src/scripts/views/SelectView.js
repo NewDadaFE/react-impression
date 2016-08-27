@@ -46,7 +46,7 @@ export default class SelectView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Select } from 'impression-react';\n\n<Select><Select.Option value="1">First</Select.Option>...</Select>\n<Select value={0}><Select.Option value={0}>First</Select.Option>...</Select>`}
+                            {`import { Select } from 'impression-react';\n\n<Select>\n  <Select.Option value="1">First</Select.Option>\n  ...\n</Select>\n<Select value={0}>\n  <Select.Option value={0}>First</Select.Option>\n  ...\n</Select>`}
                         </Highlight>
                     </Card>
                     <h3>Disabled</h3>
@@ -80,7 +80,7 @@ export default class SelectView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Select disabled>...</Select>\n<Select><Select.Option value="1" disabled>First</Select.Option><Select.Option value="2" disabled>Second</Select.Option>...</Select>`}
+                            {`<Select disabled>...</Select>\n<Select>\n  <Select.Option value="1" disabled>First</Select.Option>\n  <Select.Option value="2" disabled>Second</Select.Option>\n  ...\n</Select>`}
                         </Highlight>
                     </Card>
                     <h3>Select API</h3>

@@ -40,7 +40,7 @@ export default class TimelineView extends Component{
                                     </Timeline>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Timeline } from 'impression-react';\n\n <Timeline>\n  <Timeline.Item dot={<Icon type="play-circle-o" className="text-muted"/>}> 1999 疯狂世界 </Timeline.Item>\n  ... \n  <Timeline.Item dot={<Icon type="pause-circle-o" className="text-muted"/>}><a href="javascript:void(0);">查看更多</a></Timeline.Item>\n</Timeline>`}
+                                    {`import { Timeline } from 'impression-react';\n\n <Timeline>\n  <Timeline.Item dot={<Icon type="play-circle-o" className="text-muted"/>}>\n   1999 疯狂世界\n  </Timeline.Item>\n  ... \n  <Timeline.Item dot={<Icon type="pause-circle-o" className="text-muted"/>}>\n    <a href="javascript:void(0);">查看更多</a>\n </Timeline.Item>\n</Timeline>`}
                                 </Highlight>
                             </Card>
                         </Col>

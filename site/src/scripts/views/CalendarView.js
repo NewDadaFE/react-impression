@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Calendar, Breadcrumb, Badge, Icon, Image } from '../components/impression';
+import { Highlight } from '../components/';
 
 export default class CalendarView extends Component{
     constructor(prop, context){
@@ -85,23 +86,38 @@ export default class CalendarView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Basic</h3>
-                    <Card block>
-                        <Calendar></Calendar>
+                    <Card>
+                        <Card.Block>
+                            <Calendar></Calendar>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Calendar } from 'impression-react';\n\n<Calendar></Calendar>`}
+                        </Highlight>
                     </Card>
                     <h3>Small</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Calendar size="sm"></Calendar>
-                            </Col>
-                            <Col>
-                                <Calendar onDateCellClick={this.checkDateClickHandle} dateCellRender={this.checkDateCellRender} firstDayOfWeek={0} size="sm"></Calendar>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Calendar size="sm"></Calendar>
+                                </Col>
+                                <Col>
+                                    <Calendar onDateCellClick={this.checkDateClickHandle} dateCellRender={this.checkDateCellRender} firstDayOfWeek={0} size="sm"></Calendar>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Calendar size="sm"></Calendar>\n<Calendar firstDayOfWeek={0} size="sm"></Calendar>`}
+                        </Highlight>
                     </Card>
                     <h3>Custom date cell content</h3>
-                    <Card block>
-                        <Calendar dateCellRender={this.customDateCellRender}></Calendar>
+                    <Card>
+                        <Card.Block>
+                            <Calendar dateCellRender={this.customDateCellRender}></Calendar>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Calendar dateCellRender={...}></Calendar>`}
+                        </Highlight>
                     </Card>
                 </Card>
             </div>

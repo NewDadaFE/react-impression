@@ -66,7 +66,7 @@ export default class ButtonGroupView extends Component{
                             </ButtonToolbar>
                         </Card.Block>
                         <Highlight>
-                            {`<ButtonToolbar>\n  <ButtonGroup><Button>1</Button>...</ButtonGroup>\n  <ButtonGroup><Button>4</Button>...</ButtonGroup>\n  <ButtonGroup><Button>7</Button>...</ButtonGroup>\n</ButtonToolbar>`}
+                            {`<ButtonToolbar>\n  <ButtonGroup>\n    <Button>1</Button>\n    ...\n  </ButtonGroup>\n  <ButtonGroup>\n    <Button>4</Button>\n   ...\n  </ButtonGroup>\n  <ButtonGroup>\n    <Button>7</Button>\n    ...\n  </ButtonGroup>\n</ButtonToolbar>`}
                         </Highlight>
                     </Card>
                     <h3>Sizes</h3>
@@ -91,7 +91,7 @@ export default class ButtonGroupView extends Component{
                             </ButtonToolbar>
                         </Card.Block>
                         <Highlight>
-                            {`<ButtonGroup size="lg"><Button>1</Button>...</ButtonGroup>\n<ButtonGroup><Button>4</Button>...</ButtonGroup>\n<ButtonGroup size="sm"><Button>7</Button>...</ButtonGroup>`}
+                            {`<ButtonGroup size="lg">\n  <Button>1</Button>\n  ...\n</ButtonGroup>\n<ButtonGroup>\n  <Button>4</Button>\n  ...\n</ButtonGroup>\n<ButtonGroup size="sm">\n  <Button>7</Button>\n  ...\n</ButtonGroup>`}
                         </Highlight>
                     </Card>
                     <h3 className="text-secondary">API</h3>

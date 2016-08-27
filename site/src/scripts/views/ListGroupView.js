@@ -60,7 +60,7 @@ export default class ListGroupView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { ListGroup } from 'impression-react';\n\n<ListGroup>...<ListGroup.Item disabled>Lorem ipsum.</ListGroup.Item>...</ListGroup>\n<ListGroup><ListGroup.Item><Tag theme="default" className="pull-right" shape="pill">1</Tag>lorem</ListGroup.Item>...</ListGroup>\n<ListGroup>...<ListGroup.Item href="javascript:void(0)" active>Lorem ipsum dolor sit amet.</ListGroup.Item>...</ListGroup>`}
+                            {`import { ListGroup } from 'impression-react';\n\n<ListGroup>\n  ...\n  <ListGroup.Item disabled>Lorem ipsum.</ListGroup.Item>\n  ...\n</ListGroup>\n<ListGroup>\n  <ListGroup.Item>\n    <Tag theme="default" className="pull-right" shape="pill">1</Tag>\n    lorem\n  </ListGroup.Item>\n  ...\n</ListGroup>\n<ListGroup>\n  ...\n  <ListGroup.Item href="javascript:void(0)" active>\n    Lorem ipsum dolor sit amet.\n  </ListGroup.Item>\n  ...\n</ListGroup>`}
                         </Highlight>
                     </Card>
                     <h3>Custom content</h3>

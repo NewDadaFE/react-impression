@@ -87,7 +87,7 @@ export default class InputView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Input } from 'impression-react';\n\n<Input type="text"/>\n<Input type="text" ref="clearInput" defaultValue="text"><Icon type="times" onClick={...}></Icon></Input>\n<Input type="text" defaultValue="something" pill>...</Input>`}
+                            {`import { Input } from 'impression-react';\n\n<Input type="text"/>\n<Input type="text" ref="clearInput" defaultValue="text">\n  <Icon type="times" onClick={...}></Icon>\n</Input>\n<Input type="text" defaultValue="something" pill>...</Input>`}
                         </Highlight>
                     </Card>
                     <h5>Date</h5>
@@ -157,7 +157,7 @@ export default class InputView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Input type="search" value="..."/>\n<Input type="search" value="..." ><Icon type="map-marker"></Icon></Input>\n<Input type="search" value="..." disabled/>`}
+                            {`<Input type="search" value="..."/>\n<Input type="search" value="..." >\n  <Icon type="map-marker"></Icon>\n</Input>\n<Input type="search" value="..." disabled/>`}
                         </Highlight>
                     </Card>
                     <h5>File</h5>

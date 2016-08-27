@@ -32,15 +32,20 @@ export default class AlertView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Basic</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Button theme="primary" outline onClick={this.toggleAlert1Handle}>default</Button>
-                            </Col>
-                            <Col>
-                                <Button theme="secondary" outline onClick={this.toggleAlert2Handle}>danger</Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Button theme="primary" outline onClick={this.toggleAlert1Handle}>default</Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="secondary" outline onClick={this.toggleAlert2Handle}>danger</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Alert } from 'impression-react';\n\n<Alert>姓名不能为空！</Alert>\n<Alert btnText="关闭"  type="danger">请先选择所属城市！</Alert>`}
+                        </Highlight>
                     </Card>
                 </Card>
                 { showAlert1 &&
