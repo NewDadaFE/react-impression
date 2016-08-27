@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Timeline, Icon, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class TimelineView extends Component{
     render(){
@@ -39,6 +39,9 @@ export default class TimelineView extends Component{
                                         </Timeline.Item>
                                     </Timeline>
                                 </Card.Block>
+                                <Highlight>
+                                    {`import { Timeline } from 'impression-react';\n\n <Timeline>\n  <Timeline.Item dot={<Icon type="play-circle-o" className="text-muted"/>}> 1999 疯狂世界 </Timeline.Item>\n  ... \n  <Timeline.Item dot={<Icon type="pause-circle-o" className="text-muted"/>}><a href="javascript:void(0);">查看更多</a></Timeline.Item>\n</Timeline>`}
+                                </Highlight>
                             </Card>
                         </Col>
                         <Col>
@@ -70,6 +73,9 @@ export default class TimelineView extends Component{
                                         </Timeline.Item>
                                     </Timeline>
                                 </Card.Block>
+                                <Highlight>
+                                    {`<Timeline size="lg">...</Timeline>`}
+                                </Highlight>
                             </Card>
                         </Col>
                     </Row>

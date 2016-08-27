@@ -23,11 +23,10 @@ export default class RadioView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Radio</h5>
-                    <Card>
-                       <Card block noborder>
-                        <Row>
-                            <Col>
-                                <Card block>
+                    <Row>
+                        <Col>
+                            <Card>
+                                <Card.Block>
                                     <Form>
                                         <Form.Group>
                                             <label>Radio</label>
@@ -38,10 +37,15 @@ export default class RadioView extends Component{
                                             </RadioGroup>
                                         </Form.Group>
                                     </Form>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card block>
+                                </Card.Block>
+                                <Highlight>
+                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} ><Radio value={1}>First</Radio>...</RadioGroup>`}
+                                </Highlight>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card>
+                                <Card.Block>
                                     <Form>
                                         <Form.Group>
                                             <label>Disabled</label>
@@ -51,14 +55,13 @@ export default class RadioView extends Component{
                                             </RadioGroup>
                                         </Form.Group>
                                     </Form>
-                                </Card>
-                            </Col>
-                        </Row>
-                        </Card>
-                        <Highlight>
-                            {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} ><Radio value={1}>First</Radio>...</RadioGroup>\n<RadioGroup disabled><Radio defaultChecked>Yes</Radio>...</RadioGroup> `}
-                        </Highlight>
-                    </Card>
+                                </Card.Block>
+                                <Highlight>
+                                    {`<RadioGroup disabled><Radio defaultChecked>Yes</Radio>...</RadioGroup> `}
+                                </Highlight>
+                            </Card>
+                        </Col>
+                    </Row>
                     <h5 className="text-secondary">Radio API</h5>
                     <CommenTable
                         data = {[

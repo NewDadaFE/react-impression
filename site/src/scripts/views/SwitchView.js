@@ -10,7 +10,7 @@ export default class SwitchView extends Component{
                 <Card block noborder>
                     <h5>Switch</h5>
                     <Card>
-                        <Card block noborder>
+                        <Card.Block>
                             <Form grid>
                                 <Form.Group col="6">
                                     <label>Default</label>
@@ -21,7 +21,7 @@ export default class SwitchView extends Component{
                                     <Switch disabled defaultChecked />
                                 </Form.Group>
                             </Form>
-                        </Card>
+                        </Card.Block>
                         <Highlight>
                             {`import { Switch } from 'impression-react';\n\n<Switch defaultChecked/>\n<Switch disabled defaultChecked /> `}
                         </Highlight>

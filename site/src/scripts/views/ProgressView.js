@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Progress, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class ProgressView extends Component{
     render(){
@@ -9,73 +9,88 @@ export default class ProgressView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Examples</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Progress value="1"/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="25"/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50"/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="75"/>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Progress value="1"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="25"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="75"/>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Progress } from 'impression-react';\n\n<Progress value="1"/>\n<Progress value="25"/>\n<Progress value="50"/>\n<Progress value="75"/>`}
+                        </Highlight>
                     </Card>
                     <h3>Theme</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Progress value="50"/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50" theme="success"/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50" theme="warning"/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50" theme="danger"/>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Progress value="50"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" theme="success"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" theme="warning"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" theme="danger"/>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Progress value="50"/>\n<Progress value="50" theme="success"/>\n<Progress value="50" theme="warning"/>\n<Progress value="50" theme="danger"/>`}
+                        </Highlight>
                     </Card>
                     <h3>Striped</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Progress value="50" striped/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50" theme="success" striped/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50" theme="warning" striped/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Progress value="50" theme="danger" striped/>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" striped/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" theme="success" striped/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" theme="warning" striped/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Progress value="50" theme="danger" striped/>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Progress value="50" striped/>\n<Progress value="50" theme="success" striped/>\n<Progress value="50" theme="warning" striped/>\n<Progress value="50" theme="danger" striped/>`}
+                        </Highlight>
                     </Card>
                     <h3 className="text-secondary">API</h3>
                     <CommenTable

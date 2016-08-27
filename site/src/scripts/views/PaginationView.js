@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Pagination, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class PaginationView extends Component{
     constructor(prop, context){
@@ -34,17 +34,22 @@ export default class PaginationView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Examples</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={totalPage} activePage={activePage}></Pagination>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Pagination onSelect={this.onSelectHandle2} scope={2} totalPage={totalPage2} activePage={activePage2}></Pagination>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={totalPage} activePage={activePage}></Pagination>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Pagination onSelect={this.onSelectHandle2} scope={2} totalPage={totalPage2} activePage={activePage2}></Pagination>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Pagination } from 'impression-react';\n\n<Pagination  scope={2} totalPage={10} activePage={4}></Pagination>\n<Pagination  scope={2} totalPage={5} activePage={3}></Pagination>`}
+                        </Highlight>
                     </Card>
                     <h5>Pagination API</h5>
                     <CommenTable

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Nav, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class NavView extends Component{
     selectHandle(selectKey){
@@ -12,58 +12,78 @@ export default class NavView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Inline</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Nav activeKey={1} onSelect={this.selectHandle} type="inline">
-                                    <Nav.Item eventKey={1}>Active</Nav.Item>
-                                    <Nav.Item eventKey={2}>Link</Nav.Item>
-                                    <Nav.Item eventKey={3}>Anothor link</Nav.Item>
-                                    <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
-                                </Nav>
-                            </Col>
-                        </Row>
-                    </Card>
-                    <h3>Tabs</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Nav activeKey={1} onSelect={this.selectHandle} type="tab">
-                                    <Nav.Item eventKey={1}>Active</Nav.Item>
-                                    <Nav.Item eventKey={2}>Link</Nav.Item>
-                                    <Nav.Item eventKey={3}>Anothor link</Nav.Item>
-                                    <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
-                                </Nav>
-                            </Col>
-                        </Row>
-                    </Card>
-                    <h3>Pills</h3>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Nav activeKey={1} onSelect={this.selectHandle} type="pill">
-                                    <Nav.Item eventKey={1}>Active</Nav.Item>
-                                    <Nav.Item eventKey={2}>Link</Nav.Item>
-                                    <Nav.Item eventKey={3}>Anothor link</Nav.Item>
-                                    <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
-                                </Nav>
-                            </Col>
-                        </Row>
-                    </Card>
-                    <h3>Stacked pills</h3>
-                    <Card block>
-                        <Row>
-                            <Col col="3">
-                                <Card>
-                                    <Nav activeKey={2} onSelect={this.selectHandle} type="pill" stacked>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Nav activeKey={1} onSelect={this.selectHandle} type="inline">
                                         <Nav.Item eventKey={1}>Active</Nav.Item>
                                         <Nav.Item eventKey={2}>Link</Nav.Item>
                                         <Nav.Item eventKey={3}>Anothor link</Nav.Item>
                                         <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
                                     </Nav>
-                                </Card>
-                            </Col>
-                        </Row>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`import { Nav } from 'impression-react';\n\n<Nav activeKey={1} type="inline">\n  <Nav.Item eventKey={1}>Active</Nav.Item>\n   ...\n</Nav>`}
+                        </Highlight>
+                    </Card>
+                    <h3>Tabs</h3>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Nav activeKey={1} onSelect={this.selectHandle} type="tab">
+                                        <Nav.Item eventKey={1}>Active</Nav.Item>
+                                        <Nav.Item eventKey={2}>Link</Nav.Item>
+                                        <Nav.Item eventKey={3}>Anothor link</Nav.Item>
+                                        <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
+                                    </Nav>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Nav activeKey={1} type="tab">\n  ...\n  <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>\n</Nav>`}
+                        </Highlight>
+                    </Card>
+                    <h3>Pills</h3>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Nav activeKey={1} onSelect={this.selectHandle} type="pill">
+                                        <Nav.Item eventKey={1}>Active</Nav.Item>
+                                        <Nav.Item eventKey={2}>Link</Nav.Item>
+                                        <Nav.Item eventKey={3}>Anothor link</Nav.Item>
+                                        <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
+                                    </Nav>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Nav activeKey={1} type="pill">...</Nav>`}
+                        </Highlight>
+                    </Card>
+                    <h3>Stacked pills</h3>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col col="3">
+                                    <Card>
+                                        <Nav activeKey={2} onSelect={this.selectHandle} type="pill" stacked>
+                                            <Nav.Item eventKey={1}>Active</Nav.Item>
+                                            <Nav.Item eventKey={2}>Link</Nav.Item>
+                                            <Nav.Item eventKey={3}>Anothor link</Nav.Item>
+                                            <Nav.Item eventKey={4} disabled>Disabled</Nav.Item>
+                                        </Nav>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                            {`<Nav activeKey={1} type="pill" stacked>...</Nav>`}
+                        </Highlight>
                     </Card>
                     <h3 className="text-secondary">Nav API</h3>
                     <CommenTable

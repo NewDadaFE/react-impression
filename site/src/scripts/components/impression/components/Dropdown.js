@@ -1,11 +1,5 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import DropdownTrigger from './DropdownTrigger';
-import DropdownMenu from './DropdownMenu';
-import DropdownMenuItem from './DropdownMenuItem';
-import DropdownMenuDivider from './DropdownMenuDivider';
-import * as System from '../utils/system';
-
 
 /**
  * Dropdown组件.
@@ -13,73 +7,97 @@ import * as System from '../utils/system';
 export default class Dropdown extends Component{
     constructor(props, context){
         super(props, context);
-        System.manager(this);
 
         this.state = {
-            active:  undefined === props.active?  false : props.active,
+            open: false
         };
+
+        this.toggleMenuHandle = this.toggleMenuHandle.bind(this);
     }
     //prop type校验
     static propTypes = {
-        //是否激活
-        active: PropTypes.bool,
-        //触发动作
+        // 触发动作
         trigger: PropTypes.oneOf(['click', 'hover']),
+        // menus: PropTypes.arrayOf(PropTypes.object),
+        //菜单
+        menus: PropTypes.arrayOf((value, index, componentName, location, propFullName) => {
+            let callResult = Object.prototype.toString.call(value[index]);
+
+            if(callResult !== '[object String]' & callResult !== '[object Object]'){
+                return new Error(
+                    `Invalid prop '${propFullName}', supplied to '${componentName}', expected 'object' or 'string'.`
+                );
+            }
+        }).isRequired,
+        //回调
+        onClick: PropTypes.func,
         //子节点
-        children: PropTypes.array.isRequired,
+        children: PropTypes.element.isRequired,
     }
     //默认props
     static defaultProps = {
-        active: false,
         trigger: 'click',
     }
-    //显示/隐藏菜单
-    toggleOptionsHandle = flag => {
-        let { active } = this.state;
+    //点击回调
+    menuClickHandle(menu, index, event){
+        let { value, name, text, disabled } = menu,
+            { onClick } = this.props;
+
+        if(disabled){
+            return false;
+        }
 
         this.setState({
-            active: typeof flag === 'boolean'? flag : !active
+            open: false
         });
+
+        onClick && onClick(value, name || text, index, event);
     }
-    //隐藏菜单
-    hideOptionsHandle = () => {
+    //显示/隐藏菜单
+    toggleMenuHandle(flag){
         this.setState({
-            active: false
+            open: flag === undefined? !this.state.open : flag
         });
-    }
-    //清空组件管理.
-    componentWillUnmount(){
-        System.unmanager(this);
     }
     //渲染
     render(){
-        let { trigger, className, children, ...others } = this.props,
-            { active } = this.state;
+        let { menus, trigger, className, children, ...others } = this.props,
+            { open } = this.state,
+            options = {
+                className: `${children.props.className} dropdown-toggle`
+            };
 
-        children = React.Children.toArray(children);
-        children = children.map((child, index) => {
-            return React.cloneElement(child, {
-                trigger,
-                toggleMenu: this.toggleOptionsHandle
-            });
-        });
-
-        if(trigger === 'hover'){
-            others.onMouseOver = () => this.toggleOptionsHandle(true);
-            others.onMouseOut = () => this.toggleOptionsHandle(false);
+        switch(trigger){
+        case 'click':
+            options.onClick = children.onClick ? event => {
+                children.onClick(event);
+                this.toggleMenuHandle();
+            }: this.toggleMenuHandle;
+            break;
+        case 'hover':
+            others.onMouseOver = () => this.toggleMenuHandle(true);
+            others.onMouseOut = () => this.toggleMenuHandle(false);
+            break;
         }
 
-        delete others.active;
+        children = React.cloneElement(children, options);
 
         return(
-            <div {...others} className={classnames('dropdown', { active }, className)}>
+            <div {...others} className={classnames('dropdown', { open }, className)}>
                 { children }
+                <div className="dropdown-menu">
+                    { menus && menus.map((menu, index) =>
+                        Object.prototype.toString.call(menu) === '[object String]'?
+                        <div key={index} className="dropdown-divider"></div>:
+                        <a key={index} href={menu.href}
+                           className={classnames('dropdown-item', {disabled: menu.disabled, active: menu.active})}
+                           onClick={event => this.menuClickHandle(menu, index, event)}>
+                           {menu.name || menu.text || menu.value}
+                        </a>
+                    )}
+                </div>
             </div>
         );
     }
-}
 
-Dropdown.Trigger = DropdownTrigger;
-Dropdown.Menu = DropdownMenu;
-Dropdown.MenuItem = DropdownMenuItem;
-Dropdown.MenuDivider = DropdownMenuDivider;
+}

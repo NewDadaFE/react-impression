@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Card, Row, Col, Breadcrumb } from '../components/impression';
-import { CommenTable } from '../components';
+import { CommenTable, Highlight } from '../components';
 
 export default class ModalView extends Component{
     //构造函数
@@ -26,18 +26,22 @@ export default class ModalView extends Component{
                 <Breadcrumb divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Examples</h5>
-                    <Card block>
-                        <Row>
-                            <Col>
-                                <Button theme="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
-                            </Col>
-                            <Col>
-                                <Button theme="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
-                            </Col>
-                            <Col>
-                                <Button theme="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Block>
+                            <Row>
+                                <Col>
+                                    <Button theme="primary" onClick={() => this.toggleModalHandle(null)}>Modal</Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="primary" onClick={() => this.toggleModalHandle('sm')}>SM Modal</Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="primary" onClick={() => this.toggleModalHandle('lg')}>LG Modal</Button>
+                                </Col>
+                            </Row>
+                        </Card.Block>
+                        <Highlight>
+                        </Highlight>
                     </Card>
                     <h5 className="text-secondary">Modal API</h5>
                     <CommenTable

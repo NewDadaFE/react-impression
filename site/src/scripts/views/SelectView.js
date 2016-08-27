@@ -10,7 +10,7 @@ export default class SelectView extends Component{
                 <Card block noborder>
                     <h3>Select</h3>
                     <Card>
-                        <Card block noborder>
+                        <Card.Block>
                             <Row>
                                 <Col>
                                     <Form type="inline">
@@ -44,21 +44,21 @@ export default class SelectView extends Component{
                                     </Form>
                                 </Col>
                             </Row>
-                        </Card>
+                        </Card.Block>
                         <Highlight>
-                            {`import { Select } from 'impression-react';\n\n<Select><Select.Option value="1">First</Select.Option>...</Select>\n<CheckboxGroup defaultValue={['basketball', ...]} disabled> ...</CheckboxGroup>`}
+                            {`import { Select } from 'impression-react';\n\n<Select><Select.Option value="1">First</Select.Option>...</Select>\n<Select value={0}><Select.Option value={0}>First</Select.Option>...</Select>`}
                         </Highlight>
                     </Card>
                     <h3>Disabled</h3>
                     <Card>
-                        <Card noborder block>
+                        <Card.Block>
                             <Row>
                                 <Col>
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>disabled:</label>
                                             <Select disabled>
-                                                <Select.Option value="1">FirstFirstFirstFirstFirstFirstFirstFirst</Select.Option>
+                                                <Select.Option value="1">First</Select.Option>
                                                 <Select.Option value="2">Second</Select.Option>
                                                 <Select.Option value="3">Third</Select.Option>
                                             </Select>
@@ -78,9 +78,9 @@ export default class SelectView extends Component{
                                     </Form>
                                 </Col>
                             </Row>
-                        </Card>
+                        </Card.Block>
                         <Highlight>
-                            {`<Select disabled>...</Select><Select>\n<Select.Option value="1" disabled>First</Select.Option>...</Select>`}
+                            {`<Select disabled>...</Select>\n<Select><Select.Option value="1" disabled>First</Select.Option><Select.Option value="2" disabled>Second</Select.Option>...</Select>`}
                         </Highlight>
                     </Card>
                     <h3>Select API</h3>

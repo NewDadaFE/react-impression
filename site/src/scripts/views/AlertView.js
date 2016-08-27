@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Button, Breadcrumb, Alert } from '../components/impression';
+import { Highlight } from '../components';
 
 export default class AlertView extends Component{
     constructor(props, context){
