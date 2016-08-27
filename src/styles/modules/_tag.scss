@@ -29,7 +29,8 @@
 
 // Add hover effects, but only for links
 a.tag {
-    @include hover-focus {
+    &:hover,
+    &:focus {
         color: $tag-link-hover-color;
         text-decoration: none;
         cursor: pointer;

@@ -35,7 +35,8 @@
     margin-right: 1rem;
     font-size: $font-size-lg;
 
-    @include hover-focus {
+    &:hover,
+    &:focus {
         text-decoration: none;
     }
 

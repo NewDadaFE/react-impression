@@ -79,7 +79,7 @@
 
 .table-hover {
     tbody tr {
-        @include hover {
+        &:hover {
             background-color: $table-bg-hover;
         }
     }

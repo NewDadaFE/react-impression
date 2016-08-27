@@ -108,18 +108,20 @@ fieldset[disabled] a.btn {
         border-color: transparent;
     }
 
-    @include hover {
+    &:hover {
         border-color: transparent;
     }
 
-    @include hover-focus {
+    &:hover,
+    &:focus {
         color: $link-hover-color;
         text-decoration: $link-hover-decoration;
         background-color: transparent;
     }
 
     &:disabled {
-        @include hover-focus {
+        &:hover,
+        &:focus {
             color: $btn-link-disabled-color;
             text-decoration: none;
         }
