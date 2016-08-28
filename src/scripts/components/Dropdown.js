@@ -56,8 +56,7 @@ export default class Dropdown extends Component{
         let { trigger, className, children, ...others } = this.props,
             { active } = this.state;
 
-        children = React.Children.toArray(children);
-        children = children.map((child, index) => {
+        children = React.Children.map(children, (child, index) => {
             return React.cloneElement(child, {
                 trigger,
                 toggleMenu: this.toggleOptionsHandle

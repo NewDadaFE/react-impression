@@ -29,14 +29,13 @@ export default class InlineSelect extends Component{
     render(){
         let { value, className, children, ...others } = this.props;
 
-        children = React.Children.toArray(children);
-        children && (children = children.map((child, index) => {
+        children = React.Children.map(children, (child, index) => {
             return React.cloneElement(child, {
                 key: index,
                 active: value !== undefined && value === child.props.value,
                 onClick: () => this.selectOptionHandle(child.props.value, child.props.children, index)
             });
-        }));
+        });
 
         return(
             <div {...others} className={classnames('inline-select', className)}>

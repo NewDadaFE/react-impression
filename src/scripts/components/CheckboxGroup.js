@@ -47,8 +47,7 @@ export default class CheckboxGroup extends Component{
     render(){
         let { className, direction, children, ...others } = this.props;
 
-        children = React.Children.toArray(children);
-        children = children.map((child,index ) => {
+        children = React.Children.map(children, (child,index ) => {
             let { value, disabled, children } = child.props;
 
             value = (value !== undefined)? value : `${children}`;

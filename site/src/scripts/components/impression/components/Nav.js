@@ -59,8 +59,7 @@ export default class Nav extends Component{
             navStyle = this.getTypeClassMap(type);
 
         delete others.activeKey;
-        children = React.Children.toArray(children);
-        type && (children = children && children.map((child, index) => {
+        type && (children = React.Children.map(children, (child, index) => {
             let { eventKey } = child.props,
                 options = {
                     key: index,

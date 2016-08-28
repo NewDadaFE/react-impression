@@ -17,8 +17,7 @@ export default class DropdownMenu extends Component{
     render(){
         let { toggleMenu, right, className, children } = this.props;
 
-        children = React.Children.toArray(children);
-        children = children.map((child, index) => {
+        children = React.Children.map(children, (child, index) => {
             return React.cloneElement(child, {
                 toggleMenu
             });

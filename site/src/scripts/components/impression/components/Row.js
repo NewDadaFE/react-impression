@@ -14,8 +14,7 @@ export default class Row extends Component{
             count = 0,
             allocation = 0;
 
-        children = React.Children.toArray(children);
-        children.forEach(({ props }) => {
+        React.Children.forEach(children, ({ props }) => {
             if(props.hasOwnProperty('col')){
                 count += Number.parseInt(props.col);
             }else{

@@ -37,9 +37,7 @@ export default class Collapse extends Component{
             { active } = this.state;
 
         delete others.active;
-        children = React.Children.toArray(children);
-        children = children.map((child, index) => {
-
+        children = React.Children.map(children, (child, index) => {
             return React.cloneElement(child, {
                 onClick: this.toggleItemsHandle
             });

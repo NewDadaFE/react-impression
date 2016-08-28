@@ -83,8 +83,7 @@ export default class Select extends Component{
             { showOption } = this.state,
             text = undefined;
 
-        children = React.Children.toArray(children);
-        children = children.map((child, index) => {
+        children = React.Children.map(children, (child, index) => {
             let { value, children, disabled } = child.props;
 
             value === this.state.value && (text = children);
