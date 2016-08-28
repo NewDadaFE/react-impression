@@ -461,6 +461,8 @@ $navbar-pure-bg:                    $brand-pure !default;
 $navbar-pure-color:                 $body-color !default;
 $navbar-pure-border-color:          $border-color !default;
 
+$navbar-margin-vertical:            ($navbar-height - (1 + 0.5 * 2) * $font-size-root - 1 * 2) / 2  !default;
+
 
 //Sidebar
 $sidebar-width:                                 16% !default;
