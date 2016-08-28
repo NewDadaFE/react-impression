@@ -16,95 +16,115 @@ class ButtonView extends Component{
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card>
-                        <Card.Block>
-                            <Row>
-                                <Col col="2">
+                        <Row className="no-margin">
+                            <Col col="2">
+                                <Card.Block>
                                     <Button type="button" theme="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="default">default</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="secondary">secondary</Button>
-                                </Col>
-                            </Row>
-                        </Card.Block>
+                                </Card.Block>
+                            </Col>
+                        </Row>
                         <Highlight>
                             {`import { Button } from 'impression-react';\n\n<Button type="button" theme="primary" onClick={this.buttonClickHandle.bind(this)}>primary</Button>\n<Button theme="default">default</Button>\n<Button theme="secondary">secondary</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Outline</h5>
                     <Card>
-                        <Card.Block className="bg-inverse">
-                            <Row>
-                                <Col col="2">
+                        <Row className="no-margin bg-inverse">
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="primary" outline>primary</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="default" outline>default</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="secondary" outline>secondary</Button>
-                                </Col>
-                            </Row>
-                        </Card.Block>
+                                </Card.Block>
+                            </Col>
+                        </Row>
                         <Highlight>
                             {`<Button theme="primary" outline>primary</Button>\n<Button theme="default" outline>default</Button>\n<Button theme="secondary" outline>secondary</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Sizes</h5>
                     <Card>
-                        <Card.Block>
-                            <Row>
-                                <Col col="2">
+                        <Row className="no-margin">
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="primary" size="sm">Sm</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="primary">Normal</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="primary" size="lg">Large</Button>
-                                </Col>
-                            </Row>
-                        </Card.Block>
+                                </Card.Block>
+                            </Col>
+                        </Row>
                         <Highlight>
                             {`<Button size="sm" theme="primary">sm</Button>\n<Button theme="primary">Normal</Button>\n<Button size="lg" theme="primary">Large</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Pill</h5>
                     <Card>
-                        <Card.Block>
-                            <Row>
-                                <Col col="2">
+                        <Row className="no-margin">
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="primary" shape="pill">primary</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="default" shape="pill">default</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="secondary" shape="pill">secondary</Button>
-                                </Col>
-                            </Row>
-                        </Card.Block>
+                                </Card.Block>
+                            </Col>
+                        </Row>
                         <Highlight>
                             {`<Button theme="primary" shape="pill">primary</Button>\n<Button theme="default" shape="pill">default</Button>\n<Button theme="secondary" shape="pill">secondary</Button>`}
                         </Highlight>
                     </Card>
                     <h5>Link</h5>
                     <Card>
-                        <Card.Block>
-                            <Row>
-                                <Col col="2">
+                        <Row className="no-margin">
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="primary" href="www.github.com">primary</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="default" href="www.github.com">default</Button>
-                                </Col>
-                                <Col col="2">
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
                                     <Button theme="secondary" href="www.github.com">secondary</Button>
-                                </Col>
-                            </Row>
-                        </Card.Block>
+                                </Card.Block>
+                            </Col>
+                        </Row>
                         <Highlight>
                             {`<Button theme="primary" href="www.github.com">primary</Button>\n<Button theme="default" href="www.github.com">default</Button>\n<Button theme="secondary" href="www.github.com">secondary</Button>`}
                         </Highlight>
