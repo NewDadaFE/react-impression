@@ -14,7 +14,7 @@
 
 ### 使用
 
-```
+```JavaScript
     import { Button } from 'impression-react';
 
     export default class MyView extends Component{
