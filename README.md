@@ -1,21 +1,41 @@
 # Impression
 
-An enterprise-class UI design language and React-based implementation.
+一个组件丰富、简洁漂亮的React组件库。
 
-## Install
+### 少依赖
+
+整个组件库只依赖了class处理工具classnames、时间处理工具moment和滚动条美化perfect-scrollbar。
+
+### 安装
 
 ```
     npm install impression-react
 ```
 
-## Usage
+### 使用
 
 ```
-    import { Modal } from 'impression-react';
+    import { Button } from 'impression-react';
+
+    export default class MyView extends Component{
+        render(){
+            return (
+                <div>
+                    <Button theme="primary">按钮</Button>
+                </div>
+            );
+        }
+    }
 ```
 
-And import style manually:
+CSS引入：
 
 ```
     import 'impression-react/lib/index.css';
 ```
+
+！！！推荐从工程里导出scss文件，并修改variables.scss来自定义自己的样式。
+
+### Demo
+
+访问更多[示例地址](https://shenlq.github.io/impression)
