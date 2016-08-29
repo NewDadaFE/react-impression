@@ -24,10 +24,11 @@ export default class Row extends Component{
 
         let surplus = 12 - count;
 
-        return children.map(child => {
+        return React.Children.map(children, (child, index) => {
             let { col } = child.props;
 
             return React.cloneElement(child, {
+                key: index,
                 col: col || Number.parseInt(surplus / allocation),
             });
         });

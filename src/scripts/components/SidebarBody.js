@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
-// import PS from 'perfect-scrollbar';
+import PS from 'perfect-scrollbar';
 
 
 /**
@@ -8,10 +8,10 @@ import React, { Component } from 'react';
  */
 export default class SidebarBody extends Component{
     componentDidUpdate(){
-        // PS.initialize(this.refs.container);
+        PS.initialize(this.refs.container);
     }
     componentDidMount(){
-        // PS.initialize(this.refs.container);
+        PS.initialize(this.refs.container);
     }
     render(){
         let { className, children, ...others } = this.props;
