@@ -20,7 +20,6 @@ export default class CheckboxView extends Component{
                                             <Checkbox>basketball</Checkbox>
                                             <Checkbox>football</Checkbox>
                                             <Checkbox>volleyball</Checkbox>
-                                            <Checkbox>ping-pong</Checkbox>
                                         </CheckboxGroup>
                                     </Form.Group>
                                 </Form>
@@ -40,7 +39,6 @@ export default class CheckboxView extends Component{
                                                 <Checkbox>basketball</Checkbox>
                                                 <Checkbox>football</Checkbox>
                                                 <Checkbox>volleyball</Checkbox>
-                                                <Checkbox>ping-pong</Checkbox>
                                             </CheckboxGroup>
                                         </Form.Group>
                                     </Form>
