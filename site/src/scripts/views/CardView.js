@@ -68,7 +68,7 @@ export default class CardView extends Component{
                                             <h4>Left</h4>
                                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <a href="#">Card link</a>
-                                            <a href="#" className="offset-spacer-l">Another link</a>
+                                            <a href="#" className="offset-l">Another link</a>
                                         </Card.Block>
                                     </Card>
                                 </Col>
@@ -79,7 +79,7 @@ export default class CardView extends Component{
                                             <h4>Center</h4>
                                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <a href="#">Card link</a>
-                                            <a href="#" className="offset-spacer-l">Another link</a>
+                                            <a href="#" className="offset-l">Another link</a>
                                         </Card.Block>
                                     </Card>
                                 </Col>
@@ -90,7 +90,7 @@ export default class CardView extends Component{
                                             <h4>Right</h4>
                                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <a href="#">Card link</a>
-                                            <a href="#" className="offset-spacer-l">Another link</a>
+                                            <a href="#" className="offset-l">Another link</a>
                                         </Card.Block>
                                     </Card>
                                 </Col>
@@ -113,7 +113,7 @@ export default class CardView extends Component{
                                             <h4>Left</h4>
                                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <Button theme="primary">OK</Button>
-                                            <Button theme="default" className="offset-spacer-l">Cancel</Button>
+                                            <Button theme="default" className="offset-l">Cancel</Button>
                                         </Card.Block>
                                         <Card.Footer>
                                             footer
@@ -131,7 +131,7 @@ export default class CardView extends Component{
                                             <h4>center</h4>
                                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <Button theme="primary">OK</Button>
-                                            <Button theme="default" className="offset-spacer-l">Cancel</Button>
+                                            <Button theme="default" className="offset-l">Cancel</Button>
                                         </Card.Block>
                                     </Card>
                                 </Col>
@@ -141,7 +141,7 @@ export default class CardView extends Component{
                                             <h4>Right</h4>
                                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <Button theme="primary">OK</Button>
-                                            <Button theme="default" className="offset-spacer-l">Cancel</Button>
+                                            <Button theme="default" className="offset-l">Cancel</Button>
                                         </Card.Block>
                                         <Card.Footer>
                                             <h5 className="no-margin">

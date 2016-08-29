@@ -1,6 +1,6 @@
 # Impression
 
-一个组件丰富、简洁漂亮的React组件库。
+一个种类丰富、简洁漂亮的React组件库。
 
 ### 少依赖
 
@@ -15,17 +15,17 @@
 ### 使用
 
 ```JavaScript
-    import { Button } from 'impression-react';
+import { Button } from 'impression-react';
 
-    export default class MyView extends Component{
-        render(){
-            return (
-                <div>
-                    <Button theme="primary">按钮</Button>
-                </div>
-            );
-        }
+export default class MyView extends Component{
+    render(){
+        return (
+            <div>
+                <Button theme="primary">按钮</Button>
+            </div>
+        );
     }
+}
 ```
 
 CSS引入：
