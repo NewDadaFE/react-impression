@@ -36,6 +36,12 @@ CSS引入：
 
 ！！！推荐从工程里导出scss文件，并修改variables.scss来自定义自己的样式。
 
+### 本地启动
+
+```
+    cd site && npm run start
+```
+
 ### Demo
 
 访问更多[示例地址](https://shenlq.github.io/impression)
