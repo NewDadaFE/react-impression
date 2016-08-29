@@ -22,7 +22,6 @@ export default class Notification extends Component{
         this.key = 0;
         this.timers = [];
         _notification = this;
-        this.removeNotice = this.removeNotice.bind(this);
     }
     //prop type校验
     static propTypes = {
@@ -65,7 +64,7 @@ export default class Notification extends Component{
      * 移除通知.
      * @param  {[Number]} key      [索引]
      */
-    removeNotice(key) {
+    removeNotice = key => {
         delete this.state[key];
         this.setState(this.state);
     }

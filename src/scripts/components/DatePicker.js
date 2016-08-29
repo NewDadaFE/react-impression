@@ -44,18 +44,6 @@ export default class DatePicker extends Component{
         state.minDate = minDate? moment(minDate, state.format) : undefined;
         state.maxDate = maxDate? moment(maxDate, state.format) : undefined;
         this.state = state;
-
-        this.prevMonthHandle = this.prevMonthHandle.bind(this);
-        this.nextMonthHandle = this.nextMonthHandle.bind(this);
-        this.prevYearHandle = this.prevYearHandle.bind(this);
-        this.nextYearHandle = this.nextYearHandle.bind(this);
-        this.selectDateHandle = this.selectDateHandle.bind(this);
-        this.selectTodayHandle = this.selectTodayHandle.bind(this);
-        this.selectYearHandle = this.selectYearHandle.bind(this);
-        this.selectMonthHandle = this.selectMonthHandle.bind(this);
-        this.showMonthPanelHandle = this.showMonthPanelHandle.bind(this);
-        this.scrollYearHandle = this.scrollYearHandle.bind(this);
-        this.resetMonthPanelScroll = this.resetMonthPanelScroll.bind(this);
     }
     //prop type校验
     static propTypes = {
@@ -198,7 +186,7 @@ export default class DatePicker extends Component{
     /**
      * 上个月.
      */
-    prevMonthHandle(){
+    prevMonthHandle = () => {
         let { currentMoment, panel } = this.state;
 
         this.getDate(moment(currentMoment).subtract(1,'months'));
@@ -207,7 +195,7 @@ export default class DatePicker extends Component{
     /**
      * 下个月.
      */
-    nextMonthHandle(){
+    nextMonthHandle = () => {
         let { currentMoment, panel } = this.state;
 
         this.getDate(moment(currentMoment).add(1,'months'));
@@ -216,7 +204,7 @@ export default class DatePicker extends Component{
     /**
      * 上一年.
      */
-    prevYearHandle(){
+    prevYearHandle = () => {
         let { currentMoment, panel } = this.state;
 
         this.getDate(moment(currentMoment).subtract(1,'years'));
@@ -225,7 +213,7 @@ export default class DatePicker extends Component{
     /**
      * 下一年.
      */
-    nextYearHandle(){
+    nextYearHandle = () => {
         let { currentMoment, panel } = this.state;
 
         this.getDate(moment(currentMoment).add(1,'years'));
@@ -234,7 +222,7 @@ export default class DatePicker extends Component{
     /**
      * 选中时间.
      */
-    selectDateHandle(day){
+    selectDateHandle = day => {
         let { onSelect, onChange } = this.props,
             { checkedDay, format } = this.state,
             dayFormat = day.format(format);
@@ -251,7 +239,7 @@ export default class DatePicker extends Component{
      * 选中年份.
      * @param  {[String]} year [年份]
      */
-    selectYearHandle(year){
+    selectYearHandle = year => {
         let { currentMoment } = this.state,
             newMoment = moment(currentMoment).year(year);
 
@@ -265,7 +253,7 @@ export default class DatePicker extends Component{
      * 选中月份.
      * @param  {[String]} month [月份]
      */
-    selectMonthHandle(month){
+    selectMonthHandle = month => {
         let { currentMoment, format } = this.state,
             { type, onSelect, onChange } = this.props,
             newMoment = moment(currentMoment).month(month);
@@ -289,7 +277,7 @@ export default class DatePicker extends Component{
     /**
      * 今天.
      */
-    selectTodayHandle(){
+    selectTodayHandle = () => {
         let { onSelect, onChange, minDate, maxDate } = this.props,
             { checkedDay, format } = this.state,
             today = moment(moment().format(FORMAT.DATE)),
@@ -309,7 +297,7 @@ export default class DatePicker extends Component{
     /**
      * 显示年月选择面板.
      */
-    showMonthPanelHandle(){
+    showMonthPanelHandle = () => {
         let { panel } = this.state,
             { type } = this.props;
 
@@ -324,13 +312,12 @@ export default class DatePicker extends Component{
         let { type } = this.props,
             { _yeargroup } = this.refs;
 
-
         type === 'date' && _yeargroup && _yeargroup.scrollTop === 0 && this.resetMonthPanelScroll();
     }
     /**
      * 修改month面板的滚动条位置.
      */
-    resetMonthPanelScroll(){
+    resetMonthPanelScroll = () => {
         let { _yeargroup, _monthgroup } = this.refs;
 
         if(!this._activeYear || !this._activeMonth){
@@ -362,7 +349,7 @@ export default class DatePicker extends Component{
      * 无限获取年份.
      * @param  {[Event]} event [事件]
      */
-    scrollYearHandle(event){
+    scrollYearHandle = event => {
         if(!this._activeYear){
             return false;
         }

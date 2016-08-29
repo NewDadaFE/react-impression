@@ -16,9 +16,6 @@ export default class Select extends Component{
             showOption: false,
             value: props.value !== undefined? props.value : undefined,
         };
-
-        this.toggleOptionsHandle = this.toggleOptionsHandle.bind(this);
-        this.hideOptionsHandle = this.hideOptionsHandle.bind(this);
     }
     //prop type校验
     static propTypes = {
@@ -41,13 +38,13 @@ export default class Select extends Component{
         placeholder: '请选择'
     }
     //显示/隐藏菜单
-    toggleOptionsHandle(){
+    toggleOptionsHandle = () => {
         !this.props.disabled && this.setState({
             showOption: !this.state.showOption
         });
     }
     //隐藏菜单
-    hideOptionsHandle(){
+    hideOptionsHandle = () => {
         this.setState({
             showOption: false
         });

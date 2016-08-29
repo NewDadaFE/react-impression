@@ -19,13 +19,6 @@ export default class Input extends Component{
             showOption: false,
             showClear: false,
         };
-
-        this.clearInputHandle = this.clearInputHandle.bind(this);
-        this.showClearHandle = this.showClearHandle.bind(this);
-        this.hideClearHandle = this.hideClearHandle.bind(this);
-        this.showOptionHandle = this.showOptionHandle.bind(this);
-        this.hideOptionsHandle = this.hideOptionsHandle.bind(this);
-        this.selectOptionsHandle = this.selectOptionsHandle.bind(this);
     }
     //prop type校验
     static propTypes = {
@@ -57,7 +50,7 @@ export default class Input extends Component{
     /**
      * 显示候选项.
      */
-    showOptionHandle(){
+    showOptionHandle = () => {
         let { disabled } = this.props;
 
         !disabled && this.setState({
@@ -68,7 +61,7 @@ export default class Input extends Component{
     /**
      * 隐藏候选项.
      */
-    hideOptionsHandle(){
+    hideOptionsHandle = () => {
         let { main } = this.refs;
 
         if(!main){
@@ -84,7 +77,7 @@ export default class Input extends Component{
     /**
      * 清空输入框.
      */
-    clearInputHandle(){
+    clearInputHandle = () => {
         let { disabled } = this.props,
             { main } = this.refs;
 
@@ -98,7 +91,7 @@ export default class Input extends Component{
      * 选中候选项.
      * @param  {[String]} value [候选项值]
      */
-    selectOptionsHandle(value){
+    selectOptionsHandle = value => {
         let { main } = this.refs;
 
         main.value = value;
@@ -111,7 +104,7 @@ export default class Input extends Component{
     /**
      * 显示清空按钮.
      */
-    showClearHandle(){
+    showClearHandle = () => {
         !this.props.disabled
         && this.refs.main.value
         && this.setState({
@@ -121,7 +114,7 @@ export default class Input extends Component{
     /**
      * 隐藏清空按钮.
      */
-    hideClearHandle(){
+    hideClearHandle = () => {
         this.setState({
             showClear: false,
         });

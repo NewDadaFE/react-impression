@@ -5,12 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * NavItem 组件
  */
 export default class NavItem extends Component{
-    //构造函数
-    constructor(props, context){
-        super(props, context);
-
-        this.onClickHandle = this.onClickHandle.bind(this);
-    }
     //props校验
     static propTypes ={
         disabled: PropTypes.bool,
@@ -25,7 +19,7 @@ export default class NavItem extends Component{
         active: false,
     }
     //回调函数
-    onClickHandle(){
+    onClickHandle = () => {
         let { disabled, active, onClick, eventKey } = this.props;
 
         !disabled && !active && onClick(eventKey);

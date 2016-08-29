@@ -5,15 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * Pagination组件.
  */
 export default class Pagination extends Component{
-    //构造函数
-    constructor(props, context){
-        super(props, context);
-
-        //上下文绑定
-        this.prevPageHandle = this.prevPageHandle.bind(this);
-        this.nextPageHandle = this.nextPageHandle.bind(this);
-        this.goPageHandle = this.goPageHandle.bind(this);
-    }
     //默认props
     static defaultProps = {
         activePage: 1,
@@ -36,21 +27,21 @@ export default class Pagination extends Component{
         className: PropTypes.string,
     }
     //上一页
-    prevPageHandle(){
+    prevPageHandle = () => {
         let { onSelect, activePage } = this.props;
 
         activePage -= 1;
         activePage >= 1 && onSelect && onSelect(activePage);
     }
     //下一页
-    nextPageHandle(){
+    nextPageHandle = () => {
         let { onSelect, activePage, totalPage } = this.props;
 
         activePage += 1;
         activePage <= totalPage && onSelect && onSelect(activePage);
     }
     //跳转至某页
-    goPageHandle(page){
+    goPageHandle = page => {
         let { onSelect } = this.props;
 
         onSelect && onSelect(page);

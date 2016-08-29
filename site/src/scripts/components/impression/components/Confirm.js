@@ -5,11 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * Confirm组件.
  */
 export default class Confirm extends Component{
-    constructor(props, context){
-        super(props, context);
-
-        this.getAddonByType = this.getAddonByType.bind(this);
-    }
     //props校验
     static propTypes = {
         //自定义样式
@@ -35,7 +30,7 @@ export default class Confirm extends Component{
      * 根据类型获取Icon.
      * @return {[String]} [Icon类型]
      */
-    getAddonByType(type){
+    getAddonByType = type => {
         switch(type){
         case 'info':
             return 'fa-question-circle text-primary';

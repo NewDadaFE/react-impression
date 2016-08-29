@@ -65,13 +65,13 @@ export default class Popover extends Component{
         this.popover = popoverNode;
     }
     //显示popover
-    onMouseOver(event){
+    onMouseOver = event => {
         let rect = event.target.getBoundingClientRect();
 
         this.createPopover(rect);
     }
     //移除popover
-    onMouseOut(){
+    onMouseOut = () => {
         document.body.removeChild(this.popover);
     }
     //渲染
@@ -83,11 +83,11 @@ export default class Popover extends Component{
             onMouseOver: onMouseOver? event => {
                 onMouseOver();
                 this.onMouseOver(event);
-            } : this.onMouseOver.bind(this),
+            } : this.onMouseOver,
             onMouseOut: onMouseOut? event => {
                 onMouseOut();
                 this.onMouseOut(event);
-            } : this.onMouseOut.bind(this),
+            } : this.onMouseOut,
         });
 
         return children;

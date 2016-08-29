@@ -5,11 +5,6 @@ import React, { Component, PropTypes } from 'react';
  * Switch组件.
  */
 export default class Switch extends Component{
-    //初始化state
-    constructor(props, context){
-        super(props, context);
-        this.onChangeHandle = this.onChangeHandle.bind(this);
-    }
     //props校验
     static propTypes = {
         //自定义class
@@ -26,7 +21,7 @@ export default class Switch extends Component{
         disabled: false,
     }
     //状态切换回调
-    onChangeHandle(event){
+    onChangeHandle = event => {
         let { onChange } = this.props,
             { checked } = event.target;
 

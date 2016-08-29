@@ -58,13 +58,13 @@ export default class Tooltip extends Component{
         this.tooltip = tooltipNode;
     }
     //显示tooltip
-    onMouseOver(event){
+    onMouseOver = event => {
         let rect = event.target.getBoundingClientRect();
 
         this.createTooltip(rect);
     }
     //移除tooltip
-    onMouseOut(){
+    onMouseOut = () => {
         document.body.removeChild(this.tooltip);
     }
     //渲染
@@ -76,11 +76,11 @@ export default class Tooltip extends Component{
             onMouseOver: onMouseOver? event => {
                 onMouseOver();
                 this.onMouseOver(event);
-            } : this.onMouseOver.bind(this),
+            } : this.onMouseOver,
             onMouseOut: onMouseOut? event => {
                 onMouseOut();
                 this.onMouseOut(event);
-            } : this.onMouseOut.bind(this),
+            } : this.onMouseOut,
         });
 
         return children;

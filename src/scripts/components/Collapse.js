@@ -14,8 +14,6 @@ export default class Collapse extends Component{
         this.state = {
             active: props.active,
         };
-
-        this.toggleItemsHandle = this.toggleItemsHandle.bind(this);
     }
     //props校验
     static propTypes ={
@@ -26,7 +24,7 @@ export default class Collapse extends Component{
     static defaultProps = {
         active: false,
     }
-    toggleItemsHandle(){
+    toggleItemsHandle = () => {
         this.setState({
             active: !this.state.active
         });

@@ -14,9 +14,6 @@ export default class Nav extends Component{
         this.state = {
             activeKey: this.props.activeKey,
         };
-
-        //绑定上下文
-        this.onSelectHandle = this.onSelectHandle.bind(this);
     }
     //props校验
     static propTypes ={
@@ -30,7 +27,7 @@ export default class Nav extends Component{
         stacked: false,
     }
     //选中回调
-    onSelectHandle(eventKey){
+    onSelectHandle = eventKey => {
         let { activeKey } = this.state,
             { onSelect } = this.props;
 

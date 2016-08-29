@@ -12,8 +12,6 @@ export default class Attention extends Component{
         this.state = {
             show: true
         };
-
-        this.hideHandle = this.hideHandle.bind(this);
     }
     // props 校验
     static propTypes = {
@@ -25,7 +23,7 @@ export default class Attention extends Component{
         className: PropTypes.string,
     }
     //关闭
-    hideHandle(){
+    hideHandle = () => {
         this.setState({
             show: false
         });

@@ -28,9 +28,6 @@ export default class Calendar extends Component{
             days: [],//日期选择
             weekdays,
         };
-
-        this.prevMonthHandle = this.prevMonthHandle.bind(this);
-        this.nextMonthHandle = this.nextMonthHandle.bind(this);
     }
     static propTypes = {
         //尺寸
@@ -80,7 +77,7 @@ export default class Calendar extends Component{
     /**
      * 前一个月.
      */
-    prevMonthHandle(){
+    prevMonthHandle = () => {
         let { currentMoment } = this.state,
             { onDateChange } = this.props,
             prevMonthMoment = moment(currentMoment).subtract(1,'months');
@@ -94,7 +91,7 @@ export default class Calendar extends Component{
     /**
      * 下一个月.
      */
-    nextMonthHandle(){
+    nextMonthHandle = () => {
         let { currentMoment } = this.state,
             { onDateChange } = this.props,
             nextMonthMoment = moment(currentMoment).add(1,'months');

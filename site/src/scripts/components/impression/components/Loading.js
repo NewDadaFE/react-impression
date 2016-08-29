@@ -22,8 +22,6 @@ export default class Loading extends Component{
         this.state = {
             show: false
         };
-
-        this.hideHandle = this.hideHandle.bind(this);
     }
     //props校验
     static propTypes = {
@@ -45,7 +43,7 @@ export default class Loading extends Component{
     /**
      * 关闭loading.
      */
-    hideHandle(){
+    hideHandle = () => {
         let { closeable } = this.props;
 
         closeable && this.setState({
