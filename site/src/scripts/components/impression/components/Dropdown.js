@@ -16,7 +16,7 @@ export default class Dropdown extends Component{
         System.manager(this);
 
         this.state = {
-            active:  undefined === props.active?  false : props.active,
+            active: undefined === props.active?  false : props.active,
         };
     }
     //prop type校验

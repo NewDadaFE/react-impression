@@ -27,7 +27,7 @@ module.exports = {
         "no-var": 2,
         "react/jsx-uses-react": 1,
         "react/jsx-no-undef": 2,
-        "react/no-danger": 1,
+        "react/no-danger": 0,
         "react/jsx-uses-vars": "error",
         "react/wrap-multilines": 2,
         "react/prop-types": 0,

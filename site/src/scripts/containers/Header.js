@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, Form, Icon, Badge, Input, Image, Split, Flex } from '../components/impression';
+import { Navbar, Button, Form, Icon, Badge, Input, Image, Split } from '../components/impression';
 
 
 /**
