@@ -9,10 +9,9 @@ class ButtonView extends Component{
         this.props.router.push('/layout');
     }
     render(){
-
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Breadcrumb ref="a" divider="arrow" routes={this.props.routes}/>
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card>
