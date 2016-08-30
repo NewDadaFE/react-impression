@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * TimelineItem组件.
  */
-export default class TimelineItem extends Component{
+export default class TimelineItem extends PureComponent {
     //prop type校验
     static propTypes = {
         className: PropTypes.string,

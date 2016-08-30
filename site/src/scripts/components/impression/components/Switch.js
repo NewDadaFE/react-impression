@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Switch组件.
  */
-export default class Switch extends Component{
+export default class Switch extends PureComponent {
     //props校验
     static propTypes = {
         //自定义class

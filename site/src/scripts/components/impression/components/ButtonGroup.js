@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * ButtonGroup组件.
  */
-export default class ButtonGroup extends Component{
+export default class ButtonGroup extends PureComponent{
     //初始state
     constructor(props, context){
         super(props, context);

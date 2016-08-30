@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * InputGroupAddon组件.
  */
-export default class InputGroupAddon extends Component{
+export default class InputGroupAddon extends PureComponent {
     static propTypes ={
         pure: PropTypes.bool,
         className: PropTypes.string,

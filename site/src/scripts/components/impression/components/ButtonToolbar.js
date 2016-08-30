@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * ButtonToolbar组件.
  */
-export default class ButtonToolbar extends Component{
+export default class ButtonToolbar extends PureComponent{
     //prop type校验
     static propTypes = {
         //自定义样式

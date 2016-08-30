@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
@@ -8,7 +8,7 @@ import ModalFooter from './ModalFooter';
 /**
  * Modal组件.
  */
-export default class Modal extends Component{
+export default class Modal extends PureComponent {
     //props校验
     static propTypes = {
         //自定义样式

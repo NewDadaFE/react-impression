@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PS from 'perfect-scrollbar';
 
 
 /**
  * Sidebar 主内容组件
  */
-export default class SidebarBody extends Component{
+export default class SidebarBody extends PureComponent {
     componentDidMount(){
         PS.initialize(this.refs.container);
     }

@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Tooltip组件.
  */
-export default class Tooltip extends Component{
+export default class Tooltip extends PureComponent {
     //prop type校验
     static propTypes = {
         position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,

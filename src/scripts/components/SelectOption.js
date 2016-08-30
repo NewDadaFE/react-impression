@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 /**
  * Option组件.
  */
-export default class Option extends Component{
+export default class Option extends PureComponent {
     //初始state
     constructor(props, context){
         super(props, context);

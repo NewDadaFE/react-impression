@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import CollapseTitle from './CollapseTitle';
 import CollapseBody from './CollapseBody';
 
@@ -7,7 +7,7 @@ import CollapseBody from './CollapseBody';
 /**
  * Collapse 组件
  */
-export default class Collapse extends Component{
+export default class Collapse extends PureComponent{
     constructor(props, context){
         super(props, context);
 

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * RadioGroup组件.
  */
-export default class RadioGroup extends Component{
+export default class RadioGroup extends PureComponent {
     //初始化state
     constructor(props, context){
         super(props, context);

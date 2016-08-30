@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import DatePicker from './DatePicker';
 import Upload from './Upload';
 import * as System from '../utils/system';
@@ -7,7 +7,7 @@ import * as System from '../utils/system';
 /**
  * Input 组件.
  */
-export default class Input extends Component{
+export default class Input extends PureComponent {
     /**
      * 初始化.
      */

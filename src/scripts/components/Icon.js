@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Icon组件.
  */
-export default class Icon extends Component{
+export default class Icon extends PureComponent {
     //prop type校验
     static propTypes = {
         //图标类型

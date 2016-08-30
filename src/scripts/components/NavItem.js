@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * NavItem 组件
  */
-export default class NavItem extends Component{
+export default class NavItem extends PureComponent {
     //props校验
     static propTypes ={
         disabled: PropTypes.bool,

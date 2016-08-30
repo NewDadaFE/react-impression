@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * 徽章组件.
  */
-export default class Badge extends Component{
+export default class Badge extends PureComponent{
     constructor(props, context){
         super(props, context);
     }

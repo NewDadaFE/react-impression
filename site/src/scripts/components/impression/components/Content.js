@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 /**
  * 主内容区 组件.
  */
-export default class Content extends Component {
+export default class Content extends PureComponent {
     //props校验
     static propTypes = {
         //自定义样式

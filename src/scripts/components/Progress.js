@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * 进度条组件.
  */
-export default class Progress extends Component{
+export default class Progress extends PureComponent {
     //prop type校验
     static propTypes = {
         //样式

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 //时间格式
 const FORMAT = {
@@ -13,7 +13,7 @@ const FORMAT = {
 /**
  * 时间组件.
  */
-export default class DatePicker extends Component{
+export default class DatePicker extends PureComponent {
     //构造函数
     constructor(props, context){
         super(props, context);

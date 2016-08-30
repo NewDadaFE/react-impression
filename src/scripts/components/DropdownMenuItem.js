@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Dropdown 菜单项组件.
  */
-export default class DropdownMenuItem extends Component{
+export default class DropdownMenuItem extends PureComponent {
     //props类型校验
     static propTypes = {
         disabled: PropTypes.bool,

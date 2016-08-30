@@ -1,9 +1,9 @@
-import React, { Component,PropTypes } from 'react';
+import React, { PureComponent,PropTypes } from 'react';
 
 /**
  * Popover组件.
  */
-export default class Popover extends Component{
+export default class Popover extends PureComponent {
     //prop type校验
     static propTypes = {
         //显示位置

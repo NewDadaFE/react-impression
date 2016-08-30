@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import AttentionLink from './AttentionLink';
 
 /**
  * Attention 组件
  */
-export default class Attention extends Component{
+export default class Attention extends PureComponent{
     //初始state
     constructor(props, context){
         super(props, context);

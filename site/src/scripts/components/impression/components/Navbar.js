@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import NavbarBrand from './NavbarBrand';
 import NavbarButton from './NavbarButton';
 
 /**
  * Navbar 组件
  */
-export default class Navbar extends Component{
+export default class Navbar extends PureComponent {
     //构造函数
     constructor(props, context){
         super(props, context);

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Notice组件.
  */
-export default class Notice extends Component{
+export default class Notice extends PureComponent {
     //prop type校验
     static propTypes = {
         //类型

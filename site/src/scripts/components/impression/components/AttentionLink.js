@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * AttentionLink 组件
  */
-export default class AttentionLink extends Component{
+export default class AttentionLink extends PureComponent{
     // props 校验
     static propTypes = {
         //自定义样式

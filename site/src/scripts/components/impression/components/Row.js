@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 /**
  * Row组件.
  */
-export default class Row extends Component{
+export default class Row extends PureComponent {
     /**
      * 自动计算col属性.
      * @return {[Array]} [子元素]

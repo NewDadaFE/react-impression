@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Icon from './Icon';
 
 /**
  * Dropdown 触发组件.
  */
-export default class DropdownTrigger extends Component{
+export default class DropdownTrigger extends PureComponent {
     //prop type校验
     static propTypes = {
         //子节点

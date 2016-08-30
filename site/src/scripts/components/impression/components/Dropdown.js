@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import DropdownTrigger from './DropdownTrigger';
 import DropdownMenu from './DropdownMenu';
 import DropdownMenuItem from './DropdownMenuItem';
@@ -10,7 +10,7 @@ import * as System from '../utils/system';
 /**
  * Dropdown组件.
  */
-export default class Dropdown extends Component{
+export default class Dropdown extends PureComponent {
     constructor(props, context){
         super(props, context);
         System.manager(this);

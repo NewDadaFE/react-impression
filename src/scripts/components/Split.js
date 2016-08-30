@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Split组件.
  */
-export default class Split extends Component{
+export default class Split extends PureComponent {
     static propTypes = {
         //自定义样式
         className: PropTypes.string,

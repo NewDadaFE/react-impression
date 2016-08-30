@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import InputGroupAddon from './InputGroupAddon';
 import InputGroupInput from './InputGroupInput';
 import InputGroupButton from './InputGroupButton';
@@ -7,7 +7,7 @@ import InputGroupButton from './InputGroupButton';
 /**
  * InputGroup组件.
  */
-export default class InputGroup extends Component{
+export default class InputGroup extends PureComponent {
     //props校验
     static propTypes ={
         size: PropTypes.oneOf(['sm', 'lg']),

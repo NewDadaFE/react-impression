@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Button from './Button';
 
 /**
  * Navbar 组件
  */
-export default class Navbar extends Component{
+export default class Navbar extends PureComponent {
     //渲染
     render(){
         let { className, children, ...others } = this.props;

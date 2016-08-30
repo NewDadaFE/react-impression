@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import hljs from 'highlight.js';
 import { Card, Button, Icon } from './impression';
@@ -7,7 +7,7 @@ import { Card, Button, Icon } from './impression';
 /**
  * 代码展示组件.
  */
-export default class Highlight extends Component {
+export default class Highlight extends PureComponent {
     constructor(props) {
         super(props);
 

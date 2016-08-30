@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * ModalBody组件.
  */
-export default class ModalBody extends Component{
+export default class ModalBody extends PureComponent {
     //props校验
     static propTypes = {
         //自定义样式

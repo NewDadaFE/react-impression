@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import CardBlock from './CardBlock';
 import CardHeader from './CardHeader';
 import CardFooter from './CardFooter';
@@ -7,7 +7,7 @@ import CardFooter from './CardFooter';
 /**
  * Card组件.
  */
-export default class Card extends Component{
+export default class Card extends PureComponent{
     //props校验
     static propTypes = {
         //自定义样式

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 /**
  * Container组件.
  */
-export default class Container extends Component{
+export default class Container extends PureComponent {
     //渲染
     render(){
         let { children, className, ...others } = this.props;

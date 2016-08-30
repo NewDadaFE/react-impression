@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 /**
  * FlexItem组件.
  */
-export default class FlexItem extends Component{
+export default class FlexItem extends PureComponent {
     //prop type校验
     static propTypes = {
         flex: React.PropTypes.number

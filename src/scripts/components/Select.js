@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import SelectOption from './SelectOption';
 import * as System from '../utils/system';
 
 /**
  * Select组件.
  */
-export default class Select extends Component{
+export default class Select extends PureComponent {
     //初始state
     constructor(props, context){
         super(props, context);

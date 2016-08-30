@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * CollapseTitle 组件
  */
-export default class CollapseTitle extends Component{
+export default class CollapseTitle extends PureComponent{
     //props校验
     static propTypes ={
         className: PropTypes.string,

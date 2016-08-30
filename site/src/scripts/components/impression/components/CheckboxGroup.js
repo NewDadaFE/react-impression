@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * CheckboxGroup组件.
  */
-export default class CheckboxGroup extends Component{
+export default class CheckboxGroup extends PureComponent{
     //初始化state
     constructor(props, context){
         super(props, context);

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * ListGroupItem 组件
  */
-export default class ListGroupItem extends Component{
+export default class ListGroupItem extends PureComponent {
     //构造函数
     constructor(props, context){
         super(props, context);

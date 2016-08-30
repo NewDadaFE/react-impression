@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Pagination组件.
  */
-export default class Pagination extends Component{
+export default class Pagination extends PureComponent {
     //默认props
     static defaultProps = {
         activePage: 1,

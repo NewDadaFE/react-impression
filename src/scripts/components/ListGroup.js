@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import ListGroupItem from './ListGroupItem';
 
 /**
  * ListGroup组件.
  */
-export default class ListGroup extends Component{
+export default class ListGroup extends PureComponent {
     //props校验
     static propTypes = {
         className: PropTypes.string,

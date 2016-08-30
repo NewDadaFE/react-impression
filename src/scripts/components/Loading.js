@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import LoadingAddon from './LoadingAddon';
 
 let _loading = undefined,
@@ -10,7 +10,7 @@ let _loading = undefined,
 /**
  * Loading组件.
  */
-export default class Loading extends Component{
+export default class Loading extends PureComponent {
     /**
      * 初始信息.
      */

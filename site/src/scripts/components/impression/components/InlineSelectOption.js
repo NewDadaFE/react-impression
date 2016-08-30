@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * InlineSelectOption组件.
  */
-export default class InlineSelectdOption extends Component{
+export default class InlineSelectdOption extends PureComponent {
     // props 校验
     static propTypes = {
         //是否选中

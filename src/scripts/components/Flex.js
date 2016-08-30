@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import FlexItem from './FlexItem';
 
 /**
  * Flex布局组件.
  */
-export default class Flex extends Component{
+export default class Flex extends PureComponent {
     //prop type校验
     static propTypes = {
         align: React.PropTypes.oneOf(['top', 'middle', 'bottom']),

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * LoadingAddon组件.
  */
-export default class LoadingAddon extends Component{
+export default class LoadingAddon extends PureComponent {
     /**
      * 初始信息.
      */

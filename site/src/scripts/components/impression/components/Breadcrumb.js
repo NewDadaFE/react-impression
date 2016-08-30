@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 import { Link } from 'react-router';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Icon from './Icon';
 
 /**
  * 面包屑组件.
  */
-export default class Breadcrumb extends Component{
+export default class Breadcrumb extends PureComponent{
     //prop type校验
     static propTypes = {
         //分隔

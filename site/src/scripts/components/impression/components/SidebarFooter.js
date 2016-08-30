@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Sidebar 底部组件
  */
-export default class SidebarFooter extends Component{
+export default class SidebarFooter extends PureComponent {
     //props校验
     static propTypes ={
         className: PropTypes.string,

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Col布局组件.
  */
-export default class Col extends Component{
+export default class Col extends PureComponent{
     //prop type校验
     static propTypes = {
         //所占比例

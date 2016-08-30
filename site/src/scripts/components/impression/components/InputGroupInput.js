@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 // import InputGroupAddon from './InputGroupAddon';
 
 /**
  * InputGroup组件.
  */
-export default class InputGroupInput extends Component{
+export default class InputGroupInput extends PureComponent {
     //props校验
     static propTypes ={
         type: PropTypes.string,

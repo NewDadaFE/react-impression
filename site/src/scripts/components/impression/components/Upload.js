@@ -1,11 +1,11 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Icon from './Icon';
 
 /**
  * 上传组件.
  */
-export default class Upload extends Component{
+export default class Upload extends PureComponent {
     //初始state
     constructor(props, context){
         super(props, context);

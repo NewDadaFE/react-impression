@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import NavItem from './NavItem';
 import NavLink from './NavLink';
 import NavTitle from './NavTitle';
@@ -7,7 +7,7 @@ import NavTitle from './NavTitle';
 /**
  * Nav 组件
  */
-export default class Nav extends Component{
+export default class Nav extends PureComponent {
     //构造函数
     constructor(props, context){
         super(props, context);

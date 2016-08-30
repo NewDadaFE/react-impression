@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 /**
  * Tag组件
  */
-export default class Tag extends Component{
+export default class Tag extends PureComponent {
     //props校验
     static propTypes = {
         //样式（default、primary、success、info、warning、danger）

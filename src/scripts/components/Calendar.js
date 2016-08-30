@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import Icon from './Icon';
@@ -16,7 +16,7 @@ const FORMAT = {
 /**
  * 日历组件.
  */
-export default class Calendar extends Component{
+export default class Calendar extends PureComponent{
     constructor(props, context){
         super(props, context);
         let { date, format } = props,
