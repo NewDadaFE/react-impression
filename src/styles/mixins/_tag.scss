@@ -5,7 +5,7 @@
 
     &[href] {
         &:hover,
-        &:focus{
+        &:focus {
             background-color: darken($color, 10%);
         }
     }

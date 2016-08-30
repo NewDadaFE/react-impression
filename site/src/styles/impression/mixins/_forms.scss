@@ -53,6 +53,7 @@
         border-color: $input-border-focus;
         outline: none;
         box-shadow: $input-box-focus-shadow;
+
         &::placeholder {
             opacity: 0;
         }
