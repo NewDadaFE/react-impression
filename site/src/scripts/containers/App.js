@@ -38,6 +38,7 @@ import ConfirmView from '../views/ConfirmView';
 import AlertView from '../views/AlertView';
 import UploadView from '../views/UploadView';
 import UtilsClassView from '../views/UtilsClassView';
+import LoginView from '../views/LoginView';
 
 /**
  * 主应用入口.
@@ -46,7 +47,7 @@ export default class App extends Component {
     render() {
         return (
              <Router history={hashHistory}>
-                <Route path='/' component={Layout}>
+                <Route path='/app' component={Layout}>
                     <IndexRoute component={ButtonView}/>
                     <Route path='button' component={ButtonView}/>
                     <Route path='image' component={ImageView}/>
@@ -86,6 +87,7 @@ export default class App extends Component {
                     <Route path='upload' component={UploadView}/>
                     <Route path='utilsClass' component={UtilsClassView}/>
                 </Route>
+                <Route path='login' component={LoginView}/>
             </Router>
         );
     }

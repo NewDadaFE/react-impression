@@ -260,6 +260,7 @@ $input-box-shadow-focus:         rgba($input-border-focus, .8) !default;
 $input-box-focus-shadow:         0 0 8px $input-box-shadow-focus;
 
 $input-color-placeholder:        #999 !default;
+$input-font-size-placeholder:    $font-size-base !default;
 
 $input-padding-x-sm:             .5rem !default;
 $input-padding-y-sm:             .25rem !default;
@@ -274,6 +275,7 @@ $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-pa
 $form-group-margin-bottom:       $spacer-y !default;
 
 $input-group-addon-bg:           $input-border-color !default;
+$input-group-addon-color:        #999 !default;
 $input-group-addon-border-color: $input-border-color !default;
 
 //== Checkbox

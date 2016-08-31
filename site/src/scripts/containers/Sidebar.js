@@ -143,7 +143,7 @@ export default class AppSidebar extends Component {
                             <Collapse.Body>
                                 <Nav>
                                     <Nav.Link>
-                                        <Link to="/button">Login</Link>
+                                        <Link to="/login">Login</Link>
                                     </Nav.Link>
                                     <Nav.Link>
                                         <a href="http://fontawesome.io/icons/" target="_blank">500</a>

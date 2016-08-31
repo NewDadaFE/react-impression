@@ -191,7 +191,7 @@ export default class Input extends PureComponent {
                 </div>
             );
         case 'file':
-            return <Upload {...others} className={className} placeholder={placeholder}/>;
+            return <Upload {...others} ref="main" className={className} placeholder={placeholder}/>;
         default:
             return (
                 <div className={classnames('input', className)} ref="container">

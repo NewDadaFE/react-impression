@@ -32,6 +32,7 @@ form {
     // Placeholder
     &::placeholder {
         color: $input-color-placeholder;
+        font-size: $input-font-size-placeholder;
         opacity: 1;
     }
 
