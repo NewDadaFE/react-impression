@@ -26,7 +26,7 @@ if (module.hot){
             root
         );
     });
-}else{
+} else {
     render(
         <App></App>,
         root
