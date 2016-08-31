@@ -4,7 +4,6 @@ import {
     Form,
     InputGroup,
     Button,
-    Flex,
     Checkbox,
     Icon
 } from '../components/impression';
@@ -36,11 +35,11 @@ export default class LoginView extends Component {
                                 <a href="#">Forgot password?</a>
                             </Form.Group>
                             <Form.Group>
-                                <Button  block>Sign&nbsp;&nbsp;&nbsp;in</Button>
+                                <Button href="/#/app" block>Sign&nbsp;&nbsp;&nbsp;in</Button>
                             </Form.Group>
                         </Form>
                     </Card.Block>
-                    <div className="text-pure login-copyright">Copyright © 2016 Impression LLC</div>
+                    <div className="text-pure login-copyright">Copyright © 2016 Impression components</div>
                 </Card>
             </div>
         );
