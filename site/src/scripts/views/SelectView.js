@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Form, Select, Breadcrumb } from '../components/impression';
+import { Row, Col, Card, Form, Select, Breadcrumb, Notification } from '../components/impression';
 import { CommenTable, Highlight } from '../components';
 
 export default class SelectView extends Component{
+    //回调
+    selectChangeHandle = (val, text) => {
+        Notification.info({
+            closeable: false,
+            title: 'Select',
+            message: `${text} 被选中了！！！`
+        });
+    }
     render(){
         return (
             <div>
@@ -15,8 +23,8 @@ export default class SelectView extends Component{
                                 <Col>
                                     <Form type="inline">
                                         <Form.Group>
-                                            <label>basic:</label>
-                                            <Select>
+                                            <label>default:</label>
+                                            <Select ref="select1" onChange={this.selectChangeHandle}>
                                                 <Select.Option value="1">First</Select.Option>
                                                 <Select.Option value="2">Second</Select.Option>
                                                 <Select.Option value="3">Third</Select.Option>
@@ -34,8 +42,20 @@ export default class SelectView extends Component{
                                 <Col>
                                     <Form type="inline">
                                         <Form.Group>
+                                            <label>value:</label>
+                                            <Select value={0} onChange={this.selectChangeHandle}>
+                                                <Select.Option value={0}>First</Select.Option>
+                                                <Select.Option value={1}>Second</Select.Option>
+                                                <Select.Option value={2}>Third</Select.Option>
+                                            </Select>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                                <Col>
+                                    <Form type="inline">
+                                        <Form.Group>
                                             <label>defaultValue:</label>
-                                            <Select value={0}>
+                                            <Select defaultValue={0} onChange={this.selectChangeHandle}>
                                                 <Select.Option value={0}>First</Select.Option>
                                                 <Select.Option value={1}>Second</Select.Option>
                                                 <Select.Option value={2}>Third</Select.Option>
@@ -105,6 +125,7 @@ export default class SelectView extends Component{
                         ]}
                     ></CommenTable>
                 </Card>
+                <Notification/>
             </div>
         );
     }

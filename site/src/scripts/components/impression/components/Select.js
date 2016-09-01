@@ -12,15 +12,20 @@ export default class Select extends PureComponent {
         super(props, context);
         System.manager(this);
 
+        //是否木偶组件
+        this.isPuppet = props.value !== undefined? true : false;
+
         this.state = {
             showOption: false,
-            value: props.value !== undefined? props.value : undefined,
+            value: this.isPuppet? undefined : props.defaultValue,
         };
     }
     //prop type校验
     static propTypes = {
         //值
         value: PropTypes.any,
+        //默认值
+        defaultValue: PropTypes.any,
         //是否不可用
         disabled: PropTypes.bool,
         //style
@@ -56,17 +61,17 @@ export default class Select extends PureComponent {
      * @param  {[Number]} index    [索引]
      */
     selectOptionHandle(newValue, text, index){
-        let { value } = this.state,
-            { onChange } = this.props,
-            { main } = this.refs;
+        let { onChange } = this.props,
+            { main } = this.refs,
+            value = this.isPuppet? this.props.value : this.state.value;
 
-        onChange && newValue !== value && onChange(newValue, text, index);
         this.setState({
             value: newValue,
             showOption: false
+        }, () => {
+            !this.isPuppet && onChange && newValue !== value && onChange(newValue, text, index);
+            main.value = text;
         });
-
-        main.value = text;
     }
     /**
      * 清空组件管理.
@@ -78,16 +83,17 @@ export default class Select extends PureComponent {
     render(){
         let { placeholder, disabled, style, className, children } = this.props,
             { showOption } = this.state,
+            originValue = this.isPuppet? this.props.value : this.state.value,
             text = undefined;
 
         children = React.Children.map(children, (child, index) => {
             let { value, children, disabled } = child.props;
 
-            value === this.state.value && (text = children);
-            value === this.state.value && !disabled && this.refs.main && (this.refs.main.value = children);
+            value === originValue && (text = children);
+            value === originValue && !disabled && this.refs.main && (this.refs.main.value = children);
             return React.cloneElement(child, {
                 key: index,
-                active: value === this.state.value,
+                active: value === originValue,
                 onClick: () => !disabled && this.selectOptionHandle(value, children, index)
             });
         });
@@ -107,5 +113,9 @@ export default class Select extends PureComponent {
     }
 }
 
+//获取vule函数
+Select.getValue = ref => {
+    return ref.isPuppet? ref.props.value : ref.state.value;
+};
 
 Select.Option = SelectOption;
