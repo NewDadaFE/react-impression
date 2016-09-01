@@ -6,6 +6,16 @@ import InlineSelectOption from './InlineSelectOption';
  * InlineSelect组件.
  */
 export default class InlineSelect extends PureComponent {
+    constructor(props) {
+        super(props);
+
+        //是否木偶组件
+        this.isPuppet = props.value !== undefined? true : false;
+
+        this.state = {
+            value: this.isPuppet? undefined : props.defaultValue,
+        };
+    }
     // props 校验
     static propTypes = {
         //自定义样式
@@ -14,6 +24,8 @@ export default class InlineSelect extends PureComponent {
         onChange: PropTypes.func,
         //value
         value: PropTypes.any,
+        //defaultValue
+        defaultValue: PropTypes.any,
     }
     /**
      * option选中回调.
@@ -24,16 +36,28 @@ export default class InlineSelect extends PureComponent {
     selectOptionHandle(value, text, index){
         let { onChange } = this.props;
 
-        onChange && onChange(value, text, index);
+        //木偶组件
+        if(this.isPuppet){
+            onChange && onChange(value, text, index);
+        } else {
+            this.setState({
+                value
+            }, () => {
+                onChange && onChange(value, text, index);
+            });
+        }
     }
     render(){
-        let { value, className, children, ...others } = this.props;
+        let { className, children, ...others } = this.props,
+            originValue = this.isPuppet? this.props.value : this.state.value;
 
         children = React.Children.map(children, (child, index) => {
+            let { value, children } = child.props;
+
             return React.cloneElement(child, {
                 key: index,
-                active: value !== undefined && value === child.props.value,
-                onClick: () => this.selectOptionHandle(child.props.value, child.props.children, index)
+                active: originValue !== undefined && originValue === value,
+                onClick: () => this.selectOptionHandle(value, children, index)
             });
         });
 
@@ -44,5 +68,10 @@ export default class InlineSelect extends PureComponent {
         );
     }
 }
+
+//获取值
+InlineSelect.getValue = ref => {
+    return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
+};
 
 InlineSelect.Option = InlineSelectOption;

@@ -123,7 +123,7 @@ export default class Select extends PureComponent {
 
 //获取vule函数
 Select.getValue = ref => {
-    return ref.isPuppet? ref.props.value : ref.state.value;
+    return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
 };
 
 Select.Option = SelectOption;

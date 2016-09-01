@@ -11,17 +11,18 @@ export default class InlineSelectView extends Component{
             city: '1',
             zone: '1'
         };
-
-        this.selectCityHandle = this.selectCityHandle.bind(this);
-        this.selectZoneHandle = this.selectZoneHandle.bind(this);
     }
-    selectCityHandle(city){
+    //城市选中回调
+    selectCityHandle = city => {
         this.setState({
             city,
             zone: undefined
         });
+
+        console.log( InlineSelect.getValue(this.refs.city));
     }
-    selectZoneHandle(zone){
+    //区域选中回调
+    selectZoneHandle = zone => {
         this.setState({
             zone
         });
@@ -37,7 +38,7 @@ export default class InlineSelectView extends Component{
                            <Row>
                                <Col col="1" className="text-right"><strong>城市：</strong></Col>
                                <Col col="11">
-                                   <InlineSelect defaultValue={this.state.city} onChange={this.selectCityHandle}>
+                                   <InlineSelect ref="city" defaultValue={this.state.city} onChange={this.selectCityHandle}>
                                        <InlineSelect.Option value="1">北京</InlineSelect.Option>
                                        <InlineSelect.Option value="2">上海</InlineSelect.Option>
                                        <InlineSelect.Option value="3">南京</InlineSelect.Option>
