@@ -4,18 +4,16 @@ import { CommenTable, Highlight } from '../components';
 
 export default class RadioView extends Component{
     onChangeHandle = (value, event) => {
-        console.log(Radio.getValue(this.refs.radio));
+        // console.log(Radio.getValue(this.refs.radio));
+        // console.log(RadioGroup.getValue(this.refs.radios));
     }
     render(){
         let radioArray = [{
             id: 1,
-            name: 'First'
+            name: 'Yes'
         }, {
             id: 2,
-            name: 'Second'
-        }, {
-            id: 3,
-            name: 'Third'
+            name: 'No'
         }];
 
         return (
@@ -35,26 +33,7 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} >\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
-                                </Highlight>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card>
-                                <Card.Block>
-                                    <Form>
-                                        <Form.Group>
-                                            <label>RadioGroup</label>
-                                            <RadioGroup defaultValue={1} onChange={this.onChangeHandle}>
-                                               { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
-                                                )}
-                                            </RadioGroup>
-                                        </Form.Group>
-                                    </Form>
-                                </Card.Block>
-                                <Highlight>
-                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} >\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
+                                    {`import { Radio } from 'impression-react';\n\n<Radio ref="radio">single</Radio>`}
                                 </Highlight>
                             </Card>
                         </Col>
@@ -64,15 +43,72 @@ export default class RadioView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>Disabled</label>
-                                            <RadioGroup disabled>
-                                                <Radio defaultChecked>Yes</Radio>
-                                                <Radio>No</Radio>
+                                            <Radio disabled>Yes</Radio>
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Block>
+                                <Highlight>
+                                    {`<Radio disabled>Yes</Radio>`}
+                                </Highlight>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <h5>RadioGroup</h5>
+                    <Row>
+                        <Col>
+                            <Card>
+                                <Card.Block>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>defaultValue</label>
+                                            <RadioGroup ref="radios" defaultValue={1}>
+                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                )}
                                             </RadioGroup>
                                         </Form.Group>
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<RadioGroup disabled>\n  <Radio defaultChecked>Yes</Radio>\n  ...\n</RadioGroup> `}
+                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} >\n  <Radio value={1}>Yes</Radio>\n  <Radio value={2}>No</Radio>\n</RadioGroup>`}
+                                </Highlight>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card>
+                                <Card.Block>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>value</label>
+                                            <RadioGroup value={2} onChange={this.onChangeHandle}>
+                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                )}
+                                            </RadioGroup>
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Block>
+                                <Highlight>
+                                    {`<RadioGroup defaultValue={1} >\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
+                                </Highlight>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card>
+                                <Card.Block>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>Disabled</label>
+                                            <RadioGroup value={2} disabled>
+                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                )}
+                                            </RadioGroup>
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Block>
+                                <Highlight>
+                                    {`<RadioGroup defaultValue={2} disabled>\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
                                 </Highlight>
                             </Card>
                         </Col>

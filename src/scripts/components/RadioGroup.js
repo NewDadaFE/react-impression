@@ -9,14 +9,19 @@ export default class RadioGroup extends PureComponent {
     constructor(props, context){
         super(props, context);
 
+        //是否木偶组件
+        this.isPuppet = props.value !== undefined? true : false;
+
         this.state = {
-            value: props.defaultValue
+            value: this.isPuppet? undefined : props.defaultValue,
         };
     }
     //props校验
     static propTypes = {
         //自定义样式
         className: PropTypes.string,
+        //值
+        value: PropTypes.any,
         //默认是否选中
         defaultValue: PropTypes.any,
         //回调函数
@@ -37,28 +42,33 @@ export default class RadioGroup extends PureComponent {
     onChangeHandle = (event, value) => {
         let { onChange } = this.props;
 
-        this.setState({
-            value
-        });
-
-        onChange && onChange(value, event);
+        if(this.isPuppet){
+            onChange && onChange(value, event);
+        } else {
+            this.setState({
+                value
+            }, () => {
+                onChange && onChange(value, event);
+            });
+        }
     }
     //渲染
     render(){
-        let { className, name, direction, onChange, children, ...others } = this.props;
+        let { className, name, direction, onChange, children, ...others } = this.props,
+            originValue = this.isPuppet? this.props.value : this.state.value;
 
         children = React.Children.map(children, (child, index) => {
             let { value, disabled } = child.props,
                 options = {
                     name: name || `radio_${this._reactInternalInstance._mountOrder}`,
                     key: index,
-                    onChange:  onChange && this.onChangeHandle,
+                    onChange:  this.onChangeHandle,
                     disabled: disabled || this.props.disabled
                 };
 
             //是否选中
-            if((value !== undefined) || this.state.value !== undefined){
-                options.checked = (this.state.value === value);
+            if((value !== undefined) || originValue !== undefined){
+                options.checked = (originValue === value);
             }
 
             return React.cloneElement(child, options);
@@ -70,4 +80,9 @@ export default class RadioGroup extends PureComponent {
             </div>
         );
     }
+}
+
+//获取选中值
+RadioGroup.getValue = ref => {
+    return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
 }

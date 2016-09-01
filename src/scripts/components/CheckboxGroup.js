@@ -9,16 +9,21 @@ export default class CheckboxGroup extends PureComponent{
     constructor(props, context){
         super(props, context);
 
+        //是否木偶组件
+        this.isPuppet = props.value !== undefined? true : false;
+
         this.state = {
-            value: props.defaultValue || []
+            value: this.isPuppet? undefined : (props.defaultValue || []),
         };
     }
     //props校验
     static propTypes = {
         //自定义样式
         className: PropTypes.string,
+        //选中
+        value: PropTypes.array,
         //默认是否选中
-        defaultValue: PropTypes.any,
+        defaultValue: PropTypes.array,
         //回调函数
         onChange: PropTypes.func,
         //是否disabled
@@ -33,15 +38,25 @@ export default class CheckboxGroup extends PureComponent{
     }
     //checkbox选中回调函数
     onChangeHandle = (event, value) => {
-        let { checked} = event.target,
-            { onChange } = this.props,
-            newValue = checked? [...this.state.value, value]: [...this.state.value.filter(item => item !== value)];
+        let { checked } = event.target,
+            { onChange } = this.props;
 
-        this.setState({
-            value: newValue
-        });
+        if(this.isPuppet){
+            let propsValue = this.props.value,
+                originValue = checked? [...propsValue, value]: [...propsValue.filter(item => item !== value)];
 
-        onChange && onChange(newValue, event);
+            onChange && onChange(originValue, event);
+        } else {
+            let originValue = checked?
+                [...this.state.value, value] :
+                [...this.state.value.filter(item => item !== value)];
+
+            this.setState({
+                value: originValue
+            }, () => {
+                onChange && onChange(originValue, event);
+            });
+        }
     }
     //渲染
     render(){
@@ -57,9 +72,13 @@ export default class CheckboxGroup extends PureComponent{
                 key: index,
                 onChange: this.onChangeHandle,
                 disabled: disabled || this.props.disabled,
-                checked: this.state.value.indexOf(value) !== -1
+                checked:  this.isPuppet?
+                    this.props.value.indexOf(value) !== -1 :
+                    this.state.value.indexOf(value) !== -1
             });
         });
+
+        delete others.onChange;
 
         return(
             <div {...others} className={classnames(direction === 'row'?'checkbox-inline': 'checkbox-vertical', className)}>
@@ -67,4 +86,9 @@ export default class CheckboxGroup extends PureComponent{
             </div>
         );
     }
+}
+
+//获取选中值
+CheckboxGroup.getValue = ref => {
+    return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
 }

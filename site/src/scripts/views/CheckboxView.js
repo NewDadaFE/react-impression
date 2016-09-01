@@ -4,8 +4,13 @@ import { CommenTable, Highlight } from '../components';
 
 export default class CheckboxView extends Component{
     //获取checkbox是否选中
-    changeHandle = () => {
+    checkboxChangeHandle = value => {
         // console.log(Checkbox.getValue(this.refs.checkbox));
+    }
+    //获取checkboxGroup是否选中
+    checkboxGroupChangeHandle = value => {
+        // console.log(value);
+        // console.log(CheckboxGroup.getValue(this.refs.checkboxs));
     }
     render(){
         return (
@@ -19,13 +24,13 @@ export default class CheckboxView extends Component{
                             <Card.Block>
                                 <Form type="inline">
                                     <Form.Group>
-                                        <label>Checkbox:</label>
-                                        <Checkbox ref="checkbox" onChange={this.changeHandle}>remember me</Checkbox>
+                                        <label>defaultChecked:</label>
+                                        <Checkbox ref="checkbox" defaultChecked onChange={this.checkboxChangeHandle}>remember me</Checkbox>
                                     </Form.Group>
                                 </Form>
                             </Card.Block>
                             <Highlight>
-                                {`import { Checkbox } from 'impression-react';\n\n<Checkbox>remember me</Checkbox>`}
+                                {`import { Checkbox } from 'impression-react';\n\n<Checkbox defaultChecked>remember me</Checkbox>`}
                             </Highlight>
                             </Card>
                         </Col>
@@ -34,7 +39,25 @@ export default class CheckboxView extends Component{
                             <Card.Block>
                                 <Form type="inline">
                                     <Form.Group>
-                                        <label>CheckboxGroup:</label>
+                                        <label>disabled:</label>
+                                        <Checkbox disabled>remember me</Checkbox>
+                                    </Form.Group>
+                                </Form>
+                            </Card.Block>
+                            <Highlight>
+                                {`<Checkbox disabled>remember me</Checkbox>`}
+                            </Highlight>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <h5>CheckboxGroup</h5>
+                    <Row>
+                        <Col>
+                            <Card>
+                            <Card.Block>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>defaultValue:</label>
                                         <CheckboxGroup defaultValue={['basketball', 'football']}>
                                             <Checkbox>basketball</Checkbox>
                                             <Checkbox>football</Checkbox>
@@ -44,27 +67,27 @@ export default class CheckboxView extends Component{
                                 </Form>
                             </Card.Block>
                             <Highlight>
-                                {`import { Checkbox, CheckboxGroup } from 'impression-react';\n\n<CheckboxGroup defaultValue={['basketball', ...]}>\n  <Checkbox>basketball</Checkbox>\n  ...\n</CheckboxGroup>`}
+                                {`import { CheckboxGroup, Checkbox } from 'impression-react';\n\n<CheckboxGroup defaultValue={['basketball', football]}>\n  <Checkbox>basketball</Checkbox>\n  ...\n</CheckboxGroup>`}
                             </Highlight>
                             </Card>
                         </Col>
                         <Col>
                             <Card>
-                                <Card.Block>
-                                    <Form type="inline">
-                                        <Form.Group>
-                                            <label>disabled:</label>
-                                            <CheckboxGroup defaultValue={['basketball', 'football']} disabled>
-                                                <Checkbox>basketball</Checkbox>
-                                                <Checkbox>football</Checkbox>
-                                                <Checkbox>volleyball</Checkbox>
-                                            </CheckboxGroup>
-                                        </Form.Group>
-                                    </Form>
-                                </Card.Block>
-                                <Highlight>
-                                    {`<CheckboxGroup defaultValue={['basketball', ...]} disabled>\n  ...\n</CheckboxGroup>`}
-                                </Highlight>
+                            <Card.Block>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>value:</label>
+                                        <CheckboxGroup ref="checkboxs" onChange={this.checkboxGroupChangeHandle} value={['basketball', 'football']}>
+                                            <Checkbox>basketball</Checkbox>
+                                            <Checkbox>football</Checkbox>
+                                            <Checkbox>volleyball</Checkbox>
+                                        </CheckboxGroup>
+                                    </Form.Group>
+                                </Form>
+                            </Card.Block>
+                            <Highlight>
+                                {`<CheckboxGroup value={['basketball', football]}>\n  <Checkbox>basketball</Checkbox>\n  ...\n</CheckboxGroup>`}
+                            </Highlight>
                             </Card>
                         </Col>
                     </Row>
