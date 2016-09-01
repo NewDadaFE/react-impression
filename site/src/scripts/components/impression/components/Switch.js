@@ -9,6 +9,8 @@ export default class Switch extends PureComponent {
     static propTypes = {
         //自定义class
         className: PropTypes.string,
+        //是否选中
+        checked: PropTypes.bool,
         //是否默认选中
         defaultChecked: PropTypes.bool,
         //是否disabled
@@ -25,17 +27,25 @@ export default class Switch extends PureComponent {
         let { onChange } = this.props,
             { checked } = event.target;
 
-        onChange && onChange(checked, event);
+        onChange(checked, event);
     }
     //渲染
     render(){
-        let { defaultChecked, onChange, disabled, className, ...others } = this.props;
+        let { checked, defaultChecked, onChange, disabled, className, ...others } = this.props;
 
         return(
             <label {...others} className={classnames('switch', className)}>
-                <input type="checkbox" defaultChecked={defaultChecked} disabled={disabled} ref="main" onChange={onChange && this.onChangeHandle}/>
+                <input type="checkbox" checked={checked} defaultChecked={defaultChecked} disabled={disabled} ref="main" onChange={onChange && this.onChangeHandle}/>
                 <div className="switch-addon"></div>
             </label>
         );
     }
+}
+
+//获取Swtich是否选中
+Switch.getValue = ref => {
+    let { value } = ref.props,
+        { main } = ref.refs;
+
+    return ref? (value !== undefined? value : main.checked) : undefined;
 }

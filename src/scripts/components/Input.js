@@ -68,7 +68,7 @@ export default class Input extends PureComponent {
             return false;
         }
 
-        main.blur();
+        main.blur && main.blur();
         this.setState({
             showOption: false,
             showClear: false,
