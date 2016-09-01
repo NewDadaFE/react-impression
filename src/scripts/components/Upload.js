@@ -99,3 +99,8 @@ export default class Upload extends PureComponent {
         );
     }
 }
+
+//获取上传文件
+Upload.getValue = ref => {
+    return ref? ref.refs.main.files[0] : undefined;
+};

@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Breadcrumb, Input, Upload, Icon } from '../components/impression';
+import { Card, Row, Col, Breadcrumb, Input, Upload, Icon, Button } from '../components/impression';
 import { Highlight } from '../components';
 
 export default class UploadView extends Component{
+    //预览：获取上传文件
+    getUploadFileHandle = () => {
+        // console.log(Upload.getValue(this.refs.upload));
+    }
+    //获取文件
+    getFileHandle = () => {
+        // console.log(Input.getValue(this.refs.file));
+    }
     render(){
         return (
             <div>
@@ -13,7 +21,7 @@ export default class UploadView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col>
-                                    <Input type="file"/>
+                                    <Input ref="file" type="file"/>
                                 </Col>
                                 <Col>
                                     <Input type="file" placeholder="请上传资质证明"/>
@@ -32,7 +40,7 @@ export default class UploadView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col>
-                                    <Upload preview/>
+                                    <Upload ref="upload" preview/>
                                 </Col>
                                 <Col>
                                     <Upload preview message="上传图片">
@@ -47,6 +55,9 @@ export default class UploadView extends Component{
                         <Highlight>
                             {`<Upload preview/>\n<Upload preview message="上传图片"><Icon type="plus"></Icon></Upload>\n<Upload src="..." preview/>`}
                         </Highlight>
+                    </Card>
+                    <Card block>
+                        <Button onClick={this.getFileHandle}>获取</Button>
                     </Card>
                 </Card>
             </div>
