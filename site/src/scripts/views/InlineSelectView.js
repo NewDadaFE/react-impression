@@ -18,8 +18,6 @@ export default class InlineSelectView extends Component{
             city,
             zone: undefined
         });
-
-        console.log( InlineSelect.getValue(this.refs.city));
     }
     //区域选中回调
     selectZoneHandle = zone => {

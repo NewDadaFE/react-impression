@@ -32,7 +32,7 @@ export default class Radio extends PureComponent {
 
         return(
             <label {...others} className={classnames('radio', className)}>
-                <input type="radio" name={name} checked={checked} defaultChecked={defaultChecked} disabled={disabled} onChange={event => onChange(event, value)}/>
+                <input ref="main" type="radio" name={name} checked={checked} defaultChecked={defaultChecked} disabled={disabled} onChange={event => onChange && onChange(event, value)}/>
                 <div className="radio-addon">
                     <i></i>
                 </div>
@@ -40,4 +40,12 @@ export default class Radio extends PureComponent {
             </label>
         );
     }
+}
+
+//获取checkbox是否选中
+Radio.getValue = ref => {
+    let { value } = ref.props,
+        { main } = ref.refs;
+
+    return ref? (value !== undefined? value : main.checked) : undefined;
 }

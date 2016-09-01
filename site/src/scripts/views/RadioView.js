@@ -3,8 +3,8 @@ import { Row, Col, Card, Radio, RadioGroup, Form, Breadcrumb } from '../componen
 import { CommenTable, Highlight } from '../components';
 
 export default class RadioView extends Component{
-    onChangeHandle(value, event){
-        // console.log(value);
+    onChangeHandle = (value, event) => {
+        console.log(Radio.getValue(this.refs.radio));
     }
     render(){
         let radioArray = [{
@@ -30,6 +30,21 @@ export default class RadioView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>Radio</label>
+                                            <Radio ref="radio" value={1} onChange={this.onChangeHandle}>single</Radio>
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Block>
+                                <Highlight>
+                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} >\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
+                                </Highlight>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card>
+                                <Card.Block>
+                                    <Form>
+                                        <Form.Group>
+                                            <label>RadioGroup</label>
                                             <RadioGroup defaultValue={1} onChange={this.onChangeHandle}>
                                                { radioArray.length > 0 && radioArray.map((item, index) =>
                                                     <Radio key={index} value={item.id}>{item.name}</Radio>

@@ -3,6 +3,10 @@ import { Row, Col, Card, Checkbox, CheckboxGroup, Form,Breadcrumb } from '../com
 import { CommenTable, Highlight } from '../components';
 
 export default class CheckboxView extends Component{
+    //获取checkbox是否选中
+    changeHandle = () => {
+        // console.log(Checkbox.getValue(this.refs.checkbox));
+    }
     render(){
         return (
             <div>
@@ -15,7 +19,22 @@ export default class CheckboxView extends Component{
                             <Card.Block>
                                 <Form type="inline">
                                     <Form.Group>
-                                        <label>interest:</label>
+                                        <label>Checkbox:</label>
+                                        <Checkbox ref="checkbox" onChange={this.changeHandle}>remember me</Checkbox>
+                                    </Form.Group>
+                                </Form>
+                            </Card.Block>
+                            <Highlight>
+                                {`import { Checkbox } from 'impression-react';\n\n<Checkbox>remember me</Checkbox>`}
+                            </Highlight>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card>
+                            <Card.Block>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <label>CheckboxGroup:</label>
                                         <CheckboxGroup defaultValue={['basketball', 'football']}>
                                             <Checkbox>basketball</Checkbox>
                                             <Checkbox>football</Checkbox>

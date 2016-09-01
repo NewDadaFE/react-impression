@@ -43,3 +43,11 @@ export default class Checkbox extends PureComponent{
         );
     }
 }
+
+//获取checkbox是否选中
+Checkbox.getValue = ref => {
+    let { value } = ref.props,
+        { main } = ref.refs;
+
+    return ref? (value !== undefined? value : main.checked) : undefined;
+}
