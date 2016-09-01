@@ -93,14 +93,14 @@
 
     // Sizing
     &.form-control-sm {
-        padding: $input-padding-y-sm $input-padding-x-sm;
-        font-size: $font-size-sm;
+        padding: $input-group-addon-padding-sm;
+        font-size: $input-group-addon-font-size-sm;
         border-radius: $border-radius-sm;
     }
 
     &.form-control-lg {
-        padding: $input-padding-y-lg $input-padding-x-lg;
-        font-size: $font-size-lg;
+        padding: $input-group-addon-padding-lg;
+        font-size: $input-group-addon-font-size-lg;
         border-radius: $border-radius-lg;
     }
 
