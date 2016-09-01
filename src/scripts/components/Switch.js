@@ -48,4 +48,4 @@ Switch.getValue = ref => {
         { main } = ref.refs;
 
     return ref? (value !== undefined? value : main.checked) : undefined;
-}
+};

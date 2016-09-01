@@ -10,7 +10,7 @@ export default class RadioGroup extends PureComponent {
         super(props, context);
 
         //是否木偶组件
-        this.isPuppet = props.value !== undefined? true : false;
+        this.isPuppet = props.value !== undefined;
 
         this.state = {
             value: this.isPuppet? undefined : props.defaultValue,
@@ -54,7 +54,7 @@ export default class RadioGroup extends PureComponent {
     }
     //渲染
     render(){
-        let { className, name, direction, onChange, children, ...others } = this.props,
+        let { className, name, direction, children, ...others } = this.props,
             originValue = this.isPuppet? this.props.value : this.state.value;
 
         children = React.Children.map(children, (child, index) => {
@@ -74,6 +74,8 @@ export default class RadioGroup extends PureComponent {
             return React.cloneElement(child, options);
         });
 
+        delete others.onChange;
+
         return(
             <div {...others} className={classnames(direction==='row'?'radio-inline': 'radio-vertical', className)}>
                 {children}
@@ -85,4 +87,4 @@ export default class RadioGroup extends PureComponent {
 //获取选中值
 RadioGroup.getValue = ref => {
     return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
-}
+};

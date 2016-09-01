@@ -10,7 +10,7 @@ export default class CheckboxGroup extends PureComponent{
         super(props, context);
 
         //是否木偶组件
-        this.isPuppet = props.value !== undefined? true : false;
+        this.isPuppet = props.value !== undefined;
 
         this.state = {
             value: this.isPuppet? undefined : (props.defaultValue || []),
@@ -91,4 +91,4 @@ export default class CheckboxGroup extends PureComponent{
 //获取选中值
 CheckboxGroup.getValue = ref => {
     return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
-}
+};

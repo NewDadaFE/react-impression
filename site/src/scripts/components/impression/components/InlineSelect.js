@@ -10,7 +10,7 @@ export default class InlineSelect extends PureComponent {
         super(props);
 
         //是否木偶组件
-        this.isPuppet = props.value !== undefined? true : false;
+        this.isPuppet = props.value !== undefined;
 
         this.state = {
             value: this.isPuppet? undefined : props.defaultValue,

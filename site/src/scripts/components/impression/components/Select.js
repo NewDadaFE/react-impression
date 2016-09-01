@@ -13,7 +13,7 @@ export default class Select extends PureComponent {
         System.manager(this);
 
         //是否木偶组件
-        this.isPuppet = props.value !== undefined? true : false;
+        this.isPuppet = props.value !== undefined;
 
         this.state = {
             showOption: false,
