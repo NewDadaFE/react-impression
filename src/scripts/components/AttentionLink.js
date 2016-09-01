@@ -13,13 +13,13 @@ const propTypes = {
 
 function AttentionLink({ href, className, children, ...others }) {
     return (
-      <a
-          {...others}
-          href={href}
-          className={classnames('attention-link', className)}
-      >
-          {children}
-      </a>
+        <a
+            {...others}
+            href={href}
+            className={classnames('attention-link', className)}
+        >
+            {children}
+        </a>
     );
 }
 
