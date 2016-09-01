@@ -14,15 +14,15 @@ const propTypes = {
 function AttentionLink({ href, className, children, ...others }) {
     return (
       <a
-        {...others}
-        href={href}
-        className={classnames('attention-link', className)}
+          {...others}
+          href={href}
+          className={classnames('attention-link', className)}
       >
-        {children}
+          {children}
       </a>
     );
 }
 
-AttentionLink.propTypes = propTypes
+AttentionLink.propTypes = propTypes;
 
-export default AttentionLink
+export default AttentionLink;
