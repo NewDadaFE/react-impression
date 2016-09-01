@@ -37,7 +37,7 @@ export default class InlineSelectView extends Component{
                            <Row>
                                <Col col="1" className="text-right"><strong>城市：</strong></Col>
                                <Col col="11">
-                                   <InlineSelect value={this.state.city} onChange={this.selectCityHandle}>
+                                   <InlineSelect defaultValue={this.state.city} onChange={this.selectCityHandle}>
                                        <InlineSelect.Option value="1">北京</InlineSelect.Option>
                                        <InlineSelect.Option value="2">上海</InlineSelect.Option>
                                        <InlineSelect.Option value="3">南京</InlineSelect.Option>

@@ -65,12 +65,20 @@ export default class Select extends PureComponent {
             { main } = this.refs,
             value = this.isPuppet? this.props.value : this.state.value;
 
+        //木偶组件
+        if(this.isPuppet){
+            onChange && newValue !== value && onChange(newValue, text, index);
+        } else {
+            this.setState({
+                value: newValue,
+            }, () => {
+                onChange && newValue !== value && onChange(newValue, text, index);
+                main.value = text;
+            });
+        }
+
         this.setState({
-            value: newValue,
             showOption: false
-        }, () => {
-            !this.isPuppet && onChange && newValue !== value && onChange(newValue, text, index);
-            main.value = text;
         });
     }
     /**
