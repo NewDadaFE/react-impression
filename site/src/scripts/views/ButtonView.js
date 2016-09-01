@@ -11,7 +11,7 @@ class ButtonView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb ref="a" divider="arrow" routes={this.props.routes}/>
+                <Breadcrumb ref="a" divider="arrow" routes={this.props.routes.slice(1)}/>
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card>

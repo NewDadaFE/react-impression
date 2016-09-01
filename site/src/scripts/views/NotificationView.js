@@ -32,7 +32,7 @@ export default class NotificationView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
                 <Card block noborder>
                     <h5>Example</h5>
                     <Card>

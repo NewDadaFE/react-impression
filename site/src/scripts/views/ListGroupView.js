@@ -6,7 +6,7 @@ export default class ListGroupView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card>

@@ -6,7 +6,7 @@ export default class ImageView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes}/>
+                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
                 <Card block noborder>
                     <h5>Fluid</h5>
                     <Card>
