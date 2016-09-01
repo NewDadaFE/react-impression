@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Notice from './Notice';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -10,7 +10,7 @@ let _notification = undefined;
 /**
  * 通知容器.
  */
-export default class Notification extends PureComponent {
+export default class Notification extends Component {
     /**
      * 初始化信息.
      * @param  {[type]} props   [description]

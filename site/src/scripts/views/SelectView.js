@@ -6,7 +6,6 @@ export default class SelectView extends Component{
     //回调
     selectChangeHandle = (val, text) => {
         Notification.info({
-            closeable: false,
             title: 'Select',
             message: `${text} 被选中了！！！`
         });

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //Message组件引用
@@ -9,7 +9,7 @@ let _timers = [];
 /**
  * Message组件.
  */
-export default class Message extends PureComponent {
+export default class Message extends Component {
     constructor(props, context){
         super(props, context);
         _message = this;
