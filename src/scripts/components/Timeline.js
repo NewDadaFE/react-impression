@@ -6,16 +6,17 @@ import TimelineItem from './TimelineItem';
  * Timeline组件.
  */
 export default class Timeline extends PureComponent {
-    //prop type校验
+    // prop type校验
     static propTypes = {
         className: PropTypes.string,
-        //大小
+        // 大小
         size: PropTypes.oneOf(['lg']),
+        children: PropTypes.any,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { size, className, children, ...others } = this.props,
-            sizeClass = size? `timeline-${size}` : null;
+            sizeClass = size ? `timeline-${size}` : null;
 
         return(
             <ul {...others} className={classnames('timeline', sizeClass, className)}>

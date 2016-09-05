@@ -1,11 +1,11 @@
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import Notice from './Notice';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Notice from './Notice';
 
 
-//Notification组件引用
-let _notification = undefined;
+// Notification组件引用
+let _notification;
 
 /**
  * 通知容器.
@@ -18,17 +18,19 @@ export default class Notification extends Component {
      */
     constructor(props, context) {
         super(props, context);
+
         this.state = {};
         this.key = 0;
         this.timers = [];
         _notification = this;
     }
-    //prop type校验
+    // prop type校验
     static propTypes = {
-        //是否可关闭
+        className: PropTypes.string,
+        // 是否可关闭
         closeable: PropTypes.bool,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         closeable: true,
     }
@@ -46,11 +48,10 @@ export default class Notification extends Component {
      * @param {[String]} options.message  [内容]
      * @param {Number}   options.duration [延时]
      */
-    addNotice({ title, message, duration=2000, closeable }, theme){
+    addNotice({ title, message, duration = 2000, closeable = this.props.closeable }, theme) {
         let key = this.key++,
             state = { ...this.state };
 
-        closeable = closeable === undefined? this.props.closeable : closeable;
         state[key] = {
             title,
             message,
@@ -73,7 +74,7 @@ export default class Notification extends Component {
      * @param  {[Number]} key      [索引]
      * @param  {[Number]} duration [延时]
      */
-    timeToRemoveNotice(key, duration){
+    timeToRemoveNotice(key, duration) {
         this.timers.push(setTimeout(() => {
             this.removeNotice(key);
         }, duration));
@@ -81,18 +82,24 @@ export default class Notification extends Component {
     /**
      * 渲染.
      */
-    render(){
+    render() {
         let { className } = this.props;
 
         return (
             <div className={classnames('notification', className)}>
-                <ReactCSSTransitionGroup component="div" transitionName="notice" transitionEnterTimeout={200} transitionLeaveTimeout={800}>
+                <ReactCSSTransitionGroup
+                    component="div"
+                    transitionName="notice"
+                    transitionEnterTimeout={200}
+                    transitionLeaveTimeout={800}>
                     { Object.keys(this.state).map(key =>
-                        <Notice key={key} theme={this.state[key].theme}
+                        <Notice
+                            key={key}
+                            theme={this.state[key].theme}
                             closeable={this.state[key].closeable}
                             title={this.state[key].title}
                             close={() => this.removeNotice(key)}>
-                                {this.state[key].message}
+                            {this.state[key].message}
                         </Notice>
                     )}
                 </ReactCSSTransitionGroup>
@@ -101,24 +108,22 @@ export default class Notification extends Component {
     }
 }
 
-//添加一条info消息
+// 添加一条info消息
 Notification.info = options => {
     _notification.addNotice(options, 'info');
 };
 
-//添加一条success消息
+// 添加一条success消息
 Notification.success = options => {
     _notification.addNotice(options, 'success');
 };
 
-//添加一条warning消息
+// 添加一条warning消息
 Notification.warning = options => {
     _notification.addNotice(options, 'warning');
 };
 
-//添加一条danger消息
+// 添加一条danger消息
 Notification.error = options => {
     _notification.addNotice(options, 'danger');
 };
-
-

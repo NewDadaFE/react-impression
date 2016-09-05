@@ -1,1 +1,5 @@
- ☐ 升级perfect-scrollbar, 暂时不支持FF
+ ✔ 升级perfect-scrollbar, 暂时不支持FF @done (16-09-05 18:12)
+ ✔ 参照Airbnb的eslint配置 @done (16-09-05 18:12)
+ ☐     "import/no-extraneous-dependencies": 0,
+        "import/no-unresolved": 0,
+ ☐ react/prefer-stateless-function

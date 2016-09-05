@@ -5,39 +5,45 @@ import AttentionLink from './AttentionLink';
 /**
  * Attention 组件
  */
-export default class Attention extends PureComponent{
-    //初始state
-    constructor(props, context){
+export default class Attention extends PureComponent {
+    // 初始state
+    constructor(props, context) {
         super(props, context);
         this.state = {
-            show: true
+            show: true,
         };
     }
     // props 校验
     static propTypes = {
-        //样式（success、primary、warning、danger）
+        // 样式（success、primary、warning、danger）
         theme: PropTypes.string,
-        //是否可关闭
+        // 是否可关闭
         closeable: PropTypes.bool,
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //关闭
+    // 关闭
     hideHandle = () => {
         this.setState({
-            show: false
+            show: false,
         });
     }
-    render(){
+    // 渲染
+    render() {
         let { theme, className, closeable, children, ...others } = this.props,
             themeClass = `attention-${theme}`,
-            hiddenClass = this.state.show? '' : 'hidden';
+            hiddenClass = this.state.show ? '' : 'hidden';
 
-        return(
-            <div {...others} className={classnames('attention', themeClass, hiddenClass, className)}>
+        return (
+            <div
+                {...others}
+                className={classnames('attention', themeClass, hiddenClass, className)}>
                 {children}
                 { closeable &&
-                    <button type="button" className="close" onClick={this.hideHandle}>&times;</button>
+                    <button type="button" className="close" onClick={this.hideHandle}>
+                        &times;
+                    </button>
                 }
             </div>
         );

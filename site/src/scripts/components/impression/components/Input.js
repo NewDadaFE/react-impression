@@ -11,7 +11,7 @@ export default class Input extends PureComponent {
     /**
      * 初始化.
      */
-    constructor(props, context){
+    constructor(props, context) {
         super(props, context);
         System.manager(this);
 
@@ -20,28 +20,32 @@ export default class Input extends PureComponent {
             showClear: false,
         };
     }
-    //prop type校验
+    // prop type校验
     static propTypes = {
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
-        //类型
+        // 行内样式
+        style: PropTypes.object,
+        // 类型
         type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month', 'search']),
-        //提示
+        // 提示
         placeholder: PropTypes.string,
-        //值
+        // 值
         value: PropTypes.any,
-        //默认值
+        // 默认值
         defaultValue: PropTypes.any,
-        //是否可清除
+        // 是否可清除
         clearable: PropTypes.bool,
-        //是否不可选
+        // 是否不可选
         disabled: PropTypes.bool,
-        //子元素只能为节点
+        // 子元素只能为节点
         children: PropTypes.element,
-        //是否椭圆形
+        // 是否椭圆形
         pill: PropTypes.bool,
+        // 点击事件
+        onClick: PropTypes.func,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         type: 'text',
         clearable: true,
@@ -64,8 +68,8 @@ export default class Input extends PureComponent {
     hideOptionsHandle = () => {
         let { main } = this.refs;
 
-        if(!main){
-            return false;
+        if(!main) {
+            return;
         }
 
         main.blur && main.blur();
@@ -81,8 +85,8 @@ export default class Input extends PureComponent {
         let { disabled } = this.props,
             { main } = this.refs;
 
-        if(disabled){
-            return false;
+        if(disabled) {
+            return;
         }
 
         main.value = '';
@@ -98,7 +102,7 @@ export default class Input extends PureComponent {
 
         this.setState({
             showOption: false,
-            showClear: false
+            showClear: false,
         });
     }
     /**
@@ -108,7 +112,7 @@ export default class Input extends PureComponent {
         !this.props.disabled
         && this.refs.main.value
         && this.setState({
-            showClear: true
+            showClear: true,
         });
     }
     /**
@@ -122,27 +126,43 @@ export default class Input extends PureComponent {
     /**
      * 清空组件管理.
      */
-    componentWillUnmount(){
+    componentWillUnmount() {
         System.unmanager(this);
     }
-    //渲染
-    render(){
-        let { type, value, defaultValue, disabled, placeholder, clearable, style, pill, onClick, className, children, ...others} = this.props,
+    // 渲染
+    render() {
+        let {
+                type,
+                value,
+                defaultValue,
+                disabled,
+                placeholder,
+                clearable,
+                style,
+                pill,
+                onClick,
+                className,
+                children,
+                ...others,
+            } = this.props,
             { showOption, showClear } = this.state,
-            pillClass = pill? 'input-pill' : null;
+            pillClass = pill ? 'input-pill' : null;
 
         children && (children = React.cloneElement(children, {
-            className: classnames('input-addon', children.props.className)
+            className: classnames('input-addon', children.props.className),
         }));
 
-        switch(type){
+        switch(type) {
         case 'date':
         case 'month':
             return (
-                <div className={classnames('input', className)} ref="container"
+                <div
+                    className={classnames('input', className)}
+                    ref="container"
                     onMouseEnter={this.showClearHandle}
                     onMouseLeave={this.hideClearHandle}>
-                    <input type='text'
+                    <input
+                        type="text"
                         ref="main"
                         value={value}
                         defaultValue={defaultValue}
@@ -154,25 +174,32 @@ export default class Input extends PureComponent {
                         disabled={disabled}
                         placeholder={placeholder}
                         onClick={this.showOptionHandle}
-                        style={style}/>
+                        style={style} />
 
                     { clearable && showClear &&
-                        <i className="fa fa-times input-addon" onClick={this.clearInputHandle}></i>
+                        <i className="fa fa-times input-addon" onClick={this.clearInputHandle} />
                     }
 
                     { (!showClear || !clearable) &&
-                        <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle}></i>
+                        <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle} />
                     }
 
                     { showOption &&
-                        <DatePicker {...others} type={type} value={this.refs.main.value} onSelect={this.selectOptionsHandle}/>
+                        <DatePicker
+                            {...others}
+                            type={type}
+                            value={this.refs.main.value}
+                            onSelect={this.selectOptionsHandle} />
                     }
                 </div>
             );
         case 'search':
             return (
-                <div className={classnames('input', className)} ref="container">
-                    <input type='text'
+                <div
+                    className={classnames('input', className)}
+                    ref="container">
+                    <input
+                        type="text"
                         ref="main"
                         value={value}
                         className={classnames('form-control',
@@ -183,43 +210,54 @@ export default class Input extends PureComponent {
                         onClick={onClick}
                         disabled={disabled}
                         placeholder={placeholder}
-                        style={style}/>
+                        style={style} />
                     { children }
                     { !children &&
-                        <i className="fa fa-search input-addon" onClick={onClick}></i>
+                        <i className="fa fa-search input-addon" onClick={onClick} />
                     }
                 </div>
             );
         case 'file':
-            return <Upload {...others} ref="main" className={className} placeholder={placeholder}/>;
+            return (
+                <Upload
+                    {...others}
+                    ref="main"
+                    className={className}
+                    placeholder={placeholder} />
+            );
         default:
             return (
-                <div className={classnames('input', className)} ref="container">
-                    <input type={type}
+                <div
+                    className={classnames('input', className)}
+                    ref="container">
+                    <input
+                        type={type}
                         ref="main"
                         value={value}
                         defaultValue={defaultValue}
-                        className={classnames('form-control',
-                        pillClass,
-                        'input-field',{
-                            'input-field-addon': children
-                        })}
+                        className={classnames(
+                            'form-control',
+                            pillClass,
+                            'input-field',
+                            {
+                                'input-field-addon': children,
+                            }
+                        )}
                         disabled={disabled}
                         placeholder={placeholder}
-                        style={style}/>
+                        style={style} />
                     { children }
                 </div>
             );
         }
-
     }
 }
 
-//获取Input内容
+// 获取Input内容
 Input.getValue = ref => {
     let { type } = ref.props;
 
-    if(!ref){
+    if(!ref) {
         return undefined;
     }
 

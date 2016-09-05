@@ -6,17 +6,18 @@ import Button from './Button';
  * InputGroupButton组件.
  */
 export default class InputGroupButton extends PureComponent {
-    //props校验
+    // props校验
     static propTypes ={
         theme: PropTypes.string,
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         theme: 'primary',
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { theme, className, children, ...others } = this.props;
 
         return(

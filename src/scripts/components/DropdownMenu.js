@@ -5,28 +5,35 @@ import React, { PureComponent, PropTypes } from 'react';
  * Dropdown 菜单组件.
  */
 export default class DropdownMenu extends PureComponent {
-    //props类型校验
+    // props类型校验
     static propTypes = {
+        className: PropTypes.string,
+        children: PropTypes.any,
         right: PropTypes.bool,
+        toggleMenu: PropTypes.func,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         right: false,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { toggleMenu, right, className, children } = this.props;
 
-        children = React.Children.map(children, (child, index) => {
+        children = React.Children.map(children, child => {
             return React.cloneElement(child, {
-                toggleMenu
+                toggleMenu,
             });
         });
 
-        return(
+        return (
             <div className="dropdown-picker">
-                <div className="dropdown-gap"/>
-                <ul className={classnames('dropdown-menu', {'dropdown-menu-right': right}, className)}>
+                <div className="dropdown-gap" />
+                <ul
+                    className={classnames(
+                        'dropdown-menu',
+                        { 'dropdown-menu-right': right },
+                        className)}>
                     {children}
                 </ul>
             </div>

@@ -5,23 +5,24 @@ import React, { PureComponent, PropTypes } from 'react';
  * Image组件
  */
 export default class Image extends PureComponent {
-    //prop type校验
+    // prop type校验
     static propTypes = {
-        //形状（fluid、rounded、circle、thumbnail）
+        // 形状（fluid、rounded、circle、thumbnail）
         fluid: PropTypes.bool,
         rounded: PropTypes.bool,
         circle: PropTypes.bool,
         thumbnail: PropTypes.bool,
+        className: PropTypes.string,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         fluid: false,
         rounded: false,
         circle: false,
         thumbnail: false,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { fluid, rounded, circle, thumbnail, className, ...others } = this.props,
             classes = {
                 'img-fluid': fluid,
@@ -31,7 +32,7 @@ export default class Image extends PureComponent {
             };
 
         return(
-            <img {...others} className={classnames(classes, className)}/>
+            <img {...others} className={classnames(classes, className)} />
         );
     }
  }

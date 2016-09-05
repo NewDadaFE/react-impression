@@ -4,31 +4,34 @@ import React, { PureComponent, PropTypes } from 'react';
 /**
  * Alert 组件
  */
-export default class Alert extends PureComponent{
+export default class Alert extends PureComponent {
     // props 校验
     static propTypes = {
-        //类型（success、primary、warning、danger）
-        type: PropTypes.string,
-        //自定义样式
+        children: PropTypes.any,
+        // 自定义样式
         className: PropTypes.string,
-        //回调
-        onClick: PropTypes.func
+        // 类型（success、primary、warning、danger）
+        type: PropTypes.string,
+        // 回调
+        onClick: PropTypes.func,
+        // 按钮名字
+        btnText: PropTypes.string,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         type: 'info',
         btnText: '确定',
-
     }
-    getAddonByType(type){
-        switch(type){
+    // 获取小图标
+    getAddonByType(type) {
+        switch(type) {
         case 'danger':
             return 'fa-exclamation-circle text-danger';
         default:
             return 'fa-exclamation-triangle text-warning';
         }
     }
-    render(){
+    render() {
         let { type, btnText, onClick, className, children, ...others } = this.props,
             iconTypeClass = this.getAddonByType(type);
 
@@ -36,7 +39,7 @@ export default class Alert extends PureComponent{
             <div className={classnames('alert', className)}>
                 <div {...others} className="alert-dialog">
                     <div className="alert-addon">
-                        <i className={classnames('fa', iconTypeClass)}></i>
+                        <i className={classnames('fa', iconTypeClass)} />
                     </div>
                     <div className="alert-body">
                         {children}

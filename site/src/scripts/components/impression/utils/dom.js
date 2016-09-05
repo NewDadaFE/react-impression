@@ -7,8 +7,8 @@
 export const isDescendentNode = (ancestor, descendent) => {
     let parentNode = descendent.parentNode;
 
-    while(parentNode){
-        if(ancestor === parentNode){
+    while (parentNode) {
+        if (ancestor === parentNode) {
             return true;
         }
         parentNode = parentNode.parentNode;

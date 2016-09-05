@@ -4,14 +4,15 @@ import React, { PureComponent, PropTypes } from 'react';
 /**
  * ButtonToolbar组件.
  */
-export default class ButtonToolbar extends PureComponent{
-    //prop type校验
+export default class ButtonToolbar extends PureComponent {
+    // prop type校验
     static propTypes = {
-        //自定义样式
+        children: PropTypes.any,
+        // 自定义样式
         className: PropTypes.string,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { className, children } = this.props;
 
         return (

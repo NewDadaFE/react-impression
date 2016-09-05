@@ -8,37 +8,41 @@ import NavTitle from './NavTitle';
  * Nav 组件
  */
 export default class Nav extends PureComponent {
-    //构造函数
-    constructor(props, context){
+    // 构造函数
+    constructor(props, context) {
         super(props, context);
         this.state = {
             activeKey: this.props.activeKey,
         };
     }
-    //props校验
+    // props校验
     static propTypes ={
+        children: PropTypes.any,
+        className: PropTypes.string,
         type: PropTypes.string,
         stacked: PropTypes.bool,
         activeKey: PropTypes.any,
         onSelect: PropTypes.func,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         stacked: false,
     }
-    //选中回调
+    // 选中回调
     onSelectHandle = eventKey => {
         let { activeKey } = this.state,
             { onSelect } = this.props;
 
-        if(activeKey === eventKey){
+        if(activeKey === eventKey) {
             return false;
         }
-        this.setState({activeKey: eventKey});
+        this.setState({ activeKey: eventKey });
         onSelect && onSelect(eventKey);
+
+        return true;
     }
-    //返回type映射的class
-    getTypeClassMap(type){
+    // 返回type映射的class
+    getTypeClassMap(type) {
         let map = {
             tab: 'nav-tabs',
             pill: 'nav-pills',
@@ -46,10 +50,10 @@ export default class Nav extends PureComponent {
             'inline-bordered': 'nav-inline nav-inline-bordered',
         };
 
-        return map[type]? map[type]: type;
+        return map[type] ? map[type] : type;
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { type, stacked, className, children, ...others } = this.props,
             { activeKey } = this.state,
             navStacked = stacked && type === 'pill' ? 'nav-stacked' : null,
@@ -60,10 +64,10 @@ export default class Nav extends PureComponent {
             let { eventKey } = child.props,
                 options = {
                     key: index,
-                    onClick: this.onSelectHandle
+                    onClick: this.onSelectHandle,
                 };
 
-            if(eventKey !== undefined){
+            if(eventKey !== undefined) {
                 options.eventKey = eventKey;
                 options.active = eventKey === activeKey;
             }

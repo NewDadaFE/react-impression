@@ -8,12 +8,13 @@ import Body from './SidebarBody';
  * Sidebar 组件
  */
 export default class Sidebar extends PureComponent {
-    //props校验
+    // props校验
     static propTypes ={
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { children, className, ...others } = this.props;
 
         return(

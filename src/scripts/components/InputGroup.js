@@ -8,15 +8,16 @@ import InputGroupButton from './InputGroupButton';
  * InputGroup组件.
  */
 export default class InputGroup extends PureComponent {
-    //props校验
+    // props校验
     static propTypes ={
         size: PropTypes.oneOf(['sm', 'lg']),
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { size, className, children, ...others } = this.props,
-            sizeClass = size? `input-group-${size}`: null;
+            sizeClass = size ? `input-group-${size}` : null;
 
         return(
             <div {...others} className={classnames('input-group', sizeClass, className)}>

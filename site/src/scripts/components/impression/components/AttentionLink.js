@@ -5,13 +5,14 @@ import React, { PropTypes } from 'react';
  * AttentionLink 组件
  */
 const propTypes = {
-    //自定义样式
+    children: PropTypes.any,
+    // 自定义样式
     className: PropTypes.string,
-    //超链接
-    href: PropTypes.string
+    // 超链接
+    href: PropTypes.string,
 };
 
-function AttentionLink({ href, className, children, ...others }) {
+const AttentionLink = ({ href, className, children, ...others }) => {
     return (
         <a
             {...others}
@@ -21,7 +22,7 @@ function AttentionLink({ href, className, children, ...others }) {
             {children}
         </a>
     );
-}
+};
 
 AttentionLink.propTypes = propTypes;
 

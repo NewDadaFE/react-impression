@@ -7,27 +7,28 @@ import FormControl from './FormControl';
  * Form 组件.
  */
 export default class Form extends PureComponent {
-    //props校验
+    // props校验
     static propTypes ={
-        //排列方向
+        // 排列方向
         type: PropTypes.string,
-        //是否分列
+        // 是否分列
         grid: PropTypes.bool,
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         type: 'inline',
         grid: false,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { type, grid, className, children, ...others } = this.props,
-            typeClass = type? `form-${type}`: null;
+            typeClass = type ? `form-${type}` : null;
 
         return(
-            <form {...others} className={classnames(typeClass, {row: grid}, className)}>
+            <form {...others} className={classnames(typeClass, { row: grid }, className)}>
                 { children }
             </form>
         );

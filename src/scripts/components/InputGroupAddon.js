@@ -8,12 +8,12 @@ export default class InputGroupAddon extends PureComponent {
     static propTypes ={
         pure: PropTypes.bool,
         className: PropTypes.string,
-
+        children: PropTypes.any,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { pure, className, children, ...others } = this.props,
-            pureClass = pure? 'bg-pure' : null;
+            pureClass = pure ? 'bg-pure' : null;
 
         return(
             <span {...others} className={classnames('input-group-addon', pureClass, className)}>

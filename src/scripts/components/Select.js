@@ -7,51 +7,52 @@ import * as System from '../utils/system';
  * Select组件.
  */
 export default class Select extends PureComponent {
-    //初始state
-    constructor(props, context){
+    // 初始state
+    constructor(props, context) {
         super(props, context);
         System.manager(this);
 
-        //是否木偶组件
+        // 是否木偶组件
         this.isPuppet = props.value !== undefined;
 
         this.state = {
             showOption: false,
-            value: this.isPuppet? undefined : props.defaultValue,
+            value: this.isPuppet ? undefined : props.defaultValue,
         };
     }
-    //prop type校验
+    // prop type校验
     static propTypes = {
-        //值
+        // 值
         value: PropTypes.any,
-        //默认值
+        // 默认值
         defaultValue: PropTypes.any,
-        //是否不可用
+        // 是否不可用
         disabled: PropTypes.bool,
-        //style
+        // style
         style: PropTypes.object,
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
-        //placeholder
+        // placeholder
         placeholder: PropTypes.string,
-        //onChange
+        // onChange
         onChange: PropTypes.func,
+        children: PropTypes.any,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         disabled: false,
-        placeholder: '请选择'
+        placeholder: '请选择',
     }
-    //显示/隐藏菜单
+    // 显示/隐藏菜单
     toggleOptionsHandle = () => {
         !this.props.disabled && this.setState({
-            showOption: !this.state.showOption
+            showOption: !this.state.showOption,
         });
     }
-    //隐藏菜单
+    // 隐藏菜单
     hideOptionsHandle = () => {
         this.setState({
-            showOption: false
+            showOption: false,
         });
     }
     /**
@@ -60,13 +61,13 @@ export default class Select extends PureComponent {
      * @param  {[String]} text     [文本显示]
      * @param  {[Number]} index    [索引]
      */
-    selectOptionHandle(newValue, text, index){
+    selectOptionHandle(newValue, text, index) {
         let { onChange } = this.props,
             { main } = this.refs,
-            value = this.isPuppet? this.props.value : this.state.value;
+            value = this.isPuppet ? this.props.value : this.state.value;
 
-        //木偶组件
-        if(this.isPuppet){
+        // 木偶组件
+        if(this.isPuppet) {
             onChange && newValue !== value && onChange(newValue, text, index);
         } else {
             this.setState({
@@ -78,41 +79,49 @@ export default class Select extends PureComponent {
         }
 
         this.setState({
-            showOption: false
+            showOption: false,
         });
     }
     /**
      * 清空组件管理.
      */
-    componentWillUnmount(){
+    componentWillUnmount() {
         System.unmanager(this);
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { placeholder, disabled, style, className, children } = this.props,
             { showOption } = this.state,
-            originValue = this.isPuppet? this.props.value : this.state.value,
-            text = undefined;
+            originValue = this.isPuppet ? this.props.value : this.state.value,
+            text;
 
         children = React.Children.map(children, (child, index) => {
             let { value, children, disabled } = child.props;
 
             value === originValue && (text = children);
-            value === originValue && !disabled && this.refs.main && (this.refs.main.value = children);
+            value === originValue
+                        && !disabled && this.refs.main
+                        && (this.refs.main.value = children);
             return React.cloneElement(child, {
                 key: index,
                 active: value === originValue,
-                onClick: () => !disabled && this.selectOptionHandle(value, children, index)
+                onClick: () => !disabled && this.selectOptionHandle(value, children, index),
             });
         });
 
         return(
-            <div style={style} className={classnames('select', { disabled }, { open: showOption }, className)} disabled={disabled}>
-                <input type="text" defaultValue={text} readOnly ref="main"
+            <div
+                style={style}
+                className={classnames('select', { disabled }, { open: showOption }, className)}
+                disabled={disabled}>
+                <input
+                    type="text"
+                    defaultValue={text}
+                    readOnly ref="main"
                     placeholder={placeholder} disabled={disabled}
-                    className={classnames('form-control' ,'select-selection')}
-                    onClick={this.toggleOptionsHandle}/>
-                <i className="fa fa-angle-down select-addon" onClick={this.toggleOptionsHandle}></i>
+                    className={classnames('form-control', 'select-selection')}
+                    onClick={this.toggleOptionsHandle} />
+                <i className="fa fa-angle-down select-addon" onClick={this.toggleOptionsHandle} />
                 <ul className="select-options">
                     { children }
                 </ul>
@@ -121,9 +130,17 @@ export default class Select extends PureComponent {
     }
 }
 
-//获取vule函数
+// 获取vule函数
 Select.getValue = ref => {
-    return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
+    if(!ref) {
+        return undefined;
+    }
+
+    if(ref.isPuppet) {
+        return ref.props.value;
+    }
+
+    return ref.state.value;
 };
 
 Select.Option = SelectOption;

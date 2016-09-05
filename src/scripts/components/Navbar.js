@@ -7,18 +7,16 @@ import NavbarButton from './NavbarButton';
  * Navbar 组件
  */
 export default class Navbar extends PureComponent {
-    //构造函数
-    constructor(props, context){
-        super(props, context);
-    }
-    //props校验
+    // props校验
     static propTypes ={
+        className: PropTypes.string,
+        children: PropTypes.any,
         theme: PropTypes.string,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { theme, className, children, ...others } = this.props,
-            themeClass = theme? `navbar-${theme}` : undefined;
+            themeClass = theme ? `navbar-${theme}` : undefined;
 
         return(
             <nav {...others} className={classnames('navbar', themeClass, className)}>

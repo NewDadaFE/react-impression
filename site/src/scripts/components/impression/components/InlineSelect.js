@@ -9,22 +9,23 @@ export default class InlineSelect extends PureComponent {
     constructor(props) {
         super(props);
 
-        //是否木偶组件
+        // 是否木偶组件
         this.isPuppet = props.value !== undefined;
 
         this.state = {
-            value: this.isPuppet? undefined : props.defaultValue,
+            value: this.isPuppet ? undefined : props.defaultValue,
         };
     }
     // props 校验
     static propTypes = {
-        //自定义样式
+        children: PropTypes.any,
+        // 自定义样式
         className: PropTypes.string,
-        //onChange
+        // onChange
         onChange: PropTypes.func,
-        //value
+        // value
         value: PropTypes.any,
-        //defaultValue
+        // defaultValue
         defaultValue: PropTypes.any,
     }
     /**
@@ -33,23 +34,23 @@ export default class InlineSelect extends PureComponent {
      * @param  {[String]} text     [名称]
      * @param  {[Number]} index    [索引]
      */
-    selectOptionHandle(value, text, index){
+    selectOptionHandle(value, text, index) {
         let { onChange } = this.props;
 
-        //木偶组件
-        if(this.isPuppet){
+        // 木偶组件
+        if(this.isPuppet) {
             onChange && onChange(value, text, index);
         } else {
             this.setState({
-                value
+                value,
             }, () => {
                 onChange && onChange(value, text, index);
             });
         }
     }
-    render(){
+    render() {
         let { className, children, ...others } = this.props,
-            originValue = this.isPuppet? this.props.value : this.state.value;
+            originValue = this.isPuppet ? this.props.value : this.state.value;
 
         children = React.Children.map(children, (child, index) => {
             let { value, children } = child.props;
@@ -57,7 +58,7 @@ export default class InlineSelect extends PureComponent {
             return React.cloneElement(child, {
                 key: index,
                 active: originValue !== undefined && originValue === value,
-                onClick: () => this.selectOptionHandle(value, children, index)
+                onClick: () => this.selectOptionHandle(value, children, index),
             });
         });
 
@@ -69,9 +70,17 @@ export default class InlineSelect extends PureComponent {
     }
 }
 
-//获取值
+// 获取值
 InlineSelect.getValue = ref => {
-    return ref? (ref.isPuppet? ref.props.value : ref.state.value) : undefined;
+    if(!ref) {
+        return undefined;
+    }
+
+    if(ref.isPuppet) {
+        return ref.props.value;
+    }
+
+    return ref.state.value;
 };
 
 InlineSelect.Option = InlineSelectOption;

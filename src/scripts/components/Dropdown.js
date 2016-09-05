@@ -11,59 +11,60 @@ import * as System from '../utils/system';
  * Dropdown组件.
  */
 export default class Dropdown extends PureComponent {
-    constructor(props, context){
+    constructor(props, context) {
         super(props, context);
         System.manager(this);
 
         this.state = {
-            active: undefined === props.active?  false : props.active,
+            active: undefined === props.active ? false : props.active,
         };
     }
-    //prop type校验
+    // prop type校验
     static propTypes = {
-        //是否激活
+        // 是否激活
         active: PropTypes.bool,
         // 触发动作
         trigger: PropTypes.oneOf(['click', 'hover']),
-        //子节点
+        // 子节点
         children: PropTypes.array.isRequired,
+        className: PropTypes.string,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         active: false,
         trigger: 'click',
     }
-    //显示/隐藏菜单
+    // 显示/隐藏菜单
     toggleOptionsHandle = flag => {
         let { active } = this.state;
 
         this.setState({
-            active: typeof flag === 'boolean'? flag : !active
+            active: typeof flag === 'boolean' ? flag : !active,
         });
     }
-    //隐藏菜单
+    // 隐藏菜单
     hideOptionsHandle = () => {
         this.setState({
-            active: false
+            active: false,
         });
     }
-    //清空组件管理.
-    componentWillUnmount(){
+    // 清空组件管理.
+    componentWillUnmount() {
         System.unmanager(this);
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { trigger, className, children, ...others } = this.props,
             { active } = this.state;
 
-        children = React.Children.map(children, (child, index) => {
+        children = React.Children.map(children, child => {
             return React.cloneElement(child, {
                 trigger,
-                toggleMenu: this.toggleOptionsHandle
+                toggleMenu: this.toggleOptionsHandle,
             });
         });
 
-        if(trigger === 'hover'){
+        if(trigger === 'hover') {
             others.onMouseOver = () => this.toggleOptionsHandle(true);
             others.onMouseOut = () => this.toggleOptionsHandle(false);
         }

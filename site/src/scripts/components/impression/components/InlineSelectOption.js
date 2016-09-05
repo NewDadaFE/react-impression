@@ -7,14 +7,21 @@ import React, { PureComponent, PropTypes } from 'react';
 export default class InlineSelectdOption extends PureComponent {
     // props 校验
     static propTypes = {
-        //是否选中
+        // 是否选中
         active: PropTypes.bool,
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    render(){
+    render() {
         let { active, className, children, ...others } = this.props;
 
-        return <div {...others} className={classnames('inline-select-option', {active}, className)}>{children}</div>;
+        return (
+            <div
+                {...others}
+                className={classnames('inline-select-option', { active }, className)}>
+                {children}
+            </div>
+        );
     }
 }

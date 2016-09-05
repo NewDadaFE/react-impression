@@ -7,42 +7,43 @@ import CollapseBody from './CollapseBody';
 /**
  * Collapse 组件
  */
-export default class Collapse extends PureComponent{
-    constructor(props, context){
+export default class Collapse extends PureComponent {
+    constructor(props, context) {
         super(props, context);
 
         this.state = {
             active: props.active,
         };
     }
-    //props校验
-    static propTypes ={
+    // props校验
+    static propTypes = {
+        children: PropTypes.any,
         className: PropTypes.string,
         active: PropTypes.bool,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         active: false,
     }
     toggleItemsHandle = () => {
         this.setState({
-            active: !this.state.active
+            active: !this.state.active,
         });
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { children, className, ...others } = this.props,
             { active } = this.state;
 
         delete others.active;
-        children = React.Children.map(children, (child, index) => {
+        children = React.Children.map(children, child => {
             return React.cloneElement(child, {
-                onClick: this.toggleItemsHandle
+                onClick: this.toggleItemsHandle,
             });
         });
 
         return(
-            <div {...others} className={classnames('collapse', {active: active}, className)}>
+            <div {...others} className={classnames('collapse', { active }, className)}>
                 {children}
             </div>
         );

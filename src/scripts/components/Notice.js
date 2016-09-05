@@ -5,18 +5,22 @@ import React, { PureComponent, PropTypes } from 'react';
  * Notice组件.
  */
 export default class Notice extends PureComponent {
-    //prop type校验
+    // prop type校验
     static propTypes = {
-        //类型
+        className: PropTypes.string,
+        children: PropTypes.any,
+        // 类型
         theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
-        //标题
+        // 标题
         title: PropTypes.string,
-        //内容
+        // 内容
         message: PropTypes.string,
-        //关闭
+        // 关闭
         close: PropTypes.func,
+        // 是否可关闭
+        closeable: PropTypes.bool,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         theme: 'info',
         title: '通知',
@@ -25,14 +29,14 @@ export default class Notice extends PureComponent {
      * 获取信息图标.
      * @return {[type]} [description]
      */
-    getTitleIcon(){
+    getTitleIcon() {
         let { theme } = this.props;
 
         return {
-            info:     ['fa', 'fa-volume-up'],
-            success:  ['fa', 'fa-check-circle'],
-            warning:  ['fa', 'fa-exclamation-triangle'],
-            danger:   ['fa', 'fa-times-circle'],
+            info: ['fa', 'fa-volume-up'],
+            success: ['fa', 'fa-check-circle'],
+            warning: ['fa', 'fa-exclamation-triangle'],
+            danger: ['fa', 'fa-times-circle'],
         }[theme];
     }
     /**
@@ -46,7 +50,7 @@ export default class Notice extends PureComponent {
         return (
             <div className={classnames('notice', themeClass, className)}>
                 <div className="notice-header">
-                    <i className={classnames(iconClass)}></i>
+                    <i className={classnames(iconClass)} />
                 </div>
                 <div className="notice-body">
                     <div className="notice-title">

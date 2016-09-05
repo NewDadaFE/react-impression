@@ -6,13 +6,14 @@ import React, { PureComponent, PropTypes } from 'react';
  */
 export default class Split extends PureComponent {
     static propTypes = {
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //默认props
+    // 默认props
     static defaultProps = {
     }
-    render(){
+    render() {
         let { children, className } = this.props;
 
         return (

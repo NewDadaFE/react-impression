@@ -5,19 +5,20 @@ import React, { PureComponent, PropTypes } from 'react';
  * Sidebar 底部组件
  */
 export default class SidebarFooter extends PureComponent {
-    //props校验
-    static propTypes ={
+    // props校验
+    static propTypes = {
         className: PropTypes.string,
+        children: PropTypes.any,
     }
-    //渲染
-    render(){
+    // 渲染
+    render() {
         let { children, className, ...others } = this.props;
 
-        children = React.Children.map(children, (child, index) => {
+        children = React.Children.map(children, child => {
             let { className } = child.props;
 
             return React.cloneElement(child, {
-                className: classnames('sidebar-footer-item', className)
+                className: classnames('sidebar-footer-item', className),
             });
         });
 

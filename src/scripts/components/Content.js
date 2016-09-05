@@ -7,23 +7,23 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
  * 主内容区 组件.
  */
 export default class Content extends PureComponent {
-    //props校验
+    // props校验
     static propTypes = {
-        //自定义样式
+        // 自定义样式
         className: PropTypes.string,
-        //动画名称
+        // 动画名称
         transitionName: PropTypes.string,
-        //进入动画时间
+        // 进入动画时间
         transitionEnterTimeout: PropTypes.number,
-        //退出动画时间
+        // 退出动画时间
         transitionLeaveTimeout: PropTypes.number,
-        //包裹元素
+        // 包裹元素
         component: PropTypes.string,
-        //子元素为单一节点
+        // 子元素为单一节点
         children: PropTypes.element.isRequired,
 
     }
-    //默认props
+    // 默认props
     static defaultProps = {
         transitionName: 'zoom-slide',
         component: 'div',
@@ -31,10 +31,17 @@ export default class Content extends PureComponent {
         transitionLeaveTimeout: 1200,
     }
     render() {
-        let { transitionName, transitionEnterTimeout, transitionLeaveTimeout, component, className, children } = this.props;
+        let {
+                transitionName,
+                transitionEnterTimeout,
+                transitionLeaveTimeout,
+                component,
+                className,
+                children,
+        } = this.props;
 
         children && (children = React.cloneElement(children, {
-            key: children.props.location.pathname
+            key: children.props.location.pathname,
         }));
 
         return (
