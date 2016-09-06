@@ -39,8 +39,6 @@ module.exports = {
         "no-param-reassign": 0,
         "prefer-const": 0,
         "no-prototype-builtins": 0,
-        "no-script-url": 0,
-        "import/no-extraneous-dependencies": 0,
-        "import/no-unresolved": 0
+        "no-script-url": 0
     }
 };

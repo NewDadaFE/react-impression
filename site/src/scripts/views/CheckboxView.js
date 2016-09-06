@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Checkbox, CheckboxGroup, Form,Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Row, Col, Card, Checkbox, CheckboxGroup, Form } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class CheckboxView extends Component{
     //获取checkbox是否选中
@@ -15,7 +15,7 @@ export default class CheckboxView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Checkbox</h5>
                     <Row>

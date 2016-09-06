@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Button, ButtonGroup, ButtonToolbar, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Button, ButtonGroup, ButtonToolbar } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class ButtonGroupView extends Component{
     //onSelect
@@ -9,7 +9,7 @@ export default class ButtonGroupView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card>

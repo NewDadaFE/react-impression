@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Nav, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Row, Col, Nav } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class NavView extends Component{
     selectHandle(selectKey){
@@ -9,7 +9,7 @@ export default class NavView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Inline</h3>
                     <Card>

@@ -4,100 +4,43 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "settings": {
-        "react": {
-            "pragma": "React",
-            "version": "15.0",
-        }
-    },
     "parser": "babel-eslint",
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
-        },
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
+    "extends": "airbnb",
+    plugins: [
+        'react'
     ],
     "rules": {
-        "strict": 0,
-        "no-var": 2,
-        "react/jsx-uses-react": 1,
-        "react/jsx-no-undef": 2,
-        "react/no-danger": 0,
-        "react/jsx-uses-vars": "error",
-        "react/wrap-multilines": 2,
-        "react/prop-types": 0,
-        "arrow-parens": [2, "as-needed"],
         "indent": [
-            "error",
+            2,
             4,
             {"VariableDeclarator": 1}
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "warn",
-            "single",
-            {"avoidEscape": true, "allowTemplateLiterals": true}
-        ],
-        "semi": [
-            "error",
-            "always",
-            { "omitLastInOneLineBlock": true}
-        ],
-        "comma-dangle": [
-            "error",
-            "only-multiline"
-        ],
-        "no-unused-vars": [
-            2,
-            {"vars": "local", "args": "none"}
-        ],
-        "no-undef": [
-            "off"
-        ],
-        "no-mixed-spaces-and-tabs": [
-            "off"
-        ],
-        "no-console": 2,
-        "no-alert": 2,
-        "no-array-constructor": 2,
-        "no-cond-assign": 2,
-        "no-const-assign": 2,
-        "no-constant-condition": 2,
-        "no-delete-var": 2,
-        "eqeqeq": 1,
-        "use-isnan": 2,
-        "space-in-parens": 0,
-        "space-before-function-paren": 0,
-        "space-before-blocks": 0,
-        "padded-blocks": 0,
-        "one-var": 1,
-        "newline-after-var": 2,
-        "curly": [2, "all"],
-        "camelcase": 2,
-        "block-scoped-var": 0,
-        "arrow-spacing": 0,
-        "no-with": 2,
+        "import/prefer-default-export": 0,
+        "keyword-spacing": 2,
         "no-unused-expressions": 0,
-        "no-unreachable": 2,
-        "no-unneeded-ternary": 2,
-        "no-trailing-spaces": 1,
-        "no-sparse-arrays": 2,
-        "no-spaced-func": 2,
-        "no-multi-spaces": 1,
-        "no-fallthrough": 1,
-        "no-empty": 2,
-        "no-else-return": 2,
-        "no-duplicate-case": 2,
-        "no-dupe-keys": 2,
-        "no-dupe-args": 2,
-        "no-delete-var": 2
+        "react/no-string-refs": 0,
+        "react/jsx-indent-props": [2, 4],
+        "react/jsx-indent": [2, 4],
+        "react/jsx-filename-extension": [2, { extensions: ['.js'] }],
+        "react/jsx-closing-bracket-location": 0,
+        "react/sort-comp": 0,
+        "jsx-a11y/img-has-alt": 0,
+        "jsx-a11y/label-has-for": 0,
+        "arrow-body-style": 0,
+        "space-before-function-paren": 0,
+        "keyword-spacing": 0,
+        "no-mixed-operators": 0,
+        "no-underscore-dangle": 0,
+        "one-var": [
+            1,
+            "always"
+        ],
+        "no-shadow": 0,
+        "no-param-reassign": 0,
+        "prefer-const": 0,
+        "no-prototype-builtins": 0,
+        "no-script-url": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/no-unresolved": 0
     }
 };

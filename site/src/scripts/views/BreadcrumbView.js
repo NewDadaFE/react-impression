@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class BreadcrumbView extends Component{
     render(){
@@ -15,7 +15,7 @@ export default class BreadcrumbView extends Component{
 
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card>

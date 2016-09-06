@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Breadcrumb, Alert } from '../components/impression';
-import { Highlight } from '../components';
+import { Card, Row, Col, Button, Alert } from '../components/impression';
+import { Highlight, Breadcrumb } from '../components';
 
 export default class AlertView extends Component{
     constructor(props, context){
@@ -29,7 +29,7 @@ export default class AlertView extends Component{
 
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Basic</h3>
                     <Card>

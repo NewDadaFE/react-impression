@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, InputGroup, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Row, Col, Button, InputGroup } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class InputGroupView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card >

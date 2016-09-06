@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Confirm, Breadcrumb, Button } from '../components/impression';
-import { CommenTable, Highlight } from '../components/';
+import { Card, Row, Col, Confirm, Button } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components/';
 
 export default class ConfirmView extends Component{
     constructor(props, context){
@@ -36,7 +36,7 @@ export default class ConfirmView extends Component{
 
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Tooltip, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Row, Col, Button, Tooltip } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class TooltipView extends Component{
     onMouseOver(){
@@ -8,7 +8,7 @@ export default class TooltipView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Examples</h5>
                     <Card>

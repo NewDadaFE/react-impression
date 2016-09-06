@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Breadcrumb, Input, Upload, Icon, Button } from '../components/impression';
-import { Highlight } from '../components';
+import { Card, Row, Col, Input, Upload, Icon, Button } from '../components/impression';
+import { Highlight, Breadcrumb } from '../components';
 
 export default class UploadView extends Component{
     //预览：获取上传文件
@@ -14,7 +14,7 @@ export default class UploadView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes}/>
                 <Card block noborder>
                     <h3>Basic</h3>
                     <Card>

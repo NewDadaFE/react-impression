@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Loading, Button, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components/';
+import { Card, Row, Col, Loading, Button } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class LoadingView extends Component{
     //初始state
@@ -26,7 +26,7 @@ export default class LoadingView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Loading</h5>
                     <Card>

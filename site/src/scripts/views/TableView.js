@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Card, Breadcrumb } from '../components/impression';
-import { Highlight } from '../components';
+import { Card } from '../components/impression';
+import { Highlight, Breadcrumb } from '../components';
 
 
 export default class TableView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Basic table</h3>
                     <Card>

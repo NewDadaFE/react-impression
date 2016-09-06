@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Calendar, Breadcrumb, Badge, Icon, Image } from '../components/impression';
-import { Highlight } from '../components/';
+import { Card, Row, Col, Calendar, Badge, Icon, Image } from '../components/impression';
+import { Highlight, Breadcrumb } from '../components/';
 
 export default class CalendarView extends Component{
     constructor(prop, context){
@@ -83,7 +83,7 @@ export default class CalendarView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Basic</h3>
                     <Card>

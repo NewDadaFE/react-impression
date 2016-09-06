@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Button, Dropdown, Breadcrumb, Row, Col, Notification } from '../components/impression';
-import { CommenTable } from '../components';
+import { Card, Button, Dropdown, Row, Col, Notification } from '../components/impression';
+import { CommenTable, Breadcrumb } from '../components';
 
 export default class DropdownView extends Component{
     //菜单点击提醒
@@ -14,7 +14,7 @@ export default class DropdownView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Row>

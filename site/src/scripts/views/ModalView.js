@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Button, Card, Row, Col, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Modal, Button, Card, Row, Col } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class ModalView extends Component{
     //构造函数
@@ -23,7 +23,7 @@ export default class ModalView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Examples</h5>
                     <Card>

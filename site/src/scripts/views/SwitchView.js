@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Switch, Form, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Switch, Form } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class SwitchView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Switch</h5>
                     <Card>

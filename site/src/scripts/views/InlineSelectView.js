@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Breadcrumb, InlineSelect } from '../components/impression';
-import { Highlight } from '../components';
+import { Card, Row, Col, InlineSelect } from '../components/impression';
+import { Highlight, Breadcrumb } from '../components';
 
 export default class InlineSelectView extends Component{
     //初始state
@@ -28,7 +28,7 @@ export default class InlineSelectView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Examples</h3>
                     <Card>

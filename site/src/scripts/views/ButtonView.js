@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Button, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Row, Col, Button } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 import { withRouter } from 'react-router';
 
 
@@ -11,7 +11,7 @@ class ButtonView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb ref="a" divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Basic</h5>
                     <Card>

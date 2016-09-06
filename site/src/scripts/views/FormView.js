@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Col, Checkbox, Radio, RadioGroup, Form, Input, Button, Breadcrumb } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Col, Checkbox, Radio, RadioGroup, Form, Input, Button } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class FormView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Inline</h5>
                     <Card>

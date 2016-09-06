@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, Form, Input, Breadcrumb, Modal, Button, Icon, InlineSelect } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Row, Col, Form, Input, Modal, Button, Icon, InlineSelect } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class InputView extends Component{
     constructor(props, context){
@@ -50,7 +50,7 @@ export default class InputView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Text</h5>
                     <Card>

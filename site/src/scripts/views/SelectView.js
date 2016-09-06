@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Form, Select, Breadcrumb, Notification } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Row, Col, Card, Form, Select, Notification } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class SelectView extends Component{
     //回调
@@ -13,7 +13,7 @@ export default class SelectView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h3>Select</h3>
                     <Card>

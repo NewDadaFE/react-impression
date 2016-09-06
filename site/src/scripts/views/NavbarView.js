@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Navbar, Nav, Form, Button, Breadcrumb, Flex } from '../components/impression';
-import { CommenTable, Highlight } from '../components';
+import { Card, Navbar, Nav, Form, Button, Flex } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class NavbarView extends Component{
     render(){
         return (
             <div>
-                <Breadcrumb divider="arrow" routes={this.props.routes.slice(1)}/>
+                <Breadcrumb routes={this.props.routes} />
                 <Card block noborder>
                     <h5>Default</h5>
                     <Card>

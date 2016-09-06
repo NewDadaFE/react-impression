@@ -11,6 +11,7 @@
 
 .breadcrumb-item {
     float: left;
+    text-transform: capitalize;
 
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item::before {
