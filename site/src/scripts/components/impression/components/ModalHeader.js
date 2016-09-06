@@ -1,24 +1,20 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * ModalHeader组件.
  */
-export default class ModalHeader extends PureComponent {
-    // props校验
-    static propTypes = {
-        children: PropTypes.any,
-        // 自定义样式
-        className: PropTypes.string,
-    }
-    // 渲染
-    render() {
-        let { className, children, ...others } = this.props;
+const ModalHeader = ({ className, children, ...others }) => {
+    return (
+        <div {...others} className={classnames('modal-header', className)}>
+            {children}
+        </div>
+    );
+};
 
-        return(
-            <div {...others} className={classnames('modal-header', className)}>
-                {children}
-            </div>
-        );
-    }
-}
+ModalHeader.ModalHeader.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+};
+
+export default ModalHeader;

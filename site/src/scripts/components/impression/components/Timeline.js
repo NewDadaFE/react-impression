@@ -1,29 +1,28 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import TimelineItem from './TimelineItem';
+
+const propTypes = {
+    // 大小
+    size: PropTypes.oneOf(['lg']),
+    children: PropTypes.any,
+    className: PropTypes.string,
+};
 
 /**
  * Timeline组件.
  */
-export default class Timeline extends PureComponent {
-    // prop type校验
-    static propTypes = {
-        className: PropTypes.string,
-        // 大小
-        size: PropTypes.oneOf(['lg']),
-        children: PropTypes.any,
-    }
-    // 渲染
-    render() {
-        let { size, className, children, ...others } = this.props,
-            sizeClass = size ? `timeline-${size}` : null;
+const Timeline = ({ size, className, children, ...others }) => {
+    let sizeClass = size ? `timeline-${size}` : null;
 
-        return(
-            <ul {...others} className={classnames('timeline', sizeClass, className)}>
-                {children}
-            </ul>
-        );
-    }
-}
+    return (
+        <ul {...others} className={classnames('timeline', sizeClass, className)}>
+            {children}
+        </ul>
+    );
+};
 
+Timeline.propTypes = propTypes;
 Timeline.Item = TimelineItem;
+
+export default Timeline;

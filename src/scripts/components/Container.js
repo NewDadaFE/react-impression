@@ -1,22 +1,20 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * Container组件.
  */
-export default class Container extends PureComponent {
-    static propTypes = {
-        className: PropTypes.string,
-        children: PropTypes.any,
-    }
-    // 渲染
-    render() {
-        let { children, className, ...others } = this.props;
+const Container = ({ children, className, ...others }) => {
+    return (
+        <div {...others} className={classnames('container', className)}>
+            {children}
+        </div>
+    );
+};
 
-        return(
-            <div {...others} className={classnames('container', className)}>
-                {children}
-            </div>
-        );
-    }
-}
+Container.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.any,
+};
+
+export default Container;

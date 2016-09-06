@@ -1,24 +1,20 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * CardFooter组件.
  */
-export default class CardFooter extends PureComponent {
-    // props校验
-    static propTypes = {
-        children: PropTypes.any,
-        // 自定义样式
-        className: PropTypes.string,
-    }
-    // 渲染
-    render() {
-        let { className, children, ...others } = this.props;
+const CardFooter = ({ className, children, ...others }) => {
+    return (
+        <div {...others} className={classnames('card-footer', className)}>
+            {children}
+        </div>
+    );
+};
 
-        return(
-            <div {...others} className={classnames('card-footer', className)}>
-                {children}
-            </div>
-        );
-    }
-}
+CardFooter.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+};
+
+export default CardFooter;

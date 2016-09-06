@@ -36,11 +36,11 @@ module.exports = {
             "always"
         ],
         "no-shadow": 0,
+        "no-param-reassign": 0,
         "prefer-const": 0,
         "no-prototype-builtins": 0,
         "no-script-url": 0,
         "import/no-extraneous-dependencies": 0,
-        "import/no-unresolved": 0,
-        "react/prefer-stateless-function": 0
+        "import/no-unresolved": 0
     }
 };

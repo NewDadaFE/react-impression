@@ -1,24 +1,20 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Button from './Button';
 
 /**
  * Navbar 组件
  */
-export default class Navbar extends PureComponent {
-    // prop type校验
-    static propTypes = {
-        className: PropTypes.string,
-        children: PropTypes.any,
-    }
-    // 渲染
-    render() {
-        let { className, children, ...others } = this.props;
+const Navbar = ({ className, children, ...others }) => {
+    return (
+        <Button {...others} className={classnames('navbar-btn', className)}>
+            {children}
+        </Button>
+    );
+};
 
-        return(
-            <Button {...others} className={classnames('navbar-btn', className)}>
-                {children}
-            </Button>
-        );
-    }
-}
+Navbar.NavbarButton.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.any,
+};
+export default Navbar;

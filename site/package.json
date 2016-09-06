@@ -6,7 +6,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "eslint": "eslint ./src/scripts/",
-    "start": "npm run eslint && gulp build && webpack-dashboard -- node server.js",
+    "start": "gulp build && webpack-dashboard -- node server.js",
     "watch": "gulp watch",
     "copy:impression-css": "cp -R ../src/styles/** src/styles/impression",
     "copy:impression-js": "cp -R ../src/scripts/** src/scripts/components/impression",

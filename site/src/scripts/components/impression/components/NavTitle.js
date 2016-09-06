@@ -1,23 +1,22 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+
+    // props校验
+const propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+};
 
 /**
  * NavTitle 组件
  */
-export default class NavTitle extends PureComponent {
-    // props校验
-    static propTypes ={
-        children: PropTypes.any,
-        className: PropTypes.string,
-    }
-    // 渲染
-    render() {
-        let { children, className, ...others } = this.props;
+const NavTitle = ({ children, className, ...others }) => {
+    return (
+        <div {...others} className={classnames('nav-title', className)}>
+            {children}
+        </div>
+    );
+};
 
-        return(
-            <div {...others} className={classnames('nav-title', className)}>
-                {children}
-            </div>
-        );
-    }
-}
+NavTitle.propTypes = propTypes;
+export default NavTitle;

@@ -1,17 +1,15 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * Dropdown 菜单分割线组件.
  */
-export default class DropdownMenuDivider extends PureComponent {
-    static propTypes = {
-        className: PropTypes.string,
-    }
-    // 渲染
-    render() {
-        let { className } = this.props;
+const DropdownMenuDivider = ({ className }) => {
+    return <li className={classnames('dropdown-divider', className)} />;
+};
 
-        return <li className={classnames('dropdown-divider', className)} />;
-    }
-}
+DropdownMenuDivider.propTypes = {
+    className: PropTypes.string,
+};
+
+export default DropdownMenuDivider;

@@ -1,25 +1,22 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * CollapseBody 组件
  */
-export default class CollapseBody extends PureComponent {
-    // props校验
-    static propTypes ={
-        children: PropTypes.any,
-        className: PropTypes.string,
-    }
-    // 渲染
-    render() {
-        let { className, children, ...others } = this.props;
+const CollapseBody = ({ className, children, ...others }) => {
+    delete others.onClick;
 
-        delete others.onClick;
+    return (
+        <div {...others} className={classnames('collapse-body', className)}>
+            {children}
+        </div>
+    );
+};
 
-        return(
-            <div {...others} className={classnames('collapse-body', className)}>
-                {children}
-            </div>
-        );
-    }
-}
+CollapseBody.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+};
+
+export default CollapseBody;

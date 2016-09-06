@@ -1,25 +1,24 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+
+// props校验
+const propTypes = {
+    img: PropTypes.string,
+    className: PropTypes.string,
+    children: PropTypes.any,
+};
 
 /**
  * Sidebar 顶部组件
  */
-export default class SidebarHeader extends PureComponent {
-    // props校验
-    static propTypes ={
-        img: PropTypes.string,
-        className: PropTypes.string,
-        children: PropTypes.any,
-    }
-    // 渲染
-    render() {
-        let { img, className, children, ...others } = this.props;
+const SidebarHeader = ({ img, className, children, ...others }) => {
+    return (
+        <div {...others} className={classnames('sidebar-header', className)}>
+            { img && <img src={img} /> }
+            { children }
+        </div>
+    );
+};
 
-        return (
-            <div {...others} className={classnames('sidebar-header', className)}>
-                { img && <img src={img} /> }
-                { children }
-            </div>
-        );
-    }
-}
+SidebarHeader.propTypes = propTypes;
+export default SidebarHeader;

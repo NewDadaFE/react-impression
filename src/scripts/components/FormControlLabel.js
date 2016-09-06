@@ -1,24 +1,21 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * FormControlLabel 组件.
  */
-export default class FormControlLabel extends PureComponent {
-    // props校验
-    static propTypes ={
-        // 自定义样式
-        className: PropTypes.string,
-        children: PropTypes.any,
-    }
-    // 渲染
-    render() {
-        let { children, className, ...others } = this.props;
+const FormControlLabel = ({ children, className, ...others }) => {
+    return (
+        <label {...others} className={classnames('form-control-label', className)}>
+            {children}
+        </label>
+    );
+};
 
-        return (
-            <label {...others} className={classnames('form-control-label', className)}>
-                {children}
-            </label>
-        );
-    }
-}
+FormControlLabel.propTypes = {
+    // 自定义样式
+    className: PropTypes.string,
+    children: PropTypes.any,
+};
+
+export default FormControlLabel;

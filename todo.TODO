@@ -2,4 +2,4 @@
  ✔ 参照Airbnb的eslint配置 @done (16-09-05 18:12)
  ☐     "import/no-extraneous-dependencies": 0,
         "import/no-unresolved": 0,
- ☐ react/prefer-stateless-function
+ ✔ react/prefer-stateless-function @done (16-09-06 11:21)

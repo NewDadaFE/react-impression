@@ -1,30 +1,30 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import NavbarBrand from './NavbarBrand';
 import NavbarButton from './NavbarButton';
+
+// props校验
+const propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.any,
+    theme: PropTypes.string,
+};
 
 /**
  * Navbar 组件
  */
-export default class Navbar extends PureComponent {
-    // props校验
-    static propTypes ={
-        className: PropTypes.string,
-        children: PropTypes.any,
-        theme: PropTypes.string,
-    }
-    // 渲染
-    render() {
-        let { theme, className, children, ...others } = this.props,
-            themeClass = theme ? `navbar-${theme}` : undefined;
+const Navbar = ({ theme, className, children, ...others }) => {
+    let themeClass = theme ? `navbar-${theme}` : undefined;
 
-        return(
-            <nav {...others} className={classnames('navbar', themeClass, className)}>
-                {children}
-            </nav>
-        );
-    }
-}
+    return (
+        <nav {...others} className={classnames('navbar', themeClass, className)}>
+            {children}
+        </nav>
+    );
+};
 
+Navbar.propTypes = propTypes;
 Navbar.Brand = NavbarBrand;
 Navbar.Button = NavbarButton;
+
+export default Navbar;
