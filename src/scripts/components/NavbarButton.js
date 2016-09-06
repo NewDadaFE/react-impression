@@ -5,7 +5,7 @@ import Button from './Button';
 /**
  * Navbar 组件
  */
-const Navbar = ({ className, children, ...others }) => {
+const NavbarButton = ({ className, children, ...others }) => {
     return (
         <Button {...others} className={classnames('navbar-btn', className)}>
             {children}
@@ -13,8 +13,8 @@ const Navbar = ({ className, children, ...others }) => {
     );
 };
 
-Navbar.NavbarButton.propTypes = {
+NavbarButton.propTypes = {
     className: PropTypes.string,
     children: PropTypes.any,
 };
-export default Navbar;
+export default NavbarButton;

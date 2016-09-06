@@ -13,7 +13,7 @@ const ListGroup = ({ className, children, ...others }) => {
     );
 };
 
-ListGroup.ListGroup.propTypes = {
+ListGroup.propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,
 };

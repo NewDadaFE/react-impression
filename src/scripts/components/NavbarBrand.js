@@ -12,7 +12,7 @@ const NavbarBrand = ({ href, className, children, ...others }) => {
     );
 };
 
-NavbarBrand.NavbarBrand.propTypes = {
+NavbarBrand.propTypes = {
     href: PropTypes.string,
     className: PropTypes.string,
     children: PropTypes.any,

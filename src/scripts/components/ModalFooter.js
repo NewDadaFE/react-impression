@@ -12,7 +12,7 @@ const ModalFooter = ({ className, children, ...others }) => {
     );
 };
 
-ModalFooter.ModalFooter.propTypes = {
+ModalFooter.propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,
 };

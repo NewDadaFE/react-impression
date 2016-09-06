@@ -12,7 +12,7 @@ const ModalBody = ({ className, children, ...others }) => {
     );
 };
 
-ModalBody.ModalBody.propTypes = {
+ModalBody.propTypes = {
     children: PropTypes.any,
     // 自定义样式
     className: PropTypes.string,

@@ -12,7 +12,7 @@ const ModalHeader = ({ className, children, ...others }) => {
     );
 };
 
-ModalHeader.ModalHeader.propTypes = {
+ModalHeader.propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,
 };

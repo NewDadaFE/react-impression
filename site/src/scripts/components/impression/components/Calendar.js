@@ -50,7 +50,7 @@ export default class Calendar extends PureComponent {
         // 是否显示头部
         showHeader: PropTypes.bool,
         // 自定义内容
-        dateCellRender: PropTypes.func,
+        cellRender: PropTypes.func,
         // 时间单元格点击
         onDateCellClick: PropTypes.func,
         // 日历时间切换
@@ -188,7 +188,7 @@ export default class Calendar extends PureComponent {
                 showHeader,
                 showToolbar,
                 captionFormat,
-                dateCellRender,
+                cellRender,
                 onDateCellClick,
                 className,
             } = this.props,
@@ -251,7 +251,7 @@ export default class Calendar extends PureComponent {
                                     {day.text}
                                 </div>
                                 <div className="calendar-daygroup-item-body">
-                                    { dateCellRender && dateCellRender({
+                                    { cellRender && cellRender({
                                         day: day.text,
                                         year: day.date.format(FORMAT.YEAR),
                                         month: day.date.format(FORMAT.MONTH),
