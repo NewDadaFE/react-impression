@@ -39,7 +39,7 @@ CSS引入：
 ### 本地启动
 
 ```
-    cd site && npm run start
+    cd site && npm start
 ```
 
 ### Demo

@@ -1,19 +1,23 @@
 import React, { PropTypes } from 'react';
-import { Card } from '../components/impression';
-import { CommenTable, Highlight, Breadcrumb } from '../components';
+import { Icon, Card, Breadcrumb } from '../components/impression';
+import { CommenTable, Highlight, Breadcrumb as MyBreadcrumb } from '../components';
 
 const BreadcrumbView = ({ routes }) => {
     return (
         <div>
-            <Breadcrumb routes={routes} />
+            <MyBreadcrumb routes={routes} />
             <Card block noborder>
                 <h3>Examples</h3>
                 <Card>
                     <Card.Block>
                         <Breadcrumb className="no-padding">
-                            <a href="javascript:void(0);">首页</a>
-                            <a href="javascript:void(0);">财务管理</a>
-                            <span>收入</span>
+                            <a href="javascript:void(0);">
+                                Home
+                            </a>
+                            <a href="javascript:void(0);">
+                                User Center
+                            </a>
+                            <span>Basic Information</span>
                         </Breadcrumb>
                     </Card.Block>
                     <Highlight>
@@ -29,9 +33,15 @@ const BreadcrumbView = ({ routes }) => {
                 <Card>
                     <Card.Block>
                         <Breadcrumb className="no-padding" separator="arrow">
-                            <a href="javascript:void(0);">首页</a>
-                            <a href="javascript:void(0);">财务管理</a>
-                            <span>收入</span>
+                            <a href="javascript:void(0);">
+                                <Icon type="home" left />Home
+                            </a>
+                            <a href="javascript:void(0);">
+                                <Icon type="user" left />User Center
+                            </a>
+                            <span>
+                                <Icon type="cog" left />Basic Information
+                            </span>
                         </Breadcrumb>
                     </Card.Block>
                     <Highlight>

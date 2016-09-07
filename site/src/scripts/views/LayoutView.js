@@ -108,37 +108,37 @@ const LayoutView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'<Row>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {'  <Col>1</Col>'}
-                        {`</Row>\n\n`}
-                        {'<Row>'}
-                        {'  <Col>2</Col>'}
-                        {'  <Col>2</Col>'}
-                        {'  <Col>2</Col>'}
-                        {'  <Col>2</Col>'}
-                        {'  <Col>2</Col>'}
-                        {'  <Col>2</Col>'}
-                        {`</Row>\n\n`}
-                        {'<Row>'}
-                        {'  <Col>3</Col>'}
-                        {'  <Col>3</Col>'}
-                        {'  <Col>3</Col>'}
-                        {'  <Col>3</Col>'}
-                        {`</Row>\n\n`}
-                        {'<Row>'}
-                        {'  <Col>6</Col>'}
-                        {'  <Col>6</Col>'}
+                        {'<Row>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {'  <Col>1</Col>\n'}
+                        {`</Row>\n`}
+                        {'<Row>\n'}
+                        {'  <Col>2</Col>\n'}
+                        {'  <Col>2</Col>\n'}
+                        {'  <Col>2</Col>\n'}
+                        {'  <Col>2</Col>\n'}
+                        {'  <Col>2</Col>\n'}
+                        {'  <Col>2</Col>\n'}
+                        {`</Row>\n`}
+                        {'<Row>\n'}
+                        {'  <Col>3</Col>\n'}
+                        {'  <Col>3</Col>\n'}
+                        {'  <Col>3</Col>\n'}
+                        {'  <Col>3</Col>\n'}
+                        {`</Row>\n`}
+                        {'<Row>\n'}
+                        {'  <Col>6</Col>\n'}
+                        {'  <Col>6</Col>\n'}
                         {'</Row>'}
                     </Highlight>
                 </Card>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Card, Row, Col, ListGroup, Tag } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-const ListGroupView = () => {
+const ListGroupView = ({ routes }) => {
     return (
         <div>
-            <Breadcrumb routes={this.props.routes} />
+            <Breadcrumb routes={routes} />
             <Card block noborder>
                 <h3>Examples</h3>
                 <Card>
@@ -143,6 +143,10 @@ const ListGroupView = () => {
             </Card>
         </div>
     );
+};
+
+ListGroupView.propTypes = {
+    routes: PropTypes.array,
 };
 
 export default ListGroupView;

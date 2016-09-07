@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import Icon from './Icon';
@@ -16,7 +16,7 @@ const FORMAT = {
 /**
  * 日历组件.
  */
-export default class Calendar extends PureComponent {
+export default class Calendar extends Component {
     constructor(props, context) {
         super(props, context);
         let { date, format } = props,
@@ -52,7 +52,7 @@ export default class Calendar extends PureComponent {
         // 自定义内容
         cellRender: PropTypes.func,
         // 时间单元格点击
-        onDateCellClick: PropTypes.func,
+        onCellClick: PropTypes.func,
         // 日历时间切换
         onDateChange: PropTypes.func,
     }
@@ -189,7 +189,7 @@ export default class Calendar extends PureComponent {
                 showToolbar,
                 captionFormat,
                 cellRender,
-                onDateCellClick,
+                onCellClick,
                 className,
             } = this.props,
             { currentMoment, weekdays } = this.state,
@@ -228,7 +228,7 @@ export default class Calendar extends PureComponent {
                         { days.map((day, index) =>
                             <div
                                 key={index}
-                                onClick={() => onDateCellClick && onDateCellClick({
+                                onClick={() => onCellClick && onCellClick({
                                     day: day.text,
                                     year: day.date.format(FORMAT.YEAR),
                                     month: day.date.format(FORMAT.MONTH),

@@ -104,8 +104,8 @@ export default class CalendarView extends Component {
                                 </Col>
                                 <Col>
                                     <Calendar
-                                        onDateCellClick={this.checkDateClickHandle}
-                                        dateCellRender={this.checkDateCellRender}
+                                        onCellClick={this.checkDateClickHandle}
+                                        cellRender={this.checkDateCellRender}
                                         firstDayOfWeek={0} size="sm" />
                                 </Col>
                             </Row>
@@ -118,10 +118,10 @@ export default class CalendarView extends Component {
                     <h3>Custom date cell content</h3>
                     <Card>
                         <Card.Block>
-                            <Calendar dateCellRender={this.customDateCellRender} />
+                            <Calendar cellRender={this.customDateCellRender} />
                         </Card.Block>
                         <Highlight>
-                            {'<Calendar dateCellRender={...} />'}
+                            {'<Calendar cellRender={...} />'}
                         </Highlight>
                     </Card>
                 </Card>

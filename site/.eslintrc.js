@@ -24,6 +24,7 @@ module.exports = {
         "react/jsx-filename-extension": [2, { extensions: ['.js'] }],
         "react/jsx-closing-bracket-location": 0,
         "react/sort-comp": 0,
+        "react/no-find-dom-node": 0,
         "jsx-a11y/img-has-alt": 0,
         "jsx-a11y/label-has-for": 0,
         "arrow-body-style": 0,
@@ -40,7 +41,8 @@ module.exports = {
         "prefer-const": 0,
         "no-prototype-builtins": 0,
         "no-script-url": 0,
-        "import/no-extraneous-dependencies": 0,
-        "import/no-unresolved": 0
+        "global-require": 0,
+        "max-len": [2, {"code" : 120}],
+        "import/no-extraneous-dependencies": 0
     }
 };

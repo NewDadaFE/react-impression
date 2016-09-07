@@ -15,17 +15,17 @@ export default class ConfirmView extends Component {
             showConfirm3: false,
         };
     }
-    toggleConfirm1Handle() {
+    toggleConfirm1Handle = () => {
         this.setState({
             showConfirm1: !this.state.showConfirm1,
         });
     }
-    toggleConfirm2Handle() {
+    toggleConfirm2Handle = () => {
         this.setState({
             showConfirm2: !this.state.showConfirm2,
         });
     }
-    toggleConfirm3Handle() {
+    toggleConfirm3Handle = () => {
         this.setState({
             showConfirm3: !this.state.showConfirm3,
         });
