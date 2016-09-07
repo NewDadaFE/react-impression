@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Calendar, Badge, Icon, Image } from '../components/impression';
 import { Highlight, Breadcrumb } from '../components/';
 
-export default class CalendarView extends Component{
-    constructor(prop, context){
+export default class CalendarView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    constructor(prop, context) {
         super(prop, context);
 
         this.state = {
-            days: [5, 6, 7, 8, 9, 10]
+            days: [5, 6, 7, 8, 9, 10],
         };
-
-        this.checkDateCellRender = this.checkDateCellRender.bind(this);
-        this.checkDateClickHandle = this.checkDateClickHandle.bind(this);
     }
-    customDateCellRender(date){
-        if(!date.inMonth){
-            return false;
+    customDateCellRender = date => {
+        if(!date.inMonth) {
+            return null;
         }
 
-        switch(date.day){
+        switch(date.day) {
         case 1:
         case 2:
         case 3:
@@ -33,7 +33,7 @@ export default class CalendarView extends Component{
         case 14:
         case 23:
         case 27:
-            return <div className="text-center"><Image circle src="images/user.jpg" style={{width: '70px'}}/></div>;
+            return <div className="text-center"><Image circle src="images/user.jpg" style={{ width: '70px' }} /></div>;
         case 11:
         case 12:
         case 13:
@@ -49,38 +49,38 @@ export default class CalendarView extends Component{
         case 21:
         case 22:
             return <Badge type="legend" theme="danger">{date.day}</Badge>;
+        default:
+            return null;
         }
     }
-    checkDateCellRender(date){
-        if(!date.inMonth){
-            return false;
+    checkDateCellRender = date => {
+        if(this.state.days.indexOf(date.day) !== -1) {
+            return <div className="text-success text-center"><Icon type="check" /></div>;
         }
 
-        if(this.state.days.indexOf(date.day) !== -1){
-            return <div className="text-success text-center"><Icon type="check"></Icon></div>;
-        }
+        return null;
     }
-    checkDateClickHandle(date){
+    checkDateClickHandle = date => {
         let { days } = this.state;
 
-        if(!date.inMonth){
-            return false;
+        if(!date.inMonth) {
+            return;
         }
 
-        //选中
-        if(days.indexOf(date.day) === -1){
+        // 选中
+        if(days.indexOf(date.day) === -1) {
             this.setState({
-                days: [...days, date.day]
+                days: [...days, date.day],
             });
-        }else{//去除选中
+        } else { // 去除选中
             this.setState({
                 days: days.filter(day => {
                     return day !== date.day;
-                })
+                }),
             });
         }
     }
-    render(){
+    render() {
         return (
             <div>
                 <Breadcrumb routes={this.props.routes} />
@@ -88,10 +88,11 @@ export default class CalendarView extends Component{
                     <h3>Basic</h3>
                     <Card>
                         <Card.Block>
-                            <Calendar></Calendar>
+                            <Calendar />
                         </Card.Block>
                         <Highlight>
-                            {`import { Calendar } from 'impression-react';\n\n<Calendar></Calendar>`}
+                            {`import { Calendar } from 'impression-react';\n\n`}
+                            {'<Calendar />'}
                         </Highlight>
                     </Card>
                     <h3>Small</h3>
@@ -99,24 +100,28 @@ export default class CalendarView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col>
-                                    <Calendar size="sm"></Calendar>
+                                    <Calendar size="sm" />
                                 </Col>
                                 <Col>
-                                    <Calendar onDateCellClick={this.checkDateClickHandle} dateCellRender={this.checkDateCellRender} firstDayOfWeek={0} size="sm"></Calendar>
+                                    <Calendar
+                                        onDateCellClick={this.checkDateClickHandle}
+                                        dateCellRender={this.checkDateCellRender}
+                                        firstDayOfWeek={0} size="sm" />
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Calendar size="sm"></Calendar>\n<Calendar firstDayOfWeek={0} size="sm"></Calendar>`}
+                            {`<Calendar size="sm" />\n`}
+                            {'<Calendar firstDayOfWeek={0} size="sm" />'}
                         </Highlight>
                     </Card>
                     <h3>Custom date cell content</h3>
                     <Card>
                         <Card.Block>
-                            <Calendar dateCellRender={this.customDateCellRender}></Calendar>
+                            <Calendar dateCellRender={this.customDateCellRender} />
                         </Card.Block>
                         <Highlight>
-                            {`<Calendar dateCellRender={...}></Calendar>`}
+                            {'<Calendar dateCellRender={...} />'}
                         </Highlight>
                     </Card>
                 </Card>
@@ -124,5 +129,3 @@ export default class CalendarView extends Component{
         );
     }
 }
-
-CalendarView.title = 'Calendar';

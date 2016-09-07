@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Row, Col, Card, Form, Select, Notification } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class SelectView extends Component{
-    //回调
+export default class SelectView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    // 回调
     selectChangeHandle = (val, text) => {
         Notification.info({
             title: 'Select',
-            message: `${text} 被选中了！！！`
+            message: `${text} 被选中了！！！`,
         });
     }
-    render(){
+    render() {
         return (
             <div>
                 <Breadcrumb routes={this.props.routes} />
@@ -65,7 +68,13 @@ export default class SelectView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Select } from 'impression-react';\n\n<Select>\n  <Select.Option value="1">First</Select.Option>\n  ...\n</Select>\n<Select value={0}>\n  <Select.Option value={0}>First</Select.Option>\n  ...\n</Select>`}
+                            {`import { Select } from 'impression-react';\n\n`}
+                            {`<Select>\n`}
+                            {`  <Select.Option value="1">First</Select.Option>\n  ...\n`}
+                            {`</Select>\n`}
+                            {`<Select value={0}>\n`}
+                            {`  <Select.Option value={0}>First</Select.Option>\n  ...\n`}
+                            {'</Select>'}
                         </Highlight>
                     </Card>
                     <h3>Disabled</h3>
@@ -99,12 +108,16 @@ export default class SelectView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Select disabled>...</Select>\n<Select>\n  <Select.Option value="1" disabled>First</Select.Option>\n  <Select.Option value="2" disabled>Second</Select.Option>\n  ...\n</Select>`}
+                            {`<Select disabled>...</Select>\n`}
+                            {`<Select>\n`}
+                            {`  <Select.Option value="1" disabled>First</Select.Option>\n`}
+                            {`  <Select.Option value="2" disabled>Second</Select.Option>\n  ...\n`}
+                            {'</Select>'}
                         </Highlight>
                     </Card>
                     <h3>Select API</h3>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['value', '值', 'any', ''],
                             ['disabled', '是否不可用', 'boolean', 'false'],
                             ['style', '行内样式', 'object', ''],
@@ -112,22 +125,20 @@ export default class SelectView extends Component{
                             ['onChange', '状态变更回调函数', 'function', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                     <h3>Select.Option API</h3>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['disabled', '是否不可用', 'boolean', 'false'],
                             ['active', '是否选中', 'boolean', 'false'],
                             ['value', '必填，值', 'any', ''],
                             ['onClick', '点击回调函数', 'function', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
-                <Notification/>
+                <Notification />
             </div>
         );
     }
 }
-
-SelectView.title = 'Select';

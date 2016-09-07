@@ -12,34 +12,35 @@ export default class Highlight extends PureComponent {
         super(props);
 
         this.state = {
-            show: undefined !== props.show? props.show : false
+            show: undefined !== props.show ? props.show : false,
         };
     }
     static propTypes = {
         innerHTML: PropTypes.string,
-        children: PropTypes.string,
+        children: PropTypes.any,
+        show: PropTypes.bool,
     };
-    //格式化代码
-    highlightCode(){
+    // 格式化代码
+    highlightCode() {
         let domNode = ReactDOM.findDOMNode(this),
             nodes = domNode.querySelectorAll('pre code');
 
-        for(let i=0; i<nodes.length; i++){
+        for(let i = 0; i < nodes.length; i++) {
             hljs.highlightBlock(nodes[i]);
         }
     }
-    //显示/隐藏代码
+    // 显示/隐藏代码
     toggleCodeHandle = () => {
         let { show } = this.state;
 
         this.setState({
-            show: !show
+            show: !show,
         });
     }
-    componentDidMount(){
+    componentDidMount() {
         this.highlightCode();
     }
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.highlightCode();
     }
     render() {
@@ -51,19 +52,19 @@ export default class Highlight extends PureComponent {
 
             return (
                 <div
-                    dangerouslySetInnerHTML={{ __html: innerHTML }}
-                    {...others}></div>
+                    {...others}
+                    dangerouslySetInnerHTML={{ __html: innerHTML }} />
             );
         }
 
         return (
-            <div style={{marginTop: '-20px'}} {...others}>
+            <div style={{ marginTop: '-20px' }} {...others}>
                 <div className="text-right">
                     <Button onClick={this.toggleCodeHandle} className="btn-code-toggle" theme="default" size="sm">
-                        <Icon type={show?'angle-double-up':'code'}/>
+                        <Icon type={show ? 'angle-double-up' : 'code'} />
                     </Button>
                 </div>
-                <Card className={classnames('no-margin', {hidden: !show})} noborder>
+                <Card className={classnames('no-margin', { hidden: !show })} noborder>
                     <pre className="no-margin">
                         <code>{children}</code>
                     </pre>

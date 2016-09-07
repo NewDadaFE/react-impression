@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Pagination } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class PaginationView extends Component{
-    constructor(prop, context){
+export default class PaginationView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    constructor(prop, context) {
         super(prop, context);
 
         this.state = {
             totalPage: 10,
             activePage: 4,
             totalPage2: 5,
-            activePage2: 3
+            activePage2: 3,
         };
-
-        this.onSelectHandle = this.onSelectHandle.bind(this);
-        this.onSelectHandle2 = this.onSelectHandle2.bind(this);
     }
-    onSelectHandle(activePage){
+    onSelectHandle = activePage => {
         this.setState({
-            activePage
+            activePage,
         });
     }
-    onSelectHandle2(activePage2){
+    onSelectHandle2 = activePage2 => {
         this.setState({
-            activePage2
+            activePage2,
         });
     }
-    render(){
+    render() {
         let { totalPage, activePage, totalPage2, activePage2 } = this.state;
 
         return (
@@ -38,22 +38,32 @@ export default class PaginationView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col>
-                                    <Pagination onSelect={this.onSelectHandle} scope={2} totalPage={totalPage} activePage={activePage}></Pagination>
+                                    <Pagination
+                                        onSelect={this.onSelectHandle}
+                                        scope={2}
+                                        totalPage={totalPage}
+                                        activePage={activePage} />
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <Pagination onSelect={this.onSelectHandle2} scope={2} totalPage={totalPage2} activePage={activePage2}></Pagination>
+                                    <Pagination
+                                        onSelect={this.onSelectHandle2}
+                                        scope={2}
+                                        totalPage={totalPage2}
+                                        activePage={activePage2} />
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Pagination } from 'impression-react';\n\n<Pagination  scope={2} totalPage={10} activePage={4}></Pagination>\n<Pagination  scope={2} totalPage={5} activePage={3}></Pagination>`}
+                            {`import { Pagination } from 'impression-react';\n\n`}
+                            {`<Pagination  scope={2} totalPage={10} activePage={4} />\n`}
+                            {'<Pagination  scope={2} totalPage={5} activePage={3} />'}
                         </Highlight>
                     </Card>
                     <h5>Pagination API</h5>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['scope', '设置前后延伸几页', 'number', '2'],
                             ['activePage', '当前在第几页', 'number', '1'],
                             ['totalPage', '总页数', 'number', ''],
@@ -61,11 +71,9 @@ export default class PaginationView extends Component{
                             ['onSelect', '选中回调函数', 'function', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
             </div>
         );
     }
 }
-
-PaginationView.title = 'Pagination';

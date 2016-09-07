@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { Flex, Content } from '../components/impression';
@@ -6,29 +6,26 @@ import { Flex, Content } from '../components/impression';
 /**
  * 页面布局.
  */
-export default class Layout extends Component {
-    /**
-     * 组件渲染.
-     */
-    render () {
-        let { children } = this.props;
+const Layout = ({ children }) => {
+    return (
+        <Flex className="layout">
+            {/* 侧边栏 */}
+            <Sidebar />
+            {/* 内容区 */}
+            <Flex.Item>
+                <Flex direction="column">
+                    <Header />
+                    <Content>
+                        {children}
+                    </Content>
+                </Flex>
+            </Flex.Item>
+        </Flex>
+    );
+};
 
-        return (
-            <Flex className="layout">
-                {/* 侧边栏 */}
-                <Sidebar/>
-                {/* 内容区 */}
-                <Flex.Item>
-                    <Flex direction="column">
-                        <Header/>
-                        <Content>
-                            {children}
-                        </Content>
-                    </Flex>
-                </Flex.Item>
-            </Flex>
-        );
-    }
-}
+Layout.propTypes = {
+    children: PropTypes.any,
+};
 
-Layout.title = 'Home';
+export default Layout;

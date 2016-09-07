@@ -1,29 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Button, Message, Icon } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class MessageView extends Component{
-    showInfoMessageHandle(){
+export default class MessageView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    showInfoMessageHandle() {
         Message.info('你好，这是一条info消息！');
     }
-    showSuccessMessageHandle(){
+    showSuccessMessageHandle() {
         Message.success('你好，这是一条success消息！');
     }
-    showWarningMessageHandle(){
+    showWarningMessageHandle() {
         Message.warning('你好，这是一条warning消息！');
     }
-    showErrorMessageHandle(){
+    showErrorMessageHandle() {
         Message.error('你好，这是一条error消息！');
     }
-    showLoadingMessageHandle(){
+    showLoadingMessageHandle() {
         Message.loading('正在执行中...', 0);
 
-        //5秒后关闭
+        // 5秒后关闭
         setTimeout(() => {
             Message.hideMessage();
         }, 5000);
     }
-    render(){
+    render() {
         return (
             <div>
                 <Breadcrumb routes={this.props.routes} />
@@ -48,22 +51,27 @@ export default class MessageView extends Component{
                                     </Button>
                                 </Col>
                                 <Col>
-                                   <Button theme="default" onClick={this.showErrorMessageHandle}>
+                                    <Button theme="default" onClick={this.showErrorMessageHandle}>
                                         <span className="text-danger">错误</span>
-                                   </Button>
+                                    </Button>
                                 </Col>
                                 <Col>
-                                   <Button theme="primary" outline onClick={this.showLoadingMessageHandle}>
-                                        <Icon type="spinner" left/>Loading
-                                   </Button>
+                                    <Button theme="primary" outline onClick={this.showLoadingMessageHandle}>
+                                        <Icon type="spinner" left />Loading
+                                    </Button>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Message } from 'impression-react';\n\nMessage.info('你好，这是一条info消息！');\nMessage.success('你好，这是一条success消息！');\nMessage.warning('你好，这是一条warning消息！');\nMessage.error('你好，这是一条error消息！');\nMessage.loading('正在执行中...', 0);`}
+                            {`import { Message } from 'impression-react';\n\n`}
+                            {`Message.info('你好，这是一条info消息！');\n`}
+                            {`Message.success('你好，这是一条success消息！');\n`}
+                            {`Message.warning('你好，这是一条warning消息！');\n`}
+                            {`Message.error('你好，这是一条error消息！');\n`}
+                            {'Message.loading("正在执行中...", 0);'}
                         </Highlight>
                     </Card>
-                    <Message/>
+                    <Message />
                     <h5>API</h5>
                     <ul>
                         <li><code>Message.info(message, duration)</code></li>
@@ -74,15 +82,13 @@ export default class MessageView extends Component{
                         <li><code>Message.hideMessage()</code></li>
                     </ul>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['message', '提示内容', 'string', ''],
                             ['duration', '停留时间（ms）', 'number', '2000'],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
             </div>
         );
     }
 }
-
-MessageView.title = 'Message';

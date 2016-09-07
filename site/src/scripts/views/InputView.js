@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Form, Input, Modal, Button, Icon, InlineSelect } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class InputView extends Component{
-    constructor(props, context){
+export default class InputView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    constructor(props, context) {
         super(props, context);
         this.state = {
             show: false,
             city: {
                 name: '上海',
-                id: '1'
-            }
+                id: '1',
+            },
         };
 
         this.toggleModalHandle = this.toggleModalHandle.bind(this);
@@ -20,11 +23,11 @@ export default class InputView extends Component{
     /**
      * 显示/隐藏弹出层.
      */
-    toggleModalHandle(){
+    toggleModalHandle = () => {
         let { show } = this.state;
 
         this.setState({
-            show: !show
+            show: !show,
         });
     }
     /**
@@ -32,22 +35,22 @@ export default class InputView extends Component{
      * @param  {[String]} id   [值]
      * @param  {[String]} name [名称]
      */
-    selectCityHandle(id, name){
+    selectCityHandle = (id, name) => {
         this.setState({
             show: false,
             city: {
                 name,
-                id
-            }
+                id,
+            },
         });
     }
     /**
      * 清空Input.
      */
-    clearInputHandle(){
+    clearInputHandle = () => {
         this.refs.clearInput.refs.main.value = '';
     }
-    render(){
+    render() {
         return (
             <div>
                 <Breadcrumb routes={this.props.routes} />
@@ -60,7 +63,7 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>basic:</label>
-                                            <Input type="text"/>
+                                            <Input type="text" />
                                         </Form.Group>
                                     </Form>
                                 </Col>
@@ -69,7 +72,7 @@ export default class InputView extends Component{
                                         <Form.Group>
                                             <label>addon:</label>
                                             <Input type="text" ref="clearInput" defaultValue="text">
-                                                <Icon type="times" onClick={this.clearInputHandle}></Icon>
+                                                <Icon type="times" onClick={this.clearInputHandle} />
                                             </Input>
                                         </Form.Group>
                                     </Form>
@@ -79,7 +82,7 @@ export default class InputView extends Component{
                                         <Form.Group>
                                             <label>pill shape:</label>
                                             <Input type="text" defaultValue="something" pill>
-                                                <Icon type="search"></Icon>
+                                                <Icon type="search" />
                                             </Input>
                                         </Form.Group>
                                     </Form>
@@ -87,7 +90,12 @@ export default class InputView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Input } from 'impression-react';\n\n<Input type="text"/>\n<Input type="text" ref="clearInput" defaultValue="text">\n  <Icon type="times" onClick={...}></Icon>\n</Input>\n<Input type="text" defaultValue="something" pill>...</Input>`}
+                            {`import { Input } from 'impression-react';\n\n`}
+                            {`<Input type="text"/>\n`}
+                            {`<Input type="text" ref="clearInput" defaultValue="text">\n`}
+                            {`  <Icon type="times" onClick={...} />\n`}
+                            {`</Input>\n`}
+                            {'<Input type="text" defaultValue="something" pill />'}
                         </Highlight>
                     </Card>
                     <h5>Date</h5>
@@ -98,7 +106,7 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>basic:</label>
-                                            <Input type="date"/>
+                                            <Input type="date" />
                                         </Form.Group>
                                     </Form>
                                 </Col>
@@ -106,7 +114,7 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>defaultValue:</label>
-                                            <Input type="date" defaultValue="2016-05-29"/>
+                                            <Input type="date" defaultValue="2016-05-29" />
                                         </Form.Group>
                                     </Form>
                                 </Col>
@@ -114,14 +122,16 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>disabled:</label>
-                                            <Input type="date" defaultValue="2016-05-29" disabled/>
+                                            <Input type="date" defaultValue="2016-05-29" disabled />
                                         </Form.Group>
                                     </Form>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                        {`<Input type="date"/>\n<Input type="date" defaultValue="2016-05-29"/>\n<Input type="date" defaultValue="2016-05-29" disabled/>`}
+                            {`<Input type="date"/>\n`}
+                            {`<Input type="date" defaultValue="2016-05-29"/>\n`}
+                            {'<Input type="date" defaultValue="2016-05-29" disabled/>'}
                         </Highlight>
                     </Card>
                     <h5>Search</h5>
@@ -132,7 +142,10 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>basic:</label>
-                                            <Input type="search" onClick={this.toggleModalHandle} value={this.state.city.name}/>
+                                            <Input
+                                                type="search"
+                                                onClick={this.toggleModalHandle}
+                                                value={this.state.city.name} />
                                         </Form.Group>
                                     </Form>
                                 </Col>
@@ -140,8 +153,11 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>addon:</label>
-                                            <Input type="search" onClick={this.toggleModalHandle} value={this.state.city.name}>
-                                                <Icon type="map-marker"></Icon>
+                                            <Input
+                                                type="search"
+                                                onClick={this.toggleModalHandle}
+                                                value={this.state.city.name}>
+                                                <Icon type="map-marker" />
                                             </Input>
                                         </Form.Group>
                                     </Form>
@@ -150,14 +166,18 @@ export default class InputView extends Component{
                                     <Form>
                                         <Form.Group>
                                             <label>disabled:</label>
-                                            <Input type="search" value="上海" disabled/>
+                                            <Input type="search" value="上海" disabled />
                                         </Form.Group>
                                     </Form>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Input type="search" value="..."/>\n<Input type="search" value="..." >\n  <Icon type="map-marker"></Icon>\n</Input>\n<Input type="search" value="..." disabled/>`}
+                            {`<Input type="search" value="..."/>\n`}
+                            {`<Input type="search" value="..." >\n`}
+                            {`  <Icon type="map-marker" />\n`}
+                            {`</Input>\n`}
+                            {'<Input type="search" value="..." disabled/>'}
                         </Highlight>
                     </Card>
                     <h5>File</h5>
@@ -165,23 +185,25 @@ export default class InputView extends Component{
                         <Card.Block>
                             <Row>
                                 <Col>
-                                    <Input type="file"/>
+                                    <Input type="file" />
                                 </Col>
                                 <Col>
-                                    <Input type="file" placeholder="请选择要上传的证书图片"/>
+                                    <Input type="file" placeholder="请选择要上传的证书图片" />
                                 </Col>
                                 <Col>
-                                    <Input type="file" btnStyle="primary"/>
+                                    <Input type="file" btnStyle="primary" />
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Input type="file"/>\n<Input type="file" placeholder="请选择要上传的证书图片"/>\n<Input type="file" btnStyle="primary"/>`}
+                            {`<Input type="file"/>\n`}
+                            {`<Input type="file" placeholder="请选择要上传的证书图片"/>\n`}
+                            {'<Input type="file" btnStyle="primary"/>'}
                         </Highlight>
                     </Card>
                     <h5>Input API</h5>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['type', '设置输入框类型，可选值为text、password、file、date、emaile、mouth、search', 'string', 'text'],
                             ['placeholder', '输入框提示信息', 'string', ''],
                             ['value', '输入框的值', 'any', ''],
@@ -191,7 +213,7 @@ export default class InputView extends Component{
                             ['disabled', '是否不可选', 'boolean', 'false'],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
                 { this.state.show &&
                     <Modal size={this.state.size}>
@@ -246,5 +268,3 @@ export default class InputView extends Component{
         );
     }
 }
-
-InputView.title = 'Input';

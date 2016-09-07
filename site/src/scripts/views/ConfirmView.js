@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Confirm, Button } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components/';
 
-export default class ConfirmView extends Component{
-    constructor(props, context){
+export default class ConfirmView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    constructor(props, context) {
         super(props, context);
 
         this.state = {
@@ -11,27 +14,23 @@ export default class ConfirmView extends Component{
             showConfirm2: false,
             showConfirm3: false,
         };
-
-        this.toggleConfirm1Handle = this.toggleConfirm1Handle.bind(this);
-        this.toggleConfirm2Handle = this.toggleConfirm2Handle.bind(this);
-        this.toggleConfirm3Handle = this.toggleConfirm3Handle.bind(this);
     }
-    toggleConfirm1Handle(){
+    toggleConfirm1Handle() {
         this.setState({
-            showConfirm1: !this.state.showConfirm1
+            showConfirm1: !this.state.showConfirm1,
         });
     }
-    toggleConfirm2Handle(){
+    toggleConfirm2Handle() {
         this.setState({
-            showConfirm2: !this.state.showConfirm2
+            showConfirm2: !this.state.showConfirm2,
         });
     }
-    toggleConfirm3Handle(){
+    toggleConfirm3Handle() {
         this.setState({
-            showConfirm3: !this.state.showConfirm3
+            showConfirm3: !this.state.showConfirm3,
         });
     }
-    render(){
+    render() {
         let { showConfirm1, showConfirm2, showConfirm3 } = this.state;
 
         return (
@@ -41,25 +40,34 @@ export default class ConfirmView extends Component{
                     <h5>Basic</h5>
                     <Card>
                         <Card.Block>
-                           <Row>
-                               <Col>
-                                   <Button theme="secondary" outline onClick={this.toggleConfirm1Handle}>warning</Button>
-                               </Col>
+                            <Row>
                                 <Col>
-                                   <Button theme="primary" outline onClick={this.toggleConfirm2Handle}>question</Button>
-                               </Col>
+                                    <Button theme="secondary" outline onClick={this.toggleConfirm1Handle}>
+                                        warning
+                                    </Button>
+                                </Col>
                                 <Col>
-                                   <Button theme="default" onClick={this.toggleConfirm3Handle}>danger</Button>
-                               </Col>
-                           </Row>
+                                    <Button theme="primary" outline onClick={this.toggleConfirm2Handle}>
+                                        question
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button theme="default" onClick={this.toggleConfirm3Handle}>
+                                        danger
+                                    </Button>
+                                </Col>
+                            </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Notification } from 'impression-react';\n\n<Confirm >您确定删除消费记录？</Confirm>\n<Confirm type="info">您确定购买该航班机票？</Confirm>\n<Confirm type="danger">您确定注销该银行卡？</Confirm>`}
+                            {`import { Notification } from 'impression-react';\n\n`}
+                            {`<Confirm >您确定删除消费记录？</Confirm>\n`}
+                            {`<Confirm type="info">您确定购买该航班机票？</Confirm>\n`}
+                            {'<Confirm type="danger">您确定注销该银行卡？</Confirm>'}
                         </Highlight>
                     </Card>
                     <h5>API</h5>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['onOkClick', '点击确认回调函数', 'function', ''],
                             ['onCancelClick', '点击取消回调函数', 'function', ''],
                             ['okText', '确认按钮显示文本', 'string', '确认'],
@@ -75,12 +83,18 @@ export default class ConfirmView extends Component{
                     </Confirm>
                 }
                 { showConfirm2 &&
-                    <Confirm type="info" onOkClick={this.toggleConfirm2Handle} onCancelClick={this.toggleConfirm2Handle}>
+                    <Confirm
+                        type="info"
+                        onOkClick={this.toggleConfirm2Handle}
+                        onCancelClick={this.toggleConfirm2Handle}>
                         您确定购买该航班机票？
                     </Confirm>
                 }
                 { showConfirm3 &&
-                    <Confirm type="danger" onOkClick={this.toggleConfirm3Handle} onCancelClick={this.toggleConfirm3Handle}>
+                    <Confirm
+                        type="danger"
+                        onOkClick={this.toggleConfirm3Handle}
+                        onCancelClick={this.toggleConfirm3Handle}>
                         您确定注销该银行卡？
                     </Confirm>
                 }
@@ -88,5 +102,3 @@ export default class ConfirmView extends Component{
         );
     }
 }
-
-ConfirmView.title = 'Confirm';

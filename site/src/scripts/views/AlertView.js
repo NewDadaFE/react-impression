@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Button, Alert } from '../components/impression';
 import { Highlight, Breadcrumb } from '../components';
 
-export default class AlertView extends Component{
-    constructor(props, context){
+export default class AlertView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    constructor(props, context) {
         super(props, context);
 
         this.state = {
             showAlert1: false,
             showAlert2: false,
         };
-
-        this.toggleAlert1Handle = this.toggleAlert1Handle.bind(this);
-        this.toggleAlert2Handle = this.toggleAlert2Handle.bind(this);
     }
-    toggleAlert1Handle(){
+    toggleAlert1Handle = () => {
         this.setState({
-            showAlert1: !this.state.showAlert1
+            showAlert1: !this.state.showAlert1,
         });
     }
-    toggleAlert2Handle(){
+    toggleAlert2Handle = () => {
         this.setState({
-            showAlert2: !this.state.showAlert2
+            showAlert2: !this.state.showAlert2,
         });
     }
-    render(){
+    render() {
         let { showAlert1, showAlert2 } = this.state;
 
         return (
@@ -44,7 +44,9 @@ export default class AlertView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Alert } from 'impression-react';\n\n<Alert>姓名不能为空！</Alert>\n<Alert btnText="关闭"  type="danger">请先选择所属城市！</Alert>`}
+                            {`import { Alert } from 'impression-react';\n\n`}
+                            {`<Alert>姓名不能为空！</Alert>\n`}
+                            {'<Alert btnText="关闭"  type="danger">请先选择所属城市！</Alert>'}
                         </Highlight>
                     </Card>
                 </Card>
@@ -58,5 +60,3 @@ export default class AlertView extends Component{
         );
     }
 }
-
-AlertView.title = 'Alert';

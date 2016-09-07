@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Row, Col, Card, Radio, RadioGroup, Form } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class RadioView extends Component{
-    onChangeHandle = (value, event) => {
+export default class RadioView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    onChangeHandle = () => {
         // console.log(Radio.getValue(this.refs.radio));
         // console.log(RadioGroup.getValue(this.refs.radios));
     }
-    render(){
+    render() {
         let radioArray = [{
             id: 1,
-            name: 'Yes'
+            name: 'Yes',
         }, {
             id: 2,
-            name: 'No'
+            name: 'No',
         }];
 
         return (
@@ -48,7 +51,7 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<Radio disabled>Yes</Radio>`}
+                                    {'<Radio disabled>Yes</Radio>'}
                                 </Highlight>
                             </Card>
                         </Col>
@@ -62,7 +65,7 @@ export default class RadioView extends Component{
                                         <Form.Group>
                                             <label>defaultValue</label>
                                             <RadioGroup ref="radios" defaultValue={1}>
-                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                { radioArray.length > 0 && radioArray.map((item, index) =>
                                                     <Radio key={index} value={item.id}>{item.name}</Radio>
                                                 )}
                                             </RadioGroup>
@@ -70,7 +73,11 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n<RadioGroup defaultValue={1} >\n  <Radio value={1}>Yes</Radio>\n  <Radio value={2}>No</Radio>\n</RadioGroup>`}
+                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n`}
+                                    {`<RadioGroup defaultValue={1} >\n`}
+                                    {`  <Radio value={1}>Yes</Radio>\n`}
+                                    {`  <Radio value={2}>No</Radio>\n`}
+                                    {'</RadioGroup>'}
                                 </Highlight>
                             </Card>
                         </Col>
@@ -81,7 +88,7 @@ export default class RadioView extends Component{
                                         <Form.Group>
                                             <label>value</label>
                                             <RadioGroup value={2} onChange={this.onChangeHandle}>
-                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                { radioArray.length > 0 && radioArray.map((item, index) =>
                                                     <Radio key={index} value={item.id}>{item.name}</Radio>
                                                 )}
                                             </RadioGroup>
@@ -89,7 +96,9 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<RadioGroup defaultValue={1} >\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
+                                    {`<RadioGroup defaultValue={1} >\n`}
+                                    {`  <Radio value={1}>First</Radio>\n  ...\n`}
+                                    {'</RadioGroup>'}
                                 </Highlight>
                             </Card>
                         </Col>
@@ -100,7 +109,7 @@ export default class RadioView extends Component{
                                         <Form.Group>
                                             <label>Disabled</label>
                                             <RadioGroup value={2} disabled>
-                                               { radioArray.length > 0 && radioArray.map((item, index) =>
+                                                { radioArray.length > 0 && radioArray.map((item, index) =>
                                                     <Radio key={index} value={item.id}>{item.name}</Radio>
                                                 )}
                                             </RadioGroup>
@@ -108,14 +117,16 @@ export default class RadioView extends Component{
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<RadioGroup defaultValue={2} disabled>\n  <Radio value={1}>First</Radio>\n  ...\n</RadioGroup>`}
+                                    {`<RadioGroup defaultValue={2} disabled>\n`}
+                                    {`  <Radio value={1}>First</Radio>\n  ...\n`}
+                                    {'</RadioGroup>'}
                                 </Highlight>
                             </Card>
                         </Col>
                     </Row>
                     <h5 className="text-secondary">Radio API</h5>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['name', '名称', 'any', ''],
                             ['value', '返回值', 'any', ''],
                             ['checked', '是否选中', 'boolean', ''],
@@ -124,10 +135,10 @@ export default class RadioView extends Component{
                             ['onChange', '状态变更回调函数', 'function', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                     <h5 className="text-secondary">RadioGroup API</h5>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['value', '设置默认是否选中', 'any', ''],
                             ['onChange', '状态变更回调函数', 'function', ''],
                             ['disabled', '是否可以点击', 'boolean', 'false'],
@@ -135,11 +146,9 @@ export default class RadioView extends Component{
                             ['direction', '排列方向，可选值为 row、column', 'string', 'row'],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
             </div>
         );
     }
 }
-
-RadioView.title = 'Radio';

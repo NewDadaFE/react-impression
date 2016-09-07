@@ -1,35 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Button, Notification } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class NotificationView extends Component{
-    //添加一条
-    addInfoNotice(){
+export default class NotificationView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    // 添加一条
+    addInfoNotice() {
         Notification.info({
             closeable: false,
             title: '通知',
-            message: '欢迎，这是一个Info通知。'
+            message: '欢迎，这是一个Info通知。',
         });
     }
-    addSuccessNotice(){
+    addSuccessNotice() {
         Notification.success({
             title: '成功',
-            message: '恭喜您，操作成功！'
+            message: '恭喜您，操作成功！',
         });
     }
-    addWarningNotice(){
+    addWarningNotice() {
         Notification.warning({
             title: '警告',
-            message: '请注意，前方有狗熊！'
+            message: '请注意，前方有狗熊！',
         });
     }
-    addErrorNotice(){
+    addErrorNotice() {
         Notification.error({
             title: '错误',
-            message: '很遗憾，您的小四轮爆胎了！'
+            message: '很遗憾，您的小四轮爆胎了！',
         });
     }
-    render(){
+    render() {
         return (
             <div>
                 <Breadcrumb routes={this.props.routes} />
@@ -54,17 +57,21 @@ export default class NotificationView extends Component{
                                     </Button>
                                 </Col>
                                 <Col>
-                                   <Button theme="default" onClick={this.addErrorNotice}>
+                                    <Button theme="default" onClick={this.addErrorNotice}>
                                         <span className="text-danger">错误</span>
-                                   </Button>
+                                    </Button>
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Notification } from 'impression-react';\n\nNotification.info(title, message, closeable)\nNotification.success(title, message, closeable)\nNotification.warning(title, message, closeable)\nNotification.error(title, message, closeable)`}
+                            {`import { Notification } from 'impression-react';\n\n`}
+                            {`Notification.info(title, message, closeable)\n`}
+                            {`Notification.success(title, message, closeable)\n`}
+                            {`Notification.warning(title, message, closeable)\n`}
+                            {'Notification.error(title, message, closeable)'}
                         </Highlight>
                     </Card>
-                    <Notification/>
+                    <Notification />
                     <h5>Notification API</h5>
                     <ul>
                         <li><code>Notification.info(title, message, closeable)</code></li>
@@ -73,16 +80,14 @@ export default class NotificationView extends Component{
                         <li><code>Notification.error(title, message, closeable)</code></li>
                     </ul>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['title', '提示内容标题', 'string', '通知'],
                             ['message', '提示内容', 'string', ''],
                             ['closeable', '是否显示关闭按钮', 'boolean', 'true'],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
             </div>
         );
     }
 }
-
-NotificationView.title = 'Notification';

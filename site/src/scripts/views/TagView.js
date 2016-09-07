@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Tag } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
-export default class TagView extends Component{
-    constructor(props, context){
+export default class TagView extends Component {
+    static propTypes = {
+        routes: PropTypes.array,
+    }
+    constructor(props, context) {
         super(props, context);
         this.state = {
-            shows: [true, true, true, true, true, true]
+            shows: [true, true, true, true, true, true],
         };
-
-        this.closeTagHandle = this.closeTagHandle.bind(this);
     }
     /**
      * 隐藏Tag.
      * @param  {[Number]} index [索引]
      */
-    closeTagHandle(index){
+    closeTagHandle = index => {
         this.setState({
             shows: this.state.shows.map((item, indx) => {
                 return indx === index ? false : item;
-            })
+            }),
         });
     }
-    render(){
+    render() {
         let { shows } = this.state;
 
         return (
@@ -40,7 +41,11 @@ export default class TagView extends Component{
                             <h6>Example heading <Tag>tag</Tag></h6>
                         </Card.Block>
                         <Highlight>
-                            {`import { Tag } from 'impression-react';\n\n<h1>Example heading <Tag>tag</Tag></h1>\n<h2>Example heading <Tag>tag</Tag></h2>\n...\n<h5>Example heading <Tag>tag</Tag></h5>\n<h6>Example heading <Tag>tag</Tag></h6>`}
+                            {`import { Tag } from 'impression-react';\n\n`}
+                            {`<h1>Example heading <Tag>tag</Tag></h1>\n`}
+                            {`<h2>Example heading <Tag>tag</Tag></h2>\n...\n`}
+                            {`<h5>Example heading <Tag>tag</Tag></h5>\n`}
+                            {'<h6>Example heading <Tag>tag</Tag></h6>'}
                         </Highlight>
                     </Card>
                     <h5>Theme tag</h5>
@@ -68,7 +73,12 @@ export default class TagView extends Component{
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Tag theme="default">default</Tag>\n<Tag theme="primary">primary</Tag>\n<Tag theme="success">success</Tag>\n<Tag theme="info">info</Tag>\n<Tag theme="warning">warning</Tag>\n<Tag theme="danger">danger</Tag>`}
+                            {`<Tag theme="default">default</Tag>\n`}
+                            {`<Tag theme="primary">primary</Tag>\n`}
+                            {`<Tag theme="success">success</Tag>\n`}
+                            {`<Tag theme="info">info</Tag>\n`}
+                            {`<Tag theme="warning">warning</Tag>\n`}
+                            {'<Tag theme="danger">danger</Tag>'}
                         </Highlight>
                     </Card>
                     <h5>Closeable</h5>
@@ -77,22 +87,58 @@ export default class TagView extends Component{
                             <Row>
                                 <Col>
                                     { shows[0] &&
-                                        <Tag closable onClose={() => this.closeTagHandle(0)} theme="default" className="offset-l">apple</Tag>
+                                        <Tag
+                                            closable
+                                            onClose={() => this.closeTagHandle(0)}
+                                            theme="default"
+                                            className="offset-l">
+                                            apple
+                                        </Tag>
                                     }
                                     { shows[1] &&
-                                        <Tag closable onClose={() => this.closeTagHandle(1)} theme="default" className="offset-l">orange</Tag>
+                                        <Tag
+                                            closable
+                                            onClose={() => this.closeTagHandle(1)}
+                                            theme="default"
+                                            className="offset-l">
+                                            orange
+                                        </Tag>
                                     }
                                     { shows[2] &&
-                                        <Tag closable onClose={() => this.closeTagHandle(2)} theme="default" className="offset-l">banana</Tag>
+                                        <Tag
+                                            closable
+                                            onClose={() => this.closeTagHandle(2)}
+                                            theme="default"
+                                            className="offset-l">
+                                            banana
+                                        </Tag>
                                     }
                                     { shows[3] &&
-                                        <Tag closable onClose={() => this.closeTagHandle(3)} theme="default" className="offset-l">pear</Tag>
+                                        <Tag
+                                            closable
+                                            onClose={() => this.closeTagHandle(3)}
+                                            theme="default"
+                                            className="offset-l">
+                                            pear
+                                        </Tag>
                                     }
                                     { shows[4] &&
-                                        <Tag closable onClose={() => this.closeTagHandle(4)} theme="default" className="offset-l">watermelon</Tag>
+                                        <Tag
+                                            closable
+                                            onClose={() => this.closeTagHandle(4)}
+                                            theme="default"
+                                            className="offset-l">
+                                            watermelon
+                                        </Tag>
                                     }
                                     { shows[5] &&
-                                        <Tag closable onClose={() => this.closeTagHandle(5)} theme="default" className="offset-l">peach</Tag>
+                                        <Tag
+                                            closable
+                                            onClose={() => this.closeTagHandle(5)}
+                                            theme="default"
+                                            className="offset-l">
+                                            peach
+                                        </Tag>
                                     }
                                 </Col>
                             </Row>
@@ -159,16 +205,14 @@ export default class TagView extends Component{
                     </Card>
                     <h5 className="text-secondary">API</h5>
                     <CommenTable
-                        data = {[
+                        data={[
                             ['theme', '设置标签样式，可选值为 default、primary、success、info、warning、danger', 'string', ''],
                             ['shape', '设置标签形状，可选值为 pill', 'string', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
-                    ></CommenTable>
+                    />
                 </Card>
             </div>
         );
     }
 }
-
-TagView.title = 'Tag';
