@@ -12,5 +12,3 @@
 /.sass-cache
 scss-lint-report.xml
 /lib
-/lib/**
-/lib/utils
