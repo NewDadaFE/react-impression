@@ -33,7 +33,7 @@ module.exports = {
         "no-mixed-operators": 0,
         "no-underscore-dangle": 0,
         "one-var": [
-            1,
+            0,
             "always"
         ],
         "no-shadow": 0,
