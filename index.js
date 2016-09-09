@@ -21,8 +21,6 @@ module.exports = {
         "keyword-spacing": 2,
         "no-unused-expressions": 0,
         "react/no-string-refs": 0,
-        "react/jsx-indent-props": [2, 4],
-        "react/jsx-indent": [2, 4],
         "react/jsx-filename-extension": [2, { extensions: ['.js'] }],
         "react/jsx-closing-bracket-location": 0,
         "react/sort-comp": 0,
