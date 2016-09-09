@@ -17,12 +17,18 @@ module.exports = {
             'process.env.NODE_ENV': '"production"'
         }),
         new webpack.optimize.UglifyJsPlugin({
-            compress: true,
+            mangle: true,
+            compress: {
+                warnings: false,
+            },
             comments: false,
             mangle: {
                 except: ['$super', '$', 'exports', 'require', 'module']
             }
-        })
+        }),
+        new webpack.optimize.MinChunkSizePlugin({minChunkSize: 51200}),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
     ],
     resolve: {
         extensions: ['', '.js']

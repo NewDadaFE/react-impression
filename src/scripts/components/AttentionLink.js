@@ -17,8 +17,7 @@ const AttentionLink = ({ href, className, children, ...others }) => {
         <a
             {...others}
             href={href}
-            className={classnames('attention-link', className)}
-        >
+            className={classnames('attention-link', className)}>
             {children}
         </a>
     );

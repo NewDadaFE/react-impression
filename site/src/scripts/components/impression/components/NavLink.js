@@ -4,18 +4,21 @@ import React, { PropTypes } from 'react';
 // props校验
 const propTypes = {
     className: PropTypes.string,
-    children: PropTypes.element.isRequired,
+    children: PropTypes.any,
 };
 
 /**
  * NavLink 组件
  */
 const NavLink = ({ children, className, ...others }) => {
+    if(!children) {
+        return children;
+    }
+
     let childrenProps = {
         className: classnames('nav-link', children.props.className),
     };
 
-    children.type.displayName === 'Link' && (childrenProps.activeClassName = 'active');
     children = React.cloneElement(children, childrenProps);
 
     return (

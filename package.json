@@ -1,6 +1,6 @@
 {
   "name": "impression-react",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "author": "peter.shenlq",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
@@ -45,6 +45,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.4.0",
     "eslint-config-airbnb": "^10.0.1",
+    "eslint-config-impression": "^1.0.0",
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-flow-vars": "^0.3.0",
     "eslint-plugin-import": "^1.14.0",
