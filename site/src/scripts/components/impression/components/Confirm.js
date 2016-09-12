@@ -33,12 +33,12 @@ export default class Confirm extends PureComponent {
      */
     getAddonByType = type => {
         switch(type) {
-        case 'info':
-            return 'fa-question-circle text-primary';
-        case 'danger':
-            return 'fa-exclamation-circle text-danger';
-        default:
-            return 'fa-exclamation-circle text-warning';
+            case 'info':
+                return 'fa-question-circle text-primary';
+            case 'danger':
+                return 'fa-exclamation-circle text-danger';
+            default:
+                return 'fa-exclamation-circle text-warning';
         }
     }
     // 渲染

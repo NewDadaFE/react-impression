@@ -31,14 +31,14 @@ export default class DatePicker extends PureComponent {
             };
 
         switch(type) {
-        case 'month':
-            state.format = format || FORMAT.YEAR_MONTH;
-            state.panel = 'month';
-            break;
-        default:
-            state.format = format || FORMAT.DATE;
-            state.panel = 'day';
-            break;
+            case 'month':
+                state.format = format || FORMAT.YEAR_MONTH;
+                state.panel = 'month';
+                break;
+            default:
+                state.format = format || FORMAT.DATE;
+                state.panel = 'day';
+                break;
         }
 
         state.minDate = minDate ? moment(minDate, state.format) : undefined;
@@ -270,18 +270,18 @@ export default class DatePicker extends PureComponent {
             newMoment = moment(currentMoment).month(month);
 
         switch(type) {
-        case 'month':
-            newMoment = newMoment.format(format);
-            onSelect && onSelect(newMoment);
-            onChange && onChange(newMoment);
-            break;
-        default:
-            this.setState({
-                panel: 'day',
-                checkedDay: undefined,
-                currentMoment: newMoment,
-            });
-            this.getDate(newMoment);
+            case 'month':
+                newMoment = newMoment.format(format);
+                onSelect && onSelect(newMoment);
+                onChange && onChange(newMoment);
+                break;
+            default:
+                this.setState({
+                    panel: 'day',
+                    checkedDay: undefined,
+                    currentMoment: newMoment,
+                });
+                this.getDate(newMoment);
         }
     }
     /**

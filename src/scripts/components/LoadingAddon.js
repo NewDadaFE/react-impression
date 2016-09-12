@@ -40,23 +40,23 @@ export default class LoadingAddon extends PureComponent {
         let { type } = this.props;
 
         switch(type) {
-        case 'pendule':// 摆钟
-            return (
-                <div className={classnames('loading-addon')}>
-                    <div />
-                    <div />
-                </div>
-            );
-        case 'cyclone':// 旋风
-            return (
-                <div className={classnames('loading-addon')} />
-            );
-        default:// 喷泉、波纹
-            return(
-                <div className={classnames('loading-addon')}>
-                    <div />
-                </div>
-            );
+            case 'pendule':// 摆钟
+                return (
+                    <div className={classnames('loading-addon')}>
+                        <div />
+                        <div />
+                    </div>
+                );
+            case 'cyclone':// 旋风
+                return (
+                    <div className={classnames('loading-addon')} />
+                );
+            default:// 喷泉、波纹
+                return(
+                    <div className={classnames('loading-addon')}>
+                        <div />
+                    </div>
+                );
         }
     }
     /**

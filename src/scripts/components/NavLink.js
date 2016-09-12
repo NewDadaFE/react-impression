@@ -19,6 +19,10 @@ const NavLink = ({ children, className, ...others }) => {
         className: classnames('nav-link', children.props.className),
     };
 
+    if(children.type && ['a', 'span', 'div'].indexOf(children.type) === -1) {
+        childrenProps.activeClassName = 'active';
+    }
+
     children = React.cloneElement(children, childrenProps);
 
     return (

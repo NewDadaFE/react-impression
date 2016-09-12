@@ -19,9 +19,13 @@ export default class Row extends PureComponent {
             count = 0,
             allocation = 0;
 
-        React.Children.forEach(children, ({ props }) => {
-            if(props.hasOwnProperty('col')) {
-                count += Number.parseInt(props.col, 10);
+        React.Children.forEach(children, child => {
+            if(!child) {
+                return;
+            }
+
+            if(child.props.hasOwnProperty('col')) {
+                count += Number.parseInt(child.props.col, 10);
             }else{
                 allocation += 1;
             }

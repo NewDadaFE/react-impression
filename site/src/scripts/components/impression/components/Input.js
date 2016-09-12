@@ -153,102 +153,102 @@ export default class Input extends PureComponent {
         }));
 
         switch(type) {
-        case 'date':
-        case 'month':
-            return (
-                <div
-                    className={classnames('input', className)}
-                    ref="container"
-                    onMouseEnter={this.showClearHandle}
-                    onMouseLeave={this.hideClearHandle}>
-                    <input
-                        type="text"
-                        ref="main"
-                        value={value}
-                        defaultValue={defaultValue}
-                        className={classnames('form-control',
-                        pillClass,
-                        'input-field',
-                        'input-field-addon')}
-                        readOnly
-                        disabled={disabled}
-                        placeholder={placeholder}
-                        onClick={this.showOptionHandle}
-                        style={style} />
-
-                    { clearable && showClear &&
-                        <i className="fa fa-times input-addon" onClick={this.clearInputHandle} />
-                    }
-
-                    { (!showClear || !clearable) &&
-                        <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle} />
-                    }
-
-                    { showOption &&
-                        <DatePicker
-                            {...others}
-                            type={type}
-                            value={this.refs.main.value}
-                            onSelect={this.selectOptionsHandle} />
-                    }
-                </div>
-            );
-        case 'search':
-            return (
-                <div
-                    className={classnames('input', className)}
-                    ref="container">
-                    <input
-                        type="text"
-                        ref="main"
-                        value={value}
-                        className={classnames('form-control',
-                        pillClass,
-                        'input-field',
-                        'input-field-addon')}
-                        readOnly
-                        onClick={onClick}
-                        disabled={disabled}
-                        placeholder={placeholder}
-                        style={style} />
-                    { children }
-                    { !children &&
-                        <i className="fa fa-search input-addon" onClick={onClick} />
-                    }
-                </div>
-            );
-        case 'file':
-            return (
-                <Upload
-                    {...others}
-                    ref="main"
-                    className={className}
-                    placeholder={placeholder} />
-            );
-        default:
-            return (
-                <div
-                    className={classnames('input', className)}
-                    ref="container">
-                    <input
-                        type={type}
-                        ref="main"
-                        value={value}
-                        defaultValue={defaultValue}
-                        className={classnames(
-                            'form-control',
+            case 'date':
+            case 'month':
+                return (
+                    <div
+                        className={classnames('input', className)}
+                        ref="container"
+                        onMouseEnter={this.showClearHandle}
+                        onMouseLeave={this.hideClearHandle}>
+                        <input
+                            type="text"
+                            ref="main"
+                            value={value}
+                            defaultValue={defaultValue}
+                            className={classnames('form-control',
                             pillClass,
                             'input-field',
-                            {
-                                'input-field-addon': children,
-                            }
-                        )}
-                        disabled={disabled}
-                        placeholder={placeholder}
-                        style={style} />
-                    { children }
-                </div>
-            );
+                            'input-field-addon')}
+                            readOnly
+                            disabled={disabled}
+                            placeholder={placeholder}
+                            onClick={this.showOptionHandle}
+                            style={style} />
+
+                        { clearable && showClear &&
+                            <i className="fa fa-times input-addon" onClick={this.clearInputHandle} />
+                        }
+
+                        { (!showClear || !clearable) &&
+                            <i className="fa fa-calendar input-addon" onClick={this.showOptionHandle} />
+                        }
+
+                        { showOption &&
+                            <DatePicker
+                                {...others}
+                                type={type}
+                                value={this.refs.main.value}
+                                onSelect={this.selectOptionsHandle} />
+                        }
+                    </div>
+                );
+            case 'search':
+                return (
+                    <div
+                        className={classnames('input', className)}
+                        ref="container">
+                        <input
+                            type="text"
+                            ref="main"
+                            value={value}
+                            className={classnames('form-control',
+                            pillClass,
+                            'input-field',
+                            'input-field-addon')}
+                            readOnly
+                            onClick={onClick}
+                            disabled={disabled}
+                            placeholder={placeholder}
+                            style={style} />
+                        { children }
+                        { !children &&
+                            <i className="fa fa-search input-addon" onClick={onClick} />
+                        }
+                    </div>
+                );
+            case 'file':
+                return (
+                    <Upload
+                        {...others}
+                        ref="main"
+                        className={className}
+                        placeholder={placeholder} />
+                );
+            default:
+                return (
+                    <div
+                        className={classnames('input', className)}
+                        ref="container">
+                        <input
+                            type={type}
+                            ref="main"
+                            value={value}
+                            defaultValue={defaultValue}
+                            className={classnames(
+                                'form-control',
+                                pillClass,
+                                'input-field',
+                                {
+                                    'input-field-addon': children,
+                                }
+                            )}
+                            disabled={disabled}
+                            placeholder={placeholder}
+                            style={style} />
+                        { children }
+                    </div>
+                );
         }
     }
 }
@@ -262,9 +262,9 @@ Input.getValue = ref => {
     }
 
     switch(type) {
-    case 'file':
-        return ref.refs.main.refs.main.files[0];
-    default:
-        return ref.refs.main.files[0];
+        case 'file':
+            return ref.refs.main.refs.main.files[0];
+        default:
+            return ref.refs.main.files[0];
     }
 };

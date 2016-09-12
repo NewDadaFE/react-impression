@@ -11,6 +11,7 @@ const LayoutView = ({ routes }) => {
                 <Card>
                     <Card.Block>
                         <Row>
+                            {false}
                             <Col>
                                 <div className="bg-primary text-center">1</div>
                             </Col>

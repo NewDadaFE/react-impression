@@ -25,10 +25,10 @@ export default class Alert extends PureComponent {
     // 获取小图标
     getAddonByType(type) {
         switch(type) {
-        case 'danger':
-            return 'fa-exclamation-circle text-danger';
-        default:
-            return 'fa-exclamation-triangle text-warning';
+            case 'danger':
+                return 'fa-exclamation-circle text-danger';
+            default:
+                return 'fa-exclamation-triangle text-warning';
         }
     }
     render() {
