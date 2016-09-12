@@ -24,9 +24,9 @@
   "homepage": "https://github.com/shenlq/Impression",
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^15.2.0",
-    "react-addons-css-transition-group": "^15.2.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.3.1",
+    "react-addons-css-transition-group": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-router": "^2.6.1",
     "highlight.js": "^9.6.0",
     "moment": "^2.14.1",
