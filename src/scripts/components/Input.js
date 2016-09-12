@@ -199,6 +199,7 @@ export default class Input extends PureComponent {
                         className={classnames('input', className)}
                         ref="container">
                         <input
+                            {...others}
                             type="text"
                             ref="main"
                             value={value}
@@ -231,6 +232,7 @@ export default class Input extends PureComponent {
                         className={classnames('input', className)}
                         ref="container">
                         <input
+                            {...others}
                             type={type}
                             ref="main"
                             value={value}
