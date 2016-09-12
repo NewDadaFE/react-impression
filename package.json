@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-impression",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "An enterprise javaScript style guide",
   "main": "index.js",
   "scripts": {
