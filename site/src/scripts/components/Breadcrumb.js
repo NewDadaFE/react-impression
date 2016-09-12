@@ -17,7 +17,7 @@ const WrapBreadcrumb = ({ routes }) => {
                     );
                 }
 
-                return <span key={route.path}>{route.path}</span>;
+                return <span key={index}>{route.path}</span>;
             })}
         </Breadcrumb>
     );

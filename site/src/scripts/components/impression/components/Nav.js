@@ -61,6 +61,10 @@ export default class Nav extends PureComponent {
 
         delete others.activeKey;
         type && (children = React.Children.map(children, (child, index) => {
+            if(!child) {
+                return child;
+            }
+
             let { eventKey } = child.props,
                 options = {
                     key: index,
