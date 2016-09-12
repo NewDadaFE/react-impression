@@ -37,6 +37,10 @@ export default class Collapse extends PureComponent {
 
         delete others.active;
         children = React.Children.map(children, child => {
+            if(!child) {
+                return child;
+            }
+
             return React.cloneElement(child, {
                 onClick: this.toggleItemsHandle,
             });

@@ -21,6 +21,10 @@ export default class DropdownMenu extends PureComponent {
         let { toggleMenu, right, className, children } = this.props;
 
         children = React.Children.map(children, child => {
+            if(!child) {
+                return child;
+            }
+
             return React.cloneElement(child, {
                 toggleMenu,
             });

@@ -96,6 +96,10 @@ export default class Select extends PureComponent {
             text;
 
         children = React.Children.map(children, (child, index) => {
+            if(!child) {
+                return child;
+            }
+
             let { value, children, disabled } = child.props;
 
             value === originValue && (text = children);

@@ -30,6 +30,10 @@ export default class Row extends PureComponent {
         let surplus = 12 - count;
 
         return React.Children.map(children, (child, index) => {
+            if(!child) {
+                return child;
+            }
+
             let { col } = child.props;
 
             return React.cloneElement(child, {

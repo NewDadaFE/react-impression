@@ -53,6 +53,10 @@ export default class InlineSelect extends PureComponent {
             originValue = this.isPuppet ? this.props.value : this.state.value;
 
         children = React.Children.map(children, (child, index) => {
+            if(!child) {
+                return child;
+            }
+
             let { value, children } = child.props;
 
             return React.cloneElement(child, {

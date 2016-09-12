@@ -1,6 +1,6 @@
 {
   "name": "impression-react",
-  "version": "0.4.5",
+  "version": "0.4.8",
   "author": "peter.shenlq",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./lib/index.js",
@@ -24,10 +24,11 @@
   },
   "homepage": "https://github.com/shenlq/impression",
   "dependencies": {
-    "babel-runtime": "^6.11.6",
     "classnames": "^2.2.0",
     "moment": "^2.14.1",
-    "perfect-scrollbar": "^0.6.12",
+    "perfect-scrollbar": "^0.6.12"
+  },
+  "peerDependencies": {
     "react": "^15.3.1",
     "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.3.1"
@@ -36,6 +37,7 @@
     "babel": "^6.5.2",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.7.7",
+    "babel-runtime": "^6.11.6",
     "babel-eslint": "^6.0.4",
     "babel-plugin-transform-class-properties": "^6.8.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",

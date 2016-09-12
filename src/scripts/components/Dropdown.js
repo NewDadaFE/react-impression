@@ -58,6 +58,10 @@ export default class Dropdown extends PureComponent {
             { active } = this.state;
 
         children = React.Children.map(children, child => {
+            if(!child) {
+                return child;
+            }
+
             return React.cloneElement(child, {
                 trigger,
                 toggleMenu: this.toggleOptionsHandle,

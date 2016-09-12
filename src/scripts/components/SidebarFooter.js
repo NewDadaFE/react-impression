@@ -15,6 +15,10 @@ export default class SidebarFooter extends PureComponent {
         let { children, className, ...others } = this.props;
 
         children = React.Children.map(children, child => {
+            if(!child) {
+                return child;
+            }
+
             let { className } = child.props;
 
             return React.cloneElement(child, {

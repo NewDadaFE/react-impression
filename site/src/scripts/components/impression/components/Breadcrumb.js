@@ -8,6 +8,10 @@ const Breadcrumb = ({ separator, children, className, ...others }) => {
     let separatorClass = separator ? `breadcrumb-${separator}` : null;
 
     children = React.Children.map(children, (child, index) => {
+        if(!child) {
+            return child;
+        }
+
         return (
             <li key={index} className="breadcrumb-item">{child}</li>
         );

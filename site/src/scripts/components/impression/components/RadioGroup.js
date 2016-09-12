@@ -60,6 +60,10 @@ export default class RadioGroup extends PureComponent {
             directionClass = direction === 'row' ? 'radio-inline' : 'radio-vertical';
 
         children = React.Children.map(children, (child, index) => {
+            if(!child) {
+                return child;
+            }
+
             let { value, disabled } = child.props,
                 options = {
                     name: name || `radio_${this._reactInternalInstance._mountOrder}`,

@@ -66,6 +66,10 @@ export default class CheckboxGroup extends PureComponent {
         let { className, direction, children, ...others } = this.props;
 
         children = React.Children.map(children, (child, index) => {
+            if(!child) {
+                return child;
+            }
+
             let { value, disabled, children } = child.props;
 
             value = (value !== undefined) ? value : `${children}`;
