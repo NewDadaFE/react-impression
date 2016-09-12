@@ -115,6 +115,8 @@ export default class LoadingAddon extends PureComponent {
             loadingAddon = this.getLoadingAddon(),
             dotted = this.getDotted();
 
+        delete others.show;
+
         return (
             <div {...others} className={classnames('loading', typeClass, className)}>
                 {loadingAddon}
