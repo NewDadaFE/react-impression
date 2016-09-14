@@ -475,8 +475,8 @@ $sidebar-width:                                 16% !default;
 $sidebar-color:                                 $gray-light !default;
 $sidebar-bg:                                    $gray-secondary !default;
 
-$sidebar-header-bg:                             url(../images/logo.png) center center no-repeat;
-$sidebar-header-bg-color:                       mix($sidebar-bg, $navbar-primary-bg, 90%);
+$sidebar-header-bg:                             url(../images/logo.png) center center no-repeat !default;
+$sidebar-header-bg-color:                       mix($sidebar-bg, $navbar-primary-bg, 90%) !default;
 $sidebar-header-border:                         darken($sidebar-header-bg-color, 6%) !default;
 $sidebar-header-font-size:                      $font-size-lg !default;
 $sidebar-header-color:                          $gray-lighter !default;

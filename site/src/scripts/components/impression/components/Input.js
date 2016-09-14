@@ -267,6 +267,6 @@ Input.getValue = ref => {
         case 'file':
             return ref.refs.main.refs.main.files[0];
         default:
-            return ref.refs.main.files[0];
+            return ref.refs.main.value;
     }
 };
