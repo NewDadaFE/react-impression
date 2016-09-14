@@ -42,7 +42,7 @@ export default class Checkbox extends PureComponent {
                 <input
                     type="checkbox"
                     ref="main"
-                    onChange={event => onChange(event, value)}
+                    onChange={event => onChange && onChange(event, value)}
                     disabled={disabled}
                     checked={checked}
                     defaultChecked={defaultChecked} />
