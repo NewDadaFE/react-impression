@@ -212,9 +212,39 @@ export default class DropdownView extends Component {
                     <CommenTable
                         data={[
                             ['trigger', '设置触发动作，可选值为 click、hover', 'string', 'click'],
-                            ['menus', '下拉菜单选项', 'array', ''],
-                            ['onClick', '点击回调函数', 'function', ''],
-                            ['children', '必填，子节点', 'element', ''],
+                            ['active', '是否激活', 'boolean', 'false'],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
+                    <h5>Dropdown.Menu API</h5>
+                    <CommenTable
+                        data={[
+                            ['right', '下拉列表靠右', 'boolean', 'false'],
+                            ['toggleMenu', '切换回调函数', 'function', ''],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
+                    <h5>Dropdown.MenuDivider API</h5>
+                    <CommenTable
+                        data={[
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
+                    <h5>Dropdown.MenuItem API</h5>
+                    <CommenTable
+                        data={[
+                            ['disabled', '是否不可点击', 'boolean', 'false'],
+                            ['onClick', '点击回调', 'function', ''],
+                            ['toggleMenu', '切换回调函数', 'function', ''],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
+                    <h5>Dropdown.Trigger API</h5>
+                    <CommenTable
+                        data={[
+                            ['trigger', '触发方式', 'click/hover', ''],
+                            ['toggleMenu', '切换回调函数', 'function', ''],
+                            ['className', '自定义样式', 'string', ''],
                         ]}
                     />
                 </Card>

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Calendar, Badge, Icon, Image } from '../components/impression';
-import { Highlight, Breadcrumb } from '../components/';
+import { Highlight, Breadcrumb, CommenTable } from '../components/';
 
 export default class CalendarView extends Component {
     static propTypes = {
@@ -124,6 +124,23 @@ export default class CalendarView extends Component {
                             {'<Calendar cellRender={...} />'}
                         </Highlight>
                     </Card>
+                    <h5>Calendar API</h5>
+                    <CommenTable
+                        data = {[
+                            ['size', '尺寸', 'sm/lg', ''],
+                            ['date', '时间', 'string', ''],
+                            ['format', '时间格式', '', ''],
+                            ['captionFormat', '头部显示格式', 'string', 'YYYY年MM月'],
+                            ['firstDayOfWeek', '一周第一天', 'number', '1'],
+                            ['weekdays', '周几', 'array', '[周日,周一,...,周六]'],
+                            ['months', '月份', 'array', '[1月,...,12月]'],
+                            ['showToolbar', '是否显示工具栏', 'boolean', 'true'],
+                            ['showHeader', '是否显示头部', 'boolean', 'true'],
+                            ['cellRender', '自定义内容', 'function', ''],
+                            ['onCellClick', '时间单元格点击', 'function', ''],
+                            ['onDateChange', '日历时间切换', 'function', ''],
+                        ]}
+                    />
                 </Card>
             </div>
         );

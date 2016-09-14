@@ -83,6 +83,7 @@ export default class LoadingView extends Component {
                             ['type', '类型，可选值为 fountain, wave, pendule, cyclone', 'string', 'cyclone'],
                             ['loadingMsg', '加载文本', 'string', '加载中'],
                             ['closeable', '是否可关闭', 'boolean', 'false'],
+                            ['duration', '停留时间', 'number', ''],
                         ]}
                     />
                 </Card>

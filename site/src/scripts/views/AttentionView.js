@@ -114,11 +114,18 @@ const AttentionView = ({ routes }) => {
                         {'<Attention theme="success" closeable>...</Attention>'}
                     </Highlight>
                 </Card>
-                <h3 className="text-secondary">API</h3>
+                <h5 className="text-secondary">Attention API</h5>
                 <CommenTable
                     data={[
                         ['theme', '设置警告提示样式，可选值为 success、primary、warning、danger', 'string', ''],
                         ['closeable', '设置是否显示关闭按钮', 'boolean', ''],
+                        ['className', '自定义样式', 'string', ''],
+                    ]}
+                />
+                <h5 className="text-secondary">Attention.Link API</h5>
+                <CommenTable
+                    data={[
+                        ['href', '设置链接地址', 'string', ''],
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 />

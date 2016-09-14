@@ -125,6 +125,9 @@ export default class RadioView extends Component {
                         </Col>
                     </Row>
                     <h5 className="text-secondary">Radio API</h5>
+                    <ul>
+                        <li>Radio.getValue(ref)</li>
+                    </ul>
                     <CommenTable
                         data={[
                             ['name', '名称', 'any', ''],
@@ -137,6 +140,9 @@ export default class RadioView extends Component {
                         ]}
                     />
                     <h5 className="text-secondary">RadioGroup API</h5>
+                    <ul>
+                        <li>RadioGroup.getValue(ref)</li>
+                    </ul>
                     <CommenTable
                         data={[
                             ['value', '设置默认是否选中', 'any', ''],
