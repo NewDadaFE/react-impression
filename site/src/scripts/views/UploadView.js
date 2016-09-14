@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, Input, Upload, Icon, Button } from '../components/impression';
-import { Highlight, Breadcrumb } from '../components';
+import { Highlight, Breadcrumb, CommenTable } from '../components';
 
 export default class UploadView extends Component {
     static propTypes = {
@@ -67,6 +67,21 @@ export default class UploadView extends Component {
                     <Card block>
                         <Button onClick={this.getFileHandle}>获取</Button>
                     </Card>
+                    <h5>Upload API</h5>
+                    <ul>
+                        <li><code>Upload.getValue(ref)</code></li>
+                    </ul>
+                    <CommenTable
+                        data = {[
+                            ['btnText', '按钮文字', 'string', '浏览'],
+                            ['placeholder', '占位文字', 'string', '请选择要上传的附件'],
+                            ['btnStyle', '按钮样式', 'default', ''],
+                            ['preview', '是否可预览', 'boolean', 'false'],
+                            ['message', '提示信息', 'string', ''],
+                            ['src', '文件路径', 'string', ''],
+                            ['className', '样式', 'string', ''],
+                        ]}
+                    />
                 </Card>
             </div>
         );

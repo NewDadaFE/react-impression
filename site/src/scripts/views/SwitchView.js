@@ -28,6 +28,9 @@ const SwitchView = ({ routes }) => {
                     </Highlight>
                 </Card>
                 <h5 className="text-secondary">API</h5>
+                <ul>
+                    <li>Switch.getValue(ref)</li>
+                </ul>
                 <CommenTable
                     data={[
                         ['defaultChecked', '是否默认选中', 'boolean', ''],

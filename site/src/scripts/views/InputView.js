@@ -202,6 +202,9 @@ export default class InputView extends Component {
                         </Highlight>
                     </Card>
                     <h5>Input API</h5>
+                    <ul>
+                        <li><code>Input.getValue(ref)</code></li>
+                    </ul>
                     <CommenTable
                         data={[
                             ['type', '设置输入框类型，可选值为text、password、file、date、emaile、mouth、search', 'string', 'text'],

@@ -116,6 +116,9 @@ export default class SelectView extends Component {
                         </Highlight>
                     </Card>
                     <h3>Select API</h3>
+                    <ul>
+                        <li>Select.getValue(ref)</li>
+                    </ul>
                     <CommenTable
                         data={[
                             ['value', '值', 'any', ''],

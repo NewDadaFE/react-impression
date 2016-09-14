@@ -203,11 +203,14 @@ export default class TagView extends Component {
                             {`<Tag theme="default" outline>default</Tag>\n...`}
                         </Highlight>
                     </Card>
-                    <h5 className="text-secondary">API</h5>
+                    <h5 className="text-secondary">Tag API</h5>
                     <CommenTable
                         data={[
                             ['theme', '设置标签样式，可选值为 default、primary、success、info、warning、danger', 'string', ''],
                             ['shape', '设置标签形状，可选值为 pill', 'string', ''],
+                            ['outline', '是否为outline样式', 'boolean', 'false'],
+                            ['closable', '是否可删除', 'boolean', 'false'],
+                            ['onClose', '删除回调', 'function', ''],
                             ['className', '自定义样式', 'string', ''],
                         ]}
                     />

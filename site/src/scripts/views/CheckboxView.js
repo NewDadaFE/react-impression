@@ -92,6 +92,9 @@ export default class CheckboxView extends Component {
                         </Col>
                     </Row>
                     <h5 className="text-secondary">Checkbox API</h5>
+                    <ul>
+                        <li>Checkbox.getValue(ref)</li>
+                    </ul>
                     <CommenTable
                         data={[
                             ['disabled', '设置是否可以点击', 'boolean', 'false'],
@@ -102,6 +105,9 @@ export default class CheckboxView extends Component {
                         ]}
                     />
                     <h5 className="text-secondary">CheckboxGroup API</h5>
+                    <ul>
+                        <li>CheckboxGroup.getValue(ref)</li>
+                    </ul>
                     <CommenTable
                         data={[
                             ['vlaue', '设置默认是否选中', 'any', ''],
