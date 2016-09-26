@@ -59,7 +59,7 @@ export default class ConfirmView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Notification } from 'impression-react';\n\n`}
+                            {`import { Confirm } from 'impression-react';\n\n`}
                             {`<Confirm >您确定删除消费记录？</Confirm>\n`}
                             {`<Confirm type="info">您确定购买该航班机票？</Confirm>\n`}
                             {'<Confirm type="danger">您确定注销该银行卡？</Confirm>'}
