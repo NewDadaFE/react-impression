@@ -12,8 +12,12 @@ export default class RadioGroup extends PureComponent {
         // 是否木偶组件
         this.isPuppet = props.value !== undefined;
 
-        this.state = {
+        let initValue = {
             value: this.isPuppet ? undefined : props.defaultValue,
+        };
+
+        this.state = {
+            ...initValue,
         };
     }
     // props校验
