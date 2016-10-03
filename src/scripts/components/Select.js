@@ -15,9 +15,13 @@ export default class Select extends PureComponent {
         // 是否木偶组件
         this.isPuppet = props.value !== undefined;
 
-        this.state = {
+        let initValue = {
             showOption: false,
             value: this.isPuppet ? undefined : props.defaultValue,
+        };
+
+        this.state = {
+            ...initValue,
         };
     }
     // prop type校验
