@@ -9,13 +9,13 @@
 ### 安装
 
 ```
-    npm install impression-react
+    npm install react-impression
 ```
 
 ### 使用
 
 ```JavaScript
-import { Button } from 'impression-react';
+import { Button } from 'react-impression';
 
 export default class MyView extends Component{
     render(){
@@ -31,7 +31,7 @@ export default class MyView extends Component{
 CSS引入：
 
 ```
-    import 'impression-react/lib/index.css';
+    import 'react-impression/lib/index.css';
 ```
 
 ！！！推荐从工程里导出scss文件，并修改variables.scss来自定义自己的样式。
