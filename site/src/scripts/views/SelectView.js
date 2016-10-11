@@ -12,6 +12,8 @@ export default class SelectView extends Component {
             title: 'Select',
             message: `${text} 被选中了！！！`,
         });
+
+        Select.setValue(this.refs.select3, null);
     }
     render() {
         return (
@@ -45,7 +47,7 @@ export default class SelectView extends Component {
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>value:</label>
-                                            <Select value={0} onChange={this.selectChangeHandle}>
+                                            <Select ref="select2" value={0} onChange={this.selectChangeHandle}>
                                                 <Select.Option value={0}>First</Select.Option>
                                                 <Select.Option value={1}>Second</Select.Option>
                                                 <Select.Option value={2}>Third</Select.Option>
@@ -57,7 +59,7 @@ export default class SelectView extends Component {
                                     <Form type="inline">
                                         <Form.Group>
                                             <label>defaultValue:</label>
-                                            <Select defaultValue={0} onChange={this.selectChangeHandle}>
+                                            <Select ref="select3" defaultValue={0} onChange={this.selectChangeHandle}>
                                                 <Select.Option value={0}>First</Select.Option>
                                                 <Select.Option value={1}>Second</Select.Option>
                                                 <Select.Option value={2}>Third</Select.Option>

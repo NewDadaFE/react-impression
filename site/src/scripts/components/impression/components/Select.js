@@ -15,6 +15,9 @@ export default class Select extends PureComponent {
         // 是否木偶组件
         this.isPuppet = props.value !== undefined;
 
+        // 子组件数据
+        this.options = [];
+
         let initValue = {
             showOption: false,
             value: this.isPuppet ? undefined : props.defaultValue,
@@ -99,13 +102,20 @@ export default class Select extends PureComponent {
             originValue = this.isPuppet ? this.props.value : this.state.value,
             text;
 
+        this.options = [];
+
         children = React.Children.map(children, (child, index) => {
             if(!child) {
                 return child;
             }
 
+
             let { value, children, disabled } = child.props;
 
+            this.options.push({
+                name: children,
+                value,
+            });
             value === originValue && (text = children);
             value === originValue
                         && !disabled && this.refs.main
@@ -153,7 +163,16 @@ Select.getValue = ref => {
 
 // setValue
 Select.setValue = (ref, value) => {
+    let { main } = ref.refs;
+
     if(ref && !ref.isPuppet) {
+        main.value = null;
+        ref.options.forEach(option => {
+            if(value === option.value) {
+                main.value = option.name;
+            }
+        });
+
         ref.setState({
             value,
         });
