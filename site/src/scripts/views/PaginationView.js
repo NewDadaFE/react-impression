@@ -10,10 +10,10 @@ export default class PaginationView extends Component {
         super(prop, context);
 
         this.state = {
-            totalPage: 10,
-            activePage: 4,
-            totalPage2: 5,
-            activePage2: 3,
+            totalPage: 5,
+            activePage: 3,
+            totalPage2: 1,
+            activePage2: 1,
         };
     }
     onSelectHandle = activePage => {

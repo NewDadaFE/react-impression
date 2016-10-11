@@ -10,6 +10,7 @@ export default class Pagination extends PureComponent {
         activePage: 1,
         scope: 2,
         ellipsis: true,
+        totalPage: 1,
     }
     // props校验
     static propTypes = {
@@ -35,7 +36,7 @@ export default class Pagination extends PureComponent {
     }
     // 下一页
     nextPageHandle = () => {
-        let { onSelect, activePage, totalPage } = this.props;
+        let { onSelect, activePage, totalPage = 1 } = this.props;
 
         activePage += 1;
         activePage <= totalPage && onSelect && onSelect(activePage);
@@ -48,7 +49,7 @@ export default class Pagination extends PureComponent {
     }
     // 获取显示页码
     getShowPageArray() {
-        let { scope, totalPage, activePage } = this.props,
+        let { scope, totalPage = 1, activePage } = this.props,
             result = [];
 
         scope = scope < 0 ? 2 : scope;
@@ -64,7 +65,7 @@ export default class Pagination extends PureComponent {
     }
     // 渲染
     render() {
-        let { totalPage, className, ellipsis, activePage, ...others } = this.props,
+        let { totalPage = 1, className, ellipsis, activePage, ...others } = this.props,
             children = this.getShowPageArray();
 
         return(
