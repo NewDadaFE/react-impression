@@ -52,7 +52,7 @@ export default class Switch extends PureComponent {
     }
 }
 
-// 获取Swtich是否选中
+// getValue
 Switch.getValue = ref => {
     let { value } = ref.props,
         { main } = ref.refs;
@@ -66,4 +66,13 @@ Switch.getValue = ref => {
     }
 
     return value;
+};
+
+// setValue
+Switch.setValue = (ref, checked) => {
+    let { main } = ref.refs;
+
+    if(ref) {
+        main.checked = !!checked;
+    }
 };

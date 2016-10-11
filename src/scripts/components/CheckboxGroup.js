@@ -102,7 +102,7 @@ export default class CheckboxGroup extends PureComponent {
     }
 }
 
-// 获取选中值
+// getValue
 CheckboxGroup.getValue = ref => {
     if(!ref) {
         return undefined;
@@ -113,4 +113,13 @@ CheckboxGroup.getValue = ref => {
     }
 
     return ref.state.value;
+};
+
+// setValue
+CheckboxGroup.setValue = (ref, value) => {
+    if(ref && !ref.isPuppet) {
+        ref.setState({
+            value,
+        });
+    }
 };

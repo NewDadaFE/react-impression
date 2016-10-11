@@ -96,7 +96,7 @@ export default class RadioGroup extends PureComponent {
     }
 }
 
-// 获取选中值
+// getValue
 RadioGroup.getValue = ref => {
     if(!ref) {
         return undefined;
@@ -107,4 +107,13 @@ RadioGroup.getValue = ref => {
     }
 
     return ref.state.value;
+};
+
+// setValue
+RadioGroup.setValue = (ref, value) => {
+    if(ref && !ref.isPuppet) {
+        ref.setState({
+            value,
+        });
+    }
 };

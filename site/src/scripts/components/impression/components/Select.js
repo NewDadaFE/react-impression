@@ -138,7 +138,7 @@ export default class Select extends PureComponent {
     }
 }
 
-// 获取vule函数
+// getValue
 Select.getValue = ref => {
     if(!ref) {
         return undefined;
@@ -149,6 +149,15 @@ Select.getValue = ref => {
     }
 
     return ref.state.value;
+};
+
+// setValue
+Select.setValue = (ref, value) => {
+    if(ref && !ref.isPuppet) {
+        ref.setState({
+            value,
+        });
+    }
 };
 
 Select.Option = SelectOption;

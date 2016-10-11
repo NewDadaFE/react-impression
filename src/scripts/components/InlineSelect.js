@@ -78,7 +78,7 @@ export default class InlineSelect extends PureComponent {
     }
 }
 
-// 获取值
+// getValue
 InlineSelect.getValue = ref => {
     if(!ref) {
         return undefined;
@@ -89,6 +89,15 @@ InlineSelect.getValue = ref => {
     }
 
     return ref.state.value;
+};
+
+// setValue
+InlineSelect.setValue = (ref, value) => {
+    if(ref && !ref.isPuppet) {
+        ref.setState({
+            value,
+        });
+    }
 };
 
 InlineSelect.Option = InlineSelectOption;

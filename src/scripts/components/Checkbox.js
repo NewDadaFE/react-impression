@@ -57,7 +57,7 @@ export default class Checkbox extends PureComponent {
     }
 }
 
-// 获取checkbox是否选中
+// getValue
 Checkbox.getValue = ref => {
     let { value } = ref.props,
         { main } = ref.refs;
@@ -71,4 +71,13 @@ Checkbox.getValue = ref => {
     }
 
     return value;
+};
+
+// setValue
+Checkbox.setValue = (ref, checked) => {
+    let { main } = ref.refs;
+
+    if(ref) {
+        main.checked = !!checked;
+    }
 };

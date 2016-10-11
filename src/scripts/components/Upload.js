@@ -121,7 +121,12 @@ export default class Upload extends PureComponent {
     }
 }
 
-// 获取上传文件
+// getValue
 Upload.getValue = ref => {
     return ref ? ref.refs.main.files[0] : undefined;
+};
+
+// setValue
+Upload.setValue = (ref, value) => {
+    return ref && (ref.refs.main.files[0] = value);
 };

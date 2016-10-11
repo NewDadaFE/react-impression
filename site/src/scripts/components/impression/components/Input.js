@@ -255,7 +255,7 @@ export default class Input extends PureComponent {
     }
 }
 
-// 获取Input内容
+// getValue
 Input.getValue = ref => {
     let { type } = ref.props;
 
@@ -268,5 +268,22 @@ Input.getValue = ref => {
             return ref.refs.main.refs.main.files[0];
         default:
             return ref.refs.main.value;
+    }
+};
+
+// setValue
+Input.setValue = (ref, value) => {
+    let { type } = ref.props;
+
+    if(!ref) {
+        return;
+    }
+
+    switch(type) {
+        case 'file':
+            ref.refs.main.refs.main.files[0] = value;
+            break;
+        default:
+            ref.refs.main.value = value;
     }
 };

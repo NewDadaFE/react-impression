@@ -64,7 +64,7 @@ export default class Radio extends PureComponent {
     }
 }
 
-// 获取checkbox是否选中
+// getValue
 Radio.getValue = ref => {
     let { value } = ref.props,
         { main } = ref.refs;
@@ -78,4 +78,13 @@ Radio.getValue = ref => {
     }
 
     return value;
+};
+
+// setValue
+Radio.setValue = (ref, checked) => {
+    let { main } = ref.refs;
+
+    if(ref) {
+        main.checked = !!checked;
+    }
 };
