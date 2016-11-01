@@ -74,9 +74,7 @@ export default class Select extends PureComponent {
             value = this.isPuppet ? this.props.value : this.state.value;
 
         // 木偶组件
-        if(this.isPuppet) {
-            onChange && newValue !== value && onChange(newValue, text, index);
-        } else {
+        if(!this.isPuppet) {
             this.setState({
                 value: newValue,
             }, () => {
