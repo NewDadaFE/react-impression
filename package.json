@@ -1,6 +1,6 @@
 {
   "name": "generator-react-impression",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "一个React项目的脚手架工具。",
   "homepage": "https://github.com/shenlq/generator-react-impression.git",
   "author": {
@@ -19,37 +19,34 @@
     "webpack",
     "scss",
     "gulp",
-    "yeoman-generator"
+    "yeoman-generator",
+    "generator-react-impression"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.23.0",
     "chalk": "^1.0.0",
+    "lodash": "^4.16.6",
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.23.0",
     "yosay": "^1.0.0"
   },
   "devDependencies": {
-    "yeoman-test": "^1.0.0",
-    "yeoman-assert": "^2.0.0",
-    "eslint": "^3.1.1",
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.9.1",
     "eslint-config-xo-space": "^0.15.0",
     "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^3.0.1",
     "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-line-ending-corrector": "^1.0.1",
     "gulp-istanbul": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
     "gulp-mocha": "^3.0.1",
-    "gulp-plumber": "^1.0.0",
     "gulp-nsp": "^2.1.0",
-    "gulp-coveralls": "^0.1.0"
-  },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
+    "gulp-plumber": "^1.0.0",
+    "yeoman-assert": "^2.0.0",
+    "yeoman-test": "^1.0.0"
   },
   "repository": "shenlq/generator-react-impression",
   "scripts": {
-    "prepublish": "gulp prepublish",
     "test": "gulp"
   },
   "license": "MIT"
