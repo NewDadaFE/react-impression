@@ -16,6 +16,14 @@ Then generate your new project:
 yo react-impression
 ```
 
+
+## Start
+
+```bash
+npm start
+```
+
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
