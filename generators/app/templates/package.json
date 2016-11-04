@@ -60,7 +60,7 @@
     "html-webpack-plugin": "^2.21.0",
     "json-loader": "^0.5.4",
     "node-libs-browser": "^1.0.0",
-    "node-sass": "^3.8.0",
+    "node-sass": "^3.11.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "sass-loader": "^3.2.1",
     "url-loader": "^0.5.7",
