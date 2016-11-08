@@ -55,6 +55,14 @@ const FormView = ({ routes }) => {
                                     <Input type="password" />
                                 </Col>
                             </Form.Group>
+                            <Form.Group>
+                                <Col col="2" className="text-right">
+                                    <Form.Control.Label>description:</Form.Control.Label>
+                                </Col>
+                                <Col col="10">
+                                    <Input type="textarea" />
+                                </Col>
+                            </Form.Group>
                             <Form.Group className="offset-b-lg">
                                 <Col col="2" className="text-right">
                                     <Form.Control.Label>Radios:</Form.Control.Label>

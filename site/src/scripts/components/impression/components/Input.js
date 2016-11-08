@@ -163,7 +163,7 @@ export default class Input extends PureComponent {
                         onMouseLeave={this.hideClearHandle}>
                         <input
                             type="text"
-                            ref="main"
+                            ref={ref => (this.refMain = ref)}
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames('form-control',
@@ -201,7 +201,7 @@ export default class Input extends PureComponent {
                         <input
                             {...others}
                             type="text"
-                            ref="main"
+                            ref={ref => (this.refMain = ref)}
                             value={value}
                             className={classnames('form-control',
                             pillClass,
@@ -222,7 +222,7 @@ export default class Input extends PureComponent {
                 return (
                     <Upload
                         {...others}
-                        ref="main"
+                        ref={ref => (this.refMain = ref)}
                         className={className}
                         placeholder={placeholder} />
                 );
@@ -230,7 +230,7 @@ export default class Input extends PureComponent {
                 return (
                     <textarea
                         rows="10"
-                        ref="main"
+                        ref={ref => (this.refMain = ref)}
                         style={style}
                         disabled={disabled}
                         placeholder={placeholder}
@@ -245,7 +245,7 @@ export default class Input extends PureComponent {
                         <input
                             {...others}
                             type={type}
-                            ref="main"
+                            ref={ref => (this.refMain = ref)}
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames(
@@ -276,9 +276,9 @@ Input.getValue = ref => {
 
     switch(type) {
         case 'file':
-            return ref.refs.main.refs.main.files[0];
+            return ref.refMain.refs.main.files[0];
         default:
-            return ref.refs.main.value;
+            return ref.refMain.value;
     }
 };
 
@@ -292,9 +292,9 @@ Input.setValue = (ref, value) => {
 
     switch(type) {
         case 'file':
-            ref.refs.main.refs.main.files[0] = value;
+            ref.refMain.refs.main.files[0] = value;
             break;
         default:
-            ref.refs.main.value = value;
+            ref.refMain.value = value;
     }
 };
