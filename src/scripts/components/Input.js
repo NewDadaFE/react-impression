@@ -27,7 +27,7 @@ export default class Input extends PureComponent {
         // 行内样式
         style: PropTypes.object,
         // 类型
-        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month', 'search']),
+        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month', 'search', 'textarea']),
         // 提示
         placeholder: PropTypes.string,
         // 值
@@ -225,6 +225,17 @@ export default class Input extends PureComponent {
                         ref="main"
                         className={className}
                         placeholder={placeholder} />
+                );
+            case 'textarea':
+                return (
+                    <textarea
+                        rows="10"
+                        ref="main"
+                        style={style}
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        {...others}
+                        className={classnames('form-control', className)} />
                 );
             default:
                 return (
