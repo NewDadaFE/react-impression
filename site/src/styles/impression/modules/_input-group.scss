@@ -30,7 +30,7 @@
             z-index: 6;
         }
 
-        &:last-child {
+        &:not(:first-child) {
             margin-left: -1px;
         }
 
