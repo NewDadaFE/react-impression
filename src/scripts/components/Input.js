@@ -234,6 +234,8 @@ export default class Input extends PureComponent {
                         style={style}
                         disabled={disabled}
                         placeholder={placeholder}
+                        value={value}
+                        defaultValue={defaultValue}
                         {...others}
                         className={classnames('form-control', className)} />
                 );
