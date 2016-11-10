@@ -42,6 +42,10 @@ CSS引入：
     cd site && npm start
 ```
 
+### 快速搭建项目
+
+yeoman generator[github](https://github.com/shenlq/generator-react-impression)
+
 ### Demo
 
 访问更多[示例地址](https://shenlq.github.io/impression)
