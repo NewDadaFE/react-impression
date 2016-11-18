@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Card, Row, Col, InlineSelect } from '../components/impression';
-import { Highlight, Breadcrumb } from '../components';
+import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 export default class InlineSelectView extends Component {
     static propTypes = {
@@ -68,7 +68,8 @@ export default class InlineSelectView extends Component {
                                         <InlineSelect.Option value="23">佛山</InlineSelect.Option>
                                     </InlineSelect>
                                 </Col>
-                            </Row> <Row>
+                            </Row>
+                            <Row>
                                 <Col col="1" className="text-right"><strong>区域：</strong></Col>
                                 <Col col="11">
                                     <InlineSelect value={this.state.zone} onChange={this.selectZoneHandle}>
@@ -90,6 +91,22 @@ export default class InlineSelectView extends Component {
                             {'</InlineSelect>'}
                         </Highlight>
                     </Card>
+                    <h5>InlineSelect API</h5>
+                    <CommenTable
+                        data={[
+                            ['value', '选中值', 'any', '2'],
+                            ['defaultValue', '选中值', 'any', '1'],
+                            ['onChange', '选中回调函数', 'function', ''],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
+                    <h5>InlineSelect.Option API</h5>
+                    <CommenTable
+                        data={[
+                            ['active', '是否选择', 'boolean', ''],
+                            ['className', '自定义样式', 'string', ''],
+                        ]}
+                    />
                 </Card>
             </div>
         );

@@ -124,6 +124,7 @@ const InputGroupView = ({ routes }) => {
                 <h5 className="text-secondary">InputGroup.Addon API</h5>
                 <CommenTable
                     data={[
+                        ['pure', '显示成文字', 'boolean', 'false'],
                         ['className', '自定义样式', 'string', ''],
                     ]}
                 />
