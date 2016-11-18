@@ -25,7 +25,26 @@ export default class InputGroupInput extends PureComponent {
                 {...others}
                 type={type}
                 className={classnames('form-control', className)}
-                placeholder={placeholder} ref="main" />
+                placeholder={placeholder} ref={ref => (this.refMain = ref)} />
         );
     }
 }
+
+
+// getValue
+InputGroupInput.getValue = ref => {
+    if(!ref) {
+        return undefined;
+    }
+
+    return ref.refMain.value;
+};
+
+// setValue
+InputGroupInput.setValue = (ref, value) => {
+    if(!ref) {
+        return;
+    }
+
+    ref.refMain.value = value;
+};

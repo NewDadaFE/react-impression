@@ -8,7 +8,7 @@ export default class RadioView extends Component {
     }
     onChangeHandle = () => {
         // console.log(Radio.getValue(this.refs.radio));
-        // console.log(RadioGroup.getValue(this.refs.radios));
+        console.log(RadioGroup.getValue(this.refs.radios));
     }
     render() {
         let radioArray = [{

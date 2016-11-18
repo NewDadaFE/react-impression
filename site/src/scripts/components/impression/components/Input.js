@@ -27,7 +27,7 @@ export default class Input extends PureComponent {
         // 行内样式
         style: PropTypes.object,
         // 类型
-        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month', 'search']),
+        type: PropTypes.oneOf(['text', 'password', 'file', 'date', 'emaile', 'month', 'search', 'textarea']),
         // 提示
         placeholder: PropTypes.string,
         // 值
@@ -163,7 +163,7 @@ export default class Input extends PureComponent {
                         onMouseLeave={this.hideClearHandle}>
                         <input
                             type="text"
-                            ref="main"
+                            ref={ref => (this.refMain = ref)}
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames('form-control',
@@ -201,7 +201,7 @@ export default class Input extends PureComponent {
                         <input
                             {...others}
                             type="text"
-                            ref="main"
+                            ref={ref => (this.refMain = ref)}
                             value={value}
                             className={classnames('form-control',
                             pillClass,
@@ -222,9 +222,22 @@ export default class Input extends PureComponent {
                 return (
                     <Upload
                         {...others}
-                        ref="main"
+                        ref={ref => (this.refMain = ref)}
                         className={className}
                         placeholder={placeholder} />
+                );
+            case 'textarea':
+                return (
+                    <textarea
+                        rows="10"
+                        ref={ref => (this.refMain = ref)}
+                        style={style}
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        value={value}
+                        defaultValue={defaultValue}
+                        {...others}
+                        className={classnames('form-control', className)} />
                 );
             default:
                 return (
@@ -234,7 +247,7 @@ export default class Input extends PureComponent {
                         <input
                             {...others}
                             type={type}
-                            ref="main"
+                            ref={ref => (this.refMain = ref)}
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames(
@@ -265,9 +278,9 @@ Input.getValue = ref => {
 
     switch(type) {
         case 'file':
-            return ref.refs.main.refs.main.files[0];
+            return ref.refMain.refs.main.files[0];
         default:
-            return ref.refs.main.value;
+            return ref.refMain.value;
     }
 };
 
@@ -281,9 +294,9 @@ Input.setValue = (ref, value) => {
 
     switch(type) {
         case 'file':
-            ref.refs.main.refs.main.files[0] = value;
+            ref.refMain.refs.main.files[0] = value;
             break;
         default:
-            ref.refs.main.value = value;
+            ref.refMain.value = value;
     }
 };
