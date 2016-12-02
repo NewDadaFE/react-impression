@@ -14,6 +14,9 @@ export default class UploadView extends Component {
     getFileHandle = () => {
         // console.log(Input.getValue(this.refs.file));
     }
+    onChangeHandle = () => {
+        console.log('ddd');
+    }
     render() {
         return (
             <div>
@@ -27,7 +30,7 @@ export default class UploadView extends Component {
                                     <Input ref="file" type="file" />
                                 </Col>
                                 <Col>
-                                    <Input type="file" placeholder="请上传资质证明" />
+                                    <Input type="file" placeholder="请上传资质证明" onChange={this.onChangeHandle} />
                                 </Col>
                                 <Col>
                                     <Upload btnText="附件" btnStyle="primary" />

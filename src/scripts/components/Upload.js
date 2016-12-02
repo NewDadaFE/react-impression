@@ -82,6 +82,7 @@ export default class Upload extends PureComponent {
                 placeholder,
                 className,
                 children,
+                onChange,
                 ...others,
             } = this.props,
             { file, previewImageUrl } = this.state;
@@ -96,7 +97,7 @@ export default class Upload extends PureComponent {
                 <div className="upload-preview" onClick={this.openFileDialogHandle}>
                     { children || <Icon type="camera" className="upload-preview-addon" /> }
                     <span className="upload-preview-text">{message}</span>
-                    <input type="file" ref="main" onChange={this.imagePreviewHandle} />
+                    <input type="file" ref="main" onChange={onChange && this.imagePreviewHandle} />
                     { (previewImageUrl || src) &&
                         <div className="upload-preview-img">
                             <img src={previewImageUrl || src} />
@@ -122,7 +123,7 @@ export default class Upload extends PureComponent {
                         {btnText}
                     </button>
                 </span>
-                <input type="file" ref="main" onChange={this.fileChangeHandle} />
+                <input type="file" ref="main" onChange={onChange && this.fileChangeHandle} />
             </div>
         );
     }
