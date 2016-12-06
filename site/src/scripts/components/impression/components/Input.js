@@ -66,13 +66,11 @@ export default class Input extends PureComponent {
      * 隐藏候选项.
      */
     hideOptionsHandle = () => {
-        let { main } = this.refs;
-
-        if(!main) {
+        if(!this.refMain) {
             return;
         }
 
-        main.blur && main.blur();
+        this.refMain.blur && this.refMain.blur();
         this.setState({
             showOption: false,
             showClear: false,
@@ -82,23 +80,20 @@ export default class Input extends PureComponent {
      * 清空输入框.
      */
     clearInputHandle = () => {
-        let { disabled } = this.props,
-            { main } = this.refs;
+        let { disabled } = this.props;
 
         if(disabled) {
             return;
         }
 
-        main.value = '';
+        this.refMain.value = '';
     }
     /**
      * 选中候选项.
      * @param  {[String]} value [候选项值]
      */
     selectOptionsHandle = value => {
-        let { main } = this.refs;
-
-        main.value = value;
+        this.refMain.value = value;
 
         this.setState({
             showOption: false,
@@ -110,7 +105,7 @@ export default class Input extends PureComponent {
      */
     showClearHandle = () => {
         !this.props.disabled
-        && this.refs.main.value
+        && this.refMain.value
         && this.setState({
             showClear: true,
         });
@@ -188,7 +183,7 @@ export default class Input extends PureComponent {
                             <DatePicker
                                 {...others}
                                 type={type}
-                                value={this.refs.main.value}
+                                value={this.refMain.value}
                                 onSelect={this.selectOptionsHandle} />
                         }
                     </div>
