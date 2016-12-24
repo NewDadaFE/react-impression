@@ -2,7 +2,7 @@ var path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     DashboardPlugin = require('webpack-dashboard/plugin'),
-    port  = 9016;
+    port  = 9008;
 
 
 module.exports = {
@@ -11,8 +11,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:' + port,
         'webpack/hot/only-dev-server',
-        'react-hot-loader/patch',
-        './src/scripts/index'
+        './src/scripts/index',
     ],
     output: {
         path: path.join(__dirname, 'dist'),
