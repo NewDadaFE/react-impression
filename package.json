@@ -11,7 +11,7 @@
   },
   "scripts": {
     "eslint": "eslint ./src/scripts/",
-    "pre-commit": "eslint",
+    "pre-commit": "npm run eslint",
     "scsslint": "scss-lint src/styles/**/*.scss",
     "clean": "rimraf ./lib && mkdir lib",
     "copy": "cp -a src/styles lib/styles",
