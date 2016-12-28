@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "scripts": {
     "eslint": "eslint --fix src/scripts",
-    "start": "gulp && webpack-dashboard -- node server.js",
+    "start": "gulp && webpack-dashboard -- webpack-dev-server --config webpack.dev.config.js --colors --port 9008",
     "watch": "gulp watch",
     "prebuild": "npm run eslint && gulp prod",
     "build": "webpack -p --config webpack.prod.config.js",

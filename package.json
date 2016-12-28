@@ -1,6 +1,6 @@
 {
   "name": "generator-react-impression",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "一个React项目的脚手架工具。",
   "homepage": "https://github.com/shenlq/generator-react-impression.git",
   "author": {
@@ -46,9 +46,11 @@
     "yeoman-assert": "^2.0.0",
     "yeoman-test": "^1.0.0"
   },
-  "repository": "shenlq/generator-react-impression",
+  "repository": "https://github.com/NewDadaFE/generator-react-impression",
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+    "prepublish": "npm config set registry http://registry.npmjs.org",
+    "postpublish": "npm config set registry https://registry.npm.taobao.org/"
   },
   "license": "MIT"
 }
