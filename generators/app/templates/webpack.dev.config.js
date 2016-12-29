@@ -1,23 +1,24 @@
 var path = require('path'),
     webpack = require('webpack'),
-    DashboardPlugin = require('webpack-dashboard/plugin');
-
+    DashboardPlugin = require('webpack-dashboard/plugin'),
+    publicPath = 'http://localhost:9008/';
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:' + 9008,
-        'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
+        'webpack-dev-server/client?' + publicPath,
+        'webpack/hot/only-dev-server',
         './src/scripts/index',
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'app.js',
-        publicPath: '/scripts/',
+        path: path.resolve(__dirname, 'build'),
+        filename: 'scripts/app.js',
+        publicPath: publicPath,
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
         new webpack.DefinePlugin({
             '__SHOW_DEV_TOOLS__': false,
             '__ENABLE_LOG__': true,
@@ -33,12 +34,13 @@ module.exports = {
         }],
     },
     devServer: {
-        contentBase: './build',
-        publicPath: '/scripts',
+        contentBase: path.resolve(__dirname, 'build'),
+        publicPath: publicPath,
         hot: true,
         historyApiFallback: true,
         stats: {
             colors: true,
+            chunks: false,
         },
         headers: {
             'Access-Control-Allow-Origin': '*',

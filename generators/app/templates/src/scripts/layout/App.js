@@ -1,6 +1,7 @@
 /* global __SHOW_DEV_TOOLS__ */
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
+import { Router, hashHistory } from 'react-router';
 import routes from '../routes';
 
 // 是否显示开发者工具
@@ -11,19 +12,25 @@ if(__SHOW_DEV_TOOLS__) {
 }
 
 // 主应用入口
-const App = ({ store }) => {
-    return (
-        <Provider store={store}>
-            <div>
-                { routes }
-                { DevTools && <DevTools /> }
-            </div>
-        </Provider>
-    );
-};
+class App extends Component {
+    static propTypes = {
+        store: PropTypes.object,
+    }
 
-App.propTypes = {
-    store: PropTypes.object,
-};
+    render() {
+        const { store } = this.props;
+
+        if (!this.routes) this.routes = routes;
+
+        return (
+            <Provider store={store}>
+                <div>
+                    <Router history={hashHistory} routes={this.routes} />
+                    { DevTools && <DevTools /> }
+                </div>
+            </Provider>
+        );
+    }
+}
 
 export default App;
