@@ -19,5 +19,5 @@ export default function counter(state = init, action) {
             };
         default:
             return state;
-        }
+    }
 }

@@ -27,6 +27,13 @@ module.exports = {
         new DashboardPlugin(),
     ],
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: 'eslint-loader',
+                exclude: /node_modules/
+            }
+        ],
         loaders: [{
             test: /\.js$/,
             loaders: ['babel'],
@@ -45,5 +52,8 @@ module.exports = {
         headers: {
             'Access-Control-Allow-Origin': '*',
         },
+    },
+    eslint: {
+        failOnError: true
     },
 };
