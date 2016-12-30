@@ -1,28 +1,30 @@
 {
   "name": "react-impression",
   "version": "1.1.0",
-  "author": "peter.shenlq",
+  "author": "NewDadaFE",
   "description": "An enterprise-class UI design language and React-based implementation.",
-  "main": "./lib/index.js",
+  "main": "./dist/scripts/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/shenlq/impression.git"
+    "url": "git://github.com/NewDadaFE/react-impression.git"
   },
+  "homepage": "https://github.com/NewDadaFE/react-impression",
   "scripts": {
     "eslint": "eslint ./src/scripts/",
     "start": "gulp build && webpack-dashboard -- webpack-dev-server --config webpack.dev.config.js --colors --port 9008",
     "scsslint": "scss-lint src/styles/**/*.scss",
-    "clean": "rimraf ./lib && mkdir lib",
-    "copy": "cp -a src/styles lib/styles",
-    "compile:js": "node_modules/babel-cli/bin/babel.js src/scripts --out-dir lib",
-    "compile:scss": "sass src/styles/index.scss lib/index.css",
-    "compile:minscss": "sass --style compressed src/styles/index.scss lib/index.min.css",
-    "prebuild": "npm run eslint && npm run scsslint && npm run clean",
+    "clean": "rimraf ./dist && mkdir dist",
+    "copy": "cp -a src/styles dist/styles",
+    "compile:js": "node_modules/babel-cli/bin/babel.js src/scripts/components/impression --out-dir dist/scripts/",
+    "compile:scss": "sass src/styles/index.scss dist/index.css",
+    "compile:minscss": "sass --style compressed src/styles/index.scss dist/index.min.css",
+    "prebuild": "npm run eslint && npm run clean",
     "build": "npm run compile:js && npm run compile:scss && npm run compile:minscss",
-    "postbuild": "npm run copy && npm publish"
+    "postbuild": "npm run copy && npm publish",
+    "prepublish": "npm config set registry http://registry.npmjs.org",
+    "postpublish": "npm config set registry https://registry.npm.taobao.org/"
   },
-  "homepage": "https://github.com/shenlq/impression",
   "dependencies": {
     "classnames": "^2.2.0",
     "moment": "^2.14.1",
