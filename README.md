@@ -1,5 +1,5 @@
 # react-impression
-UI Components with Reac for desktop.[Demo](https://newdadafe.github.io/impression_react/index.html#/app)
+UI Components with React for desktop.[Demo](https://newdadafe.github.io/impression_react/index.html#/app)
 
 ## Installation
 ```shell
@@ -31,5 +31,5 @@ https://newdadafe.github.io/impression_react/index.html#/app
 
 ## Quickly build web app
 
-yeoman generator[github](https://github.com/NewDadaFE/generator-react-impression)
+[yeoman generator](https://github.com/NewDadaFE/generator-react-impression)
 
