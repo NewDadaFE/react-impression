@@ -9,7 +9,7 @@
 ### 安装
 
 ```
-    npm install react-impression
+    npm install react-impression --S
 ```
 
 ### 使用
@@ -31,7 +31,7 @@ export default class MyView extends Component{
 CSS引入：
 
 ```
-    import 'react-impression/lib/index.css';
+    import 'react-impression/styles/index.css';
 ```
 
 ！！！推荐从工程里导出scss文件，并修改variables.scss来自定义自己的样式。
@@ -39,13 +39,13 @@ CSS引入：
 ### 本地启动
 
 ```
-    cd site && npm start
+    npm start
 ```
 
 ### 快速搭建项目
 
-yeoman generator[github](https://github.com/shenlq/generator-react-impression)
+yeoman generator[github](https://github.com/NewDadaFE/generator-react-impression)
 
 ### Demo
 
-访问更多[示例地址](https://shenlq.github.io/impression)
+访问更多[示例地址](https://newdadafe.github.io/impression_react/index.html#/app)
