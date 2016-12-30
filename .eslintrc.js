@@ -1,3 +1,6 @@
 module.exports = {
-    "extends": "impression"
+    "extends": "react-impression",
+    rules: {
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}]
+    },
 };

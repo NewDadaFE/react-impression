@@ -1,34 +1,30 @@
-import classnames from 'classnames';
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import { Breadcrumb } from './impression';
 
-/**
- * 面包屑组件.
- */
-const Breadcrumb = ({ separator, children, className, ...others }) => {
-    let separatorClass = separator ? `breadcrumb-${separator}` : null;
-
-    children = React.Children.map(children, (child, index) => {
-        if(!child) {
-            return child;
-        }
-
-        return (
-            <li key={index} className="breadcrumb-item">{child}</li>
-        );
-    });
+const WrapBreadcrumb = ({ routes }) => {
+    routes = routes.slice(1);
+    let length = routes.length;
 
     return (
-        <ol {...others} className={classnames('breadcrumb', className, separatorClass)}>
-            {children}
-        </ol>
+        <Breadcrumb>
+            { routes.map((route, index) => {
+                if(index < length - 1) {
+                    return (
+                        <Link key={index} to={`/${route.path}`}>
+                            {route.path === 'app' ? 'home' : route.path}
+                        </Link>
+                    );
+                }
+
+                return <span key={index}>{route.path}</span>;
+            })}
+        </Breadcrumb>
     );
 };
 
-Breadcrumb.propTypes = {
-    // 分隔
-    separator: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.any,
+WrapBreadcrumb.propTypes = {
+    routes: PropTypes.array,
 };
 
-export default Breadcrumb;
+export default WrapBreadcrumb;
