@@ -57,6 +57,7 @@
 
         &:checked {
             + .checkbox-addon i {
+                transform: scale(1);
                 color: $checkbox-addon-checked-color;
             }
         }
@@ -85,9 +86,10 @@
     vertical-align: middle;
     transition: $checkbox-addon-transtion;
 
-
     i {
         color: transparent;
+        transform: scale(0);
+        transform-origin: 50% 50%;
         width: round($checkbox-addon-width * $font-size-root);
         height: round($checkbox-addon-height * $font-size-root);
         transition: $checkbox-addon-transtion;
@@ -105,6 +107,7 @@
 
         &:checked {
             + .radio-addon i {
+                transform: scale(1);
                 background: $checkbox-addon-checked-color;
             }
         }
@@ -136,8 +139,10 @@
     transition: $checkbox-addon-transtion;
 
     i {
-        display: inline-block;
         content: '';
+        display: inline-block;
+        transform: scale(0);
+        transform-origin: 50% 50%;
         width: round($radio-addon-width * $font-size-root);
         height: round($radio-addon-height * $font-size-root);
         background: transparent;
