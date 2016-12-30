@@ -41,6 +41,12 @@ export default class CheckboxGroup extends PureComponent {
         disabled: false,
         direction: 'row',
     }
+    getValue() {
+        return this.isPuppet ? this.props.value : this.state.value;
+    }
+    setValue(value) {
+        if(!this.isPuppet) this.setState({ value });
+    }
     // checkbox选中回调函数
     onChangeHandle = (event, value) => {
         let { checked } = event.target,
@@ -104,22 +110,14 @@ export default class CheckboxGroup extends PureComponent {
 
 // getValue
 CheckboxGroup.getValue = ref => {
-    if(!ref) {
-        return undefined;
-    }
+    if(!ref) return undefined;
 
-    if(ref.isPuppet) {
-        return ref.props.value;
-    }
-
-    return ref.state.value;
+    return ref.getValue();
 };
 
 // setValue
 CheckboxGroup.setValue = (ref, value) => {
-    if(ref && !ref.isPuppet) {
-        ref.setState({
-            value,
-        });
-    }
+    if(!ref) return;
+
+    ref.setValue(value);
 };

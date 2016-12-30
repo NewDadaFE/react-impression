@@ -16,6 +16,12 @@ export default class InputGroupInput extends PureComponent {
     static defaultProps = {
         type: 'text',
     }
+    getValue() {
+        return this.refMain.value;
+    }
+    setValue(value) {
+        this.refMain.value = value;
+    }
     // 渲染
     render() {
         let { type, className, placeholder, ...others } = this.props;
@@ -33,18 +39,14 @@ export default class InputGroupInput extends PureComponent {
 
 // getValue
 InputGroupInput.getValue = ref => {
-    if(!ref) {
-        return undefined;
-    }
+    if(!ref) return undefined;
 
-    return ref.refMain.value;
+    return ref.getVaule();
 };
 
 // setValue
 InputGroupInput.setValue = (ref, value) => {
-    if(!ref) {
-        return;
-    }
+    if(!ref) return;
 
-    ref.refMain.value = value;
+    ref.setValue(value);
 };

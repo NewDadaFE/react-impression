@@ -33,6 +33,12 @@ export default class Upload extends PureComponent {
             file: '',
         };
     }
+    getValue() {
+        return this.refs.main.files[0];
+    }
+    setValue(value) {
+        this.refs.main.files[0] = value;
+    }
     /**
      * 打开文件浏览器对话框.
      */
@@ -131,10 +137,14 @@ export default class Upload extends PureComponent {
 
 // getValue
 Upload.getValue = ref => {
-    return ref ? ref.refs.main.files[0] : undefined;
+    if(!ref) return undefined;
+
+    return ref.getValue();
 };
 
 // setValue
 Upload.setValue = (ref, value) => {
-    return ref && (ref.refs.main.files[0] = value);
+    if(!ref) return;
+
+    ref.setValue(value);
 };

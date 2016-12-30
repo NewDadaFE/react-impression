@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Card, Row, Col, Button, Alert } from '../components/impression';
+import { Card, Row, Col, Button, Alert, Input } from '../components/impression';
 import { Highlight, Breadcrumb } from '../components';
 
 export default class AlertView extends Component {
@@ -36,6 +36,7 @@ export default class AlertView extends Component {
                         <Card.Block>
                             <Row>
                                 <Col>
+                                    <Input type="text" placeholder="Jane Doe" />
                                     <Button theme="primary" outline onClick={this.toggleAlert1Handle}>default</Button>
                                 </Col>
                                 <Col>

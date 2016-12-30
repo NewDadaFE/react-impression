@@ -27,6 +27,21 @@ export default class Radio extends PureComponent {
     static defaultProps = {
         disabled: false,
     }
+    getValue() {
+        let { value } = this.props,
+            { main } = this.refs;
+
+        if(value === undefined) {
+            return main.checked;
+        }
+
+        return value;
+    }
+    setValue(checked) {
+        let { main } = this.refs;
+
+        main.checked = !!checked;
+    }
     // 渲染
     render() {
         let {
@@ -66,25 +81,14 @@ export default class Radio extends PureComponent {
 
 // getValue
 Radio.getValue = ref => {
-    let { value } = ref.props,
-        { main } = ref.refs;
+    if(!ref) return undefined;
 
-    if(!ref) {
-        return undefined;
-    }
-
-    if(value === undefined) {
-        return main.checked;
-    }
-
-    return value;
+    return ref.getValue();
 };
 
 // setValue
 Radio.setValue = (ref, checked) => {
-    let { main } = ref.refs;
+    if(!ref) return;
 
-    if(ref) {
-        main.checked = !!checked;
-    }
+    ref.setValue(checked);
 };

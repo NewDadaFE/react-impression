@@ -32,6 +32,16 @@ export default class InlineSelect extends PureComponent {
         // defaultValue
         defaultValue: PropTypes.any,
     }
+    getValue() {
+        if(this.isPuppet) {
+            return this.props.value;
+        }
+
+        return this.state.value;
+    }
+    setValue(value) {
+        if(!this.isPuppet) this.setState({ value });
+    }
     /**
      * option选中回调.
      * @param  {[Any]} value       [值]
@@ -80,24 +90,16 @@ export default class InlineSelect extends PureComponent {
 
 // getValue
 InlineSelect.getValue = ref => {
-    if(!ref) {
-        return undefined;
-    }
+    if(!ref) return undefined;
 
-    if(ref.isPuppet) {
-        return ref.props.value;
-    }
-
-    return ref.state.value;
+    return ref.getValue();
 };
 
 // setValue
 InlineSelect.setValue = (ref, value) => {
-    if(ref && !ref.isPuppet) {
-        ref.setState({
-            value,
-        });
-    }
+    if(!ref) return;
+
+    ref.setValue(value);
 };
 
 InlineSelect.Option = InlineSelectOption;

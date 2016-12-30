@@ -50,6 +50,23 @@ export default class Select extends PureComponent {
         disabled: false,
         placeholder: '请选择',
     }
+    getValue() {
+        return this.isPuppet ? this.props.value : this.state.value;
+    }
+    setValue(value) {
+        let { main } = this.refs;
+
+        if(!this.isPuppet) {
+            main.value = null;
+            this.options.forEach(option => {
+                if(value === option.value) main.value = option.name;
+            });
+
+            this.setState({
+                value,
+            });
+        }
+    }
     // 显示/隐藏菜单
     toggleOptionsHandle = () => {
         !this.props.disabled && this.setState({
@@ -148,33 +165,16 @@ export default class Select extends PureComponent {
 
 // getValue
 Select.getValue = ref => {
-    if(!ref) {
-        return undefined;
-    }
+    if(!ref) return undefined;
 
-    if(ref.isPuppet) {
-        return ref.props.value;
-    }
-
-    return ref.state.value;
+    return ref.getValue();
 };
 
 // setValue
 Select.setValue = (ref, value) => {
-    let { main } = ref.refs;
+    if(!ref) return;
 
-    if(ref && !ref.isPuppet) {
-        main.value = null;
-        ref.options.forEach(option => {
-            if(value === option.value) {
-                main.value = option.name;
-            }
-        });
-
-        ref.setState({
-            value,
-        });
-    }
+    ref.setValue(value);
 };
 
 Select.Option = SelectOption;

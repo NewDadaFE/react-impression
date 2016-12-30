@@ -51,6 +51,29 @@ export default class Input extends PureComponent {
         clearable: true,
         disabled: false,
     }
+    // 获取Input value
+    getValue() {
+        let { type } = this.props;
+
+        switch(type) {
+            case 'file':
+                return this.refMain.refs.main.files[0];
+            default:
+                return this.refMain.value;
+        }
+    }
+    // 设置Input value
+    setValue(value) {
+        let { type } = this.props;
+
+        switch(type) {
+            case 'file':
+                this.refMain.refs.main.files[0] = value;
+                break;
+            default:
+                this.refMain.value = value;
+        }
+    }
     /**
      * 显示候选项.
      */
@@ -265,33 +288,14 @@ export default class Input extends PureComponent {
 
 // getValue
 Input.getValue = ref => {
-    let { type } = ref.props;
+    if(!ref) return undefined;
 
-    if(!ref) {
-        return undefined;
-    }
-
-    switch(type) {
-        case 'file':
-            return ref.refMain.refs.main.files[0];
-        default:
-            return ref.refMain.value;
-    }
+    return ref.getValue();
 };
 
 // setValue
 Input.setValue = (ref, value) => {
-    let { type } = ref.props;
+    if(!ref) return;
 
-    if(!ref) {
-        return;
-    }
-
-    switch(type) {
-        case 'file':
-            ref.refMain.refs.main.files[0] = value;
-            break;
-        default:
-            ref.refMain.value = value;
-    }
+    ref.setValue(value);
 };

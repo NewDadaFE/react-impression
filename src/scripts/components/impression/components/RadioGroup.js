@@ -43,6 +43,12 @@ export default class RadioGroup extends PureComponent {
         disabled: false,
         direction: 'row',
     }
+    getValue() {
+        return this.isPuppet ? this.props.value : this.state.value;
+    }
+    setValue(value) {
+        if(!this.isPuppet) this.setState({ value });
+    }
     // radio切换回调函数
     onChangeHandle = (event, value) => {
         let { onChange } = this.props;
@@ -98,22 +104,14 @@ export default class RadioGroup extends PureComponent {
 
 // getValue
 RadioGroup.getValue = ref => {
-    if(!ref) {
-        return undefined;
-    }
+    if(!ref) return undefined;
 
-    if(ref.isPuppet) {
-        return ref.props.value;
-    }
-
-    return ref.state.value;
+    return ref.getValue();
 };
 
 // setValue
 RadioGroup.setValue = (ref, value) => {
-    if(ref && !ref.isPuppet) {
-        ref.setState({
-            value,
-        });
-    }
+    if(!ref) return;
+
+    ref.setValue(value);
 };

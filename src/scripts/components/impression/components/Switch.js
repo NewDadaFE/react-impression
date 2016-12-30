@@ -17,10 +17,26 @@ export default class Switch extends PureComponent {
         disabled: PropTypes.bool,
         // 状态切换回调
         onChange: PropTypes.func,
+        value: PropTypes.any,
     }
     // 默认props
     static defaultProps = {
         disabled: false,
+    }
+    getValue() {
+        let { value } = this.props,
+            { main } = this.refs;
+
+        if(value === undefined) {
+            return main.checked;
+        }
+
+        return value;
+    }
+    setValue(checked) {
+        let { main } = this.refs;
+
+        main.checked = !!checked;
     }
     // 状态切换回调
     onChangeHandle = event => {
@@ -54,25 +70,14 @@ export default class Switch extends PureComponent {
 
 // getValue
 Switch.getValue = ref => {
-    let { value } = ref.props,
-        { main } = ref.refs;
+    if(!ref) return undefined;
 
-    if(!ref) {
-        return undefined;
-    }
-
-    if(value === undefined) {
-        return main.checked;
-    }
-
-    return value;
+    return ref.getValue();
 };
 
 // setValue
 Switch.setValue = (ref, checked) => {
-    let { main } = ref.refs;
+    if(!ref) return;
 
-    if(ref) {
-        main.checked = !!checked;
-    }
+    ref.setValue(checked);
 };
