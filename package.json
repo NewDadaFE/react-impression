@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "NewDadaFE",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./dist/scripts/index.js",
@@ -13,6 +13,7 @@
   "scripts": {
     "eslint": "eslint ./src/scripts/",
     "start": "gulp build && webpack-dashboard -- webpack-dev-server --config webpack.dev.config.js --colors --port 9008",
+    "build:site": "gulp build && webpack -p --config webpack.prod.config.js",
     "scsslint": "scss-lint src/styles/**/*.scss",
     "clean": "rimraf ./dist && mkdir dist",
     "copy": "cp -a src/styles dist/styles",
