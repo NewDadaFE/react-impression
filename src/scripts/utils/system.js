@@ -1,5 +1,5 @@
 import { findDOMNode } from 'react-dom';
-import { isDescendentNode } from './dom';
+import { contains } from './dom';
 
 /**
  * 初始化.
@@ -14,9 +14,7 @@ const init = () => {
         document.body.popLayers.forEach(component => {
             const componentDom = findDOMNode(component);
 
-            // 兼容Chrome、FF、Safari
-            if ((event.path && event.path.indexOf(componentDom) === -1)
-                || !isDescendentNode(componentDom, event.target)) {
+            if(!contains(componentDom, event.target)) {
                 component.hideOptionsHandle && component.hideOptionsHandle();
             }
         });
