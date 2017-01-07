@@ -67,6 +67,10 @@ export default class Select extends PureComponent {
             });
         }
     }
+    // focus
+    focus() {
+        this.refs.main.focus();
+    }
     // 显示/隐藏菜单
     toggleOptionsHandle = () => {
         !this.props.disabled && this.setState({
@@ -98,6 +102,8 @@ export default class Select extends PureComponent {
                 onChange && newValue !== value && onChange(newValue, text, index);
                 main.value = text;
             });
+        } else {
+            onChange && newValue !== value && onChange(newValue, text, index);
         }
 
         this.setState({
@@ -150,7 +156,8 @@ export default class Select extends PureComponent {
                 <input
                     type="text"
                     defaultValue={text}
-                    readOnly ref="main"
+                    readOnly
+                    ref="main"
                     placeholder={placeholder} disabled={disabled}
                     className={classnames('form-control', 'select-selection')}
                     onClick={this.toggleOptionsHandle} />
