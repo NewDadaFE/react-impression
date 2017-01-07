@@ -13,7 +13,8 @@ export default class SelectView extends Component {
             message: `${text} 被选中了！！！`,
         });
 
-        Select.setValue(this.refs.select3, null);
+        this.refs.select3.setValue(null);
+        this.refs.select3.focus();
     }
     render() {
         return (

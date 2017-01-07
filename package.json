@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "author": "NewDadaFE",
   "description": "An enterprise-class UI design language and React-based implementation.",
   "main": "./dist/scripts/index.js",

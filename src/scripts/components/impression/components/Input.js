@@ -74,9 +74,10 @@ export default class Input extends PureComponent {
                 this.refMain.value = value;
         }
     }
-    /**
-     * 显示候选项.
-     */
+    focus() {
+        this.refMain.focus();
+    }
+    // 显示候选项
     showOptionHandle = () => {
         let { disabled } = this.props;
 
@@ -85,9 +86,7 @@ export default class Input extends PureComponent {
             showClear: false,
         });
     }
-    /**
-     * 隐藏候选项.
-     */
+    // 隐藏候选项.
     hideOptionsHandle = () => {
         if(!this.refMain) {
             return;
@@ -99,9 +98,7 @@ export default class Input extends PureComponent {
             showClear: false,
         });
     }
-    /**
-     * 清空输入框.
-     */
+    // 清空输入框.
     clearInputHandle = () => {
         let { disabled } = this.props;
 
@@ -123,9 +120,7 @@ export default class Input extends PureComponent {
             showClear: false,
         });
     }
-    /**
-     * 显示清空按钮.
-     */
+    // 显示清空按钮.
     showClearHandle = () => {
         !this.props.disabled
         && this.refMain.value
@@ -133,17 +128,13 @@ export default class Input extends PureComponent {
             showClear: true,
         });
     }
-    /**
-     * 隐藏清空按钮.
-     */
+    // 隐藏清空按钮.
     hideClearHandle = () => {
         this.setState({
             showClear: false,
         });
     }
-    /**
-     * 清空组件管理.
-     */
+    // 清空组件管理.
     componentWillUnmount() {
         System.unmanager(this);
     }

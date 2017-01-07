@@ -48,7 +48,8 @@ export default class InputView extends Component {
      * 清空Input.
      */
     clearInputHandle = () => {
-        Input.setValue(this.refs.clearInput, '');
+        this.refs.clearInput.setValue('');
+        this.refs.clearInput.focus();
     }
     render() {
         return (
