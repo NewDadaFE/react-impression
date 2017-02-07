@@ -34,11 +34,16 @@ module.exports = {
                 exclude: /node_modules/
             }
         ],
-        loaders: [{
-            test: /\.js$/,
-            loaders: ['babel'],
-            exclude: /node_modules/,
-        }],
+        loaders: [
+            {
+                test: /\.js$/,
+                include: [
+                    path.resolve(__dirname, 'src'),
+                    /whatwg-fetch/
+                ],
+                loader: 'babel-loader',
+            }
+        ],
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),

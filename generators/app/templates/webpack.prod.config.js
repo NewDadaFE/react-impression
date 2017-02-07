@@ -31,16 +31,23 @@ module.exports = {
         extensions: ['', '.js']
     },
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loaders: ['babel'],
-            exclude: /node_modules/
-        }, {
-            test: /\.scss$/,
-            loader: 'style!css!sass'
-        },{
-            test: /\.(png|jpg|gif|jpeg)$/,
-            loader: 'url'
-        }]
+        loaders: [
+            {
+                test: /\.js$/,
+                include: [
+                    path.resolve(__dirname, 'src'),
+                    /whatwg-fetch/
+                ],
+                loader: 'babel-loader',
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style!css!sass'
+            },
+            {
+                test: /\.(png|jpg|gif|jpeg)$/,
+                loader: 'url'
+            }
+        ]
     }
 };
