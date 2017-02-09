@@ -9,9 +9,9 @@ export default class Popover extends PureComponent {
         // 显示位置
         position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
         // 标题
-        title: PropTypes.string,
+        title: PropTypes.node,
         // 内容
-        content: PropTypes.string,
+        content: PropTypes.node,
         // 子节点
         children: PropTypes.element.isRequired,
     }

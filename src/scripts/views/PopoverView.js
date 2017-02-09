@@ -62,8 +62,8 @@ const PopoverView = ({ routes }) => {
                 <CommenTable
                     data={[
                         ['position', '设置弹出框位置，可选值为 left、right、top、bottom', 'string', 'right'],
-                        ['title', '弹出框标题', 'string', ''],
-                        ['content', '弹出框主内容', 'string', ''],
+                        ['title', '弹出框标题', 'node', ''],
+                        ['content', '弹出框主内容', 'node', ''],
                         ['children', '必填，子节点', 'element', ''],
                     ]}
                 />
