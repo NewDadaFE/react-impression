@@ -1,13 +1,13 @@
 # generator-react-impression
-> 一个React项目的脚手架工具。
+
+> React + Redux + React Router + React Impression + Webpack 2
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-react-impression using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install Yeoman and generator-react-impression:
 
 ```bash
-npm install -g yo
-npm install -g generator-react-impression
+npm i -g yo generator-react-impression
 ```
 
 Then generate your new project:
@@ -19,28 +19,43 @@ yo react-impression
 
 ## Start
 
+First, run following command in your project folder:
+
 ```bash
+npm install
 npm start
 ```
 
+Then, open your browser with http://localhost:8080.
 
-## Getting To Know Yeoman
+## Publish
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+First, add your qiniu key to `deploy.js`
+
+```js
+qiniu.conf.ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+qiniu.conf.SECRET_KEY = 'YOUR_SECRET_KEY_HERE';
+```
+
+Then run command:
+
+```bash
+npm version patch -m 'Release version %s'
+```
+
+## Best practice
+
+* Create Flux Standard Action with [redux-actions][redux-actions]
+* Follow standard of [ducks-modular-redux][ducks-modular-redux]
+* Update state using [dot-prop-immutable][dot-prop-immutable]
+* Write styles with [babel-plugin-react-css-modules][babel-plugin-react-css-modules]
+
 
 ## License
 
-MIT © [peter](https://github.com/shenlq)
+MIT
 
-
-[npm-image]: https://badge.fury.io/js/generator-react-impression.svg
-[npm-url]: https://npmjs.org/package/generator-react-impression
-[travis-image]: https://travis-ci.org/shenlq/generator-react-impression.svg?branch=master
-[travis-url]: https://travis-ci.org/shenlq/generator-react-impression
-[daviddm-image]: https://david-dm.org/shenlq/generator-react-impression.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/shenlq/generator-react-impression
-[coveralls-image]: https://coveralls.io/repos/shenlq/generator-react-impression/badge.svg
-[coveralls-url]: https://coveralls.io/r/shenlq/generator-react-impression
+[redux-actions]: https://github.com/acdlite/redux-actions
+[ducks-modular-redux]: https://github.com/erikras/ducks-modular-redux
+[dot-prop-immutable]: https://github.com/debitoor/dot-prop-immutable
+[babel-plugin-react-css-modules]: https://github.com/gajus/babel-plugin-react-css-modules
