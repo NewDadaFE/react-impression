@@ -1,7 +1,7 @@
 {
-  "name": "test",
+  "name": "<%= name %>",
   "version": "1.0.0",
-  "description": "test",
+  "description": "<%= description %>",
   "private": true,
   "scripts": {
     "format": "prettier --single-quote --trailing-comma all --write 'src/**/*.js'",

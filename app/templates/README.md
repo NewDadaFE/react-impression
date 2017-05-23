@@ -1,6 +1,6 @@
-# test
+# <%= name %>
 
-> test
+> <%= description %>
 
 ## Build Setup
 
