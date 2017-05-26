@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Calendar, Badge, Icon, Image } from '../components/impression';
 import { Highlight, Breadcrumb, CommenTable } from '../components/';
 
@@ -95,7 +96,7 @@ export default class CalendarView extends Component {
                             <Calendar />
                         </Card.Block>
                         <Highlight>
-                            {`import { Calendar } from 'impression-react';\n\n`}
+                            {'import { Calendar } from "impression-react";\n\n'}
                             {'<Calendar />'}
                         </Highlight>
                     </Card>
@@ -115,7 +116,7 @@ export default class CalendarView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Calendar size="sm" />\n`}
+                            {'<Calendar size="sm" />\n'}
                             {'<Calendar firstDayOfWeek={0} size="sm" />'}
                         </Highlight>
                     </Card>

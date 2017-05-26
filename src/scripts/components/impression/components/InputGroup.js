@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import InputGroupAddon from './InputGroupAddon';
 import InputGroupInput from './InputGroupInput';
 import InputGroupButton from './InputGroupButton';

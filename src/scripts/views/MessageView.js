@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Button, Message, Icon } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -63,11 +64,11 @@ export default class MessageView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Message } from 'impression-react';\n\n`}
-                            {`Message.info('你好，这是一条info消息！');\n`}
-                            {`Message.success('你好，这是一条success消息！');\n`}
-                            {`Message.warning('你好，这是一条warning消息！');\n`}
-                            {`Message.error('你好，这是一条error消息！');\n`}
+                            {'import { Message } from "impression-react";\n\n'}
+                            {'Message.info("你好，这是一条info消息！");\n'}
+                            {'Message.success("你好，这是一条success消息！");\n'}
+                            {'Message.warning("你好，这是一条warning消息！");\n'}
+                            {'Message.error("你好，这是一条error消息！");\n'}
                             {'Message.loading("正在执行中...", 0);'}
                         </Highlight>
                     </Card>

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Switch, Form } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -22,8 +23,8 @@ const SwitchView = ({ routes }) => {
                         </Form>
                     </Card.Block>
                     <Highlight>
-                        {`import { Switch } from 'impression-react';\n\n`}
-                        {`<Switch defaultChecked/>\n`}
+                        {'import { Switch } from "impression-react";\n\n'}
+                        {'<Switch defaultChecked/>\n'}
                         {'<Switch disabled defaultChecked />'}
                     </Highlight>
                 </Card>

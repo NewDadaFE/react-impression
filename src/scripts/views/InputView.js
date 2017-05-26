@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Form, Input, Modal, Button, Icon, InlineSelect } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -91,11 +92,11 @@ export default class InputView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Input } from 'impression-react';\n\n`}
-                            {`<Input type="text"/>\n`}
-                            {`<Input type="text" ref="clearInput" defaultValue="text">\n`}
-                            {`  <Icon type="times" onClick={...} />\n`}
-                            {`</Input>\n`}
+                            {'import { Input } from "impression-react";\n\n'}
+                            {'<Input type="text"/>\n'}
+                            {'<Input type="text" ref="clearInput" defaultValue="text">\n'}
+                            {'  <Icon type="times" onClick={...} />\n'}
+                            {'</Input>\n'}
                             {'<Input type="text" defaultValue="something" pill />'}
                         </Highlight>
                     </Card>
@@ -130,8 +131,8 @@ export default class InputView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Input type="date"/>\n`}
-                            {`<Input type="date" defaultValue="2016-05-29"/>\n`}
+                            {'<Input type="date"/>\n'}
+                            {'<Input type="date" defaultValue="2016-05-29"/>\n'}
                             {'<Input type="date" defaultValue="2016-05-29" disabled/>'}
                         </Highlight>
                     </Card>
@@ -174,10 +175,10 @@ export default class InputView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Input type="search" value="..."/>\n`}
-                            {`<Input type="search" value="..." >\n`}
-                            {`  <Icon type="map-marker" />\n`}
-                            {`</Input>\n`}
+                            {'<Input type="search" value="..."/>\n'}
+                            {'<Input type="search" value="..." >\n'}
+                            {'  <Icon type="map-marker" />\n'}
+                            {'</Input>\n'}
                             {'<Input type="search" value="..." disabled/>'}
                         </Highlight>
                     </Card>
@@ -197,8 +198,8 @@ export default class InputView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Input type="file"/>\n`}
-                            {`<Input type="file" placeholder="请选择要上传的证书图片"/>\n`}
+                            {'<Input type="file"/>\n'}
+                            {'<Input type="file" placeholder="请选择要上传的证书图片"/>\n'}
                             {'<Input type="file" btnStyle="primary"/>'}
                         </Highlight>
                     </Card>

@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import hljs from 'highlight.js';
 import { Card, Button, Icon } from './impression';

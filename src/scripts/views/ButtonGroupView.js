@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Button, ButtonGroup, ButtonToolbar } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -17,11 +18,11 @@ const ButtonGroupView = ({ routes }) => {
                         </ButtonGroup>
                     </Card.Block>
                     <Highlight>
-                        {`import { ButtonGroup } from 'impression-react';\n\n`}
-                        {`<ButtonGroup theme="default" activeKey="left">\n`}
-                        {`  <Button eventKey="left">Left</Button>\n`}
-                        {`  <Button eventKey="middle">Middle</Button>\n`}
-                        {`  <Button eventKey="right">Right</Button>\n`}
+                        {'import { ButtonGroup } from "impression-react";\n\n'}
+                        {'<ButtonGroup theme="default" activeKey="left">\n'}
+                        {'  <Button eventKey="left">Left</Button>\n'}
+                        {'  <Button eventKey="middle">Middle</Button>\n'}
+                        {'  <Button eventKey="right">Right</Button>\n'}
                         {'</ButtonGroup>'}
                     </Highlight>
                 </Card>
@@ -44,8 +45,8 @@ const ButtonGroupView = ({ routes }) => {
                         </ButtonToolbar>
                     </Card.Block>
                     <Highlight>
-                        {`<ButtonGroup theme="primary" activeKey="right">...</ButtonGroup>\n`}
-                        {`<ButtonGroup theme="secondary" activeKey="middle">...</ButtonGroup>\n`}
+                        {'<ButtonGroup theme="primary" activeKey="right">...</ButtonGroup>\n'}
+                        {'<ButtonGroup theme="secondary" activeKey="middle">...</ButtonGroup>\n'}
                     </Highlight>
                 </Card>
                 <h3>Button toolbar</h3>
@@ -70,16 +71,16 @@ const ButtonGroupView = ({ routes }) => {
                         </ButtonToolbar>
                     </Card.Block>
                     <Highlight>
-                        {`<ButtonToolbar>\n`}
-                        {`  <ButtonGroup>\n`}
-                        {`    <Button>1</Button>\n    ...\n`}
-                        {`  </ButtonGroup>\n`}
-                        {`  <ButtonGroup>\n`}
-                        {`    <Button>4</Button>\n   ...\n`}
-                        {`  </ButtonGroup>\n`}
-                        {`  <ButtonGroup>\n`}
-                        {`    <Button>7</Button>\n    ...\n`}
-                        {`  </ButtonGroup>\n`}
+                        {'<ButtonToolbar>\n'}
+                        {'  <ButtonGroup>\n'}
+                        {'    <Button>1</Button>\n    ...\n'}
+                        {'  </ButtonGroup>\n'}
+                        {'  <ButtonGroup>\n'}
+                        {'    <Button>4</Button>\n   ...\n'}
+                        {'  </ButtonGroup>\n'}
+                        {'  <ButtonGroup>\n'}
+                        {'    <Button>7</Button>\n    ...\n'}
+                        {'  </ButtonGroup>\n'}
                         {'</ButtonToolbar>'}
                     </Highlight>
                 </Card>
@@ -105,14 +106,14 @@ const ButtonGroupView = ({ routes }) => {
                         </ButtonToolbar>
                     </Card.Block>
                     <Highlight>
-                        {`<ButtonGroup size="lg">\n`}
-                        {`  <Button>1</Button>\n  ...\n`}
-                        {`</ButtonGroup>\n`}
-                        {`<ButtonGroup>\n`}
-                        {`  <Button>4</Button>\n  ...\n`}
-                        {`</ButtonGroup>\n`}
-                        {`<ButtonGroup size="sm">\n`}
-                        {`  <Button>7</Button>\n  ...\n`}
+                        {'<ButtonGroup size="lg">\n'}
+                        {'  <Button>1</Button>\n  ...\n'}
+                        {'</ButtonGroup>\n'}
+                        {'<ButtonGroup>\n'}
+                        {'  <Button>4</Button>\n  ...\n'}
+                        {'</ButtonGroup>\n'}
+                        {'<ButtonGroup size="sm">\n'}
+                        {'  <Button>7</Button>\n  ...\n'}
                         {'</ButtonGroup>'}
                     </Highlight>
                 </Card>

@@ -1,6 +1,7 @@
 import moment from 'moment';
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 // 时间格式
 const FORMAT = {
@@ -97,10 +98,10 @@ export default class DatePicker extends PureComponent {
         let { firstDayOfWeek, weekdays } = this.props;
 
         return firstDayOfWeek === 0 ? weekdays :
-            [
-                ...weekdays.slice(firstDayOfWeek, weekdays.length),
-                ...weekdays.slice(0, firstDayOfWeek),
-            ];
+        [
+            ...weekdays.slice(firstDayOfWeek, weekdays.length),
+            ...weekdays.slice(0, firstDayOfWeek),
+        ];
     }
     /**
      * 获取日期数据.
@@ -434,21 +435,21 @@ export default class DatePicker extends PureComponent {
                         <div className="datepicker-daygroup">
                             { days.map((
                                 { text, date, checked, isToday, inMonth, disable }, index) =>
-                                <div
-                                    key={index}
-                                    onClick={() => !disable && this.selectDateHandle(date)}
-                                    className="datepicker-daygroup-item">
                                     <div
-                                        className={
-                                        classnames('datepicker-daygroup-item-text', {
-                                            disable,
-                                            now: isToday,
-                                            'text-muted': !inMonth,
-                                            active: date.isSame(checkedDay),
-                                        })}>
-                                        {text}
+                                        key={index}
+                                        onClick={() => !disable && this.selectDateHandle(date)}
+                                        className="datepicker-daygroup-item">
+                                        <div
+                                            className={
+                                            classnames('datepicker-daygroup-item-text', {
+                                                disable,
+                                                now: isToday,
+                                                'text-muted': !inMonth,
+                                                active: date.isSame(checkedDay),
+                                            })}>
+                                            {text}
+                                        </div>
                                     </div>
-                                </div>
                             )}
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Icon from './Icon';
 
 /**
@@ -89,7 +90,7 @@ export default class Upload extends PureComponent {
                 className,
                 children,
                 onChange,
-                ...others,
+                ...others
             } = this.props,
             { file, previewImageUrl } = this.state;
 

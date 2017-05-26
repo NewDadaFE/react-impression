@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, ListGroup, Tag } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -61,18 +62,18 @@ const ListGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`import { ListGroup } from 'impression-react';\n\n`}
-                        {`<ListGroup>\n  ...\n`}
-                        {`  <ListGroup.Item disabled>Lorem ipsum.</ListGroup.Item>\n  ...\n`}
-                        {`</ListGroup>\n<ListGroup>\n`}
-                        {`  <ListGroup.Item>\n`}
-                        {`    <Tag theme="default" className="pull-right" shape="pill">1</Tag>\n`}
-                        {`    lorem\n`}
-                        {`  </ListGroup.Item>\n  ...\n`}
-                        {`</ListGroup>\n<ListGroup>\n  ...\n`}
-                        {`  <ListGroup.Item href="javascript:void(0)" active>\n`}
-                        {`    Lorem ipsum dolor sit amet.\n`}
-                        {`  </ListGroup.Item>\n  ...\n`}
+                        {'import { ListGroup } from "impression-react";\n\n'}
+                        {'<ListGroup>\n  ...\n'}
+                        {'  <ListGroup.Item disabled>Lorem ipsum.</ListGroup.Item>\n  ...\n'}
+                        {'</ListGroup>\n<ListGroup>\n'}
+                        {'  <ListGroup.Item>\n'}
+                        {'    <Tag theme="default" className="pull-right" shape="pill">1</Tag>\n'}
+                        {'    lorem\n'}
+                        {'  </ListGroup.Item>\n  ...\n'}
+                        {'</ListGroup>\n<ListGroup>\n  ...\n'}
+                        {'  <ListGroup.Item href="javascript:void(0)" active>\n'}
+                        {'    Lorem ipsum dolor sit amet.\n'}
+                        {'  </ListGroup.Item>\n  ...\n'}
                         {'</ListGroup>'}
                     </Highlight>
                 </Card>
@@ -115,12 +116,12 @@ const ListGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<ListGroup>\n`}
-                        {`  <ListGroup.Item href="javascript:void(0)">\n`}
-                        {`    <h5>List group item heading</h5>\n`}
+                        {'<ListGroup>\n'}
+                        {'  <ListGroup.Item href="javascript:void(0)">\n'}
+                        {'    <h5>List group item heading</h5>\n'}
                         {'    <div>Donec id elit non mi porta gravida at eget metus.'}
-                        {` Maecenas sed diam eget risus varius blandit.</div>\n`}
-                        {`  </ListGroup.Item>\n  ...\n`}
+                        {' Maecenas sed diam eget risus varius blandit.</div>\n'}
+                        {'  </ListGroup.Item>\n  ...\n'}
                         {'</ListGroup>'}
                     </Highlight>
                 </Card>

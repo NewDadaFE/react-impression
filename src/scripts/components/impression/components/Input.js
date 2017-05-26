@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
 import Upload from './Upload';
 import * as System from '../utils/system';
@@ -152,7 +153,7 @@ export default class Input extends PureComponent {
                 onClick,
                 className,
                 children,
-                ...others,
+                ...others
             } = this.props,
             { showOption, showClear } = this.state,
             pillClass = pill ? 'input-pill' : null;
