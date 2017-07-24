@@ -52,6 +52,7 @@ export default class InputView extends Component {
         this.refs.clearInput.setValue('');
         this.refs.clearInput.focus();
     }
+
     render() {
         return (
             <div>
@@ -83,7 +84,10 @@ export default class InputView extends Component {
                                     <Form>
                                         <Form.Group>
                                             <label>pill shape:</label>
-                                            <Input type="text" defaultValue="something" pill>
+                                            <Input
+                                                type="text"
+                                                defaultValue="something"
+                                                pill
                                                 <Icon type="search" />
                                             </Input>
                                         </Form.Group>

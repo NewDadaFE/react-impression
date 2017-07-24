@@ -7,7 +7,8 @@ export default class RadioView extends Component {
     static propTypes = {
         routes: PropTypes.array,
     }
-    onChangeHandle = () => {
+    onChangeHandle = (event, value) => {
+        console.log(value);
         console.log(Radio.getValue(this.refs.radio));
     }
     render() {

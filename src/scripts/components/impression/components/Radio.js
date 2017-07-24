@@ -32,7 +32,7 @@ export default class Radio extends PureComponent {
         super(props);
 
         this.state = {
-            time: (new Date()).valueOf() + Math.ceil(Math.random() * 10), // 设置radio id时间戳 ？
+            time: (new Date()).valueOf() + Math.ceil(Math.random() * 10), // 设置radio id时间戳
         };
     }
 
@@ -72,7 +72,6 @@ export default class Radio extends PureComponent {
             ...others
             } = this.props;
         let { time } = this.state;
-        //  77 性能
 
         return(
             <label
@@ -87,7 +86,6 @@ export default class Radio extends PureComponent {
                     checked={checked}
                     defaultChecked={defaultChecked}
                     disabled={disabled}
-                    // onChange={event => this.onChangeHandle(event, value)}
                     onChange={event => onChange && onChange(event, value)}
                     id={`radio${time}`}
                     />
@@ -103,7 +101,6 @@ export default class Radio extends PureComponent {
 // getValue
 Radio.getValue = ref => {
     if(!ref) return undefined;
-    console.log('get', ref);
     return ref.getValue();
 };
 
