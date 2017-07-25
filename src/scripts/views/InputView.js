@@ -87,7 +87,7 @@ export default class InputView extends Component {
                                             <Input
                                                 type="text"
                                                 defaultValue="something"
-                                                pill
+                                                pill>
                                                 <Icon type="search" />
                                             </Input>
                                         </Form.Group>
