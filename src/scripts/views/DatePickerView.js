@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Form, Input } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -38,8 +39,8 @@ const DatePickerView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Input type="date" />\n`}
-                        {`<Input type="date" defaultValue="2016-05-29"/>\n`}
+                        {'<Input type="date" />\n'}
+                        {'<Input type="date" defaultValue="2016-05-29"/>\n'}
                         {'<Input type="date" defaultValue="2016-05-29" disabled/>'}
                     </Highlight>
                 </Card>
@@ -74,8 +75,8 @@ const DatePickerView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Input type="date" defaultValue="2016-05-29" minDate="2016-05-15" />\n`}
-                        {`<Input type="date" defaultValue="2016-05-29" maxDate="2016-05-31"/>\n`}
+                        {'<Input type="date" defaultValue="2016-05-29" minDate="2016-05-15" />\n'}
+                        {'<Input type="date" defaultValue="2016-05-29" maxDate="2016-05-31"/>\n'}
                         {'<Input type="date" defaultValue="2016-05-29" firstDayOfWeek={1} />'}
                     </Highlight>
                 </Card>
@@ -110,8 +111,8 @@ const DatePickerView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Input type="date" defaultValue="2016-5-29" format="Y-M-D" />\n`}
-                        {`<Input type="date" defaultValue="2016/05/29" format="YYYY/MM/DD" />\n`}
+                        {'<Input type="date" defaultValue="2016-5-29" format="Y-M-D" />\n'}
+                        {'<Input type="date" defaultValue="2016/05/29" format="YYYY/MM/DD" />\n'}
                         {'<Input type="date" defaultValue="2016年05月29日" format="YYYY年MM月DD日" />'}
                     </Highlight>
                 </Card>

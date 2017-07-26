@@ -31,12 +31,14 @@
     "highlight.js": "^9.9.0",
     "moment": "^2.14.1",
     "perfect-scrollbar": "^0.6.12",
+    "prop-types": "^15.5.10",
     "react": "^15.4.1",
+    "react-addons-css-transition-group": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-addons-css-transition-group": "^15.4.1"
+    "react-router": "3.0.5"
   },
   "peerDependencies": {
-    "react-router": "^3.0.2"
+    "react-router": "3.0.5"
   },
   "devDependencies": {
     "babel": "^6.5.2",

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Timeline, Icon } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -53,14 +54,14 @@ const TimelineView = ({ routes }) => {
                                 </Timeline>
                             </Card.Block>
                             <Highlight>
-                                {`import { Timeline } from 'impression-react';\n\n`}
-                                {`<Timeline>\n`}
-                                {`  <Timeline.Item dot={<Icon type="play-circle-o" className="text-muted"/>}>\n`}
-                                {`    1999 疯狂世界\n`}
-                                {`  </Timeline.Item>\n  ... \n`}
-                                {`  <Timeline.Item dot={<Icon type="pause-circle-o" className="text-muted"/>}>\n`}
-                                {`    <a href="javascript:void(0);">查看更多</a>\n`}
-                                {`   </Timeline.Item>\n`}
+                                {'import { Timeline } from "impression-react";\n\n'}
+                                {'<Timeline>\n'}
+                                {'  <Timeline.Item dot={<Icon type="play-circle-o" className="text-muted"/>}>\n'}
+                                {'    1999 疯狂世界\n'}
+                                {'  </Timeline.Item>\n  ... \n'}
+                                {'  <Timeline.Item dot={<Icon type="pause-circle-o" className="text-muted"/>}>\n'}
+                                {'    <a href="javascript:void(0);">查看更多</a>\n'}
+                                {'   </Timeline.Item>\n'}
                                 {'</Timeline>'}
                             </Highlight>
                         </Card>

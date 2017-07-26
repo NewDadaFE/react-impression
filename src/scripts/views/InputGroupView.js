@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, InputGroup } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -39,14 +40,14 @@ const InputGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`import { InputGroup } from 'impression-react';\n\n`}
-                        {`<InputGroup>\n`}
-                        {`  <InputGroup.Addon>@</InputGroup.Addon>\n`}
-                        {`  <InputGroup.Input placeholder="something"/>\n`}
-                        {`</InputGroup>\n...\n`}
-                        {`<InputGroup>\n`}
-                        {`  <InputGroup.Addon pure>+86</InputGroup.Addon>\n`}
-                        {`  <InputGroup.Input placeholder="phone"/>\n`}
+                        {'import { InputGroup } from "impression-react";\n\n'}
+                        {'<InputGroup>\n'}
+                        {'  <InputGroup.Addon>@</InputGroup.Addon>\n'}
+                        {'  <InputGroup.Input placeholder="something"/>\n'}
+                        {'</InputGroup>\n...\n'}
+                        {'<InputGroup>\n'}
+                        {'  <InputGroup.Addon pure>+86</InputGroup.Addon>\n'}
+                        {'  <InputGroup.Input placeholder="phone"/>\n'}
                         {'</InputGroup>'}
                     </Highlight>
                 </Card>
@@ -76,9 +77,9 @@ const InputGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<InputGroup>\n`}
-                        {`  <InputGroup.Button theme="default">help</InputGroup.Button>\n`}
-                        {`  <InputGroup.Input placeholder="something"/>\n`}
+                        {'<InputGroup>\n'}
+                        {'  <InputGroup.Button theme="default">help</InputGroup.Button>\n'}
+                        {'  <InputGroup.Input placeholder="something"/>\n'}
                         {'</InputGroup>'}
                     </Highlight>
                 </Card>
@@ -107,10 +108,10 @@ const InputGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<InputGroup size="sm">\n`}
-                        {`  <InputGroup.Input placeholder="something"/>\n`}
-                        {`  <InputGroup.Button theme="primary">Search</InputGroup.Button>\n`}
-                        {`</InputGroup>\n<InputGroup>...</InputGroup>\n`}
+                        {'<InputGroup size="sm">\n'}
+                        {'  <InputGroup.Input placeholder="something"/>\n'}
+                        {'  <InputGroup.Button theme="primary">Search</InputGroup.Button>\n'}
+                        {'</InputGroup>\n<InputGroup>...</InputGroup>\n'}
                         {'<InputGroup size="lg">...</InputGroup>'}
                     </Highlight>
                 </Card>

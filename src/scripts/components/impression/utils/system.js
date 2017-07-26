@@ -1,5 +1,5 @@
 import { findDOMNode } from 'react-dom';
-import { isDescendentNode } from './dom';
+import { isDescendentNode } from './dom'; // 获取组件中的真实dom
 
 /**
  * 初始化.

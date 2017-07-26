@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import SelectOption from './SelectOption';
 import * as System from '../utils/system';
 
@@ -67,7 +68,7 @@ export default class Select extends PureComponent {
             });
         }
     }
-    // focus
+    // focus  没调用？
     focus() {
         this.refs.main.focus();
     }
@@ -78,18 +79,15 @@ export default class Select extends PureComponent {
         });
     }
     // 隐藏菜单
-    hideOptionsHandle = () => {
-        this.setState({
-            showOption: false,
-        });
-    }
+    hideOptionsHandle = () => this.setState({ showOption: false });
+
     /**
      * option选中回调.
      * @param  {[String]} newValue [值]
      * @param  {[String]} text     [文本显示]
      * @param  {[Number]} index    [索引]
      */
-    selectOptionHandle(newValue, text, index) {
+    selectOptionHandle (newValue, text, index) {
         let { onChange } = this.props,
             { main } = this.refs,
             value = this.isPuppet ? this.props.value : this.state.value;
@@ -123,12 +121,12 @@ export default class Select extends PureComponent {
             originValue = this.isPuppet ? this.props.value : this.state.value,
             text;
 
-        this.options = [];
+        this.options = []; // this问题
 
         children = React.Children.map(children, (child, index) => {
             if(!child) {
                 return child;
-            }
+            } // ? child ?
 
 
             let { value, children, disabled } = child.props;
@@ -140,7 +138,7 @@ export default class Select extends PureComponent {
             value === originValue && (text = children);
             value === originValue
                         && !disabled && this.refs.main
-                        && (this.refs.main.value = children);
+                        && (this.refs.main.value = children);  //  todo
             return React.cloneElement(child, {
                 key: index,
                 active: value === originValue,

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components/';
 
@@ -11,7 +12,6 @@ const LayoutView = ({ routes }) => {
                 <Card>
                     <Card.Block>
                         <Row>
-                            {false}
                             <Col>
                                 <div className="bg-primary text-center">1</div>
                             </Col>
@@ -103,7 +103,17 @@ const LayoutView = ({ routes }) => {
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
+                            <Col pull="1" col="6">
+                                <div className="bg-primary text-center">12</div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col col="6" push="1">
+                                <div className="bg-primary text-center">12</div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col offset="1" col="9">
                                 <div className="bg-primary text-center">12</div>
                             </Col>
                         </Row>
@@ -122,7 +132,7 @@ const LayoutView = ({ routes }) => {
                         {'  <Col>1</Col>\n'}
                         {'  <Col>1</Col>\n'}
                         {'  <Col>1</Col>\n'}
-                        {`</Row>\n`}
+                        {'</Row>\n'}
                         {'<Row>\n'}
                         {'  <Col>2</Col>\n'}
                         {'  <Col>2</Col>\n'}
@@ -130,17 +140,26 @@ const LayoutView = ({ routes }) => {
                         {'  <Col>2</Col>\n'}
                         {'  <Col>2</Col>\n'}
                         {'  <Col>2</Col>\n'}
-                        {`</Row>\n`}
+                        {'</Row>\n'}
                         {'<Row>\n'}
                         {'  <Col>3</Col>\n'}
                         {'  <Col>3</Col>\n'}
                         {'  <Col>3</Col>\n'}
                         {'  <Col>3</Col>\n'}
-                        {`</Row>\n`}
+                        {'</Row>\n'}
                         {'<Row>\n'}
                         {'  <Col>6</Col>\n'}
                         {'  <Col>6</Col>\n'}
-                        {'</Row>'}
+                        {'</Row>\n'}
+                        {'<Row>\n'}
+                        {'   <Col pull="1" col="6">\n'}
+                        {'</Row>\n'}
+                        {'<Row>\n'}
+                        {'   <Col push="1" col="6">\n'}
+                        {'</Row>\n'}
+                        {'<Row>\n'}
+                        {'   <Col offset="1" col="6">\n'}
+                        {'</Row>\n'}
                     </Highlight>
                 </Card>
                 <h3 className="text-secondary">Col API</h3>

@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Tag组件
@@ -37,7 +38,7 @@ export default class Tag extends PureComponent {
                 outline,
                 children,
                 className,
-                ...others,
+                ...others
             } = this.props,
             tagStyle = outline ? `tag-outline-${theme}` : `tag-${theme}`,
             tagShape = shape ? `tag-${shape}` : '';

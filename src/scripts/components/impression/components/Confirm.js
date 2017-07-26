@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
-
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 /**
  * Confirm组件.
  */
@@ -51,7 +51,7 @@ export default class Confirm extends PureComponent {
                 onCancelClick,
                 className,
                 children,
-                ...others,
+                ...others
             } = this.props,
             iconTypeClass = this.getAddonByType(type);
 
