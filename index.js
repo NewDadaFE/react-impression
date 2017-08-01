@@ -1,3 +1,5 @@
+const inProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
     env: {
         browser: true,
@@ -46,6 +48,9 @@ module.exports = {
         "no-prototype-builtins": 0,
         "no-script-url": 0,
         "global-require": 0,
-        "max-len": [2, {"code" : 120}]
+        "max-len": [2, {"code" : 120}],
+        'no-debugger': inProduction ? 2 : 0,
+        'no-console': inProduction ? 2 : 0,
+        'no-alert': inProduction ? 2 : 0,
     }
 };

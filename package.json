@@ -1,14 +1,16 @@
 {
-  "name": "eslint-config-impression",
-  "version": "1.0.5",
-  "description": "An enterprise javaScript style guide",
+  "name": "eslint-config-react-impression",
+  "version": "1.1.2",
+  "description": "ESlint shareable config for React support in javaScript standard style.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm config set registry http://registry.npmjs.org",
+    "postpublish": "npm config set registry https://registry.npm.taobao.org/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shenlq/eslint-config-impression.git"
+    "url": "https://github.com/NewDadaFE/eslint-config-vue-impression.git"
   },
   "keywords": [
     "eslint",
@@ -18,20 +20,18 @@
     "javascript",
     "eslintconfig"
   ],
-  "author": "peter.shenlq",
+  "author": "NewDadaFE",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shenlq/eslint-config-impression/issues"
+    "url": "https://github.com/NewDadaFE/eslint-config-vue-impression/issues"
   },
-  "homepage": "https://github.com/shenlq/eslint-config-impression",
-  "peerDependencies": {
-    "eslint": "^3.4.0",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-jsx-a11y": "^2.2.1",
-    "eslint-plugin-react": "^6.2.0",
-    "eslint-config-airbnb": "^10.0.1"
-  },
+  "homepage": "https://github.com/NewDadaFE/eslint-config-vue-impression",
   "dependencies": {
-    "eslint-config-airbnb": "^10.0.1"
+    "babel-eslint": "*",
+    "eslint": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-react": "*",
+    "eslint-config-airbnb": "*"
   }
 }

@@ -1,18 +1,19 @@
-# eslint-config-impression
+# eslint-config-react-impression
 
-An enterprise javaScript style guide.
+ESlint shareable config for React support in javaScript standard style.
 
 ## Install
 
 ```
-    npm i eslint-config-impression eslint-plugin-babel eslint-plugin-flow-vars eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --save-dev
+    npm i eslint-config-react-impression eslint-plugin-babel eslint-plugin-flow-vars eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --save-dev
 ```
 
 ## Examples
 
+.babelrc
 ```javascript
     module.exports = {
-        "extends": "impression",
+        "extends": "react-impression",
         "rules": {
             ...
         }
