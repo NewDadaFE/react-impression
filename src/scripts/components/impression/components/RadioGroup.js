@@ -103,7 +103,7 @@ export default class RadioGroup extends PureComponent {
 }
 
 // getValue
-RadioGroup.getValue = ref => {
+RadioGroup.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getValue();

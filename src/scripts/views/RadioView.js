@@ -36,7 +36,7 @@ export default class RadioView extends Component {
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Radio } from 'impression-react';\n\n<Radio ref="radio">single</Radio>`}
+                                    {'import { Radio } from \'impression-react\';\n\n<Radio ref="radio">single</Radio>'}
                                 </Highlight>
                             </Card>
                         </Col>
@@ -66,17 +66,17 @@ export default class RadioView extends Component {
                                             <label>defaultValue</label>
                                             <RadioGroup ref="radios" defaultValue={1}>
                                                 { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>,
                                                 )}
                                             </RadioGroup>
                                         </Form.Group>
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Radio, RadioGroup } from 'impression-react';\n\n`}
-                                    {`<RadioGroup defaultValue={1} >\n`}
-                                    {`  <Radio value={1}>Yes</Radio>\n`}
-                                    {`  <Radio value={2}>No</Radio>\n`}
+                                    {'import { Radio, RadioGroup } from \'impression-react\';\n\n'}
+                                    {'<RadioGroup defaultValue={1} >\n'}
+                                    {'  <Radio value={1}>Yes</Radio>\n'}
+                                    {'  <Radio value={2}>No</Radio>\n'}
                                     {'</RadioGroup>'}
                                 </Highlight>
                             </Card>
@@ -89,15 +89,15 @@ export default class RadioView extends Component {
                                             <label>value</label>
                                             <RadioGroup value={2} onChange={this.onChangeHandle}>
                                                 { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>,
                                                 )}
                                             </RadioGroup>
                                         </Form.Group>
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<RadioGroup defaultValue={1} >\n`}
-                                    {`  <Radio value={1}>First</Radio>\n  ...\n`}
+                                    {'<RadioGroup defaultValue={1} >\n'}
+                                    {'  <Radio value={1}>First</Radio>\n  ...\n'}
                                     {'</RadioGroup>'}
                                 </Highlight>
                             </Card>
@@ -110,15 +110,15 @@ export default class RadioView extends Component {
                                             <label>Disabled</label>
                                             <RadioGroup value={2} disabled>
                                                 { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                    <Radio key={index} value={item.id}>{item.name}</Radio>,
                                                 )}
                                             </RadioGroup>
                                         </Form.Group>
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<RadioGroup defaultValue={2} disabled>\n`}
-                                    {`  <Radio value={1}>First</Radio>\n  ...\n`}
+                                    {'<RadioGroup defaultValue={2} disabled>\n'}
+                                    {'  <Radio value={1}>First</Radio>\n  ...\n'}
                                     {'</RadioGroup>'}
                                 </Highlight>
                             </Card>

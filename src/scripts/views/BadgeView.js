@@ -44,11 +44,11 @@ const BadgeView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`import { Badge } from 'impression-react';\n\n`}
-                        {`<Badge content="3">...</Badge>\n`}
-                        {`<Badge content="16" theme="secondary">...</Badge>\n`}
-                        {`<Badge content="25" theme="danger">...</Badge>\n`}
-                        {`<Badge content="33" theme="success">...</Badge>\n`}
+                        {'import { Badge } from \'impression-react\';\n\n'}
+                        {'<Badge content="3">...</Badge>\n'}
+                        {'<Badge content="16" theme="secondary">...</Badge>\n'}
+                        {'<Badge content="25" theme="danger">...</Badge>\n'}
+                        {'<Badge content="33" theme="success">...</Badge>\n'}
                         {'<Badge content="99+" theme="inverse">...</Badge>'}
                     </Highlight>
                 </Card>
@@ -79,9 +79,9 @@ const BadgeView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Badge><Icon size="lg" type="bell" /></Badge>\n`}
-                        {`<Badge theme="danger"><Icon size="lg" type="bell-o" /></Badge>\n`}
-                        {`<Badge theme="danger"><Icon size="lg" type="envelope-o" /></Badge>\n`}
+                        {'<Badge><Icon size="lg" type="bell" /></Badge>\n'}
+                        {'<Badge theme="danger"><Icon size="lg" type="bell-o" /></Badge>\n'}
+                        {'<Badge theme="danger"><Icon size="lg" type="envelope-o" /></Badge>\n'}
                         {'<Badge theme="danger"><Icon size="lg" type="bullhorn" /></Badge>'}
                     </Highlight>
                 </Card>
@@ -104,9 +104,9 @@ const BadgeView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Badge type="legend">primary</Badge>\n`}
-                        {`<Badge type="legend" theme="danger">danger</Badge>\n`}
-                        {`<Badge type="legend" theme="warning">warning</Badge>\n`}
+                        {'<Badge type="legend">primary</Badge>\n'}
+                        {'<Badge type="legend" theme="danger">danger</Badge>\n'}
+                        {'<Badge type="legend" theme="warning">warning</Badge>\n'}
                         {'<Badge type="legend" theme="success">success</Badge>'}
                     </Highlight>
                 </Card>

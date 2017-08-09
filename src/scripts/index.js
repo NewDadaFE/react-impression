@@ -12,7 +12,7 @@ if (module.hot) {
         <AppContainer>
             <App />
         </AppContainer>,
-        root
+        root,
     );
 
     // v3.0.0起支持组件热加载
@@ -23,7 +23,7 @@ if (module.hot) {
             <AppContainer>
                 <App />
             </AppContainer>,
-            root
+            root,
         );
     });
 } else {

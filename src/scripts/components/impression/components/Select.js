@@ -58,7 +58,7 @@ export default class Select extends PureComponent {
 
         if(!this.isPuppet) {
             main.value = null;
-            this.options.forEach(option => {
+            this.options.forEach((option) => {
                 if(value === option.value) main.value = option.name;
             });
 
@@ -158,7 +158,8 @@ export default class Select extends PureComponent {
                     defaultValue={text}
                     readOnly
                     ref="main"
-                    placeholder={placeholder} disabled={disabled}
+                    placeholder={placeholder}
+                    disabled={disabled}
                     className={classnames('form-control', 'select-selection')}
                     onClick={this.toggleOptionsHandle} />
                 <i className="fa fa-angle-down select-addon" onClick={this.toggleOptionsHandle} />
@@ -171,7 +172,7 @@ export default class Select extends PureComponent {
 }
 
 // getValue
-Select.getValue = ref => {
+Select.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getValue();

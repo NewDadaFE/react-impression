@@ -24,7 +24,7 @@ export default class CheckboxView extends Component {
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { Checkbox } from 'impression-react';\n\n`}
+                                    {'import { Checkbox } from \'impression-react\';\n\n'}
                                     {'<Checkbox defaultChecked>remember me</Checkbox>'}
                                 </Highlight>
                             </Card>
@@ -62,9 +62,9 @@ export default class CheckboxView extends Component {
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`import { CheckboxGroup, Checkbox } from 'impression-react';\n\n`}
-                                    {`<CheckboxGroup defaultValue={['basketball', football]}>\n`}
-                                    {`  <Checkbox>basketball</Checkbox>\n  ...\n`}
+                                    {'import { CheckboxGroup, Checkbox } from \'impression-react\';\n\n'}
+                                    {'<CheckboxGroup defaultValue={[\'basketball\', football]}>\n'}
+                                    {'  <Checkbox>basketball</Checkbox>\n  ...\n'}
                                     {'</CheckboxGroup>'}
                                 </Highlight>
                             </Card>
@@ -84,8 +84,8 @@ export default class CheckboxView extends Component {
                                     </Form>
                                 </Card.Block>
                                 <Highlight>
-                                    {`<CheckboxGroup value={['basketball', football]}>\n`}
-                                    {`  <Checkbox>basketball</Checkbox>\n  ...\n`}
+                                    {'<CheckboxGroup value={[\'basketball\', football]}>\n'}
+                                    {'  <Checkbox>basketball</Checkbox>\n  ...\n'}
                                     {'</CheckboxGroup>'}
                                 </Highlight>
                             </Card>

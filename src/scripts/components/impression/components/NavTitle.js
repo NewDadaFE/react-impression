@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { PropTypes } from 'react';
 
-    // props校验
+// props校验
 const propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,

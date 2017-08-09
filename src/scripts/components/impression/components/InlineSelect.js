@@ -89,7 +89,7 @@ export default class InlineSelect extends PureComponent {
 }
 
 // getValue
-InlineSelect.getValue = ref => {
+InlineSelect.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getValue();

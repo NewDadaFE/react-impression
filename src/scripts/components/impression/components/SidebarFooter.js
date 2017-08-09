@@ -14,7 +14,7 @@ export default class SidebarFooter extends PureComponent {
     render() {
         let { children, className, ...others } = this.props;
 
-        children = React.Children.map(children, child => {
+        children = React.Children.map(children, (child) => {
             if(!child) {
                 return child;
             }

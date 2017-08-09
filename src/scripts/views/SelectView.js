@@ -71,12 +71,12 @@ export default class SelectView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Select } from 'impression-react';\n\n`}
-                            {`<Select>\n`}
-                            {`  <Select.Option value="1">First</Select.Option>\n  ...\n`}
-                            {`</Select>\n`}
-                            {`<Select value={0}>\n`}
-                            {`  <Select.Option value={0}>First</Select.Option>\n  ...\n`}
+                            {'import { Select } from \'impression-react\';\n\n'}
+                            {'<Select>\n'}
+                            {'  <Select.Option value="1">First</Select.Option>\n  ...\n'}
+                            {'</Select>\n'}
+                            {'<Select value={0}>\n'}
+                            {'  <Select.Option value={0}>First</Select.Option>\n  ...\n'}
                             {'</Select>'}
                         </Highlight>
                     </Card>
@@ -111,10 +111,10 @@ export default class SelectView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Select disabled>...</Select>\n`}
-                            {`<Select>\n`}
-                            {`  <Select.Option value="1" disabled>First</Select.Option>\n`}
-                            {`  <Select.Option value="2" disabled>Second</Select.Option>\n  ...\n`}
+                            {'<Select disabled>...</Select>\n'}
+                            {'<Select>\n'}
+                            {'  <Select.Option value="1" disabled>First</Select.Option>\n'}
+                            {'  <Select.Option value="2" disabled>Second</Select.Option>\n  ...\n'}
                             {'</Select>'}
                         </Highlight>
                     </Card>

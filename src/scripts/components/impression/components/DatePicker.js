@@ -137,8 +137,8 @@ export default class DatePicker extends PureComponent {
             prevMonthMonth = prevMonth.format(FORMAT.MONTH),
             prevMonthDaysLength = prevMonth.daysInMonth(),
             prevMonthMax = (firstDay - firstDayOfWeek) >= 0 ?
-                            (firstDay - firstDayOfWeek) :
-                            (firstDay - firstDayOfWeek + 7);
+                (firstDay - firstDayOfWeek) :
+                (firstDay - firstDayOfWeek + 7);
 
         for (let i = 0; i <= prevMonthMax - 1; i++) {
             let dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength - i}`,
@@ -233,7 +233,7 @@ export default class DatePicker extends PureComponent {
     /**
      * 选中时间.
      */
-    selectDateHandle = day => {
+    selectDateHandle = (day) => {
         let { onSelect, onChange } = this.props,
             { checkedDay, format } = this.state,
             dayFormat = day.format(format);
@@ -250,7 +250,7 @@ export default class DatePicker extends PureComponent {
      * 选中年份.
      * @param  {[String]} year [年份]
      */
-    selectYearHandle = year => {
+    selectYearHandle = (year) => {
         let { currentMoment } = this.state,
             newMoment = moment(currentMoment).year(year);
 
@@ -264,7 +264,7 @@ export default class DatePicker extends PureComponent {
      * 选中月份.
      * @param  {[String]} month [月份]
      */
-    selectMonthHandle = month => {
+    selectMonthHandle = (month) => {
         let { currentMoment, format } = this.state,
             { type, onSelect, onChange } = this.props,
             newMoment = moment(currentMoment).month(month);
@@ -361,7 +361,7 @@ export default class DatePicker extends PureComponent {
      * 无限获取年份.
      * @param  {[Event]} event [事件]
      */
-    scrollYearHandle = event => {
+    scrollYearHandle = (event) => {
         if(!this._activeYear) {
             return;
         }
@@ -428,27 +428,27 @@ export default class DatePicker extends PureComponent {
                     <div className="datepicker-body">
                         <div className="datepicker-weekgroup">
                             { weekdays.map((day, index) =>
-                                <div key={index} className="datepicker-weekgroup-item">{day}</div>
+                                <div key={index} className="datepicker-weekgroup-item">{day}</div>,
                             )}
                         </div>
                         <div className="datepicker-daygroup">
                             { days.map((
                                 { text, date, checked, isToday, inMonth, disable }, index) =>
                                 <div
-                                    key={index}
-                                    onClick={() => !disable && this.selectDateHandle(date)}
-                                    className="datepicker-daygroup-item">
-                                    <div
+                                        key={index}
+                                        onClick={() => !disable && this.selectDateHandle(date)}
+                                        className="datepicker-daygroup-item">
+                                        <div
                                         className={
-                                        classnames('datepicker-daygroup-item-text', {
-                                            disable,
-                                            now: isToday,
-                                            'text-muted': !inMonth,
-                                            active: date.isSame(checkedDay),
-                                        })}>
+                                            classnames('datepicker-daygroup-item-text', {
+                                                disable,
+                                                now: isToday,
+                                                'text-muted': !inMonth,
+                                                active: date.isSame(checkedDay),
+                                            })}>
                                         {text}
                                     </div>
-                                </div>
+                                    </div>,
                             )}
                         </div>
                     </div>
@@ -460,7 +460,7 @@ export default class DatePicker extends PureComponent {
                             ref="_yeargroup"
                             onScroll={this.scrollYearHandle}>
                             { years.map((year, index) =>
-                                <div
+                                (<div
                                     key={index}
                                     onClick={() => this.selectYearHandle(year)}
                                     ref={dom => (Number(year) === Number(currentYear))
@@ -469,12 +469,12 @@ export default class DatePicker extends PureComponent {
                                         'datepicker-yeargroup-item',
                                         { active: Number(year) === Number(currentYear) })}>
                                     {year}
-                                </div>
+                                </div>),
                             )}
                         </div>
                         <div className="datepicker-monthgroup" ref="_monthgroup">
                             { months.map((month, index) =>
-                                <div
+                                (<div
                                     key={index}
                                     onClick={() => this.selectMonthHandle(index)}
                                     ref={dom => (index === currentMonth - 1)
@@ -483,7 +483,7 @@ export default class DatePicker extends PureComponent {
                                         'datepicker-monthgroup-item',
                                         { active: index === currentMonth - 1 })}>
                                     {month}
-                                </div>
+                                </div>),
                             )}
                         </div>
                     </div>

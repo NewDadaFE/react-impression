@@ -37,7 +37,8 @@ export default class Progress extends PureComponent {
         return (
             <progress
                 {...others}
-                value={value} max={max}
+                value={value}
+                max={max}
                 className={classnames('progress', themeClass, stripedClass, className)} />
         );
     }

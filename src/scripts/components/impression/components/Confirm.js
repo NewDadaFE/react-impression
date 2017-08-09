@@ -31,7 +31,7 @@ export default class Confirm extends PureComponent {
      * 根据类型获取Icon.
      * @return {[String]} [Icon类型]
      */
-    getAddonByType = type => {
+    getAddonByType = (type) => {
         switch(type) {
             case 'info':
                 return 'fa-question-circle text-primary';
@@ -51,7 +51,7 @@ export default class Confirm extends PureComponent {
                 onCancelClick,
                 className,
                 children,
-                ...others,
+                ...others
             } = this.props,
             iconTypeClass = this.getAddonByType(type);
 

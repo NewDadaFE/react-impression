@@ -13,7 +13,7 @@ export default class CalendarView extends Component {
             days: [5, 6, 7, 8, 9, 10],
         };
     }
-    customDateCellRender = date => {
+    customDateCellRender = (date) => {
         if(!date.inMonth) {
             return null;
         }
@@ -57,14 +57,14 @@ export default class CalendarView extends Component {
                 return null;
         }
     }
-    checkDateCellRender = date => {
+    checkDateCellRender = (date) => {
         if(this.state.days.indexOf(date.day) !== -1) {
             return <div className="text-success text-center"><Icon type="check" /></div>;
         }
 
         return null;
     }
-    checkDateClickHandle = date => {
+    checkDateClickHandle = (date) => {
         let { days } = this.state;
 
         if(!date.inMonth) {
@@ -78,7 +78,7 @@ export default class CalendarView extends Component {
             });
         } else { // 去除选中
             this.setState({
-                days: days.filter(day => {
+                days: days.filter((day) => {
                     return day !== date.day;
                 }),
             });
@@ -95,7 +95,7 @@ export default class CalendarView extends Component {
                             <Calendar />
                         </Card.Block>
                         <Highlight>
-                            {`import { Calendar } from 'impression-react';\n\n`}
+                            {'import { Calendar } from \'impression-react\';\n\n'}
                             {'<Calendar />'}
                         </Highlight>
                     </Card>
@@ -110,12 +110,13 @@ export default class CalendarView extends Component {
                                     <Calendar
                                         onCellClick={this.checkDateClickHandle}
                                         cellRender={this.checkDateCellRender}
-                                        firstDayOfWeek={0} size="sm" />
+                                        firstDayOfWeek={0}
+                                        size="sm" />
                                 </Col>
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Calendar size="sm" />\n`}
+                            {'<Calendar size="sm" />\n'}
                             {'<Calendar firstDayOfWeek={0} size="sm" />'}
                         </Highlight>
                     </Card>

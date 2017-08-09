@@ -51,7 +51,7 @@ export default class Button extends PureComponent {
                 close,
                 block,
                 children,
-                ...others,
+                ...others
             } = this.props,
             { Tag } = this.state,
             btnClass = !close ? 'btn' : null,

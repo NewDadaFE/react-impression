@@ -22,8 +22,8 @@ const SwitchView = ({ routes }) => {
                         </Form>
                     </Card.Block>
                     <Highlight>
-                        {`import { Switch } from 'impression-react';\n\n`}
-                        {`<Switch defaultChecked/>\n`}
+                        {'import { Switch } from \'impression-react\';\n\n'}
+                        {'<Switch defaultChecked/>\n'}
                         {'<Switch disabled defaultChecked />'}
                     </Highlight>
                 </Card>

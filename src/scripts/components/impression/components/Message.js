@@ -99,7 +99,7 @@ export default class Message extends Component {
 }
 
 // 隐藏消息
-const hideMessage = duration => {
+const hideMessage = (duration) => {
     _timers.push(setTimeout(() => {
         _message.setState({
             show: false,
@@ -145,7 +145,7 @@ Message.error = (message, duration) => {
 };
 
 // 显示loading信息
-Message.loading = message => {
+Message.loading = (message) => {
     showMessage('loading', message, 0);
 };
 

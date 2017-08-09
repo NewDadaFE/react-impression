@@ -35,4 +35,4 @@ export default class Image extends PureComponent {
             <img {...others} className={classnames(classes, className)} />
         );
     }
- }
+}

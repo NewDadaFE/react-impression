@@ -45,7 +45,7 @@ export default class ButtonGroup extends PureComponent {
                 outline: theme !== 'default' && (!onSelect || activeKey !== eventKey),
                 theme: theme === 'default' && onSelect
                     && activeKey === eventKey ? 'primary' : theme,
-                onClick: onSelect ? event => {
+                onClick: onSelect ? (event) => {
                     this.setState({
                         activeKey: eventKey,
                     });

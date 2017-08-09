@@ -37,5 +37,4 @@ export default class Option extends PureComponent {
             </li>
         );
     }
-
 }

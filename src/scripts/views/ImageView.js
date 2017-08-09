@@ -32,8 +32,8 @@ const ImageView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Image rounded src="http://placehold.it/200x200" />\n`}
-                        {`<Image circle src="http://placehold.it/200x200" />\n`}
+                        {'<Image rounded src="http://placehold.it/200x200" />\n'}
+                        {'<Image circle src="http://placehold.it/200x200" />\n'}
                         {'<Image thumbnail src="http://placehold.it/200x200" />'}
                     </Highlight>
                 </Card>

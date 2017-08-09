@@ -16,7 +16,7 @@ export default class TagView extends Component {
      * 隐藏Tag.
      * @param  {[Number]} index [索引]
      */
-    closeTagHandle = index => {
+    closeTagHandle = (index) => {
         this.setState({
             shows: this.state.shows.map((item, indx) => {
                 return indx === index ? false : item;
@@ -41,10 +41,10 @@ export default class TagView extends Component {
                             <h6>Example heading <Tag>tag</Tag></h6>
                         </Card.Block>
                         <Highlight>
-                            {`import { Tag } from 'impression-react';\n\n`}
-                            {`<h1>Example heading <Tag>tag</Tag></h1>\n`}
-                            {`<h2>Example heading <Tag>tag</Tag></h2>\n...\n`}
-                            {`<h5>Example heading <Tag>tag</Tag></h5>\n`}
+                            {'import { Tag } from \'impression-react\';\n\n'}
+                            {'<h1>Example heading <Tag>tag</Tag></h1>\n'}
+                            {'<h2>Example heading <Tag>tag</Tag></h2>\n...\n'}
+                            {'<h5>Example heading <Tag>tag</Tag></h5>\n'}
                             {'<h6>Example heading <Tag>tag</Tag></h6>'}
                         </Highlight>
                     </Card>
@@ -73,11 +73,11 @@ export default class TagView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Tag theme="default">default</Tag>\n`}
-                            {`<Tag theme="primary">primary</Tag>\n`}
-                            {`<Tag theme="success">success</Tag>\n`}
-                            {`<Tag theme="info">info</Tag>\n`}
-                            {`<Tag theme="warning">warning</Tag>\n`}
+                            {'<Tag theme="default">default</Tag>\n'}
+                            {'<Tag theme="primary">primary</Tag>\n'}
+                            {'<Tag theme="success">success</Tag>\n'}
+                            {'<Tag theme="info">info</Tag>\n'}
+                            {'<Tag theme="warning">warning</Tag>\n'}
                             {'<Tag theme="danger">danger</Tag>'}
                         </Highlight>
                     </Card>
@@ -144,7 +144,7 @@ export default class TagView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Tag closable theme="default" className="offset-l">apple</Tag>\n...`}
+                            {'<Tag closable theme="default" className="offset-l">apple</Tag>\n...'}
                         </Highlight>
                     </Card>
                     <h5>Pill tag</h5>
@@ -172,7 +172,7 @@ export default class TagView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Tag theme="default" shape="pill">default</Tag>\n...`}
+                            {'<Tag theme="default" shape="pill">default</Tag>\n...'}
                         </Highlight>
                     </Card>
                     <h5>Outline tag</h5>
@@ -200,7 +200,7 @@ export default class TagView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`<Tag theme="default" outline>default</Tag>\n...`}
+                            {'<Tag theme="default" outline>default</Tag>\n...'}
                         </Highlight>
                     </Card>
                     <h5 className="text-secondary">Tag API</h5>

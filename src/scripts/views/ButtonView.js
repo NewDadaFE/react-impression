@@ -44,9 +44,9 @@ class ButtonView extends Component {
                             </Col>
                         </Row>
                         <Highlight>
-                            {`import { Button } from 'impression-react';\n\n`}
-                            {`<Button type="button" theme="primary">primary</Button>\n`}
-                            {`<Button theme="default">default</Button>\n`}
+                            {'import { Button } from \'impression-react\';\n\n'}
+                            {'<Button type="button" theme="primary">primary</Button>\n'}
+                            {'<Button theme="default">default</Button>\n'}
                             {'<Button theme="secondary">secondary</Button>'}
                         </Highlight>
                     </Card>
@@ -70,8 +70,8 @@ class ButtonView extends Component {
                             </Col>
                         </Row>
                         <Highlight>
-                            {`<Button theme="primary" outline>primary</Button>\n`}
-                            {`<Button theme="default" outline>default</Button>\n`}
+                            {'<Button theme="primary" outline>primary</Button>\n'}
+                            {'<Button theme="default" outline>default</Button>\n'}
                             {'<Button theme="secondary" outline>secondary</Button>'}
                         </Highlight>
                     </Card>
@@ -95,8 +95,8 @@ class ButtonView extends Component {
                             </Col>
                         </Row>
                         <Highlight>
-                            {`<Button size="sm" theme="primary">sm</Button>\n`}
-                            {`<Button theme="primary">Normal</Button>\n`}
+                            {'<Button size="sm" theme="primary">sm</Button>\n'}
+                            {'<Button theme="primary">Normal</Button>\n'}
                             {'<Button size="lg" theme="primary">Large</Button>'}
                         </Highlight>
                     </Card>
@@ -120,8 +120,8 @@ class ButtonView extends Component {
                             </Col>
                         </Row>
                         <Highlight>
-                            {`<Button theme="primary" shape="pill">primary</Button>\n`}
-                            {`<Button theme="default" shape="pill">default</Button>\n`}
+                            {'<Button theme="primary" shape="pill">primary</Button>\n'}
+                            {'<Button theme="default" shape="pill">default</Button>\n'}
                             {'<Button theme="secondary" shape="pill">secondary</Button>'}
                         </Highlight>
                     </Card>
@@ -145,8 +145,8 @@ class ButtonView extends Component {
                             </Col>
                         </Row>
                         <Highlight>
-                            {`<Button theme="primary" href="www.github.com">primary</Button>\n`}
-                            {`<Button theme="default" href="www.github.com">default</Button>\n`}
+                            {'<Button theme="primary" href="www.github.com">primary</Button>\n'}
+                            {'<Button theme="default" href="www.github.com">default</Button>\n'}
                             {'<Button theme="secondary" href="www.github.com">secondary</Button>'}
                         </Highlight>
                     </Card>

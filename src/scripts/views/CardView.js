@@ -15,10 +15,7 @@ const CardView = ({ routes }) => {
                                 <Card>
                                     <Card.Block>
                                         <h4>Title</h4>
-                                        <div>
-                                            Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
-                                        </div>
+                                        <div>Some quick example text to build on the card title and make up the bulk of the card's content.</div>
                                     </Card.Block>
                                     <Image fluid src="http://placehold.it/350x200" />
                                     <Card.Block>
@@ -68,10 +65,10 @@ const CardView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`import { Card } from 'impression-react';\n\n`}
-                        {`<Card>\n`}
-                        {`  <Card.Block><h4>Title</h4>...</Card.Block>\n`}
-                        {`  <Image fluid src="http://placehold.it/350x200" />\n  ...\n`}
+                        {'import { Card } from \'impression-react\';\n\n'}
+                        {'<Card>\n'}
+                        {'  <Card.Block><h4>Title</h4>...</Card.Block>\n'}
+                        {'  <Image fluid src="http://placehold.it/350x200" />\n  ...\n'}
                         {'</Card>'}
                     </Highlight>
                 </Card>
@@ -124,8 +121,8 @@ const CardView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Card>...</Card>\n`}
-                        {`<Card className="text-center">..</Card>\n`}
+                        {'<Card>...</Card>\n'}
+                        {'<Card className="text-center">..</Card>\n'}
                         {'<Card className="text-right">...</Card>'}
                     </Highlight>
                 </Card>
@@ -191,10 +188,10 @@ const CardView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Card>\n`}
-                        {`  <Card.Header>Header</Card.Header>\n`}
-                        {`  <Card.Block>...</Card.Block>\n`}
-                        {`  <Card.Footer>footer</Card.Footer>\n`}
+                        {'<Card>\n'}
+                        {'  <Card.Header>Header</Card.Header>\n'}
+                        {'  <Card.Block>...</Card.Block>\n'}
+                        {'  <Card.Footer>footer</Card.Footer>\n'}
                         {'</Card>'}
                     </Highlight>
                 </Card>

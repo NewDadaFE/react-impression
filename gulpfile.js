@@ -6,12 +6,18 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     cssmin = require('gulp-minify-css'),
     sequence = require('gulp-run-sequence'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    editor = require('gulp-json-editor');
 
 
 // 清空
-gulp.task('clean', function() {
+gulp.task('clean:build', function() {
     return gulp.src('build', { read: false })
+    .pipe(clean({ force: true }));
+});
+
+gulp.task('clean:package', function() {
+    return gulp.src('package.json_', { read: false })
     .pipe(clean({ force: true }));
 });
 
@@ -63,6 +69,41 @@ gulp.task('sass:fontawesome', function() {
     .pipe(gulp.dest('build/styles'));
 });
 
+// 重命名package.json
+gulp.task('rename:package.json', function() {
+    return gulp.src('package.json')
+    .pipe(rename('package.json_'))
+    .pipe(gulp.dest('.'));
+});
+
+// 重命名package.json_
+gulp.task('rename:package.json_', function() {
+    return gulp.src('package.json_')
+    .pipe(rename('package.json'))
+    .pipe(gulp.dest('.'));
+});
+
+// 创建npm可用的package.json
+gulp.task('edit:package.json', function() {
+    return gulp.src('package.json')
+    .pipe(editor(function(json) {
+        json.scripts = {
+            postpublish: "gulp recovery && npm config set registry https://registry.npm.taobao.org/"
+        };
+
+        delete json.peerDependencies;
+        delete json.devDependencies;
+
+        delete json.dependencies['highlight.js'];
+        delete json.dependencies['perfect-scrollbar'];
+        delete json.dependencies['react-router'];
+
+        return json;
+    }))
+    .pipe(gulp.dest("."));
+});
+
+
 // 监听
 gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.scss', ['sass:index', 'sass:project']);
@@ -71,5 +112,15 @@ gulp.task('watch', function() {
 
 // 本地启动
 gulp.task('build', function(cb) {
-    sequence('clean', ['copy:html', 'copy:image'], ['sass:index', 'sass:project'], cb);
+    sequence('clean:build', ['copy:html', 'copy:image'], ['sass:index', 'sass:project'], cb);
+});
+
+// 备份
+gulp.task('backup', function(cb) {
+    sequence('rename:package.json', 'edit:package.json', cb);
+});
+
+// 恢复
+gulp.task('recovery', function(cb) {
+    sequence('rename:package.json_', 'clean:package', cb);
 });

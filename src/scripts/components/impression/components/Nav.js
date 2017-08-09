@@ -29,7 +29,7 @@ export default class Nav extends PureComponent {
         stacked: false,
     }
     // 选中回调
-    onSelectHandle = eventKey => {
+    onSelectHandle = (eventKey) => {
         let { activeKey } = this.state,
             { onSelect } = this.props;
 

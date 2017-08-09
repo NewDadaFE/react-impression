@@ -45,8 +45,8 @@ export default class AlertView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Alert } from 'impression-react';\n\n`}
-                            {`<Alert>姓名不能为空！</Alert>\n`}
+                            {'import { Alert } from \'impression-react\';\n\n'}
+                            {'<Alert>姓名不能为空！</Alert>\n'}
                             {'<Alert btnText="关闭"  type="danger">请先选择所属城市！</Alert>'}
                         </Highlight>
                     </Card>

@@ -122,7 +122,7 @@ const LayoutView = ({ routes }) => {
                         {'  <Col>1</Col>\n'}
                         {'  <Col>1</Col>\n'}
                         {'  <Col>1</Col>\n'}
-                        {`</Row>\n`}
+                        {'</Row>\n'}
                         {'<Row>\n'}
                         {'  <Col>2</Col>\n'}
                         {'  <Col>2</Col>\n'}
@@ -130,13 +130,13 @@ const LayoutView = ({ routes }) => {
                         {'  <Col>2</Col>\n'}
                         {'  <Col>2</Col>\n'}
                         {'  <Col>2</Col>\n'}
-                        {`</Row>\n`}
+                        {'</Row>\n'}
                         {'<Row>\n'}
                         {'  <Col>3</Col>\n'}
                         {'  <Col>3</Col>\n'}
                         {'  <Col>3</Col>\n'}
                         {'  <Col>3</Col>\n'}
-                        {`</Row>\n`}
+                        {'</Row>\n'}
                         {'<Row>\n'}
                         {'  <Col>6</Col>\n'}
                         {'  <Col>6</Col>\n'}

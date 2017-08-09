@@ -53,8 +53,8 @@ export default class Radio extends PureComponent {
             name,
             onChange,
             children,
-            ...others,
-            } = this.props;
+            ...others
+        } = this.props;
 
         return(
             <label
@@ -80,7 +80,7 @@ export default class Radio extends PureComponent {
 }
 
 // getValue
-Radio.getValue = ref => {
+Radio.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getValue();

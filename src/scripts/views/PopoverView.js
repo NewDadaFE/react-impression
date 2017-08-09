@@ -51,10 +51,10 @@ const PopoverView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`import { Popover } from 'impression-react';\n\n`}
-                        {`<Popover position="right" title="popover" content="...">...</Popover>\n`}
-                        {`<Popover position="left" title="popover" content="...">...</Popover>\n`}
-                        {`<Popover position="top" title="popover" content="...">...</Popover>\n`}
+                        {'import { Popover } from \'impression-react\';\n\n'}
+                        {'<Popover position="right" title="popover" content="...">...</Popover>\n'}
+                        {'<Popover position="left" title="popover" content="...">...</Popover>\n'}
+                        {'<Popover position="top" title="popover" content="...">...</Popover>\n'}
                         {'<Popover position="bottom" title="popover" content="...">...</Popover>'}
                     </Highlight>
                 </Card>

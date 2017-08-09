@@ -112,7 +112,7 @@ export default class Input extends PureComponent {
      * 选中候选项.
      * @param  {[String]} value [候选项值]
      */
-    selectOptionsHandle = value => {
+    selectOptionsHandle = (value) => {
         this.refMain.value = value;
 
         this.setState({
@@ -152,7 +152,7 @@ export default class Input extends PureComponent {
                 onClick,
                 className,
                 children,
-                ...others,
+                ...others
             } = this.props,
             { showOption, showClear } = this.state,
             pillClass = pill ? 'input-pill' : null;
@@ -176,9 +176,9 @@ export default class Input extends PureComponent {
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames('form-control',
-                            pillClass,
-                            'input-field',
-                            'input-field-addon')}
+                                pillClass,
+                                'input-field',
+                                'input-field-addon')}
                             readOnly
                             disabled={disabled}
                             placeholder={placeholder}
@@ -213,9 +213,9 @@ export default class Input extends PureComponent {
                             ref={ref => (this.refMain = ref)}
                             value={value}
                             className={classnames('form-control',
-                            pillClass,
-                            'input-field',
-                            'input-field-addon')}
+                                pillClass,
+                                'input-field',
+                                'input-field-addon')}
                             readOnly
                             onClick={onClick}
                             disabled={disabled}
@@ -265,7 +265,7 @@ export default class Input extends PureComponent {
                                 'input-field',
                                 {
                                     'input-field-addon': children,
-                                }
+                                },
                             )}
                             disabled={disabled}
                             placeholder={placeholder}
@@ -278,7 +278,7 @@ export default class Input extends PureComponent {
 }
 
 // getValue
-Input.getValue = ref => {
+Input.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getValue();

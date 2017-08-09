@@ -40,10 +40,10 @@ export default class TooltipView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Tooltip } from 'impression-react';\n\n`}
-                            {`<Tooltip position="right" content="Tooltip right">...</Tooltip>\n`}
-                            {`<Tooltip position="top" content="Tooltip top">..</Tooltip>\n`}
-                            {`<Tooltip position="bottom" content="Tooltip bottom">...</Tooltip>\n`}
+                            {'import { Tooltip } from \'impression-react\';\n\n'}
+                            {'<Tooltip position="right" content="Tooltip right">...</Tooltip>\n'}
+                            {'<Tooltip position="top" content="Tooltip top">..</Tooltip>\n'}
+                            {'<Tooltip position="bottom" content="Tooltip bottom">...</Tooltip>\n'}
                             {'<Tooltip position="left" content="Tooltip left">...</Tooltip>'}
                         </Highlight>
                     </Card>

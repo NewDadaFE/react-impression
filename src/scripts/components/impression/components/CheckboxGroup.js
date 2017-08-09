@@ -55,8 +55,8 @@ export default class CheckboxGroup extends PureComponent {
         if(this.isPuppet) {
             let propsValue = this.props.value,
                 originValue = checked ?
-                [...propsValue, value] :
-                [...propsValue.filter(item => item !== value)];
+                    [...propsValue, value] :
+                    [...propsValue.filter(item => item !== value)];
 
             onChange && onChange(originValue, event);
         } else {
@@ -109,7 +109,7 @@ export default class CheckboxGroup extends PureComponent {
 }
 
 // getValue
-CheckboxGroup.getValue = ref => {
+CheckboxGroup.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getValue();

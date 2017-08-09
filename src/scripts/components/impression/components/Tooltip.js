@@ -58,7 +58,7 @@ export default class Tooltip extends PureComponent {
         this.tooltip = tooltipNode;
     }
     // 显示tooltip
-    onMouseOver = event => {
+    onMouseOver = (event) => {
         let rect = event.target.getBoundingClientRect();
 
         this.createTooltip(rect);
@@ -73,11 +73,11 @@ export default class Tooltip extends PureComponent {
             { onMouseOver, onMouseOut } = children.props;
 
         children = React.cloneElement(children, {
-            onMouseOver: onMouseOver ? event => {
+            onMouseOver: onMouseOver ? (event) => {
                 onMouseOver();
                 this.onMouseOver(event);
             } : this.onMouseOver,
-            onMouseOut: onMouseOut ? event => {
+            onMouseOut: onMouseOut ? (event) => {
                 onMouseOut();
                 this.onMouseOut(event);
             } : this.onMouseOut,

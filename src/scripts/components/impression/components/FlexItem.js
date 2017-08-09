@@ -26,5 +26,4 @@ export default class FlexItem extends PureComponent {
             </div>
         );
     }
-
 }

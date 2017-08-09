@@ -39,7 +39,7 @@ const NavbarView = ({ routes }) => {
                         </Navbar>
                     </Card>
                     <Highlight>
-                        {`import { Navbar } from 'impression-react';\n\n<Navbar>...</Navbar>`}
+                        {'import { Navbar } from \'impression-react\';\n\n<Navbar>...</Navbar>'}
                     </Highlight>
                 </Card>
                 <h5>Primary</h5>

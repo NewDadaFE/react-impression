@@ -26,12 +26,12 @@ const FormView = ({ routes }) => {
                         </Form>
                     </Card.Block>
                     <Highlight>
-                        {`import { Form } from 'impression-react';\n\n`}
-                        {`<Form>\n`}
-                        {`  <Form.Group>\n`}
-                        {`    <label>Name:</label>\n`}
-                        {`    <Input type="text" placeholder="Jane Doe"/>\n     ...\n`}
-                        {`  </Form.Group>\n`}
+                        {'import { Form } from \'impression-react\';\n\n'}
+                        {'<Form>\n'}
+                        {'  <Form.Group>\n'}
+                        {'    <label>Name:</label>\n'}
+                        {'    <Input type="text" placeholder="Jane Doe"/>\n     ...\n'}
+                        {'  </Form.Group>\n'}
                         {'</Form>'}
                     </Highlight>
                 </Card>
@@ -95,15 +95,15 @@ const FormView = ({ routes }) => {
                         </Form>
                     </Card.Block>
                     <Highlight>
-                        {`<Form type="horizontal">\n`}
-                        {`  <Form.Group>\n`}
-                        {`    <Col col="2" className="text-right">\n`}
-                        {`      <Form.Control.Label>Email:</Form.Control.Label>\n`}
-                        {`    </Col>\n`}
-                        {`    <Col col="10">\n`}
-                        {`      <Input type="text" placeholder="Email"/>\n`}
-                        {`    </Col>\n`}
-                        {`  </Form.Group>\n  ...\n`}
+                        {'<Form type="horizontal">\n'}
+                        {'  <Form.Group>\n'}
+                        {'    <Col col="2" className="text-right">\n'}
+                        {'      <Form.Control.Label>Email:</Form.Control.Label>\n'}
+                        {'    </Col>\n'}
+                        {'    <Col col="10">\n'}
+                        {'      <Input type="text" placeholder="Email"/>\n'}
+                        {'    </Col>\n'}
+                        {'  </Form.Group>\n  ...\n'}
                         {'</Form>'}
                     </Highlight>
                 </Card>

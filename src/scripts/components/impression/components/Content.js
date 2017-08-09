@@ -32,12 +32,12 @@ export default class Content extends PureComponent {
     }
     render() {
         let {
-                transitionName,
-                transitionEnterTimeout,
-                transitionLeaveTimeout,
-                component,
-                className,
-                children,
+            transitionName,
+            transitionEnterTimeout,
+            transitionLeaveTimeout,
+            component,
+            className,
+            children,
         } = this.props;
 
         children && (children = React.cloneElement(children, {

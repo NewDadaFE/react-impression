@@ -31,14 +31,15 @@ export default class InputGroupInput extends PureComponent {
                 {...others}
                 type={type}
                 className={classnames('form-control', className)}
-                placeholder={placeholder} ref={ref => (this.refMain = ref)} />
+                placeholder={placeholder}
+                ref={ref => (this.refMain = ref)} />
         );
     }
 }
 
 
 // getValue
-InputGroupInput.getValue = ref => {
+InputGroupInput.getValue = (ref) => {
     if(!ref) return undefined;
 
     return ref.getVaule();

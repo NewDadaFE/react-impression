@@ -44,10 +44,10 @@ const AttentionView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`import { Attention } from 'impression-react';\n\n`}
-                        {`<Attention theme="success"><strong>Well done!</strong>...</Attention>\n`}
-                        {`<Attention theme="primary"><strong>Heads up!</strong>...</Attention>\n`}
-                        {`<Attention theme="warning"><strong>Warning!</strong>...</Attention>\n`}
+                        {'import { Attention } from \'impression-react\';\n\n'}
+                        {'<Attention theme="success"><strong>Well done!</strong>...</Attention>\n'}
+                        {'<Attention theme="primary"><strong>Heads up!</strong>...</Attention>\n'}
+                        {'<Attention theme="warning"><strong>Warning!</strong>...</Attention>\n'}
                         {'<Attention theme="danger" ><strong>Oh snap!</strong>...</Attention>'}
                     </Highlight>
                 </Card>
@@ -88,18 +88,18 @@ const AttentionView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {`<Attention theme="success">\n`}
-                        {`  ...<Attention.Link href="#"> click here</Attention.Link>\n`}
-                        {`<Attention>\n`}
-                        {`<Attention theme="primary">\n`}
-                        {`  ...<Attention.Link href="#"> click here</Attention.Link>\n`}
-                        {`<Attention>\n`}
-                        {`<Attention theme="warning">\n`}
-                        {`  ...<Attention.Link href="#"> click here</Attention.Link>\n`}
-                        {`<Attention>\n`}
-                        {`<Attention theme="danger">\n`}
-                        {`  ...<Attention.Link href="#"> click here</Attention.Link>\n`}
-                        {`<Attention>\n`}
+                        {'<Attention theme="success">\n'}
+                        {'  ...<Attention.Link href="#"> click here</Attention.Link>\n'}
+                        {'<Attention>\n'}
+                        {'<Attention theme="primary">\n'}
+                        {'  ...<Attention.Link href="#"> click here</Attention.Link>\n'}
+                        {'<Attention>\n'}
+                        {'<Attention theme="warning">\n'}
+                        {'  ...<Attention.Link href="#"> click here</Attention.Link>\n'}
+                        {'<Attention>\n'}
+                        {'<Attention theme="danger">\n'}
+                        {'  ...<Attention.Link href="#"> click here</Attention.Link>\n'}
+                        {'<Attention>\n'}
                     </Highlight>
                 </Card>
                 <h3>Dismissible</h3>

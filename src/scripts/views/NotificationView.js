@@ -64,10 +64,10 @@ export default class NotificationView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {`import { Notification } from 'impression-react';\n\n`}
-                            {`Notification.info(title, message, closeable)\n`}
-                            {`Notification.success(title, message, closeable)\n`}
-                            {`Notification.warning(title, message, closeable)\n`}
+                            {'import { Notification } from \'impression-react\';\n\n'}
+                            {'Notification.info(title, message, closeable)\n'}
+                            {'Notification.success(title, message, closeable)\n'}
+                            {'Notification.warning(title, message, closeable)\n'}
                             {'Notification.error(title, message, closeable)'}
                         </Highlight>
                     </Card>
