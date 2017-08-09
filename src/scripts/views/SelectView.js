@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, Card, Form, Select, Notification } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -71,7 +72,7 @@ export default class SelectView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Select } from \'impression-react\';\n\n'}
+                            {'import { Select } from "impression-react";\n\n'}
                             {'<Select>\n'}
                             {'  <Select.Option value="1">First</Select.Option>\n  ...\n'}
                             {'</Select>\n'}

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Confirm, Button } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components/';
 
@@ -59,7 +60,7 @@ export default class ConfirmView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Confirm } from \'impression-react\';\n\n'}
+                            {'import { Confirm } from "impression-react";\n\n'}
                             {'<Confirm >您确定删除消费记录？</Confirm>\n'}
                             {'<Confirm type="info">您确定购买该航班机票？</Confirm>\n'}
                             {'<Confirm type="danger">您确定注销该银行卡？</Confirm>'}

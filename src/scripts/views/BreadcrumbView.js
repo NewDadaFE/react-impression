@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Card, Breadcrumb } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb as MyBreadcrumb } from '../components';
 
@@ -21,7 +22,7 @@ const BreadcrumbView = ({ routes }) => {
                         </Breadcrumb>
                     </Card.Block>
                     <Highlight>
-                        {'import { Breadcrumb } from \'impression-react\';\n\n'}
+                        {'import { Breadcrumb } from "impression-react";\n\n'}
                         {'<Breadcrumb>\n'}
                         {' <a href="javascript:void(0);">首页</a>\n'}
                         {' <a href="javascript:void(0);">财务管理</a>\n'}

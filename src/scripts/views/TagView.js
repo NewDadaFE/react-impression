@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Tag } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -16,7 +17,7 @@ export default class TagView extends Component {
      * 隐藏Tag.
      * @param  {[Number]} index [索引]
      */
-    closeTagHandle = (index) => {
+    closeTagHandle = index => {
         this.setState({
             shows: this.state.shows.map((item, indx) => {
                 return indx === index ? false : item;
@@ -41,7 +42,7 @@ export default class TagView extends Component {
                             <h6>Example heading <Tag>tag</Tag></h6>
                         </Card.Block>
                         <Highlight>
-                            {'import { Tag } from \'impression-react\';\n\n'}
+                            {'import { Tag } from "impression-react";\n\n'}
                             {'<h1>Example heading <Tag>tag</Tag></h1>\n'}
                             {'<h2>Example heading <Tag>tag</Tag></h2>\n...\n'}
                             {'<h5>Example heading <Tag>tag</Tag></h5>\n'}

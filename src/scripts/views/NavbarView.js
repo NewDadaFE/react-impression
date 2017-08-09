@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Navbar, Nav, Form, Button, Flex } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -39,7 +40,7 @@ const NavbarView = ({ routes }) => {
                         </Navbar>
                     </Card>
                     <Highlight>
-                        {'import { Navbar } from \'impression-react\';\n\n<Navbar>...</Navbar>'}
+                        {'import { Navbar } from "impression-react";\n\n<Navbar>...</Navbar>'}
                     </Highlight>
                 </Card>
                 <h5>Primary</h5>

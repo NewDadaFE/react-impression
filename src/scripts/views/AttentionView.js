@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Attention } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -44,7 +45,7 @@ const AttentionView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { Attention } from \'impression-react\';\n\n'}
+                        {'import { Attention } from "impression-react";\n\n'}
                         {'<Attention theme="success"><strong>Well done!</strong>...</Attention>\n'}
                         {'<Attention theme="primary"><strong>Heads up!</strong>...</Attention>\n'}
                         {'<Attention theme="warning"><strong>Warning!</strong>...</Attention>\n'}

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Progress } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -32,7 +33,7 @@ const ProgressView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { Progress } from \'impression-react\';\n\n'}
+                        {'import { Progress } from "impression-react";\n\n'}
                         {'<Progress value="1"/>\n'}
                         {'<Progress value="25"/>\n'}
                         {'<Progress value="50"/>\n'}

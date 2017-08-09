@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button, Card, Row, Col } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -15,7 +16,7 @@ export default class ModalView extends Component {
         };
     }
     // 显示/隐藏modal
-    toggleModalHandle = (size) => {
+    toggleModalHandle = size => {
         this.setState({
             size,
             show: !this.state.show,
@@ -50,7 +51,7 @@ export default class ModalView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Modal } from \'impression-react\';\n\n'}
+                            {'import { Modal } from "impression-react";\n\n'}
                             {'<Modal>\n'}
                             {'  <Modal.Header>...</Modal.Header>\n'}
                             {'  <Modal.Body>...</Modal.Body>\n'}

@@ -1,10 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Popover, Button } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
 const PopoverView = ({ routes }) => {
-    let content = `Sed posuere consectetur est at lobortis. Aenean eu leo quam.
-    Pellentesque ornare sem lacinia quam venenatis vestibulum.`;
+    let content = 'Sed posuere consectetur est at lobortis. ' +
+    'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.';
 
     return (
         <div>
@@ -51,7 +52,7 @@ const PopoverView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { Popover } from \'impression-react\';\n\n'}
+                        {'import { Popover } from "impression-react";\n\n'}
                         {'<Popover position="right" title="popover" content="...">...</Popover>\n'}
                         {'<Popover position="left" title="popover" content="...">...</Popover>\n'}
                         {'<Popover position="top" title="popover" content="...">...</Popover>\n'}

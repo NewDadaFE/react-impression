@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { Card, Row, Col, Button } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
@@ -44,7 +45,7 @@ class ButtonView extends Component {
                             </Col>
                         </Row>
                         <Highlight>
-                            {'import { Button } from \'impression-react\';\n\n'}
+                            {'import { Button } from "impression-react";\n\n'}
                             {'<Button type="button" theme="primary">primary</Button>\n'}
                             {'<Button theme="default">default</Button>\n'}
                             {'<Button theme="secondary">secondary</Button>'}
@@ -148,6 +149,31 @@ class ButtonView extends Component {
                             {'<Button theme="primary" href="www.github.com">primary</Button>\n'}
                             {'<Button theme="default" href="www.github.com">default</Button>\n'}
                             {'<Button theme="secondary" href="www.github.com">secondary</Button>'}
+                        </Highlight>
+                    </Card>
+                    <h5>Close</h5>
+                    <Card>
+                        <Row className="no-margin">
+                            <Col col="2">
+                                <Card.Block>
+                                    <Button theme="primary" close>primary</Button>
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
+                                    <Button theme="default" close>default</Button>
+                                </Card.Block>
+                            </Col>
+                            <Col col="2">
+                                <Card.Block>
+                                    <Button theme="secondary" close>secondary</Button>
+                                </Card.Block>
+                            </Col>
+                        </Row>
+                        <Highlight>
+                            {'<Button theme="primary" close>primary</Button>\n'}
+                            {'<Button theme="default" close>default</Button>\n'}
+                            {'<Button theme="secondary" close>secondary</Button>'}
                         </Highlight>
                     </Card>
                     <h5>API</h5>

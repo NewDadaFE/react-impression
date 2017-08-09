@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Badge, Icon } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components/';
 
@@ -44,7 +45,7 @@ const BadgeView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { Badge } from \'impression-react\';\n\n'}
+                        {'import { Badge } from "impression-react";\n\n'}
                         {'<Badge content="3">...</Badge>\n'}
                         {'<Badge content="16" theme="secondary">...</Badge>\n'}
                         {'<Badge content="25" theme="danger">...</Badge>\n'}

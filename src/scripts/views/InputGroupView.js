@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, InputGroup } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -39,7 +40,7 @@ const InputGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { InputGroup } from \'impression-react\';\n\n'}
+                        {'import { InputGroup } from "impression-react";\n\n'}
                         {'<InputGroup>\n'}
                         {'  <InputGroup.Addon>@</InputGroup.Addon>\n'}
                         {'  <InputGroup.Input placeholder="something"/>\n'}

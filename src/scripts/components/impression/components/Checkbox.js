@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
-
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 /**
  * Checkbox 组件.
  */
@@ -42,15 +42,15 @@ export default class Checkbox extends PureComponent {
     // 渲染
     render() {
         let {
-            value,
-            checked,
-            defaultChecked,
-            disabled,
-            className,
-            onChange,
-            children,
-            ...others
-        } = this.props;
+                value,
+                checked,
+                defaultChecked,
+                disabled,
+                className,
+                onChange,
+                children,
+                ...others
+            } = this.props;
 
         return(
             <label {...others} className={classnames('checkbox', className)}>
@@ -73,7 +73,7 @@ export default class Checkbox extends PureComponent {
 }
 
 // getValue
-Checkbox.getValue = (ref) => {
+Checkbox.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getValue();

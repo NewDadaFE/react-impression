@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Button, Dropdown, Row, Col, Notification } from '../components/impression';
 import { CommenTable, Breadcrumb } from '../components';
 

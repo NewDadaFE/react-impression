@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, InlineSelect } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -16,14 +17,14 @@ export default class InlineSelectView extends Component {
         };
     }
     // 城市选中回调
-    selectCityHandle = (city) => {
+    selectCityHandle = city => {
         this.setState({
             city,
             zone: undefined,
         });
     }
     // 区域选中回调
-    selectZoneHandle = (zone) => {
+    selectZoneHandle = zone => {
         this.setState({
             zone,
         });
@@ -82,7 +83,7 @@ export default class InlineSelectView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { InlineSelect } from \'impression-react\';\n\n'}
+                            {'import { InlineSelect } from "impression-react";\n\n'}
                             {'<InlineSelect value="1" onChange={..}>\n'}
                             {'  <InlineSelect.Option value="1">北京</InlineSelect.Option>\n  ...\n'}
                             {'</InlineSelect>\n'}

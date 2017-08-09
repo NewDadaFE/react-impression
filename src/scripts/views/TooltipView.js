@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Button, Tooltip } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -40,7 +41,7 @@ export default class TooltipView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Tooltip } from \'impression-react\';\n\n'}
+                            {'import { Tooltip } from "impression-react";\n\n'}
                             {'<Tooltip position="right" content="Tooltip right">...</Tooltip>\n'}
                             {'<Tooltip position="top" content="Tooltip top">..</Tooltip>\n'}
                             {'<Tooltip position="bottom" content="Tooltip bottom">...</Tooltip>\n'}

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, ListGroup, Tag } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -61,7 +62,7 @@ const ListGroupView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { ListGroup } from \'impression-react\';\n\n'}
+                        {'import { ListGroup } from "impression-react";\n\n'}
                         {'<ListGroup>\n  ...\n'}
                         {'  <ListGroup.Item disabled>Lorem ipsum.</ListGroup.Item>\n  ...\n'}
                         {'</ListGroup>\n<ListGroup>\n'}

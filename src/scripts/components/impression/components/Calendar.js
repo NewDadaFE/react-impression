@@ -1,6 +1,7 @@
 import moment from 'moment';
 import classnames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import Icon from './Icon';
@@ -74,9 +75,9 @@ export default class Calendar extends Component {
         let { firstDayOfWeek, weekdays } = this.props;
 
         return firstDayOfWeek === 0 ?
-            weekdays :
-            [...weekdays.slice(firstDayOfWeek, weekdays.length),
-                ...weekdays.slice(0, firstDayOfWeek)];
+        weekdays :
+        [...weekdays.slice(firstDayOfWeek, weekdays.length),
+            ...weekdays.slice(0, firstDayOfWeek)];
     }
     /**
      * 前一个月.
@@ -220,13 +221,13 @@ export default class Calendar extends Component {
                 <div className="calendar-body">
                     <div className="calendar-weekgroup">
                         { weekdays.map((weekday, index) =>
-                            <div key={index} className="calendar-weekgroup-item">{weekday}</div>,
+                            <div key={index} className="calendar-weekgroup-item">{weekday}</div>
                         )}
 
                     </div>
                     <div className="calendar-daygroup">
                         { days.map((day, index) =>
-                            (<div
+                            <div
                                 key={index}
                                 onClick={() => onCellClick && onCellClick({
                                     day: day.text,
@@ -260,7 +261,7 @@ export default class Calendar extends Component {
                                         isToday: day.isToday,
                                     })}
                                 </div>
-                            </div>),
+                            </div>
                         )}
                     </div>
                 </div>

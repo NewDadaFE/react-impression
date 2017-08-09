@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Pagination } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -16,12 +17,12 @@ export default class PaginationView extends Component {
             activePage2: 1,
         };
     }
-    onSelectHandle = (activePage) => {
+    onSelectHandle = activePage => {
         this.setState({
             activePage,
         });
     }
-    onSelectHandle2 = (activePage2) => {
+    onSelectHandle2 = activePage2 => {
         this.setState({
             activePage2,
         });
@@ -56,7 +57,7 @@ export default class PaginationView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Pagination } from \'impression-react\';\n\n'}
+                            {'import { Pagination } from "impression-react";\n\n'}
                             {'<Pagination  scope={2} totalPage={10} activePage={4} />\n'}
                             {'<Pagination  scope={2} totalPage={5} activePage={3} />'}
                         </Highlight>

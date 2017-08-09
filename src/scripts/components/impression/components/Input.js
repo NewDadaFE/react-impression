@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
 import Upload from './Upload';
 import * as System from '../utils/system';
@@ -44,6 +45,8 @@ export default class Input extends PureComponent {
         pill: PropTypes.bool,
         // 点击事件
         onClick: PropTypes.func,
+        // onChange
+        onChange: PropTypes.func,
     }
     // 默认props
     static defaultProps = {
@@ -112,7 +115,7 @@ export default class Input extends PureComponent {
      * 选中候选项.
      * @param  {[String]} value [候选项值]
      */
-    selectOptionsHandle = (value) => {
+    selectOptionsHandle = value => {
         this.refMain.value = value;
 
         this.setState({
@@ -152,6 +155,7 @@ export default class Input extends PureComponent {
                 onClick,
                 className,
                 children,
+                onChange,
                 ...others
             } = this.props,
             { showOption, showClear } = this.state,
@@ -176,12 +180,13 @@ export default class Input extends PureComponent {
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames('form-control',
-                                pillClass,
-                                'input-field',
-                                'input-field-addon')}
+                            pillClass,
+                            'input-field',
+                            'input-field-addon')}
                             readOnly
                             disabled={disabled}
                             placeholder={placeholder}
+                            onChange={event => onChange && onChange(event, defaultValue)}
                             onClick={this.showOptionHandle}
                             style={style} />
 
@@ -213,11 +218,12 @@ export default class Input extends PureComponent {
                             ref={ref => (this.refMain = ref)}
                             value={value}
                             className={classnames('form-control',
-                                pillClass,
-                                'input-field',
-                                'input-field-addon')}
+                            pillClass,
+                            'input-field',
+                            'input-field-addon')}
                             readOnly
                             onClick={onClick}
+                            // onChange={event => onChange && onChange(event.target.value, event)}
                             disabled={disabled}
                             placeholder={placeholder}
                             style={style} />
@@ -239,14 +245,16 @@ export default class Input extends PureComponent {
                 return (
                     <textarea
                         rows="10"
-                        ref={ref => (this.refMain = ref)}
+                        ref={ref => (this.refMain = ref.value)}
                         style={style}
                         disabled={disabled}
                         placeholder={placeholder}
                         value={value}
+                        onChange={event => onChange && onChange(event, value)}
                         defaultValue={defaultValue}
                         {...others}
-                        className={classnames('form-control', className)} />
+                        className={classnames('form-control', className)}
+                         />
                 );
             default:
                 return (
@@ -265,8 +273,9 @@ export default class Input extends PureComponent {
                                 'input-field',
                                 {
                                     'input-field-addon': children,
-                                },
+                                }
                             )}
+                            onChange={event => onChange && onChange(event.target.value, event)}
                             disabled={disabled}
                             placeholder={placeholder}
                             style={style} />
@@ -278,7 +287,7 @@ export default class Input extends PureComponent {
 }
 
 // getValue
-Input.getValue = (ref) => {
+Input.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getValue();

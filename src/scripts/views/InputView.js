@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Form, Input, Modal, Button, Icon, InlineSelect } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -51,6 +52,7 @@ export default class InputView extends Component {
         this.refs.clearInput.setValue('');
         this.refs.clearInput.focus();
     }
+
     render() {
         return (
             <div>
@@ -82,7 +84,10 @@ export default class InputView extends Component {
                                     <Form>
                                         <Form.Group>
                                             <label>pill shape:</label>
-                                            <Input type="text" defaultValue="something" pill>
+                                            <Input
+                                                type="text"
+                                                defaultValue="something"
+                                                pill>
                                                 <Icon type="search" />
                                             </Input>
                                         </Form.Group>
@@ -91,7 +96,7 @@ export default class InputView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Input } from \'impression-react\';\n\n'}
+                            {'import { Input } from "impression-react";\n\n'}
                             {'<Input type="text"/>\n'}
                             {'<Input type="text" ref="clearInput" defaultValue="text">\n'}
                             {'  <Icon type="times" onClick={...} />\n'}

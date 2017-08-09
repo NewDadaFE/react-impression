@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Col, Checkbox, Radio, RadioGroup, Form, Input, Button } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -26,7 +27,7 @@ const FormView = ({ routes }) => {
                         </Form>
                     </Card.Block>
                     <Highlight>
-                        {'import { Form } from \'impression-react\';\n\n'}
+                        {'import { Form } from "impression-react";\n\n'}
                         {'<Form>\n'}
                         {'  <Form.Group>\n'}
                         {'    <label>Name:</label>\n'}

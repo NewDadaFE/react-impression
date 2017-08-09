@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Button, Image } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -15,7 +16,10 @@ const CardView = ({ routes }) => {
                                 <Card>
                                     <Card.Block>
                                         <h4>Title</h4>
-                                        <div>Some quick example text to build on the card title and make up the bulk of the card's content.</div>
+                                        <div>
+                                            Some quick example text to build on the card title
+                                            and make up the bulk of the card's content.
+                                        </div>
                                     </Card.Block>
                                     <Image fluid src="http://placehold.it/350x200" />
                                     <Card.Block>
@@ -65,7 +69,7 @@ const CardView = ({ routes }) => {
                         </Row>
                     </Card.Block>
                     <Highlight>
-                        {'import { Card } from \'impression-react\';\n\n'}
+                        {'import { Card } from "impression-react";\n\n'}
                         {'<Card>\n'}
                         {'  <Card.Block><h4>Title</h4>...</Card.Block>\n'}
                         {'  <Image fluid src="http://placehold.it/350x200" />\n  ...\n'}

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, Loading, Button } from '../components/impression';
 import { CommenTable, Highlight, Breadcrumb } from '../components';
 
@@ -17,7 +18,7 @@ export default class LoadingView extends Component {
      * 显示Loading.
      * @param  {String} type loading类型
      */
-    showLoadingHandle = (type) => {
+    showLoadingHandle = type => {
         this.setState({
             type,
             msg: type,
@@ -64,7 +65,7 @@ export default class LoadingView extends Component {
                             </Row>
                         </Card.Block>
                         <Highlight>
-                            {'import { Loading } from \'impression-react\';\n\n'}
+                            {'import { Loading } from "impression-react";\n\n'}
                             {'<Loading type="fountain" loadingMsg="fountain"/>\n'}
                             {'<Loading type="wave" loadingMsg="wave"/>\n'}
                             {'<Loading type="pendule" loadingMsg="pendule"/>\n'}
