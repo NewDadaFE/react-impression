@@ -24,7 +24,7 @@
     "prebuild": "npm run clean",
     "build": "npm run compile:js && npm run compile:scss && npm run compile:minscss",
     "postbuild": "npm run copy && gulp backup && npm publish",
-    "prepublish": "npm config set registry http://registry.npmjs.org",
+    "prepublish": "npm config set registry http://registry.npmjs.org/",
     "postpublish": "gulp recovery && npm config set registry https://registry.npm.taobao.org/"
   },
   "dependencies": {
@@ -32,10 +32,11 @@
     "highlight.js": "^9.9.0",
     "moment": "^2.14.1",
     "perfect-scrollbar": "^0.6.12",
-    "react": "latest",
-    "react-addons-css-transition-group": "latest",
-    "react-dom": "latest",
-    "react-router": "latest"
+    "prop-types": "^15.5.10",
+    "react": "^15.4.1",
+    "react-addons-css-transition-group": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-router": "3.0.5"
   },
   "devDependencies": {
     "babel": "^6.5.2",
