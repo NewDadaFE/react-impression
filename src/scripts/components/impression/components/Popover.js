@@ -65,7 +65,7 @@ export default class Popover extends PureComponent {
         this.popover = popoverNode;
     }
     // 显示popover
-    onMouseOver = (event) => {
+    onMouseOver = event => {
         let rect = event.target.getBoundingClientRect();
 
         this.createPopover(rect);
@@ -80,11 +80,11 @@ export default class Popover extends PureComponent {
             { onMouseOver, onMouseOut } = children.props;
 
         children = React.cloneElement(children, {
-            onMouseOver: onMouseOver ? (event) => {
+            onMouseOver: onMouseOver ? event => {
                 onMouseOver();
                 this.onMouseOver(event);
             } : this.onMouseOver,
-            onMouseOut: onMouseOut ? (event) => {
+            onMouseOut: onMouseOut ? event => {
                 onMouseOut();
                 this.onMouseOut(event);
             } : this.onMouseOut,

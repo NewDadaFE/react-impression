@@ -98,10 +98,10 @@ export default class DatePicker extends PureComponent {
         let { firstDayOfWeek, weekdays } = this.props;
 
         return firstDayOfWeek === 0 ? weekdays :
-        [
-            ...weekdays.slice(firstDayOfWeek, weekdays.length),
-            ...weekdays.slice(0, firstDayOfWeek),
-        ];
+            [
+                ...weekdays.slice(firstDayOfWeek, weekdays.length),
+                ...weekdays.slice(0, firstDayOfWeek),
+            ];
     }
     /**
      * 获取日期数据.
@@ -138,8 +138,8 @@ export default class DatePicker extends PureComponent {
             prevMonthMonth = prevMonth.format(FORMAT.MONTH),
             prevMonthDaysLength = prevMonth.daysInMonth(),
             prevMonthMax = (firstDay - firstDayOfWeek) >= 0 ?
-                            (firstDay - firstDayOfWeek) :
-                            (firstDay - firstDayOfWeek + 7);
+                (firstDay - firstDayOfWeek) :
+                (firstDay - firstDayOfWeek + 7);
 
         for (let i = 0; i <= prevMonthMax - 1; i++) {
             let dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength - i}`,
@@ -428,28 +428,27 @@ export default class DatePicker extends PureComponent {
                 { panel === 'day' &&
                     <div className="datepicker-body">
                         <div className="datepicker-weekgroup">
-                            { weekdays.map((day, index) =>
-                                <div key={index} className="datepicker-weekgroup-item">{day}</div>
+                            { weekdays.map(day =>
+                                <div key={day} className="datepicker-weekgroup-item">{day}</div>
                             )}
                         </div>
                         <div className="datepicker-daygroup">
-                            { days.map((
-                                { text, date, checked, isToday, inMonth, disable }, index) =>
+                            { days.map(({ text, date, isToday, inMonth, disable }) =>
+                                (<div
+                                    key={`${text}-${inMonth}`}
+                                    onClick={() => !disable && this.selectDateHandle(date)}
+                                    className="datepicker-daygroup-item">
                                     <div
-                                        key={index}
-                                        onClick={() => !disable && this.selectDateHandle(date)}
-                                        className="datepicker-daygroup-item">
-                                        <div
-                                            className={
+                                        className={
                                             classnames('datepicker-daygroup-item-text', {
                                                 disable,
                                                 now: isToday,
                                                 'text-muted': !inMonth,
                                                 active: date.isSame(checkedDay),
                                             })}>
-                                            {text}
-                                        </div>
+                                        {text}
                                     </div>
+                                </div>)
                             )}
                         </div>
                     </div>
@@ -460,9 +459,9 @@ export default class DatePicker extends PureComponent {
                             className="datepicker-yeargroup"
                             ref="_yeargroup"
                             onScroll={this.scrollYearHandle}>
-                            { years.map((year, index) =>
-                                <div
-                                    key={index}
+                            { years.map(year =>
+                                (<div
+                                    key={year}
                                     onClick={() => this.selectYearHandle(year)}
                                     ref={dom => (Number(year) === Number(currentYear))
                                         && (this._activeYear = dom)}
@@ -470,13 +469,13 @@ export default class DatePicker extends PureComponent {
                                         'datepicker-yeargroup-item',
                                         { active: Number(year) === Number(currentYear) })}>
                                     {year}
-                                </div>
+                                </div>)
                             )}
                         </div>
                         <div className="datepicker-monthgroup" ref="_monthgroup">
                             { months.map((month, index) =>
-                                <div
-                                    key={index}
+                                (<div
+                                    key={month}
                                     onClick={() => this.selectMonthHandle(index)}
                                     ref={dom => (index === currentMonth - 1)
                                         && (this._activeMonth = dom)}
@@ -484,7 +483,7 @@ export default class DatePicker extends PureComponent {
                                         'datepicker-monthgroup-item',
                                         { active: index === currentMonth - 1 })}>
                                     {month}
-                                </div>
+                                </div>)
                             )}
                         </div>
                     </div>

@@ -18,14 +18,14 @@ const CardView = ({ routes }) => {
                                         <h4>Title</h4>
                                         <div>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </div>
                                     </Card.Block>
                                     <Image fluid src="http://placehold.it/350x200" />
                                     <Card.Block>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <Button theme="primary">More</Button>
                                     </Card.Block>
@@ -38,7 +38,7 @@ const CardView = ({ routes }) => {
                                         <h4>Title</h4>
                                         <p>
                                             ome quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <Button theme="primary">Detail</Button>
                                     </Card.Block>
@@ -49,7 +49,7 @@ const CardView = ({ routes }) => {
                                     <Card.Block>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                     </Card.Block>
                                     <Image fluid src="http://placehold.it/350x200" />
@@ -60,7 +60,7 @@ const CardView = ({ routes }) => {
                                     <Card.Block>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <Button theme="primary">OK</Button>
                                     </Card.Block>
@@ -87,7 +87,7 @@ const CardView = ({ routes }) => {
                                         <h4>Left</h4>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <a href="javascript:void(0);">Card link</a>
                                         <a href="javascript:void(0);" className="offset-l">Another link</a>
@@ -101,7 +101,7 @@ const CardView = ({ routes }) => {
                                         <h4>Center</h4>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <a href="javascript:void(0);">Card link</a>
                                         <a href="javascript:void(0);" className="offset-l">Another link</a>
@@ -115,7 +115,7 @@ const CardView = ({ routes }) => {
                                         <h4>Right</h4>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <a href="javascript:void(0);">Card link</a>
                                         <a href="javascript:void(0);" className="offset-l">Another link</a>
@@ -143,7 +143,7 @@ const CardView = ({ routes }) => {
                                         <h4>Left</h4>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <Button theme="primary">OK</Button>
                                         <Button theme="default" className="offset-l">Cancel</Button>
@@ -164,7 +164,7 @@ const CardView = ({ routes }) => {
                                         <h4>center</h4>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <Button theme="primary">OK</Button>
                                         <Button theme="default" className="offset-l">Cancel</Button>
@@ -177,7 +177,7 @@ const CardView = ({ routes }) => {
                                         <h4>Right</h4>
                                         <p>
                                             Some quick example text to build on the card title
-                                            and make up the bulk of the card's content.
+                                            and make up the bulk of the card&apos;s content.
                                         </p>
                                         <Button theme="primary">OK</Button>
                                         <Button theme="default" className="offset-l">Cancel</Button>

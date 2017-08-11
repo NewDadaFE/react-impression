@@ -62,7 +62,7 @@ export default class Input extends PureComponent {
             case 'file':
                 return this.refMain.refs.main.files[0];
             default:
-                return this.refMain.value;
+                return this.refMain ? this.refMain.value : undefined;
         }
     }
     // 设置Input value
@@ -74,7 +74,7 @@ export default class Input extends PureComponent {
                 this.refMain.refs.main.files[0] = value;
                 break;
             default:
-                this.refMain.value = value;
+                this.refMain && (this.refMain.value = value);
         }
     }
     focus() {
@@ -109,14 +109,14 @@ export default class Input extends PureComponent {
             return;
         }
 
-        this.refMain.value = '';
+        this.refMain && (this.refMain.value = '');
     }
     /**
      * 选中候选项.
      * @param  {[String]} value [候选项值]
      */
     selectOptionsHandle = value => {
-        this.refMain.value = value;
+        this.refMain && (this.refMain.value = value);
 
         this.setState({
             showOption: false,
@@ -126,6 +126,7 @@ export default class Input extends PureComponent {
     // 显示清空按钮.
     showClearHandle = () => {
         !this.props.disabled
+        && this.refMain
         && this.refMain.value
         && this.setState({
             showClear: true,
@@ -180,9 +181,9 @@ export default class Input extends PureComponent {
                             value={value}
                             defaultValue={defaultValue}
                             className={classnames('form-control',
-                            pillClass,
-                            'input-field',
-                            'input-field-addon')}
+                                pillClass,
+                                'input-field',
+                                'input-field-addon')}
                             readOnly
                             disabled={disabled}
                             placeholder={placeholder}
@@ -218,9 +219,9 @@ export default class Input extends PureComponent {
                             ref={ref => (this.refMain = ref)}
                             value={value}
                             className={classnames('form-control',
-                            pillClass,
-                            'input-field',
-                            'input-field-addon')}
+                                pillClass,
+                                'input-field',
+                                'input-field-addon')}
                             readOnly
                             onClick={onClick}
                             // onChange={event => onChange && onChange(event.target.value, event)}
@@ -254,7 +255,7 @@ export default class Input extends PureComponent {
                         defaultValue={defaultValue}
                         {...others}
                         className={classnames('form-control', className)}
-                         />
+                    />
                 );
             default:
                 return (

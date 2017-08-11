@@ -59,7 +59,7 @@ export default class Select extends PureComponent {
 
         if(!this.isPuppet) {
             main.value = null;
-            this.options.forEach((option) => {
+            this.options.forEach(option => {
                 if(value === option.value) main.value = option.name;
             });
 
@@ -138,7 +138,7 @@ export default class Select extends PureComponent {
             value === originValue && (text = children);
             value === originValue
                         && !disabled && this.refs.main
-                        && (this.refs.main.value = children);  //  todo
+                        && (this.refs.main.value = children);
             return React.cloneElement(child, {
                 key: index,
                 active: value === originValue,
@@ -170,7 +170,7 @@ export default class Select extends PureComponent {
 }
 
 // getValue
-Select.getValue = (ref) => {
+Select.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getValue();

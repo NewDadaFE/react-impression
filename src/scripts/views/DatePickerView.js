@@ -134,7 +134,7 @@ const DatePickerView = ({ routes }) => {
                         {'<Input type="month" />'}
                     </Highlight>
                 </Card>
-                <h3>Input[type='date'] API</h3>
+                <h3>Input[type=&apos;date&apos;] API</h3>
                 <CommenTable
                     data={[
                         ['value', '日期', 'string', ''],

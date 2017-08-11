@@ -12,13 +12,13 @@ const WrapBreadcrumb = ({ routes }) => {
             { routes.map((route, index) => {
                 if(index < length - 1) {
                     return (
-                        <Link key={index} to={`/${route.path}`}>
+                        <Link key={route} to={`/${route.path}`}>
                             {route.path === 'app' ? 'home' : route.path}
                         </Link>
                     );
                 }
 
-                return <span key={index}>{route.path}</span>;
+                return <span key={route}>{route.path}</span>;
             })}
         </Breadcrumb>
     );

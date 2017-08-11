@@ -44,8 +44,6 @@ export default class Calendar extends Component {
         firstDayOfWeek: PropTypes.number,
         // 周几
         weekdays: PropTypes.arrayOf(PropTypes.string),
-        // 月份
-        months: PropTypes.arrayOf(PropTypes.string),
         // 是否显示工具栏
         showToolbar: PropTypes.bool,
         // 是否显示头部
@@ -65,7 +63,6 @@ export default class Calendar extends Component {
         showHeader: true,
         firstDayOfWeek: 1,
         weekdays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-        months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     }
     /**
      * 获取排序后的星期.
@@ -75,9 +72,9 @@ export default class Calendar extends Component {
         let { firstDayOfWeek, weekdays } = this.props;
 
         return firstDayOfWeek === 0 ?
-        weekdays :
-        [...weekdays.slice(firstDayOfWeek, weekdays.length),
-            ...weekdays.slice(0, firstDayOfWeek)];
+            weekdays :
+            [...weekdays.slice(firstDayOfWeek, weekdays.length),
+                ...weekdays.slice(0, firstDayOfWeek)];
     }
     /**
      * 前一个月.
@@ -220,15 +217,15 @@ export default class Calendar extends Component {
                 }
                 <div className="calendar-body">
                     <div className="calendar-weekgroup">
-                        { weekdays.map((weekday, index) =>
-                            <div key={index} className="calendar-weekgroup-item">{weekday}</div>
+                        { weekdays.map(weekday =>
+                            <div key={weekday} className="calendar-weekgroup-item">{weekday}</div>
                         )}
 
                     </div>
                     <div className="calendar-daygroup">
                         { days.map((day, index) =>
-                            <div
-                                key={index}
+                            (<div
+                                key={`${day.text}-${day.inMonth}`}
                                 onClick={() => onCellClick && onCellClick({
                                     day: day.text,
                                     year: day.date.format(FORMAT.YEAR),
@@ -261,7 +258,7 @@ export default class Calendar extends Component {
                                         isToday: day.isToday,
                                     })}
                                 </div>
-                            </div>
+                            </div>)
                         )}
                     </div>
                 </div>

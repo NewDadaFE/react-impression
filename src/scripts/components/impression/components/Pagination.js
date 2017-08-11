@@ -42,7 +42,7 @@ export default class Pagination extends PureComponent {
         activePage <= totalPage && onSelect && onSelect(activePage);
     }
     // 跳转至某页
-    goPageHandle = (page) => {
+    goPageHandle = page => {
         let { onSelect } = this.props;
 
         onSelect && onSelect(page);
@@ -85,9 +85,9 @@ export default class Pagination extends PureComponent {
                     </li>
                 }
 
-                { children.map((child, index) =>
+                { children.map(child =>
                     (<li
-                        key={index}
+                        key={child}
                         className={classnames('page-item', { active: child === activePage })}>
                         <a
                             className="page-link"

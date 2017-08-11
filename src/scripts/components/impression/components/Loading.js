@@ -55,12 +55,12 @@ export default class Loading extends PureComponent {
     }
     // 渲染
     render() {
-        let { type, loadingMsg } = this.props,
+        let { type, loadingMsg, className } = this.props,
             { show } = this.state;
 
         return (
             <div
-                className={classnames('loading-mask', { invisible: !show })}
+                className={classnames('loading-mask', { invisible: !show }, className)}
                 onClick={this.hideHandle}>
                 <LoadingAddon type={type} show={show} loadingMsg={loadingMsg} />
             </div>

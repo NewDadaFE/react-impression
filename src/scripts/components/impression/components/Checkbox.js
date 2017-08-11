@@ -42,15 +42,15 @@ export default class Checkbox extends PureComponent {
     // 渲染
     render() {
         let {
-                value,
-                checked,
-                defaultChecked,
-                disabled,
-                className,
-                onChange,
-                children,
-                ...others
-            } = this.props;
+            value,
+            checked,
+            defaultChecked,
+            disabled,
+            className,
+            onChange,
+            children,
+            ...others
+        } = this.props;
 
         return(
             <label {...others} className={classnames('checkbox', className)}>

@@ -39,7 +39,7 @@ export default class Notification extends Component {
      * 移除定时器.
      */
     componentWillUnmount() {
-        this.timers.forEach((timer) => {
+        this.timers.forEach(timer => {
             clearTimeout(timer);
         });
     }
@@ -66,7 +66,7 @@ export default class Notification extends Component {
      * 移除通知.
      * @param  {[Number]} key      [索引]
      */
-    removeNotice = (key) => {
+    removeNotice = key => {
         delete this.state[key];
         this.setState(this.state);
     }
@@ -110,21 +110,21 @@ export default class Notification extends Component {
 }
 
 // 添加一条info消息
-Notification.info = (options) => {
+Notification.info = options => {
     _notification.addNotice(options, 'info');
 };
 
 // 添加一条success消息
-Notification.success = (options) => {
+Notification.success = options => {
     _notification.addNotice(options, 'success');
 };
 
 // 添加一条warning消息
-Notification.warning = (options) => {
+Notification.warning = options => {
     _notification.addNotice(options, 'warning');
 };
 
 // 添加一条danger消息
-Notification.error = (options) => {
+Notification.error = options => {
     _notification.addNotice(options, 'danger');
 };

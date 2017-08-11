@@ -66,8 +66,8 @@ export default class RadioView extends Component {
                                         <Form.Group>
                                             <label>defaultValue</label>
                                             <RadioGroup ref="radios" defaultValue={1}>
-                                                { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                { radioArray.length > 0 && radioArray.map(item =>
+                                                    <Radio key={item.id} value={item.id}>{item.name}</Radio>
                                                 )}
                                             </RadioGroup>
                                         </Form.Group>
@@ -89,8 +89,8 @@ export default class RadioView extends Component {
                                         <Form.Group>
                                             <label>value</label>
                                             <RadioGroup value={2} onChange={this.onChangeHandle}>
-                                                { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                { radioArray.length > 0 && radioArray.map(item =>
+                                                    <Radio key={item.id} value={item.id}>{item.name}</Radio>
                                                 )}
                                             </RadioGroup>
                                         </Form.Group>
@@ -110,8 +110,8 @@ export default class RadioView extends Component {
                                         <Form.Group>
                                             <label>Disabled</label>
                                             <RadioGroup value={2} disabled>
-                                                { radioArray.length > 0 && radioArray.map((item, index) =>
-                                                    <Radio key={index} value={item.id}>{item.name}</Radio>
+                                                { radioArray.length > 0 && radioArray.map(item =>
+                                                    <Radio key={item.id} value={item.id}>{item.name}</Radio>
                                                 )}
                                             </RadioGroup>
                                         </Form.Group>

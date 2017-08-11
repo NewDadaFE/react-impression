@@ -69,16 +69,15 @@ export default class Radio extends PureComponent {
             name,
             onChange,
             children,
-            ...others
-            } = this.props;
+            ...others,
+        } = this.props;
         let { time } = this.state;
 
         return(
             <label
                 {...others}
                 className={classnames('radio', className)}
-                htmlFor={`radio${time}`}
-                >
+                htmlFor={`radio${time}`} >
                 <input
                     ref="main"
                     type="radio"
@@ -87,8 +86,7 @@ export default class Radio extends PureComponent {
                     defaultChecked={defaultChecked}
                     disabled={disabled}
                     onChange={event => onChange && onChange(event, value)}
-                    id={`radio${time}`}
-                    />
+                    id={`radio${time}`} />
                 <div className="radio-addon">
                     <i />
                 </div>

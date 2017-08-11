@@ -95,7 +95,6 @@ gulp.task('edit:package.json', function() {
         delete json.devDependencies;
 
         delete json.dependencies['highlight.js'];
-        delete json.dependencies['perfect-scrollbar'];
         delete json.dependencies['react-router'];
 
         return json;

@@ -37,7 +37,7 @@ export default class Collapse extends PureComponent {
             { active } = this.state;
 
         delete others.active;
-        children = React.Children.map(children, (child) => {
+        children = React.Children.map(children, child => {
             if(!child) {
                 return child;
             }

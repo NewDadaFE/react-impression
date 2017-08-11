@@ -21,7 +21,7 @@ export default class DropdownMenu extends PureComponent {
     render() {
         let { toggleMenu, right, className, children } = this.props;
 
-        children = React.Children.map(children, (child) => {
+        children = React.Children.map(children, child => {
             if(!child) {
                 return child;
             }

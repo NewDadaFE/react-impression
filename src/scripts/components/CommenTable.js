@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
  * React组件
  */
 const CommenTable = ({ data }) => {
-    let rows = data.map((item, index) => {
+    let rows = data.map(item => {
         return (
-            <tr key={index}>
+            <tr key={item}>
                 <td style={{ fontWeight: 'bold' }}>{item[0]}</td>
                 <td>{item[1]}</td>
                 <td>{item[2]}</td>

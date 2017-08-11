@@ -17,10 +17,10 @@ export default class InputGroupInput extends PureComponent {
         type: 'text',
     }
     getValue() {
-        return this.refMain.value;
+        return this.refMain ? this.refMain.value : undefined;
     }
     setValue(value) {
-        this.refMain.value = value;
+        this.refMain && (this.refMain.value = value);
     }
     // 渲染
     render() {
@@ -39,7 +39,7 @@ export default class InputGroupInput extends PureComponent {
 
 
 // getValue
-InputGroupInput.getValue = (ref) => {
+InputGroupInput.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getVaule();

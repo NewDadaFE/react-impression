@@ -5,6 +5,18 @@ import NavItem from './NavItem';
 import NavLink from './NavLink';
 import NavTitle from './NavTitle';
 
+// 返回type映射的class
+const getTypeClassMap = type => {
+    let map = {
+        tab: 'nav-tabs',
+        pill: 'nav-pills',
+        inline: 'nav-inline',
+        'inline-bordered': 'nav-inline nav-inline-bordered',
+    };
+
+    return map[type] ? map[type] : type;
+};
+
 /**
  * Nav 组件
  */
@@ -30,7 +42,7 @@ export default class Nav extends PureComponent {
         stacked: false,
     }
     // 选中回调
-    onSelectHandle = (eventKey) => {
+    onSelectHandle = eventKey => {
         let { activeKey } = this.state,
             { onSelect } = this.props;
 
@@ -42,23 +54,12 @@ export default class Nav extends PureComponent {
 
         return true;
     }
-    // 返回type映射的class
-    getTypeClassMap(type) {
-        let map = {
-            tab: 'nav-tabs',
-            pill: 'nav-pills',
-            inline: 'nav-inline',
-            'inline-bordered': 'nav-inline nav-inline-bordered',
-        };
-
-        return map[type] ? map[type] : type;
-    }
     // 渲染
     render() {
         let { type, stacked, className, children, ...others } = this.props,
             { activeKey } = this.state,
             navStacked = stacked && type === 'pill' ? 'nav-stacked' : null,
-            navStyle = this.getTypeClassMap(type);
+            navStyle = getTypeClassMap(type);
 
         delete others.activeKey;
         type && (children = React.Children.map(children, (child, index) => {

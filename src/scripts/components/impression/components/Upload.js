@@ -49,7 +49,7 @@ export default class Upload extends PureComponent {
     /**
      * 设置文件名.
      */
-    fileChangeHandle = (event) => {
+    fileChangeHandle = event => {
         let { onChange } = this.props;
 
         this.setState({
@@ -62,13 +62,13 @@ export default class Upload extends PureComponent {
      * 图片预览处理.
      * @param  {[Event]} event [事件]
      */
-    imagePreviewHandle = (event) => {
+    imagePreviewHandle = event => {
         let { onChange } = this.props,
             file = event.target.files[0],
             reader = new FileReader();
 
         if (file) {
-            reader.onload = (e) => {
+            reader.onload = e => {
                 this.setState({
                     previewImageUrl: e.currentTarget.result,
                 });
@@ -138,7 +138,7 @@ export default class Upload extends PureComponent {
 }
 
 // getValue
-Upload.getValue = (ref) => {
+Upload.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getValue();

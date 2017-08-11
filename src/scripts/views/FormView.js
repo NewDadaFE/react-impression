@@ -71,16 +71,16 @@ const FormView = ({ routes }) => {
                                 <Col col="10">
                                     <RadioGroup direction="column">
                                         <Radio>
-                                            Option one is this and that&mdash;be sure to include why it's great
+                                            Option one is this and that&mdash;be sure to include why it&apos;s great
                                         </Radio>
                                         <Radio>
-                                            Option one is this and that&mdash;be sure to include why it's great
+                                            Option one is this and that&mdash;be sure to include why it&apos;s great
                                         </Radio>
                                         <Radio>
-                                            Option one is this and that&mdash;be sure to include why it's great
+                                            Option one is this and that&mdash;be sure to include why it&apos;s great
                                         </Radio>
                                         <Radio>
-                                            Option one is this and that&mdash;be sure to include why it's great
+                                            Option one is this and that&mdash;be sure to include why it&apos;s great
                                         </Radio>
                                     </RadioGroup>
                                 </Col>

@@ -48,7 +48,7 @@ export default class Switch extends PureComponent {
         main.checked = !!checked;
     }
     // 状态切换回调
-    onChangeHandle = (event) => {
+    onChangeHandle = event => {
         let { onChange } = this.props,
             { checked } = event.target;
 
@@ -80,7 +80,7 @@ export default class Switch extends PureComponent {
 }
 
 // getValue
-Switch.getValue = (ref) => {
+Switch.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getValue();

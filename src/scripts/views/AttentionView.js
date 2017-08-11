@@ -23,7 +23,7 @@ const AttentionView = ({ routes }) => {
                             <Col>
                                 <Attention theme="primary">
                                     <strong>Heads up!</strong>
-                                    This attention needs your attention, but it's not super important.
+                                    This attention needs your attention, but it&apos;s not super important.
                                 </Attention>
                             </Col>
                         </Row>
@@ -31,7 +31,7 @@ const AttentionView = ({ routes }) => {
                             <Col>
                                 <Attention theme="warning">
                                     <strong>Warning!</strong>
-                                    Better check yourself, you're not looking too good.
+                                    Better check yourself, you&apos;re not looking too good.
                                 </Attention>
                             </Col>
                         </Row>
@@ -66,7 +66,7 @@ const AttentionView = ({ routes }) => {
                         <Row>
                             <Col>
                                 <Attention theme="primary">
-                                    This attention needs your attention, but it's not super important
+                                    This attention needs your attention, but it&apos;s not super important
                                     <Attention.Link href="#"> click here</Attention.Link>.
                                 </Attention>
                             </Col>
@@ -74,7 +74,7 @@ const AttentionView = ({ routes }) => {
                         <Row>
                             <Col>
                                 <Attention theme="warning">
-                                    Better check yourself, you're not looking too good
+                                    Better check yourself, you&apos;re not looking too good
                                     <Attention.Link href="#"> click here</Attention.Link>.
                                 </Attention>
                             </Col>

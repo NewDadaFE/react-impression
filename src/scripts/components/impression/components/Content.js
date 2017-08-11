@@ -29,7 +29,7 @@ export default class Content extends PureComponent {
         transitionName: 'zoom-slide',
         component: 'div',
         transitionEnterTimeout: 1200,
-        transitionLeaveTimeout: 1200,
+        transitionLeaveTimeout: 900,
     }
     render() {
         let {

@@ -36,7 +36,7 @@ export default class Dropdown extends PureComponent {
         trigger: 'click',
     }
     // 显示/隐藏菜单
-    toggleOptionsHandle = (flag) => {
+    toggleOptionsHandle = flag => {
         let { active } = this.state;
 
         this.setState({
@@ -58,7 +58,7 @@ export default class Dropdown extends PureComponent {
         let { trigger, className, children, ...others } = this.props,
             { active } = this.state;
 
-        children = React.Children.map(children, (child) => {
+        children = React.Children.map(children, child => {
             if(!child) {
                 return child;
             }

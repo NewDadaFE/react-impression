@@ -19,7 +19,7 @@ export default class Row extends PureComponent {
             count = 0,
             allocation = 0;
 
-        React.Children.forEach(children, (child) => {
+        React.Children.forEach(children, child => {
             if(!child) {
                 return;
             }

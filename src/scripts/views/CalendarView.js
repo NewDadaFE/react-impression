@@ -111,7 +111,8 @@ export default class CalendarView extends Component {
                                     <Calendar
                                         onCellClick={this.checkDateClickHandle}
                                         cellRender={this.checkDateCellRender}
-                                        firstDayOfWeek={0} size="sm" />
+                                        firstDayOfWeek={0}
+                                        size="sm" />
                                 </Col>
                             </Row>
                         </Card.Block>

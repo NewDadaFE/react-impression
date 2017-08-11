@@ -109,7 +109,7 @@ export default class CheckboxGroup extends PureComponent {
 }
 
 // getValue
-CheckboxGroup.getValue = (ref) => {
+CheckboxGroup.getValue = ref => {
     if(!ref) return undefined;
 
     return ref.getValue();

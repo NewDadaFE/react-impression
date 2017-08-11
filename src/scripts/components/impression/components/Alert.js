@@ -1,6 +1,17 @@
 import classnames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
+// 获取小图标
+const getAddonByType = type => {
+    switch(type) {
+        case 'danger':
+            return 'fa-exclamation-circle text-danger';
+        default:
+            return 'fa-exclamation-triangle text-warning';
+    }
+};
+
 /**
  * Alert 组件
  */
@@ -22,18 +33,9 @@ export default class Alert extends PureComponent {
         type: 'info',
         btnText: '确定',
     }
-    // 获取小图标
-    getAddonByType(type) {
-        switch(type) {
-            case 'danger':
-                return 'fa-exclamation-circle text-danger';
-            default:
-                return 'fa-exclamation-triangle text-warning';
-        }
-    }
     render() {
         let { type, btnText, onClick, className, children, ...others } = this.props,
-            iconTypeClass = this.getAddonByType(type);
+            iconTypeClass = getAddonByType(type);
 
         return(
             <div className={classnames('alert', className)}>

@@ -10,12 +10,6 @@ export default class MessageItem extends PureComponent {
     static propTypes = {
         children: PropTypes.any,
         className: PropTypes.string,
-        // 类型
-        type: PropTypes.oneOf(['info', 'success', 'warning', 'error', 'loading']),
-    }
-    // 默认props
-    static defaultProps = {
-        type: 'info',
     }
     /**
      * 渲染.
