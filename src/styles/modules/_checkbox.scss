@@ -87,6 +87,7 @@
     transition: $checkbox-addon-transtion;
 
     i {
+        display: block;
         color: transparent;
         transform: scale(0);
         transform-origin: 50% 50%;
@@ -140,7 +141,7 @@
 
     i {
         content: '';
-        display: inline-block;
+        display: block;
         transform: scale(0);
         transform-origin: 50% 50%;
         width: round($radio-addon-width * $font-size-root);
@@ -189,7 +190,7 @@
 
     &::before {
         content: '';
-        display: inline-block;
+        display: block;
         width: round($switch-addon-width * $font-size-root);
         height: round($switch-addon-height * $font-size-root);
         border-radius: 50%;
