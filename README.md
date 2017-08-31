@@ -1,21 +1,21 @@
 # eslint-config-react-impression
 
-ESlint shareable config for React support in javaScript standard style.
+[style-guide](https://github.com/NewDadaFE/style-guide)
+
+ESLint shareable config for React/JSX support.
 
 ## Install
 
-```
-    npm i eslint-config-react-impression eslint-plugin-babel eslint-plugin-flow-vars eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --save-dev
+```sh
+npm i -D eslint-config-react-impression
 ```
 
-## Examples
+## Usage
 
-.babelrc
-```javascript
-    module.exports = {
-        "extends": "react-impression",
-        "rules": {
-            ...
-        }
-    };
+Add a file called .babelrc to the project root:
+
+```json
+{
+  "extends": "react-impression"
+}
 ```
