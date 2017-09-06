@@ -28,14 +28,6 @@ export default class Radio extends PureComponent {
         disabled: false,
     }
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            time: (new Date()).valueOf() + Math.ceil(Math.random() * 10), // 设置radio id时间戳
-        };
-    }
-
     getValue() {
         let { value } = this.props, // props内容
             { main } = this.refs; // dom节点
@@ -71,13 +63,12 @@ export default class Radio extends PureComponent {
             children,
             ...others,
         } = this.props;
-        let { time } = this.state;
 
         return(
             <label
                 {...others}
                 className={classnames('radio', className)}
-                htmlFor={`radio${time}`} >
+                htmlFor={`radio${this._reactInternalInstance._mountOrder}`} >
                 <input
                     ref="main"
                     type="radio"
@@ -86,7 +77,7 @@ export default class Radio extends PureComponent {
                     defaultChecked={defaultChecked}
                     disabled={disabled}
                     onChange={event => onChange && onChange(event, value)}
-                    id={`radio${time}`} />
+                    id={`radio${this._reactInternalInstance._mountOrder}`} />
                 <div className="radio-addon">
                     <i />
                 </div>

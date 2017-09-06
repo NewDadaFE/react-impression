@@ -246,7 +246,6 @@ export default class Input extends PureComponent {
                 return (
                     <textarea
                         rows="10"
-                        ref={ref => (this.refMain = ref)}
                         style={style}
                         disabled={disabled}
                         placeholder={placeholder}
