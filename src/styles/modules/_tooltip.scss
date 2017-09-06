@@ -1,6 +1,6 @@
 // Base class
 .tooltip {
-    position: absolute;
+    position: fixed;
     z-index: $zindex-tooltip;
     display: block;
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.

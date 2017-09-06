@@ -45,20 +45,20 @@ export default class Popover extends PureComponent {
         // 计算left、top
         switch(position) {
             case 'top':
-                popoverNode.style.top = targetRect.top - popoverRect.height;
-                popoverNode.style.left = targetRect.left - (popoverRect.width - targetRect.width) / 2;
+                popoverNode.style.top = `${targetRect.top - popoverRect.height}px`;
+                popoverNode.style.left = `${targetRect.left - (popoverRect.width - targetRect.width) / 2}px`;
                 break;
             case 'left':
-                popoverNode.style.left = targetRect.left - popoverRect.width;
-                popoverNode.style.top = targetRect.top + (targetRect.height - popoverRect.height) / 2;
+                popoverNode.style.left = `${targetRect.left - popoverRect.width}px`;
+                popoverNode.style.top = `${targetRect.top + (targetRect.height - popoverRect.height) / 2}px`;
                 break;
             case 'right':
-                popoverNode.style.left = targetRect.left + targetRect.width;
-                popoverNode.style.top = targetRect.top + (targetRect.height - popoverRect.height) / 2;
+                popoverNode.style.left = `${targetRect.left + targetRect.width}px`;
+                popoverNode.style.top = `${targetRect.top + (targetRect.height - popoverRect.height) / 2}px`;
                 break;
             default:
-                popoverNode.style.top = targetRect.top + targetRect.height;
-                popoverNode.style.left = targetRect.left - (popoverRect.width - targetRect.width) / 2;
+                popoverNode.style.top = `${targetRect.top + targetRect.height}px`;
+                popoverNode.style.left = `${targetRect.left - (popoverRect.width - targetRect.width) / 2}px`;
                 break;
         }
 
