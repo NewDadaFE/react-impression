@@ -11,10 +11,10 @@
     "app"
   ],
   "dependencies": {
-    "chalk": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "yeoman-generator": "0.24.1",
-    "yosay": "^2.0.0"
+    "chalk": "~2.1.0",
+    "mkdirp": "~0.5.1",
+    "yeoman-generator": "~1.1.1",
+    "yosay": "~2.0.1"
   },
   "keywords": [
     "react",

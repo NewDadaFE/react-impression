@@ -1,10 +1,10 @@
-const yeoman = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
 const mkdirp = require('mkdirp');
 
-module.exports = yeoman.Base.extend({
+module.exports = class extends Generator {
   prompting() {
     this.log(
       yosay(
@@ -35,7 +35,7 @@ module.exports = yeoman.Base.extend({
     return this.prompt(prompts).then(props => {
       this.props = props;
     });
-  },
+  }
 
   defaults() {
     if (path.basename(this.destinationPath()) !== this.props.name) {
@@ -48,7 +48,7 @@ module.exports = yeoman.Base.extend({
       mkdirp(this.props.name);
       this.destinationRoot(this.destinationPath(this.props.name));
     }
-  },
+  }
 
   writing() {
     const { name, description } = this.props;
@@ -70,7 +70,7 @@ module.exports = yeoman.Base.extend({
       this.destinationRoot(),
       { globOptions: { dot: true } }
     );
-  },
+  }
 
   install() {
     this.log(yosay(`WOW! I'm all ${chalk.red('done')}!`));
@@ -78,5 +78,5 @@ module.exports = yeoman.Base.extend({
     if (this.props.install) {
       this.npmInstall();
     }
-  },
-});
+  }
+}
