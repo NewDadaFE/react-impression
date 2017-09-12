@@ -1,8 +1,8 @@
 {
   "name": "react-impression",
-  "version": "1.0.0",
-  "description": "react-impression",
+  "version": "0.1.0",
   "private": true,
+  "description": "react-impression",
   "scripts": {
     "precommit": "lint-staged",
     "format": "prettier --single-quote --trailing-comma all --write 'src/**/*.js'",
@@ -10,85 +10,6 @@
     "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
     "version": "npm run build && node config/deploy.js",
     "postversion": "git push && git push --tags"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --single-quote --trailing-comma all --write",
-      "git add"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "impression",
-      "prettier"
-    ],
-    "settings": {
-      "import/resolver": {
-        "webpack": {
-          "config": "config/webpack.dev.js"
-        }
-      }
-    },
-    "globals": {
-      "__DEV__": false,
-      "AMap": false
-    },
-    "rules": {
-      "indent": [
-        "error",
-        2,
-        {
-          "SwitchCase": 1,
-          "VariableDeclarator": 1,
-          "outerIIFEBody": 1
-        }
-      ],
-      "react/jsx-indent": [
-        "error",
-        2
-      ],
-      "react/jsx-indent-props": [
-        "error",
-        2
-      ],
-      "newline-after-var": "off",
-      "import/imports-first": "off"
-    }
-  },
-  "babel": {
-    "presets": [
-      ["es2015", { "modules": false }],
-      "react"
-    ],
-    "plugins": [
-      "react-hot-loader/babel",
-      ["transform-imports", {
-        "lodash": {
-          "transform": "lodash/${member}",
-          "preventFullImport": true
-        }
-      }],
-      ["react-css-modules", {
-        "filetypes": { ".scss": "postcss-scss" },
-        "webpackHotModuleReloading": true,
-        "generateScopedName": "[name]__[local]___[hash:base64:5]"
-      }],
-      "transform-runtime",
-      "transform-object-rest-spread",
-      "transform-class-properties",
-      "transform-export-extensions"
-    ]
-  },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie < 9"
-  ],
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
   },
   "dependencies": {
     "babel-plugin-react-css-modules": "^2.7.0",
@@ -150,5 +71,80 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "lint-staged": {
+    "*.js": ["prettier --single-quote --trailing-comma all --write", "git add"]
+  },
+  "babel": {
+    "plugins": [
+      "react-hot-loader/babel",
+      [
+        "transform-imports",
+        {
+          "lodash": {
+            "transform": "lodash/${member}",
+            "preventFullImport": true
+          }
+        }
+      ],
+      [
+        "react-css-modules",
+        {
+          "filetypes": {
+            ".scss": "postcss-scss"
+          },
+          "webpackHotModuleReloading": true,
+          "generateScopedName": "[name]__[local]___[hash:base64:5]"
+        }
+      ],
+      "transform-runtime",
+      "transform-object-rest-spread",
+      "transform-class-properties",
+      "transform-export-extensions"
+    ],
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
+      "react"
+    ]
+  },
+  "eslintConfig": {
+    "extends": ["impression", "prettier"],
+    "globals": {
+      "__DEV__": false,
+      "AMap": false
+    },
+    "rules": {
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1,
+          "VariableDeclarator": 1,
+          "outerIIFEBody": 1
+        }
+      ],
+      "react/jsx-indent": ["error", 2],
+      "react/jsx-indent-props": ["error", 2],
+      "newline-after-var": "off",
+      "import/imports-first": "off"
+    },
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "config/webpack.dev.js"
+        }
+      }
+    }
+  },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   }
 }
