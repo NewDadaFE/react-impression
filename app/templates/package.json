@@ -1,15 +1,15 @@
 {
-  "name": "<%= name %>",
+  "name": "react-impression",
   "version": "1.0.0",
-  "description": "<%= description %>",
+  "description": "react-impression",
   "private": true,
   "scripts": {
+    "precommit": "lint-staged",
     "format": "prettier --single-quote --trailing-comma all --write 'src/**/*.js'",
-    "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.config.js",
-    "build": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
-    "version": "npm run build && node deploy.js",
-    "postversion": "git push && git push --tags",
-    "precommit": "lint-staged"
+    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
+    "version": "npm run build && node config/deploy.js",
+    "postversion": "git push && git push --tags"
   },
   "lint-staged": {
     "*.js": [

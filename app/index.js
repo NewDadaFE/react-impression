@@ -69,14 +69,14 @@ module.exports = class extends Generator {
       this.templatePath('**/!(package.json|README.md)'),
       this.destinationRoot(),
       { globOptions: { dot: true } }
-    );
+    );    
   }
 
   install() {
     this.log(yosay(`WOW! I'm all ${chalk.red('done')}!`));
 
     if (this.props.install) {
-      this.npmInstall();
+      this.yarnInstall();
     }
   }
 }
