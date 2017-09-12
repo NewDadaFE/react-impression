@@ -1,6 +1,5 @@
 var path = require('path'),
     webpack = require('webpack'),
-    DashboardPlugin = require('webpack-dashboard/plugin'),
     publicPath = 'http://localhost:9008/';
 
 
@@ -24,7 +23,6 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"',
         }),
-        new DashboardPlugin(),
     ],
     module: {
         preLoaders: [{
@@ -47,8 +45,8 @@ module.exports = {
         hot: true,
         historyApiFallback: true,
         stats: {
-            colors: true,
             chunks: false,
+            children: false,
         },
         headers: {
             'Access-Control-Allow-Origin': '*',
