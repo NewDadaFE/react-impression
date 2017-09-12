@@ -17,6 +17,79 @@
       "git add"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "impression",
+      "prettier"
+    ],
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "config/webpack.dev.js"
+        }
+      }
+    },
+    "globals": {
+      "__DEV__": false,
+      "AMap": false
+    },
+    "rules": {
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1,
+          "VariableDeclarator": 1,
+          "outerIIFEBody": 1
+        }
+      ],
+      "react/jsx-indent": [
+        "error",
+        2
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        2
+      ],
+      "newline-after-var": "off",
+      "import/imports-first": "off"
+    }
+  },
+  "babel": {
+    "presets": [
+      ["es2015", { "modules": false }],
+      "react"
+    ],
+    "plugins": [
+      "react-hot-loader/babel",
+      ["transform-imports", {
+        "lodash": {
+          "transform": "lodash/${member}",
+          "preventFullImport": true
+        }
+      }],
+      ["react-css-modules", {
+        "filetypes": { ".scss": "postcss-scss" },
+        "webpackHotModuleReloading": true,
+        "generateScopedName": "[name]__[local]___[hash:base64:5]"
+      }],
+      "transform-runtime",
+      "transform-object-rest-spread",
+      "transform-class-properties",
+      "transform-export-extensions"
+    ]
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
   "dependencies": {
     "babel-plugin-react-css-modules": "^2.7.0",
     "babel-runtime": "^6.22.0",
