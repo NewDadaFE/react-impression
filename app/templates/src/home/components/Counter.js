@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { Button } from 'react-impression';
+import React, { Component, PropTypes } from 'react'
+import { Button } from 'react-impression'
 
 // 计数器组件
 export default class Counter extends Component {
@@ -7,24 +7,23 @@ export default class Counter extends Component {
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
     counter: PropTypes.number.isRequired,
-  };
+  }
   onIncrementHandle = () => {
-    let { increment } = this.props;
+    let { increment } = this.props
 
-    increment();
-  };
+    increment()
+  }
   render() {
-    const { decrement, counter } = this.props;
+    const { decrement, counter } = this.props
 
     return (
       <p>
-        Clicked: {counter} times
-        {' '}
-        <Button onClick={this.onIncrementHandle}>+</Button>
-        {' '}
-        <Button theme="secondary" onClick={decrement}>-</Button>
-        {' '}
+        Clicked: {counter} times{' '}
+        <Button onClick={this.onIncrementHandle}>+</Button>{' '}
+        <Button theme="secondary" onClick={decrement}>
+          -
+        </Button>{' '}
       </p>
-    );
+    )
   }
 }

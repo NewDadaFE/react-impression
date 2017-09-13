@@ -1,18 +1,18 @@
-import { createAction, handleActions } from 'redux-actions';
-import dotProp from 'dot-prop-immutable';
+import { createAction, handleActions } from 'redux-actions'
+import dotProp from 'dot-prop-immutable'
 
 // Action Creators
-export const increment = createAction('home/COUNTER_INCREMENT');
+export const increment = createAction('home/COUNTER_INCREMENT')
 
-export const decrement = createAction('home/COUNTER_DECREMENT');
+export const decrement = createAction('home/COUNTER_DECREMENT')
 
 export const incrementAsync = () => dispatch =>
-  setTimeout(() => dispatch(increment()), 1000);
+  setTimeout(() => dispatch(increment()), 1000)
 
 // Reducer
 const initialState = {
   total: 0,
-};
+}
 
 const reducer = handleActions(
   {
@@ -20,7 +20,7 @@ const reducer = handleActions(
 
     [decrement]: state => dotProp.set(state, 'total', state.total - 1),
   },
-  initialState
-);
+  initialState,
+)
 
-export default reducer;
+export default reducer

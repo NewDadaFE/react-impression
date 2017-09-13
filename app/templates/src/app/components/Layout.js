@@ -1,13 +1,7 @@
-import React, { PropTypes } from 'react';
-import {
-  Flex,
-  Content,
-  Loading,
-  Notification,
-  Message,
-} from 'react-impression';
-import Header from './Header';
-import Sidebar from './Sidebar';
+import React, { PropTypes } from 'react'
+import { Flex, Content, Loading, Notification, Message } from 'react-impression'
+import Header from './Header'
+import Sidebar from './Sidebar'
 
 // 页面布局
 const Layout = ({ children }) => {
@@ -20,20 +14,18 @@ const Layout = ({ children }) => {
           {/* 顶部栏 */}
           <Header />
           {/* 内容区 */}
-          <Content>
-            {children}
-          </Content>
+          <Content>{children}</Content>
           <Notification />
           <Message />
           <Loading type="fountain" duration={500} />
         </Flex>
       </Flex.Item>
     </Flex>
-  );
-};
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.element,
-};
+}
 
-export default Layout;
+export default Layout

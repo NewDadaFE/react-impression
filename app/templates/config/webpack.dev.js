@@ -1,9 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const resolveApp = require('./paths');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const resolveApp = require('./paths')
 
 module.exports = {
   entry: [
@@ -99,4 +98,4 @@ module.exports = {
     new ExtractTextPlugin('styles/app.css'),
     new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
   ],
-};
+}

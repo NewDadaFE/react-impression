@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, IndexRoute, Redirect } from 'react-router';
-import Layout from 'app/components/Layout';
-import Home from 'home';
+import React from 'react'
+import { Route, IndexRoute, Redirect } from 'react-router'
+import Layout from 'app/components/Layout'
+import Home from 'home'
 
 // 路由配置
 const createRoutes = () => (
@@ -9,6 +9,6 @@ const createRoutes = () => (
     <IndexRoute component={Home} />
     <Redirect from="*" to="/" />
   </Route>
-);
+)
 
-export default createRoutes;
+export default createRoutes

@@ -1,12 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const resolveApp = require('./paths');
+const path = require('path')
+const webpack = require('webpack')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const resolveApp = require('./paths')
 
-const { npm_package_name: NAME, npm_package_version: VERSION } = process.env;
+const { npm_package_name: NAME, npm_package_version: VERSION } = process.env
 
 module.exports = {
   entry: './src/main.js',
@@ -87,4 +86,4 @@ module.exports = {
   stats: {
     children: false,
   },
-};
+}

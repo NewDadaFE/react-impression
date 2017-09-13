@@ -5,8 +5,10 @@
   "description": "react-impression",
   "scripts": {
     "precommit": "lint-staged",
-    "format": "prettier --single-quote --trailing-comma all --write 'src/**/*.js'",
-    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "format":
+      "prettier --single-quote --trailing-comma all --write 'src/**/*.js'",
+    "start":
+      "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
     "version": "npm run build && node config/deploy.js",
     "postversion": "git push && git push --tags"

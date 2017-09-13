@@ -1,9 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import './app/styles/index.scss';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import AppProvider from './provider';
+import './app/styles/index.scss'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+import AppProvider from './provider'
 
 const render = Component => {
   ReactDOM.render(
@@ -11,11 +10,11 @@ const render = Component => {
       <Component />
     </AppContainer>,
     document.getElementById('root'),
-  );
-};
+  )
+}
 
-render(AppProvider);
+render(AppProvider)
 
 if (__DEV__) {
-  if (module.hot) module.hot.accept('./provider', () => render(AppProvider));
+  if (module.hot) module.hot.accept('./provider', () => render(AppProvider))
 }
