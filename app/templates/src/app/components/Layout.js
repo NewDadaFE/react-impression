@@ -6,18 +6,18 @@ import Sidebar from './Sidebar'
 // 页面布局
 const Layout = ({ children }) => {
   return (
-    <Flex className="layout">
+    <Flex className='layout'>
       {/* 侧边栏 */}
       <Sidebar />
       <Flex.Item>
-        <Flex direction="column">
+        <Flex direction='column'>
           {/* 顶部栏 */}
           <Header />
           {/* 内容区 */}
           <Content>{children}</Content>
           <Notification />
           <Message />
-          <Loading type="fountain" duration={500} />
+          <Loading type='fountain' duration={500} />
         </Flex>
       </Flex.Item>
     </Flex>

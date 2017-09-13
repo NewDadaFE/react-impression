@@ -20,7 +20,7 @@ export default class Counter extends Component {
       <p>
         Clicked: {counter} times{' '}
         <Button onClick={this.onIncrementHandle}>+</Button>{' '}
-        <Button theme="secondary" onClick={decrement}>
+        <Button theme='secondary' onClick={decrement}>
           -
         </Button>{' '}
       </p>

@@ -5,9 +5,9 @@ import Home from 'home'
 
 // 路由配置
 const createRoutes = () => (
-  <Route path="/" component={Layout}>
+  <Route path='/' component={Layout}>
     <IndexRoute component={Home} />
-    <Redirect from="*" to="/" />
+    <Redirect from='*' to='/' />
   </Route>
 )
 

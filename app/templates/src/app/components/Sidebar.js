@@ -10,8 +10,8 @@ const AppSidebar = () => {
       <Sidebar.Body>
         <Nav>
           <Nav.Link>
-            <Link to="/index">
-              <Icon type="television" left />Counter
+            <Link to='/index'>
+              <Icon type='television' left />Counter
             </Link>
           </Nav.Link>
         </Nav>
