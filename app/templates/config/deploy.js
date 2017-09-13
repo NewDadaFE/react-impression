@@ -1,14 +1,20 @@
 const qiniu = require('qiniu')
 const path = require('path')
 const dir = require('node-dir')
+const resolveApp = require('./paths')
 
-const { npm_package_name: NAME, npm_package_version: VERSION } = process.env
+const {
+  npm_package_name: NAME,
+  npm_package_version: VERSION,
+  npm_package_deploy_ACCESS_KEY: ACCESS_KEY,
+  npm_package_deploy_SECRET_KEY: SECRET_KEY,
+} = process.env
 
-const BASE = path.resolve(__dirname, 'dist')
+const BASE = resolveApp('dist')
 const BUCKET = 'dada-fe'
 
-qiniu.conf.ACCESS_KEY = ''
-qiniu.conf.SECRET_KEY = ''
+qiniu.conf.ACCESS_KEY = ACCESS_KEY
+qiniu.conf.SECRET_KEY = SECRET_KEY
 
 dir.files(BASE, (err, files) => {
   if (err) return console.error(err)

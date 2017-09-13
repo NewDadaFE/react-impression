@@ -117,5 +117,9 @@
     "plugins": {
       "autoprefixer": {}
     }
+  },
+  "deploy": {
+    "ACCESS_KEY": "",
+    "SECRET_KEY": ""
   }
 }

@@ -30,11 +30,15 @@ Then, open your browser with http://localhost:8080.
 
 ## Publish
 
-First, add your qiniu key to `deploy.js`
+First, add your qiniu key to `package.json`:
 
-```js
-qiniu.conf.ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
-qiniu.conf.SECRET_KEY = 'YOUR_SECRET_KEY_HERE';
+```json
+{
+  "deploy": {
+    "ACCESS_KEY": "",
+    "SECRET_KEY": ""
+  }
+}
 ```
 
 Then run command:
