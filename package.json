@@ -21,7 +21,7 @@
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "es5"
   },
   "lint-staged": {
     "*.{js,json}": ["prettier --write", "git add"]

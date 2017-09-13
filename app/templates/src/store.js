@@ -6,7 +6,7 @@ import reducer from './reducers'
 const composeEnhancers = composeWithDevTools({})
 const store = createStore(
   reducer,
-  composeEnhancers(applyMiddleware(thunkMiddleware)),
+  composeEnhancers(applyMiddleware(thunkMiddleware))
 )
 
 if (__DEV__) {

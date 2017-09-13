@@ -9,9 +9,9 @@ module.exports = class extends Generator {
     this.log(
       yosay(
         `Welcome to the neat ${chalk.red(
-          'generator-react-impression',
-        )} generator!`,
-      ),
+          'generator-react-impression'
+        )} generator!`
+      )
     )
 
     const prompts = [
@@ -45,7 +45,7 @@ module.exports = class extends Generator {
         'Your generator must be inside a folder named ' +
           this.props.name +
           '\n' +
-          "I'll automatically create this folder.",
+          "I'll automatically create this folder."
       )
       mkdirp(this.props.name)
       this.destinationRoot(this.destinationPath(this.props.name))
@@ -58,19 +58,19 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('package.json'),
       this.destinationPath('package.json'),
-      { name, description },
+      { name, description }
     )
 
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
-      { name, description },
+      { name, description }
     )
 
     this.fs.copy(
       this.templatePath('**/!(package.json|README.md)'),
       this.destinationRoot(),
-      { globOptions: { dot: true } },
+      { globOptions: { dot: true } }
     )
   }
 

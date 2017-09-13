@@ -20,7 +20,7 @@ const reducer = handleActions(
 
     [decrement]: state => dotProp.set(state, 'total', state.total - 1),
   },
-  initialState,
+  initialState
 )
 
 export default reducer
