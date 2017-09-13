@@ -4,13 +4,14 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const resolveApp = require('./paths');
 
 const { npm_package_name: NAME, npm_package_version: VERSION } = process.env;
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: resolveApp('dist'),
     filename: 'scripts/app.js',
     publicPath: `//fe.imdada.cn/${NAME}/${VERSION}/`,
   },
@@ -18,12 +19,12 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: [path.resolve(__dirname, '../src'), /whatwg-fetch/],
+        include: [resolveApp('src'), /whatwg-fetch/],
         loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
-        exclude: [path.resolve(__dirname, '../src/app/styles'), /node_modules/],
+        exclude: [resolveApp('src/app/styles'), /node_modules/],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -35,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: [path.resolve(__dirname, '../src/app/styles'), /node_modules/],
+        include: [resolveApp('src/app/styles'), /node_modules/],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'postcss-loader', 'sass-loader'],
@@ -60,7 +61,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+    modules: [resolveApp('src'), 'node_modules'],
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),

@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const resolveApp = require('./paths');
 
 module.exports = {
   entry: [
@@ -12,7 +13,7 @@ module.exports = {
     './src/main.js',
   ],
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: resolveApp('dist'),
     filename: 'scripts/app.js',
     publicPath: 'http://localhost:8080/',
   },
@@ -27,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: [path.resolve(__dirname, '../src'), /whatwg-fetch/],
+        include: [resolveApp('src'), /whatwg-fetch/],
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
@@ -35,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: [path.resolve(__dirname, '../src/app/styles'), /node_modules/],
+        exclude: [resolveApp('src/app/styles'), /node_modules/],
         use: [
           'style-loader',
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
@@ -45,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: [path.resolve(__dirname, '../src/app/styles'), /node_modules/],
+        include: [resolveApp('src/app/styles'), /node_modules/],
         use: [
           'style-loader',
           'css-loader?sourceMap',
@@ -72,11 +73,11 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+    modules: [resolveApp('src'), 'node_modules'],
   },
   devtool: 'cheap-module-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: resolveApp('dist'),
     historyApiFallback: true,
     hot: true,
     stats: {
