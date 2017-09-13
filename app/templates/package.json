@@ -45,16 +45,8 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.1",
-    "eslint": "^3.19.0",
-    "eslint-config-impression": "^1.0.0",
-    "eslint-config-prettier": "^2.1.1",
-    "eslint-import-resolver-webpack": "^0.8.1",
+    "eslint-config-react-impression": "~2.0.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-babel": "^4.0.1",
-    "eslint-plugin-flow-vars": "^0.5.0",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.10.3",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
@@ -115,32 +107,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": ["impression", "prettier"],
+    "extends": "react-impression",
     "globals": {
       "__DEV__": false,
       "AMap": false
-    },
-    "rules": {
-      "indent": [
-        "error",
-        2,
-        {
-          "SwitchCase": 1,
-          "VariableDeclarator": 1,
-          "outerIIFEBody": 1
-        }
-      ],
-      "react/jsx-indent": ["error", 2],
-      "react/jsx-indent-props": ["error", 2],
-      "newline-after-var": "off",
-      "import/imports-first": "off"
-    },
-    "settings": {
-      "import/resolver": {
-        "webpack": {
-          "config": "config/webpack.dev.js"
-        }
-      }
     }
   },
   "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
