@@ -57,30 +57,28 @@ npm version patch -m 'Release version %s'
 npm version minor -m 'Release version %s'
 ```
 
-## Proxy API Request
-
-First, update proxy table:
-
-```json
-{
-  "proxy": {
-    "/api": "http://localhost:3000"
-  }
-}
-```
-
-Then run following command to release `patch` version:
-
-```bash
-npm version patch -m 'Release version %s'
-```
-
-***OR*** release `minor` version:
-```bash
-npm version minor -m 'Release version %s'
-```
-
 ## Best Practice
+
+* Proxy API request
+
+  First, update proxy table in `package.json`. For example:
+
+  ```json
+  {
+    "proxy": {
+      "/api": {
+        "target": "http://localhost:3000",
+        "changeOrigin": true
+      }
+    }
+  }
+  ```
+
+  Then restart development server:
+
+  ```bash
+  npm start
+  ```
 
 * Create Flux Standard Action with [redux-actions][redux-actions]
 * Follow standard of [ducks-modular-redux][ducks-modular-redux]
