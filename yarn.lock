@@ -1834,6 +1834,10 @@ quick-lru@^1.0.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/quick-lru/download/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
 
+ramda@~0.24.1:
+  version "0.24.1"
+  resolved "http://registry.npm.taobao.org/ramda/download/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
+
 read-chunk@^2.0.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/read-chunk/download/read-chunk-2.1.0.tgz#6a04c0928005ed9d42e1a6ac5600e19cbc7ff655"
