@@ -23,20 +23,19 @@ cd YOUR_PROJECT_FOLDER
 yo react-impression --upgrade
 ```
 
-## Start
+## Development
 
 First, run following command in your project folder:
 
 ```bash
-npm install
 npm start
 ```
 
 Then, open your browser with http://localhost:8080.
 
-## Publish
+## Deploy
 
-First, add your qiniu key to `package.json`:
+First, add your Qiniu key to `package.json`:
 
 ```json
 {
@@ -47,13 +46,41 @@ First, add your qiniu key to `package.json`:
 }
 ```
 
-Then run command:
+Then run following command to release `patch` version:
 
 ```bash
 npm version patch -m 'Release version %s'
 ```
 
-## Best practice
+***OR*** release `minor` version:
+```bash
+npm version minor -m 'Release version %s'
+```
+
+## Proxy API Request
+
+First, update proxy table:
+
+```json
+{
+  "proxy": {
+    "/api": "http://localhost:3000"
+  }
+}
+```
+
+Then run following command to release `patch` version:
+
+```bash
+npm version patch -m 'Release version %s'
+```
+
+***OR*** release `minor` version:
+```bash
+npm version minor -m 'Release version %s'
+```
+
+## Best Practice
 
 * Create Flux Standard Action with [redux-actions][redux-actions]
 * Follow standard of [ducks-modular-redux][ducks-modular-redux]
