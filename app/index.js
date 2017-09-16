@@ -5,6 +5,14 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 
 module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts)
+
+    this.option('upgrade')
+
+    this.isUpgrade = Boolean(this.options.upgrade)
+  }
+
   prompting() {
     this.log(
       yosay(
@@ -55,10 +63,14 @@ module.exports = class extends Generator {
   writing() {
     const { name, description } = this.props
 
-    this.fs.copyTpl(
-      this.templatePath('package.json'),
+    this.fs.writeJSON(
       this.destinationPath('package.json'),
-      { name, description }
+      Object.assign(
+        {},
+        this.fs.readJSON(this.destinationPath('package.json'), {}),
+        this.fs.readJSON(this.templatePath('package.json')),
+        { name, description }
+      )
     )
 
     this.fs.copyTpl(
@@ -72,6 +84,10 @@ module.exports = class extends Generator {
       this.destinationRoot(),
       { globOptions: { dot: true } }
     )
+
+    if (this.isUpgrade) {
+      this.fs.delete(this.destinationPath('src'))
+    }
   }
 
   install() {

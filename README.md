@@ -16,6 +16,12 @@ Then generate your new project:
 yo react-impression
 ```
 
+***OR*** upgrade existed project:
+
+```bash
+cd YOUR_PROJECT_FOLDER
+yo react-impression --upgrade
+```
 
 ## Start
 
