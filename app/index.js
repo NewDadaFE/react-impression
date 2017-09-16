@@ -4,6 +4,16 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
 const mkdirp = require('mkdirp')
+const execSync = require('child_process').execSync
+
+const shouldUseYarn = () => {
+  try {
+    execSync('yarnpkg --version', { stdio: 'ignore' })
+    return true
+  } catch (e) {
+    return false
+  }
+}
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -100,8 +110,8 @@ module.exports = class extends Generator {
   install() {
     this.log(yosay(`WOW! I'm all ${chalk.red('done')}!`))
 
-    if (this.props.install) {
-      this.yarnInstall()
-    }
+    if (!this.props.install) return
+
+    return shouldUseYarn() ? this.yarnInstall() : this.npmInstall()
   }
 }
