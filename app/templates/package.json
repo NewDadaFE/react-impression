@@ -118,6 +118,7 @@
       "autoprefixer": {}
     }
   },
+  "proxy": {},
   "deploy": {
     "ACCESS_KEY": "",
     "SECRET_KEY": ""

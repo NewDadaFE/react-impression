@@ -83,7 +83,7 @@ module.exports = {
       chunks: false,
       children: false,
     },
-    proxy: {},
+    proxy: require(resolveApp('package.json')).proxy || {},
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
