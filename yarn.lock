@@ -1751,9 +1751,9 @@ prepend-http@^1.0.1:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/prepend-http/download/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
-prettier-eslint-cli@4.3.0:
-  version "4.3.0"
-  resolved "http://registry.npm.taobao.org/prettier-eslint-cli/download/prettier-eslint-cli-4.3.0.tgz#5aa2cf2faf607e6eb85d102741883592f9a5a7c4"
+prettier-eslint-cli@~4.3.2:
+  version "4.3.2"
+  resolved "http://registry.npm.taobao.org/prettier-eslint-cli/download/prettier-eslint-cli-4.3.2.tgz#217796ca7bdb9ce12f7299c77e10c700b08abcda"
   dependencies:
     arrify "^1.0.1"
     babel-runtime "^6.23.0"
@@ -1770,13 +1770,13 @@ prettier-eslint-cli@4.3.0:
     lodash.memoize "^4.1.2"
     loglevel-colored-level-prefix "^1.0.0"
     messageformat "^1.0.2"
-    prettier-eslint "^7.0.0"
+    prettier-eslint "^8.0.0"
     rxjs "^5.3.0"
     yargs "8.0.2"
 
-prettier-eslint@^7.0.0:
-  version "7.1.0"
-  resolved "http://registry.npm.taobao.org/prettier-eslint/download/prettier-eslint-7.1.0.tgz#cba3925f90a14498bd1ebb5464c3bbba00659868"
+prettier-eslint@^8.0.0:
+  version "8.1.0"
+  resolved "http://registry.npm.taobao.org/prettier-eslint/download/prettier-eslint-8.1.0.tgz#8b0366e180c0d4ec1f76ccd635bb20e3f47bc156"
   dependencies:
     common-tags "^1.4.0"
     dlv "^1.1.0"
@@ -1784,15 +1784,15 @@ prettier-eslint@^7.0.0:
     indent-string "^3.2.0"
     lodash.merge "^4.6.0"
     loglevel-colored-level-prefix "^1.0.0"
-    prettier "^1.6.0"
+    prettier "^1.7.0"
     pretty-format "^20.0.3"
     require-relative "^0.8.7"
     typescript "^2.4.2"
     typescript-eslint-parser "^7.0.0"
 
-prettier@^1.6.0:
-  version "1.6.1"
-  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.6.1.tgz#850f411a3116226193e32ea5acfc21c0f9a76d7d"
+prettier@^1.7.0:
+  version "1.7.0"
+  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.7.0.tgz#47481588f41f7c90f63938feb202ac82554e7150"
 
 pretty-bytes@^4.0.2:
   version "4.0.2"
