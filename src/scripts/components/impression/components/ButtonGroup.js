@@ -37,11 +37,11 @@ export default class ButtonGroup extends PureComponent {
             btnGroupSize = size ? `btn-group-${size}` : null;
 
         delete others.activeKey;
-        children = children.map(child => {
+        children = children.map((child, idx) => {
             let { eventKey, onClick } = child.props;
 
             return React.cloneElement(child, {
-                key: child,
+                key: idx,   // eslint-disable-line
                 outline: theme !== 'default' && (!onSelect || activeKey !== eventKey),
                 theme: theme === 'default' && onSelect
                     && activeKey === eventKey ? 'primary' : theme,

@@ -29,6 +29,10 @@
 
 .alert-addon {
     font-size: $alert-addon-font-size;
+
+    i {
+        display: block;
+    }
 }
 
 .alert-body {

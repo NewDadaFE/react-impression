@@ -29,6 +29,10 @@
 
 .confirm-addon {
     font-size: $confirm-addon-font-size;
+
+    i {
+        display: block;
+    }
 }
 
 .confirm-body {

@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "1.3.1",
+  "version": "1.4.2",
   "author": "NewDadaFE",
   "description": "UI Components with React.",
   "main": "./dist/scripts/index.js",
@@ -13,7 +13,7 @@
   "scripts": {
     "eslint": "eslint ./src/scripts/",
     "eslint:fix": "eslint ./src/scripts/ --fix",
-    "start": "gulp build && webpack-dashboard -- webpack-dev-server --config webpack.dev.config.js --colors --port 9008",
+    "start": "gulp build && webpack-dev-server --config webpack.dev.config.js --port 9008",
     "build:site": "gulp build && webpack -p --config webpack.prod.config.js",
     "scsslint": "scss-lint src/styles/**/*.scss",
     "clean": "rimraf ./dist && mkdir dist",
@@ -42,7 +42,7 @@
     "babel": "^6.5.2",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.7.7",
-    "babel-eslint": "^6.0.4",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.2.4",
     "babel-plugin-syntax-decorators": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.8.0",
@@ -73,7 +73,6 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
-    "webpack-dashboard": "^0.1.1",
     "webpack-dev-server": "^1.14.1"
   }
 }
