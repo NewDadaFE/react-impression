@@ -52,8 +52,6 @@ export default class Upload extends PureComponent {
     fileChangeHandle = event => {
         let { onChange } = this.props;
 
-        console.log('test');
-
         this.setState({
             file: event.target.value,
         });
