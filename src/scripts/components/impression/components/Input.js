@@ -204,6 +204,7 @@ export default class Input extends PureComponent {
                                 {...others}
                                 type={type}
                                 value={this.refMain.value}
+                                onChange={value => onChange && onChange(value)}
                                 onSelect={this.selectOptionsHandle} />
                         }
                     </div>
@@ -224,7 +225,7 @@ export default class Input extends PureComponent {
                                 'input-field-addon')}
                             readOnly
                             onClick={onClick}
-                            // onChange={event => onChange && onChange(event.target.value, event)}
+                            onChange={e => onChange && onChange(e.target.value, e)}
                             disabled={disabled}
                             placeholder={placeholder}
                             style={style} />
@@ -240,7 +241,8 @@ export default class Input extends PureComponent {
                         {...others}
                         ref={ref => (this.refMain = ref)}
                         className={className}
-                        placeholder={placeholder} />
+                        placeholder={placeholder}
+                        onChange={e => onChange && onChange(e.target.files[0], e)} />
                 );
             case 'textarea':
                 return (
@@ -251,7 +253,7 @@ export default class Input extends PureComponent {
                         disabled={disabled}
                         placeholder={placeholder}
                         value={value}
-                        onChange={event => onChange && onChange(event, value)}
+                        onChange={e => onChange && onChange(e.target.value, e)}
                         defaultValue={defaultValue}
                         {...others}
                         className={classnames('form-control', className)}
@@ -276,7 +278,7 @@ export default class Input extends PureComponent {
                                     'input-field-addon': children,
                                 }
                             )}
-                            onChange={event => onChange && onChange(event.target.value, event)}
+                            onChange={e => onChange && onChange(e.target.value, e)}
                             disabled={disabled}
                             placeholder={placeholder}
                             style={style} />
