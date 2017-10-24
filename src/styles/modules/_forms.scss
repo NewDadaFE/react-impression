@@ -45,6 +45,11 @@ form {
     &:disabled {
         cursor: $cursor-disabled;
     }
+
+    &:focus {
+        position: relative;
+        z-index: 1;
+    }
 }
 
 // Make file inputs better match text inputs by forcing them to new lines.
