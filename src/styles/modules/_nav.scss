@@ -43,8 +43,10 @@
     }
 
     .nav-link {
+        padding: $nav-link-padding;
         &.active {
             color: $nav-link-active-color;
+            background-color: $nav-link-active-bg;
         }
     }
 }
@@ -52,9 +54,9 @@
 .nav-inline-bordered {
     .nav-link {
         &.active {
-            border-bottom: 2px solid $nav-link-active-color;
+            border-bottom: $nav-link-active-border-width solid $nav-link-active-color;
         }
-      }
+    }
 }
 
 
@@ -79,7 +81,7 @@
     .nav-link {
         color: $nav-tabs-link-color;
         display: block;
-        padding: $nav-link-padding;
+        padding: $nav-tabs-link-padding;
         border: $nav-tabs-link-border-width solid transparent;
         border-bottom: 0;
 
@@ -130,7 +132,7 @@
     .nav-link {
         display: block;
         color: $nav-pills-color;
-        padding: $nav-link-padding;
+        padding: $nav-pills-padding;
 
         @include border-radius($nav-pills-border-radius);
 

@@ -43,7 +43,7 @@ const NavbarView = ({ routes }) => {
                         {'import { Navbar } from "impression-react";\n\n<Navbar>...</Navbar>'}
                     </Highlight>
                 </Card>
-                <h5>Primary</h5>
+                <h5>Pure</h5>
                 <Card>
                     <Card noborder>
                         <Navbar theme="pure">
@@ -78,7 +78,7 @@ const NavbarView = ({ routes }) => {
                         {'<Navbar theme="pure">...</Navbar>'}
                     </Highlight>
                 </Card>
-                <h5>Pure</h5>
+                <h5>Primary</h5>
                 <Card>
                     <Card noborder>
                         <Navbar theme="primary">
@@ -102,7 +102,7 @@ const NavbarView = ({ routes }) => {
                                 </Flex.Item>
                                 <Form type="inline">
                                     <Form.Group>
-                                        <input className="form-control" type="text" placeholder="Search" />
+                                        <input className="form-control no-border" type="text" placeholder="Search" />
                                     </Form.Group>
                                     <Button theme="secondary">Search</Button>
                                 </Form>
@@ -111,6 +111,46 @@ const NavbarView = ({ routes }) => {
                     </Card>
                     <Highlight>
                         {'<Navbar theme="primary">...</Navbar>'}
+                    </Highlight>
+                </Card>
+                <Card>
+                    <Card noborder>
+                        <Navbar theme="primary">
+                            <Flex>
+                                <Navbar.Brand>Navbar</Navbar.Brand>
+                                <Flex.Item>
+                                    <Nav type="inline">
+                                        <Nav.Link>
+                                            <a href="javascript:void(0);" className="active">Home</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="javascript:void(0);">Features</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="javascript:void(0);">Pricing</a>
+                                        </Nav.Link>
+                                        <Nav.Link>
+                                            <a href="javascript:void(0);">About</a>
+                                        </Nav.Link>
+                                    </Nav>
+                                </Flex.Item>
+                                <Form type="inline">
+                                    <Form.Group>
+                                        <input className="form-control no-border" type="text" placeholder="Search" />
+                                    </Form.Group>
+                                    <Button theme="secondary">Search</Button>
+                                </Form>
+                            </Flex>
+                        </Navbar>
+                    </Card>
+                    <Highlight>
+                        {'<Navbar theme="primary">\n'}
+                        {'  <Nav type="inline">\n'}
+                        {'    <Nav.Link>\n'}
+                        {'      <a href="javascript:void(0);" className="active">Home</a>\n'}
+                        {'    </Nav.Link>\n'}
+                        {'  </Nav>\n'}
+                        {'</Navbar>'}
                     </Highlight>
                 </Card>
                 <h5 className="text-secondary">Navbar API</h5>
