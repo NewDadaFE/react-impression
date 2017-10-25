@@ -131,14 +131,14 @@
 
     .nav-link {
         display: block;
-        color: $nav-pills-color;
-        padding: $nav-pills-padding;
+        color: $nav-pills-link-color;
+        padding: $nav-pills-link-padding;
 
-        @include border-radius($nav-pills-border-radius);
+        @include border-radius($nav-pills-link-border-radius);
 
         &:hover {
-            background: $nav-tabs-link-hover-bg;
-            border-color: $nav-tabs-link-hover-border-color;
+            background: $nav-pills-link-hover-bg;
+            border-color: $nav-pills-link-hover-border-color;
         }
 
         &.disabled {

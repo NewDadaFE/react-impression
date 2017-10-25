@@ -23,9 +23,9 @@
     "compile:minscss": "node-sass --output-style compressed src/styles/index.scss dist/index.min.css",
     "prebuild": "npm run clean",
     "build": "npm run compile:js && npm run compile:scss && npm run compile:minscss",
-    "postbuild": "npm run copy && gulp backup && npm publish",
-    "prepublish": "npm config set registry https://registry.npmjs.org/",
-    "postpublish": "gulp recovery && npm config set registry https://registry.npm.taobao.org/"
+    "postbuild": "npm run copy && gulp backup",
+    "prepublish1": "npm config set registry https://registry.npmjs.org/",
+    "postpublish1": "gulp recovery && npm config set registry https://registry.npm.taobao.org/"
   },
   "dependencies": {
     "classnames": "^2.2.0",
@@ -65,6 +65,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-run-sequence": "^0.3.2",
     "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.6.3",
     "gulp-watch": "^4.3.9",
     "html-webpack-plugin": "^2.16.0",
     "json-loader": "^0.5.4",

@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     cssmin = require('gulp-minify-css'),
     sequence = require('gulp-run-sequence'),
     autoprefixer = require('gulp-autoprefixer'),
-    editor = require('gulp-json-editor');
+    editor = require('gulp-json-editor'),
+    shell = require('gulp-shell');
 
 
 // 清空
@@ -106,6 +107,11 @@ gulp.task('edit:package.json', function() {
 // 监听
 gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.scss', ['sass:index', 'sass:project']);
+});
+
+// 监听: 重新link
+gulp.task('watch:link', function() {
+    return watch('src/**/*.*').pipe(shell(['npm run compile:js', 'npm run copy']));
 });
 
 

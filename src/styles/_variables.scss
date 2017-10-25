@@ -507,9 +507,9 @@ $nav-title-color:                               $brand-pure !default;
 $nav-title-padding:                             1rem !default;
 $nav-title-font-size:                           1.1rem !default;
 
-$nav-link-padding:                              0 1.5em !default;
-$nav-link-active-color:                         #fff !default;
-$nav-link-active-bg:                            darken($brand-primary, 6%) !default;
+$nav-link-padding:                              0 !default;
+$nav-link-active-color:                         $brand-primary !default;
+$nav-link-active-bg:                            transparent !default;
 $nav-link-hover-bg:                             $gray-lighter !default;
 $nav-link-active-border-width:                  2px !default;
 
@@ -534,11 +534,14 @@ $nav-tabs-justified-link-border-color:          #ddd !default;
 
 $nav-tabs-justified-active-link-border-color:   $body-bg !default;
 
-$nav-pills-color:                                $nav-tabs-link-color !default;
-$nav-pills-padding:                              $nav-tabs-link-padding !default;
-$nav-pills-border-radius:                        $border-radius !default;
+$nav-pills-link-color:                           $nav-tabs-link-color !default;
+$nav-pills-link-border-radius:                   $border-radius !default;
+$nav-pills-link-padding:                         $nav-tabs-link-padding !default;
 $nav-pills-active-link-color:                    $component-active-color !default;
 $nav-pills-active-link-bg:                       $brand-primary !default;
+$nav-pills-link-hover-bg:                        $nav-tabs-link-hover-bg !default;
+$nav-pills-link-hover-border-color:              $nav-tabs-link-hover-border-color !default;
+
 
 $nav-stacked-items-padding:                      .75rem 1rem !default;
 
