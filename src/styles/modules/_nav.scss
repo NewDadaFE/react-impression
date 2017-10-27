@@ -137,6 +137,7 @@
         @include border-radius($nav-pills-link-border-radius);
 
         &:hover {
+            color: $nav-pills-link-hover-color;
             background: $nav-pills-link-hover-bg;
             border-color: $nav-pills-link-hover-border-color;
         }

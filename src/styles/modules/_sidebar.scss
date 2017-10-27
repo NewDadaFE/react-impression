@@ -7,7 +7,6 @@
     color: $sidebar-color;
     background-color: $sidebar-bg;
 
-
     .nav-item {
         display: block;
         text-indent: $sidebar-nav-item-indent;
@@ -65,7 +64,8 @@
     background: $sidebar-header-bg;
     background-color: $sidebar-header-bg-color;
     background-size: contain;
-    border-bottom: 1px solid $sidebar-header-border;
+    border-bottom: 1px solid $sidebar-header-bottom-border-color;
+    border-right: 1px solid $sidebar-header-border-right-color;
 
     img {
         max-height: $navbar-height;
@@ -77,6 +77,8 @@
 .sidebar-body {
     flex: 1;
     overflow-y: auto;
+    border-right: 1px solid $sidebar-body-border-right-color;
+
 
     .nav {
         margin-bottom: $sidebar-body-padding-bottom;

@@ -477,11 +477,14 @@ $sidebar-bg:                                    $gray-secondary !default;
 
 $sidebar-header-bg:                             url(../images/logo.png) center center no-repeat !default;
 $sidebar-header-bg-color:                       mix($sidebar-bg, $navbar-primary-bg, 90%) !default;
-$sidebar-header-border:                         darken($sidebar-header-bg-color, 6%) !default;
+$sidebar-header-bottom-border-color:            darken($sidebar-header-bg-color, 6%) !default;
 $sidebar-header-font-size:                      $font-size-lg !default;
 $sidebar-header-color:                          $gray-lighter !default;
+$sidebar-header-border-right-color:             transparent !default;
 
 $sidebar-body-padding-bottom:                   4rem !default;
+$sidebar-body-border-right-color:               transparent !default;
+
 
 $sidebar-footer-height:                         3rem !default;
 $sidebar-footer-bg:                             darken($sidebar-bg, 3%) !default;
@@ -539,6 +542,7 @@ $nav-pills-link-border-radius:                   $border-radius !default;
 $nav-pills-link-padding:                         $nav-tabs-link-padding !default;
 $nav-pills-active-link-color:                    $component-active-color !default;
 $nav-pills-active-link-bg:                       $brand-primary !default;
+$nav-pills-link-hover-color:                     $nav-tabs-active-link-hover-color !default;
 $nav-pills-link-hover-bg:                        $nav-tabs-link-hover-bg !default;
 $nav-pills-link-hover-border-color:              $nav-tabs-link-hover-border-color !default;
 
