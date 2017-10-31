@@ -10,6 +10,7 @@
     .nav-item {
         display: block;
         text-indent: $sidebar-nav-item-indent;
+        margin: $sidebar-nav-item-margin;
 
         + .nav-item {
             margin-left: 0;
@@ -77,8 +78,8 @@
 .sidebar-body {
     flex: 1;
     overflow-y: auto;
+    padding-top: $sidebar-body-padding-top;
     border-right: 1px solid $sidebar-body-border-right-color;
-
 
     .nav {
         margin-bottom: $sidebar-body-padding-bottom;

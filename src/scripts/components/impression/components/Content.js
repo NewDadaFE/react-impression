@@ -12,6 +12,8 @@ export default class Content extends PureComponent {
     static propTypes = {
         // 自定义样式
         className: PropTypes.string,
+        // 是否有动画
+        notransition: PropTypes.bool,
         // 动画名称
         transitionName: PropTypes.string,
         // 进入动画时间
@@ -26,6 +28,7 @@ export default class Content extends PureComponent {
     }
     // 默认props
     static defaultProps = {
+        notransition: false,
         transitionName: 'zoom-slide',
         component: 'div',
         transitionEnterTimeout: 1200,
@@ -33,6 +36,7 @@ export default class Content extends PureComponent {
     }
     render() {
         let {
+            notransition,
             transitionName,
             transitionEnterTimeout,
             transitionLeaveTimeout,
@@ -44,6 +48,15 @@ export default class Content extends PureComponent {
         children && (children = React.cloneElement(children, {
             key: children.props.location.pathname,
         }));
+
+        console.log(notransition);
+        if(notransition) {
+            return (
+                <div className={classnames('content', className)}>
+                    {children}
+                </div>
+            );
+        }
 
         return (
             <div className={classnames('content', className)}>
