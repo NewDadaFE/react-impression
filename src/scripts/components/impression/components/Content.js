@@ -49,7 +49,6 @@ export default class Content extends PureComponent {
             key: children.props.location.pathname,
         }));
 
-        console.log(notransition);
         if(notransition) {
             return (
                 <div className={classnames('content', className)}>
