@@ -24,19 +24,11 @@ export default class Switch extends PureComponent {
         disabled: false,
     }
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            time: (new Date()).valueOf() + Math.ceil(Math.random() * 10), // 设置radio id时间戳 ？
-        };
-    }
-
     getValue() {
         let { value } = this.props,
             { main } = this.refs;
 
-        if(value === undefined) {
+        if (value === undefined) {
             return main.checked;
         }
 
@@ -57,14 +49,13 @@ export default class Switch extends PureComponent {
 
     // 渲染
     render() {
-        let { checked, defaultChecked, onChange, disabled, className, ...others } = this.props,
-            { time } = this.state;
+        let { checked, defaultChecked, onChange, disabled, className, ...others } = this.props
 
-        return(
+        return (
             <label
                 {...others}
                 className={classnames('switch', className)}
-                htmlFor={`switch${time}`}>
+                htmlFor={`switch${this._reactInternalInstance._mountOrder}`}>
                 <input
                     ref="main"
                     type="checkbox"
@@ -72,7 +63,7 @@ export default class Switch extends PureComponent {
                     defaultChecked={defaultChecked}
                     disabled={disabled}
                     onChange={onChange && this.onChangeHandle}
-                    id={`switch${time}`} />
+                    id={`switch${this._reactInternalInstance._mountOrder}`} />
                 <div className="switch-addon" />
             </label>
         );
@@ -81,14 +72,14 @@ export default class Switch extends PureComponent {
 
 // getValue
 Switch.getValue = ref => {
-    if(!ref) return undefined;
+    if (!ref) return undefined;
 
     return ref.getValue();
 };
 
 // setValue
 Switch.setValue = (ref, checked) => {
-    if(!ref) return;
+    if (!ref) return;
 
     ref.setValue(checked);
 };
