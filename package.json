@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "author": "NewDadaFE",
   "description": "UI Components with React.",
   "main": "./dist/scripts/index.js",
@@ -68,6 +68,7 @@
     "gulp-shell": "^0.6.3",
     "gulp-watch": "^4.3.9",
     "html-webpack-plugin": "^2.16.0",
+    "is-primitive": "^2.0.0",
     "json-loader": "^0.5.4",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^4.5.3",
