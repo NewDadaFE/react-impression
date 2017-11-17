@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "author": "NewDadaFE",
   "description": "UI Components with React.",
   "main": "./dist/scripts/index.js",
