@@ -8,6 +8,7 @@
     "format": "prettier-eslint --write 'src/**/*.js'",
     "start": "webpack-dev-server --env.development",
     "build": "webpack --env.production",
+    "debug": "npm run build && node deploy.js --debug",
     "version": "npm run build && node deploy.js",
     "postversion": "git push && git push --tags"
   },
