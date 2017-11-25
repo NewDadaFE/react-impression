@@ -1,10 +1,10 @@
 const path = require('path')
-const merge = require('webpack-merge')
 const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const merge = require('webpack-merge')
 const BabelWebpackPlugin = require('babel-minify-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const config = require('./package.json')
 
 const paths = {
