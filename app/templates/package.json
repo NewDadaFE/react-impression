@@ -8,7 +8,7 @@
     "format": "prettier-eslint --write 'src/**/*.js'",
     "start": "webpack-dev-server --env.development",
     "build": "webpack --env.production",
-    "version": "npm run build && node config/deploy.js",
+    "version": "npm run build && node deploy.js",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
@@ -67,10 +67,7 @@
     "webpack-merge": "~4.1.1"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "*.js": ["prettier-eslint --write", "git add"]
   },
   "babel": {
     "plugins": [
@@ -105,12 +102,7 @@
         {
           "modules": false,
           "targets": {
-            "browsers": [
-              ">1%",
-              "last 4 versions",
-              "Firefox ESR",
-              "not ie < 9"
-            ]
+            "browsers": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"]
           }
         }
       ],
@@ -124,12 +116,7 @@
       "AMap": false
     }
   },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie < 9"
-  ],
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "postcss": {
     "plugins": {
       "autoprefixer": {}
