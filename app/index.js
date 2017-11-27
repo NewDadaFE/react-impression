@@ -75,9 +75,6 @@ module.exports = class extends Generator {
   writing() {
     const { name, description } = this.props
 
-    // Copy config files
-    this.fs.copy(this.templatePath('config/**'), this.destinationPath('config'))
-
     // Copy example code
     if (!this.isUpgrade) {
       this.fs.copy(this.templatePath('src/**'), this.destinationPath('src'))
@@ -105,6 +102,9 @@ module.exports = class extends Generator {
       this.destinationPath('README.md'),
       { name, description }
     )
+
+    // Copy JS
+    this.fs.copy(this.templatePath('*.js'), this.destinationRoot())
   }
 
   install() {
