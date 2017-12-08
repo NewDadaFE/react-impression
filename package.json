@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-react-impression",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "ESLint shareable config for React/JSX support.",
   "repository": "NewDadaFE/eslint-config-react-impression",
   "license": "MIT",
