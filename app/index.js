@@ -89,10 +89,11 @@ module.exports = class extends Generator {
       { name, description }
     )
     if (this.isUpgrade) {
-      templatePackage = R.mergeDeepRight(
-        this.fs.readJSON(this.destinationPath('package.json')),
-        templatePackage
+      const config = R.pick(
+        ['version', 'dependencies', 'proxy', 'deploy'],
+        this.fs.readJSON(this.destinationPath('package.json'))
       )
+      templatePackage = R.merge(templatePackage, config)
     }
     this.fs.writeJSON(this.destinationPath('package.json'), templatePackage)
 
