@@ -1,41 +1,43 @@
 # generator-react-impression
 
-> React + Redux + React Router + React Impression + Webpack 2
+> React + Redux + React Router + React Impression + Webpack 3
 
-## Installation
+[English Version]('./README_EN.md')
 
-First, install Yeoman and generator-react-impression:
+## 安装
+
+首先, 安装`Yeoman`和`generator-react-impression`:
 
 ```bash
 npm i -g yo generator-react-impression
 ```
 
-Then generate your new project:
+创建新项目:
 
 ```bash
 yo react-impression
 ```
 
-***OR*** upgrade existed project:
+或者升级旧项目:
 
 ```bash
 cd YOUR_PROJECT_FOLDER
 yo react-impression --upgrade
 ```
 
-## Development
+## 开发
 
-First, run following command in your project folder:
+首先, 进入项目目录并执行如下命令:
 
 ```bash
 npm start
 ```
 
-Then, open your browser with http://localhost:8080.
+然后, 打开浏览器并访问 [http://localhost:8080](http://localhost:8080)
 
-## Deploy
+## 发版
 
-First, add your Qiniu key to `package.json`:
+首先, 在`package.json`文件中加入七牛云秘钥:
 
 ```json
 {
@@ -46,22 +48,24 @@ First, add your Qiniu key to `package.json`:
 }
 ```
 
-Then run following command to release `patch` version:
+然后执行如下命令之一:
 
 ```bash
+# 小版本更新，如修复问题
 npm version patch -m 'Release version %s'
-```
 
-***OR*** release `minor` version:
-```bash
+# 大版本更新，如增加功能
 npm version minor -m 'Release version %s'
+
+# 手动指定版本号，如1.0.0
+npm version 1.0.0 -m 'Release version %s'
 ```
 
-## Best Practice
+## 最佳实践
 
-* Proxy API request
+* 转发API请求
 
-  First, update proxy table in `package.json`. For example:
+  首先, 更新`package.json`文件中的配置，比如：
 
   ```json
   {
@@ -74,16 +78,16 @@ npm version minor -m 'Release version %s'
   }
   ```
 
-  Then restart development server:
+  然后，重启服务：
 
   ```bash
   npm start
   ```
 
-* Create Flux Standard Action with [redux-actions][redux-actions]
-* Follow standard of [ducks-modular-redux][ducks-modular-redux]
-* Update state using [dot-prop-immutable][dot-prop-immutable]
-* Write styles with [babel-plugin-react-css-modules][babel-plugin-react-css-modules]
+* 使用[redux-actions][redux-actions]创建`Flux Standard Action`
+* 遵守[ducks-modular-redux][ducks-modular-redux]标准
+* 使用[dot-prop-immutable][dot-prop-immutable]更新嵌套数据
+* 使用[babel-plugin-react-css-modules][babel-plugin-react-css-modules]创建模块化样式
 
 
 ## License
