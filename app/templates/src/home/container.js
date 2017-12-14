@@ -10,7 +10,7 @@ class Home extends Component {
     total: PropTypes.number,
     increment: PropTypes.func,
     decrement: PropTypes.func,
-  }
+  };
 
   componentDidMount() {
     Notification.info({

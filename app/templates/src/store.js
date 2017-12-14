@@ -10,7 +10,9 @@ const store = createStore(
 )
 
 if (DEBUG) {
-  if (module.hot) module.hot.accept('./reducers', store.replaceReducer(reducer))
+  if (module.hot) {
+    module.hot.accept('./reducers', store.replaceReducer(reducer))
+  }
 }
 
 export default store
