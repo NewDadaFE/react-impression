@@ -2,7 +2,7 @@
 
 > React + Redux + React Router + React Impression + Webpack 3
 
-[English Version]('./README_EN.md')
+[English Version](./README_EN.md)
 
 ## 安装
 
@@ -12,7 +12,7 @@
 npm i -g yo generator-react-impression
 ```
 
-创建新项目:
+然后创建新项目:
 
 ```bash
 yo react-impression
@@ -37,7 +37,7 @@ npm start
 
 ## 发版
 
-首先, 在`package.json`文件中加入七牛云秘钥:
+首先, 在`package.json`文件中加入七牛云密钥:
 
 ```json
 {
