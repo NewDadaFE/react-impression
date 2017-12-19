@@ -7,9 +7,8 @@
     "precommit": "lint-staged",
     "format": "prettier-eslint --write 'src/**/*.js'",
     "start": "webpack-dev-server --env.development",
-    "build": "webpack --env.production",
-    "debug": "npm run build && node deploy.js --debug",
-    "version": "npm run build && node deploy.js",
+    "debug": "webpack --env.debug && node deploy.js",
+    "version": "webpack --env.production && node deploy.js",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
@@ -73,6 +72,7 @@
     "url-loader": "~0.6.2",
     "webpack": "~3.9.1",
     "webpack-dev-server": "~2.9.7",
+    "webpack-manifest-plugin": "~1.3.2",
     "webpack-merge": "~4.1.1"
   },
   "lint-staged": {
