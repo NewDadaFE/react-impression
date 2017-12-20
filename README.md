@@ -63,6 +63,10 @@ npm version 1.0.0 -m 'Release version %s'
 
 ## 最佳实践
 
+* 代码格式化
+
+  代码提交时会自动格式化，如需手动格式化，执行`npm run format`命令
+
 * 转发API请求
 
   首先, 更新`package.json`文件中的配置，比如：
@@ -84,6 +88,7 @@ npm version 1.0.0 -m 'Release version %s'
   npm start
   ```
 
+* 遵守[eslint-config-react-impression][eslint-config-react-impression]规范
 * 使用[redux-actions][redux-actions]创建`Flux Standard Action`
 * 遵守[ducks-modular-redux][ducks-modular-redux]标准
 * 使用[dot-prop-immutable][dot-prop-immutable]更新嵌套数据
@@ -94,6 +99,7 @@ npm version 1.0.0 -m 'Release version %s'
 
 MIT
 
+[eslint-config-react-impression]: https://github.com/NewDadaFE/eslint-config-react-impression
 [redux-actions]: https://github.com/acdlite/redux-actions
 [ducks-modular-redux]: https://github.com/erikras/ducks-modular-redux
 [dot-prop-immutable]: https://github.com/debitoor/dot-prop-immutable
