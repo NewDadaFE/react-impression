@@ -76,10 +76,7 @@
     "webpack-merge": "~4.1.1"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "*.js": ["prettier-eslint --write", "git add"]
   },
   "babel": {
     "plugins": [
@@ -117,12 +114,7 @@
         {
           "modules": false,
           "targets": {
-            "browsers": [
-              ">1%",
-              "last 4 versions",
-              "Firefox ESR",
-              "not ie < 9"
-            ]
+            "browsers": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"]
           }
         }
       ],
@@ -136,12 +128,7 @@
       "AMap": false
     }
   },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie < 9"
-  ],
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "postcss": {
     "plugins": {
       "autoprefixer": {}
@@ -149,6 +136,8 @@
   },
   "proxy": {},
   "deploy": {
+    "DOMAIN": "fe.imdada.cn",
+    "BUCKET": "dada-fe",
     "ACCESS_KEY": "",
     "SECRET_KEY": ""
   }

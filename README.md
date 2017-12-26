@@ -37,11 +37,13 @@ npm start
 
 ## 发版
 
-首先, 在`package.json`文件中加入七牛云密钥:
+首先, 在`package.json`文件中修改七牛云配置并加入密钥:
 
 ```json
 {
   "deploy": {
+    "DOMAIN": "fe.imdada.cn",
+    "BUCKET": "dada-fe",
     "ACCESS_KEY": "",
     "SECRET_KEY": ""
   }
