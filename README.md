@@ -61,6 +61,9 @@ npm version minor -m 'Release version %s'
 
 # 手动指定版本号，如1.0.0
 npm version 1.0.0 -m 'Release version %s'
+
+# 测试版本
+npm run debug
 ```
 
 ## 最佳实践
