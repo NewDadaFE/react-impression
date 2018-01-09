@@ -49,7 +49,7 @@ export default class Switch extends PureComponent {
 
     // 渲染
     render() {
-        let { checked, defaultChecked, onChange, disabled, className, ...others } = this.props
+        let { checked, defaultChecked, onChange, disabled, className, ...others } = this.props;
 
         return (
             <label
