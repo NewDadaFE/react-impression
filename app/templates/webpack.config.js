@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const BabelWebpackPlugin = require('babel-minify-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -212,7 +212,11 @@ const production = env => {
         'process.env.NODE_ENV': '"production"',
         DEBUG: JSON.stringify(false),
       }),
-      new BabelWebpackPlugin(),
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          ecma: 8,
+        },
+      }),
       new ExtractTextPlugin(names.css),
       new ManifestPlugin({
         seed: {
