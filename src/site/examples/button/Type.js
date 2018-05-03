@@ -3,15 +3,12 @@ import React from 'react'
 import { Button } from 'react-impression'
 
 const ButtonType = () => {
-  const handleClick = () => {
-    console.log(112345)
-  }
-
   return (
     <div>
-      <Button ghost type="primary" onClick={handleClick}>
-        huang
-      </Button>
+      <Button type="default">default</Button>
+      <Button type="primary">primary</Button>
+      <Button type="secondary">secondary</Button>
+      <Button type="danger">danger</Button>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import './button.scss'
 
 /**
  * 按钮组件.
@@ -9,6 +8,7 @@ import './button.scss'
 const Button = (props) => {
   const {
     theme,
+    type,
     outline,
     ghost,
     size,
@@ -23,6 +23,7 @@ const Button = (props) => {
   } = props
   const Component = props.href ? 'a' : 'button'
   const _ghost = outline || ghost
+  const _type = theme || type
 
   return (
     <Component
@@ -32,7 +33,7 @@ const Button = (props) => {
       href={href}
       className={classnames(
         !close && 'btn',
-        !close && `btn${_ghost ? '-outline' : ''}-${theme}`,
+        !close && `btn${_ghost ? '-outline' : ''}-${_type}`,
         size && `btn-${size}`,
         shape && `btn-${shape}`,
         close && 'close',
@@ -48,8 +49,10 @@ const Button = (props) => {
 Button.propTypes = {
   // 自定义样式
   className: PropTypes.string,
-  // 样式（primary、default、secondary）
+  // 样式（primary、default、secondary、danger）
+  // deprecated
   theme: PropTypes.string,
+  type: PropTypes.string,
   // click事件
   onClick: PropTypes.func,
   // 是否outline
@@ -71,7 +74,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  theme: 'primary'
+  type: 'primary'
 }
 
 export default Button
