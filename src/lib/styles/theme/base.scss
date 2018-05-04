@@ -1,173 +1,23 @@
-// Variables
+// brand colors
+$brand-primary:             #3399FF !default;
+$brand-secondary:           #FF9900 !default;
 
-@mixin _assert-ascending($map, $map-name) {
-  $prev-key: null;
-  $prev-num: null;
-  @each $key, $num in $map {
-      @if $prev-num != null and $prev-num >= $num {
-          @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
-      }
-      $prev-key: $key;
-      $prev-num: $num;
-  }
-}
+// status colors
+$primary-color:             #3399FF !default;
+$success-color:             #33CC66 !default;
+$warning-color:             #FF9900 !default;
+$danger-color:              #FF3333 !default;
+$pure-color: #D0D0D0 !default;
+$muted-color: #ffffff !default;
 
-// Colors
-$gray-dark:                 #373a3c !default;
-$gray:                      #55595c !default;
-$gray-light:                #999 !default;
-$gray-lighter:              #eceeef !default;
-$gray-lightest:             #f4f4f4 !default;
+// text colors
+$text-color-primary: #22252A !default;
+$text-color-secondary: #6D7077 !default;
+$text-color-pure: #D0D0D0 !default;
+$text-color-muted: #ffffff !default;
 
-$brand-primary:             #4285f4 !default;
-$brand-secondary:           complement($brand-primary) !default;
-$brand-success:             #34a853 !default;
-$brand-info:                #5bc0de !default;
-$brand-warning:             #fbbc05 !default;
-$brand-danger:              #ea4335 !default;
-$brand-pure:                #fff !default;
+// line colors
+$line-color: #E9E9EB !default;
 
-$gray-secondary:            mix($brand-primary, $gray-dark, 20%) !default;
-
-// Options
-$enable-flex:               true !default;
-
-// Spacing
-$spacer:   1rem !default;
-$spacer-x: $spacer !default;
-$spacer-y: $spacer !default;
-$spacers: (
-0: (
-  x: 0,
-  y: 0
-),
-1: (
-  x: $spacer-x,
-  y: $spacer-y
-),
-2: (
-  x: ($spacer-x * 1.5),
-  y: ($spacer-y * 1.5)
-),
-3: (
-  x: ($spacer-x * 3),
-  y: ($spacer-y * 3)
-)
-) !default;
-$border-width: 1px !default;
-
-// Inverse level
-$inverse-level-1:               rgba(0, 0, 0, .18) !default;
-$inverse-level-2:               rgba(0, 0, 0, .24) !default;
-$inverse-level-3:               rgba(0, 0, 0, .3) !default;
-$inverse-level-6:               rgba(0, 0, 0, .6) !default;
-
-// Body
-$body-bg:                       $brand-pure !default;
-$body-color:                    #666 !default;
-$border-color:                  #e7eaec !default;
-$text-muted:                    $gray-light !default;
-
-
-// Links
-$link-color:                    $brand-primary !default;
-$link-decoration:               none !default;
-$link-hover-color:              darken($link-color, 15%) !default;
-$link-hover-decoration:         underline !default;
-
-
-// Grid breakpoints
-$grid-breakpoints: (
-xs: 0,
-sm: 544px,
-md: 768px,
-lg: 992px,
-xl: 1200px
-) !default;
-@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
-
-
-// Grid containers
-$container-max-widths: (
-sm: 576px,
-md: 720px,
-lg: 940px,
-xl: 1140px
-) !default;
-@include _assert-ascending($container-max-widths, '$container-max-widths');
-
-
-// Grid columns
-$grid-columns:              12 !default;
-$grid-gutter-width:         30px !default;
-
-
-// Typography
-$font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "WenQuanYi Micro Hei", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
-$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
-$font-family-base:        $font-family-sans-serif !default;
-
-
-// Pixel value used to responsively scale all typography. Applied to the `<html>` element.
-$font-size-root:    14px !default;
-$font-size-base:    1rem !default;
-$font-size-lg:      1.25rem !default;
-$font-size-sm:      .875rem !default;
-$font-size-xs:      .75rem !default;
-
-
-$font-size-h1:      2.5rem !default;
-$font-size-h2:      2rem !default;
-$font-size-h3:      1.75rem !default;
-$font-size-h4:      1.5rem !default;
-$font-size-h5:      1.25rem !default;
-$font-size-h6:      1rem !default;
-
-$display1-size:     6rem !default;
-$display2-size:     5.5rem !default;
-$display3-size:     4.5rem !default;
-$display4-size:     3.5rem !default;
-
-$display1-weight:   300 !default;
-$display2-weight:   300 !default;
-$display3-weight:   300 !default;
-$display4-weight:   300 !default;
-
-$headings-margin-bottom: ($spacer / 2) !default;
-$headings-font-family:   inherit !default;
-$headings-font-weight:   500 !default;
-$headings-line-height:   1.1 !default;
-$headings-color:         inherit !default;
-
-$small-font-size:        80% !default;
-
-
-$hr-border-color: $border-color !default;
-$hr-border-width: $border-width !default;
-
-$mark-padding: .2em !default;
-
-$dt-font-weight: bold !default;
-
-$list-inline-padding: 5px !default;
-
-$cursor-disabled:                not-allowed !default;
-$cursor-pointer:                 pointer !default;
-
-// Components
-//
-// Define common padding and border radius sizes and more.
-$line-height-base:       1.43 !default;
-$line-height-lg:         (4 / 3) !default;
-$line-height-sm:         1.5 !default;
-
-$border-radius:          4px !default;
-$border-radius-lg:       6px !default;
-$border-radius-sm:       2px !default;
-
-$component-active-color: $brand-pure !default;
-$component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
-
-$caret-width:            .3em !default;
-$caret-width-lg:         $caret-width !default;
+// bg colors
+$bg-pure-color: #F6F7FB !default;

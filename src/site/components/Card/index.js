@@ -6,13 +6,15 @@ import 'prismjs/themes/prism.css'
 
 loadLanguages(['jsx'])
 
-const Card = ({ component: Component }) => {
+const Card = ({ component: Component, cardClass, ...others }) => {
   const sourceCode = Component._sourceCode || ''
   const code = Prism.highlight(sourceCode, Prism.languages.jsx, 'jsx')
 
   return (
-    <div>
-      <Component />
+    <div {...others}>
+      <div className={cardClass}>
+        <Component />
+      </div>
       <h2>{Component.title}</h2>
       <p>{Component.desc}</p>
 
@@ -26,7 +28,8 @@ const Card = ({ component: Component }) => {
 }
 
 Card.propTypes = {
-  component: PropTypes.any
+  component: PropTypes.any,
+  cardClass: PropTypes.string
 }
 
 export default Card

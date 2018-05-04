@@ -1,5 +1,15 @@
 .button {
+  padding: 20px;
+
+  a,
   button {
     margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ghost {
+    background-color: gray;
+    padding: 10px;
+    padding-bottom: 0;
   }
 }

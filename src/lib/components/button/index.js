@@ -22,8 +22,8 @@ const Button = (props) => {
     ...others
   } = props
   const Component = props.href ? 'a' : 'button'
-  const _ghost = outline || ghost
   const _type = theme || type
+  const _ghost = outline || ghost
 
   return (
     <Component
@@ -74,7 +74,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  type: 'primary'
+  type: 'default'
 }
 
 export default Button

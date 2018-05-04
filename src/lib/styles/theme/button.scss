@@ -1,0 +1,49 @@
+// Buttons
+
+// basic
+$btn-pill-radius: 200px !default;
+$btn-transition: all .2s cubic-bezier(.4, 0, .2, 1) !default;
+
+
+// theme
+$btn-primary-color:              $text-color-muted !default;
+$btn-primary-bg:                 $primary-color !default;
+$btn-primary-border:             $primary-color !default;
+
+$btn-success-color:              $text-color-muted !default;
+$btn-success-bg:                 $success-color !default;
+$btn-success-border:             $success-color !default;
+
+$btn-warning-color:              $text-color-muted !default;
+$btn-warning-bg:                 $warning-color !default;
+$btn-warning-border:             $warning-color !default;
+
+$btn-danger-color:              $text-color-muted !default;
+$btn-danger-bg:                 $danger-color !default;
+$btn-danger-border:             $danger-color !default;
+
+$btn-default-color:             $text-color-primary !default;
+$btn-default-bg:                $muted-color !default;
+$btn-default-border:            $pure-color !default;
+
+// size
+$btn-padding-x-sm: 16px !default;
+$btn-padding-y-sm: 3px !default;
+$btn-font-size-sm: 12px !default;
+$btn-line-height-sm: 17px !default;
+$btn-icon-margin-right-sm: 6px !default;
+$btn-border-radius-sm: 4px !default;
+
+$btn-padding-x-md: 22px !default;
+$btn-padding-y-md: 5px !default;
+$btn-font-size-md: 14px !default;
+$btn-line-height-md: 20px !default;
+$btn-icon-margin-right-md: 6px !default;
+$btn-border-radius-md: 4px !default;
+
+$btn-padding-x-lg: 26px !default;
+$btn-padding-y-lg: 8px !default;
+$btn-font-size-lg: 16px !default;
+$btn-line-height-lg: 22px !default;
+$btn-icon-margin-right-lg: 6px !default;
+$btn-border-radius-lg: 4px !default;
