@@ -1,5 +1,5 @@
 // scss-lint:disable QualifyingElement
-@import '@/lib/styles/theme/index.scss';
+@import '../../../styles/theme/index.scss';
 @import './mixin.scss';
 
 // scss-lint:disable QualifyingElement
@@ -15,7 +15,6 @@
   outline: none;
   text-decoration: none;
 
-  @include button-size($btn-padding-y-md, $btn-padding-x-md, $btn-font-size-md, $btn-border-radius-md);
   @include click-ripple();
 }
 
@@ -67,6 +66,10 @@ fieldset[disabled] a.btn {
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+}
+
+.btn-md {
+  @include button-size($btn-padding-y-md, $btn-padding-x-md, $btn-font-size-md, $btn-border-radius-md);
 }
 
 .btn-sm {

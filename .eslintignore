@@ -1,2 +1,4 @@
 webpack.*.js
 build
+lib
+es

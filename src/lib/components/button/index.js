@@ -74,7 +74,8 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  type: 'default'
+  type: 'default',
+  size: 'md'
 }
 
 export default Button
