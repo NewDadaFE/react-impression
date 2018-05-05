@@ -6,14 +6,16 @@ const sequence = require('gulp-run-sequence')
 const utils = require('./utils')
 
 // Clean
-gulp.task('clean:es', () => {
-  return gulp.src(utils.resolve('es'))
-    .pipe(clean({force: true}))
+const cleanDirs = ['es', 'lib', 'site', 'dist']
+const cleans = []
+cleanDirs.forEach(dir => {
+  gulp.task(`clean:${dir}`, () => {
+    return gulp.src(utils.resolve(dir))
+      .pipe(clean({force: true}))
+  })
+  cleans.push(`clean:${dir}`)
 })
-gulp.task('clean:lib', () => {
-  return gulp.src(utils.resolve('lib'))
-    .pipe(clean({force: true}))
-})
+gulp.task('clean', cleans)
 
 // 编译esModules版本
 gulp.task('build:es', () => {
@@ -54,5 +56,5 @@ gulp.task('build:scss', function () {
 })
 
 gulp.task('default', function (cb) {
-  sequence(['clean:es', 'clean:lib'], ['build:lib', 'build:es'], ['cp:scss', 'build:scss'], cb)
+  sequence(['clean'], ['build:lib', 'build:es'], ['cp:scss', 'build:scss'], cb)
 })
