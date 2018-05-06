@@ -12,7 +12,7 @@ const ButtonSize = () => {
         md
       </Button>
       <Button type="primary" size="lg">
-        lg
+        large
       </Button>
     </div>
   )
