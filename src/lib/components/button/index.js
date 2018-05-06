@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 /**
  * 按钮组件.
  */
-const Button = (props) => {
+const Button = props => {
   const {
     theme,
     type,

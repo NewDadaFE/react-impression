@@ -5,19 +5,19 @@ import { Button } from 'react-impression'
 const ButtonType = () => {
   return (
     <div>
-      <Button type="default">
+      <Button type='default'>
         default
       </Button>
-      <Button type="primary">
+      <Button type='primary'>
         primary
       </Button>
-      <Button type="success">
+      <Button type='success'>
         success
       </Button>
-      <Button type="warning">
+      <Button type='warning'>
         warning
       </Button>
-      <Button type="danger">
+      <Button type='danger'>
         danger
       </Button>
     </div>

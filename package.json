@@ -7,6 +7,20 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "es/components/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config build/webpack.config.dev.js",
+    "format": "yarn lint-staged",
+    "lint:scss": "stylelint src/**/*.scss --syntax scss --fix",
+    "clean": "gulp --gulpfile build/pre-deploy.js clean",
+    "build": "yarn clean && yarn build:dist && gulp --gulpfile build/pre-deploy.js && yarn build:site",
+    "build:site": "webpack -p --config build/webpack.config.site.js",
+    "build:dist": "webpack -p --config build/webpack.config.dist.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.scss": "stylelint --syntax scss --fix",
+    "src/**/*.js": "prettier --write"
+  },
   "files": [
     "dist",
     "lib",
@@ -16,18 +30,21 @@
     "type": "git",
     "url": "git://github.com/NewDadaFE/react-impression.git"
   },
+  "bugs": {
+    "url": "https://github.com/NewDadaFE/react-impression/issues"
+  },
+  "keywords": [
+    "impression",
+    "react-impression",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
   "homepage": "https://github.com/NewDadaFE/react-impression",
-  "scripts": {
-    "start": "webpack-dev-server --config build/webpack.config.dev.js",
-    "lint:scss": "stylelint src/**/*.scss --syntax scss --fix",
-    "clean": "gulp --gulpfile build/pre-deploy.js clean",
-    "build": "yarn clean && yarn build:dist && gulp --gulpfile build/pre-deploy.js && yarn build:site",
-    "build:site": "webpack -p --config build/webpack.config.site.js",
-    "build:dist": "webpack -p --config build/webpack.config.dist.js"
-  },
-  "lint-staged": {
-    "src/**/*.scss": "stylelint --syntax scss --fix"
-  },
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
@@ -48,6 +65,7 @@
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-import-resolver-webpack": "^0.9.0",
     "eslint-loader": "^2.0.0",
@@ -67,6 +85,7 @@
     "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "postcss-loader": "^2.1.4",
+    "prettier": "^1.12.1",
     "prismjs": "^1.14.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",

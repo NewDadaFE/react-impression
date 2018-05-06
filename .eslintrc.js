@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint-config-airbnb'],
+  extends: ['eslint-config-airbnb', 'prettier'],
   env: {
     browser: true,
     node: true,
@@ -25,7 +25,7 @@ module.exports = {
   rules: {
     semi: ['error', 'never'],
     'arrow-body-style': 0,
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.md'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'no-unused-vars': ['warn'],
     'react/no-danger': 0,
     'comma-dangle': ['error', 'never'],
