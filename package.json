@@ -10,7 +10,6 @@
   "scripts": {
     "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "format": "yarn lint-staged",
-    "lint:scss": "stylelint src/**/*.scss --syntax scss --fix",
     "clean": "gulp --gulpfile build/pre-deploy.js clean",
     "build": "yarn clean && yarn build:dist && gulp --gulpfile build/pre-deploy.js && yarn build:site",
     "build:site": "webpack -p --config build/webpack.config.site.js",
@@ -18,8 +17,8 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.scss": "stylelint --syntax scss --fix",
-    "src/**/*.js": "prettier --write"
+    "src/**/*.js": "prettier --single-quote --no-semi --write",
+    "src/**/*.scss": "stylelint --syntax scss --fix"
   },
   "files": [
     "dist",
@@ -71,6 +70,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^1.1.11",
     "gulp": "^3.9.1",
