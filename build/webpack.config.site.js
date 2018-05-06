@@ -80,7 +80,7 @@ module.exports = merge(baseConfig, {
         maxLineLength: 80
       }
     }),
-    new CleanWebpackPlugin([utils.resolve('dist')], {
+    new CleanWebpackPlugin([utils.resolve('site')], {
       root: process.cwd()
     }),
     new MiniCssExtractPlugin({

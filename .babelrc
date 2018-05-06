@@ -1,5 +1,5 @@
 {
-    "presets": ["env", "react"],
+    "presets": [["env", { "modules": false }], "react"],
     "plugins": [
       "./build/babel-plugin-jsx-source",
       "transform-runtime",
