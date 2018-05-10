@@ -3,27 +3,29 @@
 // basic
 $btn-pill-radius: 200px !default;
 $btn-transition: all .2s cubic-bezier(.4, 0, .2, 1) !default;
+$btn-active-box-shadow: 0 2px 6px rgba(0, 0, 0, .24),
+  0 1px 6px rgba(0, 0, 0, .24) !default;
 
 // theme
-$btn-primary-color:              $text-color-muted !default;
-$btn-primary-bg:                 $primary-color !default;
-$btn-primary-border:             $primary-color !default;
+$btn-primary-color: $text-color-muted !default;
+$btn-primary-bg: $brand-primary !default;
+$btn-primary-border: $brand-primary !default;
 
-$btn-success-color:              $text-color-muted !default;
-$btn-success-bg:                 $success-color !default;
-$btn-success-border:             $success-color !default;
+$btn-success-color: $text-color-muted !default;
+$btn-success-bg: $brand-success !default;
+$btn-success-border: $brand-success !default;
 
-$btn-warning-color:              $text-color-muted !default;
-$btn-warning-bg:                 $warning-color !default;
-$btn-warning-border:             $warning-color !default;
+$btn-warning-color: $text-color-muted !default;
+$btn-warning-bg: $brand-warning !default;
+$btn-warning-border: $brand-warning !default;
 
-$btn-danger-color:              $text-color-muted !default;
-$btn-danger-bg:                 $danger-color !default;
-$btn-danger-border:             $danger-color !default;
+$btn-danger-color: $text-color-muted !default;
+$btn-danger-bg: $brand-danger !default;
+$btn-danger-border: $brand-danger !default;
 
-$btn-default-color:             $text-color-primary !default;
-$btn-default-bg:                $muted-color !default;
-$btn-default-border:            $pure-color !default;
+$btn-default-color: $text-color-primary !default;
+$btn-default-bg: $brand-muted !default;
+$btn-default-border: $brand-pure !default;
 
 // size
 $btn-padding-x-sm: 16px !default;

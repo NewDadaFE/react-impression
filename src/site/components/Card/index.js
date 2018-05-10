@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import loadLanguages from 'prismjs/components/index'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'
+import MarkdownPreview from '../MarkdownPreview'
 
 loadLanguages(['jsx'])
 
@@ -16,10 +17,10 @@ const Card = ({ component: Component, cardClass, ...others }) => {
         <Component />
       </div>
       <h2>{Component.title}</h2>
-      <p>{Component.desc}</p>
+      <MarkdownPreview markdown={Component.desc} />
 
       <pre>
-        <code className="language-jsx">
+        <code className='language-jsx'>
           <div dangerouslySetInnerHTML={{ __html: code }} />
         </code>
       </pre>
@@ -29,7 +30,7 @@ const Card = ({ component: Component, cardClass, ...others }) => {
 
 Card.propTypes = {
   component: PropTypes.any,
-  cardClass: PropTypes.string
+  cardClass: PropTypes.string,
 }
 
 export default Card

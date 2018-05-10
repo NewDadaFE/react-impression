@@ -14,9 +14,7 @@ module.exports = (_ref) => {
 
         if (comment.value.trim() === 'sourceCode:start') {
           startComment = startComment || comment.loc.start.line
-          continue
-        }
-        if (comment.value.trim() === 'sourceCode:end') {
+        } else if (comment.value.trim() === 'sourceCode:end') {
           endComment = comment.loc.end.line
         }
       }
@@ -33,14 +31,12 @@ module.exports = (_ref) => {
       const expr = t.assignmentExpression(
         '=',
         t.identifier(`${nodeName}._sourceCode`),
-        t.identifier(JSON.stringify(sourceCode))
+        t.identifier(JSON.stringify(sourceCode)) // 将sourceCode的值作为字符串赋给_sourceCode
       )
 
       path.insertBefore(t.expressionStatement(expr))
     }
   }
 
-  return {
-    visitor
-  }
+  return { visitor}
 }

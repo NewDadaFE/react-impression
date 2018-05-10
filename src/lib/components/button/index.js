@@ -70,12 +70,12 @@ Button.propTypes = {
   // 是否block
   block: PropTypes.bool,
   // 子节点
-  children: PropTypes.any
+  children: PropTypes.any,
 }
 
 Button.defaultProps = {
   type: 'default',
-  size: 'md'
+  size: 'md',
 }
 
 export default Button

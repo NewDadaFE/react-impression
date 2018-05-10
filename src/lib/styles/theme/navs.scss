@@ -1,0 +1,47 @@
+$navbar-primary-bg: $gray-primary !default;
+
+// Navs
+$nav-item-margin: .2rem !default;
+$nav-item-spacer-x: 1rem !default;
+$nav-item-inline-spacer: $nav-item-spacer-x * 2 !default;
+
+$nav-title-color: $brand-pure !default;
+$nav-title-padding: 1rem !default;
+$nav-title-font-size: 1.1rem !default;
+
+$nav-link-padding: 0 !default;
+$nav-link-active-color: $brand-primary !default;
+$nav-link-active-bg: transparent !default;
+$nav-link-hover-bg: $gray-secondary !default;
+$nav-link-active-border-width: 2px !default;
+
+$nav-disabled-link-color: $gray-secondary !default;
+$nav-disabled-link-hover-color: $gray-secondary !default;
+$nav-disabled-link-hover-bg: transparent !default;
+
+$nav-tabs-link-padding: .5em 1em !default;
+$nav-tabs-link-color: $gray-primary !default;
+$nav-tabs-border-color: $brand-primary !default;
+$nav-tabs-border-width: 2px !default;
+$nav-tabs-link-border-width: 1px !default;
+$nav-tabs-link-hover-bg: $gray-secondary !default;
+$nav-tabs-link-hover-border-color: $nav-tabs-link-hover-bg !default;
+
+$nav-tabs-active-link-hover-color: $brand-pure !default;
+$nav-tabs-active-link-hover-bg: $nav-tabs-border-color !default;
+$nav-tabs-active-link-border-color: $nav-tabs-border-color !default;
+$nav-tabs-active-link-hover-border-color: #ddd !default;
+$nav-tabs-justified-link-border-color: #ddd !default;
+
+$nav-tabs-justified-active-link-border-color: $body-bg !default;
+
+$nav-pills-link-color: $nav-tabs-link-color !default;
+$nav-pills-link-border-radius: $border-radius !default;
+$nav-pills-link-padding: $nav-tabs-link-padding !default;
+$nav-pills-active-link-color: $brand-pure !default;
+$nav-pills-active-link-bg: $brand-primary !default;
+$nav-pills-link-hover-color: $nav-tabs-active-link-hover-color !default;
+$nav-pills-link-hover-bg: $nav-tabs-link-hover-bg !default;
+$nav-pills-link-hover-border-color: $nav-tabs-link-hover-border-color !default;
+
+$nav-stacked-items-padding: .75rem 1rem !default;

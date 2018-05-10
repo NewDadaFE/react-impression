@@ -3,6 +3,7 @@ module.exports = {
     'stylelint-scss'
   ],
   rules: {
+    indentation: 2,
     'selector-max-empty-lines': 0,
     'color-hex-case': 'lower',
     'number-leading-zero': 'never',
@@ -10,7 +11,6 @@ module.exports = {
     'number-no-trailing-zeros': true,
     'value-list-comma-space-after': 'always-single-line',
     'value-list-max-empty-lines': 0,
-    'declaration-colon-newline-after': 'always-multi-line',
     'declaration-bang-space-after': 'never',
     'declaration-block-semicolon-newline-after': 'always',
     'block-closing-brace-empty-line-before': 'never'

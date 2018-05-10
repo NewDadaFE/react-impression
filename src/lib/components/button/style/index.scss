@@ -1,8 +1,5 @@
-// scss-lint:disable QualifyingElement
 @import '../../../styles/theme/index.scss';
 @import './mixin.scss';
-
-// scss-lint:disable QualifyingElement
 
 .btn {
   display: inline-block;
@@ -15,7 +12,10 @@
   outline: none;
   text-decoration: none;
 
-  @include click-ripple();
+  transition: $btn-transition;
+  &:hover {
+    box-shadow: $btn-active-box-shadow;
+  }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -24,10 +24,7 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 
-//
-// Alternate buttons
-//
-
+// btn theme
 .btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }
@@ -44,20 +41,21 @@ fieldset[disabled] a.btn {
   @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
 }
 
+// btn outline
 .btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg, $btn-primary-border);
+  @include button-outline-variant($btn-primary-bg);
 }
 .btn-outline-success {
-  @include button-outline-variant($btn-success-bg, $btn-success-border);
+  @include button-outline-variant($btn-success-bg);
 }
 .btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg, $btn-warning-border);
+  @include button-outline-variant($btn-warning-bg);
 }
 .btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg, $btn-danger-border);
+  @include button-outline-variant($btn-danger-bg);
 }
 .btn-outline-default {
-  @include button-outline-variant($btn-default-bg, $btn-default-border);
+  @include button-outline-variant($btn-default-border);
 }
 //
 // Button Sizes

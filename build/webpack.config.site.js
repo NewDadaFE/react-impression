@@ -68,7 +68,8 @@ module.exports = merge(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: utils.resolve('./src/site/index.html'),
+      template: utils.resolve('src/site/index.html'),
+      favicon: utils.resolve('src/site/images/favicon.ico'),
       inject: true,
       minify: {
         collapseWhitespace: true,

@@ -40,59 +40,68 @@
   border-color: $border;
 
   &:hover {
-      color: $hover-color;
-      background-color: $hover-background;
-      border-color: $hover-border;
+    color: $hover-color;
+    background-color: $hover-background;
+    border-color: $hover-border;
   }
 
   &.acitve,
-  &:active {
+  &:active,
+  .open > &.dropdown-toggle {
     color: $color;
     background-color: $active-background;
     border-color: $active-border;
+    background-image: none;
   }
 
   &.disabled,
   &:disabled {
-      &:hover {
-          background-color: $background;
-          border-color: $border;
-      }
+    &:hover {
+      background-color: $background;
+      border-color: $border;
+    }
   }
 }
 
-@mixin button-outline-variant($color, $border) {
+@mixin button-outline-variant($color) {
   $hover-color: lighten($color, 10%);
-  $hover-border: lighten($border, 10%);
-  $active-color: darken($color, 10%);
-  $active-border: darken($border, 10%);
+  $active-color: darken($color, 15%);
 
   color: $color;
   background-image: none;
   background-color: transparent;
-  border-color: $border;
+  border-color: $color;
 
   &:hover {
-      color: $hover-color;
-      border-color: $hover-border;
+    color: $text-color-muted;
+    border-color: $hover-color;
+    background-color: $hover-color;
   }
 
   &.acitve,
-  &:active {
-    color: $active-color;
-    border-color: $active-border;
+  &:active,
+  .open > &.dropdown-toggle  {
+    color: $text-color-muted;
+    border-color: $active-color;
+    background-color: $active-color;
+
+    &:hover {
+      color: $text-color-muted;
+      border-color: $active-color;
+      background-color: $active-color;
+    }
   }
 
   &.disabled,
   &:disabled {
-      &:focus,
-      &.focus {
-          border-color: $hover-border;
-      }
+    &:focus,
+    &.focus {
+      border-color: $hover-color;
+    }
 
-      &:hover {
-          border-color: $hover-border;
-      }
+    &:hover {
+      border-color: $hover-color;
+    }
   }
 }
 

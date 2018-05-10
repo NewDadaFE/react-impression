@@ -2,6 +2,11 @@
     "presets": [["env", { "modules": false }], "react"],
     "plugins": [
       "./build/babel-plugin-jsx-source",
+      ["react-css-modules", {
+        "filetypes": { ".scss": { "syntax": "postcss-scss" } },
+        "webpackHotModuleReloading": true,
+        "generateScopedName": "[name]__[local]___[hash:base64:5]"
+      }],
       "transform-runtime",
       "syntax-object-rest-spread",
       "transform-export-extensions",

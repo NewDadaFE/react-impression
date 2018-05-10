@@ -5,13 +5,13 @@ import { Button } from 'react-impression'
 const ButtonSize = () => {
   return (
     <div>
-      <Button type="primary" size="sm">
+      <Button type='primary' size='sm'>
         sm
       </Button>
-      <Button type="primary" size="md">
+      <Button type='primary' size='md'>
         md
       </Button>
-      <Button type="primary" size="lg">
+      <Button type='primary' size='lg'>
         large
       </Button>
     </div>
