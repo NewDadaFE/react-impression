@@ -7,6 +7,9 @@ const clean = require('gulp-clean')
 const sequence = require('gulp-run-sequence')
 const sourcemaps = require('gulp-sourcemaps')
 const utils = require('./utils')
+const pkg = require('../package.json')
+const rsync = require('gulp-rsync')
+const baseDir = `/home/dada/apps/wangjin/react_impression_v2`
 
 // Clean
 const cleanDirs = ['es', 'lib', 'site', 'dist']
@@ -68,6 +71,24 @@ gulp.task('build:scss', function () {
     .pipe(gulp.dest(utils.resolve('lib')))
     .pipe(gulp.dest(utils.resolve('es')))
 })
+
+gulp.task('cp:dist:css', function () {
+  return gulp.src(utils.resolve('dist/index.css'))
+    .pipe(gulp.dest(utils.resolve(`site/styles`)))
+})
+
+gulp.task('sync:dev', () => {
+  return gulp.src(utils.resolve('site/**')).pipe(
+    rsync({
+      root: utils.resolve('site'),
+      hostname: 'dada@192.168.1.201',
+      destination: baseDir,
+      progress: true,
+      times: true,
+      compress: false
+    })
+  )
+});
 
 gulp.task('default', function (cb) {
   sequence(['build:lib', 'build:es'], ['cp:scss', 'build:scss', 'gen:dist:scss'], cb)

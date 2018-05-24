@@ -1,134 +1,11 @@
 $header-height: 44px;
-$content-padding: 10px;
-$content-bg: #eee;
-$primary-color: #0078ef;
+$content-padding: 20px;
+$content-bg: #fff;
 $text-color: #000;
 
 .layout {
   display: flex;
   height: 100%;
-}
-
-.sider {
-  min-width: 220px;
-  max-width: 250px;
-  height: 100%;
-  background-color: #fff;
-
-  .logo {
-    height: $header-height;
-    line-height: $header-height;
-    text-align: center;
-    color: #fff;
-    font-size: 16px;
-    letter-spacing: 1px;
-    background-color: $primary-color;
-  }
-
-  .sider-bar {
-    .workbench {
-      margin: 15px auto;
-      text-align: center;
-
-      button {
-        border-radius: 8px;
-        font-size: 14px;
-        color: #90a4ae;
-        border-color: #90a4ae;
-
-        i {
-          font-size: 14px;
-        }
-      }
-
-      &.active button {
-        color: $primary-color;
-        border-color: $primary-color;
-        background: rgba($color: $primary-color, $alpha: .1);
-      }
-    }
-    a {
-      text-decoration: none;
-      display: inline-block;
-      color: #000;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      user-select: none;
-
-      .active {
-        background: #f4f8f9;
-        color: $primary-color;
-
-        a {
-          color: $primary-color;
-        }
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          background-color: $primary-color;
-          height: 100%;
-          width: 5px;
-        }
-      }
-
-      a {
-        font-size: 14px;
-        padding: 14px;
-        line-height: 1;
-        width: 100%;
-
-        &:hover {
-          cursor: pointer;
-          color: $primary-color;
-        }
-      }
-    }
-
-    li {
-      position: relative;
-
-      .title {
-        margin: 0;
-        padding: 14px;
-        font-size: 16px;
-        color: #555;
-        position: relative;
-
-        &:hover {
-          cursor: pointer;
-          color: $primary-color;
-        }
-
-        .collapse {
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 8px;
-        }
-        .icon {
-          padding-right: 10px;
-        }
-      }
-    }
-
-    dl {
-      transition: all 666ms;
-      overflow: hidden;
-      margin: 0;
-    }
-    dd {
-      margin: 0;
-      position: relative;
-      padding-left: 26px;
-    }
-  }
 }
 
 .right {
@@ -174,12 +51,11 @@ $text-color: #000;
     height: 100%;
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: $content-bg;
 
     .content {
-      height: 100%;
-      width: 100%;
       padding: $content-padding;
       overflow: auto;
     }

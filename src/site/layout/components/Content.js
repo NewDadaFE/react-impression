@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // import CSSTransitionGroup from 'react-transition-group/TransitionGroup'
-import '../index.scss'
+import styles from '../index.scss'
 
 const Content = ({ children }) => {
   return (
@@ -16,7 +16,9 @@ const Content = ({ children }) => {
     //   </div>
     // </CSSTransitionGroup>
 
-    <div styleName='content'>{children}</div>
+    <div className={styles['content-wrapper']}>
+      <div className={styles['content']}>{children}</div>
+    </div>
   )
 }
 

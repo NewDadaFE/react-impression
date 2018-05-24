@@ -1,9 +1,9 @@
 import React from 'react'
-import '../index.scss'
+import styles from '../index.scss'
 
 export default () => {
   return (
-    <div styleName='header'>
+    <div className={styles.header}>
       <div>header</div>
     </div>
   )

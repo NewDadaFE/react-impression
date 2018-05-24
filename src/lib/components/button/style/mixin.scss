@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
 
-  &:after {
+  &:not([disabled]):after {
     content: '';
     position: absolute;
     top: 0;
@@ -21,10 +21,26 @@
     opacity: 0;
     transition: transform .3s, opacity .5s;
   }
-  &:active:after {
+  &:not([disabled]):active:after {
     transform: scale(0);
     opacity: .3;
     transition: 0s;
+  }
+}
+
+@mixin button-disabled() {
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: $btn-disable-color;
+      background-color: $btn-disable-bg;
+      border-color: $btn-disable-border;
+      box-shadow: none;
+    }
   }
 }
 
@@ -54,13 +70,7 @@
     background-image: none;
   }
 
-  &.disabled,
-  &:disabled {
-    &:hover {
-      background-color: $background;
-      border-color: $border;
-    }
-  }
+  @include button-disabled()
 }
 
 @mixin button-outline-variant($color) {
@@ -69,7 +79,7 @@
 
   color: $color;
   background-image: none;
-  background-color: transparent;
+  background-color: transparent !important;
   border-color: $color;
 
   &:hover {
@@ -92,17 +102,7 @@
     }
   }
 
-  &.disabled,
-  &:disabled {
-    &:focus,
-    &.focus {
-      border-color: $hover-color;
-    }
-
-    &:hover {
-      border-color: $hover-color;
-    }
-  }
+  @include button-disabled()
 }
 
 // Button sizes

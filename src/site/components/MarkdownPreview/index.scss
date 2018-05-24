@@ -569,9 +569,21 @@ html, body {
 }
 
 .markdown-body table {
-  display: block;
+  display: table;
   width: 100%;
   overflow: auto;
+}
+
+.markdown-body.api-container table td:first-child {
+  width: 20%;
+}
+
+.markdown-body.api-container table td:nth-child(3) {
+  width: 20%;
+}
+
+.markdown-body.api-container table td:last-child {
+  width: 13%;
 }
 
 .markdown-body table th {

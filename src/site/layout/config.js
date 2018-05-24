@@ -1,40 +1,37 @@
 export const SIDER_MENU = [
   {
     id: 1,
-    name: 'CASE管理',
+    name: 'Basic',
     icon: 'icon-caseguanli',
     children: [
       {
-        id: 10,
-        name: '来电CASE',
-        url: '/cases/call',
-      },
-      {
         id: 11,
-        name: '投诉CASE',
-        url: '/cases/complaint',
+        name: 'Button',
+        url: '/button',
       },
     ],
   },
   {
     id: 2,
-    name: '数据查询',
+    name: 'Form Control',
     icon: 'icon-shujuchaxun',
     children: [
       {
         id: 21,
-        name: '订单查询',
-        url: '/dataCenter/orderList',
+        name: 'Radio',
+        url: '/radio',
       },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Navigation',
+    icon: 'icon-shujuchaxun',
+    children: [
       {
-        id: 24,
-        name: '骑士查询',
-        url: '/dataCenter/transporterList',
-      },
-      {
-        id: 22,
-        name: '商家查询',
-        url: '/dataCenter/supplierList',
+        id: 31,
+        name: 'Nav',
+        url: '/nav',
       },
     ],
   },

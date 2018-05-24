@@ -17,7 +17,7 @@ module.exports = merge(baseConfig, {
   output: {
     path: utils.resolve('site'),
     filename: 'scripts/[name].[chunkhash:8].js',
-    publicPath: `${config.publicPathPrefix}/${pkg.name}`
+    publicPath: config.publicPathPrefix ? `${config.publicPathPrefix}/${pkg.name}` : ''
   },
 
   module: {
@@ -27,7 +27,8 @@ module.exports = merge(baseConfig, {
         type: 'scss',
         include: [utils.resolve('./src/lib')],
         sourceMap: true,
-        extract: true
+        extract: true,
+        cssModules: false
       }),
       utils.getStyleLoader({
         type: 'scss',

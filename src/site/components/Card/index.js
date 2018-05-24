@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import loadLanguages from 'prismjs/components/index'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'
+import styles from './index.scss'
 import MarkdownPreview from '../MarkdownPreview'
 
 loadLanguages(['jsx'])
@@ -13,13 +15,12 @@ const Card = ({ component: Component, cardClass, ...others }) => {
 
   return (
     <div {...others}>
-      <div className={cardClass}>
+      <h2>{Component.title}</h2>
+      <div className={classnames(styles['card-wrapper'], cardClass)}>
         <Component />
       </div>
-      <h2>{Component.title}</h2>
       <MarkdownPreview markdown={Component.desc} />
-
-      <pre>
+      <pre className='language-jsx'>
         <code className='language-jsx'>
           <div dangerouslySetInnerHTML={{ __html: code }} />
         </code>

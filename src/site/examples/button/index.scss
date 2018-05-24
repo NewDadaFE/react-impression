@@ -1,6 +1,4 @@
 .button {
-  padding: 20px;
-
   a,
   button {
     margin-right: 10px;
@@ -12,4 +10,8 @@
     padding: 10px;
     padding-bottom: 0;
   }
+}
+
+.button-card-padding {
+  padding-bottom: 0;
 }

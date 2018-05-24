@@ -1,4 +1,6 @@
 //侧边栏
+@import '../../../styles/theme/index.scss';
+
 .sidebar {
   height: 100%;
   display: flex;
@@ -82,6 +84,95 @@
 
   .nav {
     margin-bottom: $sidebar-body-padding-bottom;
+  }
+
+  // todo
+  // add nav component
+
+  .side-bar {
+    a {
+      text-decoration: none;
+      display: inline-block;
+      color: #a7b1c2;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      user-select: none;
+
+      .active {
+        background: $sidebar-nav-link-active-bg;
+        color: $sidebar-nav-link-active-color;
+
+        a {
+          color: $sidebar-nav-link-active-color;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: $sidebar-nav-link-active-color;
+          height: 100%;
+          width: 5px;
+        }
+      }
+
+      a {
+        font-size: 14px;
+        padding: 14px;
+        line-height: 1;
+        width: 100%;
+
+        &:hover {
+          cursor: pointer;
+          color: $sidebar-nav-link-active-color;
+          background: $sidebar-nav-link-active-bg;
+        }
+      }
+    }
+
+    li {
+      position: relative;
+
+      .title {
+        margin: 0;
+        padding: 14px;
+        font-size: 16px;
+        color: #fff;
+        position: relative;
+
+        &:hover {
+          cursor: pointer;
+          color: $sidebar-nav-link-active-color;
+          background: $sidebar-nav-link-active-bg;
+        }
+
+        .collapse {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 8px;
+        }
+        .icon {
+          padding-right: 10px;
+        }
+      }
+    }
+
+    dl {
+      transition: all 666ms;
+      overflow: hidden;
+      margin: 0;
+    }
+    dd {
+      margin: 0;
+      position: relative;
+      padding-left: 26px;
+    }
   }
 }
 

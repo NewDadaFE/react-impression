@@ -13,8 +13,19 @@
   text-decoration: none;
 
   transition: $btn-transition;
+
+  @include click-ripple();
+
   &:hover {
     box-shadow: $btn-active-box-shadow;
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    > * {
+      pointer-events: none;
+    }
   }
 }
 

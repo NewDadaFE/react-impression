@@ -27,6 +27,10 @@ $btn-default-color: $text-color-primary !default;
 $btn-default-bg: $brand-muted !default;
 $btn-default-border: $brand-pure !default;
 
+$btn-disable-color      : $disabled-color !default;
+$btn-disable-bg         : $disabled-bg !default;
+$btn-disable-border     : $btn-default-border !default;
+
 // size
 $btn-padding-x-sm: 16px !default;
 $btn-padding-y-sm: 3px !default;

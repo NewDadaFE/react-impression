@@ -1,6 +1,4 @@
-module.exports = (_ref) => {
-  const t = _ref.types
-
+module.exports = ({types: t}) => {
   const visitor = {
     ExportDefaultDeclaration(path) {
       const file = path.hub.file

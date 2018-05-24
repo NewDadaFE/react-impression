@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router'
 import { Icon, Sidebar } from 'react-impression'
 import { SIDER_MENU, getMenuDict } from '../config'
-import '../index.scss'
 
 const menuDict = getMenuDict()
 
@@ -73,11 +72,11 @@ class AppSidebar extends React.PureComponent {
       return (
         <li key={item.id}>
           <Link
-            styleName={`title ${this.getActiveStyle(item.url)}`}
-            href={item.url}
+            className={`title ${this.getActiveStyle(item.url)}`}
+            to={item.url}
             target={this.getTarget()}
           >
-            <Icon type={item.icon} styleName='icon' />
+            <Icon type={item.icon} className='icon' />
             <span>{item.name}</span>
           </Link>
         </li>
@@ -87,22 +86,22 @@ class AppSidebar extends React.PureComponent {
     return (
       <li key={item.id}>
         <a className='title' onClick={() => this.handleMenuShow(item)}>
-          <Icon type={item.icon} styleName='icon' />
+          <Icon type={item.icon} className='icon' />
           <span>{item.name}</span>
 
           <Icon
             type={
               item.id === expandParentId ? 'icon-jiantou-up' : 'icon-jiantou'
             }
-            styleName='collapse'
+            className='collapse'
           />
         </a>
 
         {!!item.children && (
           <dl style={{ height: `${this.getSubMenuHeight(item)}rem` }}>
             {item.children.map(child => (
-              <dd key={child.id} styleName={this.getActiveStyle(child.url)}>
-                <Link href={child.url} target={this.getTarget()}>
+              <dd key={child.id} className={this.getActiveStyle(child.url)}>
+                <Link to={child.url} target={this.getTarget()}>
                   <span>{child.name}</span>
                 </Link>
               </dd>
@@ -118,7 +117,7 @@ class AppSidebar extends React.PureComponent {
       <Sidebar>
         <Sidebar.Header>ReactImpression</Sidebar.Header>
         <Sidebar.Body>
-          <div styleName='sider-bar'>
+          <div className='side-bar'>
             <ul>{SIDER_MENU.map(this.renderMenu)}</ul>
           </div>
         </Sidebar.Body>

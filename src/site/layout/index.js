@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import Header from './components/Header'
-import './index.scss'
+import style from './index.scss'
 
 // 页面布局
 const Layout = ({ children }) => {
@@ -11,10 +11,10 @@ const Layout = ({ children }) => {
   document.title = title || 'ReactImpression'
 
   return (
-    <div styleName='layout'>
+    <div className={style['layout']}>
       {/* 侧边栏 */}
       <Sidebar />
-      <div styleName='right'>
+      <div className={style['right']}>
         {/* Header头部 */}
         <Header />
         {/* 内容区 */}

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import marked from 'marked'
 import styles from './index.scss'
 
@@ -7,6 +8,7 @@ const renderer = new marked.Renderer()
 
 marked.setOptions({
   renderer,
+  gfm: true,
   tables: true,
 })
 
@@ -15,18 +17,26 @@ const renderMarkdown = mk => {
 }
 
 const MarkdownPreview = props => {
-  const { markdown } = props
+  const { markdown, name } = props
+  const className = classnames([
+    styles['api-container'],
+    styles['markdown-body'],
+  ])
 
   return (
-    <div
-      className={styles['markdown-body']}
-      dangerouslySetInnerHTML={renderMarkdown(markdown)}
-    />
+    <div>
+      {name && <h2>{name}</h2>}
+      <div
+        className={className}
+        dangerouslySetInnerHTML={renderMarkdown(markdown)}
+      />
+    </div>
   )
 }
 
 MarkdownPreview.propTypes = {
   markdown: PropTypes.string,
+  name: PropTypes.string,
 }
 
 export default MarkdownPreview

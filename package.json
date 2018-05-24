@@ -12,8 +12,9 @@
     "format": "prettier-eslint --write src/**/*.js && stylelint --syntax scss --fix src/**/*.scss",
     "clean": "gulp --gulpfile build/pre-deploy.js clean",
     "build": "yarn clean && yarn build:dist && gulp --gulpfile build/pre-deploy.js && yarn build:site",
-    "build:site": "webpack -p --config build/webpack.config.site.js",
+    "build:site": "webpack -p --config build/webpack.config.site.js && gulp cp:dist:css --gulpfile build/pre-deploy.js",
     "build:dist": "webpack -p --config build/webpack.config.dist.js",
+    "upload:site": "gulp sync:dev --gulpfile build/pre-deploy.js",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -91,6 +92,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-clean": "^0.4.0",
+    "gulp-rsync": "^0.0.8",
     "gulp-run-sequence": "^0.3.2",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
