@@ -15,7 +15,7 @@ export const transfer = paramsArray => {
 
   let arrLineLen = paramsArray[0].length
 
-  const tempArrTitle = arrLineLen === attrTitle.length ? apiTitle : apiTitle
+  const tempArrTitle = arrLineLen === attrTitle.length ? attrTitle : apiTitle
   const titleLine = new Array(arrLineLen).fill('--')
 
   const tempArr = [tempArrTitle, titleLine, ...paramsArray]

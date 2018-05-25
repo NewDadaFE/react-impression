@@ -12,6 +12,7 @@ $code-expand-icon-max-width: 20px;
 .code-wrapper {
   position: relative;
   margin-top: 10px;
+  margin-bottom: 10px;
 
   .split-line {
     margin-right: 40px;
@@ -52,6 +53,7 @@ $code-expand-icon-max-width: 20px;
 
   pre[class*='language-'] {
     margin-top: 0;
+    margin-bottom: 1.5em;
   }
 
   .api-container {

@@ -46,7 +46,7 @@ export default () => {
       <Card component={Ghost} cardClass={styles.ghost} />
       <Card component={Size} cardClass={styles['button-card-padding']} />
       <Card component={Disabled} />
-      <MarkdownPreview markdown={attrTable} />
+      <MarkdownPreview markdown={attrTable} name='API' />
     </Wrapper>
   )
 }
