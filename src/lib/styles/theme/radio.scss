@@ -15,8 +15,8 @@ $checkbox-addon-disabled-text:              $disabled-color !default;
 $checkbox-addon-active-box-shadow:          inset 0 0 2rem rgba($checkbox-addon-border-color, .8) !default;
 
 //== Radio
-$radio-addon-width:                         .4 !default;
+$radio-addon-width:                         .35 !default;
 $radio-addon-height:                        $radio-addon-width !default;
-$radio-addon-padding:                       round(($line-height-base * .8 - $radio-addon-width) * $font-size-root / 2) !default;
+$radio-addon-padding:                       round(($line-height-base * .6 - $radio-addon-width) * $font-size-root / 2) !default;
 
 $radio-dot-color:                           $brand-primary !default;

@@ -4,6 +4,7 @@ import Type from './Type'
 import Size from './Size'
 import Ghost from './Ghost'
 import Disabled from './Disabled'
+import Wrapper from '../../components/exampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
 import styles from './index.scss'
@@ -36,12 +37,16 @@ const attrTable = transfer(attrParams)
 
 export default () => {
   return (
-    <div className={styles.button}>
+    <Wrapper
+      className={styles.button}
+      title='Button按钮'
+      desc='按钮用于开始一个点击反馈操作'
+    >
       <Card component={Type} cardClass={styles['button-card-padding']} />
       <Card component={Ghost} cardClass={styles.ghost} />
       <Card component={Size} cardClass={styles['button-card-padding']} />
       <Card component={Disabled} />
       <MarkdownPreview markdown={attrTable} />
-    </div>
+    </Wrapper>
   )
 }

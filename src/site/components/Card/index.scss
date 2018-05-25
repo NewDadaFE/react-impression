@@ -1,6 +1,67 @@
+$code-expand-icon-max-width: 20px;
+
 .card-wrapper {
   padding: 10px;
   border: 1px solid #ebedf0;
   border-radius: 2px;
   margin-bottom: 20px;
 }
+
+// wrapper 部分控制显示代码
+
+.code-wrapper {
+  position: relative;
+  margin-top: 10px;
+
+  .split-line {
+    margin-right: 40px;
+    border-top: 1px dashed #ebedf0;
+
+    + .code-expand-icon {
+      top: -($code-expand-icon-max-width / 2);
+    }
+  }
+
+  .code-expand-icon {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      vertical-align: baseline;
+      box-shadow: none;
+      max-width: $code-expand-icon-max-width;
+      transition: all .4s;
+      user-select: none;
+    }
+
+    .code-expand-icon-hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .code-box .code-expand-icon-show {
+      opacity: .55;
+      pointer-events: auto;
+    }
+  }
+
+  pre[class*='language-'] {
+    margin-top: 0;
+  }
+
+  .api-container {
+    display: none;
+    overflow: auto;
+  }
+
+  .api-container.api-container-expand {
+    display: block;
+  }
+}
+
+

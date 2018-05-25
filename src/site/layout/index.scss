@@ -1,5 +1,5 @@
 $header-height: 44px;
-$content-padding: 20px;
+$content-padding: 60px;
 $content-bg: #fff;
 $text-color: #000;
 
@@ -57,6 +57,7 @@ $text-color: #000;
 
     .content {
       padding: $content-padding;
+      padding-top: 0;
       overflow: auto;
     }
   }

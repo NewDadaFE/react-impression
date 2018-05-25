@@ -9,29 +9,75 @@ import MarkdownPreview from '../MarkdownPreview'
 
 loadLanguages(['jsx'])
 
-const Card = ({ component: Component, cardClass, ...others }) => {
-  const sourceCode = Component._sourceCode || ''
-  const code = Prism.highlight(sourceCode, Prism.languages.jsx, 'jsx')
+class Card extends React.Component {
+  state = {
+    codeExpand: false,
+  }
 
-  return (
-    <div {...others}>
-      <h2>{Component.title}</h2>
-      <div className={classnames(styles['card-wrapper'], cardClass)}>
-        <Component />
+  static propTypes = {
+    component: PropTypes.any,
+    cardClass: PropTypes.string,
+    expand: PropTypes.bool,
+  }
+
+  handleCodeExpand = () => {
+    this.setState({ codeExpand: !this.state.codeExpand })
+  }
+
+  render() {
+    const { component: Component, cardClass, expand, ...others } = this.props
+
+    const codeExpand = this.state.codeExpand || expand
+    const sourceCode = Component._sourceCode || ''
+    const code = Prism.highlight(sourceCode, Prism.languages.jsx, 'jsx')
+
+    const codeClass = classnames({
+      [styles['api-container']]: true,
+      [styles['api-container-expand']]: codeExpand,
+    })
+
+    return (
+      <div {...others}>
+        <h2>{Component.title}</h2>
+        <div className={classnames(styles['card-wrapper'], cardClass)}>
+          <Component />
+        </div>
+        <MarkdownPreview markdown={Component.desc} />
+        <div className={styles['code-wrapper']}>
+          {!codeExpand && <div className={styles['split-line']} />}
+          <span className={styles['code-expand-icon']}>
+            <img
+              alt='expand code'
+              src='https://fe.imdada.cn/react-impression-v2/images/icon/open-code.svg'
+              className={
+                codeExpand
+                  ? styles['code-expand-icon-hide']
+                  : styles['code-expand-icon-show']
+              }
+              onClick={this.handleCodeExpand}
+            />
+            <img
+              alt='expand code'
+              src='https://fe.imdada.cn/react-impression-v2/images/icon/close-code.svg'
+              className={
+                codeExpand
+                  ? styles['code-expand-icon-show']
+                  : styles['code-expand-icon-hide']
+              }
+              onClick={this.handleCodeExpand}
+            />
+          </span>
+          <div className={codeClass}>
+            <pre className='language-jsx'>
+              <code className='language-jsx'>
+                <div dangerouslySetInnerHTML={{ __html: code }} />
+              </code>
+            </pre>
+          </div>
+        </div>
       </div>
-      <MarkdownPreview markdown={Component.desc} />
-      <pre className='language-jsx'>
-        <code className='language-jsx'>
-          <div dangerouslySetInnerHTML={{ __html: code }} />
-        </code>
-      </pre>
-    </div>
-  )
-}
-
-Card.propTypes = {
-  component: PropTypes.any,
-  cardClass: PropTypes.string,
+    )
+  }
 }
 
 export default Card
