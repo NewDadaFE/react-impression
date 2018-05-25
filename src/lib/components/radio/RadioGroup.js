@@ -79,7 +79,7 @@ export default class RadioGroup extends PureComponent {
 
       let { value, disabled } = child.props
       let options = {
-        name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+        name: name,
         key: index,
         onChange: this.onChangeHandle,
         disabled: disabled || this.props.disabled,
