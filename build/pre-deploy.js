@@ -33,7 +33,10 @@ gulp.task('build:es', () => {
 // 分开编译JS，方便单个引入
 gulp.task('build:lib', () => {
   return gulp.src(utils.resolve('src/lib/**/*.js'))
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['es2015', 'react'],
+      plugins: ['transform-class-properties']
+    }))
     .pipe(gulp.dest(utils.resolve('lib')))
 })
 
