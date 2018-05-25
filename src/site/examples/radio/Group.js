@@ -29,6 +29,6 @@ class Group extends React.Component {
 /* sourceCode:end */
 
 Group.title = '组合radio'
-Group.desc = `> 使用一组互斥的Radio`
+Group.desc = `> 例子为使用一组互斥的Radio，除此之外可以为 RadioGroup 配置 name 参数，组合内的 input 元素会有相同的 name 属性，浏览器会自动将这组Radio变为单选`
 
 export default Group
