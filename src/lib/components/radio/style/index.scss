@@ -60,7 +60,7 @@
 
   &:checked:not(:disabled) {
     + .radio-addon {
-      border-color: $radio-dot-color;
+      border-color: $checkbox-addon-checked-border-color;
     }
 
     + .radio-addon i {

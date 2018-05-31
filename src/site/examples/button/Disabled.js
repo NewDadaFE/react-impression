@@ -1,7 +1,7 @@
 /* sourceCode:start */
 import React from 'react'
 import { Button } from 'react-impression'
-import styles from './index.scss'
+import './index.scss'
 
 const ButtonDisabled = () => {
   return (
@@ -10,7 +10,7 @@ const ButtonDisabled = () => {
       <Button type='default' disabled>
         default
       </Button>
-      <div className={styles.ghost}>
+      <div styleName='ghost'>
         <Button type='primary' ghost>
           primary
         </Button>

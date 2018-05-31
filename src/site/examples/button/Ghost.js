@@ -11,12 +11,6 @@ const ButtonGhost = () => {
       <Button type='primary' ghost>
         primary
       </Button>
-      <Button type='success' ghost>
-        success
-      </Button>
-      <Button type='warning' ghost>
-        warning
-      </Button>
       <Button type='danger' ghost>
         danger
       </Button>

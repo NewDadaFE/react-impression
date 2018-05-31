@@ -1,0 +1,21 @@
+$popover-bg:                          $brand-muted !default;
+$popover-max-width:                   276px !default;
+$popover-min-width:                   113px !default;
+$popover-border-width:                $border-width !default;
+$popover-border-color:                rgba($gray-secondary, .2) !default;
+$popover-box-shadow:                  0 2px 6px $inverse-level-2 !default;
+
+$popover-title-bg:                    $body-bg !default;
+$popover-title-color:                 $gray-primary;
+$popover-title-padding-x:             .8rem !default;
+$popover-title-padding-y:             .4rem !default;
+$popover-title-font-size:             1.1rem;
+
+$popover-content-padding-x:           .8rem !default;
+$popover-content-padding-y:           .6rem !default;
+
+$popover-arrow-width:                 6px !default;
+$popover-arrow-color:                 $popover-bg !default;
+
+$popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
+$popover-arrow-outer-color:           fade-in($popover-border-color, .2) !default;

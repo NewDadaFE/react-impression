@@ -21,6 +21,11 @@ export const SIDER_MENU = [
         name: 'Radio',
         url: '/radio',
       },
+      {
+        id: 22,
+        name: 'Checkbox',
+        url: '/checkbox',
+      },
     ],
   },
   {
@@ -32,6 +37,35 @@ export const SIDER_MENU = [
         id: 31,
         name: 'Nav',
         url: '/nav',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Prompt',
+    icon: 'icon-shujuchaxun',
+    children: [
+      {
+        id: 41,
+        name: 'Tooltip',
+        url: '/tooltip',
+      },
+      {
+        id: 42,
+        name: 'Popover',
+        url: '/popover',
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Components',
+    icon: 'icon-shujuchaxun',
+    children: [
+      {
+        id: 51,
+        name: 'Card',
+        url: '/card',
       },
     ],
   },

@@ -1,13 +1,16 @@
 //== Checkbox
+$checkbox-size:                             14px !default;
 $checkbox-label-space-x:                    $spacer-y / 2 !default;
 $checkbox-space-x:                          $spacer-y !default;
 $checkbox-space-y:                          $spacer-y !default;
-$checkbox-addon-width:                      1 !default;
+$checkbox-addon-width:                      .5 !default;
 $checkbox-addon-height:                     $checkbox-addon-width !default;
-$checkbox-addon-padding:                    round(($line-height-base - $checkbox-addon-width) * $font-size-root / 2) !default;
+$checkbox-addon-padding:                    round(($line-height-base * .8 - $checkbox-addon-width) * $font-size-root / 2) !default;
 $checkbox-addon-border-color:               #ddd !default;
 $checkbox-addon-border-radius:              $border-radius-sm !default;
-$checkbox-addon-checked-color:              $brand-primary !default;
+$checkbox-addon-checked-color:              $brand-muted !default;
+$checkbox-addon-checked-bg-color:           $brand-primary !default;
+$checkbox-addon-checked-border-color:       $brand-primary !default;
 $checkbox-addon-disabled-checked-color:      $gray-secondary !default;
 $checkbox-addon-transtion:                  all .2s ease !default;
 $checkbox-addon-disabled-bg:                $disabled-bg !default;
@@ -18,5 +21,4 @@ $checkbox-addon-active-box-shadow:          inset 0 0 2rem rgba($checkbox-addon-
 $radio-addon-width:                         .35 !default;
 $radio-addon-height:                        $radio-addon-width !default;
 $radio-addon-padding:                       round(($line-height-base * .6 - $radio-addon-width) * $font-size-root / 2) !default;
-
 $radio-dot-color:                           $brand-primary !default;

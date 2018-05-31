@@ -4,7 +4,7 @@ import Type from './Type'
 import Size from './Size'
 import Ghost from './Ghost'
 import Disabled from './Disabled'
-import Wrapper from '../../components/exampleWrapper'
+import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
 import styles from './index.scss'
@@ -12,7 +12,7 @@ import styles from './index.scss'
 const attrParams = [
   [
     'theme',
-    '设置按钮的样式，可选值为 primary、default、success、warning、danger',
+    '设置按钮的样式，可选值为 primary、default、danger',
     'string',
     'primary',
   ],
@@ -38,7 +38,7 @@ const attrTable = transfer(attrParams)
 export default () => {
   return (
     <Wrapper
-      className={styles.button}
+      styleName='button'
       title='Button按钮'
       desc='按钮用于开始一个点击反馈操作'
     >
