@@ -30,7 +30,7 @@
 
   .nav-link,
   .collapse-title {
-    cursor: pointer;
+    cursor: $cursor-pointer;
 
     &:hover,
     &.active {
@@ -126,7 +126,7 @@
         width: 100%;
 
         &:hover {
-          cursor: pointer;
+          cursor: $cursor-pointer;
           color: $sidebar-nav-link-active-color;
           background: $sidebar-nav-link-active-bg;
         }
@@ -144,7 +144,7 @@
         position: relative;
 
         &:hover {
-          cursor: pointer;
+          cursor: $cursor-pointer;
           color: $sidebar-nav-link-active-color;
           background: $sidebar-nav-link-active-bg;
         }

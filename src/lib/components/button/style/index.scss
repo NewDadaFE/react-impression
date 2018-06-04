@@ -6,7 +6,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  cursor: pointer;
+  cursor: $cursor-pointer;
   user-select: none;
   border: 1px solid transparent;
   outline: none;
@@ -22,7 +22,7 @@
 
   &.disabled,
   &[disabled] {
-    cursor: not-allowed;
+    cursor: $cursor-disabled;
     > * {
       pointer-events: none;
     }

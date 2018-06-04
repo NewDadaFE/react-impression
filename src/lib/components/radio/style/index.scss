@@ -2,7 +2,7 @@
 
 .radio {
   margin: 0;
-  cursor: pointer;
+  cursor: $cursor-pointer;
   user-select: none;
   display: inline-block;
   vertical-align: middle;
@@ -17,7 +17,7 @@
   }
 
   @at-root #{&}-disabled {
-    cursor: not-allowed;
+    cursor: $cursor-disabled;
   }
 }
 

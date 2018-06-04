@@ -1,0 +1,235 @@
+// Kickstart any navigation component with a set of style resets. Works with
+// `<nav>`s or `<ul>`s.
+@import '../../../styles/theme/index.scss';
+@import '../../../styles/mixins/index';
+
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-link {
+  display: inline-block;
+  transition: background-color .3s $ease-in-out, color .3s $ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Disabled state lightens text and removes hover/tab effects
+  &.disabled {
+    color: $nav-disabled-link-color;
+
+    &:hover {
+      color: $nav-disabled-link-hover-color;
+      cursor: $cursor-disabled;
+      background-color: $nav-disabled-link-hover-bg;
+    }
+  }
+}
+
+// Nav line
+.nav-line {
+  border-bottom: $nav-line-border-bottom-width solid $nav-line-border-bottom-color;
+
+  @include clearfix();
+
+  .nav-item {
+    float: left;
+    cursor: $cursor-pointer;
+
+    + .nav-item {
+      margin-left: $nav-item-margin;
+    }
+  }
+
+  .nav-link {
+    color: $nav-line-link-color;
+    display: block;
+    padding: $nav-line-link-padding;
+    line-height: $nav-line-link-line-height;
+    border-bottom: 0;
+
+    &:hover {
+      color: $nav-line-active-link-color;
+    }
+
+    &.active,
+    .nav-item.open & {
+      color: $nav-line-active-link-color;
+      border-bottom: $nav-line-border-bottom-width solid $nav-line-active-link-border-bottom-color;
+    }
+
+    &.disabled {
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+}
+
+// Nav inline
+
+.nav-inline {
+  .nav-item {
+    display: inline-block;
+    cursor: $cursor-pointer;
+  }
+
+  .nav-item + .nav-item,
+  .nav-link + .nav-link {
+    margin-left: $nav-item-inline-spacer;
+  }
+
+  .nav-link {
+    padding: $nav-link-padding;
+    &.active {
+      color: $nav-link-active-color;
+      background-color: $nav-link-active-bg;
+    }
+  }
+}
+
+.nav-inline-bordered {
+  .nav-link {
+    &.active {
+      border-bottom: $nav-link-active-border-width solid $nav-link-active-color;
+    }
+  }
+}
+
+
+//
+// Tabs
+//
+
+.nav-tabs {
+  height: $nav-tabs-link-line-height + 1px;
+  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+
+  @include clearfix();
+
+  .nav-item {
+    float: left;
+    cursor: $cursor-pointer;
+
+    + .nav-item {
+      margin-left: $nav-item-margin;
+    }
+  }
+
+  .nav-link {
+    color: $nav-tabs-link-color;
+    display: block;
+    position: relative;
+    padding: $nav-tabs-link-padding;
+    line-height: $nav-tabs-link-line-height;
+    border: $nav-tabs-link-border-width solid transparent;
+    border-bottom: 0;
+
+    &:hover {
+      color: $nav-tabs-active-link-hover-color;
+    }
+
+    &.active,
+    .nav-item.open & {
+      color: $nav-tabs-active-link-hover-color;
+      border: $nav-tabs-link-border-width solid $nav-tabs-link-hover-border-color;
+      @include border-top-radius($nav-pills-link-border-radius);
+      border-bottom: none;
+      background-color: $nav-tabs-active-link-bg-color;
+      padding-bottom: $nav-tabs-link-border-width;
+    }
+
+    &.disabled {
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .dropdown-menu {
+    // Make dropdown border overlap tab border
+    margin-top: -$nav-tabs-border-width;
+    // Remove the top rounded corners here since there is a hard edge above the menu
+    @include border-top-radius(0);
+  }
+}
+
+//
+// Pills
+//
+
+.nav-pills {
+  @include clearfix();
+
+  .nav-item {
+    float: left;
+    cursor: $cursor-pointer;
+
+    + .nav-item {
+      margin-left: $nav-item-margin;
+    }
+  }
+
+  .nav-link {
+    display: block;
+    color: $nav-pills-link-color;
+    padding: $nav-pills-link-padding;
+
+    @include border-radius($nav-pills-link-border-radius);
+
+    &:hover {
+      color: $nav-pills-link-hover-color;
+      background: $nav-pills-link-hover-bg;
+      border-color: $nav-pills-link-hover-border-color;
+    }
+
+    &.disabled {
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.open .nav-link {
+    color: $nav-pills-link-hover-color;
+    cursor: $cursor-pointer;
+    background-color: $nav-pills-active-link-bg;
+  }
+}
+
+.nav-stacked {
+  .nav-item {
+    display: block;
+    float: none;
+    cursor: $cursor-pointer;
+
+    + .nav-item {
+      // margin-top: $nav-item-margin;
+      margin-left: 0;
+    }
+  }
+
+  .nav-link {
+    border-radius: 0;
+    padding: $nav-stacked-items-padding;
+  }
+}
+
+//
+// Tabbable tabs
+//
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+
+  > .active {
+    display: block;
+  }
+}
