@@ -11,7 +11,6 @@
 
 .nav-link {
   display: inline-block;
-  transition: background-color .3s $ease-in-out, color .3s $ease-in-out;
 
   &:hover {
     text-decoration: none;
@@ -50,6 +49,7 @@
     padding: $nav-line-link-padding;
     line-height: $nav-line-link-line-height;
     border-bottom: 0;
+    transition: color .3s $ease-in-out;
 
     &:hover {
       color: $nav-line-active-link-color;
@@ -84,6 +84,8 @@
 
   .nav-link {
     padding: $nav-link-padding;
+    transition: color .3s $ease-in-out;
+
     &.active {
       color: $nav-link-active-color;
       background-color: $nav-link-active-bg;
@@ -98,7 +100,6 @@
     }
   }
 }
-
 
 //
 // Tabs
@@ -127,6 +128,7 @@
     line-height: $nav-tabs-link-line-height;
     border: $nav-tabs-link-border-width solid transparent;
     border-bottom: 0;
+    transition: color .3s $ease-in-out;
 
     &:hover {
       color: $nav-tabs-active-link-hover-color;
@@ -177,8 +179,8 @@
     display: block;
     color: $nav-pills-link-color;
     padding: $nav-pills-link-padding;
-
     @include border-radius($nav-pills-link-border-radius);
+    transition: background-color .3s $ease-in-out, color .3s $ease-in-out;
 
     &:hover {
       color: $nav-pills-link-hover-color;
