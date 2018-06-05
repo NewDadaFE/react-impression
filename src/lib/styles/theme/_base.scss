@@ -23,10 +23,11 @@ $brand-muted: #ffffff !default;
 // gray colors
 $gray-primary: #22252a !default;
 $gray-secondary: #6d7077 !default;
-$gray-lighter: #f1f1f1 !default;
+$gray-lighter: #d0d0d0 !default;
 
 $text-color-primary: $gray-primary !default;
 $text-color-secondary: $gray-secondary !default;
+$text-color-lighter: $gray-lighter !default;
 $text-color-pure: $brand-pure !default;
 $text-color-muted: $brand-muted !default;
 
@@ -76,6 +77,12 @@ $inverse-level-1:               rgba(0, 0, 0, .18) !default;
 $inverse-level-2:               rgba(0, 0, 0, .24) !default;
 $inverse-level-3:               rgba(0, 0, 0, .3) !default;
 $inverse-level-6:               rgba(0, 0, 0, .6) !default;
+
+// Links
+$link-color:                    $brand-primary !default;
+$link-decoration:               none !default;
+$link-hover-color:              darken($link-color, 15%) !default;
+$link-hover-decoration:         underline !default;
 
 // Grid columns
 

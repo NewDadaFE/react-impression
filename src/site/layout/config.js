@@ -38,6 +38,11 @@ export const SIDER_MENU = [
         name: 'Nav',
         url: '/nav',
       },
+      {
+        id: 32,
+        name: 'Navbar',
+        url: '/navbar',
+      },
     ],
   },
   {

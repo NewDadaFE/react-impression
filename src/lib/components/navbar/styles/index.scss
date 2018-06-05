@@ -1,0 +1,69 @@
+// Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+@import '../../../styles/theme/index.scss';
+@import '../../../styles/mixins/index';
+
+.navbar {
+  height: $navbar-height;
+  line-height: $navbar-line-height;
+  position: relative;
+  padding: $navbar-padding-y $navbar-padding-x;
+  border-bottom: 1px solid transparent;
+  box-shadow: $navbar-box-shadow;
+
+  @include clearfix;
+  @include nav-variant($navbar-color, $navbar-bg, $navbar-focus-color);
+}
+
+.navbar-primary {
+  @include nav-variant($navbar-primary-color, $navbar-primary-bg, $navbar-primary-focus-color);
+}
+
+.navbar-inverse {
+  @include nav-variant($navbar-inverse-color, $navbar-inverse-bg, $navbar-inverse-focus-color);
+}
+
+.navbar-pure {
+  @include nav-variant($navbar-pure-color, $navbar-pure-bg, $navbar-pure-focus-color);
+}
+
+
+//
+// Brand
+//
+
+.navbar-brand {
+  margin-right: 1rem;
+  font-size: $font-size-lg;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  > img {
+    display: block;
+  }
+}
+
+.navbar-btn {
+  margin-top: $navbar-margin-vertical;
+  margin-bottom: $navbar-margin-vertical;
+}
+
+
+.navbar-divider {
+  float: left;
+  width: $border-width;
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+  margin-right: $navbar-padding-x;
+  margin-left: $navbar-padding-x;
+  overflow: hidden;
+
+  &::before {
+    content: '\00a0';
+  }
+}

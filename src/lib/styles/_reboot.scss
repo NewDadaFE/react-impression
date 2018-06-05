@@ -1,3 +1,5 @@
+@import './theme/index';
+
 html {
   box-sizing: border-box;
   font-family: sans-serif; // 1
@@ -440,4 +442,14 @@ ul ul,
 ol ul,
 ul ol {
   margin-bottom: 0;
+}
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
 }

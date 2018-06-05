@@ -30,6 +30,7 @@
 
 // Nav line
 .nav-line {
+  height: $nav-tabs-link-line-height;
   border-bottom: $nav-line-border-bottom-width solid $nav-line-border-bottom-color;
 
   @include clearfix();
@@ -47,7 +48,7 @@
     color: $nav-line-link-color;
     display: block;
     padding: $nav-line-link-padding;
-    line-height: $nav-line-link-line-height;
+    line-height: $nav-line-link-line-height - 2px;
     border-bottom: 0;
     transition: color .3s $ease-in-out;
 
@@ -58,7 +59,8 @@
     &.active,
     .nav-item.open & {
       color: $nav-line-active-link-color;
-      border-bottom: $nav-line-border-bottom-width solid $nav-line-active-link-border-bottom-color;
+      padding-bottom: $nav-tabs-link-border-width;
+      border-bottom: $nav-line-border-bottom-width * 2 solid $nav-line-active-link-border-bottom-color;
     }
 
     &.disabled {

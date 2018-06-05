@@ -8,6 +8,7 @@ import TooltipExample from './examples/tooltip'
 import PopoverExample from './examples/popover'
 import CardExample from './examples/card'
 import NavExample from './examples/nav'
+import NavbarExample from './examples/navbar'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -19,6 +20,7 @@ const routers = (
     <Route path='card' component={CardExample} />
     <Route path='checkbox' component={CheckboxExample} />
     <Route path='nav' component={NavExample} />
+    <Route path='navbar' component={NavbarExample} />
   </Route>
 )
 

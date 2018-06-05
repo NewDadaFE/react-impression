@@ -4,22 +4,27 @@ $navbar-line-height: $navbar-height !default;
 $navbar-padding-x: 1.25rem !default;
 $navbar-padding-y: 0 !default;
 $navbar-brand-padding-y: .25rem !default;
+$navbar-box-shadow: 0 2px 8px #f0f1f2 !default;
 
-$navbar-bg: mix($gray-secondary, $brand-primary, 99%) !default;
-$navbar-color: $gray-secondary !default;
+$navbar-bg: $brand-muted !default;
+$navbar-color: $text-color-lighter !default;
 $navbar-border-color: $border-color !default;
+$navbar-focus-color: $text-color-primary !default;
 
-$navbar-primary-bg: $brand-primary !default;
-$navbar-primary-color: $brand-pure !default;
+$navbar-primary-bg: $gray-lighter !default;
+$navbar-primary-color: $text-color-secondary !default;
 $navbar-primary-border-color: $navbar-primary-bg !default;
+$navbar-primary-focus-color: $text-color-primary !default;
 
 $navbar-inverse-bg: $gray-primary !default;
 $navbar-inverse-color: $gray-secondary !default;
 $navbar-inverse-border-color: $navbar-inverse-bg !default;
+$navbar-inverse-focus-color: $gray-primary !default;
 
-$navbar-pure-bg: $brand-pure !default;
-$navbar-pure-color: $body-color !default;
-$navbar-pure-border-color: $border-color !default;
+$navbar-pure-bg: $brand-primary !default;
+$navbar-pure-color: $brand-muted !default;
+$navbar-pure-border-color: darken($brand-muted, 20%) !default;
+$navbar-pure-focus-color: darken($brand-muted, 20%) !default;
 
 $navbar-margin-vertical: (
   $navbar-height - (1 + .5 * 2) * $font-size-root - 1 * 2
