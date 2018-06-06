@@ -1,10 +1,20 @@
 import React from 'react'
-import styles from '../index.scss'
+import { Navbar } from 'react-impression'
+import '../index.scss'
 
-export default () => {
+/**
+ * Header.
+ */
+const Header = () => {
   return (
-    <div className={styles.header}>
-      <div>header</div>
+    <div styleName='header'>
+      <Navbar>
+        <Navbar.Button theme='primary'>
+          <i className='fa fa-bars' />
+        </Navbar.Button>
+      </Navbar>
     </div>
   )
 }
+
+export default Header

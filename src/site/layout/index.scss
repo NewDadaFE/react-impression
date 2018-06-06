@@ -1,7 +1,5 @@
-$header-height: 44px;
 $content-padding: 60px;
 $content-bg: #fff;
-$text-color: #000;
 
 .layout {
   display: flex;
@@ -16,15 +14,13 @@ $text-color: #000;
   overflow-x: hidden;
 
   .header {
-    height: $header-height;
     background-color: #fff;
     font-size: 14px;
-    color: $text-color;
     width: 100%;
+    z-index: 10;
 
     .user-wrapper {
       float: right;
-      line-height: $header-height;
 
       .user {
         padding-right: 20px;
@@ -57,7 +53,6 @@ $text-color: #000;
 
     .content {
       padding: $content-padding;
-      padding-top: 0;
       overflow: auto;
     }
   }

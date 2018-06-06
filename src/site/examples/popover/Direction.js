@@ -31,7 +31,7 @@ const Direction = ({ onMouseOver }) => {
       <Col>
         <Popover position='right' title='popover' content={content}>
           <Button theme='primary'>Right</Button>
-        </Popover>s
+        </Popover>
       </Col>
     </Row>
   )
