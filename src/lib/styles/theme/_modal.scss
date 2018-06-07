@@ -1,0 +1,34 @@
+// Modals
+
+$modal-bg:                              $inverse-level-3 !default;
+$modal-left:                            $sidebar-width !default;
+$modal-top:                             $navbar-height !default;
+$modal-inner-padding:                   .8rem !default;
+$modal-inner-padding-sm:                .6rem !default;
+$modal-border-radius:                   $border-radius !default;
+
+$modal-dialog-margin:                   10px !default;
+$modal-dialog-sm-up-margin-y:           $navbar-height !default;
+
+$modal-title-padding:                   .8rem !default;
+$modal-title-line-height:               $line-height-base !default;
+
+$modal-content-border-color:            rgba($gray-secondary, .06) !default;
+$modal-content-border-width:            $border-width !default;
+
+$modal-header-bg:                       $brand-pure !default;
+$modal-header-color:                    $body-color !default;
+$modal-header-border-color:             #e5e5e5 !default;
+$modal-header-border-width:             $modal-content-border-width !default;
+
+$modal-body-bg:                         $brand-pure !default;
+
+$modal-footer-bg:                       $brand-pure !default;
+$modal-footer-border-color:             $modal-header-border-color !default;
+$modal-footer-border-width:             $modal-header-border-width !default;
+
+$modal-lg:                              900px !default;
+$modal-md:                              600px !default;
+$modal-sm:                              300px !default;
+
+$modal-animation-duration:              .36s !default;

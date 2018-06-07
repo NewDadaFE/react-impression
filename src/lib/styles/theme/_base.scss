@@ -14,6 +14,7 @@
 // brand colors
 $brand-primary: #3399ff !default;
 $brand-secondary: #ff9900 !default;
+$brand-info: #5bc0de !default;
 $brand-success: #33cc66 !default;
 $brand-warning: #ffad29 !default;
 $brand-danger: #ff3333 !default;
@@ -21,9 +22,11 @@ $brand-pure: #d0d0d0 !default;
 $brand-muted: #ffffff !default;
 
 // gray colors
+$gray-dark: #373a3c !default;
 $gray-primary: #22252a !default;
 $gray-secondary: #6d7077 !default;
 $gray-lighter: #d0d0d0 !default;
+$gray-lightest: #f4f4f4 !default;
 
 $text-color-primary: $gray-primary !default;
 $text-color-secondary: $gray-secondary !default;
@@ -43,6 +46,7 @@ $border-style-base: solid !default;
 $background-color-base: $gray-lighter !default;
 $body-bg: #f6f7fb !default;
 $body-color: $text-color-secondary !default;
+$text-muted: $gray-lighter !default;
 
 // Disabled states
 $disabled-color: $gray-secondary !default;
@@ -118,3 +122,23 @@ $ease-in-out-quint   : cubic-bezier(.86, 0, .07, 1);
 $cursor-disabled:                not-allowed !default;
 $cursor-pointer:                 pointer !default;
 
+// Z-index master list
+$zindex-dropdown-backdrop:         990 !default;
+$zindex-navbar:                   1000 !default;
+$zindex-select:                   1000 !default;
+$zindex-dropdown:                 1000 !default;
+$zindex-datepicker:               1000 !default;
+$zindex-page-transition:          1000 !default;
+
+$zindex-navbar-fixed:             1030 !default;
+$zindex-navbar-sticky:            1030 !default;
+$zindex-modal-bg:                 1040 !default;
+$zindex-modal:                    1050 !default;
+$zindex-confirm:                  1050 !default;
+$zindex-alert:                    1050 !default;
+$zindex-loading:                  1050 !default;
+$zindex-message:                  1060 !default;
+$zindex-notification:             1060 !default;
+$zindex-notification:             1060 !default;
+$zindex-popover:                  1060 !default;
+$zindex-tooltip:                  1060 !default;

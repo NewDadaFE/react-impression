@@ -9,6 +9,9 @@ import PopoverExample from './examples/popover'
 import CardExample from './examples/card'
 import NavExample from './examples/nav'
 import NavbarExample from './examples/navbar'
+import InlineSelectExample from './examples/inline-select'
+import AlertViewExample from './examples/alert'
+import LayoutExample from './examples/layout'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -21,6 +24,9 @@ const routers = (
     <Route path='checkbox' component={CheckboxExample} />
     <Route path='nav' component={NavExample} />
     <Route path='navbar' component={NavbarExample} />
+    <Route path='inline-select' component={InlineSelectExample} />
+    <Route path='alert' component={AlertViewExample} />
+    <Route path='layout' component={LayoutExample} />
   </Route>
 )
 

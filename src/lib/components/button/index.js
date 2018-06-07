@@ -49,7 +49,7 @@ const Button = props => {
 Button.propTypes = {
   // 自定义样式
   className: PropTypes.string,
-  // 样式（primary、default、secondary、danger）
+  // 样式（primary、default、danger）
   // deprecated
   theme: PropTypes.string,
   type: PropTypes.string,

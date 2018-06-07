@@ -1,0 +1,17 @@
+// Alert
+$alert-top:                             $modal-top !default;
+$alert-left:                            $modal-left !default;
+$alert-bg:                              $modal-bg !default;
+
+$alert-dialog-bg:                       $brand-muted !default;
+$alert-dialog-width:                    300px !default;
+$alert-dialog-min-height:               95px !default;
+$alert-dialog-max-height:               150px;
+$alert-dialog-padding:                  2rem 1rem 1rem 1rem !default;
+$alert-dialog-border-radius:            $border-radius-lg !default;
+
+$alert-addon-font-size:                 4rem !default;
+$alert-body-padding:                    1rem 0 !default;
+$alert-btn-color:                       $brand-primary !default;
+
+$alert-animation-duration:              .36s !default;

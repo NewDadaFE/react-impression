@@ -9,6 +9,11 @@ export const SIDER_MENU = [
         name: 'Button',
         url: '/button',
       },
+      {
+        id: 12,
+        name: 'Layout',
+        url: '/layout',
+      },
     ],
   },
   {
@@ -43,6 +48,11 @@ export const SIDER_MENU = [
         name: 'Navbar',
         url: '/navbar',
       },
+      {
+        id: 33,
+        name: 'InlineSelect',
+        url: '/inline-select',
+      },
     ],
   },
   {
@@ -59,6 +69,11 @@ export const SIDER_MENU = [
         id: 42,
         name: 'Popover',
         url: '/popover',
+      },
+      {
+        id: 43,
+        name: 'Alert',
+        url: '/alert',
       },
     ],
   },

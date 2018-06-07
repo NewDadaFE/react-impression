@@ -1,0 +1,15 @@
+// Contextual backgrounds
+
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    color: $brand-muted !important;
+    background-color: $color !important;
+  }
+
+  a#{$parent} {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+}

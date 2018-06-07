@@ -1,0 +1,29 @@
+//
+// Contextual backgrounds
+//
+.bg-inverse {
+  color: $gray-lighter;
+  background-color: $gray-dark;
+}
+
+.bg-faded {
+  background-color: $gray-lightest;
+}
+
+.bg-default {
+  background-color: $gray-lighter;
+}
+
+.bg-pure {
+  background-color: transparent !important;
+}
+
+@include bg-variant('.bg-primary', $brand-primary);
+
+@include bg-variant('.bg-success', $brand-success);
+
+@include bg-variant('.bg-secondary', $brand-secondary);
+
+@include bg-variant('.bg-warning', $brand-warning);
+
+@include bg-variant('.bg-danger', $brand-danger);

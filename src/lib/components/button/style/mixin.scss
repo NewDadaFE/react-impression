@@ -83,7 +83,7 @@
   border-color: $color;
 
   &:hover {
-    color: $text-color-muted;
+    color: $hover-color;
     border-color: $hover-color;
     background-color: $hover-color;
   }
@@ -91,12 +91,12 @@
   &.acitve,
   &:active,
   .open > &.dropdown-toggle  {
-    color: $text-color-muted;
+    color: $active-color;
     border-color: $active-color;
     background-color: $active-color;
 
     &:hover {
-      color: $text-color-muted;
+      color: $active-color;
       border-color: $active-color;
       background-color: $active-color;
     }

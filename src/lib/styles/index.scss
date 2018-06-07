@@ -1,14 +1,21 @@
+// todo 用不用把前边几个引入？
+@import './theme/index';
 @import './reboot';
-@import '../components/button/style/index.scss';
-@import '../components/sidebar/style/index.scss';
-@import '../components/radio/style/index.scss';
-@import '../components/tooltip/style/index.scss';
-@import '../components/popover/styles/index.scss';
-@import '../components/row/styles/index.scss';
-@import '../components/col/styles/index.scss';
-@import '../components/card/styles/index.scss';
-@import '../components/checkbox/styles/index.scss';
-@import '../components/nav/styles/index.scss';
-@import '../components/navbar/styles/index.scss';
-@import '../components/flex/styles/index.scss';
+@import './mixins/index';
+@import './utilities/index';
+
+@import '../components/button/style/index';
+@import '../components/sidebar/style/index';
+@import '../components/radio/style/index';
+@import '../components/tooltip/style/index';
+@import '../components/popover/styles/index';
+@import '../components/row/styles/index';
+@import '../components/col/styles/index';
+@import '../components/card/styles/index';
+@import '../components/checkbox/styles/index';
+@import '../components/nav/styles/index';
+@import '../components/navbar/styles/index';
+@import '../components/flex/styles/index';
+@import '../components/inline-select/styles/index';
+@import '../components/alert/styles/index';
 

@@ -1,0 +1,60 @@
+@import '../../../styles/theme/index.scss';
+@import '../../../styles/mixins/index.scss';
+@import '../../../styles/utilities/index.scss';
+
+.alert {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: $alert-top;
+  left: $alert-left;
+  background: $alert-bg;
+  z-index: $zindex-alert;
+  overflow: hidden;
+  outline: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.alert-dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  width: $alert-dialog-width;
+  min-height: $alert-dialog-min-height;
+  max-height: $alert-dialog-max-height;
+  background: $alert-dialog-bg;
+  padding: $alert-dialog-padding;
+  border-radius: $alert-dialog-border-radius;
+  animation: bounceIn $alert-animation-duration ease-in-out;
+}
+
+.alert-addon {
+  font-size: $alert-addon-font-size;
+
+  i {
+    display: block;
+  }
+}
+
+.alert-body {
+  padding: $alert-body-padding;
+}
+
+
+.alert-footer {
+  @extend .reset-component;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: .8rem;
+  justify-content: space-around;
+  border-radius: 0 0 $alert-dialog-border-radius $alert-dialog-border-radius;
+  cursor: pointer;
+  color: $alert-btn-color;
+}
