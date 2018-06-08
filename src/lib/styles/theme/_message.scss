@@ -1,0 +1,18 @@
+// Message
+$message-left:                $sidebar-width !default;
+$message-top:                 ($navbar-height + 20) !default;
+$message-max-width:           250px !default;
+$message-border-radius:       $border-radius-lg !default;
+$message-color:               $text-color-secondary !default;
+$message-box-shadow:          0 2px 6px $inverse-level-2 !default;
+
+$message-header-font-size:    $font-size-lg !default;
+$message-body-font-size:      $font-size !default;
+$message-header-padding:      .5rem 0 .5rem .75rem !default;
+$message-body-padding:        .5rem 1rem .5rem .75rem !default;
+
+$message-loading-padding:      0 .5rem 0 0 !default;
+$message-loading-border-color: $brand-primary !default;
+
+$message-enter-duration:      .24s !default;
+$message-leave-duration:      .36s !default;

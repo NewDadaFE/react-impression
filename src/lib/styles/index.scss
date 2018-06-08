@@ -1,6 +1,6 @@
 // todo 用不用把前边几个引入？
 @import './theme/index';
-@import './reboot';
+@import './modules/index';
 @import './mixins/index';
 @import './utilities/index';
 
@@ -18,4 +18,6 @@
 @import '../components/flex/styles/index';
 @import '../components/inline-select/styles/index';
 @import '../components/alert/styles/index';
+@import '../components/message/styles/index';
+@import '../components/notification/styles/index';
 

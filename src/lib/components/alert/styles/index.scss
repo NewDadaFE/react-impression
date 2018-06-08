@@ -4,6 +4,9 @@
 
 .alert {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   right: 0;
   bottom: 0;
   top: $alert-top;
@@ -16,24 +19,18 @@
 }
 
 .alert-dialog {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  position: relative;
   text-align: center;
   width: $alert-dialog-width;
   min-height: $alert-dialog-min-height;
-  max-height: $alert-dialog-max-height;
   background: $alert-dialog-bg;
-  padding: $alert-dialog-padding;
   border-radius: $alert-dialog-border-radius;
   animation: bounceIn $alert-animation-duration ease-in-out;
 }
 
 .alert-addon {
   font-size: $alert-addon-font-size;
+  padding: $alert-header-padding;
 
   i {
     display: block;
@@ -44,15 +41,11 @@
   padding: $alert-body-padding;
 }
 
-
 .alert-footer {
   @extend .reset-component;
-  position: absolute;
-  left: 0;
-  bottom: 0;
   width: 100%;
   display: flex;
-  padding: .8rem;
+  padding: $alert-footer-padding;
   justify-content: space-around;
   border-radius: 0 0 $alert-dialog-border-radius $alert-dialog-border-radius;
   cursor: pointer;

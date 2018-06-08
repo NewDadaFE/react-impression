@@ -1,0 +1,124 @@
+@import '../../../styles/modules/index';
+
+.notification {
+  position: fixed;
+  margin-right: 20px;
+  z-index: $zindex-notification;
+  width: $notification-width;
+
+  &-topLeft,
+  &-bottomLeft {
+    margin-left: 1rem;
+    margin-right: 0;
+
+    .notice-enter {
+      animation-name: slideInLeft;
+    }
+    .notice-leave {
+      animation-duration: $notice-leave-duration;
+      animation-name: slideOutLeft;
+    }
+  }
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  color: $notice-color;
+  border-radius: $notice-border-radius;
+  margin-bottom: $notice-margin-bottom;
+  box-shadow: $notice-box-shadow;
+  border: $notice-border-width solid transparent;
+  animation-duration: $notice-enter-duration;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+
+  .close {
+    color: $notice-color;
+    opacity: .6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.notice-header {
+  font-size: $notice-header-font-size;
+  padding: $notice-header-padding;
+}
+
+.notice-body {
+  flex: 1;
+  font-size: $notice-body-font-size;
+  padding: $notice-body-padding;
+}
+
+.notice-title {
+  margin: $notice-title-margin;
+  font-size: $notice-body-title-font-size;
+}
+
+
+// Alternate styles
+.notice-info { @include notice-variant($notice-primary-bg); }
+.notice-success { @include notice-variant($notice-success-bg); }
+.notice-warning { @include notice-variant($notice-warning-bg); }
+.notice-danger { @include notice-variant($notice-danger-bg); }
+
+
+//Animation
+.notice-enter {
+  animation-name: slideInRight;
+}
+
+.notice-leave {
+  animation-duration: $notice-leave-duration;
+  animation-name: slideOutRight;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+}

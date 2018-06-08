@@ -2,7 +2,7 @@
 
 @mixin bg-variant($parent, $color) {
   #{$parent} {
-    color: $brand-muted !important;
+    color: $brand-pure !important;
     background-color: $color !important;
   }
 

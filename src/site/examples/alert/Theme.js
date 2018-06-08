@@ -50,21 +50,27 @@ class Theme extends Component {
           </Col>
         </Row>
         {/* 此处有bug 添加alert节点之后row变成不是最后一个，会产生margin-bottom */}
-        {showAlert1 && (
-          <Alert type='warning' onClick={this.toggleAlert1Handle}>
-            姓名不能为空！
-          </Alert>
-        )}
-        {showAlert2 && (
-          <Alert btnText='关闭' onClick={this.toggleAlert2Handle} type='danger'>
-            请先选择所属城市！
-          </Alert>
-        )}
-        {showAlert3 && (
-          <Alert btnText='关闭' onClick={this.toggleAlert3Handle} type='none'>
-            这是一个没有icon的alert！
-          </Alert>
-        )}
+        <Alert
+          type='warning'
+          onClick={this.toggleAlert1Handle}
+          visible={showAlert1}
+        >
+          姓名不能为空！
+        </Alert>
+        <Alert
+          type='danger'
+          onClick={this.toggleAlert2Handle}
+          visible={showAlert2}
+        >
+          请先选择所属城市！
+        </Alert>
+        <Alert
+          type='none'
+          onClick={this.toggleAlert3Handle}
+          visible={showAlert3}
+        >
+          这是一个没有icon的alert！
+        </Alert>
       </div>
     )
   }

@@ -45,9 +45,9 @@
 }
 
 @mixin button-variant($color, $background, $border) {
-  $hover-color: lighten($color, 20%);
-  $hover-background: lighten($background, 20%);
-  $hover-border: lighten($border, 20%);
+  $hover-color: lighten($color, 10%);
+  $hover-background: lighten($background, 10%);
+  $hover-border: lighten($border, 10%);
   $active-background: darken($background, 20%);
   $active-border: darken($border, 20%);
 

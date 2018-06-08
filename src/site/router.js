@@ -12,6 +12,8 @@ import NavbarExample from './examples/navbar'
 import InlineSelectExample from './examples/inline-select'
 import AlertViewExample from './examples/alert'
 import LayoutExample from './examples/layout'
+import MessageExample from './examples/message'
+import NotificationExample from './examples/notification'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -27,6 +29,8 @@ const routers = (
     <Route path='inline-select' component={InlineSelectExample} />
     <Route path='alert' component={AlertViewExample} />
     <Route path='layout' component={LayoutExample} />
+    <Route path='message' component={MessageExample} />
+    <Route path='notification' component={NotificationExample} />
   </Route>
 )
 

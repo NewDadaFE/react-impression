@@ -75,6 +75,16 @@ export const SIDER_MENU = [
         name: 'Alert',
         url: '/alert',
       },
+      {
+        id: 44,
+        name: 'Message',
+        url: '/message',
+      },
+      {
+        id: 45,
+        name: 'Notification',
+        url: '/notification',
+      },
     ],
   },
   {

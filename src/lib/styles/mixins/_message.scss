@@ -1,0 +1,10 @@
+// Message
+
+@mixin message-variant($color) {
+  background: mix($color, $brand-pure, 4%);
+  border: 1px solid rgba($color, .5);
+
+  .message-header {
+    color: $color;
+  }
+}

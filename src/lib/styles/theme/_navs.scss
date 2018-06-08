@@ -3,7 +3,7 @@ $nav-item-margin: .2rem !default;
 $nav-item-spacer-x: 1rem !default;
 $nav-item-inline-spacer: $nav-item-spacer-x * 2 !default;
 
-$nav-title-color: $brand-pure !default;
+$nav-title-color: $brand-muted !default;
 $nav-title-padding: 1rem !default;
 $nav-title-font-size: 1.1rem !default;
 
@@ -36,13 +36,13 @@ $nav-tabs-border-width: $nav-link-active-border-width !default;
 $nav-tabs-link-border-width: $nav-link-active-border-width !default;
 $nav-tabs-link-hover-border-color: $nav-link-active-color !default;
 $nav-tabs-active-link-hover-color: $nav-link-active-color !default;
-$nav-tabs-active-link-bg-color: $brand-muted !default;
+$nav-tabs-active-link-bg-color: $brand-pure !default;
 
 // type pills
 $nav-pills-link-color: $gray-primary !default;
 $nav-pills-link-border-radius: $border-radius !default;
 $nav-pills-link-padding: .5em 1em !default;
-$nav-pills-active-link-color: $brand-muted !default;
+$nav-pills-active-link-color: $brand-pure !default;
 $nav-pills-active-link-bg: $brand-primary !default;
 $nav-pills-link-hover-color: $nav-pills-active-link-color !default;
 $nav-pills-link-hover-bg: $nav-pills-active-link-bg !default;

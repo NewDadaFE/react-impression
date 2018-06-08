@@ -1,0 +1,27 @@
+.close {
+  float: right;
+  font-size: $font-size-base;
+  font-weight: $close-font-weight;
+  line-height: 1;
+  color: $close-color;
+  opacity: .2;
+
+  &:hover {
+    color: $close-color;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .5;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}

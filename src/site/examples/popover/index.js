@@ -4,7 +4,6 @@ import Direction from './Direction'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
-import './style.scss'
 
 const popoverAttrParams = [
   [
@@ -23,7 +22,6 @@ const popoverAttrTable = transfer(popoverAttrParams)
 export default () => {
   return (
     <Wrapper
-      styleName='popover-example'
       title='Popover气泡卡片'
       desc='点击或者鼠标移入元素，弹出气泡式的卡片浮层'
     >
