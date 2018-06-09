@@ -8,7 +8,7 @@ const callback = key => {
 
 const NavBasic = () => {
   return (
-    <Nav defaultActiveKey={1} onSelect={callback}>
+    <Nav defaultActiveKey={1} onSelect={callback} type='line'>
       <Nav.Item eventKey={1}>Active</Nav.Item>
       <Nav.Item eventKey={2}>Link</Nav.Item>
       <Nav.Item eventKey={3}>Anothor link</Nav.Item>

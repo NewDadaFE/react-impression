@@ -41,7 +41,6 @@ export default class Nav extends PureComponent {
   // 默认props
   static defaultProps = {
     stacked: false,
-    type: 'line',
   }
   // 选中回调
   onSelectHandle = eventKey => {

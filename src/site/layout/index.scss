@@ -1,59 +1,19 @@
-$content-padding: 60px;
-$content-bg: #fff;
+:global {
+  html, body, #root {
+    height: 100%;
+  }
+}
 
 .layout {
-  display: flex;
   height: 100%;
+  overflow: hidden;
 }
 
-.right {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 1000px;
-  overflow-x: hidden;
-
-  .header {
-    background-color: #fff;
-    font-size: 14px;
-    width: 100%;
-    z-index: 10;
-
-    .user-wrapper {
-      float: right;
-
-      .user {
-        padding-right: 20px;
-        border-right: 1px solid rgba($color: #90a4ae, $alpha: .5);
-      }
-
-      .padding-r {
-        padding-right: 14px;
-      }
-      .logout {
-        padding: 0 $content-padding;
-
-        &:hover {
-          color: #4fa4cf;
-          cursor: pointer;
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
-
-  .content-wrapper {
-    flex: 1;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: $content-bg;
-
-    .content {
-      padding: $content-padding;
-      overflow: auto;
-    }
-  }
+.content {
+  padding: 40px;
 }
+
+.top {
+  vertical-align: top;
+}
+

@@ -1,129 +1,58 @@
 import React from 'react'
+import { Link } from 'react-router'
 import PropTypes from 'prop-types'
-import { Link, withRouter } from 'react-router'
-import { Icon, Sidebar } from 'react-impression'
-import { SIDER_MENU, getMenuDict } from '../config'
+import { Sidebar, Nav, Collapse, Icon } from 'react-impression'
+import '../index.scss'
 
-const menuDict = getMenuDict()
+// 侧边栏Sidebar
+function AppSidebar(props) {
+  const { menu } = props
 
-class AppSidebar extends React.PureComponent {
-  static propTypes = {
-    router: PropTypes.object,
-    loginSuccess: PropTypes.bool,
-  }
-  state = {
-    expandParentId: '',
-    activeUrl: '',
-  }
-
-  componentDidMount() {
-    this.init()
-  }
-
-  componentWillReceiveProps() {
-    this.init()
-  }
-
-  getActiveStyle = url => {
-    return url === this.state.activeUrl ? 'active' : ''
-  }
-  // 获取一个子菜单的高度
-  getSubMenuHeight = item => {
-    // const { expandParentId } = this.state
-
-    // if (expandParentId !== item.id) return 0
-
-    return item.children.length * 4.2
-  }
-
-  // 获取是否新开一页标志
-  getTarget = () => {
-    return this.props.loginSuccess ? '_blank' : ''
-  }
-
-  init = () => {
-    const { pathname } = this.props.router.location
-    const menu = menuDict[pathname] || {}
-
-    this.setState({
-      activeUrl: pathname,
-      expandParentId: menu.parentId,
-    })
-  }
-
-  /**
-   * 菜单显示/隐藏
-   */
-  handleMenuShow = item => {
-    const { expandParentId } = this.state
-    let newId = item.id
-
-    if (expandParentId === newId) {
-      newId = ''
-    }
-
-    this.setState({ expandParentId: newId })
-  }
-
-  renderMenu = item => {
-    const { expandParentId } = this.state
-
-    if (item.url) {
-      return (
-        <li key={item.id}>
-          <Link
-            className={`title ${this.getActiveStyle(item.url)}`}
-            to={item.url}
-            target={this.getTarget()}
-          >
-            <Icon type={item.icon} className='icon' />
-            <span>{item.name}</span>
-          </Link>
-        </li>
-      )
-    }
-
-    return (
-      <li key={item.id}>
-        <a className='title' onClick={() => this.handleMenuShow(item)}>
-          <Icon type={item.icon} className='icon' />
-          <span>{item.name}</span>
-
-          <Icon
-            type={
-              item.id === expandParentId ? 'icon-jiantou-up' : 'icon-jiantou'
-            }
-            className='collapse'
-          />
-        </a>
-
-        {!!item.children && (
-          <dl style={{ height: `${this.getSubMenuHeight(item)}rem` }}>
-            {item.children.map(child => (
-              <dd key={child.id} className={this.getActiveStyle(child.url)}>
-                <Link to={child.url} target={this.getTarget()}>
-                  <span>{child.name}</span>
-                </Link>
-              </dd>
-            ))}
-          </dl>
-        )}
-      </li>
-    )
-  }
-
-  render() {
-    return (
-      <Sidebar>
-        <Sidebar.Header>ReactImpression</Sidebar.Header>
-        <Sidebar.Body>
-          <div className='side-bar'>
-            <ul>{SIDER_MENU.map(this.renderMenu)}</ul>
-          </div>
-        </Sidebar.Body>
-      </Sidebar>
-    )
-  }
+  return (
+    <Sidebar>
+      <Sidebar.Header>
+        <Icon styleName='top' type='dada' size='2x' left />
+        <span styleName='top'>{menu.projectName}</span>
+      </Sidebar.Header>
+      <Sidebar.Body>
+        <Nav>
+          {menu.menuModel &&
+            menu.menuModel.map(list => {
+              if (list.children.length) {
+                return (
+                  <Collapse key={list.id} active>
+                    <Collapse.Title>
+                      <Icon type={list.icon} left />
+                      {list.name}
+                    </Collapse.Title>
+                    <Collapse.Body>
+                      <Nav>
+                        {list.children.map(item => (
+                          <Nav.Link key={item.id}>
+                            <Link to={item.url}>{item.name}</Link>
+                          </Nav.Link>
+                        ))}
+                      </Nav>
+                    </Collapse.Body>
+                  </Collapse>
+                )
+              }
+              return (
+                <Nav.Link key={list.id}>
+                  <Link to={list.url}>
+                    <Icon type={list.icon} left />
+                    {list.name}
+                  </Link>
+                </Nav.Link>
+              )
+            })}
+        </Nav>
+      </Sidebar.Body>
+    </Sidebar>
+  )
+}
+AppSidebar.propTypes = {
+  menu: PropTypes.object.isRequired,
 }
 
-export default withRouter(AppSidebar)
+export default AppSidebar

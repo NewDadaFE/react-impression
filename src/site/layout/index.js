@@ -1,31 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Sidebar from './components/Sidebar'
-import Content from './components/Content'
 import Header from './components/Header'
-import style from './index.scss'
+import Sidebar from './components/Sidebar'
+import { Flex, Content } from 'react-impression'
+import { SIDEBAR_MENU } from './config'
+import './index.scss'
 
-// 页面布局
+// 页面布局.
 const Layout = ({ children }) => {
-  const { title } = children.type
-  document.title = title || 'ReactImpression'
-
   return (
-    <div className={style['layout']}>
+    <Flex styleName='layout'>
       {/* 侧边栏 */}
-      <Sidebar />
-      <div className={style['right']}>
-        {/* Header头部 */}
-        <Header />
-        {/* 内容区 */}
-        <Content>{children}</Content>
-      </div>
-    </div>
+      <Sidebar menu={SIDEBAR_MENU} />
+      {/* 内容区 */}
+      <Flex.Item>
+        <Flex direction='column'>
+          <Header />
+          <Content styleName='content' notransition>
+            {children}
+          </Content>
+        </Flex>
+      </Flex.Item>
+    </Flex>
   )
 }
 
 Layout.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
 
 export default Layout

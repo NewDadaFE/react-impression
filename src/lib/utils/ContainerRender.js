@@ -33,7 +33,6 @@ export default class ContainerRender extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger
     if (this.props.autoDestroy) {
       this.removeContainer()
     }

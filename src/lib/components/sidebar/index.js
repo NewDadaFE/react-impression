@@ -5,12 +5,6 @@ import Footer from './SidebarFooter'
 import Header from './SidebarHeader'
 import Body from './SidebarBody'
 
-// props校验
-const propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.any,
-}
-
 /**
  * Sidebar 组件
  */
@@ -22,7 +16,13 @@ const Sidebar = ({ children, className, ...others }) => {
   )
 }
 
-Sidebar.propTypes = propTypes
+// props校验
+
+Sidebar.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.any,
+}
+
 Sidebar.Header = Header
 Sidebar.Body = Body
 Sidebar.Footer = Footer

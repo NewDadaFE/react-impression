@@ -127,7 +127,7 @@
     display: block;
     position: relative;
     padding: $nav-tabs-link-padding;
-    line-height: $nav-tabs-link-line-height;
+    line-height: $nav-tabs-link-line-height - 1px;
     border: $nav-tabs-link-border-width solid transparent;
     border-bottom: 0;
     transition: color .3s $ease-in-out;
@@ -236,4 +236,10 @@
   > .active {
     display: block;
   }
+}
+
+.nav-title {
+  padding: $nav-title-padding;
+  color: $nav-title-color;
+  font-size: $nav-title-font-size;
 }
