@@ -4,19 +4,19 @@ import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import { Flex, Content } from 'react-impression'
 import { SIDEBAR_MENU } from './config'
-import './index.scss'
+import styles from './index.scss'
 
 // 页面布局.
 const Layout = ({ children }) => {
   return (
-    <Flex styleName='layout'>
+    <Flex className={styles['layout']}>
       {/* 侧边栏 */}
       <Sidebar menu={SIDEBAR_MENU} />
       {/* 内容区 */}
       <Flex.Item>
         <Flex direction='column'>
           <Header />
-          <Content styleName='content' notransition>
+          <Content className={styles['content']} notransition>
             {children}
           </Content>
         </Flex>

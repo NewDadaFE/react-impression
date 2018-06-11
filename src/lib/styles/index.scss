@@ -1,7 +1,7 @@
 // todo 用不用把前边几个引入？
 @import './theme/index';
-@import './modules/index';
 @import './mixins/index';
+@import './modules/index';
 @import './utilities/index';
 
 @import '../components/button/style/index';
@@ -22,3 +22,5 @@
 @import '../components/notification/styles/index';
 @import '../components/content/styles/index';
 @import '../components/collapse/styles/index';
+@import '../components/confirm/styles/index';
+@import '../components/modal/styles/index';

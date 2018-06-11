@@ -1,0 +1,24 @@
+// Confirm
+$confirm-top:                           $modal-top !default;
+$confirm-left:                          $modal-left !default;
+$confirm-bg:                            $modal-bg !default;
+
+$confirm-dialog-bg:                     $brand-pure !default;
+$confirm-dialog-width:                  240px !default;
+$confirm-dialog-height:                 150px !default;
+$confirm-dialog-padding:                1rem !default;
+$confirm-dialog-border-radius:          $border-radius-lg !default;
+$confirm-dialog-min-height:               95px !default;
+
+$confirm-addon-font-size:               3rem !default;
+$confirm-header-padding:                16px 24px 0 !default;
+$confirm-body-padding:                  30px 24px 0 !default;
+$confirm-footer-padding:                25px 16px !default;
+$confirm-footer-border-color:           $border-color !default;
+
+$confirm-btn-padding:                   .8rem !default;
+$confirm-btn-color:                     $brand-primary !default;
+$confirm-btn-hover-bg:                  $gray-lighter !default;
+$confirm-btn-primary-color:             $brand-primary !default;
+
+$confirm-animation-duration:            .36s !default;

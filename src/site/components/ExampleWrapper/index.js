@@ -6,9 +6,11 @@ const Wrapper = props => {
 
   return (
     <div {...rest} className={className}>
-      <h1>{title}</h1>
-      <p>{desc}</p>
-      <h1>使用演示</h1>
+      <div className='offset-b-lg'>
+        <h3>{title}</h3>
+        <p>{desc}</p>
+        <h3>使用演示</h3>
+      </div>
       {children}
     </div>
   )

@@ -1,0 +1,52 @@
+@import '../../../styles/theme/index.scss';
+@import '../../../styles/mixins/index.scss';
+
+.confirm {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  bottom: 0;
+  top: $confirm-top;
+  left: $confirm-left;
+  background: $confirm-bg;
+  z-index: $zindex-confirm;
+  overflow: hidden;
+  outline: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.confirm-dialog {
+  position: relative;
+  text-align: center;
+  width: $confirm-dialog-width;
+  min-height: $confirm-dialog-min-height;
+  background: $confirm-dialog-bg;
+  border-radius: $confirm-dialog-border-radius;
+  animation: bounceIn $confirm-animation-duration ease-in-out;
+}
+
+.confirm-addon {
+  font-size: $confirm-addon-font-size;
+  padding: $confirm-header-padding;
+
+  i {
+    display: block;
+  }
+}
+
+.confirm-body {
+  padding: $confirm-body-padding;
+}
+
+.confirm-footer {
+  @include reset-component;
+  width: 100%;
+  display: flex;
+  padding: $confirm-footer-padding;
+  justify-content: space-around;
+  border-radius: 0 0 $confirm-dialog-border-radius $confirm-dialog-border-radius;
+  cursor: pointer;
+  color: $confirm-btn-color;
+}

@@ -38,7 +38,7 @@ class Card extends React.Component {
 
     return (
       <div {...others}>
-        <h2>{Component.title}</h2>
+        <h5>{Component.title}</h5>
         <div className={classnames(styles['card-wrapper'], cardClass)}>
           <Component />
         </div>

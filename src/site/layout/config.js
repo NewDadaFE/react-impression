@@ -87,6 +87,11 @@ export const SIDEBAR_MENU = {
           name: 'Notification',
           url: '/notification',
         },
+        {
+          id: 46,
+          name: 'Confirm',
+          url: '/confirm',
+        },
       ],
     },
     {
@@ -98,6 +103,11 @@ export const SIDEBAR_MENU = {
           id: 51,
           name: 'Card',
           url: '/card',
+        },
+        {
+          id: 52,
+          name: 'Modal',
+          url: '/modal',
         },
       ],
     },

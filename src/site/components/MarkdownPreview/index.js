@@ -25,7 +25,7 @@ const MarkdownPreview = props => {
 
   return (
     <div>
-      {name && <h2>{name}</h2>}
+      {name && <h5>{name}</h5>}
       <div
         className={className}
         dangerouslySetInnerHTML={renderMarkdown(markdown)}

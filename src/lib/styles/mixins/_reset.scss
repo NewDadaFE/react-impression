@@ -1,4 +1,4 @@
-.reset-component {
+@mixin reset-component {
   font-size: $font-size;
   line-height: $line-height-base;
   color: $text-color-primary;

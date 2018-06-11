@@ -1,6 +1,5 @@
 @import '../../../styles/theme/index.scss';
 @import '../../../styles/mixins/index.scss';
-@import '../../../styles/utilities/index.scss';
 
 .alert {
   position: fixed;
@@ -42,7 +41,7 @@
 }
 
 .alert-footer {
-  @extend .reset-component;
+  @include reset-component;
   width: 100%;
   display: flex;
   padding: $alert-footer-padding;

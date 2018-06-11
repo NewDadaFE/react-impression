@@ -14,6 +14,8 @@ import AlertViewExample from './examples/alert'
 import LayoutExample from './examples/layout'
 import MessageExample from './examples/message'
 import NotificationExample from './examples/notification'
+import ConfirmExample from './examples/confirm'
+import ModalExample from './examples/modal'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -31,6 +33,8 @@ const routers = (
     <Route path='layout' component={LayoutExample} />
     <Route path='message' component={MessageExample} />
     <Route path='notification' component={NotificationExample} />
+    <Route path='confirm' component={ConfirmExample} />
+    <Route path='modal' component={ModalExample} />
   </Route>
 )
 
