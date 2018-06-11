@@ -34,7 +34,7 @@ class Theme extends Component {
       <div>
         <Row>
           <Col>
-            <Button theme='primary' outline onClick={this.toggleConfirm1Handle}>
+            <Button theme='warning' outline onClick={this.toggleConfirm1Handle}>
               warning
             </Button>
           </Col>

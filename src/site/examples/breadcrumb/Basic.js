@@ -17,6 +17,6 @@ const Basic = () => {
 /* sourceCode:end */
 
 Basic.title = '基本用法'
-Basic.desc = `> 默认面包屑`
+Basic.desc = `> 默认面包屑, 也可以和react-router结合传入routes参数，此时不必添加子节点`
 
 export default Basic

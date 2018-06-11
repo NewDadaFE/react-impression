@@ -8,6 +8,7 @@ const ButtonType = () => {
       <Button type='default'>default</Button>
       <Button type='primary'>primary</Button>
       <Button type='danger'>danger</Button>
+      <Button type='warning'>warning</Button>
     </div>
   )
 }
