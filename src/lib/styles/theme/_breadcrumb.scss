@@ -1,0 +1,14 @@
+// Breadcrumbs
+$breadcrumb-color:                  #777 !default;
+$breadcrumb-padding:                $card-padding 0 !default;
+$breadcrumb-bg:                     transparent !default;
+
+$breadcrumb-divider-color:          $gray-lighter !default;
+$breadcrumb-active-color:           $gray-lighter !default;
+
+$breadcrumb-divider:                '/' !default;
+$breadcrumb-arrow-divider:          '>' !default;
+
+$breadcrumb-item-padding:            .5rem !default;
+$breadcrumb-item-addon-spacer:       5px !default;
+$breadcrumb-item-addon-font-size:    1.2rem !default;

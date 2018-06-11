@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@/site/components/Card'
 import Theme from './Theme'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -16,11 +17,12 @@ const confirmAttr = [
 
 const confirmAttrTable = transfer(confirmAttr)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Confirm' desc='点击元素，弹出确认框。'>
       <Card component={Theme} />
       <MarkdownPreview markdown={confirmAttrTable} name='Confirm API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

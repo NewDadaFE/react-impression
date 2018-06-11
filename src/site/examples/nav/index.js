@@ -5,6 +5,7 @@ import Inline from './Inline'
 import Slack from './Slack'
 import Tab from './Tab'
 import Pill from './Pill'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -27,8 +28,9 @@ const NavItemAttrParams = [
 const NavAttrTable = transfer(NavAttrParams)
 const NavItemAttrTable = transfer(NavItemAttrParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Nav标签切换' desc='导航栏切换组件'>
       <Card component={Basic} />
       <Card component={Inline} />
@@ -37,6 +39,6 @@ export default () => {
       <Card component={Pill} />
       <MarkdownPreview markdown={NavAttrTable} name='Nav API' />
       <MarkdownPreview markdown={NavItemAttrTable} name='NavItem API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

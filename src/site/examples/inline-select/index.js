@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@/site/components/Card'
 import Basic from './Basic'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -20,8 +21,9 @@ const optionAttr = [
 const inlineSelectAttrTable = transfer(inlineSelectAttr)
 const optionTable = transfer(optionAttr)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='InlineSelect' desc='行内样式选择器，多用于属性分类选择'>
       <Card component={Basic} />
       <MarkdownPreview
@@ -29,6 +31,6 @@ export default () => {
         name='InlineSelect API'
       />
       <MarkdownPreview markdown={optionTable} name='InlineSelect.Option API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

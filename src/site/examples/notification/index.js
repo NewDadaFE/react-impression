@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '@/site/components/Card'
 import Type from './Type'
 import Placement from './Placement'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -44,8 +45,9 @@ const NotificationAttrTable = transfer(NotificationAttrParams)
 const apiTable = transfer(apiParams)
 const configTable = transfer(configParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper
       title='Notification通知提醒框'
       desc='全局展示通知提醒信息。经常用于较为复杂的通知内容或者带有交互的通知或者系统主动推送'
@@ -58,6 +60,6 @@ export default () => {
       />
       <MarkdownPreview markdown={apiTable} name='方法' />
       <MarkdownPreview markdown={configTable} name='Notification.config API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

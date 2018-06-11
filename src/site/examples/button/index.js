@@ -4,6 +4,7 @@ import Type from './Type'
 import Size from './Size'
 import Ghost from './Ghost'
 import Disabled from './Disabled'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -35,8 +36,9 @@ const attrParams = [
 
 const attrTable = transfer(attrParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper
       styleName='button'
       title='Button按钮'
@@ -47,6 +49,6 @@ export default () => {
       <Card component={Size} cardClass={styles['button-card-padding']} />
       <Card component={Disabled} />
       <MarkdownPreview markdown={attrTable} name='API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

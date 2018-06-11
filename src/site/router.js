@@ -16,6 +16,7 @@ import MessageExample from './examples/message'
 import NotificationExample from './examples/notification'
 import ConfirmExample from './examples/confirm'
 import ModalExample from './examples/modal'
+import BreadcrumbExample from './examples/breadcrumb'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -35,6 +36,7 @@ const routers = (
     <Route path='notification' component={NotificationExample} />
     <Route path='confirm' component={ConfirmExample} />
     <Route path='modal' component={ModalExample} />
+    <Route path='breadcrumb' component={BreadcrumbExample} />
   </Route>
 )
 

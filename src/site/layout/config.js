@@ -55,6 +55,11 @@ export const SIDEBAR_MENU = {
           name: 'InlineSelect',
           url: '/inline-select',
         },
+        {
+          id: 34,
+          name: 'Breadcrumb',
+          url: '/breadcrumb',
+        },
       ],
     },
     {

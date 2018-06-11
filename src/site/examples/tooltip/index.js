@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@/site/components/Card'
 import Direction from './Direction'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -18,11 +19,12 @@ const tooltipAttrParams = [
 
 const tooltipAttrTable = transfer(tooltipAttrParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Tooltip文字提示' desc='简单的文字提示气泡框'>
       <Card component={Direction} />
       <MarkdownPreview markdown={tooltipAttrTable} name='Tooltip API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

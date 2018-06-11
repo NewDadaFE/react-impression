@@ -4,6 +4,7 @@ import Basic from './Basic'
 import Disabled from './Disabled'
 import Group from './Group'
 import Column from './Column'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -34,8 +35,9 @@ const radioAttrTable = transfer(radioAttrParams)
 const radioGroupAttrTable = transfer(radioGroupAttrParams)
 const apiTable = transfer(apiParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Radio单选框' desc='单选框'>
       <Card component={Basic} />
       <Card component={Disabled} />
@@ -44,6 +46,6 @@ export default () => {
       <MarkdownPreview markdown={radioAttrTable} name='Radio API' />
       <MarkdownPreview markdown={radioGroupAttrTable} name='RadioGroup API' />
       <MarkdownPreview markdown={apiTable} name='方法' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

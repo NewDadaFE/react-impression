@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '@/site/components/Card'
 import Grid from './Grid'
 import Offset from './Offset'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -15,12 +16,13 @@ const GridAttr = [
 
 const GridAttrTable = transfer(GridAttr)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Grid栅格' desc='12栅格系统。'>
       <Card component={Grid} />
       <Card component={Offset} />
       <MarkdownPreview markdown={GridAttrTable} name='Col API' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

@@ -4,6 +4,7 @@ import Basic from './Basic'
 import Disabled from './Disabled'
 import Group from './Group'
 import Column from './Column'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -35,8 +36,9 @@ const checkBoxAttrTable = transfer(checkBoxAttrParams)
 const checkBoxGroupAttrTable = transfer(checkBoxGroupAttrParams)
 const apiTable = transfer(apiParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Radio单选框' desc='单选框'>
       <Card component={Basic} />
       <Card component={Disabled} />
@@ -45,6 +47,6 @@ export default () => {
       <MarkdownPreview markdown={checkBoxAttrTable} name='Checkbox API' />
       <MarkdownPreview markdown={checkBoxGroupAttrTable} name='Checkbox API' />
       <MarkdownPreview markdown={apiTable} name='方法' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

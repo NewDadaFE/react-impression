@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@/site/components/Card'
 import Type from './Type'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -22,8 +23,9 @@ const apiParams = [
 const MessageAttrTable = transfer(MessageAttrParams)
 const apiTable = transfer(apiParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper
       title='Message全局提示'
       desc='全局展示操作反馈信息，可提供成功、警告和错误等反馈信息'
@@ -31,6 +33,6 @@ export default () => {
       <Card component={Type} />
       <MarkdownPreview markdown={MessageAttrTable} name='Message API' />
       <MarkdownPreview markdown={apiTable} name='方法' />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }

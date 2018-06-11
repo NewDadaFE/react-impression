@@ -3,6 +3,7 @@ import Card from '@/site/components/Card'
 import Default from './Default'
 import Primary from './Primary'
 import Pure from './Pure'
+import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
@@ -20,8 +21,9 @@ const NavbarBrandAttrParams = [
 const NavbarAttrTable = transfer(NavbarAttrParams)
 const NavbarBrandItemAttrTable = transfer(NavbarBrandAttrParams)
 
-export default () => {
-  return (
+export default ({ routes, params }) => {
+  return [
+    <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Navbar导航栏' desc='多用于页面头部的导航栏组件'>
       <Card component={Default} />
       <Card component={Primary} />
@@ -31,6 +33,6 @@ export default () => {
         markdown={NavbarBrandItemAttrTable}
         name='Navbar Brand API'
       />
-    </Wrapper>
-  )
+    </Wrapper>,
+  ]
 }
