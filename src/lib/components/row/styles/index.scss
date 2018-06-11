@@ -1,6 +1,6 @@
 @import '../../../styles/theme/index.scss';
-@import './mixin.scss';
 @import '../../../styles/mixins/index';
+@import './mixin.scss';
 
 .row {
   @include make-row();

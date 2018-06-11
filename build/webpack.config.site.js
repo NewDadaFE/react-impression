@@ -47,7 +47,7 @@ module.exports = merge(baseConfig, {
         parallel: true,
         sourceMap: true
       }),
-      new OptimizeCSSAssetsPlugin()
+      // new OptimizeCSSAssetsPlugin()
     ],
     splitChunks: {
       cacheGroups: {
