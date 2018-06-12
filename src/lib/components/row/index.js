@@ -9,12 +9,14 @@ export default class Row extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.any,
+    gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    style: PropTypes.object,
   }
   /**
    * 自动计算col属性.
    * @return {[Array]} [子元素]
    */
-  getChildren() {
+  getChildren(gutterNum) {
     let { children } = this.props,
       count = 0,
       allocation = 0
@@ -39,20 +41,44 @@ export default class Row extends PureComponent {
       }
 
       let { col } = child.props
-
-      return React.cloneElement(child, {
+      let computedProps = {
         key: index,
         col: col || Number.parseInt(surplus / allocation, 10),
-      })
+      }
+      if (child.props && gutterNum > 0) {
+        computedProps.style = {
+          paddingLeft: gutterNum / 2,
+          paddingRight: gutterNum / 2,
+          ...child.props.style,
+        }
+      }
+
+      return React.cloneElement(child, computedProps)
     })
   }
   // 渲染
   render() {
-    let { className, children, ...others } = this.props
+    let { className, children, gutter, style, ...others } = this.props
+    const gutterNum = Number(gutter)
+    const rowStyle =
+      gutterNum > 0
+        ? {
+          marginLeft: gutterNum / -2,
+          marginRight: gutterNum / -2,
+          ...style,
+        }
+        : style
 
-    children = this.getChildren()
+    const otherProps = { ...others }
+    delete otherProps.gutter
+
+    children = this.getChildren(gutterNum)
     return (
-      <div {...others} className={classnames('row', className)}>
+      <div
+        {...otherProps}
+        className={classnames('row', className)}
+        style={rowStyle}
+      >
         {children}
       </div>
     )

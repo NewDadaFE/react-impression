@@ -1,30 +1,30 @@
 /* sourceCode:start */
 import React from 'react'
 import { Row, Col } from 'react-impression'
-import styles from './index.scss'
+import './index.scss'
 
 const Offset = () => {
   return (
     <div>
       <Row>
-        <Col col='4' className={styles['demo-col-on']}>
-          col-4
+        <Col col='4'>
+          <div styleName='demo-col-on'>col-4</div>
         </Col>
-        <Col col='4' offset='4' className={styles['demo-col-on']}>
-          col-4 offset-4
-        </Col>
-      </Row>
-      <Row>
-        <Col col='3' className={styles['demo-col-on']}>
-          col-3 offset-3
-        </Col>
-        <Col col='3' offset='3' className={styles['demo-col-on']}>
-          col-3 offset-3
+        <Col col='4' offset='4'>
+          <div styleName='demo-col-on'>col-4 offset-4</div>
         </Col>
       </Row>
       <Row>
-        <Col col='6' offset='3' className={styles['demo-col-on']}>
-          col-6 offset-3
+        <Col col='3' offset='3'>
+          <div styleName='demo-col-on'>col-3 offset-3</div>
+        </Col>
+        <Col col='3' offset='3'>
+          <div styleName='demo-col-on'>col-3 offset-3</div>
+        </Col>
+      </Row>
+      <Row>
+        <Col col='6' offset='3'>
+          <div styleName='demo-col-on'> col-6 offset-3</div>
         </Col>
       </Row>
     </div>

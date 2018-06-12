@@ -38,6 +38,13 @@
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   $breakpoint-counter: 0;
+
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      @include make-col($i, $columns, $gutter);
+    }
+  }
+
   @each $breakpoint in map-keys($breakpoints) {
     $breakpoint-counter: ($breakpoint-counter + 1);
 

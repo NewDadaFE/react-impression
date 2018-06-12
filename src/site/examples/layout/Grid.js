@@ -1,50 +1,106 @@
 /* sourceCode:start */
 import React from 'react'
 import { Row, Col } from 'react-impression'
-import styles from './index.scss'
+import './index.scss'
 
 const Grid = () => {
   return (
     <div>
       <Row>
-        <Col className={styles['demo-col-on']}>1</Col>
-        <Col className={styles['demo-col']}>1</Col>
-        <Col className={styles['demo-col-on']}>1</Col>
-        <Col className={styles['demo-col']}>1</Col>
-        <Col className={styles['demo-col-on']}>1</Col>
-        <Col className={styles['demo-col']}>1</Col>
-        <Col className={styles['demo-col-on']}>1</Col>
-        <Col className={styles['demo-col']}>1</Col>
-        <Col className={styles['demo-col-on']}>1</Col>
-        <Col className={styles['demo-col']}>1</Col>
-        <Col className={styles['demo-col-on']}>1</Col>
-        <Col className={styles['demo-col']}>1</Col>
+        <Col>
+          <div styleName='demo-col-on'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>1</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>1</div>
+        </Col>
       </Row>
       <Row>
-        <Col className={styles['demo-col-on']}>2</Col>
-        <Col className={styles['demo-col']}>2</Col>
-        <Col className={styles['demo-col-on']}>2</Col>
-        <Col className={styles['demo-col']}>2</Col>
-        <Col className={styles['demo-col-on']}>2</Col>
-        <Col className={styles['demo-col']}>2</Col>
+        <Col>
+          <div styleName='demo-col-on'>2</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>2</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>2</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>2</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>2</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>2</div>
+        </Col>
       </Row>
       <Row>
-        <Col className={styles['demo-col-on']}>3</Col>
-        <Col className={styles['demo-col']}>3</Col>
-        <Col className={styles['demo-col-on']}>3</Col>
-        <Col className={styles['demo-col']}>3</Col>
+        <Col>
+          <div styleName='demo-col-on'>3</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>3</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>3</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>3</div>
+        </Col>
       </Row>
       <Row>
-        <Col className={styles['demo-col-on']}>4</Col>
-        <Col className={styles['demo-col']}>4</Col>
-        <Col className={styles['demo-col-on']}>4</Col>
+        <Col>
+          <div styleName='demo-col-on'>4</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>4</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col-on'>4</div>
+        </Col>
       </Row>
       <Row>
-        <Col className={styles['demo-col-on']}>6</Col>
-        <Col className={styles['demo-col']}>6</Col>
+        <Col>
+          <div styleName='demo-col-on'>6</div>
+        </Col>
+        <Col>
+          <div styleName='demo-col'>6</div>
+        </Col>
       </Row>
       <Row>
-        <Col className={styles['demo-col-on']}>12</Col>
+        <Col>
+          <div styleName='demo-col-on'>12</div>
+        </Col>
       </Row>
     </div>
   )

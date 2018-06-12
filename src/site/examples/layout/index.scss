@@ -1,4 +1,4 @@
-.demo-col-on, .demo-col {
+.demo-col-on, .demo-col, .demo-col-on-light {
   text-align: center;
   padding: 30px 0;
   font-size: 18px;
@@ -7,6 +7,11 @@
 .demo-col-on {
   color: #fff;
   background: #1c89ea;
+}
+
+.demo-col-on-light {
+  color: #fff;
+  background: lighten(#1c89ea, 20%);
 }
 
 .demo-col {

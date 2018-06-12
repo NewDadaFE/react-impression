@@ -136,7 +136,8 @@ $grid-breakpoints: (
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
 $grid-columns:              12 !default;
-$grid-gutter-width:         30px !default;
+// 默认没有间距
+$grid-gutter-width:         0 !default;
 
 // Options
 $enable-flex:               true !default;
