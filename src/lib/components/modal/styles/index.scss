@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   left: $modal-left;
+  height: calc(100% - #{$modal-top});
   background: $modal-bg;
   z-index: $zindex-modal;
   overflow: hidden;
@@ -17,6 +18,7 @@
 .modal-dialog {
   position: relative;
   width: auto;
+  height: calc(100% - #{$modal-dialog-margin} * 2);
   margin: $modal-dialog-margin;
   border-radius: $modal-border-radius;
   animation: slideInDown $modal-animation-duration ease;
@@ -28,6 +30,7 @@
   background-clip: padding-box;
   border: 1px solid $modal-content-border-color;
   border-radius: $modal-border-radius;
+  height: 100%;
   outline: 0;
 }
 
@@ -69,8 +72,8 @@
     border-radius: 0 0 $modal-border-radius $modal-border-radius;
   }
 
-  max-height: 75%;
-  overflow-y: visible;
+  max-height: 60%;
+  overflow-y: auto;
 }
 
 // Footer (for actions)
@@ -93,6 +96,7 @@
   .modal-dialog {
     max-width: $modal-md;
     margin: $modal-dialog-sm-up-margin-y auto;
+    height: calc(100% - #{$modal-dialog-sm-up-margin-y} * 2);
   }
 
   .modal-sm {

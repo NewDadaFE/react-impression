@@ -1,8 +1,8 @@
 /* sourceCode:start */
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col } from 'react-impression'
+import { Modal, Button } from 'react-impression'
 
-class Size extends Component {
+class Overflow extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
@@ -21,29 +21,9 @@ class Size extends Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col>
-            <Button theme='primary' onClick={() => this.toggleModalHandle()}>
-              Modal
-            </Button>
-          </Col>
-          <Col>
-            <Button
-              theme='primary'
-              onClick={() => this.toggleModalHandle('sm')}
-            >
-              SM Modal
-            </Button>
-          </Col>
-          <Col>
-            <Button
-              theme='primary'
-              onClick={() => this.toggleModalHandle('lg')}
-            >
-              LG Modal
-            </Button>
-          </Col>
-        </Row>
+        <Button theme='primary' onClick={() => this.toggleModalHandle()}>
+          Modal
+        </Button>
         <Modal size={this.state.size} visible={this.state.show}>
           <Modal.Header>
             <Button close onClick={this.toggleModalHandle}>
@@ -52,6 +32,23 @@ class Size extends Component {
             <h5 className='no-margin'>Modal title</h5>
           </Modal.Header>
           <Modal.Body>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
+            <p>more contents&hellip;</p>
             <p>more contents&hellip;</p>
             <p>more contents&hellip;</p>
           </Modal.Body>
@@ -68,7 +65,7 @@ class Size extends Component {
 }
 /* sourceCode:end */
 
-Size.title = '基本用法,可以选择不同size'
-Size.desc = `> 几种size的modal模态框`
+Overflow.title = '多内容情况'
+Overflow.desc = `> 内容多的时候会有最大内容高度，可滚动查看内容`
 
-export default Size
+export default Overflow

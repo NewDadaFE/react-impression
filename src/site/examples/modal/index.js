@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@/site/components/Card'
 import Size from './Size'
+import Overflow from './Overflow'
 import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
@@ -21,6 +22,7 @@ export default ({ routes, params }) => {
     <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Modal对话框' desc='模态对话框'>
       <Card component={Size} />
+      <Card component={Overflow} />
       <MarkdownPreview markdown={modalAttrTable} name='Modal API' />
       <MarkdownPreview
         markdown={modalChildrenAttrTable}
