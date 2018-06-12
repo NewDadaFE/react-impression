@@ -17,6 +17,8 @@ import NotificationExample from './examples/notification'
 import ConfirmExample from './examples/confirm'
 import ModalExample from './examples/modal'
 import BreadcrumbExample from './examples/breadcrumb'
+import DropdownExample from './examples/dropdown'
+import ImageExample from './examples/image'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -37,6 +39,8 @@ const routers = (
     <Route path='confirm' component={ConfirmExample} />
     <Route path='modal' component={ModalExample} />
     <Route path='breadcrumb' component={BreadcrumbExample} />
+    <Route path='dropdown' component={DropdownExample} />
+    <Route path='image' component={ImageExample} />
   </Route>
 )
 

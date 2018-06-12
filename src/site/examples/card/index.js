@@ -3,6 +3,7 @@ import Card from '@/site/components/Card'
 import Simple from './Simple'
 import Border from './Border'
 import HeaderFooter from './HeaderFooter'
+import TextAlign from './TextAlign'
 import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
@@ -24,6 +25,7 @@ export default ({ routes, params }) => {
     <Breadcrumb routes={routes} params={params} />,
     <Wrapper title='Card卡片' desc='通用卡片容器'>
       <Card component={Simple} />
+      <Card component={TextAlign} />
       <Card component={Border} cardClass={styles['gray-bg']} />
       <Card component={HeaderFooter} />
       <MarkdownPreview markdown={cardAttrTable} name='Card API' />

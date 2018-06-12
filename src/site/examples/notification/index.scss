@@ -1,3 +1,8 @@
-.margin-left {
-  margin-left: 1rem;
+:global {
+  .margin-left {
+    margin-left: 1rem;
+  }
+  .margin-right {
+    margin-right: 1rem;
+  }
 }

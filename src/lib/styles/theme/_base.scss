@@ -33,9 +33,7 @@ $text-color-secondary: $gray-secondary !default;
 $text-color-lighter: $gray-lighter !default;
 $text-color-pure: $brand-pure !default;
 $text-color-muted: $brand-pure !default;
-
-$state-warning-bg: lighten($brand-warning, 36%) !default;
-$mark-bg: $state-warning-bg !default;
+$text-muted: $gray-lighter !default;
 
 // border colors
 $border-color: #e9e9eb !default;
@@ -49,7 +47,9 @@ $border-style-base: solid !default;
 $background-color-base: $gray-lighter !default;
 $body-bg: #f6f7fb !default;
 $body-color: $text-color-secondary !default;
-$text-muted: $gray-lighter !default;
+$state-warning-bg: lighten($brand-warning, 36%) !default;
+$mark-bg: $state-warning-bg !default;
+$component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
 
 // Disabled states
 $disabled-color: $gray-secondary !default;
@@ -83,7 +83,7 @@ $inverse-level-6:               rgba(0, 0, 0, .6) !default;
 $link-color:                    $brand-primary !default;
 $link-decoration:               none !default;
 $link-hover-color:              darken($link-color, 15%) !default;
-$link-hover-decoration:         underline !default;
+$link-hover-decoration:         none !default;
 
 // fong-size
 $font-size: 14px !default;
@@ -107,6 +107,10 @@ $headings-line-height:   1.1 !default;
 $headings-color:         inherit !default;
 
 $small-font-size:        80% !default;
+
+// Figures
+
+$figure-caption-font-size:          90% !default;
 
 $display1-size:     6rem !default;
 $display2-size:     5.5rem !default;

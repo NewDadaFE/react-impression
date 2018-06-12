@@ -30,7 +30,7 @@
 
 // Nav line
 .nav-line {
-  height: $nav-tabs-link-line-height;
+  height: $nav-tabs-link-line-height + 1px;
   border-bottom: $nav-line-border-bottom-width solid $nav-line-border-bottom-color;
 
   @include clearfix();

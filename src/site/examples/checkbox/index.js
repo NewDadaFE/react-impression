@@ -39,7 +39,7 @@ const apiTable = transfer(apiParams)
 export default ({ routes, params }) => {
   return [
     <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Radio单选框' desc='单选框'>
+    <Wrapper title='Checkbox 多选框' desc='一组备选项中进行多选'>
       <Card component={Basic} />
       <Card component={Disabled} />
       <Card component={Group} />

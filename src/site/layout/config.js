@@ -16,6 +16,11 @@ export const SIDEBAR_MENU = {
           name: 'Layout',
           url: '/layout',
         },
+        {
+          id: 13,
+          name: 'Image',
+          url: '/image',
+        },
       ],
     },
     {
@@ -113,6 +118,11 @@ export const SIDEBAR_MENU = {
           id: 52,
           name: 'Modal',
           url: '/modal',
+        },
+        {
+          id: 53,
+          name: 'Dropdown',
+          url: '/dropdown',
         },
       ],
     },
