@@ -38,6 +38,11 @@ export const SIDEBAR_MENU = {
           name: 'Checkbox',
           url: '/checkbox',
         },
+        {
+          id: 23,
+          name: 'Switch',
+          url: '/switch',
+        },
       ],
     },
     {

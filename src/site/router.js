@@ -20,6 +20,7 @@ import BreadcrumbExample from './examples/breadcrumb'
 import DropdownExample from './examples/dropdown'
 import ImageExample from './examples/image'
 import LoadingExample from './examples/loading'
+import SwitchExample from './examples/switch'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -43,6 +44,7 @@ const routers = (
     <Route path='dropdown' component={DropdownExample} />
     <Route path='image' component={ImageExample} />
     <Route path='loading' component={LoadingExample} />
+    <Route path='switch' component={SwitchExample} />
   </Route>
 )
 

@@ -1,0 +1,50 @@
+.switch {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+
+  input {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    &:checked + .switch-addon {
+      border-color: $checkbox-addon-checked-color;
+      background: $checkbox-addon-checked-color;
+
+      &::before {
+        transform: $switch-addon-translate-x;
+      }
+    }
+
+    &:disabled + .switch-addon,
+    &.disabled + .switch-addon {
+      opacity: .6;
+    }
+  }
+}
+
+.switch-addon {
+  display: inline-block;
+  background: $switch-bg;
+  width: round($switch-width * $font-size-root);
+  border-radius: round($switch-addon-width * $font-size-root);
+  padding: $switch-addon-padding;
+  transition: $checkbox-addon-transtion;
+
+
+  &::before {
+    content: '';
+    display: block;
+    width: round($switch-addon-width * $font-size-root);
+    height: round($switch-addon-height * $font-size-root);
+    border-radius: 50%;
+    background: $switch-addon-bg;
+    transition: $checkbox-addon-transtion;
+  }
+}

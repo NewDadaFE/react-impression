@@ -1,0 +1,8 @@
+//== Switch
+$switch-width:                              3 !default;
+$switch-bg:                                 $border-color !default;
+$switch-addon-bg:                           $brand-pure !default;
+$switch-addon-width:                        1 !default;
+$switch-addon-height:                       $switch-addon-width !default;
+$switch-addon-padding:                      round(($line-height-base - $switch-addon-width) * $font-size-root / 2) !default;
+$switch-addon-translate-x:                  translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
