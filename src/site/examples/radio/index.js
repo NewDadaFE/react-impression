@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Basic from './Basic'
 import Disabled from './Disabled'
@@ -35,17 +36,26 @@ const radioAttrTable = transfer(radioAttrParams)
 const radioGroupAttrTable = transfer(radioGroupAttrParams)
 const apiTable = transfer(apiParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Radio单选框' desc='单选框'>
-      <Card component={Basic} />
-      <Card component={Disabled} />
-      <Card component={Group} />
-      <Card component={Column} />
-      <MarkdownPreview markdown={radioAttrTable} name='Radio API' />
-      <MarkdownPreview markdown={radioGroupAttrTable} name='RadioGroup API' />
-      <MarkdownPreview markdown={apiTable} name='方法' />
-    </Wrapper>,
-  ]
+const RadioExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Radio单选框' desc='单选框'>
+        <Card component={Basic} />
+        <Card component={Disabled} />
+        <Card component={Group} />
+        <Card component={Column} />
+        <MarkdownPreview markdown={radioAttrTable} name='Radio API' />
+        <MarkdownPreview markdown={radioGroupAttrTable} name='RadioGroup API' />
+        <MarkdownPreview markdown={apiTable} name='方法' />
+      </Wrapper>
+    </div>
+  )
 }
+
+RadioExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default RadioExample

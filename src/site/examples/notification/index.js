@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Type from './Type'
 import Placement from './Placement'
@@ -45,21 +46,33 @@ const NotificationAttrTable = transfer(NotificationAttrParams)
 const apiTable = transfer(apiParams)
 const configTable = transfer(configParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper
-      title='Notification通知提醒框'
-      desc='全局展示通知提醒信息。经常用于较为复杂的通知内容或者带有交互的通知或者系统主动推送'
-    >
-      <Card component={Type} />
-      <Card component={Placement} />
-      <MarkdownPreview
-        markdown={NotificationAttrTable}
-        name='Notification API'
-      />
-      <MarkdownPreview markdown={apiTable} name='方法' />
-      <MarkdownPreview markdown={configTable} name='Notification.config API' />
-    </Wrapper>,
-  ]
+const NotificationExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper
+        title='Notification通知提醒框'
+        desc='全局展示通知提醒信息。经常用于较为复杂的通知内容或者带有交互的通知或者系统主动推送'
+      >
+        <Card component={Type} />
+        <Card component={Placement} />
+        <MarkdownPreview
+          markdown={NotificationAttrTable}
+          name='Notification API'
+        />
+        <MarkdownPreview markdown={apiTable} name='方法' />
+        <MarkdownPreview
+          markdown={configTable}
+          name='Notification.config API'
+        />
+      </Wrapper>
+    </div>
+  )
 }
+
+NotificationExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default NotificationExample

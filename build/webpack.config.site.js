@@ -22,21 +22,47 @@ module.exports = merge(baseConfig, {
 
   module: {
     rules: [
-      utils.getStyleLoader({ type: 'css' }),
-      utils.getStyleLoader({
-        type: 'scss',
-        include: [utils.resolve('./src/lib')],
-        sourceMap: true,
-        extract: true,
-        cssModules: false
-      }),
-      utils.getStyleLoader({
-        type: 'scss',
-        exclude: [utils.resolve('./src/lib')],
-        cssModules: true,
-        sourceMap: true,
-        extract: true
-      })
+      // utils.getStyleLoader({ type: 'css' }),
+      // utils.getStyleLoader({
+      //   type: 'scss',
+      //   include: [utils.resolve('./src/lib')],
+      //   sourceMap: true,
+      //   extract: true,
+      //   cssModules: false
+      // }),
+      // utils.getStyleLoader({
+      //   type: 'scss',
+      //   exclude: [utils.resolve('./src/lib')],
+      //   cssModules: true,
+      //   sourceMap: true,
+      //   extract: true
+      // })
+      {
+        test: /\.scss$/,
+        exclude: [utils.resolve('./src/lib'), /node_modules/],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          // 'postcss-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        include: [utils.resolve('./src/lib'), /node_modules/],
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
     ]
   },
 
@@ -47,7 +73,7 @@ module.exports = merge(baseConfig, {
         parallel: true,
         sourceMap: true
       }),
-      // new OptimizeCSSAssetsPlugin()
+      new OptimizeCSSAssetsPlugin()
     ],
     splitChunks: {
       cacheGroups: {

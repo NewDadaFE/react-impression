@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Default from './Default'
 import Primary from './Primary'
@@ -21,18 +22,27 @@ const NavbarBrandAttrParams = [
 const NavbarAttrTable = transfer(NavbarAttrParams)
 const NavbarBrandItemAttrTable = transfer(NavbarBrandAttrParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Navbar导航栏' desc='多用于页面头部的导航栏组件'>
-      <Card component={Default} />
-      <Card component={Primary} />
-      <Card component={Pure} />
-      <MarkdownPreview markdown={NavbarAttrTable} name='Navbar API' />
-      <MarkdownPreview
-        markdown={NavbarBrandItemAttrTable}
-        name='Navbar Brand API'
-      />
-    </Wrapper>,
-  ]
+const NavbarExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Navbar导航栏' desc='多用于页面头部的导航栏组件'>
+        <Card component={Default} />
+        <Card component={Primary} />
+        <Card component={Pure} />
+        <MarkdownPreview markdown={NavbarAttrTable} name='Navbar API' />
+        <MarkdownPreview
+          markdown={NavbarBrandItemAttrTable}
+          name='Navbar Brand API'
+        />
+      </Wrapper>
+    </div>
+  )
 }
+
+NavbarExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default NavbarExample

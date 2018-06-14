@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Theme from './Theme'
 import { Breadcrumb } from 'react-impression'
@@ -17,12 +18,21 @@ const confirmAttr = [
 
 const confirmAttrTable = transfer(confirmAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Confirm' desc='点击元素，弹出确认框。'>
-      <Card component={Theme} />
-      <MarkdownPreview markdown={confirmAttrTable} name='Confirm API' />
-    </Wrapper>,
-  ]
+const ConfirmExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Confirm' desc='点击元素，弹出确认框。'>
+        <Card component={Theme} />
+        <MarkdownPreview markdown={confirmAttrTable} name='Confirm API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+ConfirmExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default ConfirmExample

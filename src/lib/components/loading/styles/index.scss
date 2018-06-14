@@ -1,0 +1,278 @@
+//== Loading
+//
+//
+.loading-container {
+  position: relative;
+
+  &.full-screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-loading;
+  }
+}
+
+.loading-mask {
+  display: block;
+  position: absolute;
+  z-index: $zindex-loading;
+  background-color: $loading-mask-bg;
+  margin: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+.loading {
+  color: $loading-color;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: $loading-transition;
+}
+
+.loading-addon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.loading-message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  font-size: $loading-message-font-size;
+}
+
+.loading-message-dotted {
+  display: inline-block;
+  width: 1rem;
+  margin-left: 5px;
+}
+
+//== -------------------------------- 喷泉式 -------------------------------- ==
+.loading-fountain {
+  .loading-addon {
+    width: $loading-fountain-width;
+    height: $loading-fountain-height;
+
+    > :only-child,
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      // background-color: $loading-fountain-bg;
+      background-color: $brand-primary;
+      border-radius: 100%;
+      animation-fill-mode: both;
+      opacity: 0;
+      animation: fountain $loading-fountain-animation-duration linear infinite;
+    }
+
+    &::before {
+      animation-delay: $loading-fountain-animation-duration * .2;
+    }
+
+    &::after {
+      animation-delay: $loading-fountain-animation-duration * .4;
+    }
+  }
+
+  .loading-message {
+    margin-top: $loading-fountain-height * .6;
+  }
+}
+
+@keyframes fountain {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+//== -------------------------------- 波纹式 -------------------------------- ==
+.loading-wave {
+  .loading-addon {
+    width: $loading-wave-width;
+    height: $loading-wave-height;
+
+    > :only-child,
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      border: $loading-wave-border;
+      border-radius: 100%;
+      animation-fill-mode: both;
+      opacity: 0;
+      animation: fountain $loading-wave-animation-duration linear infinite;
+    }
+
+    &::before {
+      animation-delay: $loading-wave-animation-duration * .6;
+    }
+
+    &::after {
+      animation-delay: $loading-wave-animation-duration * .8;
+    }
+  }
+
+  .loading-message {
+    margin-top: $loading-wave-height * .6;
+  }
+}
+
+//== -------------------------------- 摆钟式 -------------------------------- ==
+.loading-pendule {
+  .loading-addon {
+    width: $loading-pendule-width;
+    height: $loading-pendule-height;
+
+    > :first-child,
+    > :last-child,
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      width: $loading-pendule-item-width;
+      height: $loading-pendule-item-height;
+      border-radius: 100%;
+      background-color: $loading-pendule-item-bg;
+      transform: translateX(0%);
+    }
+
+    &::before {
+      animation: pendule-left $loading-pendule-animation-duration ease-out infinite;
+    }
+
+    &::after {
+      animation: pendule-right $loading-pendule-animation-duration ease-out infinite;
+    }
+  }
+}
+
+@keyframes pendule-left {
+  25% {
+    transform: translateX(-100%);
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    transform: translateX(0%);
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes pendule-right {
+  50% {
+    transform: translateX(0%);
+    animation-timing-function: ease-in;
+  }
+
+  75% {
+    transform: translatex(100%);
+    animation-timing-function: ease-in;
+  }
+}
+
+//== -------------------------------- 旋风式 -------------------------------- ==
+.loading-cyclone {
+  .loading-addon {
+    width: $loading-cyclone-width;
+    height: $loading-cyclone-height;
+    animation: cyclone $loading-cyclone-animation-duration linear infinite;
+
+
+    &,
+    &::before {
+      border: $loading-cyclone-line-height solid transparent;
+      border-top-color: $loading-cyclone-line-color;
+      border-bottom-color: $loading-cyclone-line-color;
+      border-radius: 100%;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    &::before {
+      width: 50%;
+      height: 50%;
+      transform: rotate(90deg);
+      animation: cyclone-inverse $loading-cyclone-animation-duration linear infinite;
+    }
+
+    &::after {
+      width: $loading-cyclone-ball-width;
+      height: $loading-cyclone-ball-height;
+      background: $loading-cyclone-ball-color;
+      border-radius: 100%;
+      animation: fountain $loading-cyclone-animation-duration linear infinite;
+    }
+  }
+
+  .loading-message {
+    margin-top: $loading-cyclone-height * .6;
+  }
+}
+
+@keyframes cyclone {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cyclone-inverse {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(-180deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}

@@ -124,6 +124,11 @@ export const SIDEBAR_MENU = {
           name: 'Dropdown',
           url: '/dropdown',
         },
+        {
+          id: 54,
+          name: 'Loading',
+          url: '/loading',
+        },
       ],
     },
   ],

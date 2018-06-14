@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Direction from './Direction'
 import { Breadcrumb } from 'react-impression'
@@ -19,12 +20,21 @@ const tooltipAttrParams = [
 
 const tooltipAttrTable = transfer(tooltipAttrParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Tooltip文字提示' desc='简单的文字提示气泡框'>
-      <Card component={Direction} />
-      <MarkdownPreview markdown={tooltipAttrTable} name='Tooltip API' />
-    </Wrapper>,
-  ]
+const TooltipExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Tooltip文字提示' desc='简单的文字提示气泡框'>
+        <Card component={Direction} />
+        <MarkdownPreview markdown={tooltipAttrTable} name='Tooltip API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+TooltipExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default TooltipExample

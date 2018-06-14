@@ -19,6 +19,7 @@ import ModalExample from './examples/modal'
 import BreadcrumbExample from './examples/breadcrumb'
 import DropdownExample from './examples/dropdown'
 import ImageExample from './examples/image'
+import LoadingExample from './examples/loading'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -41,6 +42,7 @@ const routers = (
     <Route path='breadcrumb' component={BreadcrumbExample} />
     <Route path='dropdown' component={DropdownExample} />
     <Route path='image' component={ImageExample} />
+    <Route path='loading' component={LoadingExample} />
   </Route>
 )
 

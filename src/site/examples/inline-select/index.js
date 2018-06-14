@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Basic from './Basic'
 import { Breadcrumb } from 'react-impression'
@@ -21,16 +22,28 @@ const optionAttr = [
 const inlineSelectAttrTable = transfer(inlineSelectAttr)
 const optionTable = transfer(optionAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='InlineSelect' desc='行内样式选择器，多用于属性分类选择'>
-      <Card component={Basic} />
-      <MarkdownPreview
-        markdown={inlineSelectAttrTable}
-        name='InlineSelect API'
-      />
-      <MarkdownPreview markdown={optionTable} name='InlineSelect.Option API' />
-    </Wrapper>,
-  ]
+const InlineSelectExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='InlineSelect' desc='行内样式选择器，多用于属性分类选择'>
+        <Card component={Basic} />
+        <MarkdownPreview
+          markdown={inlineSelectAttrTable}
+          name='InlineSelect API'
+        />
+        <MarkdownPreview
+          markdown={optionTable}
+          name='InlineSelect.Option API'
+        />
+      </Wrapper>
+    </div>
+  )
 }
+
+InlineSelectExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default InlineSelectExample

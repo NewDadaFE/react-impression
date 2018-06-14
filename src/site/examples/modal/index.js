@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Size from './Size'
 import Overflow from './Overflow'
@@ -17,17 +18,26 @@ const modalChildrenAttr = [['className', '自定义样式', 'string', '']]
 const modalAttrTable = transfer(modalAttr)
 const modalChildrenAttrTable = transfer(modalChildrenAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Modal对话框' desc='模态对话框'>
-      <Card component={Size} />
-      <Card component={Overflow} />
-      <MarkdownPreview markdown={modalAttrTable} name='Modal API' />
-      <MarkdownPreview
-        markdown={modalChildrenAttrTable}
-        name='Modal.Header/Modal.Footer/Modal.Body API'
-      />
-    </Wrapper>,
-  ]
+const ModalExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Modal对话框' desc='模态对话框'>
+        <Card component={Size} />
+        <Card component={Overflow} />
+        <MarkdownPreview markdown={modalAttrTable} name='Modal API' />
+        <MarkdownPreview
+          markdown={modalChildrenAttrTable}
+          name='Modal.Header/Modal.Footer/Modal.Body API'
+        />
+      </Wrapper>
+    </div>
+  )
 }
+
+ModalExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default ModalExample

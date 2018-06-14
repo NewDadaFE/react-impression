@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Direction from './Direction'
 import { Breadcrumb } from 'react-impression'
@@ -20,15 +21,24 @@ const popoverAttrParams = [
 
 const popoverAttrTable = transfer(popoverAttrParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper
-      title='Popover气泡卡片'
-      desc='点击或者鼠标移入元素，弹出气泡式的卡片浮层'
-    >
-      <Card component={Direction} />
-      <MarkdownPreview markdown={popoverAttrTable} name='Popover API' />
-    </Wrapper>,
-  ]
+const PopoverExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper
+        title='Popover气泡卡片'
+        desc='点击或者鼠标移入元素，弹出气泡式的卡片浮层'
+      >
+        <Card component={Direction} />
+        <MarkdownPreview markdown={popoverAttrTable} name='Popover API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+PopoverExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default PopoverExample

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Type from './Type'
 import Size from './Size'
@@ -36,19 +37,28 @@ const attrParams = [
 
 const attrTable = transfer(attrParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper
-      styleName='button'
-      title='Button按钮'
-      desc='按钮用于开始一个点击反馈操作'
-    >
-      <Card component={Type} cardClass={styles['button-card-padding']} />
-      <Card component={Ghost} cardClass={styles.ghost} />
-      <Card component={Size} cardClass={styles['button-card-padding']} />
-      <Card component={Disabled} />
-      <MarkdownPreview markdown={attrTable} name='API' />
-    </Wrapper>,
-  ]
+const ButtonExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper
+        styleName='button'
+        title='Button按钮'
+        desc='按钮用于开始一个点击反馈操作'
+      >
+        <Card component={Type} cardClass={styles['button-card-padding']} />
+        <Card component={Ghost} cardClass={styles.ghost} />
+        <Card component={Size} cardClass={styles['button-card-padding']} />
+        <Card component={Disabled} />
+        <MarkdownPreview markdown={attrTable} name='API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+ButtonExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default ButtonExample

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Simple from './Simple'
 import Border from './Border'
@@ -20,19 +21,28 @@ const otherTypeAttr = [['className', '自定义样式', 'string', '-']]
 const cardAttrTable = transfer(cardAttr)
 const otherTypeTable = transfer(otherTypeAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Card卡片' desc='通用卡片容器'>
-      <Card component={Simple} />
-      <Card component={TextAlign} />
-      <Card component={Border} cardClass={styles['gray-bg']} />
-      <Card component={HeaderFooter} />
-      <MarkdownPreview markdown={cardAttrTable} name='Card API' />
-      <MarkdownPreview
-        markdown={otherTypeTable}
-        name='Card.Header/Card.Footer/Card.Block API'
-      />
-    </Wrapper>,
-  ]
+const CardExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Card卡片' desc='通用卡片容器'>
+        <Card component={Simple} />
+        <Card component={TextAlign} />
+        <Card component={Border} cardClass={styles['gray-bg']} />
+        <Card component={HeaderFooter} />
+        <MarkdownPreview markdown={cardAttrTable} name='Card API' />
+        <MarkdownPreview
+          markdown={otherTypeTable}
+          name='Card.Header/Card.Footer/Card.Block API'
+        />
+      </Wrapper>
+    </div>
+  )
 }
+
+CardExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default CardExample

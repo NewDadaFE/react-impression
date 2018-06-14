@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Fluid from './Fluid'
 import Shape from './Shape'
@@ -16,13 +17,22 @@ const imageAttr = [
 
 const iamgeAttrTable = transfer(imageAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Image组件' desc='放置图片的展示组件'>
-      <Card component={Fluid} />
-      <Card component={Shape} />
-      <MarkdownPreview markdown={iamgeAttrTable} name='Image API' />
-    </Wrapper>,
-  ]
+const ImageExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Image组件' desc='放置图片的展示组件'>
+        <Card component={Fluid} />
+        <Card component={Shape} />
+        <MarkdownPreview markdown={iamgeAttrTable} name='Image API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+ImageExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default ImageExample

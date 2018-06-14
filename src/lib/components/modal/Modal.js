@@ -16,15 +16,39 @@ class Modal extends Component {
     visible: PropTypes.bool,
   }
 
+  componentWillUnmount() {
+    if (this.props.visible) {
+      this.enableScroll()
+    }
+  }
+
+  documentBody() {
+    return document.body
+  }
+
+  disableScroll() {
+    const documentBody = this.documentBody()
+    if (documentBody) {
+      documentBody.style.setProperty('overflow', 'hidden')
+    }
+  }
+
+  enableScroll() {
+    const documentBody = this.documentBody()
+    if (documentBody) {
+      documentBody.style.removeProperty('overflow')
+    }
+  }
+
   render() {
     const { size, className, children, visible, ...others } = this.props
     let sizeClass = size ? `modal-${size}` : null
 
     if (!visible) {
-      document.body.style.overflow = ''
+      this.enableScroll()
       return null
     } else {
-      document.body.style.overflow = 'hidden'
+      this.disableScroll()
     }
 
     return (

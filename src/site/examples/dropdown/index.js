@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Basic from './Basic'
 import Disabled from './Disabled'
@@ -41,21 +42,33 @@ const dividerTable = transfer(dividerAttr)
 const menuItemTable = transfer(menuItemAttr)
 const triggerTable = transfer(triggerAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Dropdown 下拉菜单' desc='将动作或菜单折叠到下拉菜单中'>
-      <Card component={Basic} />
-      <Card component={Disabled} />
-      <Card component={Trigger} />
-      <MarkdownPreview markdown={dropdownAttrTable} name='Dropdown API' />
-      <MarkdownPreview markdown={menuTable} name='Dropdown.Menu API' />
-      <MarkdownPreview
-        markdown={dividerTable}
-        name='Dropdown.MenuDivider API'
-      />
-      <MarkdownPreview markdown={menuItemTable} name='Dropdown.MenuItem API' />
-      <MarkdownPreview markdown={triggerTable} name='Dropdown.Trigger API' />
-    </Wrapper>,
-  ]
+const DropdownExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Dropdown 下拉菜单' desc='将动作或菜单折叠到下拉菜单中'>
+        <Card component={Basic} />
+        <Card component={Disabled} />
+        <Card component={Trigger} />
+        <MarkdownPreview markdown={dropdownAttrTable} name='Dropdown API' />
+        <MarkdownPreview markdown={menuTable} name='Dropdown.Menu API' />
+        <MarkdownPreview
+          markdown={dividerTable}
+          name='Dropdown.MenuDivider API'
+        />
+        <MarkdownPreview
+          markdown={menuItemTable}
+          name='Dropdown.MenuItem API'
+        />
+        <MarkdownPreview markdown={triggerTable} name='Dropdown.Trigger API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+DropdownExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default DropdownExample

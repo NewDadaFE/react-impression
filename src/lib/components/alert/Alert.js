@@ -46,7 +46,25 @@ export default class Alert extends PureComponent {
 
   componentWillUnmount() {
     if (this.props.visible) {
-      document.body.style.overflow = ''
+      this.enableScroll()
+    }
+  }
+
+  documentBody() {
+    return document.body
+  }
+
+  disableScroll() {
+    const documentBody = this.documentBody()
+    if (documentBody) {
+      documentBody.style.setProperty('overflow', 'hidden')
+    }
+  }
+
+  enableScroll() {
+    const documentBody = this.documentBody()
+    if (documentBody) {
+      documentBody.style.removeProperty('overflow')
     }
   }
 
@@ -63,10 +81,10 @@ export default class Alert extends PureComponent {
       iconTypeClass = getAddonByType(type)
 
     if (!visible) {
-      document.body.style.overflow = ''
+      this.enableScroll()
       return null
     } else {
-      document.body.style.overflow = 'hidden'
+      this.disableScroll()
     }
 
     return (

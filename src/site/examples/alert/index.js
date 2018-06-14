@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Theme from './Theme'
 import { Breadcrumb } from 'react-impression'
@@ -17,12 +18,21 @@ const alertAttr = [
 
 const alertAttrTable = transfer(alertAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Alert' desc='反馈信息弹出框，多用于反馈简洁的信息说明'>
-      <Card component={Theme} />
-      <MarkdownPreview markdown={alertAttrTable} name='Alert API' />
-    </Wrapper>,
-  ]
+const alertExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Alert' desc='反馈信息弹出框，多用于反馈简洁的信息说明'>
+        <Card component={Theme} />
+        <MarkdownPreview markdown={alertAttrTable} name='Alert API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+alertExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default alertExample

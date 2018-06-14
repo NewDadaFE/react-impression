@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Basic from './Basic'
 import Arrow from './Arrow'
@@ -14,16 +15,25 @@ const breadcrumbAttr = [
 
 const breadcrumbAttrTable = transfer(breadcrumbAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper
-      title='Breadcrumb面包屑'
-      desc='显示当前页面路径层级，可以点击返回上层。'
-    >
-      <Card component={Basic} />
-      <Card component={Arrow} />
-      <MarkdownPreview markdown={breadcrumbAttrTable} name='Breadcrumb API' />
-    </Wrapper>,
-  ]
+const breadExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper
+        title='Breadcrumb面包屑'
+        desc='显示当前页面路径层级，可以点击返回上层。'
+      >
+        <Card component={Basic} />
+        <Card component={Arrow} />
+        <MarkdownPreview markdown={breadcrumbAttrTable} name='Breadcrumb API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+breadExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default breadExample

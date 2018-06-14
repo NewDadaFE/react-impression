@@ -48,7 +48,7 @@ $background-color-base: $gray-lighter !default;
 $body-bg: #f6f7fb !default;
 $body-color: $text-color-secondary !default;
 $state-warning-bg: lighten($brand-warning, 36%) !default;
-$mark-bg: $state-warning-bg !default;
+$mark-bg: $body-bg !default;
 $component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
 
 // Disabled states

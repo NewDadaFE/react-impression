@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Basic from './Basic'
 import Inline from './Inline'
@@ -28,17 +29,26 @@ const NavItemAttrParams = [
 const NavAttrTable = transfer(NavAttrParams)
 const NavItemAttrTable = transfer(NavItemAttrParams)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Nav标签切换' desc='导航栏切换组件'>
-      <Card component={Basic} />
-      <Card component={Inline} />
-      <Card component={Slack} />
-      <Card component={Tab} />
-      <Card component={Pill} />
-      <MarkdownPreview markdown={NavAttrTable} name='Nav API' />
-      <MarkdownPreview markdown={NavItemAttrTable} name='NavItem API' />
-    </Wrapper>,
-  ]
+const NavExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Nav标签切换' desc='导航栏切换组件'>
+        <Card component={Basic} />
+        <Card component={Inline} />
+        <Card component={Slack} />
+        <Card component={Tab} />
+        <Card component={Pill} />
+        <MarkdownPreview markdown={NavAttrTable} name='Nav API' />
+        <MarkdownPreview markdown={NavItemAttrTable} name='NavItem API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+NavExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default NavExample

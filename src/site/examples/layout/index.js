@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '@/site/components/Card'
 import Grid from './Grid'
 import Offset from './Offset'
@@ -23,15 +24,24 @@ const GridAttr = [
 
 const GridAttrTable = transfer(GridAttr)
 
-export default ({ routes, params }) => {
-  return [
-    <Breadcrumb routes={routes} params={params} />,
-    <Wrapper title='Grid栅格' desc='12栅格系统。'>
-      <Card component={Grid} />
-      <Card component={Gutter} />
-      <Card component={Offset} />
-      <Card component={Responsive} />
-      <MarkdownPreview markdown={GridAttrTable} name='Col API' />
-    </Wrapper>,
-  ]
+const LayoutExample = ({ routes, params }) => {
+  return (
+    <div>
+      <Breadcrumb routes={routes} params={params} />
+      <Wrapper title='Grid栅格' desc='12栅格系统。'>
+        <Card component={Grid} />
+        <Card component={Gutter} />
+        <Card component={Offset} />
+        <Card component={Responsive} />
+        <MarkdownPreview markdown={GridAttrTable} name='Col API' />
+      </Wrapper>
+    </div>
+  )
 }
+
+LayoutExample.propTypes = {
+  routes: PropTypes.array,
+  params: PropTypes.object,
+}
+
+export default LayoutExample
