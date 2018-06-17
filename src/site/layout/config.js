@@ -43,6 +43,16 @@ export const SIDEBAR_MENU = {
           name: 'Switch',
           url: '/switch',
         },
+        {
+          id: 24,
+          name: 'Input',
+          url: '/input',
+        },
+        {
+          id: 25,
+          name: 'InputGroup',
+          url: '/inputGroup',
+        },
       ],
     },
     {

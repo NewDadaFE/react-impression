@@ -21,6 +21,8 @@ import DropdownExample from './examples/dropdown'
 import ImageExample from './examples/image'
 import LoadingExample from './examples/loading'
 import SwitchExample from './examples/switch'
+import InputExample from './examples/input'
+import InputGroupExample from './examples/inputGroup'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -45,6 +47,8 @@ const routers = (
     <Route path='image' component={ImageExample} />
     <Route path='loading' component={LoadingExample} />
     <Route path='switch' component={SwitchExample} />
+    <Route path='input' component={InputExample} />
+    <Route path='inputGroup' component={InputGroupExample} />
   </Route>
 )
 

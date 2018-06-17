@@ -1,0 +1,47 @@
+// Forms
+$input-padding-x:                12px !default;
+$input-padding-y:                6px !default;
+$input-line-height:              1.25 !default;
+
+$input-affix-width:               20px !default;
+
+$input-bg:                       $brand-pure !default;
+$input-bg-disabled:              $gray-lightest !default;
+
+$input-color:                    $gray-secondary !default;
+$input-disabled-color:           $gray-lighter !default;
+$input-border-color:             #ddd !default;
+$input-border-radius:            4px !default;
+$input-border-hover-color:       $brand-primary !default;
+$input-btn-border-width:         $border-width !default; // For form controls and buttons
+
+$input-border-radius:            0 !default;
+$input-border-radius-lg:         $border-radius !default;
+$input-border-radius-sm:         0 !default;
+
+$input-border-focus:             lighten($brand-primary, 12%) !default;
+$input-box-shadow-focus:         rgba(51, 153, 255, .5) !default;
+$input-box-focus-shadow:         0 0 4px 0 $input-box-shadow-focus;
+
+$input-color-placeholder:        #999 !default;
+$input-font-size-placeholder:    $font-size-base !default;
+
+$input-padding-x-sm:             8px !default;
+$input-padding-y-sm:             0 !default;
+
+$input-padding-x-lg:             24px !default;
+$input-padding-y-lg:             10px !default;
+
+$input-height-base:              32px;
+$input-height-lg:                40px;
+$input-height-sm:                24px;
+
+$form-group-margin-bottom:       $spacer-y !default;
+
+$input-group-addon-bg:                      $brand-pure !default;
+$input-group-addon-color:                   #999 !default;
+$input-group-addon-border-color:            $input-border-color !default;
+$input-group-addon-padding-sm:              $input-padding-y-sm $input-padding-x-sm !default;
+$input-group-addon-padding-lg:              $input-padding-y-lg $input-padding-x-lg !default;
+$input-group-addon-font-size-lg:            $font-size-lg !default;
+$input-group-addon-font-size-sm:            $font-size-sm !default;

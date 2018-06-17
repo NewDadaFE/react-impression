@@ -1,0 +1,119 @@
+@import '../../../styles/theme/index.scss';
+@import '../../../styles/mixins/index.scss';
+
+.input, .form-control {
+  display: inline-block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  height: $input-height-base;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  background-clip: padding-box;
+  border: $input-btn-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
+
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include input-focus();
+
+  // Placeholder
+  &::placeholder {
+    color: $input-color-placeholder;
+    font-size: $input-font-size-placeholder;
+    opacity: 1;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: $input-bg-disabled;
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: $cursor-disabled;
+    color: $input-disabled-color;
+  }
+
+  &:focus {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover:not([disabled]) {
+    border-color: $input-border-hover-color;
+  }
+
+  &.textarea {
+    max-width: 100%; // prevent textearea resize from coming out of its container
+    height: auto;
+    vertical-align: bottom;
+    transition: all .3s, height 0s;
+    min-height: $input-height-base;
+  }
+}
+
+.input-sm {
+  @include input-size($input-padding-y-sm, $input-padding-x-sm, $font-size-sm, $input-height-sm, $input-border-radius-sm);
+}
+
+.input-lg {
+  @include input-size($input-padding-y-lg, $input-padding-x-lg, $font-size-lg, $input-height-lg, $input-border-radius-lg);
+}
+
+.input-pill {
+  border-radius: 10rem;
+}
+
+.input-affix-wrapper {
+  @include reset-component;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &:hover .input:not([disabled]) {
+    border-color: $input-border-hover-color;
+  }
+
+  .input-prefix,
+  .input-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 0;
+    color: $input-color;
+
+    :not(.fa) {
+      line-height: $line-height-base;
+    }
+  }
+
+  .input-prefix {
+    left: $input-padding-x + 1px;
+  }
+
+  .input-suffix {
+    right: $input-padding-x + 1px;
+  }
+
+  .input:not(:first-child) {
+    padding-left: $input-padding-x + $input-affix-width;
+  }
+
+  .input:not(:last-child) {
+    padding-right: $input-padding-x + $input-affix-width;
+  }
+
+  .input {
+    position: static;
+    min-height: 100%;
+  }
+}
+
