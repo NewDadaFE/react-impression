@@ -61,7 +61,7 @@ const Disabled = () => {
         </Card>
       </Col>
       <Col>
-        <Card block className='margin-left'>
+        <Card block className='offset-l-lg'>
           <Dropdown>
             <Dropdown.Trigger>
               <a href='javascript:void(0);'>下拉菜单</a>

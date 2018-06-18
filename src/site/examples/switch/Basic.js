@@ -10,11 +10,11 @@ const Basic = () => {
   return (
     <Row>
       <Col>
-        <label className='margin-right'>Default</label>
+        <label className='offset-r-lg'>Default</label>
         <Switch defaultChecked onChange={onChange} />
       </Col>
       <Col>
-        <label className='margin-right'>Disabled</label>
+        <label className='offset-r-lg'>Disabled</label>
         <Switch disabled defaultChecked />
       </Col>
     </Row>

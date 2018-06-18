@@ -19,7 +19,7 @@ class Full extends Component {
       this.setState({
         fullScreen: false,
       })
-    }, 2000000)
+    }, 2000)
 
     this.setState({
       fullScreen: true,

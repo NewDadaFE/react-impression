@@ -47,7 +47,27 @@ $border-style-base: solid !default;
 $background-color-base: $gray-lighter !default;
 $body-bg: #f6f7fb !default;
 $body-color: $text-color-secondary !default;
-$state-warning-bg: lighten($brand-warning, 36%) !default;
+
+// Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             darken($brand-success, 3%) !default;
+$state-success-bg:               lighten($brand-success, 36%) !default;
+$state-success-border:           darken($state-success-bg, 6%) !default;
+
+$state-primary-text:             darken($brand-primary, 3%) !default;
+$state-primary-bg:               lighten($brand-primary, 24%) !default;
+$state-primary-border:           darken($state-primary-bg, 6%) !default;
+
+$state-warning-text:             darken($brand-warning, 3%) !default;
+$state-warning-bg:               lighten($brand-warning, 36%) !default;
+$mark-bg:                        $state-warning-bg !default;
+$state-warning-border:           darken($state-warning-bg, 12%) !default;
+
+
+$state-danger-text:              darken($brand-danger, 3%) !default;
+$state-danger-bg:                lighten($brand-danger, 36%) !default;
+$state-danger-border:            darken($state-danger-bg, 6%) !default;
+
 $mark-bg: $body-bg !default;
 $component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
 
@@ -83,7 +103,7 @@ $inverse-level-6:               rgba(0, 0, 0, .6) !default;
 $link-color:                    $brand-primary !default;
 $link-decoration:               none !default;
 $link-hover-color:              darken($link-color, 15%) !default;
-$link-hover-decoration:         none !default;
+$link-hover-decoration:         underline !default;
 
 // fong-size
 $font-size: 14px !default;

@@ -17,7 +17,7 @@ const Basic = () => {
       </Col>
       <Col>
         <Input
-          className='margin-left'
+          className='offset-l-lg'
           disabled
           style={{ width: '200px' }}
           placeholder='disabled'
@@ -25,7 +25,7 @@ const Basic = () => {
       </Col>
       <Col>
         <Input
-          className='margin-left'
+          className='offset-l-lg'
           pill
           style={{ width: '200px' }}
           placeholder='pill'

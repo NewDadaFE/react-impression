@@ -24,6 +24,6 @@ const Gutter = () => {
 /* sourceCode:end */
 
 Gutter.title = '分栏间隔'
-Gutter.desc = `> 分栏之间存在间隔`
+Gutter.desc = `> 分栏之间存在间隔，Row组件上设置gutter参数`
 
 export default Gutter

@@ -1,7 +1,6 @@
 /* sourceCode:start */
 import React from 'react'
 import { Button, Notification, Radio } from 'react-impression'
-import styles from './index.scss'
 
 const RadioGroup = Radio.Group
 
@@ -29,11 +28,7 @@ class NotificationPlacement extends React.Component {
           <Radio value='topRight'>右上</Radio>
           <Radio value='bottomRight'>右下</Radio>
         </RadioGroup>
-        <Button
-          theme='primary'
-          onClick={addNotice}
-          className={styles['margin-left']}
-        >
+        <Button theme='primary' onClick={addNotice} className='offset-l-lg'>
           <span>打开消息提示</span>
         </Button>
         <Notification />

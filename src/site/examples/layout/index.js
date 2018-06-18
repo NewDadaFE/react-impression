@@ -10,7 +10,7 @@ import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
 
-const GridAttr = [
+const ColAttr = [
   ['col', '所占比例', 'number、string', '-'],
   ['offset', '栅格左侧的间隔格数，间隔内不可以有栅格', 'number、string', '-'],
   ['push', '栅格向左偏移格数', 'number、string', '-'],
@@ -22,7 +22,12 @@ const GridAttr = [
   ['xl', '>=1200px 响应式栅格', 'number、string', '-'],
 ]
 
-const GridAttrTable = transfer(GridAttr)
+const RowAttr = [
+  ['gutter', '栅格间隔，可以传入number或者string', 'string/number', '0'],
+]
+
+const ColAttrTable = transfer(ColAttr)
+const RowAttrTable = transfer(RowAttr)
 
 const LayoutExample = ({ routes, params }) => {
   return (
@@ -33,7 +38,8 @@ const LayoutExample = ({ routes, params }) => {
         <Card component={Gutter} />
         <Card component={Offset} />
         <Card component={Responsive} />
-        <MarkdownPreview markdown={GridAttrTable} name='Col API' />
+        <MarkdownPreview markdown={RowAttrTable} name='Row API' />
+        <MarkdownPreview markdown={ColAttrTable} name='Col API' />
       </Wrapper>
     </div>
   )

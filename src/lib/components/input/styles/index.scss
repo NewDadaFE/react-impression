@@ -1,5 +1,6 @@
 @import '../../../styles/theme/index.scss';
 @import '../../../styles/mixins/index.scss';
+@import './mixin';
 
 .input, .form-control {
   display: inline-block;

@@ -117,6 +117,11 @@ export const SIDEBAR_MENU = {
           name: 'Confirm',
           url: '/confirm',
         },
+        {
+          id: 47,
+          name: 'Attention',
+          url: '/attention',
+        },
       ],
     },
     {

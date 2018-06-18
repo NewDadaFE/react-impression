@@ -21,7 +21,7 @@ class ShowHide extends Component {
           show
         </Button>
         <Button
-          className='margin-left'
+          className='offset-l-lg'
           theme='default'
           onClick={() => this.showLoadingHandle('hide')}
         >

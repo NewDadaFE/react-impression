@@ -23,6 +23,7 @@ import LoadingExample from './examples/loading'
 import SwitchExample from './examples/switch'
 import InputExample from './examples/input'
 import InputGroupExample from './examples/inputGroup'
+import AttentionExample from './examples/attention'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -49,6 +50,7 @@ const routers = (
     <Route path='switch' component={SwitchExample} />
     <Route path='input' component={InputExample} />
     <Route path='inputGroup' component={InputGroupExample} />
+    <Route path='attention' component={AttentionExample} />
   </Route>
 )
 

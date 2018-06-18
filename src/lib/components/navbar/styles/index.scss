@@ -3,7 +3,7 @@
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
 @import '../../../styles/theme/index.scss';
-@import '../../../styles/mixins/index';
+@import './mixin';
 
 .navbar {
   height: $navbar-height;

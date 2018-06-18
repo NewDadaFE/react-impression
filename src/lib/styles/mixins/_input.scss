@@ -1,17 +1,5 @@
 @import './border-radius';
 
-@mixin input-focus() {
-  &:focus {
-    border-color: $input-border-focus;
-    outline: none;
-    box-shadow: $input-box-focus-shadow;
-
-    &::placeholder {
-      opacity: 0;
-    }
-  }
-}
-
 @mixin input-size($padding-x, $padding-y, $font-size, $height, $border-radius) {
   padding: $padding-x $padding-y;
   font-size: $font-size;

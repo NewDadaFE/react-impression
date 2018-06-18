@@ -1,0 +1,24 @@
+// Attentions
+//
+// Define alert colors, border radius, and padding.
+
+$attention-padding:               15px !default;
+$attention-border-radius:         $border-radius !default;
+$attention-link-font-weight:      bold !default;
+$attention-border-width:          $border-width !default;
+
+$attention-success-bg:            $state-success-bg !default;
+$attention-success-text:          $state-success-text !default;
+$attention-success-border:        $state-success-border !default;
+
+$attention-primary-bg:            $state-primary-bg !default;
+$attention-primary-text:          $state-primary-text !default;
+$attention-primary-border:        $state-primary-border !default;
+
+$attention-warning-bg:            $state-warning-bg !default;
+$attention-warning-text:          $state-warning-text !default;
+$attention-warning-border:        $state-warning-border !default;
+
+$attention-danger-bg:             $state-danger-bg !default;
+$attention-danger-text:           $state-danger-text !default;
+$attention-danger-border:         $state-danger-border !default;
