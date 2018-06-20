@@ -26,7 +26,7 @@ class Overflow extends Component {
         </Button>
         <Modal size={this.state.size} visible={this.state.show}>
           <Modal.Header>
-            <Button close onClick={this.toggleModalHandle}>
+            <Button close onClick={() => this.toggleModalHandle()}>
               &times;
             </Button>
             <h5 className='no-margin'>Modal title</h5>

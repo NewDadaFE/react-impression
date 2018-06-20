@@ -12,7 +12,7 @@ export default class Input extends PureComponent {
     // 自定义样式
     className: PropTypes.string,
     // 尺寸
-    size: PropTypes.oneOf(['small', 'default', 'large']),
+    size: PropTypes.oneOf(['sm', 'default', 'lg']),
     // 行内样式
     style: PropTypes.object,
     // 值
@@ -50,8 +50,8 @@ export default class Input extends PureComponent {
   getInputClassName() {
     const { size, disabled } = this.props
     return classnames({
-      'input-sm': size === 'small',
-      'input-lg': size === 'large',
+      'input-sm': size === 'sm',
+      'input-lg': size === 'lg',
       'input-disabled': disabled,
     })
   }
@@ -105,9 +105,9 @@ export default class Input extends PureComponent {
     this.setState({ computedStyle })
   }
 
-  handleIconClick = () => {
+  handleIconClick = event => {
     if (this.props.onIconClick && !this.props.disabled) {
-      this.props.onIconClick(this.getValue())
+      this.props.onIconClick(this.getValue(), event)
     }
   }
 
@@ -134,6 +134,8 @@ export default class Input extends PureComponent {
       <span
         className={classnames('input-affix-wrapper', props.className)}
         style={props.style}
+        onMouseEnter={props.onMouseEnter}
+        onMouseLeave={props.onMouseLeave}
       >
         {prefix}
         {React.cloneElement(children, {
@@ -142,6 +144,8 @@ export default class Input extends PureComponent {
             this.getInputClassName()
           ),
           style: {},
+          onMouseEnter: null,
+          onMouseLeave: null,
         })}
         {suffix}
       </span>

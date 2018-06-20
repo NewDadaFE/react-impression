@@ -1,0 +1,132 @@
+//== 下拉框
+//
+//
+@import '../../../styles/theme/index';
+.select {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+
+  &.disabled {
+    &,
+    .select-addon,
+    .select-selection {
+      background: $select-disable-bg;
+      cursor: $cursor-disabled;
+    }
+  }
+}
+
+.select-selection {
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  text-align: left;
+  text-overflow: ellipsis;
+
+  &.form-control.input-lg {
+    font-size: $font-size;
+
+    &::placeholder {
+      font-size: $font-size;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  &[readonly] {
+    background: $select-bg;
+  }
+}
+
+.select-addon {
+  cursor: pointer;
+  user-select: none;
+  transition: $select-transition;
+
+  .open & {
+    transform: rotate(180deg);
+  }
+}
+
+.select-options {
+  position: absolute;
+  left: 0;
+  top: $select-options-top;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: $zindex-select;
+  display: none;
+  background: $select-bg;
+  list-style: none;
+  overflow-y: auto;
+  max-height: $select-selection-max-height;
+  transition: $select-transition;
+  border: $select-options-border;
+  box-shadow: $select-options-box-shadow;
+  animation: scaleIn .36s ease;
+  transform-origin: center 0;
+
+  .open & {
+    display: block;
+  }
+}
+
+.select-option {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: $select-option-padding;
+
+  &:hover:not([disabled]):not(.disabled) {
+    background-color: $select-option-hover-bg;
+  }
+
+  &.active {
+    color: $select-option-active-color;
+  }
+
+  &.disabled, .select-group-container.disabled & {
+    cursor: $cursor-disabled;
+    color: $select-option-disable-color;
+    pointer-events: none;
+  }
+}
+
+.select-group-container {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .select-group-title {
+    padding-left: 10px;
+    font-size: $select-group-font-size;
+    color: $select-group-color;
+    height: $select-group-height;
+    line-height: $select-group-height;
+  }
+
+  .select-group-inner {
+    margin: 0;
+    padding: 0;
+  }
+
+  &.disabled {
+    cursor: $cursor-disabled;
+    color: $select-option-disable-color;
+
+    .select-option:hover {
+      background: $select-bg;
+    }
+  }
+}

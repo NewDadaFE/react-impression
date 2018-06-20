@@ -6,13 +6,13 @@ const Size = () => {
   return (
     <Row gutter='12'>
       <Col>
-        <Input size='large' placeholder='large size' />
+        <Input size='lg' placeholder='lg size' />
       </Col>
       <Col>
         <Input placeholder='default size' />
       </Col>
       <Col>
-        <Input size='small' placeholder='small size' />
+        <Input size='sm' placeholder='sm size' />
       </Col>
     </Row>
   )
@@ -20,6 +20,6 @@ const Size = () => {
 /* sourceCode:end */
 
 Size.title = '不同的size'
-Size.desc = `> Input 输入框定义了三种尺寸（大、默认、小）`
+Size.desc = `> Input 输入框定义了三种尺寸（lg、默认、sm）`
 
 export default Size

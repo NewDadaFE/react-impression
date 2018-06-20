@@ -11,7 +11,7 @@
   height: calc(100% - #{$modal-top});
   background: $modal-bg;
   z-index: $zindex-modal;
-  overflow: hidden;
+  overflow: auto;
   outline: 0;
   -webkit-overflow-scrolling: touch;
   animation: fadeIn $modal-animation-duration ease;
@@ -21,7 +21,6 @@
 .modal-dialog {
   position: relative;
   width: auto;
-  height: calc(100% - #{$modal-dialog-margin} * 2);
   margin: $modal-dialog-margin;
   border-radius: $modal-border-radius;
   animation: slideInDown $modal-animation-duration ease;
@@ -74,9 +73,6 @@
   &:last-child {
     border-radius: 0 0 $modal-border-radius $modal-border-radius;
   }
-
-  max-height: 60%;
-  overflow-y: auto;
 }
 
 // Footer (for actions)

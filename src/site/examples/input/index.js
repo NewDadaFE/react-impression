@@ -12,7 +12,7 @@ import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
 
 const inputAttrParams = [
-  ['size', '尺寸，small, default, large', 'string', 'default'],
+  ['size', '尺寸，sm, default, lg', 'string', 'default'],
   ['value', 'input值', 'any', '-'],
   ['defaultValue', 'input默认值', 'any', '-'],
   ['onKeyEnter', '按下回车键', 'function', '-'],

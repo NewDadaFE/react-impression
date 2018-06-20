@@ -53,6 +53,11 @@ export const SIDEBAR_MENU = {
           name: 'InputGroup',
           url: '/inputGroup',
         },
+        {
+          id: 26,
+          name: 'Select',
+          url: '/select',
+        },
       ],
     },
     {
