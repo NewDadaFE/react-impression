@@ -60,7 +60,6 @@ $state-primary-border:           darken($state-primary-bg, 6%) !default;
 
 $state-warning-text:             darken($brand-warning, 3%) !default;
 $state-warning-bg:               lighten($brand-warning, 36%) !default;
-$mark-bg:                        $state-warning-bg !default;
 $state-warning-border:           darken($state-warning-bg, 12%) !default;
 
 
@@ -68,7 +67,8 @@ $state-danger-text:              darken($brand-danger, 3%) !default;
 $state-danger-bg:                lighten($brand-danger, 36%) !default;
 $state-danger-border:            darken($state-danger-bg, 6%) !default;
 
-$mark-bg: $body-bg !default;
+$mask-bg:                        $body-bg !default;
+$mark-bg:                        $body-bg !default;
 $component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
 
 // Disabled states
