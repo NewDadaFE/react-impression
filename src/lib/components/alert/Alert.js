@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import { Button } from 'react-impression'
-import PropTypes from 'prop-types'
+import propTypes from './propTypes'
 
 // 获取小图标
 const getAddonByType = type => {
@@ -24,19 +24,7 @@ const getAddonByType = type => {
  */
 export default class Alert extends PureComponent {
   // props 校验
-  static propTypes = {
-    children: PropTypes.any,
-    // 自定义样式
-    className: PropTypes.string,
-    // 类型（success、warning、danger、none）
-    type: PropTypes.string,
-    // 回调
-    onClick: PropTypes.func,
-    // 按钮名字
-    btnText: PropTypes.string,
-    // 是否显示
-    visible: PropTypes.bool,
-  }
+  static propTypes = propTypes
   // 默认props
   static defaultProps = {
     type: 'info',

@@ -1,22 +1,12 @@
 import classnames from 'classnames'
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import propTypes from './propTypes'
 
 /**
  * Modal组件.
  */
 class Modal extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-    // 自定义样式
-    className: PropTypes.string,
-    // 大小
-    size: PropTypes.string,
-    // 是否可见
-    visible: PropTypes.bool,
-    // 限制最大高度
-    isLimitHeight: PropTypes.bool,
-  }
+  static propTypes = propTypes
 
   componentWillUnmount() {
     if (this.props.visible) {

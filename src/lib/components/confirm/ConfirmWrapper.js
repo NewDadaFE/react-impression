@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import propTypes from './propTypes'
 import Confirm from './Confirm'
 import ContainerRender from '../../utils/ContainerRender'
 import Portal from '../../utils/Portal'
@@ -9,22 +10,8 @@ const IS_REACT_16 = 'createPortal' in ReactDOM
 
 class ConfirmWrap extends React.Component {
   static propTypes = {
-    children: PropTypes.any,
-    // 自定义样式
-    className: PropTypes.string,
-    // 类型
-    type: PropTypes.string,
-    // 确定按钮
-    okText: PropTypes.string,
-    // 取消按钮
-    cancelText: PropTypes.string,
-    // 确定按钮点击
-    onOkClick: PropTypes.func,
-    // 取消按钮点击
-    onCancelClick: PropTypes.func,
-    // 是否显示
-    visible: PropTypes.bool,
-    // alert在dom重的位置
+    ...propTypes,
+    // alert在dom中的位置
     getContainer: PropTypes.element,
   }
 

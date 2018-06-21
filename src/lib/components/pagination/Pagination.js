@@ -7,6 +7,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'react-impression'
 import PageBlock from './PageBlock'
+import KeyCode from '../../utils/keyCode'
 
 const isInteger = value => {
   return (
@@ -153,7 +154,7 @@ export default class Pagination extends PureComponent {
       return
     }
     val = isNaN(val) ? this.props.activePage : Number(val)
-    if (e.keyCode === 13) {
+    if (e.keyCode === KeyCode.ENTER) {
       this.setState({
         currentJumpInput: '',
       })

@@ -11,7 +11,7 @@ export default class Popover extends PureComponent {
     // 标题
     title: PropTypes.node,
     // 内容
-    content: PropTypes.node,
+    content: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     // 子节点
     children: PropTypes.element.isRequired,
   }

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import propTypes from './propTypes'
 import omit from 'omit.js'
 import Modal from './Modal'
 import ContainerRender from '../../utils/ContainerRender'
@@ -10,17 +11,9 @@ const IS_REACT_16 = 'createPortal' in ReactDOM
 
 class ModalWrap extends React.Component {
   static propTypes = {
-    children: PropTypes.any,
-    // 自定义样式
-    className: PropTypes.string,
-    // 大小
-    size: PropTypes.string,
-    // 是否显示
-    visible: PropTypes.bool,
-    // alert在dom重的位置
+    ...propTypes,
+    // alert在dom中的位置
     getContainer: PropTypes.element,
-    // 限制最大高度
-    isLimitHeight: PropTypes.bool,
   }
 
   static defaultProps = {

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import propTypes from './propTypes'
 import Alert from './Alert'
 import ContainerRender from '../../utils/ContainerRender'
 import Portal from '../../utils/Portal'
@@ -9,18 +10,8 @@ const IS_REACT_16 = 'createPortal' in ReactDOM
 
 class AlertWrap extends React.Component {
   static propTypes = {
-    children: PropTypes.any,
-    // 自定义样式
-    className: PropTypes.string,
-    // 类型（success、warning、danger、none）
-    type: PropTypes.string,
-    // 回调
-    onClick: PropTypes.func,
-    // 按钮名字
-    btnText: PropTypes.string,
-    // 是否显示
-    visible: PropTypes.bool,
-    // alert在dom重的位置
+    ...propTypes,
+    // alert在dom中的位置
     getContainer: PropTypes.element,
   }
 

@@ -1,29 +1,13 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import { Button } from 'react-impression'
-import PropTypes from 'prop-types'
+import propTypes from './propTypes'
 /**
  * Confirm组件.
  */
 export default class Confirm extends PureComponent {
   // props校验
-  static propTypes = {
-    children: PropTypes.any,
-    // 自定义样式
-    className: PropTypes.string,
-    // 类型
-    type: PropTypes.string,
-    // 确定按钮
-    okText: PropTypes.string,
-    // 取消按钮
-    cancelText: PropTypes.string,
-    // 确定按钮点击
-    onOkClick: PropTypes.func,
-    // 取消按钮点击
-    onCancelClick: PropTypes.func,
-    // 是否显示
-    visible: PropTypes.bool,
-  }
+  static propTypes = propTypes
   // 默认props
   static defaultProps = {
     type: 'warning',

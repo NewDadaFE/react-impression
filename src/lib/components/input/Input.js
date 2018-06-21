@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import omit from 'omit.js'
+import KeyCode from '../../utils/keyCode'
 import calcTextAreaHeight from './calcTextAreaHeight'
 
 export default class Input extends PureComponent {
@@ -78,7 +79,7 @@ export default class Input extends PureComponent {
 
   handleKeyDown = e => {
     const { onKeyEnter } = this.props
-    if (e.keyCode === 13 && onKeyEnter) {
+    if (e.keyCode === KeyCode.ENTER && onKeyEnter) {
       onKeyEnter(this.getValue(), e)
       this.refMain.focus()
     }

@@ -15,7 +15,7 @@ const popoverAttrParams = [
     'right',
   ],
   ['title', '弹出框标题', 'string', '-'],
-  ['content', '弹出框主内容', 'string', '-'],
+  ['content', '弹出框主内容', 'string，可以是节点类型的string', '-'],
   ['children', '必填，子节点', 'element', '-'],
 ]
 
