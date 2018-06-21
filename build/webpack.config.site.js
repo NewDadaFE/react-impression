@@ -50,7 +50,7 @@ module.exports = merge(baseConfig, {
               localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
-          // 'postcss-loader',
+          'postcss-loader',
           'sass-loader',
         ],
       },
@@ -60,7 +60,16 @@ module.exports = merge(baseConfig, {
         use: [
           'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        include: [utils.resolve('./src/lib'), /node_modules/],
+        use: [
+          'style-loader',
+          'css-loader',
         ]
       },
     ]
