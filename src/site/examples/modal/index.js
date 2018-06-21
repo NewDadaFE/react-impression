@@ -11,6 +11,7 @@ import { transfer } from '../../utils/transferApiTable'
 const modalAttr = [
   ['size', '设置模态框大小，可选值为 sm、lg', 'string', ''],
   ['className', '自定义样式', 'string', ''],
+  ['isLimitHeight', '是否限制modal最大高度', 'boolean', 'false'],
 ]
 
 const modalChildrenAttr = [['className', '自定义样式', 'string', '']]

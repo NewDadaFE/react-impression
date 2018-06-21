@@ -14,6 +14,8 @@ class Modal extends Component {
     size: PropTypes.string,
     // 是否可见
     visible: PropTypes.bool,
+    // 限制最大高度
+    isLimitHeight: PropTypes.bool,
   }
 
   componentWillUnmount() {
@@ -41,7 +43,14 @@ class Modal extends Component {
   }
 
   render() {
-    const { size, className, children, visible, ...others } = this.props
+    const {
+      size,
+      className,
+      children,
+      visible,
+      isLimitHeight,
+      ...others
+    } = this.props
     let sizeClass = size ? `modal-${size}` : null
 
     if (!visible) {
@@ -52,7 +61,14 @@ class Modal extends Component {
     }
 
     return (
-      <div {...others} className={classnames('modal', className)}>
+      <div
+        {...others}
+        className={classnames(
+          'modal',
+          { 'limit-height': isLimitHeight },
+          className
+        )}
+      >
         <div className={classnames('modal-dialog', sizeClass)}>
           <div className='modal-content slideInDown'>{children}</div>
         </div>

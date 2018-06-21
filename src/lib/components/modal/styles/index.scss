@@ -15,6 +15,19 @@
   outline: 0;
   -webkit-overflow-scrolling: touch;
   animation: fadeIn $modal-animation-duration ease;
+
+  &.limit-height {
+    overflow: hidden;
+
+    .modal-dialog {
+      height: calc(100% - #{$modal-dialog-margin} * 2);
+    }
+
+    .modal-body {
+      max-height: $modal-body-max-height;
+      overflow-y: auto;
+    }
+  }
 }
 
 // Shell div to position the modal with bottom padding

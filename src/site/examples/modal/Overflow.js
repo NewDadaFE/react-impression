@@ -1,6 +1,6 @@
 /* sourceCode:start */
 import React, { Component } from 'react'
-import { Modal, Button } from 'react-impression'
+import { Modal, Button, Switch, Row, Col } from 'react-impression'
 
 class Overflow extends Component {
   constructor(props, context) {
@@ -8,6 +8,7 @@ class Overflow extends Component {
     this.state = {
       show: false,
       size: null,
+      isLimitHeight: false,
     }
   }
   // 显示/隐藏modal
@@ -18,13 +19,33 @@ class Overflow extends Component {
     })
   }
 
+  toggleModalLimitHeight = value => {
+    this.setState({
+      isLimitHeight: value,
+    })
+  }
+
   render() {
     return (
       <div>
-        <Button theme='primary' onClick={() => this.toggleModalHandle()}>
-          Modal
-        </Button>
-        <Modal size={this.state.size} visible={this.state.show}>
+        <Row>
+          <Col>
+            <label className='offset-r-lg'>is Modal limitHeight</label>
+            <Switch onChange={this.toggleModalLimitHeight} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button theme='primary' onClick={() => this.toggleModalHandle()}>
+              Show Modal
+            </Button>
+          </Col>
+        </Row>
+        <Modal
+          size={this.state.size}
+          visible={this.state.show}
+          isLimitHeight={this.state.isLimitHeight}
+        >
           <Modal.Header>
             <Button close onClick={() => this.toggleModalHandle()}>
               &times;
@@ -66,6 +87,6 @@ class Overflow extends Component {
 /* sourceCode:end */
 
 Overflow.title = '多内容情况'
-Overflow.desc = `> 内容多的时候会有最大内容高度，可滚动查看内容`
+Overflow.desc = `> 内容多的时候会有最大内容高度，可滚动查看内容,也可以完全展开，由isLimitHeight参数决定`
 
 export default Overflow

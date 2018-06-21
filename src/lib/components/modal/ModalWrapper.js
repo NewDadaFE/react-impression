@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import omit from 'omit.js'
 import Modal from './Modal'
 import ContainerRender from '../../utils/ContainerRender'
 import Portal from '../../utils/Portal'
@@ -18,10 +19,13 @@ class ModalWrap extends React.Component {
     visible: PropTypes.bool,
     // alert在dom重的位置
     getContainer: PropTypes.element,
+    // 限制最大高度
+    isLimitHeight: PropTypes.bool,
   }
 
   static defaultProps = {
     visible: false,
+    isLimitHeight: false,
   }
 
   shouldComponentUpdate({ visible }) {
@@ -33,7 +37,8 @@ class ModalWrap extends React.Component {
   }
 
   getComponent = () => {
-    return <Modal ref={this.saveModal} {...this.props} key='modal' />
+    const omitProps = omit(this.props, ['getContainer'])
+    return <Modal ref={this.saveModal} {...omitProps} key='modal' />
   }
 
   getContainer = () => {
