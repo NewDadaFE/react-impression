@@ -1,0 +1,32 @@
+// Pagination
+$pagination-margin-x:                 6px !default;
+$pagination-margin-y:                 0 !default;
+
+$pagination-color:                     $gray-secondary !default;
+$pagination-bg:                        $brand-pure !default;
+$pagination-border-width:              $border-width !default;
+$pagination-border-color:              $gray-lighter !default;
+$pagination-border-radius:             4px !default;
+$pagination-transition:                all .2s cubic-bezier(.4, 0, .2, 1) !default;
+
+$pagination-hover-color:               $brand-primary !default;
+$pagination-hover-bg:                  $brand-pure !default;
+$pagination-hover-border:              $brand-primary !default;
+
+$pagination-active-color:              $brand-primary !default;
+$pagination-active-border:             $brand-primary !default;
+
+$pagination-disabled-color:            $gray-lighter !default;
+$pagination-disabled-bg:               $brand-pure !default;
+$pagination-disabled-border:           #ddd !default;
+
+$page-item-spacer-x:                   .6rem !default;
+$page-item-min-width:                  32px !default;
+$page-item-height:                     32px !default;
+$page-item-line-height:                30px !default;
+$page-font-size:                       $font-size !default;
+$page-jump-prev-next-font-size:        12px !default;
+$page-jump-prev-next-hover-font-size:  15px !default;
+$page-jump-input-width:                50px !default;
+$page-jump-input-margin:                0 5px !default;
+$page-option-margin-left:              16px !default;

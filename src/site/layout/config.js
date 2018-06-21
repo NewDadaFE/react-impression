@@ -85,6 +85,11 @@ export const SIDEBAR_MENU = {
           name: 'Breadcrumb',
           url: '/breadcrumb',
         },
+        {
+          id: 35,
+          name: 'Pagination',
+          url: '/pagination',
+        },
       ],
     },
     {

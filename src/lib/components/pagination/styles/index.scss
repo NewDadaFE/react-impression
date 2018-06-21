@@ -1,0 +1,126 @@
+.pagination {
+  text-align: center;
+  padding-left: 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+.page-item {
+  display: inline-block; // Remove list-style and block-level defaults
+  min-width: $page-item-min-width;
+  height: $page-item-height;
+  line-height: $page-item-line-height;
+  text-align: center;
+  background-color: $pagination-bg;
+  border: $pagination-border-width solid $pagination-border-color;
+  border-radius: $pagination-border-radius;
+  transition: $pagination-transition;
+  vertical-align: middle;
+
+  &:not(:last-child) {
+    margin-right: $page-item-spacer-x;
+  }
+
+  &.active {
+    cursor: default;
+    border-color: $pagination-active-border;
+
+    .page-link {
+      color: $pagination-active-color;
+    }
+  }
+
+  &.disabled {
+    opacity: .5;
+    cursor: $cursor-disabled;
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border;
+    pointer-events: none;
+
+    .page-link {
+      color: $pagination-disabled-color;
+    }
+  }
+
+  &:hover {
+    background-color: $pagination-hover-bg;
+    border-color: $pagination-hover-border;
+
+    .page-link {
+      color: $pagination-hover-color;
+    }
+  }
+
+  &.page-jump-prev, &.page-jump-next {
+    border: none;
+  }
+}
+
+.page-jump-prev, .page-jump-next {
+  &:after {
+    content: '···';
+    display: block;
+    letter-spacing: 2px;
+    color: $pagination-color;
+    font-size: $page-jump-prev-next-font-size;
+    margin-top: 1px;
+  }
+
+  &:hover {
+    &:after {
+      color: $pagination-hover-color;
+    }
+  }
+}
+
+.page-jump-prev {
+  &:hover {
+    &:after {
+      font-size: $page-jump-prev-next-hover-font-size;
+      content: '«';
+    }
+  }
+}
+
+.page-jump-next {
+  &:hover {
+    &:after {
+      font-size: $page-jump-prev-next-hover-font-size;
+      content: '»';
+    }
+  }
+}
+
+.page-link {
+  position: relative;
+  margin: $pagination-margin-y $pagination-margin-x;
+  color: $pagination-color;
+  text-decoration: none;
+  font-size: $page-font-size;
+  line-height: $page-font-size;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.page-option {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: $page-option-margin-left;
+
+  .page-option-jump-page {
+    display: inline-block;
+    vertical-align: top;
+    height: $page-item-height;
+    line-height: $page-item-height;
+  }
+
+  .page-jump-input {
+    display: inline-block;
+    width: $page-jump-input-width;
+    margin: $page-jump-input-margin;
+  }
+}
+
+

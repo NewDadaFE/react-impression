@@ -25,6 +25,7 @@ import InputExample from './examples/input'
 import InputGroupExample from './examples/inputGroup'
 import AttentionExample from './examples/attention'
 import SelectExample from './examples/select'
+import PaginationExample from './examples/pagination'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -53,6 +54,7 @@ const routers = (
     <Route path='inputGroup' component={InputGroupExample} />
     <Route path='attention' component={AttentionExample} />
     <Route path='select' component={SelectExample} />
+    <Route path='pagination' component={PaginationExample} />
   </Route>
 )
 
