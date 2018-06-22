@@ -1,6 +1,6 @@
-@import '../../../styles/mixins/index';
 @import '../../../styles/theme/index.scss';
-@import './mixin.scss';
+@import '../../../styles/mixins/index';
+@import 'mixin';
 
 .card {
   position: relative;

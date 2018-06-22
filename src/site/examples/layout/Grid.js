@@ -1,105 +1,105 @@
 /* sourceCode:start */
 import React from 'react'
 import { Row, Col } from 'react-impression'
-import './index.scss'
+import styles from './index.scss'
 
 const Grid = () => {
   return (
     <div>
       <Row>
         <Col>
-          <div styleName='demo-col-on'>1</div>
+          <div className={styles['demo-col-on']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>1</div>
+          <div className={styles['demo-col']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>1</div>
+          <div className={styles['demo-col-on']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>1</div>
+          <div className={styles['demo-col']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>1</div>
+          <div className={styles['demo-col-on']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>1</div>
+          <div className={styles['demo-col']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>1</div>
+          <div className={styles['demo-col-on']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>1</div>
+          <div className={styles['demo-col']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>1</div>
+          <div className={styles['demo-col-on']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>1</div>
+          <div className={styles['demo-col']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>1</div>
+          <div className={styles['demo-col-on']}>1</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>1</div>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div styleName='demo-col-on'>2</div>
-        </Col>
-        <Col>
-          <div styleName='demo-col'>2</div>
-        </Col>
-        <Col>
-          <div styleName='demo-col-on'>2</div>
-        </Col>
-        <Col>
-          <div styleName='demo-col'>2</div>
-        </Col>
-        <Col>
-          <div styleName='demo-col-on'>2</div>
-        </Col>
-        <Col>
-          <div styleName='demo-col'>2</div>
+          <div className={styles['demo-col']}>1</div>
         </Col>
       </Row>
       <Row>
         <Col>
-          <div styleName='demo-col-on'>3</div>
+          <div className={styles['demo-col-on']}>2</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>3</div>
+          <div className={styles['demo-col']}>2</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>3</div>
+          <div className={styles['demo-col-on']}>2</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>3</div>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div styleName='demo-col-on'>4</div>
+          <div className={styles['demo-col']}>2</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>4</div>
+          <div className={styles['demo-col-on']}>2</div>
         </Col>
         <Col>
-          <div styleName='demo-col-on'>4</div>
+          <div className={styles['demo-col']}>2</div>
         </Col>
       </Row>
       <Row>
         <Col>
-          <div styleName='demo-col-on'>6</div>
+          <div className={styles['demo-col-on']}>3</div>
         </Col>
         <Col>
-          <div styleName='demo-col'>6</div>
+          <div className={styles['demo-col']}>3</div>
+        </Col>
+        <Col>
+          <div className={styles['demo-col-on']}>3</div>
+        </Col>
+        <Col>
+          <div className={styles['demo-col']}>3</div>
         </Col>
       </Row>
       <Row>
         <Col>
-          <div styleName='demo-col-on'>12</div>
+          <div className={styles['demo-col-on']}>4</div>
+        </Col>
+        <Col>
+          <div className={styles['demo-col']}>4</div>
+        </Col>
+        <Col>
+          <div className={styles['demo-col-on']}>4</div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className={styles['demo-col-on']}>6</div>
+        </Col>
+        <Col>
+          <div className={styles['demo-col']}>6</div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className={styles['demo-col-on']}>12</div>
         </Col>
       </Row>
     </div>

@@ -1,6 +1,5 @@
 @import '../../../styles/theme/index';
-@import '../../../styles/modules/index';
-@import './mixin';
+@import 'mixin';
 
 .notification {
   position: fixed;

@@ -1,5 +1,6 @@
-@import '../theme/index.scss';
-@import '../mixins/index.scss';
+@import '../../../styles/theme/index.scss';
+@import '../../../styles/mixins/index';
+
 // Flex variation
 //
 // Custom styles for additional flex alignment options.
@@ -70,4 +71,5 @@
 .flex-items-bottom { align-items: flex-end; }
 
 .flex-justify-between { justify-content: space-between; }
+
 

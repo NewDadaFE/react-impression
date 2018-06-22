@@ -1,19 +1,19 @@
 /* sourceCode:start */
 import React from 'react'
 import { Row, Col } from 'react-impression'
-import './index.scss'
+import styles from './index.scss'
 
 const Responsive = () => {
   return (
     <Row>
       <Col xs='1' sm='2' md='3' lg='4' xl='5'>
-        <div styleName='demo-col-on-light'>Col</div>
+        <div className={styles['demo-col-on-light']}>Col</div>
       </Col>
       <Col xs={10} sm={8} md={6} lg={4} xl={2}>
-        <div styleName='demo-col-on'>Col</div>
+        <div className={styles['demo-col-on']}>Col</div>
       </Col>
       <Col xs='1' sm='2' md='3' lg='4' xl='5'>
-        <div styleName='demo-col-on-light'>Col</div>
+        <div className={styles['demo-col-on-light']}>Col</div>
       </Col>
     </Row>
   )

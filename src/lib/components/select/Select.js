@@ -92,7 +92,7 @@ export default class Select extends PureComponent {
       let tempLabel = ''
 
       this.state.options.forEach(option => {
-        if (value === option.value) tempLabel = option.label
+        if (value === option.props.value) tempLabel = option.getLabel()
       })
 
       this.setState({

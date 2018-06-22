@@ -4,7 +4,7 @@
 // other navbar variations.
 @import '../../../styles/theme/index.scss';
 @import '../../../styles/mixins/index';
-@import './mixin';
+@import 'mixin';
 
 .navbar {
   height: $navbar-height;

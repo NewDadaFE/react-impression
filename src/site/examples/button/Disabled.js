@@ -10,14 +10,12 @@ const ButtonDisabled = () => {
       <Button type='default' disabled>
         default
       </Button>
-      <div styleName='ghost'>
-        <Button type='primary' ghost>
-          primary
-        </Button>
-        <Button type='primary' ghost disabled>
-          primary
-        </Button>
-      </div>
+      <Button type='primary' ghost>
+        primary
+      </Button>
+      <Button type='primary' ghost disabled>
+        primary
+      </Button>
     </div>
   )
 }

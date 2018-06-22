@@ -55,12 +55,12 @@ gulp.task('gen:dist:scss', function () {
   }
 
   const targetPath = path.join(dist, 'index.scss')
-  const str = '@import "../lib/styles/index.scss";'
+  const str = '@import "../lib/styles/_index.scss";'
 
   fs.writeFileSync(targetPath, str)
 
   // concat
-  return gulp.src(utils.resolve('src/lib/styles/index.scss'))
+  return gulp.src(utils.resolve('src/lib/styles/_index.scss'))
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(cssmin())
@@ -71,7 +71,7 @@ gulp.task('gen:dist:scss', function () {
 // 编译scss
 gulp.task('build:scss', function () {
   // complie
-  return gulp.src(utils.resolve('src/lib/**/index.scss'))
+  return gulp.src(utils.resolve('src/lib/**/_index.scss'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest(utils.resolve('lib')))
     .pipe(gulp.dest(utils.resolve('es')))

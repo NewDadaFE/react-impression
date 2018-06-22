@@ -41,11 +41,7 @@ const ButtonExample = ({ routes, params }) => {
   return (
     <div>
       <Breadcrumb routes={routes} params={params} />
-      <Wrapper
-        styleName='button'
-        title='Button按钮'
-        desc='按钮用于开始一个点击反馈操作'
-      >
+      <Wrapper title='Button按钮' desc='按钮用于开始一个点击反馈操作'>
         <Card component={Type} cardClass={styles['button-card-padding']} />
         <Card component={Ghost} cardClass={styles.ghost} />
         <Card component={Size} cardClass={styles['button-card-padding']} />

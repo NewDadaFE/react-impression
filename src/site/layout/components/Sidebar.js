@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import PropTypes from 'prop-types'
 import { Sidebar, Nav, Collapse, Icon } from 'react-impression'
-import '../index.scss'
+import styles from '../index.scss'
 
 // 侧边栏Sidebar
 function AppSidebar(props) {
@@ -11,8 +11,8 @@ function AppSidebar(props) {
   return (
     <Sidebar>
       <Sidebar.Header>
-        <Icon styleName='top' type='dada' size='2x' left />
-        <span styleName='top'>{menu.projectName}</span>
+        <Icon className={styles['top']} type='dada' size='2x' left />
+        <span className={styles['top']}>{menu.projectName}</span>
       </Sidebar.Header>
       <Sidebar.Body>
         <Nav>

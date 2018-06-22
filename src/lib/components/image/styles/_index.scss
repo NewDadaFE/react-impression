@@ -8,7 +8,7 @@
 
 @import '../../../styles/theme/index';
 @import '../../../styles/mixins/index';
-@import './mixin.scss';
+@import 'mixin';
 
 .img-fluid {
   @include img-fluid();
