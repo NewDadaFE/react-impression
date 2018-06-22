@@ -29,10 +29,6 @@ class Filterable extends PureComponent {
           label: '烧雏鸡',
         },
         {
-          value: '选项5',
-          label: '烧雏鸡',
-        },
-        {
           value: '选项6',
           label: '烧子鹅',
         },

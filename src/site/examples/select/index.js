@@ -6,6 +6,7 @@ import Filterable from './Filterable'
 import Clearable from './Clearable'
 import OptionGroup from './OptionGroup'
 import Disabled from './Disabled'
+import Cascader from './Cascader'
 import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
@@ -64,6 +65,7 @@ const SelectExample = ({ routes, params }) => {
         <Card component={Clearable} />
         <Card component={Disabled} />
         <Card component={OptionGroup} />
+        <Card component={Cascader} />
         <MarkdownPreview markdown={selectAttrTable} name='Select API' />
         <MarkdownPreview
           markdown={selectEventsTable}

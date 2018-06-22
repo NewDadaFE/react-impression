@@ -69,6 +69,12 @@ class Option extends PureComponent {
     }
 
     const visible = defaultMethod(query, this.getLabel())
+
+    // 此处多处setstate会最终只setstate一次，所以直接set最后调用forceUpdate
+    !visible &&
+      (this.parent().state.filteredOptionsCount =
+        this.parent().state.filteredOptionsCount - 1)
+
     this.setState({ visible })
   }
 

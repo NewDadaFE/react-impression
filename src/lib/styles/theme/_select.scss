@@ -2,7 +2,7 @@
 $select-line-height:                        $input-line-height !default;
 $select-transition:                         all .2s ease !default;
 $select-bg:                                 $brand-pure !default;
-$select-disable-bg:                         $gray-lighter !default;
+$select-disable-bg:                         $gray-lightest !default;
 
 $select-selection-max-height:               20rem !default;
 $select-options-top:                        120% !default;
@@ -17,3 +17,6 @@ $select-option-disable-color:               $gray-lighter !default;
 $select-group-font-size:                    12px !default;
 $select-group-color:                        $gray-secondary !default;
 $select-group-height:                       30px !default;
+
+$select-options-empty-padding:              10px 0;
+$select-options-empty-color:                $gray-secondary;

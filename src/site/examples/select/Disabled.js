@@ -31,7 +31,7 @@ class Disabled extends PureComponent {
           disabled: true,
         },
       ],
-      value: '',
+      value: '选项3',
     }
   }
 

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { debounce } from 'throttle-debounce'
 import * as PopManager from '../../utils/pop'
 import { Input, Icon } from 'react-impression'
+import View from '../../utils/View'
 
 /**
  * Select组件.
@@ -18,10 +19,6 @@ export default class Select extends PureComponent {
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
-
-    // 子组件数据
-    this.options = []
-
     this.debouncedOnInputChange = debounce(this.debounce(), () => {
       this.onInputChange()
     })
@@ -38,6 +35,10 @@ export default class Select extends PureComponent {
       inputHovering: false,
       // 选项节点的数组
       options: [],
+      // filterable模式下符合条件的筛选项数量
+      filteredOptionsCount: 0,
+      // 总的筛选项数量
+      optionsCount: 0,
     }
   }
   // prop type校验
@@ -80,7 +81,7 @@ export default class Select extends PureComponent {
   }
 
   debounce() {
-    return 0
+    return 150
   }
 
   getValue() {
@@ -90,7 +91,7 @@ export default class Select extends PureComponent {
     if (!this.isPuppet) {
       let tempLabel = ''
 
-      this.options.forEach(option => {
+      this.state.options.forEach(option => {
         if (value === option.value) tempLabel = option.label
       })
 
@@ -108,37 +109,51 @@ export default class Select extends PureComponent {
   }
 
   onOptionCreate(option) {
-    this.options.push(option)
+    // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
+    this.state.options.push(option)
+    this.state.optionsCount++
+    this.state.filteredOptionsCount++
+
+    this.forceUpdate()
+    this.handleValueChange()
   }
 
   onOptionDestroy(option) {
-    const index = this.options.indexOf(option)
+    const { options } = this.state
+    // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
+    this.state.optionsCount++
+    this.state.filteredOptionsCount++
+
+    const index = options.indexOf(option)
     if (index > -1) {
-      this.options.splice(index, 1)
+      options.splice(index, 1)
     }
+
+    this.forceUpdate()
+    this.handleValueChange()
   }
 
   // 隐藏菜单
   hideOptionsHandle = () => this.setState({ showOption: false })
 
   componentDidMount() {
-    this.handlePropsValueChange()
+    this.handleValueChange()
   }
 
   componentWillReceiveProps(props) {
     if (props.value !== this.props.value) {
-      this.handlePropsValueChange(props)
+      this.handleValueChange(props)
     }
   }
 
-  handlePropsValueChange(props) {
+  handleValueChange(props) {
     const originValue = this.isPuppet
       ? props !== undefined
         ? props.value
         : this.props.value
       : this.state.value
 
-    const selected = this.options.filter(option => {
+    const selected = this.state.options.filter(option => {
       return option.props && option.props.value === originValue
     })[0]
     let dataToSet
@@ -177,11 +192,18 @@ export default class Select extends PureComponent {
   }
 
   componentWillUpdate(props, state) {
-    let { query, selected, selectedLabel, value } = this.state
+    let {
+      query,
+      selected,
+      selectedLabel,
+      value,
+      optionsCount,
+      options,
+    } = this.state
     const { filterable, filterMethod } = this.props
 
     if (state.value !== value) {
-      let option = this.options.filter(
+      let option = options.filter(
         option => option.props.value === state.value
       )[0]
 
@@ -220,9 +242,17 @@ export default class Select extends PureComponent {
     }
 
     if (state.query !== query) {
-      this.options.forEach(option => {
-        option && option.queryChange(state.query, filterMethod)
-      })
+      this.setState(
+        {
+          filteredOptionsCount: optionsCount,
+        },
+        () => {
+          options.forEach(option => {
+            option && option.queryChange(state.query, filterMethod)
+          })
+          this.forceUpdate()
+        }
+      )
     }
   }
 
@@ -293,6 +323,7 @@ export default class Select extends PureComponent {
    */
   selectOptionHandle = result => {
     let { onChange } = this.props
+    const originValue = this.isPuppet ? this.props.value : this.state.value
 
     // 木偶组件
     if (!this.isPuppet) {
@@ -304,13 +335,13 @@ export default class Select extends PureComponent {
         },
         () => {
           onChange &&
-            result.value !== this.state.value &&
+            result.value !== originValue &&
             onChange(result.value, result.label)
         }
       )
     } else {
       onChange &&
-        result.value !== this.props.value &&
+        result.value !== originValue &&
         onChange(result.value, result.label)
     }
 
@@ -331,6 +362,21 @@ export default class Select extends PureComponent {
     })
   }
 
+  getEmptyText = () => {
+    const { filterable } = this.props
+    const { filteredOptionsCount, options } = this.state
+
+    if (filterable && filteredOptionsCount === 0) {
+      return '无匹配数据'
+    }
+
+    if (options.length === 0) {
+      return '无选项'
+    }
+
+    return null
+  }
+
   render() {
     let {
         placeholder,
@@ -341,7 +387,7 @@ export default class Select extends PureComponent {
         filterable,
         size,
       } = this.props,
-      { showOption, selectedLabel } = this.state
+      { showOption, selectedLabel, options, filteredOptionsCount } = this.state
 
     return (
       <div
@@ -371,7 +417,14 @@ export default class Select extends PureComponent {
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
         />
-        <ul className='select-options'>{children}</ul>
+        <ul className='select-options'>
+          <View show={options.length > 0 && filteredOptionsCount > 0}>
+            <div>{children}</div>
+          </View>
+          {this.getEmptyText() && (
+            <p className='select-options-empty'>{this.getEmptyText()}</p>
+          )}
+        </ul>
       </div>
     )
   }

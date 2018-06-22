@@ -79,6 +79,14 @@
   .open & {
     display: block;
   }
+
+  @at-root #{&}-empty {
+    padding: $select-options-empty-padding;
+    margin: 0;
+    text-align: center;
+    color: $select-options-empty-color;
+    font-size: $font-size-base;
+  }
 }
 
 .select-option {
