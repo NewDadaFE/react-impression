@@ -108,34 +108,6 @@ export default class Select extends PureComponent {
     }
   }
 
-  onOptionCreate(option) {
-    // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
-    this.state.options.push(option)
-    this.state.optionsCount++
-    this.state.filteredOptionsCount++
-
-    this.forceUpdate()
-    this.handleValueChange()
-  }
-
-  onOptionDestroy(option) {
-    const { options } = this.state
-    // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
-    this.state.optionsCount++
-    this.state.filteredOptionsCount++
-
-    const index = options.indexOf(option)
-    if (index > -1) {
-      options.splice(index, 1)
-    }
-
-    this.forceUpdate()
-    this.handleValueChange()
-  }
-
-  // 隐藏菜单
-  hideOptionsHandle = () => this.setState({ showOption: false })
-
   componentDidMount() {
     this.handleValueChange()
   }
@@ -143,6 +115,83 @@ export default class Select extends PureComponent {
   componentWillReceiveProps(props) {
     if (props.value !== this.props.value) {
       this.handleValueChange(props)
+    }
+  }
+
+  /**
+   * 清空组件管理.
+   */
+  componentWillUnmount() {
+    PopManager.unManager(this)
+  }
+
+  componentWillUpdate(props, state) {
+    let { query, selected, selectedLabel, value, options } = this.state
+
+    if (state.value !== value) {
+      let option = options.filter(
+        option => option.props.value === state.value
+      )[0]
+
+      if (option) {
+        selected = option
+        selectedLabel = option.getLabel()
+      } else {
+        selected = {}
+        selectedLabel = ''
+      }
+      this.setState({ selected, selectedLabel })
+    }
+
+    if (state.showOption !== this.state.showOption) {
+      this.handleVisibleChange(props, state)
+    }
+
+    if (state.query !== query) {
+      this.handleQueryChange(state)
+    }
+  }
+
+  handleQueryChange(state) {
+    let { optionsCount, options } = this.state
+    const { filterMethod } = this.props
+
+    this.setState(
+      {
+        filteredOptionsCount: optionsCount,
+      },
+      () => {
+        options.forEach(option => {
+          option && option.queryChange(state.query, filterMethod)
+        })
+        this.forceUpdate()
+      }
+    )
+  }
+
+  handleVisibleChange(props, state) {
+    let { value, selected, selectedLabel, query, filterable } = this.state
+
+    if (
+      !state.showOption &&
+      props.value === this.props.value &&
+      state.value === value
+    ) {
+      if (selected && selected.props) {
+        selected.props.value && (selectedLabel = selected.getLabel())
+      } else if (filterable) {
+        selectedLabel = ''
+      }
+      this.setState({ selectedLabel })
+    } else {
+      if (filterable) {
+        query = selectedLabel
+      }
+      this.setState({ query: query || '' })
+    }
+
+    if (this.props.onVisibleChange) {
+      this.props.onVisibleChange(state.showOption)
     }
   }
 
@@ -184,77 +233,33 @@ export default class Select extends PureComponent {
     }
   }
 
-  /**
-   * 清空组件管理.
-   */
-  componentWillUnmount() {
-    PopManager.unManager(this)
+  onOptionCreate(option) {
+    // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
+    this.state.options.push(option)
+    this.state.optionsCount++
+    this.state.filteredOptionsCount++
+
+    this.forceUpdate()
+    this.handleValueChange()
   }
 
-  componentWillUpdate(props, state) {
-    let {
-      query,
-      selected,
-      selectedLabel,
-      value,
-      optionsCount,
-      options,
-    } = this.state
-    const { filterable, filterMethod } = this.props
+  onOptionDestroy(option) {
+    const { options } = this.state
+    // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
+    this.state.optionsCount++
+    this.state.filteredOptionsCount++
 
-    if (state.value !== value) {
-      let option = options.filter(
-        option => option.props.value === state.value
-      )[0]
-
-      if (option) {
-        selected = option
-        selectedLabel = option.getLabel()
-      } else {
-        selected = {}
-        selectedLabel = ''
-      }
-      this.setState({ selected, selectedLabel })
+    const index = options.indexOf(option)
+    if (index > -1) {
+      options.splice(index, 1)
     }
 
-    if (state.showOption !== this.state.showOption) {
-      if (
-        !state.showOption &&
-        props.value === this.props.value &&
-        state.value === value
-      ) {
-        if (selected && selected.props) {
-          selected.props.value && (selectedLabel = selected.getLabel())
-        } else if (filterable) {
-          selectedLabel = ''
-        }
-        this.setState({ selectedLabel })
-      } else {
-        if (filterable) {
-          query = selectedLabel
-        }
-        this.setState({ query: query || '' })
-      }
-
-      if (this.props.onVisibleChange) {
-        this.props.onVisibleChange(state.showOption)
-      }
-    }
-
-    if (state.query !== query) {
-      this.setState(
-        {
-          filteredOptionsCount: optionsCount,
-        },
-        () => {
-          options.forEach(option => {
-            option && option.queryChange(state.query, filterMethod)
-          })
-          this.forceUpdate()
-        }
-      )
-    }
+    this.forceUpdate()
+    this.handleValueChange()
   }
+
+  // 隐藏菜单
+  hideOptionsHandle = () => this.setState({ showOption: false })
 
   /*
   * 返回select右侧icon
