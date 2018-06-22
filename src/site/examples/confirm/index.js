@@ -14,6 +14,7 @@ const confirmAttr = [
   ['cancleText', '取消按钮显示文本', 'string', '取消'],
   ['type', '弹框类型，可选值为 info、danger、warning', 'string', 'warning'],
   ['className', '自定义样式', 'string', ''],
+  ['keyboard', '是否可以通过esc来关闭', 'boolean', 'true'],
 ]
 
 const confirmAttrTable = transfer(confirmAttr)

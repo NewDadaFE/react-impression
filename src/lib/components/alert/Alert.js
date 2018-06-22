@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-no-bind */
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import { Button } from 'react-impression'
 import propTypes from './propTypes'
+import KeyCode from '../../utils/keyCode'
 
 // 获取小图标
 const getAddonByType = type => {
@@ -56,6 +58,37 @@ export default class Alert extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (!prevProps.visible && this.props.visible) {
+      this.wrap.focus()
+    }
+  }
+
+  /*
+  * 如果是Protal类型的wrapper，外部组件第一次visible变化不会触发内部组件update，所以在componentDidMount去触发focus
+  * if (visible || this._component) {
+      portal = (
+        <Portal getContainer={this.getContainer}>{this.getComponent()}</Portal>
+      )
+    }
+  * */
+  componentDidMount() {
+    if (this.props.visible) {
+      this.wrap.focus()
+    }
+  }
+
+  getWrap = ref => {
+    this.wrap = ref
+  }
+
+  onKeyDown(e) {
+    const { keyboard, onClick } = this.props
+    if (keyboard && e.keyCode === KeyCode.ESC) {
+      onClick && onClick(e)
+    }
+  }
+
   render() {
     let {
         type,
@@ -68,6 +101,8 @@ export default class Alert extends PureComponent {
       } = this.props,
       iconTypeClass = getAddonByType(type)
 
+    delete others.keyboard
+
     if (!visible) {
       this.enableScroll()
       return null
@@ -76,7 +111,12 @@ export default class Alert extends PureComponent {
     }
 
     return (
-      <div className={classnames('alert', className)}>
+      <div
+        className={classnames('alert', className)}
+        ref={this.getWrap}
+        tabIndex={-1}
+        onKeyDown={this.onKeyDown.bind(this)}
+      >
         <div {...others} className='alert-dialog'>
           {type !== 'none' && (
             <div className='alert-addon'>

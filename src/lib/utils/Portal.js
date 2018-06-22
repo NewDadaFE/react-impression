@@ -12,7 +12,9 @@ export default class Portal extends React.Component {
   componentDidMount() {
     this.createContainer()
   }
-
+  /*
+  * Portal的children(即外部用到的类似confirm、alert组件节点)或者getcontainer改变的时候会触发update
+  * */
   componentDidUpdate(prevProps) {
     const { didUpdate } = this.props
     if (didUpdate) {

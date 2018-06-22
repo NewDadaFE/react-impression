@@ -14,6 +14,7 @@ const alertAttr = [
     'string',
     'none',
   ],
+  ['keyboard', '是否可以通过esc来关闭', 'boolean', 'true'],
 ]
 
 const alertAttrTable = transfer(alertAttr)

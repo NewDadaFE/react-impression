@@ -12,6 +12,8 @@ const propTypes = {
   btnText: PropTypes.string,
   // 是否显示
   visible: PropTypes.bool,
+  // 是否可以esc键关闭
+  keyboard: PropTypes.bool,
 }
 
 export default propTypes

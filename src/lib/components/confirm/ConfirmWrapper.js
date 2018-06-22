@@ -17,6 +17,7 @@ class ConfirmWrap extends React.Component {
 
   static defaultProps = {
     visible: false,
+    keyboard: true,
   }
 
   shouldComponentUpdate({ visible }) {
