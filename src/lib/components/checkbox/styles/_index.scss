@@ -23,6 +23,33 @@
   @at-root #{&}-disabled {
     cursor: $cursor-disabled;
   }
+
+  @at-root #{&}-uncertain {
+    .checkbox-addon {
+      border-color: $checkbox-addon-checked-border-color;
+      background-color: $checkbox-addon-checked-bg-color;
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        border: $border-width solid $checkbox-addon-uncertain-color;
+        margin-top: -1px;
+        left: 3px;
+        right: 3px;
+        top: 50%;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    input:disabled + .checkbox-addon {
+      background: $checkbox-addon-disabled-bg;
+      border: $border-width solid $checkbox-addon-disabled-border-color;
+    }
+  }
 }
 
 .checkbox-label {
@@ -64,13 +91,6 @@
   &:checked {
     + .checkbox-addon:after {
       transform: rotate(45deg) scale(1);
-      position: absolute;
-      display: table;
-      border: 2px solid #fff;
-      border-top: 0;
-      border-left: 0;
-      content: ' ';
-      transition: all .2s $ease-out-back .1s;
     }
   }
 
@@ -90,8 +110,14 @@
   }
 
   &:checked:disabled {
-    + .checkbox-addon i {
-      color: $checkbox-addon-disabled-checked-color;
+
+    + .checkbox-addon {
+      background: $checkbox-addon-disabled-bg;
+      border: $border-width solid $checkbox-addon-disabled-border-color;
+
+      i {
+        color: $checkbox-addon-disabled-checked-color;
+      }
     }
   }
 
@@ -99,6 +125,7 @@
   &.disabled + .checkbox-addon {
     opacity: .6;
     background: $checkbox-addon-disabled-bg;
+    border: $border-width solid $checkbox-addon-disabled-border-color;
   }
 
   &:disabled ~.checkbox-label,

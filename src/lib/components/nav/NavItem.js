@@ -19,6 +19,20 @@ export default class NavItem extends PureComponent {
     disabled: false,
     active: false,
   }
+
+  parent() {
+    return this.context.componentNav
+  }
+
+  getRef = ref => {
+    this.main = { node: this, ref }
+    this.parent().onItemCreate(this.main)
+  }
+
+  componentWillUnmount() {
+    this.parent().onItemDestroy(this.main)
+  }
+
   // 回调函数
   onClickHandle = () => {
     let { disabled, active, onClick, eventKey } = this.props
@@ -43,15 +57,24 @@ export default class NavItem extends PureComponent {
     return eventKey !== undefined ? (
       <li
         {...others}
+        ref={this.getRef}
         className={classnames('nav-item', className)}
         onClick={this.onClickHandle}
       >
         <span className={classnames('nav-link', childClass)}>{children}</span>
       </li>
     ) : (
-      <div {...others} className={classnames('nav-item', className)}>
+      <div
+        {...others}
+        ref={this.getRef}
+        className={classnames('nav-item', className)}
+      >
         {children}
       </div>
     )
   }
+}
+
+NavItem.contextTypes = {
+  componentNav: PropTypes.any,
 }

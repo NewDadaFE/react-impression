@@ -6,14 +6,16 @@ $checkbox-space-y:                          $spacer-y !default;
 $checkbox-addon-width:                      .5 !default;
 $checkbox-addon-height:                     $checkbox-addon-width !default;
 $checkbox-addon-padding:                    round(($line-height-base * .8 - $checkbox-addon-width) * $font-size-root / 2) !default;
-$checkbox-addon-border-color:               #ddd !default;
+$checkbox-addon-border-color:               $brand-muted !default;
 $checkbox-addon-border-radius:              $border-radius-sm !default;
 $checkbox-addon-checked-color:              $brand-primary !default;
+$checkbox-addon-uncertain-color:            $brand-pure !default;
 $checkbox-addon-checked-bg-color:           $brand-primary !default;
 $checkbox-addon-checked-border-color:       $brand-primary !default;
-$checkbox-addon-disabled-checked-color:      $gray-secondary !default;
+$checkbox-addon-disabled-checked-color:     $gray-lightest !default;
 $checkbox-addon-transtion:                  all .2s ease !default;
 $checkbox-addon-disabled-bg:                $disabled-bg !default;
+$checkbox-addon-disabled-border-color:      $border-color !default;
 $checkbox-addon-disabled-text:              $disabled-color !default;
 $checkbox-addon-active-box-shadow:          inset 0 0 2rem rgba($checkbox-addon-border-color, .8) !default;
 

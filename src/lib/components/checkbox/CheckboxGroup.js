@@ -58,7 +58,7 @@ export default class CheckboxGroup extends PureComponent {
           ? [...propsValue, value]
           : [...propsValue.filter(item => item !== value)]
 
-      onChange && onChange(originValue, event)
+      onChange && onChange(originValue)
     } else {
       let originValue = checked
         ? [...this.state.value, value]

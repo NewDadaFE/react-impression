@@ -8,7 +8,7 @@ class Column extends React.Component {
     value: [2, 3],
   }
 
-  onChange = (value, e) => {
+  onChange = value => {
     console.log('checkbox value is', value)
     this.setState({
       value: value,

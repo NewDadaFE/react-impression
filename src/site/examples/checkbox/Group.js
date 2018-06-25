@@ -8,7 +8,7 @@ class Group extends React.Component {
     value: [2, 4],
   }
 
-  onChange = (value, e) => {
+  onChange = value => {
     console.log('Checkbox value is', value)
     this.setState({
       value: value,

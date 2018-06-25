@@ -4,9 +4,21 @@
 @import '../../../styles/mixins/index';
 
 .nav {
+  position: relative;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
+  @at-root #{&}__active-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: $nav-line-active-link-border-bottom-color;
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    list-style: none;
+  }
 }
 
 .nav-link {
@@ -30,7 +42,7 @@
 
 // Nav line
 .nav-line {
-  height: $nav-tabs-link-line-height + 1px;
+  height: $nav-tabs-link-line-height;
   border-bottom: $nav-line-border-bottom-width solid $nav-line-border-bottom-color;
 
   @include clearfix();
@@ -48,7 +60,7 @@
     color: $nav-line-link-color;
     display: block;
     padding: $nav-line-link-padding;
-    line-height: $nav-line-link-line-height - 2px;
+    line-height: $nav-line-link-line-height;
     border-bottom: 0;
     transition: color .3s $ease-in-out;
 
@@ -59,8 +71,6 @@
     &.active,
     .nav-item.open & {
       color: $nav-line-active-link-color;
-      padding-bottom: $nav-tabs-link-border-width;
-      border-bottom: $nav-line-border-bottom-width * 2 solid $nav-line-active-link-border-bottom-color;
     }
 
     &.disabled {

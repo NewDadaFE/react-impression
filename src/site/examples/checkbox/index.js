@@ -5,6 +5,7 @@ import Basic from './Basic'
 import Disabled from './Disabled'
 import Group from './Group'
 import Column from './Column'
+import Uncertain from './Uncertain'
 import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
@@ -16,6 +17,7 @@ const checkBoxAttrParams = [
   ['disabled', '是否可以点击', 'boolean', 'false'],
   ['onChange', '状态变更回调函数', 'function', '-'],
   ['className', '自定义样式', 'string', '-'],
+  ['uncertain', '是否半选模式', 'boolean', 'false'],
 ]
 
 const checkBoxGroupAttrParams = [
@@ -46,10 +48,11 @@ const CheckboxExample = ({ routes, params }) => {
         <Card component={Disabled} />
         <Card component={Group} />
         <Card component={Column} />
+        <Card component={Uncertain} />
         <MarkdownPreview markdown={checkBoxAttrTable} name='Checkbox API' />
         <MarkdownPreview
           markdown={checkBoxGroupAttrTable}
-          name='Checkbox API'
+          name='Checkbox.Group API'
         />
         <MarkdownPreview markdown={apiTable} name='方法' />
       </Wrapper>
