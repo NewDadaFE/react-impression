@@ -10,8 +10,13 @@ import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
 
 const loadingAttr = [
-  ['loading', '是否显示', 'boolean', 'false'],
-  ['full', '是否全屏', 'boolean', 'false'],
+  ['loading', '是否显示', 'boolean', '-'],
+  [
+    'full',
+    '是否全屏, 默认开启全屏，直接调用Loading.show()／hide()方法即可',
+    'boolean',
+    'true',
+  ],
   ['className', '自定义样式', 'string', ''],
   [
     'type',

@@ -64,6 +64,7 @@ class Type extends Component {
           loading={this.state.loading}
           type={this.state.type}
           loadingMsg={this.state.msg}
+          full={false}
         >
           <div
             style={{

@@ -17,10 +17,10 @@ export default class Loading extends PureComponent {
     _loading = this
 
     const { loading } = props
-
     props.duration && (_duration = props.duration)
+
     this.state = {
-      loading: loading === undefined ? true : loading,
+      loading: loading === undefined ? false : loading,
     }
   }
   // props校验
@@ -47,8 +47,7 @@ export default class Loading extends PureComponent {
     type: 'cyclone',
     closeable: false,
     loadingMsg: '加载中',
-    full: false,
-    loading: true,
+    full: true,
   }
 
   componentWillReceiveProps(props) {
@@ -59,16 +58,22 @@ export default class Loading extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    debugger
+    if (!prevState.loading && this.state.loading) {
+      this.disableScroll()
+    } else if (prevState.loading && !this.state.loading) {
+      this.enableScroll()
+    }
+  }
+
   getClass() {
     let classMap = {
       'loading-container': true,
     }
 
-    if (this.props.full) {
-      this.disableScroll()
+    if (this.props.full && this.state.loading) {
       classMap['full-screen'] = true
-    } else {
-      this.enableScroll()
     }
 
     return classMap
@@ -108,6 +113,30 @@ export default class Loading extends PureComponent {
       })
   }
 
+  show() {
+    _startDate = new Date()
+    this.setState({
+      loading: true,
+    })
+  }
+
+  hide() {
+    _endDate = new Date()
+    if (_endDate - _startDate < _duration) {
+      setTimeout(() => {
+        this.setState({
+          loading: false,
+        })
+      }, _duration - (_endDate - _startDate))
+
+      return
+    }
+
+    this.setState({
+      loading: false,
+    })
+  }
+
   render() {
     let { type, loadingMsg, className } = this.props,
       { loading } = this.state
@@ -133,26 +162,13 @@ export default class Loading extends PureComponent {
 }
 
 Loading.Addon = LoadingAddon
-Loading.show = () => {
-  _startDate = new Date()
-  _loading.setState({
-    loading: true,
-  })
+
+Loading.show = ref => {
+  if (!ref) return _loading.show()
+  return ref.show()
 }
 
-Loading.hide = () => {
-  _endDate = new Date()
-  if (_endDate - _startDate < _duration) {
-    setTimeout(() => {
-      _loading.setState({
-        loading: false,
-      })
-    }, _duration - (_endDate - _startDate))
-
-    return
-  }
-
-  _loading.setState({
-    loading: false,
-  })
+Loading.hide = ref => {
+  if (!ref) return _loading.hide()
+  return ref.hide()
 }
