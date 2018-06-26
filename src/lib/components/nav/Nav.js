@@ -103,7 +103,8 @@ export default class Nav extends PureComponent {
   calculateBarStyle() {
     const { type } = this.props
     const { tabs, activeKey, barStyle } = this.state
-    if (!type || !tabs.length) return {}
+
+    if (type !== 'line' || !tabs.length) return
 
     let style = { ...barStyle }
     let offset = 0

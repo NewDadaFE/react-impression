@@ -14,10 +14,10 @@ $notice-header-padding:       .75rem 0 .75rem 1rem !default;
 $notice-title-margin:         0 0 .2rem 0 !default;
 $notice-body-padding:         .75rem 1rem !default;
 
-$notice-primary-bg:           mix($brand-primary, $brand-muted, 98%) !default;
-$notice-success-bg:           mix($brand-success, $brand-muted, 98%) !default;
-$notice-warning-bg:           mix($brand-warning, $brand-muted, 98%) !default;
-$notice-danger-bg:            mix($brand-danger, $brand-muted, 98%) !default;
+$notice-primary-bg:           mix($brand-primary, $gray-lighter, 98%) !default;
+$notice-success-bg:           mix($brand-success, $gray-lighter, 98%) !default;
+$notice-warning-bg:           mix($brand-warning, $gray-lighter, 98%) !default;
+$notice-danger-bg:            mix($brand-danger, $gray-lighter, 98%) !default;
 
 
 $notice-enter-duration:      .2s !default;

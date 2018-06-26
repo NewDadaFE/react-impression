@@ -47,7 +47,7 @@
 
 @include text-emphasis-variant('.text-secondary', $brand-secondary);
 
-@include text-emphasis-variant('.text-pure', $brand-muted);
+@include text-emphasis-variant('.text-pure', $gray-lighter);
 
 
 // Misc

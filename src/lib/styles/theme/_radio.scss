@@ -6,7 +6,7 @@ $checkbox-space-y:                          $spacer-y !default;
 $checkbox-addon-width:                      .5 !default;
 $checkbox-addon-height:                     $checkbox-addon-width !default;
 $checkbox-addon-padding:                    round(($line-height-base * .8 - $checkbox-addon-width) * $font-size-root / 2) !default;
-$checkbox-addon-border-color:               $brand-muted !default;
+$checkbox-addon-border-color:               $gray-lighter !default;
 $checkbox-addon-border-radius:              $border-radius-sm !default;
 $checkbox-addon-checked-color:              $brand-primary !default;
 $checkbox-addon-uncertain-color:            $brand-pure !default;

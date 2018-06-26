@@ -6,8 +6,8 @@ import './index.scss'
 const ButtonDisabled = () => {
   return (
     <div>
-      <Button type='default'>default</Button>
-      <Button type='default' disabled>
+      <Button type='primary'>default</Button>
+      <Button type='primary' disabled>
         default
       </Button>
       <Button type='primary' ghost>

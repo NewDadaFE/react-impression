@@ -58,6 +58,11 @@ export const SIDEBAR_MENU = {
           name: 'Select',
           url: '/select',
         },
+        {
+          id: 27,
+          name: 'Form',
+          url: '/form',
+        },
       ],
     },
     {

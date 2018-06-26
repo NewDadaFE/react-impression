@@ -79,13 +79,12 @@
 
   color: $color;
   background-image: none;
-  background-color: transparent !important;
+  background-color: transparent;
   border-color: $color;
 
   &:hover {
     color: $hover-color;
     border-color: $hover-color;
-    background-color: $hover-color;
   }
 
   &.acitve,
@@ -93,12 +92,10 @@
   .open > &.dropdown-toggle  {
     color: $active-color;
     border-color: $active-color;
-    background-color: $active-color;
 
     &:hover {
       color: $active-color;
       border-color: $active-color;
-      background-color: $active-color;
     }
   }
 

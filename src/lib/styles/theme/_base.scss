@@ -19,7 +19,6 @@ $brand-success: #33cc66 !default;
 $brand-warning: #ffad29 !default;
 $brand-danger: #ff3333 !default;
 $brand-pure: #ffffff !default;
-$brand-muted: #d0d0d0 !default;
 
 // gray colors
 $gray-dark: #373a3c !default;
@@ -73,7 +72,7 @@ $component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
 
 // Disabled states
 $disabled-color: $gray-secondary !default;
-$disabled-bg: $background-color-base !default;
+$disabled-bg: #f1f1f1 !default;
 
 // Typography
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei',
@@ -205,7 +204,7 @@ $zindex-popover:                  1060 !default;
 $zindex-tooltip:                  1060 !default;
 
 //Page transition
-$page-transition-bg:                         $brand-muted !default;
+$page-transition-bg:                         $gray-lighter !default;
 $page-transition-duration:                   1.2s !default;
 $page-transition-enter-boxshadow:            0 0 2px darken($brand-primary, 12%) !default;
 $page-transition-leave-boxshadow:            $page-transition-enter-boxshadow !default;
@@ -213,4 +212,4 @@ $page-transition-leave-boxshadow:            $page-transition-enter-boxshadow !d
 // Close
 $close-font-weight:                           normal !default;
 $close-color:                                 #000 !default;
-$close-text-shadow:                           0 1px 0 $brand-muted !default;
+$close-text-shadow:                           0 1px 0 $gray-lighter !default;
