@@ -51,7 +51,7 @@ export const SIDEBAR_MENU = {
         {
           id: 25,
           name: 'InputGroup',
-          url: '/inputGroup',
+          url: '/input-group',
         },
         {
           id: 26,
@@ -60,6 +60,11 @@ export const SIDEBAR_MENU = {
         },
         {
           id: 27,
+          name: 'Upload',
+          url: '/upload',
+        },
+        {
+          id: 28,
           name: 'Form',
           url: '/form',
         },
@@ -163,6 +168,11 @@ export const SIDEBAR_MENU = {
           id: 54,
           name: 'Loading',
           url: '/loading',
+        },
+        {
+          id: 55,
+          name: 'Progress',
+          url: '/progress',
         },
       ],
     },

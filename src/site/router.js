@@ -22,11 +22,13 @@ import ImageExample from './examples/image'
 import LoadingExample from './examples/loading'
 import SwitchExample from './examples/switch'
 import InputExample from './examples/input'
-import InputGroupExample from './examples/inputGroup'
+import InputGroupExample from './examples/input-group'
 import AttentionExample from './examples/attention'
 import SelectExample from './examples/select'
 import PaginationExample from './examples/pagination'
 import FormExample from './examples/form'
+import UploadExample from './examples/upload'
+import ProgressExample from './examples/progress'
 
 const routers = (
   <Route path='/' component={Layout}>
@@ -57,6 +59,8 @@ const routers = (
     <Route path='select' component={SelectExample} />
     <Route path='pagination' component={PaginationExample} />
     <Route path='form' component={FormExample} />
+    <Route path='upload' component={UploadExample} />
+    <Route path='progress' component={ProgressExample} />
   </Route>
 )
 

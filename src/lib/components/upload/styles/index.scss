@@ -1,0 +1,66 @@
+.input-group-upload {
+  input[type='file'] {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .form-control[disabled] {
+    cursor: default;
+    background: $input-bg;
+  }
+}
+
+.upload-preview {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  width: $upload-preview-width;
+  height: $upload-preview-height;
+  border: 1px solid $upload-preview-border-color;
+  background: $upload-preview-bg;
+  color: $upload-preview-color;
+  transition: $upload-preview-transition;
+
+  &:hover {
+    color: $body-color;
+    border-color: $input-border-focus;
+    box-shadow: $input-box-focus-shadow;
+  }
+
+  input[type='file'] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    opacity: 0;
+  }
+}
+
+.upload-preview-addon {
+  line-height: $upload-preview-height;
+  font-size: $upload-preview-addon-font-size;
+}
+
+.upload-preview-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: $upload-preview-text-bottom;
+  font-size: $upload-preview-text-font-size;
+}
+
+.upload-preview-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: $upload-preview-bg;
+  padding: $upload-preview-img-padding;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

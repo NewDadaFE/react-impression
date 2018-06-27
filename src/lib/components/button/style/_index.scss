@@ -37,31 +37,31 @@ fieldset[disabled] a.btn {
 }
 
 // btn theme
+.btn-default {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
 .btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }
 .btn-danger {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
-.btn-default {
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-}
 .btn-warning {
   @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
 }
 
 // btn outline
+.btn-outline-default {
+  @include button-outline-variant($btn-default-color, $btn-default-border);
+}
 .btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg);
+  @include button-outline-variant($btn-primary-border, $btn-primary-bg);
 }
 .btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg);
-}
-.btn-outline-default {
-  @include button-outline-variant($btn-default-border);
+  @include button-outline-variant($btn-danger-bg, $btn-danger-bg);
 }
 .btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg);
+  @include button-outline-variant($btn-warning-bg, $btn-warning-bg);
 }
 //
 // Button Sizes

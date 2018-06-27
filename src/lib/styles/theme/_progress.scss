@@ -1,0 +1,21 @@
+// Progress bars
+
+$progress-bg:                       #eee !default;
+$progress-bar-color:                #0074d9 !default;
+$progress-border-radius:            $border-radius !default;
+$progress-box-shadow:               inset 0 .1rem .1rem $inverse-level-1 !default;
+
+$progress-bar-bg:                   $brand-primary !default;
+$progress-bar-success-bg:           $brand-success !default;
+$progress-bar-warning-bg:           $brand-warning !default;
+$progress-bar-danger-bg:            $brand-danger !default;
+$progress-bar-striped-bg-image:     linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+transparent 75%, transparent);
+$progress-bar-striped-box-shadow:   1px 1px 8px gray;
+$progress-bar-striped-bg-size:      50px 50px;
+$progress-info-default-color:       $text-color-secondary !default;
+$progress-info-width:               2em !default;
+$progress-info-margin-left:         5px !default;
+$progress-info-font-size:           1em !default;
+

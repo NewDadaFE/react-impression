@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types'
 /* sourceCode:start */
 import React from 'react'
 import { Row, Col, Tooltip, Button } from 'react-impression'
 
-const Direction = ({ onMouseOver }) => {
+const onMouseOver = event => {
+  console.log(event)
+}
+
+const Direction = () => {
   return (
     <Row>
       <Col>
@@ -30,9 +33,6 @@ const Direction = ({ onMouseOver }) => {
   )
 }
 /* sourceCode:end */
-Direction.propTypes = {
-  onMouseOver: PropTypes.func,
-}
 
 Direction.title = 'tooltip的四个方向'
 Direction.desc = `> Tooltip的气泡浮层不会放置复杂的子节点文本和操作，鼠标移入则显示提示，移出消失。例子为气泡四个方向的展示`

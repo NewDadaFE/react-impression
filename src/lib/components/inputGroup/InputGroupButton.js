@@ -12,6 +12,7 @@ export default class InputGroupButton extends PureComponent {
     theme: PropTypes.string,
     className: PropTypes.string,
     children: PropTypes.any,
+    ghost: PropTypes.bool,
   }
   // 默认props
   static defaultProps = {
@@ -19,11 +20,11 @@ export default class InputGroupButton extends PureComponent {
   }
   // 渲染
   render() {
-    let { theme, className, children, ...others } = this.props
+    let { theme, className, children, ghost, ...others } = this.props
 
     return (
       <span {...others} className='input-group-btn'>
-        <Button theme={theme} className={classnames(className)}>
+        <Button theme={theme} ghost={ghost} className={classnames(className)}>
           {children}
         </Button>
       </span>

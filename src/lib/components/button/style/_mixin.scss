@@ -45,11 +45,11 @@
 }
 
 @mixin button-variant($color, $background, $border) {
-  $hover-color: lighten($color, 10%);
-  $hover-background: lighten($background, 10%);
-  $hover-border: lighten($border, 10%);
-  $active-background: darken($background, 20%);
-  $active-border: darken($border, 20%);
+  $hover-color: desaturate($color, 20%);
+  $hover-background: desaturate($background, 20%);
+  $hover-border: desaturate($border, 20%);
+  $active-background: darken($background, 10%);
+  $active-border: darken($border, 10%);
 
   color: $color;
   background-color: $background;
@@ -73,29 +73,31 @@
   @include button-disabled()
 }
 
-@mixin button-outline-variant($color) {
+@mixin button-outline-variant($color, $border-color) {
   $hover-color: lighten($color, 10%);
-  $active-color: darken($color, 15%);
+  $hover-border: lighten($border-color, 10%);
+  $active-color: darken($color, 20%);
+  $active-border: darken($border-color, 20%);
 
   color: $color;
   background-image: none;
   background-color: transparent;
-  border-color: $color;
+  border-color: $border-color;
 
   &:hover {
     color: $hover-color;
-    border-color: $hover-color;
+    border-color: $hover-border;
   }
 
   &.acitve,
   &:active,
   .open > &.dropdown-toggle  {
     color: $active-color;
-    border-color: $active-color;
+    border-color: $active-border;
 
     &:hover {
       color: $active-color;
-      border-color: $active-color;
+      border-color: $active-border;
     }
   }
 

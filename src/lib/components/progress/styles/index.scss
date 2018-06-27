@@ -1,0 +1,73 @@
+@import '../../../styles/theme/index';
+@import '../../../styles/mixins/index';
+@import './mixin';
+
+@keyframes progress-bar-stripes {
+  from { background-position: 0 0; }
+  to { background-position: 50px 0; }
+}
+
+.progress {
+  @include reset-component;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.progress-outer {
+  display: inline-block;
+  width: 100%;
+  margin-right: 0;
+  padding-right: 0;
+
+  .progress-show-info &{
+    padding-right: calc(#{$progress-info-width} + #{$progress-info-margin-left});
+    margin-right: calc(-#{$progress-info-width} - #{$progress-info-margin-left});
+  }
+}
+
+.progress-inner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background-color: $progress-bg;
+  border-radius: $progress-border-radius;
+  vertical-align: middle;
+}
+
+.progress-inner-bg {
+  position: relative;
+  border-radius: $progress-border-radius;
+  background-color: $progress-bar-bg;
+  transition: all .4s $ease-out 0s;
+
+  .progress-success & {
+    @include progress-variant($progress-bar-success-bg);
+  }
+
+  .progress-warning & {
+    @include progress-variant($progress-bar-warning-bg);
+  }
+
+  .progress-danger & {
+    @include progress-variant($progress-bar-danger-bg);
+  }
+
+  .progress-striped & {
+    background-size: $progress-bar-striped-bg-size;
+    box-shadow: $progress-bar-striped-box-shadow;
+    background-image: $progress-bar-striped-bg-image;
+    animation: progress-bar-stripes 1s linear infinite;
+  }
+}
+.progress-info {
+  display: inline-block;
+  width: $progress-info-width;
+  font-size: $progress-info-font-size;
+  margin-left: $progress-info-margin-left;
+  color: $progress-info-default-color;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 1;
+  word-break: normal;
+}
