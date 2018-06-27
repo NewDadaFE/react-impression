@@ -54,7 +54,7 @@ const routers = (
     <Route path='loading' component={LoadingExample} />
     <Route path='switch' component={SwitchExample} />
     <Route path='input' component={InputExample} />
-    <Route path='inputGroup' component={InputGroupExample} />
+    <Route path='input-group' component={InputGroupExample} />
     <Route path='attention' component={AttentionExample} />
     <Route path='select' component={SelectExample} />
     <Route path='pagination' component={PaginationExample} />
