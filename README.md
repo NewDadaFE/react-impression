@@ -9,7 +9,7 @@
 首先, 安装`Yeoman`和`generator-react-impression`:
 
 ```bash
-npm i -g yo generator-react-impression
+yarn global add yo generator-react-impression
 ```
 
 然后创建新项目:
@@ -30,7 +30,7 @@ yo react-impression --upgrade
 首先, 进入项目目录并执行如下命令:
 
 ```bash
-npm start
+yarn start
 ```
 
 然后, 打开浏览器并访问 [http://localhost:8080](http://localhost:8080)
@@ -63,7 +63,7 @@ npm version minor -m 'Release version %s'
 npm version 1.0.0 -m 'Release version %s'
 
 # 测试版本
-npm run debug
+yarn debug
 ```
 
 ## 最佳实践
@@ -90,7 +90,7 @@ npm run debug
   然后，重启服务：
 
   ```bash
-  npm start
+  yarn start
   ```
 
 - 遵守[eslint-config-react-impression][eslint-config-react-impression]规范
