@@ -7,13 +7,13 @@ export default class Counter extends Component {
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
     counter: PropTypes.number.isRequired,
-  };
+  }
 
   onIncrementHandle = () => {
     let { increment } = this.props
 
     increment()
-  };
+  }
 
   render() {
     const { decrement, counter } = this.props

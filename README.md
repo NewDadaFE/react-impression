@@ -68,11 +68,11 @@ npm run debug
 
 ## 最佳实践
 
-* 代码格式化
+- 代码格式化
 
-  代码提交时会自动格式化，如需手动格式化，执行`npm run format`命令
+  如需格式化代码，执行 `yarn format` 命令
 
-* 转发API请求
+- 转发 API 请求
 
   首先, 更新`package.json`文件中的配置，比如：
 
@@ -93,12 +93,11 @@ npm run debug
   npm start
   ```
 
-* 遵守[eslint-config-react-impression][eslint-config-react-impression]规范
-* 使用[redux-actions][redux-actions]创建`Flux Standard Action`
-* 遵守[ducks-modular-redux][ducks-modular-redux]标准
-* 使用[dot-prop-immutable][dot-prop-immutable]更新嵌套数据
-* 使用[babel-plugin-react-css-modules][babel-plugin-react-css-modules]创建模块化样式
-
+- 遵守[eslint-config-react-impression][eslint-config-react-impression]规范
+- 使用[redux-actions][redux-actions]创建`Flux Standard Action`
+- 遵守[ducks-modular-redux][ducks-modular-redux]标准
+- 使用[dot-prop-immutable][dot-prop-immutable]更新嵌套数据
+- 使用[babel-plugin-react-css-modules][babel-plugin-react-css-modules]创建模块化样式
 
 ## License
 

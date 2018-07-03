@@ -10,7 +10,7 @@ class Home extends Component {
     total: PropTypes.number,
     increment: PropTypes.func,
     decrement: PropTypes.func,
-  };
+  }
 
   componentDidMount() {
     Notification.info({
@@ -35,4 +35,7 @@ const mapStateToProps = state => ({ total: state.home.total })
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)
