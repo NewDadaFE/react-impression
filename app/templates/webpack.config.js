@@ -111,10 +111,6 @@ const development = {
     hot: true,
     historyApiFallback: true,
     stats: 'errors-only',
-    overlay: {
-      errors: true,
-      warnings: true,
-    },
     proxy: config.proxy || {},
   },
   plugins: [
