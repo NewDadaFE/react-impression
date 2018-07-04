@@ -3,13 +3,10 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import omit from 'omit.js'
 import KeyCode from '../../utils/keyCode'
-import calcTextAreaHeight from './calcTextAreaHeight'
 
 export default class Input extends PureComponent {
   // prop type校验
   static propTypes = {
-    // 类型
-    type: PropTypes.string,
     // 自定义样式
     className: PropTypes.string,
     // 尺寸
@@ -30,20 +27,10 @@ export default class Input extends PureComponent {
     onKeyEnter: PropTypes.func,
     // 是否椭圆形
     pill: PropTypes.bool,
-    // 自适应高 适用textarea
-    autoResize: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    // 列数
-    rows: PropTypes.number,
   }
   // 默认props
   static defaultProps = {
-    type: 'text',
     disabled: false,
-    rows: 2,
-  }
-
-  state = {
-    computedStyle: {},
   }
 
   getInputClassName() {
@@ -58,7 +45,7 @@ export default class Input extends PureComponent {
   saveInput = input => {
     this.refMain = input
   }
-
+  /* Instance Methods */
   focus() {
     this.refMain.focus()
   }
@@ -81,27 +68,6 @@ export default class Input extends PureComponent {
       onKeyEnter(this.getValue(), e)
       this.refMain.focus()
     }
-  }
-
-  handleTextAreaChange = e => {
-    const { onChange } = this.props
-    if (onChange) {
-      onChange(this.getValue(), e)
-    }
-    this.resizeTextArea()
-  }
-
-  resizeTextArea = () => {
-    const { autoResize, type } = this.props
-    if (!autoResize || !this.refMain || type !== 'textarea') {
-      return
-    }
-
-    const minRows = autoResize.minRows || null
-    const maxRows = autoResize.maxRows || null
-    const computedStyle = calcTextAreaHeight(this.refMain, minRows, maxRows)
-
-    this.setState({ computedStyle })
   }
 
   renderAuffix = children => {
@@ -145,39 +111,13 @@ export default class Input extends PureComponent {
     )
   }
 
-  componentDidMount() {
-    this.resizeTextArea()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (
-      this.props.value !== nextProps.value &&
-      this.props.type === 'textarea'
-    ) {
-      let resizeFunc = this.resizeTextArea
-
-      if (this.resizeTextAreaId) {
-        if (window.cancelAnimationFrame) {
-          window.cancelAnimationFrame(resizeFunc)
-        } else {
-          window.clearTimeout(resizeFunc)
-        }
-      }
-      this.resizeTextAreaId = window.requestAnimationFrame
-        ? window.requestAnimationFrame(resizeFunc)
-        : window.setTimeout(resizeFunc, 1000 / 60)
-    }
-  }
-
   render() {
-    const { value, className, onChange, pill, type, style, rows } = this.props
+    const { value, className, onChange, pill, style } = this.props
     const finalProps = omit(this.props, [
       'prefix',
       'suffix',
       'onKeyEnter',
       'pill',
-      'autoResize',
-      'rows',
     ])
     const pillClass = pill ? 'input-pill' : null
 
@@ -188,11 +128,6 @@ export default class Input extends PureComponent {
       }
       finalProps.value = finalValue
       delete finalProps.defaultValue
-    }
-
-    const computedStyle = {
-      ...style,
-      ...this.state.computedStyle,
     }
 
     const inputNode = (
@@ -212,21 +147,7 @@ export default class Input extends PureComponent {
       />
     )
 
-    if (type === 'textarea') {
-      return (
-        <textarea
-          {...finalProps}
-          ref={this.saveInput}
-          rows={rows}
-          className={classnames('input textarea form-control', className)}
-          style={computedStyle}
-          onKeyDown={this.handleKeyDown}
-          onChange={this.handleTextAreaChange}
-        />
-      )
-    } else {
-      return this.renderAuffix(inputNode)
-    }
+    return this.renderAuffix(inputNode)
   }
 }
 
