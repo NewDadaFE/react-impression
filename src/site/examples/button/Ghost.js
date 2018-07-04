@@ -5,23 +5,23 @@ import { Button } from 'react-impression'
 const ButtonGhost = () => {
   return (
     <div>
-      <Button type='default' ghost>
+      <Button type='default' outline>
         default
       </Button>
-      <Button type='primary' ghost>
+      <Button type='primary' outline>
         primary
       </Button>
-      <Button type='danger' ghost>
-        danger
+      <Button type='secondary' outline>
+        secondary
       </Button>
     </div>
   )
 }
 /* sourceCode:end */
 
-ButtonGhost.title = '幽灵按钮'
+ButtonGhost.title = 'outline按钮'
 ButtonGhost.desc = `
-> 按钮有四种类型：主按钮、次按钮、虚线按钮、危险按钮。主按钮在同一个操作区域最多出现一次。
+> 三种类型的无背景色按钮。
 `
 
 export default ButtonGhost

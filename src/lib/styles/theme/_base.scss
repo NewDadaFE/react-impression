@@ -13,10 +13,10 @@
 
 // brand colors
 $brand-primary: #3399ff !default;
-$brand-secondary: #ff9900 !default;
+$brand-secondary: #f6c244 !default;
 $brand-info: #5bc0de !default;
 $brand-success: #33cc66 !default;
-$brand-warning: #ffad29 !default;
+$brand-warning: #f6c244 !default;
 $brand-danger: #ff3333 !default;
 $brand-pure: #ffffff !default;
 
@@ -71,7 +71,7 @@ $mark-bg:                        $body-bg !default;
 $component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
 
 // Disabled states
-$disabled-color: $gray-secondary !default;
+$disabled-color: $gray-lighter !default;
 $disabled-bg: #f1f1f1 !default;
 
 // Typography

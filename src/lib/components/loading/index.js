@@ -163,6 +163,7 @@ export default class Loading extends PureComponent {
 Loading.Addon = LoadingAddon
 
 Loading.show = ref => {
+  // 如果不传ref 一个页面中有多个Loading实例，_loading = this会等于最后一个创建的实例，导致调用结果跟预期不一致，所以多个实例要传ref
   if (!ref) return _loading.show()
   return ref.show()
 }

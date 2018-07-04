@@ -30,7 +30,7 @@ export default class Radio extends PureComponent {
 
   getValue() {
     let { value } = this.props // props内容
-    let { main } = this.refs // dom节点
+    let { main } = this // dom节点
 
     if (value === undefined) {
       return main.checked
@@ -39,9 +39,13 @@ export default class Radio extends PureComponent {
     return value
   }
   setValue(checked) {
-    let { main } = this.refs
+    let { main } = this
 
     main.checked = !!checked
+  }
+  // radio的ref
+  saveRadio = ref => {
+    this.main = ref
   }
 
   // 渲染
@@ -68,7 +72,7 @@ export default class Radio extends PureComponent {
       >
         <input
           name={name}
-          ref='main'
+          ref={this.saveRadio}
           type='radio'
           checked={checked}
           defaultChecked={defaultChecked}

@@ -49,8 +49,7 @@ const Button = props => {
 Button.propTypes = {
   // 自定义样式
   className: PropTypes.string,
-  // 样式（primary、default、danger）
-  // deprecated
+  // 样式（primary、default、secondary）
   theme: PropTypes.string,
   type: PropTypes.string,
   // click事件

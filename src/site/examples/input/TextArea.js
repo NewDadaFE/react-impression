@@ -4,7 +4,7 @@ import { Input, Row, Col } from 'react-impression'
 
 const TextArea = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <Input type='textarea' placeholder='Basic textarea' />
       </Col>

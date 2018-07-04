@@ -20,7 +20,6 @@ const inputAttrParams = [
   ['onChange', 'input改变回调函数', 'function', '-'],
   ['className', '自定义样式', 'string', '-'],
   ['pill', '是否为圆角', 'boolean', 'false'],
-  ['onIconClick', 'suffix图标存在时，点击触发函数', 'function', '-'],
 ]
 
 const textAreaAttrParams = [

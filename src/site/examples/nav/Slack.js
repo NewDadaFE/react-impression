@@ -5,7 +5,7 @@ import { Nav, Row, Col, Card } from 'react-impression'
 const NavBasic = () => {
   return (
     <Row>
-      <Col col='3'>
+      <Col col={3}>
         <Card>
           <Nav defaultActiveKey={2} type='pill' stacked>
             <Nav.Item eventKey={1}>Active</Nav.Item>

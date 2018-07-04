@@ -28,12 +28,7 @@ const checkBoxGroupAttrParams = [
   ['direction', '排列方向，可选值为 row、column', 'string', 'row'],
 ]
 
-const apiParams = [
-  [
-    'CheckBox.getValue(ref)/CheckBoxGroup.getValue(ref)',
-    'CheckBox/CheckBoxGroup的value',
-  ],
-]
+const apiParams = [['ref.getValue()', 'CheckBox/CheckBoxGroup获取value']]
 
 const checkBoxAttrTable = transfer(checkBoxAttrParams)
 const checkBoxGroupAttrTable = transfer(checkBoxGroupAttrParams)

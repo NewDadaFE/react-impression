@@ -16,7 +16,7 @@
     height: 3px;
     background-color: $nav-line-active-link-border-bottom-color;
     z-index: 1;
-    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    transition: transform .3s $ease-in-out, width .3s $ease-in-out;
     list-style: none;
   }
 }

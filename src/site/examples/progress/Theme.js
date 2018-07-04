@@ -7,22 +7,22 @@ const Theme = () => {
     <div>
       <Row>
         <Col>
-          <Progress percent='20' />
+          <Progress value={20} />
         </Col>
       </Row>
       <Row>
         <Col>
-          <Progress percent='30' theme='success' />
+          <Progress value={30} theme='success' />
         </Col>
       </Row>
       <Row>
         <Col>
-          <Progress percent='40' theme='warning' />
+          <Progress value={40} theme='warning' />
         </Col>
       </Row>
       <Row>
         <Col>
-          <Progress percent='50' theme='danger' />
+          <Progress value={50} theme='danger' />
         </Col>
       </Row>
     </div>

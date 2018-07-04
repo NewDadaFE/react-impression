@@ -7,23 +7,23 @@ const Offset = () => {
   return (
     <div>
       <Row>
-        <Col col='4'>
+        <Col col={4}>
           <div className={styles['demo-col-on']}>col-4</div>
         </Col>
-        <Col col='4' offset='4'>
+        <Col col={4} offset={4}>
           <div className={styles['demo-col-on']}>col-4 offset-4</div>
         </Col>
       </Row>
       <Row>
-        <Col col='3' offset='3'>
+        <Col col={3} offset={3}>
           <div className={styles['demo-col-on']}>col-3 offset-3</div>
         </Col>
-        <Col col='3' offset='3'>
+        <Col col={3} offset={3}>
           <div className={styles['demo-col-on']}>col-3 offset-3</div>
         </Col>
       </Row>
       <Row>
-        <Col col='6' offset='3'>
+        <Col col={6} offset={3}>
           <div styleName='demo-col-on'> col-6 offset-3</div>
         </Col>
       </Row>

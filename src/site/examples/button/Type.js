@@ -7,8 +7,7 @@ const ButtonType = () => {
     <div>
       <Button type='default'>default</Button>
       <Button type='primary'>primary</Button>
-      <Button type='danger'>danger</Button>
-      <Button type='warning'>warning</Button>
+      <Button type='secondary'>secondary</Button>
     </div>
   )
 }
@@ -16,7 +15,7 @@ const ButtonType = () => {
 
 ButtonType.title = '按钮类型'
 ButtonType.desc = `
-> 按钮有三种类型：默认按钮、主按钮、危险按钮。
+> 按钮有三种类型：默认按钮、主按钮、辅助颜色按钮。
 主按钮在同一个操作区域最多出现一次。
 `
 

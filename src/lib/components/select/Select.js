@@ -3,7 +3,6 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { debounce } from 'throttle-debounce'
 import * as PopManager from '../../utils/pop'
 import { Input, Icon } from 'react-impression'
 import View from '../../utils/View'
@@ -19,9 +18,8 @@ export default class Select extends PureComponent {
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
-    this.debouncedOnInputChange = debounce(this.debounce(), () => {
-      this.onInputChange()
-    })
+    // icon的type
+    this.iconClass = ''
 
     this.state = {
       showOption: false,
@@ -29,10 +27,10 @@ export default class Select extends PureComponent {
       // 展示在input上的label值，可以随着可筛选状态下input变化而变化
       selectedLabel: '',
       // 已选选项的节点
-      selected: undefined,
-      // 筛选状态下inpu的值
+      selected: null,
+      // 筛选状态下input的值
       query: '',
-      inputHovering: false,
+      isInputHover: false,
       // 选项节点的数组
       options: [],
       // filterable模式下符合条件的筛选项数量
@@ -64,24 +62,24 @@ export default class Select extends PureComponent {
     filterable: PropTypes.bool,
     // 是否可清除
     clearable: PropTypes.bool,
-    // 清除选项的时候
-    onClear: PropTypes.func,
     // 选项显示与否变化时触发
     onVisibleChange: PropTypes.func,
     // 自定义过滤方法
     filterMethod: PropTypes.func,
+    // 无匹配文字
+    noMatchText: PropTypes.string,
+    // 无选项文字
+    noOptionsText: PropTypes.string,
   }
   // 默认props
   static defaultProps = {
-    size: 'lg',
+    size: 'default',
     disabled: false,
     placeholder: '请选择',
     filterable: false,
     clearable: false,
-  }
-
-  debounce() {
-    return 150
+    noMatchText: '无匹配选项',
+    noOptionsText: '无选项',
   }
 
   getValue() {
@@ -129,15 +127,13 @@ export default class Select extends PureComponent {
     let { query, selected, selectedLabel, value, options } = this.state
 
     if (state.value !== value) {
-      let option = options.filter(
-        option => option.props.value === state.value
-      )[0]
+      let option = options.find(option => option.props.value === state.value)
 
       if (option) {
         selected = option
         selectedLabel = option.getLabel()
       } else {
-        selected = {}
+        selected = null
         selectedLabel = ''
       }
       this.setState({ selected, selectedLabel })
@@ -153,7 +149,7 @@ export default class Select extends PureComponent {
   }
 
   handleQueryChange(state) {
-    let { optionsCount, options } = this.state
+    const { optionsCount, options } = this.state
     const { filterMethod } = this.props
 
     this.setState(
@@ -170,7 +166,8 @@ export default class Select extends PureComponent {
   }
 
   handleVisibleChange(props, state) {
-    let { value, selected, selectedLabel, query, filterable } = this.state
+    let { value, selected, selectedLabel, query } = this.state
+    const { filterable } = this.props
 
     if (
       !state.showOption &&
@@ -202,9 +199,10 @@ export default class Select extends PureComponent {
         : this.props.value
       : this.state.value
 
-    const selected = this.state.options.filter(option => {
+    const selected = this.state.options.find(option => {
       return option.props && option.props.value === originValue
-    })[0]
+    })
+
     let dataToSet
 
     if (selected && selected.props) {
@@ -214,7 +212,7 @@ export default class Select extends PureComponent {
       }
     } else {
       dataToSet = {
-        selected: {},
+        selected: null,
         selectedLabel: '',
       }
     }
@@ -222,7 +220,7 @@ export default class Select extends PureComponent {
     this.setState(dataToSet)
   }
 
-  onInputChange() {
+  onInputChange = () => {
     if (
       this.props.filterable &&
       this.state.selectedLabel !== this.state.value
@@ -236,8 +234,8 @@ export default class Select extends PureComponent {
   onOptionCreate(option) {
     // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
     this.state.options.push(option)
-    this.state.optionsCount++
-    this.state.filteredOptionsCount++
+    this.state.optionsCount += 1
+    this.state.filteredOptionsCount += 1
 
     this.forceUpdate()
     this.handleValueChange()
@@ -246,8 +244,8 @@ export default class Select extends PureComponent {
   onOptionDestroy(option) {
     const { options } = this.state
     // 此处不用setstate，因为会调用多次，直接修改之后forceUpdate
-    this.state.optionsCount++
-    this.state.filteredOptionsCount++
+    this.state.optionsCount += 1
+    this.state.filteredOptionsCount += 1
 
     const index = options.indexOf(option)
     if (index > -1) {
@@ -261,26 +259,33 @@ export default class Select extends PureComponent {
   // 隐藏菜单
   hideOptionsHandle = () => this.setState({ showOption: false })
 
+  // 储存iconClass
+  get isShowClose() {
+    return (
+      this.props.clearable &&
+      this.state.isInputHover &&
+      this.state.selectedLabel !== ''
+    )
+  }
+
   /*
   * 返回select右侧icon
   * */
   getIcon = () => {
-    const isShowClose =
-      this.props.clearable &&
-      this.state.inputHovering &&
-      this.state.selectedLabel !== ''
-    this.iconClass = isShowClose ? 'times-circle' : 'angle-down'
-    return <Icon type={this.iconClass} className='select-addon' />
+    this.iconClass = this.isShowClose ? 'times-circle' : 'angle-down'
+    return (
+      <Icon
+        type={this.iconClass}
+        className='select-addon'
+        onClick={this.handleIconClick}
+      />
+    )
   }
 
   // 显示/隐藏菜单
   toggleOptionsHandle = () => {
-    const { filterable, disabled } = this.props
-    const { query, showOption } = this.state
-
-    if (filterable && query === '' && showOption) {
-      return
-    }
+    const { disabled } = this.props
+    const { showOption } = this.state
 
     !disabled &&
       this.setState({
@@ -288,7 +293,7 @@ export default class Select extends PureComponent {
       })
   }
 
-  handleIconClick(value, event) {
+  handleIconClick = event => {
     if (this.iconClass.indexOf('times-circle') > -1) {
       this.deleteSelected(event)
     } else {
@@ -307,17 +312,13 @@ export default class Select extends PureComponent {
       if (!this.isPuppet) {
         dataToSet.value = ''
         dataToSet.selectedLabel = ''
-        dataToSet.selected = {}
+        dataToSet.selected = null
       }
 
       this.setState(dataToSet)
 
       if (this.props.onChange) {
         this.props.onChange('')
-      }
-
-      if (this.props.onClear) {
-        this.props.onClear()
       }
     }
   }
@@ -327,8 +328,8 @@ export default class Select extends PureComponent {
    * @param  {[Object]} result [值]
    */
   selectOptionHandle = result => {
-    let { onChange } = this.props
-    const originValue = this.isPuppet ? this.props.value : this.state.value
+    const { onChange, value } = this.props
+    const originValue = this.isPuppet ? value : this.state.value
 
     // 木偶组件
     if (!this.isPuppet) {
@@ -357,42 +358,48 @@ export default class Select extends PureComponent {
 
   onMouseEnter = () => {
     this.setState({
-      inputHovering: true,
+      isInputHover: true,
     })
   }
 
   onMouseLeave = () => {
     this.setState({
-      inputHovering: false,
+      isInputHover: false,
     })
   }
 
   getEmptyText = () => {
-    const { filterable } = this.props
+    const { filterable, noMatchText, noOptionsText } = this.props
     const { filteredOptionsCount, options } = this.state
 
     if (filterable && filteredOptionsCount === 0) {
-      return '无匹配数据'
+      return noMatchText
     }
 
     if (options.length === 0) {
-      return '无选项'
+      return noOptionsText
     }
 
     return null
   }
 
   render() {
-    let {
-        placeholder,
-        disabled,
-        style,
-        className,
-        children,
-        filterable,
-        size,
-      } = this.props,
-      { showOption, selectedLabel, options, filteredOptionsCount } = this.state
+    const {
+      placeholder,
+      disabled,
+      style,
+      className,
+      children,
+      filterable,
+      size,
+    } = this.props
+
+    const {
+      showOption,
+      selectedLabel,
+      options,
+      filteredOptionsCount,
+    } = this.state
 
     return (
       <div
@@ -407,18 +414,16 @@ export default class Select extends PureComponent {
       >
         <Input
           className='select-selection'
-          ref='main'
           size={size}
           value={selectedLabel}
           type='text'
           placeholder={placeholder}
           disabled={disabled}
           readOnly={!filterable}
-          suffix={this.getIcon() || undefined}
+          suffix={this.getIcon()}
           onChange={value => this.setState({ selectedLabel: value })}
-          onKeyUp={this.debouncedOnInputChange}
+          onKeyUp={this.onInputChange}
           onClick={this.toggleOptionsHandle}
-          onIconClick={this.handleIconClick.bind(this)}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
         />

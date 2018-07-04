@@ -3,12 +3,10 @@ import React from 'react'
 import { Input, Icon } from 'react-impression'
 
 const Auffix = () => {
-  const searchHandle = e => {
-    console.log(e)
-  }
+  const searchHandle = () => {}
 
   const prefix = <Icon type='address-book' />
-  const suffixIcon = <Icon type='search' />
+  const suffixIcon = <Icon type='search' onClick={searchHandle} />
 
   return (
     <div>
@@ -17,7 +15,6 @@ const Auffix = () => {
         placeholder='search icon'
         suffix={suffixIcon}
         prefix={prefix}
-        onIconClick={searchHandle}
       />
     </div>
   )

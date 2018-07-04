@@ -4,7 +4,7 @@ import { Card, Row, Col, Image } from 'react-impression'
 
 const TextAlign = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <Card>
           <Image fluid src='http://placehold.it/350x200' />

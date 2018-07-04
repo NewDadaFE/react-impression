@@ -1,5 +1,7 @@
 // Loading
-$loading-mask-bg:                             rgba($mask-bg, .8) !default;
+$loading-mask-bg:                             rgba($mask-bg, .6) !default;
+$loding-left:                                 $sidebar-width !default;
+$loading-top:                                 0 !default;
 
 $loading-color:                               $brand-primary !default;
 $loading-width:                               80px !default;

@@ -31,7 +31,7 @@ const Type = () => {
         </Col>
       </Row>
       <Row>
-        <Col col='12'>
+        <Col col={12}>
           <Attention theme='danger'>
             <strong>Oh snap!</strong>
             Change a few things up and try submitting again.

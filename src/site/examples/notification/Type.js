@@ -44,13 +44,13 @@ const NotificationType = () => {
           </Button>
         </Col>
         <Col>
-          <Button theme='default' onClick={addWarningNotice}>
-            <span className='text-warning'>警告</span>
+          <Button theme='secondary' onClick={addWarningNotice}>
+            警告
           </Button>
         </Col>
         <Col>
-          <Button theme='danger' onClick={addErrorNotice}>
-            <span>错误</span>
+          <Button theme='default' onClick={addErrorNotice}>
+            <span className='text-danger'>错误</span>
           </Button>
         </Col>
       </Row>

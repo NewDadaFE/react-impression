@@ -34,17 +34,21 @@ class Theme extends Component {
       <div>
         <Row>
           <Col>
-            <Button theme='warning' outline onClick={this.toggleConfirm1Handle}>
+            <Button
+              theme='secondary'
+              outline
+              onClick={this.toggleConfirm1Handle}
+            >
               warning
             </Button>
           </Col>
           <Col>
-            <Button theme='danger' outline onClick={this.toggleConfirm2Handle}>
-              danger
+            <Button theme='default' outline onClick={this.toggleConfirm2Handle}>
+              <span className='text-danger'>danger</span>
             </Button>
           </Col>
           <Col>
-            <Button theme='primary' onClick={this.toggleConfirm3Handle}>
+            <Button theme='primary' outline onClick={this.toggleConfirm3Handle}>
               info
             </Button>
           </Col>

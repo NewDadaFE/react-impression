@@ -38,13 +38,13 @@ const MessageType = () => {
           </Button>
         </Col>
         <Col>
-          <Button theme='default' outline onClick={showWarningMessageHandle}>
-            <span className='text-warning'>警告</span>
+          <Button theme='secondary' outline onClick={showWarningMessageHandle}>
+            警告
           </Button>
         </Col>
         <Col>
-          <Button type='danger' onClick={showErrorMessageHandle}>
-            错误
+          <Button theme='default' onClick={showErrorMessageHandle}>
+            <span className='text-danger'>错误</span>
           </Button>
         </Col>
         <Col>

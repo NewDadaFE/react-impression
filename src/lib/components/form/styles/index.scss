@@ -37,7 +37,7 @@ form {
 .form-control-legend {
   padding: 0 $input-padding-x;
   margin-bottom: 0;
-  font-size: $font-size-base;
+  font-size: $font-size-root;
 }
 
 // Form item
@@ -46,7 +46,7 @@ form {
 // horizontal forms, use the predefined grid classes.
 
 .form-item {
-  line-height: $input-height-base;
+  line-height: $input-height-base - 2px;
   vertical-align: middle;
   margin-bottom: $form-item-margin-bottom;
 

@@ -30,8 +30,6 @@ export default class Input extends PureComponent {
     onKeyEnter: PropTypes.func,
     // 是否椭圆形
     pill: PropTypes.bool,
-    // suffix图标点击时候触发
-    onIconClick: PropTypes.func,
     // 自适应高 适用textarea
     autoResize: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     // 列数
@@ -106,12 +104,6 @@ export default class Input extends PureComponent {
     this.setState({ computedStyle })
   }
 
-  handleIconClick = event => {
-    if (this.props.onIconClick && !this.props.disabled) {
-      this.props.onIconClick(this.getValue(), event)
-    }
-  }
-
   renderAuffix = children => {
     const { props } = this
     if (!('prefix' in props) && !('suffix' in props)) {
@@ -184,7 +176,6 @@ export default class Input extends PureComponent {
       'suffix',
       'onKeyEnter',
       'pill',
-      'onIconClick',
       'autoResize',
       'rows',
     ])

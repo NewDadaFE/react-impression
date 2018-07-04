@@ -6,7 +6,7 @@
   display: inline-block;
   width: 100%;
   padding: $input-padding-y $input-padding-x;
-  font-size: $font-size-base;
+  font-size: $font-size-root;
   height: $input-height-base;
   line-height: $input-line-height;
   color: $input-color;
@@ -49,6 +49,7 @@
   }
 
   &:hover:not([disabled]) {
+    z-index: 1;
     border-color: $input-border-hover-color;
   }
 
@@ -80,6 +81,7 @@
   width: 100%;
 
   &:hover .input:not([disabled]) {
+    z-index: 1;
     border-color: $input-border-hover-color;
   }
 

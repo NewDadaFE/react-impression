@@ -28,9 +28,7 @@ const radioGroupAttrParams = [
   ['direction', '排列方向，可选值为 row、column', 'string', 'row'],
 ]
 
-const apiParams = [
-  ['Radio.getValue(ref)/RadioGroup.getValue(ref)', 'Radio/RadioGroup的value'],
-]
+const apiParams = [['ref.getValue()', 'Radio/RadioGroup获取value']]
 
 const radioAttrTable = transfer(radioAttrParams)
 const radioGroupAttrTable = transfer(radioGroupAttrParams)

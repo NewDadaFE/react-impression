@@ -41,7 +41,12 @@ class Clearable extends PureComponent {
 
   render() {
     return (
-      <Select value={this.state.value} onChange={this.onChange} clearable>
+      <Select
+        value={this.state.value}
+        onChange={this.onChange}
+        clearable
+        filterable
+      >
         {this.state.options.map(el => {
           return (
             <Select.Option key={el.value} label={el.label} value={el.value} />

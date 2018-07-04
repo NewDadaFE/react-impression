@@ -1,7 +1,7 @@
 // Buttons
 
 // basic
-$btn-line-height: 1.25rem !default;
+$btn-line-height: 1.5 !default;
 $btn-pill-radius: 200px !default;
 $btn-transition: all .2s cubic-bezier(.4, 0, .2, 1) !default;
 $btn-active-box-shadow: 0 2px 6px rgba(0, 0, 0, .24),
@@ -12,13 +12,9 @@ $btn-primary-color: $text-color-muted !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: $brand-primary !default;
 
-$btn-warning-color: $text-color-muted !default;
-$btn-warning-bg: $brand-warning !default;
-$btn-warning-border: $brand-warning !default;
-
-$btn-danger-color: $text-color-muted !default;
-$btn-danger-bg: $brand-danger !default;
-$btn-danger-border: $brand-danger !default;
+$btn-secondary-color: $text-color-muted !default;
+$btn-secondary-bg: $brand-secondary !default;
+$btn-secondary-border: $brand-secondary !default;
 
 $btn-default-color: $text-color-primary !default;
 $btn-default-bg: $brand-pure !default;
@@ -26,7 +22,7 @@ $btn-default-border: $gray-lighter !default;
 
 $btn-disable-color      : $disabled-color !default;
 $btn-disable-bg         : $disabled-bg !default;
-$btn-disable-border     : $btn-default-border !default;
+$btn-disable-border     : $disabled-bg !default;
 
 // size
 $btn-padding-x-sm: 16px !default;
@@ -44,7 +40,6 @@ $btn-icon-margin-right-md: 6px !default;
 $btn-border-radius-md: 4px !default;
 
 $btn-padding-x-lg: 26px !default;
-$btn-padding-y-lg: 8px !default;
 $btn-font-size-lg: 16px !default;
 $btn-height-lg: 40px;
 $btn-icon-margin-right-lg: 6px !default;

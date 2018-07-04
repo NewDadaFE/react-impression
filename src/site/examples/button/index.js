@@ -14,11 +14,11 @@ import styles from './index.scss'
 const attrParams = [
   [
     'theme',
-    '设置按钮的样式，可选值为 primary、default、danger',
+    '设置按钮的样式，可选值为 default、primary、secondary',
     'string',
     'primary',
   ],
-  ['ghost', '幽灵属性，使按钮背景透明', 'boolean', 'false'],
+  ['outline', '只有外边框的属性，使按钮背景透明', 'boolean', 'false'],
   [
     'size',
     '设置按钮大小，可选值为 sm、lg、md 若不设置 size，则尺寸为中',

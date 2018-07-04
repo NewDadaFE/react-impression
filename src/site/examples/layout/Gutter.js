@@ -5,7 +5,7 @@ import styles from './index.scss'
 
 const Gutter = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <div className={styles['demo-col-on']}>Col</div>
       </Col>

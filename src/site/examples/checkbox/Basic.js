@@ -2,10 +2,13 @@
 import React from 'react'
 import { Checkbox } from 'react-impression'
 
+const onChange = (event, label) => {
+  console.log(event.target.checked)
+}
 const CheckBoxBasic = () => {
   return (
     <div>
-      <Checkbox>CheckBox</Checkbox>
+      <Checkbox onChange={onChange}>CheckBox</Checkbox>
     </div>
   )
 }

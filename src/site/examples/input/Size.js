@@ -4,7 +4,7 @@ import { Input, Row, Col } from 'react-impression'
 
 const Size = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <Input size='lg' placeholder='lg size' />
       </Col>

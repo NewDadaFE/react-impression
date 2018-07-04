@@ -49,10 +49,10 @@ const Col = ({ col, offset, push, pull, children, className, ...others }) => {
 
 Col.propTypes = {
   // 所占比例
-  col: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  push: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  pull: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  col: PropTypes.number,
+  offset: PropTypes.number,
+  push: PropTypes.number,
+  pull: PropTypes.number,
   children: PropTypes.any,
   className: PropTypes.string,
 }

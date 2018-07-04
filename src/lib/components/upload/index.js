@@ -35,17 +35,22 @@ export default class Upload extends PureComponent {
       file: '',
     }
   }
+
+  saveUpload = ref => {
+    this.main = ref
+  }
+
   getValue() {
-    return this.refs.main.files[0]
+    return this.main.files[0]
   }
   setValue(value) {
-    this.refs.main.files[0] = value
+    this.main.files[0] = value
   }
   /**
    * 打开文件浏览器对话框.
    */
   openFileDialogHandle = () => {
-    this.refs.main.click()
+    this.main.click()
   }
   /**
    * 设置文件名.
@@ -111,7 +116,11 @@ export default class Upload extends PureComponent {
         <div className='upload-preview' onClick={this.openFileDialogHandle}>
           {children || <Icon type='camera' className='upload-preview-addon' />}
           <span className='upload-preview-text'>{message}</span>
-          <input type='file' ref='main' onChange={this.imagePreviewHandle} />
+          <input
+            type='file'
+            ref={this.saveUpload}
+            onChange={this.imagePreviewHandle}
+          />
           {computedImageUrl && (
             <div
               className='upload-preview-img'
@@ -129,7 +138,11 @@ export default class Upload extends PureComponent {
         className={classnames('input-group-upload', className)}
       >
         <Input placeholder={placeholder} disabled value={file} />
-        <input type='file' ref='main' onChange={this.fileChangeHandle} />
+        <input
+          type='file'
+          ref={this.saveUpload}
+          onChange={this.fileChangeHandle}
+        />
         <InputGroup.Button
           ghost
           theme={btnType}

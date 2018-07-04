@@ -4,6 +4,7 @@ import Card from '@/site/components/Card'
 import Button from './Button'
 import Addon from './Addon'
 import Size from './Size'
+import SelectAddon from './SelectAddon'
 import { Breadcrumb } from 'react-impression'
 import Wrapper from '../../components/ExampleWrapper'
 import MarkdownPreview from '../../components/MarkdownPreview/index'
@@ -44,6 +45,7 @@ const InputGroupExample = ({ routes, params }) => {
         <Card component={Button} />
         <Card component={Size} />
         <Card component={Addon} />
+        <Card component={SelectAddon} />
         <MarkdownPreview markdown={groupAttrTable} name='InputGroup API' />
         <MarkdownPreview
           markdown={addonAttrTable}

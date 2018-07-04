@@ -8,7 +8,7 @@ const onChangeHandle = e => {
 
 const Basic = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <Upload placeholder='请上传资质证明' onChange={onChangeHandle} />
       </Col>

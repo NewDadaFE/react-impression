@@ -23,10 +23,9 @@ export default class Progress extends PureComponent {
     // 斑马线
     striped: PropTypes.bool,
     // 值
-    percent: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-      .isRequired,
+    value: PropTypes.number,
     // progress 宽度
-    strokeWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    strokeWidth: PropTypes.number,
     // 是否显示进度信息
     showInfo: PropTypes.bool,
     // 信息显示方式，function
@@ -46,7 +45,7 @@ export default class Progress extends PureComponent {
     let {
         theme,
         striped,
-        percent,
+        value,
         className,
         strokeWidth,
         showInfo,
@@ -58,7 +57,7 @@ export default class Progress extends PureComponent {
       showInfoClass = showInfo ? `${prefix}-show-info` : ''
 
     const percentStyle = {
-      width: `${getProgress(percent)}%`,
+      width: `${getProgress(value)}%`,
       height: strokeWidth || 12,
     }
 
@@ -79,7 +78,7 @@ export default class Progress extends PureComponent {
           </div>
         </div>
         {showInfo && (
-          <span className={`${prefix}-info`}>{formatter(percent)}</span>
+          <span className={`${prefix}-info`}>{formatter(value)}</span>
         )}
       </div>
     )

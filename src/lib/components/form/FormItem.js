@@ -16,7 +16,7 @@ const FormItem = ({ col, className, children, ...others }) => {
 
 FormItem.propTypes = {
   // 所占比例
-  col: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  col: PropTypes.number,
   // 自定义样式
   className: PropTypes.string,
   children: PropTypes.any,

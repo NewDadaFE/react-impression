@@ -36,18 +36,17 @@
     &:focus,
     &:active,
     &.active {
+      @content;
       color: $btn-disable-color;
-      background-color: $btn-disable-bg;
-      border-color: $btn-disable-border;
       box-shadow: none;
     }
   }
 }
 
 @mixin button-variant($color, $background, $border) {
-  $hover-color: desaturate($color, 20%);
-  $hover-background: desaturate($background, 20%);
-  $hover-border: desaturate($border, 20%);
+  $hover-color: lighten($color, 10%);
+  $hover-background: lighten($background, 10%);
+  $hover-border: lighten($border, 10%);
   $active-background: darken($background, 10%);
   $active-border: darken($border, 10%);
 
@@ -70,7 +69,10 @@
     background-image: none;
   }
 
-  @include button-disabled()
+  @include button-disabled {
+    background-color: $btn-disable-bg;
+    border-color: transparent;
+  }
 }
 
 @mixin button-outline-variant($color, $border-color) {
@@ -101,13 +103,17 @@
     }
   }
 
-  @include button-disabled()
+  @include button-disabled {
+    background-color: transparent;
+    border-color: $btn-disable-border;
+  }
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius, $height) {
-  padding: $padding-y $padding-x;
+@mixin button-size($btn-padding-x, $font-size, $border-radius, $height) {
+  padding: 0 $btn-padding-x;
   font-size: $font-size;
   border-radius: $border-radius;
   height: $height;
+  line-height: $height - 2px;
 }

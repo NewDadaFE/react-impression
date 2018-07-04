@@ -39,8 +39,8 @@ class Theme extends Component {
             </Button>
           </Col>
           <Col>
-            <Button theme='danger' outline onClick={this.toggleAlert2Handle}>
-              danger
+            <Button theme='default' outline onClick={this.toggleAlert2Handle}>
+              <span className='text-danger'>danger</span>
             </Button>
           </Col>
           <Col>

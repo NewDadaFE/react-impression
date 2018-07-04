@@ -11,20 +11,18 @@ import MarkdownPreview from '../../components/MarkdownPreview/index'
 import { transfer } from '../../utils/transferApiTable'
 
 const ColAttr = [
-  ['col', '所占比例', 'number、string', '-'],
-  ['offset', '栅格左侧的间隔格数，间隔内不可以有栅格', 'number、string', '-'],
-  ['push', '栅格向左偏移格数', 'number、string', '-'],
-  ['pull', '栅格向右偏移格数', 'number、string', '-'],
-  ['xs', '<544px 响应式栅格', 'number、string', '-'],
-  ['sm', '<768px 响应式栅格', 'number、string', '-'],
-  ['md', '<992px 响应式栅格', 'number、string', '-'],
-  ['lg', '<1200px 响应式栅格', 'number、string', '-'],
-  ['xl', '>=1200px 响应式栅格', 'number、string', '-'],
+  ['col', '所占比例', 'number', '-'],
+  ['offset', '栅格左侧的间隔格数，间隔内不可以有栅格', 'number', '-'],
+  ['push', '栅格向左偏移格数', 'number', '-'],
+  ['pull', '栅格向右偏移格数', 'number', '-'],
+  ['xs', '<544px 响应式栅格', 'number', '-'],
+  ['sm', '<768px 响应式栅格', 'number', '-'],
+  ['md', '<992px 响应式栅格', 'number', '-'],
+  ['lg', '<1200px 响应式栅格', 'number', '-'],
+  ['xl', '>=1200px 响应式栅格', 'number', '-'],
 ]
 
-const RowAttr = [
-  ['gutter', '栅格间隔，可以传入number或者string', 'string/number', '0'],
-]
+const RowAttr = [['gutter', '栅格间隔', 'number', '0']]
 
 const ColAttrTable = transfer(ColAttr)
 const RowAttrTable = transfer(RowAttr)

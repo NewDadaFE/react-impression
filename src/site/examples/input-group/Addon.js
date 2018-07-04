@@ -4,7 +4,7 @@ import { InputGroup, Row, Col, Input } from 'react-impression'
 
 const Addon = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <InputGroup>
           <InputGroup.Addon>@</InputGroup.Addon>
@@ -18,7 +18,7 @@ const Addon = () => {
         </InputGroup>
       </Col>
       <Col>
-        <InputGroup>
+        <InputGroup size='lg'>
           <InputGroup.Addon>@</InputGroup.Addon>
           <Input placeholder='something' />
           <InputGroup.Addon>@</InputGroup.Addon>

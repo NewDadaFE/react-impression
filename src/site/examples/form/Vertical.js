@@ -17,18 +17,18 @@ const Horizontal = () => {
       <Card.Block>
         <Form type='horizontal'>
           <Item>
-            <Col col='2' className='text-right'>
+            <Col col={2} className='text-right'>
               <Item.Label>Email:</Item.Label>
             </Col>
-            <Col col='10'>
+            <Col col={10}>
               <Input type='text' placeholder='Email' />
             </Col>
           </Item>
           <Item>
-            <Col col='2' className='text-right'>
+            <Col col={2} className='text-right'>
               <Item.Label>name:</Item.Label>
             </Col>
-            <Col col='10'>
+            <Col col={10}>
               <InputGroup>
                 <InputGroup.Addon>help</InputGroup.Addon>
                 <Input placeholder='something' style={{ width: '100px' }} />
@@ -36,18 +36,18 @@ const Horizontal = () => {
             </Col>
           </Item>
           <Item>
-            <Col col='2' className='text-right'>
+            <Col col={2} className='text-right'>
               <Item.Label>description:</Item.Label>
             </Col>
-            <Col col='10'>
+            <Col col={10}>
               <Input type='textarea' />
             </Col>
           </Item>
           <Item className='offset-b-lg'>
-            <Col col='2' className='text-right'>
+            <Col col={2} className='text-right'>
               <Item.Label>Radios:</Item.Label>
             </Col>
-            <Col col='10'>
+            <Col col={10}>
               <Radio.Group direction='column'>
                 <Radio>
                   Option one is this and that&mdash;be sure to include why
@@ -69,10 +69,10 @@ const Horizontal = () => {
             </Col>
           </Item>
           <Item>
-            <Col col='2' offset='2'>
+            <Col col={2} offset={2}>
               <Button theme='primary'>Sign in</Button>
             </Col>
-            <Col col='2'>
+            <Col col={2}>
               <Button theme='default'>Cancel</Button>
             </Col>
           </Item>

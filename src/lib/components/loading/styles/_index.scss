@@ -5,10 +5,10 @@
 
   &.full-screen {
     position: fixed;
-    top: 0;
+    top: $loading-top;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: $loding-left;
     z-index: $zindex-loading;
   }
 }

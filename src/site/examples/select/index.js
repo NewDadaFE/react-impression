@@ -24,6 +24,8 @@ const selectAttrParams = [
   ['clearable', '单选时是否可以清空选项', 'boolean', 'false'],
   ['filterable', '是否可搜索筛选', 'boolean', 'false'],
   ['filterMethod', '自定义筛选方法', 'function', '-'],
+  ['noMatchText', '筛选模式下无匹配选项文字', 'string', '无匹配选项'],
+  ['noOptionsText', '无选项时的显示文字', 'string', '无选项'],
 ]
 
 const selectEventsParams = [
@@ -32,7 +34,6 @@ const selectEventsParams = [
     '选中值发生变化时触发,回调参数为目前选中值，存在label则第二个参数为label',
   ],
   ['onVisibleChange', '下拉框显示改变时触发'],
-  ['onClear', '可清空状态下用户点击清空按钮时触'],
 ]
 
 const optionGroupParams = [

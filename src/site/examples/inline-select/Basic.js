@@ -30,10 +30,10 @@ class InlineSelectExample extends Component {
     return (
       <div>
         <Row>
-          <Col col='1' className='text-right'>
+          <Col col={1} className='text-right'>
             <strong>城市：</strong>
           </Col>
-          <Col col='11'>
+          <Col col={11}>
             <InlineSelect
               ref='city'
               defaultValue={this.state.city}
@@ -66,10 +66,10 @@ class InlineSelectExample extends Component {
           </Col>
         </Row>
         <Row>
-          <Col col='1' className='text-right'>
+          <Col col={1} className='text-right'>
             <strong>区域：</strong>
           </Col>
-          <Col col='11'>
+          <Col col={11}>
             <InlineSelect
               value={this.state.zone}
               onChange={this.selectZoneHandle}

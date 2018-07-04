@@ -7,7 +7,7 @@ const Theme = () => {
     <div>
       <Row>
         <Col>
-          <Progress percent='50' striped />
+          <Progress value={50} striped />
         </Col>
       </Row>
     </div>

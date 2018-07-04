@@ -11,8 +11,8 @@ import { transfer } from '../../utils/transferApiTable'
 const progressAttrParams = [
   ['theme', '设置进度条样式，可选值为 success、warning、danger', 'string', ''],
   ['striped', '是否为斑马线样式', 'boolean', 'false'],
-  ['percent', '进度值，必填', 'string、number', ''],
-  ['strokeWidth', '进度条宽度', 'string、number', '12px'],
+  ['value', '进度值,不填默认为0', 'number', ''],
+  ['strokeWidth', '进度条宽度', 'number', '12px'],
   ['showInfo', '进度条信息显示', 'boolean', 'true'],
   [
     'formatter',

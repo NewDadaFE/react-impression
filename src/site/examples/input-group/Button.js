@@ -4,7 +4,7 @@ import { InputGroup, Row, Col, Input } from 'react-impression'
 
 const Button = () => {
   return (
-    <Row gutter='12'>
+    <Row gutter={12}>
       <Col>
         <InputGroup>
           <InputGroup.Button theme='default'>help</InputGroup.Button>

@@ -1,5 +1,5 @@
 // Progress bars
 
 @mixin progress-variant($color) {
-  background-color: $color;
+  background-color: darken($color, 10%);
 }

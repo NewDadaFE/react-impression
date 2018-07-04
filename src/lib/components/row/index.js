@@ -9,7 +9,7 @@ export default class Row extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.any,
-    gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    gutter: PropTypes.number,
     style: PropTypes.object,
   }
   /**

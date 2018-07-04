@@ -69,13 +69,13 @@
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  @include input-size($input-padding-y-lg, $input-padding-x-lg, $font-size-lg, $input-height-lg, $input-border-radius-lg);
+  @include button-size($btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg, $btn-height-lg);
 }
 
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  @include input-size($input-padding-y-sm, $input-padding-x-sm, $font-size-sm, $input-height-sm, $input-border-radius-sm);
+  @include button-size($btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm, $btn-height-sm);
 }
 
 
@@ -84,12 +84,12 @@
 //
 
 .input-group-addon {
-  padding: $input-padding-y $input-padding-x;
+  padding: 0 $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
-  font-size: $font-size-base;
+  font-size: $font-size-root;
   font-weight: normal;
   height: $input-height-base;
-  line-height: $input-line-height;
+  line-height: $input-height-base - 2px;
   color: $input-group-addon-color;
   text-align: center;
   background-color: $input-group-addon-bg;
