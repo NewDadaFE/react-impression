@@ -1,1 +1,1 @@
-export default from './components/TimelineItem'
+export default from './TimelineItem'

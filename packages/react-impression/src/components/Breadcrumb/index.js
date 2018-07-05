@@ -1,1 +1,1 @@
-export default from './components/Breadcrumb'
+export default from './Breadcrumb'

@@ -1,1 +1,1 @@
-export default from './components/CollapseTitle'
+export default from './CollapseTitle'

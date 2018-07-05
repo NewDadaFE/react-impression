@@ -1,1 +1,1 @@
-export default from './components/Attention'
+export default from './Attention'

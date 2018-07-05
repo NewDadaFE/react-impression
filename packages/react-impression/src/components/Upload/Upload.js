@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Icon from './Icon';
+import Icon from '../Icon';
 
 /**
  * 上传组件.

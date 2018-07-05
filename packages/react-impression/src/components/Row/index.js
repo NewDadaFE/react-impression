@@ -1,1 +1,1 @@
-export default from './components/Row'
+export default from './Row'

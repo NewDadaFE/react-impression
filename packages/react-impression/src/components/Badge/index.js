@@ -1,1 +1,1 @@
-export default from './components/Badge'
+export default from './Badge'

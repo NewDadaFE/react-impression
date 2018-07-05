@@ -1,1 +1,1 @@
-export default from './components/Dropdown'
+export default from './Dropdown'

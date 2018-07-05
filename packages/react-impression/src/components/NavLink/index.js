@@ -1,1 +1,1 @@
-export default from './components/NavLink'
+export default from './NavLink'

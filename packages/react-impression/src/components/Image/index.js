@@ -1,1 +1,1 @@
-export default from './components/Image'
+export default from './Image'

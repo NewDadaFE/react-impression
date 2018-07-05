@@ -1,1 +1,1 @@
-export default from './components/CollapseBody'
+export default from './CollapseBody'

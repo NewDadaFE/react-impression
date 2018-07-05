@@ -1,1 +1,1 @@
-export default from './components/ModalBody'
+export default from './ModalBody'

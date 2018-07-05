@@ -1,1 +1,1 @@
-export default from './components/InlineSelect'
+export default from './InlineSelect'

@@ -1,1 +1,1 @@
-export default from './components/InputGroup'
+export default from './InputGroup'

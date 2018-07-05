@@ -1,1 +1,1 @@
-export default from './components/Loading'
+export default from './Loading'

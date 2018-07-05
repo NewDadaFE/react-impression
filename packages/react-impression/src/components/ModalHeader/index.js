@@ -1,1 +1,1 @@
-export default from './components/ModalHeader'
+export default from './ModalHeader'

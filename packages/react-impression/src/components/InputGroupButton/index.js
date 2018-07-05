@@ -1,1 +1,1 @@
-export default from './components/InputGroupButton'
+export default from './InputGroupButton'

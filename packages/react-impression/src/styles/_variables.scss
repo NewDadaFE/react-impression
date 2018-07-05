@@ -475,7 +475,8 @@ $sidebar-width:                                 16% !default;
 $sidebar-color:                                 $gray-light !default;
 $sidebar-bg:                                    $gray-secondary !default;
 
-$sidebar-header-bg:                             url(../images/logo.png) center center no-repeat !default;
+// $sidebar-header-bg:                             url(../images/logo.png) center center no-repeat !default;
+$sidebar-header-bg:                             none !default;
 $sidebar-header-bg-color:                       mix($sidebar-bg, $navbar-primary-bg, 90%) !default;
 $sidebar-header-bottom-border-color:            darken($sidebar-header-bg-color, 6%) !default;
 $sidebar-header-font-size:                      $font-size-lg !default;
@@ -1083,6 +1084,3 @@ $ps-scrollbar-y-rail-width: 15px !default;
 $ps-scrollbar-y-right: 2px !default;
 $ps-scrollbar-y-width: 6px !default;
 $ps-scrollbar-y-hover-width: 11px !default;
-
-
-

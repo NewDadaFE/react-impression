@@ -1,1 +1,1 @@
-export default from './components/Notice'
+export default from './Notice'

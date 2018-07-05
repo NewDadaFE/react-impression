@@ -1,1 +1,1 @@
-export default from './components/Radio'
+export default from './Radio'

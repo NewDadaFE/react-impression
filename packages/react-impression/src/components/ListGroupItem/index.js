@@ -1,1 +1,1 @@
-export default from './components/ListGroupItem'
+export default from './ListGroupItem'

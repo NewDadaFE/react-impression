@@ -1,1 +1,1 @@
-export default from './components/DropdownTrigger'
+export default from './DropdownTrigger'

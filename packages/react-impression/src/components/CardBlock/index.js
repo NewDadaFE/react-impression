@@ -1,1 +1,1 @@
-export default from './components/CardBlock'
+export default from './CardBlock'

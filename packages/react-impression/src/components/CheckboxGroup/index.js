@@ -1,1 +1,1 @@
-export default from './components/CheckboxGroup'
+export default from './CheckboxGroup'

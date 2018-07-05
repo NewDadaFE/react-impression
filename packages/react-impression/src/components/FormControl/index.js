@@ -1,1 +1,1 @@
-export default from './components/FormControl'
+export default from './FormControl'

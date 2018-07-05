@@ -1,1 +1,1 @@
-export default from './components/Switch'
+export default from './Switch'

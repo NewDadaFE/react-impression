@@ -1,1 +1,1 @@
-export default from './components/CardHeader'
+export default from './CardHeader'

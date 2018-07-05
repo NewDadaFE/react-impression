@@ -1,1 +1,1 @@
-export default from './components/Progress'
+export default from './Progress'

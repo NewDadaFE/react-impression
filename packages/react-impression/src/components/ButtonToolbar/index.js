@@ -1,1 +1,1 @@
-export default from './components/ButtonToolbar'
+export default from './ButtonToolbar'

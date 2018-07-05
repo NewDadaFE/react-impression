@@ -14,24 +14,24 @@ fs.readdirSync(folder).forEach(file => {
 
   // console.log(dirPath);
 
-  try {
-    fs.mkdirSync(dirPath)
-  } catch (err) {
-    if (err.code !== 'EEXIST') throw err
-  }
+  // try {
+  //   fs.mkdirSync(dirPath)
+  // } catch (err) {
+  //   if (err.code !== 'EEXIST') throw err
+  // }
 
   const oldName = path.join(folder, file)
   const newName = path.join(dirPath, file)
 
   // console.log(newName);
 
-  fs.renameSync(oldName, newName)
+  // fs.renameSync(oldName, newName)
 
   const indexPath = `${dirPath}/index.js`
 
   // console.log(indexPath);
 
-  const content = `export default from './components/${fileName}'`
+  const content = `export default from './${fileName}'`
 
   // console.log(content);
 

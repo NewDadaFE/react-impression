@@ -1,1 +1,1 @@
-export default from './components/InlineSelectOption'
+export default from './InlineSelectOption'
