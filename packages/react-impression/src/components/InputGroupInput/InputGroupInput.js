@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';// import InputGroupAddon from './InputGroupAddon';
+import PropTypes from 'prop-types';
+// import InputGroupAddon from '../InputGroupAddon';
 
 /**
  * InputGroup组件.

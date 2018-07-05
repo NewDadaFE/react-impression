@@ -2,9 +2,9 @@ import moment from 'moment';
 import classnames from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
-import Icon from './Icon';
+import Button from '../Button';
+import ButtonGroup from '../ButtonGroup';
+import Icon from '../Icon';
 
 
 // 时间格式
