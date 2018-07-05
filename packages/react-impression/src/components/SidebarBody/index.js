@@ -1,1 +1,1 @@
-export default from './components/SidebarBody'
+export default from './SidebarBody'

@@ -1,1 +1,1 @@
-export default from './components/Card'
+export default from './Card'

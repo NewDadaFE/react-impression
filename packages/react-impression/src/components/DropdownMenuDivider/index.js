@@ -1,1 +1,1 @@
-export default from './components/DropdownMenuDivider'
+export default from './DropdownMenuDivider'

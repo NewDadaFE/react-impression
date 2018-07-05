@@ -1,1 +1,1 @@
-export default from './components/SidebarFooter'
+export default from './SidebarFooter'

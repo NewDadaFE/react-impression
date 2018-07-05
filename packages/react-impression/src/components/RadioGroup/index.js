@@ -1,1 +1,1 @@
-export default from './components/RadioGroup'
+export default from './RadioGroup'

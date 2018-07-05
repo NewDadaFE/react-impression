@@ -1,1 +1,1 @@
-export default from './components/Calendar'
+export default from './Calendar'

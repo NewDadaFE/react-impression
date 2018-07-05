@@ -1,1 +1,1 @@
-export default from './components/Container'
+export default from './Container'

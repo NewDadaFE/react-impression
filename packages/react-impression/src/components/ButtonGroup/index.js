@@ -1,1 +1,1 @@
-export default from './components/ButtonGroup'
+export default from './ButtonGroup'

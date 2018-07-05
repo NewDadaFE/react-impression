@@ -1,1 +1,1 @@
-export default from './components/Confirm'
+export default from './Confirm'

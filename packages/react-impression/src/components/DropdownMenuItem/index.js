@@ -1,1 +1,1 @@
-export default from './components/DropdownMenuItem'
+export default from './DropdownMenuItem'

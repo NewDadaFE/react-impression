@@ -1,1 +1,1 @@
-export default from './components/InputGroupAddon'
+export default from './InputGroupAddon'

@@ -1,1 +1,1 @@
-export default from './components/Navbar'
+export default from './Navbar'

@@ -1,1 +1,1 @@
-export default from './components/ModalFooter'
+export default from './ModalFooter'

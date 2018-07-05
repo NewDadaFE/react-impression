@@ -1,1 +1,1 @@
-export default from './components/CardFooter'
+export default from './CardFooter'

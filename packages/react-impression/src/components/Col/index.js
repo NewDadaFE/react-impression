@@ -1,1 +1,1 @@
-export default from './components/Col'
+export default from './Col'

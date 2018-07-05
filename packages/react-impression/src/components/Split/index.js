@@ -1,1 +1,1 @@
-export default from './components/Split'
+export default from './Split'

@@ -1,1 +1,1 @@
-export default from './components/Alert'
+export default from './Alert'

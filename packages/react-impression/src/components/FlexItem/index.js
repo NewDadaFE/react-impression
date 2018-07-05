@@ -1,1 +1,1 @@
-export default from './components/FlexItem'
+export default from './FlexItem'

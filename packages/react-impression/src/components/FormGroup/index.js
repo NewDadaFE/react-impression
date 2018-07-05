@@ -1,1 +1,1 @@
-export default from './components/FormGroup'
+export default from './FormGroup'

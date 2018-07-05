@@ -1,1 +1,1 @@
-export default from './components/FormControlLabel'
+export default from './FormControlLabel'

@@ -1,1 +1,1 @@
-export default from './components/MessageItem'
+export default from './MessageItem'

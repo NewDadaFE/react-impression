@@ -1,1 +1,1 @@
-export default from './components/Pagination'
+export default from './Pagination'
