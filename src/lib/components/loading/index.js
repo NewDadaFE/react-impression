@@ -59,6 +59,7 @@ export default class Loading extends PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (!this.props.full) return
     if (!prevState.loading && this.state.loading) {
       this.disableScroll()
     } else if (prevState.loading && !this.state.loading) {
