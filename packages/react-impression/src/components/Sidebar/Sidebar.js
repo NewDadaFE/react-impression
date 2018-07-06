@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Footer from '../SidebarFooter';
-import Header from '../SidebarHeader';
-import Body from '../SidebarBody';
+import Header from './SidebarHeader';
+import Body from './SidebarBody';
+import Footer from './SidebarFooter';
 
 // props校验
 const propTypes = {
