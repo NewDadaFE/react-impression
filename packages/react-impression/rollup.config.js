@@ -1,4 +1,6 @@
+import del from 'rollup-plugin-delete'
 import resolve from 'rollup-plugin-node-resolve'
+import postcss from 'rollup-plugin-postcss'
 import commonjs from 'rollup-plugin-commonjs'
 import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
@@ -24,7 +26,13 @@ export default {
     },
   ],
   plugins: [
+    del({
+      targets: 'dist/*',
+    }),
     resolve(),
+    postcss({
+      extract: 'dist/react-impression.css',
+    }),
     commonjs({
       include: /node_modules/,
     }),
