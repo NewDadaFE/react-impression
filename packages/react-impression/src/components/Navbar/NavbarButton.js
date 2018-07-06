@@ -1,21 +1,21 @@
-import classnames from 'classnames';
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '../Button';
+import classnames from 'classnames'
+import React from 'react'
+import PropTypes from 'prop-types'
+import Button from '../Button'
 
 /**
  * Navbar 组件
  */
 const NavbarButton = ({ className, children, ...others }) => {
-    return (
-        <Button {...others} className={classnames('navbar-btn', className)}>
-            {children}
-        </Button>
-    );
-};
+  return (
+    <Button {...others} className={classnames('navbar-btn', className)}>
+      {children}
+    </Button>
+  )
+}
 
 NavbarButton.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.any,
-};
-export default NavbarButton;
+  className: PropTypes.string,
+  children: PropTypes.any,
+}
+export default NavbarButton

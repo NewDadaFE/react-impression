@@ -8,6 +8,11 @@ const componentsPath = path.join(srcPath, 'components')
 // console.log(componentsPath);
 
 const list = fs.readdirSync(componentsPath)
-const content = list.map(name => `export ${name} from './components/${name}'`).join('\n')
+const content = list
+  .map(name => `export ${name} from './components/${name}'`)
+  .join('\n')
 
-fs.writeFileSync(`${srcPath}/index.js`, `import './styles/index.scss'\n\n${content}`)
+fs.writeFileSync(
+  `${srcPath}/index.js`,
+  `import './styles/index.scss'\n\n${content}`
+)

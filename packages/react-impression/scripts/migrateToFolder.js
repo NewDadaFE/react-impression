@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
 let folder = path.resolve(__dirname, '../src/components')
 
-console.log(folder);
+console.log(folder)
 
 fs.readdirSync(folder).forEach(file => {
   // console.log(file);
