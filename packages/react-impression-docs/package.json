@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "react-impression-docs",
+  "modules": [
+    "."
+  ],
   "scripts": {
     "format": "prettier-eslint --write 'src/**/*.js'",
     "start": "webpack-dev-server --env.development",
@@ -131,6 +134,9 @@
     "globals": {
       "DEBUG": false,
       "AMap": false
+    },
+    "rules": {
+      "one-var": 0
     }
   },
   "browserslist": [

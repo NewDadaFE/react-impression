@@ -1,8 +1,3 @@
-import { combineReducers } from 'redux'
-import home from 'home/reducer'
-
-const reducer = combineReducers({
-  home,
-})
+const reducer = state => state
 
 export default reducer
