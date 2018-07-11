@@ -44,6 +44,7 @@
     "babel-eslint": "^8.2.5",
     "babel-loader": "~7.1.2",
     "babel-plugin-import": "^1.8.0",
+    "babel-plugin-jsx-source": "^0.1.0",
     "babel-plugin-transform-class-properties": "~6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-imports": "^1.2.0",
@@ -86,6 +87,7 @@
   "babel": {
     "plugins": [
       "react-hot-loader/babel",
+      "jsx-source",
       [
         "transform-imports",
         {
