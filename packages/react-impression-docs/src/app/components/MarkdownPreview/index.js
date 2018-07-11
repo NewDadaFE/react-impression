@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import marked from 'marked'
-import styles from './index.scss'
+import './index.scss'
 
 const renderer = new marked.Renderer()
 
@@ -18,10 +18,7 @@ const renderMarkdown = mk => {
 
 const MarkdownPreview = props => {
   const { markdown, name } = props
-  const className = classnames([
-    styles['api-container'],
-    styles['markdown-body'],
-  ])
+  const className = classnames(['api-container', 'markdown-body'])
 
   return (
     <div>

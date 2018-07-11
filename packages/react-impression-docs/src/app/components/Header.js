@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Form, Badge, Icon, Split } from 'react-impression'
-import './Header.scss'
+import './Header.module.scss'
 
 // Header
 const Header = () => {

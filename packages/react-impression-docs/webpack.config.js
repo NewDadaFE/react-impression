@@ -58,51 +58,59 @@ const development = {
         },
       },
       {
-        test: /\.js$/,
-        include: [paths.src, /whatwg-fetch/],
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-        },
-      },
-      {
-        test: /\.scss$/,
-        exclude: [paths.css, /node_modules/],
-        use: [
-          'style-loader',
+        oneOf: [
           {
-            loader: 'css-loader',
+            test: /\.js$/,
+            include: [paths.src, /whatwg-fetch/],
+            loader: 'babel-loader',
             options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]___[hash:base64:5]',
+              cacheDirectory: true,
             },
           },
-          'postcss-loader',
-          'sass-loader',
+          // CSS Modules
+          // [name].module.css
+          {
+            test: /\.module\.s?css$/,
+            exclude: /node_modules/,
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  importLoaders: 1,
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                },
+              },
+              'postcss-loader',
+              'sass-loader',
+            ],
+          },
+          // Regular CSS
+          // name.css
+          {
+            test: /\.s?css$/,
+            exclude: /node_modules/,
+            use: [
+              'style-loader',
+              'css-loader?sourceMap',
+              'postcss-loader?sourceMap',
+              'sass-loader?sourceMap',
+            ],
+          },
+          {
+            test: /\.(png|jpe?g|gif|svg)$/,
+            loader: 'url-loader',
+          },
+          {
+            test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url-loader',
+          },
+          {
+            test: /\.(xlsx?)$/,
+            loader: 'url-loader',
+          },
         ],
-      },
-      {
-        test: /\.scss$/,
-        include: [paths.css, /node_modules/],
-        use: [
-          'style-loader',
-          'css-loader?sourceMap',
-          'postcss-loader?sourceMap',
-          'sass-loader?sourceMap',
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        loader: 'url-loader',
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader',
-      },
-      {
-        test: /\.(xlsx?)$/,
-        loader: 'url-loader',
       },
     ],
   },
@@ -143,9 +151,21 @@ const production = env => {
           include: [paths.src, /whatwg-fetch/],
           loader: 'babel-loader',
         },
+        // Regular CSS
+        // name.css
         {
-          test: /\.scss$/,
-          exclude: [paths.css, /node_modules/],
+          test: /\.s?css$/,
+          exclude: /node_modules/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'postcss-loader', 'sass-loader'],
+          }),
+        },
+        // CSS Modules
+        // [name].module.css
+        {
+          test: /\.module\.s?css$/,
+          exclude: /node_modules/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
@@ -160,14 +180,6 @@ const production = env => {
               'postcss-loader',
               'sass-loader',
             ],
-          }),
-        },
-        {
-          test: /\.scss$/,
-          include: [paths.css, /node_modules/],
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', 'sass-loader'],
           }),
         },
         {
