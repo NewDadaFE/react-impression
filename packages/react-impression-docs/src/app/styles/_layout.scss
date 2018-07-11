@@ -10,3 +10,16 @@ body {
 #root {
   width: 100%;
 }
+
+.layout {
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  padding: 40px;
+}
+
+.top {
+  vertical-align: top;
+}
