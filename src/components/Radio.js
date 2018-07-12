@@ -1,28 +1,46 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-/**
- * Radio组件.
- */
+
 export default class Radio extends PureComponent {
-  // props校验
   static propTypes = {
-    // 名称
+    /**
+     * 名称
+     */
     name: PropTypes.any,
-    // 返回值
+
+    /**
+     * 返回值
+     */
     value: PropTypes.any,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 是否选中
+
+    /**
+     * 是否选中
+     */
     checked: PropTypes.bool,
-    // 默认是否选中
+
+    /**
+     * 默认是否选中
+     */
     defaultChecked: PropTypes.bool,
-    // 是否disabled
+
+    /**
+     * 是否disabled
+     */
     disabled: PropTypes.bool,
-    // 回调函数
+
+    /**
+     * 回调函数
+     */
     onChange: PropTypes.func,
     children: PropTypes.any,
   }
+
   // 默认props
   static defaultProps = {
     disabled: false,
