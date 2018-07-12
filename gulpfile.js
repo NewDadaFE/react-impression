@@ -31,7 +31,7 @@ const script = async () => {
     plugins: [
       resolve(),
       commonjs({ include: /node_modules/ }),
-      babel({ exclude: 'node_modules/**' }),
+      babel({ exclude: 'node_modules/**', plugins: ['external-helpers'] }),
     ],
   }
   const outputOptions = {
