@@ -5,13 +5,13 @@
  * @return {[Boolean]}              [是否]
  */
 export const isDescendentNode = (ancestor, descendent) => {
-    let parentNode = descendent.parentNode;
+  let parentNode = descendent.parentNode
 
-    while (parentNode) {
-        if (ancestor === parentNode) {
-            return true;
-        }
-        parentNode = parentNode.parentNode;
+  while (parentNode) {
+    if (ancestor === parentNode) {
+      return true
     }
-    return false;
-};
+    parentNode = parentNode.parentNode
+  }
+  return false
+}

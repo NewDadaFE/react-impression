@@ -1,20 +1,20 @@
-import classnames from 'classnames';
-import React from 'react';
-import PropTypes from 'prop-types';
+import classnames from 'classnames'
+import React from 'react'
+import PropTypes from 'prop-types'
 /**
  * CardBlock组件.
  */
 const CardBlock = ({ className, children, ...others }) => {
-    return (
-        <div {...others} className={classnames('card-block', className)}>
-            {children}
-        </div>
-    );
-};
+  return (
+    <div {...others} className={classnames('card-block', className)}>
+      {children}
+    </div>
+  )
+}
 
 CardBlock.propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.string,
-};
+  children: PropTypes.any,
+  className: PropTypes.string,
+}
 
-export default CardBlock;
+export default CardBlock
