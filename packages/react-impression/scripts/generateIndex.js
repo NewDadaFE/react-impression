@@ -12,7 +12,4 @@ const content = list
   .map(name => `export ${name} from './components/${name}'`)
   .join('\n')
 
-fs.writeFileSync(
-  `${srcPath}/index.js`,
-  `import './styles/index.scss'\n\n${content}`
-)
+fs.writeFileSync(`${srcPath}/index.js`, content)

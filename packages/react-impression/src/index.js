@@ -1,5 +1,3 @@
-import './styles/index.scss'
-
 export Alert from './components/Alert'
 export Attention from './components/Attention'
 export Badge from './components/Badge'
