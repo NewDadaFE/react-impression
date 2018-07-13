@@ -1,19 +1,21 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-/**
- * Row组件.
- */
+
 export default class Row extends PureComponent {
   // props校验
   static propTypes = {
+    /**
+     * 样式名
+     */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
-  /**
-   * 自动计算col属性.
-   * @return {[Array]} [子元素]
-   */
+
   getChildren() {
     let { children } = this.props,
       count = 0,
@@ -46,7 +48,7 @@ export default class Row extends PureComponent {
       })
     })
   }
-  // 渲染
+
   render() {
     let { className, children, ...others } = this.props
 
