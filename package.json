@@ -38,6 +38,9 @@
     "globals": {
       "DEBUG": false,
       "AMap": false
+    },
+    "rules": {
+      "one-var": 0
     }
   }
 }
