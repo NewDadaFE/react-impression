@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import FlexItem from './FlexItem'
+import FlexItem from '../FlexItem'
 
 /**
  * Flex布局组件.

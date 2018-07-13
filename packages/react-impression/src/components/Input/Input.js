@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import DatePicker from './DatePicker'
-import Upload from './Upload'
-import * as System from '../utils/system'
+import DatePicker from '../DatePicker'
+import Upload from '../Upload'
+import * as System from '../../utils/system'
 
 /**
  * Input 组件.

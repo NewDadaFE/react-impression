@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import FormGroup from './FormGroup'
-import FormControl from './FormControl'
+import FormGroup from '../FormGroup'
+import FormControl from '../FormControl'
 
 /**
  * Form 组件.

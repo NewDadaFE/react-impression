@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import AttentionLink from './AttentionLink'
+import AttentionLink from '../AttentionLink'
 
 /**
  * Attention 组件

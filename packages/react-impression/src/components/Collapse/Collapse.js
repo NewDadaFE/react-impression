@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import CollapseTitle from './CollapseTitle'
-import CollapseBody from './CollapseBody'
+import CollapseTitle from '../CollapseTitle'
+import CollapseBody from '../CollapseBody'
 
 /**
  * Collapse 组件

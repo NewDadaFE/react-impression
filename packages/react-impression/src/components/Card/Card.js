@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import CardBlock from './CardBlock'
-import CardHeader from './CardHeader'
-import CardFooter from './CardFooter'
+import CardBlock from '../CardBlock'
+import CardHeader from '../CardHeader'
+import CardFooter from '../CardFooter'
 
 /**
  * Card组件.

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import ListGroupItem from './ListGroupItem'
+import ListGroupItem from '../ListGroupItem'
 
 /**
  * ListGroup组件.

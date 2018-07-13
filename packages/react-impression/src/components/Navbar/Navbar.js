@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavbarBrand from './NavbarBrand'
-import NavbarButton from './NavbarButton'
+import NavbarBrand from '../NavbarBrand'
+import NavbarButton from '../NavbarButton'
 
 // props校验
 const propTypes = {

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import InlineSelectOption from './InlineSelectOption'
+import InlineSelectOption from '../InlineSelectOption'
 
 /**
  * InlineSelect组件.

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import LoadingAddon from './LoadingAddon'
+import LoadingAddon from '../LoadingAddon'
 
 let _loading,
   _startDate,

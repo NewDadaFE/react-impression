@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import ModalHeader from './ModalHeader'
-import ModalBody from './ModalBody'
-import ModalFooter from './ModalFooter'
+import ModalHeader from '../ModalHeader'
+import ModalBody from '../ModalBody'
+import ModalFooter from '../ModalFooter'
 
 /**
  * Modal组件.

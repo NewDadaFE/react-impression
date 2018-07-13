@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import TimelineItem from './TimelineItem'
+import TimelineItem from '../TimelineItem'
 
 const propTypes = {
   // 大小

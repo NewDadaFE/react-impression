@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import NavItem from './NavItem'
-import NavLink from './NavLink'
-import NavTitle from './NavTitle'
+import NavItem from '../NavItem'
+import NavLink from '../NavLink'
+import NavTitle from '../NavTitle'
 
 // 返回type映射的class
 const getTypeClassMap = type => {

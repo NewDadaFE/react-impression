@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from './Icon'
+import Icon from '../Icon'
 
 /**
  * Dropdown 触发组件.

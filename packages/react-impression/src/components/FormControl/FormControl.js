@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import Label from './FormControlLabel'
+import Label from '../FormControlLabel'
 
 /**
  * FormControl 组件.

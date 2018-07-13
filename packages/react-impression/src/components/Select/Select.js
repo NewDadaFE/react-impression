@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import SelectOption from './SelectOption'
-import * as System from '../utils/system'
+import SelectOption from '../SelectOption'
+import * as System from '../../utils/system'
 
 /**
  * Select组件.

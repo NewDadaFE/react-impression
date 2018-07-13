@@ -1,11 +1,11 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import DropdownTrigger from './DropdownTrigger'
-import DropdownMenu from './DropdownMenu'
-import DropdownMenuItem from './DropdownMenuItem'
-import DropdownMenuDivider from './DropdownMenuDivider'
-import * as System from '../utils/system'
+import DropdownTrigger from '../DropdownTrigger'
+import DropdownMenu from '../DropdownMenu'
+import DropdownMenuItem from '../DropdownMenuItem'
+import DropdownMenuDivider from '../DropdownMenuDivider'
+import * as System from '../../utils/system'
 
 /**
  * Dropdown组件.

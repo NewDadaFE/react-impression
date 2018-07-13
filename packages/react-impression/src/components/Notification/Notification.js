@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import Notice from './Notice'
+import Notice from '../Notice'
 
 // Notification组件引用
 let _notification

@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import InputGroupAddon from './InputGroupAddon'
-import InputGroupInput from './InputGroupInput'
-import InputGroupButton from './InputGroupButton'
+import InputGroupAddon from '../InputGroupAddon'
+import InputGroupInput from '../InputGroupInput'
+import InputGroupButton from '../InputGroupButton'
 
 /**
  * InputGroup组件.
