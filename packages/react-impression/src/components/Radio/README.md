@@ -1,6 +1,6 @@
 ### Examples
 
-**basic**
+**Basic**
 
 ```js
 <Form>
@@ -13,7 +13,7 @@
 </Form>
 ```
 
-**disabled**
+**Disabled**
 
 ```js
 <Form>
