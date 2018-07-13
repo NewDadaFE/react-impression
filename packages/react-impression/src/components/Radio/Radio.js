@@ -30,14 +30,18 @@ export default class Radio extends PureComponent {
     defaultChecked: PropTypes.bool,
 
     /**
-     * 是否disabled
+     * 是否可以点击
      */
     disabled: PropTypes.bool,
 
     /**
-     * 回调函数
+     * 状态变更回调函数
      */
     onChange: PropTypes.func,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
 

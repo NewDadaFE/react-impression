@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-/**
- * RadioGroup组件.
- */
+
 export default class RadioGroup extends PureComponent {
   // 初始化state
   constructor(props) {
@@ -22,20 +20,44 @@ export default class RadioGroup extends PureComponent {
   }
   // props校验
   static propTypes = {
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 值
+
+    /**
+     * 设置默认是否选中
+     */
     value: PropTypes.any,
-    // 默认是否选中
+
+    /**
+     * 默认值
+     */
     defaultValue: PropTypes.any,
-    // 回调函数
+
+    /**
+     * 状态变更回调函数
+     */
     onChange: PropTypes.func,
-    // 是否disabled
+
+    /**
+     * 是否可以点击
+     */
     disabled: PropTypes.bool,
-    // 名称
+
+    /**
+     * 设置名称
+     */
     name: PropTypes.string,
-    // 排列方向
+
+    /**
+     * 排列方向
+     */
     direction: PropTypes.oneOf(['row', 'column']),
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
   // 默认props
