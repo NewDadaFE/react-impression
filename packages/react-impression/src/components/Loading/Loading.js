@@ -8,13 +8,8 @@ let _loading,
   _endDate,
   _duration = 1000
 
-/**
- * Loading组件.
- */
 export default class Loading extends PureComponent {
-  /**
-   * 初始信息.
-   */
+  // 初始信息
   constructor(props, context) {
     super(props, context)
     _loading = this
@@ -26,15 +21,25 @@ export default class Loading extends PureComponent {
   }
   // props校验
   static propTypes = {
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 类型
+    /**
+     * 类型
+     */
     type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
-    // 加载文本
+    /**
+     * 加载文本
+     */
     loadingMsg: PropTypes.string,
-    // 可关闭
+    /**
+     * 可关闭
+     */
     closeable: PropTypes.bool,
-    // 停留时间
+    /**
+     * 停留时间
+     */
     duration: PropTypes.number,
   }
   // 默认props
@@ -54,7 +59,11 @@ export default class Loading extends PureComponent {
         show: false,
       })
   }
-  // 渲染
+
+  /**
+   * 渲染
+   * @returns {boolean}
+   */
   render() {
     let { type, loadingMsg, className } = this.props,
       { show } = this.state

@@ -1,13 +1,12 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+
 /**
- * LoadingAddon组件.
+ * Loading组件的核心子组件
  */
 export default class LoadingAddon extends PureComponent {
-  /**
-   * 初始信息.
-   */
+  // 初始信息
   constructor(props, context) {
     super(props, context)
 
@@ -17,13 +16,21 @@ export default class LoadingAddon extends PureComponent {
   }
   // props校验
   static propTypes = {
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 类型
+    /**
+     * 类型
+     */
     type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
-    // 信息提示
+    /**
+     * 信息提示
+     */
     loadingMsg: PropTypes.string,
-    // 显示
+    /**
+     * 显示
+     */
     show: PropTypes.bool,
   }
   // 默认props
@@ -107,7 +114,11 @@ export default class LoadingAddon extends PureComponent {
     !nextprops.show && this.clearDottedInterval()
     !this.props.show && nextprops.show && this.setDottedInterval()
   }
-  // 渲染
+
+  /**
+   * 渲染
+   * @returns {boolean}
+   */
   render() {
     let { type, loadingMsg, className, ...others } = this.props,
       typeClass = `loading-${type}`,
