@@ -13,18 +13,21 @@ class AlertView extends React.Component {
     this.toggleAlert1Handle = this.toggleAlert1Handle.bind(this)
     this.toggleAlert2Handle = this.toggleAlert2Handle.bind(this)
   }
+  
   toggleAlert1Handle() {
     this.setState({
       showAlert1: !this.state.showAlert1,
     })
   }
+  
   toggleAlert2Handle() {
     this.setState({
       showAlert2: !this.state.showAlert2,
     })
   }
+  
   render() {
-    let { showAlert1, showAlert2 } = this.state
+    const { showAlert1, showAlert2 } = this.state
     return (
       <div>
         <Card block noborder>
@@ -43,11 +46,11 @@ class AlertView extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    theme='secondary'
+                    theme='default'
                     outline
                     onClick={this.toggleAlert2Handle}
                   >
-                    danger
+                    <span className='text-danger'>danger</span>
                   </Button>
                 </Col>
               </Row>

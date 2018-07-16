@@ -29,9 +29,9 @@ export default class Alert extends PureComponent {
     className: PropTypes.string,
 
     /**
-     * 类型（success、primary、warning、danger）
+     * 类型
      */
-    type: PropTypes.string,
+    type: PropTypes.oneOf(['warning', 'danger']),
 
     /**
      * 点击确定的回调
@@ -43,11 +43,13 @@ export default class Alert extends PureComponent {
      */
     btnText: PropTypes.string,
   }
+
   // 默认props
   static defaultProps = {
-    type: 'info',
+    type: 'warning',
     btnText: '确定',
   }
+
   render() {
     let { type, btnText, onClick, className, children, ...others } = this.props,
       iconTypeClass = getAddonByType(type)
