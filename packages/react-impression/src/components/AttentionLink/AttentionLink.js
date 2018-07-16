@@ -1,21 +1,14 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-
+/**
+ * AttentionLink 组件
+ */
 const propTypes = {
-  /**
-   * 子元素
-   */
   children: PropTypes.any,
-
-  /**
-   * 自定义样式
-   */
+  // 自定义样式
   className: PropTypes.string,
-
-  /**
-   * 超链接
-   */
+  // 超链接
   href: PropTypes.string,
 }
 
