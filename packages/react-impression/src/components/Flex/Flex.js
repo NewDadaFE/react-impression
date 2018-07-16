@@ -9,9 +9,21 @@ import FlexItem from '../FlexItem'
 export default class Flex extends PureComponent {
   // prop type校验
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
     children: PropTypes.any,
+
+    /**
+     * 对齐方式
+     */
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
+
+    /**
+     * 方向
+     */
     direction: PropTypes.oneOf(['row', 'column']),
   }
   // 默认props
