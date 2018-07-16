@@ -11,6 +11,16 @@ module.exports = {
 
     return `import { ${name} } from 'react-impression'`
   },
+  template: {
+    head: {
+      links: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css'
+        }
+      ]
+    }
+  },
   webpackConfig: {
     module: {
       rules: [
