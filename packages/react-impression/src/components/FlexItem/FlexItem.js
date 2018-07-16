@@ -8,8 +8,15 @@ import PropTypes from 'prop-types'
 export default class FlexItem extends PureComponent {
   // prop type校验
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
     children: PropTypes.any,
+
+    /**
+     * 占比
+     */
     flex: PropTypes.number,
   }
   // 默认props
