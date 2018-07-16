@@ -12,9 +12,6 @@ const getAddonByType = type => {
   }
 }
 
-/**
- * Alert 组件
- */
 export default class Alert extends PureComponent {
   static propTypes = {
 
