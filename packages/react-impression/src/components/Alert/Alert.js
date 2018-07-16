@@ -16,16 +16,31 @@ const getAddonByType = type => {
  * Alert 组件
  */
 export default class Alert extends PureComponent {
-  // props 校验
   static propTypes = {
+
+    /**
+     * 子节点元素
+     */
     children: PropTypes.any,
-    // 自定义样式
+
+    /**
+     * 样式
+     */
     className: PropTypes.string,
-    // 类型（success、primary、warning、danger）
+
+    /**
+     * 类型（success、primary、warning、danger）
+     */
     type: PropTypes.string,
-    // 回调
+
+    /**
+     * 点击确定的回调
+     */
     onClick: PropTypes.func,
-    // 按钮名字
+
+    /**
+     * 按钮文字
+     */
     btnText: PropTypes.string,
   }
   // 默认props
