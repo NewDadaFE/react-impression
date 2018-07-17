@@ -2,9 +2,6 @@ import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-/**
- * Icon组件.
- */
 export default class Icon extends PureComponent {
   static propTypes = {
     /**
