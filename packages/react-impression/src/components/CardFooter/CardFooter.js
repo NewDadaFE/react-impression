@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * CardFooter组件.
- */
+
 const CardFooter = ({ className, children, ...others }) => {
   return (
     <div {...others} className={classnames('card-footer', className)}>
@@ -13,7 +11,14 @@ const CardFooter = ({ className, children, ...others }) => {
 }
 
 CardFooter.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
