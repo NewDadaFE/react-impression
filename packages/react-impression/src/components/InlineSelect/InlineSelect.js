@@ -3,9 +3,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import InlineSelectOption from '../InlineSelectOption'
 
-/**
- * InlineSelect组件.
- */
 export default class InlineSelect extends PureComponent {
   constructor(props) {
     super(props)
@@ -21,16 +18,30 @@ export default class InlineSelect extends PureComponent {
       ...initValue,
     }
   }
-  // props 校验
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // onChange
+
+    /**
+     * 选中回调函数
+     */
     onChange: PropTypes.func,
-    // value
+
+    /**
+     * 选中值
+     */
     value: PropTypes.any,
-    // defaultValue
+
+    /**
+     * 选中值
+     */
     defaultValue: PropTypes.any,
   }
   getValue() {
@@ -43,12 +54,6 @@ export default class InlineSelect extends PureComponent {
   setValue(value) {
     if (!this.isPuppet) this.setState({ value })
   }
-  /**
-   * option选中回调.
-   * @param  {[Any]} value       [值]
-   * @param  {[String]} text     [名称]
-   * @param  {[Number]} index    [索引]
-   */
   selectOptionHandle(value, text, index) {
     let { onChange } = this.props
 
@@ -67,8 +72,9 @@ export default class InlineSelect extends PureComponent {
     }
   }
   render() {
-    let { className, children, ...others } = this.props,
-      originValue = this.isPuppet ? this.props.value : this.state.value
+    const { className, ...others } = this.props
+    const originValue = this.isPuppet ? this.props.value : this.state.value
+    let { children } = this.props
 
     children = React.Children.map(children, (child, index) => {
       if (!child) {
