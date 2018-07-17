@@ -4,9 +4,6 @@ import PropTypes from 'prop-types'
 import FormGroup from '../FormGroup'
 import FormControl from '../FormControl'
 
-/**
- * Form 组件.
- */
 export default class Form extends PureComponent {
   static propTypes = {
     /**
