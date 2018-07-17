@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Col = ({ col, offset, push, pull, children, className, ...others }) => {
-  let colClass = `col-xs-${col}`,
-    offsetClass = offset ? `offset-xs-${offset}` : null,
-    pushClass = push ? `push-xs-${push}` : null,
-    pullClass = pull ? `pull-xs-${pull}` : null
+  const colClass = `col-xs-${col}`
+  const offsetClass = offset ? `offset-xs-${offset}` : null
+  const pushClass = push ? `push-xs-${push}` : null
+  const pullClass = pull ? `pull-xs-${pull}` : null
 
   return (
     <div
