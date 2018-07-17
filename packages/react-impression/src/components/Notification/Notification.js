@@ -1,21 +1,12 @@
 import classnames from 'classnames'
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Notice from '../Notice'
 
-// Notification组件引用
 let _notification
 
-/**
- * 通知容器.
- */
-export default class Notification extends Component {
-  /**
-   * 初始化信息.
-   * @param  {[type]} props   [description]
-   * @param  {[type]} context [description]
-   */
+export default class Notification extends React.Component {
   constructor(props, context) {
     super(props, context)
 
@@ -24,36 +15,45 @@ export default class Notification extends Component {
     this.timers = []
     _notification = this
   }
-  // prop type校验
+
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 是否可关闭
+    /**
+     * 是否可关闭
+     */
     closeable: PropTypes.bool,
   }
-  // 默认props
+
   static defaultProps = {
     closeable: true,
   }
+
   /**
-   * 移除定时器.
+   * 移除定时器
    */
   componentWillUnmount() {
     this.timers.forEach(timer => {
       clearTimeout(timer)
     })
   }
+
   /**
-   * 添加通知.
-   * @param {[String]} options.title    [标题]
-   * @param {[String]} options.message  [内容]
-   * @param {Number}   options.duration [延时]
+   * 添加通知
+   * @param title
+   * @param message
+   * @param duration {number} [duration=2000] - 通知显示时长，单位ms.
+   * @param closeable
+   * @param theme
    */
   addNotice(
     { title, message, duration = 2000, closeable = this.props.closeable },
     theme
   ) {
-    let key = this.key++,
-      state = { ...this.state }
+    const key = this.key++
+    const state = { ...this.state }
 
     state[key] = {
       title,
@@ -64,18 +64,20 @@ export default class Notification extends Component {
     this.setState(state)
     this.timeToRemoveNotice(key, duration)
   }
+
   /**
-   * 移除通知.
-   * @param  {[Number]} key      [索引]
+   * 移除通知
+   * @param key
    */
   removeNotice = key => {
     delete this.state[key]
     this.setState(this.state)
   }
+
   /**
-   * 移除通知.
-   * @param  {[Number]} key      [索引]
-   * @param  {[Number]} duration [延时]
+   * 移除通知
+   * @param key
+   * @param duration
    */
   timeToRemoveNotice(key, duration) {
     this.timers.push(
@@ -84,11 +86,9 @@ export default class Notification extends Component {
       }, duration)
     )
   }
-  /**
-   * 渲染.
-   */
+
   render() {
-    let { className } = this.props
+    const { className } = this.props
 
     return (
       <div className={classnames('notification', className)}>
@@ -115,22 +115,34 @@ export default class Notification extends Component {
   }
 }
 
-// 添加一条info消息
+/**
+ * 添加一条info消息
+ * @param options
+ */
 Notification.info = options => {
   _notification.addNotice(options, 'info')
 }
 
-// 添加一条success消息
+/**
+ * 添加一条success消息
+ * @param options
+ */
 Notification.success = options => {
   _notification.addNotice(options, 'success')
 }
 
-// 添加一条warning消息
+/**
+ * 添加一条warning消息
+ * @param options
+ */
 Notification.warning = options => {
   _notification.addNotice(options, 'warning')
 }
 
-// 添加一条danger消息
+/**
+ * 添加一条danger消息
+ * @param options
+ */
 Notification.error = options => {
   _notification.addNotice(options, 'danger')
 }
