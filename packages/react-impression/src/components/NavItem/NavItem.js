@@ -1,44 +1,61 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * NavItem 组件
- */
-export default class NavItem extends PureComponent {
-  // props校验
+
+export default class NavItem extends React.PureComponent {
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+    /**
+     * 是否可以选中
+     */
     disabled: PropTypes.bool,
+    /**
+     * 是否为激活状态
+     */
     active: PropTypes.bool,
+    /**
+     * 事件关键字
+     */
     eventKey: PropTypes.any,
+    /**
+     * 点击回调函数
+     */
     onClick: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
     active: false,
   }
-  // 回调函数
+  /**
+   * 回调函数
+   */
   onClickHandle = () => {
-    let { disabled, active, onClick, eventKey } = this.props
+    const { disabled, active, onClick, eventKey } = this.props
 
     !disabled && !active && onClick(eventKey)
   }
-  // 渲染
+
   render() {
-    let {
-        disabled,
-        active,
-        eventKey,
-        className,
-        children,
-        ...others
-      } = this.props,
-      childClass = {
-        disabled,
-        active,
-      }
+    const {
+      disabled,
+      active,
+      eventKey,
+      className,
+      children,
+      ...others
+    } = this.props
+    const childClass = {
+      disabled,
+      active,
+    }
 
     return eventKey !== undefined ? (
       <li
