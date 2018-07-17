@@ -4,18 +4,26 @@ import PropTypes from 'prop-types'
 import NavbarBrand from '../NavbarBrand'
 import NavbarButton from '../NavbarButton'
 
-// props校验
 const propTypes = {
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
-  theme: PropTypes.string,
+  /**
+   * 导航条样式
+   */
+  theme: PropTypes.oneOf(['primary', 'inverse', 'pure']),
 }
 
 /**
  * Navbar 组件
  */
 const Navbar = ({ theme, className, children, ...others }) => {
-  let themeClass = theme ? `navbar-${theme}` : undefined
+  const themeClass = theme ? `navbar-${theme}` : undefined
 
   return (
     <nav {...others} className={classnames('navbar', themeClass, className)}>
