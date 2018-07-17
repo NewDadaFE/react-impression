@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Option extends React.PureComponent {
+export default class SelectOption extends React.PureComponent {
   static propTypes = {
     /**
      * 是否不可用
