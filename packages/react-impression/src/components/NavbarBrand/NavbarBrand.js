@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * NavbarBrand 组件
- */
+
 const NavbarBrand = ({ href, className, children, ...others }) => {
   return (
     <a
@@ -17,8 +15,17 @@ const NavbarBrand = ({ href, className, children, ...others }) => {
 }
 
 NavbarBrand.propTypes = {
+  /**
+   * 点击跳转的链接
+   */
   href: PropTypes.string,
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 
