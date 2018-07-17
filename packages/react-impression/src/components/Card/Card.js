@@ -1,11 +1,11 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import CardBlock from '../CardBlock'
 import CardHeader from '../CardHeader'
 import CardFooter from '../CardFooter'
 
-export default class Card extends PureComponent {
+export default class Card extends React.PureComponent {
   static propTypes = {
     /**
       * 子组件
