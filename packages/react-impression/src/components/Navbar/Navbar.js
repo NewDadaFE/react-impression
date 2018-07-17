@@ -19,9 +19,6 @@ const propTypes = {
   theme: PropTypes.oneOf(['primary', 'inverse', 'pure']),
 }
 
-/**
- * Navbar 组件
- */
 const Navbar = ({ theme, className, children, ...others }) => {
   const themeClass = theme ? `navbar-${theme}` : undefined
 

@@ -3,9 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 
-/**
- * Navbar 组件
- */
 const NavbarButton = ({ className, children, ...others }) => {
   return (
     <Button {...others} className={classnames('navbar-btn', className)}>
@@ -15,7 +12,14 @@ const NavbarButton = ({ className, children, ...others }) => {
 }
 
 NavbarButton.propTypes = {
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
+
 export default NavbarButton
