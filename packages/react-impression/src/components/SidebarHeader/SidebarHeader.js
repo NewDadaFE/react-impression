@@ -1,16 +1,24 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-// props校验
+
 const propTypes = {
+  /**
+   * logo
+   */
   img: PropTypes.string,
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 
-/**
- * Sidebar 顶部组件
- */
 const SidebarHeader = ({ img, className, children, ...others }) => {
   return (
     <div {...others} className={classnames('sidebar-header', className)}>
@@ -21,4 +29,5 @@ const SidebarHeader = ({ img, className, children, ...others }) => {
 }
 
 SidebarHeader.propTypes = propTypes
+
 export default SidebarHeader
