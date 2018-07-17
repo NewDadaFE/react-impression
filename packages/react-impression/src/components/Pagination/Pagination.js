@@ -1,56 +1,76 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Pagination组件.
- */
-export default class Pagination extends PureComponent {
-  // 默认props
+
+export default class Pagination extends React.PureComponent {
   static defaultProps = {
     activePage: 1,
     scope: 2,
     ellipsis: true,
     totalPage: 1,
   }
-  // props校验
+
   static propTypes = {
-    // 前后延伸
+    /**
+     * 前后延伸
+     */
     scope: PropTypes.number,
-    // 当前在第几页
+    /**
+     * 当前在第几页
+     */
     activePage: PropTypes.number,
-    // 总页数
+    /**
+     * 总页数
+     */
     totalPage: PropTypes.number.isRequired,
-    // 是否显示省略号
+    /**
+     * 是否显示省略号
+     */
     ellipsis: PropTypes.bool,
-    // onSelect
+    /**
+     * onSelect
+     */
     onSelect: PropTypes.func,
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
   }
-  // 上一页
+  /**
+   * 上一页
+   */
   prevPageHandle = () => {
     let { onSelect, activePage } = this.props
 
     activePage -= 1
     activePage >= 1 && onSelect && onSelect(activePage)
   }
-  // 下一页
+  /**
+   * 下一页
+   */
   nextPageHandle = () => {
     let { onSelect, activePage, totalPage = 1 } = this.props
 
     activePage += 1
     activePage <= totalPage && onSelect && onSelect(activePage)
   }
-  // 跳转至某页
+  /**
+   * 跳转至某页
+   * @param page
+   */
   goPageHandle = page => {
-    let { onSelect } = this.props
+    const { onSelect } = this.props
 
     onSelect && onSelect(page)
   }
-  // 获取显示页码
+
+  /**
+   * 获取显示页码
+   * @returns {Array}
+   */
   getShowPageArray() {
-    let { scope, totalPage = 1, activePage } = this.props,
-      result = []
+    let { scope, totalPage = 1, activePage } = this.props
+    const result = []
 
     scope = scope < 0 ? 2 : scope
     for (let i = activePage - scope; i <= activePage + scope; i++) {
@@ -58,23 +78,23 @@ export default class Pagination extends PureComponent {
         i === activePage - scope && i === 2 && result.push(1)
         result.push(i)
         i === activePage + scope &&
-          i === totalPage - 1 &&
-          result.push(totalPage)
+        i === totalPage - 1 &&
+        result.push(totalPage)
       }
     }
 
     return result
   }
-  // 渲染
+
   render() {
-    let {
-        totalPage = 1,
-        className,
-        ellipsis,
-        activePage,
-        ...others
-      } = this.props,
-      children = this.getShowPageArray()
+    const {
+      totalPage = 1,
+      className,
+      ellipsis,
+      activePage,
+      ...others
+    } = this.props
+    const children = this.getShowPageArray()
 
     return (
       <ul {...others} className={classnames('Pagination', className)}>
@@ -89,7 +109,7 @@ export default class Pagination extends PureComponent {
         </li>
 
         {ellipsis &&
-          children[0] > 1 && (
+        children[0] > 1 && (
           <li className='page-item disabled'>
             <i className='fa fa-ellipsis-h' />
           </li>
@@ -113,7 +133,7 @@ export default class Pagination extends PureComponent {
         ))}
 
         {ellipsis &&
-          children[children.length - 1] < totalPage && (
+        children[children.length - 1] < totalPage && (
           <li className='page-item disabled'>
             <i className='fa fa-ellipsis-h' />
           </li>
