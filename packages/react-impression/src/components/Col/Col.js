@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Col布局组件.
- */
+
 const Col = ({ col, offset, push, pull, children, className, ...others }) => {
   let colClass = `col-xs-${col}`,
     offsetClass = offset ? `offset-xs-${offset}` : null,
@@ -47,8 +45,14 @@ Col.propTypes = {
    */
   pull: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
