@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import AttentionLink from '../AttentionLink'
 
 export default class Attention extends React.PureComponent {
   constructor(props, context) {
@@ -12,7 +13,7 @@ export default class Attention extends React.PureComponent {
 
   static propTypes = {
     /**
-     * 主题（success、primary、warning、danger）
+     * 主题
      */
     theme: PropTypes.oneOf(['warning', 'success', 'primary', 'danger']),
 
@@ -27,7 +28,7 @@ export default class Attention extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 子元素
+     * 子组件
      */
     children: PropTypes.any,
   }
@@ -59,3 +60,5 @@ export default class Attention extends React.PureComponent {
     )
   }
 }
+
+Attention.Link = AttentionLink

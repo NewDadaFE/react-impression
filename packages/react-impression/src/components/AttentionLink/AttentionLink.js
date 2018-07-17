@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const propTypes = {
   /**
-   * 子元素
+   * 子组件
    */
   children: PropTypes.any,
 
