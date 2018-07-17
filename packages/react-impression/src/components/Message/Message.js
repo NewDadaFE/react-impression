@@ -1,13 +1,12 @@
 import classnames from 'classnames'
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-// Message组件引用
-let _message,
-  _timers = []
+let _message
+let _timers = []
 
-export default class Message extends Component {
+export default class Message extends React.Component {
   constructor(props, context) {
     super(props, context)
     _message = this
@@ -18,7 +17,7 @@ export default class Message extends Component {
       theme: props.theme,
     }
   }
-  // prop type校验
+
   static propTypes = {
     /**
      * 自定义样式
@@ -33,7 +32,7 @@ export default class Message extends Component {
      */
     theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'loading']),
   }
-  // 默认props
+
   static defaultProps = {
     theme: 'info',
   }
@@ -43,13 +42,12 @@ export default class Message extends Component {
   componentWillUnmount() {
     _timers.forEach(timer => clearTimeout(timer))
   }
-
   /**
    * 获取信息图标
    * @returns {*}
    */
   getTitleIcon() {
-    let { theme } = this.state
+    const { theme } = this.state
 
     return {
       info: ['fa', 'fa-volume-up'],
@@ -59,13 +57,12 @@ export default class Message extends Component {
       loading: ['message-loading'],
     }[theme]
   }
-
   /**
    * 获取主题样式
    * @returns {*}
    */
   getStyleClass() {
-    let { theme } = this.state
+    const { theme } = this.state
 
     return {
       info: 'message-primary',
@@ -76,15 +73,11 @@ export default class Message extends Component {
     }[theme]
   }
 
-  /**
-   * 渲染
-   * @returns {boolean}
-   */
   render() {
-    let { className } = this.props,
-      { message, show } = this.state,
-      themeClass = this.getStyleClass(),
-      iconClass = this.getTitleIcon()
+    const { className } = this.props
+    const { message, show } = this.state
+    const themeClass = this.getStyleClass()
+    const iconClass = this.getTitleIcon()
 
     return (
       <div>
