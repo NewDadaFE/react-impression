@@ -16,9 +16,9 @@ export default class Row extends React.PureComponent {
   }
 
   getChildren() {
-    let { children } = this.props,
-      count = 0,
-      allocation = 0
+    const { children } = this.props
+    let count = 0
+    let allocation = 0
 
     React.Children.forEach(children, child => {
       if (!child) {
@@ -32,7 +32,7 @@ export default class Row extends React.PureComponent {
       }
     })
 
-    let surplus = 12 - count
+    const surplus = 12 - count
 
     return React.Children.map(children, (child, index) => {
       if (!child) {
@@ -49,12 +49,13 @@ export default class Row extends React.PureComponent {
   }
 
   render() {
-    let { className, children, ...others } = this.props
+    const { className, children, ...others } = this.props
 
-    children = this.getChildren()
+    const _children = this.getChildren()
+
     return (
       <div {...others} className={classnames('row', className)}>
-        {children}
+        {_children}
       </div>
     )
   }
