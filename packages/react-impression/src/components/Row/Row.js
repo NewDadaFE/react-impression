@@ -1,12 +1,11 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Row extends PureComponent {
-  // props校验
+export default class Row extends React.PureComponent {
   static propTypes = {
     /**
-     * 样式名
+     * 自定义样式
      */
     className: PropTypes.string,
 
@@ -29,7 +28,7 @@ export default class Row extends PureComponent {
       if (child.props.hasOwnProperty('col')) {
         count += Number.parseInt(child.props.col, 10)
       } else {
-        allocation += 1 // 校验
+        allocation += 1
       }
     })
 
