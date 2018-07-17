@@ -3,9 +3,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Label from '../FormControlLabel'
 
-/**
- * FormControl 组件.
- */
 export default class FormControl extends PureComponent {
   static propTypes = {
     /**
