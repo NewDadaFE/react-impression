@@ -1,25 +1,34 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Popover组件.
- */
-export default class Popover extends PureComponent {
-  // prop type校验
+
+export default class Popover extends React.PureComponent {
   static propTypes = {
-    // 显示位置
+    /**
+     * 显示位置
+     */
     position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
-    // 标题
+    /**
+     * 标题
+     */
     title: PropTypes.node,
-    // 内容
+    /**
+     * 内容
+     */
     content: PropTypes.node,
-    // 子节点
+    /**
+     * 子组件
+     */
     children: PropTypes.element.isRequired,
   }
-  // 默认props
+
   static defaultProps = {
     position: 'right',
   }
-  // 创建popover
+
+  /**
+   * 创建popover
+   * @param targetRect
+   */
   createPopover(targetRect) {
     let { position, title, content } = this.props,
       positionClass = `popover-${position}`,
@@ -68,20 +77,26 @@ export default class Popover extends PureComponent {
 
     this.popover = popoverNode
   }
-  // 显示popover
+
+  /**
+   * 显示popover
+   * @param event
+   */
   onMouseOver = event => {
-    let rect = event.target.getBoundingClientRect()
+    const rect = event.target.getBoundingClientRect()
 
     this.createPopover(rect)
   }
-  // 移除popover
+  /**
+   * 移除popover
+   */
   onMouseOut = () => {
     document.body.removeChild(this.popover)
   }
-  // 渲染
+
   render() {
-    let { children } = this.props,
-      { onMouseOver, onMouseOut } = children.props
+    let { children } = this.props
+    const { onMouseOver, onMouseOut } = children.props
 
     children = React.cloneElement(children, {
       onMouseOver: onMouseOver
