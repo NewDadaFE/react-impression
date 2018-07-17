@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * CollapseBody 组件
- */
+
 const CollapseBody = ({ className, children, ...others }) => {
   delete others.onClick
 
@@ -15,7 +13,14 @@ const CollapseBody = ({ className, children, ...others }) => {
 }
 
 CollapseBody.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
