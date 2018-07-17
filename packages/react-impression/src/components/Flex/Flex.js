@@ -3,9 +3,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import FlexItem from '../FlexItem'
 
-/**
- * Flex布局组件.
- */
 export default class Flex extends PureComponent {
   // prop type校验
   static propTypes = {
