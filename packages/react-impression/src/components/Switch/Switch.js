@@ -1,32 +1,47 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Switch组件.
- */
-export default class Switch extends PureComponent {
-  // props校验
+
+export default class Switch extends React.PureComponent {
   static propTypes = {
-    // 自定义class
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 是否选中
+
+    /**
+     * 是否选中
+     */
     checked: PropTypes.bool,
-    // 是否默认选中
+
+    /**
+     * 是否默认选中
+     */
     defaultChecked: PropTypes.bool,
-    // 是否disabled
+
+    /**
+     * 是否可以点击
+     */
     disabled: PropTypes.bool,
-    // 状态切换回调
+
+    /**
+     * 状态变更回调函数
+     */
     onChange: PropTypes.func,
+
+    /**
+     * 值
+     */
     value: PropTypes.any,
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
   }
 
   getValue() {
-    let { value } = this.props,
-      { main } = this.refs
+    const { value } = this.props
+    const { main } = this.refs
 
     if (value === undefined) {
       return main.checked
@@ -34,22 +49,23 @@ export default class Switch extends PureComponent {
 
     return value
   }
+
   setValue(checked) {
-    let { main } = this.refs
+    const { main } = this.refs
 
     main.checked = !!checked
   }
+
   // 状态切换回调
   onChangeHandle = event => {
-    let { onChange } = this.props,
-      { checked } = event.target
+    const { onChange } = this.props
+    const { checked } = event.target
 
     onChange(checked, event)
   }
 
-  // 渲染
   render() {
-    let {
+    const {
       checked,
       defaultChecked,
       onChange,
@@ -79,14 +95,12 @@ export default class Switch extends PureComponent {
   }
 }
 
-// getValue
 Switch.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getValue()
 }
 
-// setValue
 Switch.setValue = (ref, checked) => {
   if (!ref) return
 
