@@ -1,18 +1,15 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * CheckboxGroup组件.
- */
-export default class CheckboxGroup extends PureComponent {
-  // 初始化state
+
+export default class CheckboxGroup extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
 
-    let initValue = {
+    const initValue = {
       value: this.isPuppet ? undefined : props.defaultValue || [],
     }
 
@@ -20,36 +17,59 @@ export default class CheckboxGroup extends PureComponent {
       ...initValue,
     }
   }
-  // props校验
+
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 选中
+
+    /**
+     * 选中的值
+     */
     value: PropTypes.array,
-    // 默认是否选中
+
+    /**
+     * 默认选中的值
+     */
     defaultValue: PropTypes.array,
-    // 回调函数
+
+    /**
+     * 状态变更回调
+     */
     onChange: PropTypes.func,
-    // 是否disabled
+
+    /**
+     * 是否disabled
+     */
     disabled: PropTypes.bool,
-    // 排列方向
+
+    /**
+     * 排列方向
+     */
     direction: PropTypes.oneOf(['row', 'column']),
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
     direction: 'row',
   }
+
   getValue() {
     return this.isPuppet ? this.props.value : this.state.value
   }
+
   setValue(value) {
     if (!this.isPuppet) this.setState({ value })
   }
-  // checkbox选中回调函数
+
   onChangeHandle = (event, value) => {
-    let { checked } = event.target,
+    const { checked } = event.target,
       { onChange } = this.props
 
     if (this.isPuppet) {
@@ -74,7 +94,7 @@ export default class CheckboxGroup extends PureComponent {
       )
     }
   }
-  // 渲染
+
   render() {
     let { className, direction, children, ...others } = this.props
 
@@ -114,14 +134,12 @@ export default class CheckboxGroup extends PureComponent {
   }
 }
 
-// getValue
 CheckboxGroup.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getValue()
 }
 
-// setValue
 CheckboxGroup.setValue = (ref, value) => {
   if (!ref) return
 
