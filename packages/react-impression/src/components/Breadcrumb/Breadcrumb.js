@@ -1,11 +1,9 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * 面包屑组件.
- */
+
 const Breadcrumb = ({ separator, children, className, ...others }) => {
-  let separatorClass = separator ? `breadcrumb-${separator}` : null
+  const separatorClass = separator ? `breadcrumb-${separator}` : null
 
   children = React.Children.map(children, (child, index) => {
     if (!child) {
@@ -30,9 +28,19 @@ const Breadcrumb = ({ separator, children, className, ...others }) => {
 }
 
 Breadcrumb.propTypes = {
-  // 分隔
+  /**
+   * 分割标识，'arrow'或者不传则默认为／
+   */
   separator: PropTypes.string,
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 
