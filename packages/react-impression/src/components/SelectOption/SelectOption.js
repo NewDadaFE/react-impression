@@ -1,32 +1,47 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Option组件.
- */
-export default class Option extends PureComponent {
-  // prop type校验
+
+export default class Option extends React.PureComponent {
   static propTypes = {
-    // 是否不可用
+    /**
+     * 是否不可用
+     */
     disabled: PropTypes.bool,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 是否选中
+
+    /**
+     * 是否选中
+     */
     active: PropTypes.bool,
-    // value
+
+    /**
+     * 值
+     */
     value: PropTypes.any.isRequired,
-    // 回调
+
+    /**
+     * 点击回调函数
+     */
     onClick: PropTypes.func,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
     active: false,
   }
-  // 渲染
+
   render() {
-    let {
+    const {
       active,
       disabled,
       onClick,
