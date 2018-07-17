@@ -15,10 +15,19 @@ const FormGroup = ({ col, className, children, ...others }) => {
 }
 
 FormGroup.propTypes = {
-  // 所占比例
+  /**
+   * 所占比例
+   */
   col: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  // 自定义样式
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 

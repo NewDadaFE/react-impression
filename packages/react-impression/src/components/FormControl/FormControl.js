@@ -7,9 +7,10 @@ import Label from '../FormControlLabel'
  * FormControl 组件.
  */
 export default class FormControl extends PureComponent {
-  // prop type校验
   static propTypes = {
-    // 子节点
+    /**
+     * 子组件
+     */
     children: PropTypes.element.isRequired,
   }
   // 渲染
