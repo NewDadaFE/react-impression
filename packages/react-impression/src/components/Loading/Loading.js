@@ -1,15 +1,14 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import LoadingAddon from '../LoadingAddon'
 
-let _loading,
-  _startDate,
-  _endDate,
-  _duration = 1000
+let _loading
+let _startDate
+let _endDate
+let _duration = 1000
 
-export default class Loading extends PureComponent {
-  // 初始信息
+export default class Loading extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     _loading = this
@@ -19,7 +18,7 @@ export default class Loading extends PureComponent {
       show: false,
     }
   }
-  // props校验
+
   static propTypes = {
     /**
      * 自定义样式
@@ -42,17 +41,18 @@ export default class Loading extends PureComponent {
      */
     duration: PropTypes.number,
   }
-  // 默认props
+
   static defaultProps = {
     type: 'cyclone',
     closeable: false,
     loadingMsg: '加载中',
   }
+
   /**
    * 关闭loading.
    */
   hideHandle = () => {
-    let { closeable } = this.props
+    const { closeable } = this.props
 
     closeable &&
       this.setState({
@@ -60,13 +60,9 @@ export default class Loading extends PureComponent {
       })
   }
 
-  /**
-   * 渲染
-   * @returns {boolean}
-   */
   render() {
-    let { type, loadingMsg, className } = this.props,
-      { show } = this.state
+    const { type, loadingMsg, className } = this.props
+    const { show } = this.state
 
     return (
       <div
