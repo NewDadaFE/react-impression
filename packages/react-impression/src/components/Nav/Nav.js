@@ -1,13 +1,17 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import NavItem from '../NavItem'
 import NavLink from '../NavLink'
 import NavTitle from '../NavTitle'
 
-// 返回type映射的class
+/**
+ * 返回type映射的class
+ * @param type
+ * @returns {string}
+ */
 const getTypeClassMap = type => {
-  let map = {
+  const map = {
     tab: 'nav-tabs',
     pill: 'nav-pills',
     inline: 'nav-inline',
@@ -17,34 +21,52 @@ const getTypeClassMap = type => {
   return map[type] ? map[type] : type
 }
 
-/**
- * Nav 组件
- */
-export default class Nav extends PureComponent {
-  // 构造函数
+export default class Nav extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     this.state = {
       activeKey: this.props.activeKey,
     }
   }
-  // props校验
+
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    type: PropTypes.string,
+    /**
+     * 导航栏样式
+     */
+    type: PropTypes.oneOf(['tab', 'pill', 'inline', 'inline-bordered']),
+    /**
+     * 是否纵向排列
+     */
     stacked: PropTypes.bool,
+    /**
+     * 默认激活标签
+     */
     activeKey: PropTypes.any,
+    /**
+     * 选中回调函数
+     */
     onSelect: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     stacked: false,
   }
-  // 选中回调
+  /**
+   * 选中回调
+   * @param eventKey
+   * @returns {boolean}
+   */
   onSelectHandle = eventKey => {
-    let { activeKey } = this.state,
-      { onSelect } = this.props
+    const { activeKey } = this.state
+    const { onSelect } = this.props
 
     if (activeKey === eventKey) {
       return false
@@ -54,25 +76,27 @@ export default class Nav extends PureComponent {
 
     return true
   }
-  // 渲染
+
   render() {
-    let { type, stacked, className, children, ...others } = this.props,
-      { activeKey } = this.state,
-      navStacked = stacked && type === 'pill' ? 'nav-stacked' : null,
-      navStyle = getTypeClassMap(type)
+    let children = this.props.children
+    const { type, stacked, className, ...others } = this.props
+    const { activeKey } = this.state
+    const navStacked = stacked && type === 'pill' ? 'nav-stacked' : null
+    const navStyle = getTypeClassMap(type)
 
     delete others.activeKey
-    type &&
-      (children = React.Children.map(children, (child, index) => {
+
+    if (type) {
+      children = React.Children.map(children, (child, index) => {
         if (!child) {
           return child
         }
 
-        let { eventKey } = child.props,
-          options = {
-            key: index,
-            onClick: this.onSelectHandle,
-          }
+        const { eventKey } = child.props
+        const options = {
+          key: index,
+          onClick: this.onSelectHandle,
+        }
 
         if (eventKey !== undefined) {
           options.eventKey = eventKey
@@ -80,7 +104,8 @@ export default class Nav extends PureComponent {
         }
 
         return React.cloneElement(child, options)
-      }))
+      })
+    }
 
     return (
       <ul
