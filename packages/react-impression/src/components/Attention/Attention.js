@@ -33,7 +33,9 @@ export default class Attention extends React.PureComponent {
     children: PropTypes.any,
   }
 
-  // 关闭
+  /**
+   * 关闭attention
+   */
   hideHandle = () => {
     this.setState({
       show: false,
