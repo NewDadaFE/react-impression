@@ -1,32 +1,63 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from '../Icon'
 
-/**
- * 上传组件.
- */
-export default class Upload extends PureComponent {
-  // props校验
+export default class Upload extends React.PureComponent {
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 按钮文字
+     */
     btnText: PropTypes.string,
+
+    /**
+     * 占位文字
+     */
     placeholder: PropTypes.string,
+
+    /**
+     * 按钮样式
+     */
     btnStyle: PropTypes.string,
+
+    /**
+     * 是否可预览
+     */
     preview: PropTypes.bool,
+
+    /**
+     * 提示信息
+     */
     message: PropTypes.string,
+
+    /**
+     * 文件路径
+     */
     src: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+
+    /**
+     * 回调函数
+     */
     onChange: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     btnText: '浏 览',
     btnStyle: 'default',
     placeholder: '请选择要上传的附件',
     preview: false,
   }
-  // 初始state
+
   constructor(props, context) {
     super(props, context)
 
@@ -34,18 +65,22 @@ export default class Upload extends PureComponent {
       file: '',
     }
   }
+
   getValue() {
     return this.refs.main.files[0]
   }
+
   setValue(value) {
     this.refs.main.files[0] = value
   }
+
   /**
    * 打开文件浏览器对话框.
    */
   openFileDialogHandle = () => {
     this.refs.main.click()
   }
+
   /**
    * 设置文件名.
    */
@@ -58,6 +93,7 @@ export default class Upload extends PureComponent {
 
     onChange && onChange(event)
   }
+
   /**
    * 图片预览处理.
    * @param  {[Event]} event [事件]
@@ -78,6 +114,7 @@ export default class Upload extends PureComponent {
     reader.readAsDataURL(file)
     onChange && onChange(event)
   }
+
   // 渲染
   render() {
     let {
@@ -154,14 +191,12 @@ export default class Upload extends PureComponent {
   }
 }
 
-// getValue
 Upload.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getValue()
 }
 
-// setValue
 Upload.setValue = (ref, value) => {
   if (!ref) return
 
