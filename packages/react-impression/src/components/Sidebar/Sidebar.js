@@ -5,15 +5,18 @@ import Footer from '../SidebarFooter'
 import Header from '../SidebarHeader'
 import Body from '../SidebarBody'
 
-// props校验
 const propTypes = {
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 
-/**
- * Sidebar 组件
- */
 const Sidebar = ({ children, className, ...others }) => {
   return (
     <div {...others} className={classnames('sidebar', className)}>
