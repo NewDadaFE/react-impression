@@ -1,15 +1,18 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-// props校验
+
 const propTypes = {
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 
-/**
- * NavLink 组件
- */
 const NavLink = ({ children, className, ...others }) => {
   if (!children) {
     return children
