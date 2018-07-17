@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * InlineSelectOption组件.
- */
+
 const InlineSelectOption = ({ active, className, children, ...others }) => {
   return (
     <div
@@ -16,10 +14,19 @@ const InlineSelectOption = ({ active, className, children, ...others }) => {
 }
 
 InlineSelectOption.propTypes = {
-  // 是否选中
+  /**
+   * 是否选择
+   */
   active: PropTypes.bool,
-  // 自定义样式
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 
