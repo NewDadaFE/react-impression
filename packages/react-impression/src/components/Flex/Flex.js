@@ -14,6 +14,9 @@ export default class Flex extends PureComponent {
      */
     className: PropTypes.string,
 
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
 
     /**

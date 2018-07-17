@@ -12,6 +12,10 @@ export default class FlexItem extends PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
 
     /**
