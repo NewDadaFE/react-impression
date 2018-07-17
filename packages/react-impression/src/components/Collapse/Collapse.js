@@ -1,13 +1,10 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import CollapseTitle from '../CollapseTitle'
 import CollapseBody from '../CollapseBody'
 
-/**
- * Collapse 组件
- */
-export default class Collapse extends PureComponent {
+export default class Collapse extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
@@ -15,28 +12,41 @@ export default class Collapse extends PureComponent {
       active: props.active,
     }
   }
-  // props校验
+
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 是否是激活状态
+     */
     active: PropTypes.bool,
   }
-  // 默认props
+
   static defaultProps = {
     active: false,
   }
+
   toggleItemsHandle = () => {
     this.setState({
       active: !this.state.active,
     })
   }
-  // 渲染
+
   render() {
-    let { children, className, ...others } = this.props,
-      { active } = this.state
+    let { children, className, ...others } = this.props
+    const { active } = this.state
 
     delete others.active
-    children = React.Children.map(children, child => {
+
+    const _children = React.Children.map(children, child => {
       if (!child) {
         return child
       }
@@ -51,7 +61,7 @@ export default class Collapse extends PureComponent {
         {...others}
         className={classnames('collapse', { active }, className)}
       >
-        {children}
+        {_children}
       </div>
     )
   }
