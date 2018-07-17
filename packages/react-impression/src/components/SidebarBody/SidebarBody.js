@@ -3,21 +3,26 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import PS from 'perfect-scrollbar'
 
-/**
- * Sidebar 主内容组件
- */
 export default class SidebarBody extends PureComponent {
-  // props校验
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
-  // 初始化滚动条
+
   componentDidMount() {
+    // 初始化滚动条
     PS.initialize(this.refs.container)
   }
+
   render() {
-    let { className, children, ...others } = this.props
+    const { className, children, ...others } = this.props
 
     return (
       <div
