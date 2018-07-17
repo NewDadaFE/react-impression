@@ -1,27 +1,35 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-/**
- * Tooltip组件.
- */
-export default class Tooltip extends PureComponent {
-  // prop type校验
+export default class Tooltip extends React.PureComponent {
   static propTypes = {
+    /**
+     * 设置提示工具位置
+     */
     position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+
+    /**
+     * 提示工具内容
+     */
     content: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.element.isRequired,
   }
-  // 默认props
+
   static defaultProps = {
     position: 'right',
   }
+
   // 创建tooltip
   createTooltip(targetRect) {
-    let { position, content } = this.props,
-      positionClass = `tooltip-${position}`,
-      tooltipNode = document.createElement('div'),
-      arrowNode = document.createElement('div'),
-      innerNode = document.createElement('div')
+    const { position, content } = this.props
+    const positionClass = `tooltip-${position}`
+    const tooltipNode = document.createElement('div')
+    const arrowNode = document.createElement('div')
+    const innerNode = document.createElement('div')
 
     tooltipNode.className = `tooltip ${positionClass}`
     arrowNode.className = 'tooltip-arrow'
@@ -62,22 +70,25 @@ export default class Tooltip extends PureComponent {
     tooltipNode.classList.add('in')
     this.tooltip = tooltipNode
   }
+
   // 显示tooltip
   onMouseOver = event => {
     let rect = event.target.getBoundingClientRect()
 
     this.createTooltip(rect)
   }
+
   // 移除tooltip
   onMouseOut = () => {
     document.body.removeChild(this.tooltip)
   }
+
   // 渲染
   render() {
-    let { children } = this.props,
-      { onMouseOver, onMouseOut } = children.props
+    const { children } = this.props
+    const { onMouseOver, onMouseOut } = children.props
 
-    children = React.cloneElement(children, {
+    return React.cloneElement(children, {
       onMouseOver: onMouseOver
         ? event => {
           onMouseOver()
@@ -91,7 +102,5 @@ export default class Tooltip extends PureComponent {
         }
         : this.onMouseOut,
     })
-
-    return children
   }
 }
