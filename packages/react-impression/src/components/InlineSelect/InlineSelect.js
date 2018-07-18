@@ -6,7 +6,7 @@ import InlineSelectOption from '../InlineSelectOption'
 export default class InlineSelect extends React.PureComponent {
   constructor(props) {
     super(props)
-
+    // 是否木偶组件
     this.isPuppet = props.value !== undefined
 
     let initValue = {
@@ -53,6 +53,7 @@ export default class InlineSelect extends React.PureComponent {
   setValue(value) {
     if (!this.isPuppet) this.setState({ value })
   }
+  // ption选中回调
   selectOptionHandle(value, text, index) {
     let { onChange } = this.props
 
