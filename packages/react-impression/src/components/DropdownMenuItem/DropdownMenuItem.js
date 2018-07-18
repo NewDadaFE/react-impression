@@ -29,7 +29,7 @@ export default class DropdownMenuItem extends React.PureComponent {
      */
     toggleMenu: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
   }
@@ -39,7 +39,7 @@ export default class DropdownMenuItem extends React.PureComponent {
     !disabled && onClick && onClick()
     toggleMenu()
   }
-  // 渲染
+
   render() {
     const { disabled, className, children } = this.props
 

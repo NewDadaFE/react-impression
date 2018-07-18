@@ -24,11 +24,11 @@ export default class DropdownMenu extends React.PureComponent {
      */
     toggleMenu: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     right: false,
   }
-  // 渲染
+
   render() {
     const { toggleMenu, right, className } = this.props
     let { children } = this.props

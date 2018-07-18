@@ -38,7 +38,6 @@ export default class Dropdown extends React.PureComponent {
      */
     className: PropTypes.string,
   }
-  // 默认props
   static defaultProps = {
     active: false,
     trigger: 'click',
@@ -61,7 +60,7 @@ export default class Dropdown extends React.PureComponent {
   componentWillUnmount() {
     System.unmanager(this)
   }
-  // 渲染
+
   render() {
     const { trigger, className, ...others } = this.props
     const { active } = this.state
