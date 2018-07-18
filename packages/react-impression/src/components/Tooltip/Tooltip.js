@@ -6,7 +6,7 @@ export default class Tooltip extends React.PureComponent {
     /**
      * 设置提示工具位置
      */
-    position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+    position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
 
     /**
      * 提示工具内容
