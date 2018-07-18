@@ -25,11 +25,11 @@ export default class Flex extends React.PureComponent {
      */
     direction: PropTypes.oneOf(['row', 'column']),
   }
-  // 默认props
+
   static defaultProps = {
     direction: 'row',
   }
-  // 渲染
+
   render() {
     const { direction, align, className, ...others } = this.props
     let { children } = this.props

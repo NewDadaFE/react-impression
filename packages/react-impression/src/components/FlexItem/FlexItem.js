@@ -19,11 +19,11 @@ export default class FlexItem extends React.PureComponent {
      */
     flex: PropTypes.number,
   }
-  // 默认props
+
   static defaultProps = {
     flex: 1,
   }
-  // 渲染
+
   render() {
     const { flex, className, ...others } = this.props
     let { children } = this.props
