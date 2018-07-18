@@ -3,9 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from '../Icon'
 
-/**
- * Dropdown 触发组件.
- */
 const DropdownTrigger = ({
   trigger,
   toggleMenu,
@@ -36,9 +33,24 @@ const DropdownTrigger = ({
 }
 
 DropdownTrigger.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.element.isRequired,
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 触发方式
+   */
   trigger: PropTypes.oneOf(['click', 'hover']),
+
+  /**
+   * 切换回调函数
+   */
   toggleMenu: PropTypes.func,
 }
 
