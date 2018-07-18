@@ -1,11 +1,11 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import DatePicker from '../DatePicker'
 import Upload from '../Upload'
 import * as System from '../../utils/system'
 
-export default class Input extends PureComponent {
+export default class Input extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     System.manager(this)

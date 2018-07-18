@@ -1,15 +1,22 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types' // import InputGroupAddon from './InputGroupAddon';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-/**
- * InputGroup组件.
- */
-export default class InputGroupInput extends PureComponent {
-  // props校验
+export default class InputGroupInput extends React.PureComponent {
   static propTypes = {
+    /**
+     * 设置输入框组内 input 类型，可选值为 text
+     */
     type: PropTypes.string,
+
+    /**
+     * 设置占位符
+     */
     placeholder: PropTypes.string,
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
   }
   // 默认props
@@ -24,7 +31,7 @@ export default class InputGroupInput extends PureComponent {
   }
   // 渲染
   render() {
-    let { type, className, placeholder, ...others } = this.props
+    const { type, className, placeholder, ...others } = this.props
 
     return (
       <input

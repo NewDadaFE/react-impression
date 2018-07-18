@@ -5,9 +5,6 @@ import InputGroupAddon from '../InputGroupAddon'
 import InputGroupInput from '../InputGroupInput'
 import InputGroupButton from '../InputGroupButton'
 
-/**
- * InputGroup组件.
- */
 const InputGroup = ({ size, className, children, ...others }) => {
   let sizeClass = size ? `input-group-${size}` : null
 
@@ -22,8 +19,19 @@ const InputGroup = ({ size, className, children, ...others }) => {
 }
 
 InputGroup.propTypes = {
+  /**
+   * 设置输入框组大小
+   */
   size: PropTypes.oneOf(['sm', 'lg']),
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 InputGroup.Addon = InputGroupAddon
