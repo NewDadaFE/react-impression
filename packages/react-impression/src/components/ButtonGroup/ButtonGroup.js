@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 export default class ButtonGroup extends React.PureComponent {
   static propTypes = {
     /**
-     * 大小（lg、sm或者默认）
+     * 尺寸
      */
-    size: PropTypes.string,
+    size: PropTypes.oneOf(['sm', 'lg']),
 
     /**
      * 主题样式

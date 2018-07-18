@@ -37,9 +37,9 @@ export default class Button extends React.PureComponent {
     outline: PropTypes.bool,
 
     /**
-     * 尺寸，sm, lg或者默认
+     * 尺寸
      */
-    size: PropTypes.string,
+    size: PropTypes.oneOf(['sm', 'lg']),
 
     /**
      * 形状，可选值为pill
