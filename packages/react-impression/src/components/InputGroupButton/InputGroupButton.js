@@ -1,16 +1,23 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 
-/**
- * InputGroupButton组件.
- */
-export default class InputGroupButton extends PureComponent {
-  // props校验
+export default class InputGroupButton extends React.PureComponent {
   static propTypes = {
+    /**
+     * 设置输入框组内按钮样式,可选值为 default、primary
+     */
     theme: PropTypes.string,
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
   // 默认props
@@ -19,7 +26,7 @@ export default class InputGroupButton extends PureComponent {
   }
   // 渲染
   render() {
-    let { theme, className, children, ...others } = this.props
+    const { theme, className, children, ...others } = this.props
 
     return (
       <span {...others} className='input-group-btn'>
