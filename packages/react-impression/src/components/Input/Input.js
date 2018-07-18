@@ -85,7 +85,7 @@ export default class Input extends React.PureComponent {
      */
     onChange: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     type: 'text',
     clearable: true,
@@ -169,7 +169,7 @@ export default class Input extends React.PureComponent {
   componentWillUnmount() {
     System.unmanager(this)
   }
-  // 渲染
+
   render() {
     let {
         type,
