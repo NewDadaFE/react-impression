@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import DropdownTrigger from '../DropdownTrigger'
 import DropdownMenu from '../DropdownMenu'
@@ -7,10 +7,7 @@ import DropdownMenuItem from '../DropdownMenuItem'
 import DropdownMenuDivider from '../DropdownMenuDivider'
 import * as System from '../../utils/system'
 
-/**
- * Dropdown组件.
- */
-export default class Dropdown extends PureComponent {
+export default class Dropdown extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     System.manager(this)
@@ -19,14 +16,26 @@ export default class Dropdown extends PureComponent {
       active: undefined === props.active ? false : props.active,
     }
   }
-  // prop type校验
+
   static propTypes = {
-    // 是否激活
+    /**
+     * 是否激活
+     */
     active: PropTypes.bool,
-    // 触发动作
+
+    /**
+     * 触发动作
+     */
     trigger: PropTypes.oneOf(['click', 'hover']),
-    // 子节点
+
+    /**
+     * 子组件
+     */
     children: PropTypes.array.isRequired,
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
   }
   // 默认props
@@ -34,7 +43,7 @@ export default class Dropdown extends PureComponent {
     active: false,
     trigger: 'click',
   }
-  // 显示/隐藏菜单
+
   toggleOptionsHandle = flag => {
     let { active } = this.state
 
@@ -42,20 +51,21 @@ export default class Dropdown extends PureComponent {
       active: typeof flag === 'boolean' ? flag : !active,
     })
   }
-  // 隐藏菜单
+
   hideOptionsHandle = () => {
     this.setState({
       active: false,
     })
   }
-  // 清空组件管理.
+
   componentWillUnmount() {
     System.unmanager(this)
   }
   // 渲染
   render() {
-    let { trigger, className, children, ...others } = this.props,
-      { active } = this.state
+    const { trigger, className, ...others } = this.props
+    const { active } = this.state
+    let { children } = this.props
 
     children = React.Children.map(children, child => {
       if (!child) {

@@ -1,24 +1,38 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-/**
- * Dropdown 菜单项组件.
- */
-export default class DropdownMenuItem extends PureComponent {
-  // props类型校验
+export default class DropdownMenuItem extends React.PureComponent {
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+
+    /**
+     * 是否不可点击
+     */
     disabled: PropTypes.bool,
+
+    /**
+     * 点击回调
+     */
     onClick: PropTypes.func,
+
+    /**
+     * 切换回调函数
+     */
     toggleMenu: PropTypes.func,
   }
   // 默认props
   static defaultProps = {
     disabled: false,
   }
-  // 点击回调
   onClickHandle = () => {
     let { disabled, onClick, toggleMenu } = this.props
 
@@ -27,7 +41,7 @@ export default class DropdownMenuItem extends PureComponent {
   }
   // 渲染
   render() {
-    let { disabled, className, children } = this.props
+    const { disabled, className, children } = this.props
 
     return (
       <li
