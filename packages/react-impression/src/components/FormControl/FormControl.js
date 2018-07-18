@@ -1,9 +1,9 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Label from '../FormControlLabel'
 
-export default class FormControl extends PureComponent {
+export default class FormControl extends React.PureComponent {
   static propTypes = {
     /**
      * 子组件
@@ -12,8 +12,8 @@ export default class FormControl extends PureComponent {
   }
   // 渲染
   render() {
-    let { children } = this.props,
-      { className } = children
+    let { children } = this.props
+    const { className } = children
 
     children = React.cloneElement(children, {
       className: classnames(className, 'form-control'),
