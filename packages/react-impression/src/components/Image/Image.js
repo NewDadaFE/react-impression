@@ -29,14 +29,14 @@ export default class Image extends React.PureComponent {
      */
     className: PropTypes.string,
   }
-  // 默认props
+
   static defaultProps = {
     fluid: false,
     rounded: false,
     circle: false,
     thumbnail: false,
   }
-  // 渲染
+
   render() {
     const {
       fluid,
