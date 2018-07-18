@@ -1,30 +1,47 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-/**
- * 主内容区 组件.
- */
-export default class Content extends PureComponent {
-  // props校验
+export default class Content extends React.PureComponent {
   static propTypes = {
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 是否有动画
+
+    /**
+     * 是否有动画
+     */
     notransition: PropTypes.bool,
-    // 动画名称
+
+    /**
+     * 动画名称
+     */
     transitionName: PropTypes.string,
-    // 进入动画时间
+
+    /**
+     * 进入动画时间
+     */
     transitionEnterTimeout: PropTypes.number,
-    // 退出动画时间
+
+    /**
+     * 退出动画时间
+     */
     transitionLeaveTimeout: PropTypes.number,
-    // 包裹元素
+
+    /**
+     * 包裹元素
+     */
     component: PropTypes.string,
-    // 子元素为单一节点
+
+    /**
+     * 子元素
+     */
     children: PropTypes.element.isRequired,
   }
-  // 默认props
+
   static defaultProps = {
     notransition: false,
     transitionName: 'zoom-slide',
@@ -32,6 +49,7 @@ export default class Content extends PureComponent {
     transitionEnterTimeout: 1200,
     transitionLeaveTimeout: 900,
   }
+
   render() {
     let {
       notransition,
