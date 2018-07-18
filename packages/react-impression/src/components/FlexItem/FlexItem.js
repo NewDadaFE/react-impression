@@ -1,9 +1,8 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class FlexItem extends PureComponent {
-  // prop type校验
+export default class FlexItem extends React.PureComponent {
   static propTypes = {
     /**
      * 自定义样式
