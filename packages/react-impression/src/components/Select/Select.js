@@ -110,6 +110,9 @@ export default class Select extends React.PureComponent {
 
   /**
    * option选中回调
+   * @param {String} 值
+   * @param {String} 显示文本
+   * @param {Number} 索引
    */
   selectOptionHandle(newValue, text, index) {
     const { onChange } = this.props
