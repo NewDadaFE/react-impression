@@ -5,13 +5,7 @@ import DatePicker from '../DatePicker'
 import Upload from '../Upload'
 import * as System from '../../utils/system'
 
-/**
- * Input 组件.
- */
 export default class Input extends PureComponent {
-  /**
-   * 初始化.
-   */
   constructor(props, context) {
     super(props, context)
     System.manager(this)
@@ -21,13 +15,20 @@ export default class Input extends PureComponent {
       showClear: false,
     }
   }
-  // prop type校验
   static propTypes = {
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 行内样式
+
+    /**
+     * 行内样式
+     */
     style: PropTypes.object,
-    // 类型
+
+    /**
+     * 设置输入框类型
+     */
     type: PropTypes.oneOf([
       'text',
       'password',
@@ -38,23 +39,50 @@ export default class Input extends PureComponent {
       'search',
       'textarea',
     ]),
-    // 提示
+
+    /**
+     * 输入框提示信息
+     */
     placeholder: PropTypes.string,
-    // 值
+
+    /**
+     * 输入框的值
+     */
     value: PropTypes.any,
-    // 默认值
+
+    /**
+     * 输入框默认值
+     */
     defaultValue: PropTypes.any,
-    // 是否可清除
+
+    /**
+     * 是否可清除
+     */
     clearable: PropTypes.bool,
-    // 是否不可选
+
+    /**
+     * 是否不可选
+     */
     disabled: PropTypes.bool,
     // 子元素只能为节点
+    /**
+     * 子组件
+     */
     children: PropTypes.element,
-    // 是否椭圆形
+
+    /**
+     * 样式是否椭圆形
+     */
     pill: PropTypes.bool,
-    // 点击事件
+
+    /**
+     * 点击事件
+     */
     onClick: PropTypes.func,
-    // onChange
+
+    /**
+     * 更改事件
+     */
     onChange: PropTypes.func,
   }
   // 默认props
@@ -63,7 +91,7 @@ export default class Input extends PureComponent {
     clearable: true,
     disabled: false,
   }
-  // 获取Input value
+  // getValue
   getValue() {
     let { type } = this.props
 
@@ -74,7 +102,6 @@ export default class Input extends PureComponent {
         return this.refMain ? this.refMain.value : undefined
     }
   }
-  // 设置Input value
   setValue(value) {
     let { type } = this.props
 
@@ -89,7 +116,6 @@ export default class Input extends PureComponent {
   focus() {
     this.refMain.focus()
   }
-  // 显示候选项
   showOptionHandle = () => {
     let { disabled } = this.props
 
@@ -99,7 +125,6 @@ export default class Input extends PureComponent {
         showClear: false,
       })
   }
-  // 隐藏候选项.
   hideOptionsHandle = () => {
     if (!this.refMain) {
       return
@@ -111,7 +136,6 @@ export default class Input extends PureComponent {
       showClear: false,
     })
   }
-  // 清空输入框.
   clearInputHandle = () => {
     let { disabled } = this.props
 
@@ -121,10 +145,6 @@ export default class Input extends PureComponent {
 
     this.refMain && (this.refMain.value = '')
   }
-  /**
-   * 选中候选项.
-   * @param  {[String]} value [候选项值]
-   */
   selectOptionsHandle = value => {
     this.refMain && (this.refMain.value = value)
 
@@ -133,7 +153,6 @@ export default class Input extends PureComponent {
       showClear: false,
     })
   }
-  // 显示清空按钮.
   showClearHandle = () => {
     !this.props.disabled &&
       this.refMain &&
@@ -142,13 +161,11 @@ export default class Input extends PureComponent {
         showClear: true,
       })
   }
-  // 隐藏清空按钮.
   hideClearHandle = () => {
     this.setState({
       showClear: false,
     })
   }
-  // 清空组件管理.
   componentWillUnmount() {
     System.unmanager(this)
   }
