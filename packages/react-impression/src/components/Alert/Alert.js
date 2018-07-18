@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // 获取小图标
@@ -12,7 +12,7 @@ const getAddonByType = type => {
   }
 }
 
-export default class Alert extends PureComponent {
+export default class Alert extends React.PureComponent {
   static propTypes = {
 
     /**
