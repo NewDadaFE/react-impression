@@ -1,10 +1,10 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import FormGroup from '../FormGroup'
 import FormControl from '../FormControl'
 
-export default class Form extends PureComponent {
+export default class Form extends React.PureComponent {
   static propTypes = {
     /**
      * 排列方向
