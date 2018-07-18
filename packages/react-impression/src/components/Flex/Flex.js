@@ -31,9 +31,10 @@ export default class Flex extends React.PureComponent {
   }
   // 渲染
   render() {
-    let { direction, align, children, className, ...others } = this.props,
-      directionClass = direction === 'row' ? '' : 'flex-vertical',
-      alignClass = align ? `flex-items-${align}` : null
+    const { direction, align, className, ...others } = this.props
+    let { children } = this.props
+    const directionClass = direction === 'row' ? '' : 'flex-vertical'
+    const alignClass = align ? `flex-items-${align}` : null
 
     return (
       <div
