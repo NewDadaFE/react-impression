@@ -3,9 +3,10 @@
 **Basic**
 
 ```js
-<Row>
+let file
+;<Row>
   <Col>
-    <Input ref="file" type="file" />
+    <Input ref={ref => (file = ref)} type="file" />
   </Col>
   <Col>
     <Input type="file" placeholder="请上传资质证明" onChange={() => {}} />
@@ -19,9 +20,10 @@
 **Preview**
 
 ```js
-<Row>
+let upload
+;<Row>
   <Col>
-    <Upload ref="upload" preview />
+    <Upload ref={ref => (upload = ref)} preview />
   </Col>
   <Col>
     <Upload preview message="上传图片">
