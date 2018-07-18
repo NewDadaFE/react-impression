@@ -25,8 +25,9 @@ export default class FlexItem extends React.PureComponent {
   }
   // 渲染
   render() {
-    let { flex, children, className, ...others } = this.props,
-      flexClass = `flex-item${flex > 1 ? `-${flex}` : ''}`
+    const { flex, className, ...others } = this.props
+    let { children } = this.props
+    const flexClass = `flex-item${flex > 1 ? `-${flex}` : ''}`
 
     return (
       <div {...others} className={classnames(flexClass, className)}>
