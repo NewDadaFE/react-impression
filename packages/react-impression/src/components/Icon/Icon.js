@@ -1,8 +1,8 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Icon extends PureComponent {
+export default class Icon extends React.PureComponent {
   static propTypes = {
     /**
      * 图标类型
@@ -36,11 +36,11 @@ export default class Icon extends PureComponent {
   }
   // 渲染
   render() {
-    let { type, size, left, right, className, ...others } = this.props,
-      typeClass = `fa-${type}`,
-      sizeClass = size ? `fa-${size}` : null,
-      leftClass = left ? 'offset-r' : null,
-      rightClass = right ? 'offset-l' : null
+    const { type, size, left, right, className, ...others } = this.props
+    const typeClass = `fa-${type}`
+    const sizeClass = size ? `fa-${size}` : null
+    const leftClass = left ? 'offset-r' : null
+    const rightClass = right ? 'offset-l' : null
 
     return (
       <i
