@@ -1,8 +1,8 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Image extends PureComponent {
+export default class Image extends React.PureComponent {
   static propTypes = {
     /**
      * 图片是否自适应
