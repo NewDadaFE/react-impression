@@ -10,7 +10,7 @@ export default class FormControl extends React.PureComponent {
      */
     children: PropTypes.element.isRequired,
   }
-  // 渲染
+
   render() {
     let { children } = this.props
     const { className } = children

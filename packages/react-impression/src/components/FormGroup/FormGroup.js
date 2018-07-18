@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * FormGroup 组件.
- */
+
 const FormGroup = ({ col, className, children, ...others }) => {
   let colClass = col ? `col-xs-${col}` : null
 
