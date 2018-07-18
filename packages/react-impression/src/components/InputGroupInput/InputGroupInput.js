@@ -19,7 +19,7 @@ export default class InputGroupInput extends React.PureComponent {
      */
     className: PropTypes.string,
   }
-  // 默认props
+
   static defaultProps = {
     type: 'text',
   }
@@ -29,7 +29,7 @@ export default class InputGroupInput extends React.PureComponent {
   setValue(value) {
     this.refMain && (this.refMain.value = value)
   }
-  // 渲染
+
   render() {
     const { type, className, placeholder, ...others } = this.props
 

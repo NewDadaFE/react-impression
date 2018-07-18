@@ -20,11 +20,11 @@ export default class InputGroupButton extends React.PureComponent {
      */
     children: PropTypes.any,
   }
-  // 默认props
+
   static defaultProps = {
     theme: 'primary',
   }
-  // 渲染
+
   render() {
     const { theme, className, children, ...others } = this.props
 
