@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 export default class Checkbox extends React.PureComponent {
   static propTypes = {
     /**
-      * 子组件
-      */
+     * 子组件
+     */
     children: PropTypes.any,
 
     /**
@@ -40,8 +40,8 @@ export default class Checkbox extends React.PureComponent {
   }
 
   getValue() {
-    let { value } = this.props,
-      { main } = this.refs
+    const { value } = this.props
+    const { main } = this.refs
 
     if (value === undefined) {
       return main.checked
