@@ -102,6 +102,7 @@ export default class Input extends React.PureComponent {
         return this.refMain ? this.refMain.value : undefined
     }
   }
+  // setValue
   setValue(value) {
     let { type } = this.props
 
@@ -116,6 +117,7 @@ export default class Input extends React.PureComponent {
   focus() {
     this.refMain.focus()
   }
+  // 显示候选项
   showOptionHandle = () => {
     let { disabled } = this.props
 
@@ -125,6 +127,7 @@ export default class Input extends React.PureComponent {
         showClear: false,
       })
   }
+  // 隐藏候选项
   hideOptionsHandle = () => {
     if (!this.refMain) {
       return
@@ -136,6 +139,7 @@ export default class Input extends React.PureComponent {
       showClear: false,
     })
   }
+  // 清空输入框
   clearInputHandle = () => {
     let { disabled } = this.props
 
@@ -145,6 +149,7 @@ export default class Input extends React.PureComponent {
 
     this.refMain && (this.refMain.value = '')
   }
+  // 选中候选项
   selectOptionsHandle = value => {
     this.refMain && (this.refMain.value = value)
 
@@ -153,6 +158,7 @@ export default class Input extends React.PureComponent {
       showClear: false,
     })
   }
+  // 显示清空按钮
   showClearHandle = () => {
     !this.props.disabled &&
       this.refMain &&
@@ -161,6 +167,7 @@ export default class Input extends React.PureComponent {
         showClear: true,
       })
   }
+  // 隐藏清空按钮
   hideClearHandle = () => {
     this.setState({
       showClear: false,
