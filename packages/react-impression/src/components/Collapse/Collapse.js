@@ -41,7 +41,7 @@ export default class Collapse extends React.PureComponent {
   }
 
   render() {
-    let { children, className, ...others } = this.props
+    const { children, className, ...others } = this.props
     const { active } = this.state
 
     delete others.active
