@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * ModalBody组件.
- */
+
 const ModalBody = ({ className, children, ...others }) => {
   return (
     <div {...others} className={classnames('modal-body', className)}>
@@ -13,8 +11,13 @@ const ModalBody = ({ className, children, ...others }) => {
 }
 
 ModalBody.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
-  // 自定义样式
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
