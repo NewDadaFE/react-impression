@@ -29,12 +29,12 @@ export default class Icon extends React.PureComponent {
      */
     className: PropTypes.string,
   }
-  // 默认props
+
   static defaultProps = {
     left: false,
     right: false,
   }
-  // 渲染
+
   render() {
     const { type, size, left, right, className, ...others } = this.props
     const typeClass = `fa-${type}`
