@@ -31,3 +31,28 @@
   </Col>
 </Row>
 ```
+
+**size**
+
+```js
+<Row>
+  <Col col="3">
+    <InputGroup size="sm">
+      <InputGroup.Input placeholder="something" />
+      <InputGroup.Button theme="primary">Search</InputGroup.Button>
+    </InputGroup>
+  </Col>
+  <Col col="4">
+    <InputGroup>
+      <InputGroup.Input placeholder="something" />
+      <InputGroup.Button theme="primary">Search</InputGroup.Button>
+    </InputGroup>
+  </Col>
+  <Col col="5">
+    <InputGroup size="lg">
+      <InputGroup.Input placeholder="something" />
+      <InputGroup.Button theme="primary">Search</InputGroup.Button>
+    </InputGroup>
+  </Col>
+</Row>
+```
