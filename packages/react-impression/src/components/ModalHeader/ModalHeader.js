@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * ModalHeader组件.
- */
+
 const ModalHeader = ({ className, children, ...others }) => {
   return (
     <div {...others} className={classnames('modal-header', className)}>
@@ -13,7 +11,13 @@ const ModalHeader = ({ className, children, ...others }) => {
 }
 
 ModalHeader.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
