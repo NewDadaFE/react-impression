@@ -1,13 +1,12 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import InlineSelectOption from '../InlineSelectOption'
 
-export default class InlineSelect extends PureComponent {
+export default class InlineSelect extends React.PureComponent {
   constructor(props) {
     super(props)
 
-    // 是否木偶组件
     this.isPuppet = props.value !== undefined
 
     let initValue = {
@@ -57,7 +56,6 @@ export default class InlineSelect extends PureComponent {
   selectOptionHandle(value, text, index) {
     let { onChange } = this.props
 
-    // 木偶组件
     if (this.isPuppet) {
       onChange && onChange(value, text, index)
     } else {
