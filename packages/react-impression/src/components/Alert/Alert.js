@@ -2,7 +2,11 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// 获取小图标
+/**
+ * 获取小图标
+ * @param type
+ * @returns {string}
+ */
 const getAddonByType = type => {
   switch (type) {
     case 'danger':
@@ -41,7 +45,6 @@ export default class Alert extends React.PureComponent {
     btnText: PropTypes.string,
   }
 
-  // 默认props
   static defaultProps = {
     type: 'warning',
     btnText: '确定',
