@@ -78,7 +78,7 @@ export default class Nav extends React.PureComponent {
   }
 
   render() {
-    let children = this.props.children
+    let { children } = this.props
     const { type, stacked, className, ...others } = this.props
     const { activeKey } = this.state
     const navStacked = stacked && type === 'pill' ? 'nav-stacked' : null
