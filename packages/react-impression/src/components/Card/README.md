@@ -6,56 +6,56 @@
 <Row>
   <Col>
     <Card>
-      <Card.Block>
+      <CardBlock>
         <h4>Title</h4>
         <div>
           Some quick example text to build on the card title and
           make up the bulk of the card&apos;s content.
         </div>
-      </Card.Block>
+      </CardBlock>
       <Image fluid src='http://placehold.it/350x200' />
-      <Card.Block>
+      <CardBlock>
         <p>
           Some quick example text to build on the card title and
           make up the bulk of the card&apos;s content.
         </p>
         <Button theme='primary'>More</Button>
-      </Card.Block>
+      </CardBlock>
     </Card>
   </Col>
   <Col>
     <Card>
       <Image fluid src='http://placehold.it/350x200' />
-      <Card.Block>
+      <CardBlock>
         <h4>Title</h4>
         <p>
           ome quick example text to build on the card title and make
           up the bulk of the card&apos;s content.
         </p>
         <Button theme='primary'>Detail</Button>
-      </Card.Block>
+      </CardBlock>
     </Card>
   </Col>
   <Col>
     <Card>
-      <Card.Block>
+      <CardBlock>
         <p>
           Some quick example text to build on the card title and
           make up the bulk of the card&apos;s content.
         </p>
-      </Card.Block>
+      </CardBlock>
       <Image fluid src='http://placehold.it/350x200' />
     </Card>
   </Col>
   <Col>
     <Card>
-      <Card.Block>
+      <CardBlock>
         <p>
           Some quick example text to build on the card title and
           make up the bulk of the card&apos;s content.
         </p>
         <Button theme='primary'>OK</Button>
-      </Card.Block>
+      </CardBlock>
     </Card>
   </Col>
 </Row>
@@ -68,7 +68,7 @@
   <Col>
     <Card>
       <Image fluid src='http://placehold.it/350x200' />
-      <Card.Block>
+      <CardBlock>
         <h4>Left</h4>
         <p>
           Some quick example text to build on the card title and
@@ -78,13 +78,13 @@
         <a href='javascript:void(0);' className='offset-l'>
           Another link
         </a>
-      </Card.Block>
+      </CardBlock>
     </Card>
   </Col>
   <Col>
     <Card className='text-center'>
       <Image fluid src='http://placehold.it/350x200' />
-      <Card.Block>
+      <CardBlock>
         <h4>Center</h4>
         <p>
           Some quick example text to build on the card title and
@@ -94,13 +94,13 @@
         <a href='javascript:void(0);' className='offset-l'>
           Another link
         </a>
-      </Card.Block>
+      </CardBlock>
     </Card>
   </Col>
   <Col>
     <Card className='text-right'>
       <Image fluid src='http://placehold.it/350x200' />
-      <Card.Block>
+      <CardBlock>
         <h4>Right</h4>
         <p>
           Some quick example text to build on the card title and
@@ -110,7 +110,7 @@
         <a href='javascript:void(0);' className='offset-l'>
           Another link
         </a>
-      </Card.Block>
+      </CardBlock>
     </Card>
   </Col>
 </Row>

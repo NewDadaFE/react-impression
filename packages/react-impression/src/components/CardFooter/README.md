@@ -2,7 +2,7 @@
 
 ```js
  <Card>
-  <Card.Block>
+  <CardBlock>
     <h4>Right</h4>
     <p>
       Some quick example text to build on the card title and
@@ -12,9 +12,9 @@
     <Button theme='default' className='offset-l'>
       Cancel
     </Button>
-  </Card.Block>
-  <Card.Footer>
+  </CardBlock>
+  <CardFooter>
     <h5 className='no-margin'>footer</h5>
-  </Card.Footer>
+  </CardFooter>
 </Card>
 ```
