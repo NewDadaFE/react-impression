@@ -69,8 +69,8 @@ export default class CheckboxGroup extends React.PureComponent {
   }
 
   onChangeHandle = (event, value) => {
-    const { checked } = event.target,
-      { onChange } = this.props
+    const { checked } = event.target
+    const { onChange } = this.props
 
     if (this.isPuppet) {
       let propsValue = this.props.value,
