@@ -1,13 +1,8 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * LoadingAddon组件.
- */
-export default class LoadingAddon extends PureComponent {
-  /**
-   * 初始信息.
-   */
+
+export default class LoadingAddon extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
@@ -15,18 +10,26 @@ export default class LoadingAddon extends PureComponent {
       dottedCount: 0,
     }
   }
-  // props校验
+
   static propTypes = {
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 类型
+    /**
+     * 类型
+     */
     type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
-    // 信息提示
+    /**
+     * 信息提示
+     */
     loadingMsg: PropTypes.string,
-    // 显示
+    /**
+     * 显示
+     */
     show: PropTypes.bool,
   }
-  // 默认props
+
   static defaultProps = {
     type: 'cyclone',
     loadingMsg: '加载中',
@@ -37,7 +40,7 @@ export default class LoadingAddon extends PureComponent {
    * @return {Html} [addon片段]
    */
   getLoadingAddon() {
-    let { type } = this.props
+    const { type } = this.props
 
     switch (type) {
       case 'pendule': // 摆钟
@@ -63,8 +66,8 @@ export default class LoadingAddon extends PureComponent {
    * @return {String} [点点]
    */
   getDotted() {
-    let { dottedCount } = this.state,
-      result = []
+    const { dottedCount } = this.state
+    const result = []
 
     for (let i = 0; i < dottedCount; i++) {
       result[i] = '.'
@@ -107,12 +110,12 @@ export default class LoadingAddon extends PureComponent {
     !nextprops.show && this.clearDottedInterval()
     !this.props.show && nextprops.show && this.setDottedInterval()
   }
-  // 渲染
+
   render() {
-    let { type, loadingMsg, className, ...others } = this.props,
-      typeClass = `loading-${type}`,
-      loadingAddon = this.getLoadingAddon(),
-      dotted = this.getDotted()
+    const { type, loadingMsg, className, ...others } = this.props
+    const typeClass = `loading-${type}`
+    const loadingAddon = this.getLoadingAddon()
+    const dotted = this.getDotted()
 
     delete others.show
 

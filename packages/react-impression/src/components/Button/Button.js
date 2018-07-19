@@ -1,44 +1,71 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * 按钮组件.
- */
-export default class Button extends PureComponent {
-  // 构造函数
+
+export default class Button extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     this.state = {
       Tag: props.href ? 'a' : 'button',
     }
   }
-  // prop type校验
+
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 样式（primary、default、secondary）
-    theme: PropTypes.string,
-    // click事件
+
+    /**
+     * 主题样式
+     */
+    theme: PropTypes.oneOf(['primary', 'default', 'secondary']),
+
+    /**
+     * click事件
+     */
     onClick: PropTypes.func,
-    // 是否outline
+
+    /**
+     * 是否outline
+     */
     outline: PropTypes.bool,
-    // 尺寸
-    size: PropTypes.string,
-    // 形状
+
+    /**
+     * 尺寸
+     */
+    size: PropTypes.oneOf(['sm', 'lg']),
+
+    /**
+     * 形状，可选值为pill
+     */
     shape: PropTypes.string,
-    // 链接地址
+
+    /**
+     * 按钮的链接
+     */
     href: PropTypes.string,
-    // 是否关闭按钮
+
+    /**
+     * 是否为关闭样式按钮
+     */
     close: PropTypes.bool,
-    // 是否block
+
+    /**
+     * 是否block元素
+     */
     block: PropTypes.bool,
   }
-  // 默认props
+
   static defaultProps = {
     theme: 'primary',
   }
-  // 渲染
+
   render() {
     let {
         theme,
@@ -52,8 +79,8 @@ export default class Button extends PureComponent {
         block,
         children,
         ...others
-      } = this.props,
-      { Tag } = this.state
+      } = this.props
+    const { Tag } = this.state
 
     delete others.eventKey
 

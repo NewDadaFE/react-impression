@@ -1,8 +1,8 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Radio extends PureComponent {
+export default class Radio extends React.PureComponent {
   static propTypes = {
     /**
      * 名称
@@ -30,25 +30,28 @@ export default class Radio extends PureComponent {
     defaultChecked: PropTypes.bool,
 
     /**
-     * 是否disabled
+     * 是否可以点击
      */
     disabled: PropTypes.bool,
 
     /**
-     * 回调函数
+     * 状态变更回调函数
      */
     onChange: PropTypes.func,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
 
-  // 默认props
   static defaultProps = {
     disabled: false,
   }
 
   getValue() {
-    let { value } = this.props, // props内容
-      { main } = this.refs // dom节点
+    const { value } = this.props
+    const { main } = this.refs
 
     if (value === undefined) {
       return main.checked
@@ -56,21 +59,22 @@ export default class Radio extends PureComponent {
 
     return value
   }
+
   setValue(checked) {
-    let { main } = this.refs
+    const { main } = this.refs
 
     main.checked = !!checked
   }
 
   onChangeHandle = (event, value) => {
-    let { onChange } = this.props
+    const { onChange } = this.props
 
     onChange && onChange(event, value)
   }
 
   // 渲染
   render() {
-    let {
+    const {
       value,
       checked,
       defaultChecked,
@@ -107,13 +111,11 @@ export default class Radio extends PureComponent {
   }
 }
 
-// getValue
 Radio.getValue = ref => {
   if (!ref) return undefined
   return ref.getValue()
 }
 
-// setValue
 Radio.setValue = (ref, checked) => {
   if (!ref) return
 

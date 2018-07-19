@@ -1,16 +1,13 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import SelectOption from '../SelectOption'
 import * as System from '../../utils/system'
 
-/**
- * Select组件.
- */
-export default class Select extends PureComponent {
-  // 初始state
+export default class Select extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
+
     System.manager(this)
 
     // 是否木偶组件
@@ -19,7 +16,7 @@ export default class Select extends PureComponent {
     // 子组件数据
     this.options = []
 
-    let initValue = {
+    const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
     }
@@ -28,34 +25,60 @@ export default class Select extends PureComponent {
       ...initValue,
     }
   }
-  // prop type校验
+
   static propTypes = {
-    // 值
+    /**
+     * 值
+     */
     value: PropTypes.any,
-    // 默认值
+
+    /**
+     * 默认值
+     */
     defaultValue: PropTypes.any,
-    // 是否不可用
+
+    /**
+     * 是否不可用
+     */
     disabled: PropTypes.bool,
-    // style
+
+    /**
+     * 行内样式
+     */
     style: PropTypes.object,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // placeholder
+
+    /**
+     * 占位文字
+     */
     placeholder: PropTypes.string,
-    // onChange
+
+    /**
+     * 状态变更回调函数
+     */
     onChange: PropTypes.func,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
   }
+
   getValue() {
     return this.isPuppet ? this.props.value : this.state.value
   }
+
   setValue(value) {
-    let { main } = this.refs
+    const { main } = this.refs
 
     if (!this.isPuppet) {
       main.value = null
@@ -68,10 +91,12 @@ export default class Select extends PureComponent {
       })
     }
   }
+
   // focus  没调用？
   focus() {
     this.refs.main.focus()
   }
+
   // 显示/隐藏菜单
   toggleOptionsHandle = () => {
     !this.props.disabled &&
@@ -79,19 +104,20 @@ export default class Select extends PureComponent {
         showOption: !this.state.showOption,
       })
   }
+
   // 隐藏菜单
   hideOptionsHandle = () => this.setState({ showOption: false })
 
   /**
-   * option选中回调.
-   * @param  {[String]} newValue [值]
-   * @param  {[String]} text     [文本显示]
-   * @param  {[Number]} index    [索引]
+   * option选中回调
+   * @param {String} 值
+   * @param {String} 显示文本
+   * @param {Number} 索引
    */
   selectOptionHandle(newValue, text, index) {
-    let { onChange } = this.props,
-      { main } = this.refs,
-      value = this.isPuppet ? this.props.value : this.state.value
+    const { onChange } = this.props
+    const { main } = this.refs
+    const value = this.isPuppet ? this.props.value : this.state.value
 
     // 木偶组件
     if (!this.isPuppet) {
@@ -112,27 +138,28 @@ export default class Select extends PureComponent {
       showOption: false,
     })
   }
+
   /**
-   * 清空组件管理.
+   * 清空组件管理
    */
   componentWillUnmount() {
     System.unmanager(this)
   }
-  // 渲染
+
   render() {
-    let { placeholder, disabled, style, className, children } = this.props,
-      { showOption } = this.state,
-      originValue = this.isPuppet ? this.props.value : this.state.value,
-      text
+    const { placeholder, disabled, style, className, children } = this.props
+    const { showOption } = this.state
+    const originValue = this.isPuppet ? this.props.value : this.state.value
+    let text
 
     this.options = [] // this问题
 
-    children = React.Children.map(children, (child, index) => {
+    const _children = React.Children.map(children, (child, index) => {
       if (!child) {
         return child
       } // ? child ?
 
-      let { value, children, disabled } = child.props
+      const { value, children, disabled } = child.props
 
       this.options.push({
         name: children,
@@ -176,20 +203,18 @@ export default class Select extends PureComponent {
           className='fa fa-angle-down select-addon'
           onClick={this.toggleOptionsHandle}
         />
-        <ul className='select-options'>{children}</ul>
+        <ul className='select-options'>{_children}</ul>
       </div>
     )
   }
 }
 
-// getValue
 Select.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getValue()
 }
 
-// setValue
 Select.setValue = (ref, value) => {
   if (!ref) return
 

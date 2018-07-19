@@ -1,18 +1,15 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * RadioGroup组件.
- */
-export default class RadioGroup extends PureComponent {
-  // 初始化state
+
+export default class RadioGroup extends React.PureComponent {
   constructor(props) {
     super(props)
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
 
-    let initValue = {
+    const initValue = {
       value: this.isPuppet ? undefined : props.defaultValue,
     }
 
@@ -20,38 +17,64 @@ export default class RadioGroup extends PureComponent {
       ...initValue,
     }
   }
-  // props校验
+
   static propTypes = {
-    // 自定义样式
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 值
+
+    /**
+     * 设置默认是否选中
+     */
     value: PropTypes.any,
-    // 默认是否选中
+
+    /**
+     * 默认值
+     */
     defaultValue: PropTypes.any,
-    // 回调函数
+
+    /**
+     * 状态变更回调函数
+     */
     onChange: PropTypes.func,
-    // 是否disabled
+
+    /**
+     * 是否可以点击
+     */
     disabled: PropTypes.bool,
-    // 名称
+
+    /**
+     * 设置名称
+     */
     name: PropTypes.string,
-    // 排列方向
+
+    /**
+     * 排列方向
+     */
     direction: PropTypes.oneOf(['row', 'column']),
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
-  // 默认props
+
   static defaultProps = {
     disabled: false,
     direction: 'row',
   }
+
   getValue() {
     return this.isPuppet ? this.props.value : this.state.value
   }
+
   setValue(value) {
     if (!this.isPuppet) this.setState({ value })
   }
-  // radio切换回调函数
+
   onChangeHandle = (event, value) => {
-    let { onChange } = this.props
+    const { onChange } = this.props
 
     if (this.isPuppet) {
       onChange && onChange(value, event)
@@ -66,13 +89,14 @@ export default class RadioGroup extends PureComponent {
       )
     }
   }
-  // 渲染
-  render() {
-    let { className, name, direction, children, ...others } = this.props,
-      originValue = this.isPuppet ? this.props.value : this.state.value,
-      directionClass = direction === 'row' ? 'radio-inline' : 'radio-vertical'
 
-    children = React.Children.map(children, (child, index) => {
+  render() {
+    const { className, name, direction, children, ...others } = this.props
+    const originValue = this.isPuppet ? this.props.value : this.state.value
+    const directionClass =
+      direction === 'row' ? 'radio-inline' : 'radio-vertical'
+
+    const _children = React.Children.map(children, (child, index) => {
       if (!child) {
         return child
       }
@@ -97,20 +121,18 @@ export default class RadioGroup extends PureComponent {
 
     return (
       <div {...others} className={classnames(directionClass, className)}>
-        {children}
+        {_children}
       </div>
     )
   }
 }
 
-// getValue
 RadioGroup.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getValue()
 }
 
-// setValue
 RadioGroup.setValue = (ref, value) => {
   if (!ref) return
 

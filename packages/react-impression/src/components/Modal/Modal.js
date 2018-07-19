@@ -5,11 +5,8 @@ import ModalHeader from '../ModalHeader'
 import ModalBody from '../ModalBody'
 import ModalFooter from '../ModalFooter'
 
-/**
- * Modal组件.
- */
 const Modal = ({ size, className, children, ...others }) => {
-  let sizeClass = size ? `modal-${size}` : null
+  const sizeClass = size ? `modal-${size}` : null
 
   return (
     <div {...others} className={classnames('modal', className)}>
@@ -21,11 +18,18 @@ const Modal = ({ size, className, children, ...others }) => {
 }
 
 Modal.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
-  // 自定义样式
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
-  // 大小
-  size: PropTypes.string,
+  /**
+   * 大小
+   */
+  size: PropTypes.oneOf(['sm', 'lg']),
 }
 Modal.Header = ModalHeader
 Modal.Body = ModalBody
