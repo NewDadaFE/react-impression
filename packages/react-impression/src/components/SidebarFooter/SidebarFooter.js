@@ -1,20 +1,24 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Sidebar 底部组件
- */
-export default class SidebarFooter extends PureComponent {
-  // props校验
+
+export default class SidebarFooter extends React.PureComponent {
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
   }
-  // 渲染
-  render() {
-    let { children, className, ...others } = this.props
 
-    children = React.Children.map(children, child => {
+  render() {
+    const { children, className, ...others } = this.props
+
+    const _children = React.Children.map(children, child => {
       if (!child) {
         return child
       }
@@ -28,7 +32,7 @@ export default class SidebarFooter extends PureComponent {
 
     return (
       <div {...others} className={classnames('sidebar-footer', className)}>
-        {children}
+        {_children}
       </div>
     )
   }

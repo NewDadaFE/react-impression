@@ -1,32 +1,51 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Confirm组件.
- */
-export default class Confirm extends PureComponent {
-  // props校验
+
+export default class Confirm extends React.PureComponent {
   static propTypes = {
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
-    // 自定义样式
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 类型
-    type: PropTypes.string,
-    // 确定按钮
+
+    /**
+     * 类型
+     */
+    type: PropTypes.oneOf(['warning', 'info', 'danger']),
+
+    /**
+     * 确定按钮内容
+     */
     okText: PropTypes.string,
-    // 取消按钮
+
+    /**
+     * 取消按钮内容
+     */
     cancelText: PropTypes.string,
-    // 确定按钮点击
+
+    /**
+     * 确定按钮点击
+     */
     onOkClick: PropTypes.func,
-    // 取消按钮点击
+
+    /**
+     * 取消按钮点击
+     */
     onCancelClick: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     type: 'warning',
     okText: '确定',
     cancelText: '取消',
   }
+
   /**
    * 根据类型获取Icon.
    * @return {[String]} [Icon类型]
@@ -41,9 +60,9 @@ export default class Confirm extends PureComponent {
         return 'fa-exclamation-circle text-warning'
     }
   }
-  // 渲染
+
   render() {
-    let {
+    const {
         type,
         okText,
         cancelText,
@@ -52,8 +71,8 @@ export default class Confirm extends PureComponent {
         className,
         children,
         ...others
-      } = this.props,
-      iconTypeClass = this.getAddonByType(type)
+      } = this.props
+    const iconTypeClass = this.getAddonByType(type)
 
     return (
       <div className={classnames('confirm', className)}>

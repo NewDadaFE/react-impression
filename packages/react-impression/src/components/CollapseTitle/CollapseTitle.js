@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * CollapseTitle 组件
- */
+
 const CollapseTitle = ({ onClick, children, className, ...others }) => {
   return (
     <div
@@ -18,8 +16,19 @@ const CollapseTitle = ({ onClick, children, className, ...others }) => {
 }
 
 CollapseTitle.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 点击回调函数
+   */
   onClick: PropTypes.func,
 }
 

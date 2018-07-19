@@ -1,9 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * Container组件.
- */
+
 const Container = ({ children, className, ...others }) => {
   return (
     <div {...others} className={classnames('container', className)}>
@@ -13,7 +11,14 @@ const Container = ({ children, className, ...others }) => {
 }
 
 Container.propTypes = {
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
+
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
 }
 

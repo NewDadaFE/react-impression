@@ -1,16 +1,12 @@
 import classnames from 'classnames'
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-// Message组件引用
-let _message,
-  _timers = []
+let _message
+let _timers = []
 
-/**
- * Message组件.
- */
-export default class Message extends Component {
+export default class Message extends React.Component {
   constructor(props, context) {
     super(props, context)
     _message = this
@@ -21,30 +17,37 @@ export default class Message extends Component {
       theme: props.theme,
     }
   }
-  // prop type校验
+
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
-    // 是否显示
+    /**
+     * 是否显示
+     */
     show: PropTypes.bool,
-    // 类型
+    /**
+     * 类型
+     */
     theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'loading']),
   }
-  // 默认props
+
   static defaultProps = {
     theme: 'info',
   }
   /**
-   * 移除定时器.
+   * 移除定时器
    */
   componentWillUnmount() {
     _timers.forEach(timer => clearTimeout(timer))
   }
   /**
-   * 获取信息图标.
-   * @return {[type]} [description]
+   * 获取信息图标
+   * @returns {*}
    */
   getTitleIcon() {
-    let { theme } = this.state
+    const { theme } = this.state
 
     return {
       info: ['fa', 'fa-volume-up'],
@@ -55,11 +58,11 @@ export default class Message extends Component {
     }[theme]
   }
   /**
-   * [获取主题样式]
-   * @return {[String]} [主题样式类名]
+   * 获取主题样式
+   * @returns {*}
    */
   getStyleClass() {
-    let { theme } = this.state
+    const { theme } = this.state
 
     return {
       info: 'message-primary',
@@ -69,14 +72,12 @@ export default class Message extends Component {
       loading: 'message-primary',
     }[theme]
   }
-  /**
-   * 渲染.
-   */
+
   render() {
-    let { className } = this.props,
-      { message, show } = this.state,
-      themeClass = this.getStyleClass(),
-      iconClass = this.getTitleIcon()
+    const { className } = this.props
+    const { message, show } = this.state
+    const themeClass = this.getStyleClass()
+    const iconClass = this.getTitleIcon()
 
     return (
       <div>
@@ -100,7 +101,10 @@ export default class Message extends Component {
   }
 }
 
-// 隐藏消息
+/**
+ * 隐藏消息
+ * @param duration
+ */
 const hideMessage = duration => {
   _timers.push(
     setTimeout(() => {
@@ -111,7 +115,12 @@ const hideMessage = duration => {
   )
 }
 
-// 显示消息
+/**
+ * 显示消息
+ * @param theme
+ * @param message
+ * @param duration
+ */
 const showMessage = (theme, message, duration = 2000) => {
   // 清空隐藏消息定时器
   _timers.forEach(timer => clearTimeout(timer))
@@ -128,32 +137,53 @@ const showMessage = (theme, message, duration = 2000) => {
   duration > 0 && hideMessage(duration)
 }
 
-// 显示info信息
+/**
+ * 显示info信息
+ * @param message
+ * @param duration
+ */
 Message.info = (message, duration) => {
   showMessage('info', message, duration)
 }
 
-// 显示info信息
+/**
+ * 显示success信息
+ * @param message
+ * @param duration
+ */
 Message.success = (message, duration) => {
   showMessage('success', message, duration)
 }
 
-// 显示warning信息
+/**
+ * 显示warning信息
+ * @param message
+ * @param duration
+ */
 Message.warning = (message, duration) => {
   showMessage('warning', message, duration)
 }
 
-// 显示error信息
+/**
+ * 显示error信息
+ * @param message
+ * @param duration
+ */
 Message.error = (message, duration) => {
   showMessage('danger', message, duration)
 }
 
-// 显示loading信息
+/**
+ * 显示loading信息
+ * @param message
+ */
 Message.loading = message => {
   showMessage('loading', message, 0)
 }
 
-// 隐藏信息
+/**
+ * 隐藏信息
+ */
 Message.hideMessage = () => {
   hideMessage(0)
 }

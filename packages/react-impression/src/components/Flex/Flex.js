@@ -1,28 +1,40 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import FlexItem from '../FlexItem'
 
-/**
- * Flex布局组件.
- */
-export default class Flex extends PureComponent {
-  // prop type校验
+export default class Flex extends React.PureComponent {
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+
+    /**
+     * 对齐方式
+     */
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
+
+    /**
+     * 方向
+     */
     direction: PropTypes.oneOf(['row', 'column']),
   }
-  // 默认props
+
   static defaultProps = {
     direction: 'row',
   }
-  // 渲染
+
   render() {
-    let { direction, align, children, className, ...others } = this.props,
-      directionClass = direction === 'row' ? '' : 'flex-vertical',
-      alignClass = align ? `flex-items-${align}` : null
+    const { direction, align, className, ...others } = this.props
+    let { children } = this.props
+    const directionClass = direction === 'row' ? '' : 'flex-vertical'
+    const alignClass = align ? `flex-items-${align}` : null
 
     return (
       <div
