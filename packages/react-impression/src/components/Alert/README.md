@@ -30,33 +30,26 @@ class AlertView extends React.Component {
     const { showAlert1, showAlert2 } = this.state
     return (
       <div>
-        <Card block noborder>
-          <h3>Basic</h3>
-          <Card>
-            <Card.Block>
-              <Row>
-                <Col>
-                  <Button
-                    theme='primary'
-                    outline
-                    onClick={this.toggleAlert1Handle}
-                  >
-                    default
-                  </Button>
-                </Col>
-                <Col>
-                  <Button
-                    theme='default'
-                    outline
-                    onClick={this.toggleAlert2Handle}
-                  >
-                    <span className='text-danger'>danger</span>
-                  </Button>
-                </Col>
-              </Row>
-            </Card.Block>
-          </Card>
-        </Card>
+        <Row>
+          <Col>
+            <Button
+              theme='primary'
+              outline
+              onClick={this.toggleAlert1Handle}
+            >
+              default
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              theme='default'
+              outline
+              onClick={this.toggleAlert2Handle}
+            >
+              <span className='text-danger'>danger</span>
+            </Button>
+          </Col>
+        </Row>
         {showAlert1 && (
           <Alert onClick={this.toggleAlert1Handle}>姓名不能为空！</Alert>
         )}

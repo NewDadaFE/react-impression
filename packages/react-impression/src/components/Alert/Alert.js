@@ -1,8 +1,12 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-// 获取小图标
+/**
+ * 获取小图标
+ * @param type
+ * @returns {string}
+ */
 const getAddonByType = type => {
   switch (type) {
     case 'danger':
@@ -12,7 +16,7 @@ const getAddonByType = type => {
   }
 }
 
-export default class Alert extends PureComponent {
+export default class Alert extends React.PureComponent {
   static propTypes = {
 
     /**
@@ -41,7 +45,6 @@ export default class Alert extends PureComponent {
     btnText: PropTypes.string,
   }
 
-  // 默认props
   static defaultProps = {
     type: 'warning',
     btnText: '确定',
