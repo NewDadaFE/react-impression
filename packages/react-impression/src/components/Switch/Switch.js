@@ -56,7 +56,9 @@ export default class Switch extends React.PureComponent {
     main.checked = !!checked
   }
 
-  // 状态切换回调
+  /**
+   * 状态切换回调
+   */
   onChangeHandle = event => {
     const { onChange } = this.props
     const { checked } = event.target
