@@ -23,7 +23,6 @@ export default class Tooltip extends React.PureComponent {
     position: 'right',
   }
 
-  // 创建tooltip
   createTooltip(targetRect) {
     const { position, content } = this.props
     const positionClass = `tooltip-${position}`
@@ -41,9 +40,13 @@ export default class Tooltip extends React.PureComponent {
 
     document.body.appendChild(tooltipNode)
 
-    let tooltipRect = tooltipNode.getBoundingClientRect()
+    const tooltipRect = tooltipNode.getBoundingClientRect()
 
-    // 计算left、top
+    /**
+     * switch - 计算left、top
+     *
+     * @param  {type} position 位置
+     */
     switch (position) {
       case 'top':
         tooltipNode.style.top = `${targetRect.top - tooltipRect.height}px`
@@ -71,19 +74,22 @@ export default class Tooltip extends React.PureComponent {
     this.tooltip = tooltipNode
   }
 
-  // 显示tooltip
+  /**
+   * 显示tooltip
+   */
   onMouseOver = event => {
-    let rect = event.target.getBoundingClientRect()
+    const rect = event.target.getBoundingClientRect()
 
     this.createTooltip(rect)
   }
 
-  // 移除tooltip
+  /**
+   * 移除tooltip
+   */
   onMouseOut = () => {
     document.body.removeChild(this.tooltip)
   }
 
-  // 渲染
   render() {
     const { children } = this.props
     const { onMouseOver, onMouseOut } = children.props
