@@ -75,17 +75,17 @@ export default class Upload extends React.PureComponent {
   }
 
   /**
-   * 打开文件浏览器对话框.
+   * 打开文件浏览器对话框
    */
   openFileDialogHandle = () => {
     this.refs.main.click()
   }
 
   /**
-   * 设置文件名.
+   * 设置文件名
    */
   fileChangeHandle = event => {
-    let { onChange } = this.props
+    const { onChange } = this.props
 
     this.setState({
       file: event.target.value,
@@ -95,13 +95,12 @@ export default class Upload extends React.PureComponent {
   }
 
   /**
-   * 图片预览处理.
-   * @param  {[Event]} event [事件]
+   * 图片预览处理
    */
   imagePreviewHandle = event => {
-    let { onChange } = this.props,
-      file = event.target.files[0],
-      reader = new window.FileReader()
+    const { onChange } = this.props
+    const file = event.target.files[0]
+    const reader = new window.FileReader()
 
     if (file) {
       reader.onload = e => {
@@ -115,31 +114,30 @@ export default class Upload extends React.PureComponent {
     onChange && onChange(event)
   }
 
-  // 渲染
   render() {
-    let {
-        preview,
-        message,
-        src,
-        btnText,
-        btnStyle,
-        placeholder,
-        className,
-        children,
-        onChange,
-        ...others
-      } = this.props,
-      { file, previewImageUrl } = this.state
+    const {
+      preview,
+      message,
+      src,
+      btnText,
+      btnStyle,
+      placeholder,
+      className,
+      onChange,
+      ...others
+    } = this.props
+    const { file, previewImageUrl } = this.state
+    let { children } = this.props
 
-    // 预览模式
     if (preview) {
-      children &&
-        (children = React.cloneElement(children, {
+      if (children) {
+        children = React.cloneElement(children, {
           className: classnames(
             'upload-preview-addon',
             children.props.className
           ),
-        }))
+        })
+      }
 
       return (
         <div className='upload-preview' onClick={this.openFileDialogHandle}>
@@ -159,7 +157,6 @@ export default class Upload extends React.PureComponent {
       )
     }
 
-    // Input type="file"
     return (
       <div
         {...others}
