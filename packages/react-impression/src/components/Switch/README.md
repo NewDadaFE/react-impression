@@ -4,10 +4,10 @@
 
 ```js
 <Form grid>
-  <Form.Group col="6">
+  <FormGroup col="6">
     <label>Default</label>
     <Switch defaultChecked />
-  </Form.Group>
+  </FormGroup>
 </Form>
 ```
 
@@ -15,9 +15,9 @@
 
 ```js
 <Form grid>
-  <Form.Group>
+  <FormGroup>
     <label>Disabled</label>
     <Switch disabled defaultChecked />
-  </Form.Group>
+  </FormGroup>
 </Form>
 ```
