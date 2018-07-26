@@ -4,17 +4,17 @@
 
 ```js
 <Form>
-  <Form.Group>
+  <FormGroup>
     <label>Name:</label>
     <Input type="text" placeholder="Jane Doe" />
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <label>Email</label>
     <Input type="text" placeholder="hello@example.com" />
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <Checkbox defaultChecked>Remember me</Checkbox>
-  </Form.Group>
+  </FormGroup>
   <Button theme="primary">Search</Button>
 </Form>
 ```

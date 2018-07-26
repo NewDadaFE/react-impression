@@ -4,17 +4,17 @@
 
 ```js
 <Form>
-  <Form.Group>
+  <FormGroup>
     <label>Name:</label>
     <Input type="text" placeholder="Jane Doe" />
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <label>Email</label>
     <Input type="text" placeholder="hello@example.com" />
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <Checkbox defaultChecked>Remember me</Checkbox>
-  </Form.Group>
+  </FormGroup>
   <Button theme="primary">Search</Button>
 </Form>
 ```
@@ -23,33 +23,33 @@
 
 ```js
 <Form type="horizontal">
-  <Form.Group>
+  <FormGroup>
     <Col col="2" className="text-right">
-      <Form.Control.Label>Email:</Form.Control.Label>
+      <FormControlLabel>Email:</FormControlLabel>
     </Col>
     <Col col="10">
       <Input type="text" placeholder="Email" />
     </Col>
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <Col col="2" className="text-right">
-      <Form.Control.Label>name:</Form.Control.Label>
+      <FormControlLabel>name:</FormControlLabel>
     </Col>
     <Col col="10">
       <Input type="password" />
     </Col>
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <Col col="2" className="text-right">
-      <Form.Control.Label>description:</Form.Control.Label>
+      <FormControlLabel>description:</FormControlLabel>
     </Col>
     <Col col="10">
       <Input type="textarea" />
     </Col>
-  </Form.Group>
-  <Form.Group className="offset-b-lg">
+  </FormGroup>
+  <FormGroup className="offset-b-lg">
     <Col col="2" className="text-right">
-      <Form.Control.Label>Radios:</Form.Control.Label>
+      <FormControlLabel>Radios:</FormControlLabel>
     </Col>
     <Col col="10">
       <RadioGroup direction="column">
@@ -71,14 +71,14 @@
         </Radio>
       </RadioGroup>
     </Col>
-  </Form.Group>
-  <Form.Group>
+  </FormGroup>
+  <FormGroup>
     <Col col="2" offset="2">
       <Button theme="primary">Sign in</Button>
     </Col>
     <Col col="2">
       <Button theme="default">Cancel</Button>
     </Col>
-  </Form.Group>
+  </FormGroup>
 </Form>
 ```
