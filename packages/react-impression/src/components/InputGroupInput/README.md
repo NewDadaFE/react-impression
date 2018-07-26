@@ -6,21 +6,21 @@
 <Row>
   <Col>
     <InputGroup>
-      <InputGroup.Button theme="default">help</InputGroup.Button>
-      <InputGroup.Input placeholder="something" />
+      <InputGroupButton theme="default">help</InputGroupButton>
+      <InputGroupInput placeholder="something" />
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Button theme="primary">Go</InputGroup.Button>
+      <InputGroupInput placeholder="something" />
+      <InputGroupButton theme="primary">Go</InputGroupButton>
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroup.Button theme="default">-</InputGroup.Button>
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Button theme="default">+</InputGroup.Button>
+      <InputGroupButton theme="default">-</InputGroupButton>
+      <InputGroupInput placeholder="something" />
+      <InputGroupButton theme="default">+</InputGroupButton>
     </InputGroup>
   </Col>
 </Row>

@@ -45,14 +45,12 @@ export default class InputGroupInput extends React.PureComponent {
   }
 }
 
-// getValue
 InputGroupInput.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getVaule()
 }
 
-// setValue
 InputGroupInput.setValue = (ref, value) => {
   if (!ref) return
 
