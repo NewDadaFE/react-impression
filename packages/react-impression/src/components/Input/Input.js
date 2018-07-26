@@ -91,7 +91,12 @@ export default class Input extends React.PureComponent {
     clearable: true,
     disabled: false,
   }
-  // getValue
+  /**
+   *getValue
+   *
+   * @returns
+   * @memberof Input
+   */
   getValue() {
     let { type } = this.props
 
@@ -102,7 +107,12 @@ export default class Input extends React.PureComponent {
         return this.refMain ? this.refMain.value : undefined
     }
   }
-  // setValue
+
+  /**
+   * setValue
+   * @param {*} value
+   * @memberof Input
+   */
   setValue(value) {
     let { type } = this.props
 
@@ -117,7 +127,11 @@ export default class Input extends React.PureComponent {
   focus() {
     this.refMain.focus()
   }
-  // 显示候选项
+
+  /**
+   *显示候选项
+   * @memberof Input
+   */
   showOptionHandle = () => {
     let { disabled } = this.props
 
@@ -127,7 +141,11 @@ export default class Input extends React.PureComponent {
         showClear: false,
       })
   }
-  // 隐藏候选项
+
+  /**
+   *隐藏候选项
+   * @memberof Input
+   */
   hideOptionsHandle = () => {
     if (!this.refMain) {
       return
@@ -139,7 +157,11 @@ export default class Input extends React.PureComponent {
       showClear: false,
     })
   }
-  // 清空输入框
+
+  /**
+   *清空输入框
+   * @memberof Input
+   */
   clearInputHandle = () => {
     let { disabled } = this.props
 
@@ -149,7 +171,11 @@ export default class Input extends React.PureComponent {
 
     this.refMain && (this.refMain.value = '')
   }
-  // 选中候选项
+
+  /**
+   *选中候选项
+   * @memberof Input
+   */
   selectOptionsHandle = value => {
     this.refMain && (this.refMain.value = value)
 
@@ -158,7 +184,11 @@ export default class Input extends React.PureComponent {
       showClear: false,
     })
   }
-  // 显示清空按钮
+
+  /**
+   *显示清空按钮
+   * @memberof Input
+   */
   showClearHandle = () => {
     !this.props.disabled &&
       this.refMain &&
@@ -167,7 +197,11 @@ export default class Input extends React.PureComponent {
         showClear: true,
       })
   }
-  // 隐藏清空按钮
+
+  /**
+   *隐藏清空按钮
+   * @memberof Input
+   */
   hideClearHandle = () => {
     this.setState({
       showClear: false,
@@ -332,14 +366,12 @@ export default class Input extends React.PureComponent {
   }
 }
 
-// getValue
 Input.getValue = ref => {
   if (!ref) return undefined
 
   return ref.getValue()
 }
 
-// setValue
 Input.setValue = (ref, value) => {
   if (!ref) return
 

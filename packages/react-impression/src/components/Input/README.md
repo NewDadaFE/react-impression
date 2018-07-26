@@ -18,30 +18,30 @@ class ModalExample extends React.Component {
       <Row>
         <Col>
           <Form>
-            <Form.Group>
+            <FormGroup>
               <label>basic:</label>
               <Input type="text" />
-            </Form.Group>
+            </FormGroup>
           </Form>
         </Col>
         <Col>
           <Form>
-            <Form.Group>
+            <FormGroup>
               <label>addon:</label>
               <Input type="text" ref="clearInput" defaultValue="text">
                 <Icon type="times" onClick={this.clearInputHandle} />
               </Input>
-            </Form.Group>
+            </FormGroup>
           </Form>
         </Col>
         <Col>
           <Form>
-            <Form.Group>
+            <FormGroup>
               <label>pill shape:</label>
               <Input type="text" defaultValue="something" pill>
                 <Icon type="search" />
               </Input>
-            </Form.Group>
+            </FormGroup>
           </Form>
         </Col>
       </Row>
@@ -57,26 +57,26 @@ class ModalExample extends React.Component {
 <Row>
   <Col>
     <Form>
-      <Form.Group>
+      <FormGroup>
         <label>basic:</label>
         <Input type="date" />
-      </Form.Group>
+      </FormGroup>
     </Form>
   </Col>
   <Col>
     <Form>
-      <Form.Group>
+      <FormGroup>
         <label>defaultVal:</label>
         <Input type="date" defaultValue="2016-05-29" />
-      </Form.Group>
+      </FormGroup>
     </Form>
   </Col>
   <Col>
     <Form>
-      <Form.Group>
+      <FormGroup>
         <label>disabled:</label>
         <Input type="date" defaultValue="2016-05-29" disabled />
-      </Form.Group>
+      </FormGroup>
     </Form>
   </Col>
 </Row>
@@ -120,19 +120,19 @@ class Example extends React.Component {
         <Row>
           <Col>
             <Form>
-              <Form.Group>
+              <FormGroup>
                 <label>basic:</label>
                 <Input
                   type="search"
                   onClick={this.toggleModalHandle}
                   value={this.state.city.name}
                 />
-              </Form.Group>
+              </FormGroup>
             </Form>
           </Col>
           <Col>
             <Form>
-              <Form.Group>
+              <FormGroup>
                 <label>addon:</label>
                 <Input
                   type="search"
@@ -141,27 +141,27 @@ class Example extends React.Component {
                 >
                   <Icon type="map-marker" />
                 </Input>
-              </Form.Group>
+              </FormGroup>
             </Form>
           </Col>
           <Col>
             <Form>
-              <Form.Group>
+              <FormGroup>
                 <label>disabled:</label>
                 <Input type="search" value="上海" disabled />
-              </Form.Group>
+              </FormGroup>
             </Form>
           </Col>
         </Row>
         {this.state.show && (
           <Modal size={this.state.size}>
-            <Modal.Header>
+            <ModalHeader>
               <Button close onClick={this.toggleModalHandle}>
                 &times;
               </Button>
               <h5 className="no-margin">Search</h5>
-            </Modal.Header>
-            <Modal.Body>
+            </ModalHeader>
+            <ModalBody>
               <Row>
                 <Col col="2" className="text-right">
                   <strong>华东：</strong>
@@ -171,15 +171,15 @@ class Example extends React.Component {
                     value={this.state.city.id}
                     onChange={this.selectCityHandle}
                   >
-                    <InlineSelect.Option value="1">上海</InlineSelect.Option>
-                    <InlineSelect.Option value="2">苏州</InlineSelect.Option>
-                    <InlineSelect.Option value="3">杭州</InlineSelect.Option>
-                    <InlineSelect.Option value="4">嘉兴</InlineSelect.Option>
-                    <InlineSelect.Option value="5">绍兴</InlineSelect.Option>
-                    <InlineSelect.Option value="6">常州</InlineSelect.Option>
-                    <InlineSelect.Option value="7">千岛湖</InlineSelect.Option>
-                    <InlineSelect.Option value="8">昆山</InlineSelect.Option>
-                    <InlineSelect.Option value="9">合肥</InlineSelect.Option>
+                    <InlineSelectOption value="1">上海</InlineSelectOption>
+                    <InlineSelectOption value="2">苏州</InlineSelectOption>
+                    <InlineSelectOption value="3">杭州</InlineSelectOption>
+                    <InlineSelectOption value="4">嘉兴</InlineSelectOption>
+                    <InlineSelectOption value="5">绍兴</InlineSelectOption>
+                    <InlineSelectOption value="6">常州</InlineSelectOption>
+                    <InlineSelectOption value="7">千岛湖</InlineSelectOption>
+                    <InlineSelectOption value="8">昆山</InlineSelectOption>
+                    <InlineSelectOption value="9">合肥</InlineSelectOption>
                   </InlineSelect>
                 </Col>
               </Row>
@@ -192,24 +192,24 @@ class Example extends React.Component {
                     value={this.state.city.id}
                     onChange={this.selectCityHandle}
                   >
-                    <InlineSelect.Option value="21">广州</InlineSelect.Option>
-                    <InlineSelect.Option value="22">深圳</InlineSelect.Option>
-                    <InlineSelect.Option value="23">东莞</InlineSelect.Option>
-                    <InlineSelect.Option value="24">佛山</InlineSelect.Option>
-                    <InlineSelect.Option value="25">厦门</InlineSelect.Option>
-                    <InlineSelect.Option value="26">福州</InlineSelect.Option>
-                    <InlineSelect.Option value="27">南昌</InlineSelect.Option>
-                    <InlineSelect.Option value="28">泉州</InlineSelect.Option>
-                    <InlineSelect.Option value="29">赣州</InlineSelect.Option>
+                    <InlineSelectOption value="21">广州</InlineSelectOption>
+                    <InlineSelectOption value="22">深圳</InlineSelectOption>
+                    <InlineSelectOption value="23">东莞</InlineSelectOption>
+                    <InlineSelectOption value="24">佛山</InlineSelectOption>
+                    <InlineSelectOption value="25">厦门</InlineSelectOption>
+                    <InlineSelectOption value="26">福州</InlineSelectOption>
+                    <InlineSelectOption value="27">南昌</InlineSelectOption>
+                    <InlineSelectOption value="28">泉州</InlineSelectOption>
+                    <InlineSelectOption value="29">赣州</InlineSelectOption>
                   </InlineSelect>
                 </Col>
               </Row>
-            </Modal.Body>
-            <Modal.Footer>
+            </ModalBody>
+            <ModalFooter>
               <Button theme="default" onClick={this.toggleModalHandle}>
                 Close
               </Button>
-            </Modal.Footer>
+            </ModalFooter>
           </Modal>
         )}
       </div>

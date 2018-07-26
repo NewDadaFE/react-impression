@@ -6,27 +6,27 @@
 <Row>
   <Col>
     <InputGroup>
-      <InputGroup.Addon>@</InputGroup.Addon>
-      <InputGroup.Input placeholder="something" />
+      <InputGroupAddon>@</InputGroupAddon>
+      <InputGroupInput placeholder="something" />
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Addon>@</InputGroup.Addon>
+      <InputGroupInput placeholder="something" />
+      <InputGroupAddon>@</InputGroupAddon>
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroup.Addon>@</InputGroup.Addon>
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Addon>@</InputGroup.Addon>
+      <InputGroupAddon>@</InputGroupAddon>
+      <InputGroupInput placeholder="something" />
+      <InputGroupAddon>@</InputGroupAddon>
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroup.Addon pure>+86</InputGroup.Addon>
-      <InputGroup.Input placeholder="phone" />
+      <InputGroupAddon pure>+86</InputGroupAddon>
+      <InputGroupInput placeholder="phone" />
     </InputGroup>
   </Col>
 </Row>
@@ -38,20 +38,20 @@
 <Row>
   <Col col="3">
     <InputGroup size="sm">
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Button theme="primary">Search</InputGroup.Button>
+      <InputGroupInput placeholder="something" />
+      <InputGroupButton theme="primary">Search</InputGroupButton>
     </InputGroup>
   </Col>
   <Col col="4">
     <InputGroup>
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Button theme="primary">Search</InputGroup.Button>
+      <InputGroupInput placeholder="something" />
+      <InputGroupButton theme="primary">Search</InputGroupButton>
     </InputGroup>
   </Col>
   <Col col="5">
     <InputGroup size="lg">
-      <InputGroup.Input placeholder="something" />
-      <InputGroup.Button theme="primary">Search</InputGroup.Button>
+      <InputGroupInput placeholder="something" />
+      <InputGroupButton theme="primary">Search</InputGroupButton>
     </InputGroup>
   </Col>
 </Row>
