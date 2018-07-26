@@ -34,7 +34,7 @@ export default class DropdownMenuItem extends React.PureComponent {
     disabled: false,
   }
   onClickHandle = () => {
-    let { disabled, onClick, toggleMenu } = this.props
+    const { disabled, onClick, toggleMenu } = this.props
 
     !disabled && onClick && onClick()
     toggleMenu()
