@@ -4,8 +4,8 @@
 
 ```js
 <Form type="horizontal">
-  <Form.Control>
+  <FormControl>
     <div>我是formControl</div>
-  </Form.Control>
+  </FormControl>
 </Form>
 ```
