@@ -3,9 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ListGroupItem from '../ListGroupItem'
 
-/**
- * ListGroup组件.
- */
 const ListGroup = ({ className, children, ...others }) => {
   return (
     <ul {...others} className={classnames('list-group', className)}>
@@ -15,7 +12,13 @@ const ListGroup = ({ className, children, ...others }) => {
 }
 
 ListGroup.propTypes = {
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 ListGroup.Item = ListGroupItem
