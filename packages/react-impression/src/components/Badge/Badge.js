@@ -1,31 +1,57 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-/**
- * 徽章组件.
- */
-export default class Badge extends PureComponent {
+
+export default class Badge extends React.PureComponent {
   static propTypes = {
-    // 内容
+    /**
+     * 内容
+     */
     content: PropTypes.string,
-    // 样式
-    theme: PropTypes.string,
-    // 类型
-    type: PropTypes.string,
-    // addon尺寸
-    size: PropTypes.string,
+
+    /**
+     * 样式
+     */
+    theme: PropTypes.oneOf([
+      'primary',
+      'secondary',
+      'warning',
+      'danger',
+      'success',
+      'inverse',
+    ]),
+
+    /**
+     * 类型
+     */
+    type: PropTypes.oneOf(['legend']),
+
+    /**
+     * 尺寸
+     */
+    size: PropTypes.oneOf(['lg', 'sm']),
+
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
   }
-  // 默认props
+
   static defaultProps = {
     theme: 'primary',
   }
+
   render() {
-    let { content, children, theme, type, size, className } = this.props,
-      themeClass = `bg-${theme}`,
-      typeClass = `badge-${type}`,
-      badgeSizeClass = size ? `badge-addon-${size}` : null
+    const { content, theme, type, size, className } = this.props
+    const themeClass = `bg-${theme}`
+    const typeClass = `badge-${type}`
+    const badgeSizeClass = size ? `badge-addon-${size}` : null
+    let { children } = this.props
 
     return (
       <span className={classnames('badge', typeClass, className)}>
