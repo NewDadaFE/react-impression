@@ -4,17 +4,22 @@ import PropTypes from 'prop-types'
 import TimelineItem from '../TimelineItem'
 
 const propTypes = {
-  // 大小
+  /**
+   * 时间线节点尺寸
+   */
   size: PropTypes.oneOf(['lg']),
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
-/**
- * Timeline组件.
- */
 const Timeline = ({ size, className, children, ...others }) => {
-  let sizeClass = size ? `timeline-${size}` : null
+  const sizeClass = size ? `timeline-${size}` : null
 
   return (
     <ul {...others} className={classnames('timeline', sizeClass, className)}>
