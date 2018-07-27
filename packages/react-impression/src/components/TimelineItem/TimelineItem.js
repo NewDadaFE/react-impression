@@ -3,19 +3,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
-  // 自定义icon
+  /**
+   * 自定义icon
+   */
   dot: PropTypes.element,
-  // 不可达
+  /**
+   * 是否可到达
+   */
   unreachable: PropTypes.bool,
+  /**
+   * 子组件
+   */
   children: PropTypes.any,
+  /**
+   * 自定义样式
+   */
   className: PropTypes.string,
 }
 
-/**
- * TimelineItem组件.
- */
 const TimelineItem = ({ dot, unreachable, className, children, ...others }) => {
-  let unreachableClass = unreachable ? 'timeline-item-unreachable' : null
+  const unreachableClass = unreachable ? 'timeline-item-unreachable' : null
 
   return (
     <li
