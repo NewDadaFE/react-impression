@@ -1,9 +1,12 @@
 import moment from 'moment'
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-// 时间格式
+/**
+ * 时间格式
+ */
+
 const FORMAT = {
   YEAR: 'YYYY',
   MONTH: 'MM',
@@ -11,25 +14,94 @@ const FORMAT = {
   DATE: 'YYYY-MM-DD',
 }
 
-/**
- * 时间组件.
- */
-export default class DatePicker extends PureComponent {
-  // 构造函数
+export default class DatePicker extends React.PureComponent {
+  static propTypes = {
+
+    /**
+     * 类型
+     */
+    type: PropTypes.oneOf(['date', 'month']),
+
+    /**
+     * 自定义样式
+     */
+    className: PropTypes.string,
+
+    /**
+     * 日期
+     */
+    value: PropTypes.string,
+
+    /**
+     * 格式
+     */
+    format: PropTypes.string,
+
+    /**
+     * 星期
+     */
+    weekdays: PropTypes.arrayOf(PropTypes.string),
+
+    /**
+     * 月份
+     */
+    months: PropTypes.arrayOf(PropTypes.string),
+
+    /**
+     * 是否显示今天
+     */
+    showToday: PropTypes.bool,
+
+    /**
+     * 今天
+     */
+    todayText: PropTypes.string,
+
+    /**
+     * 星期第一天
+     */
+    firstDayOfWeek: PropTypes.number,
+
+    /**
+     * 最小日期
+     */
+    minDate: PropTypes.string,
+
+    /**
+     * 最大日期
+     */
+    maxDate: PropTypes.string,
+
+    /**
+     * 年份前后默认范围
+     */
+    yearScope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /**
+     * 选中时间
+     */
+    onSelect: PropTypes.func,
+
+    /**
+     * 修改选中时间
+     */
+    onChange: PropTypes.func,
+  }
+
   constructor(props, context) {
     super(props, context)
-    let { type, value, minDate, maxDate, format } = props,
-      weekdays = this.getSortWeekdays(),
-      currentMoment = value ? moment(value, format) : moment(),
-      checkedDay = value ? moment(value, format) : undefined,
-      years = this.getYears(currentMoment),
-      state = {
-        currentMoment, // 当前时间
-        days: [], // 日期选择
-        weekdays,
-        checkedDay, // 选中日期
-        years, // 年份
-      }
+    const { type, value, minDate, maxDate, format } = props
+    const weekdays = this.getSortWeekdays()
+    const currentMoment = value ? moment(value, format) : moment()
+    const checkedDay = value ? moment(value, format) : undefined
+    const years = this.getYears(currentMoment)
+    let state = {
+      currentMoment,
+      days: [],
+      weekdays,
+      checkedDay,
+      years,
+    }
 
     switch (type) {
       case 'month':
@@ -46,38 +118,7 @@ export default class DatePicker extends PureComponent {
     state.maxDate = maxDate ? moment(maxDate, state.format) : undefined
     this.state = state
   }
-  // prop type校验
-  static propTypes = {
-    // 类型
-    type: PropTypes.oneOf(['date', 'month']),
-    // 自定义样式
-    className: PropTypes.string,
-    // 日期
-    value: PropTypes.string,
-    // 格式
-    format: PropTypes.string,
-    // 星期
-    weekdays: PropTypes.arrayOf(PropTypes.string),
-    // 月份
-    months: PropTypes.arrayOf(PropTypes.string),
-    // 是否显示今天
-    showToday: PropTypes.bool,
-    // 今天
-    todayText: PropTypes.string,
-    // 星期第一天
-    firstDayOfWeek: PropTypes.number,
-    // 最小日期
-    minDate: PropTypes.string,
-    // 最大日期
-    maxDate: PropTypes.string,
-    // 年份前后默认范围
-    yearScope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    // 选中时间
-    onSelect: PropTypes.func,
-    // 修改选中时间
-    onChange: PropTypes.func,
-  }
-  // 默认props
+
   static defaultProps = {
     type: 'date',
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
@@ -100,12 +141,13 @@ export default class DatePicker extends PureComponent {
       '12月',
     ],
   }
+
   /**
    * 获取排序后的星期.
    * @return {[Array]} [星期数组]
    */
   getSortWeekdays() {
-    let { firstDayOfWeek, weekdays } = this.props
+    const { firstDayOfWeek, weekdays } = this.props
 
     return firstDayOfWeek === 0
       ? weekdays
@@ -114,25 +156,25 @@ export default class DatePicker extends PureComponent {
         ...weekdays.slice(0, firstDayOfWeek),
       ]
   }
+
   /**
    * 获取日期数据.
    * @param  {[Moment]} currentMoment [当前日期]
    */
   getDate(currentMoment) {
-    let { minDate, maxDate } = this.state,
-      { firstDayOfWeek } = this.props,
-      days = [],
-      today = moment().format(FORMAT.DATE),
-      prevMonth = moment(currentMoment).subtract(1, 'months'),
-      nextMonth = moment(currentMoment).add(1, 'months'),
-      // 当月天数
-      currentYear = currentMoment.format(FORMAT.YEAR),
-      currentMonth = currentMoment.format(FORMAT.MONTH),
-      daysLength = currentMoment.daysInMonth()
+    const { minDate, maxDate } = this.state
+    const { firstDayOfWeek } = this.props
+    const today = moment().format(FORMAT.DATE)
+    const prevMonth = moment(currentMoment).subtract(1, 'months')
+    const nextMonth = moment(currentMoment).add(1, 'months')
+    const currentYear = currentMoment.format(FORMAT.YEAR)
+    const currentMonth = currentMoment.format(FORMAT.MONTH)
+    const daysLength = currentMoment.daysInMonth()
+    let days = []
 
     for (let i = 1; i <= daysLength; i++) {
-      let dayFormat = `${currentYear}-${currentMonth}-${i}`,
-        dayMoment = moment(dayFormat, FORMAT.DATE)
+      const dayFormat = `${currentYear}-${currentMonth}-${i}`
+      const dayMoment = moment(dayFormat, FORMAT.DATE)
 
       days.push({
         text: i,
@@ -140,58 +182,57 @@ export default class DatePicker extends PureComponent {
         inMonth: true,
         isToday: dayMoment.isSame(today),
         disable:
-          (minDate && dayMoment.isBefore(minDate)) ||
-          (maxDate && dayMoment.isAfter(maxDate)),
+        (minDate && dayMoment.isBefore(minDate)) ||
+        (maxDate && dayMoment.isAfter(maxDate)),
       })
     }
-    // 上个月天数
-    let firstDay = moment(currentMoment)
-        .date(1)
-        .day(),
-      prevMonthYear = prevMonth.format(FORMAT.YEAR),
-      prevMonthMonth = prevMonth.format(FORMAT.MONTH),
-      prevMonthDaysLength = prevMonth.daysInMonth(),
-      prevMonthMax =
-        firstDay - firstDayOfWeek >= 0
-          ? firstDay - firstDayOfWeek
-          : firstDay - firstDayOfWeek + 7
+
+    const firstDay = moment(currentMoment)
+      .date(1)
+      .day()
+    const prevMonthYear = prevMonth.format(FORMAT.YEAR)
+    const prevMonthMonth = prevMonth.format(FORMAT.MONTH)
+    const prevMonthDaysLength = prevMonth.daysInMonth()
+    const prevMonthMax =
+      firstDay - firstDayOfWeek >= 0
+        ? firstDay - firstDayOfWeek
+        : firstDay - firstDayOfWeek + 7
 
     for (let i = 0; i <= prevMonthMax - 1; i++) {
-      let dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength -
-          i}`,
-        dayMoment = moment(dayFormat, FORMAT.DATE)
+      const dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength - i}`
+      const dayMoment = moment(dayFormat, FORMAT.DATE)
 
       days.unshift({
         text: prevMonthDaysLength - i,
         date: dayMoment,
         isToday: dayMoment.isSame(today),
         disable:
-          (minDate && dayMoment.isBefore(minDate)) ||
-          (maxDate && dayMoment.isAfter(maxDate)),
+        (minDate && dayMoment.isBefore(minDate)) ||
+        (maxDate && dayMoment.isAfter(maxDate)),
       })
     }
-    // 下个月天数
-    let lastDay = moment(currentMoment)
-        .date(daysLength)
-        .day(),
-      nextMonthYear = nextMonth.format(FORMAT.YEAR),
-      nextMonthMonth = nextMonth.format(FORMAT.MONTH),
-      nextMonthMax =
-        lastDay - firstDayOfWeek >= 0
-          ? 7 - lastDay + firstDayOfWeek
-          : firstDayOfWeek - lastDay
+
+    const lastDay = moment(currentMoment)
+      .date(daysLength)
+      .day()
+    const nextMonthYear = nextMonth.format(FORMAT.YEAR)
+    const nextMonthMonth = nextMonth.format(FORMAT.MONTH)
+    const nextMonthMax =
+      lastDay - firstDayOfWeek >= 0
+        ? 7 - lastDay + firstDayOfWeek
+        : firstDayOfWeek - lastDay
 
     for (let i = 1; i < nextMonthMax; i++) {
-      let dayFormat = `${nextMonthYear}-${nextMonthMonth}-${i}`,
-        dayMoment = moment(dayFormat, FORMAT.DATE)
+      const dayFormat = `${nextMonthYear}-${nextMonthMonth}-${i}`
+      const dayMoment = moment(dayFormat, FORMAT.DATE)
 
       days.push({
         text: i,
         date: dayMoment,
         isToday: dayMoment.isSame(today),
         disable:
-          (minDate && dayMoment.isBefore(minDate)) ||
-          (maxDate && dayMoment.isAfter(maxDate)),
+        (minDate && dayMoment.isBefore(minDate)) ||
+        (maxDate && dayMoment.isAfter(maxDate)),
       })
     }
 
@@ -200,15 +241,16 @@ export default class DatePicker extends PureComponent {
       currentMoment,
     })
   }
+
   /**
    * 根据当前时间获取年份列表.
    * @param  {[Moment]} currentMoment [当前时间]
    * @return {[Array]}                [年份列表]
    */
   getYears(currentMoment) {
-    let { yearScope } = this.props,
-      years = [],
-      currentYear = currentMoment.year()
+    const { yearScope } = this.props
+    const currentYear = currentMoment.year()
+    let years = []
 
     for (let i = currentYear - yearScope; i <= currentYear + yearScope; i++) {
       years.push(i)
@@ -216,49 +258,54 @@ export default class DatePicker extends PureComponent {
 
     return years
   }
+
   /**
    * 上个月.
    */
   prevMonthHandle = () => {
-    let { currentMoment, panel } = this.state
+    const { currentMoment, panel } = this.state
 
     this.getDate(moment(currentMoment).subtract(1, 'months'))
     panel === 'month' && this.resetMonthPanelScroll()
   }
+
   /**
    * 下个月.
    */
   nextMonthHandle = () => {
-    let { currentMoment, panel } = this.state
+    const { currentMoment, panel } = this.state
 
     this.getDate(moment(currentMoment).add(1, 'months'))
     panel === 'month' && this.resetMonthPanelScroll()
   }
+
   /**
    * 上一年.
    */
   prevYearHandle = () => {
-    let { currentMoment, panel } = this.state
+    const { currentMoment, panel } = this.state
 
     this.getDate(moment(currentMoment).subtract(1, 'years'))
     panel === 'month' && this.resetMonthPanelScroll()
   }
+
   /**
    * 下一年.
    */
   nextYearHandle = () => {
-    let { currentMoment, panel } = this.state
+    const { currentMoment, panel } = this.state
 
     this.getDate(moment(currentMoment).add(1, 'years'))
     panel === 'month' && this.resetMonthPanelScroll()
   }
+
   /**
    * 选中时间.
    */
   selectDateHandle = day => {
-    let { onSelect, onChange } = this.props,
-      { checkedDay, format } = this.state,
-      dayFormat = day.format(format)
+    const { onSelect, onChange } = this.props
+    const { checkedDay, format } = this.state
+    const dayFormat = day.format(format)
 
     this.setState({
       checkedDay: day,
@@ -267,13 +314,14 @@ export default class DatePicker extends PureComponent {
     onSelect && onSelect(dayFormat)
     onChange && checkedDay !== day && onChange(dayFormat)
   }
+
   /**
    * 选中年份.
    * @param  {[String]} year [年份]
    */
   selectYearHandle = year => {
-    let { currentMoment } = this.state,
-      newMoment = moment(currentMoment).year(year)
+    const { currentMoment } = this.state
+    const newMoment = moment(currentMoment).year(year)
 
     this.setState({
       checkedDay: undefined,
@@ -281,14 +329,15 @@ export default class DatePicker extends PureComponent {
     })
     this.getDate(newMoment)
   }
+
   /**
    * 选中月份.
    * @param  {[String]} month [月份]
    */
   selectMonthHandle = month => {
-    let { currentMoment, format } = this.state,
-      { type, onSelect, onChange } = this.props,
-      newMoment = moment(currentMoment).month(month)
+    const { currentMoment, format } = this.state
+    const { type, onSelect, onChange } = this.props
+    let newMoment = moment(currentMoment).month(month)
 
     switch (type) {
       case 'month':
@@ -305,14 +354,15 @@ export default class DatePicker extends PureComponent {
         this.getDate(newMoment)
     }
   }
+
   /**
    * 今天.
    */
   selectTodayHandle = () => {
-    let { onSelect, onChange, minDate, maxDate } = this.props,
-      { checkedDay, format } = this.state,
-      today = moment(moment().format(FORMAT.DATE)),
-      dayFormat = today.format(format)
+    const { onSelect, onChange, minDate, maxDate } = this.props
+    const { checkedDay, format } = this.state
+    const today = moment(moment().format(FORMAT.DATE))
+    const dayFormat = today.format(format)
 
     if (
       (minDate && today.isBefore(minDate)) ||
@@ -328,42 +378,45 @@ export default class DatePicker extends PureComponent {
     onSelect && onSelect(dayFormat)
     onChange && checkedDay !== today && onChange(dayFormat)
   }
+
   /**
    * 显示年月选择面板.
    */
   showMonthPanelHandle = () => {
-    let { panel } = this.state,
-      { type } = this.props
+    const { panel } = this.state
+    const { type } = this.props
 
     type === 'date' &&
-      this.setState({
-        panel: panel === 'month' ? 'day' : 'month',
-      })
+    this.setState({
+      panel: panel === 'month' ? 'day' : 'month',
+    })
   }
+
   /**
    * 更正month面板滚动条位置.
    */
   componentDidUpdate() {
-    let { type } = this.props,
-      { _yeargroup } = this.refs
+    const { type } = this.props
+    const { _yeargroup } = this.refs
 
     type === 'date' &&
-      _yeargroup &&
-      _yeargroup.scrollTop === 0 &&
-      this.resetMonthPanelScroll()
+    _yeargroup &&
+    _yeargroup.scrollTop === 0 &&
+    this.resetMonthPanelScroll()
   }
+
   /**
    * 修改month面板的滚动条位置.
    */
   resetMonthPanelScroll = () => {
-    let { _yeargroup, _monthgroup } = this.refs
+    const { _yeargroup, _monthgroup } = this.refs
 
     if (!this._activeYear || !this._activeMonth) {
       return true
     }
 
-    let yearHeight = this._activeYear.getBoundingClientRect().height,
-      monthHeight = this._activeMonth.getBoundingClientRect().height
+    const yearHeight = this._activeYear.getBoundingClientRect().height
+    const monthHeight = this._activeMonth.getBoundingClientRect().height
 
     this._yeargroupScrollTop = _yeargroup.scrollTop =
       this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 2
@@ -372,19 +425,22 @@ export default class DatePicker extends PureComponent {
 
     return true
   }
+
   componentDidMount() {
-    let { currentMoment } = this.state
+    const { currentMoment } = this.state
 
     this.getDate(currentMoment)
   }
+
   componentWillReceiveProps(nextProps) {
-    let { value } = nextProps,
-      { format } = this.state
+    const { value } = nextProps
+    const { format } = this.state
 
     this.setState({
       checkedDay: value ? moment(value, format) : undefined,
     })
   }
+
   /**
    * 无限获取年份.
    * @param  {[Event]} event [事件]
@@ -394,12 +450,11 @@ export default class DatePicker extends PureComponent {
       return
     }
 
-    let { years } = this.state,
-      container = event.target,
-      yearHeight = this._activeYear.getBoundingClientRect().height,
-      point = container.getBoundingClientRect().height + yearHeight
+    const { years } = this.state
+    const container = event.target
+    const yearHeight = this._activeYear.getBoundingClientRect().height
+    const point = container.getBoundingClientRect().height + yearHeight
 
-    // 上滑
     if (this._yeargroupScrollTop > container.scrollTop) {
       this._yeargroupScrollTop = container.scrollTop
       if (container.scrollTop < yearHeight) {
@@ -414,7 +469,6 @@ export default class DatePicker extends PureComponent {
             : container.scrollTop + yearHeight
       }
     } else if (this._yeargroupScrollTop < container.scrollTop) {
-      // 下滑
       this._yeargroupScrollTop = container.scrollTop
       if (container.scrollHeight - container.scrollTop < point) {
         let nextYear = years[years.length - 1] + 1
@@ -425,19 +479,19 @@ export default class DatePicker extends PureComponent {
       }
     }
   }
-  // 渲染
+
   render() {
-    let {
-        panel,
-        currentMoment,
-        weekdays,
-        days,
-        checkedDay,
-        years,
-      } = this.state,
-      { showToday, todayText, months, className } = this.props,
-      currentYear = currentMoment.format(FORMAT.YEAR),
-      currentMonth = currentMoment.format(FORMAT.MONTH)
+    const {
+      panel,
+      currentMoment,
+      weekdays,
+      days,
+      checkedDay,
+      years,
+    } = this.state
+    const { showToday, todayText, months, className } = this.props
+    const currentYear = currentMoment.format(FORMAT.YEAR)
+    const currentMonth = currentMoment.format(FORMAT.MONTH)
 
     return (
       <div
@@ -542,7 +596,7 @@ export default class DatePicker extends PureComponent {
           </div>
         )}
         {showToday &&
-          panel !== 'month' && (
+        panel !== 'month' && (
           <div className='datepicker-footer'>
             <a href='javascript:void(0);' onClick={this.selectTodayHandle}>
               {todayText}
