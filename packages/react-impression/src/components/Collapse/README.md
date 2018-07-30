@@ -4,15 +4,15 @@
 
 ```js
 <Collapse>
-  <Collapse.Title>
+  <CollapseTitle>
     <Icon type='bars' left />Common Pages
-  </Collapse.Title>
-  <Collapse.Body>
+  </CollapseTitle>
+  <CollapseBody>
     <Nav>
-      <Nav.Link>
+      <NavLink>
         <span>Login</span>
-      </Nav.Link>
-      <Nav.Link>
+      </NavLink>
+      <NavLink>
         <a
           href='http://fontawesome.io/icons/'
           rel='noreferrer noopener'
@@ -20,8 +20,8 @@
         >
           500
         </a>
-      </Nav.Link>
+      </NavLink>
     </Nav>
-  </Collapse.Body>
+  </CollapseBody>
 </Collapse>
 ```
