@@ -93,7 +93,7 @@ class CalendarView extends React.Component {
   }
   
   checkDateClickHandle(date) {
-    let { days } = this.state
+    const { days } = this.state
 
     if (!date.inMonth) {
       return
