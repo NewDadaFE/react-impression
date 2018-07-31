@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SelectOption from '../SelectOption'
 import * as System from '../../utils/system'
+import { serialize } from '../../../../../node_modules/uri-js'
 
 export default class Select extends React.PureComponent {
   constructor(props, context) {
@@ -19,6 +20,7 @@ export default class Select extends React.PureComponent {
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
+      searchText: '',
     }
 
     this.state = {
@@ -42,6 +44,10 @@ export default class Select extends React.PureComponent {
      */
     disabled: PropTypes.bool,
 
+    /**
+     * 是否可搜索
+     */
+    searchable: PropTypes.bool,
     /**
      * 行内样式
      */
@@ -108,6 +114,14 @@ export default class Select extends React.PureComponent {
   // 隐藏菜单
   hideOptionsHandle = () => this.setState({ showOption: false })
 
+  handleBlur = () => {
+    this.refs.main.blur()
+  }
+  handleSearch = () => {
+    let searchValue = this.refs.main.value
+
+    this.setState({ searchText: searchValue })
+  }
   /**
    * option选中回调
    * @param {String} 值
@@ -137,6 +151,7 @@ export default class Select extends React.PureComponent {
     this.setState({
       showOption: false,
     })
+    setTimeout(this.handleBlur, 1)
   }
 
   /**
@@ -145,15 +160,19 @@ export default class Select extends React.PureComponent {
   componentWillUnmount() {
     System.unmanager(this)
   }
+  componentDidMount() {}
+  // componentDidUpdate(prevState) {
+  //   const { searchText } = this.state
+  //   if (searchText !== prevState.searchText) {
+  //     console.log(44)
+  //   }
+  // }
 
-  render() {
-    const { placeholder, disabled, style, className, children } = this.props
-    const { showOption } = this.state
-    const originValue = this.isPuppet ? this.props.value : this.state.value
+  get child() {
+    const { children } = this.props
+    const { searchText } = this.state
     let text
-
-    this.options = [] // this问题
-
+    const originValue = this.isPuppet ? this.props.value : this.state.value
     const _children = React.Children.map(children, (child, index) => {
       if (!child) {
         return child
@@ -175,8 +194,41 @@ export default class Select extends React.PureComponent {
         active: value === originValue,
         onClick: () =>
           !disabled && this.selectOptionHandle(value, children, index),
+        style:
+          searchText === value ? { display: 'none' } : { display: 'block' },
       })
     })
+    return _children
+  }
+  render() {
+    const { placeholder, disabled, style, className, searchable } = this.props
+    const { showOption } = this.state
+    let text
+    this.options = [] // this问题
+
+    // const _children = React.Children.map(children, (child, index) => {
+    //   if (!child) {
+    //     return child
+    //   } // ? child ?
+
+    //   const { value, children, disabled } = child.props
+
+    //   this.options.push({
+    //     name: children,
+    //     value,
+    //   })
+    //   value === originValue && (text = children)
+    //   value === originValue &&
+    //     !disabled &&
+    //     this.refs.main &&
+    //     (this.refs.main.value = children)
+    //   return React.cloneElement(child, {
+    //     key: index,
+    //     active: value === originValue,
+    //     onClick: () =>
+    //       !disabled && this.selectOptionHandle(value, children, index),
+    //   })
+    // })
 
     return (
       <div
@@ -192,18 +244,19 @@ export default class Select extends React.PureComponent {
         <input
           type='text'
           defaultValue={text}
-          readOnly
+          readOnly={!searchable}
           ref='main'
           placeholder={placeholder}
           disabled={disabled}
           className={classnames('form-control', 'select-selection')}
           onClick={this.toggleOptionsHandle}
+          onKeyDown={this.handleSearch}
         />
         <i
           className='fa fa-angle-down select-addon'
           onClick={this.toggleOptionsHandle}
         />
-        <ul className='select-options'>{_children}</ul>
+        <ul className='select-options'>{this.child}</ul>
       </div>
     )
   }
