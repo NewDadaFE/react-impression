@@ -20,7 +20,7 @@ export default class Tag extends PureComponent {
     onClose: PropTypes.func,
     // 自定义样式
     className: PropTypes.string,
-    children: PropTypes.any,
+    children: PropTypes.node,
   }
   // 默认props
   static defaultProps = {

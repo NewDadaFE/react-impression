@@ -8,9 +8,9 @@ import CardFooter from '../CardFooter'
 export default class Card extends React.PureComponent {
   static propTypes = {
     /**
-      * 子组件
-      */
-    children: PropTypes.any,
+     * 子组件
+     */
+    children: PropTypes.node,
 
     /**
      * 自定义样式

@@ -12,7 +12,7 @@ export default class DropdownMenu extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
 
     /**
      * 下拉列表靠右

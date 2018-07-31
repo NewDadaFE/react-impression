@@ -41,7 +41,7 @@ Breadcrumb.propTypes = {
   /**
    * 子组件
    */
-  children: PropTypes.any,
+  children: PropTypes.node,
 }
 
 export default Breadcrumb
