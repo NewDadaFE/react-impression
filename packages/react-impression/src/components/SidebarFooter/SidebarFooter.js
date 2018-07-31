@@ -12,7 +12,7 @@ export default class SidebarFooter extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
   }
 
   render() {

@@ -43,7 +43,7 @@ export default class Upload extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
 
     /**
      * 回调函数
