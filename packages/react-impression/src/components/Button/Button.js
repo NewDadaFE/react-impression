@@ -14,7 +14,7 @@ export default class Button extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
 
     /**
      * 自定义样式
@@ -68,18 +68,18 @@ export default class Button extends React.PureComponent {
 
   render() {
     let {
-        theme,
-        outline,
-        size,
-        shape,
-        className,
-        onClick,
-        href,
-        close,
-        block,
-        children,
-        ...others
-      } = this.props
+      theme,
+      outline,
+      size,
+      shape,
+      className,
+      onClick,
+      href,
+      close,
+      block,
+      children,
+      ...others
+    } = this.props
     const { Tag } = this.state
 
     delete others.eventKey

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 export default class MessageItem extends PureComponent {
   // prop type校验
   static propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.node,
     className: PropTypes.string,
   }
   /**

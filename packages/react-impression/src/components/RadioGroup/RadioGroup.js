@@ -57,7 +57,7 @@ export default class RadioGroup extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
   }
 
   static defaultProps = {

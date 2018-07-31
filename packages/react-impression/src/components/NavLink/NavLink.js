@@ -10,7 +10,7 @@ const propTypes = {
   /**
    * 子组件
    */
-  children: PropTypes.any,
+  children: PropTypes.node,
 }
 
 const NavLink = ({ children, className, ...others }) => {

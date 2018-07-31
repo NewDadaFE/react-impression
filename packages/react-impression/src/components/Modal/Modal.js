@@ -21,7 +21,7 @@ Modal.propTypes = {
   /**
    * 子组件
    */
-  children: PropTypes.any,
+  children: PropTypes.node,
   /**
    * 自定义样式
    */

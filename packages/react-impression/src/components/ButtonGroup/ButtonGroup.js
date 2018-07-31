@@ -32,7 +32,7 @@ export default class ButtonGroup extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
   }
 
   static defaultProps = {
