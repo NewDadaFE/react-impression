@@ -25,7 +25,6 @@ class DefaultExample extends React.Component {
         <Notification />
         <Select
           ref={select => (this.select = select)}
-          searchable
           onChange={this.handleChange}
         >
           <Select.Option value="1">First</Select.Option>
@@ -73,7 +72,6 @@ class ValueExample extends React.Component {
         <Select
           ref={select => (this.select = select)}
           value={0}
-          searchable
           onChange={this.handleChange}
         >
           <Select.Option value={0}>First</Select.Option>
@@ -115,7 +113,6 @@ class DefaultValueExample extends React.Component {
         <Select
           ref={select => (this.select = select)}
           defaultValue={0}
-          searchable
           onChange={this.handleChange}
         >
           <Select.Option value={0}>First</Select.Option>
