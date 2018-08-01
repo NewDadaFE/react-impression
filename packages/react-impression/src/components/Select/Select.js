@@ -14,6 +14,16 @@ const isContainer = (text, arr) => {
   }
   return false
 }
+const isEqual = (text, arr) => {
+  const len = arr.length
+  for (let i = 0; i < len; i++) {
+    const name = arr[i].name
+    if (name.toLocaleUpperCase() === text.toLocaleUpperCase()) {
+      return true
+    }
+  }
+  return false
+}
 export default class Select extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -29,6 +39,7 @@ export default class Select extends React.PureComponent {
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
+      searchValue: props.value,
       isSearch: false,
       searchText: '',
       isNoresult: false,
@@ -166,12 +177,41 @@ export default class Select extends React.PureComponent {
         main.value = ''
         this.setState({ searchText: '' })
       }
+    } else {
+      if (isEqual(main.value, this.defaultoptions)) return
+      if (!this.isPuppet) {
+        this.defaultoptions.forEach(option => {
+          if (defaultValue === option.value) {
+            main.value = option.name
+            this.setState({ value: defaultValue, searchText: '' })
+          }
+        })
+      } else {
+        this.defaultoptions.forEach(option => {
+          if (value === option.value) {
+            main.value = option.name
+            this.setState({ value: value, searchText: '' })
+          }
+        })
+      }
+      if (!value && value !== 0 && !defaultValue && defaultValue !== 0) {
+        if (isContainer(main.value, this.defaultoptions)) {
+          this.setState({ searchText: '' })
+          main.value = ''
+        }
+      }
     }
   }
   handleSearch = () => {
     const { showOption } = this.state
     const searchText = this.refs.main.value
     this.setState({ isSearch: true, searchText: searchText })
+    if (!this.isPuppet) {
+      this.setState({ value: searchText })
+    } else {
+      this.setState({ searchValue: searchText })
+      this.refs.main.value = searchText
+    }
     if (!showOption) {
       this.setState({ showOption: true })
     }
@@ -221,7 +261,6 @@ export default class Select extends React.PureComponent {
   }
 
   componentDidMount() {
-    console.log(this.props)
     const { children } = this.props
     this.defaultoptions = []
     React.Children.map(children, (child, index) => {
@@ -247,7 +286,14 @@ export default class Select extends React.PureComponent {
     const { showOption, isSearch, searchText, isNoresult } = this.state
     let text
     this.options = [] // this问题
-    const originValue = this.isPuppet ? this.props.value : this.state.value
+    let originValue
+    if (!searchable) {
+      originValue = this.isPuppet ? this.props.value : this.state.value
+    } else {
+      originValue = this.isPuppet ? this.state.searchValue : this.state.value
+    }
+
+    // const originValue = this.isPuppet ? this.props.value : this.state.value
     let _children
     if (!isNoresult) {
       _children = React.Children.map(children, (child, index) => {
@@ -295,6 +341,9 @@ export default class Select extends React.PureComponent {
         '无匹配结果'
       )
     }
+    if (this.isPuppet && !searchable) {
+      this.refs.main && (this.refs.main.value = text)
+    }
     return (
       <div
         style={style}
@@ -315,7 +364,7 @@ export default class Select extends React.PureComponent {
           disabled={disabled}
           className={classnames('form-control', 'select-selection')}
           onClick={this.toggleOptionsHandle}
-          onKeyUp={this.handleSearch}
+          onKeyUp={searchable ? this.handleSearch : ''}
           onBlur={this.handleSearchBlur}
         />
         <i
