@@ -137,6 +137,7 @@ export default class Select extends React.PureComponent {
       this.setState({
         showOption: !this.state.showOption,
         isNoresult: false,
+        searchText: '',
       })
   }
 
@@ -155,7 +156,7 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleSearchBlur = () => {
-    this.searchText = ''
+    this.refs.main.blur()
     const { isNoresult } = this.state
     const { main } = this.refs
     const { value, defaultValue } = this.props
@@ -178,7 +179,8 @@ export default class Select extends React.PureComponent {
         this.setState({ searchText: '' })
       }
     } else {
-      if (isEqual(main.value, this.defaultoptions)) return
+      this.setState({ searchValue: value })
+      if (isEqual(main.value, this.defaultoptions) || this.isPuppet) return
       if (!this.isPuppet) {
         this.defaultoptions.forEach(option => {
           if (defaultValue === option.value) {
@@ -202,6 +204,7 @@ export default class Select extends React.PureComponent {
       }
     }
   }
+
   handleSearch = () => {
     const { showOption } = this.state
     const searchText = this.refs.main.value
@@ -228,7 +231,7 @@ export default class Select extends React.PureComponent {
    * @param {Number} 索引
    */
   selectOptionHandle(newValue, text, index) {
-    const { onChange } = this.props
+    const { onChange, searchable } = this.props
     const { main } = this.refs
     const value = this.isPuppet ? this.props.value : this.state.value
 
@@ -244,13 +247,25 @@ export default class Select extends React.PureComponent {
         }
       )
     } else {
-      onChange && newValue !== value && onChange(newValue, text, index)
+      if (searchable) {
+        main.value = text
+        // this.setState(
+        //   {
+        //     searchValue: newValue,
+        //   },
+        //   () => {
+        onChange && newValue !== value && onChange(newValue, text, index)
+        main.value = text
+        //   }
+        // )
+      } else {
+        onChange && newValue !== value && onChange(newValue, text, index)
+      }
     }
 
     this.setState({
       showOption: false,
     })
-    setTimeout(this.handleBlur, 1)
   }
 
   /**
@@ -273,6 +288,12 @@ export default class Select extends React.PureComponent {
         value,
       })
     })
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const { showOption } = this.state
+    if (!showOption) {
+      this.handleSearchBlur()
+    }
   }
   render() {
     const {
@@ -365,7 +386,6 @@ export default class Select extends React.PureComponent {
           className={classnames('form-control', 'select-selection')}
           onClick={this.toggleOptionsHandle}
           onKeyUp={searchable ? this.handleSearch : ''}
-          onBlur={this.handleSearchBlur}
         />
         <i
           className='fa fa-angle-down select-addon'
