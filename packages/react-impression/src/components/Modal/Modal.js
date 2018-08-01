@@ -46,6 +46,7 @@ class Modal extends React.Component {
 
   disableScroll() {
     const documentBody = this.documentBody()
+
     if (documentBody) {
       documentBody.style.setProperty('overflow', 'hidden')
     }
@@ -53,6 +54,7 @@ class Modal extends React.Component {
 
   enableScroll() {
     const documentBody = this.documentBody()
+
     if (documentBody) {
       documentBody.style.removeProperty('overflow')
     }
