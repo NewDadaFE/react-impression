@@ -74,15 +74,44 @@
         &.disabled + .checkbox-addon {
             opacity: .6;
             background: $checkbox-addon-disabled-bg;
+
+            i {
+                color: $checkbox-addon-disabled-border-color;
+            }
+        }
+    }
+
+    @at-root #{&}-uncertain {
+        .checkbox-addon {
+            width: $checkbox-addon-padding * 2 + $border-width * 2 + round($checkbox-addon-width * $font-size-root); // padding + border + i标签的宽高
+            height: $checkbox-addon-padding * 2 + $border-width * 2 + round($checkbox-addon-height * $font-size-root);
+
+            &::before {
+                position: relative;
+                content: '';
+                display: block;
+                border: $border-width solid $checkbox-addon-uncertain-color;
+                margin-top: -$border-width;
+                top: 50%;
+            }
+
+            i {
+                display: none;
+            }
+        }
+
+        input:disabled + .checkbox-addon::before {
+            border-color: $checkbox-addon-disabled-border-color;
         }
     }
 }
 
 .checkbox-addon {
+    position: relative;
     line-height: 1;
     padding: $checkbox-addon-padding;
     display: inline-block;
-    border: 1px solid $checkbox-addon-border-color;
+    border: $border-width solid $checkbox-addon-border-color;
     border-radius: $checkbox-addon-border-radius;
     vertical-align: middle;
     transition: $checkbox-addon-transtion;
