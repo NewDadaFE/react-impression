@@ -15,7 +15,6 @@ class DefaultExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`
     });
-
     this.select.setValue(null);
     this.select.focus();
   }
@@ -27,7 +26,6 @@ class DefaultExample extends React.Component {
         <Select
           ref={select => (this.select = select)}
           onChange={this.handleChange}
-          searchable
         >
           <Select.Option value="1">First</Select.Option>
           <Select.Option value="2">Second</Select.Option>
@@ -63,7 +61,6 @@ class ValueExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`
     });
-
     this.select.setValue(null);
     this.select.focus();
   }
@@ -148,6 +145,16 @@ class DefaultValueExample extends React.Component {
   <Select.Option value="2" disabled>
     Second
   </Select.Option>
+  <Select.Option value="3">Third</Select.Option>
+</Select>
+```
+
+**searchable**
+
+```js
+<Select searchable>
+  <Select.Option value="1">First</Select.Option>
+  <Select.Option value="2">Second</Select.Option>
   <Select.Option value="3">Third</Select.Option>
 </Select>
 ```

@@ -3,8 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SelectOption from '../SelectOption'
 import * as System from '../../utils/system'
-import { serialize } from '../../../../../node_modules/uri-js'
 
+const isContainer = (text, arr) => {
+  const len = arr.length
+  for (let i = 0; i < len; i++) {
+    const name = arr[i].name
+    if (name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1) {
+      return true
+    }
+  }
+  return false
+}
 export default class Select extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -16,11 +25,13 @@ export default class Select extends React.PureComponent {
 
     // 子组件数据
     this.options = []
-
+    this.defaultoptions = []
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
+      isSearch: false,
       searchText: '',
+      isNoresult: false,
     }
 
     this.state = {
@@ -88,7 +99,7 @@ export default class Select extends React.PureComponent {
 
     if (!this.isPuppet) {
       main.value = null
-      this.options.forEach(option => {
+      this.defaultoptions.forEach(option => {
         if (value === option.value) main.value = option.name
       })
 
@@ -98,29 +109,77 @@ export default class Select extends React.PureComponent {
     }
   }
 
-  // focus  没调用？
+  /**
+   * @description  focus
+   * @memberof Select
+   */
   focus() {
     this.refs.main.focus()
   }
 
-  // 显示/隐藏菜单
+  /**
+   * @description 显示/隐藏菜单
+   * @memberof Select
+   */
   toggleOptionsHandle = () => {
     !this.props.disabled &&
       this.setState({
         showOption: !this.state.showOption,
+        isNoresult: false,
       })
   }
 
-  // 隐藏菜单
+  /**
+   * @description 隐藏菜单
+   * @memberof Select
+   */
   hideOptionsHandle = () => this.setState({ showOption: false })
 
   handleBlur = () => {
     this.refs.main.blur()
+    this.setState({ isSearch: false, searchText: '' })
+  }
+  /**
+   * @description blur 事件
+   * @memberof Select
+   */
+  handleSearchBlur = () => {
+    this.searchText = ''
+    const { isNoresult } = this.state
+    const { main } = this.refs
+    const { value, defaultValue } = this.props
+    if (isNoresult) {
+      if (this.isPuppet) {
+        main.value = null
+        this.defaultoptions.forEach(option => {
+          if (value === option.value) main.value = option.name
+        })
+        this.setState({ searchText: '' })
+      } else {
+        main.value = null
+        this.defaultoptions.forEach(option => {
+          if (defaultValue === option.value) main.value = option.name
+        })
+        this.setState({ searchText: '', value: defaultValue })
+      }
+      if (!value && value !== 0 && !defaultValue && defaultValue !== 0) {
+        main.value = ''
+        this.setState({ searchText: '' })
+      }
+    }
   }
   handleSearch = () => {
-    let searchValue = this.refs.main.value
-
-    this.setState({ searchText: searchValue })
+    const { showOption } = this.state
+    const searchText = this.refs.main.value
+    this.setState({ isSearch: true, searchText: searchText })
+    if (!showOption) {
+      this.setState({ showOption: true })
+    }
+    if (!isContainer(searchText, this.defaultoptions)) {
+      this.setState({ isNoresult: true })
+    } else {
+      this.setState({ isNoresult: false })
+    }
   }
   /**
    * option选中回调
@@ -160,76 +219,82 @@ export default class Select extends React.PureComponent {
   componentWillUnmount() {
     System.unmanager(this)
   }
-  componentDidMount() {}
-  // componentDidUpdate(prevState) {
-  //   const { searchText } = this.state
-  //   if (searchText !== prevState.searchText) {
-  //     console.log(44)
-  //   }
-  // }
 
-  get child() {
+  componentDidMount() {
+    console.log(this.props)
     const { children } = this.props
-    const { searchText } = this.state
-    let text
-    const originValue = this.isPuppet ? this.props.value : this.state.value
-    const _children = React.Children.map(children, (child, index) => {
+    this.defaultoptions = []
+    React.Children.map(children, (child, index) => {
       if (!child) {
         return child
       } // ? child ?
-
-      const { value, children, disabled } = child.props
-
-      this.options.push({
+      const { value, children } = child.props
+      this.defaultoptions.push({
         name: children,
         value,
       })
-      value === originValue && (text = children)
-      value === originValue &&
-        !disabled &&
-        this.refs.main &&
-        (this.refs.main.value = children)
-      return React.cloneElement(child, {
-        key: index,
-        active: value === originValue,
-        onClick: () =>
-          !disabled && this.selectOptionHandle(value, children, index),
-        style:
-          searchText === value ? { display: 'none' } : { display: 'block' },
-      })
     })
-    return _children
   }
   render() {
-    const { placeholder, disabled, style, className, searchable } = this.props
-    const { showOption } = this.state
+    const {
+      placeholder,
+      disabled,
+      style,
+      className,
+      searchable,
+      children,
+    } = this.props
+    const { showOption, isSearch, searchText, isNoresult } = this.state
     let text
     this.options = [] // this问题
+    const originValue = this.isPuppet ? this.props.value : this.state.value
+    let _children
+    if (!isNoresult) {
+      _children = React.Children.map(children, (child, index) => {
+        if (!child) {
+          return child
+        } // ? child ?
 
-    // const _children = React.Children.map(children, (child, index) => {
-    //   if (!child) {
-    //     return child
-    //   } // ? child ?
-
-    //   const { value, children, disabled } = child.props
-
-    //   this.options.push({
-    //     name: children,
-    //     value,
-    //   })
-    //   value === originValue && (text = children)
-    //   value === originValue &&
-    //     !disabled &&
-    //     this.refs.main &&
-    //     (this.refs.main.value = children)
-    //   return React.cloneElement(child, {
-    //     key: index,
-    //     active: value === originValue,
-    //     onClick: () =>
-    //       !disabled && this.selectOptionHandle(value, children, index),
-    //   })
-    // })
-
+        const { value, children, disabled } = child.props
+        this.options.push({
+          name: children,
+          value,
+        })
+        value === originValue && (text = children)
+        value === originValue &&
+          !disabled &&
+          this.refs.main &&
+          (this.refs.main.value = children)
+        // 搜索筛选
+        if (
+          searchable &&
+          isSearch &&
+          children.toLocaleUpperCase().indexOf(searchText.toLocaleUpperCase()) >
+            -1
+        ) {
+          return React.cloneElement(child, {
+            key: index,
+            active: value === originValue,
+            onClick: () =>
+              !disabled && this.selectOptionHandle(value, children, index),
+          })
+        }
+        if (!searchText) {
+          return React.cloneElement(child, {
+            key: index,
+            active: value === originValue,
+            onClick: () =>
+              !disabled && this.selectOptionHandle(value, children, index),
+          })
+        }
+      })
+    } else {
+      _children = React.createElement(
+        'li',
+        { className: 'select-noresult' },
+        '无匹配结果'
+      )
+    }
     return (
       <div
         style={style}
@@ -250,13 +315,14 @@ export default class Select extends React.PureComponent {
           disabled={disabled}
           className={classnames('form-control', 'select-selection')}
           onClick={this.toggleOptionsHandle}
-          onKeyDown={this.handleSearch}
+          onKeyUp={this.handleSearch}
+          onBlur={this.handleSearchBlur}
         />
         <i
           className='fa fa-angle-down select-addon'
           onClick={this.toggleOptionsHandle}
         />
-        <ul className='select-options'>{this.child}</ul>
+        <ul className='select-options'>{_children}</ul>
       </div>
     )
   }

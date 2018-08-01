@@ -77,6 +77,11 @@
     opacity: 1;
     max-height: $select-selection-max-height;
   }
+  .select-noresult {
+    cursor: not-allowed;
+    color: $select-option-disable-color;
+    padding: $select-option-padding;
+  }
 }
 
 .select-option {
