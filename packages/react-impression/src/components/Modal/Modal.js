@@ -10,7 +10,7 @@ class Modal extends React.Component {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
 
     /**
      * 自定义样式
@@ -20,7 +20,7 @@ class Modal extends React.Component {
     /**
      * 大小
      */
-    size: PropTypes.string,
+    size: PropTypes.oneOf(['sm', 'lg']),
 
     /**
      * 限制最大高度
@@ -32,20 +32,16 @@ class Modal extends React.Component {
     isLimitHeight: false,
   }
 
-  documentBody() {
-    return document.body
+  componentDidMount() {
+    this.disableScroll()
   }
 
   componentWillUnmount() {
     this.enableScroll()
   }
 
-  componentDidMount() {
-    this.disableScroll()
-  }
-
   disableScroll() {
-    const documentBody = this.documentBody()
+    const documentBody = document.body
 
     if (documentBody) {
       documentBody.style.setProperty('overflow', 'hidden')
@@ -53,7 +49,7 @@ class Modal extends React.Component {
   }
 
   enableScroll() {
-    const documentBody = this.documentBody()
+    const documentBody = document.body
 
     if (documentBody) {
       documentBody.style.removeProperty('overflow')
