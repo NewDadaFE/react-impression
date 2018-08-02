@@ -23,7 +23,7 @@ class Modal extends React.Component {
     size: PropTypes.oneOf(['sm', 'lg']),
 
     /**
-     * 限制最大高度
+     * Modal是否内部滚动
      */
     scrollInside: PropTypes.bool,
   }
