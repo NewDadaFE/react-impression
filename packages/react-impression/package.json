@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/NewDadaFE/react-impression",
   "scripts": {
-    "start": "styleguidist server",
+    "start": "styleguidist server --config rsg/config.js",
     "build": "gulp build",
     "precommit": "lint-staged"
   },
