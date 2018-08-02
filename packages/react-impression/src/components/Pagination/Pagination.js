@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const FIRST_PAGE = 1
 const PAGE_MIN_RANGE = 10
-export default class Pagination extends React.Component {
+export default class Pagination extends React.PureComponent {
   static defaultProps = {
     activePage: 1,
     totalPage: 1,
@@ -19,6 +19,14 @@ export default class Pagination extends React.Component {
      * 总页数
      */
     totalPage: PropTypes.number.isRequired,
+    /**
+     * 上一个按钮内容
+     */
+    lastContent: PropTypes.node,
+    /**
+     * 下一个按钮内容
+     */
+    nextContent: PropTypes.node,
     /**
      * onSelect
      */
@@ -219,6 +227,8 @@ export default class Pagination extends React.Component {
       totalPage = 1,
       className,
       activePage,
+      lastContent,
+      nextContent,
       ...others
     } = this.props
 
@@ -232,7 +242,7 @@ export default class Pagination extends React.Component {
             href='javascript:void(0);'
             onClick={this.prevPageHandle}
           >
-            <i className='fa fa-angle-left' />
+            {lastContent || <i className='fa fa-angle-left' />}
           </a>
         </li>
         {/* 第一个省略 */}
@@ -321,7 +331,7 @@ export default class Pagination extends React.Component {
             href='javascript:void(0);'
             onClick={this.nextPageHandle}
           >
-            <i className='fa fa-angle-right' />
+            {nextContent || <i className='fa fa-angle-right' />}
           </a>
         </li>
       </ul>

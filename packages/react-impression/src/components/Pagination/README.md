@@ -33,7 +33,10 @@ initialState = {
         onSelect={onSelectHandle2}
         scope={2}
         totalPage={state.totalPage2}
-        activePage={state.activePage2} />
+        activePage={state.activePage2}
+        lastContent='上一页'
+        nextContent='下一页'
+      />
     </Col>
   </Row>
 </div>
