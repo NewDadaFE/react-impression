@@ -25,11 +25,11 @@ class Modal extends React.Component {
     /**
      * 限制最大高度
      */
-    isLimitHeight: PropTypes.bool,
+    scrollInside: PropTypes.bool,
   }
 
   static defaultProps = {
-    isLimitHeight: false,
+    scrollInside: false,
   }
 
   componentDidMount() {
@@ -61,13 +61,13 @@ class Modal extends React.Component {
       size,
       className,
       children,
-      isLimitHeight,
+      scrollInside,
       ...others
     } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     return (
-      <div {...others} className={classnames('modal', { 'limit-height': isLimitHeight }, className)}>
+      <div {...others} className={classnames('modal', { 'limit-height': scrollInside }, className)}>
         <div className={classnames('modal-dialog', sizeClass)}>
           <div className='modal-content slideInDown'>{children}</div>
         </div>

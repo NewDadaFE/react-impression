@@ -101,7 +101,7 @@ class Overflow extends React.Component {
     super(props, context)
     this.state = {
       show: false,
-      isLimitHeight: false,
+      scrollInside: false,
     }
     
     this.toggleModalHandle = this.toggleModalHandle.bind(this)
@@ -116,7 +116,7 @@ class Overflow extends React.Component {
 
   toggleModalLimitHeight(value) {
     this.setState({
-      isLimitHeight: value,
+      scrollInside: value,
     })
   }
 
@@ -138,7 +138,7 @@ class Overflow extends React.Component {
         </Row>
         {this.state.show && (
           <Modal
-            isLimitHeight={this.state.isLimitHeight}
+            scrollInside={this.state.scrollInside}
           >
             <Modal.Header>
               <Button close onClick={() => this.toggleModalHandle()}>
