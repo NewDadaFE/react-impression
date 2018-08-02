@@ -22,7 +22,7 @@ export default class Alert extends React.PureComponent {
     /**
      * 子节点元素
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
 
     /**
      * 样式

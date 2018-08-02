@@ -32,7 +32,7 @@ InputGroup.propTypes = {
   /**
    * 子组件
    */
-  children: PropTypes.any,
+  children: PropTypes.node,
 }
 InputGroup.Addon = InputGroupAddon
 InputGroup.Input = InputGroupInput

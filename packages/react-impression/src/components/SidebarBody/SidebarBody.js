@@ -13,7 +13,7 @@ export default class SidebarBody extends PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
   }
 
   componentDidMount() {

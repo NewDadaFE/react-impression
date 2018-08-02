@@ -17,7 +17,7 @@ export default class Collapse extends React.PureComponent {
     /**
      * 子组件
      */
-    children: PropTypes.any,
+    children: PropTypes.node,
 
     /**
      * 自定义样式

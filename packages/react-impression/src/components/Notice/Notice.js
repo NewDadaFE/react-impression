@@ -8,7 +8,7 @@ export default class Notice extends PureComponent {
   // prop type校验
   static propTypes = {
     className: PropTypes.string,
-    children: PropTypes.any,
+    children: PropTypes.node,
     // 类型
     theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
     // 标题
