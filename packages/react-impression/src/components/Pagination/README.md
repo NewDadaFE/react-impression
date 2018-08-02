@@ -7,14 +7,14 @@ const onSelectHandle1 = activePage => {
   });
 }
 const onSelectHandle2 = activePage2 => {
-  this.setState({
-      activePage: activePage2,
+  setState({
+      activePage2: activePage2,
   });
 }
 initialState = {
-  totalPage1: 10,
+  totalPage1: 6,
   activePage1: 3,
-  totalPage2: 1,
+  totalPage2: 99,
   activePage2: 1,
 };
 <div className="text-center">
