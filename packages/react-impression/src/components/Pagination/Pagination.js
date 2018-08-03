@@ -2,15 +2,18 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const FIRST_PAGE = 1
-const PAGE_MIN_RANGE = 10
 export default class Pagination extends React.PureComponent {
   static defaultProps = {
+    scope: 2,
     activePage: 1,
     totalPage: 1,
   }
 
   static propTypes = {
+    /**
+     * 前后延伸
+     */
+    scope: PropTypes.number,
     /**
      * 当前在第几页
      */
@@ -37,41 +40,6 @@ export default class Pagination extends React.PureComponent {
     className: PropTypes.string,
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      start: [],
-      middle: [],
-      end: [],
-    }
-  }
-
-  componentDidMount() {
-    const { totalPage, activePage } = this.props
-
-    if (totalPage < PAGE_MIN_RANGE) {
-      const newStart = []
-      for (let i = 1; i <= totalPage; i++) {
-        newStart.push(i)
-      }
-      this.setState({
-        start: newStart,
-      })
-      return
-    }
-    const middleBase = activePage
-    const startBase = this._average(1, activePage)
-    const endBase = this._average(activePage, totalPage)
-
-    this._setShowPageArray(startBase, middleBase, endBase)
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (this.props.activePage !== newProps.activePage) {
-      this._getShowPageArray(newProps.activePage)
-    }
-  }
-
   /**
    * 上一页
    */
@@ -81,6 +49,7 @@ export default class Pagination extends React.PureComponent {
     activePage -= 1
     activePage >= 1 && onSelect && onSelect(activePage)
   }
+
   /**
    * 下一页
    */
@@ -90,6 +59,7 @@ export default class Pagination extends React.PureComponent {
     activePage += 1
     activePage <= totalPage && onSelect && onSelect(activePage)
   }
+
   /**
    * 跳转至某页
    * @param page
@@ -100,126 +70,48 @@ export default class Pagination extends React.PureComponent {
     onSelect && onSelect(page)
   }
 
-  _setShowPageArray = (startBase, middleBase, endBase) => {
-    // 基准矫正
-    const { totalPage: LAST_PAGE } = this.props
-
-    // 中间范围超出首页
-    if (middleBase <= 4) {
-      middleBase = FIRST_PAGE + 4
-    }
-    // 中间范围超出末尾页
-    if (middleBase >= LAST_PAGE - 4) {
-      middleBase = LAST_PAGE - 4
-    }
-
-    // 起始范围超出首页
-    if (startBase <= FIRST_PAGE) {
-      startBase = FIRST_PAGE + 1
-    }
-    // 起始范围与中间范围重叠
-    if (startBase >= middleBase - 2) {
-      startBase = middleBase - 3
-    }
-
-    // 末尾范围与中间范围重叠
-    if (endBase <= middleBase + 2) {
-      endBase = middleBase + 3
-    }
-    // 末尾范围超出末尾页
-    if (endBase >= LAST_PAGE - 1) {
-      endBase = LAST_PAGE - 1
-    }
-
-    this.setState({
-      start: [startBase - 1, startBase, startBase + 1],
-      middle: [middleBase - 1, middleBase, middleBase + 1],
-      end: [endBase - 1, endBase, endBase + 1],
-    })
-  }
-
-  _getShowPageArray = (activePage) => {
-    if (this.props.totalPage < PAGE_MIN_RANGE) return
-
-    const { start, middle, end } = this.state
-    let endBase
-    let startBase
-    let middleBase
-    let index
-    // 1. 第一区间 A
-    if (start.includes(activePage)) {
-      index = start.indexOf(activePage)
-      switch (index) {
-        case 0:
-          // A1+ 扩大区间
-          startBase = this._average(1, activePage)
-          middleBase = activePage
-          endBase = this._average(activePage, end[2])
-          break
-        case 1:
-          // A2 基准不变
-          startBase = start[1]
-          middleBase = middle[1]
-          endBase = end[1]
-          break
-        case 2:
-          // A3- 缩小区间
-          startBase = activePage
-          middleBase = this._average(activePage, middle[1])
-          endBase = 2 * middleBase
-          break
+  /**
+   * 获取组件显示的页码
+   * @returns {Array}
+   */
+  getPageList = () => {
+    const { scope, totalPage, activePage } = this.props
+    const pageList = []
+    const scopeLength = scope * 2
+    // 页数少于（首、尾、中间、两边scope）不出现省略号
+    if (totalPage <= 3 + scopeLength) {
+      for (let i = 1; i <= totalPage; i++) {
+        pageList.push(i)
       }
+      return pageList
     }
-
-    // 2. 第二区间 B
-    if (middle.includes(activePage)) {
-      index = middle.indexOf(activePage)
-      switch (index) {
-        case 0:
-        case 2:
-          // B1- & B3- 缩小区间
-          middleBase = activePage
-          startBase = this._average(start[1], activePage)
-          endBase = this._average(activePage, end[1])
-          break
-        case 1:
-          // B2+ 扩大区间
-          startBase = 2 * start[1] - activePage
-          middleBase = activePage
-          endBase = 2 * end[1] - activePage
-          break
-      }
+    // 有"..."的情况下，中间部分页数的范围 [scopeLeft，scopeRight]
+    let scopeLeft = Math.max(1, activePage - scope)
+    let scopeRight = Math.min(activePage + scope, totalPage)
+    // scopeLeft或scopeRight为总页数的左端或右端，特殊处理
+    if (scopeLeft === 1) {
+      scopeRight = scopeLeft + scopeLength
     }
-
-    // 3. 第三区间 C
-    if (end.includes(activePage)) {
-      index = end.indexOf(activePage)
-      switch (index) {
-        case 0:
-          // C1- 缩小区间
-          startBase = middle[1]
-          middleBase = this._average(activePage, middle[1])
-          endBase = activePage
-          break
-        case 1:
-          // C2 基准不变
-          startBase = start[1]
-          middleBase = middle[1]
-          endBase = end[1]
-          break
-        case 2:
-          // C3+ 扩大区间
-          startBase = this._average(start[0], activePage)
-          middleBase = activePage
-          endBase = this._average(activePage, this.props.totalPage)
-          break
-      }
+    if (scopeRight === totalPage) {
+      scopeLeft = scopeRight - scopeLength
     }
-    this._setShowPageArray(startBase, middleBase, endBase)
-  }
+    // 首页页码必须为 1
+    scopeLeft !== 1 && pageList.push(1)
+    // 显示"..."的情况，考虑到scope=1的特殊情况所以current也不能等于3
+    if (activePage >= 1 + scopeLength && activePage !== 3) {
+      pageList.push('')
+    }
+    for (let i = scopeLeft; i <= scopeRight; i++) {
+      pageList.push(i)
+    }
+    // 显示"..."的情况
+    if (activePage <= totalPage - scopeLength && activePage !== totalPage - 2) {
+      pageList.push('')
+    }
+    // 尾页页码必须为 totalPage
+    scopeRight !== totalPage && pageList.push(totalPage)
 
-  _average = (start, end) => {
-    return Math.floor((start + end) / 2)
+    return pageList
   }
 
   render() {
@@ -232,7 +124,7 @@ export default class Pagination extends React.PureComponent {
       ...others
     } = this.props
 
-    const { start, middle, end } = this.state
+    const pageList = this.getPageList()
 
     return (
       <ul {...others} className={classnames('Pagination', className)}>
@@ -245,82 +137,31 @@ export default class Pagination extends React.PureComponent {
             {lastContent || <i className='fa fa-angle-left' />}
           </a>
         </li>
-        {/* 第一个省略 */}
-        {start[0] > 1 && (
-          <li className='page-item disabled'>
-            <i className='fa fa-ellipsis-h' />
-          </li>
-        )}
-
-        {start.map(child => (
-          <li
-            key={child}
-            className={classnames('page-item', {
-              active: child === activePage,
-            })}
-          >
-            <a
-              className='page-link'
-              href='javascript:void(0);'
-              onClick={() => this.goPageHandle(child)}
+        {
+          pageList.map((child, index) => child ? (
+            <li
+              key={`${child}-${index}`}
+              className={classnames('page-item', {
+                active: child === activePage,
+              })}
             >
-              {child}
-            </a>
-          </li>
-        ))}
-        {/* 第二个省略 */}
-        {middle.length > 0 && start[2] + 1 !== middle[0] && (
-          <li className='page-item disabled'>
-            <i className='fa fa-ellipsis-h' />
-          </li>
-        )}
-
-        {middle.map(child => (
-          <li
-            key={child}
-            className={classnames('page-item', {
-              active: child === activePage,
-            })}
-          >
-            <a
-              className='page-link'
-              href='javascript:void(0);'
-              onClick={() => this.goPageHandle(child)}
+              <a
+                className='page-link'
+                href='javascript:void(0);'
+                onClick={() => this.goPageHandle(child)}
+              >
+                {child}
+              </a>
+            </li>
+          ) : (
+            <li
+              key={`${child}-${index}`}
+              className='page-item disabled'
             >
-              {child}
-            </a>
-          </li>
-        ))}
-        {/* 第三个省略 */}
-        {end.length > 0 && middle[2] + 1 !== end[0] && (
-          <li className='page-item disabled'>
-            <i className='fa fa-ellipsis-h' />
-          </li>
-        )}
-
-        {end.map(child => (
-          <li
-            key={child}
-            className={classnames('page-item', {
-              active: child === activePage,
-            })}
-          >
-            <a
-              className='page-link'
-              href='javascript:void(0);'
-              onClick={() => this.goPageHandle(child)}
-            >
-              {child}
-            </a>
-          </li>
-        ))}
-        {/* 第四个省略 */}
-        {end.length === 3 && end[2] < totalPage && (
-          <li className='page-item disabled'>
-            <i className='fa fa-ellipsis-h' />
-          </li>
-        )}
-
+              <i className='fa fa-ellipsis-h' />
+            </li>
+          ))
+        }
         <li
           className={classnames('page-item', {
             disabled: activePage >= totalPage,

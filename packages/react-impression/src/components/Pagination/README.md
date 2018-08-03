@@ -13,16 +13,16 @@ const onSelectHandle2 = activePage2 => {
 }
 initialState = {
   totalPage1: 6,
-  activePage1: 3,
+  activePage1: 2,
   totalPage2: 99,
-  activePage2: 1,
+  activePage2: 50,
 };
 <div className="text-center">
   <Row>
     <Col>
       <Pagination
         onSelect={onSelectHandle1}
-        scope={4}
+        scope={2}
         totalPage={state.totalPage1}
         activePage={state.activePage1} />
     </Col>
