@@ -1,3 +1,11 @@
+const color = {
+  light: '#d0d0d0',
+  lightGray: '#a7b1c2',
+  lightDark: '#22252a',
+  dark: '#191b1f',
+  darker: '#141619',
+}
+
 module.exports = {
   StyleGuide: {
     logo: {
@@ -5,13 +13,13 @@ module.exports = {
       backgroundPosition: 'center',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
-      backgroundColor: '#22252a',
-      borderBottom: '1px solid #141619',
+      backgroundColor: color.lightDark,
+      borderBottom: `1px solid ${color.darker}`,
     },
   },
   Logo: {
     logo: {
-      color: '#d0d0d0',
+      color: color.light,
     },
   },
   ComponentsList: {
@@ -24,17 +32,35 @@ module.exports = {
         display: 'block',
         padding: '8px 0 8px 16px !important',
         '&:link, &:visited': {
-          color: '#a7b1c2',
+          color: color.lightGray,
         },
         '&:hover, &:active': {
-          color: '#d0d0d0',
-          backgroundColor: '#191b1f',
-          boxShadow: 'inset 0 0 1px #141619',
+          color: color.light,
+          backgroundColor: color.dark,
+          boxShadow: `inset 0 0 1px ${color.darker}`,
           cursor: 'pointer',
         },
       },
       '& > ul a': {
         paddingLeft: '32px !important',
+      },
+    },
+  },
+  Table: {
+    cell: {
+      '&:nth-child(3)': {
+        width: '35%',
+        paddingRight: '16px',
+        paddingTop: '8px',
+        paddingBottom: '8px',
+        verticalAlign: 'top',
+        fontSize: '13px',
+      },
+      '& p': {
+        marginBottom: `5px !important`,
+      },
+      '& div[class*="para"]': {
+        marginBottom: `5px !important`,
       },
     },
   },
