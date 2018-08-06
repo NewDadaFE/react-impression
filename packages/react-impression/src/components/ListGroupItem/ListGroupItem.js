@@ -38,7 +38,14 @@ export default class ListGroupItem extends React.PureComponent {
   }
 
   render() {
-    const { href, disabled, active, children, className, ...others } = this.props
+    const {
+      href,
+      disabled,
+      active,
+      children,
+      className,
+      ...others
+    } = this.props
     const { Tag } = this.state
     const disabledStyle = disabled ? 'disabled' : null
     const activeStyle = active ? 'active' : null

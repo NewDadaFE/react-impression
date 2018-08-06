@@ -1,6 +1,6 @@
 ### Examples
 
-**Button toolbar** 
+**Button toolbar**
 
 ```js
 <ButtonToolbar>

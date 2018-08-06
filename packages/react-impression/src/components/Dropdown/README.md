@@ -5,18 +5,18 @@
 ```js
 class ModalExample extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      isOpen: false
-    };
-    this.menuClickHandle = this.menuClickHandle.bind(this);
+      isOpen: false,
+    }
+    this.menuClickHandle = this.menuClickHandle.bind(this)
   }
   menuClickHandle(message) {
     Notification.info({
       closeable: false,
       title: '菜单点击',
-      message: `${message}被点击了！！！`
-    });
+      message: `${message}被点击了！！！`,
+    })
   }
   render() {
     return (
@@ -79,10 +79,10 @@ class ModalExample extends React.Component {
           <Notification />
         </Col>
       </Row>
-    );
+    )
   }
 }
-<ModalExample />;
+;<ModalExample />
 ```
 
 **disabled**
@@ -90,18 +90,18 @@ class ModalExample extends React.Component {
 ```js
 class ModalExample extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      isOpen: false
-    };
-    this.menuClickHandle = this.menuClickHandle.bind(this);
+      isOpen: false,
+    }
+    this.menuClickHandle = this.menuClickHandle.bind(this)
   }
   menuClickHandle(message) {
     Notification.info({
       closeable: false,
       title: '菜单点击',
-      message: `${message}被点击了！！！`
-    });
+      message: `${message}被点击了！！！`,
+    })
   }
   render() {
     return (
@@ -182,8 +182,8 @@ class ModalExample extends React.Component {
           <Notification />
         </Col>
       </Row>
-    );
+    )
   }
 }
-<ModalExample />;
+;<ModalExample />
 ```

@@ -16,7 +16,6 @@ const FORMAT = {
 
 export default class DatePicker extends React.PureComponent {
   static propTypes = {
-
     /**
      * 类型
      */
@@ -180,8 +179,8 @@ export default class DatePicker extends React.PureComponent {
         inMonth: true,
         isToday: dayMoment.isSame(today),
         disable:
-        (minDate && dayMoment.isBefore(minDate)) ||
-        (maxDate && dayMoment.isAfter(maxDate)),
+          (minDate && dayMoment.isBefore(minDate)) ||
+          (maxDate && dayMoment.isAfter(maxDate)),
       })
     }
 
@@ -197,7 +196,8 @@ export default class DatePicker extends React.PureComponent {
         : firstDay - firstDayOfWeek + 7
 
     for (let i = 0; i <= prevMonthMax - 1; i++) {
-      const dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength - i}`
+      const dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength -
+        i}`
       const dayMoment = moment(dayFormat, FORMAT.DATE)
 
       days.unshift({
@@ -205,8 +205,8 @@ export default class DatePicker extends React.PureComponent {
         date: dayMoment,
         isToday: dayMoment.isSame(today),
         disable:
-        (minDate && dayMoment.isBefore(minDate)) ||
-        (maxDate && dayMoment.isAfter(maxDate)),
+          (minDate && dayMoment.isBefore(minDate)) ||
+          (maxDate && dayMoment.isAfter(maxDate)),
       })
     }
 
@@ -229,8 +229,8 @@ export default class DatePicker extends React.PureComponent {
         date: dayMoment,
         isToday: dayMoment.isSame(today),
         disable:
-        (minDate && dayMoment.isBefore(minDate)) ||
-        (maxDate && dayMoment.isAfter(maxDate)),
+          (minDate && dayMoment.isBefore(minDate)) ||
+          (maxDate && dayMoment.isAfter(maxDate)),
       })
     }
 
@@ -381,9 +381,9 @@ export default class DatePicker extends React.PureComponent {
     const { type } = this.props
 
     type === 'date' &&
-    this.setState({
-      panel: panel === 'month' ? 'day' : 'month',
-    })
+      this.setState({
+        panel: panel === 'month' ? 'day' : 'month',
+      })
   }
 
   /**
@@ -394,9 +394,9 @@ export default class DatePicker extends React.PureComponent {
     const { _yeargroup } = this.refs
 
     type === 'date' &&
-    _yeargroup &&
-    _yeargroup.scrollTop === 0 &&
-    this.resetMonthPanelScroll()
+      _yeargroup &&
+      _yeargroup.scrollTop === 0 &&
+      this.resetMonthPanelScroll()
   }
 
   /**
@@ -589,7 +589,7 @@ export default class DatePicker extends React.PureComponent {
           </div>
         )}
         {showToday &&
-        panel !== 'month' && (
+          panel !== 'month' && (
           <div className='datepicker-footer'>
             <a href='javascript:void(0);' onClick={this.selectTodayHandle}>
               {todayText}

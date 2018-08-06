@@ -56,7 +56,11 @@
     </FlexItem>
     <Form type="inline">
       <FormGroup>
-        <input className="form-control no-border" type="text" placeholder="Search" />
+        <input
+          className="form-control no-border"
+          type="text"
+          placeholder="Search"
+        />
       </FormGroup>
       <Button theme="secondary">Search</Button>
     </Form>
@@ -88,7 +92,11 @@
     </FlexItem>
     <Form type="inline">
       <FormGroup>
-        <input className="form-control no-border" type="text" placeholder="Search" />
+        <input
+          className="form-control no-border"
+          type="text"
+          placeholder="Search"
+        />
       </FormGroup>
       <Button theme="primary">Search</Button>
     </Form>
