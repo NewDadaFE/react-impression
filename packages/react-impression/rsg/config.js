@@ -1,4 +1,5 @@
 const path = require('path')
+const theme = require('./theme')
 const styles = require('./styles')
 
 const resolvePath = relativePath => path.resolve(process.cwd(), relativePath)
@@ -28,11 +29,7 @@ module.exports = {
       ],
     },
   },
-  theme: {
-    color: {
-      sidebarBackground: '#22252a',
-    },
-  },
+  theme,
   styles,
   sections: [
     {
@@ -42,6 +39,7 @@ module.exports = {
       name: 'Components',
       components: resolvePath('src/components/**/[A-Z]*.js'),
       // components: resolvePath('src/components/**/Flex*.js'),
+      usageMode: 'expand',
     },
   ],
   webpackConfig: {
