@@ -7,7 +7,9 @@
   <NavItem eventKey={1}>Active</NavItem>
   <NavItem eventKey={2}>Link</NavItem>
   <NavItem eventKey={3}>Anothor link</NavItem>
-  <NavItem eventKey={4} disabled>Disabled</NavItem>
+  <NavItem eventKey={4} disabled>
+    Disabled
+  </NavItem>
 </Nav>
 ```
 
@@ -18,7 +20,9 @@
   <NavItem eventKey={1}>Active</NavItem>
   <NavItem eventKey={2}>Link</NavItem>
   <NavItem eventKey={3}>Anothor link</NavItem>
-  <NavItem eventKey={4} disabled>Disabled</NavItem>
+  <NavItem eventKey={4} disabled>
+    Disabled
+  </NavItem>
 </Nav>
 ```
 
@@ -29,7 +33,9 @@
   <NavItem eventKey={1}>Active</NavItem>
   <NavItem eventKey={2}>Link</NavItem>
   <NavItem eventKey={3}>Anothor link</NavItem>
-  <NavItem eventKey={4} disabled>Disabled</NavItem>
+  <NavItem eventKey={4} disabled>
+    Disabled
+  </NavItem>
 </Nav>
 ```
 
@@ -40,7 +46,9 @@
   <NavItem eventKey={1}>Active</NavItem>
   <NavItem eventKey={2}>Link</NavItem>
   <NavItem eventKey={3}>Anothor link</NavItem>
-  <NavItem eventKey={4} disabled>Disabled</NavItem>
+  <NavItem eventKey={4} disabled>
+    Disabled
+  </NavItem>
 </Nav>
 ```
 
@@ -54,7 +62,9 @@
         <NavItem eventKey={1}>Active</NavItem>
         <NavItem eventKey={2}>Link</NavItem>
         <NavItem eventKey={3}>Anothor link</NavItem>
-        <NavItem eventKey={4} disabled>Disabled</NavItem>
+        <NavItem eventKey={4} disabled>
+          Disabled
+        </NavItem>
       </Nav>
     </Card>
   </Col>

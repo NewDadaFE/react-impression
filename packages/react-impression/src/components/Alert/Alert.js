@@ -18,7 +18,6 @@ const getAddonByType = type => {
 
 export default class Alert extends React.PureComponent {
   static propTypes = {
-
     /**
      * 子节点元素
      */
