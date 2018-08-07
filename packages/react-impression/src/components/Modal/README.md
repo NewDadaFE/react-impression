@@ -198,7 +198,7 @@ class Overflow extends React.Component {
 ;<Overflow />
 ```
 
-### Changelog
+### 变更记录
 
 v2.0.0
 
