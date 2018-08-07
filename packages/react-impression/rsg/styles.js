@@ -50,11 +50,11 @@ module.exports = {
     cell: {
       '&:nth-child(3)': {
         width: '35%',
-        paddingRight: '16',
-        paddingTop: '8',
-        paddingBottom: '8',
+        paddingRight: 16,
+        paddingTop: 8,
+        paddingBottom: 8,
         verticalAlign: 'top',
-        fontSize: '13',
+        fontSize: 13,
       },
       '& p': {
         marginBottom: `5px !important`,
