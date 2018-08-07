@@ -197,3 +197,9 @@ class Overflow extends React.Component {
 }
 ;<Overflow />
 ```
+
+### Changelog
+
+v2.0.0
+
+- 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
