@@ -23,15 +23,15 @@ export default class Pagination extends React.PureComponent {
      */
     totalPage: PropTypes.number.isRequired,
     /**
-     * 上一个按钮内容
+     * 上一页控制按钮内容
      */
     lastContent: PropTypes.node,
     /**
-     * 下一个按钮内容
+     * 下一页控制按钮内容
      */
     nextContent: PropTypes.node,
     /**
-     * onSelect
+     * 选中回调函数
      */
     onSelect: PropTypes.func,
     /**
