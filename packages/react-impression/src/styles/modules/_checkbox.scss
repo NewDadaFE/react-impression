@@ -81,7 +81,7 @@
         }
     }
 
-    @at-root #{&}-uncertain {
+    @at-root #{&}-indeterminate {
         .checkbox-addon {
             width: $checkbox-addon-padding * 2 + $border-width * 2 + round($checkbox-addon-width * $font-size-root); // padding + border + i标签的宽高
             height: $checkbox-addon-padding * 2 + $border-width * 2 + round($checkbox-addon-height * $font-size-root);
@@ -90,7 +90,7 @@
                 position: relative;
                 content: '';
                 display: block;
-                border: $border-width solid $checkbox-addon-uncertain-color;
+                border: $border-width solid $checkbox-addon-indeterminate-color;
                 margin-top: -$border-width;
                 top: 50%;
             }

@@ -1,6 +1,6 @@
 ### Example
 
-**Basic**
+**basic**
 
 ```js
 <Form type='inline'>
@@ -13,7 +13,7 @@
 </Form>
 ```
 
-**Disabled**
+**disabled**
 
 ```js
 <Form type='inline'>
@@ -28,18 +28,18 @@
 </Form>
 ```
 
-**Uncertain**
+**indeterminate**
 
 ```js
 const options = ['number1', 'number2', 'number3', 'number4']
 const optionsCheckedDefault = ['number1', 'number3']
 
-class Uncertain extends React.Component {
+class Indeterminate extends React.Component {
   constructor() {
     super()
     this.state = {
       checkedList: optionsCheckedDefault,
-      uncertain: true,
+      indeterminate: true,
       checkAll: false,
     }
     this.onChange = this.onChange.bind(this)
@@ -49,7 +49,7 @@ class Uncertain extends React.Component {
   onChange(checkedList) {
     this.setState({
       checkedList,
-      uncertain: !!checkedList.length && checkedList.length < options.length,
+      indeterminate: !!checkedList.length && checkedList.length < options.length,
       checkAll: checkedList.length === options.length,
     })
   }
@@ -59,7 +59,7 @@ class Uncertain extends React.Component {
 
     this.setState({
       checkedList: target.checked ? options : [],
-      uncertain: false,
+      indeterminate: false,
       checkAll: target.checked,
     })
   }
@@ -69,7 +69,7 @@ class Uncertain extends React.Component {
       <div>
         <div className='offset-b-lg'>
           <Checkbox
-            uncertain={this.state.uncertain}
+            indeterminate={this.state.indeterminate}
             onChange={this.onCheckAllChange}
             checked={this.state.checkAll}
           >
@@ -89,5 +89,11 @@ class Uncertain extends React.Component {
     )
   }
 };
-<Uncertain />
+<Indeterminate />
 ```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 indeterminate 参数

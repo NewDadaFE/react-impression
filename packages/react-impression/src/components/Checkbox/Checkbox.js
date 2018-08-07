@@ -42,11 +42,11 @@ export default class Checkbox extends React.PureComponent {
     /**
      * 是否为半选状态
      */
-    uncertain: PropTypes.bool,
+    indeterminate: PropTypes.bool,
   }
 
   static defaultProps = {
-    uncertain: false,
+    indeterminate: false,
     disabled: false,
   }
 
@@ -76,13 +76,13 @@ export default class Checkbox extends React.PureComponent {
       className,
       onChange,
       children,
-      uncertain,
+      indeterminate,
       ...others
     } = this.props
 
     return (
       <label {...others} className={classnames('checkbox', className, {
-        'checkbox-uncertain': uncertain,
+        'checkbox-indeterminate': indeterminate,
       })}>
         <input
           type='checkbox'
