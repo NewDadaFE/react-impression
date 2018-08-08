@@ -5,18 +5,18 @@
 ```js
 class DefaultExample extends React.Component {
   constructor() {
-    super();
+    super()
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(val, text) {
     Notification.info({
       title: 'Select',
       message: `${text} 被选中了！！！`
-    });
-    this.select.setValue(null);
-    this.select.focus();
+    })
+    this.select.setValue(null)
+    this.select.focus()
   }
 
   render() {
@@ -39,11 +39,11 @@ class DefaultExample extends React.Component {
           <Select.Option value="10">Ten</Select.Option>
         </Select>
       </div>
-    );
+    )
   }
 }
 
-<DefaultExample />;
+<DefaultExample />
 ```
 
 **value**
@@ -51,18 +51,18 @@ class DefaultExample extends React.Component {
 ```js
 class ValueExample extends React.Component {
   constructor() {
-    super();
+    super()
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(val, text) {
     Notification.info({
       title: 'Select',
       message: `${text} 被选中了！！！`
-    });
-    this.select.setValue(null);
-    this.select.focus();
+    })
+    this.select.setValue(null)
+    this.select.focus()
   }
 
   render() {
@@ -79,11 +79,11 @@ class ValueExample extends React.Component {
           <Select.Option value={2}>Third</Select.Option>
         </Select>
       </div>
-    );
+    )
   }
 }
 
-<ValueExample />;
+<ValueExample />
 ```
 
 **defaultValue**
@@ -91,19 +91,19 @@ class ValueExample extends React.Component {
 ```js
 class DefaultValueExample extends React.Component {
   constructor() {
-    super();
+    super()
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(val, text) {
     Notification.info({
       title: 'Select',
       message: `${text} 被选中了！！！`
-    });
+    })
 
-    this.select.setValue(null);
-    this.select.focus();
+    this.select.setValue(null)
+    this.select.focus()
   }
 
   render() {
@@ -120,11 +120,11 @@ class DefaultValueExample extends React.Component {
           <Select.Option value={2}>Third</Select.Option>
         </Select>
       </div>
-    );
+    )
   }
 }
 
-<DefaultValueExample />;
+<DefaultValueExample />
 ```
 
 **disabled**
