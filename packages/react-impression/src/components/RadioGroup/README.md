@@ -6,26 +6,21 @@
 const radioArray = [
   {
     id: 1,
-    name: 'Yes',
+    name: '是',
   },
   {
     id: 2,
-    name: 'No',
+    name: '否',
   },
 ]
-;<Form>
-  <Form.Group>
-    <label>defaultValue</label>
-    <RadioGroup ref="radios" defaultValue={1}>
-      {radioArray.length > 0 &&
-        radioArray.map(item => (
-          <Radio key={item.id} value={item.id}>
-            {item.name}
-          </Radio>
-        ))}
-    </RadioGroup>
-  </Form.Group>
-</Form>
+;<RadioGroup ref="radios" defaultValue={1}>
+  {radioArray.length > 0 &&
+    radioArray.map(item => (
+      <Radio key={item.id} value={item.id}>
+        {item.name}
+      </Radio>
+    ))}
+</RadioGroup>
 ```
 
 **指定值（受控组件）**
@@ -34,29 +29,21 @@ const radioArray = [
 const radioArray = [
   {
     id: 1,
-    name: 'Yes',
+    name: '是',
   },
   {
     id: 2,
-    name: 'No',
+    name: '否',
   },
 ]
-;<Form>
-  <Form.Group>
-    <label>value</label>
-    <RadioGroup
-      value={2}
-      onChange={(event, value) => console.log(event, value)}
-    >
-      {radioArray.length > 0 &&
-        radioArray.map(item => (
-          <Radio key={item.id} value={item.id}>
-            {item.name}
-          </Radio>
-        ))}
-    </RadioGroup>
-  </Form.Group>
-</Form>
+;<RadioGroup value={2} onChange={(event, value) => console.log(event, value)}>
+  {radioArray.length > 0 &&
+    radioArray.map(item => (
+      <Radio key={item.id} value={item.id}>
+        {item.name}
+      </Radio>
+    ))}
+</RadioGroup>
 ```
 
 **禁用状态**
@@ -65,24 +52,19 @@ const radioArray = [
 const radioArray = [
   {
     id: 1,
-    name: 'Yes',
+    name: '是',
   },
   {
     id: 2,
-    name: 'No',
+    name: '否',
   },
 ]
-;<Form>
-  <Form.Group>
-    <label>Disabled</label>
-    <RadioGroup value={2} disabled>
-      {radioArray.length > 0 &&
-        radioArray.map(item => (
-          <Radio key={item.id} value={item.id}>
-            {item.name}
-          </Radio>
-        ))}
-    </RadioGroup>
-  </Form.Group>
-</Form>
+;<RadioGroup value={2} disabled>
+  {radioArray.length > 0 &&
+    radioArray.map(item => (
+      <Radio key={item.id} value={item.id}>
+        {item.name}
+      </Radio>
+    ))}
+</RadioGroup>
 ```
