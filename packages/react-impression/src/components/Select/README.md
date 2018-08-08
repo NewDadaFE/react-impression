@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**default**
+**基本使用**
 
 ```js
 class DefaultExample extends React.Component {
@@ -47,7 +47,7 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
-**value**
+**指定值（受控组件）**
 
 ```js
 class ValueExample extends React.Component {
@@ -88,7 +88,7 @@ class ValueExample extends React.Component {
 ;<ValueExample />
 ```
 
-**defaultValue**
+**默认值（非受控组件）**
 
 ```js
 class DefaultValueExample extends React.Component {
@@ -129,7 +129,7 @@ class DefaultValueExample extends React.Component {
 ;<DefaultValueExample />
 ```
 
-**disabled**
+**禁用状态**
 
 ```js
 <Select disabled>
@@ -139,7 +139,7 @@ class DefaultValueExample extends React.Component {
 </Select>
 ```
 
-**option disabled**
+**选项禁用**
 
 ```js
 <Select>
