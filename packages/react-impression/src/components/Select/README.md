@@ -13,7 +13,7 @@ class DefaultExample extends React.Component {
   handleChange(val, text) {
     Notification.info({
       title: 'Select',
-      message: `${text} 被选中了！！！`
+      message: `${text} 被选中了！！！`,
     })
     this.select.setValue(null)
     this.select.focus()
@@ -28,23 +28,23 @@ class DefaultExample extends React.Component {
           searchable
           onChange={this.handleChange}
         >
-          <SelectOption value="1">First</SelectOption>
-          <SelectOption value="2">Second</SelectOption>
-          <SelectOption value="3">Third</SelectOption>
-          <SelectOption value="4">Four</SelectOption>
-          <SelectOption value="5">Five</SelectOption>
-          <SelectOption value="6">Six</SelectOption>
-          <SelectOption value="7">Seven</SelectOption>
-          <SelectOption value="8">Eight</SelectOption>
-          <SelectOption value="9">Nine</SelectOption>
-          <SelectOption value="10">Ten</SelectOption>
+          <Select.Option value="1">一</Select.Option>
+          <Select.Option value="2">二</Select.Option>
+          <Select.Option value="3">三</Select.Option>
+          <Select.Option value="4">四</Select.Option>
+          <Select.Option value="5">五</Select.Option>
+          <Select.Option value="6">六</Select.Option>
+          <Select.Option value="7">七</Select.Option>
+          <Select.Option value="8">八</Select.Option>
+          <Select.Option value="9">九</Select.Option>
+          <Select.Option value="10">十</Select.Option>
         </Select>
       </div>
     )
   }
 }
 
-<DefaultExample />
+;<DefaultExample />
 ```
 
 **指定值（受控组件）**
@@ -60,7 +60,7 @@ class ValueExample extends React.Component {
   handleChange(val, text) {
     Notification.info({
       title: 'Select',
-      message: `${text} 被选中了！！！`
+      message: `${text} 被选中了！！！`,
     })
     this.select.setValue(null)
     this.select.focus()
@@ -76,16 +76,16 @@ class ValueExample extends React.Component {
           searchable
           onChange={this.handleChange}
         >
-          <SelectOption value={0}>First</SelectOption>
-          <SelectOption value={1}>Second</SelectOption>
-          <SelectOption value={2}>Third</SelectOption>
+          <Select.Option value={0}>一</Select.Option>
+          <Select.Option value={1}>二</Select.Option>
+          <Select.Option value={2}>三</Select.Option>
         </Select>
       </div>
     )
   }
 }
 
-<ValueExample />
+;<ValueExample />
 ```
 
 **默认值（非受控组件）**
@@ -100,7 +100,7 @@ class DefaultValueExample extends React.Component {
   handleChange(val, text) {
     Notification.info({
       title: 'Select',
-      message: `${text} 被选中了！！！`
+      message: `${text} 被选中了！！！`,
     })
 
     this.select.setValue(null)
@@ -117,25 +117,25 @@ class DefaultValueExample extends React.Component {
           defaultValue={0}
           onChange={this.handleChange}
         >
-          <SelectOption value={0}>First</SelectOption>
-          <SelectOption value={1}>Second</SelectOption>
-          <SelectOption value={2}>Third</SelectOption>
+          <Select.Option value={0}>一</Select.Option>
+          <Select.Option value={1}>二</Select.Option>
+          <Select.Option value={2}>三</Select.Option>
         </Select>
       </div>
     )
   }
 }
 
-<DefaultValueExample />
+;<DefaultValueExample />
 ```
 
 **禁用状态**
 
 ```js
 <Select disabled>
-  <SelectOption value="1">First</SelectOption>
-  <SelectOption value="2">Second</SelectOption>
-  <SelectOption value="3">Third</SelectOption>
+  <Select.Option value="1">一</Select.Option>
+  <Select.Option value="2">二</Select.Option>
+  <Select.Option value="3">三</Select.Option>
 </Select>
 ```
 
@@ -143,11 +143,11 @@ class DefaultValueExample extends React.Component {
 
 ```js
 <Select>
-  <SelectOption value="1">First</SelectOption>
-  <SelectOption value="2" disabled>
-    Second
-  </SelectOption>
-  <SelectOption value="3">Third</SelectOption>
+  <Select.Option value="1">一</Select.Option>
+  <Select.Option value="2" disabled>
+    二
+  </Select.Option>
+  <Select.Option value="3">三</Select.Option>
 </Select>
 ```
 
