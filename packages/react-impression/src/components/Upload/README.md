@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 let file
@@ -17,7 +17,7 @@ let file
 </Row>
 ```
 
-**Preview**
+**图片预览**
 
 ```js
 let upload
