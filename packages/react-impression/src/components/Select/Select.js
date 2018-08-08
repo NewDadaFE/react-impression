@@ -24,6 +24,7 @@ const isEqual = (text, arr) => {
   }
   return false
 }
+
 export default class Select extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -146,17 +147,12 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   hideOptionsHandle = () => this.setState({ showOption: false })
-
-  handleBlur = () => {
-    this.refs.main.blur()
-    this.setState({ isSearch: false, searchText: '' })
-  }
   /**
    * @description blur 事件
    * @memberof Select
    */
   handleSearchBlur = () => {
-    this.refs.main.blur()
+    console.log(2233)
     const { isNoresult } = this.state
     const { main } = this.refs
     const { value, defaultValue } = this.props
@@ -180,7 +176,15 @@ export default class Select extends React.PureComponent {
       }
     } else {
       this.setState({ searchValue: value })
-      if (isEqual(main.value, this.defaultoptions) || this.isPuppet) return
+      this.refs.main.blur()
+      console.log(this.refs.main)
+      if (
+        (isEqual(main.value, this.defaultoptions) &&
+          this.state.value !== this.state.searchText) ||
+        this.isPuppet
+      ) {
+        return
+      }
       if (!this.isPuppet) {
         this.defaultoptions.forEach(option => {
           if (defaultValue === option.value) {
@@ -203,6 +207,7 @@ export default class Select extends React.PureComponent {
         }
       }
     }
+    this.refs.main.blur()
   }
 
   handleSearch = () => {
@@ -249,23 +254,21 @@ export default class Select extends React.PureComponent {
     } else {
       if (searchable) {
         main.value = text
-        // this.setState(
-        //   {
-        //     searchValue: newValue,
-        //   },
-        //   () => {
         onChange && newValue !== value && onChange(newValue, text, index)
         main.value = text
-        //   }
-        // )
       } else {
         onChange && newValue !== value && onChange(newValue, text, index)
       }
     }
 
-    this.setState({
-      showOption: false,
-    })
+    this.setState(
+      {
+        showOption: false,
+      },
+      () => {
+        this.handleSearchBlur()
+      }
+    )
   }
 
   /**
@@ -291,7 +294,7 @@ export default class Select extends React.PureComponent {
   }
   componentDidUpdate(prevProps, prevState) {
     const { showOption } = this.state
-    if (!showOption) {
+    if (showOption !== prevState.showOption && !showOption) {
       this.handleSearchBlur()
     }
   }
@@ -313,14 +316,12 @@ export default class Select extends React.PureComponent {
     } else {
       originValue = this.isPuppet ? this.state.searchValue : this.state.value
     }
-
-    // const originValue = this.isPuppet ? this.props.value : this.state.value
     let _children
     if (!isNoresult) {
       _children = React.Children.map(children, (child, index) => {
         if (!child) {
           return child
-        } // ? child ?
+        }
 
         const { value, children, disabled } = child.props
         this.options.push({

@@ -25,25 +25,26 @@ class DefaultExample extends React.Component {
         <Notification />
         <Select
           ref={select => (this.select = select)}
+          searchable
           onChange={this.handleChange}
         >
-          <Select.Option value="1">First</Select.Option>
-          <Select.Option value="2">Second</Select.Option>
-          <Select.Option value="3">Third</Select.Option>
-          <Select.Option value="4">Four</Select.Option>
-          <Select.Option value="5">Five</Select.Option>
-          <Select.Option value="6">Six</Select.Option>
-          <Select.Option value="7">Seven</Select.Option>
-          <Select.Option value="8">Eight</Select.Option>
-          <Select.Option value="9">Nine</Select.Option>
-          <Select.Option value="10">Ten</Select.Option>
+          <SelectOption value="1">First</SelectOption>
+          <SelectOption value="2">Second</SelectOption>
+          <SelectOption value="3">Third</SelectOption>
+          <SelectOption value="4">Four</SelectOption>
+          <SelectOption value="5">Five</SelectOption>
+          <SelectOption value="6">Six</SelectOption>
+          <SelectOption value="7">Seven</SelectOption>
+          <SelectOption value="8">Eight</SelectOption>
+          <SelectOption value="9">Nine</SelectOption>
+          <SelectOption value="10">Ten</SelectOption>
         </Select>
       </div>
     )
   }
 }
 
-<DefaultExample />
+;<DefaultExample />
 ```
 
 **value**
@@ -72,18 +73,19 @@ class ValueExample extends React.Component {
         <Select
           ref={select => (this.select = select)}
           value={0}
+          searchable
           onChange={this.handleChange}
         >
-          <Select.Option value={0}>First</Select.Option>
-          <Select.Option value={1}>Second</Select.Option>
-          <Select.Option value={2}>Third</Select.Option>
+          <SelectOption value={0}>First</SelectOption>
+          <SelectOption value={1}>Second</SelectOption>
+          <SelectOption value={2}>Third</SelectOption>
         </Select>
       </div>
     )
   }
 }
 
-<ValueExample />
+;<ValueExample />
 ```
 
 **defaultValue**
@@ -92,7 +94,6 @@ class ValueExample extends React.Component {
 class DefaultValueExample extends React.Component {
   constructor() {
     super()
-
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -111,29 +112,30 @@ class DefaultValueExample extends React.Component {
       <div>
         <Notification />
         <Select
+          searchable
           ref={select => (this.select = select)}
           defaultValue={0}
           onChange={this.handleChange}
         >
-          <Select.Option value={0}>First</Select.Option>
-          <Select.Option value={1}>Second</Select.Option>
-          <Select.Option value={2}>Third</Select.Option>
+          <SelectOption value={0}>First</SelectOption>
+          <SelectOption value={1}>Second</SelectOption>
+          <SelectOption value={2}>Third</SelectOption>
         </Select>
       </div>
     )
   }
 }
 
-<DefaultValueExample />
+;<DefaultValueExample />
 ```
 
 **disabled**
 
 ```js
 <Select disabled>
-  <Select.Option value="1">First</Select.Option>
-  <Select.Option value="2">Second</Select.Option>
-  <Select.Option value="3">Third</Select.Option>
+  <SelectOption value="1">First</SelectOption>
+  <SelectOption value="2">Second</SelectOption>
+  <SelectOption value="3">Third</SelectOption>
 </Select>
 ```
 
@@ -141,11 +143,11 @@ class DefaultValueExample extends React.Component {
 
 ```js
 <Select>
-  <Select.Option value="1">First</Select.Option>
-  <Select.Option value="2" disabled>
+  <SelectOption value="1">First</SelectOption>
+  <SelectOption value="2" disabled>
     Second
-  </Select.Option>
-  <Select.Option value="3">Third</Select.Option>
+  </SelectOption>
+  <SelectOption value="3">Third</SelectOption>
 </Select>
 ```
 
@@ -153,8 +155,8 @@ class DefaultValueExample extends React.Component {
 
 ```js
 <Select searchable>
-  <Select.Option value="1">First</Select.Option>
-  <Select.Option value="2">Second</Select.Option>
-  <Select.Option value="3">Third</Select.Option>
+  <SelectOption value="1">First</SelectOption>
+  <SelectOption value="2">Second</SelectOption>
+  <SelectOption value="3">Third</SelectOption>
 </Select>
 ```
