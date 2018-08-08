@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**defaultValue**
+**默认值（非受控组件）**
 
 ```js
 const radioArray = [
@@ -28,7 +28,7 @@ const radioArray = [
 </Form>
 ```
 
-**value**
+**指定值（受控组件）**
 
 ```js
 const radioArray = [
@@ -59,7 +59,7 @@ const radioArray = [
 </Form>
 ```
 
-**Disabled**
+**禁用状态**
 
 ```js
 const radioArray = [
