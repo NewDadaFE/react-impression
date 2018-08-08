@@ -152,7 +152,6 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleSearchBlur = () => {
-    console.log(2233)
     const { isNoresult } = this.state
     const { main } = this.refs
     const { value, defaultValue } = this.props
@@ -177,7 +176,6 @@ export default class Select extends React.PureComponent {
     } else {
       this.setState({ searchValue: value })
       this.refs.main.blur()
-      console.log(this.refs.main)
       if (
         (isEqual(main.value, this.defaultoptions) &&
           this.state.value !== this.state.searchText) ||

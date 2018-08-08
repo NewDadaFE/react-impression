@@ -160,3 +160,9 @@ class DefaultValueExample extends React.Component {
   <SelectOption value="3">Third</SelectOption>
 </Select>
 ```
+
+### 变更记录
+
+v 2.0.0
+
+- 新增 searchable 属性
