@@ -3,24 +3,24 @@
 ```js
 const handleShowInfo = () => {
   Message.info('你好，这是一条info消息！')
-};
+}
 const handleShowSuccess = () => {
   Message.success('你好，这是一条success消息！')
-};
+}
 const handleShowWarning = () => {
   Message.warning('你好，这是一条warning消息！')
-};
+}
 const handleShowError = () => {
   Message.error('你好，这是一条error消息！')
-};
+}
 const handleShowLoading = () => {
   Message.loading('正在执行中...', 0)
   // 4秒后关闭
   setTimeout(() => {
     Message.hideMessage()
   }, 4000)
-};
-<Row>
+}
+;<Row>
   <Col>
     <Button theme="primary" onClick={handleShowInfo}>
       信息
