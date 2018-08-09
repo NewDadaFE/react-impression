@@ -78,8 +78,8 @@ export default class Pagination extends React.PureComponent {
         i === activePage - scope && i === 2 && result.push(1)
         result.push(i)
         i === activePage + scope &&
-        i === totalPage - 1 &&
-        result.push(totalPage)
+          i === totalPage - 1 &&
+          result.push(totalPage)
       }
     }
 
@@ -109,7 +109,7 @@ export default class Pagination extends React.PureComponent {
         </li>
 
         {ellipsis &&
-        children[0] > 1 && (
+          children[0] > 1 && (
           <li className='page-item disabled'>
             <i className='fa fa-ellipsis-h' />
           </li>
@@ -133,7 +133,7 @@ export default class Pagination extends React.PureComponent {
         ))}
 
         {ellipsis &&
-        children[children.length - 1] < totalPage && (
+          children[children.length - 1] < totalPage && (
           <li className='page-item disabled'>
             <i className='fa fa-ellipsis-h' />
           </li>

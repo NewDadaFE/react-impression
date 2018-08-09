@@ -61,6 +61,20 @@ module.exports = {
       },
       '& div[class*="para"]': {
         marginBottom: `5px !important`,
+      }
+  },
+  ReactComponent: {
+    tabs: {
+      paddingTop: 12,
+      paddingRight: 24,
+      paddingBottom: 12,
+      paddingLeft: 24,
+      backgroundColor: '#F6F7FB',
+    },
+    tabButtons: {
+      '& button': {
+        borderBottomWidth: 0,
+        textTransform: 'uppercase',
       },
     },
   },

@@ -13,9 +13,10 @@
   },
   "homepage": "https://github.com/NewDadaFE/react-impression",
   "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier-eslint --write 'src/**/*.{js,json,md}'",
     "start": "styleguidist server --config rsg/config.js",
-    "build": "gulp build",
-    "precommit": "lint-staged"
+    "build": "gulp build"
   },
   "dependencies": {
     "classnames": "^2.2.0",

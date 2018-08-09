@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Default**
+**基本用法**
 
 ```js
 <Form grid>
@@ -11,7 +11,7 @@
 </Form>
 ```
 
-**Disabled**
+**禁用状态**
 
 ```js
 <Form grid>
