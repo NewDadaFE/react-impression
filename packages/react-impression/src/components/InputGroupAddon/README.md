@@ -1,19 +1,19 @@
-### Examples
+### 代码示例
 
-**basic**
+**基础用法**
 
 ```js
 <Row>
   <Col>
     <InputGroup>
-      <InputGroupButton theme="default">help</InputGroupButton>
+      <InputGroupButton theme="default">帮助</InputGroupButton>
       <InputGroupInput placeholder="something" />
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
       <InputGroupInput placeholder="something" />
-      <InputGroupButton theme="primary">Go</InputGroupButton>
+      <InputGroupButton theme="primary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
   <Col>

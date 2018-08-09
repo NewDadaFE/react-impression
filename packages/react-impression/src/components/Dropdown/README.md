@@ -1,6 +1,6 @@
-### Examples
+### 代码示例
 
-**basic**
+**基础用法**
 
 ```js
 class ModalExample extends React.Component {
@@ -24,7 +24,7 @@ class ModalExample extends React.Component {
         <Col>
           <Dropdown>
             <DropdownTrigger>
-              <Button theme="primary">Dropdown</Button>
+              <Button theme="primary">下拉菜单</Button>
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownMenuItem onClick={() => this.menuClickHandle('菜单一')}>
@@ -85,7 +85,7 @@ class ModalExample extends React.Component {
 ;<ModalExample />
 ```
 
-**disabled**
+**禁用状态**
 
 ```js
 class ModalExample extends React.Component {
@@ -109,7 +109,7 @@ class ModalExample extends React.Component {
         <Col>
           <Dropdown>
             <DropdownTrigger>
-              <Button theme="primary">Dropdown</Button>
+              <Button theme="primary">下拉菜单</Button>
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownMenuItem

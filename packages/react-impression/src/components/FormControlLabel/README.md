@@ -1,20 +1,20 @@
-### Examples
+### 代码示例
 
-**basic**
+**基础用法**
 
 ```js
 <Form type="horizontal">
   <FormGroup>
     <Col col="2" className="text-right">
-      <FormControlLabel>Email:</FormControlLabel>
+      <FormControlLabel>邮箱:</FormControlLabel>
     </Col>
     <Col col="10">
-      <Input type="text" placeholder="Email" />
+      <Input type="text" placeholder="hello@example.com" />
     </Col>
   </FormGroup>
   <FormGroup>
     <Col col="2" className="text-right">
-      <FormControlLabel>name:</FormControlLabel>
+      <FormControlLabel>姓名:</FormControlLabel>
     </Col>
     <Col col="10">
       <Input type="password" />

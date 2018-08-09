@@ -1,6 +1,6 @@
-### Examples
+### 代码示例
 
-**basic**
+**基础用法**
 
 ```js
 <Row>
@@ -32,26 +32,26 @@
 </Row>
 ```
 
-**size**
+**不同尺寸**
 
 ```js
 <Row>
   <Col col="3">
     <InputGroup size="sm">
       <InputGroupInput placeholder="something" />
-      <InputGroupButton theme="primary">Search</InputGroupButton>
+      <InputGroupButton theme="primary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
   <Col col="4">
     <InputGroup>
       <InputGroupInput placeholder="something" />
-      <InputGroupButton theme="primary">Search</InputGroupButton>
+      <InputGroupButton theme="primary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
   <Col col="5">
     <InputGroup size="lg">
       <InputGroupInput placeholder="something" />
-      <InputGroupButton theme="primary">Search</InputGroupButton>
+      <InputGroupButton theme="primary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
 </Row>
