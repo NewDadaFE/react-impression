@@ -1,6 +1,6 @@
-### Example
+### 示例
 
-**basic**
+**基本使用**
 
 ```js
 <Form type="inline">
@@ -13,7 +13,7 @@
 </Form>
 ```
 
-**disabled**
+**禁用状态**
 
 ```js
 <Form type="inline">
@@ -22,13 +22,15 @@
     <Checkbox disabled>remember me</Checkbox>
   </FormGroup>
   <FormGroup>
-      <label>disabled-checked:</label>
-      <Checkbox disabled defaultChecked>remember me</Checkbox>
-    </FormGroup>
+    <label>disabled-checked:</label>
+    <Checkbox disabled defaultChecked>
+      remember me
+    </Checkbox>
+  </FormGroup>
 </Form>
 ```
 
-**indeterminate**
+**全选**
 
 ```js
 const options = ['number1', 'number2', 'number3', 'number4']
@@ -49,7 +51,8 @@ class Indeterminate extends React.Component {
   onChange(checkedList) {
     this.setState({
       checkedList,
-      indeterminate: !!checkedList.length && checkedList.length < options.length,
+      indeterminate:
+        !!checkedList.length && checkedList.length < options.length,
       checkAll: checkedList.length === options.length,
     })
   }
@@ -67,7 +70,7 @@ class Indeterminate extends React.Component {
   render() {
     return (
       <div>
-        <div className='offset-b-lg'>
+        <div className="offset-b-lg">
           <Checkbox
             indeterminate={this.state.indeterminate}
             onChange={this.onCheckAllChange}
@@ -88,12 +91,12 @@ class Indeterminate extends React.Component {
       </div>
     )
   }
-};
-<Indeterminate />
+}
+;<Indeterminate />
 ```
 
 ### 变更记录
 
 v2.0.0
 
-* 新增 indeterminate 参数
+- 新增 indeterminate 参数
