@@ -1,4 +1,4 @@
-### Examples
+### 示例
 
 ```js
 const handleShowLoading = () => {
@@ -12,7 +12,7 @@ initialState = {
 }
 ;<div>
   <Button name="cyclone" onClick={handleShowLoading}>
-    Toggle LoadingAddon
+    点击触发
   </Button>
   <LoadingAddon
     className={state.isShow ? '' : 'hidden'}
@@ -22,3 +22,5 @@ initialState = {
   />
 </div>
 ```
+
+更多样式类型参考 [Loading](#loading)
