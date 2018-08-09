@@ -1,20 +1,20 @@
-### Examples
+### 代码示例额
 
-**Inline**
+**行内表单**
 
 ```js
 <Form>
   <FormGroup>
-    <label>Name:</label>
+    <label>姓名:</label>
     <Input type="text" placeholder="Jane Doe" />
   </FormGroup>
   <FormGroup>
-    <label>Email</label>
+    <label>邮箱</label>
     <Input type="text" placeholder="hello@example.com" />
   </FormGroup>
   <FormGroup>
-    <Checkbox defaultChecked>Remember me</Checkbox>
+    <Checkbox defaultChecked>记住我</Checkbox>
   </FormGroup>
-  <Button theme="primary">Search</Button>
+  <Button theme="primary">搜索</Button>
 </Form>
 ```
