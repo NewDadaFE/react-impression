@@ -44,7 +44,7 @@ class DefaultExample extends React.Component {
   }
 }
 
-;<DefaultExample />
+<DefaultExample />
 ```
 
 **value**
@@ -85,7 +85,7 @@ class ValueExample extends React.Component {
   }
 }
 
-;<ValueExample />
+<ValueExample />
 ```
 
 **defaultValue**
@@ -126,7 +126,7 @@ class DefaultValueExample extends React.Component {
   }
 }
 
-;<DefaultValueExample />
+<DefaultValueExample />
 ```
 
 **disabled**
