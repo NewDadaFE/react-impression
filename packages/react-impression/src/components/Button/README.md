@@ -10,18 +10,18 @@ const buttonClickHandle = () => {
   <Col col="2">
     <Card.Block>
       <Button type="button" theme="primary" onClick={buttonClickHandle}>
-        primary
+        主题色
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
-      <Button theme="default">default</Button>
+      <Button theme="default">默认</Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
-      <Button theme="secondary">secondary</Button>
+      <Button theme="secondary">副主题色</Button>
     </Card.Block>
   </Col>
 </Row>
@@ -34,21 +34,21 @@ const buttonClickHandle = () => {
   <Col col="2">
     <Card.Block>
       <Button theme="primary" outline>
-        primary
+        主题色
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="default" outline>
-        default
+        默认
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="secondary" outline>
-        secondary
+        副主题色
       </Button>
     </Card.Block>
   </Col>
@@ -62,19 +62,19 @@ const buttonClickHandle = () => {
   <Col col="2">
     <Card.Block>
       <Button theme="primary" size="sm">
-        Sm
+        小
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
-      <Button theme="primary">Normal</Button>
+      <Button theme="primary">普通大小</Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="primary" size="lg">
-        Large
+        大
       </Button>
     </Card.Block>
   </Col>
@@ -88,21 +88,21 @@ const buttonClickHandle = () => {
   <Col col="2">
     <Card.Block>
       <Button theme="primary" shape="pill">
-        primary
+        主题色
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="default" shape="pill">
-        default
+        默认
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="secondary" shape="pill">
-        secondary
+        副主题色
       </Button>
     </Card.Block>
   </Col>
@@ -116,21 +116,21 @@ const buttonClickHandle = () => {
   <Col col="2">
     <Card.Block>
       <Button theme="primary" href="https://www.github.com">
-        primary
+        主题色
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="default" href="https://www.github.com">
-        default
+        默认
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
       <Button theme="secondary" href="https://www.github.com">
-        secondary
+        副主题色
       </Button>
     </Card.Block>
   </Col>

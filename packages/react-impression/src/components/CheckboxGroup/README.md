@@ -5,11 +5,11 @@
 ```js
 <Form type="inline">
   <Form.Group>
-    <label>defaultValue:</label>
-    <CheckboxGroup defaultValue={['basketball', 'football']}>
-      <Checkbox>basketball</Checkbox>
-      <Checkbox>football</Checkbox>
-      <Checkbox>volleyball</Checkbox>
+    <label>默认值:</label>
+    <CheckboxGroup defaultValue={['篮球', '足球']}>
+      <Checkbox>篮球</Checkbox>
+      <Checkbox>足球</Checkbox>
+      <Checkbox>排球</Checkbox>
     </CheckboxGroup>
   </Form.Group>
 </Form>
@@ -20,11 +20,11 @@
 ```js
 <Form type="inline">
   <Form.Group>
-    <label>value:</label>
-    <CheckboxGroup ref="checkboxs" value={['basketball', 'football']}>
-      <Checkbox>basketball</Checkbox>
-      <Checkbox>football</Checkbox>
-      <Checkbox>volleyball</Checkbox>
+    <label>传入的值:</label>
+    <CheckboxGroup ref="checkboxs" value={['篮球', '足球']}>
+      <Checkbox>篮球</Checkbox>
+      <Checkbox>足球</Checkbox>
+      <Checkbox>排球</Checkbox>
     </CheckboxGroup>
   </Form.Group>
 </Form>
