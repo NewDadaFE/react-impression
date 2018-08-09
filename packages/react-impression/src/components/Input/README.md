@@ -5,13 +5,13 @@
 ```js
 class ModalExample extends React.Component {
   constructor() {
-    super();
-    this.state = {};
-    this.clearInputHandle = this.clearInputHandle.bind(this);
+    super()
+    this.state = {}
+    this.clearInputHandle = this.clearInputHandle.bind(this)
   }
   clearInputHandle() {
-    this.refs.clearInput.setValue('');
-    this.refs.clearInput.focus();
+    this.refs.clearInput.setValue('')
+    this.refs.clearInput.focus()
   }
   render() {
     return (
@@ -45,10 +45,10 @@ class ModalExample extends React.Component {
           </Form>
         </Col>
       </Row>
-    );
+    )
   }
 }
-<ModalExample />;
+;<ModalExample />
 ```
 
 **date**
@@ -87,32 +87,32 @@ class ModalExample extends React.Component {
 ```js
 class Example extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       show: false,
       city: {
         name: '上海',
-        id: '1'
-      }
-    };
-    this.toggleModalHandle = this.toggleModalHandle.bind(this);
-    this.selectCityHandle = this.selectCityHandle.bind(this);
+        id: '1',
+      },
+    }
+    this.toggleModalHandle = this.toggleModalHandle.bind(this)
+    this.selectCityHandle = this.selectCityHandle.bind(this)
   }
   toggleModalHandle() {
-    let { show } = this.state;
+    let { show } = this.state
 
     this.setState({
-      show: !show
-    });
+      show: !show,
+    })
   }
   selectCityHandle(id, name) {
     this.setState({
       show: false,
       city: {
         name,
-        id
-      }
-    });
+        id,
+      },
+    })
   }
   render() {
     return (
@@ -213,10 +213,10 @@ class Example extends React.Component {
           </Modal>
         )}
       </div>
-    );
+    )
   }
 }
-<Example />;
+;<Example />
 ```
 
 **file**

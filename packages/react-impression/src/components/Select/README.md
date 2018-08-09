@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**default**
+**基本使用**
 
 ```js
 class DefaultExample extends React.Component {
@@ -28,16 +28,16 @@ class DefaultExample extends React.Component {
           ref={select => (this.select = select)}
           onChange={this.handleChange}
         >
-          <Select.Option value="1">First</Select.Option>
-          <Select.Option value="2">Second</Select.Option>
-          <Select.Option value="3">Third</Select.Option>
-          <Select.Option value="4">Four</Select.Option>
-          <Select.Option value="5">Five</Select.Option>
-          <Select.Option value="6">Six</Select.Option>
-          <Select.Option value="7">Seven</Select.Option>
-          <Select.Option value="8">Eight</Select.Option>
-          <Select.Option value="9">Nine</Select.Option>
-          <Select.Option value="10">Ten</Select.Option>
+          <Select.Option value="1">一</Select.Option>
+          <Select.Option value="2">二</Select.Option>
+          <Select.Option value="3">三</Select.Option>
+          <Select.Option value="4">四</Select.Option>
+          <Select.Option value="5">五</Select.Option>
+          <Select.Option value="6">六</Select.Option>
+          <Select.Option value="7">七</Select.Option>
+          <Select.Option value="8">八</Select.Option>
+          <Select.Option value="9">九</Select.Option>
+          <Select.Option value="10">十</Select.Option>
         </Select>
       </div>
     )
@@ -47,7 +47,7 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
-**value**
+**指定值（受控组件）**
 
 ```js
 class ValueExample extends React.Component {
@@ -76,9 +76,9 @@ class ValueExample extends React.Component {
           value={0}
           onChange={this.handleChange}
         >
-          <Select.Option value={0}>First</Select.Option>
-          <Select.Option value={1}>Second</Select.Option>
-          <Select.Option value={2}>Third</Select.Option>
+          <Select.Option value={0}>一</Select.Option>
+          <Select.Option value={1}>二</Select.Option>
+          <Select.Option value={2}>三</Select.Option>
         </Select>
       </div>
     )
@@ -88,7 +88,7 @@ class ValueExample extends React.Component {
 ;<ValueExample />
 ```
 
-**defaultValue**
+**默认值（非受控组件）**
 
 ```js
 class DefaultValueExample extends React.Component {
@@ -117,9 +117,9 @@ class DefaultValueExample extends React.Component {
           defaultValue={0}
           onChange={this.handleChange}
         >
-          <Select.Option value={0}>First</Select.Option>
-          <Select.Option value={1}>Second</Select.Option>
-          <Select.Option value={2}>Third</Select.Option>
+          <Select.Option value={0}>一</Select.Option>
+          <Select.Option value={1}>二</Select.Option>
+          <Select.Option value={2}>三</Select.Option>
         </Select>
       </div>
     )
@@ -129,24 +129,24 @@ class DefaultValueExample extends React.Component {
 ;<DefaultValueExample />
 ```
 
-**disabled**
+**禁用状态**
 
 ```js
 <Select disabled>
-  <Select.Option value="1">First</Select.Option>
-  <Select.Option value="2">Second</Select.Option>
-  <Select.Option value="3">Third</Select.Option>
+  <Select.Option value="1">一</Select.Option>
+  <Select.Option value="2">二</Select.Option>
+  <Select.Option value="3">三</Select.Option>
 </Select>
 ```
 
-**option disabled**
+**选项禁用**
 
 ```js
 <Select>
-  <Select.Option value="1">First</Select.Option>
+  <Select.Option value="1">一</Select.Option>
   <Select.Option value="2" disabled>
-    Second
+    二
   </Select.Option>
-  <Select.Option value="3">Third</Select.Option>
+  <Select.Option value="3">三</Select.Option>
 </Select>
 ```

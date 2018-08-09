@@ -8,7 +8,7 @@
     <Form>
       <FormGroup>
         <label>basic:</label>
-        <Input type='date' />
+        <Input type="date" />
       </FormGroup>
     </Form>
   </Col>
@@ -16,7 +16,7 @@
     <Form>
       <FormGroup>
         <label>defaultValue:</label>
-        <Input type='date' defaultValue='2016-05-29' />
+        <Input type="date" defaultValue="2016-05-29" />
       </FormGroup>
     </Form>
   </Col>
@@ -24,12 +24,12 @@
     <Form>
       <FormGroup>
         <label>disabled:</label>
-        <Input type='date' defaultValue='2016-05-29' disabled />
+        <Input type="date" defaultValue="2016-05-29" disabled />
       </FormGroup>
     </Form>
   </Col>
 </Row>
-````
+```
 
 **Limit**
 
@@ -39,11 +39,7 @@
     <Form>
       <FormGroup>
         <label>min:</label>
-        <Input
-          type='date'
-          defaultValue='2016-05-29'
-          minDate='2016-05-15'
-        />
+        <Input type="date" defaultValue="2016-05-29" minDate="2016-05-15" />
       </FormGroup>
     </Form>
   </Col>
@@ -51,11 +47,7 @@
     <Form>
       <FormGroup>
         <label>max:</label>
-        <Input
-          type='date'
-          defaultValue='2016-05-29'
-          maxDate='2016-05-31'
-        />
+        <Input type="date" defaultValue="2016-05-29" maxDate="2016-05-31" />
       </FormGroup>
     </Form>
   </Col>
@@ -63,11 +55,7 @@
     <Form>
       <FormGroup>
         <label>first day:</label>
-        <Input
-          type='date'
-          defaultValue='2016-05-29'
-          firstDayOfWeek={1}
-        />
+        <Input type="date" defaultValue="2016-05-29" firstDayOfWeek={1} />
       </FormGroup>
     </Form>
   </Col>
@@ -82,11 +70,7 @@
     <Form>
       <FormGroup>
         <label>Y-M-D:</label>
-        <Input
-          type='date'
-          defaultValue='2016-5-29'
-          format='Y-M-D'
-        />
+        <Input type="date" defaultValue="2016-5-29" format="Y-M-D" />
       </FormGroup>
     </Form>
   </Col>
@@ -94,11 +78,7 @@
     <Form>
       <FormGroup>
         <label>Y/MM/DD:</label>
-        <Input
-          type='date'
-          defaultValue='2016/05/29'
-          format='YYYY/MM/DD'
-        />
+        <Input type="date" defaultValue="2016/05/29" format="YYYY/MM/DD" />
       </FormGroup>
     </Form>
   </Col>
@@ -107,9 +87,9 @@
       <FormGroup>
         <label>年月日:</label>
         <Input
-          type='date'
-          defaultValue='2016年05月29日'
-          format='YYYY年MM月DD日'
+          type="date"
+          defaultValue="2016年05月29日"
+          format="YYYY年MM月DD日"
         />
       </FormGroup>
     </Form>
@@ -125,8 +105,9 @@
     <Form>
       <FormGroup>
         <label>年月:</label>
-        <Input type='month' />
+        <Input type="month" />
       </FormGroup>
     </Form>
   </Col>
 </Row>
+```

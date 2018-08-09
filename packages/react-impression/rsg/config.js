@@ -1,11 +1,14 @@
 const path = require('path')
+const theme = require('./theme')
+const styles = require('./styles')
+
+const resolvePath = relativePath => path.resolve(process.cwd(), relativePath)
 
 module.exports = {
   title: 'React Impression',
   serverPort: 8080,
-  require: [path.join(__dirname, 'src/styles/index.scss')],
-  components: 'src/components/**/[A-Z]*.js',
-  showUsage: true,
+  require: [resolvePath('src/styles/index.scss')],
+  assetsDir: resolvePath('rsg/assets'),
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js')
 
@@ -15,12 +18,30 @@ module.exports = {
     head: {
       links: [
         {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/icon.ico',
+        },
+        {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css'
-        }
-      ]
-    }
+          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css',
+        },
+      ],
+    },
   },
+  theme,
+  styles,
+  sections: [
+    {
+      name: 'Introduction',
+    },
+    {
+      name: 'Components',
+      components: resolvePath('src/components/**/[A-Z]*.js'),
+      // components: resolvePath('src/components/**/Flex*.js'),
+      usageMode: 'expand',
+    },
+  ],
   webpackConfig: {
     module: {
       rules: [

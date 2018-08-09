@@ -3,14 +3,14 @@
 ```js
 const handleShowLoading = e => {
   setState({
-    type: e.currentTarget.name
+    type: e.currentTarget.name,
   })
   Loading.show()
-};
+}
 initialState = {
   type: 'cyclone',
-};
-<Row>
+}
+;<Row>
   <Col>
     <Button name="fountain" onClick={handleShowLoading}>
       fountain

@@ -9,12 +9,12 @@ class CalendarView extends React.Component {
     this.state = {
       days: [5, 6, 7, 8, 9, 10],
     }
-    
+
     this.customDateCellRender = this.customDateCellRender.bind(this)
     this.checkDateCellRender = this.checkDateCellRender.bind(this)
     this.checkDateClickHandle = this.checkDateClickHandle.bind(this)
   }
-  
+
   customDateCellRender(date) {
     if (!date.inMonth) {
       return null
@@ -27,17 +27,17 @@ class CalendarView extends React.Component {
         return (
           <div>
             <div>
-              <Badge type='legend' theme='success'>
+              <Badge type="legend" theme="success">
                 {date.day}
               </Badge>
             </div>
             <div>
-              <Badge type='legend' theme='warning'>
+              <Badge type="legend" theme="warning">
                 {date.day}
               </Badge>
             </div>
             <div>
-              <Badge type='legend' theme='danger'>
+              <Badge type="legend" theme="danger">
                 {date.day}
               </Badge>
             </div>
@@ -48,8 +48,12 @@ class CalendarView extends React.Component {
       case 23:
       case 27:
         return (
-          <div className='text-center'>
-            <Image circle src={require('../../images/user.jpg')} style={{ width: '70px' }} />
+          <div className="text-center">
+            <Image
+              circle
+              src={require('../../images/user.jpg')}
+              style={{ width: '70px' }}
+            />
           </div>
         )
       case 11:
@@ -58,7 +62,7 @@ class CalendarView extends React.Component {
         return (
           <div>
             <div>
-              <Badge type='legend' theme='success'>
+              <Badge type="legend" theme="success">
                 {date.day}
               </Badge>
             </div>
@@ -71,7 +75,7 @@ class CalendarView extends React.Component {
       case 21:
       case 22:
         return (
-          <Badge type='legend' theme='danger'>
+          <Badge type="legend" theme="danger">
             {date.day}
           </Badge>
         )
@@ -79,19 +83,19 @@ class CalendarView extends React.Component {
         return null
     }
   }
-  
+
   checkDateCellRender(date) {
     if (this.state.days.indexOf(date.day) !== -1) {
       return (
-        <div className='text-success text-center'>
-          <Icon type='check' />
+        <div className="text-success text-center">
+          <Icon type="check" />
         </div>
       )
     }
 
     return null
   }
-  
+
   checkDateClickHandle(date) {
     const { days } = this.state
 
@@ -111,7 +115,7 @@ class CalendarView extends React.Component {
       })
     }
   }
-  
+
   render() {
     return (
       <div>
@@ -126,14 +130,14 @@ class CalendarView extends React.Component {
           <Card.Block>
             <Row>
               <Col>
-                <Calendar size='sm' />
+                <Calendar size="sm" />
               </Col>
               <Col>
                 <Calendar
                   onCellClick={this.checkDateClickHandle}
                   cellRender={this.checkDateCellRender}
                   firstDayOfWeek={0}
-                  size='sm'
+                  size="sm"
                 />
               </Col>
             </Row>
@@ -148,6 +152,6 @@ class CalendarView extends React.Component {
       </div>
     )
   }
-};
-<CalendarView />
+}
+;<CalendarView />
 ```

@@ -5,7 +5,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class Content extends React.PureComponent {
   static propTypes = {
-
     /**
      * 自定义样式
      */
