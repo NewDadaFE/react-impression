@@ -33,9 +33,20 @@ export default class Checkbox extends React.PureComponent {
      * 状态变更回调
      */
     onChange: PropTypes.func,
+
+    /**
+     * checkbox选项对应的值
+     */
+    value: PropTypes.any,
+
+    /**
+     * 是否为半选状态
+     */
+    indeterminate: PropTypes.bool,
   }
 
   static defaultProps = {
+    indeterminate: false,
     disabled: false,
   }
 
@@ -65,11 +76,14 @@ export default class Checkbox extends React.PureComponent {
       className,
       onChange,
       children,
+      indeterminate,
       ...others
     } = this.props
 
     return (
-      <label {...others} className={classnames('checkbox', className)}>
+      <label {...others} className={classnames('checkbox', className, {
+        'checkbox-indeterminate': indeterminate,
+      })}>
         <input
           type='checkbox'
           ref='main'
