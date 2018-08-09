@@ -1,6 +1,6 @@
-### Example
+### 示例
 
-**Default**
+**默认样式**
 
 ```js
 const toggleModalHandle = () => {
@@ -13,31 +13,31 @@ initialState = {
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
-    Toggle Modal
+    显示默认弹窗
   </Button>
   {state.isShow && (
     <Modal>
-      <Modal.Header>
+      <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">Modal title</h5>
-      </Modal.Header>
-      <Modal.Body>
-        <p>One fine body&hellip;</p>
-      </Modal.Body>
-      <Modal.Footer>
+        <h5 className="no-margin">弹窗标题</h5>
+      </ModalHeader>
+      <ModalBody>
+        <p>内容&hellip;</p>
+      </ModalBody>
+      <ModalFooter>
         <Button theme="default" onClick={toggleModalHandle}>
-          Close
+          关闭
         </Button>
-        <Button theme="primary">Save</Button>
-      </Modal.Footer>
+        <Button theme="primary">保存</Button>
+      </ModalFooter>
     </Modal>
   )}
 </div>
 ```
 
-**Size: sm**
+**小尺寸弹窗**
 
 ```js
 const toggleModalHandle = () => {
@@ -50,31 +50,31 @@ initialState = {
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
-    Toggle Modal
+    显示小尺寸弹窗
   </Button>
   {state.isShow && (
     <Modal size="sm">
-      <Modal.Header>
+      <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">Modal title</h5>
-      </Modal.Header>
-      <Modal.Body>
-        <p>One fine body&hellip;</p>
-      </Modal.Body>
-      <Modal.Footer>
+        <h5 className="no-margin">弹窗标题</h5>
+      </ModalHeader>
+      <ModalBody>
+        <p>内容&hellip;</p>
+      </ModalBody>
+      <ModalFooter>
         <Button theme="default" onClick={toggleModalHandle}>
-          Close
+          关闭
         </Button>
-        <Button theme="primary">Save</Button>
-      </Modal.Footer>
+        <Button theme="primary">保存</Button>
+      </ModalFooter>
     </Modal>
   )}
 </div>
 ```
 
-**Size: lg**
+**大尺寸弹窗**
 
 ```js
 const toggleModalHandle = () => {
@@ -87,25 +87,25 @@ initialState = {
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
-    Toggle Modal
+    显示大尺寸弹窗
   </Button>
   {state.isShow && (
     <Modal size="lg">
-      <Modal.Header>
+      <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">Modal title</h5>
-      </Modal.Header>
-      <Modal.Body>
-        <p>One fine body&hellip;</p>
-      </Modal.Body>
-      <Modal.Footer>
+        <h5 className="no-margin">弹窗标题</h5>
+      </ModalHeader>
+      <ModalBody>
+        <p>内容&hellip;</p>
+      </ModalBody>
+      <ModalFooter>
         <Button theme="default" onClick={toggleModalHandle}>
-          Close
+          关闭
         </Button>
-        <Button theme="primary">Save</Button>
-      </Modal.Footer>
+        <Button theme="primary">保存</Button>
+      </ModalFooter>
     </Modal>
   )}
 </div>
@@ -150,45 +150,45 @@ class Overflow extends React.Component {
         <Row>
           <Col>
             <Button theme="primary" onClick={() => this.toggleModalHandle()}>
-              Show Modal
+              显示弹窗
             </Button>
           </Col>
         </Row>
         {this.state.show && (
           <Modal scrollInside={this.state.scrollInside}>
-            <Modal.Header>
+            <ModalHeader>
               <Button close onClick={() => this.toggleModalHandle()}>
                 &times;
               </Button>
-              <h5 className="no-margin">Modal title</h5>
-            </Modal.Header>
-            <Modal.Body>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-              <p>more contents&hellip;</p>
-            </Modal.Body>
-            <Modal.Footer>
+              <h5 className="no-margin">弹窗标题</h5>
+            </ModalHeader>
+            <ModalBody>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+            </ModalBody>
+            <ModalFooter>
               <Button theme="default" onClick={() => this.toggleModalHandle()}>
-                Close
+                关闭
               </Button>
-              <Button theme="primary">Save</Button>
-            </Modal.Footer>
+              <Button theme="primary">保存</Button>
+            </ModalFooter>
           </Modal>
         )}
       </div>
