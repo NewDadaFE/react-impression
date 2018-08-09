@@ -1,11 +1,11 @@
-### Examples
+### 示例
 
 ```js
 const handleShowInfo = () => {
   Notification.info({
     closeable: false,
     title: '通知',
-    message: '欢迎，这是一个Info通知。',
+    message: '欢迎，这是一个消息通知。',
   })
 }
 const handleShowSuccess = () => {
