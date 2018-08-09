@@ -1,4 +1,4 @@
-### Examples
+### 示例
 
 ```js
 initialState = {
