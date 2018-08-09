@@ -1,33 +1,33 @@
-### Examples
+### 示例
 
-**Right**
+**上方展示**
 
 ```js
-<Tooltip position="right" content="Tooltip right">
-  <Button theme="primary">Right</Button>
+<Tooltip position="top" content="提示内容">
+  <Button theme="primary">上方</Button>
 </Tooltip>
 ```
 
-**Top**
+**右侧展示**
 
 ```js
-<Tooltip position="top" content="Tooltip top">
-  <Button theme="primary">Top</Button>
+<Tooltip position="right" content="提示内容">
+  <Button theme="primary">右侧</Button>
 </Tooltip>
 ```
 
-**Bottom**
+**底部展示**
 
 ```js
-<Tooltip position="bottom" content="Tooltip bottom">
-  <Button theme="primary">Bottom</Button>
+<Tooltip position="bottom" content="提示内容">
+  <Button theme="primary">底部</Button>
 </Tooltip>
 ```
 
-**Left**
+**左侧展示**
 
 ```js
-<Tooltip position="left" content="Tooltip left">
-  <Button theme="primary">Left</Button>
+<Tooltip position="left" content="提示内容">
+  <Button theme="primary">左侧</Button>
 </Tooltip>
 ```

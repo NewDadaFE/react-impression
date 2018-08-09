@@ -47,8 +47,8 @@ export default class Confirm extends React.PureComponent {
   }
 
   /**
-   * 根据类型获取Icon.
-   * @return {[String]} [Icon类型]
+   * 根据类型获取Icon
+   * @return String Icon类型
    */
   getAddonByType = type => {
     switch (type) {
@@ -63,15 +63,15 @@ export default class Confirm extends React.PureComponent {
 
   render() {
     const {
-        type,
-        okText,
-        cancelText,
-        onOkClick,
-        onCancelClick,
-        className,
-        children,
-        ...others
-      } = this.props
+      type,
+      okText,
+      cancelText,
+      onOkClick,
+      onCancelClick,
+      className,
+      children,
+      ...others
+    } = this.props
     const iconTypeClass = this.getAddonByType(type)
 
     return (

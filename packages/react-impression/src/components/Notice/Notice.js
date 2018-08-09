@@ -25,9 +25,10 @@ export default class Notice extends PureComponent {
     theme: 'info',
     title: '通知',
   }
+
   /**
-   * 获取信息图标.
-   * @return {[type]} [description]
+   * 获取图标样式
+   * @return Array 图标样式
    */
   getTitleIcon() {
     let { theme } = this.props

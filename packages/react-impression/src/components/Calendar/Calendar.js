@@ -169,7 +169,8 @@ export default class Calendar extends React.Component {
         : firstDay - firstDayOfWeek + 7
 
     for (let i = 0; i <= prevMonthMax - 1; i++) {
-      const dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength - i}`
+      const dayFormat = `${prevMonthYear}-${prevMonthMonth}-${prevMonthDaysLength -
+        i}`
       const dayMoment = moment(dayFormat, FORMAT.DATE)
 
       days.unshift({
@@ -209,10 +210,10 @@ export default class Calendar extends React.Component {
     const { date } = nextProps
 
     date &&
-    currentMoment.format(format) !== date &&
-    this.setState({
-      currentMoment: moment(date, format),
-    })
+      currentMoment.format(format) !== date &&
+      this.setState({
+        currentMoment: moment(date, format),
+      })
   }
 
   render() {
@@ -283,22 +284,22 @@ export default class Calendar extends React.Component {
                 <div
                   className={classnames('calendar-daygroup-item-header', {
                     'text-secondary':
-                    (index + firstDayOfWeek) % 7 === 0 ||
-                    (index + firstDayOfWeek + 1) % 7 === 0,
+                      (index + firstDayOfWeek) % 7 === 0 ||
+                      (index + firstDayOfWeek + 1) % 7 === 0,
                   })}
                 >
                   {day.text}
                 </div>
                 <div className='calendar-daygroup-item-body'>
                   {cellRender &&
-                  cellRender({
-                    day: day.text,
-                    year: day.date.format(FORMAT.YEAR),
-                    month: day.date.format(FORMAT.MONTH),
-                    date: day.date.format(format),
-                    inMonth: day.inMonth,
-                    isToday: day.isToday,
-                  })}
+                    cellRender({
+                      day: day.text,
+                      year: day.date.format(FORMAT.YEAR),
+                      month: day.date.format(FORMAT.MONTH),
+                      date: day.date.format(format),
+                      inMonth: day.inMonth,
+                      isToday: day.isToday,
+                    })}
                 </div>
               </div>
             ))}

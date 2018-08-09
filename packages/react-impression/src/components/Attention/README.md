@@ -40,8 +40,8 @@
 **Dismissible**
 
 ```js
-<Attention theme='success' closeable>
+<Attention theme="success" closeable>
   You successfully read this important attention message
-  <AttentionLink href='#'> click here</AttentionLink>
+  <AttentionLink href="#"> click here</AttentionLink>
 </Attention>
 ```
