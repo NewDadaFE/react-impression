@@ -1,6 +1,6 @@
 ### 示例
 
-**基本使用**
+**基本用法**
 
 ```js
 <Breadcrumb className="no-padding">
