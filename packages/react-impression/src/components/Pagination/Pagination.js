@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 
 export default class Pagination extends React.PureComponent {
   static defaultProps = {
-    activePage: 1,
     scope: 2,
-    ellipsis: true,
+    activePage: 1,
     totalPage: 1,
   }
 
@@ -24,11 +23,15 @@ export default class Pagination extends React.PureComponent {
      */
     totalPage: PropTypes.number.isRequired,
     /**
-     * 是否显示省略号
+     * 上一页控制按钮内容
      */
-    ellipsis: PropTypes.bool,
+    lastContent: PropTypes.node,
     /**
-     * onSelect
+     * 下一页控制按钮内容
+     */
+    nextContent: PropTypes.node,
+    /**
+     * 选中回调函数
      */
     onSelect: PropTypes.func,
     /**
@@ -36,6 +39,7 @@ export default class Pagination extends React.PureComponent {
      */
     className: PropTypes.string,
   }
+
   /**
    * 上一页
    */
@@ -45,6 +49,7 @@ export default class Pagination extends React.PureComponent {
     activePage -= 1
     activePage >= 1 && onSelect && onSelect(activePage)
   }
+
   /**
    * 下一页
    */
@@ -54,6 +59,7 @@ export default class Pagination extends React.PureComponent {
     activePage += 1
     activePage <= totalPage && onSelect && onSelect(activePage)
   }
+
   /**
    * 跳转至某页
    * @param page
@@ -65,36 +71,60 @@ export default class Pagination extends React.PureComponent {
   }
 
   /**
-   * 获取显示页码
+   * 获取组件显示的页码
    * @returns {Array}
    */
-  getShowPageArray() {
-    let { scope, totalPage = 1, activePage } = this.props
-    const result = []
-
-    scope = scope < 0 ? 2 : scope
-    for (let i = activePage - scope; i <= activePage + scope; i++) {
-      if (i > 0 && i <= totalPage) {
-        i === activePage - scope && i === 2 && result.push(1)
-        result.push(i)
-        i === activePage + scope &&
-          i === totalPage - 1 &&
-          result.push(totalPage)
+  getPageList = () => {
+    const { scope, totalPage, activePage } = this.props
+    const pageList = []
+    const scopeLength = scope * 2
+    // 页数少于（首、尾、中间、两边scope）不出现省略号
+    if (totalPage <= 3 + scopeLength) {
+      for (let i = 1; i <= totalPage; i++) {
+        pageList.push(i)
       }
+      return pageList
     }
+    // 有"..."的情况下，中间部分页数的范围 [scopeLeft，scopeRight]
+    let scopeLeft = Math.max(1, activePage - scope)
+    let scopeRight = Math.min(activePage + scope, totalPage)
+    // scopeLeft或scopeRight为总页数的左端或右端，特殊处理
+    if (scopeLeft === 1) {
+      scopeRight = scopeLeft + scopeLength
+    }
+    if (scopeRight === totalPage) {
+      scopeLeft = scopeRight - scopeLength
+    }
+    // 首页页码必须为 1
+    scopeLeft !== 1 && pageList.push(1)
+    // 显示"..."的情况，考虑到scope=1的特殊情况所以current也不能等于3
+    if (activePage >= 1 + scopeLength && activePage !== 3) {
+      pageList.push('')
+    }
+    for (let i = scopeLeft; i <= scopeRight; i++) {
+      pageList.push(i)
+    }
+    // 显示"..."的情况
+    if (activePage <= totalPage - scopeLength && activePage !== totalPage - 2) {
+      pageList.push('')
+    }
+    // 尾页页码必须为 totalPage
+    scopeRight !== totalPage && pageList.push(totalPage)
 
-    return result
+    return pageList
   }
 
   render() {
     const {
       totalPage = 1,
       className,
-      ellipsis,
       activePage,
+      lastContent,
+      nextContent,
       ...others
     } = this.props
-    const children = this.getShowPageArray()
+
+    const pageList = this.getPageList()
 
     return (
       <ul {...others} className={classnames('Pagination', className)}>
@@ -104,41 +134,34 @@ export default class Pagination extends React.PureComponent {
             href='javascript:void(0);'
             onClick={this.prevPageHandle}
           >
-            <i className='fa fa-angle-left' />
+            {lastContent || <i className='fa fa-angle-left' />}
           </a>
         </li>
-
-        {ellipsis &&
-          children[0] > 1 && (
-          <li className='page-item disabled'>
-            <i className='fa fa-ellipsis-h' />
-          </li>
-        )}
-
-        {children.map(child => (
-          <li
-            key={child}
-            className={classnames('page-item', {
-              active: child === activePage,
-            })}
-          >
-            <a
-              className='page-link'
-              href='javascript:void(0);'
-              onClick={() => this.goPageHandle(child)}
+        {
+          pageList.map((child, index) => child ? (
+            <li
+              key={`${child}-${index}`}
+              className={classnames('page-item', {
+                active: child === activePage,
+              })}
             >
-              {child}
-            </a>
-          </li>
-        ))}
-
-        {ellipsis &&
-          children[children.length - 1] < totalPage && (
-          <li className='page-item disabled'>
-            <i className='fa fa-ellipsis-h' />
-          </li>
-        )}
-
+              <a
+                className='page-link'
+                href='javascript:void(0);'
+                onClick={() => this.goPageHandle(child)}
+              >
+                {child}
+              </a>
+            </li>
+          ) : (
+            <li
+              key={`${child}-${index}`}
+              className='page-item disabled'
+            >
+              <i className='fa fa-ellipsis-h' />
+            </li>
+          ))
+        }
         <li
           className={classnames('page-item', {
             disabled: activePage >= totalPage,
@@ -149,7 +172,7 @@ export default class Pagination extends React.PureComponent {
             href='javascript:void(0);'
             onClick={this.nextPageHandle}
           >
-            <i className='fa fa-angle-right' />
+            {nextContent || <i className='fa fa-angle-right' />}
           </a>
         </li>
       </ul>
