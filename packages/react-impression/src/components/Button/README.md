@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Theme**
+**主题**
 
 ```js
 const buttonClickHandle = () => {
@@ -27,7 +27,7 @@ const buttonClickHandle = () => {
 </Row>
 ```
 
-**Outline**
+**外轮廓**
 
 ```js
 <Row className="no-margin bg-inverse">
@@ -55,7 +55,7 @@ const buttonClickHandle = () => {
 </Row>
 ```
 
-**Size**
+**尺寸**
 
 ```js
 <Row className="no-margin">
@@ -81,7 +81,7 @@ const buttonClickHandle = () => {
 </Row>
 ```
 
-**Pill**
+**圆角**
 
 ```js
 <Row className="no-margin">
@@ -109,7 +109,7 @@ const buttonClickHandle = () => {
 </Row>
 ```
 
-**Link**
+**链接**
 
 ```js
 <Row className="no-margin">

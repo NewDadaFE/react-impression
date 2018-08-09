@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Basic**
+**基本使用**
 
 ```js
 <ButtonGroup theme="default" activeKey="left">
@@ -10,7 +10,7 @@
 </ButtonGroup>
 ```
 
-**Themes**
+**主题**
 
 ```js
 <ButtonToolbar>
@@ -27,7 +27,7 @@
 </ButtonToolbar>
 ```
 
-**Sizes**
+**尺寸**
 
 ```js
 <ButtonToolbar>
