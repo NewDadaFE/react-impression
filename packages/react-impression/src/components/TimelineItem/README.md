@@ -1,1 +1,1 @@
-示例见[Timeline组件](#timeline)。
+示例见[Timeline 组件](#timeline)。

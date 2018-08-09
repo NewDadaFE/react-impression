@@ -3,14 +3,14 @@
 ```js
 const handleShowLoading = () => {
   setState({
-    isShow: !state.isShow
+    isShow: !state.isShow,
   })
-};
+}
 initialState = {
   type: 'fountain',
   isShow: false,
-};
-<div>
+}
+;<div>
   <Button name="cyclone" onClick={handleShowLoading}>
     Toggle LoadingAddon
   </Button>
