@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Basic**
+**基本使用**
 
 ```js
 <Row>
@@ -37,7 +37,7 @@
 </Row>
 ```
 
-**Dismissible**
+**可关闭的**
 
 ```js
 <Attention theme="success" closeable>
