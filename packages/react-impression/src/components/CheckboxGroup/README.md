@@ -1,6 +1,6 @@
-### Example
+### 示例
 
-**defaultValue**
+**默认值（非受控组件**
 
 ```js
 <Form type="inline">
@@ -15,7 +15,7 @@
 </Form>
 ```
 
-**传入 value**
+**指定值（受控组件）**
 
 ```js
 <Form type="inline">
