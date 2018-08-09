@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Basic**
+**基本使用**
 
 ```js
 <Breadcrumb className="no-padding">
@@ -10,7 +10,7 @@
 </Breadcrumb>
 ```
 
-**Arrow separator**
+**箭头分隔符**
 
 ```js
 <Breadcrumb className="no-padding" separator="arrow">
