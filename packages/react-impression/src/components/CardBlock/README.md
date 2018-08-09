@@ -5,11 +5,8 @@
 ```js
 <Card>
   <CardBlock>
-    <p>
-      Some quick example text to build on the card title and make up the bulk of
-      the card&apos;s content.
-    </p>
-    <Button theme="primary">OK</Button>
+    <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
+    <Button theme="primary">好的</Button>
   </CardBlock>
 </Card>
 ```

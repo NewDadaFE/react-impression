@@ -6,33 +6,32 @@
 <Row>
   <Col>
     <Attention theme='success'>
-      You successfully read this important attention message
-      <AttentionLink href='#'> click here</AttentionLink>
+      你成功完成了这个任务
+      <AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='primary'>
-      This attention needs your attention, but it&apos;s not super
-      important
-      <AttentionLink href='#'> click here</AttentionLink>
+      接下来你将接收到很重要的消息
+      <AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='warning'>
-      Better check yourself, you&apos;re not looking too good
-      <AttentionLink href='#'> click here</AttentionLink>
+      要多注意自己的行为，你现在状态很差
+     <AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='danger'>
-      Change a few things up and try submitting again
-      <AttentionLink href='#'> click here</AttentionLink>
+      请检查代码之后重新提交
+      <AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>

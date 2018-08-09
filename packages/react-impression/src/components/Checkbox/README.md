@@ -5,9 +5,9 @@
 ```js
 <Form type="inline">
   <FormGroup>
-    <label>defaultChecked:</label>
+    <label>默认选中:</label>
     <Checkbox ref="checkbox" defaultChecked>
-      remember me
+      记住我
     </Checkbox>
   </FormGroup>
 </Form>
@@ -18,13 +18,13 @@
 ```js
 <Form type="inline">
   <FormGroup>
-    <label>disabled:</label>
-    <Checkbox disabled>remember me</Checkbox>
+    <label>不可用状态:</label>
+    <Checkbox disabled>记住我</Checkbox>
   </FormGroup>
   <FormGroup>
-    <label>disabled-checked:</label>
+    <label>不可用的选中状态:</label>
     <Checkbox disabled defaultChecked>
-      remember me
+      记住我
     </Checkbox>
   </FormGroup>
 </Form>
@@ -33,8 +33,8 @@
 **全选**
 
 ```js
-const options = ['number1', 'number2', 'number3', 'number4']
-const optionsCheckedDefault = ['number1', 'number3']
+const options = ['数字1', '数字2', '数字3', '数字4']
+const optionsCheckedDefault = ['数字1', '数字3']
 
 class Indeterminate extends React.Component {
   constructor() {

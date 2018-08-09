@@ -27,17 +27,17 @@ const toggleConfirm3Handle = () => {
   <Row>
     <Col>
       <Button theme="secondary" outline onClick={toggleConfirm1Handle}>
-        warning
+        警告
       </Button>
     </Col>
     <Col>
       <Button theme="primary" outline onClick={toggleConfirm2Handle}>
-        question
+        信息
       </Button>
     </Col>
     <Col>
       <Button theme="default" onClick={toggleConfirm3Handle}>
-        danger
+        危险
       </Button>
     </Col>
   </Row>
