@@ -1,4 +1,4 @@
-### 代码示例
+### 示例
 
 **文字类型**
 
@@ -28,7 +28,7 @@ class ModalExample extends React.Component {
           <Form>
             <FormGroup>
               <label>可清除:</label>
-              <Input type="text" ref="clearInput" defaultValue="text">
+              <Input type="text" ref="clearInput" defaultValue="内容">
                 <Icon type="times" onClick={this.clearInputHandle} />
               </Input>
             </FormGroup>
@@ -38,7 +38,7 @@ class ModalExample extends React.Component {
           <Form>
             <FormGroup>
               <label>圆角形状:</label>
-              <Input type="text" defaultValue="something" pill>
+              <Input type="text" defaultValue="请输入内容" pill>
                 <Icon type="search" />
               </Input>
             </FormGroup>

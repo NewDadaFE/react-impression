@@ -1,25 +1,25 @@
-### 代码示例
+### 示例
 
-**基础用法**
+**基本用法**
 
 ```js
 <Row>
   <Col>
     <InputGroup>
       <InputGroupButton theme="default">帮助</InputGroupButton>
-      <InputGroupInput placeholder="something" />
+      <InputGroupInput placeholder="请输入内容" />
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroupInput placeholder="something" />
+      <InputGroupInput placeholder="请输入内容" />
       <InputGroupButton theme="primary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
       <InputGroupButton theme="default">-</InputGroupButton>
-      <InputGroupInput placeholder="something" />
+      <InputGroupInput placeholder="请输入内容" />
       <InputGroupButton theme="default">+</InputGroupButton>
     </InputGroup>
   </Col>
