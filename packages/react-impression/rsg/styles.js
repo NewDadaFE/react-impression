@@ -61,7 +61,8 @@ module.exports = {
       },
       '& div[class*="para"]': {
         marginBottom: `5px !important`,
-      }
+      },
+    },
   },
   ReactComponent: {
     tabs: {
