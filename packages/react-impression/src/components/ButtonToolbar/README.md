@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Button toolbar**
+**基本使用**
 
 ```js
 <ButtonToolbar>
