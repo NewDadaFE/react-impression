@@ -74,3 +74,18 @@
   </Col>
 </Row>
 ```
+
+### 变更记录
+
+v 2.0.0
+
+- 新增 strokeWidth 属性
+- 新增 showInfo 属性
+- 新增 formatter 属性
+- 新增 progress-bar-striped-bg-image sass 变量
+- 新增 progress-bar-striped-box-shadow sass 变量
+- 新增 progress-bar-striped-bg-size sass 变量
+- 新增 progress-info-default-color sass 变量
+- 新增 progress-info-width sass 变量
+- 新增 progress-info-margin-left sass 变量
+- 新增 progress-info-font-size sass 变量
