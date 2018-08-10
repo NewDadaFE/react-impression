@@ -4,25 +4,15 @@ import PropTypes from 'prop-types'
 import SelectOption from '../SelectOption'
 import * as System from '../../utils/system'
 
-const isContainer = (text, arr) => {
-  const len = arr.length
-  for (let i = 0; i < len; i++) {
-    const name = arr[i].name
-    if (name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1) {
-      return true
-    }
-  }
-  return false
+const isContainer = (text, array) => {
+  return array.some(
+    item => item.name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1
+  )
 }
-const isEqual = (text, arr) => {
-  const len = arr.length
-  for (let i = 0; i < len; i++) {
-    const name = arr[i].name
-    if (name.toLocaleUpperCase() === text.toLocaleUpperCase()) {
-      return true
-    }
-  }
-  return false
+const isEqual = (text, array) => {
+  return array.some(
+    item => item.name.toLocaleUpperCase() === text.toLocaleUpperCase()
+  )
 }
 
 export default class Select extends React.PureComponent {
@@ -36,14 +26,14 @@ export default class Select extends React.PureComponent {
 
     // 子组件数据
     this.options = []
-    this.defaultoptions = []
+    this.defaultOptions = []
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
       searchValue: props.value,
       isSearch: false,
       searchText: '',
-      isNoresult: false,
+      hasResult: false,
     }
 
     this.state = {
@@ -111,7 +101,7 @@ export default class Select extends React.PureComponent {
 
     if (!this.isPuppet) {
       main.value = null
-      this.defaultoptions.forEach(option => {
+      this.defaultOptions.forEach(option => {
         if (value === option.value) main.value = option.name
       })
 
@@ -134,12 +124,12 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = () => {
-    !this.props.disabled &&
-      this.setState({
-        showOption: !this.state.showOption,
-        isNoresult: false,
-        searchText: '',
-      })
+    if (this.props.disabled) return
+    this.setState({
+      showOption: !this.state.showOption,
+      hasResult: false,
+      searchText: '',
+    })
   }
 
   /**
@@ -152,19 +142,19 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleSearchBlur = () => {
-    const { isNoresult } = this.state
+    const { hasResult } = this.state
     const { main } = this.refs
     const { value, defaultValue } = this.props
-    if (isNoresult) {
+    if (hasResult) {
       if (this.isPuppet) {
         main.value = null
-        this.defaultoptions.forEach(option => {
+        this.defaultOptions.forEach(option => {
           if (value === option.value) main.value = option.name
         })
         this.setState({ searchText: '' })
       } else {
         main.value = null
-        this.defaultoptions.forEach(option => {
+        this.defaultOptions.forEach(option => {
           if (defaultValue === option.value) main.value = option.name
         })
         this.setState({ searchText: '', value: defaultValue })
@@ -177,21 +167,21 @@ export default class Select extends React.PureComponent {
       this.setState({ searchValue: value })
       this.refs.main.blur()
       if (
-        (isEqual(main.value, this.defaultoptions) &&
+        (isEqual(main.value, this.defaultOptions) &&
           this.state.value !== this.state.searchText) ||
         this.isPuppet
       ) {
         return
       }
       if (!this.isPuppet) {
-        this.defaultoptions.forEach(option => {
+        this.defaultOptions.forEach(option => {
           if (defaultValue === option.value) {
             main.value = option.name
             this.setState({ value: defaultValue, searchText: '' })
           }
         })
       } else {
-        this.defaultoptions.forEach(option => {
+        this.defaultOptions.forEach(option => {
           if (value === option.value) {
             main.value = option.name
             this.setState({ value: value, searchText: '' })
@@ -199,7 +189,7 @@ export default class Select extends React.PureComponent {
         })
       }
       if (!value && value !== 0 && !defaultValue && defaultValue !== 0) {
-        if (isContainer(main.value, this.defaultoptions)) {
+        if (isContainer(main.value, this.defaultOptions)) {
           this.setState({ searchText: '' })
           main.value = ''
         }
@@ -221,10 +211,10 @@ export default class Select extends React.PureComponent {
     if (!showOption) {
       this.setState({ showOption: true })
     }
-    if (!isContainer(searchText, this.defaultoptions)) {
-      this.setState({ isNoresult: true })
+    if (!isContainer(searchText, this.defaultOptions)) {
+      this.setState({ hasResult: true })
     } else {
-      this.setState({ isNoresult: false })
+      this.setState({ hasResult: false })
     }
   }
   /**
@@ -263,9 +253,7 @@ export default class Select extends React.PureComponent {
       {
         showOption: false,
       },
-      () => {
-        this.handleSearchBlur()
-      }
+      this.handleSearchBlur
     )
   }
 
@@ -278,13 +266,13 @@ export default class Select extends React.PureComponent {
 
   componentDidMount() {
     const { children } = this.props
-    this.defaultoptions = []
+    this.defaultOptions = []
     React.Children.map(children, (child, index) => {
       if (!child) {
         return child
       } // ? child ?
       const { value, children } = child.props
-      this.defaultoptions.push({
+      this.defaultOptions.push({
         name: children,
         value,
       })
@@ -305,7 +293,7 @@ export default class Select extends React.PureComponent {
       searchable,
       children,
     } = this.props
-    const { showOption, isSearch, searchText, isNoresult } = this.state
+    const { showOption, isSearch, searchText, hasResult } = this.state
     let text
     this.options = [] // this问题
     let originValue
@@ -315,7 +303,7 @@ export default class Select extends React.PureComponent {
       originValue = this.isPuppet ? this.state.searchValue : this.state.value
     }
     let _children
-    if (!isNoresult) {
+    if (!hasResult) {
       _children = React.Children.map(children, (child, index) => {
         if (!child) {
           return child

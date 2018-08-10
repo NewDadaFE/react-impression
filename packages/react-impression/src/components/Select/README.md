@@ -151,18 +151,18 @@ class DefaultValueExample extends React.Component {
 </Select>
 ```
 
-**searchable**
+**可搜索**
 
 ```js
 <Select searchable>
-  <SelectOption value="1">First</SelectOption>
-  <SelectOption value="2">Second</SelectOption>
-  <SelectOption value="3">Third</SelectOption>
+  <SelectOption value="1">一</SelectOption>
+  <SelectOption value="2">二</SelectOption>
+  <SelectOption value="3">三</SelectOption>
 </Select>
 ```
 
 ### 变更记录
 
-v 2.0.0
+v2.0.0
 
 - 新增 searchable 属性
