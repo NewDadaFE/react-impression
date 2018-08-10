@@ -159,7 +159,7 @@ class Example extends React.Component {
               <Button close onClick={this.toggleModalHandle}>
                 &times;
               </Button>
-              <h5 className="no-margin">Search</h5>
+              <h5 className="no-margin">搜索</h5>
             </ModalHeader>
             <ModalBody>
               <Row>
@@ -207,7 +207,7 @@ class Example extends React.Component {
             </ModalBody>
             <ModalFooter>
               <Button theme="default" onClick={this.toggleModalHandle}>
-                Close
+                搜索
               </Button>
             </ModalFooter>
           </Modal>
