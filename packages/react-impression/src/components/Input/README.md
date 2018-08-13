@@ -207,7 +207,7 @@ class Example extends React.Component {
             </ModalBody>
             <ModalFooter>
               <Button theme="default" onClick={this.toggleModalHandle}>
-                搜索
+                关闭
               </Button>
             </ModalFooter>
           </Modal>
