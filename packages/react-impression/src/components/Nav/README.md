@@ -1,69 +1,69 @@
-### Example
+### 示例
 
-**Inline**
+**行内类型**
 
 ```js
 <Nav activeKey={1} type="inline">
-  <NavItem eventKey={1}>Active</NavItem>
-  <NavItem eventKey={2}>Link</NavItem>
-  <NavItem eventKey={3}>Anothor link</NavItem>
+  <NavItem eventKey={1}>选中</NavItem>
+  <NavItem eventKey={2}>链接</NavItem>
+  <NavItem eventKey={3}>其他</NavItem>
   <NavItem eventKey={4} disabled>
-    Disabled
+    禁用
   </NavItem>
 </Nav>
 ```
 
-**Tab**
+**选项类型**
 
 ```js
 <Nav activeKey={1} type="tab">
-  <NavItem eventKey={1}>Active</NavItem>
-  <NavItem eventKey={2}>Link</NavItem>
-  <NavItem eventKey={3}>Anothor link</NavItem>
+  <NavItem eventKey={1}>选中</NavItem>
+  <NavItem eventKey={2}>链接</NavItem>
+  <NavItem eventKey={3}>其他</NavItem>
   <NavItem eventKey={4} disabled>
-    Disabled
+    禁用
   </NavItem>
 </Nav>
 ```
 
-**Pill**
+**胶囊类型**
 
 ```js
 <Nav activeKey={1} type="pill">
-  <NavItem eventKey={1}>Active</NavItem>
-  <NavItem eventKey={2}>Link</NavItem>
-  <NavItem eventKey={3}>Anothor link</NavItem>
+  <NavItem eventKey={1}>选中</NavItem>
+  <NavItem eventKey={2}>链接</NavItem>
+  <NavItem eventKey={3}>其他</NavItem>
   <NavItem eventKey={4} disabled>
-    Disabled
+    禁用
   </NavItem>
 </Nav>
 ```
 
-**Inline Bordered**
+**下划线类型**
 
 ```js
 <Nav activeKey={1} type="inline-bordered">
-  <NavItem eventKey={1}>Active</NavItem>
-  <NavItem eventKey={2}>Link</NavItem>
-  <NavItem eventKey={3}>Anothor link</NavItem>
+  <NavItem eventKey={1}>选中</NavItem>
+  <NavItem eventKey={2}>链接</NavItem>
+  <NavItem eventKey={3}>其他</NavItem>
   <NavItem eventKey={4} disabled>
-    Disabled
+    禁用
   </NavItem>
 </Nav>
 ```
 
-**Stacked Pill**
+**堆叠的胶囊类型**
 
 ```js
 <Row>
   <Col col="3">
     <Card>
       <Nav activeKey={2} type="pill" stacked>
-        <NavItem eventKey={1}>Active</NavItem>
-        <NavItem eventKey={2}>Link</NavItem>
-        <NavItem eventKey={3}>Anothor link</NavItem>
+        <NavItem eventKey={1}>选中</NavItem>
+        <NavItem eventKey={2}>链接</NavItem>
+        <NavItem eventKey={3}>其他</NavItem>
         <NavItem eventKey={4} disabled>
-          Disabled
+          禁用
         </NavItem>
       </Nav>
     </Card>

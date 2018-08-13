@@ -1,4 +1,4 @@
-### Examples
+### 示例
 
 ```js
 const handleShowLoading = e => {
@@ -13,22 +13,22 @@ initialState = {
 ;<Row>
   <Col>
     <Button name="fountain" onClick={handleShowLoading}>
-      fountain
+      喷泉（fountain）
     </Button>
   </Col>
   <Col>
     <Button name="wave" onClick={handleShowLoading}>
-      wave
+      水波（wave）
     </Button>
   </Col>
   <Col>
     <Button name="pendule" onClick={handleShowLoading}>
-      pendule
+      铅锤（pendule）
     </Button>
   </Col>
   <Col>
     <Button name="cyclone" onClick={handleShowLoading}>
-      cyclone
+      旋风（cyclone）
     </Button>
   </Col>
   <Loading type={state.type} loadingMsg={state.type} closeable />

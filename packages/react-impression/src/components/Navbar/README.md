@@ -1,56 +1,60 @@
 ### Example
 
-**Default**
+**默认主题**
 
 ```js
 <Navbar>
   <Flex>
-    <NavbarBrand>Navbar</NavbarBrand>
+    <NavbarBrand>导航条</NavbarBrand>
     <FlexItem>
       <Nav type="inline">
         <NavLink>
-          <a href="javascript:void(0);">Home</a>
+          <a href="javascript:void(0);">主页</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Features</a>
+          <a href="javascript:void(0);">特点</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Pricing</a>
+          <a href="javascript:void(0);">价格</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">About</a>
+          <a href="javascript:void(0);">关于</a>
         </NavLink>
       </Nav>
     </FlexItem>
     <Form type="inline">
       <FormGroup>
-        <input className="form-control" type="text" placeholder="Search" />
+        <input
+          className="form-control"
+          type="text"
+          placeholder="输入搜索内容"
+        />
       </FormGroup>
-      <Button theme="primary">Search</Button>
+      <Button theme="primary">搜索</Button>
     </Form>
   </Flex>
 </Navbar>
 ```
 
-**Primary**
+**原色主题**
 
 ```js
 <Navbar theme="primary">
   <Flex align="middle">
-    <NavbarBrand>Navbar</NavbarBrand>
+    <NavbarBrand>导航条</NavbarBrand>
     <FlexItem>
       <Nav type="inline">
         <NavLink>
-          <a href="javascript:void(0);">Home</a>
+          <a href="javascript:void(0);">主页</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Features</a>
+          <a href="javascript:void(0);">特点</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Pricing</a>
+          <a href="javascript:void(0);">价格</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">About</a>
+          <a href="javascript:void(0);">关于</a>
         </NavLink>
       </Nav>
     </FlexItem>
@@ -59,34 +63,34 @@
         <input
           className="form-control no-border"
           type="text"
-          placeholder="Search"
+          placeholder="输入搜索内容"
         />
       </FormGroup>
-      <Button theme="secondary">Search</Button>
+      <Button theme="secondary">搜索</Button>
     </Form>
   </Flex>
 </Navbar>
 ```
 
-**Inverse**
+**反色主题**
 
 ```js
 <Navbar theme="inverse">
   <Flex align="middle">
-    <NavbarBrand>Navbar</NavbarBrand>
+    <NavbarBrand>导航条</NavbarBrand>
     <FlexItem>
       <Nav type="inline">
         <NavLink>
-          <a href="javascript:void(0);">Home</a>
+          <a href="javascript:void(0);">主页</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Features</a>
+          <a href="javascript:void(0);">特点</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Pricing</a>
+          <a href="javascript:void(0);">价格</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">About</a>
+          <a href="javascript:void(0);">关于</a>
         </NavLink>
       </Nav>
     </FlexItem>
@@ -95,42 +99,46 @@
         <input
           className="form-control no-border"
           type="text"
-          placeholder="Search"
+          placeholder="输入搜索内容"
         />
       </FormGroup>
-      <Button theme="primary">Search</Button>
+      <Button theme="primary">搜索</Button>
     </Form>
   </Flex>
 </Navbar>
 ```
 
-**Pure**
+**素色主题**
 
 ```js
 <Navbar theme="pure">
   <Flex align="middle">
-    <NavbarBrand>Navbar</NavbarBrand>
+    <NavbarBrand>导航条</NavbarBrand>
     <FlexItem>
       <Nav type="inline">
         <NavLink>
-          <a href="javascript:void(0);">Home</a>
+          <a href="javascript:void(0);">主页</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Features</a>
+          <a href="javascript:void(0);">特点</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">Pricing</a>
+          <a href="javascript:void(0);">价格</a>
         </NavLink>
         <NavLink>
-          <a href="javascript:void(0);">About</a>
+          <a href="javascript:void(0);">关于</a>
         </NavLink>
       </Nav>
     </FlexItem>
     <Form type="inline">
       <FormGroup>
-        <input className="form-control" type="text" placeholder="Search" />
+        <input
+          className="form-control"
+          type="text"
+          placeholder="输入搜索内容"
+        />
       </FormGroup>
-      <Button theme="primary">Search</Button>
+      <Button theme="primary">搜索</Button>
     </Form>
   </Flex>
 </Navbar>

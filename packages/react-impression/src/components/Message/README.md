@@ -1,17 +1,17 @@
-### Examples
+### 示例
 
 ```js
 const handleShowInfo = () => {
-  Message.info('你好，这是一条info消息！')
+  Message.info('你好，这是一条信息！')
 }
 const handleShowSuccess = () => {
-  Message.success('你好，这是一条success消息！')
+  Message.success('你好，这是一条成功消息！')
 }
 const handleShowWarning = () => {
-  Message.warning('你好，这是一条warning消息！')
+  Message.warning('你好，这是一条警告消息！')
 }
 const handleShowError = () => {
-  Message.error('你好，这是一条error消息！')
+  Message.error('你好，这是一条错误消息！')
 }
 const handleShowLoading = () => {
   Message.loading('正在执行中...', 0)

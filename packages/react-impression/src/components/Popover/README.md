@@ -1,29 +1,28 @@
-### Examples
+### 示例
 
 ```js
 initialState = {
-  content:
-    'Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
+  content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',
 }
 ;<Row>
   <Col>
-    <Popover position="right" title="popover" content={state.content}>
-      <Button theme="primary">Right</Button>
+    <Popover position="right" title="标题" content={state.content}>
+      <Button theme="primary">显示在右侧</Button>
     </Popover>
   </Col>
   <Col>
-    <Popover position="left" title="popover" content={state.content}>
-      <Button theme="primary">Left</Button>
+    <Popover position="left" title="标题" content={state.content}>
+      <Button theme="primary">显示在左侧</Button>
     </Popover>
   </Col>
   <Col>
-    <Popover position="top" title="popover" content={state.content}>
-      <Button theme="primary">Top</Button>
+    <Popover position="top" title="标题" content={state.content}>
+      <Button theme="primary">显示在上方</Button>
     </Popover>
   </Col>
   <Col>
-    <Popover position="bottom" title="popover" content={state.content}>
-      <Button theme="primary">Bottom</Button>
+    <Popover position="bottom" title="标题" content={state.content}>
+      <Button theme="primary">显示在下方</Button>
     </Popover>
   </Col>
 </Row>
