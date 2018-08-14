@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**text**
+**文字类型**
 
 ```js
 class ModalExample extends React.Component {
@@ -19,7 +19,7 @@ class ModalExample extends React.Component {
         <Col>
           <Form>
             <FormGroup>
-              <label>basic:</label>
+              <label>基础:</label>
               <Input type="text" />
             </FormGroup>
           </Form>
@@ -27,8 +27,8 @@ class ModalExample extends React.Component {
         <Col>
           <Form>
             <FormGroup>
-              <label>addon:</label>
-              <Input type="text" ref="clearInput" defaultValue="text">
+              <label>可清除:</label>
+              <Input type="text" ref="clearInput" defaultValue="内容">
                 <Icon type="times" onClick={this.clearInputHandle} />
               </Input>
             </FormGroup>
@@ -37,8 +37,8 @@ class ModalExample extends React.Component {
         <Col>
           <Form>
             <FormGroup>
-              <label>pill shape:</label>
-              <Input type="text" defaultValue="something" pill>
+              <label>圆角形状:</label>
+              <Input type="text" defaultValue="请输入内容" pill>
                 <Icon type="search" />
               </Input>
             </FormGroup>
@@ -51,14 +51,14 @@ class ModalExample extends React.Component {
 ;<ModalExample />
 ```
 
-**date**
+**日期类型**
 
 ```js
 <Row>
   <Col>
     <Form>
       <FormGroup>
-        <label>basic:</label>
+        <label>基础:</label>
         <Input type="date" />
       </FormGroup>
     </Form>
@@ -66,7 +66,7 @@ class ModalExample extends React.Component {
   <Col>
     <Form>
       <FormGroup>
-        <label>defaultVal:</label>
+        <label>默认值:</label>
         <Input type="date" defaultValue="2016-05-29" />
       </FormGroup>
     </Form>
@@ -74,7 +74,7 @@ class ModalExample extends React.Component {
   <Col>
     <Form>
       <FormGroup>
-        <label>disabled:</label>
+        <label>禁用状态:</label>
         <Input type="date" defaultValue="2016-05-29" disabled />
       </FormGroup>
     </Form>
@@ -82,7 +82,7 @@ class ModalExample extends React.Component {
 </Row>
 ```
 
-**search**
+**可搜索类型**
 
 ```js
 class Example extends React.Component {
@@ -121,7 +121,7 @@ class Example extends React.Component {
           <Col>
             <Form>
               <FormGroup>
-                <label>basic:</label>
+                <label>基础:</label>
                 <Input
                   type="search"
                   onClick={this.toggleModalHandle}
@@ -133,7 +133,7 @@ class Example extends React.Component {
           <Col>
             <Form>
               <FormGroup>
-                <label>addon:</label>
+                <label>可清除:</label>
                 <Input
                   type="search"
                   onClick={this.toggleModalHandle}
@@ -147,7 +147,7 @@ class Example extends React.Component {
           <Col>
             <Form>
               <FormGroup>
-                <label>disabled:</label>
+                <label>禁用状态:</label>
                 <Input type="search" value="上海" disabled />
               </FormGroup>
             </Form>
@@ -159,7 +159,7 @@ class Example extends React.Component {
               <Button close onClick={this.toggleModalHandle}>
                 &times;
               </Button>
-              <h5 className="no-margin">Search</h5>
+              <h5 className="no-margin">搜索</h5>
             </ModalHeader>
             <ModalBody>
               <Row>
@@ -207,7 +207,7 @@ class Example extends React.Component {
             </ModalBody>
             <ModalFooter>
               <Button theme="default" onClick={this.toggleModalHandle}>
-                Close
+                关闭
               </Button>
             </ModalFooter>
           </Modal>
@@ -219,7 +219,7 @@ class Example extends React.Component {
 ;<Example />
 ```
 
-**file**
+**文件类型**
 
 ```js
 <Row>

@@ -1,33 +1,33 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 <ButtonGroup theme="default" activeKey="left">
-  <Button eventKey="left">Left</Button>
-  <Button eventKey="middle">Middle</Button>
-  <Button eventKey="right">Right</Button>
+  <Button eventKey="left">左</Button>
+  <Button eventKey="middle">中</Button>
+  <Button eventKey="right">右</Button>
 </ButtonGroup>
 ```
 
-**Themes**
+**主题**
 
 ```js
 <ButtonToolbar>
   <ButtonGroup theme="primary" activeKey="right">
-    <Button eventKey="left">Left</Button>
-    <Button eventKey="middle">Middle</Button>
-    <Button eventKey="right">Right</Button>
+    <Button eventKey="left">左</Button>
+    <Button eventKey="middle">中</Button>
+    <Button eventKey="right">右</Button>
   </ButtonGroup>
   <ButtonGroup theme="secondary" activeKey="middle">
-    <Button eventKey="left">Left</Button>
-    <Button eventKey="middle">Middle</Button>
-    <Button eventKey="right">Right</Button>
+    <Button eventKey="left">左</Button>
+    <Button eventKey="middle">中</Button>
+    <Button eventKey="right">右</Button>
   </ButtonGroup>
 </ButtonToolbar>
 ```
 
-**Sizes**
+**尺寸**
 
 ```js
 <ButtonToolbar>

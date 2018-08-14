@@ -1,27 +1,27 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 <Breadcrumb className="no-padding">
-  <a href="javascript:void(0);">Home</a>
-  <a href="javascript:void(0);">User Center</a>
-  <span>Basic Information</span>
+  <a href="javascript:void(0);">主页</a>
+  <a href="javascript:void(0);">用户中心</a>
+  <span>基本信息</span>
 </Breadcrumb>
 ```
 
-**Arrow separator**
+**箭头分隔符**
 
 ```js
 <Breadcrumb className="no-padding" separator="arrow">
   <a href="javascript:void(0);">
-    <Icon type="home" left />Home
+    <Icon type="home" left />主页
   </a>
   <a href="javascript:void(0);">
-    <Icon type="user" left />User Center
+    <Icon type="user" left />用户中心
   </a>
   <span>
-    <Icon type="cog" left />Basic Information
+    <Icon type="cog" left />基本信息
   </span>
 </Breadcrumb>
 ```

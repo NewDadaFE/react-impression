@@ -1,12 +1,12 @@
-### Examples
+### 示例
 
-**Fluid**
+**自适应模式**
 
 ```js
 <Image fluid src="http://placehold.it/2500x350" />
 ```
 
-**Shape**
+**多形状模式**
 
 ```js
 <Row>

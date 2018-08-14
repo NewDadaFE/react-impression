@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 class AlertView extends React.Component {
@@ -33,12 +33,12 @@ class AlertView extends React.Component {
         <Row>
           <Col>
             <Button theme="primary" outline onClick={this.toggleAlert1Handle}>
-              default
+              默认
             </Button>
           </Col>
           <Col>
             <Button theme="default" outline onClick={this.toggleAlert2Handle}>
-              <span className="text-danger">danger</span>
+              <span className="text-danger">危险</span>
             </Button>
           </Col>
         </Row>

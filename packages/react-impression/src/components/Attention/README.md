@@ -1,47 +1,46 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 <Row>
   <Col>
     <Attention theme='success'>
-      <strong>Well done!</strong>
-      You successfully read this important attention message.
+      <strong>干得不错!</strong>
+      你成功完成了这个任务
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='primary'>
-      <strong>Heads up!</strong>
-      This attention needs your attention, but it&apos;s not super important.
+      <strong>请看着我，</strong>
+      接下来你将听到很重要的消息
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='warning'>
-      <strong>Warning!</strong>
-      Better check yourself, you&apos;re not looking too good.
+      <strong>要小心!</strong>
+      要多注意自己的行为，你现在状态很差
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col col='12'>
     <Attention theme='danger'>
-      <strong>Oh snap!</strong>
-      Change a few things up and try submitting again.
+      <strong>审核失败!</strong>
+      请检查代码之后重新提交
     </Attention>
   </Col>
 </Row>
 ```
 
-**Dismissible**
+**可关闭的**
 
 ```js
 <Attention theme="success" closeable>
-  You successfully read this important attention message
-  <AttentionLink href="#"> click here</AttentionLink>
+  你成功完成了这个任务
 </Attention>
 ```

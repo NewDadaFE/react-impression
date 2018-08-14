@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 class CalendarView extends React.Component {
