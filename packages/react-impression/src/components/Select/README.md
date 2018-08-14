@@ -15,7 +15,6 @@ class DefaultExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-
     this.select.setValue(null)
     this.select.focus()
   }
@@ -26,6 +25,7 @@ class DefaultExample extends React.Component {
         <Notification />
         <Select
           ref={select => (this.select = select)}
+          searchable
           onChange={this.handleChange}
         >
           <Select.Option value="1">一</Select.Option>
@@ -62,7 +62,6 @@ class ValueExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-
     this.select.setValue(null)
     this.select.focus()
   }
@@ -74,6 +73,7 @@ class ValueExample extends React.Component {
         <Select
           ref={select => (this.select = select)}
           value={0}
+          searchable
           onChange={this.handleChange}
         >
           <Select.Option value={0}>一</Select.Option>
@@ -94,7 +94,6 @@ class ValueExample extends React.Component {
 class DefaultValueExample extends React.Component {
   constructor() {
     super()
-
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -113,6 +112,7 @@ class DefaultValueExample extends React.Component {
       <div>
         <Notification />
         <Select
+          searchable
           ref={select => (this.select = select)}
           defaultValue={0}
           onChange={this.handleChange}
@@ -150,3 +150,19 @@ class DefaultValueExample extends React.Component {
   <Select.Option value="3">三</Select.Option>
 </Select>
 ```
+
+**可搜索**
+
+```js
+<Select searchable>
+  <SelectOption value="1">一</SelectOption>
+  <SelectOption value="2">二</SelectOption>
+  <SelectOption value="3">三</SelectOption>
+</Select>
+```
+
+### 变更记录
+
+v2.0.0
+
+- 新增 searchable 属性
