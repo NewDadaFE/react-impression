@@ -30,8 +30,8 @@ https://newdadafe.github.io/impression_react/#/app
 
 开发环境：
 
-- Node.js v8.11.3
-- Yarn v1.9.4
+* Node.js v8.11.3
+* Yarn v1.9.4
 
 ```sh
 # install
@@ -41,4 +41,7 @@ yarn
 
 # documentation
 yarn start
+
+# format
+yarn format
 ```
