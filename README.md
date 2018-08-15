@@ -37,6 +37,7 @@ https://newdadafe.github.io/impression_react/#/app
 # install
 git clone https://github.com/NewDadaFE/react-impression.git
 cd react-impression
+yarn
 
 # documentation
 yarn start
