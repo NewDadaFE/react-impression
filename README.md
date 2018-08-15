@@ -31,20 +31,13 @@ https://newdadafe.github.io/impression_react/#/app
 开发环境：
 
 - Node.js v8.11.3
-- Yarn v1.7.0
+- Yarn v1.9.4
 
 ```sh
 # install
 git clone https://github.com/NewDadaFE/react-impression.git
 cd react-impression
-yarn global add lerna
-lerna bootstrap
 
-# react-impression
-cd packages/react-impression
-yarn start
-
-# react-impression-docs
-cd packages/react-impression-docs
+# documentation
 yarn start
 ```
