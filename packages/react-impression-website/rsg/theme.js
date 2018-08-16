@@ -1,8 +1,8 @@
 module.exports = {
   color: {
-    sidebarBackground: '#22252a',
+    sidebarBackground: '#22252a'
   },
   fontSize: {
-    h1: 38,
-  },
+    h1: 38
+  }
 }
