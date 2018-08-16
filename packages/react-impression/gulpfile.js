@@ -30,30 +30,30 @@ const script = async () => {
       'react-addons-css-transition-group',
       'prop-types',
       'moment',
-      'highlight.js'
+      'highlight.js',
     ],
     plugins: [
       resolve(),
       commonjs({ include: /node_modules/ }),
-      babel({ exclude: 'node_modules/**', plugins: ['external-helpers'] })
-    ]
+      babel({ exclude: 'node_modules/**', plugins: ['external-helpers'] }),
+    ],
   }
   const outputOptions = {
     commonjs: {
       format: 'cjs',
-      file: pkg.main
+      file: pkg.main,
     },
     esm: {
       format: 'es',
-      file: pkg.module
-    }
+      file: pkg.module,
+    },
   }
 
   const bundle = await rollup.rollup(inputOptions)
 
   await Promise.all([
     bundle.write(outputOptions.commonjs),
-    bundle.write(outputOptions.esm)
+    bundle.write(outputOptions.esm),
   ])
 }
 

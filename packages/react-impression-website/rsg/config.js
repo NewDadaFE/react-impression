@@ -11,7 +11,7 @@ module.exports = {
   require: [resolveLibrary('src/styles/index.scss')],
   assetsDir: 'assets',
   styleguideDir: '../dist',
-  getComponentPathLine (componentPath) {
+  getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js')
 
     return `import { ${name} } from 'react-impression'`
@@ -22,26 +22,26 @@ module.exports = {
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: '/icon.ico'
+          href: '/icon.ico',
         },
         {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css'
-        }
-      ]
-    }
+          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css',
+        },
+      ],
+    },
   },
   theme,
   styles,
   sections: [
     {
-      name: 'Introduction'
+      name: 'Introduction',
     },
     {
       name: 'Components',
       components: resolveLibrary('src/components/**/[A-Z]*.js'),
-      usageMode: 'expand'
-    }
+      usageMode: 'expand',
+    },
   ],
   webpackConfig: {
     module: {
@@ -50,21 +50,21 @@ module.exports = {
           oneOf: [
             {
               test: /\.(png|jpe?g|gif|svg)$/,
-              loader: 'url-loader'
+              loader: 'url-loader',
             },
             {
               test: /\.jsx?$/,
               exclude: /node_modules/,
-              loader: 'babel-loader'
+              loader: 'babel-loader',
             },
             {
               test: /\.s?css$/,
               exclude: /node_modules/,
-              use: ['style-loader', 'css-loader', 'sass-loader']
-            }
-          ]
-        }
-      ]
-    }
-  }
+              use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+          ],
+        },
+      ],
+    },
+  },
 }

@@ -3,7 +3,7 @@ const color = {
   lightGray: '#a7b1c2',
   lightDark: '#22252a',
   dark: '#191b1f',
-  darker: '#141619'
+  darker: '#141619',
 }
 
 module.exports = {
@@ -14,17 +14,17 @@ module.exports = {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       backgroundColor: color.lightDark,
-      borderBottom: `1px solid ${color.darker}`
-    }
+      borderBottom: `1px solid ${color.darker}`,
+    },
   },
   Logo: {
     logo: {
-      color: color.light
-    }
+      color: color.light,
+    },
   },
   ComponentsList: {
     list: {
-      paddingLeft: 0
+      paddingLeft: 0,
     },
     item: {
       margin: 0,
@@ -32,19 +32,19 @@ module.exports = {
         display: 'block',
         padding: '8px 0 8px 16px !important',
         '&:link, &:visited': {
-          color: color.lightGray
+          color: color.lightGray,
         },
         '&:hover, &:active': {
           color: color.light,
           backgroundColor: color.dark,
           boxShadow: `inset 0 0 1px ${color.darker}`,
-          cursor: 'pointer'
-        }
+          cursor: 'pointer',
+        },
       },
       '& > ul a': {
-        paddingLeft: '32px !important'
-      }
-    }
+        paddingLeft: '32px !important',
+      },
+    },
   },
   Table: {
     cell: {
@@ -54,15 +54,15 @@ module.exports = {
         paddingTop: 8,
         paddingBottom: 8,
         verticalAlign: 'top',
-        fontSize: 13
+        fontSize: 13,
       },
       '& p': {
-        marginBottom: `5px !important`
+        marginBottom: `5px !important`,
       },
       '& div[class*="para"]': {
-        marginBottom: `5px !important`
-      }
-    }
+        marginBottom: `5px !important`,
+      },
+    },
   },
   ReactComponent: {
     tabs: {
@@ -70,13 +70,13 @@ module.exports = {
       paddingRight: 24,
       paddingBottom: 12,
       paddingLeft: 24,
-      backgroundColor: '#F6F7FB'
+      backgroundColor: '#F6F7FB',
     },
     tabButtons: {
       '& button': {
         borderBottomWidth: 0,
-        textTransform: 'uppercase'
-      }
-    }
-  }
+        textTransform: 'uppercase',
+      },
+    },
+  },
 }

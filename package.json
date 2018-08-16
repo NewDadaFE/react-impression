@@ -14,7 +14,11 @@
   },
   "eslintConfig": {
     "rules": {
-      "one-var": 0
+      "space-before-function-paren": [
+        "error",
+        { "anonymous": "always", "named": "never", "asyncArrow": "always" }
+      ],
+      "comma-dangle": ["error", "always-multiline"]
     }
   },
   "lint-staged": {
