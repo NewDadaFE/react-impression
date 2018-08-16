@@ -165,4 +165,4 @@ class DefaultValueExample extends React.Component {
 
 v2.0.0
 
-- 新增 searchable 属性
+* 新增 searchable 属性

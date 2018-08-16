@@ -202,5 +202,5 @@ class Overflow extends React.Component {
 
 v2.0.0
 
-- 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
-- 新增 scrollInside 参数
+* 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
+* 新增 scrollInside 参数
