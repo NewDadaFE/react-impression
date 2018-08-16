@@ -1,5 +1,6 @@
 .DS_STORE
 .idea
 .vscode
-dist
-node_modules
+dist/
+build/
+node_modules/

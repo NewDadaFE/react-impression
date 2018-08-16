@@ -39,7 +39,7 @@ git clone https://github.com/NewDadaFE/react-impression.git
 cd react-impression
 yarn
 
-# documentation
+# website
 yarn start
 
 # format

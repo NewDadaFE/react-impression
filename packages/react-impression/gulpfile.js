@@ -1,3 +1,4 @@
+const minimist = require('minimist')
 const del = require('del')
 const gulp = require('gulp')
 const plugin = require('gulp-load-plugins')()
@@ -6,6 +7,9 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const babel = require('rollup-plugin-babel')
 const pkg = require('./package.json')
+
+const options = minimist(process.argv.slice(2))
+process.env.NODE_ENV = options.env || 'production'
 
 const clean = () => del(['dist'])
 
@@ -26,30 +30,30 @@ const script = async () => {
       'react-addons-css-transition-group',
       'prop-types',
       'moment',
-      'highlight.js',
+      'highlight.js'
     ],
     plugins: [
       resolve(),
       commonjs({ include: /node_modules/ }),
-      babel({ exclude: 'node_modules/**', plugins: ['external-helpers'] }),
-    ],
+      babel({ exclude: 'node_modules/**', plugins: ['external-helpers'] })
+    ]
   }
   const outputOptions = {
     commonjs: {
       format: 'cjs',
-      file: pkg.main,
+      file: pkg.main
     },
     esm: {
       format: 'es',
-      file: pkg.module,
-    },
+      file: pkg.module
+    }
   }
 
   const bundle = await rollup.rollup(inputOptions)
 
   await Promise.all([
     bundle.write(outputOptions.commonjs),
-    bundle.write(outputOptions.esm),
+    bundle.write(outputOptions.esm)
   ])
 }
 

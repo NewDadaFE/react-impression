@@ -2,14 +2,16 @@ const path = require('path')
 const theme = require('./theme')
 const styles = require('./styles')
 
-const resolvePath = relativePath => path.resolve(process.cwd(), relativePath)
+const resolveLibrary = relativePath =>
+  path.resolve(process.cwd(), '../react-impression', relativePath)
 
 module.exports = {
   title: 'React Impression',
   serverPort: 8080,
-  require: [resolvePath('src/styles/index.scss')],
-  assetsDir: resolvePath('rsg/assets'),
-  getComponentPathLine(componentPath) {
+  require: [resolveLibrary('src/styles/index.scss')],
+  assetsDir: 'assets',
+  styleguideDir: '../dist',
+  getComponentPathLine (componentPath) {
     const name = path.basename(componentPath, '.js')
 
     return `import { ${name} } from 'react-impression'`
@@ -20,27 +22,26 @@ module.exports = {
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: '/icon.ico',
+          href: '/icon.ico'
         },
         {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css',
-        },
-      ],
-    },
+          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css'
+        }
+      ]
+    }
   },
   theme,
   styles,
   sections: [
     {
-      name: 'Introduction',
+      name: 'Introduction'
     },
     {
       name: 'Components',
-      components: resolvePath('src/components/**/[A-Z]*.js'),
-      // components: resolvePath('src/components/**/Flex*.js'),
-      usageMode: 'expand',
-    },
+      components: resolveLibrary('src/components/**/[A-Z]*.js'),
+      usageMode: 'expand'
+    }
   ],
   webpackConfig: {
     module: {
@@ -49,21 +50,21 @@ module.exports = {
           oneOf: [
             {
               test: /\.(png|jpe?g|gif|svg)$/,
-              loader: 'url-loader',
+              loader: 'url-loader'
             },
             {
               test: /\.jsx?$/,
               exclude: /node_modules/,
-              loader: 'babel-loader',
+              loader: 'babel-loader'
             },
             {
               test: /\.s?css$/,
               exclude: /node_modules/,
-              use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-          ],
-        },
-      ],
-    },
-  },
+              use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+          ]
+        }
+      ]
+    }
+  }
 }
