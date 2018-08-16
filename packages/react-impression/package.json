@@ -18,12 +18,13 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "highlight.js": "^9.9.0",
-    "moment": "^2.14.1",
     "perfect-scrollbar": "^0.6.12",
+    "react-addons-css-transition-group": "15.6.2"
+  },
+  "peerDependencies": {
+    "moment": "^2.22.2",
     "prop-types": "15.6.2",
     "react": "15.6.2",
-    "react-addons-css-transition-group": "15.6.2",
     "react-dom": "15.6.2"
   },
   "devDependencies": {
