@@ -28,15 +28,10 @@
     "react-dom": "15.6.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
-    "babel-loader": "^7.1.5",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^3.1.2",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-load-plugins": "^1.5.0",
@@ -52,19 +47,7 @@
     "webpack": "3.12.0"
   },
   "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ],
-      "react"
-    ],
-    "plugins": [
-      "transform-class-properties",
-      "transform-object-rest-spread",
-      "transform-export-extensions"
-    ]
+    "presets": ["react-app"],
+    "plugins": ["transform-export-extensions"]
   }
 }
