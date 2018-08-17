@@ -13,18 +13,20 @@
 }
 
 // Colors
-$gray-dark:                 #373a3c !default;
-$gray:                      #55595c !default;
-$gray-light:                #999 !default;
-$gray-lighter:              #eceeef !default;
-$gray-lightest:             #f4f4f4 !default;
+$gray-base:                 #132240 !default; // 标题文字、重要文字、输入框已输入文字
+$gray-darker:               #919CB3 !default; // 次级信息文本颜色、输入框提示文字 #919CB3
+$gray-dark:                 #B6BFD1 !default; // 不可点击按钮的文字和图标的颜色
+$gray:                      #D1D8E6 !default; // 输入框颜色、不可点击颜色
+$gray-light:                #E9EBF0 !default; // 分割线颜色
+$gray-lighter:              #F7F9FC !default; // 页面背景、表头背景等
+$gray-lightest:             #F0F2F5 !default; // 模块背景颜色、交替背景色
 
-$brand-primary:             #4285f4 !default;
-$brand-secondary:           complement($brand-primary) !default;
-$brand-success:             #34a853 !default;
-$brand-info:                #5bc0de !default;
-$brand-warning:             #fbbc05 !default;
-$brand-danger:              #ea4335 !default;
+$brand-primary:             #276BF2 !default;
+$brand-secondary:           #FA8100 !default;
+$brand-success:             #29B056 !default;
+$brand-info:                #276BF2 !default;
+$brand-warning:             #FA8100 !default;
+$brand-danger:              #E92C2C !default;
 $brand-pure:                #fff !default;
 
 $gray-secondary:            mix($brand-primary, $gray-dark, 20%) !default;
@@ -103,7 +105,7 @@ $grid-gutter-width:         30px !default;
 
 
 // Typography
-$font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "WenQuanYi Micro Hei", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", Arial, "WenQuanYi Micro Hei", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
@@ -117,12 +119,12 @@ $font-size-sm:      .875rem !default;
 $font-size-xs:      .75rem !default;
 
 
-$font-size-h1:      2.5rem !default;
-$font-size-h2:      2rem !default;
-$font-size-h3:      1.75rem !default;
-$font-size-h4:      1.5rem !default;
-$font-size-h5:      1.25rem !default;
-$font-size-h6:      1rem !default;
+$font-size-h1:      ceil(($font-size-base * 2.4)) !default; // 34px
+$font-size-h2:      ceil(($font-size-base * 1.7)) !default; // 24px
+$font-size-h3:      ceil(($font-size-root * 1.25)) !default; // 18px
+$font-size-h4:      floor(($font-size-root * 1.15)) !default; // 16px
+$font-size-h5:      $font-size-root !default;
+$font-size-h6:      ceil(($font-size-base * 0.85)) !default; // 12px
 
 $display1-size:     6rem !default;
 $display2-size:     5.5rem !default;
