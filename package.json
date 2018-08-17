@@ -2,7 +2,9 @@
   "private": true,
   "workspaces": ["packages/*"],
   "scripts": {
-    "start": "yarn workspace react-impression-website start",
+    "start": "yarn website:start",
+    "website:start": "yarn workspace react-impression-website start",
+    "website:build": "yarn workspace react-impression-website build",
     "precommit": "lint-staged",
     "format":
       "find . -name '*.js' -o -name '*.md' | grep -v -f .gitignore | xargs prettier-standard"

@@ -9,7 +9,7 @@ const color = {
 module.exports = {
   StyleGuide: {
     logo: {
-      backgroundImage: 'url(/logo.png)',
+      backgroundImage: 'url(logo.png)',
       backgroundPosition: 'center',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
