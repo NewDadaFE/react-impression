@@ -20,7 +20,7 @@ import { Button } from 'react-impression'
 
 ### 文档
 
-https://newdadafe.github.io/impression_react/#/app
+https://newdadafe.github.io/react-impression/
 
 ### 快速上手
 

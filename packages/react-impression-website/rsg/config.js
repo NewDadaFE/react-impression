@@ -1,6 +1,7 @@
 const path = require('path')
 const theme = require('./theme')
 const styles = require('./styles')
+const webpackConfig = require('./webpackConfig')
 
 const resolveLibrary = relativePath =>
   path.resolve(process.cwd(), '../react-impression', relativePath)
@@ -22,7 +23,7 @@ module.exports = {
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: '/icon.ico',
+          href: 'icon.ico',
         },
         {
           rel: 'stylesheet',
@@ -43,28 +44,5 @@ module.exports = {
       usageMode: 'expand',
     },
   ],
-  webpackConfig: {
-    module: {
-      rules: [
-        {
-          oneOf: [
-            {
-              test: /\.(png|jpe?g|gif|svg)$/,
-              loader: 'url-loader',
-            },
-            {
-              test: /\.jsx?$/,
-              exclude: /node_modules/,
-              loader: 'babel-loader',
-            },
-            {
-              test: /\.s?css$/,
-              exclude: /node_modules/,
-              use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-          ],
-        },
-      ],
-    },
-  },
+  webpackConfig,
 }
