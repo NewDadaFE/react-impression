@@ -193,30 +193,31 @@
         top: 0;
         z-index: -1;
 
-        &:checked + .switch-addon {
-            border-color: $checkbox-addon-checked-color;
-            background: $checkbox-addon-checked-color;
+        &:checked {
+            & + .switch-addon {
+                background-color: $switch-addon-active-bg;
 
-            &::before {
-                transform: $switch-addon-translate-x;
+                &::before {
+                    transform: $switch-addon-translate-x;
+                }
+            }
+            &:disabled + .switch-addon {
+                opacity: .15;
             }
         }
-
-        &:disabled + .switch-addon,
-        &.disabled + .switch-addon {
-            opacity: .6;
+        &:disabled + .switch-addon {
+            opacity: .3;
         }
     }
 }
 
 .switch-addon {
     display: inline-block;
-    background: $switch-bg;
+    background-color: $switch-bg;
     width: round($switch-width * $font-size-root);
     border-radius: round($switch-addon-width * $font-size-root);
     padding: $switch-addon-padding;
     transition: $checkbox-addon-transtion;
-
 
     &::before {
         content: '';
@@ -224,7 +225,7 @@
         width: round($switch-addon-width * $font-size-root);
         height: round($switch-addon-height * $font-size-root);
         border-radius: 50%;
-        background: $switch-addon-bg;
+        background-color: $switch-addon-bg;
         transition: $checkbox-addon-transtion;
     }
 }

@@ -4,8 +4,7 @@
 
 ```js
 <Form grid>
-  <FormGroup col="6">
-    <label>Default</label>
+  <FormGroup>
     <Switch defaultChecked />
   </FormGroup>
 </Form>
@@ -16,8 +15,18 @@
 ```js
 <Form grid>
   <FormGroup>
-    <label>Disabled</label>
+    <label>打开且禁用</label>
     <Switch disabled defaultChecked />
+  </FormGroup>
+  <FormGroup>
+    <label>关闭且禁用</label>
+    <Switch disabled defaultChecked={false} />
   </FormGroup>
 </Form>
 ```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 sass 变量`$switch-addon-active-bg`用于 Switch 开状态背景色；
