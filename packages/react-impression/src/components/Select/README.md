@@ -6,7 +6,6 @@
 class DefaultExample extends React.Component {
   constructor() {
     super()
-
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -15,8 +14,7 @@ class DefaultExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-    this.select.setValue(null)
-    this.select.focus()
+    // this.select.setValue(null)
   }
 
   render() {
@@ -25,19 +23,18 @@ class DefaultExample extends React.Component {
         <Notification />
         <Select
           ref={select => (this.select = select)}
-          searchable
           onChange={this.handleChange}
         >
-          <Select.Option value="1">一</Select.Option>
-          <Select.Option value="2">二</Select.Option>
-          <Select.Option value="3">三</Select.Option>
-          <Select.Option value="4">四</Select.Option>
-          <Select.Option value="5">五</Select.Option>
-          <Select.Option value="6">六</Select.Option>
-          <Select.Option value="7">七</Select.Option>
-          <Select.Option value="8">八</Select.Option>
-          <Select.Option value="9">九</Select.Option>
-          <Select.Option value="10">十</Select.Option>
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
         </Select>
       </div>
     )
@@ -55,6 +52,9 @@ class ValueExample extends React.Component {
     super()
 
     this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      val: 1,
+    }
   }
 
   handleChange(val, text) {
@@ -62,8 +62,7 @@ class ValueExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-    this.select.setValue(null)
-    this.select.focus()
+    this.setState({ val: val })
   }
 
   render() {
@@ -72,13 +71,19 @@ class ValueExample extends React.Component {
         <Notification />
         <Select
           ref={select => (this.select = select)}
-          value={0}
-          searchable
+          value={this.state.val}
           onChange={this.handleChange}
         >
-          <Select.Option value={0}>一</Select.Option>
-          <Select.Option value={1}>二</Select.Option>
-          <Select.Option value={2}>三</Select.Option>
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
         </Select>
       </div>
     )
@@ -102,9 +107,7 @@ class DefaultValueExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-
     this.select.setValue(null)
-    this.select.focus()
   }
 
   render() {
@@ -112,14 +115,20 @@ class DefaultValueExample extends React.Component {
       <div>
         <Notification />
         <Select
-          searchable
           ref={select => (this.select = select)}
-          defaultValue={0}
+          defaultValue={1}
           onChange={this.handleChange}
         >
-          <Select.Option value={0}>一</Select.Option>
-          <Select.Option value={1}>二</Select.Option>
-          <Select.Option value={2}>三</Select.Option>
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
         </Select>
       </div>
     )
@@ -133,9 +142,9 @@ class DefaultValueExample extends React.Component {
 
 ```js
 <Select disabled>
-  <Select.Option value="1">一</Select.Option>
-  <Select.Option value="2">二</Select.Option>
-  <Select.Option value="3">三</Select.Option>
+  <SelectOption value="1">一</SelectOption>
+  <SelectOption value="2">二</SelectOption>
+  <SelectOption value="3">三</SelectOption>
 </Select>
 ```
 
@@ -143,12 +152,166 @@ class DefaultValueExample extends React.Component {
 
 ```js
 <Select>
-  <Select.Option value="1">一</Select.Option>
-  <Select.Option value="2" disabled>
+  <SelectOption value="1">一</SelectOption>
+  <SelectOption value="2" disabled>
     二
-  </Select.Option>
-  <Select.Option value="3">三</Select.Option>
+  </SelectOption>
+  <SelectOption value="3">三</SelectOption>
 </Select>
+```
+
+**基本多选使用**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+    // this.select.setValue(null)
+  }
+  handleDelete(val) {
+    Notification.info({
+      title: 'Select',
+      message: `删除值为${val}`,
+    })
+  }
+  render() {
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          multiple
+          onDelete={this.handleDelete}
+          onChange={this.handleChange}
+        >
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
+```
+
+**指定值多选（受控组件）**
+
+```js
+class ValueExample extends React.Component {
+  constructor() {
+    super()
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.state = {
+      val: [1],
+    }
+  }
+
+  handleChange(val, text, c, d) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+    this.setState({ val: [...this.state.val, val] })
+  }
+  handleDelete(val) {
+    const list = this.state.val.filter(item => item !== val)
+    this.setState({ val: list })
+  }
+
+  render() {
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          value={this.state.val}
+          multiple
+          onChange={this.handleChange}
+          onDelete={this.handleDelete}
+        >
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<ValueExample />
+```
+
+**默认值多选（非受控组件）**
+
+```js
+class DefaultValueExample extends React.Component {
+  constructor() {
+    super()
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          defaultValue={[1]}
+          searchable
+          multiple
+          onChange={this.handleChange}
+        >
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultValueExample />
 ```
 
 **可搜索**
@@ -161,8 +324,67 @@ class DefaultValueExample extends React.Component {
 </Select>
 ```
 
+**selectOptionGroup**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+  }
+  handleDelete(val) {
+    console.log(val)
+  }
+
+  render() {
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          multiple
+          defaultValue={[5, 6]}
+          searchable
+          onChange={this.handleChange}
+          onDelete={this.handleDelete}
+        >
+          <SelectOptionGroup name="上海" disabled>
+            <SelectOption value={1}>浦电路站</SelectOption>
+            <SelectOption value={2}>世纪公园站</SelectOption>
+            <SelectOption value={3}>人民广场站</SelectOption>
+            <SelectOption value={4}>中山公园站</SelectOption>
+          </SelectOptionGroup>
+          <SelectOptionGroup name="深圳">
+            <SelectOption value={5}>竹子林站</SelectOption>
+            <SelectOption value={6}>华强北站</SelectOption>
+            <SelectOption value={7}>会展中心站</SelectOption>
+            <SelectOption value={8}>科学馆站</SelectOption>
+          </SelectOptionGroup>
+          <SelectOptionGroup name="苏州" disabled />
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
+```
+
 ### 变更记录
 
 v2.0.0
 
-* 新增 searchable 属性
+* 新增 searchable 可搜索属性
+* 新增 multiple 多选属性，多选模式下，value 或者 defaultValue 格式为 [1，2]
+* 新增 onDelete 回调方法，返回值为删除项的值，仅在多选模式下生效
+* 新增 filterMethod 筛选方法
+* 删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
