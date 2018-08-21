@@ -59,6 +59,15 @@
     border-color: $brand-primary;
     outline: none;
   }
+  .required & {
+    border-color: $brand-danger;
+    &::placeholder {
+      color: $brand-danger;
+    }
+  }
+}
+.select-required {
+  color: $brand-danger;
 }
 
 .select-options-wrap {
@@ -161,9 +170,15 @@
     position: absolute;
     top: $input-padding-x;
     left: $input-padding-x;
+    .required & {
+      color: $brand-danger;
+    }
   }
   .tag {
     line-height: 1.5;
+  }
+  .required & {
+    border: 1px solid $brand-danger;
   }
 }
 

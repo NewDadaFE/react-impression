@@ -138,6 +138,51 @@ class DefaultValueExample extends React.Component {
 ;<DefaultValueExample />
 ```
 
+**必填项**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+    // this.select.setValue(null)
+  }
+
+  render() {
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          onChange={this.handleChange}
+          required
+        >
+          <SelectOption value={1}>一</SelectOption>
+          <SelectOption value={2}>二</SelectOption>
+          <SelectOption value={3}>三</SelectOption>
+          <SelectOption value={4}>四</SelectOption>
+          <SelectOption value={5}>五</SelectOption>
+          <SelectOption value={6}>六</SelectOption>
+          <SelectOption value={7}>七</SelectOption>
+          <SelectOption value={8}>八</SelectOption>
+          <SelectOption value={9}>九</SelectOption>
+          <SelectOption value={10}>十</SelectOption>
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
+```
+
 **禁用状态**
 
 ```js
@@ -385,6 +430,7 @@ v2.0.0
 
 * 新增 searchable 可搜索属性
 * 新增 multiple 多选属性，多选模式下，value 或者 defaultValue 格式为 [1，2]
+* 新增 required 是否必选项属性
 * 新增 onDelete 回调方法，返回值为删除项的值，仅在多选模式下生效
 * 新增 filterMethod 筛选方法
 * 删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签

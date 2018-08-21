@@ -78,6 +78,11 @@ export default class Select extends React.PureComponent {
     className: PropTypes.string,
 
     /**
+     * 是否必选项
+     */
+    required: PropTypes.bool,
+
+    /**
      * 占位文字
      */
     placeholder: PropTypes.string,
@@ -198,10 +203,14 @@ export default class Select extends React.PureComponent {
     }
     this.setState(dataToSet, () => {
       this.options.forEach(option => option.handleActive())
-      if (this.tag && this.tag.clientHeight < 42) {
+      if (!this.tag) {
         this.setState({ top: '120%' })
       } else {
-        this.setState({ top: '220%' })
+        if (this.tag.clientHeight < 42) {
+          this.setState({ top: '120%' })
+        } else {
+          this.setState({ top: '220%' })
+        }
       }
     })
   }
@@ -340,7 +349,7 @@ export default class Select extends React.PureComponent {
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
         },
         () => {
-          if (multiple && this.tag.clientHeight > 40) {
+          if (multiple && this.tag.clientHeight > 42) {
             this.setState({ top: '220%' })
           }
 
@@ -351,7 +360,7 @@ export default class Select extends React.PureComponent {
         }
       )
     } else {
-      if (multiple && this.tag.clientHeight > 40) {
+      if (multiple && this.tag.clientHeight > 42) {
         this.setState({ top: '220%' })
       }
       onChange &&
@@ -431,7 +440,14 @@ export default class Select extends React.PureComponent {
   }
 
   render() {
-    const { disabled, style, className, searchable, multiple } = this.props
+    const {
+      disabled,
+      style,
+      className,
+      searchable,
+      multiple,
+      required,
+    } = this.props
     const {
       showOption,
       selectText,
@@ -449,6 +465,7 @@ export default class Select extends React.PureComponent {
           'select',
           { 'select-multiple': multiple },
           { disabled },
+          { required },
           { open: showOption },
           className
         )}
