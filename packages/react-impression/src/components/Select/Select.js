@@ -198,6 +198,11 @@ export default class Select extends React.PureComponent {
     }
     this.setState(dataToSet, () => {
       this.options.forEach(option => option.handleActive())
+      if (this.tag && this.tag.clientHeight < 42) {
+        this.setState({ top: '120%' })
+      } else {
+        this.setState({ top: '220%' })
+      }
     })
   }
   getValue() {
@@ -290,9 +295,6 @@ export default class Select extends React.PureComponent {
     if (disabled) return
     if (this.isPuppet) {
       onDelete && onDelete(newVal)
-      if (this.tag.clientHeight < 40) {
-        this.setState({ top: '120%' })
-      }
       if (e) e.stopPropagation()
 
       return false
@@ -304,7 +306,7 @@ export default class Select extends React.PureComponent {
       options.forEach(option => {
         option.handleActive()
       })
-      if (this.tag.clientHeight < 40) {
+      if (this.tag.clientHeight < 42) {
         this.setState({ top: '120%' })
       }
 
