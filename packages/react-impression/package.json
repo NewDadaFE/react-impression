@@ -16,7 +16,8 @@
   "dependencies": {
     "classnames": "^2.2.0",
     "perfect-scrollbar": "^0.6.12",
-    "react-addons-css-transition-group": "15.6.2"
+    "react-addons-css-transition-group": "15.6.2",
+    "sass-rem": "^2.0.1"
   },
   "peerDependencies": {
     "moment": "^2.22.2",
@@ -40,7 +41,11 @@
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "babel": {
-    "presets": ["react-app"],
-    "plugins": ["transform-export-extensions"]
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "transform-export-extensions"
+    ]
   }
 }
