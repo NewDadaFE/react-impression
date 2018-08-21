@@ -196,6 +196,7 @@
         &:checked {
             & + .switch-addon {
                 background-color: $switch-addon-active-bg;
+                box-shadow: 0 2px 4px 0 rgba($switch-addon-active-bg, .2);
 
                 &::before {
                     transform: $switch-addon-translate-x;
