@@ -1,6 +1,7 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
@@ -17,7 +18,11 @@ module.exports = {
           {
             test: /\.s?css$/,
             exclude: /node_modules/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader', options: { sourceMap: true } },
+              { loader: 'sass-loader', options: { sourceMap: true } },
+            ],
           },
         ],
       },
