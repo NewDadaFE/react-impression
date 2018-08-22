@@ -61,3 +61,4 @@ v 2.0.0
 * 新增 progress-info-width sass 变量
 * 新增 progress-info-margin-left sass 变量
 * 新增 progress-info-font-size sass 变量
+* 移除 progress-box-shadow sass 变量
