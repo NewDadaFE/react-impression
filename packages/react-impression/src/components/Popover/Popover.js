@@ -32,11 +32,8 @@ export default class Popover extends React.PureComponent {
     trigger: 'hover',
   }
 
-  constructor(props) {
-    super(props)
-    this.reference = null
-    this.popover = null
-  }
+  reference = null
+  popover = null
 
   /**
    * 创建popover
@@ -130,11 +127,13 @@ export default class Popover extends React.PureComponent {
           !this.popover ||
           !this.referenceDom ||
           this.referenceDom.contains(e.target)
-        ) { return }
+        ) {
+          return
+        }
         // 检查popover生成的节点是否包含点击的target，包含则不触发，代码参照utils/dom, utils/system
         if (
           !isDescendentNode(this.popover, e.target) ||
-          (event.path && event.path.indexOf(componentDom) === -1)
+          (event.path && event.path.indexOf(this.popover) === -1)
         ) {
           this.onMouseOut()
         }
