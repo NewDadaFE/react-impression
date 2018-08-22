@@ -1,0 +1,47 @@
+$btn-padding-x:                           rem(30px) !default;
+$btn-padding-y:                           rem(12px) !default;
+$btn-line-height:                         1 !default;
+
+$btn-hover-primary-box-shadow:            0px rem(2px) rem(10px) 0px rgba(39,107,242,0.3) !default;  // hover---primary的button的box shadow
+$btn-hover-default-box-shadow:            0px rem(2px) rem(10px) 0px rgba(145,156,179,0.3) !default;  // hover---secondary和default的button的box shadow
+$btn-active-primary-box-shadow:           0px rem(2px) rem(10px) 0px rgba(39,107,242,0.4) !default;  // active---primary的button的box shadow
+$btn-active-box-shadow:                   0px rem(2px) rem(10px) 0px rgba(145,156,179,0.4) !default;  // active---secondary和default的button的box shadow
+
+$btn-transition:                          all .2s cubic-bezier(.4, 0, .2, 1) !default;
+$btn-disabled-color:                      $gray-dark !default;
+$btn-disabled-bg:                         $gray-light !default;
+$btn-disabled-border:                     $gray !default;
+
+$btn-primary-color:                       $brand-pure !default;
+$btn-primary-bg:                          $brand-primary !default;
+$btn-primary-border:                      $btn-primary-bg !default;
+
+$btn-default-color:                       #12203D !default;
+$btn-default-bg:                          transparent !default;
+$btn-default-border:                      $gray !default;
+
+$btn-secondary-color:                     $brand-primary !default;
+$btn-secondary-bg:                        transparent !default;
+$btn-secondary-border:                    $brand-primary !default;
+
+$btn-link-disabled-color:                 $gray-light !default;
+
+$btn-padding-x-sm:                        rem(10px) !default;
+$btn-padding-y-sm:                        rem(9px)  !default;
+$btn-font-size-sm:                        rem(14px) !default;
+
+$btn-padding-x-lg:                        rem(80px) !default;
+$btn-padding-y-lg:                        rem(23px) !default;
+$btn-font-size-lg:                        rem(18px) !default;
+
+$btn-block-spacing-y:                     rem(5px) !default;
+$btn-toolbar-margin:                      rem(15px) !default;
+
+$split-btn-dropdown-toggle-padding-x:     rem(8px) !default;
+$split-btn-lg-dropdown-toggle-padding-x:  rem(12px) !default;
+
+$btn-border-radius:                       $border-radius-sm !default;
+$btn-border-radius-lg:                    $border-radius !default;
+$btn-border-radius-sm:                    $border-radius-sm !default;
+
+$btn-group-active-box-shadow:             rem(2px) rem(2px) rem(6px) $inverse-level-1, rem(-1px) rem(-1px) rem(6px) $inverse-level-1 !default;
