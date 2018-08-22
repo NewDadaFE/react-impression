@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**basic**
+**基本用法**
 
 ```js
 <Form type="horizontal">

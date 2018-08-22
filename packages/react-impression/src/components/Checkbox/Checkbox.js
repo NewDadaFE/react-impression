@@ -81,9 +81,12 @@ export default class Checkbox extends React.PureComponent {
     } = this.props
 
     return (
-      <label {...others} className={classnames('checkbox', className, {
-        'checkbox-indeterminate': indeterminate,
-      })}>
+      <label
+        {...others}
+        className={classnames('checkbox', className, {
+          'checkbox-indeterminate': indeterminate,
+        })}
+      >
         <input
           type='checkbox'
           ref='main'

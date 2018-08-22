@@ -1,0 +1,26 @@
+{
+  "name": "react-impression-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "styleguidist server --config rsg/config.js",
+    "build": "styleguidist build --config rsg/config.js"
+  },
+  "dependencies": {
+    "moment": "^2.22.2",
+    "prop-types": "15.6.2",
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "react-styleguidist": "^7.2.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
+    "url-loader": "^1.1.0",
+    "webpack": "^4.16.5"
+  }
+}

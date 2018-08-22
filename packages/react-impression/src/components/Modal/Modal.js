@@ -57,17 +57,18 @@ class Modal extends React.Component {
   }
 
   render() {
-    const {
-      size,
-      className,
-      children,
-      scrollInside,
-      ...others
-    } = this.props
+    const { size, className, children, scrollInside, ...others } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     return (
-      <div {...others} className={classnames('modal', { 'limit-height': scrollInside }, className)}>
+      <div
+        {...others}
+        className={classnames(
+          'modal',
+          { 'limit-height': scrollInside },
+          className
+        )}
+      >
         <div className={classnames('modal-dialog', sizeClass)}>
           <div className='modal-content slideInDown'>{children}</div>
         </div>

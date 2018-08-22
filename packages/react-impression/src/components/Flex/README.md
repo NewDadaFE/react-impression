@@ -1,6 +1,6 @@
-### Examples
+### 示例
 
-**row**
+**横向默认布局**
 
 ```js
 <Flex direction="row">
@@ -16,7 +16,7 @@
 </Flex>
 ```
 
-**column**
+**纵向默认布局**
 
 ```js
 <Flex direction="column" align="top">
@@ -32,7 +32,7 @@
 </Flex>
 ```
 
-**column-middle**
+**纵向居中布局**
 
 ```js
 <Flex direction="column" align="middle">
@@ -48,7 +48,7 @@
 </Flex>
 ```
 
-**column-bottom**
+**纵向靠右布局**
 
 ```js
 <Flex direction="column" align="bottom">

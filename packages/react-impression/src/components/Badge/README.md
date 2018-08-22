@@ -1,6 +1,6 @@
 ### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 <Row>
@@ -8,36 +8,36 @@
     <Badge content="3">
       <div className="bg-default" style={{ width: 50, height: 50 }} />
     </Badge>
-    <p className="text-primary">primary</p>
+    <p className="text-primary">主题色</p>
   </Col>
   <Col>
     <Badge content="16" theme="secondary">
       <div className="bg-default" style={{ width: 50, height: 50 }} />
     </Badge>
-    <p className="text-secondary">secondary</p>
+    <p className="text-secondary">副主题色</p>
   </Col>
   <Col>
     <Badge content="25" theme="danger">
       <div className="bg-default" style={{ width: 50, height: 50 }} />
     </Badge>
-    <p className="text-danger">danger</p>
+    <p className="text-danger">危险</p>
   </Col>
   <Col>
     <Badge content="33" theme="success">
       <div className="bg-default" style={{ width: 50, height: 50 }} />
     </Badge>
-    <p className="text-success">success</p>
+    <p className="text-success">成功</p>
   </Col>
   <Col>
     <Badge content="99+" theme="inverse">
       <div className="bg-default" style={{ width: 50, height: 50 }} />
     </Badge>
-    <p>inverse</p>
+    <p>反转</p>
   </Col>
 </Row>
 ```
 
-**Dot**
+**小圆点**
 
 ```js
 <Row>
@@ -64,26 +64,26 @@
 </Row>
 ```
 
-**Legend**
+**状态点**
 
 ```js
 <Row>
   <Col>
-    <Badge type="legend">primary</Badge>
+    <Badge type="legend">主题色</Badge>
   </Col>
   <Col>
     <Badge type="legend" theme="danger">
-      danger
+      危险
     </Badge>
   </Col>
   <Col>
     <Badge type="legend" theme="warning">
-      warning
+      警告
     </Badge>
   </Col>
   <Col>
     <Badge type="legend" theme="success">
-      success
+      成功
     </Badge>
   </Col>
 </Row>

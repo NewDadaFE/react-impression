@@ -1,0 +1,19 @@
+language: node_js
+node_js: lts/*
+sudo: false
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+  - export PATH=$HOME/.yarn/bin:$PATH
+cache:
+  yarn: true
+install:
+  - yarn install
+script:
+  - yarn website:build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: next
+  local-dir: packages/react-impression-website/dist

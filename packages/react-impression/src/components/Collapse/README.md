@@ -1,16 +1,16 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 <Collapse>
   <CollapseTitle>
-    <Icon type="bars" left />Common Pages
+    <Icon type="bars" left />公共页面
   </CollapseTitle>
   <CollapseBody>
     <Nav>
       <NavLink>
-        <span>Login</span>
+        <span>登录</span>
       </NavLink>
       <NavLink>
         <a
@@ -18,7 +18,7 @@
           rel="noreferrer noopener"
           target="_blank"
         >
-          500
+          报错页面
         </a>
       </NavLink>
     </Nav>

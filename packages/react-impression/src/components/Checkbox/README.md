@@ -1,38 +1,40 @@
-### Example
+### 示例
 
-**basic**
+**基本用法**
 
 ```js
 <Form type="inline">
   <FormGroup>
-    <label>defaultChecked:</label>
+    <label>默认选中:</label>
     <Checkbox ref="checkbox" defaultChecked>
-      remember me
+      记住我
     </Checkbox>
   </FormGroup>
 </Form>
 ```
 
-**disabled**
+**禁用状态**
 
 ```js
 <Form type="inline">
   <FormGroup>
-    <label>disabled:</label>
-    <Checkbox disabled>remember me</Checkbox>
+    <label>不可用状态:</label>
+    <Checkbox disabled>记住我</Checkbox>
   </FormGroup>
   <FormGroup>
-      <label>disabled-checked:</label>
-      <Checkbox disabled defaultChecked>remember me</Checkbox>
-    </FormGroup>
+    <label>不可用的选中状态:</label>
+    <Checkbox disabled defaultChecked>
+      记住我
+    </Checkbox>
+  </FormGroup>
 </Form>
 ```
 
-**indeterminate**
+**全选**
 
 ```js
-const options = ['number1', 'number2', 'number3', 'number4']
-const optionsCheckedDefault = ['number1', 'number3']
+const options = ['数字1', '数字2', '数字3', '数字4']
+const optionsCheckedDefault = ['数字1', '数字3']
 
 class Indeterminate extends React.Component {
   constructor() {
@@ -49,7 +51,8 @@ class Indeterminate extends React.Component {
   onChange(checkedList) {
     this.setState({
       checkedList,
-      indeterminate: !!checkedList.length && checkedList.length < options.length,
+      indeterminate:
+        !!checkedList.length && checkedList.length < options.length,
       checkAll: checkedList.length === options.length,
     })
   }
@@ -67,7 +70,7 @@ class Indeterminate extends React.Component {
   render() {
     return (
       <div>
-        <div className='offset-b-lg'>
+        <div className="offset-b-lg">
           <Checkbox
             indeterminate={this.state.indeterminate}
             onChange={this.onCheckAllChange}
@@ -88,8 +91,8 @@ class Indeterminate extends React.Component {
       </div>
     )
   }
-};
-<Indeterminate />
+}
+;<Indeterminate />
 ```
 
 ### 变更记录

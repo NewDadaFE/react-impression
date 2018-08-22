@@ -1,39 +1,39 @@
-### Examples
+### 示例
 
-**Inline**
+**行内表单**
 
 ```js
 <Form>
   <FormGroup>
-    <label>Name:</label>
+    <label>姓名:</label>
     <Input type="text" placeholder="Jane Doe" />
   </FormGroup>
   <FormGroup>
-    <label>Email</label>
+    <label>邮箱</label>
     <Input type="text" placeholder="hello@example.com" />
   </FormGroup>
   <FormGroup>
-    <Checkbox defaultChecked>Remember me</Checkbox>
+    <Checkbox defaultChecked>记住我</Checkbox>
   </FormGroup>
-  <Button theme="primary">Search</Button>
+  <Button theme="primary">搜索</Button>
 </Form>
 ```
 
-**Horizontal**
+**表单示例**
 
 ```js
 <Form type="horizontal">
   <FormGroup>
     <Col col="2" className="text-right">
-      <FormControlLabel>Email:</FormControlLabel>
+      <FormControlLabel>邮箱:</FormControlLabel>
     </Col>
     <Col col="10">
-      <Input type="text" placeholder="Email" />
+      <Input type="text" placeholder="hello@example.com" />
     </Col>
   </FormGroup>
   <FormGroup>
     <Col col="2" className="text-right">
-      <FormControlLabel>name:</FormControlLabel>
+      <FormControlLabel>姓名:</FormControlLabel>
     </Col>
     <Col col="10">
       <Input type="password" />
@@ -41,7 +41,7 @@
   </FormGroup>
   <FormGroup>
     <Col col="2" className="text-right">
-      <FormControlLabel>description:</FormControlLabel>
+      <FormControlLabel>备注:</FormControlLabel>
     </Col>
     <Col col="10">
       <Input type="textarea" />
@@ -49,35 +49,23 @@
   </FormGroup>
   <FormGroup className="offset-b-lg">
     <Col col="2" className="text-right">
-      <FormControlLabel>Radios:</FormControlLabel>
+      <FormControlLabel>区域:</FormControlLabel>
     </Col>
     <Col col="10">
       <RadioGroup direction="column">
-        <Radio>
-          Option one is this and that&mdash;be sure to include why it&apos;s
-          great
-        </Radio>
-        <Radio>
-          Option one is this and that&mdash;be sure to include why it&apos;s
-          great
-        </Radio>
-        <Radio>
-          Option one is this and that&mdash;be sure to include why it&apos;s
-          great
-        </Radio>
-        <Radio>
-          Option one is this and that&mdash;be sure to include why it&apos;s
-          great
-        </Radio>
+        <Radio>北京</Radio>
+        <Radio>上海</Radio>
+        <Radio>天津</Radio>
+        <Radio>河北</Radio>
       </RadioGroup>
     </Col>
   </FormGroup>
   <FormGroup>
     <Col col="2" offset="2">
-      <Button theme="primary">Sign in</Button>
+      <Button theme="primary">注册</Button>
     </Col>
     <Col col="2">
-      <Button theme="default">Cancel</Button>
+      <Button theme="default">取消</Button>
     </Col>
   </FormGroup>
 </Form>

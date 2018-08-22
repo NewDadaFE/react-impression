@@ -1,3 +1,4 @@
+const minimist = require('minimist')
 const del = require('del')
 const gulp = require('gulp')
 const plugin = require('gulp-load-plugins')()
@@ -6,6 +7,9 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const babel = require('rollup-plugin-babel')
 const pkg = require('./package.json')
+
+const options = minimist(process.argv.slice(2))
+process.env.NODE_ENV = options.env || 'production'
 
 const clean = () => del(['dist'])
 

@@ -1,23 +1,23 @@
-### Examples
+### 示例
 
-**Fluid**
+**自适应模式**
 
 ```js
-<Image fluid src="http://placehold.it/2500x350" />
+<Image fluid src="https://placehold.it/2500x350" />
 ```
 
-**Shape**
+**多形状模式**
 
 ```js
 <Row>
   <Col>
-    <Image rounded src="http://placehold.it/200x200" />
+    <Image rounded src="https://placehold.it/200x200" />
   </Col>
   <Col>
-    <Image circle src="http://placehold.it/200x200" />
+    <Image circle src="https://placehold.it/200x200" />
   </Col>
   <Col>
-    <Image thumbnail src="http://placehold.it/200x200" />
+    <Image thumbnail src="https://placehold.it/200x200" />
   </Col>
 </Row>
 ```
