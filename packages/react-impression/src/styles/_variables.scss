@@ -299,9 +299,13 @@ $checkbox-addon-indeterminate-color:            $checkbox-addon-checked-color !d
 $checkbox-addon-disabled-border-color:      $gray-light !default;
 
 //== Radio
-$radio-addon-width:                         .6 !default;
-$radio-addon-height:                        $radio-addon-width !default;
-$radio-addon-padding:                       round(($line-height-base - $radio-addon-width) * $font-size-root / 2) !default;
+$radio-addon-size:                          1.28;
+$radio-addon-i-size:                        .4 !default;
+$radio-addon-padding:                       round(($radio-addon-size - $radio-addon-i-size) * $font-size-root / 2 - 1) !default;
+$radio-addon-bg-color:                      $brand-pure;
+$radio-addon-border-color:                  $gray-darker;
+$radio-addon-checked-color:                 $brand-primary;
+$radio-addon-disabled-color:                $gray;
 
 //== Switch
 $switch-width:                              3.14 !default;
@@ -371,9 +375,6 @@ $datepicker-footer-padding:                .75rem 1rem !default;
 
 $checkbox-height:                       round(1.4 * $font-size-root);
 $checkbox-width:                        round(1.4 * $font-size-root);
-
-$radio-height:                          round(1.5 * $font-size-root);
-$radio-width:                           round(1.5 * $font-size-root);
 
 //Upload
 
