@@ -27,27 +27,35 @@ const buttonClickHandle = () => {
 </Row>
 ```
 
-**外轮廓**
+**不可用状态**
 
 ```js
-<Row className="no-margin bg-inverse">
+const buttonClickHandle = () => {
+  console.log('Button clicked')
+}
+;<Row className="no-margin">
   <Col col="2">
     <Card.Block>
-      <Button theme="primary" outline>
+      <Button
+        disabled
+        type="button"
+        theme="primary"
+        onClick={buttonClickHandle}
+      >
         主题色
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
-      <Button theme="default" outline>
+      <Button disabled theme="default">
         默认
       </Button>
     </Card.Block>
   </Col>
   <Col col="2">
     <Card.Block>
-      <Button theme="secondary" outline>
+      <Button disabled theme="secondary">
         副主题色
       </Button>
     </Card.Block>
@@ -59,50 +67,22 @@ const buttonClickHandle = () => {
 
 ```js
 <Row className="no-margin">
-  <Col col="2">
+  <Col col="4">
     <Card.Block>
       <Button theme="primary" size="sm">
-        小
+        小的型号
       </Button>
     </Card.Block>
   </Col>
-  <Col col="2">
+  <Col col="4">
     <Card.Block>
       <Button theme="primary">普通大小</Button>
     </Card.Block>
   </Col>
-  <Col col="2">
+  <Col col="4">
     <Card.Block>
       <Button theme="primary" size="lg">
-        大
-      </Button>
-    </Card.Block>
-  </Col>
-</Row>
-```
-
-**圆角**
-
-```js
-<Row className="no-margin">
-  <Col col="2">
-    <Card.Block>
-      <Button theme="primary" shape="pill">
-        主题色
-      </Button>
-    </Card.Block>
-  </Col>
-  <Col col="2">
-    <Card.Block>
-      <Button theme="default" shape="pill">
-        默认
-      </Button>
-    </Card.Block>
-  </Col>
-  <Col col="2">
-    <Card.Block>
-      <Button theme="secondary" shape="pill">
-        副主题色
+        大的型号
       </Button>
     </Card.Block>
   </Col>

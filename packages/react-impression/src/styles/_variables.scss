@@ -1,4 +1,5 @@
 // Variables
+$rem-baseline: 14px;
 
 @mixin _assert-ascending($map, $map-name) {
     $prev-key: null;
@@ -105,7 +106,7 @@ $font-family-base:        $font-family-sans-serif !default;
 
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
-$font-size-root:    14px !default;
+$font-size-root:    $rem-baseline !default;
 $font-size-base:    1rem !default;
 $font-size-lg:      1.25rem !default;
 $font-size-sm:      .875rem !default;
@@ -196,39 +197,46 @@ $table-inverse-border-color:    $gray;
 
 // Buttons
 //
-$btn-padding-x:                  1rem !default;
-$btn-padding-y:                  .5rem !default;
-$btn-line-height:                1.25 !default;
-$btn-active-box-shadow:          0 2px 6px $inverse-level-2, 0 1px 6px $inverse-level-2 !default;
+$btn-padding-x:                  rem(30px) !default;
+$btn-padding-y:                  rem(12px) !default;
+$btn-line-height:                1 !default;
+$btn-hover-primary-box-shadow:   0px 2px 10px 0px rgba(39,107,242,0.3) !default;  // hover---primary的button的box shadow
+$btn-hover-default-box-shadow:   0px 2px 10px 0px rgba(145,156,179,0.3) !default;  // hover---secondary和default的button的box shadow
+$btn-active-primary-box-shadow:  0px 2px 10px 0px rgba(39,107,242,0.4) !default;  // active---primary的button的box shadow
+$btn-active-box-shadow:          0px 2px 10px 0px rgba(145,156,179,0.4) !default;  // active---secondary和default的button的box shadow
 $btn-transition:                 all .2s cubic-bezier(.4, 0, .2, 1) !default;
+$btn-disabled-color:             $gray-dark !default;
+$btn-disabled-bg:                $gray-light !default;
+$btn-disabled-border:            $gray !default;
 
 $btn-primary-color:              $brand-pure !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
-$btn-default-color:                 #666 !default;
-$btn-default-bg:                    $brand-pure !default;
-$btn-default-border:                #d9d9d9 !default;
+$btn-default-color:              #12203D !default;
+$btn-default-bg:                 transparent !default;
+$btn-default-border:             $gray !default;
 
-$btn-secondary-color:              $brand-pure !default;
-$btn-secondary-bg:                 $brand-secondary !default;
-$btn-secondary-border:             $btn-secondary-bg !default;
+$btn-secondary-color:            $brand-primary !default;
+$btn-secondary-bg:               transparent !default;
+$btn-secondary-border:           $brand-primary !default;
 
 
 $btn-link-disabled-color:        $gray-light !default;
 
-$btn-padding-x-sm:               .5rem !default;
-$btn-padding-y-sm:               .25rem !default;
-$btn-font-size-sm:               .8rem !default;
+$btn-padding-x-sm:               rem(10px) !default;
+$btn-padding-y-sm:               rem(9px)  !default;
+$btn-font-size-sm:               rem(14px) !default;
 
-$btn-padding-x-lg:               1.5rem !default;
-$btn-padding-y-lg:               .75rem !default;
+$btn-padding-x-lg:               rem(80px) !default;
+$btn-padding-y-lg:               rem(23px) !default;
+$btn-font-size-lg:               rem(18px) !default;
 
-$btn-block-spacing-y:            5px !default;
-$btn-toolbar-margin:             15px !default;
+$btn-block-spacing-y:            rem(5px) !default;
+$btn-toolbar-margin:             rem(15px) !default;
 
-$split-btn-dropdown-toggle-padding-x:     8px !default;
-$split-btn-lg-dropdown-toggle-padding-x: 12px !default;
+$split-btn-dropdown-toggle-padding-x:     rem(8px) !default;
+$split-btn-lg-dropdown-toggle-padding-x:  rem(12px) !default;
 
 $btn-border-radius:              $border-radius-sm !default;
 $btn-border-radius-lg:           $border-radius !default;
