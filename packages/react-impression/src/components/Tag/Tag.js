@@ -17,7 +17,7 @@ export default class Tag extends React.PureComponent {
     ]),
 
     /**
-     * 是否outline
+     * 外边框样式
      */
     outline: PropTypes.bool,
 
