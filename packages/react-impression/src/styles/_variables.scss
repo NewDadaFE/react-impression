@@ -1,4 +1,5 @@
 // Variables
+$rem-baseline: 14px;
 
 @mixin _assert-ascending($map, $map-name) {
     $prev-key: null;
@@ -105,7 +106,7 @@ $font-family-base:        $font-family-sans-serif !default;
 
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
-$font-size-root:    14px !default;
+$font-size-root:    $rem-baseline !default;
 $font-size-base:    1rem !default;
 $font-size-lg:      1.25rem !default;
 $font-size-sm:      .875rem !default;
@@ -647,28 +648,7 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 $tooltip-transition:          all .36s cubic-bezier(.4, 0, .2, 1) !default;
 
 // Popovers
-
-$popover-bg:                          $brand-pure !default;
-$popover-max-width:                   276px !default;
-$popover-border-width:                $border-width !default;
-$popover-border-color:                rgba($gray-secondary, .2) !default;
-$popover-box-shadow:                  0 2px 6px $inverse-level-2 !default;
-
-$popover-title-bg:                    $gray-secondary !default;
-$popover-title-color:                 $brand-pure;
-$popover-title-padding-x:             .8rem !default;
-$popover-title-padding-y:             .4rem !default;
-$popover-title-font-size:             1.1rem;
-
-$popover-content-padding-x:           .8rem !default;
-$popover-content-padding-y:           .6rem !default;
-
-$popover-arrow-width:                 6px !default;
-$popover-arrow-color:                 $popover-bg !default;
-
-$popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
-$popover-arrow-outer-color:           fade-in($popover-border-color, .2) !default;
-
+@import "variables/popover";
 
 // Tags
 

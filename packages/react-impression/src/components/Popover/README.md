@@ -1,5 +1,7 @@
 ### 示例
 
+**基本用法**
+
 ```js
 initialState = {
   content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',
@@ -27,3 +29,35 @@ initialState = {
   </Col>
 </Row>
 ```
+
+**激活方式**
+
+```js
+initialState = {
+  content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',
+}
+;<Row>
+  <Col>
+    <Popover position="right" title="标题" content={state.content}>
+      <Button theme="primary">默认是hover激活</Button>
+    </Popover>
+  </Col>
+  <Col>
+    <Popover
+      trigger="click"
+      position="left"
+      title="标题"
+      content={state.content}
+    >
+      <Button theme="primary">点击激活</Button>
+    </Popover>
+  </Col>
+</Row>
+```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 $popover-margin sass 变量
+* 新增 trigger 参数

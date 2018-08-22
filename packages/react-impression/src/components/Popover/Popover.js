@@ -1,5 +1,7 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { isDescendentNode } from '../../utils/dom'
 
 export default class Popover extends React.PureComponent {
   static propTypes = {
@@ -19,10 +21,21 @@ export default class Popover extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.element.isRequired,
+    /**
+     * 触发方式
+     */
+    trigger: PropTypes.oneOf(['click', 'hover']),
   }
 
   static defaultProps = {
     position: 'right',
+    trigger: 'hover',
+  }
+
+  constructor(props) {
+    super(props)
+    this.reference = null
+    this.popover = null
   }
 
   /**
@@ -30,12 +43,12 @@ export default class Popover extends React.PureComponent {
    * @param targetRect
    */
   createPopover(targetRect) {
-    let { position, title, content } = this.props,
-      positionClass = `popover-${position}`,
-      popoverNode = document.createElement('div'),
-      arrowNode = document.createElement('div'),
-      titleNode = document.createElement('div'),
-      contentNode = document.createElement('div')
+    const { position, title, content } = this.props
+    const positionClass = `popover-${position}`
+    let popoverNode = document.createElement('div')
+    let arrowNode = document.createElement('div')
+    let titleNode = document.createElement('div')
+    let contentNode = document.createElement('div')
 
     popoverNode.className = `popover ${positionClass}`
     arrowNode.className = 'popover-arrow'
@@ -49,7 +62,8 @@ export default class Popover extends React.PureComponent {
     popoverNode.appendChild(contentNode)
 
     document.body.appendChild(popoverNode)
-    let popoverRect = popoverNode.getBoundingClientRect()
+
+    const popoverRect = popoverNode.getBoundingClientRect()
 
     // 计算left、top
     switch (position) {
@@ -92,26 +106,73 @@ export default class Popover extends React.PureComponent {
    */
   onMouseOut = () => {
     document.body.removeChild(this.popover)
+    this.popover = null
+  }
+  /**
+   * 点击事件触发popover的显示与否
+   */
+  onChildClick = event => {
+    if (this.popover === null || this.popover === undefined) {
+      this.onMouseOver(event)
+    } else {
+      this.onMouseOut()
+    }
+  }
+
+  componentDidMount() {
+    const { trigger } = this.props
+    this.referenceDom = ReactDOM.findDOMNode(this.reference)
+
+    if (trigger === 'click') {
+      document.addEventListener('click', e => {
+        // 如果还没生成popover的节点，或者依附的子节点不存在，或者依附的子节点包含点击的target，则不触发点击事件
+        if (
+          !this.popover ||
+          !this.referenceDom ||
+          this.referenceDom.contains(e.target)
+        ) { return }
+        // 检查popover生成的节点是否包含点击的target，包含则不触发，代码参照utils/dom, utils/system
+        if (
+          !isDescendentNode(this.popover, e.target) ||
+          (event.path && event.path.indexOf(componentDom) === -1)
+        ) {
+          this.onMouseOut()
+        }
+      })
+    }
   }
 
   render() {
-    let { children } = this.props
-    const { onMouseOver, onMouseOut } = children.props
+    let { children, trigger } = this.props
+    const { onMouseOver, onMouseOut, onClick } = children.props
 
-    children = React.cloneElement(children, {
-      onMouseOver: onMouseOver
-        ? event => {
-          onMouseOver()
+    let triggerProps = {
+      ref: ref => (this.reference = ref),
+    }
+
+    if (trigger === 'hover') {
+      triggerProps = {
+        ...triggerProps,
+        onMouseOver: event => {
+          onMouseOver && onMouseOver(event)
           this.onMouseOver(event)
-        }
-        : this.onMouseOver,
-      onMouseOut: onMouseOut
-        ? event => {
-          onMouseOut()
+        },
+        onMouseOut: event => {
+          onMouseOut && onMouseOut(event)
           this.onMouseOut(event)
-        }
-        : this.onMouseOut,
-    })
+        },
+      }
+    } else if (trigger === 'click') {
+      triggerProps = {
+        ...triggerProps,
+        onClick: event => {
+          onClick && onClick(event)
+          this.onChildClick(event)
+        },
+      }
+    }
+
+    children = React.cloneElement(children, triggerProps)
 
     return children
   }
