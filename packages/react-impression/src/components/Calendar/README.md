@@ -121,13 +121,13 @@ class CalendarView extends React.Component {
       <div>
         <h3>基本形式</h3>
         <Card>
-          <Card.Block>
+          <CardBlock>
             <Calendar />
-          </Card.Block>
+          </CardBlock>
         </Card>
         <h3>小尺寸</h3>
         <Card>
-          <Card.Block>
+          <CardBlock>
             <Row>
               <Col>
                 <Calendar size="sm" />
@@ -141,13 +141,13 @@ class CalendarView extends React.Component {
                 />
               </Col>
             </Row>
-          </Card.Block>
+          </CardBlock>
         </Card>
         <h3>自定义模块内容</h3>
         <Card>
-          <Card.Block>
+          <CardBlock>
             <Calendar cellRender={this.customDateCellRender} />
-          </Card.Block>
+          </CardBlock>
         </Card>
       </div>
     )
