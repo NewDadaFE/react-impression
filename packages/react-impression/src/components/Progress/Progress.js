@@ -8,7 +8,7 @@ const getProgress = (percent, max) => {
   } else if (percent > max) {
     return max
   }
-  return Math.round((percent / max) * 10000) / 100.0
+  return Math.round(percent / max * 10000) / 100.0
 }
 
 export default class Progress extends React.PureComponent {
@@ -22,11 +22,6 @@ export default class Progress extends React.PureComponent {
      * 设置进度条样式
      */
     theme: PropTypes.oneOf(['success', 'warning', 'danger']),
-
-    /**
-     * 是否为斑马线样式
-     */
-    striped: PropTypes.bool,
 
     /**
      * 进度值，必填
@@ -55,10 +50,9 @@ export default class Progress extends React.PureComponent {
   }
 
   static defaultProps = {
-    striped: false,
-    showInfo: false,
+    showInfo: true,
     max: 100,
-    strokeWidth: 12,
+    strokeWidth: 10,
     formatter: percentNumber => `${percentNumber}%`,
   }
 
@@ -66,7 +60,6 @@ export default class Progress extends React.PureComponent {
     const prefix = 'progress'
     const {
       theme,
-      striped,
       value,
       max,
       className,
@@ -76,7 +69,6 @@ export default class Progress extends React.PureComponent {
       ...others
     } = this.props
     const themeClass = theme ? `${prefix}-${theme}` : ''
-    const stripedClass = striped ? `${prefix}-striped` : ''
     const showInfoClass = showInfo ? `${prefix}-show-info` : ''
 
     const percentStyle = {
@@ -87,13 +79,7 @@ export default class Progress extends React.PureComponent {
     return (
       <div
         {...others}
-        className={classnames(
-          prefix,
-          themeClass,
-          stripedClass,
-          showInfoClass,
-          className
-        )}
+        className={classnames(prefix, themeClass, showInfoClass, className)}
       >
         <div className={`${prefix}-outer`}>
           <div className={`${prefix}-inner`}>
