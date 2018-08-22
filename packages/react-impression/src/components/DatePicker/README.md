@@ -1,13 +1,13 @@
-### Examples
+### 示例
 
-**Basic**
+**基本用法**
 
 ```js
 <Row>
   <Col>
     <Form>
       <FormGroup>
-        <label>basic:</label>
+        <label>默认:</label>
         <Input type="date" />
       </FormGroup>
     </Form>
@@ -15,7 +15,7 @@
   <Col>
     <Form>
       <FormGroup>
-        <label>defaultValue:</label>
+        <label>默认值（非受控组件）:</label>
         <Input type="date" defaultValue="2016-05-29" />
       </FormGroup>
     </Form>
@@ -23,7 +23,7 @@
   <Col>
     <Form>
       <FormGroup>
-        <label>disabled:</label>
+        <label>禁用状态:</label>
         <Input type="date" defaultValue="2016-05-29" disabled />
       </FormGroup>
     </Form>
@@ -31,14 +31,14 @@
 </Row>
 ```
 
-**Limit**
+**限制日期**
 
 ```js
 <Row>
   <Col>
     <Form>
       <FormGroup>
-        <label>min:</label>
+        <label>最小值:</label>
         <Input type="date" defaultValue="2016-05-29" minDate="2016-05-15" />
       </FormGroup>
     </Form>
@@ -46,7 +46,7 @@
   <Col>
     <Form>
       <FormGroup>
-        <label>max:</label>
+        <label>最大值:</label>
         <Input type="date" defaultValue="2016-05-29" maxDate="2016-05-31" />
       </FormGroup>
     </Form>
@@ -54,7 +54,7 @@
   <Col>
     <Form>
       <FormGroup>
-        <label>first day:</label>
+        <label>设置每周第一天是星期几:</label>
         <Input type="date" defaultValue="2016-05-29" firstDayOfWeek={1} />
       </FormGroup>
     </Form>
@@ -62,14 +62,14 @@
 </Row>
 ```
 
-**Format**
+**格式化**
 
 ```js
 <Row>
   <Col>
     <Form>
       <FormGroup>
-        <label>Y-M-D:</label>
+        <label>年-月-日:</label>
         <Input type="date" defaultValue="2016-5-29" format="Y-M-D" />
       </FormGroup>
     </Form>
@@ -77,7 +77,7 @@
   <Col>
     <Form>
       <FormGroup>
-        <label>Y/MM/DD:</label>
+        <label>年/月月/日日:</label>
         <Input type="date" defaultValue="2016/05/29" format="YYYY/MM/DD" />
       </FormGroup>
     </Form>
@@ -97,7 +97,7 @@
 </Row>
 ```
 
-**Month**
+**月份选择**
 
 ```js
 <Row>
