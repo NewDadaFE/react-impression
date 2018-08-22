@@ -8,21 +8,21 @@ const buttonClickHandle = () => {
 }
 ;<Row className="no-margin">
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button type="button" theme="primary" onClick={buttonClickHandle}>
         主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="default">默认</Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="secondary">副主题色</Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
@@ -35,7 +35,7 @@ const buttonClickHandle = () => {
 }
 ;<Row className="no-margin">
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button
         disabled
         type="button"
@@ -44,21 +44,21 @@ const buttonClickHandle = () => {
       >
         主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button disabled theme="default">
         默认
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button disabled theme="secondary">
         副主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
@@ -68,23 +68,23 @@ const buttonClickHandle = () => {
 ```js
 <Row className="no-margin">
   <Col col="4">
-    <Card.Block>
+    <CardBlock>
       <Button theme="primary" size="sm">
         小的型号
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="4">
-    <Card.Block>
+    <CardBlock>
       <Button theme="primary">普通大小</Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="4">
-    <Card.Block>
+    <CardBlock>
       <Button theme="primary" size="lg">
         大的型号
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
@@ -94,25 +94,25 @@ const buttonClickHandle = () => {
 ```js
 <Row className="no-margin">
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="primary" href="https://www.github.com">
         主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="default" href="https://www.github.com">
         默认
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="secondary" href="https://www.github.com">
         副主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
