@@ -5,6 +5,10 @@ import ModalHeader from '../ModalHeader'
 import ModalBody from '../ModalBody'
 import ModalFooter from '../ModalFooter'
 
+const KeyCode = {
+  ESC: 27,
+}
+
 class Modal extends React.Component {
   static propTypes = {
     /**
@@ -26,18 +30,40 @@ class Modal extends React.Component {
      * Modal是否内部滚动
      */
     scrollInside: PropTypes.bool,
+    /**
+     * 是否支持键盘esc关闭
+     */
+    keyboard: PropTypes.bool,
+
+    /**
+     * keyboard关闭modal的触发函数，只有当keyboard为true的时候才会触发
+     */
+    onClose: PropTypes.func,
   }
 
   static defaultProps = {
+    keyboard: true,
     scrollInside: false,
+  }
+
+  getWrap = ref => {
+    this.wrap = ref
   }
 
   componentDidMount() {
     this.disableScroll()
+    this.wrap.focus()
   }
 
   componentWillUnmount() {
     this.enableScroll()
+  }
+
+  onKeyDown(e) {
+    const { keyboard, onClose } = this.props
+    if (keyboard && e.keyCode === KeyCode.ESC) {
+      onClose && onClose(e)
+    }
   }
 
   disableScroll() {
@@ -63,6 +89,9 @@ class Modal extends React.Component {
     return (
       <div
         {...others}
+        ref={this.getWrap}
+        tabIndex={-1}
+        onKeyDown={e => this.onKeyDown(e)}
         className={classnames(
           'modal',
           { 'limit-height': scrollInside },

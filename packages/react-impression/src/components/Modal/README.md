@@ -37,6 +37,43 @@ initialState = {
 </div>
 ```
 
+**支持键盘 esc 关闭**
+
+```js
+const toggleModalHandle = () => {
+  setState({
+    isShow: !state.isShow,
+  })
+}
+initialState = {
+  isShow: false,
+}
+;<div>
+  <Button theme="primary" onClick={toggleModalHandle}>
+    打开Modal按下esc关闭
+  </Button>
+  {state.isShow && (
+    <Modal onClose={toggleModalHandle}>
+      <ModalHeader>
+        <Button close onClick={toggleModalHandle}>
+          &times;
+        </Button>
+        <h5 className="no-margin">弹窗标题</h5>
+      </ModalHeader>
+      <ModalBody>
+        <p>内容&hellip;</p>
+      </ModalBody>
+      <ModalFooter>
+        <Button theme="default" onClick={toggleModalHandle}>
+          关闭
+        </Button>
+        <Button theme="primary">保存</Button>
+      </ModalFooter>
+    </Modal>
+  )}
+</div>
+```
+
 **小尺寸弹窗**
 
 ```js
@@ -203,4 +240,11 @@ class Overflow extends React.Component {
 v2.0.0
 
 * 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
+* 废弃 modal-footer-border-color 这个 sass 变量
+* 废弃 modal-footer-border-width 这个 sass 变量
+* 废弃 modal-inner-padding-sm 这个 sass 变量
+
 * 新增 scrollInside 参数
+* 新增 keyboard 参数
+* 新增 onClose 参数
+* 新增 modal-inner-padding-lg 这个 sass 变量
