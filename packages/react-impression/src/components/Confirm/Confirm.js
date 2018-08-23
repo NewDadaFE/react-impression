@@ -46,6 +46,30 @@ export default class Confirm extends React.PureComponent {
     cancelText: '取消',
   }
 
+  componentDidMount() {
+    this.disableScroll()
+  }
+
+  componentWillUnmount() {
+    this.enableScroll()
+  }
+
+  disableScroll() {
+    const documentBody = document.body
+
+    if (documentBody) {
+      documentBody.style.setProperty('overflow', 'hidden')
+    }
+  }
+
+  enableScroll() {
+    const documentBody = document.body
+
+    if (documentBody) {
+      documentBody.style.removeProperty('overflow')
+    }
+  }
+
   /**
    * 根据类型获取Icon
    * @return String Icon类型
@@ -82,12 +106,12 @@ export default class Confirm extends React.PureComponent {
           </div>
           <div className='confirm-body'>{children}</div>
           <div className='confirm-footer'>
-            <div className='confirm-btn-sure' onClick={onOkClick}>
-              {okText}
-            </div>
-            <div className='confirm-btn-cancel' onClick={onCancelClick}>
+            <Button theme='default' onClick={onCancelClick}>
               {cancelText}
-            </div>
+            </Button>
+            <Button theme='primary' onClick={onOkClick}>
+              {okText}
+            </Button>
           </div>
         </div>
       </div>
