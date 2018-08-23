@@ -282,40 +282,13 @@ $input-group-addon-font-size-lg:            $font-size-lg !default;
 $input-group-addon-font-size-sm:            $font-size-sm !default;
 
 //== Checkbox
-$checkbox-label-space-x:                    $spacer-y / 2 !default;
-$checkbox-space-x:                          $spacer-y !default;
-$checkbox-space-y:                          $spacer-y !default;
-$checkbox-addon-size:                       1.28;
-$checkbox-addon-i-size:                     .7 !default;
-$checkbox-addon-padding:                    round(($checkbox-addon-size - $checkbox-addon-i-size) * $font-size-root / 2 - 1) !default;
-$checkbox-addon-border-color:               $gray-darker !default;
-$checkbox-addon-border-radius:              $border-radius-sm !default;
-$checkbox-addon-transtion:                  all .2s ease !default;
-$checkbox-addon-bg-color:                   $brand-pure !default;
-$checkbox-addon-checked-color:              $brand-primary !default;
-$checkbox-addon-disabled-color:             $gray !default;
-$checkbox-addon-indeterminate-color:        $checkbox-addon-checked-color !default;
-$checkbox-addon-disabled-border-color:      $gray-light !default;
-$checkbox-addon-scale:                      .72;
+@import "variables/checkbox";
 
 //== Radio
-$radio-addon-size:                          1.28;
-$radio-addon-i-size:                        .4 !default;
-$radio-addon-padding:                       round(($radio-addon-size - $radio-addon-i-size) * $font-size-root / 2 - 1) !default;
-$radio-addon-bg-color:                      $brand-pure;
-$radio-addon-border-color:                  $gray-darker;
-$radio-addon-checked-color:                 $brand-primary;
-$radio-addon-disabled-color:                $gray;
+@import "variables/radio";
 
 //== Switch
-$switch-width:                              3.14 !default;
-$switch-bg:                                 $gray !default;
-$switch-addon-bg:                           $brand-pure !default;
-$switch-addon-active-bg:                    $brand-primary;
-$switch-addon-width:                        1.3 !default;
-$switch-addon-height:                       $switch-addon-width !default;
-$switch-addon-padding:                      round(($switch-addon-width / 3) * $font-size-root / 2) !default;
-$switch-addon-translate-x:                  translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
+@import "variables/switch";
 
 //== Select
 $select-line-height:                        $input-line-height !default;
