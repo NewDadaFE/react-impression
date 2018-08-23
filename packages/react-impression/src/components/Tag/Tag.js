@@ -22,6 +22,11 @@ export default class Tag extends React.PureComponent {
     outline: PropTypes.bool,
 
     /**
+     * 标签形状
+     */
+    shape: PropTypes.oneOf(['pill']),
+
+    /**
      * 是否可删除
      */
     closable: PropTypes.bool,
