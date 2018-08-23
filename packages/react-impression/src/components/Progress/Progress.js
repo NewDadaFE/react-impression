@@ -2,13 +2,13 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const getProgress = (percent, max) => {
-  if (!percent || percent < 0) {
+const getProgress = (value, max) => {
+  if (!value || value < 0) {
     return 0
-  } else if (percent > max) {
+  } else if (value > max) {
     return max
   }
-  return Math.round(percent / max * 10000) / 100.0
+  return Math.round(value / max * 10000) / 100
 }
 
 export default class Progress extends React.PureComponent {

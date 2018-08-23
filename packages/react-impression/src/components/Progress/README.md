@@ -57,6 +57,7 @@ v 2.0.0
 * 新增 strokeWidth 属性
 * 新增 showInfo 属性
 * 新增 formatter 属性
+* 移除 striped 属性
 * 新增 progress-info-default-color sass 变量
 * 新增 progress-info-width sass 变量
 * 新增 progress-info-margin-left sass 变量
