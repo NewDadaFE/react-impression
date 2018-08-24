@@ -6,7 +6,7 @@ $checkbox-addon-size:                       1.28;
 $checkbox-addon-i-size:                     .7 !default;
 $checkbox-addon-padding:                    round(($checkbox-addon-size - $checkbox-addon-i-size) * $font-size-root / 2 - 1) !default;
 $checkbox-addon-border-color:               $gray-darker !default;
-$checkbox-addon-border-radius:              2px !default;
+$checkbox-addon-border-radius:              rem(2px) !default;
 $checkbox-addon-transtion:                  all .2s ease !default;
 $checkbox-addon-bg-color:                   $brand-pure !default;
 $checkbox-addon-checked-color:              $brand-primary !default;
