@@ -515,7 +515,7 @@ export default class Select extends React.PureComponent {
 
         <i
           className={classnames('fa', {
-            'fa-angle-down': !searchable,
+            'fa-chevron-down': !searchable,
             'select-addon': !searchable,
             'fa-search': searchable,
             'select-search': searchable,

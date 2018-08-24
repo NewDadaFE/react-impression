@@ -99,7 +99,7 @@
   }
   .select-search {
     right: $input-padding-x;
-    top: $input-padding-y;
+    height: 2.142rem;
   }
 }
 
@@ -202,9 +202,9 @@
   position: absolute;
   color: $gray;
   right: 1px;
+  font-size: 1.25rem;
   top: 5px;
   z-index: 2;
-  line-height: $select-line-height;
   padding: $input-padding-y $input-padding-x;
 }
 
