@@ -42,7 +42,7 @@
     padding: $radio-addon-padding;
     transition: $checkbox-addon-transtion;
     vertical-align: middle;
-    border: 2px solid $radio-addon-border-color;
+    border: $radio-addon-border-width solid $radio-addon-border-color;
     border-radius: 50%;
     background-color: $radio-addon-bg-color;
 

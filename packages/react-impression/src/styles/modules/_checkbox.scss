@@ -105,7 +105,7 @@
     line-height: 1;
     transition: $checkbox-addon-transtion;
     vertical-align: middle;
-    border: 2px solid $checkbox-addon-border-color;
+    border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
     border-radius: $checkbox-addon-border-radius;
     background-color: $checkbox-addon-bg-color;
 
