@@ -77,6 +77,7 @@
         .checkbox-addon {
             width: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
             height: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root);
+            border-color: $checkbox-addon-checked-color;
 
             &::before {
                 position: relative;
@@ -93,7 +94,7 @@
         }
 
         input:disabled + .checkbox-addon::before {
-            border-color: $checkbox-addon-disabled-border-color;
+            border-color: $checkbox-addon-disabled-color;
         }
     }
 }
