@@ -144,7 +144,7 @@ $line-height-sm:         1.5 !default;
 $border-width:           1px !default;
 $border-radius:          4px !default;
 $border-radius-lg:       6px !default;
-$border-radius-sm:       1px !default;
+$border-radius-sm:       2px !default;
 
 $component-active-color: $brand-pure !default;
 $component-active-bg:    mix($brand-pure, $brand-primary, 60%) !default;
@@ -557,33 +557,27 @@ $nav-stacked-items-padding:                      .75rem 1rem !default;
 
 
 // Pagination
-$pagination-padding-x:                .8rem !default;
-$pagination-padding-y:                .4rem !default;
-$pagination-padding-x-sm:             .75rem !default;
-$pagination-padding-y-sm:             .275rem !default;
-$pagination-padding-x-lg:             1.5rem !default;
-$pagination-padding-y-lg:             .75rem !default;
+$pagination-padding-x:                .83rem !default;
+$pagination-padding-y:                .47rem !default;
 
-
-$pagination-color:                     $gray-light !default;
+$pagination-color:                     $gray-base !default;
 $pagination-bg:                        $brand-pure !default;
 $pagination-border-width:              $border-width !default;
-$pagination-border-color:              #ddd !default;
+$pagination-border-color:              $gray-light !default;
+$pagination-ellipsis-color:            $gray-darker !default;
+$pagination-ellipsis-padding:          10px !default;
 $pagination-transition:                all .2s cubic-bezier(.4, 0, .2, 1) !default;
+$pagination-border-radius:             $border-radius-sm !default;
 
-$pagination-hover-color:               $brand-primary !default;
-$pagination-hover-bg:                  $brand-pure !default;
-$pagination-hover-border:              $brand-primary !default;
+$pagination-hover-box-shadow:          0 2px 10px 0 rgba($gray-darker, .3);
 
-$pagination-active-color:              $brand-pure !default;
-$pagination-active-bg:                 $brand-primary !default;
+$pagination-active-color:              $brand-primary !default;
 $pagination-active-border:             $brand-primary !default;
 
-$pagination-disabled-color:            $gray-light !default;
-$pagination-disabled-bg:               $brand-pure !default;
-$pagination-disabled-border:           #ddd !default;
+$pagination-disabled-color:            $gray !default;
 
-$page-item-spacer-x:                   .6rem;
+$pagination-fa-scale:                  .72;
+$pagination-item-spacer-x:                   .43rem;
 
 
 // Jumbotron

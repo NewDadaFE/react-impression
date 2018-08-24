@@ -10,26 +10,26 @@
 .page-item {
     display: inline-block; // Remove list-style and block-level defaults
     &:not(:last-child) {
-        margin-right: $page-item-spacer-x;
+        margin-right: $pagination-item-spacer-x;
     }
 
     &.active .page-link {
         color: $pagination-active-color;
         cursor: default;
-        background-color: $pagination-active-bg;
         border-color: $pagination-active-border;
     }
 
     &.disabled {
-        opacity: .5;
         cursor: $cursor-disabled;
 
         .page-link {
             color: $pagination-disabled-color;
             pointer-events: none;
-            background-color: $pagination-disabled-bg;
-            border-color: $pagination-disabled-border;
         }
+    }
+    .fa-ellipsis-h {
+        color: $pagination-ellipsis-color;
+        padding: 0 $pagination-ellipsis-padding;
     }
 }
 
@@ -41,13 +41,14 @@
     background-color: $pagination-bg;
     border: $pagination-border-width solid $pagination-border-color;
     transition: $pagination-transition;
+    border-radius: $pagination-border-radius;
 
+    i {
+        transform: scale($pagination-fa-scale);
+    }
 
     &:hover {
-        color: $pagination-hover-color;
-        background-color: $pagination-hover-bg;
-        border-color: $pagination-hover-border;
-        box-shadow: $btn-active-box-shadow;
+        box-shadow: $pagination-hover-box-shadow;
         text-decoration: none;
     }
 }
