@@ -35,7 +35,12 @@
 
 .page-link {
     position: relative;
+    display: inline-block;
+    min-width: $pagination-link-min-size;
+    min-height: $pagination-link-min-size;
+    line-height: $pagination-link-line-height;
     padding: $pagination-padding-y $pagination-padding-x;
+    vertical-align: middle;
     color: $pagination-color;
     text-decoration: none;
     background-color: $pagination-bg;

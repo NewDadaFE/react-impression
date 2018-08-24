@@ -554,31 +554,8 @@ $nav-pills-link-hover-border-color:              $nav-tabs-link-hover-border-col
 
 $nav-stacked-items-padding:                      .75rem 1rem !default;
 
-
-
 // Pagination
-$pagination-padding-x:                .83rem !default;
-$pagination-padding-y:                .47rem !default;
-
-$pagination-color:                     $gray-base !default;
-$pagination-bg:                        $brand-pure !default;
-$pagination-border-width:              $border-width !default;
-$pagination-border-color:              $gray-light !default;
-$pagination-ellipsis-color:            $gray-darker !default;
-$pagination-ellipsis-padding:          10px !default;
-$pagination-transition:                all .2s cubic-bezier(.4, 0, .2, 1) !default;
-$pagination-border-radius:             $border-radius-sm !default;
-
-$pagination-hover-box-shadow:          0 2px 10px 0 rgba($gray-darker, .3);
-
-$pagination-active-color:              $brand-primary !default;
-$pagination-active-border:             $brand-primary !default;
-
-$pagination-disabled-color:            $gray !default;
-
-$pagination-fa-scale:                  .72;
-$pagination-item-spacer-x:                   .43rem;
-
+@import "variables/pagination";
 
 // Jumbotron
 

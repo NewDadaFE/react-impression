@@ -74,3 +74,5 @@ v2.0.0
 
 * 废弃`ellipsis`属性，自动显示省略号。
 * 新增`lastContent`、`nextContent`属性，支持自定义翻页控制按钮内容。
+* 新增 scss 变量`$pagination-link-min-size`表示页码按钮最小尺寸。
+* 新增 scss 变量`$pagination-link-line-height`表示页码按钮行高。
