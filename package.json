@@ -12,13 +12,18 @@
   "devDependencies": {
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
+    "node-fetch": "^2.2.0",
     "prettier-standard": "^8.0.1"
   },
   "eslintConfig": {
     "rules": {
       "space-before-function-paren": [
         "error",
-        { "anonymous": "always", "named": "never", "asyncArrow": "always" }
+        {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+        }
       ],
       "comma-dangle": ["error", "always-multiline"]
     }
