@@ -19,6 +19,7 @@ form {
     background-image: none;
     background-clip: padding-box;
     border: $input-btn-border-width solid $input-border-color;
+    @include border-radius($input-border-radius);
     transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
 
     &::-ms-expand {
@@ -194,6 +195,7 @@ input[type="month"] {
 
         > label {
             display: block;
+            color: $form-group-label-color;
             margin-bottom: $form-group-inline-label-margin-bottom;
         }
     }

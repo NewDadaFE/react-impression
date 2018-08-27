@@ -3,7 +3,7 @@ $input-padding-y:                rem(10.25px) !default;
 $input-line-height:              1.25 !default;
 $input-bg:                       $brand-pure !default;
 $input-bg-disabled:              $gray-lighter !default;
-$input-color:                    $gray-darker !default;
+$input-color:                    $gray-base !default;
 $input-border-color:             $gray !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-border-radius:            2px !default;
@@ -28,6 +28,7 @@ $input-height:                   (($font-size-base * $line-height-base) + ($inpu
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)) !default;
 
+$form-group-label-color:                    $gray-base !default;
 $form-group-margin-bottom:                  $spacer-y !default;
 $form-group-inline-label-margin-bottom:     rem(14px) !default;
 $form-group-inline-btn-margin-left:         rem(30px) !default;
