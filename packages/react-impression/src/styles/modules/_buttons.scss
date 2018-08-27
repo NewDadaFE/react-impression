@@ -167,12 +167,12 @@ $btn-default-args: (
 
 .btn-lg {
     // line-height: ensure even-numbered height of button next to large input
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
 }
 
 .btn-sm {
     // line-height: ensure proper height of button next to small input
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
 }
 
 
