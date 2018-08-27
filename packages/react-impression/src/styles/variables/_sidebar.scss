@@ -1,0 +1,34 @@
+//Sidebar
+$sidebar-width: 16% !default;
+$sidebar-color: $gray-light !default;
+$sidebar-bg: $gray-secondary !default;
+
+$sidebar-header-bg: url(../images/logo.png) center center no-repeat !default;
+$sidebar-header-bg-color: mix($sidebar-bg, $navbar-primary-bg, 90%) !default;
+$sidebar-header-bottom-border-color: darken(
+  $sidebar-header-bg-color,
+  6%
+) !default;
+$sidebar-header-font-size: $font-size-lg !default;
+$sidebar-header-color: $gray-lighter !default;
+$sidebar-header-border-right-color: transparent !default;
+
+$sidebar-body-padding-top: 0 !default;
+$sidebar-body-padding-bottom: 4rem !default;
+$sidebar-body-border-right-color: transparent !default;
+
+$sidebar-footer-height: 3rem !default;
+$sidebar-footer-bg: darken($sidebar-bg, 3%) !default;
+$sidebar-footer-box-shadow: 0 -1px 0 darken($sidebar-footer-bg, 3%) !default;
+$sidebar-footer-font-size: $font-size-sm !default;
+
+$sidebar-nav-item-indent: 0 !default;
+$sidebar-nav-item-margin: 0 !default;
+$sidebar-nav-link-color: #a7b1c2 !default;
+$sidebar-nav-link-padding: 0.6rem 1.2rem !default;
+$sidebar-nav-link-border-width: 2px !default;
+$sidebar-nav-link-active-bg: darken($sidebar-bg, 4%) !default;
+$sidebar-nav-link-active-color: $brand-pure !default;
+$sidebar-nav-link-active-border-color: $brand-primary !default;
+$sidebar-nav-link-active-box-shadow: inset 0 0 1px
+  darken($sidebar-nav-link-active-bg, 2%) !default;
