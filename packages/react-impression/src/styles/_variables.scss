@@ -204,46 +204,7 @@ $table-inverse-thead-color: $brand-pure;
 $table-inverse-border-color: $gray;
 
 // Buttons
-//
-$btn-padding-x: 1rem !default;
-$btn-padding-y: 0.5rem !default;
-$btn-line-height: 1.25 !default;
-$btn-active-box-shadow: 0 2px 6px $inverse-level-2, 0 1px 6px $inverse-level-2 !default;
-$btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !default;
-
-$btn-primary-color: $brand-pure !default;
-$btn-primary-bg: $brand-primary !default;
-$btn-primary-border: $btn-primary-bg !default;
-
-$btn-default-color: #666 !default;
-$btn-default-bg: $brand-pure !default;
-$btn-default-border: #d9d9d9 !default;
-
-$btn-secondary-color: $brand-pure !default;
-$btn-secondary-bg: $brand-secondary !default;
-$btn-secondary-border: $btn-secondary-bg !default;
-
-$btn-link-disabled-color: $gray-light !default;
-
-$btn-padding-x-sm: 0.5rem !default;
-$btn-padding-y-sm: 0.25rem !default;
-$btn-font-size-sm: 0.8rem !default;
-
-$btn-padding-x-lg: 1.5rem !default;
-$btn-padding-y-lg: 0.75rem !default;
-
-$btn-block-spacing-y: 5px !default;
-$btn-toolbar-margin: 15px !default;
-
-$split-btn-dropdown-toggle-padding-x: 8px !default;
-$split-btn-lg-dropdown-toggle-padding-x: 12px !default;
-
-$btn-border-radius: $border-radius-sm !default;
-$btn-border-radius-lg: $border-radius !default;
-$btn-border-radius-sm: $border-radius-sm !default;
-
-$btn-group-active-box-shadow: 2px 2px 6px $inverse-level-1,
-  -1px -1px 6px $inverse-level-1 !default;
+@import "variables/button";
 
 // Forms
 $input-padding-x: 0.75rem !default;
