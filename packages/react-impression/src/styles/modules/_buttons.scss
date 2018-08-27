@@ -14,7 +14,7 @@
     user-select: none;
     border: 1px solid transparent;
 
-    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
     transition: $btn-transition;
 
 

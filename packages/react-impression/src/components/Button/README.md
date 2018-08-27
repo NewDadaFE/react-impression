@@ -116,3 +116,40 @@ const buttonClickHandle = () => {
   </Col>
 </Row>
 ```
+
+**block 按钮**
+
+```js
+<div>
+  <Button theme="primary" block className="offset-b">
+    主题样式
+  </Button>
+  <Button theme="default" block className="offset-b">
+    默认主题样式
+  </Button>
+  <Button theme="secondary" block>
+    副主题样式
+  </Button>
+</div>
+```
+
+**图标按钮**
+
+```js
+<div>
+  <Button theme="primary" className="offset-r"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="default" className="offset-r"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="secondary"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+</div>
+<div className="offset-t">
+  <Button theme="primary" className="offset-r"><Icon type="download" /></Button>
+  <Button theme="default" className="offset-r"><Icon type="download" /></Button>
+  <Button theme="secondary"><Icon type="download" /></Button>
+</div>
+```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 btn-font-size sass 变量

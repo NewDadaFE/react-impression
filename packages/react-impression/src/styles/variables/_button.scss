@@ -1,6 +1,7 @@
 $btn-padding-x:                           rem(30px) !default;
-$btn-padding-y:                           rem(12px) !default;
-$btn-line-height:                         1 !default;
+$btn-padding-y:                           rem(9px) !default;
+$btn-line-height:                         1.25 !default;
+$btn-font-size:                           rem(16px) !default;
 
 $btn-hover-primary-box-shadow:            0px rem(2px) rem(10px) 0px rgba(39,107,242,0.3) !default;  // hover---primary的button的box shadow
 $btn-hover-default-box-shadow:            0px rem(2px) rem(10px) 0px rgba(145,156,179,0.3) !default;  // hover---secondary和default的button的box shadow
@@ -27,11 +28,11 @@ $btn-secondary-border:                    $brand-primary !default;
 $btn-link-disabled-color:                 $gray-light !default;
 
 $btn-padding-x-sm:                        rem(10px) !default;
-$btn-padding-y-sm:                        rem(9px)  !default;
-$btn-font-size-sm:                        rem(14px) !default;
+$btn-padding-y-sm:                        rem(6.25px)  !default;
+$btn-font-size-sm:                        $font-size-root !default;
 
 $btn-padding-x-lg:                        rem(80px) !default;
-$btn-padding-y-lg:                        rem(23px) !default;
+$btn-padding-y-lg:                        rem(19.75px) !default;
 $btn-font-size-lg:                        rem(18px) !default;
 
 $btn-block-spacing-y:                     rem(5px) !default;
