@@ -256,46 +256,13 @@ $input-group-addon-font-size-lg: $font-size-lg !default;
 $input-group-addon-font-size-sm: $font-size-sm !default;
 
 //== Checkbox
-$checkbox-label-space-x: $spacer-y / 2 !default;
-$checkbox-space-x: $spacer-y !default;
-$checkbox-space-y: $spacer-y !default;
-$checkbox-addon-width: 1 !default;
-$checkbox-addon-height: $checkbox-addon-width !default;
-$checkbox-addon-padding: round(
-  ($line-height-base - $checkbox-addon-width) * $font-size-root / 2
-) !default;
-$checkbox-addon-border-color: #ddd !default;
-$checkbox-addon-border-radius: $border-radius-sm !default;
-$checkbox-addon-transtion: all 0.2s ease !default;
-$checkbox-addon-disabled-bg: $gray-lighter !default;
-$checkbox-addon-active-box-shadow: inset 0 0 2rem
-  rgba($checkbox-addon-border-color, 0.8) !default;
-$checkbox-addon-checked-color: $brand-primary !default;
-$checkbox-addon-checked-bg-color: $brand-primary !default;
-$checkbox-addon-checked-border-color: $brand-primary !default;
-$checkbox-addon-indeterminate-color: $checkbox-addon-checked-color !default;
-$checkbox-addon-disabled-border-color: $gray-light !default;
+@import "variables/checkbox";
 
 //== Radio
-$radio-addon-width: 0.6 !default;
-$radio-addon-height: $radio-addon-width !default;
-$radio-addon-padding: round(
-  ($line-height-base - $radio-addon-width) * $font-size-root / 2
-) !default;
+@import "variables/radio";
 
 //== Switch
-$switch-width: 3 !default;
-$switch-bg: $border-color !default;
-$switch-addon-bg: $brand-pure !default;
-$switch-addon-width: 1 !default;
-$switch-addon-height: $switch-addon-width !default;
-$switch-addon-padding: round(
-  ($line-height-base - $switch-addon-width) * $font-size-root / 2
-) !default;
-$switch-addon-translate-x: translateX(
-  round(($switch-width - $switch-addon-width) * $font-size-root) -
-    $switch-addon-padding * 2
-) !default;
+@import "variables/switch";
 
 //== Select
 @import 'variables/select';
@@ -342,22 +309,6 @@ $datepicker-yeargroup-item-active-color: $brand-pure !default;
 $datepicker-yeargroup-item-disabled-color: #ddd !default;
 
 $datepicker-footer-padding: 0.75rem 1rem !default;
-
-// Switch
-$switch-width: 3rem !default;
-$switch-toggle-bg: #ccc !default;
-$switch-toggle-active-bg: $brand-primary;
-$switch-toggle-padding: 2px !default;
-
-$switch-toggle-addon-bg: #fdfdfd;
-$switch-toggle-addon-width: 1rem;
-$switch-toggle-addon-height: $switch-toggle-addon-width;
-
-$checkbox-height: round(1.4 * $font-size-root);
-$checkbox-width: round(1.4 * $font-size-root);
-
-$radio-height: round(1.5 * $font-size-root);
-$radio-width: round(1.5 * $font-size-root);
 
 //Upload
 

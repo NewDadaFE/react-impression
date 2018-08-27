@@ -1,18 +1,16 @@
-.checkbox,
-.radio,
-.switch {
+// checkbox
+.checkbox {
+    position: relative;
+    display: inline-block;
     margin: 0;
+    font-weight: normal !important;
     cursor: pointer;
     user-select: none;
-    display: inline-block;
     vertical-align: middle;
-    position: relative;
 
     input {
         visibility: hidden;
     }
-
-    font-weight: normal !important;
 }
 
 .checkbox-label,
@@ -27,8 +25,8 @@
 
 .checkbox-inline,
 .radio-inline {
-    user-select: none;
     display: inline-block;
+    user-select: none;
 
     .checkbox:not(:last-child),
     .radio:not(:last-child) {
@@ -38,8 +36,8 @@
 
 .checkbox-vertical,
 .radio-vertical {
-    user-select: none;
     display: block;
+    user-select: none;
 
     .checkbox:not(:last-child),
     .radio:not(:last-child) {
@@ -51,48 +49,43 @@
 .checkbox {
     input {
         position: absolute;
-        left: 0;
-        top: 0;
         z-index: -1;
+        top: 0;
+        left: 0;
 
-        &:checked {
-            + .checkbox-addon i {
+        &:checked + .checkbox-addon {
+            border-color: $checkbox-addon-checked-color;
+            i {
                 transform: scale(1);
                 color: $checkbox-addon-checked-color;
             }
         }
 
-        &:not(:disabled):not(.disabled) {
-            &:active {
-                + .checkbox-addon {
-                    box-shadow: $checkbox-addon-active-box-shadow;
-                }
+        &:disabled + .checkbox-addon {
+            border-color: $checkbox-addon-disabled-color;
+            i {
+                color: $checkbox-addon-disabled-color;
             }
         }
 
-        &:disabled + .checkbox-addon,
-        &.disabled + .checkbox-addon {
-            opacity: .6;
-            background: $checkbox-addon-disabled-bg;
-
-            i {
-                color: $checkbox-addon-disabled-border-color;
-            }
+        &:not(:checked):not(:disabled) + .checkbox-addon:hover {
+            border-color: $checkbox-addon-checked-color;
         }
     }
 
     @at-root #{&}-indeterminate {
         .checkbox-addon {
-            width: $checkbox-addon-padding * 2 + $border-width * 2 + round($checkbox-addon-width * $font-size-root); // padding + border + i标签的宽高
-            height: $checkbox-addon-padding * 2 + $border-width * 2 + round($checkbox-addon-height * $font-size-root);
+            width: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
+            height: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root);
+            border-color: $checkbox-addon-checked-color;
 
             &::before {
                 position: relative;
-                content: '';
-                display: block;
-                border: $border-width solid $checkbox-addon-indeterminate-color;
-                margin-top: -$border-width;
                 top: 50%;
+                display: block;
+                margin-top: -$border-width;
+                content: "";
+                border: $border-width solid $checkbox-addon-indeterminate-color;
             }
 
             i {
@@ -101,130 +94,36 @@
         }
 
         input:disabled + .checkbox-addon::before {
-            border-color: $checkbox-addon-disabled-border-color;
+            border-color: $checkbox-addon-disabled-color;
         }
     }
 }
-
 .checkbox-addon {
     position: relative;
-    line-height: 1;
+    display: inline-block;
     padding: $checkbox-addon-padding;
-    display: inline-block;
-    border: $border-width solid $checkbox-addon-border-color;
+    line-height: 1;
+    transition: $checkbox-addon-transtion;
+    vertical-align: middle;
+    border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
     border-radius: $checkbox-addon-border-radius;
-    vertical-align: middle;
-    transition: $checkbox-addon-transtion;
+    background-color: $checkbox-addon-bg-color;
 
     i {
+        position: relative;
         display: block;
+        width: round($checkbox-addon-i-size * $font-size-root);
+        height: round($checkbox-addon-i-size * $font-size-root);
+        transition: $checkbox-addon-transtion;
+        transform: scale(0);
+        transform-origin: 50% 50%;
         color: transparent;
-        transform: scale(0);
-        transform-origin: 50% 50%;
-        width: round($checkbox-addon-width * $font-size-root);
-        height: round($checkbox-addon-height * $font-size-root);
-        transition: $checkbox-addon-transtion;
-    }
-}
-
-
-//radio
-.radio {
-    input {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: -1;
-
-        &:checked {
-            + .radio-addon i {
-                transform: scale(1);
-                background: $checkbox-addon-checked-color;
-            }
+        &::before {
+            position: absolute;
+            top: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
+            left: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
+            display: block;
+            transform: scale($checkbox-addon-scale);
         }
-
-        &:not(:checked):not(:disabled):not(.disabled) {
-            &:active {
-                + .radio-addon {
-                    box-shadow: $checkbox-addon-active-box-shadow;
-                }
-            }
-        }
-
-
-        &:disabled + .radio-addon,
-        &.disabled + .radio-addon {
-            opacity: .6;
-            background: $checkbox-addon-disabled-bg;
-        }
-    }
-}
-
-.radio-addon {
-    position: relative;
-    padding: $radio-addon-padding;
-    border: 1px solid $checkbox-addon-border-color;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-    transition: $checkbox-addon-transtion;
-
-    i {
-        content: '';
-        display: block;
-        transform: scale(0);
-        transform-origin: 50% 50%;
-        width: round($radio-addon-width * $font-size-root);
-        height: round($radio-addon-height * $font-size-root);
-        background: transparent;
-        border-radius: 50%;
-        transition: $checkbox-addon-transtion;
-    }
-}
-
-
-.switch {
-    display: inline-block;
-    position: relative;
-
-    input {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: -1;
-
-        &:checked + .switch-addon {
-            border-color: $checkbox-addon-checked-color;
-            background: $checkbox-addon-checked-color;
-
-            &::before {
-                transform: $switch-addon-translate-x;
-            }
-        }
-
-        &:disabled + .switch-addon,
-        &.disabled + .switch-addon {
-            opacity: .6;
-        }
-    }
-}
-
-.switch-addon {
-    display: inline-block;
-    background: $switch-bg;
-    width: round($switch-width * $font-size-root);
-    border-radius: round($switch-addon-width * $font-size-root);
-    padding: $switch-addon-padding;
-    transition: $checkbox-addon-transtion;
-
-
-    &::before {
-        content: '';
-        display: block;
-        width: round($switch-addon-width * $font-size-root);
-        height: round($switch-addon-height * $font-size-root);
-        border-radius: 50%;
-        background: $switch-addon-bg;
-        transition: $checkbox-addon-transtion;
     }
 }

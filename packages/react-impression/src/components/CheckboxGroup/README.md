@@ -1,17 +1,17 @@
 ### 示例
 
-**默认值（非受控组件**
+**默认值（非受控组件）**
 
 ```js
 <Form type="inline">
-  <Form.Group>
+  <FormGroup>
     <label>默认值:</label>
     <CheckboxGroup defaultValue={['篮球', '足球']}>
       <Checkbox>篮球</Checkbox>
       <Checkbox>足球</Checkbox>
       <Checkbox>排球</Checkbox>
     </CheckboxGroup>
-  </Form.Group>
+  </FormGroup>
 </Form>
 ```
 
@@ -19,13 +19,13 @@
 
 ```js
 <Form type="inline">
-  <Form.Group>
+  <FormGroup>
     <label>传入的值:</label>
     <CheckboxGroup ref="checkboxs" value={['篮球', '足球']}>
       <Checkbox>篮球</Checkbox>
       <Checkbox>足球</Checkbox>
       <Checkbox>排球</Checkbox>
     </CheckboxGroup>
-  </Form.Group>
+  </FormGroup>
 </Form>
 ```
