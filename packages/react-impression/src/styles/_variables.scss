@@ -291,21 +291,7 @@ $input-group-addon-font-size-sm:            $font-size-sm !default;
 @import "variables/switch";
 
 //== Select
-$select-line-height:                        $input-line-height !default;
-$select-transition:                         all .2s ease !default;
-$select-bg:                                 $brand-pure !default;
-$select-disable-bg:                         $gray-lighter !default;
-
-$select-selection-padding-right:            2.25rem !default;
-$select-selection-max-height:               20rem !default;
-$select-options-top:                        120% !default;
-$select-options-box-shadow:                 0 2px 6px $inverse-level-2 !default;
-$select-options-border:                     1px solid $input-border-color !default;
-
-$select-option-padding:                     $input-padding-y $input-padding-x !default;
-$select-option-hover-bg:                    #f5f5f5 !default;
-$select-option-active-color:                $brand-primary !default;
-$select-option-disable-color:               $gray-light !default;
+@import 'variables/select';
 
 //时间控件
 $datepicker-bg:                             $brand-pure !default;
@@ -344,7 +330,7 @@ $datepicker-yeargroup-item-active-bg:       $brand-primary !default;
 $datepicker-yeargroup-item-active-color:    $brand-pure !default;
 $datepicker-yeargroup-item-disabled-color:  #ddd !default;
 
-$datepicker-footer-padding:                .75rem 1rem !default;
+$datepicker-footer-padding: 0.75rem 1rem !default;
 
 //Upload
 
