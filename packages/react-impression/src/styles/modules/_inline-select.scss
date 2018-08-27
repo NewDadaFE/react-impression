@@ -1,20 +1,28 @@
 .inline-select {
-    margin-bottom: $inline-select-margin-bottom;
+  margin-bottom: $inline-select-margin-bottom;
 }
 
 .inline-select-option {
-    cursor: pointer;
-    vertical-align: top;
-    display: inline-block;
-    color: $inline-select-option-color;
-    padding: $inline-select-option-padding;
-    border-radius: $inline-select-option-border-radius;
-    margin: $inline-select-option-margin;
-    transition: $inline-select-option-transition;
+  cursor: pointer;
+  vertical-align: top;
+  height: rem(30px);
+  display: inline-block;
+  color: $inline-select-option-color;
+  padding: $inline-select-option-padding;
+  border-radius: $inline-select-option-border-radius;
+  transition: $inline-select-option-transition;
 
-    &.active,
-    &:hover {
-        color: $inline-select-option-active-color;
-        background: $inline-select-option-active-bg;
-    }
+  &.active,
+  &:hover {
+    color: $inline-select-option-active-color;
+  }
+}
+.inline-select-label {
+  padding: $inline-select-option-padding;
+  box-sizing: border-box;
+  color: $gray-base;
+}
+.inline-select-content {
+  padding-left: 0;
+  padding-right: 0;
 }

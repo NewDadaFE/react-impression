@@ -204,19 +204,19 @@ $table-inverse-thead-color: $brand-pure;
 $table-inverse-border-color: $gray;
 
 // Buttons
-@import "variables/button";
+@import 'variables/button';
 
 // Forms
-@import "variables/input";
+@import 'variables/input';
 
 //== Checkbox
-@import "variables/checkbox";
+@import 'variables/checkbox';
 
 //== Radio
-@import "variables/radio";
+@import 'variables/radio';
 
 //== Switch
-@import "variables/switch";
+@import 'variables/switch';
 
 //== Select
 @import 'variables/select';
@@ -433,7 +433,7 @@ $nav-pills-link-hover-border-color: $nav-tabs-link-hover-border-color !default;
 $nav-stacked-items-padding: 0.75rem 1rem !default;
 
 // Pagination
-@import "variables/pagination";
+@import 'variables/pagination';
 
 // Jumbotron
 
@@ -853,14 +853,7 @@ $calendar-daygroup-item-active-bg: rgba($brand-primary, 0.1) !default;
 $calendar-daygroup-item-disable-opacity: 0.4 !default;
 
 //InlineSelect
-$inline-select-margin-bottom: -0.5rem !default;
-$inline-select-option-color: $text-muted !default;
-$inline-select-option-padding: 0.2rem 0.6rem !default;
-$inline-select-option-border-radius: $border-radius-sm !default;
-$inline-select-option-margin: 0 0.5rem 0.5rem 0 !default;
-$inline-select-option-transition: all 0.2s ease !default;
-$inline-select-option-active-color: $brand-pure !default;
-$inline-select-option-active-bg: $brand-primary !default;
+@import 'variables/inline-select';
 
 //Page transition
 $page-transition-bg: $brand-pure !default;
