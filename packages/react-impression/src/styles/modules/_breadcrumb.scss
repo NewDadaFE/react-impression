@@ -2,6 +2,7 @@
   margin: 0;
   list-style: none;
   color: $breadcrumb-color;
+  font-size: $breadcrumb-font-size;
   padding: $breadcrumb-padding;
   padding-bottom: 0;
   background-color: $breadcrumb-bg;
@@ -31,6 +32,11 @@
 
   &.active {
     color: $breadcrumb-active-color;
+  }
+
+  a:hover {
+    color: $brand-primary;
+    text-decoration: none;
   }
 }
 

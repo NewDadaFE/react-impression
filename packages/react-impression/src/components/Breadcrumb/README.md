@@ -15,13 +15,16 @@
 ```js
 <Breadcrumb className="no-padding" separator="arrow">
   <a href="javascript:void(0);">
-    <Icon type="home" left />主页
+    <Icon type="home" left />
+    主页
   </a>
   <a href="javascript:void(0);">
-    <Icon type="user" left />用户中心
+    <Icon type="user" left />
+    用户中心
   </a>
   <span>
-    <Icon type="cog" left />基本信息
+    <Icon type="cog" left />
+    基本信息
   </span>
 </Breadcrumb>
 ```
