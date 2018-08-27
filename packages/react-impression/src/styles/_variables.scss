@@ -207,53 +207,7 @@ $table-inverse-border-color: $gray;
 @import "variables/button";
 
 // Forms
-$input-padding-x: 0.75rem !default;
-$input-padding-y: 0.5rem !default;
-$input-line-height: 1.25 !default;
-
-$input-bg: $brand-pure !default;
-$input-bg-disabled: $gray-lighter !default;
-
-$input-color: $gray !default;
-$input-border-color: #ddd !default;
-$input-btn-border-width: $border-width !default; // For form controls and buttons
-
-$input-border-radius: 0 !default;
-$input-border-radius-lg: $border-radius !default;
-$input-border-radius-sm: 0 !default;
-
-$input-border-focus: lighten($brand-primary, 12%) !default;
-$input-box-shadow-focus: rgba($input-border-focus, 0.8) !default;
-$input-box-focus-shadow: 0 0 8px $input-box-shadow-focus;
-
-$input-color-placeholder: #999 !default;
-$input-font-size-placeholder: $font-size-base !default;
-
-$input-padding-x-sm: 0.5rem !default;
-$input-padding-y-sm: 0.25rem !default;
-
-$input-padding-x-lg: 1.5rem !default;
-$input-padding-y-lg: 0.75rem !default;
-
-$input-height: (
-  ($font-size-base * $line-height-base) + ($input-padding-y * 2)
-) !default;
-$input-height-lg: (
-  ($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)
-) !default;
-$input-height-sm: (
-  ($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)
-) !default;
-
-$form-group-margin-bottom: $spacer-y !default;
-
-$input-group-addon-bg: $input-border-color !default;
-$input-group-addon-color: #999 !default;
-$input-group-addon-border-color: $input-border-color !default;
-$input-group-addon-padding-sm: $input-padding-y-sm $input-padding-x-sm !default;
-$input-group-addon-padding-lg: $input-padding-y-lg $input-padding-x-lg !default;
-$input-group-addon-font-size-lg: $font-size-lg !default;
-$input-group-addon-font-size-sm: $font-size-sm !default;
+@import "variables/input";
 
 //== Checkbox
 @import "variables/checkbox";
