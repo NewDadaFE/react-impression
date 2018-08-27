@@ -84,6 +84,11 @@ export default class Input extends React.PureComponent {
      * 更改事件
      */
     onChange: PropTypes.func,
+
+    /**
+     * 尺寸
+     */
+    size: PropTypes.oneOf(['sm', 'lg']),
   }
 
   static defaultProps = {
@@ -225,6 +230,7 @@ export default class Input extends React.PureComponent {
         className,
         children,
         onChange,
+        size,
         ...others
       } = this.props,
       { showOption, showClear } = this.state,
@@ -351,9 +357,13 @@ export default class Input extends React.PureComponent {
               ref={ref => (this.refMain = ref)}
               value={value}
               defaultValue={defaultValue}
-              className={classnames('form-control', pillClass, 'input-field', {
-                'input-field-addon': children,
-              })}
+              className={classnames(
+                'form-control',
+                'input-field',
+                size && `form-control-${size}`,
+                pillClass,
+                { 'input-field-addon': children }
+              )}
               onChange={e => onChange && onChange(e.target.value, e)}
               disabled={disabled}
               placeholder={placeholder}

@@ -34,16 +34,6 @@ class ModalExample extends React.Component {
             </FormGroup>
           </Form>
         </Col>
-        <Col>
-          <Form>
-            <FormGroup>
-              <label>圆角形状:</label>
-              <Input type="text" defaultValue="请输入内容" pill>
-                <Icon type="search" />
-              </Input>
-            </FormGroup>
-          </Form>
-        </Col>
       </Row>
     )
   }
@@ -234,3 +224,33 @@ class Example extends React.Component {
   </Col>
 </Row>
 ```
+
+**三种大小**
+
+```js
+<Row>
+  <Col>
+    <Input size="sm" placeholder="小尺寸" />
+  </Col>
+  <Col>
+    <Input placeholder="默认尺寸" />
+  </Col>
+  <Col>
+    <Input size="lg" placeholder="大尺寸" />
+  </Col>
+</Row>
+```
+
+**自适应尺寸**
+
+```js
+<Input placeholder="自适应尺寸" className="d-block" />
+```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 input-box-shadow-focus sass 变量
+* 新增 $input-font-size-sm sass 变量
+* 新增 $input-font-size-lg sass 变量
