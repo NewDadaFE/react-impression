@@ -116,7 +116,8 @@ export default class Nav extends PureComponent {
         offset += item.ref.clientWidth
         return true
       } else {
-        tabWidth = item.ref.clientWidth
+        tabWidth = item.ref.clientWidth / 2
+        offset += item.ref.clientWidth / 2 - item.ref.clientWidth / 4
         return false
       }
     })

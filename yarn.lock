@@ -7527,7 +7527,7 @@ postcss-selector-parser@^4.0.0:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-svgo@^2.1.1, postcss-svgo@^2.1.6:
+postcss-svgo@^2.1.1:
   version "2.1.6"
   resolved "http://registry.npm.taobao.org/postcss-svgo/download/postcss-svgo-2.1.6.tgz#b6df18aa613b666e133f08adb5219c2684ac108d"
   dependencies:
@@ -9231,10 +9231,6 @@ text-table@^0.2.0, text-table@~0.2.0:
 textextensions@2:
   version "2.2.0"
   resolved "http://registry.npm.taobao.org/textextensions/download/textextensions-2.2.0.tgz#38ac676151285b658654581987a0ce1a4490d286"
-
-throttle-debounce@^2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/throttle-debounce/download/throttle-debounce-2.0.0.tgz#2d8d24bd8cf3cb0cc7bd1a2dbeb624b4081a1ed4"
 
 through2@2.0.3, through2@2.X, through2@^2.0.0, through2@^2.0.3:
   version "2.0.3"
