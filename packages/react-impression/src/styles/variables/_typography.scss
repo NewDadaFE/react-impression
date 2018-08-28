@@ -1,0 +1,33 @@
+// Typography
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'PingFang SC',
+  'Helvetica Neue', 'Microsoft YaHei', Arial, 'WenQuanYi Micro Hei', 'Segoe UI',
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  sans-serif !default;
+$font-family-serif: Georgia, 'Times New Roman', Times, serif !default;
+$font-family-monospace: Menlo, Monaco, Consolas, 'Courier New', monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+// Pixel value used to responsively scale all typography. Applied to the `<html>` element.
+$font-size-root: $rem-baseline !default;
+$font-size-base: 1rem !default;
+$font-size-lg: 1.25rem !default;
+$font-size-sm: 0.875rem !default;
+$font-size-xs: 0.75rem !default;
+$small-font-size: 80% !default;
+
+$font-size-h1: ceil(($font-size-base * 2.4)) !default; // 34px
+$font-size-h2: ceil(($font-size-base * 1.7)) !default; // 24px
+$font-size-h3: ceil(($font-size-root * 1.25)) !default; // 18px
+$font-size-h4: floor(($font-size-root * 1.15)) !default; // 16px
+$font-size-h5: $font-size-root !default;
+$font-size-h6: ceil(($font-size-base * 0.85)) !default; // 12px
+
+$display1-size: 6rem !default;
+$display2-size: 5.5rem !default;
+$display3-size: 4.5rem !default;
+$display4-size: 3.5rem !default;
+
+$display1-weight: 300 !default;
+$display2-weight: 300 !default;
+$display3-weight: 300 !default;
+$display4-weight: 300 !default;

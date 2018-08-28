@@ -14,7 +14,7 @@
 
 ```js
 <ButtonToolbar>
-  <ButtonGroup theme="primary" activeKey="right">
+  <ButtonGroup theme="default" activeKey="right">
     <Button eventKey="left">左</Button>
     <Button eventKey="middle">中</Button>
     <Button eventKey="right">右</Button>
@@ -32,19 +32,19 @@
 ```js
 <ButtonToolbar>
   <ButtonGroup size="lg">
-    <Button>1</Button>
-    <Button>2</Button>
-    <Button>3</Button>
+    <Button eventKey="1">1</Button>
+    <Button eventKey="2">2</Button>
+    <Button eventKey="3">3</Button>
   </ButtonGroup>
   <ButtonGroup>
-    <Button>4</Button>
-    <Button>5</Button>
-    <Button>6</Button>
+    <Button eventKey="4">4</Button>
+    <Button eventKey="5">5</Button>
+    <Button eventKey="6">6</Button>
   </ButtonGroup>
   <ButtonGroup size="sm">
-    <Button>7</Button>
-    <Button>8</Button>
-    <Button>9</Button>
+    <Button eventKey="7">7</Button>
+    <Button eventKey="8">8</Button>
+    <Button eventKey="9">9</Button>
   </ButtonGroup>
 </ButtonToolbar>
 ```

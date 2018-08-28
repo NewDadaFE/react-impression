@@ -8,49 +8,57 @@ const buttonClickHandle = () => {
 }
 ;<Row className="no-margin">
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button type="button" theme="primary" onClick={buttonClickHandle}>
         主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="default">默认</Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="secondary">副主题色</Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
 
-**外轮廓**
+**不可用状态**
 
 ```js
-<Row className="no-margin bg-inverse">
+const buttonClickHandle = () => {
+  console.log('Button clicked')
+}
+;<Row className="no-margin">
   <Col col="2">
-    <Card.Block>
-      <Button theme="primary" outline>
+    <CardBlock>
+      <Button
+        disabled
+        type="button"
+        theme="primary"
+        onClick={buttonClickHandle}
+      >
         主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
-      <Button theme="default" outline>
+    <CardBlock>
+      <Button disabled theme="default">
         默认
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
-      <Button theme="secondary" outline>
+    <CardBlock>
+      <Button disabled theme="secondary">
         副主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
@@ -59,52 +67,24 @@ const buttonClickHandle = () => {
 
 ```js
 <Row className="no-margin">
-  <Col col="2">
-    <Card.Block>
+  <Col col="4">
+    <CardBlock>
       <Button theme="primary" size="sm">
-        小
+        小的型号
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
-  <Col col="2">
-    <Card.Block>
+  <Col col="4">
+    <CardBlock>
       <Button theme="primary">普通大小</Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
-  <Col col="2">
-    <Card.Block>
+  <Col col="4">
+    <CardBlock>
       <Button theme="primary" size="lg">
-        大
+        大的型号
       </Button>
-    </Card.Block>
-  </Col>
-</Row>
-```
-
-**圆角**
-
-```js
-<Row className="no-margin">
-  <Col col="2">
-    <Card.Block>
-      <Button theme="primary" shape="pill">
-        主题色
-      </Button>
-    </Card.Block>
-  </Col>
-  <Col col="2">
-    <Card.Block>
-      <Button theme="default" shape="pill">
-        默认
-      </Button>
-    </Card.Block>
-  </Col>
-  <Col col="2">
-    <Card.Block>
-      <Button theme="secondary" shape="pill">
-        副主题色
-      </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
@@ -114,25 +94,62 @@ const buttonClickHandle = () => {
 ```js
 <Row className="no-margin">
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="primary" href="https://www.github.com">
         主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="default" href="https://www.github.com">
         默认
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
   <Col col="2">
-    <Card.Block>
+    <CardBlock>
       <Button theme="secondary" href="https://www.github.com">
         副主题色
       </Button>
-    </Card.Block>
+    </CardBlock>
   </Col>
 </Row>
 ```
+
+**block 按钮**
+
+```js
+<div>
+  <Button theme="primary" block className="offset-b">
+    主题样式
+  </Button>
+  <Button theme="default" block className="offset-b">
+    默认主题样式
+  </Button>
+  <Button theme="secondary" block>
+    副主题样式
+  </Button>
+</div>
+```
+
+**图标按钮**
+
+```js
+<div>
+  <Button theme="primary" className="offset-r"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="default" className="offset-r"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="secondary"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+</div>
+<div className="offset-t">
+  <Button theme="primary" className="offset-r"><Icon type="download" /></Button>
+  <Button theme="default" className="offset-r"><Icon type="download" /></Button>
+  <Button theme="secondary"><Icon type="download" /></Button>
+</div>
+```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 btn-font-size sass 变量
