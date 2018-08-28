@@ -37,7 +37,7 @@ initialState = {
 </div>
 ```
 
-**支持键盘 esc 关闭**
+**支持键盘 esc 键位关闭**
 
 ```js
 const toggleModalHandle = () => {
