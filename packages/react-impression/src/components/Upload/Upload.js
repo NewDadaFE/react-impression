@@ -52,7 +52,7 @@ export default class Upload extends React.PureComponent {
   }
 
   static defaultProps = {
-    btnText: '浏 览',
+    btnText: '浏览',
     btnStyle: 'default',
     placeholder: '请选择要上传的附件',
     preview: false,
@@ -141,16 +141,24 @@ export default class Upload extends React.PureComponent {
 
       return (
         <div className='upload-preview' onClick={this.openFileDialogHandle}>
-          {children || <Icon type='camera' className='upload-preview-addon' />}
-          <span className='upload-preview-text'>{message}</span>
           <input
             type='file'
             ref='main'
             onChange={onChange && this.imagePreviewHandle}
           />
-          {(previewImageUrl || src) && (
+          {previewImageUrl || src ? (
             <div className='upload-preview-img'>
               <img src={previewImageUrl || src} />
+              <div className='upload-preview-remove'>
+                <Icon type='trash' />
+              </div>
+            </div>
+          ) : (
+            <div className='upload-preview-tool'>
+              {children || (
+                <Icon type='camera' className='upload-preview-addon' />
+              )}
+              <span className='upload-preview-text'>{message}</span>
             </div>
           )}
         </div>

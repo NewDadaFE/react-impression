@@ -6,68 +6,78 @@
 
     .form-control[disabled] {
         cursor: default;
-        background: $input-bg;
+        background-color: $input-bg;
     }
 }
 
-
 .upload-preview {
-    display: inline-block;
-    text-align: center;
     position: relative;
-    cursor: pointer;
+    display: inline-block;
     width: $upload-preview-width;
     height: $upload-preview-height;
-    border: 1px solid $upload-preview-border-color;
-    background: $upload-preview-bg;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
     color: $upload-preview-color;
-    transition: $upload-preview-transition;
-
-    &:hover {
-        color: $body-color;
-        border-color: $input-border-focus;
-        box-shadow: $input-box-focus-shadow;
-    }
 
     input[type="file"] {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         width: 0;
         opacity: 0;
     }
 }
+/* 图片上传样式 start */
+.upload-preview-tool {
+    border: $border-width dashed $upload-preview-border-color;
+    border-radius: $border-radius;
+    background-color: $upload-preview-bg;
+}
 
 .upload-preview-addon {
-    line-height: $upload-preview-height;
+    width: $upload-preview-addon-width;
     font-size: $upload-preview-addon-font-size;
+    line-height: $upload-preview-addon-line-height;
 }
 
 .upload-preview-text {
     position: absolute;
-    left: 0;
     right: 0;
     bottom: $upload-preview-text-bottom;
+    left: 0;
     font-size: $upload-preview-text-font-size;
 }
-
+/* 图片上传样式 end */
+/* 图片预览样式 start */
 .upload-preview-img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background: $upload-preview-bg;
-    padding: $upload-preview-img-padding;
+    position: relative;
+    overflow: hidden;
+    border: $border-width solid $upload-preview-img-border-color;
+    background-color: $upload-preview-img-bg;
 
     img {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        max-width: 100%;
+        width: $upload-preview-img-width;
+        height: $upload-preview-img-height;
+        margin: $upload-preview-img-margin;
     }
 }
+.upload-preview-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: $upload-preview-img-margin;
+    font-size: $upload-preview-remove-font-size;
+    line-height: $upload-preview-img-height;
+    transition: $upload-preview-transition;
+    opacity: 0;
+    color: $upload-preview-remove-color;
+    background-color: $upload-preview-remove-bg;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+/* 图片预览样式 start */
