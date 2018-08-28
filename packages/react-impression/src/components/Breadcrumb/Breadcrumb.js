@@ -2,8 +2,8 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Breadcrumb = ({ separator, children, className, ...others }) => {
-  const separatorClass = separator ? `breadcrumb-${separator}` : null
+const Breadcrumb = ({ children, className, ...others }) => {
+  // const separatorClass = separator ? `breadcrumb-${separator}` : null
 
   children = React.Children.map(children, (child, index) => {
     if (!child) {
@@ -20,7 +20,7 @@ const Breadcrumb = ({ separator, children, className, ...others }) => {
   return (
     <ol
       {...others}
-      className={classnames('breadcrumb', className, separatorClass)}
+      className={classnames('breadcrumb breadcrumb-arrow', className)}
     >
       {children}
     </ol>
@@ -28,11 +28,6 @@ const Breadcrumb = ({ separator, children, className, ...others }) => {
 }
 
 Breadcrumb.propTypes = {
-  /**
-   * 分割标识，'arrow'或者不传则默认为／
-   */
-  separator: PropTypes.string,
-
   /**
    * 自定义样式
    */
