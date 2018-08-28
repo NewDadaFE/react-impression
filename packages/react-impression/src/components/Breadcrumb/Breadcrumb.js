@@ -3,8 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Breadcrumb = ({ children, className, ...others }) => {
-  // const separatorClass = separator ? `breadcrumb-${separator}` : null
-
   children = React.Children.map(children, (child, index) => {
     if (!child) {
       return child
