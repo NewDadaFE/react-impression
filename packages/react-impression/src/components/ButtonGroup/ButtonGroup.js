@@ -53,24 +53,25 @@ export default class ButtonGroup extends React.PureComponent {
 
     delete others.activeKey
     children = children.map((child, idx) => {
-      let { eventKey, onClick } = child.props
+      const { eventKey, onClick } = child.props
+      const getBtnTheme = theme => {
+        if (activeKey !== eventKey) {
+          return theme
+        } else {
+          return theme !== 'primary' ? 'primary' : theme
+        }
+      }
 
       return React.cloneElement(child, {
         key: idx,
-        outline: theme !== 'default' && (!onSelect || activeKey !== eventKey),
-        theme:
-          theme === 'default' && onSelect && activeKey === eventKey
-            ? 'primary'
-            : theme,
-        onClick: onSelect
-          ? event => {
-            this.setState({
-              activeKey: eventKey,
-            })
-            onSelect && onSelect(eventKey, event)
-            onClick && onClick(event)
-          }
-          : onClick,
+        theme: getBtnTheme(theme),
+        onClick: event => {
+          this.setState({
+            activeKey: eventKey,
+          })
+          onSelect && onSelect(eventKey, event)
+          onClick && onClick(event)
+        },
       })
     })
 

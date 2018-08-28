@@ -1,0 +1,54 @@
+// switch
+.switch {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    font-weight: normal !important;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+
+    input {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+
+        &:checked {
+            & + .switch-addon {
+                background-color: $switch-addon-active-bg;
+                box-shadow: 0 rem(2px) rem(4px) 0 rgba($switch-addon-active-bg, .2);
+
+                &::before {
+                    transform: $switch-addon-translate-x;
+                }
+            }
+            &:disabled + .switch-addon {
+                opacity: .15;
+            }
+        }
+        &:disabled + .switch-addon {
+            opacity: .3;
+        }
+    }
+}
+
+.switch-addon {
+    display: inline-block;
+    width: round($switch-width * $font-size-root);
+    padding: $switch-addon-padding;
+    transition: $checkbox-addon-transtion;
+    border-radius: round($switch-addon-width * $font-size-root);
+    background-color: $switch-bg;
+
+    &::before {
+        display: block;
+        width: round($switch-addon-width * $font-size-root);
+        height: round($switch-addon-height * $font-size-root);
+        content: "";
+        transition: $checkbox-addon-transtion;
+        border-radius: 50%;
+        background-color: $switch-addon-bg;
+    }
+}

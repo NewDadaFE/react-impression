@@ -12,13 +12,14 @@ form {
     display: block;
     width: 100%;
     padding: $input-padding-y $input-padding-x;
-    font-size: $font-size-base;
+    font-size: $font-size-root;
     line-height: $input-line-height;
     color: $input-color;
     background-color: $input-bg;
     background-image: none;
     background-clip: padding-box;
     border: $input-btn-border-width solid $input-border-color;
+    @include border-radius($input-border-radius);
     transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
 
     &::-ms-expand {
@@ -43,12 +44,17 @@ form {
     }
 
     &:disabled {
+        color: $input-disabled-color;
         cursor: $cursor-disabled;
     }
 
     &:focus {
         position: relative;
         z-index: 1;
+    }
+
+    &:hover:not(:disabled) {
+        border-color: $input-border-hover;
     }
 }
 
@@ -144,16 +150,12 @@ input[type="month"] {
 
 .form-control-sm {
     padding: $input-padding-y-sm $input-padding-x-sm;
-    font-size: $font-size-sm;
-
-    @include border-radius($input-border-radius-sm);
+    font-size: $input-font-size-sm;
 }
 
 .form-control-lg {
     padding: $input-padding-y-lg $input-padding-x-lg;
-    font-size: $font-size-lg;
-
-    @include border-radius($input-border-radius-lg);
+    font-size: $input-font-size-lg;
 }
 
 
@@ -190,10 +192,12 @@ input[type="month"] {
     .form-group {
         display: inline-block;
         margin-bottom: 0;
-        vertical-align: middle;
+        vertical-align: bottom;
 
         > label {
-            margin-right: $spacer-x / 2;
+            display: block;
+            color: $form-group-label-color;
+            margin-bottom: $form-group-inline-label-margin-bottom;
         }
     }
 
@@ -232,6 +236,14 @@ input[type="month"] {
     // Re-override the feedback icon.
     .has-feedback .form-control-feedback {
         top: 0;
+    }
+
+    > .btn:not(:first-child) {
+        margin-left: $form-group-inline-btn-margin-left;
+
+        & ~.btn {
+            margin-left: 0;
+        }
     }
 }
 
