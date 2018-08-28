@@ -28,7 +28,7 @@
   }
 }
 
-// Nav inline
+// Nav normal
 
 .nav-normal {
   border-bottom: $nav-border-width solid $nav-border-color;
@@ -37,13 +37,18 @@
     cursor: pointer;
     padding: $nav-normal-padding;
     box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out;
     &.active {
       color: $nav-link-active-color;
       background-color: $nav-link-active-bg;
       border-bottom: $nav-border-width solid $nav-link-active-color;
     }
+    &:hover {
+      color: $nav-link-active-color;
+    }
     &.disabled {
       color: $nav-disabled-link-color;
+      cursor: not-allowed;
     }
   }
 
@@ -61,133 +66,65 @@
   // }
   //   }
 }
-
-.nav-card {
-  .nav-link {
-    &.active {
-      border-bottom: $nav-link-active-border-width solid $nav-link-active-color;
-    }
-  }
-}
-
-//
-// Tabs
-//
-
-.nav-card {
-  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
-
-  @include clearfix();
-
-  .nav-item {
-    float: left;
-    cursor: pointer;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
-  }
-
-  .nav-link {
-    color: $nav-tabs-link-color;
-    display: block;
-    padding: $nav-tabs-link-padding;
-    border: $nav-tabs-link-border-width solid transparent;
-    border-bottom: 0;
-
-    &:hover {
-      background: $nav-tabs-link-hover-bg;
-      border-color: $nav-tabs-link-hover-border-color;
-    }
-
-    &.disabled {
-      color: $nav-disabled-link-color;
-      background-color: transparent;
-      border-color: transparent;
-    }
-  }
-
-  .nav-link.active,
-  .nav-item.open .nav-link {
-    color: $nav-tabs-active-link-hover-color;
-    background-color: $nav-tabs-active-link-hover-bg;
-    border-color: $nav-tabs-active-link-border-color;
-  }
-
-  .dropdown-menu {
-    // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
-    // Remove the top rounded corners here since there is a hard edge above the menu
-    @include border-top-radius(0);
-  }
-}
-
-//
-// Pills
-//
-
-.nav-card {
-  @include clearfix();
-
-  .nav-item {
-    float: left;
-    cursor: pointer;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
-  }
-
-  .nav-link {
-    display: block;
-    color: $nav-pills-link-color;
-    padding: $nav-pills-link-padding;
-
-    @include border-radius($nav-pills-link-border-radius);
-
-    &:hover {
-      color: $nav-pills-link-hover-color;
-      background: $nav-pills-link-hover-bg;
-      border-color: $nav-pills-link-hover-border-color;
-    }
-
-    &.disabled {
-      color: $nav-disabled-link-color;
-      background-color: transparent;
-      border-color: transparent;
-    }
-  }
-
-  .nav-link.active,
-  .nav-item.open .nav-link {
-    color: $nav-pills-active-link-color;
-    cursor: default;
-    background-color: $nav-pills-active-link-bg;
-  }
-}
-
 .nav-stacked {
   .nav-item {
-    display: block;
-    float: none;
+    padding: $nav-stacked-padding;
+    color: $gray-darker;
     cursor: pointer;
-
-    + .nav-item {
-      // margin-top: $nav-item-margin;
-      margin-left: 0;
+    background: $brand-pure;
+    transition: background-color 0.2s ease-in-out;
+    &.active {
+      background: $nav-link-active-color;
+      color: $brand-pure;
     }
-  }
-
-  .nav-link {
-    border-radius: 0;
-    padding: $nav-stacked-items-padding;
+    &:hover {
+      background: $nav-link-active-color;
+      color: $brand-pure;
+    }
+    &.disabled {
+      color: $nav-disabled-link-color;
+      cursor: not-allowed;
+      &:hover {
+        background: $brand-pure;
+      }
+    }
   }
 }
 
-//
-// Tabbable tabs
-//
-
+.nav-card {
+  .nav-item {
+    display: inline-block;
+    cursor: pointer;
+    border-top: $nav-border-width solid $nav-border-color;
+    border-left: $nav-border-width solid $nav-border-color;
+    border-bottom: $nav-border-width solid $nav-border-color;
+    padding: $nav-card-padding;
+    background: $gray-lighter;
+    color: $gray-darker;
+    transition: background-color 0.2s ease-in-out;
+    &.active {
+      background: $nav-link-active-bg;
+      color: $nav-link-active-color;
+      border-bottom: none;
+    }
+    &:hover {
+      background: $nav-link-active-bg;
+      color: $nav-link-active-color;
+      border-bottom: none;
+    }
+    &.disabled {
+      color: $nav-disabled-link-color;
+      cursor: not-allowed;
+      &:hover {
+        background: $gray-lighter;
+        border-bottom: $nav-border-width solid $nav-border-color;
+      }
+    }
+    &:last-child {
+      border-right: $nav-border-width solid $nav-border-color;
+    }
+  }
+}
 // Hide tabbable panes to start, show them when `.active`
 .tab-content {
   > .tab-pane {

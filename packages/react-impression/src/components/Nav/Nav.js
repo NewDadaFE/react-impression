@@ -10,13 +10,11 @@ import NavTitle from '../NavTitle'
  * @param type
  * @returns {string}
  */
-const getTypeClassMap = type => {
+const getTypeClassMap = (type, stacked) => {
+  if (stacked) return null
   if (!type) return 'nav-normal'
   const map = {
-    card: 'nav-cards',
-    pill: 'nav-pills',
-    inline: 'nav-inline',
-    'inline-bordered': 'nav-inline nav-inline-bordered',
+    card: 'nav-card',
   }
 
   return map[type] ? map[type] : type
@@ -83,8 +81,8 @@ export default class Nav extends React.PureComponent {
     let { children } = this.props
     const { type, stacked, className, ...others } = this.props
     const { activeKey } = this.state
-    const navStacked = stacked && type === 'card' ? 'nav-stacked' : null
-    const navStyle = getTypeClassMap(type)
+    const navStacked = stacked ? 'nav-stacked' : null
+    const navStyle = getTypeClassMap(type, stacked)
 
     delete others.activeKey
 
@@ -101,7 +99,9 @@ export default class Nav extends React.PureComponent {
 
       if (eventKey !== undefined) {
         options.eventKey = eventKey
-        options.active = eventKey === activeKey
+        if (activeKey) {
+          options.active = eventKey === activeKey
+        }
       }
 
       return React.cloneElement(child, options)
