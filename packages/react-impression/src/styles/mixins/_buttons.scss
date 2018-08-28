@@ -3,11 +3,20 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($color, $background, $border) {
-    $hover-background: lighten($background, 2%);
-    $hover-border: lighten($border, 2%);
-    $active-background: darken($background, 6%);
-    $active-border: darken($border, 6%);
+@mixin button-variant(
+    $color,
+    $background,
+    $border,
+    $btn-hover-box-shadow,
+    $btn-active-box-shadow,
+    $btn-disabled-color,
+    $btn-disabled-bg,
+    $btn-disabled-border
+){
+    $hover-background: darken($background, 10%);
+    $hover-border: darken($border, 10%);
+    $active-background: darken($background, 20%);
+    $active-border: darken($border, 20%);
 
     color: $color;
     background-color: $background;
@@ -17,6 +26,7 @@
         color: $color;
         background-color: $hover-background;
         border-color: $hover-border;
+        box-shadow: $btn-hover-box-shadow;
     }
 
     &:active,
@@ -25,13 +35,19 @@
         background-color: $active-background;
         border-color: $active-border;
         background-image: none;
+        box-shadow: $btn-active-box-shadow;
     }
 
     &.disabled,
     &:disabled {
+        color: $btn-disabled-color;
+        background-color: $btn-disabled-bg;
+        border-color: $btn-disabled-border;
+
         &:hover {
-            background-color: $background;
-            border-color: $border;
+            color: $btn-disabled-color;
+            background-color: $btn-disabled-bg;
+            border-color: $btn-disabled-border;
         }
     }
 }
