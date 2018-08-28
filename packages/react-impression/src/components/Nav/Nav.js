@@ -11,8 +11,9 @@ import NavTitle from '../NavTitle'
  * @returns {string}
  */
 const getTypeClassMap = type => {
+  if (!type) return 'nav-normal'
   const map = {
-    tab: 'nav-tabs',
+    card: 'nav-cards',
     pill: 'nav-pills',
     inline: 'nav-inline',
     'inline-bordered': 'nav-inline nav-inline-bordered',
@@ -41,7 +42,8 @@ export default class Nav extends React.PureComponent {
     /**
      * 导航栏样式
      */
-    type: PropTypes.oneOf(['tab', 'pill', 'inline', 'inline-bordered']),
+    // type: PropTypes.oneOf(['tab', 'pill', 'inline', 'inline-bordered']),
+    type: PropTypes.string,
     /**
      * 是否纵向排列
      */
@@ -81,31 +83,29 @@ export default class Nav extends React.PureComponent {
     let { children } = this.props
     const { type, stacked, className, ...others } = this.props
     const { activeKey } = this.state
-    const navStacked = stacked && type === 'pill' ? 'nav-stacked' : null
+    const navStacked = stacked && type === 'card' ? 'nav-stacked' : null
     const navStyle = getTypeClassMap(type)
 
     delete others.activeKey
 
-    if (type) {
-      children = React.Children.map(children, (child, index) => {
-        if (!child) {
-          return child
-        }
+    children = React.Children.map(children, (child, index) => {
+      if (!child) {
+        return child
+      }
 
-        const { eventKey } = child.props
-        const options = {
-          key: index,
-          onClick: this.onSelectHandle,
-        }
+      const { eventKey } = child.props
+      const options = {
+        key: index,
+        onClick: this.onSelectHandle,
+      }
 
-        if (eventKey !== undefined) {
-          options.eventKey = eventKey
-          options.active = eventKey === activeKey
-        }
+      if (eventKey !== undefined) {
+        options.eventKey = eventKey
+        options.active = eventKey === activeKey
+      }
 
-        return React.cloneElement(child, options)
-      })
-    }
+      return React.cloneElement(child, options)
+    })
 
     return (
       <ul
