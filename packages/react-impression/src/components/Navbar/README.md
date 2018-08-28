@@ -1,8 +1,8 @@
-### Example
+### 示例
 
 **无按钮有导航**
 
-```jsx
+```js
 <Navbar>
   <Flex>
     <FlexItem>
@@ -22,7 +22,7 @@
 
 **有按钮无导航**
 
-```jsx
+```js
 <Navbar>
   <Flex>
     <NavbarButton>
@@ -38,7 +38,7 @@
 
 **有按钮有导航**
 
-```jsx
+```js
 <Navbar>
   <Flex>
     <NavbarButton>
@@ -58,3 +58,9 @@
   </Flex>
 </Navbar>
 ```
+
+**变更记录**
+
+v2.0.0
+
+* 废弃原有组件，根据 UI 规范重新实现，不兼容 1.x 版本

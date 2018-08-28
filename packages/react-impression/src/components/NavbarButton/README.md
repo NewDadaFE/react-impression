@@ -1,7 +1,1 @@
-### Example
-
-```js
-<NavbarButton>
-  <i className="fa fa-bars" />
-</NavbarButton>
-```
+参考 [Navbar](#navbar)
