@@ -134,7 +134,7 @@ export default class Pagination extends React.PureComponent {
             href='javascript:void(0);'
             onClick={this.prevPageHandle}
           >
-            {lastContent || <i className='fa fa-angle-left' />}
+            {lastContent || <i className='fa fa-chevron-left' />}
           </a>
         </li>
         {pageList.map(
@@ -170,7 +170,7 @@ export default class Pagination extends React.PureComponent {
             href='javascript:void(0);'
             onClick={this.nextPageHandle}
           >
-            {nextContent || <i className='fa fa-angle-right' />}
+            {nextContent || <i className='fa fa-chevron-right' />}
           </a>
         </li>
       </ul>

@@ -1,0 +1,17 @@
+// Colors
+$brand-primary: #276bf2 !default;
+$brand-secondary: #fa8100 !default;
+$brand-success: #29b056 !default;
+$brand-info: #276bf2 !default;
+$brand-warning: #fa8100 !default;
+$brand-danger: #e92c2c !default;
+$brand-pure: #fff !default;
+
+$gray-base: #132240 !default; // 标题文字、重要文字、输入框已输入文字
+$gray-darker: #919cb3 !default; // 次级信息文本颜色、输入框提示文字
+$gray-dark: #b6bfd1 !default; // 不可点击按钮的文字和图标的颜色
+$gray: #d1d8e6 !default; // 输入框颜色、不可点击颜色
+$gray-light: #e9ebf0 !default; // 分割线颜色
+$gray-lighter: #f7f9fc !default; // 页面背景、表头背景等
+$gray-lightest: #f0f2f5 !default; // 模块背景颜色、交替背景色
+$gray-secondary: mix($brand-primary, $gray-dark, 20%) !default;

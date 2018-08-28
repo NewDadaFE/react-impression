@@ -5,7 +5,7 @@
 ```js
 <Form>
   <FormGroup>
-    <label>姓名:</label>
+    <label>姓名</label>
     <Input type="text" placeholder="Jane Doe" />
   </FormGroup>
   <FormGroup>
@@ -16,6 +16,7 @@
     <Checkbox defaultChecked>记住我</Checkbox>
   </FormGroup>
   <Button theme="primary">搜索</Button>
+  <Button theme="default">重置</Button>
 </Form>
 ```
 
@@ -60,13 +61,18 @@
       </RadioGroup>
     </Col>
   </FormGroup>
-  <FormGroup>
-    <Col col="2" offset="2">
-      <Button theme="primary">注册</Button>
-    </Col>
-    <Col col="2">
-      <Button theme="default">取消</Button>
-    </Col>
+  <FormGroup style={{ justifyContent: 'center' }}>
+    <Button theme="primary">注册</Button>
+    <Button theme="default" style={{ marginLeft: '20px' }}>
+      取消
+    </Button>
   </FormGroup>
 </Form>
 ```
+
+### 变更记录
+
+v2.0.0
+
+* 新增 form-group-inline-label-margin-bottom sass 变量
+* 新增 form-group-inline-btn-margin-left sass 变量
