@@ -9,22 +9,22 @@ initialState = {
 ;<Row>
   <Col>
     <Popover position="right" title="标题" content={state.content}>
-      <Button theme="primary">显示在右侧</Button>
+      <Button theme="secondary">显示在右侧</Button>
     </Popover>
   </Col>
   <Col>
     <Popover position="left" title="标题" content={state.content}>
-      <Button theme="primary">显示在左侧</Button>
+      <Button theme="secondary">显示在左侧</Button>
     </Popover>
   </Col>
   <Col>
     <Popover position="top" title="标题" content={state.content}>
-      <Button theme="primary">显示在上方</Button>
+      <Button theme="secondary">显示在上方</Button>
     </Popover>
   </Col>
   <Col>
     <Popover position="bottom" title="标题" content={state.content}>
-      <Button theme="primary">显示在下方</Button>
+      <Button theme="secondary">显示在下方</Button>
     </Popover>
   </Col>
 </Row>
@@ -39,7 +39,7 @@ initialState = {
 ;<Row>
   <Col>
     <Popover position="right" title="标题" content={state.content}>
-      <Button theme="primary">默认是hover激活</Button>
+      <Button theme="secondary">默认是鼠标悬停激活</Button>
     </Popover>
   </Col>
   <Col>
@@ -49,7 +49,7 @@ initialState = {
       title="标题"
       content={state.content}
     >
-      <Button theme="primary">点击激活</Button>
+      <Button theme="secondary">点击激活</Button>
     </Popover>
   </Col>
 </Row>
