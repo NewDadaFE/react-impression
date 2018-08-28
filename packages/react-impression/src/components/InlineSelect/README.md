@@ -44,7 +44,7 @@
     </Col>
   </Row>
   <Row>
-    <Col col="1" style={{padding: '0.57143rem 0.71429rem',boxSizing: 'border-box',color: '#132240'}} className='text-right'><strong>城市:</strong> </Col>
+    <Col col="1" style={{padding: '0.35rem 0.71429rem',boxSizing: 'border-box',color: '#132240'}} className='text-right'><strong>城市:</strong> </Col>
     <Col col="11" style={{paddingLeft:0}}>
       <InlineSelect defaultValue={'1'} onChange={this.selectZoneHandle}>
         <InlineSelectOption value="1">南京</InlineSelectOption>

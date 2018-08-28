@@ -5,10 +5,11 @@
 .inline-select-option {
   cursor: pointer;
   vertical-align: top;
-  height: rem(30px);
+  height: rem(14px);
+  line-height: 1;
   display: inline-block;
   color: $inline-select-option-color;
-  padding: $inline-select-option-padding;
+  margin: $inline-select-option-padding;
   border-radius: $inline-select-option-border-radius;
   transition: $inline-select-option-transition;
 
@@ -18,7 +19,7 @@
   }
 }
 .inline-select-label {
-  padding: $inline-select-option-padding;
+  padding: 0.3rem rem(10px);
   box-sizing: border-box;
   color: $gray-base;
 }
