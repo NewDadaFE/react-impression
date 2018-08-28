@@ -4,10 +4,29 @@
         opacity: 0;
     }
 
-    .form-control[disabled] {
+    .form-control {
+        padding-left: $upload-offset-left;
+        overflow: hidden;
         cursor: default;
-        background-color: $input-bg;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: $gray-darker;
+        &:hover {
+            border-color: $upload-preview-border-color;
+        }
     }
+    .btn {
+        padding-right: $upload-padding;
+        padding-left: $upload-padding;
+    }
+}
+.upload-addon {
+    position: absolute;
+    top: 50%;
+    left: $upload-padding;
+    font-size: $upload-icon-font-size;
+    transform: translateY(-50%);
+    color: $upload-icon-color;
 }
 
 .upload-preview {

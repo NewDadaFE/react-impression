@@ -1,23 +1,29 @@
 ### 示例
 
-**基本用法**
+**单个文件点击上传**
 
 ```js
 let file
-;<Row>
-  <Col>
-    <Input ref={ref => (file = ref)} type="file" />
-  </Col>
-  <Col>
-    <Input type="file" placeholder="请上传资质证明" onChange={() => {}} />
-  </Col>
-  <Col>
-    <Upload btnText="附件" btnStyle="primary" />
-  </Col>
-</Row>
+;<div>
+  <Row>
+    <Col col={7}>
+      <Input ref={ref => (file = ref)} type="file" />
+    </Col>
+  </Row>
+  <Row>
+    <Col col={7}>
+      <Input type="file" placeholder="请上传资质证明" onChange={() => {}} />
+    </Col>
+  </Row>
+  <Row>
+    <Col col={7}>
+      <Upload btnText="附件" btnStyle="primary" />
+    </Col>
+  </Row>
+</div>
 ```
 
-**图片预览**
+**图片上传**
 
 ```js
 let upload
@@ -43,6 +49,11 @@ let upload
 
 v2.0.0
 
+* 新增 sass 变量`$upload-color`表示 上传文件文字颜色
+* 新增 sass 变量`$upload-icon-color`表示 上传文件 Icon 颜色
+* 新增 sass 变量`$upload-icon-font-size`表示 上传文件 Icon 大小
+* 新增 sass 变量`$upload-padding`表示 上传文件按钮和 Icon 内边距
+* 新增 sass 变量`$upload-offset-left`表示 上传文件左侧文字偏移量
 * 新增 sass 变量`$upload-preview-addon-line-height`表示 图片上传 Icon 行高
 * 新增 sass 变量`$upload-preview-addon-width`表示 图片上传 Icon 宽度
 * 新增 sass 变量`$upload-preview-img-bg`表示 图片上传背景色

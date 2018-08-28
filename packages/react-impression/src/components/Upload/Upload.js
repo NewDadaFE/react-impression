@@ -88,7 +88,7 @@ export default class Upload extends React.PureComponent {
     const { onChange } = this.props
 
     this.setState({
-      file: event.target.value,
+      file: event.target.files[0].name,
     })
 
     onChange && onChange(event)
@@ -170,13 +170,10 @@ export default class Upload extends React.PureComponent {
         {...others}
         className={classnames('input-group', 'input-group-upload', className)}
       >
-        <input
-          type='text'
-          className='form-control'
-          placeholder={placeholder}
-          disabled
-          value={file}
-        />
+        <span className='form-control'>
+          <Icon type='upload' className='upload-addon' />
+          {file || placeholder}
+        </span>
         <span className='input-group-btn'>
           <button
             type='button'
