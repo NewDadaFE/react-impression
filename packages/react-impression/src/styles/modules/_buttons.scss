@@ -14,7 +14,7 @@
     user-select: none;
     border: 1px solid transparent;
 
-    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
     transition: $btn-transition;
 
 
@@ -34,15 +34,14 @@
         text-decoration: none;
     }
 
-    &:hover {
-        box-shadow: $btn-active-box-shadow;
-    }
-
     &.disabled,
     &:disabled {
         cursor: $cursor-disabled;
-        opacity: .65;
         box-shadow: none;
+
+        &:hover {
+            box-shadow: none;
+        }
     }
 }
 
@@ -57,16 +56,49 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
+$btn-primary-args: (
+    color: $btn-primary-color,
+    background: $btn-primary-bg,
+    border: $btn-primary-border,
+    btn-hover-box-shadow: $btn-hover-primary-box-shadow,
+    btn-active-box-shadow: $btn-active-primary-box-shadow,
+    btn-disabled-color: $btn-disabled-color,
+    btn-disabled-bg: $btn-disabled-bg,
+    btn-disabled-border: transparent,
+);
+
+$btn-secondary-args: (
+    color: $btn-secondary-color,
+    background: $btn-secondary-bg,
+    border: $btn-secondary-border,
+    btn-hover-box-shadow: $btn-hover-primary-box-shadow,
+    btn-active-box-shadow: $btn-active-primary-box-shadow,
+    btn-disabled-color: $btn-disabled-color,
+    btn-disabled-bg: $brand-pure,
+    btn-disabled-border: $btn-disabled-border,
+);
+
+$btn-default-args: (
+    color: $btn-default-color,
+    background: $btn-default-bg,
+    border: $btn-default-border,
+    btn-hover-box-shadow: $btn-hover-default-box-shadow,
+    btn-active-box-shadow: $btn-active-box-shadow,
+    btn-disabled-color: $btn-disabled-color,
+    btn-disabled-bg: $brand-pure,
+    btn-disabled-border: $btn-disabled-border,
+);
+
 .btn-primary {
-    @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    @include button-variant($btn-primary-args...);
 }
 
 .btn-secondary {
-    @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+    @include button-variant($btn-secondary-args...);
 }
 
 .btn-default {
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+    @include button-variant($btn-default-args...);
 }
 
 
@@ -135,14 +167,12 @@ fieldset[disabled] a.btn {
 
 .btn-lg {
     // line-height: ensure even-numbered height of button next to large input
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
     // line-height: ensure proper height of button next to small input
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
-
-    font-size: $btn-font-size-sm;
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }
 
 

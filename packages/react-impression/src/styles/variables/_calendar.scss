@@ -1,0 +1,18 @@
+//Calendar
+$calendar-border-color: $border-color !default;
+
+$calendar-header-padding: 0.6rem 0 !default;
+$calendar-sm-header-padding: 0.3rem 0 !default;
+$calendar-header-font-size: $font-size-lg !default;
+$calendar-sm-header-font-size: 1rem !default;
+
+$calendar-body-bg: $brand-pure !default;
+
+$calendar-weekgroup-bg: $gray-lightest !default;
+$calendar-sm-weekgroup-item-font-size: $font-size-sm !default;
+$calendar-weekgroup-item-padding: 0.4rem 0 !default;
+$calendar-daygroup-item-height: 8rem !default;
+$calendar-sm-daygroup-item-height: $calendar-daygroup-item-height / 2 !default;
+$calendar-daygroup-item-padding: 0.4rem !default;
+$calendar-daygroup-item-active-bg: rgba($brand-primary, 0.1) !default;
+$calendar-daygroup-item-disable-opacity: 0.4 !default;

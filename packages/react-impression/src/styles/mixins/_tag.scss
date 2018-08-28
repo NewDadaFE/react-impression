@@ -2,6 +2,7 @@
 
 @mixin tag-variant($color) {
     background-color: $color;
+    border: 1px solid $color;
 
     &[href] {
         &:hover,
