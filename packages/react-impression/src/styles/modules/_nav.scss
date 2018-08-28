@@ -3,10 +3,20 @@
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
 
+.nav-wrap {
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 .nav {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  white-space: nowrap;
+  &.nav-inline {
+    display: inline-block;
+  }
 }
 
 .nav-link {
@@ -51,11 +61,6 @@
       color: $nav-disabled-link-color;
       cursor: not-allowed;
     }
-  }
-
-  .nav-item + .nav-item,
-  .nav-link + .nav-link {
-    margin-left: $nav-item-inline-spacer;
   }
 }
 .nav-stacked {

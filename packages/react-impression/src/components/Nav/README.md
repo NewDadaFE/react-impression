@@ -4,6 +4,19 @@
 
 ```js
 <Nav activeKey={1}>
+  <NavItem eventKey={1}>标题</NavItem>
+  <NavItem eventKey={2}>长标题</NavItem>
+  <NavItem eventKey={3}>标题很长</NavItem>
+  <NavItem eventKey={4}>标题特别长</NavItem>
+  <NavItem eventKey={5}>标题再长一点</NavItem>
+  <NavItem eventKey={6}>标题还敢长点吗</NavItem>
+</Nav>
+```
+
+**基本用法(设置最大宽度)**
+
+```js
+<Nav activeKey={1} maxWidth={500}>
   <NavItem eventKey={1} active>
     标题
   </NavItem>
@@ -46,6 +59,21 @@
 </Nav>
 ```
 
+**卡片类型(设置最大宽度)**
+
+```js
+<Nav activeKey={1} type="card" maxWidth={900}>
+  <NavItem eventKey={1}>标题</NavItem>
+  <NavItem eventKey={2}>长标题</NavItem>
+  <NavItem eventKey={3}>标题很长</NavItem>
+  <NavItem eventKey={4} disabled>
+    标题特别长
+  </NavItem>
+  <NavItem eventKey={5}>标题再长一点</NavItem>
+  <NavItem eventKey={6}>标题还敢长点吗</NavItem>
+</Nav>
+```
+
 **纵向堆叠类型**
 
 ```js
@@ -67,6 +95,7 @@
 
 v2.0.0
 
+* 新增 maxWidth Nav 最大宽度属性
 * 新增 sass 变量$nav-border-color 表示 Nav 边框颜色
 * 新增 sass 变量$nav-border-width 表示 Nav 边框宽度
 * 新增 sass 变量$nav-normal-padding 表示 NavItem 基本 padding
