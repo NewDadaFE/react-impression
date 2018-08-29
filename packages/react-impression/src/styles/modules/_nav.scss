@@ -42,10 +42,11 @@
 
 .nav-normal {
   border-bottom: $nav-border-width solid $nav-border-color;
+  height: rem(49px);
+  box-sizing: border-box;
   .nav-item {
     display: inline-block;
     cursor: pointer;
-    line-height: 1;
     padding: $nav-normal-padding;
     box-sizing: border-box;
     transition: border-color 0.2s ease-in-out;
@@ -93,7 +94,6 @@
   .nav-item {
     display: inline-block;
     cursor: pointer;
-    line-height: 1;
     border-top: $nav-border-width solid $nav-border-color;
     border-left: $nav-border-width solid $nav-border-color;
     border-bottom: $nav-border-width solid $nav-border-color;
