@@ -48,8 +48,8 @@ module.exports = {
   },
   Table: {
     cell: {
-      '&:nth-child(3)': {
-        width: '35%',
+      '&:last-child': {
+        width: 'auto',
         paddingRight: 16,
         paddingTop: 8,
         paddingBottom: 8,
