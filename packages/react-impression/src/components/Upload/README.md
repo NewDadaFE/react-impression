@@ -49,18 +49,5 @@ let upload
 
 v2.0.0
 
-* 新增 sass 变量`$upload-color`表示 上传文件文字颜色
-* 新增 sass 变量`$upload-icon-color`表示 上传文件 Icon 颜色
-* 新增 sass 变量`$upload-icon-font-size`表示 上传文件 Icon 大小
-* 新增 sass 变量`$upload-padding`表示 上传文件按钮和 Icon 内边距
-* 新增 sass 变量`$upload-offset-left`表示 上传文件左侧文字偏移量
-* 新增 sass 变量`$upload-preview-addon-line-height`表示 图片上传 Icon 行高
-* 新增 sass 变量`$upload-preview-addon-width`表示 图片上传 Icon 宽度
-* 新增 sass 变量`$upload-preview-img-bg`表示 图片上传背景色
-* 新增 sass 变量`$upload-preview-img-width`表示 图片上传宽度
-* 新增 sass 变量`$upload-preview-img-height`表示 图片上传高度
-* 新增 sass 变量`$upload-preview-img-border-color`表示 图片上传边框色
-* 新增 sass 变量`$upload-preview-remove-font-size`表示 移除图片字体大小
-* 新增 sass 变量`$upload-preview-remove-color`表示 移除图片字体颜色
-* 新增 sass 变量`$upload-preview-remove-bg`表示 移除图片背景色
-* 更改 sass 变量`$upload-preview-img-padding`为 `$upload-preview-img-margin` 表示 图片预览外边距
+* 修改 选择文件后显示`文件路径`，改为显示`文件名称`
+* 新增 图片预览鼠标悬停效果

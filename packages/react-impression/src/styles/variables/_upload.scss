@@ -12,11 +12,13 @@ $upload-preview-bg: $gray-lighter !default;
 $upload-preview-color: $text-muted !default;
 $upload-preview-transition: all 0.18s ease-in-out !default;
 // 上传图片icon和文字
-$upload-preview-addon-font-size: rem(24px) !default;
+$upload-preview-addon-font-size: rem(30px) !default;
 $upload-preview-addon-width: rem(32px) !default;
+$upload-preview-addon-height: $upload-preview-addon-width !default;
 $upload-preview-addon-line-height: $upload-preview-width - rem($border-width) !default;
-$upload-preview-text-bottom: 0.5rem !default;
-$upload-preview-text-font-size: 0.8rem !default;
+$upload-preview-text-padding-top: rem(10px) !default;
+$upload-preview-text-padding-bottom: rem(15px) !default;
+$upload-preview-text-font-size: rem(12px) !default;
 // 图片预览
 $upload-preview-img-bg: $brand-pure !default;
 $upload-preview-img-width: rem(70px) !default;

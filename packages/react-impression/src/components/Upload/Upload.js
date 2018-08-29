@@ -147,14 +147,14 @@ export default class Upload extends React.PureComponent {
             onChange={onChange && this.imagePreviewHandle}
           />
           {previewImageUrl || src ? (
-            <div className='upload-preview-img'>
+            <div className='upload-preview-inner upload-preview-img'>
               <img src={previewImageUrl || src} />
               <div className='upload-preview-remove'>
                 <Icon type='trash' />
               </div>
             </div>
           ) : (
-            <div className='upload-preview-tool'>
+            <div className='upload-preview-inner upload-preview-tool'>
               {children || (
                 <Icon type='camera' className='upload-preview-addon' />
               )}
