@@ -46,11 +46,6 @@ export default class Nav extends React.PureComponent {
      * 是否纵向排列
      */
     stacked: PropTypes.bool,
-
-    /**
-     * 最大宽度
-     */
-    maxWidth: PropTypes.number,
     /**
      * 默认激活标签
      */
@@ -89,7 +84,6 @@ export default class Nav extends React.PureComponent {
     const navStacked = stacked ? 'nav-stacked' : null
     const navStyle = getTypeClassMap(type, stacked)
     const navMax = maxWidth ? 'nav-inline' : null
-    const maxWidthStyle = { maxWidth: `${maxWidth}px` }
 
     delete others.activeKey
 
@@ -115,18 +109,12 @@ export default class Nav extends React.PureComponent {
     })
 
     return (
-      <div style={maxWidthStyle} className='nav-wrap'>
-        <ul
-          {...others}
-          className={classnames('nav', navStacked, navStyle, className, navMax)}
-        >
-          {children}
-        </ul>
-      </div>
+      <ul
+        {...others}
+        className={classnames('nav', navStacked, navStyle, className, navMax)}
+      >
+        {children}
+      </ul>
     )
   }
 }
-
-Nav.Item = NavItem
-Nav.Link = NavLink
-Nav.Title = NavTitle

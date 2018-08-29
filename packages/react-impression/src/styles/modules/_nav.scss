@@ -13,7 +13,6 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  white-space: nowrap;
   &.nav-inline {
     display: inline-block;
   }
@@ -42,7 +41,7 @@
 
 .nav-normal {
   border-bottom: $nav-border-width solid $nav-border-color;
-  height: rem(49px);
+  height: rem(50px);
   box-sizing: border-box;
   .nav-item {
     display: inline-block;
@@ -53,7 +52,7 @@
     &.active {
       color: $nav-link-active-color;
       background-color: $nav-link-active-bg;
-      border-bottom: $nav-border-width solid $nav-link-active-color;
+      border-bottom: $nav-active-border-width solid $nav-link-active-color;
     }
     &:hover {
       color: $nav-link-active-color;
@@ -68,7 +67,6 @@
   .nav-item {
     padding: $nav-stacked-padding;
     color: $gray-darker;
-    line-height: 1;
     cursor: pointer;
     background: $brand-pure;
     transition: background-color 0.2s ease-in-out;
