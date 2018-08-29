@@ -1,17 +1,18 @@
 // Message
-$message-left: $sidebar-width !default;
 $message-top: ($navbar-height + 20) !default;
-$message-max-width: 250px !default;
-$message-border-radius: $border-radius-lg !default;
-$message-color: $text-muted !default;
-$message-box-shadow: 0 2px 6px $inverse-level-2 !default;
+$message-min-width: rem(360px) !default;
+$message-max-width: rem(700px) !default;
+$message-border-radius: $border-radius !default;
+$message-padding: 0 rem(8px) 0 rem(15px) !default;
+$message-close-padding: 0 rem(7px) !default;
 
-$message-header-font-size: $font-size-lg !default;
-$message-header-padding: 0.5rem 0 0.5rem 0.75rem !default;
-$message-body-padding: 0.5rem 1rem 0.5rem 0.75rem !default;
+$message-header-font-size: rem(20px) !default;
+$message-body-padding: rem(8px) rem(8px) rem(8px) rem(10px) !default;
+$message-body-line-height: rem(22px) !default;
 
-$message-loading-padding: 0 0.5rem 0 0 !default;
-$message-loading-border-color: $brand-primary !default;
+$message-icon-loading-padding: 0 0.5rem 0 0 !default;
+$message-loading-border-color: $gray !default;
+$message-loading-color: $gray-base !default;
 
 $message-enter-duration: 0.24s !default;
 $message-leave-duration: 0.36s !default;
