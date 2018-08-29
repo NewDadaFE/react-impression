@@ -130,3 +130,5 @@ InlineSelect.setValue = (ref, value) => {
 
   ref.setValue(value)
 }
+
+InlineSelect.Option = InlineSelectOption
