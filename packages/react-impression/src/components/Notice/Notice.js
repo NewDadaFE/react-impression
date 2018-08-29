@@ -34,7 +34,7 @@ export default class Notice extends PureComponent {
     let { theme } = this.props
 
     return {
-      info: ['fa', 'fa-volume-up'],
+      info: ['fa', 'fa-info-circle'],
       success: ['fa', 'fa-check-circle'],
       warning: ['fa', 'fa-exclamation-triangle'],
       danger: ['fa', 'fa-times-circle'],
@@ -62,14 +62,12 @@ export default class Notice extends PureComponent {
           <i className={classnames(iconClass)} />
         </div>
         <div className='notice-body'>
-          <div className='notice-title'>
-            {title}
-            {closeable && (
-              <button type='button' className='close' onClick={close}>
-                &times;
-              </button>
-            )}
-          </div>
+          {closeable && (
+            <button type='button' className='close' onClick={close}>
+              &times;
+            </button>
+          )}
+          <div className='notice-title'>{title}</div>
           <div className='notice-content'>{message || children}</div>
         </div>
       </div>

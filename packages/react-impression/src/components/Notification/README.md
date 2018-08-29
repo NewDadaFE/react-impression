@@ -5,14 +5,16 @@ const handleShowInfo = () => {
   Notification.info({
     closeable: false,
     title: '通知',
-    message: '欢迎，这是一个消息通知。',
+    message:
+      '这是一个没有关闭按钮的信息提醒的样式，提示注意信息填是否符合要求。',
   })
 }
 const handleShowSuccess = () => {
   Notification.success({
     title: '成功',
-    message: '恭喜您，操作成功！',
-    duration: 500,
+    message:
+      '这是一个成功信息的样式，提示信息已经全部填写完成。此条通知会显示5s',
+    duration: 5000,
   })
 }
 const handleShowWarning = () => {
