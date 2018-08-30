@@ -1,161 +1,153 @@
-//
-// Basic Bootstrap table
-//
+// //
+// // Basic Bootstrap table
+// //
 
-.table {
-    width: 100%;
-    max-width: 100%;
-    color: $body-color;
-    margin-bottom: $spacer;
-    background-color: $table-bg;
+// .table {
+//     width: 100%;
+//     max-width: 100%;
+//     color: $body-color;
+//     margin-bottom: $spacer;
+//     background-color: $table-bg;
 
-    th,
-    td {
-        padding: $table-cell-padding;
-        vertical-align: top;
-        border-top: $table-border-width solid $table-border-color;
-    }
+//     th,
+//     td {
+//         padding: $table-cell-padding;
+//         vertical-align: top;
+//         border-top: $table-border-width solid $table-border-color;
+//     }
 
-    thead th {
-        vertical-align: bottom;
-        border-bottom: $table-border-width solid $table-border-color;
-        background: $table-thead-bg;
-    }
+//     thead th {
+//         vertical-align: bottom;
+//         border-bottom: $table-border-width solid $table-border-color;
+//         background: $table-thead-bg;
+//     }
 
+//     tbody + tbody {
+//         border-top: $table-border-width solid $table-border-color;
+//     }
+// }
 
-    tbody + tbody {
-        border-top: $table-border-width solid $table-border-color;
-    }
-}
+// //
+// // Condensed table w/ half padding
+// //
 
+// .table-sm {
+//     th,
+//     td {
+//         padding: $table-sm-cell-padding;
+//     }
+// }
 
-//
-// Condensed table w/ half padding
-//
+// // Bordered version
+// //
+// // Add borders all around the table and between all the columns.
 
-.table-sm {
-    th,
-    td {
-        padding: $table-sm-cell-padding;
-    }
-}
+// .table-bordered {
+//     border: $table-border-width solid $table-border-color;
 
+//     th,
+//     td {
+//         border: $table-border-width solid $table-border-color;
+//     }
 
-// Bordered version
-//
-// Add borders all around the table and between all the columns.
+//     thead {
+//         th,
+//         td {
+//             border-bottom-width: $table-border-width;
+//         }
+//     }
+// }
 
-.table-bordered {
-    border: $table-border-width solid $table-border-color;
+// // Zebra-striping
+// //
+// // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
-    th,
-    td {
-        border: $table-border-width solid $table-border-color;
-    }
+// .table-striped {
+//     tbody tr:nth-of-type(even) {
+//         background-color: $table-bg-accent;
+//     }
+// }
 
-    thead {
-        th,
-        td {
-            border-bottom-width: $table-border-width;
-        }
-    }
-}
+// // Hover effect
+// //
+// // Placed here since it has to come after the potential zebra striping
 
+// .table-hover {
+//     tbody tr {
+//         &:hover {
+//             background-color: $table-bg-hover;
+//         }
+//     }
+// }
 
-// Zebra-striping
-//
-// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+// // Responsive tables
+// .table-responsive {
+//     display: block;
+//     width: 100%;
+//     min-height: .01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+//     overflow-x: auto;
+// }
 
-.table-striped {
-    tbody tr:nth-of-type(even) {
-        background-color: $table-bg-accent;
-    }
-}
+// .table-inverse {
+//     &,
+//     thead th {
+//         color: $table-inverse-color;
+//         background-color: $table-inverse-bg;
+//     }
 
+//     thead th {
+//         color: $table-inverse-thead-color;
+//     }
 
-// Hover effect
-//
-// Placed here since it has to come after the potential zebra striping
+//     &.table-bordered {
+//         border: 0;
+//     }
 
-.table-hover {
-    tbody tr {
-        &:hover {
-            background-color: $table-bg-hover;
-        }
-    }
-}
+//     th,
+//     td,
+//     thead th {
+//         border-color: $table-inverse-border-color;
+//     }
+// }
 
+// .table-reflow {
+//     thead {
+//         float: left;
+//     }
 
-// Responsive tables
-.table-responsive {
-    display: block;
-    width: 100%;
-    min-height: .01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
-    overflow-x: auto;
-}
+//     tbody {
+//         display: block;
+//         white-space: nowrap;
+//     }
 
+//     th,
+//     td {
+//         border-top: $table-border-width solid $table-border-color;
+//         border-left: $table-border-width solid $table-border-color;
 
-.table-inverse {
-    &,
-    thead th {
-        color: $table-inverse-color;
-        background-color: $table-inverse-bg;
-    }
+//         &:last-child {
+//             border-right: $table-border-width solid $table-border-color;
+//         }
+//     }
 
-    thead th {
-        color: $table-inverse-thead-color;
-    }
+//     thead,
+//     tbody,
+//     tfoot {
+//         &:last-child {
+//             tr:last-child th,
+//             tr:last-child td {
+//                 border-bottom: $table-border-width solid $table-border-color;
+//             }
+//         }
+//     }
 
-    &.table-bordered {
-        border: 0;
-    }
+//     tr {
+//         float: left;
 
-    th,
-    td,
-    thead th {
-        border-color: $table-inverse-border-color;
-    }
-}
-
-
-.table-reflow {
-    thead {
-        float: left;
-    }
-
-    tbody {
-        display: block;
-        white-space: nowrap;
-    }
-
-    th,
-    td {
-        border-top: $table-border-width solid $table-border-color;
-        border-left: $table-border-width solid $table-border-color;
-
-        &:last-child {
-            border-right: $table-border-width solid $table-border-color;
-        }
-    }
-
-    thead,
-    tbody,
-    tfoot {
-        &:last-child {
-            tr:last-child th,
-            tr:last-child td {
-                border-bottom: $table-border-width solid $table-border-color;
-            }
-        }
-    }
-
-    tr {
-        float: left;
-
-        th,
-        td {
-            display: block !important;
-            border: $table-border-width solid $table-border-color;
-        }
-    }
-}
+//         th,
+//         td {
+//             display: block !important;
+//             border: $table-border-width solid $table-border-color;
+//         }
+//     }
+// }

@@ -1,7 +1,15 @@
 // Tables
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
-
+$table-color: $gray-base !default;
+$table-header-padding: rem(9px) 0;
+$table-body-padding: rem(13px) rem(30px);
+$table-header-border-color: #e1e5ec;
+$table-header-color: $gray-darker;
+$table-header-line-height: rem(22px);
+$table-spried-background: $gray-lighter;
+$table-body-hover-bg-color: #ecf2ff;
+$table-header-border: rem(1px) solid $table-header-border-color;
 $table-cell-padding: 0.75rem !default;
 $table-sm-cell-padding: 0.3rem !default;
 
