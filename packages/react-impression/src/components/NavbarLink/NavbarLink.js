@@ -33,6 +33,7 @@ class NavbarLink extends React.Component {
   static defaultProps = {
     target: '_blank',
     active: false,
+    onClick: e => e.preventDefault(),
   }
 
   get className() {
@@ -55,7 +56,7 @@ class NavbarLink extends React.Component {
     return (
       <div className='navbar-link-container'>
         <a onClick={onClick} className={this.className}>
-          {this.props.children}
+          {children}
         </a>
       </div>
     )
