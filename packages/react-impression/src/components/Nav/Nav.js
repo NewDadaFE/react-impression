@@ -83,11 +83,10 @@ export default class Nav extends React.PureComponent {
 
   render() {
     let { children } = this.props
-    const { type, stacked, className, maxWidth, ...others } = this.props
+    const { type, stacked, className, ...others } = this.props
     const { activeKey } = this.state
     const navStacked = stacked ? 'nav-stacked' : null
     const navStyle = getTypeClassMap(type, stacked)
-    const navMax = maxWidth ? 'nav-inline' : null
 
     delete others.activeKey
 
@@ -115,7 +114,7 @@ export default class Nav extends React.PureComponent {
     return (
       <ul
         {...others}
-        className={classnames('nav', navStacked, navStyle, className, navMax)}
+        className={classnames('nav', navStacked, navStyle, className)}
       >
         {children}
       </ul>
