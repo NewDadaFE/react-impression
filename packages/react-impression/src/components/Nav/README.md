@@ -71,5 +71,5 @@ v2.0.0
 * 新增 sass 变量$nav-card-padding 表示 NavItem card 模式下 padding
 * 新增 sass 变量$nav-stacked-padding 表示 NavItem stacked 模式下 padding
 * 新增 sass 变量$nav-stacked-margin-bottom 表示 NavItem stacked 模式下 margin-bottom
-* 删除 type 属性的 tab、pill、inline 可选项，支持 card 属性值
+* 删除 type 属性的 tab、pill、inline 可选项，支持 card,normal 属性值，默认为 normal
 * 删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle

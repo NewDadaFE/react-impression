@@ -33,23 +33,27 @@ export default class Nav extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
     /**
      * 自定义样式
      */
     className: PropTypes.string,
+
     /**
      * 导航栏样式
      */
-    // type: PropTypes.oneOf(['tab', 'pill', 'inline', 'inline-bordered']),
-    type: PropTypes.string,
+    type: PropTypes.oneOf(['card', 'normal']),
+
     /**
      * 是否纵向排列
      */
     stacked: PropTypes.bool,
+
     /**
      * 默认激活标签
      */
     activeKey: PropTypes.any,
+
     /**
      * 选中回调函数
      */
