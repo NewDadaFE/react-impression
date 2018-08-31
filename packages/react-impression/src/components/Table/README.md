@@ -213,16 +213,16 @@ const columns = [
   {
     prop: 'code',
     label: '编码',
-    width: 120,
     fixed: 'left',
+    width: 120,
     render: code => {
       return <a href="javascript:void(0)">{code}</a>
     },
   },
   { prop: 'address', label: '地址', width: 160 },
-  { prop: 'num', label: '金额', width: 120, fixed: 'right' },
+  { prop: 'num', label: '金额', fixed: 'right', width: 100 },
   { prop: 'phone', label: '电话', width: 120 },
-  { prop: 'creatTime', label: '创建时间', width: 120 },
+  { prop: 'creatTime', label: '创建时间', fixed: 'left', width: 120 },
   { prop: 'status', label: '状态', width: 120 },
   {
     prop: 'id',

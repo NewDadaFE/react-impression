@@ -20,6 +20,7 @@ export default class Table extends React.PureComponent {
       fixLeftColumns: [],
       fixRightColumns: [],
       noFixColumns: [],
+      leftFixedWidth: '',
     }
 
     this.state = {
@@ -59,6 +60,10 @@ export default class Table extends React.PureComponent {
     scroll: PropTypes.object,
 
     /**
+     * 文本内容超出省略
+     */
+    tooltip: PropTypes.bool,
+    /**
      * 自定义样式
      */
     className: PropTypes.string,
@@ -66,6 +71,7 @@ export default class Table extends React.PureComponent {
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
+    tooltip: false,
   }
 
   componentWillMount() {
@@ -74,87 +80,52 @@ export default class Table extends React.PureComponent {
     let fixRightColumns = []
     let noFixColumns = []
     columns.forEach(column => {
-      if (column.fixed && column.fixed === 'left') {
+      if (column.fixed === 'left') {
         fixLeftColumns.push(column)
-      } else if (column.fixed && column.fixed === 'right') {
+      } else if (column.fixed === 'right') {
         fixRightColumns.push(column)
       } else {
         noFixColumns.push(column)
       }
     })
-    this.setState({
-      fixLeftColumns,
-      fixRightColumns,
-      noFixColumns,
-    })
-  }
-  componentDidMount() {}
-  getChildContext() {
-    return {
-      componentTable: this,
-    }
-  }
-  /**
-   * option选中回调
-   * @param {String} 值
-   * @param {String} 显示文本
-   * @param {Number} 索引
-   */
-  selectOptionHandle(result) {
-    const { onChange, value, filterMethod, multiple } = this.props
-    const { options, selectedItem, optionGroup } = this.state
-    const originValue = this.isPuppet ? value : this.state.value
-    if (multiple) {
-      this.setState({ currentPlaceholder: '' })
-    }
-    // 木偶组件
-    if (!this.isPuppet) {
-      this.setState(
-        {
-          value: multiple ? [...originValue, result.value] : result.value,
-          selectText: multiple ? '' : result.name,
-          selectedItem: multiple ? [...selectedItem, result.node] : result.node,
-        },
-        () => {
-          if (multiple && this.tag.clientHeight > 42) {
-            this.setState({ top: '220%' })
-          }
-
-          options.forEach(option => option.handleActive())
-          onChange &&
-            result.value !== originValue &&
-            onChange(result.value, result.name, result.index)
-        }
-      )
-    } else {
-      if (multiple && this.tag.clientHeight > 42) {
-        this.setState({ top: '220%' })
-      }
-      onChange &&
-        result.value !== originValue &&
-        onChange(result.value, result.name, result.index)
-    }
     this.setState(
       {
-        showOption: !!multiple,
-        queryText: '',
+        fixLeftColumns,
+        fixRightColumns,
+        noFixColumns,
+        columns: fixLeftColumns.concat(noFixColumns, fixRightColumns),
       },
-      () => {
-        options.forEach(option => {
-          option.queryChange('', filterMethod)
-        })
-        optionGroup.forEach(option => {
-          option.queryChange('')
-        })
-      }
+      this.updateColumnsWidth
     )
   }
+  componentDidMount() {}
 
   /**
    * 清空组件管理
    */
   componentWillUnmount() {
     System.unmanager(this)
+  }
+  updateColumnsWidth() {
+    const { fixLeftColumns, fixRightColumns } = this.state
+
+    if (fixLeftColumns.length > 0) {
+      let fixedWidth = 0
+      fixLeftColumns.forEach(function (column) {
+        fixedWidth += column.realWidth || column.width || 80
+      })
+
+      this.setState({ leftFixedWidth: fixedWidth })
+    }
+
+    if (fixRightColumns.length > 0) {
+      let rightFixedWidth = 0
+      fixRightColumns.forEach(function (column) {
+        rightFixedWidth += column.realWidth || column.width || 80
+      })
+
+      this.setState({ rightFixedWidth: rightFixedWidth })
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -173,18 +144,25 @@ export default class Table extends React.PureComponent {
   }
   render() {
     const {
-      columns,
       data,
       stripe,
       border,
       scroll,
       className,
       fixed,
+      tooltip,
     } = this.props
     const max = this.getMax(scroll)
-    const { fixLeftColumns, fixRightColumns, noFixColumns } = this.state
-    console.log('data=>', fixLeftColumns.concat(noFixColumns, fixRightColumns))
-
+    const {
+      fixLeftColumns,
+      fixRightColumns,
+      noFixColumns,
+      leftFixedWidth,
+      rightFixedWidth,
+      columns,
+    } = this.state
+    const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : ''
+    const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
     return (
       <div
         className={classnames('table', { 'table-wrap-fix': fixed })}
@@ -198,17 +176,23 @@ export default class Table extends React.PureComponent {
             className
           )}
         >
-          <TableHead columns={columns} />
-          <TableBody columns={columns} data={data} stripe={stripe} />
+          <TableHead columns={columns} tooltip={tooltip} />
+          <TableBody
+            columns={columns}
+            data={data}
+            stripe={stripe}
+            tooltip={tooltip}
+          />
         </div>
-        {/* {(!!fixLeftColumns.length || !!fixRightColumns.length) && (
+        {!!fixLeftColumns.length && (
           <div
             className={classnames(
-              'table-fixed',
+              'table-fixed-left',
               { 'table-border': border },
               { 'table-scroll': scroll && (scroll.x || scroll.y) },
               className
             )}
+            style={{ width: leftWidth }}
           >
             <TableHead
               columns={fixLeftColumns.concat(noFixColumns, fixRightColumns)}
@@ -221,7 +205,29 @@ export default class Table extends React.PureComponent {
               fixed
             />
           </div>
-        )} */}
+        )}
+        {!!fixRightColumns.length && (
+          <div
+            className={classnames(
+              'table-fixed-right',
+              { 'table-border': border },
+              { 'table-scroll': scroll && (scroll.x || scroll.y) },
+              className
+            )}
+            style={{ width: rightWidth }}
+          >
+            <TableHead
+              columns={fixRightColumns.concat(noFixColumns, fixLeftColumns)}
+              fixed
+            />
+            <TableBody
+              columns={fixRightColumns.concat(noFixColumns, fixLeftColumns)}
+              data={data}
+              stripe={stripe}
+              fixed
+            />
+          </div>
+        )}
       </div>
     )
   }

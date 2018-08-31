@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as System from '../../utils/system'
+import Tooltip from '../Tooltip/index'
 
 export default class TableHead extends React.PureComponent {
   constructor(props, context) {
@@ -33,6 +34,10 @@ export default class TableHead extends React.PureComponent {
      * 是否固定
      */
     fixed: PropTypes.bool,
+    /**
+     * 文本内容超出省略
+     */
+    tooltip: PropTypes.bool,
   }
   static defaultProps = {
     disabled: false,
@@ -51,7 +56,7 @@ export default class TableHead extends React.PureComponent {
   componentWillReceiveProps(props) {}
 
   render() {
-    const { columns, fixed } = this.props
+    const { columns, fixed, tooltip } = this.props
 
     return (
       <div className='table-head-wrap'>
@@ -60,12 +65,14 @@ export default class TableHead extends React.PureComponent {
             <tr>
               {!!columns.length &&
                 columns.map((column, index) => {
-                  const width = column.width ? column.width : ''
+                  let width = ''
                   let fix = ''
                   if (!fixed) {
                     fix = ''
+                    width = column.width ? column.width : ''
                   } else {
                     fix = fixed && column.fixed ? column.fixed : 'normal'
+                    width = column.width ? column.width : 80
                   }
                   return (
                     <th
@@ -73,7 +80,16 @@ export default class TableHead extends React.PureComponent {
                       width={width}
                       className={classnames(`item-fix-${fix}`)}
                     >
+                      {/* {tooltip && (
+                        <Tooltip position="bottom" content={column.label}>
+                          <div className="table-cell table-cell-tooltip">
+                            {column.label}
+                          </div>
+                        </Tooltip>
+                      )} */}
+                      {/* {!tooltip && ( */}
                       <div className='table-cell'>{column.label}</div>
+                      {/* )} */}
                     </th>
                   )
                 })}

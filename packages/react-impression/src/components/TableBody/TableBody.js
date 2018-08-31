@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as System from '../../utils/system'
+import Tooltip from '../Tooltip/index'
 
 export default class TableBody extends React.PureComponent {
   constructor(props, context) {
@@ -46,6 +47,11 @@ export default class TableBody extends React.PureComponent {
      * 是否固定
      */
     fixed: PropTypes.bool,
+
+    /**
+     * 文本内容超出省略
+     */
+    tooltip: PropTypes.bool,
   }
   static defaultProps = {
     disabled: false,
@@ -61,7 +67,7 @@ export default class TableBody extends React.PureComponent {
     System.unmanager(this)
   }
   render() {
-    const { columns, data, stripe, fixed } = this.props
+    const { columns, data, stripe, fixed, tooltip } = this.props
     const current = 1
     return (
       <div className='table-body-wrap'>
@@ -79,12 +85,14 @@ export default class TableBody extends React.PureComponent {
                   const value = column.prop ? item[column.prop] : ''
                   const rowspan = column.rowspan ? column.rowspan : 1
                   const colspan = column.colspan ? column.colspan : 1
-                  const width = column.width ? column.width : ''
+                  let width = ''
                   let fix = ''
                   if (!fixed) {
                     fix = ''
+                    width = column.width ? column.width : ''
                   } else {
                     fix = fixed && column.fixed ? column.fixed : 'normal'
+                    width = column.width ? column.width : 80
                   }
 
                   if (column.render && typeof column.render === 'function') {
@@ -110,9 +118,14 @@ export default class TableBody extends React.PureComponent {
                       width={width}
                       className={classnames(`item-fix-${fix}`)}
                     >
-                      {/* <Tooltip position="bottom" content={value.toString()}> */}
-                      <div className='table-cell'>{value}</div>
-                      {/* </Tooltip> */}
+                      {tooltip && (
+                        <Tooltip position='bottom' content={value}>
+                          <div className='table-cell table-cell-tooltip'>
+                            {value}
+                          </div>
+                        </Tooltip>
+                      )}
+                      {!tooltip && <div className='table-cell'>{value}</div>}
                     </td>
                   )
                 })}

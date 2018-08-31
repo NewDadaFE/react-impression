@@ -1,5 +1,7 @@
 .table {
   position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
   th {
     white-space: nowrap;
     overflow: hidden;
@@ -15,6 +17,7 @@
   }
   td {
     padding: $table-body-padding;
+    word-break: break-all;
   }
 
   .table-header {
@@ -29,6 +32,11 @@
     border-collapse: separate;
     .table-cell {
       line-height: $table-header-line-height;
+    }
+    .table-cell-tooltip {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     tr {
       &:hover {
@@ -53,5 +61,31 @@
   }
   &.table-scroll {
     overflow: auto;
+  }
+}
+.table-fixed-left {
+  position: absolute;
+  top: rem(1px);
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  .item-fix-normal {
+    visibility: hidden;
+  }
+  .item-fix-right {
+    visibility: hidden;
+  }
+}
+.table-fixed-right {
+  position: absolute;
+  top: rem(1px);
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  .item-fix-normal {
+    visibility: hidden;
+  }
+  .item-fix-left {
+    visibility: hidden;
   }
 }
