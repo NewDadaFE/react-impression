@@ -11,13 +11,12 @@ import NavTitle from '../NavTitle'
  * @returns {string}
  */
 const getTypeClassMap = (type, stacked) => {
-  if (stacked) return null
-  if (!type) return 'nav-normal'
+  if (stacked) return ''
   const map = {
     card: 'nav-card',
   }
 
-  return map[type] ? map[type] : type
+  return map[type] || 'nav-normal'
 }
 
 export default class Nav extends React.PureComponent {
@@ -101,7 +100,7 @@ export default class Nav extends React.PureComponent {
         onClick: this.onSelectHandle,
       }
 
-      if (eventKey !== undefined) {
+      if (eventKey) {
         options.eventKey = eventKey
         if (activeKey) {
           options.active = eventKey === activeKey
@@ -121,3 +120,7 @@ export default class Nav extends React.PureComponent {
     )
   }
 }
+
+Nav.Item = NavItem
+Nav.Link = NavLink
+Nav.Title = NavTitle
