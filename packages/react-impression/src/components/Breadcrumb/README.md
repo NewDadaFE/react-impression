@@ -4,8 +4,8 @@
 
 ```js
 <Breadcrumb className="no-padding">
-  <a href="javascript:void(0);">首页</a>
-  <a href="javascript:void(0);">二级菜单</a>
+  <a href="#">首页</a>
+  <a href="#">二级菜单</a>
   <span>当前页面</span>
 </Breadcrumb>
 ```

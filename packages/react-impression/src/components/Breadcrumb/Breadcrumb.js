@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Breadcrumb = ({ children, className, ...others }) => {
-  children = React.Children.map(children, (child, index) => {
+  const _children = React.Children.map(children, (child, index) => {
     if (!child) {
       return child
     }
@@ -20,7 +20,7 @@ const Breadcrumb = ({ children, className, ...others }) => {
       {...others}
       className={classnames('breadcrumb breadcrumb-arrow', className)}
     >
-      {children}
+      {_children}
     </ol>
   )
 }
