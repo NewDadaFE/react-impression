@@ -206,7 +206,7 @@ const data = [
 ;<Table columns={columns} data={data} scroll={{ x: 900 }} stripe />
 ```
 
-**固定项 table**
+**条目过多 有固定项 table**
 
 ```js
 const columns = [

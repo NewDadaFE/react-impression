@@ -21,6 +21,8 @@ export default class Table extends React.PureComponent {
       fixRightColumns: [],
       noFixColumns: [],
       leftFixedWidth: '',
+      isEnd: false,
+      isStart: true,
     }
 
     this.state = {
@@ -69,8 +71,6 @@ export default class Table extends React.PureComponent {
     className: PropTypes.string,
   }
   static defaultProps = {
-    disabled: false,
-    placeholder: '请选择',
     tooltip: false,
   }
 
@@ -142,6 +142,19 @@ export default class Table extends React.PureComponent {
     if (max.x) return { maxWidth: max.x }
     if (max.y) return { maxHeight: max.y }
   }
+  handleScroll(e) {
+    const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
+    const scrollWidth = this.scrollEl.scrollLeft
+    if (scrollWidth === 0) {
+      this.setState({ isEnd: false, isStart: true })
+    }
+    if ((scrollWidth > 0) & (scrollWidth < targetWidth)) {
+      this.setState({ isEnd: false, isStart: false })
+    }
+    if (scrollWidth === targetWidth) {
+      this.setState({ isEnd: true, isStart: false })
+    }
+  }
   render() {
     const {
       data,
@@ -160,6 +173,8 @@ export default class Table extends React.PureComponent {
       leftFixedWidth,
       rightFixedWidth,
       columns,
+      isEnd,
+      isStart,
     } = this.state
     const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : ''
     const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
@@ -169,6 +184,10 @@ export default class Table extends React.PureComponent {
         style={max}
       >
         <div
+          onScroll={e => this.handleScroll(e)}
+          ref={div => {
+            this.scrollEl = div
+          }}
           className={classnames(
             'table-wrap',
             { 'table-border': border },
@@ -176,13 +195,20 @@ export default class Table extends React.PureComponent {
             className
           )}
         >
-          <TableHead columns={columns} tooltip={tooltip} />
-          <TableBody
-            columns={columns}
-            data={data}
-            stripe={stripe}
-            tooltip={tooltip}
-          />
+          <div
+            ref={div => {
+              this.inner = div
+            }}
+            style={{ display: 'inline-block' }}
+          >
+            <TableHead columns={columns} tooltip={tooltip} />
+            <TableBody
+              columns={columns}
+              data={data}
+              stripe={stripe}
+              tooltip={tooltip}
+            />
+          </div>
         </div>
         {!!fixLeftColumns.length && (
           <div
@@ -190,6 +216,7 @@ export default class Table extends React.PureComponent {
               'table-fixed-left',
               { 'table-border': border },
               { 'table-scroll': scroll && (scroll.x || scroll.y) },
+              { 'table-shadow': !isStart },
               className
             )}
             style={{ width: leftWidth }}
@@ -212,6 +239,7 @@ export default class Table extends React.PureComponent {
               'table-fixed-right',
               { 'table-border': border },
               { 'table-scroll': scroll && (scroll.x || scroll.y) },
+              { 'table-shadow': !isEnd },
               className
             )}
             style={{ width: rightWidth }}

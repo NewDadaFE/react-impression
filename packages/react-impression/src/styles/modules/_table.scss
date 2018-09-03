@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  font-size: 0;
   th {
     white-space: nowrap;
     overflow: hidden;
@@ -30,6 +31,7 @@
     text-align: center;
     table-layout: fixed;
     border-collapse: separate;
+    font-size: rem(14px);
     .table-cell {
       line-height: $table-header-line-height;
     }
@@ -64,6 +66,16 @@
   }
 }
 .table-fixed-left {
+  &.table-border {
+    border-left: $table-header-border;
+  }
+}
+.table-fixed-right {
+  &.table-border {
+    border-right: $table-header-border;
+  }
+}
+.table-fixed-left {
   position: absolute;
   top: rem(1px);
   left: 0;
@@ -74,6 +86,9 @@
   }
   .item-fix-right {
     visibility: hidden;
+  }
+  &.table-shadow {
+    box-shadow: rem(-2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
   }
 }
 .table-fixed-right {
@@ -87,5 +102,8 @@
   }
   .item-fix-left {
     visibility: hidden;
+  }
+  &.table-shadow {
+    box-shadow: rem(-2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
   }
 }
