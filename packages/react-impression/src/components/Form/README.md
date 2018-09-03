@@ -29,7 +29,7 @@
   </FormGroup>
   <FormGroup>
     <Button theme="secondary">搜索</Button>
-    <Button theme="default" style={{ marginLeft: '20px' }}>
+    <Button theme="default" style={{ marginLeft: '20' }}>
       重置
     </Button>
   </FormGroup>
@@ -78,7 +78,7 @@
     </Col>
   </FormGroup>
   <FormGroup style={{ justifyContent: 'center' }}>
-    <Button theme="default" style={{ marginRight: '20px' }}>
+    <Button theme="default" style={{ marginRight: '20' }}>
       关闭
     </Button>
     <Button theme="primary">保存</Button>
