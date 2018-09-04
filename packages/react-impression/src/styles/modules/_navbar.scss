@@ -1,66 +1,40 @@
-// Wrapper and base class
-//
-// Provide a static navbar from which we expand to create full-width, fixed, and
-// other navbar variations.
-
 .navbar {
-    height: $navbar-height;
-    line-height: $navbar-line-height;
-    position: relative;
-    padding: $navbar-padding-y $navbar-padding-x;
-    border-bottom: 1px solid transparent;
-
-    @include clearfix;
-    @include nav-variant($navbar-color, $navbar-bg, $navbar-border-color);
+  height: rem(60px);
+  background: white;
+  box-shadow: 0 rem(2px) rem(10px) 0 rgba(145, 156, 179, 0.1);
+  line-height: rem(58px);
 }
 
-.navbar-primary {
-    @include nav-variant($navbar-primary-color, $navbar-primary-bg, $navbar-primary-border-color);
+.navbar-link-container {
+  display: inline-block;
+  height: rem(60px);
+  padding-right: rem(30px);
+  padding-left: rem(30px);
+
+  > a {
+    cursor: pointer;
+  }
 }
 
-.navbar-inverse {
-    @include nav-variant($navbar-inverse-color, $navbar-inverse-bg, $navbar-inverse-border-color);
-}
+.navbar-link {
+  display: block;
+  font-size: $font-size-h3;
+  color: $gray-darker;
 
-.navbar-pure {
-    @include nav-variant($navbar-pure-color, $navbar-pure-bg, $navbar-pure-border-color);
-}
-
-
-//
-// Brand
-//
-
-.navbar-brand {
-    margin-right: 1rem;
-    font-size: $font-size-lg;
-
-    &:hover,
-    &:focus {
-        text-decoration: none;
-    }
-
-    > img {
-        display: block;
-    }
+  &.active,
+  &:hover {
+    outline: none;
+    color: $gray-base;
+    text-decoration: none;
+    border-bottom: rem(2px) solid $gray-base;
+  }
 }
 
 .navbar-btn {
-    margin-top: $navbar-margin-vertical;
-    margin-bottom: $navbar-margin-vertical;
-}
-
-
-.navbar-divider {
-    float: left;
-    width: $border-width;
-    padding-top: .425rem;
-    padding-bottom: .425rem;
-    margin-right: $navbar-padding-x;
-    margin-left: $navbar-padding-x;
-    overflow: hidden;
-
-    &::before {
-        content: '\00a0';
-    }
+  @extend .btn;
+  height: rem(60px);
+  padding: 0 rem(20px);
+  line-height: inherit;
+  border: none;
+  border-radius: 0;
 }
