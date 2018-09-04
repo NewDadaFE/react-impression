@@ -2,14 +2,14 @@
 
 $tooltip-max-width: 15rem !default;
 $tooltip-color: $brand-pure !default;
-$tooltip-bg: $gray-secondary !default;
-$tooltip-opacity: 0.9 !default;
-$tooltip-padding-y: 0.3rem !default;
-$tooltip-padding-x: 0.6rem !default;
-$tooltip-margin: 3px !default;
-$tooltip-border-radius: 2px !default;
+$tooltip-bg: $gray-base !default;
+$tooltip-opacity: .9 !default;
+$tooltip-padding-y: rem(5px) !default;
+$tooltip-padding-x: rem(16px) !default;
+$tooltip-border-radius: $border-radius !default;
+$tooltip-line-height: rem(22px) !default;
 
-$tooltip-arrow-width: 0.5rem !default;
+$tooltip-arrow-width: rem(5px) !default;
 $tooltip-arrow-color: $tooltip-bg !default;
 
-$tooltip-transition: all 0.36s cubic-bezier(0.4, 0, 0.2, 1) !default;
+$tooltip-transition: all .36s cubic-bezier(.4, 0, .2, 1) !default;

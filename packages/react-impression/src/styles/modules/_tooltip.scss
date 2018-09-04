@@ -5,7 +5,7 @@
     display: block;
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
     // Allow breaking very long words so they don't overflow the tooltip's bounds
     word-wrap: break-word;
     opacity: 0;
@@ -16,53 +16,49 @@
     }
 
     &.tooltip-top {
-        padding: $tooltip-arrow-width 0;
-        margin-top: -$tooltip-margin;
+        padding-bottom: $tooltip-arrow-width;
 
         .tooltip-arrow {
             bottom: 0;
             left: 50%;
             margin-left: -$tooltip-arrow-width;
-            border-width: ($tooltip-arrow-width * 1.6) $tooltip-arrow-width 0;
+            border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
             border-top-color: $tooltip-arrow-color;
         }
     }
 
     &.tooltip-right {
-        padding: 0 $tooltip-arrow-width;
-        margin-left: $tooltip-margin;
+        padding-left: $tooltip-arrow-width;
 
         .tooltip-arrow {
             top: 50%;
             left: 0;
             margin-top: -$tooltip-arrow-width;
-            border-width: $tooltip-arrow-width ($tooltip-arrow-width * 1.6)  $tooltip-arrow-width 0;
+            border-width: $tooltip-arrow-width $tooltip-arrow-width  $tooltip-arrow-width 0;
             border-right-color: $tooltip-arrow-color;
         }
     }
 
     &.tooltip-bottom {
-        padding: $tooltip-arrow-width 0;
-        margin-top: $tooltip-margin;
+        padding-top: $tooltip-arrow-width;
 
         .tooltip-arrow {
             top: 0;
             left: 50%;
             margin-left: -$tooltip-arrow-width;
-            border-width: 0 $tooltip-arrow-width ($tooltip-arrow-width * 1.6);
+            border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
             border-bottom-color: $tooltip-arrow-color;
         }
     }
 
     &.tooltip-left {
-        padding: 0 $tooltip-arrow-width;
-        margin-left: -$tooltip-margin;
+        padding-right: $tooltip-arrow-width;
 
         .tooltip-arrow {
             top: 50%;
             right: 0;
             margin-top: -$tooltip-arrow-width;
-            border-width: $tooltip-arrow-width 0 $tooltip-arrow-width ($tooltip-arrow-width * 1.6);
+            border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
             border-left-color: $tooltip-arrow-color;
         }
     }
@@ -76,6 +72,7 @@
     text-align: left;
     background-color: $tooltip-bg;
     border-radius: $tooltip-border-radius;
+    line-height: $tooltip-line-height;
 }
 
 // Arrows
