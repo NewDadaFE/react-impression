@@ -2,6 +2,8 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import InlineSelectOption from '../InlineSelectOption'
+import Row from '../Row'
+import Col from '../Col'
 
 export default class InlineSelect extends React.PureComponent {
   constructor(props) {
@@ -39,6 +41,16 @@ export default class InlineSelect extends React.PureComponent {
     value: PropTypes.any,
 
     /**
+     * 标签名
+     */
+    label: PropTypes.string,
+
+    /**
+     * 标签占比
+     */
+    col: PropTypes.number,
+
+    /**
      * 选中值
      */
     defaultValue: PropTypes.any,
@@ -71,7 +83,7 @@ export default class InlineSelect extends React.PureComponent {
     }
   }
   render() {
-    const { className, ...others } = this.props
+    const { className, label, col, ...others } = this.props
     const originValue = this.isPuppet ? this.props.value : this.state.value
     let { children } = this.props
 
@@ -91,7 +103,15 @@ export default class InlineSelect extends React.PureComponent {
 
     return (
       <div {...others} className={classnames('inline-select', className)}>
-        {children}
+        {label && (
+          <Row>
+            <Col col={col || 1} className='text-right inline-select-label'>
+              <strong>{label}:</strong>
+            </Col>
+            <Col className='inline-select-content'>{children}</Col>
+          </Row>
+        )}
+        {!label && children}
       </div>
     )
   }
