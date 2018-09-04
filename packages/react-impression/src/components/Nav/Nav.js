@@ -10,15 +10,13 @@ import NavTitle from '../NavTitle'
  * @param type
  * @returns {string}
  */
-const getTypeClassMap = type => {
+const getTypeClassMap = (type, stacked) => {
+  if (stacked) return ''
   const map = {
-    tab: 'nav-tabs',
-    pill: 'nav-pills',
-    inline: 'nav-inline',
-    'inline-bordered': 'nav-inline nav-inline-bordered',
+    card: 'nav-card',
   }
 
-  return map[type] ? map[type] : type
+  return map[type] || 'nav-normal'
 }
 
 export default class Nav extends React.PureComponent {
@@ -34,22 +32,27 @@ export default class Nav extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
     /**
      * 自定义样式
      */
     className: PropTypes.string,
+
     /**
      * 导航栏样式
      */
-    type: PropTypes.oneOf(['tab', 'pill', 'inline', 'inline-bordered']),
+    type: PropTypes.oneOf(['card', 'normal']),
+
     /**
      * 是否纵向排列
      */
     stacked: PropTypes.bool,
+
     /**
      * 默认激活标签
      */
     activeKey: PropTypes.any,
+
     /**
      * 选中回调函数
      */
@@ -81,31 +84,31 @@ export default class Nav extends React.PureComponent {
     let { children } = this.props
     const { type, stacked, className, ...others } = this.props
     const { activeKey } = this.state
-    const navStacked = stacked && type === 'pill' ? 'nav-stacked' : null
-    const navStyle = getTypeClassMap(type)
+    const navStacked = stacked ? 'nav-stacked' : null
+    const navStyle = getTypeClassMap(type, stacked)
 
     delete others.activeKey
 
-    if (type) {
-      children = React.Children.map(children, (child, index) => {
-        if (!child) {
-          return child
-        }
+    children = React.Children.map(children, (child, index) => {
+      if (!child) {
+        return child
+      }
 
-        const { eventKey } = child.props
-        const options = {
-          key: index,
-          onClick: this.onSelectHandle,
-        }
+      const { eventKey } = child.props
+      const options = {
+        key: index,
+        onClick: this.onSelectHandle,
+      }
 
-        if (eventKey !== undefined) {
-          options.eventKey = eventKey
+      if (eventKey) {
+        options.eventKey = eventKey
+        if (activeKey) {
           options.active = eventKey === activeKey
         }
+      }
 
-        return React.cloneElement(child, options)
-      })
-    }
+      return React.cloneElement(child, options)
+    })
 
     return (
       <ul

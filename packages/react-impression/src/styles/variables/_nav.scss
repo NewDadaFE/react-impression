@@ -1,4 +1,10 @@
 // Navs
+$nav-border-color: #e9e9eb !default;
+$nav-border-width: rem(1px) !default;
+$nav-active-border-width: rem(2px) !default;
+$nav-normal-padding: rem(14px) rem(30px);
+$nav-card-padding: rem(13px) rem(61px);
+$nav-stacked-padding: rem(15px) rem(20px);
 $nav-item-margin: 0.2rem !default;
 $nav-item-spacer-x: 1rem !default;
 $nav-item-inline-spacer: $nav-item-spacer-x * 2 !default;
@@ -13,8 +19,8 @@ $nav-link-active-bg: transparent !default;
 $nav-link-hover-bg: $gray-lighter !default;
 $nav-link-active-border-width: 2px !default;
 
-$nav-disabled-link-color: $gray-light !default;
-$nav-disabled-link-hover-color: $gray-light !default;
+$nav-disabled-link-color: $gray !default;
+$nav-disabled-link-hover-color: $gray !default;
 $nav-disabled-link-hover-bg: transparent !default;
 
 $nav-tabs-link-padding: 0.5em 1em !default;
