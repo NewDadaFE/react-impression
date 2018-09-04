@@ -2,7 +2,7 @@
   height: rem(60px);
   background: white;
   box-shadow: 0 rem(2px) rem(10px) 0 rgba(145, 156, 179, 0.1);
-  line-height: rem(60px);
+  line-height: rem(58px);
 }
 
 .navbar-link-container {
@@ -22,9 +22,7 @@
   color: $gray-darker;
 
   &.active,
-  &:focus,
-  &:hover,
-  &:active {
+  &:hover {
     outline: none;
     color: $gray-base;
     text-decoration: none;
