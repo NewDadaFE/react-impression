@@ -8,8 +8,10 @@ $tooltip-padding-y: rem(5px) !default;
 $tooltip-padding-x: rem(16px) !default;
 $tooltip-border-radius: $border-radius !default;
 $tooltip-line-height: rem(22px) !default;
+$tooltip-offset: rem(10px) !default;
 
 $tooltip-arrow-width: rem(5px) !default;
 $tooltip-arrow-color: $tooltip-bg !default;
 
 $tooltip-transition: all .36s cubic-bezier(.4, 0, .2, 1) !default;
+$tooltip-animation: tooltip-slide-in .36s cubic-bezier(.4, 0, .2, 1) !default;

@@ -84,3 +84,107 @@
     border-style: solid;
 }
 
+/* 纯CSS版本 start */
+[data-tooltip] {
+    position: relative;
+    &:hover {
+        &::before, &::after {
+            display: block;
+            animation: $tooltip-animation ;
+            opacity: $tooltip-opacity;
+        }
+    }
+    &::before {
+        position: absolute;
+        z-index: $zindex-tooltip;
+        display: none;
+        width: 100%;
+        max-width: $tooltip-max-width;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        font-size: $font-size-base;
+        line-height: $tooltip-line-height;
+        content: attr(data-tooltip);
+        text-align: left;
+        white-space: normal;
+        color: $tooltip-color;
+        border-radius: $tooltip-border-radius;
+        background-color: $tooltip-bg;
+    }
+    &::after {
+        position: absolute;
+        z-index: $zindex-tooltip;
+        display: none;
+        content: "";
+        border-style: solid;
+    }
+
+    &[data-tooltip-pos="top"] {
+        &::before {
+            top: -($tooltip-offset + $tooltip-arrow-width);
+            left: 50%;
+            transform: translate(-50%, -100%);
+        }
+        &::after {
+            top: -$tooltip-offset;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+            border-color: $tooltip-arrow-color transparent;
+        }
+    }
+
+    &[data-tooltip-pos="bottom"] {
+        &::before {
+            bottom: -($tooltip-offset + $tooltip-arrow-width);
+            left: 50%;
+            transform: translate(-50%, 100%);
+        }
+        &::after {
+            bottom: -$tooltip-offset;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+            border-color: $tooltip-arrow-color transparent;
+        }
+    }
+
+    &[data-tooltip-pos="left"] {
+        &::before {
+            top: 50%;
+            left: -($tooltip-offset + $tooltip-arrow-width);
+            transform: translate(-100%, -50%);
+        }
+        &::after {
+            top: 50%;
+            left: -$tooltip-offset;
+            transform: translate(-100%, -50%);
+            border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+            border-color: transparent $tooltip-arrow-color;
+        }
+    }
+
+    &[data-tooltip-pos="right"] {
+        &::before {
+            top: 50%;
+            right: -($tooltip-offset + $tooltip-arrow-width);
+            transform: translate(100%, -50%);
+        }
+        &::after {
+            top: 50%;
+            right: -$tooltip-offset;
+            transform: translate(100%, -50%);
+            border-width: $tooltip-arrow-width $tooltip-arrow-width  $tooltip-arrow-width 0;
+            border-color: transparent $tooltip-arrow-color;
+        }
+    }
+}
+
+@keyframes tooltip-slide-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: $tooltip-opacity;
+    }
+}
+/* 纯CSS版本 end */
