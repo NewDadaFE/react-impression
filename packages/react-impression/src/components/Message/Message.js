@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 let _message
-let _timers = []
+let _timers
 
 export default class Message extends React.Component {
   constructor(props, context) {
@@ -42,7 +42,7 @@ export default class Message extends React.Component {
    * 移除定时器
    */
   componentWillUnmount() {
-    _timers.forEach(timer => clearTimeout(timer))
+    _timers && clearTimeout(_timers)
   }
 
   /**
@@ -78,6 +78,7 @@ export default class Message extends React.Component {
   }
 
   handleClose = () => {
+    _timers && clearTimeout(_timers)
     this.setState({ show: false })
   }
 
@@ -119,13 +120,11 @@ export default class Message extends React.Component {
  * @param duration
  */
 const hideMessage = duration => {
-  _timers.push(
-    setTimeout(() => {
-      _message.setState({
-        show: false,
-      })
-    }, duration)
-  )
+  _timers = setTimeout(() => {
+    _message.setState({
+      show: false,
+    })
+  }, duration)
 }
 
 /**
@@ -137,8 +136,7 @@ const hideMessage = duration => {
  */
 const showMessage = (theme, message, duration = 2000, closable) => {
   // 清空隐藏消息定时器
-  _timers.forEach(timer => clearTimeout(timer))
-  _timers = []
+  _timers && clearTimeout(_timers)
 
   _message.setState({
     show: true,
