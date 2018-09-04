@@ -1,14 +1,12 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as System from '../../utils/system'
 import Tooltip from '../Tooltip/index'
+import Checkbox from '../Checkbox/index'
 
 export default class TableBody extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
-
-    System.manager(this)
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
@@ -52,22 +50,48 @@ export default class TableBody extends React.PureComponent {
      * 文本内容超出省略
      */
     tooltip: PropTypes.bool,
+
+    /**
+     * 固定列，鼠标移入事件
+     */
+    onMouseEnter: PropTypes.func,
+
+    /**
+     * 固定列，鼠标移出事件
+     */
+    onMouseLeave: PropTypes.func,
+    /**
+     * 多选表格配置
+     */
+    rowSelection: PropTypes.object,
+    /**
+     * 手动单选触发回调
+     */
+    handleCheckOnSelect: PropTypes.func,
+    /**
+     * 多选选中项index list
+     */
+    selectedRowKeyList: PropTypes.array,
   }
+
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
   }
 
-  componentDidMount() {}
-
-  /**
-   * 清空组件管理
-   */
-  componentWillUnmount() {
-    System.unmanager(this)
-  }
   render() {
-    const { columns, data, stripe, fixed, tooltip } = this.props
+    const {
+      columns,
+      data,
+      stripe,
+      fixed,
+      tooltip,
+      onMouseEnter,
+      onMouseLeave,
+      rowSelection,
+      handleCheckOnSelect,
+      selectedRowKeyList,
+    } = this.props
     const current = 1
     return (
       <div className='table-body-wrap'>
@@ -76,9 +100,17 @@ export default class TableBody extends React.PureComponent {
             {data.map((item, index) => (
               <tr
                 key={index}
-                className={classnames({
-                  'table-striped': stripe && index % 2 !== 1,
-                })}
+                className={classnames(
+                  'table-tr',
+                  {
+                    'table-striped': stripe && index % 2 !== 1,
+                  },
+                  {
+                    'is-hover': fixed && item.ishover,
+                  }
+                )}
+                onMouseEnter={() => onMouseEnter(index)}
+                onMouseLeave={() => onMouseLeave(index)}
               >
                 {columns.map((column, columnIndex) => {
                   const key = `${index}${columnIndex}`
@@ -94,7 +126,26 @@ export default class TableBody extends React.PureComponent {
                     fix = fixed && column.fixed ? column.fixed : 'normal'
                     width = column.width ? column.width : 80
                   }
-
+                  if (columnIndex === 0 && rowSelection) {
+                    const fix = rowSelection.fixed ? 'left' : null
+                    return (
+                      <td
+                        className={classnames(`item-fix-${fix}`)}
+                        key={index}
+                        width={60}
+                        className={classnames(`item-fix-${fix}`)}
+                      >
+                        <div className='table-cell'>
+                          <Checkbox
+                            checked={selectedRowKeyList.some(
+                              item => Number(item) === index
+                            )}
+                            onChange={e => handleCheckOnSelect(e, index, item)}
+                          />
+                        </div>
+                      </td>
+                    )
+                  }
                   if (column.render && typeof column.render === 'function') {
                     return (
                       <td

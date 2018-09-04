@@ -3,6 +3,9 @@
   overflow: hidden;
   box-sizing: border-box;
   font-size: 0;
+  .checkbox-addon {
+    background: transparent;
+  }
   th {
     white-space: nowrap;
     overflow: hidden;
@@ -40,13 +43,34 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    tr {
+    .table-tr {
       &:hover {
         background: $table-body-hover-bg-color;
+        input {
+          background: $table-body-hover-bg-color;
+        }
       }
       &.table-striped {
         background: $table-spried-background;
         &:hover {
+          background: $table-body-hover-bg-color;
+          input {
+            background: $table-body-hover-bg-color;
+          }
+        }
+        input {
+          background: $table-spried-background;
+        }
+      }
+      &.is-hover {
+        background: $table-body-hover-bg-color;
+        input {
+          background: $table-body-hover-bg-color;
+        }
+      }
+      &.is-selected {
+        background: $table-body-hover-bg-color;
+        input {
           background: $table-body-hover-bg-color;
         }
       }
@@ -60,6 +84,18 @@
     border-left: $table-header-border;
     border-right: $table-header-border;
     border-bottom: $table-header-border;
+    th {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    td {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
   }
   &.table-scroll {
     overflow: auto;

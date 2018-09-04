@@ -1,14 +1,10 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as System from '../../utils/system'
-import Tooltip from '../Tooltip/index'
 
 export default class TableHead extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
-
-    System.manager(this)
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
@@ -35,28 +31,37 @@ export default class TableHead extends React.PureComponent {
      */
     fixed: PropTypes.bool,
     /**
-     * 文本内容超出省略
+     * 多选表格配置
      */
-    tooltip: PropTypes.bool,
+    rowSelection: PropTypes.object,
+
+    /**
+     * 半选状态
+     */
+    indeterminate: PropTypes.bool,
+    /**
+     * 全选状态
+     */
+    checkAll: PropTypes.bool,
+    /**
+     * 全选／取消全选函数
+     */
+    handleCheckOnSelectAll: PropTypes.func,
   }
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
   }
 
-  componentDidMount() {}
-
-  /**
-   * 清空组件管理
-   */
-  componentWillUnmount() {
-    System.unmanager(this)
-  }
-
-  componentWillReceiveProps(props) {}
-
   render() {
-    const { columns, fixed, tooltip } = this.props
+    const {
+      columns,
+      fixed,
+      rowSelection,
+      indeterminate,
+      checkAll,
+      handleCheckOnSelectAll,
+    } = this.props
 
     return (
       <div className='table-head-wrap'>
@@ -74,22 +79,32 @@ export default class TableHead extends React.PureComponent {
                     fix = fixed && column.fixed ? column.fixed : 'normal'
                     width = column.width ? column.width : 80
                   }
+                  if (index === 0 && rowSelection) {
+                    const fix = rowSelection.fixed ? 'left' : null
+                    return (
+                      <td
+                        className={classnames(`item-fix-${fix}`)}
+                        key={index}
+                        width={60}
+                        className={classnames(`item-fix-${fix}`)}
+                      >
+                        <div className='table-cell'>
+                          <Checkbox
+                            onChange={handleCheckOnSelectAll}
+                            indeterminate={indeterminate}
+                            checked={checkAll}
+                          />
+                        </div>
+                      </td>
+                    )
+                  }
                   return (
                     <th
                       key={index}
                       width={width}
                       className={classnames(`item-fix-${fix}`)}
                     >
-                      {/* {tooltip && (
-                        <Tooltip position="bottom" content={column.label}>
-                          <div className="table-cell table-cell-tooltip">
-                            {column.label}
-                          </div>
-                        </Tooltip>
-                      )} */}
-                      {/* {!tooltip && ( */}
                       <div className='table-cell'>{column.label}</div>
-                      {/* )} */}
                     </th>
                   )
                 })}

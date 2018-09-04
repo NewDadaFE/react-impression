@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as System from '../../utils/system'
 import TableBody from '../TableBody/index'
 import TableHead from '../TableHead/index'
 
@@ -9,10 +8,11 @@ export default class Table extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
-    System.manager(this)
-
     // 是否木偶组件
-    this.isPuppet = props.value !== undefined
+    this.isPuppet =
+      this.props.rowSelection &&
+      this.props.rowSelection.selectedRowKeys &&
+      this.props.rowSelection.onChange
 
     // 子组件数据
     const initValue = {
@@ -23,6 +23,11 @@ export default class Table extends React.PureComponent {
       leftFixedWidth: '',
       isEnd: false,
       isStart: true,
+      selectedRowKeys: this.isPuppet
+        ? this.props.rowSelection.selectedRowKeys
+        : [],
+      indeterminate: false,
+      checkAll: false,
     }
 
     this.state = {
@@ -57,7 +62,7 @@ export default class Table extends React.PureComponent {
     fixed: PropTypes.bool,
 
     /**
-     * 设置table的最大宽度／最大高度
+     * 设置table的最大宽度／最大高度，{x:number,y:number}
      */
     scroll: PropTypes.object,
 
@@ -69,9 +74,17 @@ export default class Table extends React.PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+
+    /**
+     * 多选表格配置
+     */
+    rowSelection: PropTypes.object,
   }
   static defaultProps = {
     tooltip: false,
+    border: false,
+    fixed: false,
+    stripe: false,
   }
 
   componentWillMount() {
@@ -97,15 +110,44 @@ export default class Table extends React.PureComponent {
       },
       this.updateColumnsWidth
     )
+    if (this.isPuppet) {
+      const { rowSelection, data } = this.props
+      if (!rowSelection || !rowSelection.selectedRowKeys) return
+      const { selectedRowKeys } = rowSelection
+      const selectedRowKeysLength = selectedRowKeys.length
+      const dataLength = data.length
+      if (selectedRowKeysLength === 0) {
+        this.setState({
+          selectedRowKeys: rowSelection.selectedRowKeys,
+          indeterminate: false,
+          checkAll: false,
+        })
+      }
+      if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
+        this.setState({
+          indeterminate: true,
+          selectedRowKeys: rowSelection.selectedRowKeys,
+          checkAll: false,
+        })
+      }
+      if (selectedRowKeysLength === dataLength) {
+        this.setState({
+          indeterminate: false,
+          selectedRowKeys: rowSelection.selectedRowKeys,
+          checkAll: true,
+        })
+      }
+    }
   }
-  componentDidMount() {}
+  componentDidMount() {
+    const { rowSelection } = this.props
+    if (!this.isPuppet || !rowSelection) return
+    const { selectedRowKeys } = rowSelection
+    selectedRowKeys.forEach(item => {
+      this.handleSelected(Number(item))
+    })
+  }
 
-  /**
-   * 清空组件管理
-   */
-  componentWillUnmount() {
-    System.unmanager(this)
-  }
   updateColumnsWidth() {
     const { fixLeftColumns, fixRightColumns } = this.state
 
@@ -127,12 +169,64 @@ export default class Table extends React.PureComponent {
       this.setState({ rightFixedWidth: rightFixedWidth })
     }
   }
-
-  componentWillReceiveProps(props) {
-    const { options } = this.state
-    if (props.value !== this.props.value) {
-      this.handleValueChange(props)
-      options.forEach(option => option.handleActive(props))
+  componentWillReceiveProps(nextProps) {
+    const { rowSelection } = nextProps
+    const { data } = this.props
+    if (!rowSelection || !rowSelection.selectedRowKeys || !this.isPuppet) return
+    const { selectedRowKeys, onChange } = rowSelection
+    const selectedRowKeysLength = selectedRowKeys.length
+    const dataLength = data.length
+    if (selectedRowKeysLength === 0) {
+      this.setState({
+        selectedRowKeys: rowSelection.selectedRowKeys,
+        indeterminate: false,
+        checkAll: false,
+      })
+    }
+    if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
+      this.setState({
+        indeterminate: true,
+        selectedRowKeys: rowSelection.selectedRowKeys,
+        checkAll: false,
+      })
+    }
+    if (selectedRowKeysLength === dataLength) {
+      this.setState({
+        indeterminate: false,
+        selectedRowKeys: rowSelection.selectedRowKeys,
+        checkAll: true,
+      })
+    }
+    data.forEach((item, index) => {
+      this.handleNoSelect(index)
+    })
+    selectedRowKeys.forEach(item => {
+      this.handleSelected(Number(item))
+    })
+    onChange(selectedRowKeys)
+  }
+  componentDidUpdate() {
+    const { selectedRowKeys } = this.state
+    const { data } = this.props
+    const selectedLength = selectedRowKeys.length
+    const dataLength = data.length
+    if (selectedLength === 0) {
+      this.setState({
+        indeterminate: false,
+        checkAll: false,
+      })
+    }
+    if (selectedLength > 0 && selectedLength < dataLength) {
+      this.setState({
+        indeterminate: true,
+        checkAll: false,
+      })
+    }
+    if (selectedLength === dataLength) {
+      this.setState({
+        indeterminate: false,
+        checkAll: true,
+      })
     }
   }
 
@@ -142,7 +236,7 @@ export default class Table extends React.PureComponent {
     if (max.x) return { maxWidth: max.x }
     if (max.y) return { maxHeight: max.y }
   }
-  handleScroll(e) {
+  handleScroll() {
     const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
     const scrollWidth = this.scrollEl.scrollLeft
     if (scrollWidth === 0) {
@@ -151,8 +245,192 @@ export default class Table extends React.PureComponent {
     if ((scrollWidth > 0) & (scrollWidth < targetWidth)) {
       this.setState({ isEnd: false, isStart: false })
     }
-    if (scrollWidth === targetWidth) {
+    if (scrollWidth === targetWidth + 2 || scrollWidth === targetWidth) {
       this.setState({ isEnd: true, isStart: false })
+    }
+  }
+  handleHover = index => {
+    const { fixed, rowSelection } = this.props
+    if (rowSelection || fixed) {
+      const tbody = this.tableWrap.querySelectorAll('tbody')
+      tbody.forEach(item => {
+        const tr = item.children
+        const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+        const newRow = rows[index]
+        if (newRow) {
+          this.addClass(newRow, 'is-hover')
+        }
+      })
+    }
+  }
+  handleSelected = index => {
+    const tbody = this.tableWrap.querySelectorAll('tbody')
+    tbody.forEach(item => {
+      const tr = item.children
+      const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+      const newRow = rows[index]
+      if (newRow) {
+        this.addClass(newRow, 'is-selected')
+      }
+    })
+  }
+  handleNoSelect = index => {
+    const tbody = this.tableWrap.querySelectorAll('tbody')
+    tbody.forEach(item => {
+      const tr = item.children
+      const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+      const newRow = rows[index]
+      if (newRow) {
+        this.removeClass(newRow, 'is-selected')
+      }
+      console.log(33)
+    })
+  }
+  handleHoverLeave = index => {
+    const { fixed, rowSelection } = this.props
+    if (rowSelection || fixed) {
+      const tbody = this.tableWrap.querySelectorAll('tbody')
+      tbody.forEach(item => {
+        const tr = item.children
+        const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+        const newRow = rows[index]
+        if (newRow) {
+          this.removeClass(newRow, 'is-hover')
+        }
+      })
+    }
+  }
+  hasClass(el, cls) {
+    if (!el || !cls) return false
+    if (cls.indexOf(' ') !== -1) { throw new Error('className should not contain space.') }
+    if (el.classList) {
+      return el.classList.contains(cls)
+    } else {
+      return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1
+    }
+  }
+  addClass(el, cls) {
+    if (!el) return
+    var curClass = el.className
+    var classes = (cls || '').split(' ')
+
+    for (var i = 0, j = classes.length; i < j; i++) {
+      var clsName = classes[i]
+      if (!clsName) continue
+
+      if (el.classList) {
+        el.classList.add(clsName)
+      } else if (!hasClass(el, clsName)) {
+        curClass += ' ' + clsName
+      }
+    }
+    if (!el.classList) {
+      el.className = curClass
+    }
+  }
+  removeClass(el, cls) {
+    if (!el || !cls) return
+    var classes = cls.split(' ')
+    var curClass = ' ' + el.className + ' '
+
+    for (var i = 0, j = classes.length; i < j; i++) {
+      var clsName = classes[i]
+      if (!clsName) continue
+
+      if (el.classList) {
+        el.classList.remove(clsName)
+      } else if (hasClass(el, clsName)) {
+        curClass = curClass.replace(' ' + clsName + ' ', ' ')
+      }
+    }
+    if (!el.classList) {
+      el.className = trim(curClass)
+    }
+  }
+
+  /**
+   * @description 手动单选触发回调
+   * @memberof Table
+   */
+  handleCheckOnSelect = (e, index, item) => {
+    const status = e.target.checked
+    if (!this.isPuppet) {
+      const { selectedRowKeys } = this.state
+      if (status) {
+        this.setState({ selectedRowKeys: [...selectedRowKeys, index] })
+      } else {
+        this.setState({
+          selectedRowKeys: selectedRowKeys.filter(
+            item => Number(item) !== index
+          ),
+        })
+      }
+    }
+    if (status) {
+      this.handleSelected(index)
+    } else {
+      this.handleNoSelect(index)
+    }
+    if (this.props.rowSelection && this.props.rowSelection.onSelect) {
+      const { onSelect, onChange, selectedRowKeys } = this.props.rowSelection
+      onSelect(status, index, item)
+      if (onChange) onChange(selectedRowKeys)
+    }
+  }
+  handleCheckOnSelectAll = () => {
+    const { checkAll } = this.state
+    const { data } = this.props
+    if (!this.isPuppet) {
+      if (checkAll) {
+        this.setState(
+          {
+            selectedRowKeys: [],
+            checkAll: false,
+            indeterminate: false,
+          },
+          () => {
+            if (
+              this.props.rowSelection &&
+              this.props.rowSelection.onSelectAll
+            ) {
+              const { onSelectAll } = this.props.rowSelection
+              const { checkAll, selectedRowKeys } = this.state
+              onSelectAll(checkAll, selectedRowKeys)
+              data.forEach((item, index) => {
+                this.handleNoSelect(index)
+              })
+            }
+          }
+        )
+      } else {
+        const list = data.map((item, index) => index)
+        this.setState(
+          {
+            selectedRowKeys: list,
+            checkAll: true,
+            indeterminate: false,
+          },
+          () => {
+            if (
+              this.props.rowSelection &&
+              this.props.rowSelection.onSelectAll
+            ) {
+              const { onSelectAll } = this.props.rowSelection
+              const { selectedRowKeys, checkAll } = this.state
+              onSelectAll(checkAll, selectedRowKeys)
+              data.forEach((item, index) => {
+                this.handleSelected(index)
+              })
+            }
+          }
+        )
+      }
+    } else {
+      if (this.props.rowSelection && this.props.rowSelection.onSelectAll) {
+        const { onSelectAll, selectedRowKeys } = this.props.rowSelection
+        const { checkAll } = this.state
+        onSelectAll(checkAll, selectedRowKeys)
+      }
     }
   }
   render() {
@@ -164,6 +442,7 @@ export default class Table extends React.PureComponent {
       className,
       fixed,
       tooltip,
+      rowSelection,
     } = this.props
     const max = this.getMax(scroll)
     const {
@@ -175,13 +454,19 @@ export default class Table extends React.PureComponent {
       columns,
       isEnd,
       isStart,
+      indeterminate,
+      checkAll,
+      selectedRowKeys,
     } = this.state
-    const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : ''
+    const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : 60
     const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
     return (
       <div
         className={classnames('table', { 'table-wrap-fix': fixed })}
         style={max}
+        ref={div => {
+          this.tableWrap = div
+        }}
       >
         <div
           onScroll={e => this.handleScroll(e)}
@@ -201,16 +486,28 @@ export default class Table extends React.PureComponent {
             }}
             style={{ display: 'inline-block' }}
           >
-            <TableHead columns={columns} tooltip={tooltip} />
+            <TableHead
+              columns={columns}
+              tooltip={tooltip}
+              rowSelection={rowSelection}
+              indeterminate={indeterminate}
+              checkAll={checkAll}
+              handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+            />
             <TableBody
               columns={columns}
               data={data}
               stripe={stripe}
               tooltip={tooltip}
+              rowSelection={rowSelection}
+              onMouseEnter={this.handleHover}
+              onMouseLeave={this.handleHoverLeave}
+              handleCheckOnSelect={this.handleCheckOnSelect}
+              selectedRowKeyList={selectedRowKeys}
             />
           </div>
         </div>
-        {!!fixLeftColumns.length && (
+        {(!!fixLeftColumns.length || (rowSelection && rowSelection.fixed)) && (
           <div
             className={classnames(
               'table-fixed-left',
@@ -224,11 +521,20 @@ export default class Table extends React.PureComponent {
             <TableHead
               columns={fixLeftColumns.concat(noFixColumns, fixRightColumns)}
               fixed
+              indeterminate={indeterminate}
+              checkAll={checkAll}
+              rowSelection={rowSelection}
+              handleCheckOnSelectAll={this.handleCheckOnSelectAll}
             />
             <TableBody
               columns={fixLeftColumns.concat(noFixColumns, fixRightColumns)}
               data={data}
               stripe={stripe}
+              onMouseEnter={this.handleHover}
+              rowSelection={rowSelection}
+              onMouseLeave={this.handleHoverLeave}
+              handleCheckOnSelect={this.handleCheckOnSelect}
+              selectedRowKeyList={selectedRowKeys}
               fixed
             />
           </div>
@@ -247,11 +553,20 @@ export default class Table extends React.PureComponent {
             <TableHead
               columns={fixRightColumns.concat(noFixColumns, fixLeftColumns)}
               fixed
+              indeterminate={indeterminate}
+              checkAll={checkAll}
+              rowSelection={rowSelection}
+              handleCheckOnSelectAll={this.handleCheckOnSelectAll}
             />
             <TableBody
               columns={fixRightColumns.concat(noFixColumns, fixLeftColumns)}
               data={data}
               stripe={stripe}
+              onMouseEnter={this.handleHover}
+              rowSelection={rowSelection}
+              handleCheckOnSelect={this.handleCheckOnSelect}
+              onMouseLeave={this.handleHoverLeave}
+              selectedRowKeyList={selectedRowKeys}
               fixed
             />
           </div>
