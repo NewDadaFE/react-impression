@@ -45,6 +45,9 @@
 .modal-header {
     color: $modal-header-color;
     padding: $modal-title-padding;
+    font-size: $modal-header-font-size;
+    font-weight: $modal-header-font-weight;
+    line-height: $modal-header-line-height;
     background: $modal-header-bg;
     border-radius: $modal-border-radius $modal-border-radius 0 0;
     border-bottom: 1px solid $modal-header-border-color;
@@ -54,6 +57,7 @@
     .close {
         color: $modal-header-color;
         opacity: .6;
+        font-size: $modal-header-line-height;
 
         &:hover {
             opacity: 1;

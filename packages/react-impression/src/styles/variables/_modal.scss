@@ -14,7 +14,10 @@ $modal-content-border-color:            rgba($gray-secondary, .06) !default;
 $modal-content-border-width:            $border-width !default;
 
 $modal-header-bg:                       $brand-pure !default;
-$modal-header-color:                    $body-color !default;
+$modal-header-font-size:                $font-size-h4 !default;
+$modal-header-line-height:              24px !default;
+$modal-header-font-weight:              $headings-font-weight !default;
+$modal-header-color:                    #21252a !default;
 $modal-header-border-color:             $gray-light !default;
 $modal-header-border-width:             $modal-content-border-width !default;
 

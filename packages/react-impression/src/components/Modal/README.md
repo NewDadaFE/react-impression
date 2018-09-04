@@ -21,7 +21,7 @@ initialState = {
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">弹窗标题</h5>
+        弹窗标题
       </ModalHeader>
       <ModalBody>
         <p>内容&hellip;</p>
@@ -58,7 +58,7 @@ initialState = {
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">弹窗标题</h5>
+        弹窗标题
       </ModalHeader>
       <ModalBody>
         <p>内容&hellip;</p>
@@ -95,7 +95,7 @@ initialState = {
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">弹窗标题</h5>
+        弹窗标题
       </ModalHeader>
       <ModalBody>
         <p>内容&hellip;</p>
@@ -132,7 +132,7 @@ initialState = {
         <Button close onClick={toggleModalHandle}>
           &times;
         </Button>
-        <h5 className="no-margin">弹窗标题</h5>
+        弹窗标题
       </ModalHeader>
       <ModalBody>
         <p>内容&hellip;</p>
@@ -197,7 +197,7 @@ class Overflow extends React.Component {
               <Button close onClick={() => this.toggleModalHandle()}>
                 &times;
               </Button>
-              <h5 className="no-margin">弹窗标题</h5>
+              弹窗标题
             </ModalHeader>
             <ModalBody>
               <p>显示内容&hellip;</p>
