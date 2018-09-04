@@ -153,3 +153,5 @@ const buttonClickHandle = () => {
 v2.0.0
 
 * 新增 btn-font-size sass 变量
+* 移除 btn-border-radius-lg sass 变量
+* 移除 btn-border-radius-sm sass 变量

@@ -7,7 +7,7 @@ $input-color:                    $gray-base !default;
 $input-disabled-color:           $gray !default;
 $input-border-color:             $gray !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
-$input-border-radius:            2px !default;
+$input-border-radius:            rem(2px) !default;
 
 $input-border-focus:             $brand-primary !default;
 $input-border-hover:             $brand-primary !default;
@@ -31,6 +31,7 @@ $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-pa
 
 $form-group-label-color:                    $gray-base !default;
 $form-group-margin-bottom:                  $spacer-y !default;
+$form-group-inline-margin-bottom:           rem(28px) !default;
 $form-group-inline-label-margin-bottom:     rem(14px) !default;
 $form-group-inline-btn-margin-left:         rem(30px) !default;
 
