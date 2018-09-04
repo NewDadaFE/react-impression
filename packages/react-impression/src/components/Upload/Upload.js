@@ -174,6 +174,12 @@ export default class Upload extends React.PureComponent {
           <Icon type='upload' className='upload-addon' />
           {file || placeholder}
         </span>
+        {/* 此处input只能放在中间，否则圆角样式会有问题 */}
+        <input
+          type='file'
+          ref='main'
+          onChange={onChange && this.fileChangeHandle}
+        />
         <span className='input-group-btn'>
           <button
             type='button'
@@ -183,11 +189,6 @@ export default class Upload extends React.PureComponent {
             {btnText}
           </button>
         </span>
-        <input
-          type='file'
-          ref='main'
-          onChange={onChange && this.fileChangeHandle}
-        />
       </div>
     )
   }
