@@ -1,5 +1,8 @@
 .confirm {
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     right: 0;
     bottom: 0;
     top: $confirm-top;
@@ -12,17 +15,12 @@
 }
 
 .confirm-dialog {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    position: relative;
+    padding: $confirm-dialog-padding;
     text-align: center;
     width: $confirm-dialog-width;
-    height: $confirm-dialog-height;
+    min-height: $confirm-dialog-min-height;
     background: $confirm-dialog-bg;
-    padding: $confirm-dialog-padding;
     border-radius: $confirm-dialog-border-radius;
     animation: bounceIn $confirm-animation-duration ease-in-out;
 }
@@ -36,38 +34,19 @@
 }
 
 .confirm-body {
+    font-size: $confirm-body-font-size;
     padding: $confirm-body-padding;
+    color: $confirm-body-color;
+    font-weight: $confirm-body-font-weight;
 }
-
 
 .confirm-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid $confirm-footer-border-color;
-}
-
-.confirm-btn-sure,
-.confirm-btn-cancel {
-    flex: 1;
-    padding: $confirm-btn-padding;
+    text-align: center;
+    border-radius: 0 0 $confirm-dialog-border-radius $confirm-dialog-border-radius;
     cursor: pointer;
 
-    &:hover {
-        background: $confirm-btn-hover-bg;
+    .btn:last-child {
+        margin-left: $confirm-footer-btn-margin;
     }
-}
-
-.confirm-btn-sure {
-    border-right: 1px solid $confirm-footer-border-color;
-    color: $confirm-btn-primary-color;
-    border-radius: 0 0 0 $confirm-dialog-border-radius;
-}
-
-.confirm-btn-cancel {
-    color: $text-muted;
-    border-radius: 0 0 $confirm-dialog-border-radius;
 }
