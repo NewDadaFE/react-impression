@@ -42,6 +42,19 @@ export default class Attention extends React.PureComponent {
     })
   }
 
+  /**
+   * 获取信息图标
+   * @returns {*}
+   */
+  getTitleIcon = theme => {
+    return {
+      primary: ['fa', 'fa-info-circle'],
+      success: ['fa', 'fa-check-circle'],
+      warning: ['fa', 'fa-exclamation-triangle'],
+      danger: ['fa', 'fa-times-circle'],
+    }[theme]
+  }
+
   render() {
     const { theme, className, closeable, children, ...others } = this.props
     const themeClass = `attention-${theme}`
@@ -52,11 +65,14 @@ export default class Attention extends React.PureComponent {
         {...others}
         className={classnames('attention', themeClass, hiddenClass, className)}
       >
-        {children}
+        <div className='attention-header'>
+          <i className={classnames(this.getTitleIcon(theme))} />
+        </div>
+        <div className='attention-body'>{children}</div>
         {closeable && (
-          <button type='button' className='close' onClick={this.hideHandle}>
-            &times;
-          </button>
+          <div className='attention-close' onClick={this.hideHandle}>
+            关闭
+          </div>
         )}
       </div>
     )

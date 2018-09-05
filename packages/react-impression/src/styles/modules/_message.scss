@@ -27,6 +27,7 @@
 .message-body {
     padding: $message-body-padding;
     flex: 1;
+    font-size: $message-body-font-size;
     line-height: $message-body-line-height;
 }
 
