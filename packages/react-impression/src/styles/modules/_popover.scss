@@ -1,5 +1,5 @@
 .popover {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: $zindex-popover;
@@ -16,7 +16,7 @@
 
     // Popover directions
     &.popover-top {
-        margin-top: -($popover-margin + $popover-arrow-width);
+        margin-bottom: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
             bottom: -$popover-arrow-outer-width;
@@ -76,7 +76,7 @@
     }
 
     &.popover-left {
-        margin-left: -($popover-margin + $popover-arrow-width);
+        margin-right: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
             top: 50%;

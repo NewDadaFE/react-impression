@@ -1,7 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { isDescendentNode } from '../../utils/dom'
+import ReactDOM from 'react-dom'
+import classnames from 'classnames'
+import Popper from 'popper.js'
 
 export default class Popover extends React.PureComponent {
   static propTypes = {
@@ -32,147 +33,129 @@ export default class Popover extends React.PureComponent {
     trigger: 'hover',
   }
 
+  /**
+   * popover子元素ref
+   */
   reference = null
-  popover = null
 
   /**
-   * 创建popover
-   * @param targetRect
+   * popover子元素的dom节点
    */
-  createPopover(targetRect) {
-    const { position, title, content } = this.props
-    const positionClass = `popover-${position}`
-    let popoverNode = document.createElement('div')
-    let arrowNode = document.createElement('div')
-    let titleNode = document.createElement('div')
-    let contentNode = document.createElement('div')
-
-    popoverNode.className = `popover ${positionClass}`
-    arrowNode.className = 'popover-arrow'
-    titleNode.className = 'popover-title'
-    contentNode.className = 'popover-content'
-
-    titleNode.innerHTML = title
-    contentNode.innerHTML = content
-    popoverNode.appendChild(arrowNode)
-    popoverNode.appendChild(titleNode)
-    popoverNode.appendChild(contentNode)
-
-    document.body.appendChild(popoverNode)
-
-    const popoverRect = popoverNode.getBoundingClientRect()
-
-    // 计算left、top
-    switch (position) {
-      case 'top':
-        popoverNode.style.top = `${targetRect.top - popoverRect.height}px`
-        popoverNode.style.left = `${targetRect.left -
-          (popoverRect.width - targetRect.width) / 2}px`
-        break
-      case 'left':
-        popoverNode.style.left = `${targetRect.left - popoverRect.width}px`
-        popoverNode.style.top = `${targetRect.top +
-          (targetRect.height - popoverRect.height) / 2}px`
-        break
-      case 'right':
-        popoverNode.style.left = `${targetRect.left + targetRect.width}px`
-        popoverNode.style.top = `${targetRect.top +
-          (targetRect.height - popoverRect.height) / 2}px`
-        break
-      default:
-        popoverNode.style.top = `${targetRect.top + targetRect.height}px`
-        popoverNode.style.left = `${targetRect.left -
-          (popoverRect.width - targetRect.width) / 2}px`
-        break
-    }
-
-    this.popover = popoverNode
-  }
+  referenceDom = null
 
   /**
-   * 显示popover
-   * @param event
+   * 弹出层元素的ref节点
    */
-  onMouseOver = event => {
-    const rect = event.target.getBoundingClientRect()
+  popper = null
 
-    this.createPopover(rect)
-  }
   /**
-   * 移除popover
+   * 关闭和打开弹出层的计数器
    */
-  onMouseOut = () => {
-    document.body.removeChild(this.popover)
-    this.popover = null
-  }
+  timer = null
+
   /**
-   * 点击事件触发popover的显示与否
+   * popper的实例
    */
-  onChildClick = event => {
-    if (this.popover === null || this.popover === undefined) {
-      this.onMouseOver(event)
-    } else {
-      this.onMouseOut()
-    }
+  popperJS = null
+
+  state = {
+    showPopper: false,
   }
 
   componentDidMount() {
     const { trigger } = this.props
+    const element = ReactDOM.findDOMNode(this)
+
     this.referenceDom = ReactDOM.findDOMNode(this.reference)
+    if (this.referenceDom === null) return
 
     if (trigger === 'click') {
-      document.addEventListener('click', e => {
-        // 如果还没生成popover的节点，或者依附的子节点不存在，或者依附的子节点包含点击的target，则不触发点击事件
-        if (
-          !this.popover ||
-          !this.referenceDom ||
-          this.referenceDom.contains(e.target)
-        ) {
-          return
-        }
-        // 检查popover生成的节点是否包含点击的target，包含则不触发，代码参照utils/dom, utils/system
-        if (
-          !isDescendentNode(this.popover, e.target) ||
-          (event.path && event.path.indexOf(this.popover) === -1)
-        ) {
-          this.onMouseOut()
-        }
+      this.referenceDom.addEventListener('click', () => {
+        this.setState(
+          {
+            showPopper: !this.state.showPopper,
+          },
+          () => {
+            if (this.state.showPopper) {
+              this.onMouseOver()
+            } else {
+              this.onMouseOut()
+            }
+          }
+        )
       })
+
+      document.addEventListener('click', e => {
+        if (
+          !element ||
+          element.contains(e.target) ||
+          !this.referenceDom ||
+          this.referenceDom.contains(e.target) ||
+          !this.popper ||
+          this.popper.contains(e.target)
+        ) { return }
+
+        this.setState({
+          showPopper: false,
+        })
+      })
+    } else if (trigger === 'hover') {
+      this.referenceDom.addEventListener('mouseenter', this.onMouseOver)
+      this.referenceDom.addEventListener('mouseleave', this.onMouseOut)
+
+      this.popper.addEventListener('mouseenter', this.onMouseOver)
+      this.popper.addEventListener('mouseleave', this.onMouseOut)
     }
   }
 
+  onMouseOver = () => {
+    clearTimeout(this.timer)
+
+    this.setState(
+      {
+        showPopper: true,
+      },
+      () => {
+        this.popperJS = new Popper(this.referenceDom, this.popper, {
+          placement: this.props.position,
+        })
+      }
+    )
+  }
+
+  onMouseOut = () => {
+    this.timer = setTimeout(() => {
+      this.setState({
+        showPopper: false,
+      })
+      this.popperJS.destroy()
+    }, 200)
+  }
+
   render() {
-    let { children, trigger } = this.props
-    const { onMouseOver, onMouseOut, onClick } = children.props
-
-    let triggerProps = {
-      ref: ref => (this.reference = ref),
-    }
-
-    if (trigger === 'hover') {
-      triggerProps = {
-        ...triggerProps,
-        onMouseOver: event => {
-          onMouseOver && onMouseOver(event)
-          this.onMouseOver(event)
-        },
-        onMouseOut: event => {
-          onMouseOut && onMouseOut(event)
-          this.onMouseOut(event)
-        },
+    const { children, position, title, content, style } = this.props
+    const { showPopper } = this.state
+    const showStyle = !showPopper
+      ? {
+        display: 'none',
       }
-    } else if (trigger === 'click') {
-      triggerProps = {
-        ...triggerProps,
-        onClick: event => {
-          onClick && onClick(event)
-          this.onChildClick(event)
-        },
-      }
-    }
+      : {}
 
-    children = React.cloneElement(children, triggerProps)
-
-    return children
+    return (
+      <span>
+        <div
+          ref={ref => (this.popper = ref)}
+          className={classnames('popover', `popover-${position}`)}
+          style={Object.assign({}, style, showStyle)}
+        >
+          <div className='popover-arrow' />
+          {title && <div className='popover-title'>{title}</div>}
+          <div className='popover-content'>{content}</div>
+        </div>
+        {React.cloneElement(React.Children.only(children), {
+          ref: ref => (this.reference = ref),
+        })}
+      </span>
+    )
   }
 }
