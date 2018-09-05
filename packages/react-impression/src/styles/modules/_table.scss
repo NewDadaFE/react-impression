@@ -12,22 +12,37 @@
     user-select: none;
     text-align: center;
     background-color: #fff;
-    padding: $table-header-padding;
+
     color: $table-header-color;
+    line-height: $table-header-line-height;
     font-weight: 400;
   }
   tr {
     transition: all 0.3s;
   }
   td {
-    padding: $table-body-padding;
     word-break: break-all;
+    line-height: $table-header-line-height;
   }
 
   .table-header {
     border-bottom: $table-header-border;
+    .table-cell {
+      padding: $table-header-padding;
+      &.table-cell-select {
+        padding: 0;
+      }
+    }
   }
-
+  .table-body {
+    color: $table-body-color;
+    .table-cell {
+      padding: $table-body-padding;
+      &.table-cell-select {
+        padding: 0;
+      }
+    }
+  }
   .table-header,
   .table-body {
     width: 100%;
@@ -36,6 +51,7 @@
     border-collapse: separate;
     font-size: rem(14px);
     .table-cell {
+      // display: inline-block;
       line-height: $table-header-line-height;
     }
     .table-cell-tooltip {
@@ -83,7 +99,6 @@
   &.table-border {
     border-left: $table-header-border;
     border-right: $table-header-border;
-    border-bottom: $table-header-border;
     th {
       border-right: $table-header-border;
       &:last-child {
@@ -92,6 +107,7 @@
     }
     td {
       border-right: $table-header-border;
+      border-bottom: $table-header-border;
       &:last-child {
         border-right: none;
       }
@@ -124,7 +140,22 @@
     visibility: hidden;
   }
   &.table-shadow {
-    box-shadow: rem(-2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
+    box-shadow: $table-fix-left-shadow;
+  }
+  &.table-border {
+    th {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    td {
+      border-right: $table-header-border;
+      border-bottom: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
   }
 }
 .table-fixed-right {
@@ -136,10 +167,28 @@
   .item-fix-normal {
     visibility: hidden;
   }
-  .item-fix-left {
+  .item-fix-right {
     visibility: hidden;
   }
   &.table-shadow {
-    box-shadow: rem(-2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
+    box-shadow: $table-fix-right-shadow;
   }
+  &.table-border {
+    th {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    td {
+      border-right: $table-header-border;
+      border-bottom: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+.table-pagination {
+  margin-top: $table-pagination-margin-top;
 }

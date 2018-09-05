@@ -22,11 +22,6 @@ export default class TableHead extends React.PureComponent {
 
   static propTypes = {
     /**
-     * 表格列配置项
-     */
-    columns: PropTypes.array,
-
-    /**
      * 是否固定
      */
     fixed: PropTypes.bool,
@@ -47,67 +42,158 @@ export default class TableHead extends React.PureComponent {
      * 全选／取消全选函数
      */
     handleCheckOnSelectAll: PropTypes.func,
-  }
-  static defaultProps = {
-    disabled: false,
-    placeholder: '请选择',
+    /**
+     * 是否显示多选框
+     */
+    isShowSelection: PropTypes.bool,
+
+    /**
+     * 左侧固定项目
+     */
+
+    fixLeftColumns: PropTypes.array,
+
+    /**
+     * 右侧固定项目
+     */
+    fixRightColumns: PropTypes.array,
+
+    /**
+     * 非固定项目
+     */
+    noFixColumns: PropTypes.array,
+
+    /**
+     * 是否固定左侧
+     */
+    fixLeft: PropTypes.bool,
+
+    /**
+     * 是否固定右侧
+     */
+    fixRight: PropTypes.bool,
   }
 
   render() {
     const {
-      columns,
       fixed,
       rowSelection,
       indeterminate,
       checkAll,
       handleCheckOnSelectAll,
+      isShowSelection,
+      fixLeftColumns,
+      fixRightColumns,
+      fixLeft,
+      noFixColumns,
+      fixRight,
     } = this.props
+    let fixLeftList = []
+    let fixRightList = []
+    if (!fixLeft && !fixRight) {
+      fixLeftList = fixLeftColumns
+      fixRightList = fixRightColumns
+    } else {
+      fixLeftList = fixLeft ? fixLeftColumns : fixRightColumns
+      fixRightList = fixLeft ? fixRightColumns : fixLeftColumns
+    }
 
     return (
       <div className='table-head-wrap'>
         <table className='table-header' cellSpacing='0' cellPadding='0'>
           <thead>
             <tr>
-              {!!columns.length &&
-                columns.map((column, index) => {
-                  let width = ''
-                  let fix = ''
-                  if (!fixed) {
-                    fix = ''
-                    width = column.width ? column.width : ''
-                  } else {
-                    fix = fixed && column.fixed ? column.fixed : 'normal'
-                    width = column.width ? column.width : 80
-                  }
-                  if (index === 0 && rowSelection) {
-                    const fix = rowSelection.fixed ? 'left' : null
-                    return (
-                      <td
-                        className={classnames(`item-fix-${fix}`)}
-                        key={index}
-                        width={60}
-                        className={classnames(`item-fix-${fix}`)}
-                      >
-                        <div className='table-cell'>
-                          <Checkbox
-                            onChange={handleCheckOnSelectAll}
-                            indeterminate={indeterminate}
-                            checked={checkAll}
-                          />
-                        </div>
-                      </td>
-                    )
-                  }
+              {rowSelection &&
+                !isShowSelection &&
+                rowSelection.fixed && (
+                <th
+                  className={classnames(`item-fix-left`)}
+                  key={-1}
+                  width={60}
+                >
+                  <div className='table-cell table-cell-select'>
+                    <Checkbox
+                      onChange={handleCheckOnSelectAll}
+                      indeterminate={indeterminate}
+                      checked={checkAll}
+                    />
+                  </div>
+                </th>
+              )}
+              {!!fixLeftList.length &&
+                fixLeftList.map((column, index) => {
+                  const width = column.width ? column.width : 80
                   return (
                     <th
                       key={index}
                       width={width}
-                      className={classnames(`item-fix-${fix}`)}
+                      className={classnames(`item-fix-left`)}
                     >
                       <div className='table-cell'>{column.label}</div>
                     </th>
                   )
                 })}
+              {rowSelection &&
+                !rowSelection.fixed && (
+                <th
+                  key={-1}
+                  width={60}
+                  className={classnames(`item-fix-null`)}
+                >
+                  <div className='table-cell'>
+                    <Checkbox
+                      onChange={handleCheckOnSelectAll}
+                      indeterminate={indeterminate}
+                      checked={checkAll}
+                    />
+                  </div>
+                </th>
+              )}
+              {!!noFixColumns.length &&
+                noFixColumns.map((column, index) => {
+                  let width = ''
+                  if (!fixed) {
+                    width = column.width ? column.width : ''
+                  } else {
+                    width = column.width ? column.width : 80
+                  }
+
+                  return (
+                    <th
+                      key={index}
+                      width={width}
+                      className={classnames(`item-fix-normal`)}
+                    >
+                      <div className='table-cell'>{column.label}</div>
+                    </th>
+                  )
+                })}
+              {!!fixRightList.length &&
+                fixRightList.map((column, index) => {
+                  const width = column.width ? column.width : 80
+                  return (
+                    <th
+                      key={index}
+                      width={width}
+                      className={classnames(`item-fix-right`)}
+                    >
+                      <div className='table-cell'>{column.label}</div>
+                    </th>
+                  )
+                })}
+              {rowSelection &&
+                isShowSelection &&
+                rowSelection.fixed && (
+                <th
+                  className={classnames(`item-fix-normal`)}
+                  key={-1}
+                  width={60}
+                >
+                  <div className='table-cell table-cell-select'>
+                    <Checkbox />
+                  </div>
+                </th>
+              )}
             </tr>
           </thead>
         </table>

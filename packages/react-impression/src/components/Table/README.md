@@ -1,6 +1,6 @@
 ### 示例
 
-**基本使用**
+**基本用法**
 
 ```js
 const columns = [
@@ -12,12 +12,23 @@ const columns = [
   { prop: 'status', label: '状态' },
   {
     prop: 'id',
-    label: '编辑',
-    render: id => {
+    label: '操作',
+    render: (value, index, current) => {
       return (
         <div>
-          <a>查看</a>
-          <a>合并</a>
+          <a
+            href="#"
+            style={{ padding: '0 16px', color: '#276BF2', height: '18px' }}
+            onClick={() => {
+              console.log(value, index, current)
+            }}
+          >
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -31,7 +42,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -41,14 +51,13 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
 ]
 ;<Table columns={columns} data={data} />
 ```
 
-**斑马线 table**
+**斑马线表格**
 
 ```js
 const columns = [
@@ -60,12 +69,17 @@ const columns = [
   { prop: 'status', label: '状态' },
   {
     prop: 'id',
-    label: '编辑',
+    label: '操作',
     render: id => {
       return (
         <div>
-          <a>查看</a>
-          <a>合并</a>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -79,7 +93,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -89,14 +102,13 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
 ]
 ;<Table columns={columns} data={data} stripe />
 ```
 
-**border table**
+**带边框表格**
 
 ```js
 const columns = [
@@ -104,7 +116,7 @@ const columns = [
     prop: 'code',
     label: '编码',
     render: code => {
-      return <a href="javascript:void(0)">{code}</a>
+      return <a href="#">{code}</a>
     },
   },
   { prop: 'address', label: '地址' },
@@ -114,12 +126,17 @@ const columns = [
   { prop: 'status', label: '状态' },
   {
     prop: 'id',
-    label: '编辑',
+    label: '操作',
     render: id => {
       return (
         <div>
-          <a href="javascript:void(0)">查看</a>
-          <a href="javascript:void(0)">合并</a>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -133,7 +150,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -143,14 +159,22 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
+    status: '正常',
+  },
+  {
+    id: 3,
+    code: 'JD010234',
+    address: '京东万里站站长',
+    num: 201003.0,
+    phone: 13820180309,
+    creatTime: '2018-03-09',
     status: '正常',
   },
 ]
 ;<Table columns={columns} data={data} border stripe />
 ```
 
-**设定宽度 条目过多 table**
+**设定宽度 条目过多 表格**
 
 ```js
 const columns = [
@@ -159,7 +183,7 @@ const columns = [
     label: '编码',
     width: 120,
     render: code => {
-      return <a href="javascript:void(0)">{code}</a>
+      return <a href="#">{code}</a>
     },
   },
   { prop: 'address', label: '地址', width: 160 },
@@ -169,13 +193,18 @@ const columns = [
   { prop: 'status', label: '状态', width: 120 },
   {
     prop: 'id',
-    label: '编辑',
+    label: '操作',
     width: 202,
     render: id => {
       return (
         <div>
-          <a href="javascript:void(0)">查看</a>
-          <a href="javascript:void(0)">合并</a>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -189,7 +218,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -199,14 +227,22 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
+    status: '正常',
+  },
+  {
+    id: 3,
+    code: 'JD010234',
+    address: '京东万里站站长',
+    num: 201003.0,
+    phone: 13820180309,
+    creatTime: '2018-03-09',
     status: '正常',
   },
 ]
 ;<Table columns={columns} data={data} scroll={{ x: 900 }} stripe />
 ```
 
-**条目过多 有固定项 table**
+**条目过多 有固定项 表格**
 
 ```js
 const columns = [
@@ -216,23 +252,29 @@ const columns = [
     fixed: 'left',
     width: 120,
     render: code => {
-      return <a href="javascript:void(0)">{code}</a>
+      return <a href="#">{code}</a>
     },
   },
   { prop: 'address', label: '地址', width: 160 },
-  { prop: 'num', label: '金额', fixed: 'right', width: 100 },
+  { prop: 'num', label: '金额', width: 100 },
   { prop: 'phone', label: '电话', width: 120 },
-  { prop: 'creatTime', label: '创建时间', fixed: 'left', width: 120 },
+  { prop: 'creatTime', label: '创建时间', width: 120 },
   { prop: 'status', label: '状态', width: 120 },
   {
     prop: 'id',
-    label: '编辑',
+    label: '操作',
     width: 202,
+    fixed: 'right',
     render: id => {
       return (
         <div>
-          <a href="javascript:void(0)">查看</a>
-          <a href="javascript:void(0)">合并</a>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -257,11 +299,28 @@ const data = [
     creatTime: '2018-03-09',
     status: '正常',
   },
+  {
+    id: 3,
+    code: 'JD010234',
+    address: '京东万里站站长',
+    num: 201003.0,
+    phone: 13820180309,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
 ]
-;<Table columns={columns} data={data} scroll={{ x: 900 }} stripe fixed border />
+;<Table
+  columns={columns}
+  data={data}
+  scroll={{ x: 900 }}
+  stripe
+  border
+  fixed
+  tooltip
+/>
 ```
 
-**基础多选 table**
+**基础多选 表格**
 
 ```js
 const columns = [
@@ -269,8 +328,9 @@ const columns = [
     prop: 'code',
     label: '编码',
     width: 120,
+    fixed: 'left',
     render: code => {
-      return <a href="javascript:void(0)">{code}</a>
+      return <a href="#">{code}</a>
     },
   },
   { prop: 'address', label: '地址', width: 160 },
@@ -280,13 +340,19 @@ const columns = [
   { prop: 'status', label: '状态', width: 120 },
   {
     prop: 'id',
-    label: '编辑',
+    label: '操作',
     width: 202,
+    fixed: 'right',
     render: id => {
       return (
         <div>
-          <a href="javascript:void(0)">查看</a>
-          <a href="javascript:void(0)">合并</a>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -300,7 +366,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -310,7 +375,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -320,7 +384,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
 ]
@@ -329,6 +392,14 @@ class DefaultExample extends React.Component {
     super()
     this.handleOnSelectAll = this.handleOnSelectAll.bind(this)
     this.handelOnSelect = this.handelOnSelect.bind(this)
+    this.handlePage = this.handlePage.bind(this)
+    this.state = {
+      activePage: 1,
+    }
+  }
+  handlePage(val) {
+    console.log(val)
+    this.setState({ activePage: val })
   }
   handelOnSelect(status, index, item) {
     console.log(status, index, item)
@@ -337,18 +408,32 @@ class DefaultExample extends React.Component {
     console.log(checkAll, selectedRowKeys)
   }
   render() {
+    const { activePage } = this.state
     const rowSelection = {
       onSelect: this.handelOnSelect,
       onSelectAll: this.handleOnSelectAll,
     }
+    const pagination = {
+      scope: 4,
+      onSelect: this.handlePage,
+      totalPage: 50,
+      activePage: activePage,
+    }
     return (
-      <Table
-        columns={columns}
-        data={data}
-        scroll={{ x: 900 }}
-        stripe
-        rowSelection={rowSelection}
-      />
+      <div>
+        <div className="text-right" style={{ marginBottom: '11px' }}>
+          <Input type="search" placeholder="选择日期" size="sm" />
+        </div>
+        <Table
+          columns={columns}
+          data={data}
+          scroll={{ x: 900 }}
+          stripe
+          rowSelection={rowSelection}
+          pagination={pagination}
+          fixed
+        />
+      </div>
     )
   }
 }
@@ -356,7 +441,7 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
-**带 selectedRowKeys 可控制 多选 table**
+**可控多选 表格**
 
 ```js
 const columns = [
@@ -365,7 +450,7 @@ const columns = [
     label: '编码',
     width: 120,
     render: code => {
-      return <a href="javascript:void(0)">{code}</a>
+      return <a href="#">{code}</a>
     },
   },
   {
@@ -382,13 +467,25 @@ const columns = [
   { prop: 'status', label: '状态', width: 120 },
   {
     prop: 'id',
-    label: '编辑',
+    label: '操作',
+    fixed: 'right',
     width: 202,
-    render: id => {
+    render: (value, index, current) => {
       return (
         <div>
-          <a href="javascript:void(0)">查看</a>
-          <a href="javascript:void(0)">合并</a>
+          <a
+            href="#"
+            style={{ padding: '0 16px', color: '#276BF2', height: '18px' }}
+            onClick={() => {
+              console.log(value, index, current)
+            }}
+          >
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+            删除
+          </a>
         </div>
       )
     },
@@ -402,7 +499,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -412,7 +508,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
   {
@@ -422,7 +517,6 @@ const data = [
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
-    // comment: '',
     status: '正常',
   },
 ]
@@ -432,33 +526,31 @@ class DefaultExample extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleOnSelectAll = this.handleOnSelectAll.bind(this)
     this.handelOnSelect = this.handelOnSelect.bind(this)
+    this.handlePage = this.handlePage.bind(this)
     this.state = {
       selectedRowKeys: [0, 1],
+      activePage: 2,
     }
   }
 
   handleChange(selectedRowKeys) {
     console.log(selectedRowKeys)
   }
+  handlePage(val) {
+    console.log(val)
+  }
   handelOnSelect(status, index, item) {
+    console.log(status, index, item)
     if (status) {
       const { selectedRowKeys } = this.state
-      this.setState(
-        {
-          selectedRowKeys: [...selectedRowKeys, index],
-        },
-        () => console.log(this.state)
-      )
+      this.setState({
+        selectedRowKeys: [...selectedRowKeys, index],
+      })
     } else {
       const { selectedRowKeys } = this.state
-      this.setState(
-        {
-          selectedRowKeys: selectedRowKeys.filter(
-            item => Number(item) !== index
-          ),
-        },
-        () => console.log(this.state)
-      )
+      this.setState({
+        selectedRowKeys: selectedRowKeys.filter(item => Number(item) !== index),
+      })
     }
   }
   handleOnSelectAll(checkAll, selectedRowKeys) {
@@ -473,13 +565,19 @@ class DefaultExample extends React.Component {
     }
   }
   render() {
-    const { selectedRowKeys } = this.state
+    const { selectedRowKeys, activePage } = this.state
     const rowSelection = {
       selectedRowKeys: selectedRowKeys,
       onChange: this.handleChange,
       onSelect: this.handelOnSelect,
       onSelectAll: this.handleOnSelectAll,
       fixed: true,
+    }
+    const pagination = {
+      scope: 4,
+      onSelect: this.handlePage,
+      totalPage: 50,
+      activePage: activePage,
     }
     return (
       <Table
@@ -488,6 +586,8 @@ class DefaultExample extends React.Component {
         scroll={{ x: 900 }}
         stripe
         rowSelection={rowSelection}
+        pagination={pagination}
+        fixed
       />
     )
   }
@@ -500,5 +600,6 @@ class DefaultExample extends React.Component {
 
 v2.0.0
 
-* 新增 stripe 斑马线 table 属性
-* 新增 scroll 滑动 table 属性，当设置条目宽度，并且条目过多时使用，格式为{x:number,y:number}，其中 x 为横向最大宽度，y 为纵向最大宽度
+* 新增 columns 表格配置项属性。具体用法参照例子。其中，prop 为 dataIndex，label 为表头文字，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，否则为自适应，fixed 可选值为 left/right，render 为函数，可自定义渲染项，返回值为 prop 的值，index，和当前页码
+* 新增 rowSelection 多选表格配置项属性。具体用法参照例子。其中 selectedRowKeys 和 onChange 必须同时为可控组件，onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys，fixed 为固定左侧参数
+* 新增 fixed 固定表格属性。columns 中存在 fixed 时，此参数为必传参数

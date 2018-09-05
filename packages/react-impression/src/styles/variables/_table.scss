@@ -2,16 +2,20 @@
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 $table-color: $gray-base !default;
-$table-header-padding: rem(9px) 0;
-$table-body-padding: rem(13px) rem(10px);
+$table-header-padding: rem(13px) 0;
+$table-body-color: $gray-base;
+$table-body-padding: rem(17px) rem(10px);
 $table-header-border-color: #e1e5ec;
 $table-header-color: $gray-darker;
-$table-header-line-height: rem(22px);
+$table-header-line-height: rem(14px);
 $table-spried-background: $gray-lighter;
 $table-body-hover-bg-color: #ecf2ff;
 $table-header-border: rem(1px) solid $table-header-border-color;
 $table-cell-padding: 0.75rem !default;
 $table-sm-cell-padding: 0.3rem !default;
+$table-pagination-margin-top: rem(30px);
+$table-fix-left-shadow: rem(2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
+$table-fix-right-shadow: rem(-2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
 
 $table-bg: $brand-pure !default;
 $table-bg-accent: #f9f9f9 !default;
