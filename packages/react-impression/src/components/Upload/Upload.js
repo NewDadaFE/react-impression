@@ -61,24 +61,27 @@ export default class Upload extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
+    this.fileRef = element => {
+      this.fileInput = element
+    }
     this.state = {
       file: '',
     }
   }
 
   getValue() {
-    return this.refs.main.files[0]
+    return this.fileInput.files[0]
   }
 
   setValue(value) {
-    this.refs.main.files[0] = value
+    this.fileInput.files[0] = value
   }
 
   /**
    * 打开文件浏览器对话框
    */
   openFileDialogHandle = () => {
-    this.refs.main.click()
+    this.fileInput.click()
   }
 
   /**
@@ -143,7 +146,7 @@ export default class Upload extends React.PureComponent {
         <div className='upload-preview' onClick={this.openFileDialogHandle}>
           <input
             type='file'
-            ref='main'
+            ref={this.fileRef}
             onChange={onChange && this.imagePreviewHandle}
           />
           {previewImageUrl || src ? (
@@ -177,7 +180,7 @@ export default class Upload extends React.PureComponent {
         {/* 此处input只能放在中间，否则圆角样式会有问题 */}
         <input
           type='file'
-          ref='main'
+          ref={this.fileRef}
           onChange={onChange && this.fileChangeHandle}
         />
         <span className='input-group-btn'>
