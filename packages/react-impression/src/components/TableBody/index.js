@@ -1,1 +1,1 @@
-export default from './TableBody.js'
+export { default } from './TableBody'
