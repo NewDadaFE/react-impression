@@ -2,10 +2,6 @@ const minimist = require('minimist')
 const del = require('del')
 const gulp = require('gulp')
 const plugin = require('gulp-load-plugins')()
-const rollup = require('rollup')
-const resolve = require('rollup-plugin-node-resolve')
-const commonjs = require('rollup-plugin-commonjs')
-const babel = require('rollup-plugin-babel')
 const pkg = require('./package.json')
 
 const options = minimist(process.argv.slice(2))
@@ -21,47 +17,13 @@ const style = () => {
     .pipe(gulp.dest('dist'))
 }
 
-const script = async () => {
-  const inputOptions = {
-    input: 'src/index.js',
-    external: [
-      'react',
-      'react-dom',
-      'react-addons-css-transition-group',
-      'prop-types',
-      'moment',
-      'highlight.js',
-    ],
-    plugins: [
-      resolve(),
-      commonjs({ include: /node_modules/ }),
-      babel({ exclude: 'node_modules/**', plugins: ['external-helpers'] }),
-    ],
-  }
-  const outputOptions = {
-    commonjs: {
-      format: 'cjs',
-      file: pkg.main,
-    },
-    esm: {
-      format: 'es',
-      file: pkg.module,
-    },
-  }
-
-  const bundle = await rollup.rollup(inputOptions)
-
-  await Promise.all([
-    bundle.write(outputOptions.commonjs),
-    bundle.write(outputOptions.esm),
-  ])
+const script = () => {
+  return gulp
+    .src('src/**/*.js')
+    .pipe(plugin.babel({ configFile: '../../babel.config.js' }))
+    .pipe(gulp.dest('dist'))
 }
 
-const start = () => {
-  gulp.watch('src/**/*.scss', style)
-  gulp.watch('src/**/*.js', script)
-}
+const build = gulp.series(clean, gulp.parallel(script))
 
-const build = gulp.series(clean, gulp.parallel(style, script))
-
-module.exports = { start, build }
+module.exports = { build }

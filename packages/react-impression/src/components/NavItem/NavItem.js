@@ -60,10 +60,10 @@ export default class NavItem extends React.PureComponent {
     return eventKey !== undefined ? (
       <li
         {...others}
-        className={classnames('nav-item', className)}
+        className={classnames('nav-item', className, childClass)}
         onClick={this.onClickHandle}
       >
-        <span className={classnames('nav-link', childClass)}>{children}</span>
+        <span className={classnames('nav-link')}>{children}</span>
       </li>
     ) : (
       <div {...others} className={classnames('nav-item', className)}>

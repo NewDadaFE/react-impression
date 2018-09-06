@@ -1,1 +1,1 @@
-export default from './ButtonToolbar.js'
+export { default } from './ButtonToolbar'

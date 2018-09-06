@@ -1,1 +1,1 @@
-export default from './FormGroup.js'
+export { default } from './FormGroup'

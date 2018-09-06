@@ -1,1 +1,1 @@
-export default from './FormControl.js'
+export { default } from './FormControl'

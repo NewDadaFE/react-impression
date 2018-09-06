@@ -15,6 +15,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             options: {
+              configFile: '../../babel.config.js',
               cacheDirectory: process.env.NODE_ENV === 'development',
             },
           },

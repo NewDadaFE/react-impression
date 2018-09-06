@@ -1,1 +1,1 @@
-export default from './DropdownMenuDivider.js'
+export { default } from './DropdownMenuDivider'

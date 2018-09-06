@@ -49,7 +49,7 @@ export default class Badge extends React.PureComponent {
   render() {
     const { content, theme, type, size, className } = this.props
     const themeClass = `bg-${theme}`
-    const typeClass = `badge-${type}`
+    const typeClass = type ? `badge-${type}` : ''
     const badgeSizeClass = size ? `badge-addon-${size}` : null
     let { children } = this.props
 

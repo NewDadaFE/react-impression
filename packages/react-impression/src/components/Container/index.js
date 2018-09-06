@@ -1,1 +1,1 @@
-export default from './Container.js'
+export { default } from './Container'

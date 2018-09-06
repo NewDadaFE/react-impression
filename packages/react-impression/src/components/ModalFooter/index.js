@@ -1,1 +1,1 @@
-export default from './ModalFooter.js'
+export { default } from './ModalFooter'

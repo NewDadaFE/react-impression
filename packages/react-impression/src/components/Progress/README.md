@@ -25,52 +25,41 @@
 </Row>
 ```
 
-**自定义主题**
+**四种主题**
 
 ```js
 <Row>
   <Col>
-    <Progress value='50' />
+    <Progress value='30' />
   </Col>
 </Row>
 <Row>
   <Col>
-    <Progress value='50' theme='success' />
+    <Progress value='20' theme='success' />
   </Col>
 </Row>
 <Row>
   <Col>
-    <Progress value='50' theme='warning' />
+    <Progress value='10' theme='warning' />
   </Col>
 </Row>
 <Row>
   <Col>
-    <Progress value='50' theme='danger' />
+    <Progress value='8' theme='danger' />
   </Col>
 </Row>
 ```
 
-**斑马线风格**
+### 变更记录
 
-```js
-<Row>
-  <Col>
-    <Progress value='50' striped />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Progress value='50' theme='success' striped />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Progress value='50' theme='warning' striped />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Progress value='50' theme='danger' striped />
-  </Col>
-</Row>
-```
+v 2.0.0
+
+* 新增 strokeWidth 属性
+* 新增 showInfo 属性
+* 新增 formatter 属性
+* 移除 striped 属性
+* 新增 progress-info-default-color sass 变量
+* 新增 progress-info-width sass 变量
+* 新增 progress-info-margin-left sass 变量
+* 新增 progress-info-font-size sass 变量
+* 移除 progress-box-shadow sass 变量
