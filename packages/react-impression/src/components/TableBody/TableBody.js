@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tooltip from '../Tooltip/index'
 import Checkbox from '../Checkbox/index'
 
 export default class TableBody extends React.PureComponent {
@@ -40,11 +39,6 @@ export default class TableBody extends React.PureComponent {
      * 是否固定
      */
     fixed: PropTypes.bool,
-
-    /**
-     * 文本内容超出省略
-     */
-    tooltip: PropTypes.bool,
 
     /**
      * 固定列，鼠标移入事件
@@ -109,7 +103,6 @@ export default class TableBody extends React.PureComponent {
       data,
       stripe,
       fixed,
-      tooltip,
       onMouseEnter,
       onMouseLeave,
       rowSelection,
@@ -203,17 +196,7 @@ export default class TableBody extends React.PureComponent {
                         width={width}
                         className={classnames(`item-fix-left`)}
                       >
-                        {tooltip && (
-                          <Tooltip
-                            position='bottom'
-                            content={JSON.stringify(value)}
-                          >
-                            <div className='table-cell table-cell-tooltip'>
-                              {value}
-                            </div>
-                          </Tooltip>
-                        )}
-                        {!tooltip && <div className='table-cell'>{value}</div>}
+                        <div className='table-cell'>{value}</div>
                       </td>
                     )
                   })}
@@ -266,17 +249,7 @@ export default class TableBody extends React.PureComponent {
                         width={width}
                         className={classnames(`item-fix-normal`)}
                       >
-                        {tooltip && (
-                          <Tooltip
-                            position='bottom'
-                            content={JSON.stringify(value)}
-                          >
-                            <div className='table-cell table-cell-tooltip'>
-                              {value}
-                            </div>
-                          </Tooltip>
-                        )}
-                        {!tooltip && <div className='table-cell'>{value}</div>}
+                        <div className='table-cell'>{value}</div>
                       </td>
                     )
                   })}
@@ -311,17 +284,7 @@ export default class TableBody extends React.PureComponent {
                         width={width}
                         className={classnames(`item-fix-right`)}
                       >
-                        {tooltip && (
-                          <Tooltip
-                            position='bottom'
-                            content={JSON.stringify(value)}
-                          >
-                            <div className='table-cell table-cell-tooltip'>
-                              {value}
-                            </div>
-                          </Tooltip>
-                        )}
-                        {!tooltip && <div className='table-cell'>{value}</div>}
+                        <div className='table-cell'>{value}</div>
                       </td>
                     )
                   })}

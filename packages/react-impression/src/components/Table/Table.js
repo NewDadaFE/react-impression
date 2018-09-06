@@ -62,11 +62,6 @@ export default class Table extends React.PureComponent {
      * 设置table的最大宽度 {x:number}
      */
     scroll: PropTypes.object,
-
-    /**
-     * 文本内容超出省略
-     */
-    tooltip: PropTypes.bool,
     /**
      * 自定义样式
      */
@@ -94,7 +89,6 @@ export default class Table extends React.PureComponent {
     fixed: PropTypes.bool,
   }
   static defaultProps = {
-    tooltip: false,
     border: false,
     fixed: false,
     stripe: false,
@@ -474,7 +468,6 @@ export default class Table extends React.PureComponent {
       border,
       scroll,
       className,
-      tooltip,
       rowSelection,
       pagination,
     } = this.props
@@ -521,7 +514,6 @@ export default class Table extends React.PureComponent {
               style={{ display: 'inline-block' }}
             >
               <TableHead
-                tooltip={tooltip}
                 rowSelection={rowSelection}
                 fixLeftColumns={fixLeftColumns}
                 fixRightColumns={fixRightColumns}
@@ -533,7 +525,6 @@ export default class Table extends React.PureComponent {
               <TableBody
                 data={data}
                 stripe={stripe}
-                tooltip={tooltip}
                 pagination={pagination}
                 fixLeftColumns={fixLeftColumns}
                 fixRightColumns={fixRightColumns}
@@ -576,7 +567,6 @@ export default class Table extends React.PureComponent {
                 fixRight={false}
                 stripe={stripe}
                 pagination={pagination}
-                tooltip={tooltip}
                 fixLeftColumns={fixLeftColumns}
                 fixRightColumns={fixRightColumns}
                 noFixColumns={noFixColumns}
@@ -621,7 +611,6 @@ export default class Table extends React.PureComponent {
                 fixRightColumns={fixRightColumns}
                 noFixColumns={noFixColumns}
                 stripe={stripe}
-                tooltip={tooltip}
                 pagination={pagination}
                 isShowSelection
                 onMouseEnter={this.handleHover}

@@ -309,15 +309,7 @@ const data = [
     status: '正常',
   },
 ]
-;<Table
-  columns={columns}
-  data={data}
-  scroll={{ x: 900 }}
-  stripe
-  border
-  fixed
-  tooltip
-/>
+;<Table columns={columns} data={data} scroll={{ x: 900 }} stripe border fixed />
 ```
 
 **基础多选 表格**
