@@ -73,9 +73,15 @@ export default class Table extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 多选表格配置,配置参考例子(selectedRowKeys,onChange,onSelect,onSelectAll,fixed)
+     * 多选表格配置,配置参考例子
      */
-    rowSelection: PropTypes.object,
+    rowSelection: PropTypes.shape({
+      selectedRowKeys: PropTypes.array,
+      onChange: PropTypes.func,
+      onSelect: PropTypes.func,
+      onSelectAll: PropTypes.func,
+      fixed: PropTypes.bool,
+    }),
 
     /**
      * 分页配置项，请参照Pagination
@@ -242,7 +248,7 @@ export default class Table extends React.PureComponent {
   }
 
   getMax = max => {
-    if (!max) return null
+    if (!max) return {}
     if (max.x) return { maxWidth: max.x }
   }
   handleScroll() {
@@ -266,9 +272,7 @@ export default class Table extends React.PureComponent {
         const tr = item.children
         const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
         const newRow = rows[index]
-        if (newRow) {
-          this.addClass(newRow, 'is-hover')
-        }
+        newRow && this.addClass(newRow, 'is-hover')
       })
     }
   }
@@ -278,9 +282,7 @@ export default class Table extends React.PureComponent {
       const tr = item.children
       const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
       const newRow = rows[index]
-      if (newRow) {
-        this.addClass(newRow, 'is-selected')
-      }
+      newRow && this.addClass(newRow, 'is-selected')
     })
   }
   handleNoSelect = index => {
@@ -289,9 +291,7 @@ export default class Table extends React.PureComponent {
       const tr = item.children
       const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
       const newRow = rows[index]
-      if (newRow) {
-        this.removeClass(newRow, 'is-selected')
-      }
+      newRow && this.removeClass(newRow, 'is-selected')
     })
   }
   handleHoverLeave = index => {
@@ -302,9 +302,7 @@ export default class Table extends React.PureComponent {
         const tr = item.children
         const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
         const newRow = rows[index]
-        if (newRow) {
-          this.removeClass(newRow, 'is-hover')
-        }
+        newRow && this.removeClass(newRow, 'is-hover')
       })
     }
   }
