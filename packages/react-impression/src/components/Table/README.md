@@ -15,10 +15,10 @@ const columns = [
     label: '操作',
     render: (value, index, current) => {
       return (
-        <div>
+        <div className="text-center">
           <a
             href="#"
-            style={{ padding: '0 16px', color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
             onClick={() => {
               console.log(value, index, current)
             }}
@@ -26,7 +26,7 @@ const columns = [
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -72,12 +72,12 @@ const columns = [
     label: '操作',
     render: id => {
       return (
-        <div>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+        <div className="text-center">
+          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -129,12 +129,12 @@ const columns = [
     label: '操作',
     render: id => {
       return (
-        <div>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+        <div className="text-center">
+          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -197,12 +197,12 @@ const columns = [
     width: 202,
     render: id => {
       return (
-        <div>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+        <div className="text-center">
+          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -267,12 +267,12 @@ const columns = [
     fixed: 'right',
     render: id => {
       return (
-        <div>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+        <div className="text-center">
+          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -345,12 +345,12 @@ const columns = [
     fixed: 'right',
     render: id => {
       return (
-        <div>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+        <div className="text-center">
+          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -475,7 +475,7 @@ const columns = [
         <div>
           <a
             href="#"
-            style={{ padding: '0 16px', color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
             onClick={() => {
               console.log(value, index, current)
             }}
