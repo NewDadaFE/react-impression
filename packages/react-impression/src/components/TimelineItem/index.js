@@ -1,1 +1,1 @@
-export default from './TimelineItem.js'
+export { default } from './TimelineItem'

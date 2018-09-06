@@ -1,1 +1,1 @@
-export default from './ModalBody.js'
+export { default } from './ModalBody'

@@ -1,1 +1,1 @@
-export default from './ListGroup.js'
+export { default } from './ListGroup'

@@ -13,8 +13,7 @@
     "react-dom": "15.6.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
+    "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "react-styleguidist": "^7.2.3",

@@ -1,1 +1,1 @@
-export default from './NavTitle.js'
+export { default } from './NavTitle'
