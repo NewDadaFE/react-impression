@@ -4,7 +4,7 @@
 
 ```js
 <Card>
-  <CardHeader align="left">居于左侧大标题</CardHeader>
+  <CardHeader className="text-left">居于左侧大标题</CardHeader>
   <CardBlock>
     <h4>标题</h4>
     <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
@@ -22,7 +22,7 @@
 
 ```js
 <Card>
-  <CardHeader align="center">居于正中大标题</CardHeader>
+  <CardHeader className="text-center">居于正中大标题</CardHeader>
   <CardBlock>
     <h4>标题</h4>
     <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
@@ -40,7 +40,7 @@
 
 ```js
 <Card>
-  <CardHeader align="right">居于右侧大标题</CardHeader>
+  <CardHeader className="text-right">居于右侧大标题</CardHeader>
   <CardBlock>
     <h4>标题</h4>
     <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
