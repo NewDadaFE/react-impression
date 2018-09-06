@@ -1,20 +1,21 @@
-// Confirm
-$confirm-top: $modal-top !default;
-$confirm-left: $modal-left !default;
-$confirm-bg: $modal-bg !default;
+$confirm-top:                           $modal-top !default;
+$confirm-left:                          $modal-left !default;
+$confirm-bg:                            $modal-bg !default;
 
-$confirm-dialog-bg: $brand-pure !default;
-$confirm-dialog-width: 240px !default;
-$confirm-dialog-height: 150px !default;
-$confirm-dialog-padding: 1rem !default;
-$confirm-dialog-border-radius: $border-radius-lg !default;
+$confirm-dialog-bg:                     $brand-pure !default;
+$confirm-dialog-width:                  rem(420px) !default;
+$confirm-dialog-height:                 rem(150px) !default;
+$confirm-dialog-padding:                rem(40px) rem(30px) rem(30px) !default;
+$confirm-dialog-border-radius:          rem(2px) !default;
+$confirm-dialog-min-height:             rem(95px) !default;
 
-$confirm-addon-font-size: 3rem !default;
-$confirm-body-padding: 1rem 0 !default;
-$confirm-footer-border-color: $border-color !default;
+$confirm-addon-font-size:               rem(50px) !default;
+$confirm-body-padding:                  rem(30px) 0 !default;
+$confirm-body-font-size:                $font-size-h4 !default;
+$confirm-body-font-weight:              $headings-font-weight !default;
+$confirm-body-color:                    $gray-base !default;
+$confirm-footer-border-color:           $border-color !default;
+$confirm-footer-btn-margin:             rem(20px) !default;
 
-$confirm-btn-padding: 0.8rem !default;
-$confirm-btn-hover-bg: $gray-lighter !default;
-$confirm-btn-primary-color: $brand-primary !default;
+$confirm-animation-duration:            .36s !default;
 
-$confirm-animation-duration: 0.36s !default;
