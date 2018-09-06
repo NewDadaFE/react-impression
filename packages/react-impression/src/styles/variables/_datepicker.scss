@@ -1,42 +1,41 @@
 //时间控件
 $datepicker-bg: $brand-pure !default;
-$datepicker-width: 15rem !default;
+$datepicker-width: rem(300px)!default;
 $datepicker-border: 1px solid $border-color !default;
-$datepicker-font-size: 0.8rem !default;
+$datepicker-font-size: rem(14px) !default;
 $datepicker-box-shadow: 0 2px 8px $inverse-level-2 !default;
 
-$datepicker-header-padding: 0 0.5rem !default;
+$datepicker-header-padding: 0 rem(11px) !default;
 
-$datepicker-header-btn-scale: 1.5 !default;
-$datepicker-header-btn-padding: 0.75rem 0.5rem !default;
+$datepicker-header-btn-scale: 1.3 !default;
+$datepicker-header-btn-padding: rem(10px) !default;
 $datepicker-header-btn-font-size: 1.2rem !default;
 $datepicker-header-btn-transition: all 0.18s linear !default;
 $datepicker-header-btn-hover-color: $brand-primary !default;
 
-$datepicker-caption-padding: 0.75rem 0 !default;
+$datepicker-body-padding: 0 rem(9px) rem(10px) !default;
+
+$datepicker-caption-padding: rem(15px) 0 !default;
 $datepicker-caption-hover-color: $brand-primary !default;
 
-$datepicker-weekgroup-padding: 0.5rem !default;
-$datepicker-weekgroup-item-padding: 0 0.5rem !default;
+$datepicker-weekgroup-item-size: rem(40px) !default;
 
-$datepicker-daygroup-padding: 0 0.5rem 0.5rem !default;
-
-$datepicker-daygroup-item-padding: 0.25rem 0 !default;
-$datepicker-daygroup-item-border-radius: $border-radius !default;
+$datepicker-daygroup-item-width: rem(36px) !default;
+$datepicker-daygroup-item-line-height: rem(34.5px) !default;
+$datepicker-daygroup-item-border-radius: 50% !default;
 $datepicker-daygroup-item-hover-bg: mix(
   $brand-primary,
   $brand-pure,
   20%
 ) !default;
 $datepicker-daygroup-item-active-bg: $brand-primary !default;
-$datepicker-daygroup-item-active-color: $brand-pure !default;
-$datepicker-daygroup-item-active-border: $brand-primary !default;
-$datepicker-daygroup-item-disable-color: #ddd !default;
+$datepicker-daygroup-item-active-font: $brand-pure !default;
+$datepicker-daygroup-item-disable-color: $gray !default;
 
 $datepicker-yeargroup-height: 14rem !default;
 $datepicker-yeargroup-item-padding: 0.5rem 0 !default;
 $datepicker-yeargroup-item-active-bg: $brand-primary !default;
 $datepicker-yeargroup-item-active-color: $brand-pure !default;
-$datepicker-yeargroup-item-disabled-color: #ddd !default;
+$datepicker-yeargroup-item-disable-color: $gray !default;
 
-$datepicker-footer-padding: 0.75rem 1rem !default;
+$datepicker-footer-padding: rem(13px) 0 rem(12px) !default;

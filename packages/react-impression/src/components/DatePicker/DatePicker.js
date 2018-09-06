@@ -536,7 +536,6 @@ export default class DatePicker extends React.PureComponent {
                     className={classnames('datepicker-daygroup-item-text', {
                       disable,
                       now: isToday,
-                      'text-muted': !inMonth,
                       active: date.isSame(checkedDay),
                     })}
                   >

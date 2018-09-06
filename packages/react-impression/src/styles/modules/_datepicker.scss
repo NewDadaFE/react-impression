@@ -1,95 +1,101 @@
 
 .datepicker {
     position: absolute;
-    left: 0;
+    z-index: $zindex-datepicker;
     top: 0;
+    left: 0;
     width: $datepicker-width;
+    padding-top: rem(10px);
+    font-size: $datepicker-font-size;
+    transform-origin: center 0;
+    animation: scaleIn .36s ease;
+    color: $gray-base;
     border: $datepicker-border;
     background: $datepicker-bg;
-    font-size: $datepicker-font-size;
-    z-index: $zindex-datepicker;
     box-shadow: $datepicker-box-shadow;
-    animation: scaleIn .36s ease;
-    transform-origin: center 0;
 }
 
 //头部
 .datepicker-header {
-    line-height: 1;
-    border-bottom: $datepicker-border;
     display: flex;
+    padding: $datepicker-header-padding;
     align-items: center;
     font-weight: bold;
-    padding: $datepicker-header-padding;
+    line-height: 1;
 }
 
 .datepicker-header-btn {
-    cursor: pointer;
     padding: $datepicker-header-btn-padding;
     font-size: $datepicker-header-btn-font-size;
+    cursor: pointer;
     transition: $datepicker-header-btn-transition;
 
     &:hover {
-        color: $datepicker-header-btn-hover-color;
         transform: scale($datepicker-header-btn-scale);
+        color: $datepicker-header-btn-hover-color;
     }
 }
 
 //时间标题
 .datepicker-caption {
-    flex: 1;
-    text-align: center;
-    cursor: pointer;
     padding: $datepicker-caption-padding;
+    flex: 1;
+    line-height: rem(20.5px);
+    cursor: pointer;
+    text-align: center;
 
     &:hover {
         color: $datepicker-caption-hover-color;
     }
 }
 
-//星期
-.datepicker-weekgroup {
-    font-weight: bold;
-    padding: $datepicker-weekgroup-padding;
+.datepicker-body {
+    padding: $datepicker-body-padding;
 }
 
+//星期
 .datepicker-weekgroup-item {
     display: inline-block;
+    width: $datepicker-weekgroup-item-size;
+    line-height: $datepicker-weekgroup-item-size;
     text-align: center;
-    width: percentage(1 / 7);
-    padding: $datepicker-weekgroup-item-padding;
 }
 
 //日
-.datepicker-daygroup {
-    padding: $datepicker-daygroup-padding;
-}
-
 .datepicker-daygroup-item {
-    cursor: pointer;
     display: inline-block;
-    width: percentage(1 / 7);
+    padding: rem(2px);
+    cursor: pointer;
     text-align: center;
-    padding: 1px;
 }
 
 .datepicker-daygroup-item-text {
-    padding: $datepicker-daygroup-item-padding;
+    position: relative;
+    width: $datepicker-daygroup-item-width;
+    line-height: $datepicker-daygroup-item-line-height;
     border: 1px solid transparent;
     border-radius: $datepicker-daygroup-item-border-radius;
 
     &:hover:not(.disable):not(.active) {
-        background: $datepicker-daygroup-item-hover-bg;
+        color: $datepicker-daygroup-item-active-bg;
+        border-color: $datepicker-daygroup-item-active-bg;
     }
 
-    &.now {
-        border-color: $datepicker-daygroup-item-active-border;
+    &.now::before {
+        position: absolute;
+        bottom: rem(3px);
+        left: 50%;
+        width: rem(4px);
+        height: rem(4px);
+        content: "";
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background-color: $brand-primary;
     }
 
     &.active {
-        color: $datepicker-daygroup-item-active-color !important;
-        border-color: $datepicker-daygroup-item-active-border;
-        background: $datepicker-daygroup-item-active-bg;
+        color: $datepicker-daygroup-item-active-font;
+        background-color: $datepicker-daygroup-item-active-bg;
     }
 
     &.disable {
@@ -113,9 +119,9 @@
 
 .datepicker-yeargroup-item,
 .datepicker-monthgroup-item {
+    padding: $datepicker-yeargroup-item-padding;
     cursor: pointer;
     text-align: center;
-    padding: $datepicker-yeargroup-item-padding;
 
     &:hover {
         background: $datepicker-daygroup-item-hover-bg;
@@ -128,16 +134,16 @@
 
     &.disable {
         cursor: not-allowed;
-        color: $datepicker-yeargroup-item-disabled-color !important;
+        color: $datepicker-yeargroup-item-disable-color !important;
     }
 }
 
 
 //底部
 .datepicker-footer {
+    padding: $datepicker-footer-padding;
     line-height: 1;
     text-align: center;
-    padding: $datepicker-footer-padding;
     border-top: $datepicker-border;
 
     a:hover {
