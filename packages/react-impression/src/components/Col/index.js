@@ -1,1 +1,1 @@
-export default from './Col.js'
+export { default } from './Col'

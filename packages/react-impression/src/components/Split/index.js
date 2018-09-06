@@ -1,1 +1,1 @@
-export default from './Split.js'
+export { default } from './Split'

@@ -1,1 +1,1 @@
-export default from './Notice.js'
+export { default } from './Notice'
