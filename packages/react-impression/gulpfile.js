@@ -20,7 +20,7 @@ const style = () => {
 const script = () => {
   return gulp
     .src('src/**/*.js')
-    .pipe(plugin.babel())
+    .pipe(plugin.babel({ configFile: '../../babel.config.js' }))
     .pipe(gulp.dest('dist'))
 }
 
