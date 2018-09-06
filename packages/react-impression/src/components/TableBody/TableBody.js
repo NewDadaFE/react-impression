@@ -4,21 +4,6 @@ import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox/index'
 
 export default class TableBody extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context)
-
-    // 是否木偶组件
-    this.isPuppet = props.value !== undefined
-
-    // 子组件数据
-    this.options = []
-    const initValue = {}
-
-    this.state = {
-      ...initValue,
-    }
-  }
-
   static propTypes = {
     /**
      * 数据源

@@ -1,25 +1,9 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import Checkbox from '../Checkbox/index'
 
 export default class TableHead extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context)
-
-    // 是否木偶组件
-    this.isPuppet = props.value !== undefined
-
-    // 子组件数据
-    this.options = []
-    const initValue = {
-      top: '120%',
-    }
-
-    this.state = {
-      ...initValue,
-    }
-  }
-
   static propTypes = {
     /**
      * 是否固定
