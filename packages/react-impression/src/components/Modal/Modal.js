@@ -42,6 +42,7 @@ class Modal extends React.Component {
   static defaultProps = {
     keyboard: false,
     scrollInside: false,
+    onClose: () => {},
   }
 
   componentDidMount() {
@@ -75,24 +76,29 @@ class Modal extends React.Component {
     delete others.onClose
     delete others.keyboard
 
-    const portalChildren = (
-      <div
-        {...others}
-        className={classnames(
-          'modal',
-          { 'limit-height': scrollInside },
-          className
-        )}
-      >
-        <div className={classnames('modal-dialog', sizeClass)}>
-          <div className='modal-content slideInDown'>{children}</div>
-        </div>
-      </div>
-    )
-
     return (
       <PortalWithState closeOnEsc={closeOnEsc} onClose={onClose} defaultOpen>
-        {({ portal }) => portal(portalChildren)}
+        {({ portal, closePortal }) =>
+          portal(
+            <div
+              {...others}
+              onClick={() => {
+                closePortal()
+                onClose && onClose()
+              }}
+              className={classnames('modal', className, {
+                'limit-height': scrollInside,
+              })}
+            >
+              <div
+                className={classnames('modal-dialog', sizeClass)}
+                onClick={e => e.stopPropagation()}
+              >
+                <div className='modal-content slideInDown'>{children}</div>
+              </div>
+            </div>
+          )
+        }
       </PortalWithState>
     )
   }

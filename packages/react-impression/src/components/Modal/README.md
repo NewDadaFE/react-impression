@@ -16,7 +16,7 @@ initialState = {
     显示默认弹窗
   </Button>
   {state.isShow && (
-    <Modal>
+    <Modal onClose={toggleModalHandle}>
       <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
@@ -90,7 +90,7 @@ initialState = {
     显示小尺寸弹窗
   </Button>
   {state.isShow && (
-    <Modal size="sm">
+    <Modal size="sm" onClose={toggleModalHandle}>
       <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
@@ -127,7 +127,7 @@ initialState = {
     显示大尺寸弹窗
   </Button>
   {state.isShow && (
-    <Modal size="lg">
+    <Modal size="lg" onClose={toggleModalHandle}>
       <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
@@ -192,7 +192,10 @@ class Overflow extends React.Component {
           </Col>
         </Row>
         {this.state.show && (
-          <Modal scrollInside={this.state.scrollInside}>
+          <Modal
+            scrollInside={this.state.scrollInside}
+            onClose={() => this.toggleModalHandle()}
+          >
             <ModalHeader>
               <Button close onClick={() => this.toggleModalHandle()}>
                 &times;
