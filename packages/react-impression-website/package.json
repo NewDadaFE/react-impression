@@ -16,6 +16,7 @@
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "node-sass": "^4.9.3",
     "react-styleguidist": "^7.2.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",
