@@ -1,1 +1,1 @@
-export default from './Tag.js'
+export { default } from './Tag'

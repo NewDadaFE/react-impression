@@ -1,1 +1,1 @@
-export default from './Row.js'
+export { default } from './Row'

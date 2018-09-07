@@ -1,1 +1,1 @@
-export default from './InlineSelectOption.js'
+export { default } from './InlineSelectOption'

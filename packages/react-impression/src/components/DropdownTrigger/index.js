@@ -1,1 +1,1 @@
-export default from './DropdownTrigger.js'
+export { default } from './DropdownTrigger'
