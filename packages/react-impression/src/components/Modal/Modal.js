@@ -1,17 +1,10 @@
 import classnames from 'classnames'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { PortalWithState } from 'react-portal'
 import ModalHeader from '../ModalHeader'
 import ModalBody from '../ModalBody'
 import ModalFooter from '../ModalFooter'
-
-const KeyCode = {
-  ESC: 27,
-}
-
-const IS_REACT_16 = 'createPortal' in ReactDOM
 
 class Modal extends React.Component {
   static propTypes = {
