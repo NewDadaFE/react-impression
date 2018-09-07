@@ -1,1 +1,1 @@
-export default from './CollapseBody.js'
+export { default } from './CollapseBody'

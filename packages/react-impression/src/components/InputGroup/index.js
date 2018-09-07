@@ -1,1 +1,1 @@
-export default from './InputGroup.js'
+export { default } from './InputGroup'

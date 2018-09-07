@@ -1,1 +1,1 @@
-export default from './FormControlLabel.js'
+export { default } from './FormControlLabel'

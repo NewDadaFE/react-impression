@@ -1,1 +1,1 @@
-export default from './Message.js'
+export { default } from './Message'

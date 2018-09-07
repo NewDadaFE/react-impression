@@ -1,33 +1,34 @@
 ### 示例
 
-**上方展示**
+1. 通过**data-tooltip**属性指定提示内容，**data-tooltip-pos**属性指定提示显示的位置，**两者均为必填项**。
+2. 这种模式会占用父组件的**::before**、**::after**伪类样式，父元素样式有被干扰的风险。
+3. 暂不支持改变提示块的宽度。
 
 ```js
-<Tooltip position="top" content="提示内容">
-  <Button theme="primary">上方</Button>
-</Tooltip>
-```
-
-**右侧展示**
-
-```js
-<Tooltip position="right" content="提示内容">
-  <Button theme="primary">右侧</Button>
-</Tooltip>
-```
-
-**底部展示**
-
-```js
-<Tooltip position="bottom" content="提示内容">
-  <Button theme="primary">底部</Button>
-</Tooltip>
-```
-
-**左侧展示**
-
-```js
-<Tooltip position="left" content="提示内容">
-  <Button theme="primary">左侧</Button>
-</Tooltip>
+<Row>
+  <Col>
+    <Button theme="primary" data-tooltip="提示内容" data-tooltip-pos="top">
+      上方
+    </Button>
+  </Col>
+  <Col>
+    <Button
+      theme="primary"
+      data-tooltip="提示内容很多很多很多很多很多很多"
+      data-tooltip-pos="bottom"
+    >
+      底部
+    </Button>
+  </Col>
+  <Col>
+    <Button theme="primary" data-tooltip="提示内容" data-tooltip-pos="left">
+      左侧
+    </Button>
+  </Col>
+  <Col>
+    <Button theme="primary" data-tooltip="提示内容" data-tooltip-pos="right">
+      右侧
+    </Button>
+  </Col>
+</Row>
 ```

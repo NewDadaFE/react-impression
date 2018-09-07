@@ -1,1 +1,1 @@
-export default from './LoadingAddon.js'
+export { default } from './LoadingAddon'

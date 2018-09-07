@@ -1,1 +1,1 @@
-export default from './CollapseTitle.js'
+export { default } from './CollapseTitle'

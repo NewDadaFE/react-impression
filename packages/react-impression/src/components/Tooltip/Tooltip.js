@@ -49,22 +49,22 @@ export default class Tooltip extends React.PureComponent {
      */
     switch (position) {
       case 'top':
-        tooltipNode.style.top = `${targetRect.top - tooltipRect.height}px`
+        tooltipNode.style.top = `${targetRect.top - tooltipRect.height - 10}px`
         tooltipNode.style.left = `${targetRect.left -
           (tooltipRect.width - targetRect.width) / 2}px`
         break
       case 'left':
-        tooltipNode.style.left = `${targetRect.left - tooltipRect.width}px`
+        tooltipNode.style.left = `${targetRect.left - tooltipRect.width - 10}px`
         tooltipNode.style.top = `${targetRect.top +
           (targetRect.height - tooltipRect.height) / 2}px`
         break
       case 'right':
-        tooltipNode.style.left = `${targetRect.left + targetRect.width}px`
+        tooltipNode.style.left = `${targetRect.left + targetRect.width + 10}px`
         tooltipNode.style.top = `${targetRect.top +
           (targetRect.height - tooltipRect.height) / 2}px`
         break
       default:
-        tooltipNode.style.top = `${targetRect.top + targetRect.height}px`
+        tooltipNode.style.top = `${targetRect.top + targetRect.height + 10}px`
         tooltipNode.style.left = `${targetRect.left -
           (tooltipRect.width - targetRect.width) / 2}px`
         break
