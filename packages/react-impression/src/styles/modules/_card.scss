@@ -7,13 +7,18 @@
     display: block;
     margin-bottom: $card-spacer-y;
     background-color: $card-bg;
-    border: $card-border-width solid $card-border-color;
     border-radius: $card-border-radius;
+    box-shadow: $card-box-shadow;
 }
 
 .card-block {
     @include clearfix;
     padding: $card-padding;
+    color: $gray-darker;
+
+    & ~.card-footer {
+        padding-top: 0;
+    }
 }
 
 .card-title {
@@ -43,11 +48,15 @@
     @include clearfix;
     margin: 0;
     padding: $card-spacer-y $card-spacer-x;
-    background-color: $card-cap-bg;
-    border-bottom: $card-border-width solid $card-border-color;
+    color: $card-cap-color;
+    font-size: $card-cap-font-size;
+    font-weight: $card-cap-font-weight;
 
     &:first-child {
         @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    }
+    & ~.card-block {
+        padding-top: 0;
     }
 }
 
@@ -55,8 +64,9 @@
     @include clearfix;
     margin: 0;
     padding: $card-spacer-y $card-spacer-x;
-    background-color: $card-cap-bg;
-    border-top: $card-border-width solid $card-border-color;
+    color: $card-cap-color;
+    font-size: $card-cap-font-size;
+    font-weight: $card-cap-font-weight;
 
     &:last-child {
         @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
