@@ -47,12 +47,13 @@ export default class Attention extends React.PureComponent {
    * @returns {*}
    */
   getTitleIcon = theme => {
-    return {
+    const themeMap = {
       primary: ['fa', 'fa-info-circle'],
       success: ['fa', 'fa-check-circle'],
       warning: ['fa', 'fa-exclamation-triangle'],
       danger: ['fa', 'fa-times-circle'],
-    }[theme]
+    }
+    return themeMap[theme]
   }
 
   render() {

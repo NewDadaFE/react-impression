@@ -50,15 +50,15 @@ export default class Message extends React.Component {
    * @returns {*}
    */
   getTitleIcon() {
-    const { theme } = this.state
-
-    return {
+    const themeMap = {
       info: ['fa', 'fa-info-circle'],
       success: ['fa', 'fa-check-circle'],
       warning: ['fa', 'fa-exclamation-triangle'],
       danger: ['fa', 'fa-times-circle'],
       loading: ['message-icon-loading'],
-    }[theme]
+    }
+
+    return themeMap[this.state.theme]
   }
 
   /**
@@ -66,15 +66,15 @@ export default class Message extends React.Component {
    * @returns {*}
    */
   getStyleClass() {
-    const { theme } = this.state
-
-    return {
+    const classMap = {
       info: 'message-primary',
       warning: 'message-warning',
       success: 'message-success',
       danger: 'message-danger',
       loading: 'message-default',
-    }[theme]
+    }
+
+    return classMap[this.state.theme]
   }
 
   handleClose = () => {

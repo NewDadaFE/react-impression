@@ -51,14 +51,14 @@ export default class Notice extends PureComponent {
    * @return Array 图标样式
    */
   getTitleIcon() {
-    let { theme } = this.props
-
-    return {
+    const themeMap = {
       info: ['fa', 'fa-info-circle'],
       success: ['fa', 'fa-check-circle'],
       warning: ['fa', 'fa-exclamation-triangle'],
       danger: ['fa', 'fa-times-circle'],
-    }[theme]
+    }
+
+    return themeMap[this.props.theme]
   }
 
   render() {
