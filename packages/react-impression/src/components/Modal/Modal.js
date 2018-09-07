@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { PortalWithState } from 'react-portal'
 import ModalHeader from '../ModalHeader'
 import ModalBody from '../ModalBody'
 import ModalFooter from '../ModalFooter'
@@ -33,10 +34,11 @@ class Modal extends React.Component {
      * Modal是否内部滚动
      */
     scrollInside: PropTypes.bool,
+
     /**
      * 是否支持键盘esc关闭
      */
-    keyboard: PropTypes.bool,
+    closeOnEsc: PropTypes.bool,
 
     /**
      * keyboard关闭modal的触发函数，只有当keyboard为true的时候才会触发
@@ -45,43 +47,16 @@ class Modal extends React.Component {
   }
 
   static defaultProps = {
-    keyboard: true,
+    keyboard: false,
     scrollInside: false,
   }
 
-  /**
-   * modal组件的ref
-   */
-  wrap = null
-
-  getWrap = ref => {
-    this.wrap = ref
-    if (ref) {
-      this.wrap.focus()
-    }
-  }
-
-  /**
-   * 如果是react16则在body下创建div，并触发render更新
-   */
   componentDidMount() {
-    IS_REACT_16 && this.createContainer()
     this.disableScroll()
   }
 
-  /**
-   * 如果是react16则删除渲染的modal的dom节点
-   */
   componentWillUnmount() {
-    IS_REACT_16 && this.removeContainer()
     this.enableScroll()
-  }
-
-  onKeyDown(e) {
-    const { keyboard, onClose } = this.props
-    if (keyboard && e.keyCode === KeyCode.ESC) {
-      onClose && onClose(e)
-    }
   }
 
   disableScroll() {
@@ -92,26 +67,16 @@ class Modal extends React.Component {
     document.body.style.removeProperty('overflow')
   }
 
-  createContainer() {
-    this._container = this.getContainer()
-    this.forceUpdate()
-  }
-
-  getContainer = () => {
-    const container = document.createElement('div')
-
-    document.body.appendChild(container)
-    return container
-  }
-
-  removeContainer() {
-    if (this._container) {
-      this._container.parentNode.removeChild(this._container)
-    }
-  }
-
   render() {
-    const { size, className, children, scrollInside, ...others } = this.props
+    const {
+      size,
+      className,
+      children,
+      scrollInside,
+      onClose,
+      closeOnEsc,
+      ...others
+    } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     delete others.onClose
@@ -120,9 +85,6 @@ class Modal extends React.Component {
     const portalChildren = (
       <div
         {...others}
-        ref={this.getWrap}
-        tabIndex={-1}
-        onKeyDown={e => this.onKeyDown(e)}
         className={classnames(
           'modal',
           { 'limit-height': scrollInside },
@@ -135,15 +97,11 @@ class Modal extends React.Component {
       </div>
     )
 
-    if (IS_REACT_16) {
-      if (this._container) {
-        return ReactDOM.createPortal(portalChildren, this._container)
-      } else {
-        return null
-      }
-    }
-
-    return portalChildren
+    return (
+      <PortalWithState closeOnEsc={closeOnEsc} onClose={onClose} defaultOpen>
+        {({ portal }) => portal(portalChildren)}
+      </PortalWithState>
+    )
   }
 }
 

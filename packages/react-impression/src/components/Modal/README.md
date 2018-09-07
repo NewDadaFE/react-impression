@@ -53,7 +53,7 @@ initialState = {
     打开Modal按下esc关闭
   </Button>
   {state.isShow && (
-    <Modal onClose={toggleModalHandle}>
+    <Modal onClose={toggleModalHandle} closeOnEsc>
       <ModalHeader>
         <Button close onClick={toggleModalHandle}>
           &times;
@@ -245,6 +245,6 @@ v2.0.0
 * 废弃 modal-inner-padding-sm 这个 sass 变量
 
 * 新增 scrollInside 参数
-* 新增 keyboard 参数
-* 新增 onClose 参数
+* 新增 closeOnEsc 参数
+* 新增 onClose 参数，需要配合 closeOnEsc 来使用
 * 新增 modal-inner-padding-lg 这个 sass 变量
