@@ -3,16 +3,15 @@
 **单个文件点击上传**
 
 ```js
-let file
-;<div>
+<div>
   <Row>
     <Col col={7}>
-      <Input ref={ref => (file = ref)} type="file" />
+      <Upload />
     </Col>
   </Row>
   <Row>
     <Col col={7}>
-      <Input type="file" placeholder="请上传资质证明" onChange={() => {}} />
+      <Upload placeholder="请上传资质证明" />
     </Col>
   </Row>
   <Row>
