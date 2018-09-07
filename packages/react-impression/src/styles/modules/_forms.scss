@@ -191,13 +191,17 @@ input[type="month"] {
 
     .form-group {
         display: inline-block;
-        margin-bottom: 0;
+        margin-bottom: $form-group-inline-margin-bottom;
         vertical-align: bottom;
 
         > label {
             display: block;
             color: $form-group-label-color;
             margin-bottom: $form-group-inline-label-margin-bottom;
+        }
+
+        &:not(:first-child) > .btn:first-child {
+            margin-left: $form-group-inline-btn-margin-left;
         }
     }
 
@@ -236,14 +240,6 @@ input[type="month"] {
     // Re-override the feedback icon.
     .has-feedback .form-control-feedback {
         top: 0;
-    }
-
-    > .btn:not(:first-child) {
-        margin-left: $form-group-inline-btn-margin-left;
-
-        & ~.btn {
-            margin-left: 0;
-        }
     }
 }
 

@@ -26,12 +26,12 @@ const toggleConfirm3Handle = () => {
 ;<div>
   <Row>
     <Col>
-      <Button theme="secondary" outline onClick={toggleConfirm1Handle}>
+      <Button theme="secondary" onClick={toggleConfirm1Handle}>
         警告
       </Button>
     </Col>
     <Col>
-      <Button theme="primary" outline onClick={toggleConfirm2Handle}>
+      <Button theme="primary" onClick={toggleConfirm2Handle}>
         信息
       </Button>
     </Col>
@@ -69,3 +69,13 @@ const toggleConfirm3Handle = () => {
   )}
 </div>
 ```
+
+**变更记录**
+
+v2.0.0
+
+* 移除 confirm-btn-padding sass 变量
+* 移除 confirm-btn-hover-bg sass 变量
+* 移除 confirm-btn-primary-color sass 变量
+* 新增 confirm-footer-btn-margin sass 变量
+* 新增 confirm-dialog-min-height sass 变量

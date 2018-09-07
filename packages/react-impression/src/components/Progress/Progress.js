@@ -1,8 +1,17 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Progress extends PureComponent {
+const getProgress = (value, max) => {
+  if (!value || value < 0) {
+    return 0
+  } else if (value > max) {
+    return max
+  }
+  return Math.round(value / max * 10000) / 100
+}
+
+export default class Progress extends React.PureComponent {
   static propTypes = {
     /**
      * 样式
@@ -15,11 +24,6 @@ export default class Progress extends PureComponent {
     theme: PropTypes.oneOf(['success', 'warning', 'danger']),
 
     /**
-     * 是否为斑马线样式
-     */
-    striped: PropTypes.bool,
-
-    /**
      * 进度值，必填
      */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -28,25 +32,64 @@ export default class Progress extends PureComponent {
      * 设置最大值
      */
     max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /**
+     * 进度条宽度
+     */
+    strokeWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /**
+     * 是否显示进度信息
+     */
+    showInfo: PropTypes.bool,
+
+    /**
+     * 信息显示方式
+     */
+    formatter: PropTypes.func,
   }
 
   static defaultProps = {
+    showInfo: true,
     max: 100,
-    striped: false,
+    strokeWidth: 10,
+    formatter: percentNumber => `${percentNumber}%`,
   }
 
   render() {
-    let { theme, striped, value, max, className, ...others } = this.props,
-      themeClass = theme ? `progress-${theme}` : '',
-      stripedClass = striped ? 'progress-striped' : ''
+    const prefix = 'progress'
+    const {
+      theme,
+      value,
+      max,
+      className,
+      strokeWidth,
+      showInfo,
+      formatter,
+      ...others
+    } = this.props
+    const themeClass = theme ? `${prefix}-${theme}` : ''
+    const showInfoClass = showInfo ? `${prefix}-show-info` : ''
+
+    const percentStyle = {
+      width: `${getProgress(value, max)}%`,
+      height: strokeWidth,
+    }
 
     return (
-      <progress
+      <div
         {...others}
-        value={value}
-        max={max}
-        className={classnames('progress', themeClass, stripedClass, className)}
-      />
+        className={classnames(prefix, themeClass, showInfoClass, className)}
+      >
+        <div className={`${prefix}-outer`}>
+          <div className={`${prefix}-inner`}>
+            <div className={`${prefix}-inner-bg`} style={percentStyle} />
+          </div>
+        </div>
+        {showInfo && (
+          <span className={`${prefix}-info`}>{formatter(value)}</span>
+        )}
+      </div>
     )
   }
 }

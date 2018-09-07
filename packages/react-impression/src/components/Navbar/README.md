@@ -1,145 +1,66 @@
-### Example
+### 示例
 
-**默认主题**
+**无按钮有导航**
 
 ```js
 <Navbar>
   <Flex>
-    <NavbarBrand>导航条</NavbarBrand>
     <FlexItem>
-      <Nav type="inline">
-        <NavLink>
-          <a href="javascript:void(0);">主页</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">特点</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">价格</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">关于</a>
-        </NavLink>
-      </Nav>
+      <NavbarLink href="#navbar" active>
+        绩效
+      </NavbarLink>
+      <NavbarLink href="#navbar">考勤</NavbarLink>
+      <NavbarLink href="#navbar">审批</NavbarLink>
+      <NavbarLink href="#navbar">系统</NavbarLink>
     </FlexItem>
-    <Form type="inline">
-      <FormGroup>
-        <input
-          className="form-control"
-          type="text"
-          placeholder="输入搜索内容"
-        />
-      </FormGroup>
-      <Button theme="primary">搜索</Button>
-    </Form>
+    <NavbarButton>
+      <i className="fa fa-search" />
+    </NavbarButton>
   </Flex>
 </Navbar>
 ```
 
-**原色主题**
+**有按钮无导航**
 
 ```js
-<Navbar theme="primary">
-  <Flex align="middle">
-    <NavbarBrand>导航条</NavbarBrand>
-    <FlexItem>
-      <Nav type="inline">
-        <NavLink>
-          <a href="javascript:void(0);">主页</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">特点</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">价格</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">关于</a>
-        </NavLink>
-      </Nav>
-    </FlexItem>
-    <Form type="inline">
-      <FormGroup>
-        <input
-          className="form-control no-border"
-          type="text"
-          placeholder="输入搜索内容"
-        />
-      </FormGroup>
-      <Button theme="secondary">搜索</Button>
-    </Form>
+<Navbar>
+  <Flex>
+    <NavbarButton>
+      <i className="fa fa-bars" />
+    </NavbarButton>
+    <FlexItem />
+    <NavbarButton>
+      <i className="fa fa-search" />
+    </NavbarButton>
   </Flex>
 </Navbar>
 ```
 
-**反色主题**
+**有按钮有导航**
 
 ```js
-<Navbar theme="inverse">
-  <Flex align="middle">
-    <NavbarBrand>导航条</NavbarBrand>
+<Navbar>
+  <Flex>
+    <NavbarButton>
+      <i className="fa fa-bars" />
+    </NavbarButton>
     <FlexItem>
-      <Nav type="inline">
-        <NavLink>
-          <a href="javascript:void(0);">主页</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">特点</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">价格</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">关于</a>
-        </NavLink>
-      </Nav>
+      <NavbarLink href="#navbar" active>
+        绩效
+      </NavbarLink>
+      <NavbarLink href="#navbar">考勤</NavbarLink>
+      <NavbarLink href="#navbar">审批</NavbarLink>
+      <NavbarLink href="#navbar">系统</NavbarLink>
     </FlexItem>
-    <Form type="inline">
-      <FormGroup>
-        <input
-          className="form-control no-border"
-          type="text"
-          placeholder="输入搜索内容"
-        />
-      </FormGroup>
-      <Button theme="primary">搜索</Button>
-    </Form>
+    <NavbarButton>
+      <i className="fa fa-search" />
+    </NavbarButton>
   </Flex>
 </Navbar>
 ```
 
-**素色主题**
+**变更记录**
 
-```js
-<Navbar theme="pure">
-  <Flex align="middle">
-    <NavbarBrand>导航条</NavbarBrand>
-    <FlexItem>
-      <Nav type="inline">
-        <NavLink>
-          <a href="javascript:void(0);">主页</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">特点</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">价格</a>
-        </NavLink>
-        <NavLink>
-          <a href="javascript:void(0);">关于</a>
-        </NavLink>
-      </Nav>
-    </FlexItem>
-    <Form type="inline">
-      <FormGroup>
-        <input
-          className="form-control"
-          type="text"
-          placeholder="输入搜索内容"
-        />
-      </FormGroup>
-      <Button theme="primary">搜索</Button>
-    </Form>
-  </Flex>
-</Navbar>
-```
+v2.0.0
+
+* 废弃原有组件，根据 UI 规范重新实现，不兼容 1.x 版本

@@ -44,5 +44,6 @@ module.exports = {
       usageMode: 'expand',
     },
   ],
+  skipComponentsWithoutExample: true,
   webpackConfig,
 }
