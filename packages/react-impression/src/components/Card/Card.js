@@ -21,28 +21,18 @@ export default class Card extends React.PureComponent {
      * 是否block
      */
     block: PropTypes.bool,
-
-    /**
-     * 是否无边框
-     */
-    noborder: PropTypes.bool,
   }
 
   static defaultProps = {
     block: false,
-    noborder: false,
   }
 
   render() {
-    const { block, noborder, className, children, ...others } = this.props
+    const { block, className, children, ...others } = this.props
     const blockClass = block ? 'card-block' : null
-    const borderClass = noborder ? 'no-border' : null
 
     return (
-      <div
-        {...others}
-        className={classnames('card', blockClass, borderClass, className)}
-      >
+      <div {...others} className={classnames('card', blockClass, className)}>
         {children}
       </div>
     )

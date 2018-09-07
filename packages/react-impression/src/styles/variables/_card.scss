@@ -1,12 +1,14 @@
 // Cards
-$card-padding: 1.25rem !default;
-$card-spacer-x: 0.75rem !default;
+$card-padding: rem(20px) !default;
+$card-spacer-x: $card-padding !default;
 $card-spacer-y: $card-padding !default;
-$card-border-width: 1px !default;
 $card-border-radius: $border-radius-sm !default;
-$card-border-color: $border-color !default;
 $card-border-radius-inner: $card-border-radius !default;
+$card-box-shadow: 0px rem(2px) rem(10px) 0px rgba(145,156,179,0.1) !default;
 $card-cap-bg: #f5f5f5 !default;
+$card-cap-color: #132240 !default;
+$card_cap-font-size: $font-size-h4 !default;
+$card-cap-font-weight: $headings-font-weight !default;
 $card-bg: $brand-pure !default;
 
 $card-link-hover-color: $brand-pure !default;
