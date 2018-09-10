@@ -17,6 +17,7 @@
     "classnames": "^2.2.0",
     "perfect-scrollbar": "^0.6.12",
     "prop-types": "15.6.2",
+    "popper.js": "^1.14.4",
     "react-addons-css-transition-group": "15.6.2",
     "react-debounce-input": "^3.2.0",
     "sass-rem": "^2.0.1"
