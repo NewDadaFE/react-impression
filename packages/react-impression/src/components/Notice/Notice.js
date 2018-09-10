@@ -1,26 +1,46 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+
 /**
  * Notice组件.
  */
 export default class Notice extends PureComponent {
-  // prop type校验
   static propTypes = {
+    /**
+     * 自定义样式
+     */
     className: PropTypes.string,
+    /**
+     * 子组件
+     */
     children: PropTypes.node,
-    // 类型
+    /**
+     * 类型
+     */
     theme: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
-    // 标题
+    /**
+     * 标题
+     */
     title: PropTypes.string,
-    // 内容
+    /**
+     * 内容
+     */
     message: PropTypes.string,
-    // 关闭
+    /**
+     * 关闭按钮点击事件回调
+     */
     close: PropTypes.func,
-    // 是否可关闭
+    /**
+     * 是否显示关闭按钮
+     */
     closeable: PropTypes.bool,
+    /**
+     * 鼠标移入事件回调
+     */
+    onMouseEnter: PropTypes.func,
   }
-  // 默认props
+
   static defaultProps = {
     theme: 'info',
     title: '通知',
@@ -31,46 +51,41 @@ export default class Notice extends PureComponent {
    * @return Array 图标样式
    */
   getTitleIcon() {
-    let { theme } = this.props
-
-    return {
-      info: ['fa', 'fa-volume-up'],
+    const themeMap = {
+      info: ['fa', 'fa-info-circle'],
       success: ['fa', 'fa-check-circle'],
       warning: ['fa', 'fa-exclamation-triangle'],
       danger: ['fa', 'fa-times-circle'],
-    }[theme]
+    }
+
+    return themeMap[this.props.theme]
   }
-  /**
-   * 渲染.
-   */
+
   render() {
-    let {
-        title,
-        message,
-        theme,
-        closeable,
-        close,
-        children,
-        className,
-      } = this.props,
-      themeClass = `notice-${theme}`,
-      iconClass = this.getTitleIcon()
+    const iconClass = this.getTitleIcon()
 
     return (
-      <div className={classnames('notice', themeClass, className)}>
+      <div
+        className={classnames(
+          'notice',
+          `notice-${this.props.theme}`,
+          this.props.className
+        )}
+        onMouseEnter={this.props.onMouseEnter}
+      >
         <div className='notice-header'>
           <i className={classnames(iconClass)} />
         </div>
         <div className='notice-body'>
-          <div className='notice-title'>
-            {title}
-            {closeable && (
-              <button type='button' className='close' onClick={close}>
-                &times;
-              </button>
-            )}
+          {this.props.closeable && (
+            <button type='button' className='close' onClick={this.props.close}>
+              &times;
+            </button>
+          )}
+          <div className='notice-title'>{this.props.title}</div>
+          <div className='notice-content'>
+            {this.props.message || this.props.children}
           </div>
-          <div className='notice-content'>{message || children}</div>
         </div>
       </div>
     )
