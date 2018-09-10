@@ -9,13 +9,7 @@ process.env.NODE_ENV = options.env || 'production'
 
 const clean = () => del(['dist'])
 
-const style = () => {
-  return gulp
-    .src('src/styles/index.scss')
-    .pipe(plugin.sass().on('error', plugin.sass.logError))
-    .pipe(plugin.rename({ dirname: '', basename: 'react-impression' }))
-    .pipe(gulp.dest('dist'))
-}
+const style = () => gulp.src('src/**/*.scss').pipe(gulp.dest('dist'))
 
 const script = () => {
   return gulp
@@ -24,6 +18,6 @@ const script = () => {
     .pipe(gulp.dest('dist'))
 }
 
-const build = gulp.series(clean, gulp.parallel(script))
+const build = gulp.series(clean, gulp.parallel(style, script))
 
 module.exports = { build }
