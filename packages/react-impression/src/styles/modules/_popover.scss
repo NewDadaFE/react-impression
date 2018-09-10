@@ -15,7 +15,7 @@
     animation: popoverFadeIn .6s ease;
 
     // Popover directions
-    &.popover-top {
+    &[x-placement^=top] {
         margin-bottom: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
@@ -35,7 +35,7 @@
         }
     }
 
-    &.popover-right {
+    &[x-placement^=right] {
         margin-left: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
@@ -55,7 +55,7 @@
         }
     }
 
-    &.popover-bottom {
+    &[x-placement^=bottom] {
         margin-top: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
@@ -75,7 +75,7 @@
         }
     }
 
-    &.popover-left {
+    &[x-placement^=left] {
         margin-right: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
