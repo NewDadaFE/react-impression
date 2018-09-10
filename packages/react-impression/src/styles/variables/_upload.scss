@@ -1,13 +1,31 @@
 //Upload
+$upload-color: $gray-darker !default;
+$upload-icon-color: $gray !default;
+$upload-icon-font-size: rem(20px) !default;
+$upload-padding: rem(16px) !default;
+$upload-offset-left: rem(46px) !default;
 
-$upload-preview-width: 100px !default;
+$upload-preview-width: rem(90px) !default;
 $upload-preview-height: $upload-preview-width !default;
-$upload-preview-border-color: $border-color !default;
-$upload-preview-bg: #f2f3f4 !default;
+$upload-preview-border-color: $gray !default;
+$upload-preview-bg: $gray-lighter !default;
 $upload-preview-color: $text-muted !default;
 $upload-preview-transition: all 0.18s ease-in-out !default;
-
-$upload-preview-addon-font-size: 3rem !default;
-$upload-preview-text-bottom: 0.5rem !default;
-$upload-preview-text-font-size: 0.8rem !default;
-$upload-preview-img-padding: 2px !default;
+// 上传图片icon和文字
+$upload-preview-addon-font-size: rem(30px) !default;
+$upload-preview-addon-width: rem(32px) !default;
+$upload-preview-addon-height: $upload-preview-addon-width !default;
+$upload-preview-addon-line-height: $upload-preview-width - rem($border-width) !default;
+$upload-preview-text-padding-top: rem(10px) !default;
+$upload-preview-text-padding-bottom: rem(15px) !default;
+$upload-preview-text-font-size: rem(12px) !default;
+// 图片预览
+$upload-preview-img-bg: $brand-pure !default;
+$upload-preview-img-width: rem(70px) !default;
+$upload-preview-img-height: $upload-preview-img-width !default;
+$upload-preview-img-border-color: $gray-light !default;
+$upload-preview-img-margin: ($upload-preview-width - $upload-preview-img-width) / 2 - rem($border-width) !default;
+// 图片预览hover
+$upload-preview-remove-font-size: rem(20px) !default;
+$upload-preview-remove-color: $brand-pure !default;
+$upload-preview-remove-bg: rgba(#000, .5) !default;

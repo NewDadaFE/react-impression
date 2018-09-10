@@ -52,7 +52,7 @@ export default class Upload extends React.PureComponent {
   }
 
   static defaultProps = {
-    btnText: '浏 览',
+    btnText: '浏览',
     btnStyle: 'default',
     placeholder: '请选择要上传的附件',
     preview: false,
@@ -61,24 +61,27 @@ export default class Upload extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
+    this.fileRef = element => {
+      this.fileInput = element
+    }
     this.state = {
       file: '',
     }
   }
 
   getValue() {
-    return this.refs.main.files[0]
+    return this.fileInput.files[0]
   }
 
   setValue(value) {
-    this.refs.main.files[0] = value
+    this.fileInput.files[0] = value
   }
 
   /**
    * 打开文件浏览器对话框
    */
   openFileDialogHandle = () => {
-    this.refs.main.click()
+    this.fileInput.click()
   }
 
   /**
@@ -88,7 +91,7 @@ export default class Upload extends React.PureComponent {
     const { onChange } = this.props
 
     this.setState({
-      file: event.target.value,
+      file: event.target.files[0].name,
     })
 
     onChange && onChange(event)
@@ -141,16 +144,24 @@ export default class Upload extends React.PureComponent {
 
       return (
         <div className='upload-preview' onClick={this.openFileDialogHandle}>
-          {children || <Icon type='camera' className='upload-preview-addon' />}
-          <span className='upload-preview-text'>{message}</span>
           <input
             type='file'
-            ref='main'
+            ref={this.fileRef}
             onChange={onChange && this.imagePreviewHandle}
           />
-          {(previewImageUrl || src) && (
-            <div className='upload-preview-img'>
+          {previewImageUrl || src ? (
+            <div className='upload-preview-inner upload-preview-img'>
               <img src={previewImageUrl || src} />
+              <div className='upload-preview-remove'>
+                <Icon type='trash' />
+              </div>
+            </div>
+          ) : (
+            <div className='upload-preview-inner upload-preview-tool'>
+              {children || (
+                <Icon type='camera' className='upload-preview-addon' />
+              )}
+              <span className='upload-preview-text'>{message}</span>
             </div>
           )}
         </div>
@@ -162,12 +173,15 @@ export default class Upload extends React.PureComponent {
         {...others}
         className={classnames('input-group', 'input-group-upload', className)}
       >
+        <span className='form-control'>
+          <Icon type='upload' className='upload-addon' />
+          {file || placeholder}
+        </span>
+        {/* 此处input只能放在中间，否则圆角样式会有问题 */}
         <input
-          type='text'
-          className='form-control'
-          placeholder={placeholder}
-          disabled
-          value={file}
+          type='file'
+          ref={this.fileRef}
+          onChange={onChange && this.fileChangeHandle}
         />
         <span className='input-group-btn'>
           <button
@@ -178,11 +192,6 @@ export default class Upload extends React.PureComponent {
             {btnText}
           </button>
         </span>
-        <input
-          type='file'
-          ref='main'
-          onChange={onChange && this.fileChangeHandle}
-        />
       </div>
     )
   }
