@@ -157,18 +157,12 @@ export default class TableBody extends React.PureComponent {
                     const value = prop ? item[prop] : ''
                     const colRowspan = rowspan || 1
                     const colColspan = colspan || 1
-                    const props = {
-                      data: column,
-                      'data-rowIndex': index,
-                      'data-colIndex': columnIndex,
-                      'data-current': current,
-                    }
                     const colunmWidth = width || 80
                     let content
                     if (render && typeof render === 'function') {
                       content = render(value, index, current)
                     } else if (React.isValidElement(render)) {
-                      content = React.cloneElement(render, props)
+                      content = React.cloneElement(render)
                     } else {
                       content = value
                     }
@@ -205,12 +199,6 @@ export default class TableBody extends React.PureComponent {
                     const value = prop ? item[prop] : ''
                     const colRowspan = rowspan || 1
                     const colColspan = colspan || 1
-                    const props = {
-                      data: column,
-                      'data-rowIndex': index,
-                      'data-colIndex': columnIndex,
-                      'data-current': current,
-                    }
                     let content
                     let colunmWidth = ''
                     if (!fixed) {
@@ -221,7 +209,7 @@ export default class TableBody extends React.PureComponent {
                     if (render && typeof render === 'function') {
                       content = render(value, index, current)
                     } else if (React.isValidElement(render)) {
-                      content = React.cloneElement(render, props)
+                      content = React.cloneElement(render)
                     } else {
                       content = value
                     }
@@ -245,17 +233,11 @@ export default class TableBody extends React.PureComponent {
                     const colRowspan = rowspan || 1
                     const colColspan = colspan || 1
                     const colunmWidth = width || 80
-                    const props = {
-                      data: column,
-                      'data-rowIndex': index,
-                      'data-colIndex': columnIndex,
-                      'data-current': current,
-                    }
                     let content
                     if (render && typeof render === 'function') {
                       content = render(value, index, current)
                     } else if (React.isValidElement(render)) {
-                      content = React.cloneElement(render, props)
+                      content = React.cloneElement(render)
                     } else {
                       content = value
                     }

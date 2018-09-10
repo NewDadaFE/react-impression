@@ -115,15 +115,11 @@ export default class TableHead extends React.PureComponent {
                 fixLeftList.map((column, index) => {
                   const { renderTh, label, width } = column
                   const colWidth = width || 80
-                  const props = {
-                    data: column,
-                    'data-colIndex': index,
-                  }
                   let content
                   if (renderTh && typeof renderTh === 'function') {
                     content = renderTh(column, index, current)
                   } else if (React.isValidElement(renderTh)) {
-                    content = React.cloneElement(renderTh, [props])
+                    content = React.cloneElement(renderTh)
                   } else {
                     content = label
                   }
@@ -162,15 +158,11 @@ export default class TableHead extends React.PureComponent {
                   } else {
                     colWidth = width ? column.width : 80
                   }
-                  const props = {
-                    data: column,
-                    'data-colIndex': index,
-                  }
                   let content
                   if (renderTh && typeof renderTh === 'function') {
                     content = renderTh(column, index, current)
                   } else if (React.isValidElement(renderTh)) {
-                    content = React.cloneElement(renderTh, props)
+                    content = React.cloneElement(renderTh)
                   } else {
                     content = label
                   }
@@ -188,15 +180,11 @@ export default class TableHead extends React.PureComponent {
                 fixRightList.map((column, index) => {
                   const { renderTh, label, width } = column
                   const colWidth = width || 80
-                  const props = {
-                    data: column,
-                    'data-colIndex': index,
-                  }
                   let content
                   if (renderTh && typeof renderTh === 'function') {
                     content = renderTh(column, index, current)
                   } else if (React.isValidElement(renderTh)) {
-                    content = React.cloneElement(renderTh, props)
+                    content = React.cloneElement(renderTh)
                   } else {
                     content = label
                   }
