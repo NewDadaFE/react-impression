@@ -1,7 +1,14 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin()],
+  },
   module: {
     rules: [
       {
@@ -23,7 +30,9 @@ module.exports = {
             test: /\.s?css$/,
             exclude: /node_modules/,
             use: [
-              { loader: 'style-loader' },
+              {
+                loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+              },
               { loader: 'css-loader', options: { sourceMap: true } },
               { loader: 'sass-loader', options: { sourceMap: true } },
             ],
@@ -32,5 +41,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(['dist'], { root: process.cwd() })],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'build/bundle.[contenthash:8].css',
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  ],
 }
