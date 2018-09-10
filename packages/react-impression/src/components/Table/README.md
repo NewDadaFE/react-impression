@@ -1,10 +1,19 @@
 ### 示例
 
-**基本用法**
+**columns 配置 基本用法**
 
 ```js
 const columns = [
-  { prop: 'code', label: '编码' },
+  {
+    prop: 'code',
+    label: '编码',
+    renderTh: () =>
+      React.createElement(
+        'span',
+        { id: 'recipe', 'data-type': 'title' },
+        '编码'
+      ),
+  },
   { prop: 'address', label: '地址' },
   { prop: 'num', label: '金额' },
   { prop: 'phone', label: '电话' },
@@ -55,6 +64,69 @@ const data = [
   },
 ]
 ;<Table columns={columns} data={data} />
+```
+
+**TableColumn 基本用法**
+
+```js
+const data = [
+  {
+    id: 1,
+    code: 'JD010234',
+    address: '京东万里站站长',
+    num: 201003.0,
+    phone: 13820180309,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+  {
+    id: 2,
+    code: 'JD010234',
+    address: '京东万里站站长',
+    num: 201003.0,
+    phone: 13820180309,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+]
+;<Table data={data}>
+  <TableColumn
+    prop="code"
+    label="编码"
+    renderTh={React.createElement('span', {}, '编码')}
+  />
+  <TableColumn prop="address" label="地址" />
+  <TableColumn prop="num" label="金额" />
+  <TableColumn prop="phone" label="电话" />
+  <TableColumn prop="creatTime" label="创建时间" />
+  <TableColumn prop="status" label="状态" />
+  <TableColumn
+    prop="id"
+    label="操作"
+    renderTh={() => {
+      return <div>自定义</div>
+    }}
+    render={(value, index, current) => {
+      return (
+        <div className="text-center">
+          <a
+            href="#"
+            style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
+            onClick={() => {
+              console.log(value, index, current)
+            }}
+          >
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+            删除
+          </a>
+        </div>
+      )
+    }}
+  />
+</Table>
 ```
 
 **斑马线表格**
@@ -245,41 +317,6 @@ const data = [
 **条目过多 有固定项 表格**
 
 ```js
-const columns = [
-  {
-    prop: 'code',
-    label: '编码',
-    fixed: 'left',
-    width: 120,
-    render: code => {
-      return <a href="#">{code}</a>
-    },
-  },
-  { prop: 'address', label: '地址', width: 160 },
-  { prop: 'num', label: '金额', width: 100 },
-  { prop: 'phone', label: '电话', width: 120 },
-  { prop: 'creatTime', label: '创建时间', width: 120 },
-  { prop: 'status', label: '状态', width: 120 },
-  {
-    prop: 'id',
-    label: '操作',
-    width: 202,
-    fixed: 'right',
-    render: id => {
-      return (
-        <div className="text-center">
-          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
-            编辑
-          </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
-            删除
-          </a>
-        </div>
-      )
-    },
-  },
-]
 const data = [
   {
     id: 1,
@@ -309,7 +346,41 @@ const data = [
     status: '正常',
   },
 ]
-;<Table columns={columns} data={data} scroll={{ x: 900 }} stripe border fixed />
+;<Table data={data} scroll={{ x: 900 }} stripe border fixed>
+  <TableColumn
+    prop="code"
+    label="编码"
+    fixed="left"
+    width={120}
+    render={code => {
+      return <a href="#">{code}</a>
+    }}
+  />
+  <TableColumn prop="address" label="地址" width={160} />
+  <TableColumn prop="num" label="金额" width={100} />
+  <TableColumn prop="phone" label="电话" width={120} />
+  <TableColumn prop="creatTime" label="创建时间" width={120} />
+  <TableColumn prop="status" label="状态" width={120} />
+  <TableColumn
+    prop="id"
+    label="操作"
+    width={202}
+    fixed="right"
+    render={id => {
+      return (
+        <div className="text-center">
+          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
+            编辑
+          </a>
+          <span style={{ color: '#E1E5EC' }}>|</span>
+          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+            删除
+          </a>
+        </div>
+      )
+    }}
+  />
+</Table>
 ```
 
 **基础多选 表格**
@@ -592,6 +663,7 @@ class DefaultExample extends React.Component {
 
 v2.0.0
 
+* 支持 TableColumn/columns 两种用法。
 * 新增 columns 表格配置项属性。具体用法参照例子。其中，prop 为 dataIndex，label 为表头文字，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，否则为自适应，fixed 可选值为 left/right，render 为函数，可自定义渲染项，返回值为 prop 的值，index，和当前页码
 * 新增 rowSelection 多选表格配置项属性。具体用法参照例子。其中 selectedRowKeys 和 onChange 必须同时为可控组件，onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys，fixed 为固定左侧参数
 * 新增 fixed 固定表格属性。columns 中存在 fixed 时，此参数为必传参数

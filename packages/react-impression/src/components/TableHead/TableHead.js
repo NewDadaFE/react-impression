@@ -56,6 +56,10 @@ export default class TableHead extends React.PureComponent {
      * 是否固定右侧
      */
     fixRight: PropTypes.bool,
+    /**
+     * 分页配置项，请参照Pagination
+     */
+    pagination: PropTypes.object,
   }
 
   render() {
@@ -70,8 +74,11 @@ export default class TableHead extends React.PureComponent {
       fixRightColumns,
       fixLeft,
       noFixColumns,
+      pagination,
       fixRight,
     } = this.props
+    const current =
+      pagination && pagination.activePage ? pagination.activePage : 1
     let fixLeftList = []
     let fixRightList = []
     if (!fixLeft && !fixRight) {
@@ -106,14 +113,27 @@ export default class TableHead extends React.PureComponent {
               )}
               {!!fixLeftList.length &&
                 fixLeftList.map((column, index) => {
-                  const width = column.width ? column.width : 80
+                  const { renderTh, label, width } = column
+                  const colWidth = width || 80
+                  const props = {
+                    data: column,
+                    'data-colIndex': index,
+                  }
+                  let content
+                  if (renderTh && typeof renderTh === 'function') {
+                    content = renderTh(column, index, current)
+                  } else if (React.isValidElement(renderTh)) {
+                    content = React.cloneElement(renderTh, [props])
+                  } else {
+                    content = label
+                  }
                   return (
                     <th
                       key={index}
-                      width={width}
+                      width={colWidth}
                       className={classnames(`item-fix-left`)}
                     >
-                      <div className='table-cell'>{column.label}</div>
+                      <div className='table-cell'>{content}</div>
                     </th>
                   )
                 })}
@@ -135,33 +155,58 @@ export default class TableHead extends React.PureComponent {
               )}
               {!!noFixColumns.length &&
                 noFixColumns.map((column, index) => {
-                  let width = ''
+                  const { renderTh, label, width } = column
+                  let colWidth = ''
                   if (!fixed) {
-                    width = column.width ? column.width : ''
+                    colWidth = width ? column.width : ''
                   } else {
-                    width = column.width ? column.width : 80
+                    colWidth = width ? column.width : 80
                   }
-
+                  const props = {
+                    data: column,
+                    'data-colIndex': index,
+                  }
+                  let content
+                  if (renderTh && typeof renderTh === 'function') {
+                    content = renderTh(column, index, current)
+                  } else if (React.isValidElement(renderTh)) {
+                    content = React.cloneElement(renderTh, props)
+                  } else {
+                    content = label
+                  }
                   return (
                     <th
                       key={index}
-                      width={width}
+                      width={colWidth}
                       className={classnames(`item-fix-normal`)}
                     >
-                      <div className='table-cell'>{column.label}</div>
+                      <div className='table-cell'>{content}</div>
                     </th>
                   )
                 })}
               {!!fixRightList.length &&
                 fixRightList.map((column, index) => {
-                  const width = column.width ? column.width : 80
+                  const { renderTh, label, width } = column
+                  const colWidth = width || 80
+                  const props = {
+                    data: column,
+                    'data-colIndex': index,
+                  }
+                  let content
+                  if (renderTh && typeof renderTh === 'function') {
+                    content = renderTh(column, index, current)
+                  } else if (React.isValidElement(renderTh)) {
+                    content = React.cloneElement(renderTh, props)
+                  } else {
+                    content = label
+                  }
                   return (
                     <th
                       key={index}
-                      width={width}
+                      width={colWidth}
                       className={classnames(`item-fix-right`)}
                     >
-                      <div className='table-cell'>{column.label}</div>
+                      <div className='table-cell'>{content}</div>
                     </th>
                   )
                 })}

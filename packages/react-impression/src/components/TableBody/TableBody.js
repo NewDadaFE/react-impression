@@ -152,36 +152,35 @@ export default class TableBody extends React.PureComponent {
                 )}
                 {!!fixLeftList.length &&
                   fixLeftList.map((column, columnIndex) => {
+                    const { prop, rowspan, colspan, render, width } = column
                     const key = `${index}${columnIndex}`
-                    const value = column.prop ? item[column.prop] : ''
-                    const rowspan = column.rowspan ? column.rowspan : 1
-                    const colspan = column.colspan ? column.colspan : 1
-                    const width = column.width ? column.width : 80
-
-                    if (column.render && typeof column.render === 'function') {
-                      return (
-                        <td
-                          key={key}
-                          rowSpan={rowspan}
-                          colSpan={colspan}
-                          width={width}
-                          className={classnames(`item-fix-left`)}
-                        >
-                          <div className='table-cell'>
-                            {column.render(value, index, current)}
-                          </div>
-                        </td>
-                      )
+                    const value = prop ? item[prop] : ''
+                    const colRowspan = rowspan || 1
+                    const colColspan = colspan || 1
+                    const props = {
+                      data: column,
+                      'data-rowIndex': index,
+                      'data-colIndex': columnIndex,
+                      'data-current': current,
+                    }
+                    const colunmWidth = width || 80
+                    let content
+                    if (render && typeof render === 'function') {
+                      content = render(value, index, current)
+                    } else if (React.isValidElement(render)) {
+                      content = React.cloneElement(render, props)
+                    } else {
+                      content = value
                     }
                     return (
                       <td
                         key={key}
-                        rowSpan={rowspan}
-                        colSpan={colspan}
-                        width={width}
+                        rowSpan={colRowspan}
+                        colSpan={colColspan}
+                        width={colunmWidth}
                         className={classnames(`item-fix-left`)}
                       >
-                        <div className='table-cell'>{value}</div>
+                        <div className='table-cell'>{content}</div>
                       </td>
                     )
                   })}
@@ -202,74 +201,73 @@ export default class TableBody extends React.PureComponent {
                 {!!noFixColumns.length &&
                   noFixColumns.map((column, columnIndex) => {
                     const key = `${index}${columnIndex}`
-                    const value = column.prop ? item[column.prop] : ''
-                    const rowspan = column.rowspan ? column.rowspan : 1
-                    const colspan = column.colspan ? column.colspan : 1
-                    let width = ''
-                    if (!fixed) {
-                      width = column.width ? column.width : ''
-                    } else {
-                      width = column.width ? column.width : 80
+                    const { prop, rowspan, colspan, render, width } = column
+                    const value = prop ? item[prop] : ''
+                    const colRowspan = rowspan || 1
+                    const colColspan = colspan || 1
+                    const props = {
+                      data: column,
+                      'data-rowIndex': index,
+                      'data-colIndex': columnIndex,
+                      'data-current': current,
                     }
-                    if (column.render && typeof column.render === 'function') {
-                      return (
-                        <td
-                          key={key}
-                          rowSpan={rowspan}
-                          colSpan={colspan}
-                          width={width}
-                          className={classnames(`item-fix-normal`)}
-                        >
-                          <div className='table-cell'>
-                            {column.render(value, index, current)}
-                          </div>
-                        </td>
-                      )
+                    let content
+                    let colunmWidth = ''
+                    if (!fixed) {
+                      colunmWidth = width || ''
+                    } else {
+                      colunmWidth = width || 80
+                    }
+                    if (render && typeof render === 'function') {
+                      content = render(value, index, current)
+                    } else if (React.isValidElement(render)) {
+                      content = React.cloneElement(render, props)
+                    } else {
+                      content = value
                     }
                     return (
                       <td
                         key={key}
-                        rowSpan={rowspan}
-                        colSpan={colspan}
-                        width={width}
+                        rowSpan={colRowspan}
+                        colSpan={colColspan}
+                        width={colunmWidth}
                         className={classnames(`item-fix-normal`)}
                       >
-                        <div className='table-cell'>{value}</div>
+                        <div className='table-cell'>{content}</div>
                       </td>
                     )
                   })}
                 {!!fixRightList.length &&
                   fixRightList.map((column, columnIndex) => {
+                    const { prop, rowspan, colspan, render, width } = column
                     const key = `${index}${columnIndex}`
-                    const value = column.prop ? item[column.prop] : ''
-                    const rowspan = column.rowspan ? column.rowspan : 1
-                    const colspan = column.colspan ? column.colspan : 1
-                    const width = column.width ? column.width : 80
-
-                    if (column.render && typeof column.render === 'function') {
-                      return (
-                        <td
-                          key={key}
-                          rowSpan={rowspan}
-                          colSpan={colspan}
-                          width={width}
-                          className={classnames(`item-fix-right`)}
-                        >
-                          <div className='table-cell'>
-                            {column.render(value, index, current)}
-                          </div>
-                        </td>
-                      )
+                    const value = prop ? item[prop] : ''
+                    const colRowspan = rowspan || 1
+                    const colColspan = colspan || 1
+                    const colunmWidth = width || 80
+                    const props = {
+                      data: column,
+                      'data-rowIndex': index,
+                      'data-colIndex': columnIndex,
+                      'data-current': current,
+                    }
+                    let content
+                    if (render && typeof render === 'function') {
+                      content = render(value, index, current)
+                    } else if (React.isValidElement(render)) {
+                      content = React.cloneElement(render, props)
+                    } else {
+                      content = value
                     }
                     return (
                       <td
                         key={key}
-                        rowSpan={rowspan}
-                        colSpan={colspan}
-                        width={width}
+                        rowSpan={colRowspan}
+                        colSpan={colColspan}
+                        width={colunmWidth}
                         className={classnames(`item-fix-right`)}
                       >
-                        <div className='table-cell'>{value}</div>
+                        <div className='table-cell'>{content}</div>
                       </td>
                     )
                   })}

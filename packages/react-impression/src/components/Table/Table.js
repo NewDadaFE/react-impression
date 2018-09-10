@@ -39,7 +39,7 @@ export default class Table extends React.PureComponent {
 
   static propTypes = {
     /**
-     * 表格列配置项，配置参考例子
+     * 表格列配置项，配置参考例子(非必传)
      */
     columns: PropTypes.array,
 
@@ -87,6 +87,10 @@ export default class Table extends React.PureComponent {
      * 是否有固定项表格，colunms有固定项时为必传参数
      */
     fixed: PropTypes.bool,
+    /**
+     * 子组件
+     */
+    children: PropTypes.node,
   }
   static defaultProps = {
     border: false,
@@ -95,11 +99,22 @@ export default class Table extends React.PureComponent {
   }
 
   componentWillMount() {
-    const { columns } = this.props
+    const { columns, children } = this.props
+    let columnList = []
+    if (children) {
+      let columns = children.map(child => {
+        const { prop, label, fixed, render, width, renderTh } = child.props
+        const obj = { prop, label, fixed, render, width, renderTh }
+        return obj
+      })
+      columnList = columns
+    }
+    if (columns) columnList = columns
+    console.log(columnList)
     let fixLeftColumns = []
     let fixRightColumns = []
     let noFixColumns = []
-    columns.forEach(column => {
+    columnList.forEach(column => {
       if (column.fixed === 'left') {
         fixLeftColumns.push(column)
       } else if (column.fixed === 'right') {
