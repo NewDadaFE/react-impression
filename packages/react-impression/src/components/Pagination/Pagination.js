@@ -8,7 +8,9 @@ export default class Pagination extends React.PureComponent {
     activePage: 1,
     totalPage: 1,
   }
-
+  state = {
+    currentPage: this.props.activePage,
+  }
   static propTypes = {
     /**
      * 前后延伸
@@ -65,9 +67,18 @@ export default class Pagination extends React.PureComponent {
    * @param page
    */
   goPageHandle = page => {
+    const { currentPage } = this.state
+    if (Number(currentPage) === Number(page)) return
     const { onSelect } = this.props
 
     onSelect && onSelect(page)
+  }
+  componentWillReceiveProps(nextProps) {
+    if (Number(nextProps.activePage) !== Number(this.props.activePage)) {
+      this.setState({
+        currentPage: nextProps.activePage,
+      })
+    }
   }
 
   /**
@@ -129,13 +140,9 @@ export default class Pagination extends React.PureComponent {
     return (
       <ul {...others} className={classnames('Pagination', className)}>
         <li className={classnames('page-item', { disabled: activePage <= 1 })}>
-          <a
-            className='page-link'
-            href='javascript:void(0);'
-            onClick={this.prevPageHandle}
-          >
+          <span className='page-link' onClick={this.prevPageHandle}>
             {lastContent || <i className='fa fa-chevron-left' />}
-          </a>
+          </span>
         </li>
         {pageList.map(
           (child, index) =>
@@ -146,13 +153,12 @@ export default class Pagination extends React.PureComponent {
                   active: child === activePage,
                 })}
               >
-                <a
+                <span
                   className='page-link'
-                  href='javascript:void(0);'
                   onClick={() => this.goPageHandle(child)}
                 >
                   {child}
-                </a>
+                </span>
               </li>
             ) : (
               <li key={`${child}-${index}`} className='page-item disabled'>
@@ -165,13 +171,9 @@ export default class Pagination extends React.PureComponent {
             disabled: activePage >= totalPage,
           })}
         >
-          <a
-            className='page-link'
-            href='javascript:void(0);'
-            onClick={this.nextPageHandle}
-          >
+          <span className='page-link' onClick={this.nextPageHandle}>
             {nextContent || <i className='fa fa-chevron-right' />}
-          </a>
+          </span>
         </li>
       </ul>
     )
