@@ -63,42 +63,22 @@ export default class Popover extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.addEventListeners()
+  }
+
+  componentWillUnmount() {
+    this.removeEventListeners()
+  }
+
+  addEventListeners = () => {
     const { trigger } = this.props
-    const element = ReactDOM.findDOMNode(this)
 
     this.referenceDom = ReactDOM.findDOMNode(this.reference)
     if (this.referenceDom === null) return
 
     if (trigger === 'click') {
-      this.referenceDom.addEventListener('click', () => {
-        this.setState(
-          {
-            showPopper: !this.state.showPopper,
-          },
-          () => {
-            if (this.state.showPopper) {
-              this.onMouseOver()
-            } else {
-              this.onMouseOut()
-            }
-          }
-        )
-      })
-
-      document.addEventListener('click', e => {
-        if (
-          !element ||
-          element.contains(e.target) ||
-          !this.referenceDom ||
-          this.referenceDom.contains(e.target) ||
-          !this.popper ||
-          this.popper.contains(e.target)
-        ) { return }
-
-        this.setState({
-          showPopper: false,
-        })
-      })
+      this.referenceDom.addEventListener('click', this.handleReferenceDomClick)
+      document.addEventListener('click', this.handleDocumentClick)
     } else if (trigger === 'hover') {
       this.referenceDom.addEventListener('mouseenter', this.onMouseOver)
       this.referenceDom.addEventListener('mouseleave', this.onMouseOut)
@@ -106,6 +86,61 @@ export default class Popover extends React.PureComponent {
       this.popper.addEventListener('mouseenter', this.onMouseOver)
       this.popper.addEventListener('mouseleave', this.onMouseOut)
     }
+  }
+
+  removeEventListeners = () => {
+    const { trigger } = this.props
+
+    if (this.referenceDom === null) return
+    if (trigger === 'click') {
+      this.referenceDom.removeEventListener(
+        'click',
+        this.handleReferenceDomClick
+      )
+      document.removeEventListener('click', this.handleDocumentClick)
+    } else if (trigger === 'hover') {
+      this.referenceDom.removeEventListener('mouseenter', this.onMouseOver)
+      this.referenceDom.removeEventListener('mouseleave', this.onMouseOut)
+
+      if (this.popper === null) return
+
+      this.popper.removeEventListener('mouseenter', this.onMouseOver)
+      this.popper.removeEventListener('mouseleave', this.onMouseOut)
+    }
+  }
+
+  handleReferenceDomClick = () => {
+    this.setState(
+      {
+        showPopper: !this.state.showPopper,
+      },
+      () => {
+        if (this.state.showPopper) {
+          this.onMouseOver()
+        } else {
+          this.onMouseOut()
+        }
+      }
+    )
+  }
+
+  handleDocumentClick = e => {
+    const element = ReactDOM.findDOMNode(this)
+
+    if (
+      !element ||
+      element.contains(e.target) ||
+      !this.referenceDom ||
+      this.referenceDom.contains(e.target) ||
+      !this.popper ||
+      this.popper.contains(e.target)
+    ) {
+      return
+    }
+
+    this.setState({
+      showPopper: false,
+    })
   }
 
   onMouseOver = () => {
@@ -132,8 +167,8 @@ export default class Popover extends React.PureComponent {
     }, 200)
   }
 
-  render() {
-    const { children, position, title, content, style } = this.props
+  get popperStyle() {
+    const { style } = this.props
     const { showPopper } = this.state
     const showStyle = !showPopper
       ? {
@@ -141,12 +176,18 @@ export default class Popover extends React.PureComponent {
       }
       : {}
 
+    return Object.assign({}, style, showStyle)
+  }
+
+  render() {
+    const { children, position, title, content } = this.props
+
     return (
       <span>
         <div
           ref={ref => (this.popper = ref)}
           className={classnames('popover', `popover-${position}`)}
-          style={Object.assign({}, style, showStyle)}
+          style={this.popperStyle}
         >
           <div className='popover-arrow' />
           {title && <div className='popover-title'>{title}</div>}
