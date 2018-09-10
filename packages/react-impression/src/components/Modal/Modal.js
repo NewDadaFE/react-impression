@@ -34,13 +34,12 @@ class Modal extends React.Component {
     closeOnEsc: PropTypes.bool,
 
     /**
-     * keyboard关闭modal的触发函数，只有当keyboard为true的时候才会触发
+     * 关闭modal的触发函数，只有当closeOnEsc为true的时候才会触发
      */
     onClose: PropTypes.func,
   }
 
   static defaultProps = {
-    keyboard: false,
     scrollInside: false,
     onClose: () => {},
   }
