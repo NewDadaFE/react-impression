@@ -35,7 +35,7 @@ initialState = {
 </div>
 ```
 
-**支持键盘 esc 键位和点击背景阴影区域关闭**
+**默认支持键盘 esc 键位和点击背景阴影区域关闭，下例取消了这两种方式**
 
 ```js
 const handleToggleClick = () => {
@@ -48,13 +48,13 @@ initialState = {
 }
 ;<div>
   <Button theme="primary" onClick={handleToggleClick}>
-    打开Modal按下esc关闭
+    打开Modal
   </Button>
   <Modal
     isOpen={state.isOpen}
     onClose={handleToggleClick}
-    closeOnEsc
-    closeOnOutsideClick
+    closeOnEsc={false}
+    closeOnOutsideClick={false}
   >
     <ModalHeader>
       <Button close onClick={handleToggleClick}>

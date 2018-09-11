@@ -59,13 +59,6 @@ class Modal extends React.Component {
     onClose: () => {},
   }
 
-  componentWillUnmount() {
-    if (this.props.closeOnEsc) {
-      this.removeKeydownListener()
-    }
-    this.enableScroll()
-  }
-
   componentDidUpdate(prevProps, prevState) {
     const { isOpen, closeOnEsc } = this.props
 
@@ -82,6 +75,13 @@ class Modal extends React.Component {
         }
       }
     }
+  }
+
+  componentWillUnmount() {
+    if (this.props.closeOnEsc) {
+      this.removeKeydownListener()
+    }
+    this.enableScroll()
   }
 
   addKeydownListener = () => {
@@ -130,18 +130,12 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { size, className, children, scrollInside, ...others } = this.props
+    const { size, className, children, scrollInside } = this.props
     const sizeClass = size ? `modal-${size}` : null
-
-    delete others.isOpen
-    delete others.closeOnEsc
-    delete others.onClose
-    delete others.closeOnOutsideClick
 
     return (
       <Portal>
         <div
-          {...others}
           style={this.modalStyle}
           onClick={this.handleModalMaskClick}
           className={classnames('modal', className, {
