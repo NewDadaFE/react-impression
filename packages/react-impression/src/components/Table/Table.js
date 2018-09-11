@@ -258,15 +258,15 @@ export default class Table extends React.PureComponent {
   handleScroll() {
     const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
     const scrollWidth = this.scrollEl.scrollLeft
-    scrollWidth === 0 && this.setState({ isEnd: false, isStart: true })
-
-    scrollWidth > 0 &&
-      scrollWidth < targetWidth &&
+    if (scrollWidth === 0) {
+      this.setState({ isEnd: false, isStart: true })
+    }
+    if (scrollWidth > 0 && scrollWidth < targetWidth) {
       this.setState({ isEnd: false, isStart: false })
-
-    scrollWidth === targetWidth + 2 ||
-      (scrollWidth === targetWidth &&
-        this.setState({ isEnd: true, isStart: false }))
+    }
+    if (scrollWidth === targetWidth + 2 || scrollWidth === targetWidth) {
+      this.setState({ isEnd: true, isStart: false })
+    }
   }
   handleHover = index => {
     const { fixed } = this.state
