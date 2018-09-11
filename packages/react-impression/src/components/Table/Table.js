@@ -261,7 +261,7 @@ export default class Table extends React.PureComponent {
     if (scrollWidth === 0) {
       this.setState({ isEnd: false, isStart: true })
     }
-    if ((scrollWidth > 0) & (scrollWidth < targetWidth)) {
+    if (scrollWidth > 0 && scrollWidth < targetWidth) {
       this.setState({ isEnd: false, isStart: false })
     }
     if (scrollWidth === targetWidth + 2 || scrollWidth === targetWidth) {

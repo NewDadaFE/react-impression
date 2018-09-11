@@ -24,72 +24,71 @@
     word-break: break-all;
     line-height: $table-header-line-height;
   }
-
-  .table-header {
-    border-bottom: $table-header-border;
-    .table-cell {
-      padding: $table-header-padding;
-      &.table-cell-select {
-        padding: 0;
-      }
+}
+.table-header {
+  border-bottom: $table-header-border;
+  .table-cell {
+    padding: $table-header-padding;
+    &.table-cell-select {
+      padding: 0;
     }
   }
-  .table-body {
-    color: $table-body-color;
-    .table-cell {
-      padding: $table-body-padding;
-      &.table-cell-select {
-        padding: 0;
-      }
+}
+.table-body {
+  color: $table-body-color;
+  .table-cell {
+    padding: $table-body-padding;
+    &.table-cell-select {
+      padding: 0;
     }
   }
-  .table-header,
-  .table-body {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
-    border-collapse: separate;
-    font-size: rem(14px);
-    .table-cell {
-      // display: inline-block;
-      line-height: $table-header-line-height;
+}
+.table-header,
+.table-body {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: separate;
+  font-size: rem(14px);
+}
+.table-cell {
+  // display: inline-block;
+  line-height: $table-header-line-height;
+}
+.table-cell-tooltip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.table-tr {
+  &:hover {
+    background: $table-body-hover-bg-color;
+    input {
+      background: $table-body-hover-bg-color;
     }
-    .table-cell-tooltip {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+  }
+  &.table-striped {
+    background: $table-spried-background;
+    &:hover {
+      background: $table-body-hover-bg-color;
+      input {
+        background: $table-body-hover-bg-color;
+      }
     }
-    .table-tr {
-      &:hover {
-        background: $table-body-hover-bg-color;
-        input {
-          background: $table-body-hover-bg-color;
-        }
-      }
-      &.table-striped {
-        background: $table-spried-background;
-        &:hover {
-          background: $table-body-hover-bg-color;
-          input {
-            background: $table-body-hover-bg-color;
-          }
-        }
-        input {
-          background: $table-spried-background;
-        }
-      }
-      &.is-hover {
-        background: $table-body-hover-bg-color;
-        input {
-          background: $table-body-hover-bg-color;
-        }
-      }
-      &.is-selected {
-        background: $table-body-hover-bg-color;
-        input {
-          background: $table-body-hover-bg-color;
-        }
-      }
+    input {
+      background: $table-spried-background;
+    }
+  }
+  &.is-hover {
+    background: $table-body-hover-bg-color;
+    input {
+      background: $table-body-hover-bg-color;
+    }
+  }
+  &.is-selected {
+    background: $table-body-hover-bg-color;
+    input {
+      background: $table-body-hover-bg-color;
     }
   }
 }
