@@ -43,20 +43,20 @@ class Modal extends React.Component {
     /**
      * 关闭modal的触发函数，只有当closeOnEsc为true的时候才会触发
      */
-    onHide: PropTypes.func,
+    onClose: PropTypes.func,
 
     /**
      * modal显示与否
      */
-    isShow: PropTypes.bool,
+    isOpen: PropTypes.bool,
   }
 
   static defaultProps = {
     scrollInside: false,
-    isShow: false,
+    isOpen: false,
     closeOnEsc: true,
     closeOnOutsideClick: true,
-    onHide: () => {},
+    onClose: () => {},
   }
 
   componentWillUnmount() {
@@ -67,10 +67,10 @@ class Modal extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { isShow, closeOnEsc } = this.props
+    const { isOpen, closeOnEsc } = this.props
 
-    if (prevProps.isShow !== isShow) {
-      if (isShow) {
+    if (prevProps.isOpen !== isOpen) {
+      if (isOpen) {
         this.disableScroll()
         if (closeOnEsc) {
           this.addKeydownListener()
@@ -105,22 +105,22 @@ class Modal extends React.Component {
   }
 
   handleModalMaskClick = () => {
-    const { closeOnOutsideClick, onHide } = this.props
+    const { closeOnOutsideClick, onClose } = this.props
     if (!closeOnOutsideClick) return
-    onHide()
+    onClose()
   }
 
   handleKeydown = e => {
-    const { closeOnEsc, onHide } = this.props
+    const { closeOnEsc, onClose } = this.props
     if (!closeOnEsc) return
     if (e.keyCode === KEYCODE_ESCAPE) {
-      onHide()
+      onClose()
     }
   }
 
   get modalStyle() {
-    const { style, isShow } = this.props
-    const showStyle = !isShow
+    const { style, isOpen } = this.props
+    const showStyle = !isOpen
       ? {
         display: 'none',
       }
@@ -133,9 +133,9 @@ class Modal extends React.Component {
     const { size, className, children, scrollInside, ...others } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
-    delete others.isShow
+    delete others.isOpen
     delete others.closeOnEsc
-    delete others.onHide
+    delete others.onClose
     delete others.closeOnOutsideClick
 
     return (

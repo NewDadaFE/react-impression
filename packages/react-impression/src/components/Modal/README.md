@@ -5,17 +5,17 @@
 ```js
 const toggleModalHandle = () => {
   setState({
-    isShow: !state.isShow,
+    isOpen: !state.isOpen,
   })
 }
 initialState = {
-  isShow: false,
+  isOpen: false,
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
     显示默认弹窗
   </Button>
-  <Modal isShow={state.isShow} onHide={toggleModalHandle}>
+  <Modal isOpen={state.isOpen} onClose={toggleModalHandle}>
     <ModalHeader>
       <Button close onClick={toggleModalHandle}>
         &times;
@@ -40,19 +40,19 @@ initialState = {
 ```js
 const toggleModalHandle = () => {
   setState({
-    isShow: !state.isShow,
+    isOpen: !state.isOpen,
   })
 }
 initialState = {
-  isShow: false,
+  isOpen: false,
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
     打开Modal按下esc关闭
   </Button>
   <Modal
-    isShow={state.isShow}
-    onHide={toggleModalHandle}
+    isOpen={state.isOpen}
+    onClose={toggleModalHandle}
     closeOnEsc
     closeOnOutsideClick
   >
@@ -80,17 +80,17 @@ initialState = {
 ```js
 const toggleModalHandle = () => {
   setState({
-    isShow: !state.isShow,
+    isOpen: !state.isOpen,
   })
 }
 initialState = {
-  isShow: false,
+  isOpen: false,
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
     显示小尺寸弹窗
   </Button>
-  <Modal size="sm" onHide={toggleModalHandle} isShow={state.isShow}>
+  <Modal size="sm" onClose={toggleModalHandle} isOpen={state.isOpen}>
     <ModalHeader>
       <Button close onClick={toggleModalHandle}>
         &times;
@@ -115,17 +115,17 @@ initialState = {
 ```js
 const toggleModalHandle = () => {
   setState({
-    isShow: !state.isShow,
+    isOpen: !state.isOpen,
   })
 }
 initialState = {
-  isShow: false,
+  isOpen: false,
 }
 ;<div>
   <Button theme="primary" onClick={toggleModalHandle}>
     显示大尺寸弹窗
   </Button>
-  <Modal size="lg" onHide={toggleModalHandle} isShow={state.isShow}>
+  <Modal size="lg" onClose={toggleModalHandle} isOpen={state.isOpen}>
     <ModalHeader>
       <Button close onClick={toggleModalHandle}>
         &times;
@@ -190,8 +190,8 @@ class Overflow extends React.Component {
         </Row>
         <Modal
           scrollInside={this.state.scrollInside}
-          onHide={() => this.toggleModalHandle()}
-          isShow={this.state.show}
+          onClose={() => this.toggleModalHandle()}
+          isOpen={this.state.show}
         >
           <ModalHeader>
             <Button close onClick={() => this.toggleModalHandle()}>
