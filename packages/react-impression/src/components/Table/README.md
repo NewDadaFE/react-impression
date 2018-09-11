@@ -5,7 +5,7 @@
 ```js
 const columns = [
   {
-    prop: 'code',
+    prop: 'code.id',
     Header: () =>
       React.createElement(
         'span',
@@ -13,7 +13,7 @@ const columns = [
         '编码'
       ),
   },
-  { prop: 'address', Header: '地址' },
+  { prop: 'address.detail.target', Header: '地址' },
   { prop: 'num', Header: '金额' },
   { prop: 'phone', Header: '电话' },
   { prop: 'creatTime', Header: '创建时间' },
@@ -45,8 +45,14 @@ const columns = [
 const data = [
   {
     id: 1,
-    code: 'JD010234',
-    address: '京东万里站站长',
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '京东万里站站长',
+      },
+    },
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
@@ -54,8 +60,14 @@ const data = [
   },
   {
     id: 2,
-    code: 'JD010234',
-    address: '京东万里站站长',
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '京东万里站站长',
+      },
+    },
     num: 201003.0,
     phone: 13820180309,
     creatTime: '2018-03-09',
@@ -181,8 +193,8 @@ const columns = [
   {
     prop: 'code',
     Header: '编码',
-    Cell: code => {
-      return <a href="#">{code}</a>
+    Cell: item => {
+      return <a href="#">{item.code}</a>
     },
   },
   { prop: 'address', Header: '地址' },
@@ -248,8 +260,8 @@ const columns = [
     prop: 'code',
     Header: '编码',
     width: 120,
-    Cell: code => {
-      return <a href="#">{code}</a>
+    Cell: item => {
+      return <a href="#">{item.code}</a>
     },
   },
   { prop: 'address', Header: '地址', width: 160 },
@@ -346,8 +358,8 @@ const data = [
     Header="编码"
     fixed="left"
     width={120}
-    Cell={code => {
-      return <a href="#">{code}</a>
+    Cell={item => {
+      return <a href="#">{item.code}</a>
     }}
   />
   <TableColumn prop="address" Header="地址" width={160} />
@@ -386,8 +398,8 @@ const columns = [
     Header: '编码',
     width: 120,
     fixed: 'left',
-    Cell: code => {
-      return <a href="#">{code}</a>
+    Cell: item => {
+      return <a href="#">{item.code}</a>
     },
   },
   { prop: 'address', Header: '地址', width: 160 },
@@ -505,16 +517,16 @@ const columns = [
     prop: 'code',
     Header: '编码',
     width: 120,
-    Cell: code => {
-      return <a href="#">{code}</a>
+    Cell: item => {
+      return <a href="#">{item.code}</a>
     },
   },
   {
     prop: 'address',
     Header: '地址',
     width: 160,
-    Cell: address => {
-      return <Input size="sm" defaultValue={address} />
+    Cell: item => {
+      return <Input size="sm" defaultValue={item.address} />
     },
   },
   { prop: 'num', Header: '金额', width: 120 },

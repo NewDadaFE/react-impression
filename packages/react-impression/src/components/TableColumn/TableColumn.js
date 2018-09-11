@@ -9,7 +9,7 @@ export default class TableColumn extends Component {
 
 TableColumn.propTypes = {
   /**
-   * 列数据在数据项中对应的key
+   * 列数据在数据项中对应的key，支持 a.b.c 写法
    */
   prop: PropTypes.string,
 
@@ -24,12 +24,12 @@ TableColumn.propTypes = {
   fixed: PropTypes.oneOf(['left', 'right']),
 
   /**
-   * 自定义td返回项函数
+   * 自定义td返回项
    */
   Cell: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 
   /**
-   * 自定义th返回项函数
+   * 自定义th返回项
    */
   Header: PropTypes.oneOfType([
     PropTypes.element,

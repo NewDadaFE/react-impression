@@ -83,11 +83,20 @@ export default class TableBody extends React.PureComponent {
     fixRight: PropTypes.bool,
   }
 
+  getPropVal = (item, array) => {
+    if (array.length < 1) {
+      return item
+    }
+    const target = item[array[0]]
+    array.shift()
+    return this.getPropVal(target, array)
+  }
   renderTd = (array, item, type) => {
     const { fixed } = this.props
     return array.map((column, columnIndex) => {
       const { prop, rowspan, colspan, Cell, width } = column
-      const value = prop ? item[prop] : ''
+      const propList = prop.split('.')
+      const value = propList.length > 0 ? this.getPropVal(item, propList) : ''
       const colRowspan = rowspan || 1
       const colColspan = colspan || 1
       let key
@@ -108,8 +117,7 @@ export default class TableBody extends React.PureComponent {
       }
       let content
       if (Cell && typeof Cell === 'function') {
-        content = React.createElement(Cell, item, null)
-        // content = Cell(value, item)
+        content = Cell(item)
       } else if (React.isValidElement(Cell)) {
         content = React.cloneElement(Cell)
       } else {
