@@ -516,7 +516,6 @@ const columns = [
   {
     prop: 'code',
     Header: '编码',
-    width: 120,
     Cell: item => {
       return <a href="#">{item.code}</a>
     },

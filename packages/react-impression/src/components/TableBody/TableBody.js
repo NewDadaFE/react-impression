@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox/index'
 
+const defaultWidth = 80
 export default class TableBody extends React.PureComponent {
   static propTypes = {
     /**
@@ -103,18 +104,17 @@ export default class TableBody extends React.PureComponent {
       let colunmWidth
       if (type === 'left') {
         key = `left${columnIndex}`
-        colunmWidth = width || 80
       } else if (type === 'right') {
         key = `right${columnIndex}`
-        colunmWidth = width || 80
       } else {
         key = `normal${columnIndex}`
-        if (!fixed) {
-          colunmWidth = width || ''
-        } else {
-          colunmWidth = width || 80
-        }
       }
+      if (!fixed) {
+        colunmWidth = width || ''
+      } else {
+        colunmWidth = width || defaultWidth
+      }
+
       let content
       if (Cell && typeof Cell === 'function') {
         content = Cell(item)

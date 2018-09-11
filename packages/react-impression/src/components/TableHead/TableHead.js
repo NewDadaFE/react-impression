@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox/index'
 
+const defaultWidth = 80
 export default class TableHead extends React.PureComponent {
   static propTypes = {
     /**
@@ -63,14 +64,15 @@ export default class TableHead extends React.PureComponent {
   }
 
   renderHeader = (array, type) => {
-    const { fixed } = this.props
+    // const { fixed } = this.props
     return array.map((column, index) => {
-      const { Header, width } = column
+      const { Header, width, fixed } = column
       let colWidth
+      let className
       if (!type && !fixed) {
         colWidth = width || ''
       } else {
-        colWidth = width || 80
+        colWidth = width || defaultWidth
       }
       let content
       if (Header && typeof Header === 'function') {

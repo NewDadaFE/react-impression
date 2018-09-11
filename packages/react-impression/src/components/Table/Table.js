@@ -258,15 +258,15 @@ export default class Table extends React.PureComponent {
   handleScroll() {
     const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
     const scrollWidth = this.scrollEl.scrollLeft
-    if (scrollWidth === 0) {
-      this.setState({ isEnd: false, isStart: true })
-    }
-    if (scrollWidth > 0 && scrollWidth < targetWidth) {
+    scrollWidth === 0 && this.setState({ isEnd: false, isStart: true })
+
+    scrollWidth > 0 &&
+      scrollWidth < targetWidth &&
       this.setState({ isEnd: false, isStart: false })
-    }
-    if (scrollWidth === targetWidth + 2 || scrollWidth === targetWidth) {
-      this.setState({ isEnd: true, isStart: false })
-    }
+
+    scrollWidth === targetWidth + 2 ||
+      (scrollWidth === targetWidth &&
+        this.setState({ isEnd: true, isStart: false }))
   }
   handleHover = index => {
     const { fixed } = this.state
@@ -323,38 +323,34 @@ export default class Table extends React.PureComponent {
   }
   addClass(el, cls) {
     if (!el) return
-    var curClass = el.className
-    var classes = (cls || '').split(' ')
-
-    for (var i = 0, j = classes.length; i < j; i++) {
-      var clsName = classes[i]
-      if (!clsName) continue
-
+    const curClass = el.className
+    const classes = (cls || '').split(' ')
+    classes.forEach(classItem => {
+      if (!classItem) return
       if (el.classList) {
-        el.classList.add(clsName)
-      } else if (!hasClass(el, clsName)) {
-        curClass += ' ' + clsName
+        el.classList.add(classItem)
+      } else if (!hasClass(el, classItem)) {
+        curClass += ' ' + classItem
       }
-    }
+    })
     if (!el.classList) {
       el.className = curClass
     }
   }
   removeClass(el, cls) {
     if (!el || !cls) return
-    var classes = cls.split(' ')
-    var curClass = ' ' + el.className + ' '
+    const classes = cls.split(' ')
+    const curClass = ' ' + el.className + ' '
 
-    for (var i = 0, j = classes.length; i < j; i++) {
-      var clsName = classes[i]
-      if (!clsName) continue
-
+    classes.forEach(classItem => {
+      let clsName = classItem
+      if (!clsName) return
       if (el.classList) {
         el.classList.remove(clsName)
       } else if (hasClass(el, clsName)) {
         curClass = curClass.replace(' ' + clsName + ' ', ' ')
       }
-    }
+    })
     if (!el.classList) {
       el.className = trim(curClass)
     }
@@ -490,6 +486,7 @@ export default class Table extends React.PureComponent {
       rightFixedWidth,
       isEnd,
       isStart,
+      fixed,
       indeterminate,
       checkAll,
       selectedRowKeys,
@@ -530,6 +527,7 @@ export default class Table extends React.PureComponent {
                 noFixColumns={noFixColumns}
                 indeterminate={indeterminate}
                 checkAll={checkAll}
+                fixed={fixed}
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
@@ -540,6 +538,7 @@ export default class Table extends React.PureComponent {
                 fixRightColumns={fixRightColumns}
                 noFixColumns={noFixColumns}
                 rowSelection={rowSelection}
+                fixed={fixed}
                 onMouseEnter={this.handleHover}
                 onMouseLeave={this.handleHoverLeave}
                 handleCheckOnSelect={this.handleCheckOnSelect}
