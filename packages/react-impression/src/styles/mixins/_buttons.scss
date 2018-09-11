@@ -8,15 +8,13 @@
     $background,
     $border,
     $btn-hover-box-shadow,
-    $btn-active-box-shadow,
+    $active-background,
     $btn-disabled-color,
     $btn-disabled-bg,
     $btn-disabled-border
 ){
     $hover-background: darken($background, 10%);
     $hover-border: darken($border, 10%);
-    $active-background: darken($background, 20%);
-    $active-border: darken($border, 20%);
 
     color: $color;
     background-color: $background;
@@ -33,9 +31,8 @@
     .open > &.dropdown-toggle {
         color: $color;
         background-color: $active-background;
-        border-color: $active-border;
         background-image: none;
-        box-shadow: $btn-active-box-shadow;
+        box-shadow: none;
     }
 
     &.disabled,
