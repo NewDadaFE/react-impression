@@ -1,23 +1,28 @@
 ### 示例
 
-**基本用法**
+**单个文件点击上传**
 
 ```js
-let file
-;<Row>
-  <Col>
-    <Input ref={ref => (file = ref)} type="file" />
-  </Col>
-  <Col>
-    <Input type="file" placeholder="请上传资质证明" onChange={() => {}} />
-  </Col>
-  <Col>
-    <Upload btnText="附件" btnStyle="primary" />
-  </Col>
-</Row>
+<div>
+  <Row>
+    <Col col={7}>
+      <Upload />
+    </Col>
+  </Row>
+  <Row>
+    <Col col={7}>
+      <Upload placeholder="请上传资质证明" />
+    </Col>
+  </Row>
+  <Row>
+    <Col col={7}>
+      <Upload btnText="附件" btnStyle="primary" />
+    </Col>
+  </Row>
+</div>
 ```
 
-**图片预览**
+**图片上传**
 
 ```js
 let upload
@@ -38,3 +43,9 @@ let upload
   </Col>
 </Row>
 ```
+
+### 变更记录
+
+v2.0.0
+
+* 修改 选择文件后显示`文件路径`，改为显示`文件名称`

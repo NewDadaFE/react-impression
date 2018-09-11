@@ -1,21 +1,21 @@
 // Notification
-$notification-width: 20rem !default;
+$notification-width: rem(400px) !default;
 $notification-top: $navbar-height + 10 !default;
 $notice-color: $brand-pure !default;
-$notice-border-width: 2px !default;
-$notice-border-radius: $border-radius !default;
+$notice-border-radius: $border-radius-lg !default;
 $notice-margin-bottom: $spacer-y !default;
-$notice-box-shadow: 0 2px 6px $inverse-level-2 !default;
+$notice-close-size: rem(26px) !default;
+$notice-close-offset: rem(12px) !default;
 
-$notice-header-font-size: $font-size-h2 !default;
-$notice-header-padding: 0.75rem 0 0.75rem 1rem !default;
-$notice-title-margin: 0 0 0.2rem 0 !default;
-$notice-body-padding: 0.75rem 1rem !default;
+$notice-header-font-size: rem(40px) !default;
+$notice-header-padding: rem(30px) !default;
+$notice-title-margin: 0 0 rem(10px) !default;
+$notice-body-padding: rem(30px) rem(46px) rem(30px) rem(30px) !default;
 
-$notice-primary-bg: mix($brand-primary, $brand-pure, 68%) !default;
-$notice-success-bg: mix($brand-success, $brand-pure, 68%) !default;
-$notice-warning-bg: mix($brand-warning, $brand-pure, 68%) !default;
-$notice-danger-bg: mix($brand-danger, $brand-pure, 68%) !default;
+$notice-primary-bg: linear-gradient(270deg, #0C85FF 0%, $brand-info 100%) !default;
+$notice-success-bg: linear-gradient(270deg, #00B250 0%, $brand-success 100%) !default;
+$notice-warning-bg: linear-gradient(270deg, #FFA200 0%, $brand-warning 100%) !default;
+$notice-danger-bg: linear-gradient(270deg, #FD3737 0%, $brand-danger 100%) !default;
 
 $notice-enter-duration: 0.2s !default;
 $notice-leave-duration: 0.8s !default;

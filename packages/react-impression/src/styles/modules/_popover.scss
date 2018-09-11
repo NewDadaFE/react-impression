@@ -1,5 +1,5 @@
 .popover {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: $zindex-popover;
@@ -14,10 +14,9 @@
     box-shadow: $popover-box-shadow;
     animation: popoverFadeIn .6s ease;
 
-
     // Popover directions
-    &.popover-top {
-        margin-top: -$popover-arrow-width;
+    &[x-placement^=top] {
+        margin-bottom: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
             bottom: -$popover-arrow-outer-width;
@@ -36,8 +35,8 @@
         }
     }
 
-    &.popover-right {
-        margin-left: $popover-arrow-width;
+    &[x-placement^=right] {
+        margin-left: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
             top: 50%;
@@ -56,8 +55,8 @@
         }
     }
 
-    &.popover-bottom {
-        margin-top: $popover-arrow-width;
+    &[x-placement^=bottom] {
+        margin-top: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
             top: -$popover-arrow-outer-width;
@@ -76,8 +75,8 @@
         }
     }
 
-    &.popover-left {
-        margin-left: -$popover-arrow-width;
+    &[x-placement^=left] {
+        margin-right: $popover-margin + $popover-arrow-width;
 
         .popover-arrow {
             top: 50%;
@@ -97,7 +96,6 @@
     }
 }
 
-
 // Offset the popover to account for the popover arrow
 .popover-title {
     color: $popover-title-color;
@@ -114,9 +112,7 @@
     padding: $popover-content-padding-y $popover-content-padding-x;
 }
 
-
 // Arrows
-//
 // .popover-arrow is outer, .popover-arrow::after is inner
 .popover-arrow {
     &,
