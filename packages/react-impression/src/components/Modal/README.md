@@ -3,7 +3,7 @@
 **默认样式**
 
 ```js
-const toggleModalHandle = () => {
+const handleToggleClick = () => {
   setState({
     isOpen: !state.isOpen,
   })
@@ -12,12 +12,12 @@ initialState = {
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={toggleModalHandle}>
+  <Button theme="primary" onClick={handleToggleClick}>
     显示默认弹窗
   </Button>
-  <Modal isOpen={state.isOpen} onClose={toggleModalHandle}>
+  <Modal isOpen={state.isOpen} onClose={handleToggleClick}>
     <ModalHeader>
-      <Button close onClick={toggleModalHandle}>
+      <Button close onClick={handleToggleClick}>
         &times;
       </Button>
       弹窗标题
@@ -26,7 +26,7 @@ initialState = {
       <p>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={toggleModalHandle}>
+      <Button theme="default" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -38,7 +38,7 @@ initialState = {
 **支持键盘 esc 键位和点击背景阴影区域关闭**
 
 ```js
-const toggleModalHandle = () => {
+const handleToggleClick = () => {
   setState({
     isOpen: !state.isOpen,
   })
@@ -47,17 +47,17 @@ initialState = {
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={toggleModalHandle}>
+  <Button theme="primary" onClick={handleToggleClick}>
     打开Modal按下esc关闭
   </Button>
   <Modal
     isOpen={state.isOpen}
-    onClose={toggleModalHandle}
+    onClose={handleToggleClick}
     closeOnEsc
     closeOnOutsideClick
   >
     <ModalHeader>
-      <Button close onClick={toggleModalHandle}>
+      <Button close onClick={handleToggleClick}>
         &times;
       </Button>
       弹窗标题
@@ -66,7 +66,7 @@ initialState = {
       <p>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={toggleModalHandle}>
+      <Button theme="default" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -78,7 +78,7 @@ initialState = {
 **小尺寸弹窗**
 
 ```js
-const toggleModalHandle = () => {
+const handleToggleClick = () => {
   setState({
     isOpen: !state.isOpen,
   })
@@ -87,12 +87,12 @@ initialState = {
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={toggleModalHandle}>
+  <Button theme="primary" onClick={handleToggleClick}>
     显示小尺寸弹窗
   </Button>
-  <Modal size="sm" onClose={toggleModalHandle} isOpen={state.isOpen}>
+  <Modal size="sm" onClose={handleToggleClick} isOpen={state.isOpen}>
     <ModalHeader>
-      <Button close onClick={toggleModalHandle}>
+      <Button close onClick={handleToggleClick}>
         &times;
       </Button>
       弹窗标题
@@ -101,7 +101,7 @@ initialState = {
       <p>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={toggleModalHandle}>
+      <Button theme="default" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -113,7 +113,7 @@ initialState = {
 **大尺寸弹窗**
 
 ```js
-const toggleModalHandle = () => {
+const handleToggleClick = () => {
   setState({
     isOpen: !state.isOpen,
   })
@@ -122,12 +122,12 @@ initialState = {
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={toggleModalHandle}>
+  <Button theme="primary" onClick={handleToggleClick}>
     显示大尺寸弹窗
   </Button>
-  <Modal size="lg" onClose={toggleModalHandle} isOpen={state.isOpen}>
+  <Modal size="lg" onClose={handleToggleClick} isOpen={state.isOpen}>
     <ModalHeader>
-      <Button close onClick={toggleModalHandle}>
+      <Button close onClick={handleToggleClick}>
         &times;
       </Button>
       弹窗标题
@@ -136,7 +136,7 @@ initialState = {
       <p>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={toggleModalHandle}>
+      <Button theme="default" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -156,11 +156,11 @@ class Overflow extends React.Component {
       scrollInside: false,
     }
 
-    this.toggleModalHandle = this.toggleModalHandle.bind(this)
+    this.handleToggleClick = this.handleToggleClick.bind(this)
     this.toggleModalLimitHeight = this.toggleModalLimitHeight.bind(this)
   }
 
-  toggleModalHandle() {
+  handleToggleClick() {
     this.setState({
       show: !this.state.show,
     })
@@ -183,18 +183,18 @@ class Overflow extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Button theme="primary" onClick={() => this.toggleModalHandle()}>
+            <Button theme="primary" onClick={() => this.handleToggleClick()}>
               显示弹窗
             </Button>
           </Col>
         </Row>
         <Modal
           scrollInside={this.state.scrollInside}
-          onClose={() => this.toggleModalHandle()}
+          onClose={() => this.handleToggleClick()}
           isOpen={this.state.show}
         >
           <ModalHeader>
-            <Button close onClick={() => this.toggleModalHandle()}>
+            <Button close onClick={() => this.handleToggleClick()}>
               &times;
             </Button>
             弹窗标题
@@ -221,7 +221,7 @@ class Overflow extends React.Component {
             <p>显示内容&hellip;</p>
           </ModalBody>
           <ModalFooter>
-            <Button theme="default" onClick={() => this.toggleModalHandle()}>
+            <Button theme="default" onClick={() => this.handleToggleClick()}>
               关闭
             </Button>
             <Button theme="primary">保存</Button>

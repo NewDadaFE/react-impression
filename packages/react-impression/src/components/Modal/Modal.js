@@ -41,7 +41,7 @@ class Modal extends React.Component {
     closeOnOutsideClick: PropTypes.bool,
 
     /**
-     * 关闭modal的触发函数，只有当closeOnEsc为true的时候才会触发
+     * 关闭modal的触发函数
      */
     onClose: PropTypes.func,
 
