@@ -30,6 +30,7 @@ export default class Table extends React.PureComponent {
         : [],
       indeterminate: false,
       checkAll: false,
+      fixed: false,
     }
 
     this.state = {
@@ -82,11 +83,6 @@ export default class Table extends React.PureComponent {
      * 分页配置项，请参照Pagination
      */
     pagination: PropTypes.object,
-
-    /**
-     * 是否有固定项表格，colunms有固定项时为必传参数
-     */
-    fixed: PropTypes.bool,
     /**
      * 子组件
      */
@@ -94,7 +90,6 @@ export default class Table extends React.PureComponent {
   }
   static defaultProps = {
     border: false,
-    fixed: false,
     stripe: false,
   }
 
@@ -103,14 +98,13 @@ export default class Table extends React.PureComponent {
     let columnList = []
     if (children) {
       let columns = children.map(child => {
-        const { prop, label, fixed, render, width, renderTh } = child.props
-        const obj = { prop, label, fixed, render, width, renderTh }
+        const { prop, label, fixed, Cell, width, Header } = child.props
+        const obj = { prop, label, fixed, Cell, width, Header }
         return obj
       })
       columnList = columns
     }
     if (columns) columnList = columns
-    console.log(columnList)
     let fixLeftColumns = []
     let fixRightColumns = []
     let noFixColumns = []
@@ -129,6 +123,7 @@ export default class Table extends React.PureComponent {
         fixRightColumns,
         noFixColumns,
         columns: fixLeftColumns.concat(noFixColumns, fixRightColumns),
+        fixed: fixLeftColumns.length > 0 || fixRightColumns.length > 0,
       },
       this.updateColumnsWidth
     )
@@ -274,7 +269,7 @@ export default class Table extends React.PureComponent {
     }
   }
   handleHover = index => {
-    const { fixed } = this.props
+    const { fixed } = this.state
     if (fixed) {
       const tbody = this.tableWrap.querySelectorAll('tbody')
       tbody.forEach(item => {
@@ -304,7 +299,7 @@ export default class Table extends React.PureComponent {
     })
   }
   handleHoverLeave = index => {
-    const { fixed } = this.props
+    const { fixed } = this.state
     if (fixed) {
       const tbody = this.tableWrap.querySelectorAll('tbody')
       tbody.forEach(item => {

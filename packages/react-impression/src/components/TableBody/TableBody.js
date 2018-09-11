@@ -83,6 +83,51 @@ export default class TableBody extends React.PureComponent {
     fixRight: PropTypes.bool,
   }
 
+  renderTd = (array, item, type) => {
+    const { fixed } = this.props
+    return array.map((column, columnIndex) => {
+      const { prop, rowspan, colspan, Cell, width } = column
+      const value = prop ? item[prop] : ''
+      const colRowspan = rowspan || 1
+      const colColspan = colspan || 1
+      let key
+      let colunmWidth
+      if (type === 'left') {
+        key = `left${columnIndex}`
+        colunmWidth = width || 80
+      } else if (type === 'right') {
+        key = `right${columnIndex}`
+        colunmWidth = width || 80
+      } else {
+        key = `normal${columnIndex}`
+        if (!fixed) {
+          colunmWidth = width || ''
+        } else {
+          colunmWidth = width || 80
+        }
+      }
+      let content
+      if (Cell && typeof Cell === 'function') {
+        content = React.createElement(Cell, item, null)
+        // content = Cell(value, item)
+      } else if (React.isValidElement(Cell)) {
+        content = React.cloneElement(Cell)
+      } else {
+        content = value
+      }
+      return (
+        <td
+          key={key}
+          rowSpan={colRowspan}
+          colSpan={colColspan}
+          width={colunmWidth}
+          className={classnames(`item-fix-left`)}
+        >
+          <div className='table-cell'>{content}</div>
+        </td>
+      )
+    })
+  }
   render() {
     const {
       data,
@@ -94,15 +139,12 @@ export default class TableBody extends React.PureComponent {
       handleCheckOnSelect,
       selectedRowKeyList,
       isShowSelection,
-      pagination,
       fixLeftColumns,
       fixRightColumns,
       noFixColumns,
       fixLeft,
       fixRight,
     } = this.props
-    const current =
-      pagination && pagination.activePage ? pagination.activePage : 1
     let fixLeftList = []
     let fixRightList = []
     if (!fixLeft && !fixRight) {
@@ -151,33 +193,7 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
                 {!!fixLeftList.length &&
-                  fixLeftList.map((column, columnIndex) => {
-                    const { prop, rowspan, colspan, render, width } = column
-                    const key = `${index}${columnIndex}`
-                    const value = prop ? item[prop] : ''
-                    const colRowspan = rowspan || 1
-                    const colColspan = colspan || 1
-                    const colunmWidth = width || 80
-                    let content
-                    if (render && typeof render === 'function') {
-                      content = render(value, index, current)
-                    } else if (React.isValidElement(render)) {
-                      content = React.cloneElement(render)
-                    } else {
-                      content = value
-                    }
-                    return (
-                      <td
-                        key={key}
-                        rowSpan={colRowspan}
-                        colSpan={colColspan}
-                        width={colunmWidth}
-                        className={classnames(`item-fix-left`)}
-                      >
-                        <div className='table-cell'>{content}</div>
-                      </td>
-                    )
-                  })}
+                  this.renderTd(fixLeftList, item, 'left')}
                 {rowSelection &&
                   !rowSelection.fixed && (
                   <td className={classnames(`item-fix-`)} key={-1} width={60}>
@@ -192,67 +208,9 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
 
-                {!!noFixColumns.length &&
-                  noFixColumns.map((column, columnIndex) => {
-                    const key = `${index}${columnIndex}`
-                    const { prop, rowspan, colspan, render, width } = column
-                    const value = prop ? item[prop] : ''
-                    const colRowspan = rowspan || 1
-                    const colColspan = colspan || 1
-                    let content
-                    let colunmWidth = ''
-                    if (!fixed) {
-                      colunmWidth = width || ''
-                    } else {
-                      colunmWidth = width || 80
-                    }
-                    if (render && typeof render === 'function') {
-                      content = render(value, index, current)
-                    } else if (React.isValidElement(render)) {
-                      content = React.cloneElement(render)
-                    } else {
-                      content = value
-                    }
-                    return (
-                      <td
-                        key={key}
-                        rowSpan={colRowspan}
-                        colSpan={colColspan}
-                        width={colunmWidth}
-                        className={classnames(`item-fix-normal`)}
-                      >
-                        <div className='table-cell'>{content}</div>
-                      </td>
-                    )
-                  })}
+                {!!noFixColumns.length && this.renderTd(noFixColumns, item)}
                 {!!fixRightList.length &&
-                  fixRightList.map((column, columnIndex) => {
-                    const { prop, rowspan, colspan, render, width } = column
-                    const key = `${index}${columnIndex}`
-                    const value = prop ? item[prop] : ''
-                    const colRowspan = rowspan || 1
-                    const colColspan = colspan || 1
-                    const colunmWidth = width || 80
-                    let content
-                    if (render && typeof render === 'function') {
-                      content = render(value, index, current)
-                    } else if (React.isValidElement(render)) {
-                      content = React.cloneElement(render)
-                    } else {
-                      content = value
-                    }
-                    return (
-                      <td
-                        key={key}
-                        rowSpan={colRowspan}
-                        colSpan={colColspan}
-                        width={colunmWidth}
-                        className={classnames(`item-fix-right`)}
-                      >
-                        <div className='table-cell'>{content}</div>
-                      </td>
-                    )
-                  })}
+                  this.renderTd(fixRightList, item, 'right')}
                 {rowSelection &&
                   isShowSelection &&
                   rowSelection.fixed && (

@@ -62,9 +62,38 @@ export default class TableHead extends React.PureComponent {
     pagination: PropTypes.object,
   }
 
+  renderHeader = (array, type) => {
+    const { fixed } = this.props
+    return array.map((column, index) => {
+      const { Header, width } = column
+      let colWidth
+      if (!type && !fixed) {
+        colWidth = width || ''
+      } else {
+        colWidth = width || 80
+      }
+      let content
+      if (Header && typeof Header === 'function') {
+        content = Header(column)
+      } else if (React.isValidElement(Header)) {
+        content = React.cloneElement(Header)
+      } else {
+        content = Header
+      }
+      return (
+        <th
+          key={index}
+          width={colWidth}
+          className={classnames(`item-fix-left`)}
+        >
+          <div className='table-cell'>{content}</div>
+        </th>
+      )
+    })
+  }
+
   render() {
     const {
-      fixed,
       rowSelection,
       indeterminate,
       checkAll,
@@ -74,11 +103,8 @@ export default class TableHead extends React.PureComponent {
       fixRightColumns,
       fixLeft,
       noFixColumns,
-      pagination,
       fixRight,
     } = this.props
-    const current =
-      pagination && pagination.activePage ? pagination.activePage : 1
     let fixLeftList = []
     let fixRightList = []
     if (!fixLeft && !fixRight) {
@@ -88,7 +114,6 @@ export default class TableHead extends React.PureComponent {
       fixLeftList = fixLeft ? fixLeftColumns : fixRightColumns
       fixRightList = fixLeft ? fixRightColumns : fixLeftColumns
     }
-
     return (
       <div className='table-head-wrap'>
         <table className='table-header' cellSpacing='0' cellPadding='0'>
@@ -111,28 +136,7 @@ export default class TableHead extends React.PureComponent {
                   </div>
                 </th>
               )}
-              {!!fixLeftList.length &&
-                fixLeftList.map((column, index) => {
-                  const { renderTh, label, width } = column
-                  const colWidth = width || 80
-                  let content
-                  if (renderTh && typeof renderTh === 'function') {
-                    content = renderTh(column, index, current)
-                  } else if (React.isValidElement(renderTh)) {
-                    content = React.cloneElement(renderTh)
-                  } else {
-                    content = label
-                  }
-                  return (
-                    <th
-                      key={index}
-                      width={colWidth}
-                      className={classnames(`item-fix-left`)}
-                    >
-                      <div className='table-cell'>{content}</div>
-                    </th>
-                  )
-                })}
+              {!!fixLeftList.length && this.renderHeader(fixLeftList, 'left')}
               {rowSelection &&
                 !rowSelection.fixed && (
                 <th
@@ -149,55 +153,9 @@ export default class TableHead extends React.PureComponent {
                   </div>
                 </th>
               )}
-              {!!noFixColumns.length &&
-                noFixColumns.map((column, index) => {
-                  const { renderTh, label, width } = column
-                  let colWidth = ''
-                  if (!fixed) {
-                    colWidth = width ? column.width : ''
-                  } else {
-                    colWidth = width ? column.width : 80
-                  }
-                  let content
-                  if (renderTh && typeof renderTh === 'function') {
-                    content = renderTh(column, index, current)
-                  } else if (React.isValidElement(renderTh)) {
-                    content = React.cloneElement(renderTh)
-                  } else {
-                    content = label
-                  }
-                  return (
-                    <th
-                      key={index}
-                      width={colWidth}
-                      className={classnames(`item-fix-normal`)}
-                    >
-                      <div className='table-cell'>{content}</div>
-                    </th>
-                  )
-                })}
+              {!!noFixColumns.length && this.renderHeader(noFixColumns)}
               {!!fixRightList.length &&
-                fixRightList.map((column, index) => {
-                  const { renderTh, label, width } = column
-                  const colWidth = width || 80
-                  let content
-                  if (renderTh && typeof renderTh === 'function') {
-                    content = renderTh(column, index, current)
-                  } else if (React.isValidElement(renderTh)) {
-                    content = React.cloneElement(renderTh)
-                  } else {
-                    content = label
-                  }
-                  return (
-                    <th
-                      key={index}
-                      width={colWidth}
-                      className={classnames(`item-fix-right`)}
-                    >
-                      <div className='table-cell'>{content}</div>
-                    </th>
-                  )
-                })}
+                this.renderHeader(fixRightList, 'right')}
               {rowSelection &&
                 isShowSelection &&
                 rowSelection.fixed && (

@@ -14,11 +14,6 @@ TableColumn.propTypes = {
   prop: PropTypes.string,
 
   /**
-   * 表格标题
-   */
-  label: PropTypes.string,
-
-  /**
    * 列宽度
    */
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -31,10 +26,14 @@ TableColumn.propTypes = {
   /**
    * 自定义td返回项函数
    */
-  render: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  Cell: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 
   /**
    * 自定义th返回项函数
    */
-  renderTh: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  Header: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func,
+    PropTypes.string,
+  ]),
 }

@@ -6,30 +6,29 @@
 const columns = [
   {
     prop: 'code',
-    label: '编码',
-    renderTh: () =>
+    Header: () =>
       React.createElement(
         'span',
         { id: 'recipe', 'data-type': 'title' },
         '编码'
       ),
   },
-  { prop: 'address', label: '地址' },
-  { prop: 'num', label: '金额' },
-  { prop: 'phone', label: '电话' },
-  { prop: 'creatTime', label: '创建时间' },
-  { prop: 'status', label: '状态' },
+  { prop: 'address', Header: '地址' },
+  { prop: 'num', Header: '金额' },
+  { prop: 'phone', Header: '电话' },
+  { prop: 'creatTime', Header: '创建时间' },
+  { prop: 'status', Header: '状态' },
   {
     prop: 'id',
-    label: '操作',
-    render: (value, index, current) => {
+    Header: '操作',
+    Cell: (value, item) => {
       return (
         <div className="text-center">
           <a
             href="#"
             style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
             onClick={() => {
-              console.log(value, index, current)
+              console.log(value, item)
             }}
           >
             编辑
@@ -90,23 +89,18 @@ const data = [
   },
 ]
 ;<Table data={data}>
-  <TableColumn
-    prop="code"
-    label="编码"
-    renderTh={React.createElement('span', {}, '编码')}
-  />
-  <TableColumn prop="address" label="地址" />
-  <TableColumn prop="num" label="金额" />
-  <TableColumn prop="phone" label="电话" />
-  <TableColumn prop="creatTime" label="创建时间" />
-  <TableColumn prop="status" label="状态" />
+  <TableColumn prop="code" Header={React.createElement('span', {}, '编码')} />
+  <TableColumn prop="address" Header="地址" />
+  <TableColumn prop="num" Header="金额" />
+  <TableColumn prop="phone" Header="电话" />
+  <TableColumn prop="creatTime" Header="创建时间" />
+  <TableColumn prop="status" Header="状态" />
   <TableColumn
     prop="id"
-    label="操作"
-    renderTh={() => {
+    Header={() => {
       return <div>自定义</div>
     }}
-    render={(value, index, current) => {
+    Cell={(value, index, current) => {
       return (
         <div className="text-center">
           <a
@@ -133,16 +127,16 @@ const data = [
 
 ```js
 const columns = [
-  { prop: 'code', label: '编码' },
-  { prop: 'address', label: '地址' },
-  { prop: 'num', label: '金额' },
-  { prop: 'phone', label: '电话' },
-  { prop: 'creatTime', label: '创建时间' },
-  { prop: 'status', label: '状态' },
+  { prop: 'code', Header: '编码' },
+  { prop: 'address', Header: '地址' },
+  { prop: 'num', Header: '金额' },
+  { prop: 'phone', Header: '电话' },
+  { prop: 'creatTime', Header: '创建时间' },
+  { prop: 'status', Header: '状态' },
   {
     prop: 'id',
-    label: '操作',
-    render: id => {
+    Header: '操作',
+    Cell: id => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -186,20 +180,20 @@ const data = [
 const columns = [
   {
     prop: 'code',
-    label: '编码',
-    render: code => {
+    Header: '编码',
+    Cell: code => {
       return <a href="#">{code}</a>
     },
   },
-  { prop: 'address', label: '地址' },
-  { prop: 'num', label: '金额' },
-  { prop: 'phone', label: '电话' },
-  { prop: 'creatTime', label: '创建时间' },
-  { prop: 'status', label: '状态' },
+  { prop: 'address', Header: '地址' },
+  { prop: 'num', Header: '金额' },
+  { prop: 'phone', Header: '电话' },
+  { prop: 'creatTime', Header: '创建时间' },
+  { prop: 'status', Header: '状态' },
   {
     prop: 'id',
-    label: '操作',
-    render: id => {
+    Header: '操作',
+    Cell: id => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -252,22 +246,22 @@ const data = [
 const columns = [
   {
     prop: 'code',
-    label: '编码',
+    Header: '编码',
     width: 120,
-    render: code => {
+    Cell: code => {
       return <a href="#">{code}</a>
     },
   },
-  { prop: 'address', label: '地址', width: 160 },
-  { prop: 'num', label: '金额', width: 120 },
-  { prop: 'phone', label: '电话', width: 120 },
-  { prop: 'creatTime', label: '创建时间', width: 120 },
-  { prop: 'status', label: '状态', width: 120 },
+  { prop: 'address', Header: '地址', width: 160 },
+  { prop: 'num', Header: '金额', width: 120 },
+  { prop: 'phone', Header: '电话', width: 120 },
+  { prop: 'creatTime', Header: '创建时间', width: 120 },
+  { prop: 'status', Header: '状态', width: 120 },
   {
     prop: 'id',
-    label: '操作',
+    Header: '操作',
     width: 202,
-    render: id => {
+    Cell: id => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -346,27 +340,27 @@ const data = [
     status: '正常',
   },
 ]
-;<Table data={data} scroll={{ x: 900 }} stripe border fixed>
+;<Table data={data} scroll={{ x: 900 }} stripe border>
   <TableColumn
     prop="code"
-    label="编码"
+    Header="编码"
     fixed="left"
     width={120}
-    render={code => {
+    Cell={code => {
       return <a href="#">{code}</a>
     }}
   />
-  <TableColumn prop="address" label="地址" width={160} />
-  <TableColumn prop="num" label="金额" width={100} />
-  <TableColumn prop="phone" label="电话" width={120} />
-  <TableColumn prop="creatTime" label="创建时间" width={120} />
-  <TableColumn prop="status" label="状态" width={120} />
+  <TableColumn prop="address" Header="地址" width={160} />
+  <TableColumn prop="num" Header="金额" width={100} />
+  <TableColumn prop="phone" Header="电话" width={120} />
+  <TableColumn prop="creatTime" Header="创建时间" width={120} />
+  <TableColumn prop="status" Header="状态" width={120} />
   <TableColumn
     prop="id"
-    label="操作"
+    Header="操作"
     width={202}
     fixed="right"
-    render={id => {
+    Cell={id => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -389,24 +383,24 @@ const data = [
 const columns = [
   {
     prop: 'code',
-    label: '编码',
+    Header: '编码',
     width: 120,
     fixed: 'left',
-    render: code => {
+    Cell: code => {
       return <a href="#">{code}</a>
     },
   },
-  { prop: 'address', label: '地址', width: 160 },
-  { prop: 'num', label: '金额', width: 120 },
-  { prop: 'phone', label: '电话', width: 120 },
-  { prop: 'creatTime', label: '创建时间', width: 120 },
-  { prop: 'status', label: '状态', width: 120 },
+  { prop: 'address', Header: '地址', width: 160 },
+  { prop: 'num', Header: '金额', width: 120 },
+  { prop: 'phone', Header: '电话', width: 120 },
+  { prop: 'creatTime', Header: '创建时间', width: 120 },
+  { prop: 'status', Header: '状态', width: 120 },
   {
     prop: 'id',
-    label: '操作',
+    Header: '操作',
     width: 202,
     fixed: 'right',
-    render: id => {
+    Cell: id => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -494,7 +488,6 @@ class DefaultExample extends React.Component {
           stripe
           rowSelection={rowSelection}
           pagination={pagination}
-          fixed
         />
       </div>
     )
@@ -510,30 +503,30 @@ class DefaultExample extends React.Component {
 const columns = [
   {
     prop: 'code',
-    label: '编码',
+    Header: '编码',
     width: 120,
-    render: code => {
+    Cell: code => {
       return <a href="#">{code}</a>
     },
   },
   {
     prop: 'address',
-    label: '地址',
+    Header: '地址',
     width: 160,
-    render: address => {
+    Cell: address => {
       return <Input size="sm" defaultValue={address} />
     },
   },
-  { prop: 'num', label: '金额', width: 120 },
-  { prop: 'phone', label: '电话', width: 120 },
-  { prop: 'creatTime', label: '创建时间', width: 120 },
-  { prop: 'status', label: '状态', width: 120 },
+  { prop: 'num', Header: '金额', width: 120 },
+  { prop: 'phone', Header: '电话', width: 120 },
+  { prop: 'creatTime', Header: '创建时间', width: 120 },
+  { prop: 'status', Header: '状态', width: 120 },
   {
     prop: 'id',
-    label: '操作',
+    Header: '操作',
     fixed: 'right',
     width: 202,
-    render: (value, index, current) => {
+    Cell: (value, index, current) => {
       return (
         <div>
           <a
@@ -664,6 +657,5 @@ class DefaultExample extends React.Component {
 v2.0.0
 
 * 支持 TableColumn/columns 两种用法。
-* 新增 columns 表格配置项属性。具体用法参照例子。其中，prop 为 dataIndex，label 为表头文字，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，否则为自适应，fixed 可选值为 left/right，render 为函数，可自定义渲染项，返回值为 prop 的值，index，和当前页码
+* 新增 columns 表格配置项属性。具体用法参照例子。其中，prop 为 dataIndex，Header 为表头渲染，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，否则为自适应，fixed 可选值为 left/right，Cell 为 td 渲染，可自定义渲染项，返回值为 prop 的值，当前项
 * 新增 rowSelection 多选表格配置项属性。具体用法参照例子。其中 selectedRowKeys 和 onChange 必须同时为可控组件，onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys，fixed 为固定左侧参数
-* 新增 fixed 固定表格属性。columns 中存在 fixed 时，此参数为必传参数
