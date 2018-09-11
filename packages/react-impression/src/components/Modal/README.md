@@ -15,29 +15,27 @@ initialState = {
   <Button theme="primary" onClick={toggleModalHandle}>
     显示默认弹窗
   </Button>
-  {state.isShow && (
-    <Modal onClose={toggleModalHandle}>
-      <ModalHeader>
-        <Button close onClick={toggleModalHandle}>
-          &times;
-        </Button>
-        弹窗标题
-      </ModalHeader>
-      <ModalBody>
-        <p>内容&hellip;</p>
-      </ModalBody>
-      <ModalFooter>
-        <Button theme="default" onClick={toggleModalHandle}>
-          关闭
-        </Button>
-        <Button theme="primary">保存</Button>
-      </ModalFooter>
-    </Modal>
-  )}
+  <Modal isShow={state.isShow} onHide={toggleModalHandle}>
+    <ModalHeader>
+      <Button close onClick={toggleModalHandle}>
+        &times;
+      </Button>
+      弹窗标题
+    </ModalHeader>
+    <ModalBody>
+      <p>内容&hellip;</p>
+    </ModalBody>
+    <ModalFooter>
+      <Button theme="default" onClick={toggleModalHandle}>
+        关闭
+      </Button>
+      <Button theme="primary">保存</Button>
+    </ModalFooter>
+  </Modal>
 </div>
 ```
 
-**支持键盘 esc 键位关闭**
+**支持键盘 esc 键位和点击背景阴影区域关闭**
 
 ```js
 const toggleModalHandle = () => {
@@ -52,25 +50,28 @@ initialState = {
   <Button theme="primary" onClick={toggleModalHandle}>
     打开Modal按下esc关闭
   </Button>
-  {state.isShow && (
-    <Modal onClose={toggleModalHandle} closeOnEsc>
-      <ModalHeader>
-        <Button close onClick={toggleModalHandle}>
-          &times;
-        </Button>
-        弹窗标题
-      </ModalHeader>
-      <ModalBody>
-        <p>内容&hellip;</p>
-      </ModalBody>
-      <ModalFooter>
-        <Button theme="default" onClick={toggleModalHandle}>
-          关闭
-        </Button>
-        <Button theme="primary">保存</Button>
-      </ModalFooter>
-    </Modal>
-  )}
+  <Modal
+    isShow={state.isShow}
+    onHide={toggleModalHandle}
+    closeOnEsc
+    closeOnOutsideClick
+  >
+    <ModalHeader>
+      <Button close onClick={toggleModalHandle}>
+        &times;
+      </Button>
+      弹窗标题
+    </ModalHeader>
+    <ModalBody>
+      <p>内容&hellip;</p>
+    </ModalBody>
+    <ModalFooter>
+      <Button theme="default" onClick={toggleModalHandle}>
+        关闭
+      </Button>
+      <Button theme="primary">保存</Button>
+    </ModalFooter>
+  </Modal>
 </div>
 ```
 
@@ -89,25 +90,23 @@ initialState = {
   <Button theme="primary" onClick={toggleModalHandle}>
     显示小尺寸弹窗
   </Button>
-  {state.isShow && (
-    <Modal size="sm" onClose={toggleModalHandle}>
-      <ModalHeader>
-        <Button close onClick={toggleModalHandle}>
-          &times;
-        </Button>
-        弹窗标题
-      </ModalHeader>
-      <ModalBody>
-        <p>内容&hellip;</p>
-      </ModalBody>
-      <ModalFooter>
-        <Button theme="default" onClick={toggleModalHandle}>
-          关闭
-        </Button>
-        <Button theme="primary">保存</Button>
-      </ModalFooter>
-    </Modal>
-  )}
+  <Modal size="sm" onHide={toggleModalHandle} isShow={state.isShow}>
+    <ModalHeader>
+      <Button close onClick={toggleModalHandle}>
+        &times;
+      </Button>
+      弹窗标题
+    </ModalHeader>
+    <ModalBody>
+      <p>内容&hellip;</p>
+    </ModalBody>
+    <ModalFooter>
+      <Button theme="default" onClick={toggleModalHandle}>
+        关闭
+      </Button>
+      <Button theme="primary">保存</Button>
+    </ModalFooter>
+  </Modal>
 </div>
 ```
 
@@ -126,25 +125,23 @@ initialState = {
   <Button theme="primary" onClick={toggleModalHandle}>
     显示大尺寸弹窗
   </Button>
-  {state.isShow && (
-    <Modal size="lg" onClose={toggleModalHandle}>
-      <ModalHeader>
-        <Button close onClick={toggleModalHandle}>
-          &times;
-        </Button>
-        弹窗标题
-      </ModalHeader>
-      <ModalBody>
-        <p>内容&hellip;</p>
-      </ModalBody>
-      <ModalFooter>
-        <Button theme="default" onClick={toggleModalHandle}>
-          关闭
-        </Button>
-        <Button theme="primary">保存</Button>
-      </ModalFooter>
-    </Modal>
-  )}
+  <Modal size="lg" onHide={toggleModalHandle} isShow={state.isShow}>
+    <ModalHeader>
+      <Button close onClick={toggleModalHandle}>
+        &times;
+      </Button>
+      弹窗标题
+    </ModalHeader>
+    <ModalBody>
+      <p>内容&hellip;</p>
+    </ModalBody>
+    <ModalFooter>
+      <Button theme="default" onClick={toggleModalHandle}>
+        关闭
+      </Button>
+      <Button theme="primary">保存</Button>
+    </ModalFooter>
+  </Modal>
 </div>
 ```
 
@@ -191,46 +188,45 @@ class Overflow extends React.Component {
             </Button>
           </Col>
         </Row>
-        {this.state.show && (
-          <Modal
-            scrollInside={this.state.scrollInside}
-            onClose={() => this.toggleModalHandle()}
-          >
-            <ModalHeader>
-              <Button close onClick={() => this.toggleModalHandle()}>
-                &times;
-              </Button>
-              弹窗标题
-            </ModalHeader>
-            <ModalBody>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
-            </ModalBody>
-            <ModalFooter>
-              <Button theme="default" onClick={() => this.toggleModalHandle()}>
-                关闭
-              </Button>
-              <Button theme="primary">保存</Button>
-            </ModalFooter>
-          </Modal>
-        )}
+        <Modal
+          scrollInside={this.state.scrollInside}
+          onHide={() => this.toggleModalHandle()}
+          isShow={this.state.show}
+        >
+          <ModalHeader>
+            <Button close onClick={() => this.toggleModalHandle()}>
+              &times;
+            </Button>
+            弹窗标题
+          </ModalHeader>
+          <ModalBody>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+            <p>显示内容&hellip;</p>
+          </ModalBody>
+          <ModalFooter>
+            <Button theme="default" onClick={() => this.toggleModalHandle()}>
+              关闭
+            </Button>
+            <Button theme="primary">保存</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     )
   }
