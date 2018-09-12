@@ -25,7 +25,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
             onClick={() => {
               console.log(value)
             }}
@@ -116,7 +116,7 @@ const data = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
             onClick={() => {
               console.log(value)
             }}
@@ -490,7 +490,7 @@ class DefaultExample extends React.Component {
     }
     return (
       <div>
-        <div className="text-right" style={{ marginBottom: '11px' }}>
+        <div className="text-right" style={{ marginBottom: 11 }}>
           <Input type="search" placeholder="选择日期" size="sm" />
         </div>
         <Table
@@ -543,7 +543,7 @@ const columns = [
         <div>
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
             onClick={() => {
               console.log(value, index, current)
             }}
@@ -551,7 +551,10 @@ const columns = [
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ padding: '0 16px', color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, paddingRight: 16, color: '#276BF2' }}
+          >
             删除
           </a>
         </div>
