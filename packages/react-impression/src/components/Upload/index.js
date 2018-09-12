@@ -1,1 +1,1 @@
-export default from './Upload.js'
+export { default } from './Upload'

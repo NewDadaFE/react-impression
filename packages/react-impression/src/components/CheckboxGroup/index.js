@@ -1,1 +1,1 @@
-export default from './CheckboxGroup.js'
+export { default } from './CheckboxGroup'

@@ -45,6 +45,9 @@
 .modal-header {
     color: $modal-header-color;
     padding: $modal-title-padding;
+    font-size: $modal-header-font-size;
+    font-weight: $modal-header-font-weight;
+    line-height: $modal-header-line-height;
     background: $modal-header-bg;
     border-radius: $modal-border-radius $modal-border-radius 0 0;
     border-bottom: 1px solid $modal-header-border-color;
@@ -54,6 +57,7 @@
     .close {
         color: $modal-header-color;
         opacity: .6;
+        font-size: $modal-header-line-height;
 
         &:hover {
             opacity: 1;
@@ -81,16 +85,15 @@
 
 // Footer (for actions)
 .modal-footer {
-    padding: $modal-inner-padding;
-    text-align: right; // right align buttons
-    border-top: $modal-footer-border-width solid $modal-footer-border-color;
+    padding: 0 $modal-inner-padding $modal-inner-padding;
+    text-align: center; // right align buttons
     background: $modal-footer-bg;
     border-radius: 0 0 $modal-border-radius $modal-border-radius;
 
     @include clearfix(); // clear it in case folks use .pull-* classes on buttons
 
     .btn {
-        margin-left: $spacer-x;
+        margin-left: $modal-footer-btn-margin;
     }
 }
 
@@ -103,25 +106,10 @@
     .modal-sm {
         max-width: $modal-sm;
 
-
-        .modal-content {
-            border-radius: $border-radius-sm;
-        }
-
-        .modal-header {
-            padding: $modal-inner-padding-sm;
-            border-radius: $border-radius-sm $border-radius-sm 0 0;
-        }
-
         .modal-body {
             &:last-child {
                 border-radius: 0 0 $border-radius-sm $border-radius-sm;
             }
-        }
-
-        .modal-footer {
-            padding: $modal-inner-padding-sm;
-            border-radius: 0 0 $border-radius-sm $border-radius-sm;
         }
     }
 }
@@ -130,22 +118,16 @@
     .modal-lg {
         max-width: $modal-lg;
 
-        .modal-content {
-            border-radius: $border-radius-lg;
-        }
-
-        .modal-header {
-            border-radius: $border-radius-lg $border-radius-lg 0 0;
-        }
-
         .modal-body {
+            padding: $modal-inner-padding $modal-inner-padding-lg;
+
             &:last-child {
                 border-radius: 0 0 $border-radius-lg $border-radius-lg;
             }
         }
 
         .modal-footer {
-            border-radius: 0 0 $border-radius-lg $border-radius-lg;
+            padding: 0 $modal-inner-padding-lg $modal-inner-padding;
         }
     }
 }

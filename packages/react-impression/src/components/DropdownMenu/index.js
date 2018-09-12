@@ -1,1 +1,1 @@
-export default from './DropdownMenu.js'
+export { default } from './DropdownMenu'

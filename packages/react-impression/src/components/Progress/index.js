@@ -1,1 +1,1 @@
-export default from './Progress.js'
+export { default } from './Progress'

@@ -1,1 +1,1 @@
-export default from './AttentionLink.js'
+export { default } from './AttentionLink'

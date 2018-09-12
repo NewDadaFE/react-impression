@@ -1,1 +1,1 @@
-export default from './Collapse.js'
+export { default } from './Collapse'

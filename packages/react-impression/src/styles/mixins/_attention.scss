@@ -1,15 +1,15 @@
 // Attention
 
-@mixin attention-variant($background, $border, $body-color) {
-    background-color: $background;
-    border-color: $border;
-    color: $body-color;
+@mixin attention-variant($color) {
+    background: mix($color, $brand-pure, 10%);
+    border-color: $color;
+    color: $color;
 
     hr {
-        border-top-color: darken($border, 5%);
+        border-top-color: darken($color, 5%);
     }
 
     .attention-link {
-        color: darken($body-color, 12%);
+        color: darken($color, 12%);
     }
 }

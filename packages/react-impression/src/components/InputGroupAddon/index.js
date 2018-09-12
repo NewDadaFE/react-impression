@@ -1,1 +1,1 @@
-export default from './InputGroupAddon.js'
+export { default } from './InputGroupAddon'

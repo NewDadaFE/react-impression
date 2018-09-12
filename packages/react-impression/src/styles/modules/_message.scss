@@ -1,52 +1,80 @@
 
 .message {
-    display: flex;
-    align-items: center;
     position: fixed;
-    left: $message-left;
-    right: 0;
-    margin: 0 auto;
-    top: $message-top;
     z-index: $zindex-message;
-    color: $message-color;
+    top: $message-top;
+    left: 50%;
+    display: flex;
+    min-width: $message-min-width;
     max-width: $message-max-width;
-    box-shadow: $message-box-shadow;
-    border-radius: $message-border-radius;
+    padding: $message-padding;
+    align-items: center;
+    transform: translateX(-50%);
     animation-duration: $message-enter-duration;
     animation-timing-function: ease;
+    border-width: $border-width;
+    border-style: solid;
+    border-radius: $message-border-radius;
+
     animation-fill-mode: both;
 }
 
 .message-header {
     font-size: $message-header-font-size;
-    padding: $message-header-padding;
 }
 
 
 .message-body {
-    flex: 1;
     padding: $message-body-padding;
+    flex: 1;
+    font-size: $message-body-font-size;
+    line-height: $message-body-line-height;
 }
 
-.message-loading {
+.message-close {
+    padding: $message-close-padding;
+    cursor: $cursor-pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+    &:active {
+        opacity: .6;
+    }
+}
+
+.message-icon-loading {
     display: block;
     width: $message-header-font-size;
     height: $message-header-font-size;
-    border: 1px solid transparent;
-    border-top-color: $message-loading-border-color;
-    border-radius: 100%;
-    padding: $message-loading-padding;
+    padding: $message-icon-loading-padding;
     animation: spin .6s infinite linear;
+    border: 1px solid transparent;
+    border-top-color: $message-loading-color;
+    border-radius: 100%;
 }
 
 // Alternate styles
-.message-primary { @include message-variant($brand-primary); }
+.message-primary {
+    @include message-variant($brand-primary);
+}
 
-.message-success { @include message-variant($brand-success); }
+.message-success {
+    @include message-variant($brand-success);
+}
 
-.message-warning { @include message-variant($brand-warning); }
+.message-warning {
+    @include message-variant($brand-warning);
+}
 
-.message-danger { @include message-variant($brand-danger); }
+.message-danger {
+    @include message-variant($brand-danger);
+}
+
+.message-default {
+    border-color: $message-loading-border-color;
+    color: $message-loading-color;
+    background-color: $brand-pure;
+}
 
 // Animation
 .message-enter {
@@ -54,28 +82,28 @@
 }
 
 .message-leave {
-    animation-duration: $message-leave-duration;
     animation-name: messageSlideOutUp;
+    animation-duration: $message-leave-duration;
 }
 
 @keyframes messageSlideInDown {
     0% {
+        transform: translate(-50%, -100px);
         opacity: 0;
-        transform: translateY(-100px);
     }
 
     100% {
-        transform: translateY(0);
+        transform: translate(-50%, 0);
     }
 }
 
 @keyframes messageSlideOutUp {
     0% {
-        transform: translateY(0);
+        transform: translate(-50%, 0);
     }
 
     100% {
+        transform: translate(-50%, -100px);
         opacity: 0;
-        transform: translateY(-100px);
     }
 }

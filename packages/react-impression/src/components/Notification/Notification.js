@@ -87,6 +87,13 @@ export default class Notification extends React.Component {
     )
   }
 
+  handleClearTimer = key => {
+    const stateData = this.state[key]
+    if (stateData && stateData.closeable) {
+      clearTimeout(this.timers[key])
+    }
+  }
+
   render() {
     const { className } = this.props
 
@@ -105,6 +112,7 @@ export default class Notification extends React.Component {
               closeable={this.state[key].closeable}
               title={this.state[key].title}
               close={() => this.removeNotice(key)}
+              onMouseEnter={() => this.handleClearTimer(key)}
             >
               {this.state[key].message}
             </Notice>

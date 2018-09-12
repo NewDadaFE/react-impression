@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 let _message
-let _timers = []
+let _timers
 
 export default class Message extends React.Component {
   constructor(props, context) {
@@ -15,6 +15,7 @@ export default class Message extends React.Component {
       show: props.show || false,
       message: null,
       theme: props.theme,
+      closable: false,
     }
   }
 
@@ -36,46 +37,54 @@ export default class Message extends React.Component {
   static defaultProps = {
     theme: 'info',
   }
+
   /**
    * 移除定时器
    */
   componentWillUnmount() {
-    _timers.forEach(timer => clearTimeout(timer))
+    _timers && clearTimeout(_timers)
   }
+
   /**
    * 获取信息图标
    * @returns {*}
    */
   getTitleIcon() {
-    const { theme } = this.state
-
-    return {
-      info: ['fa', 'fa-volume-up'],
+    const themeMap = {
+      info: ['fa', 'fa-info-circle'],
       success: ['fa', 'fa-check-circle'],
       warning: ['fa', 'fa-exclamation-triangle'],
       danger: ['fa', 'fa-times-circle'],
-      loading: ['message-loading'],
-    }[theme]
+      loading: ['message-icon-loading'],
+    }
+
+    return themeMap[this.state.theme]
   }
+
   /**
    * 获取主题样式
    * @returns {*}
    */
   getStyleClass() {
-    const { theme } = this.state
-
-    return {
+    const classMap = {
       info: 'message-primary',
       warning: 'message-warning',
       success: 'message-success',
       danger: 'message-danger',
-      loading: 'message-primary',
-    }[theme]
+      loading: 'message-default',
+    }
+
+    return classMap[this.state.theme]
+  }
+
+  handleClose = () => {
+    _timers && clearTimeout(_timers)
+    this.setState({ show: false })
   }
 
   render() {
     const { className } = this.props
-    const { message, show } = this.state
+    const { message, show, closable } = this.state
     const themeClass = this.getStyleClass()
     const iconClass = this.getTitleIcon()
 
@@ -93,6 +102,11 @@ export default class Message extends React.Component {
                 <i className={classnames(iconClass)} />
               </div>
               <div className='message-body'>{message}</div>
+              {closable && (
+                <div className='message-close' onClick={this.handleClose}>
+                  关闭
+                </div>
+              )}
             </div>
           )}
         </ReactCSSTransitionGroup>
@@ -106,13 +120,11 @@ export default class Message extends React.Component {
  * @param duration
  */
 const hideMessage = duration => {
-  _timers.push(
-    setTimeout(() => {
-      _message.setState({
-        show: false,
-      })
-    }, duration)
-  )
+  _timers = setTimeout(() => {
+    _message.setState({
+      show: false,
+    })
+  }, duration)
 }
 
 /**
@@ -120,17 +132,18 @@ const hideMessage = duration => {
  * @param theme
  * @param message
  * @param duration
+ * @param closable
  */
-const showMessage = (theme, message, duration = 2000) => {
+const showMessage = (theme, message, duration = 2000, closable) => {
   // 清空隐藏消息定时器
-  _timers.forEach(timer => clearTimeout(timer))
-  _timers = []
+  _timers && clearTimeout(_timers)
 
   _message.setState({
     show: true,
     theme,
     message,
     duration,
+    closable,
   })
 
   // 隐藏消息
@@ -141,36 +154,40 @@ const showMessage = (theme, message, duration = 2000) => {
  * 显示info信息
  * @param message
  * @param duration
+ * @param closable
  */
-Message.info = (message, duration) => {
-  showMessage('info', message, duration)
+Message.info = (message, duration, closable) => {
+  showMessage('info', message, duration, closable)
 }
 
 /**
  * 显示success信息
  * @param message
  * @param duration
+ * @param closable
  */
-Message.success = (message, duration) => {
-  showMessage('success', message, duration)
+Message.success = (message, duration, closable) => {
+  showMessage('success', message, duration, closable)
 }
 
 /**
  * 显示warning信息
  * @param message
  * @param duration
+ * @param closable
  */
-Message.warning = (message, duration) => {
-  showMessage('warning', message, duration)
+Message.warning = (message, duration, closable) => {
+  showMessage('warning', message, duration, closable)
 }
 
 /**
  * 显示error信息
  * @param message
  * @param duration
+ * @param closable
  */
-Message.error = (message, duration) => {
-  showMessage('danger', message, duration)
+Message.error = (message, duration, closable) => {
+  showMessage('danger', message, duration, closable)
 }
 
 /**

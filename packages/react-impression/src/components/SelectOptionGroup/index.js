@@ -1,1 +1,1 @@
-export default from './SelectOptionGroup.js'
+export { default } from './SelectOptionGroup'

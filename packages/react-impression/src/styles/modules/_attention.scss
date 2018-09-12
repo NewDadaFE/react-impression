@@ -3,24 +3,45 @@
 //
 
 .attention {
+    display: flex;
     padding: $attention-padding;
+    align-items: center;
     border: $attention-border-width solid transparent;
     border-radius: $attention-border-radius;
 }
 
-// Provide class for links that match attentions
-.attention-link {
-    font-size: 110%;
-    font-weight: $attention-link-font-weight;
+.attention-header {
+    font-size: $attention-header-font-size;
 }
 
+.attention-body {
+    padding: $attention-body-padding;
+    flex: 1;
+    font-size: $attention-body-font-size;
+    line-height: $attention-body-line-height;
+}
+
+.attention-close {
+    padding: $attention-close-padding;
+    cursor: $cursor-pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+    &:active {
+        opacity: .6;
+    }
+}
+// Provide class for links that match attentions
+.attention-link {
+    font-weight: $attention-link-font-weight;
+}
 
 // Dismissible attentions
 //
 // Expand the right padding and account for the close button's positioning.
 
 .attention-dismissible {
-    padding-right: ($attention-padding + 20px);
+    padding-right: ($attention-padding + rem(20px));
 
     // Adjust close link position
     .close {
@@ -37,17 +58,17 @@
 // Generate contextual modifier classes for colorizing the attention.
 
 .attention-success {
-    @include attention-variant($attention-success-bg, $attention-success-border, $attention-success-text);
+    @include attention-variant($brand-success);
 }
 
 .attention-primary {
-    @include attention-variant($attention-primary-bg, $attention-primary-border, $attention-primary-text);
+    @include attention-variant($brand-primary);
 }
 
 .attention-warning {
-    @include attention-variant($attention-warning-bg, $attention-warning-border, $attention-warning-text);
+    @include attention-variant($brand-warning);
 }
 
 .attention-danger {
-    @include attention-variant($attention-danger-bg, $attention-danger-border, $attention-danger-text);
+    @include attention-variant($brand-danger);
 }

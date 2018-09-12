@@ -1,1 +1,1 @@
-export default from './NavLink.js'
+export { default } from './NavLink'

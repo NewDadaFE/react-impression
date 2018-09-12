@@ -1,1 +1,1 @@
-export default from './Confirm.js'
+export { default } from './Confirm'

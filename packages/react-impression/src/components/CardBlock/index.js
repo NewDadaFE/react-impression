@@ -1,1 +1,1 @@
-export default from './CardBlock.js'
+export { default } from './CardBlock'

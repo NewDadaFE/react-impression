@@ -5,8 +5,6 @@ $btn-font-size:                           rem(16px) !default;
 
 $btn-hover-primary-box-shadow:            0px rem(2px) rem(10px) 0px rgba(39,107,242,0.3) !default;  // hover---primary的button的box shadow
 $btn-hover-default-box-shadow:            0px rem(2px) rem(10px) 0px rgba(145,156,179,0.3) !default;  // hover---secondary和default的button的box shadow
-$btn-active-primary-box-shadow:           0px rem(2px) rem(10px) 0px rgba(39,107,242,0.4) !default;  // active---primary的button的box shadow
-$btn-active-box-shadow:                   0px rem(2px) rem(10px) 0px rgba(145,156,179,0.4) !default;  // active---secondary和default的button的box shadow
 
 $btn-transition:                          all .2s cubic-bezier(.4, 0, .2, 1) !default;
 $btn-disabled-color:                      $gray-dark !default;
@@ -15,14 +13,17 @@ $btn-disabled-border:                     $gray !default;
 
 $btn-primary-color:                       $brand-pure !default;
 $btn-primary-bg:                          $brand-primary !default;
+$btn-active-primary-bg:                   #215ACC !default;
 $btn-primary-border:                      $btn-primary-bg !default;
 
 $btn-default-color:                       #12203D !default;
 $btn-default-bg:                          transparent !default;
+$btn-active-default-bg:                   #F7F9FC !default;
 $btn-default-border:                      $gray !default;
 
 $btn-secondary-color:                     $brand-primary !default;
 $btn-secondary-bg:                        transparent !default;
+$btn-active-secondary-bg:                 rgba(39,107,242,0.06) !default;
 $btn-secondary-border:                    $brand-primary !default;
 
 $btn-link-disabled-color:                 $gray-light !default;

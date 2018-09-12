@@ -1,1 +1,1 @@
-export default from './Radio.js'
+export { default } from './Radio'

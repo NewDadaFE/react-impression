@@ -1,1 +1,1 @@
-export default from './CardHeader.js'
+export { default } from './CardHeader'
