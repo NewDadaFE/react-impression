@@ -14,7 +14,7 @@
     background-color: #fff;
 
     color: $table-header-color;
-    line-height: $table-header-line-height;
+    // line-height: $table-header-line-height;
     font-weight: 400;
   }
   tr {
@@ -22,7 +22,7 @@
   }
   td {
     word-break: break-all;
-    line-height: $table-header-line-height;
+    // line-height: $table-header-line-height;
   }
 }
 .table-header {
@@ -53,7 +53,7 @@
 }
 .table-cell {
   // display: inline-block;
-  line-height: $table-header-line-height;
+  // line-height: $table-header-line-height;
 }
 .table-cell-tooltip {
   overflow: hidden;

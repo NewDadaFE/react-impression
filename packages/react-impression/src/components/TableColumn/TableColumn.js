@@ -9,9 +9,9 @@ export default class TableColumn extends Component {
 
 TableColumn.propTypes = {
   /**
-   * 列数据在数据项中对应的key，支持 a.b.c 写法
+   * 列数据在数据项中对应的key，
    */
-  prop: PropTypes.string,
+  prop: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 
   /**
    * 列宽度

@@ -5,7 +5,7 @@
 ```js
 const columns = [
   {
-    prop: 'code.id',
+    prop: data => `${data.code.id}`,
     Header: () =>
       React.createElement(
         'span',
@@ -13,7 +13,7 @@ const columns = [
         '编码'
       ),
   },
-  { prop: 'address.detail.target', Header: '地址' },
+  { prop: data => `${data.address.detail.target}`, Header: '地址' },
   { prop: 'num', Header: '金额' },
   { prop: 'phone', Header: '电话' },
   { prop: 'creatTime', Header: '创建时间' },
@@ -21,14 +21,14 @@ const columns = [
   {
     prop: 'id',
     Header: '操作',
-    Cell: (value, item) => {
+    Cell: value => {
       return (
         <div className="text-center">
           <a
             href="#"
             style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
             onClick={() => {
-              console.log(value, item)
+              console.log(value)
             }}
           >
             编辑
@@ -112,14 +112,14 @@ const data = [
     Header={() => {
       return <div>自定义</div>
     }}
-    Cell={(value, index, current) => {
+    Cell={value => {
       return (
         <div className="text-center">
           <a
             href="#"
             style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
             onClick={() => {
-              console.log(value, index, current)
+              console.log(value)
             }}
           >
             编辑
@@ -148,7 +148,7 @@ const columns = [
   {
     prop: 'id',
     Header: '操作',
-    Cell: id => {
+    Cell: item => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -205,7 +205,7 @@ const columns = [
   {
     prop: 'id',
     Header: '操作',
-    Cell: id => {
+    Cell: item => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -372,7 +372,7 @@ const data = [
     Header="操作"
     width={202}
     fixed="right"
-    Cell={id => {
+    Cell={item => {
       return (
         <div className="text-center">
           <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
@@ -516,6 +516,7 @@ const columns = [
   {
     prop: 'code',
     Header: '编码',
+    width: 120,
     Cell: item => {
       return <a href="#">{item.code}</a>
     },
