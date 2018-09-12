@@ -6,12 +6,11 @@
 const columns = [
   {
     prop: data => `${data.code.id}`,
-    Header: () =>
-      React.createElement(
-        'span',
-        { id: 'recipe', 'data-type': 'title' },
-        '编码'
-      ),
+    Header: (
+      <span id="recipe" data-type="title">
+        编码
+      </span>
+    ),
   },
   { prop: data => `${data.address.detail.target}`, Header: '地址' },
   { prop: 'num', Header: '金额' },
@@ -26,7 +25,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: 16, color: '#276BF2', height: '18px' }}
             onClick={() => {
               console.log(value)
             }}
@@ -34,7 +33,7 @@ const columns = [
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -101,7 +100,7 @@ const data = [
   },
 ]
 ;<Table data={data}>
-  <TableColumn prop="code" Header={React.createElement('span', {}, '编码')} />
+  <TableColumn prop="code" Header={<span>编码</span>} />
   <TableColumn prop="address" Header="地址" />
   <TableColumn prop="num" Header="金额" />
   <TableColumn prop="phone" Header="电话" />
@@ -117,7 +116,7 @@ const data = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: 16, color: '#276BF2', height: '18px' }}
             onClick={() => {
               console.log(value)
             }}
@@ -125,7 +124,7 @@ const data = [
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -151,11 +150,11 @@ const columns = [
     Cell: item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -208,11 +207,11 @@ const columns = [
     Cell: item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -276,11 +275,11 @@ const columns = [
     Cell: id => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -375,11 +374,11 @@ const data = [
     Cell={item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -415,11 +414,11 @@ const columns = [
     Cell: id => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
           <span style={{ color: '#E1E5EC' }}>|</span>
-          <a href="#" style={{ paddingLeft: '16px', color: '#276BF2' }}>
+          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
         </div>
@@ -466,6 +465,7 @@ class DefaultExample extends React.Component {
       activePage: 1,
     }
   }
+
   handlePage(val) {
     console.log(val)
     this.setState({ activePage: val })
@@ -543,7 +543,7 @@ const columns = [
         <div>
           <a
             href="#"
-            style={{ paddingRight: '16px', color: '#276BF2', height: '18px' }}
+            style={{ paddingRight: 16, color: '#276BF2', height: '18px' }}
             onClick={() => {
               console.log(value, index, current)
             }}

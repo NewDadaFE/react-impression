@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Checkbox from '../Checkbox/index'
+import Checkbox from '../Checkbox'
 
 const defaultWidth = 80
 export default class TableBody extends React.PureComponent {

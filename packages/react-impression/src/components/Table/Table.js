@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import TableBody from '../TableBody/index'
-import TableHead from '../TableHead/index'
-import Pagination from '../Pagination/index'
+import TableBody from '../TableBody'
+import TableHead from '../TableHead'
+import Pagination from '../Pagination'
 
 export default class Table extends React.PureComponent {
   constructor(props, context) {
@@ -387,57 +387,55 @@ export default class Table extends React.PureComponent {
   handleCheckOnSelectAll = () => {
     const { checkAll } = this.state
     const { data } = this.props
-    if (!this.isPuppet) {
-      if (checkAll) {
-        this.setState(
-          {
-            selectedRowKeys: [],
-            checkAll: false,
-            indeterminate: false,
-          },
-          () => {
-            if (
-              this.props.rowSelection &&
-              this.props.rowSelection.onSelectAll
-            ) {
-              const { onSelectAll } = this.props.rowSelection
-              const { checkAll, selectedRowKeys } = this.state
-              onSelectAll(checkAll, selectedRowKeys)
-              data.forEach((item, index) => {
-                this.handleNoSelect(index)
-              })
-            }
+
+    if (!this.isPuppet && checkAll) {
+      this.setState(
+        {
+          selectedRowKeys: [],
+          checkAll: false,
+          indeterminate: false,
+        },
+        () => {
+          if (this.props.rowSelection && this.props.rowSelection.onSelectAll) {
+            const { onSelectAll } = this.props.rowSelection
+            const { checkAll, selectedRowKeys } = this.state
+            onSelectAll(checkAll, selectedRowKeys)
+            data.forEach((item, index) => {
+              this.handleNoSelect(index)
+            })
           }
-        )
-      } else {
-        const list = data.map((item, index) => index)
-        this.setState(
-          {
-            selectedRowKeys: list,
-            checkAll: true,
-            indeterminate: false,
-          },
-          () => {
-            if (
-              this.props.rowSelection &&
-              this.props.rowSelection.onSelectAll
-            ) {
-              const { onSelectAll } = this.props.rowSelection
-              const { selectedRowKeys, checkAll } = this.state
-              onSelectAll(checkAll, selectedRowKeys)
-              data.forEach((item, index) => {
-                this.handleSelected(index)
-              })
-            }
+        }
+      )
+    }
+    if (!this.isPuppet && !checkAll) {
+      const list = data.map((item, index) => index)
+      this.setState(
+        {
+          selectedRowKeys: list,
+          checkAll: true,
+          indeterminate: false,
+        },
+        () => {
+          if (this.props.rowSelection && this.props.rowSelection.onSelectAll) {
+            const { onSelectAll } = this.props.rowSelection
+            const { selectedRowKeys, checkAll } = this.state
+            onSelectAll(checkAll, selectedRowKeys)
+            data.forEach((item, index) => {
+              this.handleSelected(index)
+            })
           }
-        )
-      }
-    } else {
-      if (this.props.rowSelection && this.props.rowSelection.onSelectAll) {
-        const { onSelectAll, selectedRowKeys } = this.props.rowSelection
-        const { checkAll } = this.state
-        onSelectAll(checkAll, selectedRowKeys)
-      }
+        }
+      )
+    }
+
+    if (
+      this.isPuppet &&
+      this.props.rowSelection &&
+      this.props.rowSelection.onSelectAll
+    ) {
+      const { onSelectAll, selectedRowKeys } = this.props.rowSelection
+      const { checkAll } = this.state
+      onSelectAll(checkAll, selectedRowKeys)
     }
   }
   handlePaginationChange = pagNo => {
