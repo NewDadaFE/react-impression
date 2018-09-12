@@ -19,7 +19,7 @@ export default class DatePicker extends React.PureComponent {
     /**
      * 类型
      */
-    type: PropTypes.oneOf(['date', 'month']),
+    type: PropTypes.oneOf(['date', 'month', 'year']),
 
     /**
      * 自定义样式
@@ -93,16 +93,19 @@ export default class DatePicker extends React.PureComponent {
     const weekdays = this.getSortWeekdays()
     const currentMoment = value ? moment(value, format) : moment()
     const checkedDay = value ? moment(value, format) : undefined
-    const years = this.getYears(currentMoment)
     let state = {
       currentMoment,
       days: [],
+      years: [],
       weekdays,
       checkedDay,
-      years,
     }
 
     switch (type) {
+      case 'year':
+        state.format = format || FORMAT.YEAR
+        state.panel = 'year'
+        break
       case 'month':
         state.format = format || FORMAT.YEAR_MONTH
         state.panel = 'month'
@@ -126,15 +129,15 @@ export default class DatePicker extends React.PureComponent {
     firstDayOfWeek: 0,
     yearScope: 5,
     months: [
-      '1月',
-      '2月',
-      '3月',
-      '4月',
-      '5月',
-      '6月',
-      '7月',
-      '8月',
-      '9月',
+      '01月',
+      '02月',
+      '03月',
+      '04月',
+      '05月',
+      '06月',
+      '07月',
+      '08月',
+      '09月',
       '10月',
       '11月',
       '12月',
@@ -158,8 +161,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 获取日期数据
    */
-  getDate(currentMoment) {
-    const { minDate, maxDate } = this.state
+  getDays(currentMoment) {
     const { firstDayOfWeek } = this.props
     const today = moment().format(FORMAT.DATE)
     const prevMonth = moment(currentMoment).subtract(1, 'months')
@@ -168,7 +170,7 @@ export default class DatePicker extends React.PureComponent {
     const currentMonth = currentMoment.format(FORMAT.MONTH)
     const daysLength = currentMoment.daysInMonth()
     let days = []
-
+    // 计算月内的日期
     for (let i = 1; i <= daysLength; i++) {
       const dayFormat = `${currentYear}-${currentMonth}-${i}`
       const dayMoment = moment(dayFormat, FORMAT.DATE)
@@ -178,12 +180,10 @@ export default class DatePicker extends React.PureComponent {
         date: dayMoment,
         inMonth: true,
         isToday: dayMoment.isSame(today),
-        disable:
-          (minDate && dayMoment.isBefore(minDate)) ||
-          (maxDate && dayMoment.isAfter(maxDate)),
+        disable: this.isDisableDate(dayMoment),
       })
     }
-
+    // 补齐上个月后几天
     const firstDay = moment(currentMoment)
       .date(1)
       .day()
@@ -204,12 +204,10 @@ export default class DatePicker extends React.PureComponent {
         text: prevMonthDaysLength - i,
         date: dayMoment,
         isToday: dayMoment.isSame(today),
-        disable:
-          (minDate && dayMoment.isBefore(minDate)) ||
-          (maxDate && dayMoment.isAfter(maxDate)),
+        disable: this.isDisableDate(dayMoment),
       })
     }
-
+    // 补齐下个月前几天
     const lastDay = moment(currentMoment)
       .date(daysLength)
       .day()
@@ -228,9 +226,7 @@ export default class DatePicker extends React.PureComponent {
         text: i,
         date: dayMoment,
         isToday: dayMoment.isSame(today),
-        disable:
-          (minDate && dayMoment.isBefore(minDate)) ||
-          (maxDate && dayMoment.isAfter(maxDate)),
+        disable: this.isDisableDate(dayMoment),
       })
     }
 
@@ -243,56 +239,75 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 根据当前时间获取年份列表
    */
-  getYears(currentMoment) {
+  getYears = currentMoment => {
     const { yearScope } = this.props
     const currentYear = currentMoment.year()
     let years = []
-
-    for (let i = currentYear - yearScope; i <= currentYear + yearScope; i++) {
+    // 一行3个，所以算成3的倍数
+    const yearMaxRange =
+      Math.ceil((yearScope * 2 + 1) / 3) * 3 - yearScope + currentYear
+    for (let i = currentYear - yearScope; i < yearMaxRange; i++) {
       years.push(i)
     }
 
-    return years
+    this.setState({
+      years,
+      currentMoment,
+    })
   }
 
   /**
    * 上个月
    */
   prevMonthHandle = () => {
-    const { currentMoment, panel } = this.state
-
-    this.getDate(moment(currentMoment).subtract(1, 'months'))
-    panel === 'month' && this.resetMonthPanelScroll()
+    this.setState({
+      currentMoment: moment(this.state.currentMoment).subtract(1, 'month'),
+    })
   }
 
   /**
    * 下个月
    */
   nextMonthHandle = () => {
-    const { currentMoment, panel } = this.state
-
-    this.getDate(moment(currentMoment).add(1, 'months'))
-    panel === 'month' && this.resetMonthPanelScroll()
+    this.setState({
+      currentMoment: moment(this.state.currentMoment).add(1, 'month'),
+    })
   }
 
   /**
    * 上一年
    */
   prevYearHandle = () => {
-    const { currentMoment, panel } = this.state
-
-    this.getDate(moment(currentMoment).subtract(1, 'years'))
-    panel === 'month' && this.resetMonthPanelScroll()
+    const { years, panel, currentMoment } = this.state
+    const newMoment = moment(currentMoment).subtract(1, 'years')
+    if (panel === 'day') {
+      this.getDays(newMoment)
+      return
+    }
+    // 选到第一个年份后翻页
+    if (panel === 'year' && newMoment.year() < years[0]) {
+      this.getYears(newMoment)
+      return
+    }
+    this.setState({ currentMoment: newMoment })
   }
 
   /**
    * 下一年
    */
   nextYearHandle = () => {
-    const { currentMoment, panel } = this.state
-
-    this.getDate(moment(currentMoment).add(1, 'years'))
-    panel === 'month' && this.resetMonthPanelScroll()
+    const { years, panel, currentMoment } = this.state
+    const newMoment = moment(currentMoment).add(1, 'years')
+    if (panel === 'day') {
+      this.getDays(newMoment)
+      return
+    }
+    // 选到最后一个年份后翻页
+    if (panel === 'year' && newMoment.year() > years[years.length - 1]) {
+      this.getYears(newMoment)
+      return
+    }
+    this.setState({ currentMoment: newMoment })
   }
 
   /**
@@ -314,54 +329,69 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 选中年份
    */
-  selectYearHandle = year => {
-    const { currentMoment } = this.state
-    const newMoment = moment(currentMoment).year(year)
-
+  selectYearHandle = e => {
+    const { currentMoment, format } = this.state
+    const year = e.currentTarget.dataset.year
+    let newMoment = moment(currentMoment).year(year)
+    if (this.isDisableDate(newMoment)) {
+      return
+    }
+    // 1. 年模式，触发选中
+    const { type, onSelect, onChange } = this.props
+    if (type === 'year') {
+      newMoment = newMoment.format(format)
+      onSelect && onSelect(newMoment)
+      onChange && onChange(newMoment)
+      return
+    }
+    // 2. 非年模式，触发下一级选择
     this.setState({
+      panel: 'month',
       checkedDay: undefined,
       currentMoment: newMoment,
     })
-    this.getDate(newMoment)
   }
 
   /**
    * 选中月份
    */
-  selectMonthHandle = month => {
+  selectMonthHandle = e => {
     const { currentMoment, format } = this.state
-    const { type, onSelect, onChange } = this.props
+    const month = e.currentTarget.dataset.month
     let newMoment = moment(currentMoment).month(month)
-
-    switch (type) {
-      case 'month':
-        newMoment = newMoment.format(format)
-        onSelect && onSelect(newMoment)
-        onChange && onChange(newMoment)
-        break
-      default:
-        this.setState({
-          panel: 'day',
-          checkedDay: undefined,
-          currentMoment: newMoment,
-        })
-        this.getDate(newMoment)
+    if (this.isDisableDate(newMoment)) {
+      return
     }
+    // 1. 月模式，触发选中
+    const { type, onSelect, onChange } = this.props
+    if (type === 'month') {
+      newMoment = newMoment.format(format)
+      onSelect && onSelect(newMoment)
+      onChange && onChange(newMoment)
+      return
+    }
+    // 2. 非月模式，触发下一级选择
+    this.setState(
+      {
+        panel: 'day',
+        checkedDay: undefined,
+      },
+      () => {
+        this.getDays(newMoment)
+      }
+    )
   }
 
   /**
    * 今天
    */
   selectTodayHandle = () => {
-    const { onSelect, onChange, minDate, maxDate } = this.props
+    const { onSelect, onChange } = this.props
     const { checkedDay, format } = this.state
     const today = moment(moment().format(FORMAT.DATE))
     const dayFormat = today.format(format)
 
-    if (
-      (minDate && today.isBefore(minDate)) ||
-      (maxDate && today.isAfter(maxDate))
-    ) {
+    if (this.isDisableDate(today)) {
       return
     }
 
@@ -374,56 +404,55 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 显示年月选择面板
+   * 切换年月日选择面板
    */
-  showMonthPanelHandle = () => {
-    const { panel } = this.state
-    const { type } = this.props
-
-    type === 'date' &&
-      this.setState({
-        panel: panel === 'month' ? 'day' : 'month',
-      })
+  switchPanelHandle = () => {
+    this.setState(
+      {
+        panel: this.state.panel === 'day' ? 'month' : 'year',
+      },
+      () => {
+        const { panel, currentMoment } = this.state
+        panel === 'year' && this.getYears(currentMoment)
+      }
+    )
   }
 
-  /**
-   * 更正month面板滚动条位置
-   */
-  componentDidUpdate() {
-    const { type } = this.props
-    const { _yeargroup } = this.refs
-
-    type === 'date' &&
-      _yeargroup &&
-      _yeargroup.scrollTop === 0 &&
-      this.resetMonthPanelScroll()
-  }
-
-  /**
-   * 修改month面板的滚动条位置.
-   */
-  resetMonthPanelScroll = () => {
-    const { _yeargroup, _monthgroup } = this.refs
-
-    if (!this._activeYear || !this._activeMonth) {
-      return true
+  getPickerTitle = () => {
+    const { panel, years, currentMoment } = this.state
+    const currentYear = currentMoment.format(FORMAT.YEAR)
+    const currentMonth = currentMoment.format(FORMAT.MONTH)
+    if (panel === 'year' && years.length) {
+      return `${years[0]}~${years[years.length - 1]}`
     }
+    if (panel === 'month') {
+      return `${currentYear}年`
+    }
+    if (panel === 'day') {
+      return `${currentYear}年${currentMonth}月`
+    }
+    return '请选择'
+  }
 
-    const yearHeight = this._activeYear.getBoundingClientRect().height
-    const monthHeight = this._activeMonth.getBoundingClientRect().height
+  isDisableDate = date => {
+    const { minDate, maxDate } = this.state
+    const dayMoment = moment(date, FORMAT.DATE)
 
-    this._yeargroupScrollTop = _yeargroup.scrollTop =
-      this._activeYear.offsetTop - _yeargroup.offsetTop - yearHeight * 2
-    _monthgroup.scrollTop =
-      this._activeMonth.offsetTop - _monthgroup.offsetTop - monthHeight * 2
-
-    return true
+    return (
+      (minDate && dayMoment.isBefore(minDate)) ||
+      (maxDate && dayMoment.isAfter(maxDate))
+    )
   }
 
   componentDidMount() {
-    const { currentMoment } = this.state
-
-    this.getDate(currentMoment)
+    const { currentMoment, panel } = this.state
+    if (panel === 'day') {
+      this.getDays(currentMoment)
+      return
+    }
+    if (panel === 'year') {
+      this.getYears(currentMoment)
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -433,44 +462,6 @@ export default class DatePicker extends React.PureComponent {
     this.setState({
       checkedDay: value ? moment(value, format) : undefined,
     })
-  }
-
-  /**
-   * 无限获取年份.
-   */
-  scrollYearHandle = event => {
-    if (!this._activeYear) {
-      return
-    }
-
-    const { years } = this.state
-    const container = event.target
-    const yearHeight = this._activeYear.getBoundingClientRect().height
-    const point = container.getBoundingClientRect().height + yearHeight
-
-    if (this._yeargroupScrollTop > container.scrollTop) {
-      this._yeargroupScrollTop = container.scrollTop
-      if (container.scrollTop < yearHeight) {
-        let prevYear = years[0] - 1
-
-        this.setState({
-          years: [prevYear, ...years],
-        })
-        container.scrollTop =
-          container.scrollTop === 0
-            ? yearHeight
-            : container.scrollTop + yearHeight
-      }
-    } else if (this._yeargroupScrollTop < container.scrollTop) {
-      this._yeargroupScrollTop = container.scrollTop
-      if (container.scrollHeight - container.scrollTop < point) {
-        let nextYear = years[years.length - 1] + 1
-
-        this.setState({
-          years: [...years, nextYear],
-        })
-      }
-    }
   }
 
   render() {
@@ -487,35 +478,41 @@ export default class DatePicker extends React.PureComponent {
     const currentMonth = currentMoment.format(FORMAT.MONTH)
 
     return (
-      <div
-        className={classnames('datepicker', className)}
-        onAnimationEnd={this.resetMonthPanelScroll}
-      >
+      <div className={classnames('datepicker', className)}>
         <div className='datepicker-header'>
-          <i
-            className='fa datepicker-header-btn fa-angle-double-left'
-            onClick={this.prevYearHandle}
-          />
-          <i
-            className='fa datepicker-header-btn fa-angle-left datepicker-month-btn'
-            onClick={this.prevMonthHandle}
-          />
+          {panel !== 'month' && (
+            <i
+              className='fa datepicker-header-btn fa-angle-double-left'
+              onClick={this.prevYearHandle}
+            />
+          )}
+          {panel !== 'year' && (
+            <i
+              className='fa datepicker-header-btn fa-angle-left datepicker-month-btn'
+              onClick={this.prevMonthHandle}
+            />
+          )}
           <div
-            className='datepicker-caption'
-            onClick={this.showMonthPanelHandle}
+            className={classnames('datepicker-caption', {
+              disable: panel === 'year',
+            })}
+            onClick={this.switchPanelHandle}
           >
-            {currentYear}年{currentMonth}月
+            {this.getPickerTitle()}
           </div>
-          <i
-            className='fa datepicker-header-btn fa-angle-right datepicker-month-btn'
-            onClick={this.nextMonthHandle}
-          />
-          <i
-            className='fa datepicker-header-btn fa-angle-double-right'
-            onClick={this.nextYearHandle}
-          />
+          {panel !== 'year' && (
+            <i
+              className='fa datepicker-header-btn fa-angle-right datepicker-month-btn'
+              onClick={this.nextMonthHandle}
+            />
+          )}
+          {panel !== 'month' && (
+            <i
+              className='fa datepicker-header-btn fa-angle-double-right'
+              onClick={this.nextYearHandle}
+            />
+          )}
         </div>
-
         {panel === 'day' && (
           <div className='datepicker-body'>
             <div className='datepicker-weekgroup'>
@@ -530,10 +527,10 @@ export default class DatePicker extends React.PureComponent {
                 <div
                   key={`${text}-${inMonth}`}
                   onClick={() => !disable && this.selectDateHandle(date)}
-                  className='datepicker-daygroup-item'
+                  className='datepicker-item datepicker-daygroup-item'
                 >
                   <div
-                    className={classnames('datepicker-daygroup-item-text', {
+                    className={classnames('datepicker-item-text', {
                       disable,
                       now: isToday,
                       active: date.isSame(checkedDay),
@@ -548,51 +545,56 @@ export default class DatePicker extends React.PureComponent {
         )}
         {panel === 'month' && (
           <div className='datepicker-body'>
-            <div
-              className='datepicker-yeargroup'
-              ref='_yeargroup'
-              onScroll={this.scrollYearHandle}
-            >
-              {years.map(year => (
-                <div
-                  key={year}
-                  onClick={() => this.selectYearHandle(year)}
-                  ref={dom =>
-                    Number(year) === Number(currentYear) &&
-                    (this._activeYear = dom)
-                  }
-                  className={classnames('datepicker-yeargroup-item', {
-                    active: Number(year) === Number(currentYear),
-                  })}
-                >
-                  {year}
-                </div>
-              ))}
-            </div>
             <div className='datepicker-monthgroup' ref='_monthgroup'>
               {months.map((month, index) => (
                 <div
                   key={month}
-                  onClick={() => this.selectMonthHandle(index)}
-                  ref={dom =>
-                    index === currentMonth - 1 && (this._activeMonth = dom)
-                  }
-                  className={classnames('datepicker-monthgroup-item', {
-                    active: index === currentMonth - 1,
-                  })}
+                  className='datepicker-item datepicker-monthgroup-item'
+                  data-month={index}
+                  onClick={this.selectMonthHandle}
                 >
-                  {month}
+                  <div
+                    className={classnames('datepicker-item-text', {
+                      active: index === currentMonth - 1,
+                      disable: this.isDisableDate(
+                        `${currentYear}-${index + 1}`
+                      ),
+                    })}
+                  >
+                    {month}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {panel === 'year' && (
+          <div className='datepicker-body'>
+            <div className='datepicker-yeargroup'>
+              {years.map(year => (
+                <div
+                  key={year}
+                  className='datepicker-item datepicker-yeargroup-item'
+                  data-year={year}
+                  onClick={this.selectYearHandle}
+                >
+                  <div
+                    className={classnames('datepicker-item-text', {
+                      active: Number(year) === Number(currentYear),
+                      disable: this.isDisableDate(year),
+                    })}
+                  >
+                    {year}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         )}
         {showToday &&
-          panel !== 'month' && (
-          <div className='datepicker-footer'>
-            <a href='javascript:void(0);' onClick={this.selectTodayHandle}>
-              {todayText}
-            </a>
+          panel === 'day' && (
+          <div className='datepicker-footer' onClick={this.selectTodayHandle}>
+            {todayText}
           </div>
         )}
       </div>

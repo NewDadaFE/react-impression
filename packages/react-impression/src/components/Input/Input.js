@@ -36,6 +36,7 @@ export default class Input extends React.PureComponent {
       'date',
       'emaile',
       'month',
+      'year',
       'search',
       'textarea',
     ]),
@@ -164,17 +165,18 @@ export default class Input extends React.PureComponent {
   }
 
   /**
-   *清空输入框
+   * 清空时间类型的输入框
    * @memberof Input
    */
-  clearInputHandle = () => {
-    let { disabled } = this.props
+  clearDateInputHandle = () => {
+    let { disabled, onChange } = this.props
 
     if (disabled) {
       return
     }
 
     this.refMain && (this.refMain.value = '')
+    onChange && onChange('')
   }
 
   /**
@@ -244,6 +246,7 @@ export default class Input extends React.PureComponent {
     switch (type) {
       case 'date':
       case 'month':
+      case 'year':
         return (
           <div
             className={classnames('input', className)}
@@ -265,7 +268,6 @@ export default class Input extends React.PureComponent {
               readOnly
               disabled={disabled}
               placeholder={placeholder}
-              onChange={event => onChange && onChange(event, defaultValue)}
               onClick={this.showOptionHandle}
               style={style}
             />
@@ -274,7 +276,7 @@ export default class Input extends React.PureComponent {
               showClear && (
               <i
                 className='fa fa-times input-addon'
-                onClick={this.clearInputHandle}
+                onClick={this.clearDateInputHandle}
               />
             )}
 
