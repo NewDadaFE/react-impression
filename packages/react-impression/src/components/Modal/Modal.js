@@ -1,9 +1,12 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Portal } from 'react-portal'
 import ModalHeader from '../ModalHeader'
 import ModalBody from '../ModalBody'
 import ModalFooter from '../ModalFooter'
+
+const KEYCODE_ESCAPE = 27
 
 class Modal extends React.Component {
   static propTypes = {
@@ -26,53 +29,127 @@ class Modal extends React.Component {
      * Modal是否内部滚动
      */
     scrollInside: PropTypes.bool,
+
+    /**
+     * 是否支持键盘esc关闭
+     */
+    closeOnEsc: PropTypes.bool,
+
+    /**
+     * 是否支持点击mask关闭
+     */
+    closeOnOutsideClick: PropTypes.bool,
+
+    /**
+     * 关闭modal的触发函数
+     */
+    onClose: PropTypes.func,
+
+    /**
+     * modal显示与否
+     */
+    isOpen: PropTypes.bool,
   }
 
   static defaultProps = {
     scrollInside: false,
+    isOpen: false,
+    closeOnEsc: true,
+    closeOnOutsideClick: true,
+    onClose: () => {},
   }
 
-  componentDidMount() {
-    this.disableScroll()
+  componentDidUpdate(prevProps, prevState) {
+    const { isOpen, closeOnEsc } = this.props
+
+    if (prevProps.isOpen !== isOpen) {
+      if (isOpen) {
+        this.disableScroll()
+        if (closeOnEsc) {
+          this.addKeydownListener()
+        }
+      } else {
+        this.enableScroll()
+        if (closeOnEsc) {
+          this.removeKeydownListener()
+        }
+      }
+    }
   }
 
   componentWillUnmount() {
+    if (this.props.closeOnEsc) {
+      this.removeKeydownListener()
+    }
     this.enableScroll()
   }
 
-  disableScroll() {
-    const documentBody = document.body
+  addKeydownListener = () => {
+    document.addEventListener('keydown', this.handleKeydown)
+  }
 
-    if (documentBody) {
-      documentBody.style.setProperty('overflow', 'hidden')
-    }
+  removeKeydownListener = () => {
+    document.removeEventListener('keydown', this.handleKeydown)
+  }
+
+  disableScroll() {
+    document.body.style.setProperty('overflow', 'hidden')
   }
 
   enableScroll() {
-    const documentBody = document.body
+    document.body.style.removeProperty('overflow')
+  }
 
-    if (documentBody) {
-      documentBody.style.removeProperty('overflow')
+  handleStopPropagation = e => {
+    e.stopPropagation()
+  }
+
+  handleModalMaskClick = () => {
+    const { closeOnOutsideClick, onClose } = this.props
+    if (!closeOnOutsideClick) return
+    onClose()
+  }
+
+  handleKeydown = e => {
+    const { closeOnEsc, onClose } = this.props
+    if (!closeOnEsc) return
+    if (e.keyCode === KEYCODE_ESCAPE) {
+      onClose()
     }
   }
 
+  get modalStyle() {
+    const { style, isOpen } = this.props
+    const showStyle = !isOpen
+      ? {
+        display: 'none',
+      }
+      : {}
+
+    return Object.assign({}, style, showStyle)
+  }
+
   render() {
-    const { size, className, children, scrollInside, ...others } = this.props
+    const { size, className, children, scrollInside } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     return (
-      <div
-        {...others}
-        className={classnames(
-          'modal',
-          { 'limit-height': scrollInside },
-          className
-        )}
-      >
-        <div className={classnames('modal-dialog', sizeClass)}>
-          <div className='modal-content slideInDown'>{children}</div>
+      <Portal>
+        <div
+          style={this.modalStyle}
+          onClick={this.handleModalMaskClick}
+          className={classnames('modal', className, {
+            'limit-height': scrollInside,
+          })}
+        >
+          <div
+            className={classnames('modal-dialog', sizeClass)}
+            onClick={this.handleStopPropagation}
+          >
+            <div className='modal-content slideInDown'>{children}</div>
+          </div>
         </div>
-      </div>
+      </Portal>
     )
   }
 }
