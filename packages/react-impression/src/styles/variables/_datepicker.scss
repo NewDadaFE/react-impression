@@ -2,7 +2,9 @@
 $datepicker-bg: $brand-pure !default;
 $datepicker-border: 1px solid $border-color !default;
 $datepicker-font-size: rem(14px) !default;
-$datepicker-box-shadow: 0 2px 8px $inverse-level-2 !default;
+$datepicker-box-shadow: 0 2px 10px 0 rgba($gray-base, .1) !default;
+$datepicker-padding-top: rem(9px) !default;
+$datepicker-offset-top: rem(10px) !default;
 
 $datepicker-header-padding: 0 rem(11px) !default;
 
@@ -14,7 +16,8 @@ $datepicker-header-btn-hover-color: $brand-primary !default;
 
 $datepicker-body-padding: 0 rem(9px) rem(9px) !default;
 
-$datepicker-caption-padding: rem(14px) 0 rem(15px) !default;
+$datepicker-caption-padding: rem(15px) 0 !default;
+$datepicker-caption-line-height: rem(20.5px) !default;
 $datepicker-caption-hover-color: $brand-primary !default;
 
 $datepicker-weekgroup-item-size: rem(40px) !default;
@@ -23,6 +26,9 @@ $datepicker-item-active-bg: $brand-primary !default;
 $datepicker-item-active-color: $brand-pure !default;
 $datepicker-item-disable-color: $gray !default;
 $datepicker-item-disable-bg: $brand-pure !default;
+
+$datepicker-item-dot-size: rem(4px) !default;
+$datepicker-item-dot-bottom: rem(3px) !default;
 // 日
 $datepicker-daygroup-width: rem(280px)!default;
 $datepicker-daygroup-item-width: rem(36px) !default;
