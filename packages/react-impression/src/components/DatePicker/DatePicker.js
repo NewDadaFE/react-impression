@@ -260,8 +260,15 @@ export default class DatePicker extends React.PureComponent {
    * 上个月
    */
   prevMonthHandle = () => {
+    const { panel, currentMoment } = this.state
+    const newMoment = moment(currentMoment).subtract(1, 'month')
+
+    if (panel === 'day') {
+      this.getDays(newMoment)
+      return
+    }
     this.setState({
-      currentMoment: moment(this.state.currentMoment).subtract(1, 'month'),
+      currentMoment: newMoment,
     })
   }
 
@@ -269,8 +276,15 @@ export default class DatePicker extends React.PureComponent {
    * 下个月
    */
   nextMonthHandle = () => {
+    const { panel, currentMoment } = this.state
+    const newMoment = moment(currentMoment).add(1, 'month')
+
+    if (panel === 'day') {
+      this.getDays(newMoment)
+      return
+    }
     this.setState({
-      currentMoment: moment(this.state.currentMoment).add(1, 'month'),
+      currentMoment: newMoment,
     })
   }
 
