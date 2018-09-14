@@ -64,18 +64,16 @@ export default class TableHead extends React.PureComponent {
   }
 
   renderHeader = (array, type) => {
-    // const { fixed } = this.props
     return array.map((column, index) => {
       const { Header, width, fixed } = column
       let colWidth
-      let className
       if (!type && !fixed) {
         colWidth = width || ''
       } else {
         colWidth = width || defaultWidth
       }
       let content
-      if (Header && typeof Header === 'function') {
+      if (typeof Header === 'function') {
         content = Header(column)
       } else if (React.isValidElement(Header)) {
         content = React.cloneElement(Header)
