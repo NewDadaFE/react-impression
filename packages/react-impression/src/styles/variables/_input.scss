@@ -30,10 +30,11 @@ $input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-pa
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)) !default;
 
 $form-group-label-color:                    $gray-base !default;
-$form-group-margin-bottom:                  $spacer-y !default;
+$form-group-margin-bottom:                  rem(20px) !default;
 $form-group-inline-margin-bottom:           rem(28px) !default;
 $form-group-inline-label-margin-bottom:     rem(14px) !default;
 $form-group-inline-btn-margin-left:         rem(30px) !default;
+$form-group-inline-component-line-height:   40px !default;
 
 $input-group-addon-bg:                      $brand-pure !default;
 $input-group-addon-color:                   $gray !default;
