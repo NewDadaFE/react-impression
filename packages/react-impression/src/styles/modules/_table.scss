@@ -1,0 +1,193 @@
+.table {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 0;
+  .checkbox-addon {
+    background: transparent;
+  }
+  th {
+    white-space: nowrap;
+    overflow: hidden;
+    user-select: none;
+    text-align: center;
+    background-color: #fff;
+
+    color: $table-header-color;
+    // line-height: $table-header-line-height;
+    font-weight: 400;
+  }
+  tr {
+    transition: all 0.3s;
+  }
+  td {
+    word-break: break-all;
+    // line-height: $table-header-line-height;
+  }
+}
+.table-header {
+  border-bottom: $table-header-border;
+  .table-cell {
+    padding: $table-header-padding;
+    &.table-cell-select {
+      padding: 0;
+    }
+  }
+}
+.table-body {
+  color: $table-body-color;
+  .table-cell {
+    padding: $table-body-padding;
+    &.table-cell-select {
+      padding: 0;
+    }
+  }
+}
+.table-header,
+.table-body {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: separate;
+  font-size: rem(14px);
+}
+.table-cell {
+  // display: inline-block;
+  // line-height: $table-header-line-height;
+}
+.table-cell-tooltip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.table-tr {
+  &:hover {
+    background: $table-body-hover-bg-color;
+    input {
+      background: $table-body-hover-bg-color;
+    }
+  }
+  &.table-striped {
+    background: $table-spried-background;
+    &:hover {
+      background: $table-body-hover-bg-color;
+      input {
+        background: $table-body-hover-bg-color;
+      }
+    }
+    input {
+      background: $table-spried-background;
+    }
+  }
+  &.is-hover {
+    background: $table-body-hover-bg-color;
+    input {
+      background: $table-body-hover-bg-color;
+    }
+  }
+  &.is-selected {
+    background: $table-body-hover-bg-color;
+    input {
+      background: $table-body-hover-bg-color;
+    }
+  }
+}
+.table-wrap {
+  width: 100%;
+  border-top: $table-header-border;
+  &.table-border {
+    border-left: $table-header-border;
+    border-right: $table-header-border;
+    th {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    td {
+      border-right: $table-header-border;
+      border-bottom: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+  &.table-scroll {
+    overflow: auto;
+  }
+}
+.table-fixed-left {
+  &.table-border {
+    border-left: $table-header-border;
+  }
+}
+.table-fixed-right {
+  &.table-border {
+    border-right: $table-header-border;
+  }
+}
+.table-fixed-left {
+  position: absolute;
+  top: rem(1px);
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  .item-fix-normal {
+    visibility: hidden;
+  }
+  .item-fix-right {
+    visibility: hidden;
+  }
+  &.table-shadow {
+    box-shadow: $table-fix-left-shadow;
+  }
+  &.table-border {
+    th {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    td {
+      border-right: $table-header-border;
+      border-bottom: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+.table-fixed-right {
+  position: absolute;
+  top: rem(1px);
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  .item-fix-normal {
+    visibility: hidden;
+  }
+  .item-fix-right {
+    visibility: hidden;
+  }
+  &.table-shadow {
+    box-shadow: $table-fix-right-shadow;
+  }
+  &.table-border {
+    th {
+      border-right: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    td {
+      border-right: $table-header-border;
+      border-bottom: $table-header-border;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+.table-pagination {
+  margin-top: $table-pagination-margin-top;
+}
