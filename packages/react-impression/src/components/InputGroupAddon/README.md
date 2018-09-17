@@ -6,21 +6,27 @@
 <Row>
   <Col>
     <InputGroup>
-      <InputGroupButton theme="default">帮助</InputGroupButton>
+      <InputGroupAddon>@</InputGroupAddon>
       <InputGroupInput placeholder="请输入内容" />
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
       <InputGroupInput placeholder="请输入内容" />
-      <InputGroupButton theme="primary">搜索</InputGroupButton>
+      <InputGroupAddon>@</InputGroupAddon>
     </InputGroup>
   </Col>
   <Col>
     <InputGroup>
-      <InputGroupButton theme="default">-</InputGroupButton>
+      <InputGroupAddon>@</InputGroupAddon>
       <InputGroupInput placeholder="请输入内容" />
-      <InputGroupButton theme="default">+</InputGroupButton>
+      <InputGroupAddon>@</InputGroupAddon>
+    </InputGroup>
+  </Col>
+  <Col>
+    <InputGroup>
+      <InputGroupAddon pure>+86</InputGroupAddon>
+      <InputGroupInput placeholder="请输入电话" />
     </InputGroup>
   </Col>
 </Row>
