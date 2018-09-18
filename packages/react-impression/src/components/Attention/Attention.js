@@ -62,19 +62,25 @@ export default class Attention extends React.PureComponent {
     const hiddenClass = this.state.show ? '' : 'hidden'
 
     return (
-      <div
-        {...others}
-        className={classnames('attention', themeClass, hiddenClass, className)}
-      >
-        <div className='attention-header'>
-          <i className={classnames(this.getTitleIcon(theme))} />
-        </div>
-        <div className='attention-body'>{children}</div>
-        {closeable && (
-          <div className='attention-close' onClick={this.hideHandle}>
-            关闭
+      <div {...others} className='attention'>
+        <div
+          className={classnames(
+            'attention-inner',
+            themeClass,
+            hiddenClass,
+            className
+          )}
+        >
+          <div className='attention-header'>
+            <i className={classnames(this.getTitleIcon(theme))} />
           </div>
-        )}
+          <div className='attention-body'>{children}</div>
+          {closeable && (
+            <div className='attention-close' onClick={this.hideHandle}>
+              关闭
+            </div>
+          )}
+        </div>
       </div>
     )
   }
