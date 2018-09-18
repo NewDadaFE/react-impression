@@ -57,8 +57,8 @@
         <h4 style={{ color: '#132240' }}>居左</h4>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <div style={{ display: 'inline-block', margin: '10px 0' }}>
-          <a href="javascript:void(0);">链接</a>
-          <a href="javascript:void(0);" className="offset-l">
+          <a href="#">链接</a>
+          <a href="#" className="offset-l">
             另一个链接
           </a>
         </div>
@@ -72,8 +72,8 @@
         <h4 style={{ color: '#132240' }}>居中</h4>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <div style={{ display: 'inline-block', margin: '10px 0' }}>
-          <a href="javascript:void(0);">链接</a>
-          <a href="javascript:void(0);" className="offset-l">
+          <a href="#">链接</a>
+          <a href="#" className="offset-l">
             另一个链接
           </a>
         </div>
@@ -87,8 +87,8 @@
         <h4 style={{ color: '#132240' }}>居右</h4>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <div style={{ display: 'inline-block', margin: '10px 0' }}>
-          <a href="javascript:void(0);">链接</a>
-          <a href="javascript:void(0);" className="offset-l">
+          <a href="#">链接</a>
+          <a href="#" className="offset-l">
             另一个链接
           </a>
         </div>
