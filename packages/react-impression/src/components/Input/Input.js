@@ -104,7 +104,7 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   getValue() {
-    let { type } = this.props
+    const { type } = this.props
 
     switch (type) {
       case 'file':
@@ -120,7 +120,7 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   setValue(value) {
-    let { type } = this.props
+    const { type } = this.props
 
     switch (type) {
       case 'file':
@@ -139,7 +139,7 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   showOptionHandle = () => {
-    let { disabled } = this.props
+    const { disabled } = this.props
 
     !disabled &&
       this.setState({
@@ -169,7 +169,7 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   clearDateInputHandle = () => {
-    let { disabled, onChange } = this.props
+    const { disabled, onChange } = this.props
 
     if (disabled) {
       return

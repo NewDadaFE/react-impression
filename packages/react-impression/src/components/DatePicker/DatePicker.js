@@ -93,7 +93,7 @@ export default class DatePicker extends React.PureComponent {
     const weekdays = this.getSortWeekdays()
     const currentMoment = value ? moment(value, format) : moment()
     const checkedDay = value ? moment(value, format) : undefined
-    let state = {
+    const state = {
       currentMoment,
       days: [],
       years: [],
@@ -169,7 +169,7 @@ export default class DatePicker extends React.PureComponent {
     const currentYear = currentMoment.format(FORMAT.YEAR)
     const currentMonth = currentMoment.format(FORMAT.MONTH)
     const daysLength = currentMoment.daysInMonth()
-    let days = []
+    const days = []
     // 计算月内的日期
     for (let i = 1; i <= daysLength; i++) {
       const dayFormat = `${currentYear}-${currentMonth}-${i}`
@@ -242,7 +242,7 @@ export default class DatePicker extends React.PureComponent {
   getYears = currentMoment => {
     const { yearScope } = this.props
     const currentYear = currentMoment.year()
-    let years = []
+    const years = []
     // 一行3个，所以算成3的倍数
     const yearMaxRange =
       Math.ceil((yearScope * 2 + 1) / 3) * 3 - yearScope + currentYear
@@ -259,7 +259,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 上个月
    */
-  prevMonthHandle = () => {
+  handlePrevMonth = () => {
     const { panel, currentMoment } = this.state
     const newMoment = moment(currentMoment).subtract(1, 'month')
 
@@ -275,7 +275,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 下个月
    */
-  nextMonthHandle = () => {
+  handleNextMonth = () => {
     const { panel, currentMoment } = this.state
     const newMoment = moment(currentMoment).add(1, 'month')
 
@@ -291,7 +291,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 上一年
    */
-  prevYearHandle = () => {
+  handlePrevYear = () => {
     const { years, panel, currentMoment } = this.state
     const newMoment = moment(currentMoment).subtract(1, 'years')
     if (panel === 'day') {
@@ -309,7 +309,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 下一年
    */
-  nextYearHandle = () => {
+  handleNextYear = () => {
     const { years, panel, currentMoment } = this.state
     const newMoment = moment(currentMoment).add(1, 'years')
     if (panel === 'day') {
@@ -327,7 +327,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 选中时间
    */
-  selectDateHandle = day => {
+  handleSelectDate = day => {
     const { onSelect, onChange } = this.props
     const { checkedDay, format } = this.state
     const dayFormat = day.format(format)
@@ -343,7 +343,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 选中年份
    */
-  selectYearHandle = e => {
+  handleSelectYear = e => {
     const { currentMoment, format } = this.state
     const year = e.currentTarget.dataset.year
     let newMoment = moment(currentMoment).year(year)
@@ -369,7 +369,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 选中月份
    */
-  selectMonthHandle = e => {
+  handleSelectMonth = e => {
     const { currentMoment, format } = this.state
     const month = e.currentTarget.dataset.month
     let newMoment = moment(currentMoment).month(month)
@@ -399,7 +399,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 今天
    */
-  selectTodayHandle = () => {
+  handleSelectToday = () => {
     const { onSelect, onChange } = this.props
     const { checkedDay, format } = this.state
     const today = moment(moment().format(FORMAT.DATE))
@@ -420,7 +420,7 @@ export default class DatePicker extends React.PureComponent {
   /**
    * 切换年月日选择面板
    */
-  switchPanelHandle = () => {
+  handleSwitchPanel = () => {
     this.setState(
       {
         panel: this.state.panel === 'day' ? 'month' : 'year',
@@ -497,33 +497,33 @@ export default class DatePicker extends React.PureComponent {
           {panel !== 'month' && (
             <i
               className='fa datepicker-header-btn fa-angle-double-left'
-              onClick={this.prevYearHandle}
+              onClick={this.handlePrevYear}
             />
           )}
           {panel !== 'year' && (
             <i
               className='fa datepicker-header-btn fa-angle-left datepicker-month-btn'
-              onClick={this.prevMonthHandle}
+              onClick={this.handlePrevMonth}
             />
           )}
           <div
             className={classnames('datepicker-caption', {
               disable: panel === 'year',
             })}
-            onClick={this.switchPanelHandle}
+            onClick={this.handleSwitchPanel}
           >
             {this.getPickerTitle()}
           </div>
           {panel !== 'year' && (
             <i
               className='fa datepicker-header-btn fa-angle-right datepicker-month-btn'
-              onClick={this.nextMonthHandle}
+              onClick={this.handleNextMonth}
             />
           )}
           {panel !== 'month' && (
             <i
               className='fa datepicker-header-btn fa-angle-double-right'
-              onClick={this.nextYearHandle}
+              onClick={this.handleNextYear}
             />
           )}
         </div>
@@ -540,7 +540,7 @@ export default class DatePicker extends React.PureComponent {
               {days.map(({ text, date, isToday, inMonth, disable }) => (
                 <div
                   key={`${text}-${inMonth}`}
-                  onClick={() => !disable && this.selectDateHandle(date)}
+                  onClick={() => !disable && this.handleSelectDate(date)}
                   className='datepicker-item datepicker-daygroup-item'
                 >
                   <div
@@ -565,7 +565,7 @@ export default class DatePicker extends React.PureComponent {
                   key={month}
                   className='datepicker-item datepicker-monthgroup-item'
                   data-month={index}
-                  onClick={this.selectMonthHandle}
+                  onClick={this.handleSelectMonth}
                 >
                   <div
                     className={classnames('datepicker-item-text', {
@@ -590,7 +590,7 @@ export default class DatePicker extends React.PureComponent {
                   key={year}
                   className='datepicker-item datepicker-yeargroup-item'
                   data-year={year}
-                  onClick={this.selectYearHandle}
+                  onClick={this.handleSelectYear}
                 >
                   <div
                     className={classnames('datepicker-item-text', {
@@ -607,7 +607,7 @@ export default class DatePicker extends React.PureComponent {
         )}
         {showToday &&
           panel === 'day' && (
-          <div className='datepicker-footer' onClick={this.selectTodayHandle}>
+          <div className='datepicker-footer' onClick={this.handleSelectToday}>
             {todayText}
           </div>
         )}
