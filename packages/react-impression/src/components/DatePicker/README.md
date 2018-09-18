@@ -102,12 +102,21 @@
 ```js
 <Row>
   <Col>
-    <Form>
-      <FormGroup>
-        <label>年月:</label>
-        <Input type="month" />
-      </FormGroup>
-    </Form>
+    <Input type="month" />
   </Col>
 </Row>
 ```
+
+**年份选择**
+
+```js
+<Row>
+  <Col>
+    <Input type="year" defaultValue="2018" minDate="2014" maxDate="2019" />
+  </Col>
+</Row>
+```
+
+### 变更记录
+
+* 新增 type 属性`year`值，支持选择年份
