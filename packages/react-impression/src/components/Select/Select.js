@@ -113,21 +113,11 @@ export default class Select extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { children } = this.props
     let optionList = []
-    if (children) {
-      children.forEach(child => {
+    if (Array.isArray(this.props.children)) {
+      this.props.children.forEach(child => {
         const { value, children } = child.props
-        if (
-          (value || value === 0) &&
-          JSON.stringify(typeof children) !== 'object'
-        ) {
-          optionList.push({
-            name: children,
-            value,
-          })
-        }
-        if (children instanceof Array) {
+        if (Array.isArray(children)) {
           children.forEach(item => {
             const { value, children } = item.props
             optionList.push({
@@ -135,8 +125,29 @@ export default class Select extends React.PureComponent {
               value,
             })
           })
+        } else {
+          optionList.push({
+            name: children,
+            value,
+          })
         }
       })
+    } else {
+      const { value, children } = this.props.children.props
+      if (Array.isArray(children)) {
+        children.forEach(item => {
+          const { value, children } = item.props
+          optionList.push({
+            name: children,
+            value,
+          })
+        })
+      } else {
+        optionList.push({
+          name: children,
+          value,
+        })
+      }
     }
     this.setState({ optionList }, this.handleValueChange)
   }
@@ -185,7 +196,7 @@ export default class Select extends React.PureComponent {
           const item = optionList.find(option => {
             return option.value === val
           })
-          selectList.push(item)
+          item && selectList.push(item)
         })
       if (!this.isPuppet) {
         dataToSet = {
