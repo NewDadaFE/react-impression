@@ -30,21 +30,27 @@
 **尺寸**
 
 ```js
-<ButtonToolbar>
-  <ButtonGroup size="lg">
-    <Button eventKey="1">1</Button>
-    <Button eventKey="2">2</Button>
-    <Button eventKey="3">3</Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button eventKey="4">4</Button>
-    <Button eventKey="5">5</Button>
-    <Button eventKey="6">6</Button>
-  </ButtonGroup>
-  <ButtonGroup size="sm">
-    <Button eventKey="7">7</Button>
-    <Button eventKey="8">8</Button>
-    <Button eventKey="9">9</Button>
-  </ButtonGroup>
-</ButtonToolbar>
+<div>
+  <div className="offset-b">
+    <ButtonGroup size="lg">
+      <Button eventKey="1">1</Button>
+      <Button eventKey="2">2</Button>
+      <Button eventKey="3">3</Button>
+    </ButtonGroup>
+  </div>
+  <div className="offset-b">
+    <ButtonGroup>
+      <Button eventKey="4">4</Button>
+      <Button eventKey="5">5</Button>
+      <Button eventKey="6">6</Button>
+    </ButtonGroup>
+  </div>
+  <div>
+    <ButtonGroup size="sm">
+      <Button eventKey="7">7</Button>
+      <Button eventKey="8">8</Button>
+      <Button eventKey="9">9</Button>
+    </ButtonGroup>
+  </div>
+</div>
 ```

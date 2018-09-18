@@ -20,7 +20,7 @@ class ModalExample extends React.Component {
           <Form>
             <FormGroup>
               <label>基础:</label>
-              <Input type="text" />
+              <Input type="text" style={{ width: 224 }} />
             </FormGroup>
           </Form>
         </Col>
@@ -28,7 +28,12 @@ class ModalExample extends React.Component {
           <Form>
             <FormGroup>
               <label>可清除:</label>
-              <Input type="text" ref="clearInput" defaultValue="内容">
+              <Input
+                type="text"
+                ref="clearInput"
+                defaultValue="内容"
+                style={{ width: 224 }}
+              >
                 <Icon type="times" onClick={this.clearInputHandle} />
               </Input>
             </FormGroup>
@@ -49,7 +54,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>基础:</label>
-        <Input type="date" />
+        <Input type="date" style={{ width: 224 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -57,7 +62,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>默认值:</label>
-        <Input type="date" defaultValue="2016-05-29" />
+        <Input type="date" defaultValue="2016-05-29" style={{ width: 224 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -65,7 +70,12 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>禁用状态:</label>
-        <Input type="date" defaultValue="2016-05-29" disabled />
+        <Input
+          type="date"
+          defaultValue="2016-05-29"
+          disabled
+          style={{ width: 224 }}
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -85,10 +95,10 @@ class Example extends React.Component {
         id: '1',
       },
     }
-    this.toggleModalHandle = this.toggleModalHandle.bind(this)
+    this.handleToggleModal = this.handleToggleModal.bind(this)
     this.selectCityHandle = this.selectCityHandle.bind(this)
   }
-  toggleModalHandle() {
+  handleToggleModal() {
     let { show } = this.state
 
     this.setState({
@@ -114,7 +124,7 @@ class Example extends React.Component {
                 <label>基础:</label>
                 <Input
                   type="search"
-                  onClick={this.toggleModalHandle}
+                  onClick={this.handleToggleModal}
                   value={this.state.city.name}
                 />
               </FormGroup>
@@ -126,7 +136,7 @@ class Example extends React.Component {
                 <label>可清除:</label>
                 <Input
                   type="search"
-                  onClick={this.toggleModalHandle}
+                  onClick={this.handleToggleModal}
                   value={this.state.city.name}
                 >
                   <Icon type="map-marker" />
@@ -144,9 +154,13 @@ class Example extends React.Component {
           </Col>
         </Row>
         {this.state.show && (
-          <Modal size={this.state.size}>
+          <Modal
+            size={this.state.size}
+            isOpen={this.state.show}
+            onClose={this.handleToggleModalhandleToggleModal}
+          >
             <ModalHeader>
-              <Button close onClick={this.toggleModalHandle}>
+              <Button close onClick={this.handleToggleModal}>
                 &times;
               </Button>
               <h5 className="no-margin">搜索</h5>
@@ -196,7 +210,7 @@ class Example extends React.Component {
               </Row>
             </ModalBody>
             <ModalFooter>
-              <Button theme="default" onClick={this.toggleModalHandle}>
+              <Button theme="default" onClick={this.handleToggleModal}>
                 关闭
               </Button>
             </ModalFooter>
@@ -230,13 +244,13 @@ class Example extends React.Component {
 ```js
 <Row>
   <Col>
-    <Input size="sm" placeholder="小尺寸" />
+    <Input size="sm" placeholder="小尺寸" style={{ width: 224 }} />
   </Col>
   <Col>
-    <Input placeholder="默认尺寸" />
+    <Input placeholder="默认尺寸" style={{ width: 224 }} />
   </Col>
   <Col>
-    <Input size="lg" placeholder="大尺寸" />
+    <Input size="lg" placeholder="大尺寸" style={{ width: 224 }} />
   </Col>
 </Row>
 ```
