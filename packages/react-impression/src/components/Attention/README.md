@@ -6,7 +6,6 @@
 <Row>
   <Col>
     <Attention theme='success'>
-      <strong>干得不错！</strong>
       你成功完成了这个任务
     </Attention>
   </Col>
@@ -14,7 +13,6 @@
 <Row>
   <Col>
     <Attention theme='primary'>
-      <strong>请看着我，</strong>
       接下来你将听到很重要的消息
     </Attention>
   </Col>
@@ -22,7 +20,6 @@
 <Row>
   <Col>
     <Attention theme='warning'>
-      <strong>要小心！</strong>
       要多注意自己的行为，你现在状态很差；要多注意自己的行为，你现在状态很差；要多注意自己的行为，你现在状态很差；重要的事情说三遍
     </Attention>
   </Col>
@@ -30,7 +27,6 @@
 <Row>
   <Col col='12'>
     <Attention theme='danger'>
-      <strong>审核失败！</strong>
       请检查代码之后重新提交
     </Attention>
   </Col>
@@ -51,32 +47,28 @@
 <Row>
   <Col>
     <Attention theme='success'>
-      你成功完成了这个任务
-      <AttentionLink href='#'>点击这里</AttentionLink>
+      你成功完成了这个任务<AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='primary'>
-      接下来你将接收到很重要的消息
-      <AttentionLink href='#'>点击这里</AttentionLink>
+      接下来你将接收到很重要的消息<AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='warning'>
-      要多注意自己的行为，你现在状态很差
-     <AttentionLink href='#'>点击这里</AttentionLink>
+      要多注意自己的行为，你现在状态很差<AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>
 <Row>
   <Col>
     <Attention theme='danger'>
-      请检查代码之后重新提交
-      <AttentionLink href='#'>点击这里</AttentionLink>
+      请检查代码之后重新提交<AttentionLink href='#'>点击这里</AttentionLink>
     </Attention>
   </Col>
 </Row>

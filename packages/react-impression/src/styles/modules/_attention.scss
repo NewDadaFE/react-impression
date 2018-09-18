@@ -3,72 +3,70 @@
 //
 
 .attention {
-    display: flex;
-    padding: $attention-padding;
-    align-items: center;
-    border: $attention-border-width solid transparent;
-    border-radius: $attention-border-radius;
+  display: inline-block;
+  min-width: rem(360px);
+  max-width: rem(700px);
 }
-
+.attention-inner {
+  display: flex;
+  padding: $attention-padding;
+  align-items: center;
+  text-align: left;
+  border: $attention-border-width solid transparent;
+  border-radius: $attention-border-radius;
+}
 .attention-header {
-    font-size: $attention-header-font-size;
+  font-size: $attention-header-font-size;
 }
-
 .attention-body {
-    padding: $attention-body-padding;
-    flex: 1;
-    font-size: $attention-body-font-size;
-    line-height: $attention-body-line-height;
+  padding: $attention-body-padding;
+  flex: 1;
+  font-size: $attention-body-font-size;
+  line-height: $attention-body-line-height;
 }
-
 .attention-close {
-    padding: $attention-close-padding;
-    cursor: $cursor-pointer;
-    &:hover {
-        text-decoration: underline;
-    }
-    &:active {
-        opacity: .6;
-    }
+  padding: $attention-close-padding;
+  cursor: $cursor-pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    opacity: .6;
+  }
 }
 // Provide class for links that match attentions
 .attention-link {
-    font-weight: $attention-link-font-weight;
+  padding-left: rem(10px);
+  text-decoration: underline;
 }
-
 // Dismissible attentions
 //
 // Expand the right padding and account for the close button's positioning.
 
 .attention-dismissible {
-    padding-right: ($attention-padding + rem(20px));
+  padding-right: ($attention-padding + rem(20px));
 
-    // Adjust close link position
-    .close {
-        position: relative;
-        top: -2px;
-        right: -21px;
-        color: inherit;
-    }
+  // Adjust close link position
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+  }
 }
-
-
 // Alternate styles
 //
 // Generate contextual modifier classes for colorizing the attention.
 
 .attention-success {
-    @include attention-variant($brand-success);
+  @include attention-variant($brand-success);
 }
-
 .attention-primary {
-    @include attention-variant($brand-primary);
+  @include attention-variant($brand-primary);
 }
-
 .attention-warning {
-    @include attention-variant($brand-warning);
+  @include attention-variant($brand-warning);
 }
-
 .attention-danger {
-    @include attention-variant($brand-danger);
+  @include attention-variant($brand-danger);
 }

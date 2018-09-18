@@ -1,15 +1,18 @@
 // Attention
 
 @mixin attention-variant($color) {
-    background: mix($color, $brand-pure, 10%);
-    border-color: $color;
+  color: $color;
+  border-color: $color;
+  background: mix($color, $brand-pure, 10%);
+
+  hr {
+    border-top-color: darken($color, 5%);
+  }
+
+  .attention-link {
     color: $color;
-
-    hr {
-        border-top-color: darken($color, 5%);
+    &:hover {
+      color: darken($color, 15%);
     }
-
-    .attention-link {
-        color: darken($color, 12%);
-    }
+  }
 }
