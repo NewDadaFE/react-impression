@@ -1,129 +1,119 @@
 // checkbox
 .checkbox {
-    position: relative;
-    display: inline-block;
-    margin: 0;
-    font-weight: normal !important;
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-weight: normal !important;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  input {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    visibility: hidden;
 
-    input {
-        visibility: hidden;
+    &:checked + .checkbox-addon {
+      border-color: $checkbox-addon-checked-color;
+      i {
+        transform: scale(1);
+        color: $checkbox-addon-checked-color;
+      }
     }
-}
 
-.checkbox-label,
-.radio-label {
-    user-select: none;
-    vertical-align: middle;
-
-    &:not(:empty) {
-        margin-left: $checkbox-label-space-x;
+    &:disabled + .checkbox-addon {
+      cursor: not-allowed;
+      border-color: $checkbox-addon-disabled-color;
+      i {
+        color: $checkbox-addon-disabled-color;
+      }
+      & + .checkbox-label {
+        cursor: not-allowed;
+        color: $checkbox-addon-disabled-color;
+      }
     }
-}
 
-.checkbox-inline,
-.radio-inline {
-    display: inline-block;
-    user-select: none;
-
-    .checkbox:not(:last-child),
-    .radio:not(:last-child) {
-        margin-right: $checkbox-space-x;
+    &:not(:checked):not(:disabled) + .checkbox-addon:hover {
+      border-color: $checkbox-addon-checked-color;
     }
-}
+  }
 
-.checkbox-vertical,
-.radio-vertical {
-    display: block;
-    user-select: none;
+  @at-root #{&}-indeterminate {
+    .checkbox-addon {
+      width: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
+      height: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root);
+      border-color: $checkbox-addon-checked-color;
 
-    .checkbox:not(:last-child),
-    .radio:not(:last-child) {
+      &::before {
+        position: relative;
+        top: 50%;
         display: block;
-        margin-bottom: $checkbox-space-x;
+        margin-top: -$border-width;
+        content: "";
+        border: $border-width solid $checkbox-addon-indeterminate-color;
+      }
+
+      i {
+        display: none;
+      }
     }
+    input:disabled + .checkbox-addon::before {
+      border-color: $checkbox-addon-disabled-color;
+    }
+  }
 }
+.checkbox-label {
+  user-select: none;
+  vertical-align: middle;
 
-.checkbox {
-    input {
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
+  &:not(:empty) {
+    padding-left: $checkbox-label-space-x;
+  }
+}
+.checkbox-inline {
+  display: inline-block;
+  user-select: none;
 
-        &:checked + .checkbox-addon {
-            border-color: $checkbox-addon-checked-color;
-            i {
-                transform: scale(1);
-                color: $checkbox-addon-checked-color;
-            }
-        }
+  .checkbox:not(:last-child) {
+    margin-right: $checkbox-space-x;
+  }
+}
+.checkbox-vertical {
+  display: block;
+  user-select: none;
 
-        &:disabled + .checkbox-addon {
-            border-color: $checkbox-addon-disabled-color;
-            i {
-                color: $checkbox-addon-disabled-color;
-            }
-        }
-
-        &:not(:checked):not(:disabled) + .checkbox-addon:hover {
-            border-color: $checkbox-addon-checked-color;
-        }
-    }
-
-    @at-root #{&}-indeterminate {
-        .checkbox-addon {
-            width: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
-            height: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root);
-            border-color: $checkbox-addon-checked-color;
-
-            &::before {
-                position: relative;
-                top: 50%;
-                display: block;
-                margin-top: -$border-width;
-                content: "";
-                border: $border-width solid $checkbox-addon-indeterminate-color;
-            }
-
-            i {
-                display: none;
-            }
-        }
-
-        input:disabled + .checkbox-addon::before {
-            border-color: $checkbox-addon-disabled-color;
-        }
-    }
+  .checkbox:not(:last-child) {
+    display: block;
+    margin-bottom: $checkbox-space-x;
+  }
 }
 .checkbox-addon {
-    position: relative;
-    display: inline-block;
-    padding: $checkbox-addon-padding;
-    line-height: 1;
-    transition: $checkbox-addon-transtion;
-    vertical-align: middle;
-    border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
-    border-radius: $checkbox-addon-border-radius;
-    background-color: $checkbox-addon-bg-color;
+  position: relative;
+  display: inline-block;
+  padding: $checkbox-addon-padding;
+  line-height: 1;
+  transition: $checkbox-addon-transtion;
+  vertical-align: middle;
+  border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
+  border-radius: $checkbox-addon-border-radius;
+  background-color: $checkbox-addon-bg-color;
 
-    i {
-        position: relative;
-        display: block;
-        width: round($checkbox-addon-i-size * $font-size-root);
-        height: round($checkbox-addon-i-size * $font-size-root);
-        transition: $checkbox-addon-transtion;
-        transform: scale(0);
-        transform-origin: 50% 50%;
-        color: transparent;
-        &::before {
-            position: absolute;
-            top: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
-            left: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
-            display: block;
-            transform: scale($checkbox-addon-scale);
-        }
+  i {
+    position: relative;
+    display: block;
+    width: round($checkbox-addon-i-size * $font-size-root);
+    height: round($checkbox-addon-i-size * $font-size-root);
+    transition: $checkbox-addon-transtion;
+    transform: scale(0);
+    transform-origin: 50% 50%;
+    color: transparent;
+    &::before {
+      position: absolute;
+      top: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
+      left: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
+      display: block;
+      transform: scale($checkbox-addon-scale);
     }
+  }
 }
