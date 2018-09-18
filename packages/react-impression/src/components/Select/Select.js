@@ -113,10 +113,9 @@ export default class Select extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { children } = this.props
     let optionList = []
-    if (children) {
-      children.forEach(child => {
+    if (this.props.children instanceof Array) {
+      this.props.children.forEach(child => {
         const { value, children } = child.props
         if (
           (value || value === 0) &&
@@ -137,6 +136,26 @@ export default class Select extends React.PureComponent {
           })
         }
       })
+    } else {
+      const { value, children } = this.props.children.props
+      if (
+        (value || value === 0) &&
+        JSON.stringify(typeof children) !== 'object'
+      ) {
+        optionList.push({
+          name: children,
+          value,
+        })
+      }
+      if (children instanceof Array) {
+        children.forEach(item => {
+          const { value, children } = item.props
+          optionList.push({
+            name: children,
+            value,
+          })
+        })
+      }
     }
     this.setState({ optionList }, this.handleValueChange)
   }
