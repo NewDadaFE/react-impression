@@ -6,6 +6,8 @@ const webpackConfig = require('./webpackConfig')
 const resolveLibrary = relativePath =>
   path.resolve(process.cwd(), '../react-impression', relativePath)
 
+const resolveWebsite = relativePath => path.resolve(process.cwd(), relativePath)
+
 module.exports = {
   title: 'React Impression',
   serverPort: 8080,
@@ -41,9 +43,15 @@ module.exports = {
     {
       name: 'Components',
       components: resolveLibrary('src/components/**/[A-Z]*.js'),
-      usageMode: 'expand',
     },
   ],
   skipComponentsWithoutExample: true,
+  styleguideComponents: {
+    'slots/UsageTabButton': resolveWebsite('rsg/components/UsageTabButton'),
+    'slots/CodeTabButton': resolveWebsite('rsg/components/CodeTabButton'),
+    PropsRenderer: resolveWebsite('rsg/components/PropsRenderer'),
+    TableRenderer: resolveWebsite('rsg/components/TableRenderer'),
+    PlaygroundRenderer: resolveWebsite('rsg/components/PlaygroundRenderer'),
+  },
   webpackConfig,
 }

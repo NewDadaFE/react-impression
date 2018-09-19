@@ -1,4 +1,4 @@
-### 示例
+### 代码示例
 
 ```js
 const handleShowLoading = e => {

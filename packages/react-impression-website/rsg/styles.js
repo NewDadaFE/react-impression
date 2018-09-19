@@ -1,3 +1,5 @@
+const theme = require('./theme')
+
 const color = {
   light: '#d0d0d0',
   lightGray: '#a7b1c2',
@@ -46,36 +48,21 @@ module.exports = {
       },
     },
   },
-  Table: {
-    cell: {
-      '&:last-child': {
-        width: 'auto',
-        paddingRight: 16,
-        paddingTop: 8,
-        paddingBottom: 8,
-        verticalAlign: 'top',
-        fontSize: 13,
-      },
-      '& p': {
-        marginBottom: `5px !important`,
-      },
-      '& div[class*="para"]': {
-        marginBottom: `5px !important`,
-      },
-    },
-  },
   ReactComponent: {
-    tabs: {
-      paddingTop: 12,
-      paddingRight: 24,
-      paddingBottom: 12,
-      paddingLeft: 24,
-      backgroundColor: '#F6F7FB',
-    },
     tabButtons: {
       '& button': {
-        borderBottomWidth: 0,
-        textTransform: 'uppercase',
+        fontSize: 24,
+        cursor: 'pointer',
+        '&:focus': {
+          isolate: false,
+          outline: 'none !important',
+          color: theme.color.base,
+        },
+        '&:hover': {
+          isolate: false,
+          outline: 'none !important',
+          color: theme.color.linkHover,
+        },
       },
     },
   },
