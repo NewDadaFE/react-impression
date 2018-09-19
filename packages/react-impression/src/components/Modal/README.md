@@ -23,7 +23,7 @@ initialState = {
       弹窗标题
     </ModalHeader>
     <ModalBody>
-      <p>内容&hellip;</p>
+      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
       <Button theme="default" onClick={handleToggleClick}>
@@ -63,7 +63,7 @@ initialState = {
       弹窗标题
     </ModalHeader>
     <ModalBody>
-      <p>内容&hellip;</p>
+      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
       <Button theme="default" onClick={handleToggleClick}>
@@ -98,7 +98,7 @@ initialState = {
       弹窗标题
     </ModalHeader>
     <ModalBody>
-      <p>内容&hellip;</p>
+      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
       <Button theme="default" onClick={handleToggleClick}>
@@ -133,7 +133,7 @@ initialState = {
       弹窗标题
     </ModalHeader>
     <ModalBody>
-      <p>内容&hellip;</p>
+      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
       <Button theme="default" onClick={handleToggleClick}>
@@ -200,25 +200,27 @@ class Overflow extends React.Component {
             弹窗标题
           </ModalHeader>
           <ModalBody>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
-            <p>显示内容&hellip;</p>
+            <div style={{ color: '#919CB3' }}>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+              <p>显示内容&hellip;</p>
+            </div>
           </ModalBody>
           <ModalFooter>
             <Button theme="default" onClick={() => this.handleToggleClick()}>
