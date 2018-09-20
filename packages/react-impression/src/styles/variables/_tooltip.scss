@@ -1,6 +1,6 @@
 // Tooltips
 
-$tooltip-max-width: 15rem !default;
+$tooltip-max-width: rem(240px) !default;
 $tooltip-color: $brand-pure !default;
 $tooltip-bg: $gray-base !default;
 $tooltip-opacity: .9 !default;
