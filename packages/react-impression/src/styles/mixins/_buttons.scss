@@ -7,13 +7,13 @@
     $color,
     $background,
     $border,
+    $hover-background,
     $btn-hover-box-shadow,
     $active-background,
     $btn-disabled-color,
     $btn-disabled-bg,
     $btn-disabled-border
 ){
-    $hover-background: darken($background, 10%);
     $hover-border: darken($border, 10%);
 
     color: $color;
