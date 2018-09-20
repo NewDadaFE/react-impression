@@ -8,7 +8,7 @@
     <Form>
       <FormGroup>
         <label>默认:</label>
-        <Input type="date" />
+        <Input type="date" style={{ width: 224 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -16,7 +16,7 @@
     <Form>
       <FormGroup>
         <label>默认值（非受控组件）:</label>
-        <Input type="date" defaultValue="2016-05-29" />
+        <Input type="date" defaultValue="2018-09-20" style={{ width: 224 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -24,7 +24,12 @@
     <Form>
       <FormGroup>
         <label>禁用状态:</label>
-        <Input type="date" defaultValue="2016-05-29" disabled />
+        <Input
+          type="date"
+          defaultValue="2018-09-20"
+          style={{ width: 224 }}
+          disabled
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -39,7 +44,12 @@
     <Form>
       <FormGroup>
         <label>最小值:</label>
-        <Input type="date" defaultValue="2016-05-29" minDate="2016-05-15" />
+        <Input
+          type="date"
+          defaultValue="2018-09-20"
+          minDate="2018-06-15"
+          style={{ width: 224 }}
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -47,7 +57,12 @@
     <Form>
       <FormGroup>
         <label>最大值:</label>
-        <Input type="date" defaultValue="2016-05-29" maxDate="2016-05-31" />
+        <Input
+          type="date"
+          defaultValue="2018-09-20"
+          maxDate="2018-06-30"
+          style={{ width: 224 }}
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -55,7 +70,12 @@
     <Form>
       <FormGroup>
         <label>设置每周第一天是星期几:</label>
-        <Input type="date" defaultValue="2016-05-29" firstDayOfWeek={1} />
+        <Input
+          type="date"
+          defaultValue="2018-09-20"
+          firstDayOfWeek={1}
+          style={{ width: 224 }}
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -70,7 +90,12 @@
     <Form>
       <FormGroup>
         <label>年-月-日:</label>
-        <Input type="date" defaultValue="2016-5-29" format="Y-M-D" />
+        <Input
+          type="date"
+          defaultValue="2018-9-20"
+          format="Y-M-D"
+          style={{ width: 224 }}
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -78,7 +103,12 @@
     <Form>
       <FormGroup>
         <label>年/月月/日日:</label>
-        <Input type="date" defaultValue="2016/05/29" format="YYYY/MM/DD" />
+        <Input
+          type="date"
+          defaultValue="2018/09/20"
+          format="YYYY/MM/DD"
+          style={{ width: 224 }}
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -88,8 +118,9 @@
         <label>年月日:</label>
         <Input
           type="date"
-          defaultValue="2016年05月29日"
+          defaultValue="2018年09月20日"
           format="YYYY年MM月DD日"
+          style={{ width: 224 }}
         />
       </FormGroup>
     </Form>
@@ -102,7 +133,7 @@
 ```js
 <Row>
   <Col>
-    <Input type="month" />
+    <Input type="month" style={{ width: 224 }} />
   </Col>
 </Row>
 ```
@@ -112,7 +143,13 @@
 ```js
 <Row>
   <Col>
-    <Input type="year" defaultValue="2018" minDate="2014" maxDate="2019" />
+    <Input
+      type="year"
+      defaultValue="2018"
+      minDate="2014"
+      maxDate="2019"
+      style={{ width: 224 }}
+    />
   </Col>
 </Row>
 ```
