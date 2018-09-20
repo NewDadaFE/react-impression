@@ -6,6 +6,8 @@ const webpackConfig = require('./webpackConfig')
 const resolveLibrary = relativePath =>
   path.resolve(process.cwd(), '../react-impression', relativePath)
 
+const resolveWebsite = relativePath => path.resolve(process.cwd(), relativePath)
+
 module.exports = {
   title: 'React Impression',
   serverPort: 8080,
@@ -37,6 +39,7 @@ module.exports = {
   sections: [
     {
       name: 'Introduction',
+      content: resolveWebsite('docs/Introduction.md'),
     },
     {
       name: 'Components',
