@@ -44,7 +44,6 @@ module.exports = {
     {
       name: 'Components',
       components: resolveLibrary('src/components/**/[A-Z]*.js'),
-      usageMode: 'expand',
     },
   ],
   skipComponentsWithoutExample: true,
