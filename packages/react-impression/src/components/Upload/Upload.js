@@ -172,6 +172,7 @@ export default class Upload extends React.PureComponent {
       <div
         {...others}
         className={classnames('input-group', 'input-group-upload', className)}
+        onClick={this.openFileDialogHandle}
       >
         <span className='form-control'>
           <Icon type='upload' className='upload-addon' />
@@ -187,7 +188,6 @@ export default class Upload extends React.PureComponent {
           <button
             type='button'
             className={classnames('btn', `btn-${btnStyle}`)}
-            onClick={this.openFileDialogHandle}
           >
             {btnText}
           </button>
