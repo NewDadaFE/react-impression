@@ -3,23 +3,21 @@
 **单个文件点击上传**
 
 ```js
-<div>
-  <Row>
-    <Col col={7}>
-      <Upload />
-    </Col>
-  </Row>
-  <Row>
-    <Col col={7}>
-      <Upload placeholder="请上传资质证明" />
-    </Col>
-  </Row>
-  <Row>
-    <Col col={7}>
-      <Upload btnText="附件" btnStyle="primary" />
-    </Col>
-  </Row>
-</div>
+<Row>
+  <Col>
+    <Upload style={{width: '464px'}} />
+  </Col>
+</Row>
+<Row>
+  <Col>
+    <Upload placeholder="请上传资质证明" style={{width: '464px'}} />
+  </Col>
+</Row>
+<Row>
+  <Col>
+    <Upload btnText="附件" btnStyle="primary" style={{width: '464px'}} />
+  </Col>
+</Row>
 ```
 
 **图片上传**
