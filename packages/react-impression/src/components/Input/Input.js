@@ -226,6 +226,7 @@ export default class Input extends React.PureComponent {
         disabled,
         placeholder,
         clearable,
+        style,
         pill,
         onClick,
         className,
@@ -268,6 +269,7 @@ export default class Input extends React.PureComponent {
               disabled={disabled}
               placeholder={placeholder}
               onClick={this.showOptionHandle}
+              style={style}
             />
 
             {clearable &&
@@ -315,6 +317,7 @@ export default class Input extends React.PureComponent {
               onChange={e => onChange && onChange(e.target.value, e)}
               disabled={disabled}
               placeholder={placeholder}
+              style={style}
             />
             {children}
             {!children && (
@@ -330,6 +333,7 @@ export default class Input extends React.PureComponent {
             className={className}
             placeholder={placeholder}
             onChange={e => onChange && onChange(e.target.files[0], e)}
+            style={style}
           />
         )
       case 'textarea':
@@ -337,6 +341,7 @@ export default class Input extends React.PureComponent {
           <textarea
             rows='10'
             ref={ref => (this.refMain = ref)}
+            style={style}
             disabled={disabled}
             placeholder={placeholder}
             value={value}
@@ -365,6 +370,7 @@ export default class Input extends React.PureComponent {
               onChange={e => onChange && onChange(e.target.value, e)}
               disabled={disabled}
               placeholder={placeholder}
+              style={style}
             />
             {children}
           </div>
