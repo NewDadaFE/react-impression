@@ -1,6 +1,6 @@
 module.exports = {
   color: {
-    sidebarBackground: '#22252a',
+    sidebarBackground: 'linear-gradient(#2F3A4F, #293245)',
   },
   fontSize: {
     h1: 38,
