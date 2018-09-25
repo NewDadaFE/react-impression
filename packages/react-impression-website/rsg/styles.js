@@ -1,7 +1,8 @@
 const color = {
-  light: '#d0d0d0',
-  lightGray: '#a7b1c2',
-  lightDark: '#22252a',
+  lightest: 'rgba(255, 255, 255, 0.1)',
+  light: '#fff',
+  lightGray: '#919CB3',
+  lightDark: '#2F3A4F',
   dark: '#191b1f',
   darker: '#141619',
 }
@@ -14,7 +15,7 @@ module.exports = {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       backgroundColor: color.lightDark,
-      borderBottom: `1px solid ${color.darker}`,
+      borderBottom: `1px solid ${color.lightest}`,
     },
   },
   Logo: {
@@ -36,7 +37,7 @@ module.exports = {
         },
         '&:hover, &:active': {
           color: color.light,
-          backgroundColor: color.dark,
+          backgroundColor: color.lightest,
           boxShadow: `inset 0 0 1px ${color.darker}`,
           cursor: 'pointer',
         },

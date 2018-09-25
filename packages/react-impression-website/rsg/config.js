@@ -47,5 +47,8 @@ module.exports = {
     },
   ],
   skipComponentsWithoutExample: true,
+  styleguideComponents: {
+    StyleGuideRenderer: resolveWebsite('rsg/components/StyleGuideRenderer'),
+  },
   webpackConfig,
 }
