@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
 import Tag from '../Tag/index'
+import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
   return array.some(
@@ -574,3 +575,5 @@ Select.setValue = (ref, value) => {
 Select.childContextTypes = {
   componentSelect: PropTypes.any,
 }
+
+Select.Option = SelectOption
