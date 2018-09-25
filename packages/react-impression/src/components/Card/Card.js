@@ -31,6 +31,8 @@ export default class Card extends React.PureComponent {
     const { block, className, children, ...others } = this.props
     const blockClass = block ? 'card-block' : null
 
+    delete others.noborder
+
     return (
       <div {...others} className={classnames('card', blockClass, className)}>
         {children}
