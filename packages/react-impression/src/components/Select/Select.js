@@ -114,7 +114,8 @@ export default class Select extends React.PureComponent {
 
   componentDidMount() {
     let optionList = []
-    if (Array.isArray(this.props.children)) {
+
+    if (this.props.children && Array.isArray(this.props.children)) {
       this.props.children.forEach(child => {
         const { value, children } = child.props
         if (Array.isArray(children)) {
@@ -132,7 +133,8 @@ export default class Select extends React.PureComponent {
           })
         }
       })
-    } else {
+    }
+    if (this.props.children && !Array.isArray(this.props.children)) {
       const { value, children } = this.props.children.props
       if (Array.isArray(children)) {
         children.forEach(item => {
