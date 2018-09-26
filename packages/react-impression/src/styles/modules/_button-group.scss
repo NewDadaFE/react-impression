@@ -19,7 +19,6 @@
 
         &:hover {
             z-index: 2;
-            box-shadow: $btn-group-active-box-shadow;
         }
 
         + .dropdown-toggle {
@@ -116,7 +115,10 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-sm > .btn { @extend .btn-sm; }
+.btn-group-sm > .btn {
+  @extend .btn-sm;
+  padding: $btn-group-padding-y-sm $btn-group-padding-x-sm;
+}
 .btn-group-lg > .btn { @extend .btn-lg; }
 
 

@@ -26,7 +26,7 @@
 
         margin-bottom: 0;
 
-        &:focus {
+        &:focus, &:hover {
             z-index: 6;
         }
 
@@ -174,12 +174,6 @@
     }
 
     // Negative margin to only have a single, shared border between the two
-    &:not(:last-child) {
-        > .btn,
-        > .btn-group {
-            margin-right: (-$input-btn-border-width);
-        }
-    }
 
     &:not(:first-child) {
         > .btn,

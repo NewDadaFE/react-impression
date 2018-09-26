@@ -200,6 +200,11 @@ input[type="month"] {
             margin-bottom: $form-group-inline-label-margin-bottom;
         }
 
+        > label.checkbox, > label.radio {
+          margin-bottom: 0;
+          line-height: $form-group-inline-component-line-height;
+        }
+
         &:not(:first-child) > .btn:first-child {
             margin-left: $form-group-inline-btn-margin-left;
         }
@@ -253,6 +258,10 @@ input[type="month"] {
         > label {
             padding-left: $input-padding-x;
             padding-right: $input-padding-x;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: $form-group-margin-bottom;
         }
 
         &:last-child {

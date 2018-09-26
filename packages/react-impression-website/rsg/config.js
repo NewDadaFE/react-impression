@@ -39,6 +39,7 @@ module.exports = {
   sections: [
     {
       name: 'Introduction',
+      content: resolveWebsite('docs/Introduction.md'),
     },
     {
       name: 'Components',
@@ -52,6 +53,7 @@ module.exports = {
     PropsRenderer: resolveWebsite('rsg/components/PropsRenderer'),
     TableRenderer: resolveWebsite('rsg/components/TableRenderer'),
     PlaygroundRenderer: resolveWebsite('rsg/components/PlaygroundRenderer'),
+    StyleGuideRenderer: resolveWebsite('rsg/components/StyleGuideRenderer'),
   },
   webpackConfig,
 }

@@ -27,7 +27,8 @@ $datepicker-item-active-color: $brand-pure !default;
 $datepicker-item-disable-color: $gray !default;
 $datepicker-item-disable-bg: $brand-pure !default;
 
-$datepicker-item-dot-size: rem(4px) !default;
+// 用px单位圆点才圆
+$datepicker-item-dot-size: 4px !default;
 $datepicker-item-dot-bottom: rem(3px) !default;
 // 日
 $datepicker-daygroup-width: rem(280px)!default;
@@ -45,7 +46,7 @@ $datepicker-monthgroup-item-text-width: rem(50px) !default;
 // 年
 $datepicker-yeargroup-item-line-height: rem(33.5px) !default;
 $datepicker-yeargroup-item-border-radius: rem(18px) !default;
-$datepicker-yeargroup-item-padding: 0 rem(20px) rem(10px) !default;
+$datepicker-yeargroup-item-padding: 0 rem(20px) rem(20px) !default;
 $datepicker-yeargroup-item-text-width: rem(52px) !default;
 
 $datepicker-footer-padding: rem(13px) 0 rem(12px) !default;

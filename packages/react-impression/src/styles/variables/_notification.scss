@@ -10,7 +10,9 @@ $notice-close-offset: rem(12px) !default;
 $notice-header-font-size: rem(40px) !default;
 $notice-header-padding: rem(30px) !default;
 $notice-title-margin: 0 0 rem(10px) !default;
+$notice-title-font-size: rem(18px) !default;
 $notice-body-padding: rem(30px) rem(46px) rem(30px) rem(30px) !default;
+$notice-content-line-height: rem(22px) !default;
 
 $notice-primary-bg: linear-gradient(270deg, #0C85FF 0%, $brand-info 100%) !default;
 $notice-success-bg: linear-gradient(270deg, #00B250 0%, $brand-success 100%) !default;

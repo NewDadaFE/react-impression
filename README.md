@@ -2,22 +2,6 @@
 
 > UI Components with React for desktop.
 
-### 安装
-
-```shell
-yarn add react-impression
-```
-
-### 使用
-
-```js
-import { Button } from 'react-impression'
-```
-
-```scss
-@import '~react-impression/dist/react-impression.css';
-```
-
 ### 文档
 
 https://newdadafe.github.io/react-impression/

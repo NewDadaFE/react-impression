@@ -11,7 +11,7 @@ module.exports = {
     error: '#c00',
     baseBackground: '#fff',
     codeBackground: '#f5f5f5',
-    sidebarBackground: '#22252A',
+    sidebarBackground: 'linear-gradient(#2F3A4F, #293245)',
     ribbonBackground: '#f9970d',
     ribbonText: '#fff',
   },
