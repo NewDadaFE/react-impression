@@ -531,7 +531,12 @@ export default class DatePicker extends React.PureComponent {
           <div className='datepicker-body'>
             <div className='datepicker-weekgroup'>
               {weekdays.map(day => (
-                <div key={day} className='datepicker-weekgroup-item'>
+                <div
+                  key={day}
+                  className={classnames('datepicker-weekgroup-item', {
+                    weekend: day === '六' || day === '日',
+                  })}
+                >
                   {day}
                 </div>
               ))}

@@ -61,8 +61,12 @@
 .datepicker-weekgroup-item {
   display: inline-block;
   width: $datepicker-weekgroup-item-size;
+  height: $datepicker-weekgroup-item-size;
   line-height: $datepicker-weekgroup-item-size;
   text-align: center;
+  &.weekend {
+    color: $datepicker-item-disable-color;
+  }
 }
 
 // 年月日
@@ -137,6 +141,7 @@
 // 年
 .datepicker-yeargroup {
   width: $datepicker-daygroup-width;
+  padding-bottom: rem(10px);
 }
 .datepicker-yeargroup-item {
   padding: $datepicker-yeargroup-item-padding;

@@ -32,7 +32,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -123,7 +123,7 @@ const data = [
           >
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -153,7 +153,7 @@ const columns = [
           <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -210,7 +210,7 @@ const columns = [
           <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -278,7 +278,7 @@ const columns = [
           <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -377,7 +377,7 @@ const data = [
           <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -417,7 +417,7 @@ const columns = [
           <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
             删除
           </a>
@@ -550,7 +550,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E1E5EC' }}>|</span>
+          <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, paddingRight: 16, color: '#276BF2' }}
