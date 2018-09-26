@@ -24,8 +24,8 @@ cd react-impression
 yarn
 
 # website
-yarn start
+yarn website:start
 
-# format
-yarn format
+# examples
+yarn examples:start
 ```
