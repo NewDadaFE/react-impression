@@ -1,10 +1,10 @@
-### 安装
+### 快速上手
+
+安装：
 
 ```shell
 yarn add react-impression@next
 ```
-
-### 使用
 
 引入样式：
 
@@ -18,7 +18,7 @@ yarn add react-impression@next
 import { Button } from 'react-impression'
 ```
 
-### Tree Shaking
+### 按需加载
 
 安装插件：
 
