@@ -17,3 +17,29 @@ yarn add react-impression@next
 ```js static
 import { Button } from 'react-impression'
 ```
+
+### Tree Shaking
+
+安装插件：
+
+```sh
+yarn add babel-plugin-transform-imports -D
+```
+
+修改 Babel 配置：
+
+```json
+{
+  "plugins": [
+    [
+      "transform-imports",
+      {
+        "react-impression": {
+          "transform": "react-impression/components/${member}",
+          "preventFullImport": true
+        }
+      }
+    ]
+  ]
+}
+```
