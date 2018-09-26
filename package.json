@@ -5,6 +5,8 @@
     "start": "yarn website:start",
     "website:start": "yarn workspace react-impression-website start",
     "website:build": "yarn workspace react-impression-website build",
+    "examples:start": "yarn workspace react-impression-examples start",
+    "examples:build": "yarn workspace react-impression-examples build",
     "precommit": "lint-staged",
     "format":
       "find . -name '*.js' -o -name '*.md' | grep -v -f .gitignore | xargs prettier-standard"
