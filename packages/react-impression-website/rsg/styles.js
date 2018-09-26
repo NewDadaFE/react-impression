@@ -12,9 +12,10 @@ const color = {
 module.exports = {
   StyleGuide: {
     logo: {
+      padding: '22px 22px 22px 60px',
       backgroundImage: 'url(logo.png)',
-      backgroundPosition: 'center',
-      backgroundSize: 'contain',
+      backgroundPosition: 20,
+      backgroundSize: 30,
       backgroundRepeat: 'no-repeat',
       backgroundColor: color.lightDark,
       borderBottom: `1px solid ${color.lightest}`,
@@ -23,6 +24,8 @@ module.exports = {
   Logo: {
     logo: {
       color: color.light,
+      fontSize: 16,
+      lineHeight: 1,
     },
   },
   ComponentsList: {

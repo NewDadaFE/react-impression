@@ -18,4 +18,5 @@ module.exports = {
   fontSize: {
     h1: 38,
   },
+  sidebarWidth: 230,
 }
