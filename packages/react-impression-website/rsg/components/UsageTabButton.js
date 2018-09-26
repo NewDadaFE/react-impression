@@ -7,7 +7,9 @@ const UsageTabButton = props => {
   const showButton =
     component.props || (component.methods && component.methods.length > 0)
   return showButton ? (
-    <TabButton {...props}>{props.active ? '隐藏' : '查看'}参数</TabButton>
+    <TabButton {...props}>
+      参数 <i className={`fa fa-angle-${props.active ? 'up' : 'down'}`} />
+    </TabButton>
   ) : null
 }
 
