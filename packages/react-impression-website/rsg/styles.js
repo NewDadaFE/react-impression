@@ -42,8 +42,8 @@ module.exports = {
         },
         '&:hover, &:active': {
           color: color.light,
-          backgroundColor: color.lightest,
-          boxShadow: `inset 0 0 1px ${color.darker}`,
+          // backgroundColor: color.lightest,
+          // boxShadow: `inset 0 0 1px ${color.darker}`,
           cursor: 'pointer',
         },
       },
