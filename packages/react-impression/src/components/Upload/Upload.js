@@ -78,6 +78,12 @@ export default class Upload extends React.PureComponent {
     this.fileInput.files[0] = value
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      previewImageUrl: newProps.src,
+    })
+  }
+
   /**
    * 打开文件浏览器对话框
    */
@@ -103,18 +109,6 @@ export default class Upload extends React.PureComponent {
    */
   handleImagePreview = event => {
     const { onChange } = this.props
-    const file = event.target.files[0]
-    const reader = new window.FileReader()
-
-    if (file) {
-      reader.onload = e => {
-        this.setState({
-          previewImageUrl: e.currentTarget.result,
-        })
-      }
-    }
-
-    reader.readAsDataURL(file)
     onChange && onChange(event)
   }
 
