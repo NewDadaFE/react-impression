@@ -34,7 +34,7 @@
     font-size: 1rem;
     line-height: 0.7;
     color: $gray-base;
-    background-color: #fff;
+    background-color: $select-tags-bg-color;
     background-image: none;
     background-clip: padding-box;
     border: rem(1px) solid $gray;
@@ -92,7 +92,7 @@
   line-height: 1.25;
   border-radius: rem(2px);
   color: $gray-base;
-  background-color: #fff;
+  background-color: $select-tags-bg-color;
   background-image: none;
   background-clip: padding-box;
   border: rem(1px) solid $gray;
@@ -175,7 +175,7 @@
   font-size: 1rem;
   line-height: 1.25;
   color: $gray-base;
-  background-color: #fff;
+  background-color: $select-tags-bg-color;
   background-image: none;
   background-clip: padding-box;
   border: 1px solid $border-color;
