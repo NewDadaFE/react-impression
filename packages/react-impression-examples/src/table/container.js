@@ -6,7 +6,7 @@ import { Notification, Card } from 'react-impression'
 import Filter from './container/Filter'
 import * as actions from './reducer'
 
-class Home extends Component {
+class Table extends Component {
   static propTypes = {}
 
   componentDidMount() {
@@ -29,8 +29,8 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({ total: state.home.total })
+const mapStateToProps = state => ({ total: state.table.total })
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Table)
