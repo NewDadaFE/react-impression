@@ -9,14 +9,14 @@ const handleChange = e => {
 ;<div>
   <Row>
     <Col>
-      <Upload style={{ width: '464px' }} onChange={handleChange} />
+      <Upload style={{ width: 464 }} onChange={handleChange} />
     </Col>
   </Row>
   <Row>
     <Col>
       <Upload
         placeholder="请上传资质证明"
-        style={{ width: '464px' }}
+        style={{ width: 464 }}
         onChange={handleChange}
       />
     </Col>
@@ -26,7 +26,7 @@ const handleChange = e => {
       <Upload
         btnText="附件"
         btnStyle="primary"
-        style={{ width: '464px' }}
+        style={{ width: 464 }}
         onChange={handleChange}
       />
     </Col>
