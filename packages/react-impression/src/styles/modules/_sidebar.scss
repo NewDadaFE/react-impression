@@ -28,41 +28,53 @@
   overflow-y: auto;
   flex: 1;
 
-  .collapse .nav-item {
+  // 二级菜单增加缩进
+  .collapse .nav-item,
+  .sidebar-list-secondary > .sidebar-item-child {
     text-indent: $sidebar-nav-item-secondary-intent;
   }
+  .nav-link {
+    text-indent: 0;
+  }
 
+  // 菜单共有样式
   .nav-item,
-  .collapse-title {
+  .collapse-title,
+  .sidebar-item-child {
     padding: $sidebar-nav-item-padding;
     font-size: $sidebar-font-size;
     line-height: $sidebar-line-height;
     cursor: pointer;
     color: $sidebar-nav-item-color;
-    &:hover,
-    &.active {
-      color: $sidebar-nav-item-active-color;
-    }
-
     &:hover {
+      color: $sidebar-nav-item-active-color;
       background-color: $sidebar-nav-item-active-bg;
     }
 
-    .fa:first-child {
+    .fa {
       width: $sidebar-icon-size;
       height: $sidebar-icon-size;
-      margin-right: $sidebar-header-logo-margin-right;
       line-height: $sidebar-icon-size;
       text-align: center;
       vertical-align: top;
+      &:first-child {
+        margin-right: $sidebar-header-logo-margin-right;
+      }
     }
   }
+  .collapse.active .collapse-title {
+    color: $sidebar-nav-item-active-color;
+  }
 
-  .nav-item {
+  // 无子菜单的选项样式
+  .nav-item,
+  .sidebar-item-child,
+  .sidebar-item {
     position: relative;
     background-color: transparent;
 
     &.active {
+      color: $sidebar-nav-item-active-color;
       background-color: $sidebar-nav-item-active-bg;
       &::before {
         position: absolute;
@@ -73,6 +85,10 @@
         content: "";
         background-color: $brand-primary;
       }
+    }
+
+    .sidebar-item-child.unfold {
+      color: $sidebar-nav-item-active-color;
     }
 
     &.disabled {
@@ -105,6 +121,55 @@
     &:hover {
       text-decoration: none;
       color: $sidebar-nav-item-active-color;
+      background-color: $sidebar-nav-item-active-bg;
+    }
+  }
+}
+
+// ====================
+.sidebar-list {
+  margin: 0;
+  padding: 0;
+  font-size: $sidebar-font-size;
+  line-height: $sidebar-line-height;
+  list-style-type: none;
+  color: $sidebar-color;
+  a {
+    cursor: pointer;
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
+    & > span {
+      cursor: pointer;
+    }
+  }
+}
+.sidebar-item {
+  // 一级菜单
+  .sidebar-item-wrap {
+    position: relative;
+    display: block;
+    padding: $sidebar-nav-item-padding;
+    &:hover {
+      background-color: $sidebar-nav-item-active-bg;
+    }
+  }
+  // icon样式
+  .sidebar-icon-arrow {
+    float: right;
+  }
+  // 二级菜单
+  .sidebar-list-secondary {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-indent: 10px;
+  }
+  .sidebar-item-child {
+    display: block;
+    padding: $sidebar-nav-item-padding;
+    &:hover {
       background-color: $sidebar-nav-item-active-bg;
     }
   }

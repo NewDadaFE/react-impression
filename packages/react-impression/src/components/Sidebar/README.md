@@ -45,3 +45,55 @@
   </SidebarBody>
 </Sidebar>
 ```
+
+**传配置项的用法**
+
+> 通过给 SidebarBody 组件传入规定格式的配置项，完成侧边栏菜单样式的呈现。
+
+1. 配置项格式为对象数组类型，具体字段请查看下面示例源码
+2. 不支持二级菜单显示图标
+3. 点击菜单项后的逻辑处理，需要使用者自行实现
+
+```js
+initialState = {
+  activePath: '/B/2',
+}
+const CONFIG = [
+  {
+    name: '订单管理',
+    path: '/A',
+    icon: 'file-text',
+  },
+  {
+    name: '数据运营',
+    icon: 'bar-chart',
+    children: [
+      {
+        name: '站点配送日报',
+        path: '/B/1',
+      },
+      {
+        name: '骑士配送日报',
+        path: '/B/2',
+      },
+    ],
+  },
+]
+const handleClick = (path, e) => {
+  console.log('选中路由: ', path)
+  setState({
+    activePath: path,
+  })
+}
+;<Sidebar style={{ height: '450px' }}>
+  <SidebarHeader>
+    <img src="logo.png" />
+    达达智能智能站点
+  </SidebarHeader>
+  <SidebarBody
+    onSelect={handleClick}
+    config={CONFIG}
+    activePath={state.activePath}
+  />
+</Sidebar>
+```
