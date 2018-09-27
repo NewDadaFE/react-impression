@@ -156,7 +156,7 @@ export default class Pagination extends React.PureComponent {
               <li
                 key={`${child}-${index}`}
                 className={classnames('page-item', {
-                  active: child === activePage,
+                  active: child === (activePage || 1),
                 })}
               >
                 <span
