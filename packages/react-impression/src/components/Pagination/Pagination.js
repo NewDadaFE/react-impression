@@ -138,7 +138,7 @@ export default class Pagination extends React.PureComponent {
     const pageList = this.getPageList()
 
     return (
-      <ul {...others} className={classnames('Pagination', className)}>
+      <ul {...others} className={classnames('pagination', className)}>
         <li className={classnames('page-item', { disabled: activePage <= 1 })}>
           <span className='page-link' onClick={this.prevPageHandle}>
             {lastContent || <i className='fa fa-chevron-left' />}
