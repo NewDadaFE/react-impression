@@ -62,7 +62,6 @@ class Filter extends Component {
       {
         prop: 'id',
         Header: '操作',
-        fixed: 'right',
         width: 150,
         Cell: value => {
           return (
@@ -104,7 +103,7 @@ class Filter extends Component {
           pagination={pagination}
           columns={columns}
           data={data.wuliu}
-          scroll={{ x: 1200 }}
+          scroll={{ x: 1500 }}
         />
       </Card>
     )
