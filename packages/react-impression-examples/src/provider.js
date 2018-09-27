@@ -5,7 +5,7 @@ import store from './store'
 import createRoutes from './routes'
 
 class AppProvider extends Component {
-  render () {
+  render() {
     if (!this.routes) this.routes = createRoutes(store)
 
     return (

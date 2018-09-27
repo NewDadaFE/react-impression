@@ -12,36 +12,36 @@ const paths = {
   dist: path.resolve(__dirname, 'dist'),
   src: path.resolve(__dirname, 'src'),
   html: path.resolve(__dirname, 'src/index.html'),
-  css: path.resolve(__dirname, 'src/app/styles')
+  css: path.resolve(__dirname, 'src/app/styles'),
 }
 
 const names = {
   image: 'images/[name].[hash:6].[ext]',
   font: 'fonts/[name].[ext]',
   css: 'styles/app.css',
-  js: 'scripts/app.js'
+  js: 'scripts/app.js',
 }
 
 const common = {
   output: {
     path: paths.dist,
     filename: names.js,
-    publicPath: '/'
+    publicPath: '/',
   },
   resolve: {
     alias: {
-      src: paths.src
+      src: paths.src,
     },
     modules: [paths.src, 'node_modules'],
-    symlinks: false
+    symlinks: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: paths.html,
-      inject: true
+      inject: true,
     }),
-    new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/)
-  ]
+    new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
+  ],
 }
 
 const development = {
@@ -54,16 +54,16 @@ const development = {
         enforce: 'pre',
         loader: 'eslint-loader',
         options: {
-          failOnError: true
-        }
+          failOnError: true,
+        },
       },
       {
         test: /\.js$/,
         include: [paths.src, /whatwg-fetch/],
         loader: 'babel-loader',
         options: {
-          cacheDirectory: true
-        }
+          cacheDirectory: true,
+        },
       },
       {
         test: /\.scss$/,
@@ -75,12 +75,12 @@ const development = {
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
-            }
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
           },
           'postcss-loader',
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.scss$/,
@@ -89,44 +89,44 @@ const development = {
           'style-loader',
           'css-loader?sourceMap',
           'postcss-loader?sourceMap',
-          'sass-loader?sourceMap'
-        ]
+          'sass-loader?sourceMap',
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
       },
       {
         test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
       },
       {
         test: /\.(xlsx?)$/,
-        loader: 'url-loader'
-      }
-    ]
+        loader: 'url-loader',
+      },
+    ],
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     hot: true,
     historyApiFallback: true,
     stats: 'errors-only',
-    proxy: config.proxy || {}
+    proxy: config.proxy || {},
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      DEBUG: JSON.stringify(true)
-    })
-  ]
+      DEBUG: JSON.stringify(true),
+    }),
+  ],
 }
 
 const production = env => {
   let {
     npm_package_name: NAME,
     npm_package_version: VERSION,
-    npm_package_deploy_DOMAIN: DOMAIN
+    npm_package_deploy_DOMAIN: DOMAIN,
   } = process.env
 
   if (env.debug) VERSION = new Date().toJSON().replace(/\D/g, '')
@@ -134,14 +134,14 @@ const production = env => {
   return {
     entry: paths.src,
     output: {
-      publicPath: `//${DOMAIN}/${NAME}/${VERSION}/`
+      publicPath: `//${DOMAIN}/${NAME}/${VERSION}/`,
     },
     module: {
       rules: [
         {
           test: /\.js$/,
           include: [paths.src, /whatwg-fetch/],
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         },
         {
           test: /\.scss$/,
@@ -154,73 +154,73 @@ const production = env => {
                 options: {
                   modules: true,
                   importLoaders: 1,
-                  localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                },
               },
               'postcss-loader',
-              'sass-loader'
-            ]
-          })
+              'sass-loader',
+            ],
+          }),
         },
         {
           test: /\.scss$/,
           include: [paths.css, /node_modules/],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', 'sass-loader']
-          })
+            use: ['css-loader', 'postcss-loader', 'sass-loader'],
+          }),
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: names.image
-          }
+            name: names.image,
+          },
         },
         {
           test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: names.font
-          }
+            name: names.font,
+          },
         },
         {
           test: /\.(xlsx?)$/,
           loader: 'url-loader',
           query: {
             limit: 10000,
-            name: 'static/[name].[ext]'
-          }
-        }
-      ]
+            name: 'static/[name].[ext]',
+          },
+        },
+      ],
     },
     stats: {
       children: false,
       chunks: false,
       chunkModules: false,
-      modules: false
+      modules: false,
     },
     plugins: [
       new CleanWebpackPlugin([paths.dist]),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"',
-        DEBUG: JSON.stringify(false)
+        DEBUG: JSON.stringify(false),
       }),
       new UglifyJsPlugin({
         uglifyOptions: {
-          ecma: 8
-        }
+          ecma: 8,
+        },
       }),
       new ExtractTextPlugin(names.css),
       new ManifestPlugin({
         seed: {
           name: NAME,
-          version: VERSION
-        }
-      })
-    ]
+          version: VERSION,
+        },
+      }),
+    ],
   }
 }
 

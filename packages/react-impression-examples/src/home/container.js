@@ -9,18 +9,18 @@ class Home extends Component {
   static propTypes = {
     total: PropTypes.number,
     increment: PropTypes.func,
-    decrement: PropTypes.func
+    decrement: PropTypes.func,
   }
 
-  componentDidMount () {
+  componentDidMount() {
     Notification.info({
       closeable: false,
       title: '通知',
-      message: '欢迎，这是一个Info通知。'
+      message: '欢迎，这是一个Info通知。',
     })
   }
 
-  render () {
+  render() {
     const { total, increment, decrement } = this.props
 
     return (

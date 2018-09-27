@@ -11,14 +11,14 @@ export const incrementAsync = () => dispatch =>
 
 // Reducer
 const initialState = {
-  total: 0
+  total: 0,
 }
 
 const reducer = handleActions(
   {
     [increment]: state => dotProp.set(state, 'total', state.total + 1),
 
-    [decrement]: state => dotProp.set(state, 'total', state.total - 1)
+    [decrement]: state => dotProp.set(state, 'total', state.total - 1),
   },
   initialState
 )
