@@ -14,6 +14,11 @@ const AppSidebar = () => {
               <Icon type='television' left />Counter
             </Link>
           </Nav.Link>
+          <Nav.Link>
+            <Link to='/overview'>
+              <Icon type='television' left />概览页面示例
+            </Link>
+          </Nav.Link>
         </Nav>
       </Sidebar.Body>
     </Sidebar>
