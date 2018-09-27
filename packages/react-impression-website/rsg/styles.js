@@ -1,3 +1,5 @@
+const theme = require('./theme')
+
 const color = {
   lightest: 'rgba(255, 255, 255, 0.1)',
   light: '#fff',
@@ -80,4 +82,22 @@ module.exports = {
   //     },
   //   },
   // },
+  ReactComponent: {
+    tabButtons: {
+      '& button': {
+        fontSize: 24,
+        cursor: 'pointer',
+        '&:focus': {
+          isolate: false,
+          outline: 'none !important',
+          color: theme.color.base,
+        },
+        '&:hover': {
+          isolate: false,
+          outline: 'none !important',
+          color: theme.color.linkHover,
+        },
+      },
+    },
+  },
 }

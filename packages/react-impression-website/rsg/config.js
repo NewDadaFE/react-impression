@@ -48,6 +48,11 @@ module.exports = {
   ],
   skipComponentsWithoutExample: true,
   styleguideComponents: {
+    'slots/UsageTabButton': resolveWebsite('rsg/components/UsageTabButton'),
+    'slots/CodeTabButton': resolveWebsite('rsg/components/CodeTabButton'),
+    PropsRenderer: resolveWebsite('rsg/components/PropsRenderer'),
+    TableRenderer: resolveWebsite('rsg/components/TableRenderer'),
+    PlaygroundRenderer: resolveWebsite('rsg/components/PlaygroundRenderer'),
     StyleGuideRenderer: resolveWebsite('rsg/components/StyleGuideRenderer'),
   },
   webpackConfig,
