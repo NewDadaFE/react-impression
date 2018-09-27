@@ -12,9 +12,10 @@ const color = {
 module.exports = {
   StyleGuide: {
     logo: {
+      padding: '22px 22px 22px 60px',
       backgroundImage: 'url(logo.png)',
-      backgroundPosition: 'center',
-      backgroundSize: 'contain',
+      backgroundPosition: 20,
+      backgroundSize: 30,
       backgroundRepeat: 'no-repeat',
       backgroundColor: color.lightDark,
       borderBottom: `1px solid ${color.lightest}`,
@@ -23,6 +24,8 @@ module.exports = {
   Logo: {
     logo: {
       color: color.light,
+      fontSize: 16,
+      lineHeight: 1,
     },
   },
   ComponentsList: {
@@ -39,8 +42,8 @@ module.exports = {
         },
         '&:hover, &:active': {
           color: color.light,
-          backgroundColor: color.lightest,
-          boxShadow: `inset 0 0 1px ${color.darker}`,
+          // backgroundColor: color.lightest,
+          // boxShadow: `inset 0 0 1px ${color.darker}`,
           cursor: 'pointer',
         },
       },
