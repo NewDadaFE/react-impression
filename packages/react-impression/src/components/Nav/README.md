@@ -3,8 +3,8 @@
 **基本用法**
 
 ```js
-<Nav activeKey={1}>
-  <NavItem eventKey={1}>标题</NavItem>
+<Nav activeKey={0}>
+  <NavItem eventKey={0}>标题</NavItem>
   <NavItem eventKey={2}>长标题</NavItem>
   <NavItem eventKey={3}>标题很长</NavItem>
   <NavItem eventKey={4}>标题特别长</NavItem>
