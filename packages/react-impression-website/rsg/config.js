@@ -62,6 +62,7 @@ module.exports = {
         'Nav[A-Z]*',
         'Navbar*',
         'Pagination',
+        'Sidebar*',
       ]),
     },
     {
@@ -83,6 +84,7 @@ module.exports = {
         'Badge',
         'Calendar',
         'Card*',
+        'Collapse*',
         'ListGroup*',
         'Popover',
         'Table*',

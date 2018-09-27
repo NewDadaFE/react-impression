@@ -1,110 +1,115 @@
 //侧边栏
 .sidebar {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: $sidebar-width;
-    color: $sidebar-color;
-    background-color: $sidebar-bg;
-
-    .nav-item {
-        display: block;
-        text-indent: $sidebar-nav-item-indent;
-        margin: $sidebar-nav-item-margin;
-
-        + .nav-item {
-            margin-left: 0;
-        }
-    }
-
-    .nav-link,
-    .collapse-title,
-    .collapse-item {
-        display: block;
-        color: $sidebar-nav-link-color;
-        padding: $sidebar-nav-link-padding;
-        border-left: $sidebar-nav-link-border-width solid transparent;
-        border-right: $sidebar-nav-link-border-width solid transparent;
-    }
-
-    .nav-link,
-    .collapse-title {
-        cursor: pointer;
-
-        &:hover,
-        &.active {
-            color: $sidebar-nav-link-active-color;
-            background: $sidebar-nav-link-active-bg;
-            box-shadow: $sidebar-nav-link-active-box-shadow;
-        }
-
-        &.active {
-            border-left-color: $sidebar-nav-link-active-border-color;
-        }
-
-        .pull-right {
-            line-height: $line-height-base;
-        }
-    }
+  display: flex;
+  width: $sidebar-width;
+  height: 100%;
+  flex-direction: column;
+  color: $sidebar-color;
+  background: $sidebar-bg;
 }
-
-.nav-title {
-    padding: $nav-title-padding;
-    color: $nav-title-color;
-    font-size: $nav-title-font-size;
-}
-
-
 //头部
 .sidebar-header {
-    text-align: center;
-    height: $navbar-height;
-    line-height: $navbar-height;
-    font-size: $sidebar-header-font-size;
-    color: $sidebar-header-color;
-    background: $sidebar-header-bg;
-    background-color: $sidebar-header-bg-color;
-    background-size: contain;
-    border-bottom: 1px solid $sidebar-header-bottom-border-color;
-    border-right: 1px solid $sidebar-header-border-right-color;
+  display: flex;
+  padding: $sidebar-header-padding;
+  align-items: center;
+  font-size: $sidebar-font-size;
+  line-height: $sidebar-header-logo-size;
+  color: $sidebar-header-color;
+  border-bottom: $border-width solid $sidebar-header-border-color;
 
-    img {
-        max-height: $navbar-height;
-        max-width: $sidebar-width;
-    }
+  img {
+    width: $sidebar-header-logo-size;
+    height: $sidebar-header-logo-size;
+    margin-right: $sidebar-header-logo-margin-right;
+  }
 }
-
 //主内容
 .sidebar-body {
-    flex: 1;
-    overflow-y: auto;
-    padding-top: $sidebar-body-padding-top;
-    border-right: 1px solid $sidebar-body-border-right-color;
+  overflow-y: auto;
+  flex: 1;
 
-    .nav {
-        margin-bottom: $sidebar-body-padding-bottom;
+  // 二级菜单增加缩进
+  .collapse .nav-item {
+    text-indent: $sidebar-nav-item-secondary-intent;
+  }
+  .nav-link {
+    text-indent: 0;
+  }
+
+  .nav-item,
+  .collapse-title {
+    padding: $sidebar-nav-item-padding;
+    font-size: $sidebar-font-size;
+    line-height: $sidebar-line-height;
+    cursor: pointer;
+    color: $sidebar-nav-item-color;
+    &:hover,
+    &.active {
+      color: $sidebar-nav-item-active-color;
     }
-}
-
-//底部
-.sidebar-footer {
-    display: flex;
-    background: $sidebar-footer-bg;
-    height: $sidebar-footer-height;
-    line-height: $sidebar-footer-height;
-    font-size: $sidebar-footer-font-size;
-    box-shadow: $sidebar-footer-box-shadow;
-}
-
-.sidebar-footer-item {
-    flex: 1;
-    text-align: center;
-    color: $sidebar-nav-link-color;
-    border-top: $sidebar-nav-link-border-width solid transparent;
 
     &:hover {
-        text-decoration: none;
-        color: $sidebar-nav-link-active-color;
-        border-top-color: $sidebar-nav-link-active-border-color;
+      background-color: $sidebar-nav-item-active-bg;
     }
+
+    .fa:first-child {
+      width: $sidebar-icon-size;
+      height: $sidebar-icon-size;
+      margin-right: $sidebar-header-logo-margin-right;
+      line-height: $sidebar-icon-size;
+      text-align: center;
+      vertical-align: top;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    background-color: transparent;
+
+    &.active {
+      background-color: $sidebar-nav-item-active-bg;
+      &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: rem(4px);
+        content: "";
+        background-color: $brand-primary;
+      }
+    }
+
+    &.disabled {
+      &:hover {
+        background-color: transparent;
+      }
+      & > .nav-link {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .collapse-title-addon {
+    margin-right: rem(10px);
+  }
+}
+//底部
+.sidebar-footer {
+  display: flex;
+  height: $sidebar-footer-height;
+  font-size: $sidebar-footer-font-size;
+  line-height: $sidebar-footer-height;
+  border-top: $border-width solid $sidebar-footer-border-color;
+  &-item {
+    flex: 1;
+    cursor: pointer;
+    text-align: center;
+    color: $sidebar-nav-item-color;
+
+    &:hover {
+      text-decoration: none;
+      color: $sidebar-nav-item-active-color;
+      background-color: $sidebar-nav-item-active-bg;
+    }
+  }
 }
