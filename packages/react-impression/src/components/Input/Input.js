@@ -138,7 +138,7 @@ export default class Input extends React.PureComponent {
    *显示候选项
    * @memberof Input
    */
-  showOptionHandle = () => {
+  handleShowOption = () => {
     const { disabled } = this.props
 
     !disabled &&
@@ -152,7 +152,7 @@ export default class Input extends React.PureComponent {
    *隐藏候选项
    * @memberof Input
    */
-  hideOptionsHandle = () => {
+  handleHideOptions = () => {
     if (!this.refMain) {
       return
     }
@@ -168,7 +168,7 @@ export default class Input extends React.PureComponent {
    * 清空时间类型的输入框
    * @memberof Input
    */
-  clearDateInputHandle = () => {
+  handleClearDateInput = () => {
     const { disabled, onChange } = this.props
 
     if (disabled) {
@@ -183,7 +183,7 @@ export default class Input extends React.PureComponent {
    *选中候选项
    * @memberof Input
    */
-  selectOptionsHandle = value => {
+  handleSelectOptions = value => {
     this.refMain && (this.refMain.value = value)
 
     this.setState({
@@ -196,7 +196,7 @@ export default class Input extends React.PureComponent {
    *显示清空按钮
    * @memberof Input
    */
-  showClearHandle = () => {
+  handleShowClear = () => {
     !this.props.disabled &&
       this.refMain &&
       this.refMain.value &&
@@ -209,11 +209,20 @@ export default class Input extends React.PureComponent {
    *隐藏清空按钮
    * @memberof Input
    */
-  hideClearHandle = () => {
+  handleHideClear = () => {
     this.setState({
       showClear: false,
     })
   }
+
+  /**
+   * 文件类型Input内容改变回调事件
+   */
+  handleUploadChange = event => {
+    const { onChange } = this.props
+    onChange && onChange(event.target.files[0], event)
+  }
+
   componentWillUnmount() {
     System.unmanager(this)
   }
@@ -251,8 +260,8 @@ export default class Input extends React.PureComponent {
           <div
             className={classnames('input', className)}
             ref='container'
-            onMouseEnter={this.showClearHandle}
-            onMouseLeave={this.hideClearHandle}
+            onMouseEnter={this.handleShowClear}
+            onMouseLeave={this.handleHideClear}
           >
             <input
               type='text'
@@ -268,7 +277,7 @@ export default class Input extends React.PureComponent {
               readOnly
               disabled={disabled}
               placeholder={placeholder}
-              onClick={this.showOptionHandle}
+              onClick={this.handleShowOption}
               style={style}
             />
 
@@ -276,14 +285,14 @@ export default class Input extends React.PureComponent {
               showClear && (
               <i
                 className='fa fa-times input-addon'
-                onClick={this.clearDateInputHandle}
+                onClick={this.handleClearDateInput}
               />
             )}
 
             {(!showClear || !clearable) && (
               <i
                 className='fa fa-calendar input-addon'
-                onClick={this.showOptionHandle}
+                onClick={this.handleShowOption}
               />
             )}
 
@@ -293,7 +302,7 @@ export default class Input extends React.PureComponent {
                 type={type}
                 value={this.refMain.value}
                 onChange={value => onChange && onChange(value)}
-                onSelect={this.selectOptionsHandle}
+                onSelect={this.handleSelectOptions}
               />
             )}
           </div>
@@ -332,7 +341,8 @@ export default class Input extends React.PureComponent {
             ref={ref => (this.refMain = ref)}
             className={className}
             placeholder={placeholder}
-            onChange={e => onChange && onChange(e.target.files[0], e)}
+            onChange={this.handleUploadChange}
+            style={style}
           />
         )
       case 'textarea':

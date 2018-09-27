@@ -66,6 +66,7 @@ export default class Upload extends React.PureComponent {
     }
     this.state = {
       file: '',
+      previewImageUrl: this.props.src,
     }
   }
 
@@ -77,17 +78,23 @@ export default class Upload extends React.PureComponent {
     this.fileInput.files[0] = value
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      previewImageUrl: newProps.src,
+    })
+  }
+
   /**
    * 打开文件浏览器对话框
    */
-  openFileDialogHandle = () => {
+  handleOpenFileDialog = () => {
     this.fileInput.click()
   }
 
   /**
    * 设置文件名
    */
-  fileChangeHandle = event => {
+  handleFileChange = event => {
     const { onChange } = this.props
 
     this.setState({
@@ -100,20 +107,19 @@ export default class Upload extends React.PureComponent {
   /**
    * 图片预览处理
    */
-  imagePreviewHandle = event => {
+  handleImagePreview = event => {
     const { onChange } = this.props
-    const file = event.target.files[0]
-    const reader = new window.FileReader()
+    onChange && onChange(event)
+  }
 
-    if (file) {
-      reader.onload = e => {
-        this.setState({
-          previewImageUrl: e.currentTarget.result,
-        })
-      }
-    }
+  handleRemoveImg = event => {
+    event.stopPropagation()
+    const { onChange } = this.props
+    this.fileInput.value = ''
+    this.setState({
+      previewImageUrl: '',
+    })
 
-    reader.readAsDataURL(file)
     onChange && onChange(event)
   }
 
@@ -121,7 +127,6 @@ export default class Upload extends React.PureComponent {
     const {
       preview,
       message,
-      src,
       btnText,
       btnStyle,
       placeholder,
@@ -143,16 +148,19 @@ export default class Upload extends React.PureComponent {
       }
 
       return (
-        <div className='upload-preview' onClick={this.openFileDialogHandle}>
+        <div className='upload-preview' onClick={this.handleOpenFileDialog}>
           <input
             type='file'
             ref={this.fileRef}
-            onChange={onChange && this.imagePreviewHandle}
+            onChange={onChange && this.handleImagePreview}
           />
-          {previewImageUrl || src ? (
+          {previewImageUrl ? (
             <div className='upload-preview-inner upload-preview-img'>
-              <img src={previewImageUrl || src} />
-              <div className='upload-preview-remove'>
+              <img src={previewImageUrl} />
+              <div
+                className='upload-preview-remove'
+                onClick={this.handleRemoveImg}
+              >
                 <Icon type='trash' />
               </div>
             </div>
@@ -172,6 +180,7 @@ export default class Upload extends React.PureComponent {
       <div
         {...others}
         className={classnames('input-group', 'input-group-upload', className)}
+        onClick={this.handleOpenFileDialog}
       >
         <span className='form-control'>
           <Icon type='upload' className='upload-addon' />
@@ -181,13 +190,12 @@ export default class Upload extends React.PureComponent {
         <input
           type='file'
           ref={this.fileRef}
-          onChange={onChange && this.fileChangeHandle}
+          onChange={onChange && this.handleFileChange}
         />
         <span className='input-group-btn'>
           <button
             type='button'
             className={classnames('btn', `btn-${btnStyle}`)}
-            onClick={this.openFileDialogHandle}
           >
             {btnText}
           </button>

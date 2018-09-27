@@ -3,20 +3,32 @@
 **单个文件点击上传**
 
 ```js
-<div>
+const handleChange = e => {
+  console.log('选择了文件：', e.currentTarget.value)
+}
+;<div>
   <Row>
-    <Col col={7}>
-      <Upload />
+    <Col>
+      <Upload style={{ width: 464 }} onChange={handleChange} />
     </Col>
   </Row>
   <Row>
-    <Col col={7}>
-      <Upload placeholder="请上传资质证明" />
+    <Col>
+      <Upload
+        placeholder="请上传资质证明"
+        style={{ width: 464 }}
+        onChange={handleChange}
+      />
     </Col>
   </Row>
   <Row>
-    <Col col={7}>
-      <Upload btnText="附件" btnStyle="primary" />
+    <Col>
+      <Upload
+        btnText="附件"
+        btnStyle="primary"
+        style={{ width: 464 }}
+        onChange={handleChange}
+      />
     </Col>
   </Row>
 </div>
@@ -25,23 +37,58 @@
 **图片上传**
 
 ```js
-let upload
-;<Row>
-  <Col>
-    <Upload ref={ref => (upload = ref)} preview />
-  </Col>
-  <Col>
-    <Upload preview message="上传图片">
-      <Icon type="plus" />
-    </Upload>
-  </Col>
-  <Col>
-    <Upload
-      src="https://nzfq0mp27.qnssl.com/0.1.18/homeV3/images/enjoy.jpg"
-      preview
-    />
-  </Col>
-</Row>
+class UploadExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      previewUrl: '',
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handlePreviewChange = this.handlePreviewChange.bind(this)
+  }
+
+  handleChange(event) {
+    console.log('选择了文件：', event.currentTarget.value)
+  }
+
+  handlePreviewChange(event) {
+    const file = event.target.files && event.target.files[0]
+
+    if (file) {
+      console.log('选择了文件：', event.currentTarget.value)
+      const reader = new window.FileReader()
+      reader.onload = e => {
+        this.setState({
+          previewUrl: e.currentTarget.result,
+        })
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  render() {
+    return (
+      <Row>
+        <Col>
+          <h5>无预览效果：</h5>
+          <Upload preview onChange={this.handleChange} />
+        </Col>
+        <Col>
+          <h5>选择图片后预览：</h5>
+          <Upload
+            src={this.state.previewUrl}
+            preview
+            message="上传图片"
+            onChange={this.handlePreviewChange}
+          >
+            <Icon type="plus" />
+          </Upload>
+        </Col>
+      </Row>
+    )
+  }
+}
+;<UploadExample />
 ```
 
 ### 变更记录
