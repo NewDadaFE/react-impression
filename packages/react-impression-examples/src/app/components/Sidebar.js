@@ -14,6 +14,11 @@ const AppSidebar = () => {
               <Icon type='television' left />Counter
             </Link>
           </Nav.Link>
+          <Nav.Link>
+            <Link to='/table'>
+              <Icon type='television' left />Table
+            </Link>
+          </Nav.Link>
         </Nav>
       </Sidebar.Body>
     </Sidebar>
