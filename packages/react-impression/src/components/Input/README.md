@@ -228,7 +228,7 @@ class Example extends React.Component {
 ```js
 <Row>
   <Col>
-    <Input type="file" style={{width: '464px'}} />
+    <Input type="file" style={{width: 464}} />
   </Col>
 </Row>
 <Row>
@@ -236,13 +236,13 @@ class Example extends React.Component {
     <Input
       type="file"
       placeholder="请选择要上传的证书图片"
-      style={{width: '464px'}}
+      style={{width: 464}}
      />
   </Col>
 </Row>
 <Row>
   <Col>
-    <Input type="file" btnStyle="primary" style={{width: '464px'}} />
+    <Input type="file" btnStyle="primary" style={{width: 464}} />
   </Col>
 </Row>
 ```
