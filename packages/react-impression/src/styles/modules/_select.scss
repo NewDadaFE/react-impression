@@ -14,7 +14,7 @@
     .select-selection {
       background: $select-disable-bg;
       cursor: $cursor-disabled;
-      color: #d1d8e6;
+      color: $select-selection-color;
     }
     .tag {
       cursor: $cursor-disabled;
