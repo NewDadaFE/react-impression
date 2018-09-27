@@ -1,34 +1,41 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Notification, Card } from 'react-impression'
-// import Counter from './components/Counter'
+import { Card } from 'react-impression'
 import * as actions from '../reducer'
+import InlineFilter from '../components/InlineFilter'
+import { cityList } from '../config'
 
 class Filter extends Component {
-  static propTypes = {}
+  static propTypes = {
+    cityId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    setCityId: PropTypes.func,
+  }
 
-  componentDidMount() {
-    Notification.info({
-      closeable: false,
-      title: '通知',
-      message: '欢迎，这是一个Info通知。',
-    })
+  handleCityChange = val => {
+    const { setCityId } = this.props
+    setCityId(val)
   }
 
   render() {
     // const { total, increment, decrement } = this.props
-
+    const { cityId } = this.props
     return (
       <Card block>
-        <Filter />
-        {/* <Counter counter={total} increment={increment} decrement={decrement} /> */}
+        <InlineFilter
+          label='城市'
+          data={cityList}
+          onChange={this.handleCityChange}
+          value={cityId}
+        />
       </Card>
     )
   }
 }
 
-const mapStateToProps = state => ({ total: state.table.total })
+const mapStateToProps = state => ({
+  cityId: state.table.cityId,
+})
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 

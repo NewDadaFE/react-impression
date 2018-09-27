@@ -1,21 +1,17 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Notification, Card } from 'react-impression'
+import { Card } from 'react-impression'
 // import Counter from './components/Counter'
 import Filter from './container/Filter'
 import * as actions from './reducer'
+import FilterContent from './container/FilterContent'
+import TableContainer from './container/TableContainer'
 
 class Table extends Component {
   static propTypes = {}
 
-  componentDidMount() {
-    Notification.info({
-      closeable: false,
-      title: '通知',
-      message: '欢迎，这是一个Info通知。',
-    })
-  }
+  componentDidMount() {}
 
   render() {
     // const { total, increment, decrement } = this.props
@@ -23,7 +19,8 @@ class Table extends Component {
     return (
       <Card block>
         <Filter />
-        {/* <Counter counter={total} increment={increment} decrement={decrement} /> */}
+        <FilterContent />
+        <TableContainer />
       </Card>
     )
   }
