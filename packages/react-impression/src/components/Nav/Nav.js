@@ -99,10 +99,9 @@ export default class Nav extends React.PureComponent {
         key: index,
         onClick: this.onSelectHandle,
       }
-
-      if (eventKey) {
+      if (typeof eventKey !== 'undefined') {
         options.eventKey = eventKey
-        if (activeKey) {
+        if (typeof activeKey !== 'undefined') {
           options.active = eventKey === activeKey
         }
       }

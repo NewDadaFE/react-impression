@@ -12,14 +12,12 @@ initialState = {
   totalPage: 6,
   activePage: 2,
 }
-;<div className="text-center">
-  <Pagination
-    onSelect={onSelectHandle}
-    scope={2}
-    totalPage={state.totalPage}
-    activePage={state.activePage}
-  />
-</div>
+;<Pagination
+  onSelect={onSelectHandle}
+  scope={2}
+  totalPage={state.totalPage}
+  activePage={state.activePage}
+/>
 ```
 
 **页码较多的情况**
@@ -34,14 +32,12 @@ initialState = {
   totalPage: 99,
   activePage: 50,
 }
-;<div className="text-center">
-  <Pagination
-    onSelect={onSelectHandle}
-    scope={2}
-    totalPage={state.totalPage}
-    activePage={state.activePage}
-  />
-</div>
+;<Pagination
+  onSelect={onSelectHandle}
+  scope={2}
+  totalPage={state.totalPage}
+  activePage={state.activePage}
+/>
 ```
 
 **自定义翻页控制按钮的内容**
@@ -56,16 +52,14 @@ initialState = {
   totalPage: 3,
   activePage: 1,
 }
-;<div className="text-center">
-  <Pagination
-    onSelect={onSelectHandle}
-    scope={2}
-    totalPage={state.totalPage}
-    activePage={state.activePage}
-    lastContent="上一页"
-    nextContent="下一页"
-  />
-</div>
+;<Pagination
+  onSelect={onSelectHandle}
+  scope={2}
+  totalPage={state.totalPage}
+  activePage={state.activePage}
+  lastContent="上一页"
+  nextContent="下一页"
+/>
 ```
 
 ### 变更记录
@@ -74,5 +68,3 @@ v2.0.0
 
 * 废弃`ellipsis`属性，自动显示省略号
 * 新增`lastContent`、`nextContent`属性，支持自定义翻页控制按钮内容
-* 新增 scss 变量`$pagination-link-min-size`表示页码按钮最小尺寸
-* 新增 scss 变量`$pagination-link-line-height`表示页码按钮行高
