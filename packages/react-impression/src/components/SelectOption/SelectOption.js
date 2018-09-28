@@ -119,7 +119,7 @@ export default class SelectOption extends React.PureComponent {
     }
   }
   componentDidMount() {
-    this.handleActive()
+    this.parent() && this.handleActive()
   }
   queryChange(query, filterMethod) {
     if (!this.parent().props.searchable) return
