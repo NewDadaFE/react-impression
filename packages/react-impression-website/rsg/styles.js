@@ -59,7 +59,7 @@ module.exports = {
         paddingRight: 16,
         paddingTop: 8,
         paddingBottom: 8,
-        verticalAlign: 'top',
+        verticalAlign: 'middle',
         fontSize: 13,
       },
       '& p': {
