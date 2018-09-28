@@ -33,7 +33,7 @@ export default class Filter extends React.Component {
           <Input
             type='date'
             style={{ width: 224 }}
-            className='pull-right'
+            className='offset-l-lg'
             placeholder='请选择日期'
             onChange={this.handleDatePickerChange}
           />
