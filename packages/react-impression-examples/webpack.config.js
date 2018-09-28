@@ -8,6 +8,39 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const config = require('./package.json')
 
+/**
+ * Babel
+ */
+const { presets, plugins } = require('../../babel.config.js')
+const babelConfig = {
+  presets,
+  plugins: [
+    [
+      'transform-imports',
+      {
+        lodash: {
+          transform: 'lodash/${member}',
+          preventFullImport: true,
+        },
+      },
+    ],
+    [
+      'react-css-modules',
+      {
+        exclude: 'node_modules',
+        filetypes: {
+          '.scss': {
+            syntax: 'postcss-scss',
+          },
+        },
+        webpackHotModuleReloading: true,
+        generateScopedName: '[name]__[local]___[hash:base64:5]',
+      },
+    ],
+    ...plugins,
+  ],
+}
+
 const paths = {
   dist: path.resolve(__dirname, 'dist'),
   src: path.resolve(__dirname, 'src'),
@@ -63,6 +96,8 @@ const development = {
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
+          presets: babelConfig.presets,
+          plugins: ['react-hot-loader/babel', ...babelConfig.plugins],
         },
       },
       {
@@ -142,6 +177,9 @@ const production = env => {
           test: /\.js$/,
           include: [paths.src, /whatwg-fetch/],
           loader: 'babel-loader',
+          options: {
+            ...babelConfig,
+          },
         },
         {
           test: /\.scss$/,
