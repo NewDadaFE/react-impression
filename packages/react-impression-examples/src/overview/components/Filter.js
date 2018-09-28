@@ -1,5 +1,5 @@
 import React from 'react'
-import { Select, Input, Card, CardBlock } from 'react-impression'
+import { Select, SelectOption, Input, Card, CardBlock } from 'react-impression'
 
 export default class Filter extends React.Component {
   /**
@@ -26,9 +26,9 @@ export default class Filter extends React.Component {
             defaultValue=''
             placeholder='请选择部门'
           >
-            <Select.Option value='frontend'>前端部门</Select.Option>
-            <Select.Option value='backend'>后端部门</Select.Option>
-            <Select.Option value='test'>测试部门</Select.Option>
+            <SelectOption value='frontend'>前端部门</SelectOption>
+            <SelectOption value='backend'>后端部门</SelectOption>
+            <SelectOption value='test'>测试部门</SelectOption>
           </Select>
           <Input
             type='date'
