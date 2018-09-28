@@ -98,8 +98,10 @@ export default class AddModal extends React.Component {
           </Form>
         </Modal.Body>
         <Modal.Footer className='text-center'>
+          <Button theme='default' onClick={onClose}>
+            取消
+          </Button>
           <Button>新增</Button>
-          <Button onClick={onClose}>取消</Button>
         </Modal.Footer>
       </Modal>
     )
