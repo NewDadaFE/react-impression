@@ -2,7 +2,8 @@
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  font-size: 0;
+  display: inline-block;
+  vertical-align: middle;
   .checkbox-addon {
     background: transparent;
   }
@@ -14,7 +15,6 @@
     background-color: #fff;
 
     color: $table-header-color;
-    // line-height: $table-header-line-height;
     font-weight: 400;
   }
   tr {
@@ -22,10 +22,14 @@
   }
   td {
     word-break: break-all;
-    // line-height: $table-header-line-height;
   }
 }
+.table-inner {
+  display: inline-block;
+  vertical-align: middle;
+}
 .table-header {
+  border-top: $table-header-border;
   border-bottom: $table-header-border;
   .table-cell {
     padding: $table-header-padding;
@@ -50,10 +54,6 @@
   table-layout: fixed;
   border-collapse: separate;
   font-size: rem(14px);
-}
-.table-cell {
-  // display: inline-block;
-  // line-height: $table-header-line-height;
 }
 .table-cell-tooltip {
   overflow: hidden;
@@ -94,7 +94,6 @@
 }
 .table-wrap {
   width: 100%;
-  border-top: $table-header-border;
   &.table-border {
     border-left: $table-header-border;
     border-right: $table-header-border;
