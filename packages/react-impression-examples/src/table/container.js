@@ -8,6 +8,7 @@ import * as actions from './reducer'
 import FilterContent from './container/FilterContent'
 import TableContainer from './container/TableContainer'
 import AddModal from './components/AddModal'
+import './index.scss'
 
 class Table extends Component {
   state = {
@@ -27,7 +28,7 @@ class Table extends Component {
     const { showAddModal } = this.state
 
     return (
-      <Card block>
+      <Card block styleName='table-wrap'>
         <Filter />
         <FilterContent handleAddToggleClick={this.handleAddToggleClick} />
         <TableContainer />
