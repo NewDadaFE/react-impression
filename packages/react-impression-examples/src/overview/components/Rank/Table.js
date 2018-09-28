@@ -21,13 +21,6 @@ const columns = [
 ]
 
 export default class CustomTable extends React.Component {
-  static propTypes = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   render() {
     const dataSource = getData()
 

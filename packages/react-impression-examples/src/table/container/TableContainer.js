@@ -19,6 +19,7 @@ class Filter extends Component {
     const { setCityId } = this.props
     setCityId(val)
   }
+
   handelOnSelect = (status, index) => {
     if (status) {
       const { selectedRowKeys } = this.state
@@ -32,6 +33,7 @@ class Filter extends Component {
       })
     }
   }
+
   handleOnSelectAll = (checkAll, selectedRowKeys) => {
     if (checkAll) {
       this.setState({

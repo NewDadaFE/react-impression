@@ -11,7 +11,7 @@ import {
   Radio,
   Col,
 } from 'react-impression'
-import './AddModal.scss'
+import './AddModal.module.scss'
 
 export default class AddModal extends React.Component {
   static propTypes = {

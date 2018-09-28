@@ -2,13 +2,6 @@ import React from 'react'
 import { Select, Input, Card, CardBlock } from 'react-impression'
 
 export default class Filter extends React.Component {
-  static propTypes = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   /**
    * Select 发生改变的时候触发的回调
    */

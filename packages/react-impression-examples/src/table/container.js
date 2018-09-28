@@ -10,8 +10,6 @@ import TableContainer from './container/TableContainer'
 import AddModal from './components/AddModal'
 
 class Table extends Component {
-  static propTypes = {}
-
   state = {
     showAddModal: false,
   }
