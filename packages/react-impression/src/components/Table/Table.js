@@ -516,7 +516,7 @@ export default class Table extends React.PureComponent {
               ref={div => {
                 this.inner = div
               }}
-              style={{ display: 'inline-block' }}
+              className='table-inner'
             >
               <TableHead
                 rowSelection={rowSelection}
