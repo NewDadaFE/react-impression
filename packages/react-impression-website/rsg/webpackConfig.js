@@ -1,14 +1,11 @@
 const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-const devMode = process.env.NODE_ENV !== 'production'
+const devMode = process.env.NODE_ENV === 'development'
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  optimization: {
-    minimizer: [new OptimizeCSSAssetsPlugin()],
-  },
   module: {
     rules: [
       {
@@ -23,28 +20,30 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               configFile: '../../babel.config.js',
-              cacheDirectory: process.env.NODE_ENV === 'development',
+              cacheDirectory: devMode,
             },
           },
           {
             test: /\.s?css$/,
             exclude: /node_modules/,
-            use: [
-              {
-                loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-              },
-              { loader: 'css-loader', options: { sourceMap: true } },
-              { loader: 'sass-loader', options: { sourceMap: true } },
-            ],
+            use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [
+                { loader: 'css-loader', options: { sourceMap: true } },
+                { loader: 'sass-loader', options: { sourceMap: true } },
+              ],
+            }),
           },
         ],
       },
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
+    new ExtractTextPlugin({
       filename: 'build/bundle.[contenthash:8].css',
+      disable: devMode,
     }),
+    new OptimizeCssAssetsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 }
