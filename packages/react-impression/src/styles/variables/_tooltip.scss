@@ -13,4 +13,4 @@ $tooltip-offset: rem(10px) !default;
 $tooltip-arrow-width: rem(5px) !default;
 $tooltip-arrow-color: $tooltip-bg !default;
 
-$tooltip-animation: tooltip-slide-in .36s cubic-bezier(.4, 0, .2, 1) !default;
+$tooltip-transition: all .36s cubic-bezier(.4, 0, .2, 1) !default;
