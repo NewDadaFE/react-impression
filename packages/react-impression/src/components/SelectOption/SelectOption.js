@@ -114,7 +114,9 @@ export default class SelectOption extends React.PureComponent {
     }
   }
   componentWillMount() {
-    this.parent().onOptionCreate(this)
+    if (this.parent()) {
+      this.parent().onOptionCreate(this)
+    }
   }
   componentDidMount() {
     this.handleActive()
