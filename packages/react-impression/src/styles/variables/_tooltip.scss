@@ -1,6 +1,6 @@
 // Tooltips
 
-$tooltip-max-width: 15rem !default;
+$tooltip-max-width: rem(240px) !default;
 $tooltip-color: $brand-pure !default;
 $tooltip-bg: $gray-base !default;
 $tooltip-opacity: .9 !default;
@@ -13,5 +13,4 @@ $tooltip-offset: rem(10px) !default;
 $tooltip-arrow-width: rem(5px) !default;
 $tooltip-arrow-color: $tooltip-bg !default;
 
-$tooltip-transition: all .36s cubic-bezier(.4, 0, .2, 1) !default;
 $tooltip-animation: tooltip-slide-in .36s cubic-bezier(.4, 0, .2, 1) !default;

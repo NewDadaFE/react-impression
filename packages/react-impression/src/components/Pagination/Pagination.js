@@ -3,14 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default class Pagination extends React.PureComponent {
-  static defaultProps = {
-    scope: 2,
-    activePage: 1,
-    totalPage: 1,
-  }
-  state = {
-    currentPage: this.props.activePage,
-  }
   static propTypes = {
     /**
      * 前后延伸
@@ -40,6 +32,19 @@ export default class Pagination extends React.PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+  }
+
+  static defaultProps = {
+    scope: 2,
+    activePage: 1,
+    totalPage: 1,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentPage: this.props.activePage,
+    }
   }
 
   /**
@@ -91,7 +96,8 @@ export default class Pagination extends React.PureComponent {
     const scopeLength = scope * 2
     // 页数少于（首、尾、中间、两边scope）不出现省略号
     if (totalPage <= 3 + scopeLength) {
-      for (let i = 1; i <= totalPage; i++) {
+      const totalPageNumber = totalPage || 1
+      for (let i = 1; i <= totalPageNumber; i++) {
         pageList.push(i)
       }
       return pageList
@@ -138,7 +144,7 @@ export default class Pagination extends React.PureComponent {
     const pageList = this.getPageList()
 
     return (
-      <ul {...others} className={classnames('Pagination', className)}>
+      <ul {...others} className={classnames('pagination', className)}>
         <li className={classnames('page-item', { disabled: activePage <= 1 })}>
           <span className='page-link' onClick={this.prevPageHandle}>
             {lastContent || <i className='fa fa-chevron-left' />}
@@ -150,7 +156,7 @@ export default class Pagination extends React.PureComponent {
               <li
                 key={`${child}-${index}`}
                 className={classnames('page-item', {
-                  active: child === activePage,
+                  active: child === (activePage || 1),
                 })}
               >
                 <span
