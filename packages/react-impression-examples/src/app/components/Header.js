@@ -6,8 +6,8 @@ import './Header.scss'
 const Header = () => {
   return (
     <Navbar>
-      <Form type='inline' className='pull-right'>
-        <span>Welcome to Impression React generator.</span>
+      <Form type='inline' className='pull-right offset-r-lg'>
+        <span>欢迎使用React Impression</span>
         <span>
           <Badge theme='warning'>
             <Icon size='lg' type='bell' />
@@ -23,7 +23,7 @@ const Header = () => {
           <span className='offset-l'>Impression</span>
         </span>
         <Split />
-        <a href='javascript:void(0);' className='nav-link'>
+        <a href='#' className='nav-link'>
           登出
         </a>
       </Form>
