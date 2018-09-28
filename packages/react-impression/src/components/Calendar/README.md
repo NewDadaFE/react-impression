@@ -3,6 +3,14 @@
 **基本用法**
 
 ```js
+<CardBlock>
+  <Calendar />
+</CardBlock>
+```
+
+**小尺寸**
+
+```js
 class CalendarView extends React.Component {
   constructor(prop, context) {
     super(prop, context)
@@ -10,9 +18,74 @@ class CalendarView extends React.Component {
       days: [5, 6, 7, 8, 9, 10],
     }
 
-    this.customDateCellRender = this.customDateCellRender.bind(this)
     this.checkDateCellRender = this.checkDateCellRender.bind(this)
     this.checkDateClickHandle = this.checkDateClickHandle.bind(this)
+  }
+
+  checkDateCellRender(date) {
+    if (this.state.days.indexOf(date.day) !== -1) {
+      return (
+        <div className="text-success text-center">
+          <Icon type="check" />
+        </div>
+      )
+    }
+
+    return null
+  }
+
+  checkDateClickHandle(date) {
+    const { days } = this.state
+
+    if (!date.inMonth) {
+      return
+    }
+
+    if (days.indexOf(date.day) === -1) {
+      this.setState({
+        days: [...days, date.day],
+      })
+    } else {
+      this.setState({
+        days: days.filter(day => {
+          return day !== date.day
+        }),
+      })
+    }
+  }
+
+  render() {
+    return (
+      <Card>
+        <CardBlock>
+          <Row>
+            <Col>
+              <Calendar size="sm" />
+            </Col>
+            <Col>
+              <Calendar
+                onCellClick={this.checkDateClickHandle}
+                cellRender={this.checkDateCellRender}
+                firstDayOfWeek={0}
+                size="sm"
+              />
+            </Col>
+          </Row>
+        </CardBlock>
+      </Card>
+    )
+  }
+}
+;<CalendarView />
+```
+
+**自定义模块内容**
+
+```js
+class CalendarView extends React.Component {
+  constructor(prop, context) {
+    super(prop, context)
+    this.customDateCellRender = this.customDateCellRender.bind(this)
   }
 
   customDateCellRender(date) {
@@ -84,72 +157,13 @@ class CalendarView extends React.Component {
     }
   }
 
-  checkDateCellRender(date) {
-    if (this.state.days.indexOf(date.day) !== -1) {
-      return (
-        <div className="text-success text-center">
-          <Icon type="check" />
-        </div>
-      )
-    }
-
-    return null
-  }
-
-  checkDateClickHandle(date) {
-    const { days } = this.state
-
-    if (!date.inMonth) {
-      return
-    }
-
-    if (days.indexOf(date.day) === -1) {
-      this.setState({
-        days: [...days, date.day],
-      })
-    } else {
-      this.setState({
-        days: days.filter(day => {
-          return day !== date.day
-        }),
-      })
-    }
-  }
-
   render() {
     return (
-      <div>
-        <h3>基本形式</h3>
-        <Card>
-          <CardBlock>
-            <Calendar />
-          </CardBlock>
-        </Card>
-        <h3>小尺寸</h3>
-        <Card>
-          <CardBlock>
-            <Row>
-              <Col>
-                <Calendar size="sm" />
-              </Col>
-              <Col>
-                <Calendar
-                  onCellClick={this.checkDateClickHandle}
-                  cellRender={this.checkDateCellRender}
-                  firstDayOfWeek={0}
-                  size="sm"
-                />
-              </Col>
-            </Row>
-          </CardBlock>
-        </Card>
-        <h3>自定义模块内容</h3>
-        <Card>
-          <CardBlock>
-            <Calendar cellRender={this.customDateCellRender} />
-          </CardBlock>
-        </Card>
-      </div>
+      <Card>
+        <CardBlock>
+          <Calendar cellRender={this.customDateCellRender} />
+        </CardBlock>
+      </Card>
     )
   }
 }
