@@ -118,6 +118,7 @@ export default class Select extends React.PureComponent {
 
     if (this.props.children && Array.isArray(this.props.children)) {
       this.props.children.forEach(child => {
+        if (!child || !child.props) return
         const { value, children } = child.props
         if (Array.isArray(children)) {
           children.forEach(item => {
@@ -137,6 +138,7 @@ export default class Select extends React.PureComponent {
     }
     if (this.props.children && !Array.isArray(this.props.children)) {
       const { value, children } = this.props.children.props
+      if (!this.props.children || !this.props.children.props) return
       if (Array.isArray(children)) {
         children.forEach(item => {
           const { value, children } = item.props
