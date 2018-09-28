@@ -68,8 +68,8 @@
     <Col col="2" className="text-right">
       <FormControlLabel>区域:</FormControlLabel>
     </Col>
-    <Col col="10" className="form-control-label">
-      <RadioGroup defaultValue={'北京'}>
+    <Col col="10">
+      <RadioGroup defaultValue={'北京'} style={{ lineHeight: '33px' }}>
         <Radio value="北京">北京</Radio>
         <Radio value="上海">上海</Radio>
         <Radio value="天津">天津</Radio>
