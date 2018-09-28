@@ -75,7 +75,7 @@ export default class Confirm extends React.PureComponent {
    * 根据类型获取Icon
    * @return String Icon类型
    */
-  getAddonByType = type => {
+  getAddonByTypes = type => {
     switch (type) {
       case 'info':
         return 'fa-question-circle text-primary'
@@ -97,7 +97,7 @@ export default class Confirm extends React.PureComponent {
       children,
       ...others
     } = this.props
-    const iconTypeClass = this.getAddonByType(type)
+    const iconTypeClass = this.getAddonByTypes(type)
 
     return (
       <div className={classnames('confirm', className)}>
