@@ -48,7 +48,7 @@ class FilterContent extends Component {
         >
           <Icon type='plus' className='pull-right' />新增任务
         </Button>
-        <div style={{ float: 'right' }}>
+        <div className='pull-right'>
           <InputGroup>
             <InputGroupInput placeholder='任务名称' />
             <InputGroupButton theme='primary'>搜索</InputGroupButton>
