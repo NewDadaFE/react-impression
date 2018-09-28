@@ -116,4 +116,5 @@ module.exports = {
     StyleGuideRenderer: resolveWebsite('rsg/components/StyleGuideRenderer'),
   },
   webpackConfig,
+  skipComponentsWithoutExample: true,
 }
