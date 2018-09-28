@@ -17,6 +17,7 @@ class FilterContent extends Component {
   static propTypes = {
     ruleId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     setRuleId: PropTypes.func,
+    handleAddToggleClick: PropTypes.func,
   }
 
   componentDidMount() {}
@@ -26,7 +27,7 @@ class FilterContent extends Component {
   }
 
   render() {
-    const { ruleId } = this.props
+    const { ruleId, handleAddToggleClick } = this.props
     return (
       <Card block>
         <ButtonGroup
@@ -40,7 +41,11 @@ class FilterContent extends Component {
             </Button>
           ))}
         </ButtonGroup>
-        <Button theme='default' className='offset-l'>
+        <Button
+          theme='default'
+          className='offset-l'
+          onClick={handleAddToggleClick}
+        >
           <Icon type='plus' style={{ marginRight: '6px' }} />新增任务
         </Button>
         <div style={{ float: 'right' }}>
