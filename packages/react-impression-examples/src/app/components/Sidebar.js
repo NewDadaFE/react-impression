@@ -12,7 +12,7 @@ import {
 // 侧边栏Sidebar
 const AppSidebar = () => {
   return (
-    <Sidebar style={{ height: 450 }}>
+    <Sidebar>
       <SidebarHeader>组件库示例</SidebarHeader>
       <SidebarBody>
         <Nav stacked>
