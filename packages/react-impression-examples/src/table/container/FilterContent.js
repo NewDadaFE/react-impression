@@ -46,7 +46,7 @@ class FilterContent extends Component {
           className='offset-l'
           onClick={handleAddToggleClick}
         >
-          <Icon type='plus' style={{ marginRight: '6px' }} />新增任务
+          <Icon type='plus' className='pull-right' />新增任务
         </Button>
         <div style={{ float: 'right' }}>
           <InputGroup>
