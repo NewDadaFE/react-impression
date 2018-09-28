@@ -1,4 +1,4 @@
-示例参考 [Notification](#notification)
+参考 [Notification](#notification)
 
 ### 变更记录
 
