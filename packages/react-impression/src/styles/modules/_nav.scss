@@ -46,6 +46,7 @@
   .nav-item {
     display: inline-block;
     cursor: pointer;
+    background: #fff;
     padding: $nav-normal-padding;
     box-sizing: border-box;
     transition: border-color 0.2s ease-in-out;
