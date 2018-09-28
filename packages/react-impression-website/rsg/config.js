@@ -46,14 +46,17 @@ module.exports = {
     },
     {
       name: 'General',
+      description: '此类别下的组件为基础内容组件。',
       components: resolveComponents(['Button*', 'Icon', 'Image']),
     },
     {
       name: 'Layout',
+      description: '布局组件，用于辅助页面结构的布局工作。',
       components: resolveComponents(['Row', 'Col', 'Flex*']),
     },
     {
       name: 'Navigation',
+      description: '导航组件。',
       components: resolveComponents([
         'Breadcrumb',
         'Dropdown*',
@@ -67,6 +70,7 @@ module.exports = {
     },
     {
       name: 'Data Entry',
+      description: '表单组件，用于采集用户输入的信息。',
       components: resolveComponents([
         'Checkbox*',
         'Datepicker',
@@ -80,6 +84,7 @@ module.exports = {
     },
     {
       name: 'Data Display',
+      description: '数据展示组件。',
       components: resolveComponents([
         'Badge',
         'Calendar',
@@ -95,6 +100,7 @@ module.exports = {
     },
     {
       name: 'Feedback',
+      description: '页面输出内容组件，丰富和优化网页对用户行为作出的反馈。',
       components: resolveComponents([
         'Alert',
         'Attention*',
