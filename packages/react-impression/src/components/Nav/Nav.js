@@ -41,7 +41,7 @@ export default class Nav extends React.PureComponent {
     /**
      * 导航栏样式
      */
-    type: PropTypes.oneOf(['card', 'normal']),
+    type: PropTypes.oneOf(['card', 'inline']),
 
     /**
      * 是否纵向排列
@@ -61,6 +61,7 @@ export default class Nav extends React.PureComponent {
 
   static defaultProps = {
     stacked: false,
+    type: 'inline',
   }
   /**
    * 选中回调

@@ -65,5 +65,5 @@
 
 v2.0.0
 
-* 删除 type 属性的 tab、pill、inline 可选项，支持 card,normal 属性值，默认为 normal
+* 删除 type 属性的 tab、pill 可选项，支持 card,inline 属性值，默认为 inline
 * 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle
