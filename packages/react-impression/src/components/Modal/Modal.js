@@ -53,7 +53,7 @@ class Modal extends React.Component {
 
   static defaultProps = {
     scrollInside: false,
-    isOpen: false,
+    isOpen: true,
     closeOnEsc: true,
     closeOnOutsideClick: true,
     onClose: () => {},
