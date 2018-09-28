@@ -242,10 +242,10 @@ export default class Calendar extends React.Component {
             {showToolbar && (
               <div className='calendar-header-toolbar'>
                 <ButtonGroup size={size}>
-                  <Button onClick={this.prevMonthHandle}>
+                  <Button eventKey='left' onClick={this.prevMonthHandle}>
                     <Icon type='angle-left' />
                   </Button>
-                  <Button onClick={this.nextMonthHandle}>
+                  <Button eventKey='right' onClick={this.nextMonthHandle}>
                     <Icon type='angle-right' />
                   </Button>
                 </ButtonGroup>
