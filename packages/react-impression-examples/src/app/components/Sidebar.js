@@ -1,21 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Sidebar, Nav, Icon } from 'react-impression'
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarBody,
+  Nav,
+  NavLink,
+  Icon,
+} from 'react-impression'
 
 // 侧边栏Sidebar
 const AppSidebar = () => {
   return (
-    <Sidebar>
-      <Sidebar.Header />
-      <Sidebar.Body>
-        <Nav>
-          <Nav.Link>
-            <Link to='/index'>
-              <Icon type='television' left />Counter
+    <Sidebar style={{ height: 450 }}>
+      <SidebarHeader>组件库示例</SidebarHeader>
+      <SidebarBody>
+        <Nav stacked>
+          <NavLink>
+            <Link to='/table'>
+              <Icon type='list' left />列表页
             </Link>
-          </Nav.Link>
+          </NavLink>
+          <NavLink>
+            <Link to='/overview'>
+              <Icon type='bar-chart' left />概览
+            </Link>
+          </NavLink>
         </Nav>
-      </Sidebar.Body>
+      </SidebarBody>
     </Sidebar>
   )
 }
