@@ -46,7 +46,7 @@ module.exports = {
     },
     {
       name: 'General',
-      description: '此类别下的组件为基础内容组件。',
+      description: '基础内容组件。',
       components: resolveComponents(['Button*', 'Icon', 'Image']),
     },
     {
@@ -56,7 +56,7 @@ module.exports = {
     },
     {
       name: 'Navigation',
-      description: '导航组件。',
+      description: '导航组件，用于页面功能模块的指示和引导。',
       components: resolveComponents([
         'Breadcrumb',
         'Dropdown*',
@@ -84,7 +84,7 @@ module.exports = {
     },
     {
       name: 'Data Display',
-      description: '数据展示组件。',
+      description: '数据展示组件，优化页面内容的展示效果。',
       components: resolveComponents([
         'Badge',
         'Calendar',
