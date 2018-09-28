@@ -8,7 +8,7 @@ import * as actions from './reducer'
 import FilterContent from './container/FilterContent'
 import TableContainer from './container/TableContainer'
 import AddModal from './components/AddModal'
-import './index.scss'
+import './container.module.scss'
 
 class Table extends Component {
   state = {
