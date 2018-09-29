@@ -45,7 +45,7 @@ class FilterContent extends Component {
           className='offset-l'
           onClick={handleAddToggleClick}
         >
-          <Icon type='plus' className='pull-right' />新增任务
+          <Icon type='plus' className='offset-r' />新增任务
         </Button>
         <div className='pull-right'>
           <InputGroup>
