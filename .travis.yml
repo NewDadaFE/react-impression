@@ -19,4 +19,4 @@ deploy:
   github-token: $GITHUB_TOKEN
   on:
     branch: next
-  local-dir: packages/react-impression-website/dist
+  local-dir: dist
