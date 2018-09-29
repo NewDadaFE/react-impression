@@ -8,12 +8,11 @@ import {
   NavLink,
   Icon,
 } from 'react-impression'
-import './Sidebar.module.scss'
 
 // 侧边栏Sidebar
 const AppSidebar = () => {
   return (
-    <Sidebar styleName='sidebar'>
+    <Sidebar>
       <SidebarHeader>React Impression Examples</SidebarHeader>
       <SidebarBody>
         <Nav stacked>
