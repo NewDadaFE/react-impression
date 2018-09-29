@@ -8,7 +8,6 @@ import '../container.module.scss'
 
 class Filter extends Component {
   static propTypes = {
-    // cityId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     setCityId: PropTypes.func,
   }
   state = {
