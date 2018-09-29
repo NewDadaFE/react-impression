@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardBlock, Row, Col } from 'react-impression'
+import './OverviewData.module.scss'
 
 // MOCK 数据
 const mockData = [
@@ -21,24 +22,6 @@ const mockData = [
   },
 ]
 
-const styles = {
-  box: {
-    textAlign: 'center',
-  },
-  name: {
-    color: '#666',
-    lineHeight: '14px',
-    fontSize: '14px',
-  },
-  value: {
-    color: '#333',
-    fontWeight: '500',
-    fontSize: '22px',
-    lineHeight: '30px',
-    marginTop: '8px',
-  },
-}
-
 export default class Overview extends React.Component {
   render() {
     return (
@@ -48,9 +31,9 @@ export default class Overview extends React.Component {
             {mockData.map((item, index) => {
               return (
                 <Col key={index}>
-                  <div style={styles.box}>
-                    <div style={styles.name}>{item.name}</div>
-                    <div style={styles.value}>{item.value}</div>
+                  <div styleName='box'>
+                    <div styleName='name'>{item.name}</div>
+                    <div styleName='value'>{item.value}</div>
                   </div>
                 </Col>
               )
