@@ -22,8 +22,6 @@ export default class AddModal extends React.Component {
     onClose: PropTypes.func.isRequired,
   }
 
-  state = {}
-
   render() {
     const { isOpen, onClose } = this.props
     return (

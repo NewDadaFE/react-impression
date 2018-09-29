@@ -15,8 +15,6 @@ class Table extends Component {
     showAddModal: false,
   }
 
-  componentDidMount() {}
-
   handleAddToggleClick = () => {
     this.setState({
       showAddModal: !this.state.showAddModal,
@@ -24,7 +22,6 @@ class Table extends Component {
   }
 
   render() {
-    // const { total, increment, decrement } = this.props
     const { showAddModal } = this.state
 
     return (

@@ -20,7 +20,6 @@ class FilterContent extends Component {
     handleAddToggleClick: PropTypes.func,
   }
 
-  componentDidMount() {}
   handleRuleChange = val => {
     const { setRuleId } = this.props
     setRuleId(val)
