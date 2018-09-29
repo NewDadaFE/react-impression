@@ -4,6 +4,7 @@
 const { execSync } = require('child_process')
 const shell = command => execSync(command, { stdio: 'inherit' })
 
+shell('yarn workspace react-impression release')
 shell('yarn workspace react-impression-website build')
 shell('yarn workspace react-impression-examples build')
 

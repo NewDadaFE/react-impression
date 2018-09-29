@@ -21,6 +21,10 @@ const babelConfig = {
           transform: 'lodash/${member}',
           preventFullImport: true,
         },
+        'react-impression': {
+          transform: 'react-impression/components/${member}',
+          preventFullImport: true,
+        },
       },
     ],
     [
@@ -158,6 +162,9 @@ const development = {
 
 const production = {
   entry: paths.src,
+  output: {
+    publicPath: './',
+  },
   module: {
     rules: [
       {
