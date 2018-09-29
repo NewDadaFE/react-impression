@@ -45,6 +45,10 @@ module.exports = {
       content: resolveWebsite('docs/Introduction.md'),
     },
     {
+      name: 'Examples',
+      href: '/examples/',
+    },
+    {
       name: 'General',
       components: resolveComponents(['Button*', 'Icon', 'Image']),
     },
@@ -60,7 +64,10 @@ module.exports = {
         'InlineSelect*',
         'Nav',
         'Nav[A-Z]*',
-        'Navbar*',
+        'Navbar',
+        // 'NavbarBrand',
+        'NavbarButton',
+        'NavbarLink',
         'Pagination',
         'Sidebar*',
       ]),
@@ -87,7 +94,10 @@ module.exports = {
         'Collapse*',
         'ListGroup*',
         'Popover',
-        'Table*',
+        'Table',
+        // 'TableBody',
+        'TableColumn',
+        // 'TableHead',
         'Tag',
         'Timeline*',
         'Tooltip',
@@ -96,7 +106,7 @@ module.exports = {
     {
       name: 'Feedback',
       components: resolveComponents([
-        'Alert',
+        // 'Alert',
         'Attention*',
         'Confirm',
         'Loading',
@@ -116,5 +126,4 @@ module.exports = {
     StyleGuideRenderer: resolveWebsite('rsg/components/StyleGuideRenderer'),
   },
   webpackConfig,
-  skipComponentsWithoutExample: true,
 }
