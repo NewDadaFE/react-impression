@@ -13,7 +13,7 @@ import {
 const AppSidebar = () => {
   return (
     <Sidebar>
-      <SidebarHeader>组件库示例</SidebarHeader>
+      <SidebarHeader>React Impression Examples</SidebarHeader>
       <SidebarBody>
         <Nav stacked>
           <NavLink>
