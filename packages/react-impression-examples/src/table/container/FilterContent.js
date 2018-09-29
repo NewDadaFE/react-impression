@@ -20,7 +20,6 @@ class FilterContent extends Component {
     handleAddToggleClick: PropTypes.func,
   }
 
-  componentDidMount() {}
   handleRuleChange = val => {
     const { setRuleId } = this.props
     setRuleId(val)
@@ -46,9 +45,9 @@ class FilterContent extends Component {
           className='offset-l'
           onClick={handleAddToggleClick}
         >
-          <Icon type='plus' style={{ marginRight: '6px' }} />新增任务
+          <Icon type='plus' className='offset-r' />新增任务
         </Button>
-        <div style={{ float: 'right' }}>
+        <div className='pull-right'>
           <InputGroup>
             <InputGroupInput placeholder='任务名称' />
             <InputGroupButton theme='primary'>搜索</InputGroupButton>

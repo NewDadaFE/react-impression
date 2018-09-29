@@ -1,14 +1,7 @@
 import React from 'react'
-import { Select, Input, Card, CardBlock } from 'react-impression'
+import { Select, SelectOption, Input, Card, CardBlock } from 'react-impression'
 
 export default class Filter extends React.Component {
-  static propTypes = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   /**
    * Select 发生改变的时候触发的回调
    */
@@ -33,14 +26,14 @@ export default class Filter extends React.Component {
             defaultValue=''
             placeholder='请选择部门'
           >
-            <Select.Option value='frontend'>前端部门</Select.Option>
-            <Select.Option value='backend'>后端部门</Select.Option>
-            <Select.Option value='test'>测试部门</Select.Option>
+            <SelectOption value='frontend'>前端部门</SelectOption>
+            <SelectOption value='backend'>后端部门</SelectOption>
+            <SelectOption value='test'>测试部门</SelectOption>
           </Select>
           <Input
             type='date'
             style={{ width: 224 }}
-            className='pull-right'
+            className='offset-l-lg'
             placeholder='请选择日期'
             onChange={this.handleDatePickerChange}
           />

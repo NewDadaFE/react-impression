@@ -2,16 +2,9 @@ import React from 'react'
 import { Card, Row, Col } from 'react-impression'
 import CustomTable from './Table'
 import PirChart from './PieChart'
-import './index.scss'
+import './index.module.scss'
 
 export default class HealthAnalysis extends React.Component {
-  static propTypes = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   render() {
     return (
       <Card>

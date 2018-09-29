@@ -41,7 +41,7 @@ const options = {
 
 export default class pieChart extends React.Component {
   componentDidMount() {
-    let chart = echarts.init(document.getElementById('pie-chart'))
+    const chart = echarts.init(document.getElementById('pie-chart'))
     chart.setOption(options)
   }
 

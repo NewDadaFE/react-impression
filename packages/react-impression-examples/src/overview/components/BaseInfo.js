@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Row, Col } from 'react-impression'
-import './BaseInfo.scss'
+import './BaseInfo.module.scss'
 
 // MOCK 数据
 const mockData = [
@@ -39,13 +39,6 @@ const mockData = [
 ]
 
 export default class BaseInfo extends React.Component {
-  static propTypes = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   render() {
     return (
       <Row>

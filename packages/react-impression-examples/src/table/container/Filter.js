@@ -18,7 +18,6 @@ class Filter extends Component {
   }
 
   render() {
-    // const { total, increment, decrement } = this.props
     const { cityId } = this.props
     return (
       <Card block>

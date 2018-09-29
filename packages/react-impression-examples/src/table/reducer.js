@@ -5,11 +5,6 @@ import dotProp from 'dot-prop-immutable'
 export const setCityId = createAction('TABLE/SETCITYID')
 export const setRuleId = createAction('TABLE/SETRULEID')
 
-// export const decrement = createAction('table/COUNTER_DECREMENT')
-
-// export const incrementAsync = () => dispatch =>
-// setTimeout(() => dispatch(increment()), 1000)
-
 // Reducer
 const initialState = {
   total: 0,

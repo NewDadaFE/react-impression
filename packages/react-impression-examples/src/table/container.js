@@ -2,21 +2,17 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Card } from 'react-impression'
-// import Counter from './components/Counter'
 import Filter from './container/Filter'
 import * as actions from './reducer'
 import FilterContent from './container/FilterContent'
 import TableContainer from './container/TableContainer'
 import AddModal from './components/AddModal'
+import './container.module.scss'
 
 class Table extends Component {
-  static propTypes = {}
-
   state = {
     showAddModal: false,
   }
-
-  componentDidMount() {}
 
   handleAddToggleClick = () => {
     this.setState({
@@ -25,11 +21,10 @@ class Table extends Component {
   }
 
   render() {
-    // const { total, increment, decrement } = this.props
     const { showAddModal } = this.state
 
     return (
-      <Card block>
+      <Card block styleName='table-wrap'>
         <Filter />
         <FilterContent handleAddToggleClick={this.handleAddToggleClick} />
         <TableContainer />

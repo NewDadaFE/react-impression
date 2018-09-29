@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { Card, Table, Split } from 'react-impression'
 import * as actions from '../reducer'
 import { data } from '../config'
+import '../container.module.scss'
 
 class Filter extends Component {
   static propTypes = {
-    // cityId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     setCityId: PropTypes.func,
   }
   state = {
@@ -19,6 +19,7 @@ class Filter extends Component {
     const { setCityId } = this.props
     setCityId(val)
   }
+
   handelOnSelect = (status, index) => {
     if (status) {
       const { selectedRowKeys } = this.state
@@ -32,6 +33,7 @@ class Filter extends Component {
       })
     }
   }
+
   handleOnSelectAll = (checkAll, selectedRowKeys) => {
     if (checkAll) {
       this.setState({
@@ -68,7 +70,7 @@ class Filter extends Component {
             <div className='text-center'>
               <a
                 href='#'
-                style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
+                className='operate'
                 onClick={() => {
                   console.log(value)
                 }}
@@ -76,7 +78,7 @@ class Filter extends Component {
                 查看
               </a>
               <Split />
-              <a href='#' style={{ paddingLeft: 16, color: '#276BF2' }}>
+              <a href='#' className='operate'>
                 编辑
               </a>
             </div>

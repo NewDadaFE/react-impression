@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import {
   Button,
   Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
   Form,
   FormGroup,
   FormControlLabel,
@@ -11,7 +14,7 @@ import {
   Radio,
   Col,
 } from 'react-impression'
-import './AddModal.scss'
+import './AddModal.module.scss'
 
 export default class AddModal extends React.Component {
   static propTypes = {
@@ -19,19 +22,17 @@ export default class AddModal extends React.Component {
     onClose: PropTypes.func.isRequired,
   }
 
-  state = {}
-
   render() {
     const { isOpen, onClose } = this.props
     return (
       <Modal isOpen={isOpen} onClose={onClose} size='lg'>
-        <Modal.Header>
+        <ModalHeader>
           <Button close onClick={onClose}>
             &times;
           </Button>
           <h5 className='no-margin'>新增任务积分模版</h5>
-        </Modal.Header>
-        <Modal.Body style={{ overflowY: 'visible' }}>
+        </ModalHeader>
+        <ModalBody style={{ overflowY: 'visible' }}>
           <Form type='horizontal'>
             <FormGroup>
               <Col col='2' className='text-center'>
@@ -96,13 +97,13 @@ export default class AddModal extends React.Component {
               </Col>
             </FormGroup>
           </Form>
-        </Modal.Body>
-        <Modal.Footer className='text-center'>
+        </ModalBody>
+        <ModalFooter className='text-center'>
           <Button theme='default' onClick={onClose}>
             取消
           </Button>
           <Button>新增</Button>
-        </Modal.Footer>
+        </ModalFooter>
       </Modal>
     )
   }
