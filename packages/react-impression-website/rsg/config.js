@@ -46,7 +46,7 @@ module.exports = {
     },
     {
       name: 'Examples',
-      href: '/examples/',
+      href: 'examples/',
     },
     {
       name: 'General',
