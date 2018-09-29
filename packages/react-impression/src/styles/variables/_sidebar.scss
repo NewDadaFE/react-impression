@@ -1,6 +1,5 @@
 //Sidebar
 $sidebar-width: rem(230px) !default;
-$sidebar-color: $gray-light !default;
 $sidebar-font-size: rem(16px) !default;
 $sidebar-line-height: rem(20.1px) !default;
 $sidebar-bg: linear-gradient(180deg,rgba(#2F3A4F, 1) 0%,rgba(#293245, 1) 100%) !default;
@@ -16,7 +15,7 @@ $sidebar-nav-item-padding: rem(20px) !default;
 $sidebar-nav-item-color: $gray-darker !default;
 $sidebar-nav-item-active-bg: rgba($brand-pure, .1) !default;
 $sidebar-nav-item-active-color: $brand-pure !default;
-$sidebar-nav-item-secondary-intent: rem(50px) !default;
+$sidebar-nav-item-secondary-padding-left: rem(70px) !default;
 
 $sidebar-footer-border-color: rgba($brand-pure, .1) !default;
 $sidebar-footer-height: 3rem !default;

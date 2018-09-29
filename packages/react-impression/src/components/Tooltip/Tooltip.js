@@ -23,12 +23,90 @@ export default class Tooltip extends React.PureComponent {
     position: 'right',
   }
 
+  createTooltip(targetRect) {
+    const { position, content } = this.props
+    const positionClass = `tooltip-${position}`
+    const tooltipNode = document.createElement('div')
+    const arrowNode = document.createElement('div')
+    const innerNode = document.createElement('div')
+
+    tooltipNode.className = `tooltip ${positionClass}`
+    arrowNode.className = 'tooltip-arrow'
+    innerNode.className = 'tooltip-inner'
+
+    innerNode.innerHTML = content
+    tooltipNode.appendChild(arrowNode)
+    tooltipNode.appendChild(innerNode)
+
+    document.body.appendChild(tooltipNode)
+
+    const tooltipRect = tooltipNode.getBoundingClientRect()
+
+    /**
+     * switch - 计算left、top
+     *
+     * @param  {type} position 位置
+     */
+    switch (position) {
+      case 'top':
+        tooltipNode.style.top = `${targetRect.top - tooltipRect.height - 10}px`
+        tooltipNode.style.left = `${targetRect.left -
+          (tooltipRect.width - targetRect.width) / 2}px`
+        break
+      case 'left':
+        tooltipNode.style.left = `${targetRect.left - tooltipRect.width - 10}px`
+        tooltipNode.style.top = `${targetRect.top +
+          (targetRect.height - tooltipRect.height) / 2}px`
+        break
+      case 'right':
+        tooltipNode.style.left = `${targetRect.left + targetRect.width + 10}px`
+        tooltipNode.style.top = `${targetRect.top +
+          (targetRect.height - tooltipRect.height) / 2}px`
+        break
+      default:
+        tooltipNode.style.top = `${targetRect.top + targetRect.height + 10}px`
+        tooltipNode.style.left = `${targetRect.left -
+          (tooltipRect.width - targetRect.width) / 2}px`
+        break
+    }
+
+    tooltipNode.classList.add('in')
+    this.tooltip = tooltipNode
+  }
+
+  /**
+   * 显示tooltip
+   */
+  onMouseOver = event => {
+    const rect = event.target.getBoundingClientRect()
+
+    this.createTooltip(rect)
+  }
+
+  /**
+   * 移除tooltip
+   */
+  onMouseOut = () => {
+    document.body.removeChild(this.tooltip)
+  }
+
   render() {
-    const { children, content, position } = this.props
+    const { children } = this.props
+    const { onMouseOver, onMouseOut } = children.props
 
     return React.cloneElement(children, {
-      'data-tooltip': content,
-      'data-tooltip-pos': position,
+      onMouseOver: onMouseOver
+        ? event => {
+          onMouseOver()
+          this.onMouseOver(event)
+        }
+        : this.onMouseOver,
+      onMouseOut: onMouseOut
+        ? event => {
+          onMouseOut()
+          this.onMouseOut(event)
+        }
+        : this.onMouseOut,
     })
   }
 }

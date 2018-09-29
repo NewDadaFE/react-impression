@@ -64,6 +64,9 @@ export default class Button extends React.PureComponent {
 
   static defaultProps = {
     theme: 'primary',
+    block: false,
+    close: false,
+    outline: false,
   }
 
   render() {

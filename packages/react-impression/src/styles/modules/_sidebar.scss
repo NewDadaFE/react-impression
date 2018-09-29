@@ -4,7 +4,6 @@
   width: $sidebar-width;
   height: 100%;
   flex-direction: column;
-  color: $sidebar-color;
   background: $sidebar-bg;
 }
 //头部
@@ -27,31 +26,26 @@
 .sidebar-body {
   overflow-y: auto;
   flex: 1;
+  color: $sidebar-nav-item-color;
 
-  // 二级菜单增加缩进
-  .collapse .nav-item {
-    text-indent: $sidebar-nav-item-secondary-intent;
+  a {
+    color: inherit;
   }
   .nav-link {
+    display: block;
     text-indent: 0;
   }
+  // 二级菜单增加缩进
+  .collapse .nav-link {
+    padding-left: $sidebar-nav-item-secondary-padding-left;
+  }
 
-  .nav-item,
+  .nav-link,
   .collapse-title {
     padding: $sidebar-nav-item-padding;
     font-size: $sidebar-font-size;
     line-height: $sidebar-line-height;
     cursor: pointer;
-    color: $sidebar-nav-item-color;
-    &:hover,
-    &.active {
-      color: $sidebar-nav-item-active-color;
-    }
-
-    &:hover {
-      background-color: $sidebar-nav-item-active-bg;
-    }
-
     .fa:first-child {
       width: $sidebar-icon-size;
       height: $sidebar-icon-size;
@@ -62,24 +56,30 @@
     }
   }
 
+  .collapse-title:hover,
+  .nav-item:hover,
+  .nav-item.active {
+      color: $sidebar-nav-item-active-color;
+      background-color: $sidebar-nav-item-active-bg;
+  }
+
   .nav-item {
     position: relative;
+    padding: 0;
     background-color: transparent;
 
-    &.active {
-      background-color: $sidebar-nav-item-active-bg;
-      &::before {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: rem(4px);
-        content: "";
-        background-color: $brand-primary;
-      }
+    &.active::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: rem(4px);
+      content: "";
+      background-color: $brand-primary;
     }
 
     &.disabled {
+      color: inherit;
       &:hover {
         background-color: transparent;
       }

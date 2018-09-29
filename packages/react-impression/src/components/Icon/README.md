@@ -30,7 +30,7 @@
     <span>图标在左边</span>
   </div>
   <div>
-    <span>图标在左边</span>
+    <span>图标在右边</span>
     <Icon type="list" right />
   </div>
 </div>

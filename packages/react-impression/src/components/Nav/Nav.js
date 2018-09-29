@@ -13,7 +13,7 @@ import NavTitle from '../NavTitle'
 const getTypeClassMap = (type, stacked) => {
   if (stacked) return ''
   const map = {
-    card: 'nav-card',
+    tab: 'nav-card',
   }
 
   return map[type] || 'nav-normal'
@@ -41,7 +41,7 @@ export default class Nav extends React.PureComponent {
     /**
      * 导航栏样式
      */
-    type: PropTypes.oneOf(['card', 'normal']),
+    type: PropTypes.oneOf(['tab', 'inline']),
 
     /**
      * 是否纵向排列
@@ -61,6 +61,7 @@ export default class Nav extends React.PureComponent {
 
   static defaultProps = {
     stacked: false,
+    type: 'inline',
   }
   /**
    * 选中回调

@@ -33,7 +33,7 @@
 **卡片类型**
 
 ```js
-<Nav activeKey={1} type="card">
+<Nav activeKey={1} type="tab">
   <NavItem eventKey={1}>标题</NavItem>
   <NavItem eventKey={2}>长标题</NavItem>
   <NavItem eventKey={3}>标题很长</NavItem>
@@ -65,5 +65,5 @@
 
 v2.0.0
 
-* 删除 type 属性的 tab、pill、inline 可选项，支持 card,normal 属性值，默认为 normal
+* 删除 type 属性的 pill 可选项，支持 tab,inline 属性值，默认为 inline
 * 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle

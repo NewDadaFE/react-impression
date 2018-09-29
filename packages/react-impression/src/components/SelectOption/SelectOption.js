@@ -74,7 +74,7 @@ export default class SelectOption extends React.PureComponent {
   optionClickHandle = () => {
     const { name, active } = this.state
     const { value } = this.props
-    const { multiple } = this.parent().props
+    const { multiple } = this.parent() ? this.parent().props : false
     if (active && !multiple) {
       this.parent().toggleOptionsHandle()
       return
@@ -114,10 +114,12 @@ export default class SelectOption extends React.PureComponent {
     }
   }
   componentWillMount() {
-    this.parent().onOptionCreate(this)
+    if (this.parent()) {
+      this.parent().onOptionCreate(this)
+    }
   }
   componentDidMount() {
-    this.handleActive()
+    this.parent() && this.handleActive()
   }
   queryChange(query, filterMethod) {
     if (!this.parent().props.searchable) return
