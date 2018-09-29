@@ -22,7 +22,7 @@ const babelConfig = {
           preventFullImport: true,
         },
         'react-impression': {
-          transform: 'react-impression/components/${member}',
+          transform: 'react-impression/dist/components/${member}',
           preventFullImport: true,
         },
       },

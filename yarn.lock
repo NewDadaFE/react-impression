@@ -3341,6 +3341,7 @@ ecc-jsbn@~0.1.1:
 echarts@^4.2.0-rc.1:
   version "4.2.0-rc.1"
   resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.2.0-rc.1.tgz#c76bc392e9d34f914480f8299305f66fa0b79cb7"
+  integrity sha1-x2vDkunTT5FEgPgpkwX2b6C3nLc=
   dependencies:
     zrender "4.0.5"
 
@@ -8602,21 +8603,6 @@ react-icons@^2.2.7:
   dependencies:
     react-icon-base "2.1.0"
 
-react-impression@^2.0.0-alpha.4:
-  version "2.0.0-alpha.4"
-  resolved "http://registry.npm.taobao.org/react-impression/download/react-impression-2.0.0-alpha.4.tgz#9291795174abeea6d3472c8990960d5d93b5e945"
-  integrity sha1-kpF5UXSr7qbTRyyJkJYNXZO16UU=
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    classnames "^2.2.0"
-    perfect-scrollbar "^0.6.12"
-    popper.js "^1.14.4"
-    prop-types "15.6.2"
-    react-addons-css-transition-group "15.6.2"
-    react-debounce-input "^3.2.0"
-    react-portal "^4.1.5"
-    sass-rem "^2.0.1"
-
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
@@ -11365,3 +11351,4 @@ yargs@~3.10.0:
 zrender@4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.5.tgz#6e8f738971ce2cd624aac82b2156729b1c0e5a82"
+  integrity sha1-bo9ziXHOLNYkqsgrIVZymxwOWoI=
