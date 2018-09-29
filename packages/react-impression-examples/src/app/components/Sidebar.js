@@ -8,12 +8,13 @@ import {
   NavLink,
   Icon,
 } from 'react-impression'
+import './Sidebar.module.scss'
 
 // 侧边栏Sidebar
 const AppSidebar = () => {
   return (
-    <Sidebar>
-      <SidebarHeader>组件库示例</SidebarHeader>
+    <Sidebar styleName='sidebar'>
+      <SidebarHeader>React Impression Examples</SidebarHeader>
       <SidebarBody>
         <Nav stacked>
           <NavLink>
