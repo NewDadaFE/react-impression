@@ -5,7 +5,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
 const config = require('./package.json')
 
 /**
@@ -157,110 +156,91 @@ const development = {
   ],
 }
 
-const production = env => {
-  let {
-    npm_package_name: NAME,
-    npm_package_version: VERSION,
-    npm_package_deploy_DOMAIN: DOMAIN,
-  } = process.env
-
-  if (env.debug) VERSION = new Date().toJSON().replace(/\D/g, '')
-
-  return {
-    entry: paths.src,
-    output: {
-      publicPath: `//${DOMAIN}/${NAME}/${VERSION}/`,
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          include: [paths.src, /whatwg-fetch/],
-          loader: 'babel-loader',
-          options: {
-            ...babelConfig,
-          },
+const production = {
+  entry: paths.src,
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: [paths.src, /whatwg-fetch/],
+        loader: 'babel-loader',
+        options: {
+          ...babelConfig,
         },
-        {
-          test: /\.scss$/,
-          exclude: [paths.css, /node_modules/],
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: true,
-                  importLoaders: 1,
-                  localIdentName: '[name]__[local]___[hash:base64:5]',
-                },
+      },
+      {
+        test: /\.scss$/,
+        exclude: [paths.css, /node_modules/],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-              'postcss-loader',
-              'sass-loader',
-            ],
-          }),
+            },
+            'postcss-loader',
+            'sass-loader',
+          ],
+        }),
+      },
+      {
+        test: /\.scss$/,
+        include: [paths.css, /node_modules/],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader'],
+        }),
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: names.image,
         },
-        {
-          test: /\.scss$/,
-          include: [paths.css, /node_modules/],
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', 'sass-loader'],
-          }),
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: names.font,
         },
-        {
-          test: /\.(png|jpe?g|gif|svg)$/,
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: names.image,
-          },
+      },
+      {
+        test: /\.(xlsx?)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'static/[name].[ext]',
         },
-        {
-          test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: names.font,
-          },
-        },
-        {
-          test: /\.(xlsx?)$/,
-          loader: 'url-loader',
-          query: {
-            limit: 10000,
-            name: 'static/[name].[ext]',
-          },
-        },
-      ],
-    },
-    stats: {
-      children: false,
-      chunks: false,
-      chunkModules: false,
-      modules: false,
-    },
-    plugins: [
-      new CleanWebpackPlugin([paths.dist]),
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': '"production"',
-        DEBUG: JSON.stringify(false),
-      }),
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          ecma: 8,
-        },
-      }),
-      new ExtractTextPlugin(names.css),
-      new ManifestPlugin({
-        seed: {
-          name: NAME,
-          version: VERSION,
-        },
-      }),
+      },
     ],
-  }
+  },
+  stats: {
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    modules: false,
+  },
+  plugins: [
+    new CleanWebpackPlugin([paths.dist]),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+      DEBUG: JSON.stringify(false),
+    }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        ecma: 8,
+      },
+    }),
+    new ExtractTextPlugin(names.css),
+  ],
 }
 
 module.exports = env =>
-  env.development ? merge(common, development) : merge(common, production(env))
+  env.development ? merge(common, development) : merge(common, production)
