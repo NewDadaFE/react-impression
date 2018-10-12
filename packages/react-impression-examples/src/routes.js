@@ -3,6 +3,7 @@ import { Route, IndexRoute, Redirect } from 'react-router'
 import Layout from 'app/components/Layout'
 import Table from 'table'
 import Overview from 'overview'
+import FormContainer from 'form'
 
 // 路由配置
 const createRoutes = () => (
@@ -10,6 +11,7 @@ const createRoutes = () => (
     <IndexRoute component={Table} />
     <Route path='table' component={Table} />
     <Route path='overview' component={Overview} />
+    <Route path='form' component={FormContainer} />
     <Redirect from='*' to='/' />
   </Route>
 )
