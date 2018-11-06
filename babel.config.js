@@ -28,6 +28,7 @@ module.exports = {
         loose: true,
       },
     ],
+    '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-transform-react-constant-elements',
     [

@@ -1,6 +1,8 @@
 {
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "yarn website:start",
     "website:start": "yarn workspace react-impression-website start",
@@ -8,12 +10,12 @@
     "examples:start": "yarn workspace react-impression-examples start",
     "examples:build": "yarn workspace react-impression-examples build",
     "precommit": "lint-staged",
-    "format":
-      "find . -name '*.js' -o -name '*.md' | grep -v -f .gitignore | xargs prettier-standard"
+    "format": "find . -name '*.js' -o -name '*.md' | grep -v -f .gitignore | xargs prettier-standard"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-object-assign": "^7.0.0",
     "@babel/plugin-transform-react-constant-elements": "^7.0.0",
@@ -21,6 +23,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.15",
+    "fs-extra": "^7.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "node-fetch": "^2.2.0",
@@ -36,10 +39,16 @@
           "asyncArrow": "always"
         }
       ],
-      "comma-dangle": ["error", "always-multiline"]
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ]
     }
   },
   "lint-staged": {
-    "*.{js,md}": ["prettier-standard", "git add"]
+    "*.{js,md}": [
+      "prettier-standard",
+      "git add"
+    ]
   }
 }

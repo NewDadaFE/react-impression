@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0",
   "author": "NewDadaFE",
   "description": "UI Components with React.",
   "sideEffects": false,

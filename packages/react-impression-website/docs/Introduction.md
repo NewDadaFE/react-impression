@@ -6,7 +6,7 @@ React Impression 是一个基于**达达-京东到家**后台产品视觉设计�
 安装：
 
 ```shell
-yarn add react-impression@next
+yarn add react-impression
 ```
 
 引入样式：

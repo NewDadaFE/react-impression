@@ -3,7 +3,7 @@ const { TRAVIS_PULL_REQUEST, TRAVIS_REPO_SLUG, GITHUB_TOKEN } = process.env
 if (TRAVIS_PULL_REQUEST === 'false') return
 
 const { execSync } = require('child_process')
-const project = 'packages/react-impression-website/dist'
+const project = 'dist'
 const domain = `https://react-impression-${TRAVIS_PULL_REQUEST}.surge.sh`
 execSync(`surge --project ${project} --domain ${domain}`, { stdio: 'inherit' })
 
