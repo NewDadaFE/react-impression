@@ -11,32 +11,32 @@ export default class Upload extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 按钮文字
+     * 按钮文字，非preview模式下使用
      */
     btnText: PropTypes.string,
 
     /**
-     * 占位文字
+     * 占位文字，非preview模式下使用
      */
     placeholder: PropTypes.string,
 
     /**
-     * 按钮样式
+     * 按钮样式，非preview模式下使用
      */
     btnStyle: PropTypes.string,
 
     /**
-     * 是否可预览
+     * 是否可预览，为true可预览上传的图片
      */
     preview: PropTypes.bool,
 
     /**
-     * 提示信息
+     * 提示信息，preview模式下使用
      */
     message: PropTypes.string,
 
     /**
-     * 文件路径
+     * 图片路径，preview模式下使用
      */
     src: PropTypes.string,
 
@@ -46,9 +46,9 @@ export default class Upload extends React.PureComponent {
     children: PropTypes.node,
 
     /**
-     * 回调函数
+     * 回调函数，参数列表：event
      */
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -101,7 +101,7 @@ export default class Upload extends React.PureComponent {
       file: event.target.files[0].name,
     })
 
-    onChange && onChange(event)
+    onChange(event)
   }
 
   /**
@@ -109,7 +109,7 @@ export default class Upload extends React.PureComponent {
    */
   handleImagePreview = event => {
     const { onChange } = this.props
-    onChange && onChange(event)
+    onChange(event)
   }
 
   handleRemoveImg = event => {
@@ -120,7 +120,7 @@ export default class Upload extends React.PureComponent {
       previewImageUrl: '',
     })
 
-    onChange && onChange(event)
+    onChange(event)
   }
 
   render() {
@@ -131,9 +131,9 @@ export default class Upload extends React.PureComponent {
       btnStyle,
       placeholder,
       className,
-      onChange,
       ...others
     } = this.props
+    delete others.onChange
     const { file, previewImageUrl } = this.state
     let { children } = this.props
 
@@ -152,7 +152,7 @@ export default class Upload extends React.PureComponent {
           <input
             type='file'
             ref={this.fileRef}
-            onChange={onChange && this.handleImagePreview}
+            onChange={this.handleImagePreview}
           />
           {previewImageUrl ? (
             <div className='upload-preview-inner upload-preview-img'>
@@ -169,7 +169,9 @@ export default class Upload extends React.PureComponent {
               {children || (
                 <Icon type='camera' className='upload-preview-addon' />
               )}
-              <span className='upload-preview-text'>{message}</span>
+              {!!message && (
+                <span className='upload-preview-text'>{message}</span>
+              )}
             </div>
           )}
         </div>
@@ -190,7 +192,7 @@ export default class Upload extends React.PureComponent {
         <input
           type='file'
           ref={this.fileRef}
-          onChange={onChange && this.handleFileChange}
+          onChange={this.handleFileChange}
         />
         <span className='input-group-btn'>
           <button
