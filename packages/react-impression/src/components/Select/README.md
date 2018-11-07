@@ -14,7 +14,7 @@ class DefaultExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-    // this.select.setValue(null)
+    this.select.setValue(null)
   }
 
   render() {
@@ -53,7 +53,7 @@ class ValueExample extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.state = {
-      val: 1,
+      val: null,
     }
   }
 
@@ -368,9 +368,9 @@ class DefaultValueExample extends React.Component {
 
 ```js
 <Select searchable>
-  <SelectOption value="1">一</SelectOption>
-  <SelectOption value="2">二</SelectOption>
-  <SelectOption value="3">三</SelectOption>
+  <SelectOption value={1}>1</SelectOption>
+  <SelectOption value={2}>2</SelectOption>
+  <SelectOption value={3}>3</SelectOption>
 </Select>
 ```
 

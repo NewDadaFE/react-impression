@@ -124,7 +124,7 @@ export default class SelectOption extends React.PureComponent {
   queryChange(query, filterMethod) {
     if (!this.parent().props.searchable) return
     let defaultMethod = (input, option) =>
-      option.toLowerCase().indexOf(input.toLowerCase()) > -1
+      option && option.toLowerCase().indexOf(input.toLowerCase()) > -1
 
     if (typeof filterMethod === 'function') {
       defaultMethod = filterMethod

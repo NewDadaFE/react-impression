@@ -28,7 +28,6 @@ export default class Select extends React.PureComponent {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
       isSearch: false,
-      hasResult: false,
       selectText: '', // 选中字段
       options: [],
       optionGroup: [],
@@ -114,14 +113,20 @@ export default class Select extends React.PureComponent {
   }
 
   componentDidMount() {
-    let optionList = []
+    this.handleInit()
+  }
 
+  /**
+   * @description 初始化
+   * @memberof Select
+   */
+  handleInit = () => {
+    let optionList = []
     if (this.props.children && Array.isArray(this.props.children)) {
       this.props.children.forEach(child => {
-        if (!child || !child.props) return
-        const { value, children } = child.props
-        if (Array.isArray(children)) {
-          children.forEach(item => {
+        if ((!child || !child.props) && !Array.isArray(child)) return
+        if (Array.isArray(child)) {
+          child.forEach(item => {
             const { value, children } = item.props
             optionList.push({
               name: children,
@@ -129,10 +134,21 @@ export default class Select extends React.PureComponent {
             })
           })
         } else {
-          optionList.push({
-            name: children,
-            value,
-          })
+          const { value, children } = child.props
+          if (Array.isArray(children)) {
+            children.forEach(item => {
+              const { value, children } = item.props
+              optionList.push({
+                name: children,
+                value,
+              })
+            })
+          } else {
+            optionList.push({
+              name: children,
+              value,
+            })
+          }
         }
       })
     }
@@ -300,7 +316,6 @@ export default class Select extends React.PureComponent {
     this.setState(
       {
         showOption: !this.state.showOption,
-        hasResult: false,
         queryText: '',
       },
       () => {
@@ -314,6 +329,13 @@ export default class Select extends React.PureComponent {
     )
   }
 
+  /**
+   * @description 多选删除
+   * @param {*} newVal
+   * @param {*} e
+   * @returns
+   * @memberof Select
+   */
   selectMultipleDelete(newVal, e) {
     const { placeholder, onDelete, disabled } = this.props
     const { selectedItem, value, options } = this.state
@@ -409,13 +431,14 @@ export default class Select extends React.PureComponent {
   componentWillReceiveProps(props) {
     const { options } = this.state
     if (props.value !== this.props.value) {
-      this.handleValueChange(props)
+      this.handleInit()
       options.forEach(option => option.handleActive(props))
     }
   }
 
   onOptionCreate(option) {
     this.state.options.push(option)
+    this.forceUpdate()
   }
   onOptionGroupCreate(optionGroup) {
     this.state.optionGroup.push(optionGroup)
