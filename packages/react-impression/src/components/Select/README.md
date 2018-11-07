@@ -438,4 +438,4 @@ v2.0.0
 * 新增 required 是否必选项属性, 状态需要自行控制
 * 新增 onDelete 回调方法，返回值为删除项的值，仅在多选模式下生效
 * 新增 filterMethod 筛选方法
-* 删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
+* 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
