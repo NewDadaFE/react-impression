@@ -171,7 +171,7 @@ export default class Input extends React.PureComponent {
    * 隐藏日期组件
    * @memberof Input
    */
-  handleHideOptions = () => {
+  hideOptionsHandle = () => {
     this.setState(
       {
         showDatePicker: false,
