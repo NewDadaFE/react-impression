@@ -1,14 +1,10 @@
 
 .datepicker {
-  position: absolute;
   z-index: $zindex-datepicker;
-  top: 100%;
-  left: 0;
-  margin-top: $datepicker-offset-top;
   padding-top: $datepicker-padding-top;
   font-size: $datepicker-font-size;
   transform-origin: center 0;
-  animation: scaleIn .36s ease;
+  animation: .36s scaleIn ease;
   color: $gray-base;
   border: $datepicker-border;
   border-radius: $border-radius;
