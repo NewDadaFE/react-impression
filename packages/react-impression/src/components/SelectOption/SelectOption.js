@@ -37,7 +37,7 @@ export default class SelectOption extends React.PureComponent {
 
   state = {
     active: this.props.active || false,
-    name: this.props.children,
+    name: this.props.children.toString(),
     visible: true,
   }
 
@@ -121,10 +121,13 @@ export default class SelectOption extends React.PureComponent {
   componentDidMount() {
     this.parent() && this.handleActive()
   }
+  componentWillUnmount() {
+    this.parent().onOptionDestroy(this)
+  }
   queryChange(query, filterMethod) {
     if (!this.parent().props.searchable) return
     let defaultMethod = (input, option) =>
-      option && option.toLowerCase().indexOf(input.toLowerCase()) > -1
+      option.toLowerCase().indexOf(input.toLowerCase()) > -1
 
     if (typeof filterMethod === 'function') {
       defaultMethod = filterMethod

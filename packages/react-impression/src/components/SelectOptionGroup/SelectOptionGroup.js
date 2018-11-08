@@ -42,6 +42,9 @@ export default class SelectOptionGroup extends React.PureComponent {
   componentWillMount() {
     this.parent().onOptionGroupCreate(this)
   }
+  componentWillUnmount() {
+    this.parent().onOptionGroupDestroy(this)
+  }
   parent() {
     return this.context.componentSelect
   }
@@ -70,8 +73,7 @@ export default class SelectOptionGroup extends React.PureComponent {
         return child
       }
       let { value, children } = child.props
-      this.options.push(children)
-
+      this.options.push(children.toString())
       return React.cloneElement(child, {
         key: index,
         disabled: disabled,

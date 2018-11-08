@@ -7,9 +7,9 @@ import Tag from '../Tag/index'
 import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
-  return array.some(
-    item => item.name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1
-  )
+  return array.some(item => {
+    return item.name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1
+  })
 }
 
 export default class Select extends React.PureComponent {
@@ -121,55 +121,12 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleInit = () => {
-    let optionList = []
-    if (this.props.children && Array.isArray(this.props.children)) {
-      this.props.children.forEach(child => {
-        if ((!child || !child.props) && !Array.isArray(child)) return
-        if (Array.isArray(child)) {
-          child.forEach(item => {
-            const { value, children } = item.props
-            optionList.push({
-              name: children,
-              value,
-            })
-          })
-        } else {
-          const { value, children } = child.props
-          if (Array.isArray(children)) {
-            children.forEach(item => {
-              const { value, children } = item.props
-              optionList.push({
-                name: children,
-                value,
-              })
-            })
-          } else {
-            optionList.push({
-              name: children,
-              value,
-            })
-          }
-        }
-      })
-    }
-    if (this.props.children && !Array.isArray(this.props.children)) {
-      const { value, children } = this.props.children.props
-      if (!this.props.children || !this.props.children.props) return
-      if (Array.isArray(children)) {
-        children.forEach(item => {
-          const { value, children } = item.props
-          optionList.push({
-            name: children,
-            value,
-          })
-        })
-      } else {
-        optionList.push({
-          name: children,
-          value,
-        })
-      }
-    }
+    const { options } = this.state
+    const optionList = options.map(option => {
+      const { value, children } = option.props
+      return { value, name: children.toString() }
+    })
+
     this.setState({ optionList }, this.handleValueChange)
   }
   getChildContext() {
@@ -439,9 +396,19 @@ export default class Select extends React.PureComponent {
   onOptionCreate(option) {
     this.state.options.push(option)
     this.forceUpdate()
+    this.handleInit()
   }
   onOptionGroupCreate(optionGroup) {
     this.state.optionGroup.push(optionGroup)
+    this.forceUpdate()
+  }
+  onOptionGroupDestroy(option) {
+    const { optionGroup } = this.state
+    const index = optionGroup.indexOf(option)
+    if (index > -1) {
+      optionGroup.splice(index, 1)
+    }
+    this.forceUpdate()
   }
   onOptionDestroy(option) {
     const { options } = this.state
@@ -449,6 +416,8 @@ export default class Select extends React.PureComponent {
     if (index > -1) {
       options.splice(index, 1)
     }
+    this.forceUpdate()
+    this.handleInit()
   }
 
   handleQuery(event) {

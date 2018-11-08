@@ -367,11 +367,47 @@ class DefaultValueExample extends React.Component {
 **可搜索**
 
 ```js
-<Select searchable>
-  <SelectOption value={1}>1</SelectOption>
-  <SelectOption value={2}>2</SelectOption>
-  <SelectOption value={3}>3</SelectOption>
-</Select>
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      data: [2, 3, 4],
+    }
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+  }
+
+  render() {
+    const { data } = this.state
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          searchable
+          onChange={this.handleChange}
+        >
+          <SelectOption value={1} key={1}>
+            1
+          </SelectOption>
+          {data.map(item => (
+            <SelectOption value={item} key={item}>
+              {item}
+            </SelectOption>
+          ))}
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
 ```
 
 **selectOptionGroup**
