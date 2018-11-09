@@ -270,6 +270,7 @@ export default class Input extends React.PureComponent {
               defaultValue={defaultValue}
               className={classnames(
                 'form-control',
+                size && `form-control-${size}`,
                 pillClass,
                 'input-field',
                 'input-field-addon'
