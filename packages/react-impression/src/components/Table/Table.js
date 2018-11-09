@@ -94,6 +94,9 @@ export default class Table extends React.PureComponent {
   }
 
   componentWillMount() {
+    this.handleInt()
+  }
+  handleInt = () => {
     const { columns, children } = this.props
     let columnList = []
     if (children) {
@@ -628,6 +631,9 @@ export default class Table extends React.PureComponent {
                 fixed
               />
             </div>
+          )}
+          {!data.length && (
+            <p className='text-center table-no-data'>暂无数据</p>
           )}
         </div>
         {this.renderPagination()}
