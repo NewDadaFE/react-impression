@@ -61,6 +61,31 @@
 </Row>
 ```
 
+**NavLink 用法**
+
+```js
+<Nav>
+  <NavLink>
+    <a href="#">标题</a>
+  </NavLink>
+  <NavLink>
+    <a>长标题</a>
+  </NavLink>
+  <NavLink>
+    <span>标题很长</span>
+  </NavLink>
+  <NavLink>
+    <span>标题特别长</span>
+  </NavLink>
+  <NavLink>
+    <span>标题再长一点</span>
+  </NavLink>
+  <NavLink>
+    <span>标题还敢长点吗</span>
+  </NavLink>
+</Nav>
+```
+
 **变更记录**
 
 v2.0.0
