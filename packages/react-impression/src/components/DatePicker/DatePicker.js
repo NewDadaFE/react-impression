@@ -492,7 +492,7 @@ export default class DatePicker extends React.PureComponent {
     const currentMonth = currentMoment.format(FORMAT.MONTH)
 
     return (
-      <div className={classnames('datepicker', className)}>
+      <div className={classnames('datepicker', className)} ref='container'>
         <div className='datepicker-header'>
           {panel !== 'month' && (
             <i

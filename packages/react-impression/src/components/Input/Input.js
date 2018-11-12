@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DatePicker from '../DatePicker'
 import Upload from '../Upload'
+import Popper from 'popper.js'
 import * as System from '../../utils/system'
 
 export default class Input extends React.PureComponent {
@@ -11,9 +12,10 @@ export default class Input extends React.PureComponent {
     System.manager(this)
 
     this.state = {
-      showOption: false,
+      showDatePicker: false,
       showClear: false,
     }
+    this.datePopper = null
   }
   static propTypes = {
     /**
@@ -135,33 +137,50 @@ export default class Input extends React.PureComponent {
   }
 
   /**
-   *显示候选项
+   * 显示日期组件
    * @memberof Input
    */
-  handleShowOption = () => {
+  handleShowDatePicker = () => {
     const { disabled } = this.props
 
     !disabled &&
-      this.setState({
-        showOption: true,
-        showClear: false,
-      })
+      this.setState(
+        {
+          showDatePicker: true,
+          showClear: false,
+        },
+        () => {
+          this.datePopper = new Popper(
+            this.refMain,
+            this.datepicker.refs.container,
+            {
+              placement: 'bottom-start',
+              modifiers: {
+                offset: { offset: '0, 10' },
+                computeStyle: {
+                  gpuAcceleration: false,
+                },
+              },
+            }
+          )
+        }
+      )
   }
 
   /**
-   *隐藏候选项
+   * 隐藏日期组件
    * @memberof Input
    */
-  handleHideOptions = () => {
-    if (!this.refMain) {
-      return
-    }
-
-    this.refMain.blur && this.refMain.blur()
-    this.setState({
-      showOption: false,
-      showClear: false,
-    })
+  hideOptionsHandle = () => {
+    this.setState(
+      {
+        showDatePicker: false,
+        showClear: false,
+      },
+      () => {
+        this.datePopper && this.datePopper.destroy()
+      }
+    )
   }
 
   /**
@@ -180,14 +199,14 @@ export default class Input extends React.PureComponent {
   }
 
   /**
-   *选中候选项
+   * 选中日期项
    * @memberof Input
    */
-  handleSelectOptions = value => {
+  handleSelectDate = value => {
     this.refMain && (this.refMain.value = value)
 
     this.setState({
-      showOption: false,
+      showDatePicker: false,
       showClear: false,
     })
   }
@@ -244,7 +263,7 @@ export default class Input extends React.PureComponent {
         size,
         ...others
       } = this.props,
-      { showOption, showClear } = this.state,
+      { showDatePicker, showClear } = this.state,
       pillClass = pill ? 'input-pill' : null
 
     children &&
@@ -278,7 +297,7 @@ export default class Input extends React.PureComponent {
               readOnly
               disabled={disabled}
               placeholder={placeholder}
-              onClick={this.handleShowOption}
+              onClick={this.handleShowDatePicker}
               style={style}
             />
 
@@ -293,17 +312,18 @@ export default class Input extends React.PureComponent {
             {(!showClear || !clearable) && (
               <i
                 className='fa fa-calendar input-addon'
-                onClick={this.handleShowOption}
+                onClick={this.handleShowDatePicker}
               />
             )}
 
-            {showOption && (
+            {showDatePicker && (
               <DatePicker
                 {...others}
                 type={type}
                 value={this.refMain.value}
                 onChange={value => onChange && onChange(value)}
-                onSelect={this.handleSelectOptions}
+                onSelect={this.handleSelectDate}
+                ref={ref => (this.datepicker = ref)}
               />
             )}
           </div>
