@@ -127,8 +127,8 @@
 }
 .table-fixed-left {
   position: absolute;
-  top: rem(1px);
   left: 0;
+  top: 0;
   overflow-x: hidden;
   overflow-y: hidden;
   .item-fix-normal {
@@ -158,8 +158,8 @@
 }
 .table-fixed-right {
   position: absolute;
-  top: rem(1px);
   right: 0;
+  top: 0;
   overflow-x: hidden;
   overflow-y: hidden;
   .item-fix-normal {
@@ -189,4 +189,7 @@
 }
 .table-pagination {
   margin-top: $table-pagination-margin-top;
+}
+.table-no-data {
+  margin: $table-body-padding;
 }

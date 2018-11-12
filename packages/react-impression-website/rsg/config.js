@@ -80,7 +80,7 @@ module.exports = {
       description: '表单组件，用于采集用户输入的信息。',
       components: resolveComponents([
         'Checkbox*',
-        'Datepicker',
+        'DatePicker',
         'Form*',
         'Input*',
         'Radio*',
