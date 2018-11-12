@@ -153,6 +153,7 @@ export default class Popover extends React.PureComponent {
       () => {
         this.popperJS = new Popper(this.referenceDom, this.popper, {
           placement: this.props.position,
+          positionFixed: true,
         })
       }
     )
