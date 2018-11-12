@@ -1,5 +1,5 @@
 .input-group-upload {
-    input[type="file"] {
+    & > input[type="file"] {
         position: absolute;
         opacity: 0;
     }
@@ -28,13 +28,15 @@
     transform: translateY(-50%);
     color: $upload-icon-color;
 }
-
+/* 图片上传样式 start */
 .upload-preview {
     position: relative;
     display: inline-block;
     vertical-align: middle;
+    width: $upload-preview-width;
+    height: $upload-preview-height;
 
-    input[type="file"] {
+    & > input[type="file"] {
         position: absolute;
         top: 0;
         left: 0;
@@ -44,34 +46,30 @@
 }
 .upload-preview-inner {
     display: flex;
-    width: $upload-preview-width;
-    height: $upload-preview-height;
+    width: 100%;
+    height: 100%;
     align-items: center;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     cursor: pointer;
     text-align: center;
     color: $upload-preview-color;
     border-width: $border-width;
     border-radius: $border-radius;
 }
-/* 图片上传样式 start */
 .upload-preview-tool {
     border-style: dashed;
     border-color: $upload-preview-border-color;
     background-color: $upload-preview-bg;
 }
-
 .upload-preview-addon {
     width: $upload-preview-addon-width;
     height: $upload-preview-addon-height;
     font-size: $upload-preview-addon-font-size;
     line-height: $upload-preview-addon-height;
 }
-
 .upload-preview-text {
     padding-top: $upload-preview-text-padding-top;
-    padding-bottom: $upload-preview-text-padding-bottom;
     font-size: $upload-preview-text-font-size;
     line-height: $upload-preview-text-font-size;
 }
@@ -83,10 +81,10 @@
     border-color: $upload-preview-img-border-color;
     background-color: $upload-preview-img-bg;
 
-    img {
-        width: $upload-preview-img-width;
-        height: $upload-preview-img-height;
-        margin: $upload-preview-img-margin;
+    & > img {
+        width: 100%;
+        height: 100%;
+        padding: $upload-preview-img-offset;
     }
 }
 .upload-preview-remove {
@@ -95,14 +93,15 @@
     right: 0;
     bottom: 0;
     left: 0;
-    margin: $upload-preview-img-margin;
+    margin: $upload-preview-img-offset;
     font-size: $upload-preview-remove-font-size;
-    line-height: $upload-preview-img-height;
     transition: $upload-preview-transition;
     opacity: 0;
     color: $upload-preview-remove-color;
     background-color: $upload-preview-remove-bg;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:hover {
         opacity: 1;
     }
