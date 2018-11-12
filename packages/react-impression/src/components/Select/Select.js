@@ -7,9 +7,9 @@ import Tag from '../Tag/index'
 import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
-  return array.some(
-    item => item.name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1
-  )
+  return array.some(item => {
+    return item.name.toLocaleUpperCase().indexOf(text.toLocaleUpperCase()) > -1
+  })
 }
 
 export default class Select extends React.PureComponent {
@@ -28,7 +28,6 @@ export default class Select extends React.PureComponent {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
       isSearch: false,
-      hasResult: false,
       selectText: '', // 选中字段
       options: [],
       optionGroup: [],
@@ -114,46 +113,20 @@ export default class Select extends React.PureComponent {
   }
 
   componentDidMount() {
-    let optionList = []
+    this.handleInit()
+  }
 
-    if (this.props.children && Array.isArray(this.props.children)) {
-      this.props.children.forEach(child => {
-        if (!child || !child.props) return
-        const { value, children } = child.props
-        if (Array.isArray(children)) {
-          children.forEach(item => {
-            const { value, children } = item.props
-            optionList.push({
-              name: children,
-              value,
-            })
-          })
-        } else {
-          optionList.push({
-            name: children,
-            value,
-          })
-        }
-      })
-    }
-    if (this.props.children && !Array.isArray(this.props.children)) {
-      const { value, children } = this.props.children.props
-      if (!this.props.children || !this.props.children.props) return
-      if (Array.isArray(children)) {
-        children.forEach(item => {
-          const { value, children } = item.props
-          optionList.push({
-            name: children,
-            value,
-          })
-        })
-      } else {
-        optionList.push({
-          name: children,
-          value,
-        })
-      }
-    }
+  /**
+   * @description 初始化
+   * @memberof Select
+   */
+  handleInit = () => {
+    const { options } = this.state
+    const optionList = options.map(option => {
+      const { value, children } = option.props
+      return { value, name: children.toString() }
+    })
+
     this.setState({ optionList }, this.handleValueChange)
   }
   getChildContext() {
@@ -300,7 +273,6 @@ export default class Select extends React.PureComponent {
     this.setState(
       {
         showOption: !this.state.showOption,
-        hasResult: false,
         queryText: '',
       },
       () => {
@@ -314,6 +286,13 @@ export default class Select extends React.PureComponent {
     )
   }
 
+  /**
+   * @description 多选删除
+   * @param {*} newVal
+   * @param {*} e
+   * @returns
+   * @memberof Select
+   */
   selectMultipleDelete(newVal, e) {
     const { placeholder, onDelete, disabled } = this.props
     const { selectedItem, value, options } = this.state
@@ -409,16 +388,27 @@ export default class Select extends React.PureComponent {
   componentWillReceiveProps(props) {
     const { options } = this.state
     if (props.value !== this.props.value) {
-      this.handleValueChange(props)
+      this.handleInit()
       options.forEach(option => option.handleActive(props))
     }
   }
 
   onOptionCreate(option) {
     this.state.options.push(option)
+    this.forceUpdate()
+    this.handleInit()
   }
   onOptionGroupCreate(optionGroup) {
     this.state.optionGroup.push(optionGroup)
+    this.forceUpdate()
+  }
+  onOptionGroupDestroy(option) {
+    const { optionGroup } = this.state
+    const index = optionGroup.indexOf(option)
+    if (index > -1) {
+      optionGroup.splice(index, 1)
+    }
+    this.forceUpdate()
   }
   onOptionDestroy(option) {
     const { options } = this.state
@@ -426,6 +416,8 @@ export default class Select extends React.PureComponent {
     if (index > -1) {
       options.splice(index, 1)
     }
+    this.forceUpdate()
+    this.handleInit()
   }
 
   handleQuery(event) {

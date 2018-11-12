@@ -14,7 +14,7 @@ class DefaultExample extends React.Component {
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
-    // this.select.setValue(null)
+    this.select.setValue(null)
   }
 
   render() {
@@ -53,7 +53,7 @@ class ValueExample extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.state = {
-      val: 1,
+      val: null,
     }
   }
 
@@ -367,11 +367,47 @@ class DefaultValueExample extends React.Component {
 **可搜索**
 
 ```js
-<Select searchable>
-  <SelectOption value="1">一</SelectOption>
-  <SelectOption value="2">二</SelectOption>
-  <SelectOption value="3">三</SelectOption>
-</Select>
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      data: [2, 3, 4],
+    }
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+  }
+
+  render() {
+    const { data } = this.state
+    return (
+      <div>
+        <Notification />
+        <Select
+          ref={select => (this.select = select)}
+          searchable
+          onChange={this.handleChange}
+        >
+          <SelectOption value={1} key={1}>
+            1
+          </SelectOption>
+          {data.map(item => (
+            <SelectOption value={item} key={item}>
+              {item}
+            </SelectOption>
+          ))}
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
 ```
 
 **selectOptionGroup**
@@ -438,4 +474,4 @@ v2.0.0
 * 新增 required 是否必选项属性, 状态需要自行控制
 * 新增 onDelete 回调方法，返回值为删除项的值，仅在多选模式下生效
 * 新增 filterMethod 筛选方法
-* 删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
+* 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
