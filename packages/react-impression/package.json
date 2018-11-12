@@ -16,7 +16,6 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "classnames": "^2.2.0",
-    "perfect-scrollbar": "^0.6.12",
     "popper.js": "^1.14.4",
     "prop-types": "15.6.2",
     "react-addons-css-transition-group": "15.6.2",
