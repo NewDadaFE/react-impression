@@ -19,16 +19,36 @@ const propTypes = {
    * 自定义样式
    */
   className: PropTypes.string,
+
+  /**
+   * 自定义左侧渲染
+   */
+  Title: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 }
 
-const TimelineItem = ({ dot, unreachable, className, children, ...others }) => {
+const TimelineItem = ({
+  dot,
+  unreachable,
+  className,
+  children,
+  Title,
+  size,
+  ...others
+}) => {
   const unreachableClass = unreachable ? 'timeline-item-unreachable' : null
+  let content
+  if (Title && typeof Title === 'function') {
+    content = Title()
+  } else if (React.isValidElement(Title)) {
+    content = React.cloneElement(Title)
+  }
 
   return (
     <li
       {...others}
       className={classnames('timeline-item', unreachableClass, className)}
     >
+      {size === 'lg' && <div className='timeline-item-title'>{content}</div>}
       <div className='timeline-item-line' />
       <div className='timeline-item-addon'>
         {dot || <i className='fa fa-circle-o' />}

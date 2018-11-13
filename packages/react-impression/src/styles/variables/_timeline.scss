@@ -1,20 +1,25 @@
 // Timeline
-$timeline-item-padding-bottom: 2rem !default;
+$timeline-item-padding-bottom: 1.86rem !default;
 
 $timeline-item-addon-bg: $brand-pure !default;
-$timeline-item-addon-color: $brand-primary !default;
+$timeline-item-addon-color: $gray !default;
 $timeline-item-addon-padding: 2px 2px !default;
 $timeline-item-addon-font-size: 1.2rem !default;
+$timeline-item-addon-top: 0.5rem !default;
+$timeline-item-addon-first-color: $brand-primary !default;
 
 $timeline-item-line-left: $timeline-item-addon-font-size / 2 !default;
 $timeline-item-line-border: 2px solid $border-color !default !default;
 
-$timeline-item-body-line-height: 1.2 !default;
-$timeline-item-body-padding-right: 2rem !default;
+$timeline-item-body-line-height: 1 !default;
+$timeline-item-body-padding-right: 2.26rem !default;
 
 $timeline-lg-item-addon-font-size: 1.5rem !default;
 $timeline-lg-item-addon-padding: 2px 3px !default;
-$timeline-lg-item-line-left: $timeline-lg-item-addon-font-size / 2 !default;
+$timeline-lg-item-addon-left: 8rem !default;
+$timeline-lg-item-line-left: 9.4rem !default;
 $timeline-lg-item-padding-bottom: 3rem !default;
 $timeline-lg-item-body-line-height: 1.5 !default;
 $timeline-lg-item-body-padding-right: 2.5rem !default;
+
+$timeline-item-title-width: 7.8rem !default;
