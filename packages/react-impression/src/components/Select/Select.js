@@ -472,14 +472,10 @@ export default class Select extends React.PureComponent {
           className
         )}
         disabled={disabled}
-        ref={ref => (this.container = ref)}
+        ref={ref => (this.selectMain = ref)}
       >
         {multiple && (
-          <div
-            className='select-tags'
-            onClick={this.toggleOptionsHandle}
-            ref={ref => (this.selectMain = ref)}
-          >
+          <div className='select-tags' onClick={this.toggleOptionsHandle}>
             {selectedItem.length <= 0 && (
               <span className='select-placeholder'>请选择</span>
             )}
@@ -505,7 +501,6 @@ export default class Select extends React.PureComponent {
             type='text'
             value={selectText}
             readOnly
-            ref={ref => (this.selectMain = ref)}
             placeholder={currentPlaceholder}
             disabled={disabled}
             className={classnames('select-selection')}
@@ -538,7 +533,6 @@ export default class Select extends React.PureComponent {
                 value={queryText}
                 onChange={e => this.handleQuery(e)}
                 className={classnames('select-search-input')}
-                // ref={ref => (this.selectMain = ref)}
               />
               <i className='fa fa-search select-search' />
             </div>
