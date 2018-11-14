@@ -25,7 +25,7 @@ export default class NavItem extends React.PureComponent {
      */
     eventKey: PropTypes.any,
     /**
-     * 点击回调函数
+     * 点击回调函数，参数列表：eventKey，event
      */
     onClick: PropTypes.func,
   }
