@@ -21,7 +21,7 @@ const propTypes = {
   className: PropTypes.string,
 
   /**
-   * 自定义左侧渲染
+   * 自定义左侧渲染内容
    */
   Title: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 }

@@ -7,8 +7,15 @@
 .timeline-lg {
   .timeline-item {
     padding-bottom: $timeline-lg-item-padding-bottom;
+    &:first-child {
+      .timeline-item-body {
+        color: $timeline-item-body-color;
+      }
+      .timeline-item-addon {
+        color: $timeline-item-addon-first-color;
+      }
+    }
   }
-
   .timeline-item-unreachable {
     padding-bottom: $timeline-lg-item-padding-bottom * 2;
 
@@ -18,6 +25,10 @@
   }
   .timeline-item-title {
     width: $timeline-item-title-width;
+    position: absolute;
+    color: $timeline-lg-color;
+    left: 0;
+    top: -$timeline-lg-item-title-top;
   }
   .timeline-item-line {
     left: $timeline-lg-item-line-left;
@@ -30,8 +41,9 @@
   }
 
   .timeline-item-body {
-    padding-left: $timeline-lg-item-body-padding-right;
+    padding-left: $timeline-lg-item-body-padding-left;
     line-height: $timeline-lg-item-body-line-height;
+    color: $timeline-lg-color;
   }
 }
 
@@ -82,5 +94,6 @@
 
 .timeline-item-body {
   line-height: $timeline-item-body-line-height;
+  color: $timeline-item-body-color;
   padding-left: $timeline-item-body-padding-right;
 }

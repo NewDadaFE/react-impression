@@ -1,53 +1,113 @@
-### Example
+### 示例
+
+**基本用法**
 
 ```js
 <Row>
   <Col col={12}>
-    <h5>Default</h5>
-    <hr />
-    <Timeline size="lg">
-      <TimelineItem Title={<span>2017-05-12 11:21:34</span>}>
-        <Row>
-          <Col col={2}>骑士</Col>
-          <Col col={2}>签收</Col>
-        </Row>
-      </TimelineItem>
-      <TimelineItem>
-        <Row>
-          <Col col={2}>骑士</Col>
-          <Col col={2}>签收</Col>
-        </Row>
-      </TimelineItem>
+    <Timeline>
       <TimelineItem>
         <Row>
           <Col col={3}>2017-04-12 11:21:34</Col>
+          <Col col={2}>骑士</Col>
+          <Col col={2}>签收</Col>
+        </Row>
+      </TimelineItem>
+      <TimelineItem>
+        <Row>
+          <Col col={3}>2017-04-11 11:21:34</Col>
+          <Col col={2}>骑士</Col>
+          <Col col={2}>签收</Col>
+        </Row>
+      </TimelineItem>
+      <TimelineItem>
+        <Row>
+          <Col col={3}>2017-04-10 11:21:34</Col>
           <Col col={2}>万里站</Col>
           <Col col={2}>反馈</Col>
         </Row>
       </TimelineItem>
       <TimelineItem>
         <Row>
-          <Col col={3}>2017-04-12 11:21:34</Col>
+          <Col col={3}>2017-04-09 11:21:34</Col>
           <Col col={2}>万里站</Col>
           <Col col={2}>返还入站</Col>
         </Row>
       </TimelineItem>
       <TimelineItem>
         <Row>
-          <Col col={3}>2017-04-12 11:21:34</Col>
+          <Col col={3}>2017-04-08 11:21:34</Col>
           <Col col={2}>万里站</Col>
           <Col col={2}>订单创建</Col>
         </Row>
       </TimelineItem>
       <TimelineItem>
         <Row>
-          <Col col={3}>2017-04-12 11:21:34</Col>
+          <Col col={3}>2017-04-07 11:21:34</Col>
           <Col col={2}>万里站</Col>
           <Col col={2}>订单创建</Col>
         </Row>
       </TimelineItem>
       <TimelineItem dot={<Icon type="pause-circle-o" className="text-muted" />}>
         <a href="#">查看更多</a>
+      </TimelineItem>
+    </Timeline>
+  </Col>
+</Row>
+```
+
+**大号用法**
+
+```js
+<Row>
+  <Col col={12}>
+    <Timeline size="lg">
+      <TimelineItem
+        dot={
+          <Icon type="map-marker" style={{ fontSize: 40, marginLeft: -4 }} />
+        }
+        Title={
+          <div>
+            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-12</div>
+            <div>11:21:34</div>
+          </div>
+        }
+      >
+        维打复持什进江把消农，从之名强照别形切高，区战35约信构南。
+        和响做什经口都飞广中，自明格十K坑总矿。
+        才了组示了平农道易，没际志太家光商力，满运隶低长花论。维打复持什进江把消农，从之名强照别形切高，区战35约信构南。
+        和响做什经口都飞广中，自明格十K坑总矿。
+        才了组示了平农道易，没际志太家光商力，满运隶低长花论。
+        通米厂素领前条毛真改组说只，并引开族华两世志料然。
+        以场或活来联华原，亲构引什元一多由，劳性前而干志4，亲公我何呆极。
+        增教节应热下部极火精你更思，技厂水集发万M两海壳求。维打复持什进江把消农，从之名强照别形切高，区战35约信构南。
+        和响做什经口都飞广中，自明格十K坑总矿。
+        才了组示了平农道易，没际志太家光商力，满运隶低长花论。
+        通米厂素领前条毛真改组说只，并引开族华两世志料然。
+      </TimelineItem>
+      <TimelineItem
+        Title={
+          <div>
+            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-11</div>
+            <div>11:21:34</div>
+          </div>
+        }
+      >
+        维打复持什进江把消农，从之名强照别形切高，区战35约信构南。
+        和响做什经口都飞广中，自明格十K坑总矿。
+        才了组示了平农道易，没际志太家光商力，满运隶低长花论。
+      </TimelineItem>
+      <TimelineItem
+        Title={
+          <div>
+            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-10</div>
+            <div>11:21:34</div>
+          </div>
+        }
+      >
+        维打复持什进江把消农，从之名强照别形切高，区战35约信构南。
+        和响做什经口都飞广中，自明格十K坑总矿。
+        才了组示了平农道易，没际志太家光商力，满运隶低长花论。
       </TimelineItem>
     </Timeline>
   </Col>
