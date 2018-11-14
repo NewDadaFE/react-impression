@@ -20,7 +20,9 @@
       cursor: $cursor-disabled;
     }
   }
-
+  .select-options-normal {
+    width: 16rem;
+  }
   .select-tags {
     cursor: pointer;
     position: relative;
@@ -81,12 +83,12 @@
 
 .select-selection {
   cursor: pointer;
+  width: 16rem;
   height: 2.857rem;
   display: inline-block;
   user-select: none;
   text-align: left;
   text-overflow: ellipsis;
-  width: 100%;
   padding: $input-padding-y $input-padding-x;
   font-size: 1rem;
   line-height: 1.25;
@@ -145,6 +147,9 @@
     opacity: 1;
     padding: 0.714rem 0;
   }
+}
+.select-options-multiple {
+  width: 28.57rem;
 }
 .select-search-wrap {
   opacity: 0;

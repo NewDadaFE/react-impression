@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
 import Tag from '../Tag/index'
+import Popper from 'popper.js'
 import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
@@ -20,11 +21,10 @@ export default class Select extends React.PureComponent {
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
-
+    this.selectPopper = null
     // 子组件数据
     this.options = []
     const initValue = {
-      top: '120%',
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
       isSearch: false,
@@ -192,15 +192,6 @@ export default class Select extends React.PureComponent {
     }
     this.setState(dataToSet, () => {
       this.options.forEach(option => option.handleActive())
-      if (!this.tag) {
-        this.setState({ top: '120%' })
-      } else {
-        if (this.tag.clientHeight < 42) {
-          this.setState({ top: '120%' })
-        } else {
-          this.setState({ top: '220%' })
-        }
-      }
     })
   }
   getValue() {
@@ -282,6 +273,20 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
+        if (this.state.showOption) {
+          this.selectPopper = new Popper(this.selectMain, this.selectOption, {
+            placement: 'bottom',
+            positionFixed: true,
+            modifiers: {
+              offset: { offset: '0, 10' },
+              computeStyle: {
+                gpuAcceleration: false,
+              },
+            },
+          })
+        } else {
+          this.selectPopper && this.selectPopper.destroy()
+        }
       }
     )
   }
@@ -310,9 +315,6 @@ export default class Select extends React.PureComponent {
       options.forEach(option => {
         option.handleActive()
       })
-      if (this.tag.clientHeight < 42) {
-        this.setState({ top: '120%' })
-      }
 
       onDelete && onDelete(newVal)
     })
@@ -344,10 +346,6 @@ export default class Select extends React.PureComponent {
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
         },
         () => {
-          if (multiple && this.tag.clientHeight > 42) {
-            this.setState({ top: '220%' })
-          }
-
           options.forEach(option => option.handleActive())
           onChange &&
             result.value !== originValue &&
@@ -355,9 +353,6 @@ export default class Select extends React.PureComponent {
         }
       )
     } else {
-      if (multiple && this.tag.clientHeight > 42) {
-        this.setState({ top: '220%' })
-      }
       onChange &&
         result.value !== originValue &&
         onChange(result.value, result.name, result.index)
@@ -462,7 +457,6 @@ export default class Select extends React.PureComponent {
       queryText,
       currentPlaceholder,
       selectedItem,
-      top,
     } = this.state
     let { children } = this.props
 
@@ -478,14 +472,13 @@ export default class Select extends React.PureComponent {
           className
         )}
         disabled={disabled}
+        ref='container'
       >
         {multiple && (
           <div
             className='select-tags'
             onClick={this.toggleOptionsHandle}
-            ref={div => {
-              this.tag = div
-            }}
+            ref={ref => (this.selectMain = ref)}
           >
             {selectedItem.length <= 0 && (
               <span className='select-placeholder'>请选择</span>
@@ -512,7 +505,7 @@ export default class Select extends React.PureComponent {
             type='text'
             value={selectText}
             readOnly
-            ref='main'
+            ref={ref => (this.selectMain = ref)}
             placeholder={currentPlaceholder}
             disabled={disabled}
             className={classnames('select-selection')}
@@ -530,7 +523,14 @@ export default class Select extends React.PureComponent {
           })}
           onClick={this.toggleOptionsHandle}
         />
-        <div className='select-options-wrap' style={{ top: top }}>
+        <div
+          className={classnames(
+            { 'select-options-normal': !multiple },
+            { 'select-options-multiple': multiple },
+            'select-options-wrap'
+          )}
+          ref={ref => (this.selectOption = ref)}
+        >
           {searchable && (
             <div className='select-search-wrap'>
               <DebounceInput
@@ -538,6 +538,7 @@ export default class Select extends React.PureComponent {
                 value={queryText}
                 onChange={e => this.handleQuery(e)}
                 className={classnames('select-search-input')}
+                // ref={ref => (this.selectMain = ref)}
               />
               <i className='fa fa-search select-search' />
             </div>
