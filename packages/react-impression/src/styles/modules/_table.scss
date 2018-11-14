@@ -37,6 +37,9 @@
       padding: 0;
     }
   }
+  .table-cell-hide {
+    opacity: 0;
+  }
 }
 .table-body {
   color: $table-body-color;
@@ -45,6 +48,9 @@
     &.table-cell-select {
       padding: 0;
     }
+  }
+  .table-cell-hide {
+    opacity: 0;
   }
 }
 .table-header,
@@ -112,7 +118,7 @@
     }
   }
   &.table-scroll {
-    overflow: auto;
+    overflow-x: auto;
   }
 }
 .table-fixed-left {

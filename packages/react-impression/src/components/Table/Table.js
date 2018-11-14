@@ -60,7 +60,7 @@ export default class Table extends React.PureComponent {
     border: PropTypes.bool,
 
     /**
-     * 设置table的最大宽度 {x:number}
+     * 设置table的最大宽度 {x:number},默认为100%
      */
     scroll: PropTypes.object,
     /**
@@ -255,7 +255,7 @@ export default class Table extends React.PureComponent {
   }
 
   getMax = max => {
-    if (!max) return {}
+    if (!max || !max.x) return { maxWidth: '100%' }
     if (max.x) return { maxWidth: max.x }
   }
   handleScroll() {
@@ -494,6 +494,7 @@ export default class Table extends React.PureComponent {
     } = this.state
     const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : 60
     const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
+    const isNeedHide = !!fixLeftColumns.length || !!fixRightColumns.length
     return (
       <div>
         <div
@@ -510,8 +511,8 @@ export default class Table extends React.PureComponent {
             }}
             className={classnames(
               'table-wrap',
+              'table-scroll',
               { 'table-border': border },
-              { 'table-scroll': scroll && scroll.x },
               className
             )}
           >
@@ -529,6 +530,7 @@ export default class Table extends React.PureComponent {
                 indeterminate={indeterminate}
                 checkAll={checkAll}
                 fixed={fixed}
+                isNeedHide={isNeedHide}
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
@@ -540,6 +542,7 @@ export default class Table extends React.PureComponent {
                 noFixColumns={noFixColumns}
                 rowSelection={rowSelection}
                 fixed={fixed}
+                isNeedHide={isNeedHide}
                 onMouseEnter={this.handleHover}
                 onMouseLeave={this.handleHoverLeave}
                 handleCheckOnSelect={this.handleCheckOnSelect}

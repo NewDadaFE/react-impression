@@ -61,9 +61,17 @@ export default class TableHead extends React.PureComponent {
      * 分页配置项，请参照Pagination
      */
     pagination: PropTypes.object,
+    /**
+     * 是否有展示固定项
+     */
+    isNeedHide: PropTypes.bool,
   }
 
-  renderHeader = (array, type) => {
+  static defaultProps = {
+    isNeedHide: false,
+  }
+
+  renderHeader = (array, type, isNeedHide) => {
     return array.map((column, index) => {
       const { Header, width, fixed } = column
       let colWidth
@@ -86,7 +94,13 @@ export default class TableHead extends React.PureComponent {
           width={colWidth}
           className={classnames(`item-fix-left`)}
         >
-          <div className='table-cell'>{content}</div>
+          <div
+            className={classnames('table-cell', {
+              'table-cell-hide': isNeedHide,
+            })}
+          >
+            {content}
+          </div>
         </th>
       )
     })
@@ -104,6 +118,7 @@ export default class TableHead extends React.PureComponent {
       fixLeft,
       noFixColumns,
       fixRight,
+      isNeedHide,
     } = this.props
     let fixLeftList = []
     let fixRightList = []
@@ -136,7 +151,8 @@ export default class TableHead extends React.PureComponent {
                   </div>
                 </th>
               )}
-              {!!fixLeftList.length && this.renderHeader(fixLeftList, 'left')}
+              {!!fixLeftList.length &&
+                this.renderHeader(fixLeftList, 'left', isNeedHide)}
               {rowSelection &&
                 !rowSelection.fixed && (
                 <th
@@ -155,7 +171,7 @@ export default class TableHead extends React.PureComponent {
               )}
               {!!noFixColumns.length && this.renderHeader(noFixColumns)}
               {!!fixRightList.length &&
-                this.renderHeader(fixRightList, 'right')}
+                this.renderHeader(fixRightList, 'right', isNeedHide)}
               {rowSelection &&
                 isShowSelection &&
                 rowSelection.fixed && (

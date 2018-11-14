@@ -316,7 +316,7 @@ const data = [
     status: '正常',
   },
 ]
-;<Table columns={columns} data={data} scroll={{ x: 900 }} stripe />
+;<Table columns={columns} data={data} stripe />
 ```
 
 **条目过多 有固定项 表格**
@@ -351,7 +351,7 @@ const data = [
     status: '正常',
   },
 ]
-;<Table data={data} scroll={{ x: 900 }} stripe border>
+;<Table data={data} stripe>
   <TableColumn
     prop="code"
     Header="编码"
