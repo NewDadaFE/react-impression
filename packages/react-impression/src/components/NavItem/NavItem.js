@@ -37,10 +37,10 @@ export default class NavItem extends React.PureComponent {
   /**
    * 回调函数
    */
-  onClickHandle = () => {
+  onClickHandle = event => {
     const { disabled, active, onClick, eventKey } = this.props
 
-    !disabled && !active && onClick(eventKey)
+    !disabled && !active && onClick(eventKey, event)
   }
 
   render() {
