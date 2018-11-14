@@ -472,7 +472,7 @@ export default class Select extends React.PureComponent {
           className
         )}
         disabled={disabled}
-        ref='container'
+        ref={ref => (this.container = ref)}
       >
         {multiple && (
           <div
