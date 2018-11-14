@@ -16,43 +16,51 @@
 * 菜单栏的收起展开逻辑，需要使用者自行实现
 
 ```js
-<Sidebar style={{ height: 450 }}>
-  <SidebarHeader>
-    <img src="logo.png" />
-    达达智能智能站点
-  </SidebarHeader>
-  <SidebarBody>
-    <Nav stacked>
-      <Collapse>
-        <CollapseTitle>
-          <Icon type="bar-chart" />
-          数据运营
-        </CollapseTitle>
-        <CollapseBody>
-          <Nav stacked>
-            <NavItem eventKey="1-1">
-              <a>站点配送日报</a>
-            </NavItem>
-            <NavItem eventKey="1-2">
-              <a>骑士配送日报</a>
-            </NavItem>
-          </Nav>
-        </CollapseBody>
-      </Collapse>
-      <Collapse>
-        <CollapseTitle>
-          <Icon type="file-text" />
-          订单管理
-        </CollapseTitle>
-        <CollapseBody>
-          <Nav stacked>
-            <NavItem eventKey="2-1">
-              <a>站点配送日报</a>
-            </NavItem>
-          </Nav>
-        </CollapseBody>
-      </Collapse>
-    </Nav>
-  </SidebarBody>
-</Sidebar>
+<div style={{ width: 230, height: 450 }}>
+  <Sidebar>
+    <SidebarHeader>
+      <img src="logo.png" />
+      小果园
+    </SidebarHeader>
+    <SidebarBody>
+      <Nav stacked>
+        <Collapse>
+          <CollapseTitle>
+            <Icon type="bar-chart" />
+            热带地区
+          </CollapseTitle>
+          <CollapseBody>
+            <Nav stacked>
+              <NavItem eventKey="1-1">
+                <a>芒果</a>
+              </NavItem>
+              <NavItem eventKey="1-2">
+                <a>榴莲</a>
+              </NavItem>
+            </Nav>
+          </CollapseBody>
+        </Collapse>
+        <Collapse>
+          <CollapseTitle>
+            <Icon type="file-text" />
+            温带地区
+          </CollapseTitle>
+          <CollapseBody>
+            <Nav stacked>
+              <NavItem eventKey="2-1">
+                <a>苹果</a>
+              </NavItem>
+              <NavItem eventKey="2-2">
+                <a>梨</a>
+              </NavItem>
+              <NavItem eventKey="2-3">
+                <a>橘子</a>
+              </NavItem>
+            </Nav>
+          </CollapseBody>
+        </Collapse>
+      </Nav>
+    </SidebarBody>
+  </Sidebar>
+</div>
 ```
