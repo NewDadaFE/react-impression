@@ -138,7 +138,12 @@ export default class Select extends React.PureComponent {
    * @description 隐藏菜单
    * @memberof Select
    */
-  hideOptionsHandle = () => this.setState({ showOption: false })
+  hideOptionsHandle = () => {
+    this.setState(
+      { showOption: false },
+      () => this.selectPopper && this.selectPopper.destroy()
+    )
+  }
 
   handleValueChange(props) {
     const { optionList } = this.state
@@ -258,8 +263,7 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = () => {
-    const { options, optionGroup } = this.state
-    const { filterMethod } = this.props
+    const { optionGroup } = this.state
     if (this.props.disabled) return
     this.setState(
       {
@@ -267,9 +271,6 @@ export default class Select extends React.PureComponent {
         queryText: '',
       },
       () => {
-        options.forEach(option => {
-          option.queryChange('', filterMethod)
-        })
         optionGroup.forEach(option => {
           option.queryChange('')
         })
@@ -331,7 +332,7 @@ export default class Select extends React.PureComponent {
    * @param {Number} 索引
    */
   selectOptionHandle(result) {
-    const { onChange, value, filterMethod, multiple } = this.props
+    const { onChange, value, multiple } = this.props
     const { options, selectedItem, optionGroup } = this.state
     const originValue = this.isPuppet ? value : this.state.value
     if (multiple) {
@@ -363,9 +364,6 @@ export default class Select extends React.PureComponent {
         queryText: '',
       },
       () => {
-        options.forEach(option => {
-          option.queryChange('', filterMethod)
-        })
         optionGroup.forEach(option => {
           option.queryChange('')
         })
@@ -430,12 +428,12 @@ export default class Select extends React.PureComponent {
   }
 
   getEmptyText = () => {
-    const { searchable } = this.props
+    const { searchable, filterMethod } = this.props
     const { options, optionList, queryText } = this.state
     if (options.length === 0) {
       return '暂无数据'
     }
-    if (searchable && !isContainer(queryText, optionList)) {
+    if (searchable && !isContainer(queryText, optionList) && !filterMethod) {
       return '暂无数据'
     }
 
