@@ -158,7 +158,6 @@ export default class TableBody extends React.PureComponent {
       fixLeftList = fixLeft ? fixLeftColumns : fixRightColumns
       fixRightList = fixLeft ? fixRightColumns : fixLeftColumns
     }
-
     return (
       <div className='table-body-wrap'>
         <table className='table-body'>
