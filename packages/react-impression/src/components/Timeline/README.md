@@ -64,7 +64,7 @@
     <Timeline size="lg">
       <TimelineItem
         dot={
-          <Icon type="map-marker" style={{ fontSize: 40, marginLeft: -4 }} />
+          <Icon type="map-marker" style={{ fontSize: 40, marginLeft: -3 }} />
         }
         Title={
           <div>
