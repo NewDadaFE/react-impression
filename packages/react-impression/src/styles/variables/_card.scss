@@ -2,6 +2,8 @@
 $card-padding: rem(20px) !default;
 $card-spacer-x: $card-padding !default;
 $card-spacer-y: $card-padding !default;
+$card-border-width: 1px !default;
+$card-border-color: $border-color !default;
 $card-border-radius: $border-radius-sm !default;
 $card-border-radius-inner: $card-border-radius !default;
 $card-box-shadow: 0px rem(2px) rem(10px) 0px rgba(145,156,179,0.1) !default;
