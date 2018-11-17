@@ -1,7 +1,7 @@
 // Loading
 $loading-mask-bg: transparent !default;
 
-$loading-color: $gray-light !default;
+$loading-color: $brand-primary !default;
 $loading-width: 100px !default;
 $loading-height: $loading-width !default;
 $loading-animation-duration: 1s !default;
@@ -34,3 +34,9 @@ $loading-cyclone-line-color: lighten($brand-primary, 6%) !default;
 $loading-cyclone-ball-width: 1rem !default;
 $loading-cyclone-ball-height: $loading-cyclone-ball-width !default;
 $loading-cyclone-ball-color: darken($brand-primary, 18%) !default;
+
+$loading-circle-width: rem(34px) !default;
+$loading-circle-height: rem(34px) !default;
+$loading-circle-animation-duration: $loading-animation-duration !default;
+$loading-circle-line-height: 2px !default;
+$loading-circle-line-color: $brand-primary !default;

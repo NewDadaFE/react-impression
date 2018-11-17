@@ -27,7 +27,7 @@ export default class Loading extends React.PureComponent {
     /**
      * 类型
      */
-    type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
+    type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone', 'circle']),
     /**
      * 加载文本
      */
