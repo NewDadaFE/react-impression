@@ -1,0 +1,101 @@
+// 步骤条样式
+.steps {
+  display: flex;
+  justify-content: space-between;
+}
+.step-node {
+  position: relative;
+  flex: 1;
+  text-align: right;
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: $step-tail-top;
+    right: $step-content-width - $step-node-offset;
+    left: -$step-node-offset;
+    height: $step-tail-height;
+    content: "";
+  }
+  &.ready {
+    @include step-node-status($step-ready-color, $step-icon-bg-color);
+  }
+  &.did {
+    @include step-node-status($step-active-color);
+    .step-dot {
+      background-color: transparent;
+    }
+  }
+  &.current {
+    @include step-node-status($step-active-color);
+    .step-seq-icon {
+      color: white;
+      background-color: $step-active-color;
+    }
+    .step-title {
+      color: $step-title-current-color;
+    }
+  }
+  &.error {
+    @include step-node-status($step-error-color);
+    .step-title {
+      color: $step-error-color;
+    }
+  }
+  &:first-child {
+    flex: unset;
+    &::before {
+      background-color: transparent;
+    }
+    & > .step-content::before {
+      background-color: transparent;
+    }
+  }
+  &:last-child {
+    & > .step-content::after {
+      background-color: transparent;
+    }
+  }
+}
+.step-content {
+  position: relative;
+  display: inline-block;
+  width: $step-content-width;
+  text-align: center;
+}
+// 节点自定义内容
+.step-custom {
+  line-height: $step-custom-line-height;
+  color: $step-custom-color;
+}
+.step-icon {
+  display: inline-block;
+  width: $step-icon-size;
+  height: $step-icon-size;
+  margin-bottom: $step-icon-offset-bottom;
+  font-size: $step-icon-size;
+  line-height: $step-icon-size;
+  text-align: center;
+}
+// 节点序号
+.step-seq-icon {
+  font-size: $step-seq-font-size;
+  color: $step-title-color;
+  border-radius: 50%;
+  background-color: $step-icon-bg-color;
+}
+.step-dot {
+  display: inline-block;
+  width: $step-dot-size;
+  height: $step-dot-size;
+  content: "";
+  border-width: $step-dot-border-width;
+  border-style: solid;
+  border-radius: 50%;
+}
+.step-title {
+  padding-bottom: $step-title-offset-bottom;
+  font-size: $step-title-font-size;
+  font-weight: bold;
+  line-height: $step-title-font-size;
+  color: $step-title-color;
+}

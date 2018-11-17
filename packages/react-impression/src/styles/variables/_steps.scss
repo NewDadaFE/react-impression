@@ -1,0 +1,24 @@
+//== Steps StepNode
+// steps color
+$step-active-color: $brand-primary !default;
+$step-error-color: $brand-danger !default;
+$step-ready-color: $gray !default;
+$step-title-current-color: $gray-base !default;
+$step-title-color: $gray-darker !default;
+$step-custom-color: $gray-dark !default;
+$step-icon-bg-color: $gray-light !default;
+// size
+$step-content-width: rem(100px) !default;
+$step-tail-height: rem(3px) !default;
+$step-icon-size: rem(24px) !default;
+$step-dot-size: rem(10px) !default;
+$step-dot-border-width: rem(2px) !default;
+// offset
+$step-node-offset: ($step-content-width - $step-icon-size) / 2 - rem(10px) !default;
+$step-tail-top: ($step-icon-size - $step-tail-height) / 2 !default;
+$step-icon-offset-bottom: rem(10px) !default;
+$step-title-offset-bottom: rem(4px) !default;
+// font size
+$step-title-font-size: rem(16px) !default;
+$step-seq-font-size: rem(14px) !default;
+$step-custom-line-height: rem(18px) !default;
