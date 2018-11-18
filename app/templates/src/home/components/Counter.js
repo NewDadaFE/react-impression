@@ -1,31 +1,21 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Button } from 'react-impression'
 
-// 计数器组件
-export default class Counter extends Component {
-  static propTypes = {
-    increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired,
-  }
+const Counter = props => (
+  <div>
+    <p>Clicked: {props.counter} times </p>
+    <Button onClick={props.increment}>+</Button>{' '}
+    <Button theme='secondary' onClick={props.decrement}>
+      -
+    </Button>{' '}
+  </div>
+)
 
-  onIncrementHandle = () => {
-    let { increment } = this.props
-
-    increment()
-  }
-
-  render() {
-    const { decrement, counter } = this.props
-
-    return (
-      <p>
-        Clicked: {counter} times{' '}
-        <Button onClick={this.onIncrementHandle}>+</Button>{' '}
-        <Button theme='secondary' onClick={decrement}>
-          -
-        </Button>{' '}
-      </p>
-    )
-  }
+Counter.propTypes = {
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
 }
+
+export default Counter

@@ -1,31 +1,37 @@
 import React, { PropTypes } from 'react'
-import { Flex, Content, Loading, Notification, Message } from 'react-impression'
+import { Loading, Notification, Message } from 'react-impression'
 import Header from './Header'
 import Sidebar from './Sidebar'
+import injectSheet from 'react-jss'
 
-// 页面布局
-const Layout = ({ children }) => {
-  return (
-    <Flex className='layout'>
-      {/* 侧边栏 */}
-      <Sidebar />
-      <Flex.Item>
-        <Flex direction='column'>
-          {/* 顶部栏 */}
-          <Header />
-          {/* 内容区 */}
-          <Content>{children}</Content>
-          <Notification />
-          <Message />
-          <Loading type='fountain' duration={500} />
-        </Flex>
-      </Flex.Item>
-    </Flex>
-  )
+const styles = {
+  container: {
+    display: 'flex',
+    height: '100vh',
+  },
+  content: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
 }
 
+const Layout = ({ classes, children }) => (
+  <div className={classes.container}>
+    <Sidebar />
+    <div className={classes.content}>
+      <Header />
+      <Notification />
+      <Message />
+      <Loading type='fountain' duration={500} />
+      {children}
+    </div>
+  </div>
+)
+
 Layout.propTypes = {
+  classes: PropTypes.object,
   children: PropTypes.element,
 }
 
-export default Layout
+export default injectSheet(styles)(Layout)

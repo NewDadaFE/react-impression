@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "react-impression",
+  "moduleRoots": [
+    "."
+  ],
   "scripts": {
     "format": "prettier-eslint --write 'src/**/*.js'",
     "start": "webpack-dev-server --env.development",
@@ -19,7 +22,8 @@
     "qs": "~6.5.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-impression": "^1.2.5",
+    "react-impression": "^2.0.1",
+    "react-jss": "^8.6.1",
     "react-redux": "^5.0.4",
     "react-router": "3.0.5",
     "redux": "^3.6.0",
@@ -80,6 +84,10 @@
         {
           "lodash": {
             "transform": "lodash/${member}",
+            "preventFullImport": true
+          },
+          "react-impression": {
+            "transform": "react-impression/components/${member}",
             "preventFullImport": true
           }
         }
