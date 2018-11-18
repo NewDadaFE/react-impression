@@ -4,29 +4,53 @@
 
 // Alignment
 
-.text-justify { text-align: justify !important; }
-.text-nowrap { white-space: nowrap !important; }
-.text-truncate { @include text-truncate; }
+.text-justify {
+  text-align: justify !important;
+}
+.text-nowrap {
+  white-space: nowrap !important;
+}
+.text-truncate {
+  @include text-truncate;
+}
 
-
-.text-left { text-align: left !important; }
-.text-right { text-align: right !important; }
-.text-center { text-align: center !important; }
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
 
 // Transformation
 
-.text-lowercase { text-transform: lowercase !important; }
-.text-uppercase { text-transform: uppercase !important; }
-.text-capitalize { text-transform: capitalize !important; }
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
+}
 
 // Weight and italics
 
-.font-weight-normal { font-weight: normal; }
-.font-weight-bold { font-weight: bold; }
-.font-italic { font-style: italic; }
+.font-weight-normal {
+  font-weight: normal;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
+.font-italic {
+  font-style: italic;
+}
 
-.vertical-middle { vertical-align: middle !important; }
-
+.vertical-middle {
+  vertical-align: middle !important;
+}
 
 // Contextual colors
 
@@ -46,9 +70,8 @@
 
 @include text-emphasis-variant('.text-pure', $brand-pure);
 
-
 // Misc
 
 .text-hide {
-    @include text-hide();
+  @include text-hide();
 }
