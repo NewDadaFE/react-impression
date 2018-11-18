@@ -10,7 +10,7 @@
     "examples:start": "yarn workspace react-impression-examples start",
     "examples:build": "yarn workspace react-impression-examples build",
     "precommit": "lint-staged",
-    "format": "find . -name '*.js' -o -name '*.md' | grep -v -f .gitignore | xargs prettier-standard"
+    "format": "find . -name '*.js' -o -name '*.md' -o -name '*.scss' | grep -v -f .gitignore | xargs prettier-standard"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
