@@ -2,6 +2,7 @@
   & > input[type='file'] {
     position: absolute;
     opacity: 0;
+    width: 0;
   }
 
   .form-control {
