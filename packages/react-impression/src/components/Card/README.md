@@ -121,15 +121,13 @@
   <Col>
     <Card outline="none">
       <CardBlock>
-        <p>无边框类型，可以用来布局（不建议）</p>
+        <p>无边框类型</p>
         <Button theme="primary">好的</Button>
       </CardBlock>
     </Card>
   </Col>
 </Row>
 ```
-
-`
 
 ### 变更记录
 
