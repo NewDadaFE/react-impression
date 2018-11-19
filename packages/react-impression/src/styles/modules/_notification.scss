@@ -1,103 +1,100 @@
-
 .notification {
-    position: fixed;
-    z-index: $zindex-notification;
-    top: $notification-top;
-    right: 1rem;
-    width: $notification-width;
+  position: fixed;
+  z-index: $zindex-notification;
+  top: $notification-top;
+  right: 1rem;
+  width: $notification-width;
 }
 
 .notice {
-    display: flex;
-    margin-bottom: $notice-margin-bottom;
-    align-items: center;
-    animation-duration: $notice-enter-duration;
-    animation-timing-function: ease;
-    color: $notice-color;
-    border-radius: $notice-border-radius;
+  display: flex;
+  margin-bottom: $notice-margin-bottom;
+  align-items: center;
+  animation-duration: $notice-enter-duration;
+  animation-timing-function: ease;
+  color: $notice-color;
+  border-radius: $notice-border-radius;
 
-    animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .notice-header {
-    padding-left: $notice-header-padding;
-    font-size: $notice-header-font-size;
+  padding-left: $notice-header-padding;
+  font-size: $notice-header-font-size;
 }
 
 .notice-body {
-    position: relative;
-    padding: $notice-body-padding;
-    flex: 1;
-    .close {
-        position: absolute;
-        top: $notice-close-offset;
-        right: $notice-close-offset;
-        width: $notice-close-size;
-        height: $notice-close-size;
-        font-size: $notice-close-size;
-        opacity: .6;
-        color: $notice-color;
+  position: relative;
+  padding: $notice-body-padding;
+  flex: 1;
+  .close {
+    position: absolute;
+    top: $notice-close-offset;
+    right: $notice-close-offset;
+    width: $notice-close-size;
+    height: $notice-close-size;
+    font-size: $notice-close-size;
+    opacity: 0.6;
+    color: $notice-color;
 
-        &:hover {
-            opacity: 1;
-        }
+    &:hover {
+      opacity: 1;
     }
+  }
 }
 
 .notice-title {
-    margin: $notice-title-margin;
-    font-size: $notice-title-font-size;
-    font-weight: 500;
-    line-height: rem(18.5px);
+  margin: $notice-title-margin;
+  font-size: $notice-title-font-size;
+  font-weight: 500;
+  line-height: rem(18.5px);
 }
 .notice-content {
-    line-height: $notice-content-line-height;
+  line-height: $notice-content-line-height;
 }
 
 // Alternate styles
 .notice-info {
-    background: $notice-primary-bg;
+  background: $notice-primary-bg;
 }
 .notice-success {
-    background: $notice-success-bg;
+  background: $notice-success-bg;
 }
 .notice-warning {
-    background: $notice-warning-bg;
+  background: $notice-warning-bg;
 }
 .notice-danger {
-    background: $notice-danger-bg;
+  background: $notice-danger-bg;
 }
-
 
 //Animation
 .notice-enter {
-    animation-name: slideInRight;
+  animation-name: slideInRight;
 }
 
 .notice-leave {
-    animation-name: slideOutRight;
-    animation-duration: $notice-leave-duration;
+  animation-name: slideOutRight;
+  animation-duration: $notice-leave-duration;
 }
 
 @keyframes slideInRight {
-    0% {
-        transform: translateX(500px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateX(0);
-    }
+  100% {
+    transform: translateX(0);
+  }
 }
 
-
 @keyframes slideOutRight {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    100% {
-        transform: translateX(500px);
-        opacity: 0;
-    }
+  100% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
 }

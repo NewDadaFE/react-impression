@@ -1,135 +1,133 @@
 // Container that the modal scrolls within
 .modal {
-    position: fixed;
-    top: $modal-top;
-    right: 0;
-    bottom: 0;
-    left: $modal-left;
-    background: $modal-bg;
-    z-index: $zindex-modal;
-    overflow: auto;
-    outline: 0;
-    -webkit-overflow-scrolling: touch;
-    animation: fadeIn $modal-animation-duration ease;
+  position: fixed;
+  top: $modal-top;
+  right: 0;
+  bottom: 0;
+  left: $modal-left;
+  background: $modal-bg;
+  z-index: $zindex-modal;
+  overflow: auto;
+  outline: 0;
+  -webkit-overflow-scrolling: touch;
+  animation: fadeIn $modal-animation-duration ease;
 
-    &.limit-height {
-        overflow: hidden;
+  &.limit-height {
+    overflow: hidden;
 
-        .modal-body {
-            max-height: $modal-body-max-height;
-            overflow-y: auto;
-        }
+    .modal-body {
+      max-height: $modal-body-max-height;
+      overflow-y: auto;
     }
+  }
 }
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-    position: relative;
-    width: auto;
-    margin: $modal-dialog-margin auto;
-    border-radius: $modal-border-radius;
-    animation: slideInDown $modal-animation-duration ease;
+  position: relative;
+  width: auto;
+  margin: $modal-dialog-margin auto;
+  border-radius: $modal-border-radius;
+  animation: slideInDown $modal-animation-duration ease;
 }
 
 // Actual modal
 .modal-content {
-    position: relative;
-    background-clip: padding-box;
-    border: 1px solid $modal-content-border-color;
-    border-radius: $modal-border-radius;
-    outline: 0;
+  position: relative;
+  background-clip: padding-box;
+  border: 1px solid $modal-content-border-color;
+  border-radius: $modal-border-radius;
+  outline: 0;
 }
 
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
+  color: $modal-header-color;
+  padding: $modal-title-padding;
+  font-size: $modal-header-font-size;
+  font-weight: $modal-header-font-weight;
+  line-height: $modal-header-line-height;
+  background: $modal-header-bg;
+  border-radius: $modal-border-radius $modal-border-radius 0 0;
+  border-bottom: 1px solid $modal-header-border-color;
+
+  @include clearfix;
+
+  .close {
     color: $modal-header-color;
-    padding: $modal-title-padding;
-    font-size: $modal-header-font-size;
-    font-weight: $modal-header-font-weight;
-    line-height: $modal-header-line-height;
-    background: $modal-header-bg;
-    border-radius: $modal-border-radius $modal-border-radius 0 0;
-    border-bottom: 1px solid $modal-header-border-color;
+    opacity: 0.6;
+    font-size: $modal-header-line-height;
 
-    @include clearfix;
-
-    .close {
-        color: $modal-header-color;
-        opacity: .6;
-        font-size: $modal-header-line-height;
-
-        &:hover {
-            opacity: 1;
-        }
+    &:hover {
+      opacity: 1;
     }
+  }
 }
 
 // Title text within header
 .modal-title {
-    margin: 0;
-    line-height: $modal-title-line-height;
+  margin: 0;
+  line-height: $modal-title-line-height;
 }
 
 // Modal body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
-    position: relative;
-    padding: $modal-inner-padding;
-    background: $modal-body-bg;
+  position: relative;
+  padding: $modal-inner-padding;
+  background: $modal-body-bg;
 
-    &:last-child {
-        border-radius: 0 0 $modal-border-radius $modal-border-radius;
-    }
+  &:last-child {
+    border-radius: 0 0 $modal-border-radius $modal-border-radius;
+  }
 }
 
 // Footer (for actions)
 .modal-footer {
-    padding: 0 $modal-inner-padding $modal-inner-padding;
-    text-align: center; // right align buttons
-    background: $modal-footer-bg;
-    border-radius: 0 0 $modal-border-radius $modal-border-radius;
+  padding: 0 $modal-inner-padding $modal-inner-padding;
+  text-align: center; // right align buttons
+  background: $modal-footer-bg;
+  border-radius: 0 0 $modal-border-radius $modal-border-radius;
 
-    @include clearfix(); // clear it in case folks use .pull-* classes on buttons
+  @include clearfix(); // clear it in case folks use .pull-* classes on buttons
 
-    .btn {
-        margin-left: $modal-footer-btn-margin;
-    }
+  .btn {
+    margin-left: $modal-footer-btn-margin;
+  }
 }
 
 // Scale up the modal
 @include media-breakpoint-up(sm) {
-    .modal-dialog {
-        max-width: $modal-md;
-    }
+  .modal-dialog {
+    max-width: $modal-md;
+  }
 
-    .modal-sm {
-        max-width: $modal-sm;
+  .modal-sm {
+    max-width: $modal-sm;
 
-        .modal-body {
-            &:last-child {
-                border-radius: 0 0 $border-radius-sm $border-radius-sm;
-            }
-        }
+    .modal-body {
+      &:last-child {
+        border-radius: 0 0 $border-radius-sm $border-radius-sm;
+      }
     }
+  }
 }
 
 @include media-breakpoint-up(lg) {
-    .modal-lg {
-        max-width: $modal-lg;
+  .modal-lg {
+    max-width: $modal-lg;
 
-        .modal-body {
-            padding: $modal-inner-padding $modal-inner-padding-lg;
+    .modal-body {
+      padding: $modal-inner-padding $modal-inner-padding-lg;
 
-            &:last-child {
-                border-radius: 0 0 $border-radius-lg $border-radius-lg;
-            }
-        }
-
-        .modal-footer {
-            padding: 0 $modal-inner-padding-lg $modal-inner-padding;
-        }
+      &:last-child {
+        border-radius: 0 0 $border-radius-lg $border-radius-lg;
+      }
     }
+
+    .modal-footer {
+      padding: 0 $modal-inner-padding-lg $modal-inner-padding;
+    }
+  }
 }
-
-

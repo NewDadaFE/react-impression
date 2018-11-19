@@ -5,65 +5,64 @@
 //
 
 form {
-    margin: 0;
+  margin: 0;
 }
 
 .form-control {
-    display: block;
-    width: 100%;
-    padding: $input-padding-y $input-padding-x;
-    font-size: $font-size-root;
-    line-height: $input-line-height;
-    color: $input-color;
-    background-color: $input-bg;
-    background-image: none;
-    background-clip: padding-box;
-    border: $input-btn-border-width solid $input-border-color;
-    @include border-radius($input-border-radius);
-    transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
+  display: block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-root;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  background-clip: padding-box;
+  border: $input-btn-border-width solid $input-border-color;
+  @include border-radius($input-border-radius);
+  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 
-    &::-ms-expand {
-        background-color: transparent;
-        border: 0;
-    }
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
 
-    // Customize the `:focus` state to imitate native WebKit styles.
-    @include form-control-focus();
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include form-control-focus();
 
-    // Placeholder
-    &::placeholder {
-        color: $input-color-placeholder;
-        font-size: $input-font-size-placeholder;
-        opacity: 1;
-    }
+  // Placeholder
+  &::placeholder {
+    color: $input-color-placeholder;
+    font-size: $input-font-size-placeholder;
+    opacity: 1;
+  }
 
-    &:disabled,
-    &[readonly] {
-        background-color: $input-bg-disabled;
-        opacity: 1;
-    }
+  &:disabled,
+  &[readonly] {
+    background-color: $input-bg-disabled;
+    opacity: 1;
+  }
 
-    &:disabled {
-        color: $input-disabled-color;
-        cursor: $cursor-disabled;
-    }
+  &:disabled {
+    color: $input-disabled-color;
+    cursor: $cursor-disabled;
+  }
 
-    &:focus {
-        position: relative;
-        z-index: 1;
-    }
+  &:focus {
+    position: relative;
+    z-index: 1;
+  }
 
-    &:hover:not(:disabled) {
-        border-color: $input-border-hover;
-    }
+  &:hover:not(:disabled) {
+    border-color: $input-border-hover;
+  }
 }
 
 // Make file inputs better match text inputs by forcing them to new lines.
 .form-control-file,
 .form-control-range {
-    display: block;
+  display: block;
 }
-
 
 //
 // Labels
@@ -72,8 +71,8 @@ form {
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .form-control-label {
-    padding: $input-padding-y $input-padding-x;
-    margin-bottom: 0;
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0;
 }
 
 //
@@ -83,11 +82,10 @@ form {
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
 .form-control-legend {
-    padding: $input-padding-y $input-padding-x;
-    margin-bottom: 0;
-    font-size: $font-size-base;
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0;
+  font-size: $font-size-base;
 }
-
 
 // Todo: clear this up
 
@@ -101,25 +99,24 @@ form {
 // Note that as of 8.3, iOS doesn't support `week`.
 
 // _::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-    &.form-control {
-        line-height: $input-height;
-    }
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
+  &.form-control {
+    line-height: $input-height;
+  }
 
-    &.input-sm,
-    .input-group-sm &.form-control {
-        line-height: $input-height-sm;
-    }
+  &.input-sm,
+  .input-group-sm &.form-control {
+    line-height: $input-height-sm;
+  }
 
-    &.input-lg,
-    .input-group-lg &.form-control {
-        line-height: $input-height-lg;
-    }
+  &.input-lg,
+  .input-group-lg &.form-control {
+    line-height: $input-height-lg;
+  }
 }
-
 
 // Static form control text
 //
@@ -127,18 +124,17 @@ input[type="month"] {
 // horizontal form layout.
 
 .form-control-static {
-    min-height: $input-height;
-    padding-top: $input-padding-y;
-    padding-bottom: $input-padding-y;
-    margin-bottom: 0;
+  min-height: $input-height;
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
+  margin-bottom: 0;
 
-    &.form-control-sm,
-    &.form-control-lg {
-        padding-right: 0;
-        padding-left: 0;
-    }
+  &.form-control-sm,
+  &.form-control-lg {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
-
 
 // Form control sizing
 //
@@ -149,15 +145,14 @@ input[type="month"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
-    padding: $input-padding-y-sm $input-padding-x-sm;
-    font-size: $input-font-size-sm;
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  font-size: $input-font-size-sm;
 }
 
 .form-control-lg {
-    padding: $input-padding-y-lg $input-padding-x-lg;
-    font-size: $input-font-size-lg;
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  font-size: $input-font-size-lg;
 }
-
 
 // Form groups
 //
@@ -165,13 +160,12 @@ input[type="month"] {
 // horizontal forms, use the predefined grid classes.
 
 .form-group {
-    margin-bottom: $form-group-margin-bottom;
+  margin-bottom: $form-group-margin-bottom;
 
-    label {
-        font-weight: bold;
-    }
+  label {
+    font-weight: bold;
+  }
 }
-
 
 // Inline forms
 //
@@ -183,89 +177,89 @@ input[type="month"] {
 // default HTML form controls and our custom form controls (e.g., input groups).
 
 .form-inline {
-    margin: 0;
+  margin: 0;
 
-    > :not(:last-child) {
-        margin-right: $spacer-x * 1.5;
+  > :not(:last-child) {
+    margin-right: $spacer-x * 1.5;
+  }
+
+  .form-group {
+    display: inline-block;
+    margin-bottom: $form-group-inline-margin-bottom;
+    vertical-align: bottom;
+
+    > label {
+      display: block;
+      color: $form-group-label-color;
+      margin-bottom: $form-group-inline-label-margin-bottom;
     }
 
-    .form-group {
-        display: inline-block;
-        margin-bottom: $form-group-inline-margin-bottom;
-        vertical-align: bottom;
-
-        > label {
-            display: block;
-            color: $form-group-label-color;
-            margin-bottom: $form-group-inline-label-margin-bottom;
-        }
-
-        > label.checkbox, > label.radio {
-          margin-bottom: 0;
-          line-height: $form-group-inline-component-line-height;
-        }
-
-        &:not(:first-child) > .btn:first-child {
-            margin-left: $form-group-inline-btn-margin-left;
-        }
+    > label.checkbox,
+    > label.radio {
+      margin-bottom: 0;
+      line-height: $form-group-inline-component-line-height;
     }
 
-    // Allow folks to *not* use `.form-group`
+    &:not(:first-child) > .btn:first-child {
+      margin-left: $form-group-inline-btn-margin-left;
+    }
+  }
+
+  // Allow folks to *not* use `.form-group`
+  .form-control {
+    display: inline-block;
+    width: auto; // Prevent labels from stacking above inputs in `.form-group`
+    vertical-align: middle;
+  }
+
+  // Make static controls behave like regular ones
+  .form-control-static {
+    display: inline-block;
+  }
+
+  .input-group {
+    vertical-align: middle;
+
+    .input-group-addon,
+    .input-group-btn,
     .form-control {
-        display: inline-block;
-        width: auto; // Prevent labels from stacking above inputs in `.form-group`
-        vertical-align: middle;
+      width: auto;
     }
 
-    // Make static controls behave like regular ones
-    .form-control-static {
-        display: inline-block;
+    > .form-control {
+      width: 100%;
     }
+  }
 
-    .input-group {
-        vertical-align: middle;
+  .form-control-label {
+    margin-bottom: 0;
+    vertical-align: middle;
+    font-weight: bold;
+  }
 
-        .input-group-addon,
-        .input-group-btn,
-        .form-control {
-            width: auto;
-        }
-
-        > .form-control {
-            width: 100%;
-        }
-    }
-
-    .form-control-label {
-        margin-bottom: 0;
-        vertical-align: middle;
-        font-weight: bold;
-    }
-
-    // Re-override the feedback icon.
-    .has-feedback .form-control-feedback {
-        top: 0;
-    }
+  // Re-override the feedback icon.
+  .has-feedback .form-control-feedback {
+    top: 0;
+  }
 }
 
-
 .form-horizontal {
-    .form-group {
-        @include make-row();
-        margin-left: 0;
-        margin-right: 0;
+  .form-group {
+    @include make-row();
+    margin-left: 0;
+    margin-right: 0;
 
-        > label {
-            padding-left: $input-padding-x;
-            padding-right: $input-padding-x;
-        }
-
-        &:not(:last-child) {
-          margin-bottom: $form-group-margin-bottom;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
+    > label {
+      padding-left: $input-padding-x;
+      padding-right: $input-padding-x;
     }
+
+    &:not(:last-child) {
+      margin-bottom: $form-group-margin-bottom;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

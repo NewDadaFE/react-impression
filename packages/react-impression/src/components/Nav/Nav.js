@@ -63,6 +63,13 @@ export default class Nav extends React.PureComponent {
     stacked: false,
     type: 'inline',
   }
+
+  componentWillReceiveProps(nextProps) {
+    const { activeKey } = nextProps
+    this.setState({
+      activeKey,
+    })
+  }
   /**
    * 选中回调
    * @param eventKey

@@ -3,7 +3,9 @@
   $prev-num: null;
   @each $key, $num in $map {
     @if $prev-num != null and $prev-num >= $num {
-      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order,
+        but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num},
+        the value of the previous key '#{$prev-key}' !";
     }
     $prev-key: $key;
     $prev-num: $num;
@@ -11,22 +13,11 @@
 }
 
 // Grid breakpoints
-$grid-breakpoints: (
-  xs: 0,
-  sm: 544px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-) !default;
+$grid-breakpoints: (xs: 0, sm: 544px, md: 768px, lg: 992px, xl: 1200px) !default;
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
 // Grid containers
-$container-max-widths: (
-  sm: 576px,
-  md: 720px,
-  lg: 940px,
-  xl: 1140px
-) !default;
+$container-max-widths: (sm: 576px, md: 720px, lg: 940px, xl: 1140px) !default;
 @include _assert-ascending($container-max-widths, '$container-max-widths');
 
 // Grid columns
