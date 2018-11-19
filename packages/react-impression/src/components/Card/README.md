@@ -105,15 +105,15 @@
   <Col>
     <Card>
       <CardBlock>
-        <p>默认为外阴影类型</p>
+        <p>默认为外边框类型</p>
         <Button theme="primary">好的</Button>
       </CardBlock>
     </Card>
   </Col>
   <Col>
-    <Card outline="border">
+    <Card outline="shadow">
       <CardBlock>
-        <p>外边框类型</p>
+        <p>外阴影类型</p>
         <Button theme="primary">好的</Button>
       </CardBlock>
     </Card>

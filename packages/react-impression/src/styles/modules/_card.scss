@@ -8,7 +8,14 @@
   margin-bottom: $card-spacer-y;
   background-color: $card-bg;
   border-radius: $card-border-radius;
-  box-shadow: $card-box-shadow;
+
+  &.card-shadow {
+    box-shadow: $card-box-shadow;
+  }
+
+  &.card-border {
+    border: $card-border-width solid $card-border-color;
+  }
 }
 
 .card-block {
