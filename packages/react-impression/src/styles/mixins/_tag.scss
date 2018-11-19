@@ -1,27 +1,26 @@
 // Tags
 
 @mixin tag-variant($color) {
-    background-color: $color;
-    border: 1px solid $color;
+  background-color: $color;
+  border: 1px solid $color;
 
-    &[href] {
-        &:hover,
-        &:focus {
-            background-color: darken($color, 10%);
-        }
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%);
     }
+  }
 }
 
-
 @mixin tag-outline-variant($color) {
-    color: $color;
-    border: 1px solid $color;
+  color: $color;
+  border: 1px solid $color;
 
-    &[href] {
-        &:hover,
-        &:focus {
-            color: darken($color, 6%);
-            border-color: darken($color, 6%);
-        }
+  &[href] {
+    &:hover,
+    &:focus {
+      color: darken($color, 6%);
+      border-color: darken($color, 6%);
     }
+  }
 }

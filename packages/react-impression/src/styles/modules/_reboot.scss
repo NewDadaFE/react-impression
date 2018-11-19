@@ -5,7 +5,6 @@
 // Global resets to common HTML elements and more for easier usage by Bootstrap.
 // Adds additional rules on top of Normalize.css, including several overrides.
 
-
 // Reset the box-sizing
 //
 // Change from `box-sizing: content-box` to `border-box` so that when you add
@@ -20,18 +19,17 @@
 // Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
 html {
-    box-sizing: border-box;
-    font-size: $font-size-root;
-    -ms-overflow-style: scrollbar;
-    // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  font-size: $font-size-root;
+  -ms-overflow-style: scrollbar;
+  // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
-
 
 // Make viewport responsive
 //
@@ -49,16 +47,17 @@ html {
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
 @at-root {
-    @-ms-viewport { width: device-width; }
+  @-ms-viewport {
+    width: device-width;
+  }
 }
 
-
 body {
-    font-family: $font-family-base;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
-    background-color: $body-bg;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -66,10 +65,9 @@ body {
 // might still respond to pointer events.
 //
 // Credit: https://github.com/suitcss/base
-[tabindex="-1"]:focus {
-    outline: none !important;
+[tabindex='-1']:focus {
+  outline: none !important;
 }
-
 
 //
 // Typography
@@ -85,8 +83,8 @@ h3,
 h4,
 h5,
 h6 {
-    margin-top: 0;
-    margin-bottom: .5rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 // Reset margins on paragraphs
@@ -94,57 +92,55 @@ h6 {
 // Similarly, the top margin on `<p>`s get reset. However, we also reset the
 // bottom margin to use `rem` units instead of `em`.
 p {
-    margin-top: 0;
-    margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 address {
-    margin-bottom: 1rem;
-    font-style: normal;
-    line-height: inherit;
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
 }
 
 ol,
 ul,
 dl {
-    margin-top: 0;
-    margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 ol ol,
 ul ul,
 ol ul,
 ul ol {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 dt {
-    font-weight: $dt-font-weight;
+  font-weight: $dt-font-weight;
 }
 
 dd {
-    margin-bottom: .5rem;
-    margin-left: 0; // Undo browser default
+  margin-bottom: 0.5rem;
+  margin-left: 0; // Undo browser default
 }
 
 blockquote {
-    margin: 0 0 1rem;
+  margin: 0 0 1rem;
 }
-
 
 //
 // Links
 //
 
 a {
-    color: $link-color;
-    text-decoration: $link-decoration;
+  color: $link-color;
+  text-decoration: $link-decoration;
 
-    &:hover {
-        color: $link-hover-color;
-        text-decoration: $link-hover-decoration;
-    }
-
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href).
@@ -153,48 +149,44 @@ a {
 // See https://github.com/twbs/bootstrap/issues/19402
 
 a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
     color: inherit;
     text-decoration: none;
+  }
 
-    &:hover,
-    &:focus {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
-
 
 //
 // Code
 //
 
 pre {
-    margin-top: 0;
-    margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
-
 
 //
 // Figures
 //
 
 figure {
-    margin: 0 0 1rem;
+  margin: 0 0 1rem;
 }
-
 
 //
 // Images
 //
 
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
-
 
 // iOS "clickable elements" fix for role="button"
 //
@@ -202,10 +194,9 @@ img {
 // for traditionally non-focusable elements with role="button"
 // see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
 
-[role="button"] {
-    cursor: pointer;
+[role='button'] {
+  cursor: pointer;
 }
-
 
 // Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
 //
@@ -220,43 +211,41 @@ img {
 a,
 area,
 button,
-[role="button"],
+[role='button'],
 input,
 label,
 select,
 summary,
 textarea {
-    touch-action: manipulation;
+  touch-action: manipulation;
 }
-
 
 //
 // Tables
 //
 
 table {
-    background-color: $table-bg;
+  background-color: $table-bg;
 }
 
 caption {
-    padding-top: $table-cell-padding;
-    padding-bottom: $table-cell-padding;
-    color: $text-muted;
-    text-align: left;
-    caption-side: bottom;
+  padding-top: $table-cell-padding;
+  padding-bottom: $table-cell-padding;
+  color: $text-muted;
+  text-align: left;
+  caption-side: bottom;
 }
 
 th {
-    text-align: left;
+  text-align: left;
 }
-
 
 //
 // Forms
 //
 
 label {
-    display: inline-block;
+  display: inline-block;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background
@@ -264,49 +253,49 @@ label {
 //
 // Credit: https://github.com/suitcss/base/
 button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,
 button,
 select,
 textarea {
-    margin: 0;
-    line-height: inherit;
-    border-radius: 0;
+  margin: 0;
+  line-height: inherit;
+  border-radius: 0;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 fieldset {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    border: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 legend {
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin-bottom: .5rem;
-    font-size: 1.5rem;
-    line-height: inherit;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
 }
 
-input[type="search"] {
-    -webkit-appearance: none;
+input[type='search'] {
+  -webkit-appearance: none;
 }
 
 // todo: needed?
 output {
-    display: inline-block;
+  display: inline-block;
 }
 
 // Always hide an element with the `hidden` HTML attribute (from PureCSS).
 [hidden] {
-    display: none !important;
+  display: none !important;
 }

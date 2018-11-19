@@ -8,15 +8,7 @@
   margin-bottom: $card-spacer-y;
   background-color: $card-bg;
   border-radius: $card-border-radius;
-
-  &.card-shadow {
-    box-shadow: $card-box-shadow;
-  }
-
-  &.card-border {
-    border: $card-border-width solid $card-border-color;
-  }
-
+  box-shadow: $card-box-shadow;
 }
 
 .card-block {
@@ -24,7 +16,7 @@
   padding: $card-padding;
   color: $gray-darker;
 
-  & ~.card-footer {
+  & ~ .card-footer {
     padding-top: 0;
   }
 }
@@ -63,7 +55,7 @@
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
   }
-  & ~.card-block {
+  & ~ .card-block {
     padding-top: 0;
   }
 }
@@ -80,7 +72,6 @@
     @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
   }
 }
-
 
 //
 // Header navs
@@ -102,7 +93,6 @@
   margin-left: -($card-spacer-x / 2);
 }
 
-
 // Remove all backgrounds
 .card-outline-primary {
   @include card-outline-variant($btn-primary-bg);
@@ -111,7 +101,6 @@
 .card-outline-secondary {
   @include card-outline-variant($btn-secondary-border);
 }
-
 
 //
 // Blockquote
@@ -127,7 +116,7 @@
 .card-img {
   max-width: 100%;
 
-  @include border-radius(.25rem);
+  @include border-radius(0.25rem);
 }
 
 .card-img-overlay {
@@ -151,7 +140,6 @@
 
   @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
 }
-
 
 //
 // Card set
@@ -259,7 +247,6 @@
     }
   }
 }
-
 
 //
 // Card

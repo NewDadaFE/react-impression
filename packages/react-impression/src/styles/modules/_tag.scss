@@ -4,37 +4,37 @@
 // `background-color`.
 
 .tag {
-    display: inline-block;
-    padding: $tag-padding-y $tag-padding-x;
-    font-size: $tag-font-size;
-    font-weight: $tag-font-weight;
-    line-height: 1;
-    color: $tag-color;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: $tag-border-radius;
+  display: inline-block;
+  padding: $tag-padding-y $tag-padding-x;
+  font-size: $tag-font-size;
+  font-weight: $tag-font-weight;
+  line-height: 1;
+  color: $tag-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $tag-border-radius;
 
-    // Empty tags collapse automatically
-    &:empty {
-        display: none;
-    }
+  // Empty tags collapse automatically
+  &:empty {
+    display: none;
+  }
 }
 
 // Quick fix for tags in buttons
 .btn .tag {
-    position: relative;
-    top: -1px;
+  position: relative;
+  top: -1px;
 }
 
 // Add hover effects, but only for links
 a.tag {
-    &:hover,
-    &:focus {
-        color: $tag-link-hover-color;
-        text-decoration: none;
-        cursor: pointer;
-    }
+  &:hover,
+  &:focus {
+    color: $tag-link-hover-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 // Pill tags
@@ -49,70 +49,70 @@ a.tag {
 // Themes
 //
 .tag-default {
-    @include tag-variant($tag-default);
+  @include tag-variant($tag-default);
 }
 
 .tag-primary {
-    @include tag-variant($tag-primary);
+  @include tag-variant($tag-primary);
 }
 
 .tag-secondary {
-    @include tag-variant($tag-secondary);
+  @include tag-variant($tag-secondary);
 }
 
 .tag-success {
-    @include tag-variant($tag-success);
+  @include tag-variant($tag-success);
 }
 
 .tag-info {
-    @include tag-variant($tag-info);
+  @include tag-variant($tag-info);
 }
 
 .tag-warning {
-    @include tag-variant($tag-warning);
+  @include tag-variant($tag-warning);
 }
 
 .tag-danger {
-    @include tag-variant($tag-danger);
+  @include tag-variant($tag-danger);
 }
 
 // Outline
 //
 .tag-outline-default {
-    @include tag-outline-variant($tag-default);
+  @include tag-outline-variant($tag-default);
 }
 
 .tag-outline-primary {
-    @include tag-outline-variant($tag-primary);
+  @include tag-outline-variant($tag-primary);
 }
 
 .tag-outline-secondary {
-    @include tag-outline-variant($tag-secondary);
+  @include tag-outline-variant($tag-secondary);
 }
 
 .tag-outline-success {
-    @include tag-outline-variant($tag-success);
+  @include tag-outline-variant($tag-success);
 }
 
 .tag-outline-info {
-    @include tag-outline-variant($tag-info);
+  @include tag-outline-variant($tag-info);
 }
 
 .tag-outline-warning {
-    @include tag-outline-variant($tag-warning);
+  @include tag-outline-variant($tag-warning);
 }
 
 .tag-outline-danger {
-    @include tag-outline-variant($tag-danger);
+  @include tag-outline-variant($tag-danger);
 }
 
 // Close
 .tag-close {
-    cursor: pointer;
-    margin-left: $tag-close-margin-right;
-    opacity: .6;
+  cursor: pointer;
+  margin-left: $tag-close-margin-right;
+  opacity: 0.6;
 
-    &:hover {
-        opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
+  }
 }

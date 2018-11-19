@@ -35,7 +35,7 @@
     }
 
     &:not(:checked):not(:disabled) + .radio-addon:hover {
-      opacity: .8;
+      opacity: 0.8;
       border-color: $radio-addon-checked-color;
     }
   }
@@ -79,7 +79,7 @@
     display: block;
     width: round($radio-addon-i-size * $font-size-root);
     height: round($radio-addon-i-size * $font-size-root);
-    content: "";
+    content: '';
     transition: $radio-addon-transtion;
     transform: scale(0);
     transform-origin: 50% 50%;
