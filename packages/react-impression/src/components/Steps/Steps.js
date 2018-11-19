@@ -10,13 +10,13 @@ export default class Steps extends React.PureComponent {
      */
     current: PropTypes.number,
     /**
-     * 是否中断进度
+     * 当前节点状态
      */
-    error: PropTypes.bool,
+    status: PropTypes.oneOf(['ready', 'finish', 'error', 'current']),
     /**
-     * 是否关闭节点序号
+     * 是否使用点状节点标识
      */
-    closeNo: PropTypes.bool,
+    processDot: PropTypes.bool,
     /**
      * 自定义样式
      */
@@ -29,10 +29,11 @@ export default class Steps extends React.PureComponent {
 
   static defaultProps = {
     current: 0,
+    processDot: false,
   }
 
-  getStepNodeIcon = (status, no) => {
-    if (status === 'did') {
+  getStepIcon = (status, no) => {
+    if (status === 'finish') {
       return <Icon type='check-circle-o' />
     }
     if (status === 'error') {
@@ -42,22 +43,22 @@ export default class Steps extends React.PureComponent {
   }
 
   render() {
-    const { className, children, closeNo, current, error } = this.props
+    const { className, children, processDot, current, status } = this.props
     const stepsNode = React.Children.map(children, (child, index) => {
       const options = {}
       // 判断节点状态
       if (index < current) {
-        options.status = 'did'
+        options.status = 'finish'
       } else if (index > current) {
         options.status = 'ready'
-      } else if (error) {
-        options.status = 'error'
+      } else if (status) {
+        options.status = status
       } else {
         options.status = 'current'
       }
       // 设置节点图标
-      if (!closeNo && !child.props.icon) {
-        options.icon = this.getStepNodeIcon(options.status, index + 1)
+      if (!processDot && !child.props.icon) {
+        options.icon = this.getStepIcon(options.status, index + 1)
       }
       return React.cloneElement(child, options)
     })

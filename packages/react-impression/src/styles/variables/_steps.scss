@@ -1,4 +1,4 @@
-//== Steps StepNode
+//== Steps Step
 // steps color
 $step-active-color: $brand-primary !default;
 $step-error-color: $brand-danger !default;
@@ -14,7 +14,7 @@ $step-icon-size: rem(24px) !default;
 $step-dot-size: rem(10px) !default;
 $step-dot-border-width: rem(2px) !default;
 // offset
-$step-node-offset: ($step-content-width - $step-icon-size) / 2 - rem(10px) !default;
+$step-tail-left: ($step-content-width - $step-icon-size) / 2 - rem(10px) !default;
 $step-tail-top: ($step-icon-size - $step-tail-height) / 2 !default;
 $step-icon-offset-bottom: rem(10px) !default;
 $step-title-offset-bottom: rem(4px) !default;

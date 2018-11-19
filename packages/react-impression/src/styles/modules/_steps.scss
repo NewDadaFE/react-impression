@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
 }
-.step-node {
+.step {
   position: relative;
   flex: 1;
   text-align: right;
@@ -11,22 +11,22 @@
     position: absolute;
     z-index: 1;
     top: $step-tail-top;
-    right: $step-content-width - $step-node-offset;
-    left: -$step-node-offset;
+    right: $step-content-width - $step-tail-left;
+    left: -$step-tail-left;
     height: $step-tail-height;
     content: "";
   }
   &.ready {
-    @include step-node-status($step-ready-color, $step-icon-bg-color);
+    @include step-status($step-ready-color, $step-icon-bg-color);
   }
-  &.did {
-    @include step-node-status($step-active-color);
+  &.finish {
+    @include step-status($step-active-color);
     .step-dot {
       background-color: transparent;
     }
   }
   &.current {
-    @include step-node-status($step-active-color);
+    @include step-status($step-active-color);
     .step-seq-icon {
       color: white;
       background-color: $step-active-color;
@@ -36,7 +36,7 @@
     }
   }
   &.error {
-    @include step-node-status($step-error-color);
+    @include step-status($step-error-color);
     .step-title {
       color: $step-error-color;
     }

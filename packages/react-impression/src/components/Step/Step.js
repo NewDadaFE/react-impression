@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Popover from '../Popover'
 
-export default class StepNode extends React.PureComponent {
+export default class Step extends React.PureComponent {
   static propTypes = {
     /**
      * 节点状态，配合Steps组件使用时设置无效
      */
-    status: PropTypes.oneOf(['ready', 'did', 'error', 'current']),
+    status: PropTypes.oneOf(['ready', 'finish', 'error', 'current']),
     /**
      * 节点图标
      */
@@ -24,7 +24,7 @@ export default class StepNode extends React.PureComponent {
     /**
      * 设置鼠标悬停图标提示内容
      */
-    tips: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    popover: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /**
      * 自定义样式
      */
@@ -45,7 +45,7 @@ export default class StepNode extends React.PureComponent {
       icon,
       title,
       description,
-      tips,
+      popover,
       className,
       children,
     } = this.props
@@ -55,10 +55,10 @@ export default class StepNode extends React.PureComponent {
     )
 
     return (
-      <div className={classnames('step-node', className, status)}>
+      <div className={classnames('step', className, status)}>
         <div className='step-content'>
-          {tips ? (
-            <Popover position='top' content={tips}>
+          {popover ? (
+            <Popover position='top' content={popover}>
               {stepIcon}
             </Popover>
           ) : (

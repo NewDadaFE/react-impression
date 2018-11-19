@@ -107,7 +107,7 @@ module.exports = {
         'Timeline*',
         'Tooltip',
         'Steps',
-        'StepNode',
+        'Step',
       ]),
     },
     {

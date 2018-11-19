@@ -1,4 +1,4 @@
-@mixin step-node-status($color, $tail-color: null) {
+@mixin step-status($color, $tail-color: null) {
   @if not $tail-color {
     $tail-color: $color;
   }
