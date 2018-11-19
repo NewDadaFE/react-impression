@@ -30,18 +30,18 @@ export default class Card extends React.PureComponent {
     /**
      * Card组件外轮廓类型
      */
-    outlineType: PropTypes.oneOf(['border', 'shadow', 'none']),
+    outline: PropTypes.oneOf(['border', 'shadow', 'none']),
   }
 
   static defaultProps = {
     block: false,
-    outlineType: 'shadow',
+    outline: 'shadow',
   }
 
   render() {
-    const { block, className, children, outlineType, ...others } = this.props
+    const { block, className, children, outline, ...others } = this.props
     const blockClass = block ? 'card-block' : null
-    const outlineClass = outlineClassName[outlineType]
+    const outlineClass = outlineClassName[outline]
     delete others.noborder
 
     return (

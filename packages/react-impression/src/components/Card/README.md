@@ -111,7 +111,7 @@
     </Card>
   </Col>
   <Col>
-    <Card outlineType="border">
+    <Card outline="border">
       <CardBlock>
         <p>外边框类型</p>
         <Button theme="primary">好的</Button>
@@ -119,7 +119,7 @@
     </Card>
   </Col>
   <Col>
-    <Card outlineType="none">
+    <Card outline="none">
       <CardBlock>
         <p>无边框类型，可以用来布局（不建议）</p>
         <Button theme="primary">好的</Button>
