@@ -1,7 +1,7 @@
 // Message
 
 @mixin message-variant($color) {
-    background: mix($color, $brand-pure, 10%);
-    border-color: $color;
-    color: $color;
+  background: mix($color, $brand-pure, 10%);
+  border-color: $color;
+  color: $color;
 }

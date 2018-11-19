@@ -3,7 +3,7 @@
 $tooltip-max-width: rem(240px) !default;
 $tooltip-color: $brand-pure !default;
 $tooltip-bg: $gray-base !default;
-$tooltip-opacity: .9 !default;
+$tooltip-opacity: 0.9 !default;
 $tooltip-padding-y: rem(5px) !default;
 $tooltip-padding-x: rem(16px) !default;
 $tooltip-border-radius: $border-radius !default;
@@ -13,4 +13,4 @@ $tooltip-offset: rem(10px) !default;
 $tooltip-arrow-width: rem(5px) !default;
 $tooltip-arrow-color: $tooltip-bg !default;
 
-$tooltip-transition: all .36s cubic-bezier(.4, 0, .2, 1) !default;
+$tooltip-transition: all 0.36s cubic-bezier(0.4, 0, 0.2, 1) !default;

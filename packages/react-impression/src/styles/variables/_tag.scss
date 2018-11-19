@@ -1,21 +1,21 @@
-$tag-default:                           $gray !default;
-$tag-primary:                           $brand-primary !default;
-$tag-secondary:                         $brand-secondary !default;
-$tag-success:                           $brand-success !default;
-$tag-info:                              $brand-info !default;
-$tag-warning:                           $brand-warning !default;
-$tag-danger:                            $brand-danger !default;
+$tag-default: $gray !default;
+$tag-primary: $brand-primary !default;
+$tag-secondary: $brand-secondary !default;
+$tag-success: $brand-success !default;
+$tag-info: $brand-info !default;
+$tag-warning: $brand-warning !default;
+$tag-danger: $brand-danger !default;
 
-$tag-color:                             $brand-pure !default;
-$tag-link-hover-color:                  $brand-pure !default;
-$tag-font-size:                         rem(12px) !default;
-$tag-font-weight:                       normal !default;
-$tag-padding-x:                         rem(3px) !default;
-$tag-padding-y:                         rem(2px) !default;
-$tag-border-radius:                     $border-radius;
+$tag-color: $brand-pure !default;
+$tag-link-hover-color: $brand-pure !default;
+$tag-font-size: rem(12px) !default;
+$tag-font-weight: normal !default;
+$tag-padding-x: rem(3px) !default;
+$tag-padding-y: rem(2px) !default;
+$tag-border-radius: $border-radius;
 
-$tag-pill-padding-x:                    rem(11px) !default;
-$tag-pill-padding-y:                    rem(4.5px) !default;
-$tag-pill-border-radius:                rem(12px) !default;
+$tag-pill-padding-x: rem(11px) !default;
+$tag-pill-padding-y: rem(4.5px) !default;
+$tag-pill-border-radius: rem(12px) !default;
 
-$tag-close-margin-right:                $tag-padding-x !default;
+$tag-close-margin-right: $tag-padding-x !default;

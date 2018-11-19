@@ -1,9 +1,14 @@
 //== Switch
-$switch-width:                              3.14 !default;
-$switch-bg:                                 $gray !default;
-$switch-addon-bg:                           $brand-pure !default;
-$switch-addon-active-bg:                    $brand-primary;
-$switch-addon-width:                        1.3 !default;
-$switch-addon-height:                       $switch-addon-width !default;
-$switch-addon-padding:                      round(($switch-addon-width / 3) * $font-size-root / 2) !default;
-$switch-addon-translate-x:                  translateX(round(($switch-width - $switch-addon-width) * $font-size-root) - $switch-addon-padding * 2) !default;
+$switch-width: 3.14 !default;
+$switch-bg: $gray !default;
+$switch-addon-bg: $brand-pure !default;
+$switch-addon-active-bg: $brand-primary;
+$switch-addon-width: 1.3 !default;
+$switch-addon-height: $switch-addon-width !default;
+$switch-addon-padding: round(($switch-addon-width / 3) * $font-size-root / 2)
+  !default;
+$switch-addon-translate-x: translateX(
+    round(($switch-width - $switch-addon-width) * $font-size-root) -
+      $switch-addon-padding * 2
+  )
+  !default;

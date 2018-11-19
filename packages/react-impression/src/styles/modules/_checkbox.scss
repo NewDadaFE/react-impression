@@ -41,8 +41,10 @@
 
   @at-root #{&}-indeterminate {
     > .checkbox-addon {
-      width: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
-      height: $checkbox-addon-padding * 2 + 4 + round($checkbox-addon-i-size * $font-size-root);
+      width: $checkbox-addon-padding * 2 + 4 +
+        round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
+      height: $checkbox-addon-padding * 2 + 4 +
+        round($checkbox-addon-i-size * $font-size-root);
       border-color: $checkbox-addon-checked-color;
 
       &::before {
@@ -50,7 +52,7 @@
         top: 50%;
         display: block;
         margin-top: -$border-width;
-        content: "";
+        content: '';
         border: $border-width solid $checkbox-addon-indeterminate-color;
       }
 

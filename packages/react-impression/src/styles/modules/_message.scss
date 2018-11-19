@@ -1,109 +1,107 @@
-
 .message {
-    position: fixed;
-    z-index: $zindex-message;
-    top: $message-top;
-    left: 50%;
-    display: flex;
-    min-width: $message-min-width;
-    max-width: $message-max-width;
-    padding: $message-padding;
-    align-items: center;
-    transform: translateX(-50%);
-    animation-duration: $message-enter-duration;
-    animation-timing-function: ease;
-    border-width: $border-width;
-    border-style: solid;
-    border-radius: $message-border-radius;
+  position: fixed;
+  z-index: $zindex-message;
+  top: $message-top;
+  left: 50%;
+  display: flex;
+  min-width: $message-min-width;
+  max-width: $message-max-width;
+  padding: $message-padding;
+  align-items: center;
+  transform: translateX(-50%);
+  animation-duration: $message-enter-duration;
+  animation-timing-function: ease;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $message-border-radius;
 
-    animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .message-header {
-    font-size: $message-header-font-size;
+  font-size: $message-header-font-size;
 }
 
-
 .message-body {
-    padding: $message-body-padding;
-    flex: 1;
-    font-size: $message-body-font-size;
-    line-height: $message-body-line-height;
+  padding: $message-body-padding;
+  flex: 1;
+  font-size: $message-body-font-size;
+  line-height: $message-body-line-height;
 }
 
 .message-close {
-    padding: $message-close-padding;
-    cursor: $cursor-pointer;
-    &:hover {
-        text-decoration: underline;
-    }
-    &:active {
-        opacity: .6;
-    }
+  padding: $message-close-padding;
+  cursor: $cursor-pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    opacity: 0.6;
+  }
 }
 
 .message-icon-loading {
-    display: block;
-    width: $message-header-font-size;
-    height: $message-header-font-size;
-    padding: $message-icon-loading-padding;
-    animation: spin .6s infinite linear;
-    border: 1px solid transparent;
-    border-top-color: $message-loading-color;
-    border-radius: 100%;
+  display: block;
+  width: $message-header-font-size;
+  height: $message-header-font-size;
+  padding: $message-icon-loading-padding;
+  animation: spin 0.6s infinite linear;
+  border: 1px solid transparent;
+  border-top-color: $message-loading-color;
+  border-radius: 100%;
 }
 
 // Alternate styles
 .message-primary {
-    @include message-variant($brand-primary);
+  @include message-variant($brand-primary);
 }
 
 .message-success {
-    @include message-variant($brand-success);
+  @include message-variant($brand-success);
 }
 
 .message-warning {
-    @include message-variant($brand-warning);
+  @include message-variant($brand-warning);
 }
 
 .message-danger {
-    @include message-variant($brand-danger);
+  @include message-variant($brand-danger);
 }
 
 .message-default {
-    border-color: $message-loading-border-color;
-    color: $message-loading-color;
-    background-color: $brand-pure;
+  border-color: $message-loading-border-color;
+  color: $message-loading-color;
+  background-color: $brand-pure;
 }
 
 // Animation
 .message-enter {
-    animation-name: messageSlideInDown;
+  animation-name: messageSlideInDown;
 }
 
 .message-leave {
-    animation-name: messageSlideOutUp;
-    animation-duration: $message-leave-duration;
+  animation-name: messageSlideOutUp;
+  animation-duration: $message-leave-duration;
 }
 
 @keyframes messageSlideInDown {
-    0% {
-        transform: translate(-50%, -100px);
-        opacity: 0;
-    }
+  0% {
+    transform: translate(-50%, -100px);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translate(-50%, 0);
-    }
+  100% {
+    transform: translate(-50%, 0);
+  }
 }
 
 @keyframes messageSlideOutUp {
-    0% {
-        transform: translate(-50%, 0);
-    }
+  0% {
+    transform: translate(-50%, 0);
+  }
 
-    100% {
-        transform: translate(-50%, -100px);
-        opacity: 0;
-    }
+  100% {
+    transform: translate(-50%, -100px);
+    opacity: 0;
+  }
 }
