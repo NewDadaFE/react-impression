@@ -1,11 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-const Navbar = ({ children }) => {
-  return <div className='navbar'>{children}</div>
-}
+const Navbar = ({ className, children }) => (
+  <div className={classNames('navbar', className)}>{children}</div>
+)
 
 Navbar.propTypes = {
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
+
   /**
    * 子组件
    */
