@@ -22,7 +22,7 @@ dir.files(BASE, (err, files) => {
     const EXTRA = new qiniu.io.PutExtra()
 
     qiniu.io.putFile(TOKEN, KEY, file, EXTRA, (err, res) => {
-      if (err) return console.error(err)
+      if (err) throw err
 
       return console.log(res.hash, res.key)
     })
