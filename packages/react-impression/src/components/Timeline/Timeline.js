@@ -29,7 +29,6 @@ const Timeline = ({ size, className, children, ...others }) => {
       size,
     })
   })
-  console.log('children', children)
 
   return (
     <ul {...others} className={classnames('timeline', sizeClass, className)}>
