@@ -20,6 +20,15 @@ const propTypes = {
 
 const Timeline = ({ size, className, children, ...others }) => {
   const sizeClass = size ? `timeline-${size}` : null
+  children = React.Children.map(children, child => {
+    if (!child) {
+      return child
+    }
+
+    return React.cloneElement(child, {
+      size,
+    })
+  })
 
   return (
     <ul {...others} className={classnames('timeline', sizeClass, className)}>
