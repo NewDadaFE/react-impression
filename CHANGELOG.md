@@ -1,3 +1,33 @@
+## 2.0.2
+
+React Impression 2.0.2 新增了 Steps 组件，在 Card、Loading 等组件中添加了更丰富的属性，并修复了之前版本中的已知漏洞。详细变更情况如下：
+
+### 新增组件
+
+* 新增 **Steps、Step 组件**，横向步骤条，支持自定义节点内容，支持自定义节点图标，支持节点样式为 点状 和 序号状，支持鼠标悬停图标展示更多描述 [详情](https://newdadafe.github.io/react-impression/#steps)
+
+### API 变更
+
+* 新增 **Card 组件** outline 属性可选参数：border、shadow、none，默认为 shadow
+* 新增 **Loading 组件** type 属性可选参数：circle
+* 变更 **Navbar 组件** className 属性，支持自定义样式
+* 变更 **Select 组件** filterMethod 属性，支持实时搜索
+* 新增 **Timeline 组件** Title 属性，在使用大号尺寸时，使用该属性来自定义左侧内容
+
+### 问题修复
+
+* 修复 **Confirm 组件** 显示在 Modal 组件下方被覆盖的问题
+* 修复 **Nav 组件** 不受控问题
+* 修复 **NavItem 组件** 点击事件相应问题以及作为一级菜单的样式
+* 修复 **Select 组件** selectOption 弹出方式
+* 修复 **Select 组件** Table 下 Select 被遮挡问题
+* 修复 **Select 组件** 搜索模式下显示的 icon
+* 修复 **Sidebar 组件** 优化侧边栏滚动条
+* 修复 **Table 组件** 修复 font-size 过小时，table header 的 border 消失问题
+* 修复 **Table 组件** 带右边固定项时，table 过长时格式错乱问题
+* 修复 **Table 组件** columns 不能动态更新问题
+* 修复 **Upload 组件** 弹出两次选择文件弹窗的问题
+
 ## 2.0.1
 
 React Impression 2.0.1 主要修复了之前版本中的已知漏洞。详细变更情况如下：
