@@ -242,6 +242,7 @@
     width: $loading-circle-width;
     height: $loading-circle-height;
     border: $loading-circle-line-height solid transparent;
+    border-top-color: $loading-circle-line-color;
     border-right-color: $loading-circle-line-color;
     border-radius: 100%;
     animation: circle $loading-circle-animation-duration linear infinite;
