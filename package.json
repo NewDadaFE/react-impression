@@ -1,6 +1,6 @@
 {
   "name": "generator-react-impression",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "license": "MIT",
   "description": "Yeoman generator for React project.",
   "scripts": {
