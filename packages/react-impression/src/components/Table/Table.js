@@ -62,7 +62,9 @@ export default class Table extends React.PureComponent {
     /**
      * 设置table的最大宽度 {x:number}
      */
+
     scroll: PropTypes.object,
+
     /**
      * 自定义样式
      */
@@ -82,6 +84,7 @@ export default class Table extends React.PureComponent {
     /**
      * 分页配置项，请参照Pagination
      */
+
     pagination: PropTypes.object,
     /**
      * 子组件
@@ -96,10 +99,18 @@ export default class Table extends React.PureComponent {
   componentWillMount() {
     this.handleInt()
   }
-  handleInt = () => {
+  handleInt = (nextColumns, nextChildren) => {
     const { columns, children } = this.props
     let columnList = []
-    if (children) {
+    if (nextChildren) {
+      let columns = nextChildren.map(child => {
+        const { prop, label, fixed, Cell, width, Header } = child.props
+        const obj = { prop, label, fixed, Cell, width, Header }
+        return obj
+      })
+      columnList = columns
+    }
+    if (children && !nextChildren) {
       let columns = children.map(child => {
         const { prop, label, fixed, Cell, width, Header } = child.props
         const obj = { prop, label, fixed, Cell, width, Header }
@@ -107,7 +118,10 @@ export default class Table extends React.PureComponent {
       })
       columnList = columns
     }
-    if (columns) columnList = columns
+    if (nextColumns) {
+      columnList = nextColumns
+    }
+    if (columns && !nextColumns) columnList = columns
     let fixLeftColumns = []
     let fixRightColumns = []
     let noFixColumns = []
@@ -194,8 +208,27 @@ export default class Table extends React.PureComponent {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const { rowSelection } = nextProps
-    const { data } = this.props
+    const { rowSelection, columns, children } = nextProps
+    const {
+      data,
+      columns: currentColumns,
+      children: currentChildren,
+    } = this.props
+    if (
+      columns &&
+      currentColumns &&
+      JSON.stringify(columns) !== JSON.stringify(currentColumns)
+    ) {
+      this.handleInt(columns, children)
+    }
+    if (
+      children &&
+      currentChildren &&
+      children.toString() !== currentChildren.toString()
+    ) {
+      this.handleInt(columns, children)
+    }
+
     if (!rowSelection || !rowSelection.selectedRowKeys || !this.isPuppet) return
     const { selectedRowKeys, onChange } = rowSelection
     const selectedRowKeysLength = selectedRowKeys.length
