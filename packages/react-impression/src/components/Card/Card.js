@@ -35,7 +35,7 @@ export default class Card extends React.PureComponent {
 
   static defaultProps = {
     block: false,
-    outline: 'border',
+    outline: 'shadow',
   }
 
   render() {
