@@ -280,9 +280,6 @@ export default class Select extends React.PureComponent {
             positionFixed: true,
             modifiers: {
               offset: { offset: '0, 10' },
-              computeStyle: {
-                gpuAcceleration: false,
-              },
             },
           })
         } else {
@@ -440,6 +437,12 @@ export default class Select extends React.PureComponent {
     return null
   }
 
+  get wrapClass() {
+    const { multiple } = this.props
+    if (!multiple) return 'select-options-normal'
+    if (multiple) return 'select-options-multiple'
+  }
+
   render() {
     const {
       disabled,
@@ -517,11 +520,7 @@ export default class Select extends React.PureComponent {
           onClick={this.toggleOptionsHandle}
         />
         <div
-          className={classnames(
-            { 'select-options-normal': !multiple },
-            { 'select-options-multiple': multiple },
-            'select-options-wrap'
-          )}
+          className={classnames(this.wrapClass, 'select-options-wrap')}
           ref={ref => (this.selectOption = ref)}
         >
           {searchable && (
