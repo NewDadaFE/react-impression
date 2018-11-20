@@ -98,6 +98,37 @@
 </Row>
 ```
 
+**外轮廓类型：Card 组件外轮廓可以设为外阴影、外边框和无边框三种类型。默认为外阴影**
+
+```js
+<Row>
+  <Col>
+    <Card>
+      <CardBlock>
+        <p>默认为外边框类型</p>
+        <Button theme="primary">好的</Button>
+      </CardBlock>
+    </Card>
+  </Col>
+  <Col>
+    <Card outline="shadow">
+      <CardBlock>
+        <p>外阴影类型</p>
+        <Button theme="primary">好的</Button>
+      </CardBlock>
+    </Card>
+  </Col>
+  <Col>
+    <Card outline="none">
+      <CardBlock>
+        <p>无边框类型</p>
+        <Button theme="primary">好的</Button>
+      </CardBlock>
+    </Card>
+  </Col>
+</Row>
+```
+
 ### 变更记录
 
 v2.0.0
