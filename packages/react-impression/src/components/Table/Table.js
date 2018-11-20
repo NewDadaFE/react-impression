@@ -62,7 +62,9 @@ export default class Table extends React.PureComponent {
     /**
      * 设置table的最大宽度 {x:number}
      */
+
     scroll: PropTypes.object,
+
     /**
      * 自定义样式
      */
@@ -82,6 +84,7 @@ export default class Table extends React.PureComponent {
     /**
      * 分页配置项，请参照Pagination
      */
+
     pagination: PropTypes.object,
     /**
      * 子组件
@@ -169,7 +172,6 @@ export default class Table extends React.PureComponent {
         })
       }
     }
-    this.forceUpdate()
   }
   componentDidMount() {
     const { rowSelection } = this.props
@@ -215,13 +217,17 @@ export default class Table extends React.PureComponent {
     if (
       columns &&
       currentColumns &&
-      columns.toString() !== currentColumns.toString()
-    ) { this.handleInt(columns, children) }
+      JSON.stringify(columns) !== JSON.stringify(currentColumns)
+    ) {
+      this.handleInt(columns, children)
+    }
     if (
       children &&
       currentChildren &&
       children.toString() !== currentChildren.toString()
-    ) { this.handleInt(columns, children) }
+    ) {
+      this.handleInt(columns, children)
+    }
 
     if (!rowSelection || !rowSelection.selectedRowKeys || !this.isPuppet) return
     const { selectedRowKeys, onChange } = rowSelection
