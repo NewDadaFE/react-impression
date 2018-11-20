@@ -1,8 +1,9 @@
 import classnames from 'classnames'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import PerfectScrollbar from 'perfect-scrollbar'
 
-export default class SidebarBody extends PureComponent {
+export default class SidebarBody extends React.PureComponent {
   static propTypes = {
     /**
      * 自定义样式
@@ -15,14 +16,41 @@ export default class SidebarBody extends PureComponent {
     children: PropTypes.node,
   }
 
+  componentDidMount() {
+    // 初始化滚动条
+    // PerfectScrollbar插件bug
+    // 若不延迟初始化滚动条，滚动条ps__rail-y的right值初始状态为'auto'，导致滚动条错误地居左侧显示
+    // https://github.com/utatti/perfect-scrollbar/issues/715
+    window.requestAnimationFrame(() => {
+      this.scrollbar = new PerfectScrollbar(this.container, {
+        suppressScrollX: true,
+      })
+    })
+  }
+
+  componentWillUnmount() {
+    this.scrollbar.destroy()
+    this.scrollbar = null
+  }
+
+  handleUpdateScroll = () => {
+    // 延迟更新滚动条
+    window.requestAnimationFrame(() => {
+      this.scrollbar.update()
+    })
+  }
+
+  setContainerRef = element => (this.container = element)
+
   render() {
     const { className, children, ...others } = this.props
 
     return (
       <div
-        ref='container'
+        ref={this.setContainerRef}
         {...others}
         className={classnames('sidebar-body', className)}
+        onClick={this.handleUpdateScroll}
       >
         {children}
       </div>

@@ -14,10 +14,14 @@ $notice-title-font-size: rem(18px) !default;
 $notice-body-padding: rem(30px) rem(46px) rem(30px) rem(30px) !default;
 $notice-content-line-height: rem(22px) !default;
 
-$notice-primary-bg: linear-gradient(270deg, #0C85FF 0%, $brand-info 100%) !default;
-$notice-success-bg: linear-gradient(270deg, #00B250 0%, $brand-success 100%) !default;
-$notice-warning-bg: linear-gradient(270deg, #FFA200 0%, $brand-warning 100%) !default;
-$notice-danger-bg: linear-gradient(270deg, #FD3737 0%, $brand-danger 100%) !default;
+$notice-primary-bg: linear-gradient(270deg, #0c85ff 0%, $brand-info 100%)
+  !default;
+$notice-success-bg: linear-gradient(270deg, #00b250 0%, $brand-success 100%)
+  !default;
+$notice-warning-bg: linear-gradient(270deg, #ffa200 0%, $brand-warning 100%)
+  !default;
+$notice-danger-bg: linear-gradient(270deg, #fd3737 0%, $brand-danger 100%)
+  !default;
 
 $notice-enter-duration: 0.2s !default;
 $notice-leave-duration: 0.8s !default;

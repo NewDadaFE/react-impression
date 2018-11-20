@@ -5,119 +5,115 @@
 //
 
 .btn {
-    display: inline-block;
-    line-height: $btn-line-height;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
+  display: inline-block;
+  line-height: $btn-line-height;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
 
-    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
-    transition: $btn-transition;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+  transition: $btn-transition;
 
-
-    &,
-    &:active,
-    &.active {
-        &:focus,
-        &.focus {
-            outline: 0;
-            background-image: none;
-        }
-    }
-
-    &:hover,
+  &,
+  &:active,
+  &.active {
     &:focus,
     &.focus {
-        text-decoration: none;
+      outline: 0;
+      background-image: none;
     }
+  }
 
-    &.disabled,
-    &:disabled {
-        cursor: $cursor-disabled;
-        box-shadow: none;
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+  }
 
-        &:hover {
-            box-shadow: none;
-        }
+  &.disabled,
+  &:disabled {
+    cursor: $cursor-disabled;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
     }
+  }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
 fieldset[disabled] a.btn {
-    pointer-events: none;
+  pointer-events: none;
 }
-
 
 //
 // Alternate buttons
 //
 
 $btn-primary-args: (
-    color: $btn-primary-color,
-    background: $btn-primary-bg,
-    border: $btn-primary-border,
-    hover-background: $btn-hover-primary-bg,
-    btn-hover-box-shadow: $btn-hover-primary-box-shadow,
-    active-background: $btn-active-primary-bg,
-    btn-disabled-color: $btn-disabled-color,
-    btn-disabled-bg: $btn-disabled-bg,
-    btn-disabled-border: transparent,
+  color: $btn-primary-color,
+  background: $btn-primary-bg,
+  border: $btn-primary-border,
+  hover-background: $btn-hover-primary-bg,
+  btn-hover-box-shadow: $btn-hover-primary-box-shadow,
+  active-background: $btn-active-primary-bg,
+  btn-disabled-color: $btn-disabled-color,
+  btn-disabled-bg: $btn-disabled-bg,
+  btn-disabled-border: transparent
 );
 
 $btn-secondary-args: (
-    color: $btn-secondary-color,
-    background: $btn-secondary-bg,
-    border: $btn-secondary-border,
-    hover-background: $btn-hover-default-bg,
-    btn-hover-box-shadow: $btn-hover-primary-box-shadow,
-    active-background: $btn-active-secondary-bg,
-    btn-disabled-color: $btn-disabled-color,
-    btn-disabled-bg: $brand-pure,
-    btn-disabled-border: $btn-disabled-border,
+  color: $btn-secondary-color,
+  background: $btn-secondary-bg,
+  border: $btn-secondary-border,
+  hover-background: $btn-hover-default-bg,
+  btn-hover-box-shadow: $btn-hover-primary-box-shadow,
+  active-background: $btn-active-secondary-bg,
+  btn-disabled-color: $btn-disabled-color,
+  btn-disabled-bg: $brand-pure,
+  btn-disabled-border: $btn-disabled-border
 );
 
 $btn-default-args: (
-    color: $btn-default-color,
-    background: $btn-default-bg,
-    border: $btn-default-border,
-    hover-background: $btn-hover-default-bg,
-    btn-hover-box-shadow: $btn-hover-default-box-shadow,
-    active-background: $btn-active-default-bg,
-    btn-disabled-color: $btn-disabled-color,
-    btn-disabled-bg: $brand-pure,
-    btn-disabled-border: $btn-disabled-border,
+  color: $btn-default-color,
+  background: $btn-default-bg,
+  border: $btn-default-border,
+  hover-background: $btn-hover-default-bg,
+  btn-hover-box-shadow: $btn-hover-default-box-shadow,
+  active-background: $btn-active-default-bg,
+  btn-disabled-color: $btn-disabled-color,
+  btn-disabled-bg: $brand-pure,
+  btn-disabled-border: $btn-disabled-border
 );
 
 .btn-primary {
-    @include button-variant($btn-primary-args...);
+  @include button-variant($btn-primary-args...);
 }
 
 .btn-secondary {
-    @include button-variant($btn-secondary-args...);
+  @include button-variant($btn-secondary-args...);
 }
 
 .btn-default {
-    @include button-variant($btn-default-args...);
+  @include button-variant($btn-default-args...);
 }
-
 
 // Remove all backgrounds
 .btn-outline-primary {
-    @include button-outline-variant($btn-primary-bg);
+  @include button-outline-variant($btn-primary-bg);
 }
 
 .btn-outline-secondary {
-    @include button-outline-variant($btn-secondary-border);
+  @include button-outline-variant($btn-secondary-border);
 }
 
 .btn-outline-default {
-    @include button-outline-variant($btn-default-border);
+  @include button-outline-variant($btn-default-border);
 }
-
 
 //
 // Link buttons
@@ -125,65 +121,63 @@ $btn-default-args: (
 
 // Make a button look and behave like a link
 .btn-link {
-    font-weight: normal;
-    color: $link-color;
-    border-radius: 0;
+  font-weight: normal;
+  color: $link-color;
+  border-radius: 0;
 
-    &,
-    &:active,
-    &.active,
-    &:disabled {
-        background-color: transparent;
-        box-shadow: none;
-    }
+  &,
+  &:active,
+  &.active,
+  &:disabled {
+    background-color: transparent;
+    box-shadow: none;
+  }
 
-    &,
-    &:focus,
-    &:active {
-        border-color: transparent;
-    }
+  &,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
 
-    &:hover {
-        border-color: transparent;
-    }
+  &:hover {
+    border-color: transparent;
+  }
 
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    background-color: transparent;
+  }
+
+  &:disabled {
     &:hover,
     &:focus {
-        color: $link-hover-color;
-        text-decoration: $link-hover-decoration;
-        background-color: transparent;
+      color: $btn-link-disabled-color;
+      text-decoration: none;
     }
-
-    &:disabled {
-        &:hover,
-        &:focus {
-            color: $btn-link-disabled-color;
-            text-decoration: none;
-        }
-    }
+  }
 }
-
 
 //
 // Button Sizes
 //
 
 .btn-lg {
-    // line-height: ensure even-numbered height of button next to large input
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
 }
 
 .btn-sm {
-    // line-height: ensure proper height of button next to small input
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
+  // line-height: ensure proper height of button next to small input
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
 }
-
 
 // Pill Button
 .btn-pill {
-    border-radius: 200px;
+  border-radius: 200px;
 }
 
 .btn-block {
-    width: 100%;
+  width: 100%;
 }

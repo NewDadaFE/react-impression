@@ -63,6 +63,13 @@ export default class Nav extends React.PureComponent {
     stacked: false,
     type: 'inline',
   }
+
+  componentWillReceiveProps(nextProps) {
+    const { activeKey } = nextProps
+    this.setState({
+      activeKey,
+    })
+  }
   /**
    * 选中回调
    * @param eventKey
@@ -95,10 +102,13 @@ export default class Nav extends React.PureComponent {
         return child
       }
 
-      const { eventKey } = child.props
+      const { eventKey, onClick } = child.props
       const options = {
         key: index,
-        onClick: this.onSelectHandle,
+        onClick: (eventKey, event) => {
+          this.onSelectHandle(eventKey)
+          onClick && onClick(eventKey, event)
+        },
       }
       if (typeof eventKey !== 'undefined') {
         options.eventKey = eventKey

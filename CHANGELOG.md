@@ -1,3 +1,25 @@
+## 2.0.1
+
+React Impression 2.0.1 主要修复了之前版本中的已知漏洞。详细变更情况如下：
+
+### 问题修复
+
+* 修复 **Button 组件** 高度是小数导致浏览器解析有误差的问题
+* 修复 **CheckboxGroup 组件** 嵌套使用时，Checkbox 的 indeterminate 状态下的样式
+* 修复 **Datepicker 组件** 示例不显示的问题
+* 修复 **Input 组件** 水平不对齐的问题
+* 修复 **Input 组件** 日期类型不支持 size 属性的问题
+* 修复 **Input 组件** 日期类型点击组件外其他区域不关闭的问题
+* 修复 **NavLink 组件** 添加 NavLink 组件示例 [详情](https://newdadafe.github.io/react-impression/#nav)
+* 修复 **Popover 组件** 在 Table 组件中被遮挡的问题
+* 修复 **Select 组件** 中 selectOption 的内容不支持 number 类型的问题
+* 修复 **Select 组件** 中 selectOption 不支持异步渲染的问题
+* 修复 **Sidebar 组件** 嵌套 Collapse 组件、Nav、NavLink 组件时的样式
+* 修复 **Sidebar 组件** 移除 perfect-scrollbar 的使用
+* 修复 **Table 组件** 无 data 时提示暂无数据
+* 修复 **Upload 组件** 完善组件的属性描述
+* 修复 **Upload 组件** preview 模式下，改变组件尺寸后样式错乱的问题
+
 ## 2.0.0
 
 React Impression 2.0.0 在最大限度向前兼容的前提下，对整体设计风格做了很大的改变。根据 1.x 版本的使用反馈情况，增强了 Modal 组件、Select 组件的功能，新增 Table 组件，并赋予 Table 组件更强大灵活的数据展示功能。同时还修复了已知漏洞。详细变更情况如下：
