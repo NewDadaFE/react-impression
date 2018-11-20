@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
 import Tag from '../Tag/index'
+import Popper from 'popper.js'
 import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
@@ -20,11 +21,10 @@ export default class Select extends React.PureComponent {
 
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
-
+    this.selectPopper = null
     // 子组件数据
     this.options = []
     const initValue = {
-      top: '120%',
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
       isSearch: false,
@@ -138,7 +138,12 @@ export default class Select extends React.PureComponent {
    * @description 隐藏菜单
    * @memberof Select
    */
-  hideOptionsHandle = () => this.setState({ showOption: false })
+  hideOptionsHandle = () => {
+    this.setState(
+      { showOption: false },
+      () => this.selectPopper && this.selectPopper.destroy()
+    )
+  }
 
   handleValueChange(props) {
     const { optionList } = this.state
@@ -192,15 +197,6 @@ export default class Select extends React.PureComponent {
     }
     this.setState(dataToSet, () => {
       this.options.forEach(option => option.handleActive())
-      if (!this.tag) {
-        this.setState({ top: '120%' })
-      } else {
-        if (this.tag.clientHeight < 42) {
-          this.setState({ top: '120%' })
-        } else {
-          this.setState({ top: '220%' })
-        }
-      }
     })
   }
   getValue() {
@@ -267,8 +263,7 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = () => {
-    const { options, optionGroup } = this.state
-    const { filterMethod } = this.props
+    const { optionGroup } = this.state
     if (this.props.disabled) return
     this.setState(
       {
@@ -276,12 +271,20 @@ export default class Select extends React.PureComponent {
         queryText: '',
       },
       () => {
-        options.forEach(option => {
-          option.queryChange('', filterMethod)
-        })
         optionGroup.forEach(option => {
           option.queryChange('')
         })
+        if (this.state.showOption) {
+          this.selectPopper = new Popper(this.selectMain, this.selectOption, {
+            placement: 'bottom',
+            positionFixed: true,
+            modifiers: {
+              offset: { offset: '0, 10' },
+            },
+          })
+        } else {
+          this.selectPopper && this.selectPopper.destroy()
+        }
       }
     )
   }
@@ -310,9 +313,6 @@ export default class Select extends React.PureComponent {
       options.forEach(option => {
         option.handleActive()
       })
-      if (this.tag.clientHeight < 42) {
-        this.setState({ top: '120%' })
-      }
 
       onDelete && onDelete(newVal)
     })
@@ -329,7 +329,7 @@ export default class Select extends React.PureComponent {
    * @param {Number} 索引
    */
   selectOptionHandle(result) {
-    const { onChange, value, filterMethod, multiple } = this.props
+    const { onChange, value, multiple } = this.props
     const { options, selectedItem, optionGroup } = this.state
     const originValue = this.isPuppet ? value : this.state.value
     if (multiple) {
@@ -344,10 +344,6 @@ export default class Select extends React.PureComponent {
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
         },
         () => {
-          if (multiple && this.tag.clientHeight > 42) {
-            this.setState({ top: '220%' })
-          }
-
           options.forEach(option => option.handleActive())
           onChange &&
             result.value !== originValue &&
@@ -355,9 +351,6 @@ export default class Select extends React.PureComponent {
         }
       )
     } else {
-      if (multiple && this.tag.clientHeight > 42) {
-        this.setState({ top: '220%' })
-      }
       onChange &&
         result.value !== originValue &&
         onChange(result.value, result.name, result.index)
@@ -368,9 +361,6 @@ export default class Select extends React.PureComponent {
         queryText: '',
       },
       () => {
-        options.forEach(option => {
-          option.queryChange('', filterMethod)
-        })
         optionGroup.forEach(option => {
           option.queryChange('')
         })
@@ -435,16 +425,22 @@ export default class Select extends React.PureComponent {
   }
 
   getEmptyText = () => {
-    const { searchable } = this.props
+    const { searchable, filterMethod } = this.props
     const { options, optionList, queryText } = this.state
     if (options.length === 0) {
       return '暂无数据'
     }
-    if (searchable && !isContainer(queryText, optionList)) {
+    if (searchable && !isContainer(queryText, optionList) && !filterMethod) {
       return '暂无数据'
     }
 
     return null
+  }
+
+  get wrapClass() {
+    const { multiple } = this.props
+    if (!multiple) return 'select-options-normal'
+    if (multiple) return 'select-options-multiple'
   }
 
   render() {
@@ -462,7 +458,6 @@ export default class Select extends React.PureComponent {
       queryText,
       currentPlaceholder,
       selectedItem,
-      top,
     } = this.state
     let { children } = this.props
 
@@ -478,15 +473,10 @@ export default class Select extends React.PureComponent {
           className
         )}
         disabled={disabled}
+        ref={ref => (this.selectMain = ref)}
       >
         {multiple && (
-          <div
-            className='select-tags'
-            onClick={this.toggleOptionsHandle}
-            ref={div => {
-              this.tag = div
-            }}
-          >
+          <div className='select-tags' onClick={this.toggleOptionsHandle}>
             {selectedItem.length <= 0 && (
               <span className='select-placeholder'>请选择</span>
             )}
@@ -512,7 +502,6 @@ export default class Select extends React.PureComponent {
             type='text'
             value={selectText}
             readOnly
-            ref='main'
             placeholder={currentPlaceholder}
             disabled={disabled}
             className={classnames('select-selection')}
@@ -530,7 +519,10 @@ export default class Select extends React.PureComponent {
           })}
           onClick={this.toggleOptionsHandle}
         />
-        <div className='select-options-wrap' style={{ top: top }}>
+        <div
+          className={classnames(this.wrapClass, 'select-options-wrap')}
+          ref={ref => (this.selectOption = ref)}
+        >
           {searchable && (
             <div className='select-search-wrap'>
               <DebounceInput

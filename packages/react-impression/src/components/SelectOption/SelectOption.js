@@ -131,11 +131,12 @@ export default class SelectOption extends React.PureComponent {
 
     if (typeof filterMethod === 'function') {
       defaultMethod = filterMethod
+      defaultMethod(query, this.getLabel())
+    } else {
+      const visible = defaultMethod(query, this.getLabel())
+
+      this.setState({ visible })
     }
-
-    const visible = defaultMethod(query, this.getLabel())
-
-    this.setState({ visible })
   }
   getLabel() {
     return (
