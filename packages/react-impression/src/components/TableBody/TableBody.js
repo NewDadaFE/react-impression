@@ -82,8 +82,9 @@ export default class TableBody extends React.PureComponent {
      * 是否固定右侧
      */
     fixRight: PropTypes.bool,
+
     /**
-     * 是否有展示固定项
+     * 渲染内容是否需要隐藏
      */
     isNeedHide: PropTypes.bool,
   }

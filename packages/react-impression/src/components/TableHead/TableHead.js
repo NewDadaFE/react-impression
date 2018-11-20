@@ -61,8 +61,9 @@ export default class TableHead extends React.PureComponent {
      * 分页配置项，请参照Pagination
      */
     pagination: PropTypes.object,
+
     /**
-     * 是否有展示固定项
+     * 渲染内容是否需要隐藏
      */
     isNeedHide: PropTypes.bool,
   }
