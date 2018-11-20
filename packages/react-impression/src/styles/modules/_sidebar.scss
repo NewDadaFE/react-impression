@@ -24,7 +24,7 @@
 }
 // 主内容
 .sidebar-body {
-  overflow-y: auto;
+  position: relative;
   flex: 1;
   color: $sidebar-nav-item-color;
 
