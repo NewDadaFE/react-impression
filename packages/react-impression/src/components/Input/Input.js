@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import DatePicker from '../DatePicker'
 import Upload from '../Upload'
 import Popper from 'popper.js'
+import TimeSelect from '../TimeSelect'
 import * as System from '../../utils/system'
 
 export default class Input extends React.PureComponent {
@@ -41,6 +42,7 @@ export default class Input extends React.PureComponent {
       'year',
       'search',
       'textarea',
+      'time',
     ]),
 
     /**
@@ -324,6 +326,60 @@ export default class Input extends React.PureComponent {
                 onChange={value => onChange && onChange(value)}
                 onSelect={this.handleSelectDate}
                 ref={ref => (this.datepicker = ref)}
+              />
+            )}
+          </div>
+        )
+      case 'time':
+        return (
+          <div
+            className={classnames('input', className)}
+            ref='container'
+            onMouseEnter={this.handleShowClear}
+            onMouseLeave={this.handleHideClear}
+          >
+            <input
+              type='text'
+              ref={ref => (this.refMain = ref)}
+              value={value}
+              defaultValue={defaultValue}
+              className={classnames(
+                'form-control',
+                size && `form-control-${size}`,
+                pillClass,
+                'input-field',
+                'input-field-addon'
+              )}
+              readOnly
+              disabled={disabled}
+              placeholder={placeholder}
+              onClick={this.handleShowDatePicker}
+              style={style}
+            />
+
+            {clearable &&
+              showClear && (
+              <i
+                className='fa fa-search input-addon'
+                onClick={this.handleClearDateInput}
+              />
+            )}
+
+            {(!showClear || !clearable) && (
+              <i
+                className='fa fa-search input-addon'
+                onClick={this.handleShowDatePicker}
+              />
+            )}
+
+            {showDatePicker && (
+              <TimeSelect
+                {...others}
+                type={type}
+                value={this.refMain.value}
+                onChange={value => onChange && onChange(value)}
+                onSelect={this.handleSelectDate}
+                // ref={ref => (this.datepicker = ref)}
               />
             )}
           </div>

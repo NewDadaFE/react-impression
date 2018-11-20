@@ -87,6 +87,7 @@ module.exports = {
         'Select*',
         'Switch',
         'Upload',
+        'TimeSelect',
       ]),
     },
     {
