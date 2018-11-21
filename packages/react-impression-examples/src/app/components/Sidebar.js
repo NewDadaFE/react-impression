@@ -26,6 +26,11 @@ const AppSidebar = () => {
               <Icon type='bar-chart' left />概览
             </Link>
           </NavLink>
+          <NavLink>
+            <Link to='/form'>
+              <Icon type='table' left />表单
+            </Link>
+          </NavLink>
         </Nav>
       </SidebarBody>
     </Sidebar>
