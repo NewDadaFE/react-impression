@@ -52,7 +52,7 @@ class ModalExample extends React.Component {
         <Col>
           <Dropdown>
             <DropdownTrigger>
-              <a href="javascript:void(0);">下拉菜单</a>
+              <a href="#Dropdown">下拉菜单</a>
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownMenuItem onClick={() => this.menuClickHandle('菜单一')}>
@@ -146,7 +146,7 @@ class ModalExample extends React.Component {
         <Col>
           <Dropdown>
             <DropdownTrigger>
-              <a href="javascript:void(0);">下拉菜单</a>
+              <a href="#Dropdown">下拉菜单</a>
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownMenuItem
