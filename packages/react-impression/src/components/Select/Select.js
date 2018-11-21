@@ -460,7 +460,7 @@ export default class Select extends React.PureComponent {
       selectedItem,
     } = this.state
     let { children } = this.props
-
+    const optionWidth = this.selectMain && this.selectMain.offsetWidth
     return (
       <div
         style={style}
@@ -517,6 +517,7 @@ export default class Select extends React.PureComponent {
         <div
           className={classnames(this.wrapClass, 'select-options-wrap')}
           ref={ref => (this.selectOption = ref)}
+          style={{ width: optionWidth }}
         >
           {searchable && (
             <div className='select-search-wrap'>
