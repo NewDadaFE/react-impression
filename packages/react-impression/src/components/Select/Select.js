@@ -511,12 +511,7 @@ export default class Select extends React.PureComponent {
         )}
 
         <i
-          className={classnames('fa', {
-            'fa-chevron-down': !searchable,
-            'select-addon': !searchable,
-            'fa-search': searchable,
-            'select-search': searchable,
-          })}
+          className='fa fa-chevron-down select-addon'
           onClick={this.toggleOptionsHandle}
         />
         <div
