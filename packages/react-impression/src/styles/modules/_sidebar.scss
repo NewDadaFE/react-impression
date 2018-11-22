@@ -28,11 +28,6 @@
   flex: 1;
   color: $sidebar-nav-item-color;
 
-  .nav-link {
-    display: block;
-    text-indent: 0;
-  }
-
   .nav-item > a,
   .nav-link > a,
   .collapse-title {
@@ -54,8 +49,15 @@
   }
 
   // 二级菜单增加缩进
-  .collapse .nav-link > a {
-    padding-left: $sidebar-nav-item-secondary-padding-left;
+  .collapse {
+    .nav-item,
+    .nav-link {
+      display: block;
+      text-indent: 0;
+      & > a {
+        padding-left: $sidebar-nav-item-secondary-padding-left;
+      }
+    }
   }
 
   .collapse-title:hover,
