@@ -1,19 +1,14 @@
 // Base class
 .tooltip {
-  position: fixed;
   z-index: $zindex-tooltip;
-  display: block;
+}
+.tooltip-inner {
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   font-size: $font-size-base;
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
-  opacity: 0;
-  transition: $tooltip-transition;
-
-  &.in {
-    opacity: $tooltip-opacity;
-  }
+  animation: $tooltip-animation;
 
   &.tooltip-top {
     padding-bottom: $tooltip-arrow-width;
@@ -67,7 +62,7 @@
 }
 
 // Wrapper for the tooltip content
-.tooltip-inner {
+.tooltip-text {
   max-width: $tooltip-max-width;
   padding: $tooltip-padding-y $tooltip-padding-x;
   color: $tooltip-color;
@@ -84,4 +79,13 @@
   height: 0;
   border-color: transparent;
   border-style: solid;
+}
+@keyframes tooltipFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: $tooltip-opacity;
+  }
 }

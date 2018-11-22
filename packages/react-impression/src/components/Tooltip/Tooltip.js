@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Popper from 'popper.js'
 
 export default class Tooltip extends React.PureComponent {
   static propTypes = {
@@ -23,54 +24,26 @@ export default class Tooltip extends React.PureComponent {
     position: 'right',
   }
 
-  createTooltip(targetRect) {
+  createTooltip() {
     const { position, content } = this.props
     const positionClass = `tooltip-${position}`
     const tooltipNode = document.createElement('div')
+    const tooltipContentNode = document.createElement('div')
     const arrowNode = document.createElement('div')
     const innerNode = document.createElement('div')
 
-    tooltipNode.className = `tooltip ${positionClass}`
+    tooltipNode.className = 'tooltip'
+    tooltipContentNode.className = `tooltip-inner ${positionClass}`
     arrowNode.className = 'tooltip-arrow'
-    innerNode.className = 'tooltip-inner'
+    innerNode.className = 'tooltip-text'
 
     innerNode.innerHTML = content
-    tooltipNode.appendChild(arrowNode)
-    tooltipNode.appendChild(innerNode)
+    tooltipContentNode.appendChild(arrowNode)
+    tooltipContentNode.appendChild(innerNode)
+    tooltipNode.appendChild(tooltipContentNode)
 
     document.body.appendChild(tooltipNode)
 
-    const tooltipRect = tooltipNode.getBoundingClientRect()
-
-    /**
-     * switch - 计算left、top
-     *
-     * @param  {type} position 位置
-     */
-    switch (position) {
-      case 'top':
-        tooltipNode.style.top = `${targetRect.top - tooltipRect.height - 10}px`
-        tooltipNode.style.left = `${targetRect.left -
-          (tooltipRect.width - targetRect.width) / 2}px`
-        break
-      case 'left':
-        tooltipNode.style.left = `${targetRect.left - tooltipRect.width - 10}px`
-        tooltipNode.style.top = `${targetRect.top +
-          (targetRect.height - tooltipRect.height) / 2}px`
-        break
-      case 'right':
-        tooltipNode.style.left = `${targetRect.left + targetRect.width + 10}px`
-        tooltipNode.style.top = `${targetRect.top +
-          (targetRect.height - tooltipRect.height) / 2}px`
-        break
-      default:
-        tooltipNode.style.top = `${targetRect.top + targetRect.height + 10}px`
-        tooltipNode.style.left = `${targetRect.left -
-          (tooltipRect.width - targetRect.width) / 2}px`
-        break
-    }
-
-    tooltipNode.classList.add('in')
     this.tooltip = tooltipNode
   }
 
@@ -78,9 +51,15 @@ export default class Tooltip extends React.PureComponent {
    * 显示tooltip
    */
   onMouseOver = event => {
-    const rect = event.target.getBoundingClientRect()
-
-    this.createTooltip(rect)
+    const { position } = this.props
+    this.createTooltip()
+    this.tooltipPopper = new Popper(event.target, this.tooltip, {
+      positionFixed: true,
+      placement: position,
+      modifiers: {
+        offset: { offset: '0, 10' },
+      },
+    })
   }
 
   /**
@@ -88,6 +67,8 @@ export default class Tooltip extends React.PureComponent {
    */
   onMouseOut = () => {
     document.body.removeChild(this.tooltip)
+    this.tooltipPopper.destroy()
+    this.tooltipPopper = null
   }
 
   render() {
