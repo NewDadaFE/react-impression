@@ -1,7 +1,6 @@
 import React from 'react'
 import { Portal } from 'react-portal'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import Popper from 'popper.js'
 
 export default class Tooltip extends React.PureComponent {
@@ -26,8 +25,27 @@ export default class Tooltip extends React.PureComponent {
     position: 'right',
   }
 
-  state = {
-    showTip: false,
+  createTooltip() {
+    const { position, content } = this.props
+    const positionClass = `tooltip-${position}`
+    const tooltipNode = document.createElement('div')
+    const tooltipContentNode = document.createElement('div')
+    const arrowNode = document.createElement('div')
+    const innerNode = document.createElement('div')
+
+    tooltipNode.className = 'tooltip'
+    tooltipContentNode.className = `tooltip-inner ${positionClass}`
+    arrowNode.className = 'tooltip-arrow'
+    innerNode.className = 'tooltip-text'
+
+    innerNode.innerHTML = content
+    tooltipContentNode.appendChild(arrowNode)
+    tooltipContentNode.appendChild(innerNode)
+    tooltipNode.appendChild(tooltipContentNode)
+
+    document.body.appendChild(tooltipNode)
+
+    this.tooltip = tooltipNode
   }
 
   /**
@@ -35,23 +53,23 @@ export default class Tooltip extends React.PureComponent {
    */
   onMouseOver = event => {
     const { position } = this.props
-    if (!this.popper) {
-      this.popper = new Popper(event.target, this.tooltip, {
-        positionFixed: true,
-        placement: position,
-        modifiers: {
-          offset: { offset: '0, 10' },
-        },
-      })
-    }
-    this.setState({ showTip: true })
+    this.createTooltip()
+    this.tooltipPopper = new Popper(event.target, this.tooltip, {
+      positionFixed: true,
+      placement: position,
+      modifiers: {
+        offset: { offset: '0, 10' },
+      },
+    })
   }
 
   /**
    * 移除tooltip
    */
   onMouseOut = () => {
-    this.setState({ showTip: false })
+    document.body.removeChild(this.tooltip)
+    this.tooltipPopper.destroy()
+    this.tooltipPopper = null
   }
 
   componentWillUnmount() {

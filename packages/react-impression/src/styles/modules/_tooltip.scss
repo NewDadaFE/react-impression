@@ -1,8 +1,16 @@
 // Base class
 .tooltip {
   z-index: $zindex-tooltip;
+}
+.tooltip-inner {
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  font-size: $font-size-base;
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
+  animation: $tooltip-animation;
 
-  &[x-placement^="top"] {
+  &.tooltip-top {
     padding-bottom: $tooltip-arrow-width;
 
     .tooltip-arrow {
