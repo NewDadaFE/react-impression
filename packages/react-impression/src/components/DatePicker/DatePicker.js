@@ -493,129 +493,134 @@ export default class DatePicker extends React.PureComponent {
 
     return (
       <div className={classnames('datepicker', className)} ref='container'>
-        <div className='datepicker-header'>
-          {panel !== 'month' && (
-            <i
-              className='fa datepicker-header-btn fa-angle-double-left'
-              onClick={this.handlePrevYear}
-            />
-          )}
-          {panel !== 'year' && (
-            <i
-              className='fa datepicker-header-btn fa-angle-left datepicker-month-btn'
-              onClick={this.handlePrevMonth}
-            />
-          )}
-          <div
-            className={classnames('datepicker-caption', {
-              disable: panel === 'year',
-            })}
-            onClick={this.handleSwitchPanel}
-          >
-            {this.getPickerTitle()}
+        <div className='datepicker-inner'>
+          <div className='datepicker-header'>
+            {panel !== 'month' && (
+              <i
+                className='fa datepicker-header-btn fa-angle-double-left'
+                onClick={this.handlePrevYear}
+              />
+            )}
+            {panel !== 'year' && (
+              <i
+                className='fa datepicker-header-btn fa-angle-left datepicker-month-btn'
+                onClick={this.handlePrevMonth}
+              />
+            )}
+            <div
+              className={classnames('datepicker-caption', {
+                disable: panel === 'year',
+              })}
+              onClick={this.handleSwitchPanel}
+            >
+              {this.getPickerTitle()}
+            </div>
+            {panel !== 'year' && (
+              <i
+                className='fa datepicker-header-btn fa-angle-right datepicker-month-btn'
+                onClick={this.handleNextMonth}
+              />
+            )}
+            {panel !== 'month' && (
+              <i
+                className='fa datepicker-header-btn fa-angle-double-right'
+                onClick={this.handleNextYear}
+              />
+            )}
           </div>
-          {panel !== 'year' && (
-            <i
-              className='fa datepicker-header-btn fa-angle-right datepicker-month-btn'
-              onClick={this.handleNextMonth}
-            />
+          {panel === 'day' && (
+            <div className='datepicker-body'>
+              <div className='datepicker-weekgroup'>
+                {weekdays.map(day => (
+                  <div
+                    key={day}
+                    className={classnames('datepicker-weekgroup-item', {
+                      weekend: day === '六' || day === '日',
+                    })}
+                  >
+                    {day}
+                  </div>
+                ))}
+              </div>
+              <div className='datepicker-daygroup'>
+                {days.map(({ text, date, isToday, inMonth, disable }) => (
+                  <div
+                    key={`${text}-${inMonth}`}
+                    onClick={() => !disable && this.handleSelectDate(date)}
+                    className='datepicker-item datepicker-daygroup-item'
+                  >
+                    <div
+                      className={classnames('datepicker-item-text', {
+                        disable,
+                        now: isToday,
+                        active: date.isSame(checkedDay),
+                      })}
+                    >
+                      {text}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
-          {panel !== 'month' && (
-            <i
-              className='fa datepicker-header-btn fa-angle-double-right'
-              onClick={this.handleNextYear}
-            />
+          {panel === 'month' && (
+            <div className='datepicker-body'>
+              <div className='datepicker-monthgroup' ref='_monthgroup'>
+                {months.map((month, index) => (
+                  <div
+                    key={month}
+                    className='datepicker-item datepicker-monthgroup-item'
+                    data-month={index}
+                    onClick={this.handleSelectMonth}
+                  >
+                    <div
+                      className={classnames('datepicker-item-text', {
+                        active: index === currentMonth - 1,
+                        disable: this.isDisableDate(
+                          `${currentYear}-${index + 1}`
+                        ),
+                      })}
+                    >
+                      {month}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {panel === 'year' && (
+            <div className='datepicker-body'>
+              <div className='datepicker-yeargroup'>
+                {years.map(year => (
+                  <div
+                    key={year}
+                    className='datepicker-item datepicker-yeargroup-item'
+                    data-year={year}
+                    onClick={this.handleSelectYear}
+                  >
+                    <div
+                      className={classnames('datepicker-item-text', {
+                        active: Number(year) === Number(currentYear),
+                        disable: this.isDisableDate(year),
+                      })}
+                    >
+                      {year}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {showToday &&
+            panel === 'day' && (
+            <div
+              className='datepicker-footer'
+              onClick={this.handleSelectToday}
+            >
+              {todayText}
+            </div>
           )}
         </div>
-        {panel === 'day' && (
-          <div className='datepicker-body'>
-            <div className='datepicker-weekgroup'>
-              {weekdays.map(day => (
-                <div
-                  key={day}
-                  className={classnames('datepicker-weekgroup-item', {
-                    weekend: day === '六' || day === '日',
-                  })}
-                >
-                  {day}
-                </div>
-              ))}
-            </div>
-            <div className='datepicker-daygroup'>
-              {days.map(({ text, date, isToday, inMonth, disable }) => (
-                <div
-                  key={`${text}-${inMonth}`}
-                  onClick={() => !disable && this.handleSelectDate(date)}
-                  className='datepicker-item datepicker-daygroup-item'
-                >
-                  <div
-                    className={classnames('datepicker-item-text', {
-                      disable,
-                      now: isToday,
-                      active: date.isSame(checkedDay),
-                    })}
-                  >
-                    {text}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {panel === 'month' && (
-          <div className='datepicker-body'>
-            <div className='datepicker-monthgroup' ref='_monthgroup'>
-              {months.map((month, index) => (
-                <div
-                  key={month}
-                  className='datepicker-item datepicker-monthgroup-item'
-                  data-month={index}
-                  onClick={this.handleSelectMonth}
-                >
-                  <div
-                    className={classnames('datepicker-item-text', {
-                      active: index === currentMonth - 1,
-                      disable: this.isDisableDate(
-                        `${currentYear}-${index + 1}`
-                      ),
-                    })}
-                  >
-                    {month}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {panel === 'year' && (
-          <div className='datepicker-body'>
-            <div className='datepicker-yeargroup'>
-              {years.map(year => (
-                <div
-                  key={year}
-                  className='datepicker-item datepicker-yeargroup-item'
-                  data-year={year}
-                  onClick={this.handleSelectYear}
-                >
-                  <div
-                    className={classnames('datepicker-item-text', {
-                      active: Number(year) === Number(currentYear),
-                      disable: this.isDisableDate(year),
-                    })}
-                  >
-                    {year}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {showToday &&
-          panel === 'day' && (
-          <div className='datepicker-footer' onClick={this.handleSelectToday}>
-            {todayText}
-          </div>
-        )}
       </div>
     )
   }

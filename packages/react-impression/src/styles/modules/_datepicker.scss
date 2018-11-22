@@ -1,5 +1,7 @@
 .datepicker {
   z-index: $zindex-datepicker;
+}
+.datepicker-inner {
   padding-top: $datepicker-padding-top;
   font-size: $datepicker-font-size;
   transform-origin: center 0;
@@ -10,7 +12,6 @@
   background-color: $datepicker-bg;
   box-shadow: $datepicker-box-shadow;
 }
-
 // 头部
 .datepicker-header {
   display: flex;
