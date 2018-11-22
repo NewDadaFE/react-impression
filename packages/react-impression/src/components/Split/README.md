@@ -2,8 +2,8 @@
 
 ```js
 <div>
-  <a href="#Split">查看</a>
+  <a href="#split">查看</a>
   <Split />
-  <a href="#Split">删除</a>
+  <a href="#split">删除</a>
 </div>
 ```

@@ -52,13 +52,13 @@
   <Col>
     <h5>链接项</h5>
     <ListGroup>
-      <ListGroupItem href="#ListGroup">带链接的示例项</ListGroupItem>
-      <ListGroupItem href="#ListGroup">通过href属性设置跳转</ListGroupItem>
-      <ListGroupItem href="#ListGroup" active>
+      <ListGroupItem href="#listGroup">带链接的示例项</ListGroupItem>
+      <ListGroupItem href="#listGroup">通过href属性设置跳转</ListGroupItem>
+      <ListGroupItem href="#listGroup" active>
         这是被激活的模样
       </ListGroupItem>
-      <ListGroupItem href="#ListGroup">示例只能看</ListGroupItem>
-      <ListGroupItem href="#ListGroup">点了哪里也不会去</ListGroupItem>
+      <ListGroupItem href="#listGroup">示例只能看</ListGroupItem>
+      <ListGroupItem href="#listGroup">点了哪里也不会去</ListGroupItem>
     </ListGroup>
   </Col>
 </Row>
@@ -70,21 +70,21 @@
 <Row>
   <Col col="6">
     <ListGroup>
-      <ListGroupItem href="#ListGroup">
+      <ListGroupItem href="#listGroup">
         <h5>玻璃樽</h5>
         <div>星星在哪里都是很亮的，就看你有没有抬头去看他们。</div>
       </ListGroupItem>
-      <ListGroupItem href="#ListGroup">
+      <ListGroupItem href="#listGroup">
         <h5>大鱼老爸</h5>
         <div>一边是平常的现实，一边是美丽的谎言，你选哪一样呢？</div>
       </ListGroupItem>
-      <ListGroupItem href="#ListGroup" active>
+      <ListGroupItem href="#listGroup" active>
         <h5>和平饭店</h5>
         <div>
           一个人杀了一个人，他是杀人犯，是坏人。当他杀了成千上万人后，他是大英雄，是好人。
         </div>
       </ListGroupItem>
-      <ListGroupItem href="#ListGroup" disabled>
+      <ListGroupItem href="#listGroup" disabled>
         <h5>阿甘正传</h5>
         <div>生活就像一盒巧克力，你永远不知道你会得到什么。</div>
       </ListGroupItem>
