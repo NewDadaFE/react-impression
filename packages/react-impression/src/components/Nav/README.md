@@ -1,5 +1,22 @@
 ### 示例
 
+**Nav 组件** 与 **NavLink 组件**、**NavItem 组件**配合使用时，需要注意：
+
+1. Nav 组件 的**activeKey 属性**
+   * 只有**与 NavItem 组件 搭配**时有效
+   * 且 NavItem 组件** 必须有 eventKey 属性**
+2. 以下情况需要开发者自行控制子项的选中状态：
+   * Nav 组件 与 **NavLink 组件 搭配**使用时
+   * Nav 组件 与**无 eventKey 属性的 NavItem 组件 搭配**使用时
+
+自行控制选中状态方法为：
+
+1. NavLink 组件 通过**改变组件的 active 样式类**控制
+2. NavItem 组件 无 eventKey 属性通过**改变组件的 active 样式类**控制
+3. NavItem 组件 有 eventKey 属性通过**active 属性**控制
+
+Nav 组件可以用于实现侧边栏的菜单，具体用法参考 [Sidebar 组件](#sidebar)
+
 **基本用法**
 
 ```js
@@ -75,8 +92,8 @@ initialState = {
 
 ```js
 <Nav>
-  <NavLink>
-    <a href="#">标题</a>
+  <NavLink className="active">
+    <a>标题</a>
   </NavLink>
   <NavLink>
     <a>长标题</a>

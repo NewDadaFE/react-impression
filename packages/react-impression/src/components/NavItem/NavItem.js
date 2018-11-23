@@ -17,7 +17,7 @@ export default class NavItem extends React.PureComponent {
      */
     disabled: PropTypes.bool,
     /**
-     * 是否为激活状态
+     * 是否为激活状态，仅eventKey有值时有效
      */
     active: PropTypes.bool,
     /**
