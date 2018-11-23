@@ -109,7 +109,7 @@ export default class TimeSelect extends React.PureComponent {
   render() {
     const { curentHour, curentMinute } = this.state
     return (
-      <div className='time-select'>
+      <div className='time-select' ref='container'>
         <div className='flex'>
           <div
             className='time-select-wrap'

@@ -17,6 +17,7 @@ export default class Input extends React.PureComponent {
       showClear: false,
     }
     this.datePopper = null
+    this.timePoper = null
   }
   static propTypes = {
     /**
@@ -152,19 +153,35 @@ export default class Input extends React.PureComponent {
           showClear: false,
         },
         () => {
-          this.datePopper = new Popper(
-            this.refMain,
-            this.datepicker.refs.container,
-            {
-              placement: 'bottom-start',
-              modifiers: {
-                offset: { offset: '0, 10' },
-                computeStyle: {
-                  gpuAcceleration: false,
+          if (this.datepicker) {
+            console.log(this.datepicker)
+            this.datePopper = new Popper(
+              this.refMain,
+              this.datepicker.refs.container,
+              {
+                placement: 'bottom-start',
+                modifiers: {
+                  offset: { offset: '0, 10' },
+                  computeStyle: {
+                    gpuAcceleration: false,
+                  },
                 },
-              },
-            }
-          )
+              }
+            )
+          }
+          if (this.dateTimepicker) {
+            console.log(this.dateTimepicker.refs)
+            this.timePopper = new Popper(
+              this.refMain,
+              this.dateTimepicker.refs.container,
+              {
+                placement: 'bottom-start',
+                modifiers: {
+                  offset: { offset: '0, 10' },
+                },
+              }
+            )
+          }
         }
       )
   }
@@ -181,6 +198,7 @@ export default class Input extends React.PureComponent {
       },
       () => {
         this.datePopper && this.datePopper.destroy()
+        this.timePopper && this.timePopper.destroy()
       }
     )
   }
@@ -379,7 +397,7 @@ export default class Input extends React.PureComponent {
                 value={this.refMain.value}
                 onChange={value => onChange && onChange(value)}
                 onSelect={this.handleSelectDate}
-                // ref={ref => (this.datepicker = ref)}
+                ref={ref => (this.dateTimepicker = ref)}
               />
             )}
           </div>
