@@ -154,7 +154,6 @@ export default class Input extends React.PureComponent {
         },
         () => {
           if (this.datepicker) {
-            console.log(this.datepicker)
             this.datePopper = new Popper(
               this.refMain,
               this.datepicker.refs.container,
@@ -168,12 +167,12 @@ export default class Input extends React.PureComponent {
             )
           }
           if (this.dateTimepicker) {
-            console.log(this.dateTimepicker.refs)
             this.timePopper = new Popper(
               this.refMain,
               this.dateTimepicker.refs.container,
               {
                 placement: 'bottom-start',
+                positionFixed: true,
                 modifiers: {
                   offset: { offset: '0, 10' },
                 },
@@ -221,6 +220,18 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   handleSelectDate = value => {
+    this.refMain && (this.refMain.value = value)
+
+    this.setState({
+      showDatePicker: false,
+      showClear: false,
+    })
+  }
+  /**
+   * 选中时间
+   * @memberof Input
+   */
+  handleSelectTime = value => {
     this.refMain && (this.refMain.value = value)
 
     this.setState({
@@ -375,14 +386,14 @@ export default class Input extends React.PureComponent {
             {clearable &&
               showClear && (
               <i
-                className='fa fa-search input-addon'
+                className='fa fa-times input-addon'
                 onClick={this.handleClearDateInput}
               />
             )}
 
             {(!showClear || !clearable) && (
               <i
-                className='fa fa-search input-addon'
+                className='fa fa-clock-o input-addon '
                 onClick={this.handleShowDatePicker}
               />
             )}
@@ -391,9 +402,9 @@ export default class Input extends React.PureComponent {
               {...others}
               type={type}
               className={classnames({ hidden: !showDatePicker })}
-              value={this.refMain.value}
+              value={this.refMain && this.refMain.value}
               onChange={value => onChange && onChange(value)}
-              onSelect={this.handleSelectDate}
+              onSelect={this.handleSelectTime}
               ref={ref => (this.dateTimepicker = ref)}
             />
           </div>

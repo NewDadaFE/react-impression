@@ -54,7 +54,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>基础:</label>
-        <Input type="time" style={{ width: 224 }} />
+        <Input type="date" style={{ width: 200 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -62,7 +62,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>默认值:</label>
-        <Input type="date" defaultValue="2016-05-29" style={{ width: 224 }} />
+        <Input type="date" defaultValue="2016-05-29" style={{ width: 200 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -74,8 +74,16 @@ class ModalExample extends React.Component {
           type="date"
           defaultValue="2016-05-29"
           disabled
-          style={{ width: 224 }}
+          style={{ width: 200 }}
         />
+      </FormGroup>
+    </Form>
+  </Col>
+  <Col>
+    <Form>
+      <FormGroup>
+        <label>时间:</label>
+        <Input type="time" style={{ width: 200 }} />
       </FormGroup>
     </Form>
   </Col>
