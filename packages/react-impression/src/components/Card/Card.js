@@ -5,6 +5,12 @@ import CardBlock from '../CardBlock'
 import CardHeader from '../CardHeader'
 import CardFooter from '../CardFooter'
 
+const outlineClassName = {
+  border: 'card-border',
+  shadow: 'card-shadow',
+  none: '',
+}
+
 export default class Card extends React.PureComponent {
   static propTypes = {
     /**
@@ -21,20 +27,28 @@ export default class Card extends React.PureComponent {
      * 是否block
      */
     block: PropTypes.bool,
+    /**
+     * Card组件外轮廓类型
+     */
+    outline: PropTypes.oneOf(['border', 'shadow', 'none']),
   }
 
   static defaultProps = {
     block: false,
+    outline: 'shadow',
   }
 
   render() {
-    const { block, className, children, ...others } = this.props
+    const { block, className, children, outline, ...others } = this.props
     const blockClass = block ? 'card-block' : null
-
+    const outlineClass = outlineClassName[outline]
     delete others.noborder
 
     return (
-      <div {...others} className={classnames('card', blockClass, className)}>
+      <div
+        {...others}
+        className={classnames('card', blockClass, outlineClass, className)}
+      >
         {children}
       </div>
     )

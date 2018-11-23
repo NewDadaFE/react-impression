@@ -159,12 +159,10 @@ export default class Input extends React.PureComponent {
               this.refMain,
               this.datepicker.refs.container,
               {
+                positionFixed: true,
                 placement: 'bottom-start',
                 modifiers: {
                   offset: { offset: '0, 10' },
-                  computeStyle: {
-                    gpuAcceleration: false,
-                  },
                 },
               }
             )
@@ -336,16 +334,15 @@ export default class Input extends React.PureComponent {
               />
             )}
 
-            {showDatePicker && (
-              <DatePicker
-                {...others}
-                type={type}
-                value={this.refMain.value}
-                onChange={value => onChange && onChange(value)}
-                onSelect={this.handleSelectDate}
-                ref={ref => (this.datepicker = ref)}
-              />
-            )}
+            <DatePicker
+              className={classnames({ hidden: !showDatePicker })}
+              {...others}
+              type={type}
+              value={this.refMain && this.refMain.value}
+              onChange={value => onChange && onChange(value)}
+              onSelect={this.handleSelectDate}
+              ref={ref => (this.datepicker = ref)}
+            />
           </div>
         )
       case 'time':
@@ -390,16 +387,15 @@ export default class Input extends React.PureComponent {
               />
             )}
 
-            {showDatePicker && (
-              <TimeSelect
-                {...others}
-                type={type}
-                value={this.refMain.value}
-                onChange={value => onChange && onChange(value)}
-                onSelect={this.handleSelectDate}
-                ref={ref => (this.dateTimepicker = ref)}
-              />
-            )}
+            <TimeSelect
+              {...others}
+              type={type}
+              className={classnames({ hidden: !showDatePicker })}
+              value={this.refMain.value}
+              onChange={value => onChange && onChange(value)}
+              onSelect={this.handleSelectDate}
+              ref={ref => (this.dateTimepicker = ref)}
+            />
           </div>
         )
       case 'search':

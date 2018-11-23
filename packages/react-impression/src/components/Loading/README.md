@@ -31,6 +31,11 @@ initialState = {
       旋风（cyclone）
     </Button>
   </Col>
+  <Col>
+    <Button name="circle" onClick={handleShowLoading}>
+      圆环（circle）
+    </Button>
+  </Col>
   <Loading type={state.type} loadingMsg={state.type} closeable />
 </Row>
 ```

@@ -82,9 +82,17 @@ export default class TableBody extends React.PureComponent {
      * 是否固定右侧
      */
     fixRight: PropTypes.bool,
+
+    /**
+     * 渲染内容是否需要隐藏
+     */
+    isNeedHide: PropTypes.bool,
+  }
+  static defaultProps = {
+    isNeedHide: false,
   }
 
-  renderTd = (array, item, type) => {
+  renderTd = (array, item, type, isNeedHide) => {
     const { fixed } = this.props
     return array.map((column, columnIndex) => {
       const { prop, rowspan, colspan, Cell, width } = column
@@ -127,7 +135,13 @@ export default class TableBody extends React.PureComponent {
           width={colunmWidth}
           className={classnames(`item-fix-left`)}
         >
-          <div className='table-cell'>{content}</div>
+          <div
+            className={classnames('table-cell', {
+              'table-cell-hide': isNeedHide,
+            })}
+          >
+            {content}
+          </div>
         </td>
       )
     })
@@ -147,6 +161,7 @@ export default class TableBody extends React.PureComponent {
       fixRightColumns,
       noFixColumns,
       fixLeft,
+      isNeedHide,
       fixRight,
     } = this.props
     let fixLeftList = []
@@ -196,7 +211,7 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
                 {!!fixLeftList.length &&
-                  this.renderTd(fixLeftList, item, 'left')}
+                  this.renderTd(fixLeftList, item, 'left', isNeedHide)}
                 {rowSelection &&
                   !rowSelection.fixed && (
                   <td className={classnames(`item-fix-`)} key={-1} width={60}>
@@ -213,7 +228,7 @@ export default class TableBody extends React.PureComponent {
 
                 {!!noFixColumns.length && this.renderTd(noFixColumns, item)}
                 {!!fixRightList.length &&
-                  this.renderTd(fixRightList, item, 'right')}
+                  this.renderTd(fixRightList, item, 'right', isNeedHide)}
                 {rowSelection &&
                   isShowSelection &&
                   rowSelection.fixed && (

@@ -7,8 +7,20 @@
 .timeline-lg {
   .timeline-item {
     padding-bottom: $timeline-lg-item-padding-bottom;
+    &:first-child {
+      .timeline-item-body {
+        color: $timeline-item-body-color;
+      }
+      .timeline-item-addon {
+        color: $timeline-item-addon-first-color;
+      }
+    }
+    .timeline-item-addon {
+      i {
+        font-size: $timeline-lg-item-addon-font-size;
+      }
+    }
   }
-
   .timeline-item-unreachable {
     padding-bottom: $timeline-lg-item-padding-bottom * 2;
 
@@ -16,19 +28,27 @@
       border-left-style: dotted;
     }
   }
-
+  .timeline-item-title {
+    width: $timeline-item-title-width;
+    position: absolute;
+    color: $timeline-lg-color;
+    left: 0;
+    top: -$timeline-lg-item-title-top;
+  }
   .timeline-item-line {
     left: $timeline-lg-item-line-left;
   }
 
   .timeline-item-addon {
     padding: $timeline-lg-item-addon-padding;
+    left: $timeline-lg-item-addon-left;
     font-size: $timeline-lg-item-addon-font-size;
   }
 
   .timeline-item-body {
-    padding-left: $timeline-lg-item-body-padding-right;
+    padding-left: $timeline-lg-item-body-padding-left;
     line-height: $timeline-lg-item-body-line-height;
+    color: $timeline-lg-color;
   }
 }
 
@@ -41,6 +61,12 @@
 
     .timeline-item-line {
       display: none;
+    }
+  }
+  &:first-child {
+    .timeline-item-addon {
+      color: $timeline-item-addon-first-color;
+
     }
   }
 }
@@ -64,17 +90,19 @@
 .timeline-item-addon {
   position: absolute;
   left: 0;
-  top: 0;
+  top: -$timeline-item-addon-top;
   color: $timeline-item-addon-color;
   font-size: $timeline-item-addon-font-size;
   padding: $timeline-item-addon-padding;
   background: $timeline-item-addon-bg;
   z-index: 2;
+  i {
+    font-size: $timeline-item-addon-font-size-sm;
+  }
 }
 
 .timeline-item-body {
   line-height: $timeline-item-body-line-height;
-  vertical-align: top;
-  display: inline-block;
+  color: $timeline-item-body-color;
   padding-left: $timeline-item-body-padding-right;
 }

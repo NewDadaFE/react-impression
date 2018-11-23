@@ -6,7 +6,7 @@
   cursor: pointer;
   display: inline-block;
   height: 2.857rem;
-
+  width: 16rem;
   &.disabled {
     &,
     .select-addon,
@@ -20,9 +20,6 @@
       cursor: $cursor-disabled;
     }
   }
-  .select-options-normal {
-    width: 16rem;
-  }
   .select-tags {
     cursor: pointer;
     position: relative;
@@ -30,7 +27,7 @@
     user-select: none;
     text-align: left;
     text-overflow: ellipsis;
-    width: 28.57rem;
+    width: 100%;
     border-radius: rem(2px);
     box-sizing: border-box;
     font-size: 1rem;
@@ -79,11 +76,14 @@
       border: rem(1px) solid $brand-danger;
     }
   }
+  &.select-multiple {
+    width: 28.57rem;
+  }
 }
 
 .select-selection {
   cursor: pointer;
-  width: 16rem;
+  width: 100%;
   height: 2.857rem;
   display: inline-block;
   user-select: none;
@@ -147,9 +147,6 @@
     opacity: 1;
     padding: 0.714rem 0;
   }
-}
-.select-options-multiple {
-  width: 28.57rem;
 }
 .select-search-wrap {
   opacity: 0;

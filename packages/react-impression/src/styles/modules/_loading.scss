@@ -236,6 +236,23 @@
   }
 }
 
+//== -------------------------------- 圆环式 -------------------------------- ==
+.loading-circle {
+  .loading-addon {
+    width: $loading-circle-width;
+    height: $loading-circle-height;
+    border: $loading-circle-line-height solid transparent;
+    border-top-color: $loading-circle-line-color;
+    border-right-color: $loading-circle-line-color;
+    border-radius: 100%;
+    animation: circle $loading-circle-animation-duration linear infinite;
+  }
+
+  .loading-message {
+    margin-top: $loading-circle-height * .5 + rem(16px);
+  }
+}
+
 @keyframes cyclone {
   0% {
     transform: rotate(0deg);
@@ -261,5 +278,15 @@
 
   100% {
     transform: rotate(90deg);
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
