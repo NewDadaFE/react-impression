@@ -31,7 +31,7 @@ export default class InlineSelect extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 选中回调函数
+     * 选中回调，参数列表：value，text，index
      */
     onChange: PropTypes.func,
 

@@ -3,6 +3,16 @@
 **基本用法**
 
 ```js
+<DatePicker className='offset-r-lg' type='year' />
+<DatePicker className='offset-r-lg' type='month' />
+<DatePicker />
+```
+
+#### 配合 Input 组件使用
+
+**基本用法**
+
+```js
 <Row>
   <Col>
     <Form>

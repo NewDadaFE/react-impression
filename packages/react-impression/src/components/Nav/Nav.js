@@ -54,7 +54,7 @@ export default class Nav extends React.PureComponent {
     activeKey: PropTypes.any,
 
     /**
-     * 选中回调函数
+     * 选中回调，参数列表：eventKey
      */
     onSelect: PropTypes.func,
   }

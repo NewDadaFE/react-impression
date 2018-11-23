@@ -52,12 +52,12 @@ export default class Calendar extends React.Component {
     captionFormat: PropTypes.string,
 
     /**
-     * 一周第一天
+     * 指定一周开始是星期几
      */
     firstDayOfWeek: PropTypes.number,
 
     /**
-     * 周几
+     * 星期映射列表
      */
     weekdays: PropTypes.arrayOf(PropTypes.string),
 
@@ -77,12 +77,12 @@ export default class Calendar extends React.Component {
     cellRender: PropTypes.func,
 
     /**
-     * 时间单元格点击
+     * 时间单元格点击回调，参数列表：{year，month，day，date，inMonth，isToday}
      */
     onCellClick: PropTypes.func,
 
     /**
-     * 日历时间切换
+     * 日历时间切换回调，参数列表：prevMonthMoment
      */
     onDateChange: PropTypes.func,
   }

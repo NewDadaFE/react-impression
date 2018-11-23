@@ -1,4 +1,6 @@
 .datepicker {
+  display: inline-block;
+  vertical-align: top;
   z-index: $zindex-datepicker;
 }
 .datepicker-inner {

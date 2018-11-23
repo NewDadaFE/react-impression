@@ -25,22 +25,22 @@ export default class RadioGroup extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 设置默认是否选中
+     * 选中的值，设置即为木偶组件
      */
     value: PropTypes.any,
 
     /**
-     * 默认值
+     * 默认值，木偶组件无效
      */
     defaultValue: PropTypes.any,
 
     /**
-     * 状态变更回调函数
+     * 状态变更回调，参数列表：value，event
      */
     onChange: PropTypes.func,
 
     /**
-     * 是否可以点击
+     * 是否禁用
      */
     disabled: PropTypes.bool,
 

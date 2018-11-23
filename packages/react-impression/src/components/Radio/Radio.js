@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 export default class Radio extends React.PureComponent {
   static propTypes = {
     /**
-     * 名称
+     * 名称，获取方式：event.currentTarget.name
      */
     name: PropTypes.any,
 
     /**
-     * 返回值
+     * 状态变更的返回值
      */
     value: PropTypes.any,
 
@@ -30,12 +30,12 @@ export default class Radio extends React.PureComponent {
     defaultChecked: PropTypes.bool,
 
     /**
-     * 是否可以点击
+     * 是否禁用
      */
     disabled: PropTypes.bool,
 
     /**
-     * 状态变更回调函数
+     * 状态变更回调，参数列表：event，value
      */
     onChange: PropTypes.func,
 

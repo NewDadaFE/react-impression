@@ -20,7 +20,7 @@ export default class ButtonGroup extends React.PureComponent {
     activeKey: PropTypes.any,
 
     /**
-     * 选中回调
+     * 选中回调，参数列表：eventKey，event
      */
     onSelect: PropTypes.func,
 
