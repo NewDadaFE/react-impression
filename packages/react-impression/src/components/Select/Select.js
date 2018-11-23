@@ -377,7 +377,10 @@ export default class Select extends React.PureComponent {
 
   componentWillReceiveProps(props) {
     const { options } = this.state
-    if (props.value !== this.props.value) {
+    if (
+      JSON.parse(JSON.stringify(props.value)) !==
+      JSON.parse(JSON.stringify(this.props.value))
+    ) {
       this.handleInit()
       options.forEach(option => option.handleActive(props))
     }
