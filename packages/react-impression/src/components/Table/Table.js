@@ -99,6 +99,10 @@ export default class Table extends React.PureComponent {
   componentWillMount() {
     this.handleInt()
   }
+  /**
+   * @description 初始化
+   * @memberof Table
+   */
   handleInt = (nextColumns, nextChildren) => {
     const { columns, children } = this.props
     let columnList = []
@@ -173,6 +177,7 @@ export default class Table extends React.PureComponent {
       }
     }
   }
+
   componentDidMount() {
     const { rowSelection } = this.props
     if (!this.isPuppet || !rowSelection) return
@@ -182,6 +187,11 @@ export default class Table extends React.PureComponent {
     })
   }
 
+  /**
+   * @description 更新左右固定项的宽度
+   * @author nmg
+   * @memberof Table
+   */
   updateColumnsWidth() {
     const { fixLeftColumns, fixRightColumns } = this.state
     const { rowSelection } = this.props
@@ -207,6 +217,22 @@ export default class Table extends React.PureComponent {
       this.setState({ rightFixedWidth: rightFixedWidth })
     }
   }
+
+  equal = (a, b) => {
+    // 判断数组的长度
+    if (a.length !== b.length) {
+      return false
+    } else {
+      // 循环遍历数组的值进行比较
+      for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) {
+          return false
+        }
+      }
+      return true
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     const { rowSelection, columns, children } = nextProps
     const {
@@ -214,11 +240,7 @@ export default class Table extends React.PureComponent {
       columns: currentColumns,
       children: currentChildren,
     } = this.props
-    if (
-      columns &&
-      currentColumns &&
-      JSON.stringify(columns) !== JSON.stringify(currentColumns)
-    ) {
+    if (columns && currentColumns && !this.equal(columns, currentColumns)) {
       this.handleInt(columns, children)
     }
     if (
@@ -262,6 +284,7 @@ export default class Table extends React.PureComponent {
     })
     onChange(selectedRowKeys)
   }
+
   componentDidUpdate() {
     const { selectedRowKeys } = this.state
     const { data } = this.props
@@ -287,10 +310,19 @@ export default class Table extends React.PureComponent {
     }
   }
 
+  /**
+   * @description table的最大宽度，默认为100%
+   * @memberof Table
+   */
   getMax = max => {
     if (!max || !max.x) return { maxWidth: '100%' }
     if (max.x) return { maxWidth: max.x }
   }
+
+  /**
+   * @description 判断是否展示固定项侧阴影
+   * @memberof Table
+   */
   handleScroll() {
     const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
     const scrollWidth = this.scrollEl.scrollLeft
@@ -304,6 +336,11 @@ export default class Table extends React.PureComponent {
       this.setState({ isEnd: true, isStart: false })
     }
   }
+
+  /**
+   * @description 鼠标移入tr，联动展示hover效果
+   * @memberof Table
+   */
   handleHover = index => {
     const { fixed } = this.state
     if (fixed) {
@@ -316,6 +353,11 @@ export default class Table extends React.PureComponent {
       })
     }
   }
+
+  /**
+   * @description 多选时，该行tr选中激活状态
+   * @memberof Table
+   */
   handleSelected = index => {
     const tbody = this.tableWrap.querySelectorAll('tbody')
     tbody.forEach(item => {
@@ -325,6 +367,11 @@ export default class Table extends React.PureComponent {
       newRow && this.addClass(newRow, 'is-selected')
     })
   }
+
+  /**
+   * @description 取消勾选时，去掉该行被选中状态样式
+   * @memberof Table
+   */
   handleNoSelect = index => {
     const tbody = this.tableWrap.querySelectorAll('tbody')
     tbody.forEach(item => {
@@ -334,6 +381,11 @@ export default class Table extends React.PureComponent {
       newRow && this.removeClass(newRow, 'is-selected')
     })
   }
+
+  /**
+   * @description 鼠标移出tr时，去掉hover效果
+   * @memberof Table
+   */
   handleHoverLeave = index => {
     const { fixed } = this.state
     if (fixed) {
@@ -346,6 +398,12 @@ export default class Table extends React.PureComponent {
       })
     }
   }
+  /**
+   * @description 工具方法，判断某元素是否存在某class
+   * @param {*} el
+   * @param {*} cls
+   * @memberof Table
+   */
   hasClass(el, cls) {
     if (!el || !cls) return false
     if (cls.indexOf(' ') !== -1) {
@@ -357,6 +415,13 @@ export default class Table extends React.PureComponent {
       return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1
     }
   }
+
+  /**
+   * @description 工具方法，为某元素添加某class
+   * @param {*} el
+   * @param {*} cls
+   * @memberof Table
+   */
   addClass(el, cls) {
     if (!el) return
     const curClass = el.className
@@ -373,6 +438,13 @@ export default class Table extends React.PureComponent {
       el.className = curClass
     }
   }
+
+  /**
+   * @description 工具方法，给某元素移除某class
+   * @param {*} el
+   * @param {*} cls
+   * @memberof Table
+   */
   removeClass(el, cls) {
     if (!el || !cls) return
     const classes = cls.split(' ')
@@ -420,6 +492,11 @@ export default class Table extends React.PureComponent {
       onSelect(status, index, item)
     }
   }
+
+  /**
+   * @description 全选事件
+   * @memberof Table
+   */
   handleCheckOnSelectAll = () => {
     const { checkAll } = this.state
     const { data } = this.props
@@ -474,6 +551,11 @@ export default class Table extends React.PureComponent {
       onSelectAll(checkAll, selectedRowKeys)
     }
   }
+
+  /**
+   * @description 当前页码改变事件
+   * @memberof Table
+   */
   handlePaginationChange = pagNo => {
     const { pagination, rowSelection } = this.props
     if (pagination && pagination.onSelect) {
@@ -485,6 +567,11 @@ export default class Table extends React.PureComponent {
       onSelect(pagNo)
     }
   }
+
+  /**
+   * @description 页码组件渲染函数
+   * @memberof Table
+   */
   renderPagination = () => {
     const { pagination } = this.props
 
@@ -501,6 +588,7 @@ export default class Table extends React.PureComponent {
       </div>
     )
   }
+
   render() {
     const {
       data,
