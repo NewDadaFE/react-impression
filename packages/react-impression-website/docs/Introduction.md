@@ -1,4 +1,4 @@
-React Impression 是一个基于**达达-京东到家**后台产品视觉设计规范的 React UI 组件库。<br>
+React Impression 是一个后台产品 React UI 组件库。<br>
 目的在于减少开发者大量重复工作，帮助开发者快速构建企业后台产品的 WEB 页面，提高工作效率。<br>
 
 ### 快速上手
