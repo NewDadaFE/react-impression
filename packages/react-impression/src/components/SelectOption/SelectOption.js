@@ -101,6 +101,7 @@ export default class SelectOption extends React.PureComponent {
             this.props.value,
             props ? props.value : this.parent().props.value
           ),
+        visible: true,
       })
     } else {
       this.setState({
@@ -110,6 +111,7 @@ export default class SelectOption extends React.PureComponent {
             this.props.value,
             props ? props.value : this.parent().props.value
           ),
+        visible: true,
       })
     }
   }
