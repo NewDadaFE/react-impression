@@ -266,7 +266,7 @@
   white-space: nowrap;
   color: $gray-base;
   padding: $input-padding-y $input-padding-x-lg;
-
+  line-height: $select-option-inline-height;
   &:hover {
     background-color: $select-option-hover-bg;
   }
