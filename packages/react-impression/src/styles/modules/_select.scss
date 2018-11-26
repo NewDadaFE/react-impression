@@ -7,6 +7,7 @@
   display: inline-block;
   height: 2.857rem;
   width: 16rem;
+  line-height: $select-option-inline-height;
   &.disabled {
     &,
     .select-addon,
