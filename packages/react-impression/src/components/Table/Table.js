@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import TableBody from '../TableBody'
 import TableHead from '../TableHead'
 import Pagination from '../Pagination'
-import R from 'ramda'
+import * as R from 'ramda'
 
 export default class Table extends React.PureComponent {
   constructor(props, context) {
