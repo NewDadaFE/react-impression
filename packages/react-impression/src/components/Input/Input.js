@@ -17,7 +17,6 @@ export default class Input extends React.PureComponent {
       showClear: false,
     }
     this.datePopper = null
-    this.timePoper = null
   }
   static propTypes = {
     /**
@@ -153,32 +152,17 @@ export default class Input extends React.PureComponent {
           showClear: false,
         },
         () => {
-          if (this.datepicker) {
-            this.datePopper = new Popper(
-              this.refMain,
-              this.datepicker.refs.container,
-              {
-                positionFixed: true,
-                placement: 'bottom-start',
-                modifiers: {
-                  offset: { offset: '0, 10' },
-                },
-              }
-            )
-          }
-          if (this.dateTimepicker) {
-            this.timePopper = new Popper(
-              this.refMain,
-              this.dateTimepicker.refs.container,
-              {
-                placement: 'bottom-start',
-                positionFixed: true,
-                modifiers: {
-                  offset: { offset: '0, 10' },
-                },
-              }
-            )
-          }
+          this.datePopper = new Popper(
+            this.refMain,
+            this.datepicker.refs.container,
+            {
+              positionFixed: true,
+              placement: 'bottom-start',
+              modifiers: {
+                offset: { offset: '0, 10' },
+              },
+            }
+          )
         }
       )
   }
@@ -195,7 +179,6 @@ export default class Input extends React.PureComponent {
       },
       () => {
         this.datePopper && this.datePopper.destroy()
-        this.timePopper && this.timePopper.destroy()
       }
     )
   }
@@ -408,7 +391,7 @@ export default class Input extends React.PureComponent {
               value={this.refMain && this.refMain.value}
               onChange={value => onChange && onChange(value)}
               onSelect={this.handleSelectTime}
-              ref={ref => (this.dateTimepicker = ref)}
+              ref={ref => (this.datepicker = ref)}
             />
           </div>
         )
