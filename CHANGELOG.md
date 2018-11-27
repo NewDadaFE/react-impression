@@ -1,3 +1,38 @@
+## 2.0.4
+
+React Impression 2.0.4 新增了 TimeSelect 组件，修复了 Select、Table 等组件的已知漏洞。详细变更情况如下：
+
+### 新增组件
+
+* 新增 **TimeSelect 组件** [详情](https://newdadafe.github.io/react-impression/#timeselect)
+
+### API 变更
+
+* 移除 **Content 组件** 去掉组件动画相关属性
+
+### 问题修复
+
+* 修复 **Input 组件** 宽度固定 16rem
+* 修复 **Select 组件** SelectOption 的显示位置问题
+* 修复 **Select 组件** SelectOption 设置默认行高
+* 修复 **Table 组件** column prop，Header 属性的值不能是组件
+* 修复 **Select 组件** value 为数组时的问题
+
+### 组件重构
+
+* 重构 **Tooltip 组件** [详情](https://newdadafe.github.io/react-impression/#tooltip)
+  * 使用 popper 来定位
+
+## 2.0.3
+
+React Impression 2.0.3 修复了之前版本中的已知漏洞。详细变更情况如下：
+
+### 问题修复
+
+* 修复 **Select 组件** 设置宽度不生效问题
+* 修复 **Sidebar 组件** 侧边栏滚动条初始化问题
+* 修复 **Input 组件** 修复 date 类型时组件被遮挡问题
+
 ## 2.0.2
 
 React Impression 2.0.2 新增了 Steps 组件，在 Card、Loading 等组件中添加了更丰富的属性，并修复了之前版本中的已知漏洞。详细变更情况如下：
