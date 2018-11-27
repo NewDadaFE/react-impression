@@ -285,7 +285,7 @@ export default class Select extends React.PureComponent {
             positionFixed: true,
             placement: 'bottom-start',
             modifiers: {
-              offset: { offset: `0,10` },
+              offset: { offset: '0, 10' },
             },
           })
         } else {
