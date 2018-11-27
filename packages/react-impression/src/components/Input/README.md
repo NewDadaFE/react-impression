@@ -253,6 +253,12 @@ class Example extends React.Component {
 </Row>
 ```
 
+**椭圆形外观**
+
+```js
+<Input placeholder="请输入内容" pill />
+```
+
 **自适应尺寸**
 
 ```js

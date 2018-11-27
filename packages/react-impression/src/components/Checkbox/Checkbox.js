@@ -15,7 +15,7 @@ export default class Checkbox extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 是否可以点击
+     * 是否禁用
      */
     disabled: PropTypes.bool,
 
@@ -30,12 +30,12 @@ export default class Checkbox extends React.PureComponent {
     checked: PropTypes.bool,
 
     /**
-     * 状态变更回调
+     * 状态变更回调，参数列表：event，value
      */
     onChange: PropTypes.func,
 
     /**
-     * checkbox选项对应的值
+     * 状态变更的返回值
      */
     value: PropTypes.any,
 

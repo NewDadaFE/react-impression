@@ -88,12 +88,12 @@ export default class Select extends React.PureComponent {
     placeholder: PropTypes.string,
 
     /**
-     * 状态变更回调函数
+     * 状态变更回调，参数列表：value，name，index
      */
     onChange: PropTypes.func,
 
     /**
-     * 多选模式下移除tag回调函数
+     * 多选模式下移除tag回调，参数列表：value
      */
     onDelete: PropTypes.func,
 
