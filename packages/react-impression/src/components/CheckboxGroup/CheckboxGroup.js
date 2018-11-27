@@ -30,22 +30,22 @@ export default class CheckboxGroup extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 选中的值
+     * 选中的值，设置即为木偶组件
      */
     value: PropTypes.array,
 
     /**
-     * 默认选中的值
+     * 默认选中的值，木偶组件无效
      */
     defaultValue: PropTypes.array,
 
     /**
-     * 状态变更回调
+     * 状态变更回调，参数列表：value，event
      */
     onChange: PropTypes.func,
 
     /**
-     * 是否disabled
+     * 是否禁用
      */
     disabled: PropTypes.bool,
 

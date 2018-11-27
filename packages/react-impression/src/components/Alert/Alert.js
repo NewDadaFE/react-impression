@@ -34,7 +34,7 @@ export default class Alert extends React.PureComponent {
     type: PropTypes.oneOf(['warning', 'danger']),
 
     /**
-     * 点击确定的回调
+     * 点击确定回调
      */
     onClick: PropTypes.func,
 
