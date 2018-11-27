@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import R from 'ramda'
 import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
 import Tag from '../Tag/index'
@@ -377,7 +378,7 @@ export default class Select extends React.PureComponent {
 
   componentWillReceiveProps(props) {
     const { options } = this.state
-    if (JSON.stringify(props.value) !== JSON.stringify(this.props.value)) {
+    if (!R.equals(props.value, this.props.value)) {
       this.handleInit()
       options.forEach(option => option.handleActive(props))
     }
