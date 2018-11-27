@@ -211,6 +211,9 @@ export default class Input extends React.PureComponent {
       return
     }
 
+    this.setState({
+      showDatePicker: false,
+    })
     this.refMain && (this.refMain.value = '')
     onChange && onChange('')
   }

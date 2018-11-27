@@ -8,8 +8,10 @@ export default class TimeSelect extends React.PureComponent {
   state = {
     hour: this.props.value ? this.props.value.split(':')[0] : '',
     minute: this.props.value ? this.props.value.split(':')[1] : '',
-    curentHour: this.props.value ? this.props.value.split(':')[0] : '',
-    curentMinute: this.props.value ? this.props.value.split(':')[1] : '',
+    second: this.props.value ? this.props.value.split(':')[1] : '',
+    currentHour: this.props.value ? this.props.value.split(':')[0] : '',
+    currentMinute: this.props.value ? this.props.value.split(':')[1] : '',
+    currentSecond: this.props.value ? this.props.value.split(':')[2] : '',
   }
   static propTypes = {
     /**
@@ -37,9 +39,18 @@ export default class TimeSelect extends React.PureComponent {
     window.requestAnimationFrame(() => {
       this.hoursScrollbar = new PerfectScrollbar(this.hourContainer, {
         suppressScrollX: true,
+        mixScrollbarLength: 34,
+        maxScrollbarLength: 34,
       })
       this.minuteScrollbar = new PerfectScrollbar(this.minuteContainer, {
         suppressScrollX: true,
+        mixScrollbarLength: 34,
+        maxScrollbarLength: 34,
+      })
+      this.secondScrollbar = new PerfectScrollbar(this.secondContainer, {
+        suppressScrollX: true,
+        mixScrollbarLength: 34,
+        maxScrollbarLength: 34,
       })
     })
   }
@@ -49,13 +60,16 @@ export default class TimeSelect extends React.PureComponent {
     this.hoursScrollbar = null
     this.minuteScrollbar.destroy()
     this.minuteScrollbar = null
+    this.secondScrollbar.destroy()
+    this.secondScrollbar = null
   }
   componentWillReceiveProps(nextProps) {
     const { value } = nextProps
 
     this.setState({
-      curentHour: value ? value.split(':')[0] : '',
-      curentMinute: value ? value.split(':')[1] : '',
+      currentHour: value ? value.split(':')[0] : '',
+      currentMinute: value ? value.split(':')[1] : '',
+      currentSecond: value ? value.split(':')[2] : '',
     })
   }
 
@@ -77,6 +91,15 @@ export default class TimeSelect extends React.PureComponent {
   handleUpdateMinuteScroll = () => {
     window.requestAnimationFrame(() => {
       this.minuteScrollbar && this.minuteScrollbar.update()
+    })
+  }
+  /**
+   * @description  延迟更新秒滚动条
+   * @memberof TimeSelect
+   */
+  handleUpdateSecondScroll = () => {
+    window.requestAnimationFrame(() => {
+      this.secondScrollbar && this.secondScrollbar.update()
     })
   }
 
@@ -107,19 +130,39 @@ export default class TimeSelect extends React.PureComponent {
   }
 
   /**
+   * @description 秒array
+   * @memberof TimeSelect
+   */
+  get secondList() {
+    return Array.from({ length: 60 }, (v, k) => {
+      if (k < 10) {
+        return `0${k}`
+      }
+      return `${k}`
+    })
+  }
+
+  /**
    * @description 小时点击事件
    * @memberof TimeSelect
    */
-  handleSetHour = (curentHour, e) => {
-    this.setState({ curentHour }, this.handleSave)
+  handleSetHour = (currentHour, e) => {
+    this.setState({ currentHour }, this.handleSave)
   }
 
   /**
    * @description 分钟点击事件
    * @memberof TimeSelect
    */
-  handleSetMinute = (curentMinute, e) => {
-    this.setState({ curentMinute }, this.handleSave)
+  handleSetMinute = (currentMinute, e) => {
+    this.setState({ currentMinute }, this.handleSave)
+  }
+  /**
+   * @description 秒点击事件
+   * @memberof TimeSelect
+   */
+  handleSetSecond = (currentSecond, e) => {
+    this.setState({ currentSecond }, this.handleSave)
   }
 
   /**
@@ -127,16 +170,16 @@ export default class TimeSelect extends React.PureComponent {
    * @memberof TimeSelect
    */
   handleSave = () => {
-    const { curentHour, curentMinute } = this.state
+    const { currentHour, currentMinute, currentSecond } = this.state
     const { onChange, onSelect } = this.props
-    if (!curentHour || !curentMinute) return
-    const result = `${curentHour}:${curentMinute}`
+    if (!currentHour || !currentMinute || !currentSecond) return
+    const result = `${currentHour}:${currentMinute}:${currentSecond}`
     onSelect && onSelect(result)
     onChange && onChange(result)
   }
 
   render() {
-    const { curentHour, curentMinute } = this.state
+    const { currentHour, currentMinute, currentSecond } = this.state
     const { className } = this.props
     return (
       <div className={classnames('time-select-out', className)} ref='container'>
@@ -151,7 +194,7 @@ export default class TimeSelect extends React.PureComponent {
                 key={`hour${item}`}
                 className={classnames('time-select-wrap-inner', {
                   active:
-                    curentHour && curentHour.toString() === item.toString(),
+                    currentHour && currentHour.toString() === item.toString(),
                 })}
                 onClick={e => this.handleSetHour(item, e)}
               >
@@ -169,9 +212,29 @@ export default class TimeSelect extends React.PureComponent {
                 key={`minute${min}`}
                 className={classnames('time-select-wrap-inner', {
                   active:
-                    curentMinute && curentMinute.toString() === min.toString(),
+                    currentMinute &&
+                    currentMinute.toString() === min.toString(),
                 })}
                 onClick={e => this.handleSetMinute(min, e)}
+              >
+                {min}
+              </div>
+            ))}
+          </div>
+          <div
+            className='time-select-wrap'
+            ref={div => (this.secondContainer = div)}
+            onClick={this.handleUpdateMinuteScroll}
+          >
+            {this.secondList.map(min => (
+              <div
+                key={`second${min}`}
+                className={classnames('time-select-wrap-inner', {
+                  active:
+                    currentSecond &&
+                    currentSecond.toString() === min.toString(),
+                })}
+                onClick={e => this.handleSetSecond(min, e)}
               >
                 {min}
               </div>
