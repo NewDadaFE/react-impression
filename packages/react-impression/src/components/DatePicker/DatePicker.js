@@ -472,7 +472,6 @@ export default class DatePicker extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     const { value } = nextProps
     const { format } = this.state
-
     this.setState({
       checkedDay: value ? moment(value, format) : undefined,
     })
@@ -490,7 +489,6 @@ export default class DatePicker extends React.PureComponent {
     const { showToday, todayText, months, className } = this.props
     const currentYear = currentMoment.format(FORMAT.YEAR)
     const currentMonth = currentMoment.format(FORMAT.MONTH)
-
     return (
       <div className={classnames('datepicker', className)} ref='container'>
         <div className='datepicker-inner'>

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import DatePicker from '../DatePicker'
 import Upload from '../Upload'
 import Popper from 'popper.js'
+import TimeSelect from '../TimeSelect'
 import * as System from '../../utils/system'
 
 export default class Input extends React.PureComponent {
@@ -29,7 +30,7 @@ export default class Input extends React.PureComponent {
     style: PropTypes.object,
 
     /**
-     * 设置输入框类型
+     * 设置输入框类型，time为时分控件，second为时分秒控件
      */
     type: PropTypes.oneOf([
       'text',
@@ -41,6 +42,8 @@ export default class Input extends React.PureComponent {
       'year',
       'search',
       'textarea',
+      'time',
+      'second',
     ]),
 
     /**
@@ -192,6 +195,9 @@ export default class Input extends React.PureComponent {
       return
     }
 
+    this.setState({
+      showDatePicker: false,
+    })
     this.refMain && (this.refMain.value = '')
     onChange && onChange('')
   }
@@ -201,6 +207,18 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   handleSelectDate = value => {
+    this.refMain && (this.refMain.value = value)
+
+    this.setState({
+      showDatePicker: false,
+      showClear: false,
+    })
+  }
+  /**
+   * 选中时间
+   * @memberof Input
+   */
+  handleSelectTime = value => {
     this.refMain && (this.refMain.value = value)
 
     this.setState({
@@ -322,6 +340,61 @@ export default class Input extends React.PureComponent {
               onChange={value => onChange && onChange(value)}
               onSelect={this.handleSelectDate}
               ref={ref => (this.datepicker = ref)}
+            />
+          </div>
+        )
+      case 'time':
+      case 'second':
+        return (
+          <div
+            className={classnames('input', className)}
+            ref='container'
+            onMouseEnter={this.handleShowClear}
+            onMouseLeave={this.handleHideClear}
+          >
+            <input
+              type='text'
+              ref={ref => (this.refMain = ref)}
+              value={value}
+              defaultValue={defaultValue}
+              className={classnames(
+                'form-control',
+                size && `form-control-${size}`,
+                pillClass,
+                'input-field',
+                'input-field-addon'
+              )}
+              readOnly
+              disabled={disabled}
+              placeholder={placeholder}
+              onClick={this.handleShowDatePicker}
+              style={style}
+            />
+
+            {clearable &&
+              showClear && (
+              <i
+                className='fa fa-times input-addon'
+                onClick={this.handleClearDateInput}
+              />
+            )}
+
+            {(!showClear || !clearable) && (
+              <i
+                className='fa fa-clock-o input-addon '
+                onClick={this.handleShowDatePicker}
+              />
+            )}
+
+            <TimeSelect
+              {...others}
+              type={type}
+              className={classnames({ hidden: !showDatePicker })}
+              value={this.refMain && this.refMain.value}
+              onChange={value => onChange && onChange(value)}
+              onSelect={this.handleSelectTime}
+              ref={ref => (this.datepicker = ref)}
+              type={type}
             />
           </div>
         )
