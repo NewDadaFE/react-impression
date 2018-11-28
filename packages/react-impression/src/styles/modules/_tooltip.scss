@@ -1,21 +1,8 @@
 // Base class
 .tooltip {
-  position: fixed;
   z-index: $zindex-tooltip;
-  display: block;
-  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
-  // So reset our font and text properties to avoid inheriting weird values.
-  font-size: $font-size-base;
-  // Allow breaking very long words so they don't overflow the tooltip's bounds
-  word-wrap: break-word;
-  opacity: 0;
-  transition: $tooltip-transition;
 
-  &.in {
-    opacity: $tooltip-opacity;
-  }
-
-  &.tooltip-top {
+  &[x-placement^="top"] {
     padding-bottom: $tooltip-arrow-width;
 
     .tooltip-arrow {
@@ -27,7 +14,7 @@
     }
   }
 
-  &.tooltip-right {
+  &[x-placement^="right"] {
     padding-left: $tooltip-arrow-width;
 
     .tooltip-arrow {
@@ -35,12 +22,12 @@
       left: 0;
       margin-top: -$tooltip-arrow-width;
       border-width: $tooltip-arrow-width $tooltip-arrow-width
-        $tooltip-arrow-width 0;
+      $tooltip-arrow-width 0;
       border-right-color: $tooltip-arrow-color;
     }
   }
 
-  &.tooltip-bottom {
+  &[x-placement^="bottom"] {
     padding-top: $tooltip-arrow-width;
 
     .tooltip-arrow {
@@ -52,7 +39,7 @@
     }
   }
 
-  &.tooltip-left {
+  &[x-placement^="left"] {
     padding-right: $tooltip-arrow-width;
 
     .tooltip-arrow {
@@ -60,14 +47,22 @@
       right: 0;
       margin-top: -$tooltip-arrow-width;
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width
-        $tooltip-arrow-width;
+      $tooltip-arrow-width;
       border-left-color: $tooltip-arrow-color;
     }
   }
 }
+.tooltip-inner {
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  font-size: $font-size-base;
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
+  animation: $tooltip-animation;
+}
 
 // Wrapper for the tooltip content
-.tooltip-inner {
+.tooltip-text {
   max-width: $tooltip-max-width;
   padding: $tooltip-padding-y $tooltip-padding-x;
   color: $tooltip-color;
@@ -84,4 +79,13 @@
   height: 0;
   border-color: transparent;
   border-style: solid;
+}
+@keyframes tooltipFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: $tooltip-opacity;
+  }
 }
