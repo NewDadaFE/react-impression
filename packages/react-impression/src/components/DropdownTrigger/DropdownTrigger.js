@@ -49,7 +49,7 @@ DropdownTrigger.propTypes = {
   trigger: PropTypes.oneOf(['click', 'hover']),
 
   /**
-   * 切换回调函数
+   * 切换回调
    */
   toggleMenu: PropTypes.func,
 }

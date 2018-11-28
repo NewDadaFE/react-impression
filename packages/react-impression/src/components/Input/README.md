@@ -20,7 +20,7 @@ class ModalExample extends React.Component {
           <Form>
             <FormGroup>
               <label>基础:</label>
-              <Input type="text" style={{ width: 224 }} />
+              <Input type="text" />
             </FormGroup>
           </Form>
         </Col>
@@ -28,12 +28,7 @@ class ModalExample extends React.Component {
           <Form>
             <FormGroup>
               <label>可清除:</label>
-              <Input
-                type="text"
-                ref="clearInput"
-                defaultValue="内容"
-                style={{ width: 224 }}
-              >
+              <Input type="text" ref="clearInput" defaultValue="内容">
                 <Icon type="times" onClick={this.clearInputHandle} />
               </Input>
             </FormGroup>
@@ -54,7 +49,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>基础:</label>
-        <Input type="date" style={{ width: 224 }} />
+        <Input type="date" />
       </FormGroup>
     </Form>
   </Col>
@@ -62,7 +57,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>默认值:</label>
-        <Input type="date" defaultValue="2016-05-29" style={{ width: 224 }} />
+        <Input type="date" defaultValue="2016-05-29" />
       </FormGroup>
     </Form>
   </Col>
@@ -70,12 +65,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>禁用状态:</label>
-        <Input
-          type="date"
-          defaultValue="2016-05-29"
-          disabled
-          style={{ width: 224 }}
-        />
+        <Input type="date" defaultValue="2016-05-29" disabled />
       </FormGroup>
     </Form>
   </Col>
@@ -252,15 +242,21 @@ class Example extends React.Component {
 ```js
 <Row>
   <Col>
-    <Input size="sm" placeholder="小尺寸" style={{ width: 224 }} />
+    <Input size="sm" placeholder="小尺寸" />
   </Col>
   <Col>
-    <Input placeholder="默认尺寸" style={{ width: 224 }} />
+    <Input placeholder="默认尺寸" />
   </Col>
   <Col>
-    <Input size="lg" placeholder="大尺寸" style={{ width: 224 }} />
+    <Input size="lg" placeholder="大尺寸" />
   </Col>
 </Row>
+```
+
+**椭圆形外观**
+
+```js
+<Input placeholder="请输入内容" pill />
 ```
 
 **自适应尺寸**

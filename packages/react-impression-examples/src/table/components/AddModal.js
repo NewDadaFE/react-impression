@@ -48,8 +48,8 @@ export default class AddModal extends React.Component {
               </Col>
               <Col col='10'>
                 <RadioGroup style={{ lineHeight: '33px' }}>
-                  <Radio value={1}>物流商户</Radio>
-                  <Radio value={2}>达达骑士</Radio>
+                  <Radio value={1}>中级</Radio>
+                  <Radio value={2}>新手</Radio>
                 </RadioGroup>
               </Col>
             </FormGroup>
@@ -61,7 +61,7 @@ export default class AddModal extends React.Component {
                 <RadioGroup style={{ lineHeight: '33px' }}>
                   <Radio value={11}>拜访积分</Radio>
                   <Radio value={12}>培训积分</Radio>
-                  <Radio value={13}>接单积分</Radio>
+                  <Radio value={13}>上岗积分</Radio>
                 </RadioGroup>
               </Col>
             </FormGroup>

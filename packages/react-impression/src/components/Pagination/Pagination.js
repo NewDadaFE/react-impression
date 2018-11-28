@@ -25,7 +25,7 @@ export default class Pagination extends React.PureComponent {
      */
     nextContent: PropTypes.node,
     /**
-     * 选中回调函数
+     * 选中回调，参数列表：activePage
      */
     onSelect: PropTypes.func,
     /**

@@ -10,7 +10,7 @@ form {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: $input-width;
   padding: $input-padding-y $input-padding-x;
   font-size: $font-size-root;
   line-height: $input-line-height;
@@ -180,7 +180,7 @@ input[type='month'] {
   margin: 0;
 
   > :not(:last-child) {
-    margin-right: $spacer-x * 1.5;
+    margin-right: $form-group-inline-margin-right;
   }
 
   .form-group {
@@ -208,7 +208,6 @@ input[type='month'] {
   // Allow folks to *not* use `.form-group`
   .form-control {
     display: inline-block;
-    width: auto; // Prevent labels from stacking above inputs in `.form-group`
     vertical-align: middle;
   }
 
@@ -261,5 +260,8 @@ input[type='month'] {
     &:last-child {
       margin-bottom: 0;
     }
+  }
+  .form-control {
+    width: 100%;
   }
 }

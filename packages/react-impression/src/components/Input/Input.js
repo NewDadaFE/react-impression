@@ -67,7 +67,7 @@ export default class Input extends React.PureComponent {
      * 是否不可选
      */
     disabled: PropTypes.bool,
-    // 子元素只能为节点
+
     /**
      * 子组件
      */
@@ -79,12 +79,12 @@ export default class Input extends React.PureComponent {
     pill: PropTypes.bool,
 
     /**
-     * 点击事件
+     * 点击回调
      */
     onClick: PropTypes.func,
 
     /**
-     * 更改事件
+     * 内容变更回调，参数列表：value，event（日期类型无event参数）
      */
     onChange: PropTypes.func,
 
