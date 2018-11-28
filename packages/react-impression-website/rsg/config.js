@@ -133,6 +133,9 @@ module.exports = {
     TableRenderer: resolveWebsite('rsg/components/TableRenderer'),
     PlaygroundRenderer: resolveWebsite('rsg/components/PlaygroundRenderer'),
     StyleGuideRenderer: resolveWebsite('rsg/components/StyleGuideRenderer'),
+    ComponentsListRenderer: resolveWebsite(
+      'rsg/components/ComponentsListRenderer'
+    ),
   },
   webpackConfig,
 }
