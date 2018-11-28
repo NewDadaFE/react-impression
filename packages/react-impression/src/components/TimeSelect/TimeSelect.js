@@ -15,17 +15,17 @@ export default class TimeSelect extends React.PureComponent {
   }
   static propTypes = {
     /**
-     * 时间
+     * 选中时间值
      */
     value: PropTypes.string,
 
     /**
-     * 修改选中时间
+     * 选中后回调
      */
     onChange: PropTypes.func,
 
     /**
-     * 选中时间
+     * 选中时间回调
      */
     onSelect: PropTypes.func,
 
@@ -33,9 +33,15 @@ export default class TimeSelect extends React.PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+
+    /**
+     * 时间控件类型
+     */
+    type: PropTypes.oneOf(['time', 'second']),
   }
 
   componentDidMount() {
+    const { type } = this.props
     window.requestAnimationFrame(() => {
       this.hoursScrollbar = new PerfectScrollbar(this.hourContainer, {
         suppressScrollX: true,
@@ -47,25 +53,29 @@ export default class TimeSelect extends React.PureComponent {
         mixScrollbarLength: 34,
         maxScrollbarLength: 34,
       })
-      this.secondScrollbar = new PerfectScrollbar(this.secondContainer, {
-        suppressScrollX: true,
-        mixScrollbarLength: 34,
-        maxScrollbarLength: 34,
-      })
+      if (type === 'second') {
+        this.secondScrollbar = new PerfectScrollbar(this.secondContainer, {
+          suppressScrollX: true,
+          mixScrollbarLength: 34,
+          maxScrollbarLength: 34,
+        })
+      }
     })
   }
 
   componentWillUnmount() {
+    const { type } = this.props
     this.hoursScrollbar.destroy()
     this.hoursScrollbar = null
     this.minuteScrollbar.destroy()
     this.minuteScrollbar = null
-    this.secondScrollbar.destroy()
-    this.secondScrollbar = null
+    if (type === 'second') {
+      this.secondScrollbar.destroy()
+      this.secondScrollbar = null
+    }
   }
   componentWillReceiveProps(nextProps) {
     const { value } = nextProps
-
     this.setState({
       currentHour: value ? value.split(':')[0] : '',
       currentMinute: value ? value.split(':')[1] : '',
@@ -171,16 +181,22 @@ export default class TimeSelect extends React.PureComponent {
    */
   handleSave = () => {
     const { currentHour, currentMinute, currentSecond } = this.state
-    const { onChange, onSelect } = this.props
-    if (!currentHour || !currentMinute || !currentSecond) return
-    const result = `${currentHour}:${currentMinute}:${currentSecond}`
+    const { onChange, onSelect, type } = this.props
+    if (!currentHour || !currentMinute || (!currentSecond && type === 'second')) { return }
+    let result = ''
+    if (type === 'time') {
+      result = `${currentHour}:${currentMinute}`
+    }
+    if (type === 'second') {
+      result = `${currentHour}:${currentMinute}:${currentSecond}`
+    }
     onSelect && onSelect(result)
     onChange && onChange(result)
   }
 
   render() {
     const { currentHour, currentMinute, currentSecond } = this.state
-    const { className } = this.props
+    const { className, type } = this.props
     return (
       <div className={classnames('time-select-out', className)} ref='container'>
         <div className='time-select flex'>
@@ -221,25 +237,27 @@ export default class TimeSelect extends React.PureComponent {
               </div>
             ))}
           </div>
-          <div
-            className='time-select-wrap'
-            ref={div => (this.secondContainer = div)}
-            onClick={this.handleUpdateMinuteScroll}
-          >
-            {this.secondList.map(min => (
-              <div
-                key={`second${min}`}
-                className={classnames('time-select-wrap-inner', {
-                  active:
-                    currentSecond &&
-                    currentSecond.toString() === min.toString(),
-                })}
-                onClick={e => this.handleSetSecond(min, e)}
-              >
-                {min}
-              </div>
-            ))}
-          </div>
+          {type === 'second' && (
+            <div
+              className='time-select-wrap'
+              ref={div => (this.secondContainer = div)}
+              onClick={this.handleUpdateMinuteScroll}
+            >
+              {this.secondList.map(min => (
+                <div
+                  key={`second${min}`}
+                  className={classnames('time-select-wrap-inner', {
+                    active:
+                      currentSecond &&
+                      currentSecond.toString() === min.toString(),
+                  })}
+                  onClick={e => this.handleSetSecond(min, e)}
+                >
+                  {min}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     )

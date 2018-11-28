@@ -30,7 +30,7 @@ export default class Input extends React.PureComponent {
     style: PropTypes.object,
 
     /**
-     * 设置输入框类型
+     * 设置输入框类型，time为时分控件，second为时分秒控件
      */
     type: PropTypes.oneOf([
       'text',
@@ -43,6 +43,7 @@ export default class Input extends React.PureComponent {
       'search',
       'textarea',
       'time',
+      'second',
     ]),
 
     /**
@@ -343,6 +344,7 @@ export default class Input extends React.PureComponent {
           </div>
         )
       case 'time':
+      case 'second':
         return (
           <div
             className={classnames('input', className)}
@@ -392,6 +394,7 @@ export default class Input extends React.PureComponent {
               onChange={value => onChange && onChange(value)}
               onSelect={this.handleSelectTime}
               ref={ref => (this.datepicker = ref)}
+              type={type}
             />
           </div>
         )
