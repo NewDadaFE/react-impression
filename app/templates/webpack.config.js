@@ -66,7 +66,7 @@ const development = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         exclude: [paths.css, /node_modules/],
         use: [
           'style-loader',
@@ -83,7 +83,7 @@ const development = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         include: [paths.css, /node_modules/],
         use: [
           'style-loader',
@@ -144,7 +144,7 @@ const production = env => {
           loader: 'babel-loader',
         },
         {
-          test: /\.scss$/,
+          test: /\.s?css$/,
           exclude: [paths.css, /node_modules/],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -163,7 +163,7 @@ const production = env => {
           }),
         },
         {
-          test: /\.scss$/,
+          test: /\.s?css$/,
           include: [paths.css, /node_modules/],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
