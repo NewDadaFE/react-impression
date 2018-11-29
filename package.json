@@ -2,22 +2,8 @@
   "name": "eslint-config-react-impression",
   "version": "2.0.4",
   "description": "ESLint shareable config for React/JSX support.",
-  "repository": "NewDadaFE/eslint-config-react-impression",
+  "repository": "NewDadaFE/generator",
   "license": "MIT",
-  "engines": {
-    "node": ">=6"
-  },
-  "bugs": {
-    "url": "https://github.com/NewDadaFE/eslint-config-react-impression/issues"
-  },
-  "keywords": [
-    "eslint",
-    "config",
-    "impression",
-    "styleguide",
-    "javascript",
-    "eslintconfig"
-  ],
   "peerDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
