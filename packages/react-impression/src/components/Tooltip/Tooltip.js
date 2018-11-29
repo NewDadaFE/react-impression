@@ -1,8 +1,5 @@
 import React from 'react'
-import { Portal } from 'react-portal'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
-import Popper from 'popper.js'
 
 export default class Tooltip extends React.PureComponent {
   static propTypes = {
@@ -26,71 +23,90 @@ export default class Tooltip extends React.PureComponent {
     position: 'right',
   }
 
-  state = {
-    showTip: false,
+  createTooltip(targetRect) {
+    const { position, content } = this.props
+    const positionClass = `tooltip-${position}`
+    const tooltipNode = document.createElement('div')
+    const arrowNode = document.createElement('div')
+    const innerNode = document.createElement('div')
+
+    tooltipNode.className = `tooltip ${positionClass}`
+    arrowNode.className = 'tooltip-arrow'
+    innerNode.className = 'tooltip-inner'
+
+    innerNode.innerHTML = content
+    tooltipNode.appendChild(arrowNode)
+    tooltipNode.appendChild(innerNode)
+
+    document.body.appendChild(tooltipNode)
+
+    const tooltipRect = tooltipNode.getBoundingClientRect()
+
+    /**
+     * switch - 计算left、top
+     *
+     * @param  {type} position 位置
+     */
+    switch (position) {
+      case 'top':
+        tooltipNode.style.top = `${targetRect.top - tooltipRect.height - 10}px`
+        tooltipNode.style.left = `${targetRect.left -
+          (tooltipRect.width - targetRect.width) / 2}px`
+        break
+      case 'left':
+        tooltipNode.style.left = `${targetRect.left - tooltipRect.width - 10}px`
+        tooltipNode.style.top = `${targetRect.top +
+          (targetRect.height - tooltipRect.height) / 2}px`
+        break
+      case 'right':
+        tooltipNode.style.left = `${targetRect.left + targetRect.width + 10}px`
+        tooltipNode.style.top = `${targetRect.top +
+          (targetRect.height - tooltipRect.height) / 2}px`
+        break
+      default:
+        tooltipNode.style.top = `${targetRect.top + targetRect.height + 10}px`
+        tooltipNode.style.left = `${targetRect.left -
+          (tooltipRect.width - targetRect.width) / 2}px`
+        break
+    }
+
+    tooltipNode.classList.add('in')
+    this.tooltip = tooltipNode
   }
 
   /**
    * 显示tooltip
    */
   onMouseOver = event => {
-    const { position } = this.props
-    if (!this.popper) {
-      this.popper = new Popper(event.target, this.tooltip, {
-        positionFixed: true,
-        placement: position,
-        modifiers: {
-          offset: { offset: '0, 10' },
-        },
-      })
-    }
-    this.setState({ showTip: true })
+    const rect = event.target.getBoundingClientRect()
+
+    this.createTooltip(rect)
   }
 
   /**
    * 移除tooltip
    */
   onMouseOut = () => {
-    this.setState({ showTip: false })
+    document.body.removeChild(this.tooltip)
   }
-
-  componentWillUnmount() {
-    this.popper && this.popper.destroy()
-    this.popper = null
-  }
-
-  setTooltipRef = element => (this.tooltip = element)
 
   render() {
-    const { position, content, children } = this.props
+    const { children } = this.props
     const { onMouseOver, onMouseOut } = children.props
 
-    return (
-      <div>
-        {React.cloneElement(children, {
-          onMouseOver: event => {
-            onMouseOver && onMouseOver()
-            this.onMouseOver(event)
-          },
-          onMouseOut: event => {
-            onMouseOut && onMouseOut()
-            this.onMouseOut(event)
-          },
-        })}
-        <Portal>
-          <div
-            className={classnames('tooltip', {
-              hidden: !this.state.showTip,
-            })}
-            ref={this.setTooltipRef}
-          >
-            <div className={`tooltip-inner tooltip-${position}`}>
-              <div className='tooltip-arrow' />
-              <div className='tooltip-text'>{content}</div>
-            </div>
-          </div>
-        </Portal>
-      </div>
-    )
+    return React.cloneElement(children, {
+      onMouseOver: onMouseOver
+        ? event => {
+          onMouseOver()
+          this.onMouseOver(event)
+        }
+        : this.onMouseOver,
+      onMouseOut: onMouseOut
+        ? event => {
+          onMouseOut()
+          this.onMouseOut(event)
+        }
+        : this.onMouseOut,
+    })
   }
 }
