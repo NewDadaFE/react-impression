@@ -601,7 +601,7 @@ export default class Table extends React.PureComponent {
     return (
       <div>
         <div
-          className={classnames('table')}
+          className={classnames('table', className)}
           style={max}
           ref={div => {
             this.tableWrap = div
@@ -612,12 +612,9 @@ export default class Table extends React.PureComponent {
             ref={div => {
               this.scrollEl = div
             }}
-            className={classnames(
-              'table-wrap',
-              'table-scroll',
-              { 'table-border': border },
-              className
-            )}
+            className={classnames('table-wrap', 'table-scroll', {
+              'table-border': border,
+            })}
           >
             <div
               ref={div => {
