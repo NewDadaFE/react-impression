@@ -354,13 +354,13 @@ export default class Select extends React.PureComponent {
           options.forEach(option => option.handleActive())
           onChange &&
             result.value !== originValue &&
-            onChange(result.value, result.name, result)
+            onChange(result.value, result.name)
         }
       )
     } else {
       onChange &&
         result.value !== originValue &&
-        onChange(result.value, result.name, result)
+        onChange(result.value, result.name)
     }
     this.setState(
       {
