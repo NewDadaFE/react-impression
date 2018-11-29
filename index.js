@@ -4,8 +4,8 @@ module.exports = {
   rules: {
     'space-before-function-paren': [
       'error',
-      { anonymous: 'always', named: 'never', asyncArrow: 'always' }
+      { anonymous: 'always', named: 'never', asyncArrow: 'always' },
     ],
-    'comma-dangle': ['error', 'always-multiline']
-  }
+    'comma-dangle': ['error', 'always-multiline'],
+  },
 }
