@@ -1,18 +1,25 @@
 {
   "name": "generator-react-impression",
   "version": "2.1.5",
-  "license": "MIT",
+  "keywords": ["yeoman-generator"],
   "description": "Yeoman generator for React project.",
+  "repository": "NewDadaFE/generator",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.12.0",
+    "yarn": ">=1.9.4"
+  },
+  "files": ["generators"],
   "scripts": {
     "precommit": "lint-staged",
     "format": "prettier-eslint --write '**/*.{js,json}'"
   },
   "dependencies": {
-    "chalk": "~2.1.0",
+    "chalk": "^2.1.0",
     "mkdirp": "~0.5.1",
     "ramda": "~0.24.1",
-    "yeoman-generator": "~1.1.1",
-    "yosay": "~2.0.1"
+    "yeoman-generator": "^3.1.1",
+    "yosay": "^2.0.1"
   },
   "devDependencies": {
     "eslint-config-react-impression": "~2.0.0",
@@ -24,25 +31,6 @@
     "extends": "react-impression"
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "prettier-eslint --write",
-      "git add"
-    ]
-  },
-  "repository": "NewDadaFE/generator-react-impression",
-  "engines": {
-    "node": ">=6"
-  },
-  "files": [
-    "app"
-  ],
-  "keywords": [
-    "react",
-    "impression",
-    "es6",
-    "webpack",
-    "scss",
-    "yeoman-generator",
-    "generator-react-impression"
-  ]
+    "*.{js,json}": ["prettier-eslint --write", "git add"]
+  }
 }
