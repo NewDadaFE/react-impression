@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const Dotenv = require('dotenv-webpack')
 const config = require('./package.json')
 
 const paths = {
@@ -36,6 +37,7 @@ const common = {
     symlinks: false,
   },
   plugins: [
+    new Dotenv({ systemvars: true }),
     new HtmlWebpackPlugin({
       template: paths.html,
       inject: true,
@@ -205,7 +207,6 @@ const production = env => {
     plugins: [
       new CleanWebpackPlugin([paths.dist]),
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': '"production"',
         DEBUG: JSON.stringify(false),
       }),
       new UglifyJsPlugin({

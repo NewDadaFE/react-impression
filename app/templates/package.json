@@ -7,9 +7,9 @@
     "."
   ],
   "scripts": {
-    "start": "webpack-dev-server --env.development",
-    "debug": "webpack --env.debug --progress && node deploy.js",
-    "version": "webpack --env.production --progress && node deploy.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --env.development",
+    "debug": "cross-env NODE_ENV=production webpack --env.debug --progress && node deploy.js",
+    "version": "cross-env NODE_ENV=production webpack --env.production --progress && node deploy.js",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
