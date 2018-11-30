@@ -1,7 +1,9 @@
 {
   "name": "generator-react-impression",
   "version": "2.1.5",
-  "keywords": ["yeoman-generator"],
+  "keywords": [
+    "yeoman-generator"
+  ],
   "description": "Yeoman generator for React project.",
   "repository": "NewDadaFE/generator",
   "license": "MIT",
@@ -9,7 +11,9 @@
     "node": ">=8.12.0",
     "yarn": ">=1.9.4"
   },
-  "files": ["generators"],
+  "files": [
+    "generators"
+  ],
   "scripts": {
     "format": "eslint --fix app/**/*.js"
   },
@@ -36,7 +40,10 @@
     "prettier": "1.15.2"
   },
   "eslintConfig": {
-    "extends": ["react-impression", "plugin:prettier/recommended"]
+    "extends": [
+      "react-impression",
+      "plugin:prettier/recommended"
+    ]
   },
   "prettier": {
     "semi": false,

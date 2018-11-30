@@ -10,10 +10,12 @@ const Dotenv = require('dotenv-webpack')
 const config = require('./package.json')
 
 const paths = {
-  dist: path.resolve(__dirname, 'dist'),
-  src: path.resolve(__dirname, 'src'),
-  html: path.resolve(__dirname, 'src/index.html'),
-  css: path.resolve(__dirname, 'src/app/styles'),
+  input: {
+    html: path.resolve(__dirname, 'src/index.html'),
+    css: path.resolve(__dirname, 'src/app/styles'),
+    js: path.resolve(__dirname, 'src'),
+  },
+  output: path.resolve(__dirname, 'build'),
 }
 
 const names = {
@@ -25,21 +27,19 @@ const names = {
 
 const common = {
   output: {
-    path: paths.dist,
-    filename: names.js,
-    publicPath: '/',
+    path: paths.output,
   },
   resolve: {
     alias: {
-      src: paths.src,
+      src: paths.input.js,
     },
-    modules: [paths.src, 'node_modules'],
+    modules: [paths.input.js, 'node_modules'],
     symlinks: false,
   },
   plugins: [
     new Dotenv({ systemvars: true }),
     new HtmlWebpackPlugin({
-      template: paths.html,
+      template: paths.input.html,
       inject: true,
     }),
     new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
@@ -47,7 +47,11 @@ const common = {
 }
 
 const development = {
-  entry: ['react-hot-loader/patch', paths.src],
+  entry: ['react-hot-loader/patch', paths.input.js],
+  output: {
+    publicPath: '/',
+    filename: 'static/js/[name].js',
+  },
   module: {
     rules: [
       {
@@ -61,7 +65,7 @@ const development = {
       },
       {
         test: /\.js$/,
-        include: [paths.src, /whatwg-fetch/],
+        include: [paths.input.js, /whatwg-fetch/],
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
@@ -69,7 +73,7 @@ const development = {
       },
       {
         test: /\.s?css$/,
-        exclude: [paths.css, /node_modules/],
+        exclude: [paths.input.css, /node_modules/],
         use: [
           'style-loader',
           {
@@ -86,7 +90,7 @@ const development = {
       },
       {
         test: /\.s?css$/,
-        include: [paths.css, /node_modules/],
+        include: [paths.input.css, /node_modules/],
         use: [
           'style-loader',
           'css-loader?sourceMap',
@@ -134,20 +138,21 @@ const production = env => {
   if (env.debug) VERSION = new Date().toJSON().replace(/\D/g, '')
 
   return {
-    entry: paths.src,
+    entry: paths.input.js,
     output: {
       publicPath: `//${DOMAIN}/${NAME}/${VERSION}/`,
+      filename: names.js,
     },
     module: {
       rules: [
         {
           test: /\.js$/,
-          include: [paths.src, /whatwg-fetch/],
+          include: [paths.input.js, /whatwg-fetch/],
           loader: 'babel-loader',
         },
         {
           test: /\.s?css$/,
-          exclude: [paths.css, /node_modules/],
+          exclude: [paths.input.css, /node_modules/],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
@@ -166,7 +171,7 @@ const production = env => {
         },
         {
           test: /\.s?css$/,
-          include: [paths.css, /node_modules/],
+          include: [paths.input.css, /node_modules/],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: ['css-loader', 'postcss-loader', 'sass-loader'],
@@ -205,7 +210,7 @@ const production = env => {
       modules: false,
     },
     plugins: [
-      new CleanWebpackPlugin([paths.dist]),
+      new CleanWebpackPlugin([paths.output]),
       new webpack.DefinePlugin({
         DEBUG: JSON.stringify(false),
       }),

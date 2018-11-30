@@ -2,8 +2,8 @@ const path = require('path')
 const dir = require('node-dir')
 const qiniu = require('qiniu')
 
-const BASE = path.resolve(__dirname, 'dist')
-const { name: NAME, version: VERSION } = require('./dist/manifest')
+const BASE = path.resolve(__dirname, 'build')
+const { name: NAME, version: VERSION } = require('./build/manifest')
 const {
   npm_package_deploy_BUCKET: BUCKET,
   npm_package_deploy_ACCESS_KEY: ACCESS_KEY,
