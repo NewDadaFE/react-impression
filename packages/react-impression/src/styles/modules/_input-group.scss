@@ -35,6 +35,10 @@
       margin-left: -1px;
     }
   }
+
+  .select.open:first-child {
+    z-index: 2;
+  }
 }
 
 .input-group-addon,
