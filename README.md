@@ -6,10 +6,12 @@
 
 ## 安装
 
+> 如果通过 NPM 安装过，先卸载`npm rm -g yo generator-react-impression`
+
 首先, 安装`Yeoman`和`generator-react-impression`:
 
 ```bash
-yarn global add yo generator-react-impression
+yarn global add yo generator-react-impression --registry https://registry.npm.taobao.org/
 ```
 
 然后创建新项目:
@@ -22,7 +24,7 @@ yo react-impression
 
 ```bash
 cd YOUR_PROJECT_FOLDER
-yo react-impression --upgrade
+yo react-impression
 ```
 
 ## 开发
@@ -70,7 +72,7 @@ yarn debug
 
 - 代码格式化
 
-  如需格式化代码，执行 `yarn format` 命令
+  如需格式化代码，执行 `yarn lint` 命令
 
 - 转发 API 请求
 
