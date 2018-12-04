@@ -1,5 +1,7 @@
 ### 示例
 
+Icon 的 type 类型可参考 [icon 类型](https://fontawesome.com/v4.7.0/icons/)
+
 **默认使用，需要传入 type 参数**
 
 ```js
