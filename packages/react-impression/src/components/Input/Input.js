@@ -30,21 +30,9 @@ export default class Input extends React.PureComponent {
     style: PropTypes.object,
 
     /**
-     * 设置输入框类型，time为时分控件，second为时分秒控件
+     * 设置输入框类型，支持text，password，file，date，email，month，year，search，textarea，time，second和其他 原生 input 的 type 值
      */
-    type: PropTypes.oneOf([
-      'text',
-      'password',
-      'file',
-      'date',
-      'emaile',
-      'month',
-      'year',
-      'search',
-      'textarea',
-      'time',
-      'second',
-    ]),
+    type: PropTypes.string,
 
     /**
      * 输入框提示信息
@@ -394,7 +382,6 @@ export default class Input extends React.PureComponent {
               onChange={value => onChange && onChange(value)}
               onSelect={this.handleSelectTime}
               ref={ref => (this.datepicker = ref)}
-              type={type}
             />
           </div>
         )
