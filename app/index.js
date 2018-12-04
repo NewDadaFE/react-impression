@@ -3,116 +3,141 @@ const Generator = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
-const mkdirp = require('mkdirp')
-const execSync = require('child_process').execSync
-
-const shouldUseYarn = () => {
-  try {
-    execSync('yarnpkg --version', { stdio: 'ignore' })
-    return true
-  } catch (e) {
-    return false
-  }
-}
+const fs = require('fs-extra')
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts)
+  }
 
-    this.option('upgrade')
-
-    this.isUpgrade = Boolean(this.options.upgrade)
+  initializing() {
+    this.isUpgrade = this.fs.exists(this.destinationPath('package.json'))
   }
 
   prompting() {
     this.log(
-      yosay(
-        `Welcome to the neat ${chalk.red(
-          'generator-react-impression'
-        )} generator!`
-      )
+      yosay(`Welcome to the neat ${chalk.red('react-impression')} generator!`)
     )
 
-    const appPackage = this.fs.readJSON(this.destinationPath('package.json'))
+    if (this.isUpgrade) {
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'))
+      this.props = R.pick(['name', 'description'], pkg)
+      return
+    }
+
     const prompts = [
       {
         type: 'input',
         name: 'name',
         message: 'Your project name:',
-        default: this.isUpgrade ? appPackage.name : this.appname,
       },
       {
         type: 'input',
         name: 'description',
         message: 'Your project description:',
-        default: this.isUpgrade ? appPackage.description : this.appname,
-      },
-      {
-        type: 'confirm',
-        name: 'install',
-        message: 'Would you like to install dependencies?',
       },
     ]
 
-    return this.prompt(prompts).then(props => {
-      this.props = props
-    })
+    return this.prompt(prompts).then(props => (this.props = props))
   }
 
-  defaults() {
-    if (path.basename(this.destinationPath()) !== this.props.name) {
-      this.log(
-        'Your generator must be inside a folder named ' +
-          this.props.name +
-          '\n' +
-          "I'll automatically create this folder."
-      )
-      mkdirp(this.props.name)
-      this.destinationRoot(this.destinationPath(this.props.name))
-    }
+  configuring() {
+    if (this.isUpgrade) return
+
+    if (path.basename(this.destinationPath()) === this.props.name) return
+
+    fs.ensureDirSync(this.props.name)
+    this.destinationRoot(this.destinationPath(this.props.name))
   }
 
-  writing() {
-    const { name, description } = this.props
+  _copyHTML() {
+    const hasHTML = this.fs.exists(this.destinationPath('src/index.html'))
 
-    // Copy example code
-    if (!this.isUpgrade) {
-      this.fs.copy(this.templatePath('src/**'), this.destinationPath('src'))
+    if (this.isUpgrade && hasHTML) {
+      this.fs.move('src/index.html', 'public/index.html')
+      return
     }
 
-    // Copy dot files
-    this.fs.copy(this.templatePath('.*'), this.destinationRoot())
-
-    // Copy package.json
-    let templatePackage = R.merge(
-      this.fs.readJSON(this.templatePath('package.json')),
-      { name, description }
+    this.fs.copyTpl(
+      this.templatePath('public/index.html'),
+      this.destinationPath('public/index.html'),
+      { name: this.props.name }
     )
-    if (this.isUpgrade) {
-      const config = R.pick(
-        ['version', 'dependencies', 'proxy', 'deploy'],
-        this.fs.readJSON(this.destinationPath('package.json'))
-      )
-      templatePackage = R.merge(templatePackage, config)
-    }
-    this.fs.writeJSON(this.destinationPath('package.json'), templatePackage)
+  }
 
-    // Copy README
+  _copyExample() {
+    if (this.isUpgrade) return
+
+    this.fs.copy(this.templatePath('src/**'), this.destinationPath('src'))
+  }
+
+  _copyConfig() {
+    this.fs.copy(this.templatePath('.*'), this.destinationRoot())
+  }
+
+  _copyPackage() {
+    let pkg = this.fs.readJSON(this.templatePath('package.json'))
+
+    if (!this.isUpgrade) {
+      pkg = R.merge(pkg, this.props)
+      pkg.babel.plugins[1][1]['react-impression'] = {
+        transform: 'react-impression/components/${member}',
+        preventFullImport: true,
+      }
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+      return
+    }
+
+    const config = R.pick(
+      ['name', 'version', 'description', 'dependencies', 'proxy', 'deploy'],
+      this.fs.readJSON(this.destinationPath('package.json'))
+    )
+
+    const required = {
+      dependencies: R.pick(
+        [
+          'babel-plugin-react-css-modules',
+          'babel-runtime',
+          'moment',
+          'react',
+          'react-dom',
+        ],
+        pkg.dependencies
+      ),
+    }
+
+    const custom = R.mergeDeepRight(config, required)
+
+    pkg = R.mergeRight(pkg, custom)
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+  }
+
+  _copyReadme() {
+    if (this.isUpgrade) return
+
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
-      { name, description }
+      this.props
     )
+  }
 
-    // Copy JS
+  _copyWebpack() {
     this.fs.copy(this.templatePath('*.js'), this.destinationRoot())
+  }
+
+  writing() {
+    this._copyHTML()
+    this._copyExample()
+    this._copyConfig()
+    this._copyPackage()
+    this._copyReadme()
+    this._copyWebpack()
   }
 
   install() {
     this.log(yosay(`WOW! I'm all ${chalk.red('done')}!`))
-
-    if (!this.props.install) return
-
-    return shouldUseYarn() ? this.yarnInstall() : this.npmInstall()
+    this.yarnInstall()
   }
 }

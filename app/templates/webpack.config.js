@@ -11,7 +11,7 @@ const config = require('./package.json')
 
 const paths = {
   input: {
-    html: path.resolve(__dirname, 'src/index.html'),
+    html: path.resolve(__dirname, 'public/index.html'),
     css: path.resolve(__dirname, 'src/app/styles'),
     js: path.resolve(__dirname, 'src'),
   },
