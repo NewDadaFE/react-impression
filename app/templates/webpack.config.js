@@ -6,10 +6,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
-const config = require('./package.json')
+const pkg = require('./package.json')
 
 const paths = {
   input: {
@@ -128,7 +127,7 @@ const development = {
     hot: true,
     historyApiFallback: true,
     stats: 'errors-only',
-    proxy: config.proxy || {},
+    proxy: pkg.proxy || {},
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
@@ -139,107 +138,93 @@ const development = {
   ],
 }
 
-const production = env => {
-  let {
-    npm_package_name: NAME,
-    npm_package_version: VERSION,
-    npm_package_deploy_DOMAIN: DOMAIN,
-  } = process.env
-
-  if (env.debug) VERSION = new Date().toJSON().replace(/\D/g, '')
-
-  return {
-    entry: paths.input.js,
-    output: {
-      publicPath: `//${DOMAIN}/${NAME}/${VERSION}/`,
-      filename: names.js,
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          include: [paths.input.js, /whatwg-fetch/],
-          loader: 'babel-loader',
-        },
-        {
-          test: /\.s?css$/,
-          exclude: [paths.input.css, /node_modules/],
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: true,
-                  importLoaders: 1,
-                  localIdentName: '[name]__[local]___[hash:base64:5]',
-                },
+const production = {
+  entry: paths.input.js,
+  output: {
+    publicPath: `//${pkg.deploy.DOMAIN}/${pkg.name}/`,
+    filename: names.js,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: [paths.input.js, /whatwg-fetch/],
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.s?css$/,
+        exclude: [paths.input.css, /node_modules/],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-              'postcss-loader',
-              'sass-loader',
-            ],
-          }),
+            },
+            'postcss-loader',
+            'sass-loader',
+          ],
+        }),
+      },
+      {
+        test: /\.s?css$/,
+        include: [paths.input.css, /node_modules/],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader'],
+        }),
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: names.image,
         },
-        {
-          test: /\.s?css$/,
-          include: [paths.input.css, /node_modules/],
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', 'sass-loader'],
-          }),
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: names.font,
         },
-        {
-          test: /\.(png|jpe?g|gif|svg)$/,
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: names.image,
-          },
+      },
+      {
+        test: /\.(xlsx?)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'static/[name].[ext]',
         },
-        {
-          test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: names.font,
-          },
-        },
-        {
-          test: /\.(xlsx?)$/,
-          loader: 'url-loader',
-          query: {
-            limit: 10000,
-            name: 'static/[name].[ext]',
-          },
-        },
-      ],
-    },
-    stats: {
-      children: false,
-      chunks: false,
-      chunkModules: false,
-      modules: false,
-    },
-    plugins: [
-      new CleanWebpackPlugin([paths.output]),
-      new webpack.DefinePlugin({
-        DEBUG: JSON.stringify(false),
-      }),
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          ecma: 8,
-        },
-      }),
-      new ExtractTextPlugin(names.css),
-      new ManifestPlugin({
-        seed: {
-          name: NAME,
-          version: VERSION,
-        },
-      }),
+      },
     ],
-  }
+  },
+  stats: {
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    modules: false,
+  },
+  plugins: [
+    new CleanWebpackPlugin([paths.output]),
+    new webpack.DefinePlugin({
+      DEBUG: JSON.stringify(false),
+    }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        ecma: 8,
+      },
+    }),
+    new ExtractTextPlugin(names.css),
+  ],
 }
 
-module.exports = env =>
-  env.development ? merge(common, development) : merge(common, production(env))
+module.exports = merge(
+  common,
+  process.env.NODE_ENV === 'development' ? development : production
+)
