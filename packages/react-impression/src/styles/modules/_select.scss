@@ -146,6 +146,7 @@
 .select-search-wrap {
   position: relative;
   z-index: $zindex-select;
+  background-color: $select-tags-bg-color;
   box-sizing: border-box;
   padding: $select-option-padding;
   .select-search {
