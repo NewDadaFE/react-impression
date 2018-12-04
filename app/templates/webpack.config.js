@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const Dotenv = require('dotenv-webpack')
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const config = require('./package.json')
 
 const paths = {
@@ -50,6 +51,7 @@ const common = {
       },
     }),
     new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
+    new WatchMissingNodeModulesPlugin(path.resolve('node_modules')),
   ],
 }
 
