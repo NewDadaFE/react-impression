@@ -1,12 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const Dotenv = require('dotenv-webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const config = require('./package.json')
 
@@ -38,7 +39,10 @@ const common = {
     symlinks: false,
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new Dotenv({ systemvars: true }),
+    new WatchMissingNodeModulesPlugin(path.resolve('node_modules')),
+    new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
     new HtmlWebpackPlugin({
       template: paths.input.html,
       minify: {
@@ -50,8 +54,6 @@ const common = {
         removeStyleLinkTypeAttributes: true,
       },
     }),
-    new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
-    new WatchMissingNodeModulesPlugin(path.resolve('node_modules')),
   ],
 }
 
