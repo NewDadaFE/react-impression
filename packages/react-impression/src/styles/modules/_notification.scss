@@ -51,6 +51,7 @@
 }
 .notice-content {
   line-height: $notice-content-line-height;
+  word-break: break-all;
 }
 
 // Alternate styles
