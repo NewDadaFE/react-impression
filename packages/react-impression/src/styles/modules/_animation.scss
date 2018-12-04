@@ -7,25 +7,6 @@
   }
 }
 
-// .collapse {
-// display: none;
-
-// &.in {
-//     display: block;
-// }
-// tr&.in    { display: table-row; }
-// tbody&.in { display: table-row-group; }
-// }
-
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  transition-timing-function: ease;
-  transition-duration: 0.35s;
-  transition-property: height;
-}
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);

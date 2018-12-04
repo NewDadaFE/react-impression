@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const CollapseTitle = ({ onClick, children, className, ...others }) => {
+  delete others.active
   return (
     <div
       onClick={onClick}

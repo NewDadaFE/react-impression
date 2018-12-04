@@ -6,11 +6,6 @@
       transform-origin: center center;
       transform: rotate(90deg);
     }
-
-    .collapse-body {
-      height: auto;
-      animation: $collapse-animation;
-    }
   }
 
   .nav-item {
@@ -29,9 +24,9 @@
 }
 
 .collapse-body {
-  height: 0;
   overflow: hidden;
   text-indent: $collapse-text-indent;
   transform-origin: center 0;
   font-size: $collapse-font-size;
+  transition: $collapse-animation;
 }

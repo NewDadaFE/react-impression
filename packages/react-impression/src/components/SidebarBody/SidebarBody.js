@@ -21,11 +21,12 @@ export default class SidebarBody extends React.PureComponent {
     // PerfectScrollbar插件bug
     // 若不延迟初始化滚动条，滚动条ps__rail-y的right值初始状态为'auto'，导致滚动条错误地居左侧显示
     // https://github.com/utatti/perfect-scrollbar/issues/715
-    setTimeout(() => {
+    window.requestAnimationFrame(() => {
       this.scrollbar = new PerfectScrollbar(this.container, {
         suppressScrollX: true,
       })
-    }, 1000)
+      this.handleUpdateScroll()
+    })
   }
 
   componentWillUnmount() {
@@ -35,9 +36,10 @@ export default class SidebarBody extends React.PureComponent {
 
   handleUpdateScroll = () => {
     // 延迟更新滚动条
-    window.requestAnimationFrame(() => {
+    // Collapse组件增加动画效果后，便不能用requestAnimationFrame更新滚动条了 2018-12-03
+    setTimeout(() => {
       this.scrollbar.update()
-    })
+    }, 400)
   }
 
   setContainerRef = element => (this.container = element)

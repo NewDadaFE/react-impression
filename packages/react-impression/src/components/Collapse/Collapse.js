@@ -53,6 +53,7 @@ export default class Collapse extends React.PureComponent {
 
       return React.cloneElement(child, {
         onClick: this.toggleItemsHandle,
+        active,
       })
     })
 
