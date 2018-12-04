@@ -40,7 +40,14 @@ const common = {
     new Dotenv({ systemvars: true }),
     new HtmlWebpackPlugin({
       template: paths.input.html,
-      inject: true,
+      minify: {
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true,
+        removeAttributeQuotes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+      },
     }),
     new webpack.ContextReplacementPlugin(/moment\/locale$/, /zh-cn/),
   ],
