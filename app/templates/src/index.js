@@ -1,3 +1,4 @@
+import 'react-app-polyfill/ie9'
 import './app/styles/index.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'

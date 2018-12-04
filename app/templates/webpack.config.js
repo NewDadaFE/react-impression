@@ -74,7 +74,7 @@ const development = {
       },
       {
         test: /\.js$/,
-        include: [paths.input.js, /whatwg-fetch/],
+        include: paths.input.js,
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
@@ -147,7 +147,7 @@ const production = {
     rules: [
       {
         test: /\.js$/,
-        include: [paths.input.js, /whatwg-fetch/],
+        include: paths.input.js,
         loader: 'babel-loader',
       },
       {
