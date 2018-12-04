@@ -20,10 +20,9 @@ const paths = {
 }
 
 const names = {
-  image: 'images/[name].[hash:6].[ext]',
-  font: 'fonts/[name].[ext]',
-  css: 'styles/app.css',
-  js: 'scripts/app.js',
+  media: 'static/media/[name].[hash:8].[ext]',
+  css: 'static/css/[name].[contenthash:8].css',
+  js: 'static/js/[name].[chunkhash:8].js',
 }
 
 const common = {
@@ -183,7 +182,7 @@ const production = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: names.image,
+          name: names.media,
         },
       },
       {
@@ -191,7 +190,7 @@ const production = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: names.font,
+          name: names.media,
         },
       },
       {
@@ -199,7 +198,7 @@ const production = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: 'static/[name].[ext]',
+          name: names.media,
         },
       },
     ],
