@@ -1,6 +1,6 @@
 {
   "name": "generator-react-impression",
-  "version": "2.1.6-alpha.0",
+  "version": "2.1.6-alpha.1",
   "keywords": [
     "yeoman-generator"
   ],
@@ -12,7 +12,7 @@
     "yarn": ">=1.9.4"
   },
   "files": [
-    "generators"
+    "app"
   ],
   "scripts": {
     "format": "eslint --fix app/**/*.js"
