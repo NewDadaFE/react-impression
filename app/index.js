@@ -66,9 +66,17 @@ module.exports = class extends Generator {
   }
 
   _copyExample() {
-    if (this.isUpgrade) return
+    if (!this.isUpgrade) {
+      this.fs.copy(this.templatePath('src/**'), this.destinationPath('src'))
+      return
+    }
 
-    this.fs.copy(this.templatePath('src/**'), this.destinationPath('src'))
+    if (this.fs.exists(this.destinationPath('src/main.js'))) {
+      this.fs.move(
+        this.destinationPath('src/main.js'),
+        this.destinationPath('src/index.js')
+      )
+    }
   }
 
   _copyConfig() {
