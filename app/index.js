@@ -87,10 +87,53 @@ module.exports = class extends Generator {
         this.destinationPath('src/index.js')
       )
     }
+
+    const regex = {
+      polyfill: /react-app-polyfill/gm,
+      fetch: /import 'whatwg-fetch'\n/gm,
+      debug: /DEBUG|__DEV__/gm,
+    }
+    const paths = {
+      index: this.destinationPath('src/index.js'),
+      store: this.destinationPath('src/store.js'),
+    }
+    const files = {
+      index: this.fs.read(paths.index),
+      store: this.fs.read(paths.store),
+    }
+    const debug = "process.env.NODE_ENV === 'development'"
+
+    if (!regex.polyfill.test(files.index)) {
+      const polyfill = "import 'react-app-polyfill/ie9'"
+      this.fs.write(paths.index, `${polyfill}\n${files.index}`)
+    }
+
+    if (regex.fetch.test(files.index)) {
+      this.fs.write(paths.index, files.index.replace(regex.fetch, ''))
+    }
+
+    if (regex.debug.test(files.index)) {
+      this.fs.write(paths.index, files.index.replace(regex.debug, debug))
+    }
+
+    if (regex.debug.test(files.store)) {
+      this.fs.write(paths.store, files.store.replace(regex.debug, debug))
+    }
   }
 
   _copyConfig() {
-    this.fs.copy(this.templatePath('.*'), this.destinationRoot())
+    this.fs.copy(
+      this.templatePath('.{editorconfig,gitignore,npmrc}'),
+      this.destinationRoot()
+    )
+  }
+
+  _copyDotenv() {
+    if (this.fs.exists(this.destinationPath('.env'))) return
+
+    this.fs.copy(this.templatePath('.env'), this.destinationPath('.env'))
+  }
+
   _copyQshell() {
     if (!this.isUpgrade) {
       const config = this.fs.readJSON(this.templatePath('.qshell.json'))
@@ -116,7 +159,7 @@ module.exports = class extends Generator {
     let pkg = this.fs.readJSON(this.templatePath('package.json'))
 
     if (!this.isUpgrade) {
-      pkg = R.merge(pkg, this.props)
+      pkg = R.mergeRight(pkg, this.props)
       pkg.babel.plugins[1][1]['react-impression'] = {
         transform: 'react-impression/components/${member}',
         preventFullImport: true,
@@ -125,10 +168,11 @@ module.exports = class extends Generator {
       return
     }
 
-    const config = R.pick(
-      ['name', 'version', 'description', 'dependencies', 'proxy', 'deploy'],
-      this.fs.readJSON(this.destinationPath('package.json'))
-    )
+    const config = R.pipe(
+      R.pick(['name', 'description', 'dependencies', 'proxy', 'deploy']),
+      R.dissocPath(['dependencies', 'react-hot-loader']),
+      R.dissocPath(['dependencies', 'whatwg-fetch'])
+    )(this.fs.readJSON(this.destinationPath('package.json')))
 
     const required = {
       dependencies: R.pick(
@@ -137,6 +181,7 @@ module.exports = class extends Generator {
           'babel-runtime',
           'moment',
           'react',
+          'react-app-polyfill',
           'react-dom',
         ],
         pkg.dependencies
@@ -180,6 +225,7 @@ module.exports = class extends Generator {
     this._copyHTML()
     this._copyExample()
     this._copyConfig()
+    this._copyDotenv()
     this._copyQshell()
     this._copyPackage()
     this._copyReadme()

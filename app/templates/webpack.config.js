@@ -130,9 +130,6 @@ const development = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      DEBUG: JSON.stringify(true),
-    }),
   ],
 }
 
@@ -210,9 +207,6 @@ const production = {
   },
   plugins: [
     new CleanWebpackPlugin([paths.output]),
-    new webpack.DefinePlugin({
-      DEBUG: JSON.stringify(false),
-    }),
     new UglifyJsPlugin({
       uglifyOptions: {
         ecma: 8,
