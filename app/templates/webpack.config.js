@@ -124,7 +124,6 @@ const development = {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     hot: true,
-    historyApiFallback: true,
     stats: 'errors-only',
     proxy: pkg.proxy || {},
   },
