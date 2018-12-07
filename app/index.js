@@ -4,6 +4,7 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
 const fs = require('fs-extra')
+const semver = require('semver')
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -136,6 +137,18 @@ module.exports = class extends Generator {
     const custom = R.mergeDeepRight(config, required)
 
     pkg = R.mergeRight(pkg, custom)
+
+    const isVersionMatch = semver.satisfies(
+      semver.valid(semver.coerce(pkg.dependencies['react-impression'])),
+      '2.x'
+    )
+
+    if (isVersionMatch) {
+      pkg.babel.plugins[1][1]['react-impression'] = {
+        transform: 'react-impression/components/${member}',
+        preventFullImport: true,
+      }
+    }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg)
   }
