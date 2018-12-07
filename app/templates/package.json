@@ -131,7 +131,8 @@
   "eslintConfig": {
     "extends": [
       "react-impression",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
+      "prettier/standard"
     ],
     "globals": {
       "DEBUG": false,
@@ -150,7 +151,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json}": [
+    "*.js": [
       "eslint --fix",
       "git add"
     ]
