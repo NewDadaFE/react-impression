@@ -81,6 +81,25 @@ module.exports = class extends Generator {
 
   _copyConfig() {
     this.fs.copy(this.templatePath('.*'), this.destinationRoot())
+  _copyQshell() {
+    if (!this.isUpgrade) {
+      const config = this.fs.readJSON(this.templatePath('.qshell.json'))
+      const custom = R.mergeRight(config, { key_prefix: `${this.props.name}/` })
+      this.fs.writeJSON(this.destinationPath('.qshell.json'), custom)
+      return
+    }
+
+    if (!this.fs.exists(this.destinationPath('.qshell.json'))) {
+      const config = this.fs.readJSON(this.templatePath('.qshell.json'))
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'))
+      const custom = R.mergeRight(config, {
+        access_key: pkg.deploy.ACCESS_KEY,
+        secret_key: pkg.deploy.SECRET_KEY,
+        bucket: pkg.deploy.BUCKET || '',
+        key_prefix: `${pkg.name}/`,
+      })
+      this.fs.writeJSON(this.destinationPath('.qshell.json'), custom)
+    }
   }
 
   _copyPackage() {
@@ -139,6 +158,7 @@ module.exports = class extends Generator {
     this._copyHTML()
     this._copyExample()
     this._copyConfig()
+    this._copyQshell()
     this._copyPackage()
     this._copyReadme()
     this._copyWebpack()
