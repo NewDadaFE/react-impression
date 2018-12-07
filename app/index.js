@@ -52,18 +52,27 @@ module.exports = class extends Generator {
   }
 
   _copyHTML() {
-    const hasHTML = this.fs.exists(this.destinationPath('src/index.html'))
+    if (!this.isUpgrade) {
+      this.fs.copyTpl(
+        this.templatePath('public/index.html'),
+        this.destinationPath('public/index.html'),
+        { name: this.props.name }
+      )
+      return
+    }
 
-    if (this.isUpgrade && hasHTML) {
+    if (this.fs.exists(this.destinationPath('src/index.html'))) {
       this.fs.move('src/index.html', 'public/index.html')
       return
     }
 
-    this.fs.copyTpl(
-      this.templatePath('public/index.html'),
-      this.destinationPath('public/index.html'),
-      { name: this.props.name }
-    )
+    if (!this.fs.exists(this.destinationPath('public/index.html'))) {
+      this.fs.copyTpl(
+        this.templatePath('public/index.html'),
+        this.destinationPath('public/index.html'),
+        { name: this.props.name }
+      )
+    }
   }
 
   _copyExample() {
