@@ -30,7 +30,7 @@ class CollapseBody extends React.PureComponent {
   setContainerRef = element => (this.container = element)
 
   render() {
-    const { className, children, active, ...others } = this.props
+    let { className, children, active, ...others } = this.props
     delete others.onClick
     return (
       <div
