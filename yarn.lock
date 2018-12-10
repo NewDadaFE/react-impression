@@ -7460,6 +7460,22 @@ react-icons@^2.2.7:
   dependencies:
     react-icon-base "2.1.0"
 
+react-impression@^2.0.0-alpha.4:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/react-impression/-/react-impression-2.0.5.tgz#aeb7e9ecba6b36c657c7f0b37bfa4de70d11a087"
+  integrity sha512-snCBqCK9X03hhynpaYnGSw5bVlC5SrbRKCcIxMoBy4+iMSxdAAMydqpvZIScPeNFPBMMN5yeBVxYa2JU8681Og==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    classnames "^2.2.0"
+    perfect-scrollbar "^1.4.0"
+    popper.js "^1.14.4"
+    prop-types "15.6.2"
+    ramda "^0.26.0"
+    react-addons-css-transition-group "15.6.2"
+    react-debounce-input "^3.2.0"
+    react-portal "^4.1.5"
+    sass-rem "^2.0.1"
+
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
