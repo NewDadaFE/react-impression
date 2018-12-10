@@ -394,7 +394,6 @@ export default class Input extends React.PureComponent {
               onChange={value => onChange && onChange(value)}
               onSelect={this.handleSelectTime}
               ref={ref => (this.datepicker = ref)}
-              type={type}
             />
           </div>
         )
