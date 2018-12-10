@@ -1,6 +1,6 @@
 # react-impression
 
-> UI Components with React for desktop.
+> 快速构建企业级应用
 
 ### 文档
 
