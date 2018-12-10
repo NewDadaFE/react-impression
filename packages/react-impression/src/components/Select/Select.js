@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import R from 'ramda'
+import * as R from 'ramda'
 import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
 import Tag from '../Tag/index'
