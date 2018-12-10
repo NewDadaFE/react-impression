@@ -20,13 +20,13 @@ $btn-primary-border: $btn-primary-bg !default;
 $btn-hover-primary-bg: #2565e6 !default;
 
 $btn-default-color: #12203d !default;
-$btn-default-bg: transparent !default;
+$btn-default-bg: $brand-pure !default;
 $btn-active-default-bg: #f7f9fc !default;
 $btn-default-border: $gray !default;
 $btn-hover-default-bg: $brand-pure !default;
 
 $btn-secondary-color: $brand-primary !default;
-$btn-secondary-bg: transparent !default;
+$btn-secondary-bg: $brand-pure !default;
 $btn-active-secondary-bg: rgba(39, 107, 242, 0.06) !default;
 $btn-secondary-border: $brand-primary !default;
 
