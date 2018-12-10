@@ -37,7 +37,7 @@
   }
 
   .select.open:first-child {
-    z-index: 2;
+    z-index: $zindex-select;
   }
 }
 
