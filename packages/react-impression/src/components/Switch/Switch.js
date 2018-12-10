@@ -20,17 +20,17 @@ export default class Switch extends React.PureComponent {
     defaultChecked: PropTypes.bool,
 
     /**
-     * 是否可以点击
+     * 是否禁用
      */
     disabled: PropTypes.bool,
 
     /**
-     * 状态变更回调函数
+     * 状态变更回调，参数列表：checked，event
      */
     onChange: PropTypes.func,
 
     /**
-     * 值
+     * 值，通过getValue可获取
      */
     value: PropTypes.any,
   }

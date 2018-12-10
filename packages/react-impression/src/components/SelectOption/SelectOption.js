@@ -25,11 +25,6 @@ export default class SelectOption extends React.PureComponent {
     value: PropTypes.any.isRequired,
 
     /**
-     * 点击回调函数
-     */
-    onClick: PropTypes.func,
-
-    /**
      * 子组件
      */
     children: PropTypes.node,
@@ -101,6 +96,7 @@ export default class SelectOption extends React.PureComponent {
             this.props.value,
             props ? props.value : this.parent().props.value
           ),
+        visible: true,
       })
     } else {
       this.setState({
@@ -110,6 +106,7 @@ export default class SelectOption extends React.PureComponent {
             this.props.value,
             props ? props.value : this.parent().props.value
           ),
+        visible: true,
       })
     }
   }
@@ -149,7 +146,7 @@ export default class SelectOption extends React.PureComponent {
   }
 
   render() {
-    const { disabled, onClick, className, children, ...others } = this.props
+    const { disabled, className, children, ...others } = this.props
     const { active } = this.state
     const { visible } = this.state
     const displayStyle = visible ? {} : { display: 'none' }

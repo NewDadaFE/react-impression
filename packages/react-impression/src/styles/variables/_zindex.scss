@@ -1,20 +1,20 @@
-// Z-index master list
-$zindex-dropdown-backdrop: 990 !default;
-$zindex-navbar: 1000 !default;
-$zindex-select: 1000 !default;
-$zindex-dropdown: 1000 !default;
-$zindex-datepicker: 1000 !default;
-$zindex-page-transition: 1000 !default;
+//loading, modal
+$zindex-loading:         1050 !default;
+$zindex-modal:           1050 !default;
 
-$zindex-navbar-fixed: 1030 !default;
-$zindex-navbar-sticky: 1030 !default;
-$zindex-modal-bg: 1040 !default;
-$zindex-modal: 1050 !default;
-$zindex-confirm: 1060 !default;
-$zindex-alert: 1050 !default;
-$zindex-loading: 1050 !default;
-$zindex-message: 1060 !default;
-$zindex-notification: 1060 !default;
-$zindex-notification: 1060 !default;
-$zindex-popover: 1060 !default;
-$zindex-tooltip: 1060 !default;
+// confirm, alert, message, notification
+$zindex-confirm:          1060 !default;
+$zindex-alert:           1060 !default;
+$zindex-message:         1060 !default;
+$zindex-notification:     1060 !default;
+
+// popover
+$zindex-popover:         1070 !default;
+
+// dropdown, select, datepicker
+$zindex-dropdown:        1080 !default;
+$zindex-select:          1080 !default;
+$zindex-datepicker:      1080 !default;
+
+// tooltip
+$zindex-tooltip:         1090 !default;

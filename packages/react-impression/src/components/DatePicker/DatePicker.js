@@ -27,7 +27,7 @@ export default class DatePicker extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 日期
+     * 选中日期值
      */
     value: PropTypes.string,
 
@@ -37,12 +37,12 @@ export default class DatePicker extends React.PureComponent {
     format: PropTypes.string,
 
     /**
-     * 星期
+     * 星期映射列表
      */
     weekdays: PropTypes.arrayOf(PropTypes.string),
 
     /**
-     * 月份
+     * 月份映射列表
      */
     months: PropTypes.arrayOf(PropTypes.string),
 
@@ -52,12 +52,12 @@ export default class DatePicker extends React.PureComponent {
     showToday: PropTypes.bool,
 
     /**
-     * 今天
+     * 今天按钮显示文案
      */
     todayText: PropTypes.string,
 
     /**
-     * 星期第一天
+     * 指定一周开始是星期几
      */
     firstDayOfWeek: PropTypes.number,
 
@@ -77,12 +77,12 @@ export default class DatePicker extends React.PureComponent {
     yearScope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
     /**
-     * 选中时间
+     * 选中时间回调，参数列表：dayFormat
      */
     onSelect: PropTypes.func,
 
     /**
-     * 修改选中时间
+     * 选中指定类型的时间格式后回调，参数列表：dayFormat
      */
     onChange: PropTypes.func,
   }
@@ -472,7 +472,6 @@ export default class DatePicker extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     const { value } = nextProps
     const { format } = this.state
-
     this.setState({
       checkedDay: value ? moment(value, format) : undefined,
     })
@@ -490,7 +489,6 @@ export default class DatePicker extends React.PureComponent {
     const { showToday, todayText, months, className } = this.props
     const currentYear = currentMoment.format(FORMAT.YEAR)
     const currentMonth = currentMoment.format(FORMAT.MONTH)
-
     return (
       <div className={classnames('datepicker', className)} ref='container'>
         <div className='datepicker-inner'>

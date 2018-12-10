@@ -5,7 +5,7 @@ import {
   SidebarHeader,
   SidebarBody,
   Nav,
-  NavLink,
+  NavItem,
   Icon,
 } from 'react-impression'
 
@@ -16,21 +16,21 @@ const AppSidebar = () => {
       <SidebarHeader>React Impression Examples</SidebarHeader>
       <SidebarBody>
         <Nav stacked>
-          <NavLink>
+          <NavItem>
             <Link to='/table'>
               <Icon type='list' left />列表页
             </Link>
-          </NavLink>
-          <NavLink>
+          </NavItem>
+          <NavItem>
             <Link to='/overview'>
               <Icon type='bar-chart' left />概览
             </Link>
-          </NavLink>
-          <NavLink>
+          </NavItem>
+          <NavItem>
             <Link to='/form'>
               <Icon type='table' left />表单
             </Link>
-          </NavLink>
+          </NavItem>
         </Nav>
       </SidebarBody>
     </Sidebar>

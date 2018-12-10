@@ -20,7 +20,7 @@ export default class DropdownMenuItem extends React.PureComponent {
     disabled: PropTypes.bool,
 
     /**
-     * 点击回调
+     * 点击回调，参数列表：无
      */
     onClick: PropTypes.func,
 

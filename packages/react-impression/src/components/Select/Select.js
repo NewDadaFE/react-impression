@@ -89,12 +89,12 @@ export default class Select extends React.PureComponent {
     placeholder: PropTypes.string,
 
     /**
-     * 状态变更回调函数
+     * 状态变更回调，参数列表：value，name，index
      */
     onChange: PropTypes.func,
 
     /**
-     * 多选模式下移除tag回调函数
+     * 多选模式下移除tag回调，参数列表：value
      */
     onDelete: PropTypes.func,
 
@@ -140,10 +140,16 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   hideOptionsHandle = () => {
-    this.setState(
-      { showOption: false },
-      () => this.selectPopper && this.selectPopper.destroy()
-    )
+    this.setState({ showOption: false }, () => {
+      const { optionGroup, options } = this.state
+      options.forEach(option => {
+        option.queryChange('')
+      })
+      optionGroup.forEach(option => {
+        option.queryChange('')
+      })
+      this.selectPopper && this.selectPopper.destroy()
+    })
   }
 
   handleValueChange(props) {
@@ -277,8 +283,8 @@ export default class Select extends React.PureComponent {
         })
         if (this.state.showOption) {
           this.selectPopper = new Popper(this.selectMain, this.selectOption, {
-            placement: 'bottom',
             positionFixed: true,
+            placement: 'bottom-start',
             modifiers: {
               offset: { offset: '0, 10' },
             },
@@ -320,6 +326,7 @@ export default class Select extends React.PureComponent {
     if (list.length <= 0) {
       this.setState({ currentPlaceholder: placeholder })
     }
+    this.selectPopper && this.selectPopper.update()
     if (e) e.stopPropagation()
   }
 
@@ -365,6 +372,7 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
+        this.selectPopper && this.selectPopper.update()
       }
     )
   }
@@ -422,6 +430,7 @@ export default class Select extends React.PureComponent {
       optionGroup.forEach(option => {
         option.queryChange(val)
       })
+      this.selectPopper && this.selectPopper.update()
     })
   }
 
@@ -516,27 +525,37 @@ export default class Select extends React.PureComponent {
           onClick={this.toggleOptionsHandle}
         />
         <div
-          className={classnames(this.wrapClass, 'select-options-wrap')}
+          className={classnames(
+            {
+              hidden: !showOption,
+            },
+            'select-option-outer'
+          )}
           ref={ref => (this.selectOption = ref)}
           style={{ width: optionWidth }}
         >
-          {searchable && (
-            <div className='select-search-wrap'>
-              <DebounceInput
-                debounceTimeout={500}
-                value={queryText}
-                onChange={e => this.handleQuery(e)}
-                className={classnames('select-search-input')}
-              />
-              <i className='fa fa-search select-search' />
-            </div>
-          )}
-          <ul className='select-options'>
-            {children}
-            {this.getEmptyText() && (
-              <p className='select-empty'>{this.getEmptyText()}</p>
+          <div className={classnames(this.wrapClass, 'select-options-wrap')}>
+            {searchable && (
+              <div className='select-search-wrap'>
+                <DebounceInput
+                  debounceTimeout={500}
+                  value={queryText}
+                  onChange={e => this.handleQuery(e)}
+                  className={classnames('select-search-input')}
+                />
+                <i className='fa fa-search select-search' />
+              </div>
             )}
-          </ul>
+            <ul
+              className='select-options'
+              ref={ref => (this.selectInner = ref)}
+            >
+              {children}
+              {this.getEmptyText() && (
+                <p className='select-empty'>{this.getEmptyText()}</p>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     )

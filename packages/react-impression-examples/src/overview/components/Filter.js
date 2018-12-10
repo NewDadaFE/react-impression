@@ -1,5 +1,6 @@
 import React from 'react'
 import { Select, SelectOption, Input, Card, CardBlock } from 'react-impression'
+import './Filter.module.scss'
 
 export default class Filter extends React.Component {
   /**
@@ -21,7 +22,7 @@ export default class Filter extends React.Component {
       <Card className='offset-t'>
         <CardBlock>
           <Select
-            style={{ width: 200 }}
+            styleName='select'
             onChange={this.handleSelectChange}
             defaultValue=''
             placeholder='请选择部门'
