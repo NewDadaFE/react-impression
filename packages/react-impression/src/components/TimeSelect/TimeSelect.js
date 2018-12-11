@@ -182,7 +182,13 @@ export default class TimeSelect extends React.PureComponent {
   handleSave = () => {
     const { currentHour, currentMinute, currentSecond } = this.state
     const { onChange, onSelect, type } = this.props
-    if (!currentHour || !currentMinute || (!currentSecond && type === 'second')) { return }
+    if (
+      !currentHour ||
+      !currentMinute ||
+      (!currentSecond && type === 'second')
+    ) {
+      return
+    }
     let result = ''
     if (type === 'time') {
       result = `${currentHour}:${currentMinute}`
