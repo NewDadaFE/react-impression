@@ -1,12 +1,13 @@
 /**
  * Build
  */
-const { execSync } = require('child_process')
-const shell = command => execSync(command, { stdio: 'inherit' })
+const { spawnSync } = require('child_process')
+const build = package =>
+  spawnSync('yarn', ['workspace', package, 'build'], { stdio: 'inherit' })
 
-shell('yarn workspace react-impression build')
-shell('yarn workspace react-impression-website build')
-shell('yarn workspace react-impression-examples build')
+build('react-impression')
+build('react-impression-website')
+build('react-impression-examples')
 
 /**
  * Copy
