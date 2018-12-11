@@ -28,6 +28,11 @@
   flex: 1;
   color: $sidebar-nav-item-color;
 
+  & > .ps__rail-y {
+    right: 0 !important;
+    left: unset !important;
+  }
+
   .nav-item > a,
   .nav-link > a,
   .collapse-title {
