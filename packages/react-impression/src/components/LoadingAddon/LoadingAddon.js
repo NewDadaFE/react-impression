@@ -19,7 +19,7 @@ export default class LoadingAddon extends React.PureComponent {
     /**
      * 类型
      */
-    type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone']),
+    type: PropTypes.oneOf(['fountain', 'wave', 'pendule', 'cyclone', 'circle']),
     /**
      * 信息提示
      */
