@@ -1,5 +1,7 @@
 ### 示例
 
+Input 组件支持类型的详细内容请参照 [原生 input 的 type 值](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types)
+
 **文字类型**
 
 ```js
