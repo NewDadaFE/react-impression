@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import * as R from 'ramda'
 import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
+import PerfectScrollbar from 'perfect-scrollbar'
 import Tag from '../Tag/index'
 import Popper from 'popper.js'
 import SelectOption from '../SelectOption'
@@ -25,6 +26,8 @@ export default class Select extends React.PureComponent {
     this.selectPopper = null
     // 子组件数据
     this.options = []
+    // 滚动条
+    this.selectScrollbar = null
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
@@ -115,6 +118,11 @@ export default class Select extends React.PureComponent {
 
   componentDidMount() {
     this.handleInit()
+    window.requestAnimationFrame(() => {
+      this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
+        suppressScrollX: true,
+      })
+    })
   }
 
   /**
@@ -382,6 +390,8 @@ export default class Select extends React.PureComponent {
    */
   componentWillUnmount() {
     System.unmanager(this)
+    this.selectScrollbar.destroy()
+    this.selectScrollbar = null
   }
 
   componentWillReceiveProps(props) {
@@ -431,6 +441,14 @@ export default class Select extends React.PureComponent {
         option.queryChange(val)
       })
       this.selectPopper && this.selectPopper.update()
+      this.selectInner.scrollTop = 0
+      this.handleUpdateSelectScroll()
+    })
+  }
+
+  handleUpdateSelectScroll = () => {
+    window.requestAnimationFrame(() => {
+      this.selectScrollbar && this.selectScrollbar.update()
     })
   }
 
@@ -549,6 +567,7 @@ export default class Select extends React.PureComponent {
             <ul
               className='select-options'
               ref={ref => (this.selectInner = ref)}
+              // onClick={this.handleUpdateMinuteScroll}
             >
               {children}
               {this.getEmptyText() && (
