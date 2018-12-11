@@ -18,7 +18,12 @@ const AppSidebar = () => {
         <Nav stacked>
           <NavItem>
             <Link to='/table'>
-              <Icon type='list' left />列表页
+              <Icon type='list' left />列表页1
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to='/list'>
+              <Icon type='list' left />列表页2
             </Link>
           </NavItem>
           <NavItem>

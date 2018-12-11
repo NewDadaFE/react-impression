@@ -4,6 +4,7 @@ import Layout from 'app/components/Layout'
 import Table from 'table'
 import Overview from 'overview'
 import FormContainer from 'form'
+import List from 'list'
 
 // 路由配置
 const createRoutes = () => (
@@ -12,6 +13,7 @@ const createRoutes = () => (
     <Route path='table' component={Table} />
     <Route path='overview' component={Overview} />
     <Route path='form' component={FormContainer} />
+    <Route path='list' component={List} />
     <Redirect from='*' to='/' />
   </Route>
 )
