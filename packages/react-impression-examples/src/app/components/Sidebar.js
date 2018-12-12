@@ -33,7 +33,12 @@ const AppSidebar = () => {
           </NavItem>
           <NavItem>
             <Link to='/form'>
-              <Icon type='table' left />表单
+              <Icon type='table' left />表单1
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to='/forms'>
+              <Icon type='table' left />表单2
             </Link>
           </NavItem>
         </Nav>
