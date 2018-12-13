@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Option from './components/Option'
 import Edit from './components/Edit'
-import { Table, Confirm, Split } from 'react-impression'
+import { Table, Confirm, Split, Card, Button } from 'react-impression'
 import { data, cityList } from './config'
 import './container.module.scss'
 
@@ -90,7 +90,15 @@ class List extends Component {
           set={this.setOption}
           search={this.searchList}
         />
-        <Table data={list.result} columns={columns} pagination={pagination} />
+        <Card block>
+          <Card outline='none'>
+            <Button theme='default'>启用</Button>
+            <Button theme='default' className='offset-l-lg'>
+              停用
+            </Button>
+          </Card>
+          <Table data={list.result} columns={columns} pagination={pagination} />
+        </Card>
         <Edit show={showEdit} toggle={this.toggleShowEdit} />
         {showDelete && (
           <Confirm

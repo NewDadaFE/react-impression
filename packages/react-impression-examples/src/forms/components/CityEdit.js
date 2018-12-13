@@ -7,6 +7,8 @@ import {
   SelectOption,
   Input,
   Button,
+  RadioGroup,
+  Radio,
 } from 'react-impression'
 import styles from './Edit.scss'
 
@@ -19,6 +21,19 @@ function Edit() {
           <Select>
             <SelectOption value='1'>哈哈</SelectOption>
           </Select>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          开启次数：
+          <Input className={styles.side} type='text' />次
+        </Col>
+        <Col>
+          规则开关：
+          <RadioGroup>
+            <Radio value='1'>开</Radio>
+            <Radio value='0'>关</Radio>
+          </RadioGroup>
         </Col>
       </Row>
       <Row>
@@ -39,12 +54,6 @@ function Edit() {
         <Col>
           时长设置：
           <Input className={styles.side} type='text' />分钟
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          规则占比：
-          <Input className={styles.side} type='text' />%
         </Col>
       </Row>
       <div className={`text-center ${styles.top}`}>
