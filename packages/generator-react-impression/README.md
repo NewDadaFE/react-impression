@@ -85,7 +85,7 @@ yarn deploy
 
 MIT
 
-[eslint-config-react-impression]: https://github.com/NewDadaFE/generator/tree/master/packages/eslint-config-react-impression
+[eslint-config-react-impression]: ../eslint-config-react-impression
 [redux-actions]: https://github.com/acdlite/redux-actions
 [ducks-modular-redux]: https://github.com/erikras/ducks-modular-redux
 [dot-prop-immutable]: https://github.com/debitoor/dot-prop-immutable
