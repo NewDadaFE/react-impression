@@ -8,7 +8,7 @@ https://newdadafe.github.io/react-impression/
 
 ### 快速上手
 
-[generator-react-impression](https://github.com/NewDadaFE/generator/tree/master/packages/generator-react-impression)
+[generator-react-impression](packages/generator-react-impression)
 
 ### 贡献代码
 
