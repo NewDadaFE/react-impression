@@ -1,0 +1,9 @@
+{
+  "access_key": "",
+  "secret_key": "",
+  "src_dir": "build",
+  "bucket": "",
+  "key_prefix": "",
+  "rescan_local": true,
+  "skip_suffixes": ".html"
+}
