@@ -6,7 +6,7 @@
 
 https://newdadafe.github.io/react-impression/
 
-### 快速上手
+### 脚手架
 
 [generator-react-impression](packages/generator-react-impression)
 
