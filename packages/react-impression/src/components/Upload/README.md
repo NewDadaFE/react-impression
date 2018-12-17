@@ -96,8 +96,39 @@ class UploadExample extends React.Component {
 ;<UploadExample />
 ```
 
+**指定上传的文件类型**
+
+通过 accept 参数，传入匹配文件类型的字符串。
+
+```js
+const handleChange = e => {
+  console.log('选择了文件：', e.currentTarget.value)
+}
+;<div>
+  <Row>
+    <Col>
+      <h5>选择图片：</h5>
+      <Upload
+        placeholder="请选择图片"
+        accept="image/*"
+        onChange={handleChange}
+      />
+    </Col>
+    <Col>
+      <h5>选择Excel：</h5>
+      <Upload
+        placeholder="请选择Excel"
+        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        onChange={handleChange}
+      />
+    </Col>
+  </Row>
+</div>
+```
+
 ### 变更记录
 
 v2.0.0
 
 * 修改 选择文件后显示`文件路径`，改为显示`文件名称`
+* 新增 `accept` 指定选择的文件类型
