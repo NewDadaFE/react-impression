@@ -293,6 +293,11 @@ export default class DatePicker extends React.PureComponent {
       checkedDay: this.convertDateToMap(newMoment),
       currentMoment: newMoment,
     })
+    const isDisable = this.isDisableDate(newMoment.format(FORMAT.YEAR_MONTH))
+    const { onSelect, onChange } = this.props
+    const formatDateStr = isDisable ? '' : newMoment.format(this.state.format)
+    onSelect && onSelect(formatDateStr)
+    onChange && onChange(formatDateStr)
   }
 
   /**
@@ -334,6 +339,11 @@ export default class DatePicker extends React.PureComponent {
     // 1. 年份类型，选中
     if (this.props.type === panel) {
       state.checkedDay = this.convertDateToMap(newMoment)
+      const isDisable = this.isDisableDate(newMoment.year())
+      const { onSelect, onChange } = this.props
+      const formatDateStr = isDisable ? '' : newMoment.format(this.state.format)
+      onSelect && onSelect(formatDateStr)
+      onChange && onChange(formatDateStr)
     }
     // 2. 非年份类型，选到首尾年份后翻页
     if (
@@ -523,7 +533,6 @@ export default class DatePicker extends React.PureComponent {
     let min
     let max
     if (this.props.maxDate === '2018-09-25') {
-
     }
     if (panel === 'year') {
       min = minDate && moment(minDate.format(FORMAT.YEAR), FORMAT.DATE)
