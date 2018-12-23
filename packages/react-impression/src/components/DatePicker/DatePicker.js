@@ -143,7 +143,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 获取排序后的星期 ok
+   * 获取排序后的星期
    */
   getSortWeekdays() {
     const { firstDayOfWeek, weekdays } = this.props
@@ -157,7 +157,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 获取日期数据 ok
+   * 获取日期数据
    */
   getDays(dateMoment) {
     const { firstDayOfWeek } = this.props
@@ -232,7 +232,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 根据当前时间获取年份列表 ok
+   * 根据当前时间获取年份列表
    */
   getYears = dateMoment => {
     const { yearScope } = this.props
@@ -249,7 +249,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 上个月 ok
+   * 上个月
    */
   handlePrevMonth = () => {
     const { currentMoment } = this.state
@@ -258,7 +258,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 下个月 ok
+   * 下个月
    */
   handleNextMonth = () => {
     const { currentMoment } = this.state
@@ -267,7 +267,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 切换月份之后 ok
+   * 切换月份之后
    * @param {Moment} newMoment
    */
   afterSwitchMonth = newMoment => {
@@ -301,7 +301,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 上一年 ok
+   * 上一年
    * 月份面板无此功能
    */
   handlePrevYear = () => {
@@ -311,7 +311,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 下一年 ok
+   * 下一年
    * 月份面板无此功能
    */
   handleNextYear = () => {
@@ -321,7 +321,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 切换年份之后 ok
+   * 切换年份之后
    * @param {Moment} newMoment
    */
   afterSwitchYear = newMoment => {
@@ -356,7 +356,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 日期转换成包含年月日的普通对象 ok
+   * 日期转换成包含年月日的普通对象
    * @param {string|moment} date
    * @param format
    * @returns {*}
@@ -374,7 +374,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 选中时间 ok
+   * 选中时间
    * @param {Moment} day
    */
   handleSelectDate = day => {
@@ -391,7 +391,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 选中年份 ok
+   * 选中年份
    */
   handleSelectYear = e => {
     const { currentMoment, format } = this.state
@@ -436,7 +436,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 选中月份 ok
+   * 选中月份
    */
   handleSelectMonth = e => {
     const { currentMoment, format } = this.state
@@ -483,7 +483,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 触发「今天」按钮 ok
+   * 触发「今天」按钮
    */
   handleSelectToday = () => {
     const { onSelect, onChange } = this.props
@@ -502,7 +502,7 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 切换年月日选择面板 ok
+   * 切换年月日选择面板
    */
   handleSwitchPanel = () => {
     const nextPanel = this.state.panel === 'date' ? 'month' : 'year'
