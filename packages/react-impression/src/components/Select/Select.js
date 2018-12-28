@@ -164,7 +164,9 @@ export default class Select extends React.PureComponent {
     const { optionList } = this.state
     const { multiple } = this.props
     const originValue = this.isPuppet
-      ? props !== undefined ? props.value : this.props.value
+      ? props !== undefined
+        ? props.value
+        : this.props.value
       : this.state.value
     let dataToSet
     if (!multiple) {
@@ -479,6 +481,7 @@ export default class Select extends React.PureComponent {
       searchable,
       multiple,
       required,
+      placeholder,
     } = this.props
     const {
       showOption,
@@ -506,7 +509,7 @@ export default class Select extends React.PureComponent {
         {multiple && (
           <div className='select-tags' onClick={this.toggleOptionsHandle}>
             {selectedItem.length <= 0 && (
-              <span className='select-placeholder'>请选择</span>
+              <span className='select-placeholder'>{placeholder}</span>
             )}
             {selectedItem.length > 0 &&
               selectedItem.map(item => {
