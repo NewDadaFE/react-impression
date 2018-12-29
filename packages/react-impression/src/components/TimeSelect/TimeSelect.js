@@ -65,12 +65,12 @@ export default class TimeSelect extends React.PureComponent {
 
   componentWillUnmount() {
     const { type } = this.props
-    this.hoursScrollbar.destroy()
+    this.hoursScrollbar && this.hoursScrollbar.destroy()
     this.hoursScrollbar = null
-    this.minuteScrollbar.destroy()
+    this.minuteScrollbar && this.minuteScrollbar.destroy()
     this.minuteScrollbar = null
     if (type === 'second') {
-      this.secondScrollbar.destroy()
+      this.secondScrollbar && this.secondScrollbar.destroy()
       this.secondScrollbar = null
     }
   }

@@ -164,7 +164,7 @@ export default class Popover extends React.PureComponent {
       this.setState({
         showPopper: false,
       })
-      this.popperJS.destroy()
+      this.popperJS && this.popperJS.destroy()
       this.popperJS = null
     }, 200)
   }
