@@ -39,7 +39,6 @@ React Impression 2.0.4 新增了 TimeSelect 组件，修复了 Select、Table �
 ### 组件重构
 
 - 重构 **Tooltip 组件** [详情](https://newdadafe.github.io/react-impression/#tooltip)
-  - 使用 popper 来定位
 
 ## 2.0.3
 
