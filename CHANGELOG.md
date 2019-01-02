@@ -1,6 +1,6 @@
 ## 2.0.6
 
-React Impression 2.0.5 修复了 Select、Table 等组件的已知漏洞。详细变更情况如下：
+React Impression 2.0.6 修复了 Select、Table 等组件的已知漏洞。详细变更情况如下：
 
 ### API 变更
 
