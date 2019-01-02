@@ -1,6 +1,6 @@
 {
   "name": "react-impression",
-  "version": "2.0.3",
+  "version": "2.0.6",
   "author": "NewDadaFE",
   "description": "UI Components with React.",
   "sideEffects": false,
@@ -19,6 +19,7 @@
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.14.4",
     "prop-types": "15.6.2",
+    "ramda": "^0.26.0",
     "react-addons-css-transition-group": "15.6.2",
     "react-debounce-input": "^3.2.0",
     "react-portal": "^4.1.5",

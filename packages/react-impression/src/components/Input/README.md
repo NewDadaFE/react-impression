@@ -1,5 +1,7 @@
 ### 示例
 
+Input 组件支持类型的详细内容请参照 [原生 input 的 type 值](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types)
+
 **文字类型**
 
 ```js
@@ -49,7 +51,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>基础:</label>
-        <Input type="date" />
+        <Input type="date" style={{ width: 200 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -57,7 +59,7 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>默认值:</label>
-        <Input type="date" defaultValue="2016-05-29" />
+        <Input type="date" defaultValue="2016-05-29" style={{ width: 200 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -65,7 +67,20 @@ class ModalExample extends React.Component {
     <Form>
       <FormGroup>
         <label>禁用状态:</label>
-        <Input type="date" defaultValue="2016-05-29" disabled />
+        <Input
+          type="date"
+          defaultValue="2016-05-29"
+          disabled
+          style={{ width: 200 }}
+        />
+      </FormGroup>
+    </Form>
+  </Col>
+  <Col>
+    <Form>
+      <FormGroup>
+        <label>时间:</label>
+        <Input type="time" style={{ width: 200 }} />
       </FormGroup>
     </Form>
   </Col>
@@ -270,6 +285,6 @@ class Example extends React.Component {
 v2.0.0
 
 * 新增 input-box-shadow-focus sass 变量
-* 新增 $input-font-size-sm sass 变量
-* 新增 $input-font-size-lg sass 变量
+* 新增 \$input-font-size-sm sass 变量
+* 新增 \$input-font-size-lg sass 变量
 * 修复 日期类型 Input 组件清除内容后，没有触发 onChange 事件的问题

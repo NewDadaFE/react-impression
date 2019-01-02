@@ -39,6 +39,10 @@ export default class Upload extends React.PureComponent {
      * 图片路径，preview模式下使用
      */
     src: PropTypes.string,
+    /**
+     * 接受的文件类型
+     */
+    accept: PropTypes.string,
 
     /**
      * 子组件
@@ -131,6 +135,7 @@ export default class Upload extends React.PureComponent {
       btnStyle,
       placeholder,
       className,
+      accept,
       ...others
     } = this.props
     delete others.onChange
@@ -151,6 +156,7 @@ export default class Upload extends React.PureComponent {
         <div className='upload-preview' onClick={this.handleOpenFileDialog}>
           <input
             type='file'
+            accept={accept}
             ref={this.fileRef}
             onChange={this.handleImagePreview}
           />
@@ -191,6 +197,7 @@ export default class Upload extends React.PureComponent {
         {/* 此处input只能放在中间，否则圆角样式会有问题 */}
         <input
           type='file'
+          accept={accept}
           ref={this.fileRef}
           onChange={this.handleFileChange}
         />

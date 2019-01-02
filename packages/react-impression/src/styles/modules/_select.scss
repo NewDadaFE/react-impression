@@ -5,8 +5,8 @@
   position: relative;
   cursor: pointer;
   display: inline-block;
-  height: 2.857rem;
   width: 16rem;
+  line-height: $select-option-inline-height;
   &.disabled {
     &,
     .select-addon,
@@ -130,37 +130,31 @@
 .select-required {
   color: $brand-danger;
 }
-
+.select-option-outer {
+  z-index: $zindex-select;
+}
 .select-options-wrap {
-  position: absolute;
-  left: 0;
-  width: 100%;
   box-sizing: border-box;
   border-radius: rem(2px);
+  animation: 0.3s scaleIn ease;
   border: $select-options-border;
+  transform-origin: center 0;
   box-shadow: 0px rem(2px) rem(10px) 0px rgba(19, 34, 64, 0.1);
   margin: 0;
-  z-index: $zindex-select;
   background: $select-bg;
-  opacity: 0;
-  .open & {
-    opacity: 1;
-    padding: 0.714rem 0;
-  }
+  padding: 0.714rem 0;
 }
 .select-search-wrap {
-  opacity: 0;
   position: relative;
   z-index: $zindex-select;
+  background-color: $select-tags-bg-color;
   box-sizing: border-box;
-  .open & {
-    opacity: 1;
-    padding: $select-option-padding;
-  }
+  padding: $select-option-padding;
   .select-search {
+    position: absolute;
     right: $input-padding-x;
     height: 2.142rem;
-    top: rem(6px);
+    top: rem(8px);
   }
 }
 
@@ -238,19 +232,11 @@
   width: 100%;
   padding: 0;
   margin: 0;
+  position: relative;
   z-index: $zindex-select;
   list-style: none;
   overflow-y: auto;
-  opacity: 0;
-  max-height: 0;
-  transition: max-height 0.3s, opacity 0.28s;
-  transform-origin: center 0;
-
-  .open & {
-    opacity: 1;
-    max-height: $select-selection-max-height;
-    padding: 0;
-  }
+  max-height: $select-selection-max-height;
   .select-noresult {
     cursor: not-allowed;
     color: $select-option-disable-color;
@@ -266,7 +252,7 @@
   white-space: nowrap;
   color: $gray-base;
   padding: $input-padding-y $input-padding-x-lg;
-
+  line-height: $select-option-inline-height;
   &:hover {
     background-color: $select-option-hover-bg;
   }

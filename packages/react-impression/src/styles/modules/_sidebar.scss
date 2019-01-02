@@ -27,6 +27,7 @@
   position: relative;
   flex: 1;
   color: $sidebar-nav-item-color;
+  overflow: hidden;
 
   .nav-item > a,
   .nav-link > a,

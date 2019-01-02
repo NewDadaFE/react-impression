@@ -1,0 +1,55 @@
+{
+  "name": "generator-react-impression",
+  "version": "2.2.0",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "description": "Yeoman generator for React project.",
+  "repository": "NewDadaFE/generator",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.12.0",
+    "yarn": ">=1.9.4"
+  },
+  "files": [
+    "app"
+  ],
+  "scripts": {
+    "format": "eslint --fix app/**/*.js"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "fs-extra": "^7.0.1",
+    "ramda": "^0.26.1",
+    "yeoman-generator": "^3.1.1",
+    "yosay": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-react-impression": "^2.0.3",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "prettier": "1.15.2",
+    "semver": "^5.6.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-impression",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "trailingComma": "es5"
+  }
+}

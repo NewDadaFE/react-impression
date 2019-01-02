@@ -2,12 +2,12 @@ $select-line-height: $input-line-height !default;
 $select-transition: all 0.2s ease !default;
 $select-bg: $brand-pure !default;
 $select-disable-bg: $gray-lighter !default;
-
 $select-selection-padding-right: 2.25rem !default;
 $select-selection-max-height: 20rem !default;
 $select-options-top: 120% !default;
 $select-selection-color: $gray;
 $select-tags-bg-color: #fff;
+$select-option-inline-height: 1rem;
 $select-options-box-shadow: 0 2px 6px $inverse-level-2 !default;
 $select-options-border: 1px solid $gray-light !default;
 

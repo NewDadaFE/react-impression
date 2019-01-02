@@ -85,7 +85,7 @@
 .table-tr {
   &:hover {
     background: $table-body-hover-bg-color;
-    input {
+    .select-selection {
       background: $table-body-hover-bg-color;
     }
   }
@@ -93,23 +93,23 @@
     background: $table-spried-background;
     &:hover {
       background: $table-body-hover-bg-color;
-      input {
+      .select-selection {
         background: $table-body-hover-bg-color;
       }
     }
-    input {
+    .select-selection {
       background: $table-spried-background;
     }
   }
   &.is-hover {
     background: $table-body-hover-bg-color;
-    input {
+    .select-selection {
       background: $table-body-hover-bg-color;
     }
   }
   &.is-selected {
     background: $table-body-hover-bg-color;
-    input {
+    .select-selection {
       background: $table-body-hover-bg-color;
     }
   }

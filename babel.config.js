@@ -32,6 +32,12 @@ module.exports = {
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-transform-react-constant-elements',
     [
+      'ramda',
+      {
+        useES: true,
+      },
+    ],
+    [
       'transform-react-remove-prop-types',
       {
         mode: 'wrap',
