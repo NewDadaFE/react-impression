@@ -744,7 +744,3 @@ export default class Table extends React.PureComponent {
     )
   }
 }
-
-Table.childContextTypes = {
-  componentTable: PropTypes.any,
-}

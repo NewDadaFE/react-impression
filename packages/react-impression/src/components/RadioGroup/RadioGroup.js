@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import uniqueId from 'lodash.uniqueid'
 
 export default class RadioGroup extends React.PureComponent {
   constructor(props) {
@@ -65,6 +66,8 @@ export default class RadioGroup extends React.PureComponent {
     direction: 'row',
   }
 
+  id = uniqueId('radio-')
+
   getValue() {
     return this.isPuppet ? this.props.value : this.state.value
   }
@@ -104,7 +107,7 @@ export default class RadioGroup extends React.PureComponent {
       let { value, disabled } = child.props
 
       let options = {
-        name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+        name: name || this.id,
         key: index,
         onChange: this.onChangeHandle,
         disabled: disabled || this.props.disabled,

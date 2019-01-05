@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "classnames": "^2.2.0",
+    "lodash.uniqueid": "^4.0.1",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.14.4",
     "prop-types": "15.6.2",
@@ -27,8 +28,8 @@
   },
   "peerDependencies": {
     "moment": "^2.22.2",
-    "react": "15.6.2",
-    "react-dom": "15.6.2"
+    "react": ">=15.6.2",
+    "react-dom": ">=15.6.2"
   },
   "devDependencies": {
     "fs-extra": "^7.0.0",
