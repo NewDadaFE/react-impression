@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { Flex, Loading, Notification, Message, Content } from 'react-impression'
 import Header from './Header'
 import Sidebar from './Sidebar'

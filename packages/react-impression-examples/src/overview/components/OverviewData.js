@@ -22,25 +22,23 @@ const mockData = [
   },
 ]
 
-export default class Overview extends React.Component {
-  render() {
-    return (
-      <Card>
-        <CardBlock>
-          <Row>
-            {mockData.map((item, index) => {
-              return (
-                <Col key={index}>
-                  <div className={styles.box}>
-                    <div className={styles.name}>{item.name}</div>
-                    <div className={styles.value}>{item.value}</div>
-                  </div>
-                </Col>
-              )
-            })}
-          </Row>
-        </CardBlock>
-      </Card>
-    )
-  }
+export default function Overview(props) {
+  return (
+    <Card>
+      <CardBlock>
+        <Row>
+          {mockData.map((item, index) => {
+            return (
+              <Col key={index}>
+                <div className={styles.box}>
+                  <div className={styles.name}>{item.name}</div>
+                  <div className={styles.value}>{item.value}</div>
+                </div>
+              </Col>
+            )
+          })}
+        </Row>
+      </CardBlock>
+    </Card>
+  )
 }

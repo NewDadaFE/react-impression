@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class TableColumn extends Component {
-  render() {
-    return React.cloneElement(React.Children.only(this.props.children))
-  }
+export default function TableColumn(props) {
+  return React.cloneElement(React.Children.only(props.children))
 }
 
 TableColumn.propTypes = {

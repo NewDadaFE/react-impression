@@ -4,20 +4,18 @@ import CustomTable from './Table'
 import PirChart from './PieChart'
 import styles from './Index.module.scss'
 
-export default class HealthAnalysis extends React.Component {
-  render() {
-    return (
-      <Card>
-        <h4 className={styles.title}>员工统计</h4>
-        <Row>
-          <Col col='5'>
-            <PirChart />
-          </Col>
-          <Col col='7'>
-            <CustomTable />
-          </Col>
-        </Row>
-      </Card>
-    )
-  }
+export default function HealthAnalysis(props) {
+  return (
+    <Card>
+      <h4 className={styles.title}>员工统计</h4>
+      <Row>
+        <Col col='5'>
+          <PirChart />
+        </Col>
+        <Col col='7'>
+          <CustomTable />
+        </Col>
+      </Row>
+    </Card>
+  )
 }

@@ -20,10 +20,8 @@ const columns = [
   { prop: 'origin', Header: '来源' },
 ]
 
-export default class CustomTable extends React.Component {
-  render() {
-    const dataSource = getData()
+export default function CustomTable(props) {
+  const dataSource = getData()
 
-    return <Table data={dataSource} columns={columns} stripe />
-  }
+  return <Table data={dataSource} columns={columns} stripe />
 }

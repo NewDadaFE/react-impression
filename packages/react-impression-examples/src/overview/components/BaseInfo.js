@@ -39,57 +39,55 @@ const mockData = [
   },
 ]
 
-export default class BaseInfo extends React.Component {
-  render() {
-    return (
-      <Row>
-        {mockData.map((item, index) => {
-          const scoreColor = item.score.value > 90 ? 'green' : 'yellow'
-          const consumeColor = item.consume.value > 90 ? 'green' : 'yellow'
-          return (
-            <Col key={index}>
-              <Card>
-                <div className={styles.cardTitle}>{item.title}</div>
-                <div className={styles.body}>
-                  <div className={styles.cell}>
-                    <div className={styles.cellName}>{item.score.name}</div>
-                    <div className={classNames('cellValue', scoreColor)}>
-                      {item.score.value}
-                    </div>
-                    <div className={classNames(consumeColor)}>
-                      {item.score.desc}
-                    </div>
+export default function BaseInfo(props) {
+  return (
+    <Row>
+      {mockData.map((item, index) => {
+        const scoreColor = item.score.value > 90 ? 'green' : 'yellow'
+        const consumeColor = item.consume.value > 90 ? 'green' : 'yellow'
+        return (
+          <Col key={index}>
+            <Card>
+              <div className={styles.cardTitle}>{item.title}</div>
+              <div className={styles.body}>
+                <div className={styles.cell}>
+                  <div className={styles.cellName}>{item.score.name}</div>
+                  <div className={classNames('cellValue', scoreColor)}>
+                    {item.score.value}
                   </div>
-                  <div className={styles.cell}>
-                    <div className={styles.cellName}>{item.consume.name}</div>
-                    <div className={classNames(styles.cellValue, styles.black)}>
-                      {item.consume.value}
-                    </div>
-                    <div className={styles.grey}>
-                      <span className={styles.ratioLabel}>环比</span>
-                      <span>{item.consume.ratio}</span>
-                    </div>
+                  <div className={classNames(consumeColor)}>
+                    {item.score.desc}
                   </div>
                 </div>
-                <div className={styles.footer}>
-                  <div className={styles.item}>
-                    <div className={styles.itemLabel}>当日利润： </div>
-                    <div className={styles.itemValue}>{item.profit}</div>
+                <div className={styles.cell}>
+                  <div className={styles.cellName}>{item.consume.name}</div>
+                  <div className={classNames(styles.cellValue, styles.black)}>
+                    {item.consume.value}
                   </div>
-                  <div className={styles.item}>
-                    <div className={styles.itemLabel}>待开通账号： </div>
-                    <div className={styles.itemValue}>{item.account}</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.itemLabel}>异常处理： </div>
-                    <div className={styles.itemValue}>{item.abnormal}</div>
+                  <div className={styles.grey}>
+                    <span className={styles.ratioLabel}>环比</span>
+                    <span>{item.consume.ratio}</span>
                   </div>
                 </div>
-              </Card>
-            </Col>
-          )
-        })}
-      </Row>
-    )
-  }
+              </div>
+              <div className={styles.footer}>
+                <div className={styles.item}>
+                  <div className={styles.itemLabel}>当日利润： </div>
+                  <div className={styles.itemValue}>{item.profit}</div>
+                </div>
+                <div className={styles.item}>
+                  <div className={styles.itemLabel}>待开通账号： </div>
+                  <div className={styles.itemValue}>{item.account}</div>
+                </div>
+                <div className={styles.item}>
+                  <div className={styles.itemLabel}>异常处理： </div>
+                  <div className={styles.itemValue}>{item.abnormal}</div>
+                </div>
+              </div>
+            </Card>
+          </Col>
+        )
+      })}
+    </Row>
+  )
 }
