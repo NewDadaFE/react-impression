@@ -2,8 +2,8 @@
 
 ## 环境
 
-* Node.js LTS
-* Yarn Latest
+- Node.js LTS
+- Yarn Latest
 
 ## 安装
 

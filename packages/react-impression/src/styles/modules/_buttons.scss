@@ -14,7 +14,12 @@
   user-select: none;
   border: 1px solid transparent;
 
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size,
+    $btn-border-radius
+  );
   transition: $btn-transition;
 
   &,
@@ -63,7 +68,7 @@ $btn-primary-args: (
   active-background: $btn-active-primary-bg,
   btn-disabled-color: $btn-disabled-color,
   btn-disabled-bg: $btn-disabled-bg,
-  btn-disabled-border: transparent
+  btn-disabled-border: transparent,
 );
 
 $btn-secondary-args: (
@@ -75,7 +80,7 @@ $btn-secondary-args: (
   active-background: $btn-active-secondary-bg,
   btn-disabled-color: $btn-disabled-color,
   btn-disabled-bg: $brand-pure,
-  btn-disabled-border: $btn-disabled-border
+  btn-disabled-border: $btn-disabled-border,
 );
 
 $btn-default-args: (
@@ -87,7 +92,7 @@ $btn-default-args: (
   active-background: $btn-active-default-bg,
   btn-disabled-color: $btn-disabled-color,
   btn-disabled-bg: $brand-pure,
-  btn-disabled-border: $btn-disabled-border
+  btn-disabled-border: $btn-disabled-border,
 );
 
 .btn-primary {
@@ -165,12 +170,22 @@ $btn-default-args: (
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $btn-border-radius
+  );
 }
 
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-border-radius
+  );
 }
 
 // Pill Button

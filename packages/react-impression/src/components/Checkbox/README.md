@@ -90,4 +90,4 @@ class Indeterminate extends React.Component {
 
 v2.0.0
 
-* 新增 indeterminate 参数
+- 新增 indeterminate 参数

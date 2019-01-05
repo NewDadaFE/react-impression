@@ -69,6 +69,6 @@
 
 v2.0.0
 
-* 新增 label 标签名属性，不传可自定义 label 项目
-* 新增 col 标签占比参数，默认值为 1
-* 将删除对 InlineSelect.Option 写法的支持，请使用 InlineSelectOption 标签
+- 新增 label 标签名属性，不传可自定义 label 项目
+- 新增 col 标签占比参数，默认值为 1
+- 将删除对 InlineSelect.Option 写法的支持，请使用 InlineSelectOption 标签

@@ -5,9 +5,8 @@ $radio-space-x: rem(50px) !default;
 $radio-addon-size: 1.28 !default;
 $radio-addon-i-size: 0.4 !default;
 $radio-addon-padding: round(
-    ($radio-addon-size - $radio-addon-i-size) * $font-size-root / 2 - 1
-  )
-  !default;
+  ($radio-addon-size - $radio-addon-i-size) * $font-size-root / 2 - 1
+) !default;
 $radio-addon-bg-color: $brand-pure !default;
 $radio-addon-border-color: $gray-darker !default;
 $radio-addon-border-width: rem(2px) !default;

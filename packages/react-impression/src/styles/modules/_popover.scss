@@ -105,9 +105,7 @@
   background-color: $popover-title-bg;
   $offset-border-width: ($border-width / $font-size-root);
   border-radius: ($border-radius-lg - $offset-border-width)
-    (
-      $border-radius-lg - $offset-border-width
-    ) 0 0;
+    ($border-radius-lg - $offset-border-width) 0 0;
 }
 
 .popover-content {

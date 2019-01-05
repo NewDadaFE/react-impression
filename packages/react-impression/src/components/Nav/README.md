@@ -3,11 +3,11 @@
 **Nav 组件** 与 **NavLink 组件**、**NavItem 组件**配合使用时，需要注意：
 
 1. Nav 组件 的**activeKey 属性**
-   * 只有**与 NavItem 组件 搭配**时有效
-   * 且 NavItem 组件** 必须有 eventKey 属性**
+   - 只有**与 NavItem 组件 搭配**时有效
+   - 且 NavItem 组件** 必须有 eventKey 属性**
 2. 以下情况需要开发者自行控制子项的选中状态：
-   * Nav 组件 与 **NavLink 组件 搭配**使用时
-   * Nav 组件 与**无 eventKey 属性的 NavItem 组件 搭配**使用时
+   - Nav 组件 与 **NavLink 组件 搭配**使用时
+   - Nav 组件 与**无 eventKey 属性的 NavItem 组件 搭配**使用时
 
 自行控制选中状态方法为：
 
@@ -117,5 +117,5 @@ initialState = {
 
 v2.0.0
 
-* 删除 type 属性的 pill 可选项，支持 tab,inline 属性值，默认为 inline
-* 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle
+- 删除 type 属性的 pill 可选项，支持 tab,inline 属性值，默认为 inline
+- 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle

@@ -252,23 +252,25 @@ export default class Input extends React.PureComponent {
 
   render() {
     let {
-        type,
-        value,
-        defaultValue,
-        disabled,
-        placeholder,
-        clearable,
-        style,
-        pill,
-        onClick,
-        className,
-        children,
-        onChange,
-        size,
-        ...others
-      } = this.props,
-      { showDatePicker, showClear } = this.state,
-      pillClass = pill ? 'input-pill' : null
+      type,
+      value,
+      defaultValue,
+      disabled,
+      placeholder,
+      clearable,
+      style,
+      pill,
+      onClick,
+      className,
+      children,
+      onChange,
+      size,
+      ...others
+    } = this.props
+
+    let { showDatePicker, showClear } = this.state
+
+    let pillClass = pill ? 'input-pill' : null
 
     children &&
       (children = React.cloneElement(children, {
@@ -305,8 +307,7 @@ export default class Input extends React.PureComponent {
               style={style}
             />
 
-            {clearable &&
-              showClear && (
+            {clearable && showClear && (
               <i
                 className='fa fa-times input-addon'
                 onClick={this.handleClearDateInput}
@@ -359,8 +360,7 @@ export default class Input extends React.PureComponent {
               style={style}
             />
 
-            {clearable &&
-              showClear && (
+            {clearable && showClear && (
               <i
                 className='fa fa-times input-addon'
                 onClick={this.handleClearDateInput}

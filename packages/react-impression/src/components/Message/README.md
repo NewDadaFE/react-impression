@@ -57,5 +57,5 @@ const handleShowLoading = () => {
 
 v2.0.0
 
-* 新增 支持手动关闭消息
-* 新增 scss 变量`$message-min-width`表示 Message 最小宽度
+- 新增 支持手动关闭消息
+- 新增 scss 变量`$message-min-width`表示 Message 最小宽度

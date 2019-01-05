@@ -133,4 +133,4 @@
 
 v2.0.0
 
-* 删除 noborder 属性
+- 删除 noborder 属性

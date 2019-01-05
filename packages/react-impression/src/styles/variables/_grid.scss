@@ -13,11 +13,22 @@
 }
 
 // Grid breakpoints
-$grid-breakpoints: (xs: 0, sm: 544px, md: 768px, lg: 992px, xl: 1200px) !default;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+) !default;
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
 // Grid containers
-$container-max-widths: (sm: 576px, md: 720px, lg: 940px, xl: 1140px) !default;
+$container-max-widths: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px,
+) !default;
 @include _assert-ascending($container-max-widths, '$container-max-widths');
 
 // Grid columns

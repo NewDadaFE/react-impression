@@ -14,7 +14,7 @@
     right: $step-content-width - $step-tail-left;
     left: -$step-tail-left;
     height: $step-tail-height;
-    content: "";
+    content: '';
   }
   &.ready {
     @include step-status($step-ready-color, $step-icon-bg-color);
@@ -87,7 +87,7 @@
   display: inline-block;
   width: $step-dot-size;
   height: $step-dot-size;
-  content: "";
+  content: '';
   border-width: $step-dot-border-width;
   border-style: solid;
   border-radius: 50%;

@@ -5,7 +5,8 @@
 ```js
 <Collapse>
   <CollapseTitle>
-    <Icon type="bars" left />公共页面
+    <Icon type="bars" left />
+    公共页面
   </CollapseTitle>
   <CollapseBody>
     <Nav>

@@ -90,6 +90,6 @@
 
 v2.0.0
 
-* 新增 form-group-inline-label-margin-bottom sass 变量
-* 新增 form-group-inline-btn-margin-left sass 变量
-* 新增 form-group-inline-margin-bottom sass 变量
+- 新增 form-group-inline-label-margin-bottom sass 变量
+- 新增 form-group-inline-btn-margin-left sass 变量
+- 新增 form-group-inline-margin-bottom sass 变量

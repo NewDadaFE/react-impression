@@ -8,7 +8,7 @@ const getProgress = (value, max) => {
   } else if (value > max) {
     return max
   }
-  return Math.round(value / max * 10000) / 100
+  return Math.round((value / max) * 10000) / 100
 }
 
 export default class Progress extends React.PureComponent {

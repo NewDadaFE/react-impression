@@ -50,8 +50,9 @@ export default class Alert extends React.PureComponent {
   }
 
   render() {
-    let { type, btnText, onClick, className, children, ...others } = this.props,
-      iconTypeClass = getAddonByType(type)
+    let { type, btnText, onClick, className, children, ...others } = this.props
+
+    let iconTypeClass = getAddonByType(type)
 
     return (
       <div className={classnames('alert', className)}>

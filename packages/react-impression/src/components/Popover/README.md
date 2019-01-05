@@ -115,5 +115,5 @@ initialState = {
 
 v2.0.0
 
-* 新增 $popover-margin sass 变量
-* 新增 trigger 参数
+- 新增 \$popover-margin sass 变量
+- 新增 trigger 参数
