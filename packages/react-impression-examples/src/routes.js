@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, IndexRoute, Redirect } from 'react-router'
-import Layout from 'app/components/Layout'
-import Table from 'table'
-import Overview from 'overview'
-import FormContainer from 'form'
+import Layout from 'src/app/components/Layout'
+import Table from 'src/table'
+import Overview from 'src/overview'
+import FormContainer from 'src/form'
 
 // 路由配置
 const createRoutes = () => (

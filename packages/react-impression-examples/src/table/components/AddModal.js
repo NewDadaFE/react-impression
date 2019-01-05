@@ -14,7 +14,7 @@ import {
   Radio,
   Col,
 } from 'react-impression'
-import './AddModal.module.scss'
+import styles from './AddModal.module.scss'
 
 export default class AddModal extends React.Component {
   static propTypes = {
@@ -71,8 +71,8 @@ export default class AddModal extends React.Component {
               </Col>
               <Col col='10'>
                 <Input type='text' style={{ width: 200 }} />
-                <span styleName='text'>分</span>
-                <span styleName='textlight'>（精确到1位小数）</span>
+                <span className={styles.text}>分</span>
+                <span className={styles.textlight}>（精确到1位小数）</span>
               </Col>
             </FormGroup>
             <FormGroup>
@@ -92,8 +92,8 @@ export default class AddModal extends React.Component {
               </Col>
               <Col col='10'>
                 <Input type='text' style={{ width: 200 }} />
-                <span styleName='text'>分</span>
-                <span styleName='textlight'>（精确到1位小数）</span>
+                <span className={styles.text}>分</span>
+                <span className={styles.textlight}>（精确到1位小数）</span>
               </Col>
             </FormGroup>
           </Form>

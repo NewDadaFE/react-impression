@@ -7,7 +7,7 @@ import * as actions from './reducer'
 import FilterContent from './container/FilterContent'
 import TableContainer from './container/TableContainer'
 import AddModal from './components/AddModal'
-import './container.module.scss'
+import styles from './Container.module.scss'
 
 class Table extends Component {
   state = {
@@ -24,7 +24,7 @@ class Table extends Component {
     const { showAddModal } = this.state
 
     return (
-      <Card block styleName='table-wrap'>
+      <Card block className={styles['table-wrap']}>
         <Filter />
         <FilterContent handleAddToggleClick={this.handleAddToggleClick} />
         <TableContainer />
@@ -38,4 +38,7 @@ const mapStateToProps = state => ({ total: state.table.total })
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Table)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Table)

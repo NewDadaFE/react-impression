@@ -9,10 +9,4 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunkMiddleware))
 )
 
-if (DEBUG) {
-  if (module.hot) {
-    module.hot.accept('./reducers', store.replaceReducer(reducer))
-  }
-}
-
 export default store

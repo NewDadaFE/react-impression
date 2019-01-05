@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Form, Badge, Icon, Split } from 'react-impression'
-import './Header.scss'
+import styles from './Header.module.scss'
 
 // Header
 const Header = () => {
@@ -19,11 +19,11 @@ const Header = () => {
           </Badge>
         </span>
         <span className='no-margin'>
-          <span styleName='navbar-user' />
+          <span className={styles['navbar-user']} />
           <span className='offset-l'>Impression</span>
         </span>
         <Split />
-        <a href='#' className='nav-link'>
+        <a href='#top' className='nav-link'>
           登出
         </a>
       </Form>

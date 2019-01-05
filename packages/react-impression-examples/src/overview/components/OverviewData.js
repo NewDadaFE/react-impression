@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardBlock, Row, Col } from 'react-impression'
-import './OverviewData.module.scss'
+import styles from './OverviewData.module.scss'
 
 // MOCK 数据
 const mockData = [
@@ -31,9 +31,9 @@ export default class Overview extends React.Component {
             {mockData.map((item, index) => {
               return (
                 <Col key={index}>
-                  <div styleName='box'>
-                    <div styleName='name'>{item.name}</div>
-                    <div styleName='value'>{item.value}</div>
+                  <div className={styles.box}>
+                    <div className={styles.name}>{item.name}</div>
+                    <div className={styles.value}>{item.value}</div>
                   </div>
                 </Col>
               )

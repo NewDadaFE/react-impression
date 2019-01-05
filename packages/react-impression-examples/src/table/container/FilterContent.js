@@ -45,7 +45,8 @@ class FilterContent extends Component {
           className='offset-l'
           onClick={handleAddToggleClick}
         >
-          <Icon type='plus' className='offset-r' />新增任务
+          <Icon type='plus' className='offset-r' />
+          新增任务
         </Button>
         <div className='pull-right'>
           <InputGroup>
@@ -64,4 +65,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterContent)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FilterContent)
