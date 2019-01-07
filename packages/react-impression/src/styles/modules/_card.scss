@@ -60,7 +60,9 @@
   font-weight: $card-cap-font-weight;
 
   &:first-child {
-    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    @include border-radius(
+      $card-border-radius-inner $card-border-radius-inner 0 0
+    );
   }
   & ~ .card-block {
     padding-top: 0;
@@ -76,7 +78,9 @@
   font-weight: $card-cap-font-weight;
 
   &:last-child {
-    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    @include border-radius(
+      0 0 $card-border-radius-inner $card-border-radius-inner
+    );
   }
 }
 
@@ -139,13 +143,17 @@
 .card-img-top {
   max-width: 100%;
 
-  @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  @include border-radius(
+    $card-border-radius-inner $card-border-radius-inner 0 0
+  );
 }
 
 .card-img-bottom {
   max-width: 100%;
 
-  @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  @include border-radius(
+    0 0 $card-border-radius-inner $card-border-radius-inner
+  );
 }
 
 //

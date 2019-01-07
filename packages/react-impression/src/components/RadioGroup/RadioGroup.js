@@ -101,13 +101,14 @@ export default class RadioGroup extends React.PureComponent {
         return child
       }
 
-      let { value, disabled } = child.props,
-        options = {
-          name: name || `radio_${this._reactInternalInstance._mountOrder}`,
-          key: index,
-          onChange: this.onChangeHandle,
-          disabled: disabled || this.props.disabled,
-        }
+      let { value, disabled } = child.props
+
+      let options = {
+        name: name || `radio_${this._reactInternalInstance._mountOrder}`,
+        key: index,
+        onChange: this.onChangeHandle,
+        disabled: disabled || this.props.disabled,
+      }
 
       // 是否选中
       if (value !== undefined || originValue !== undefined) {

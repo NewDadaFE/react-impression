@@ -1,19 +1,16 @@
-import React, { PropTypes } from 'react'
-import { Flex, Content, Loading, Notification, Message } from 'react-impression'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Flex, Loading, Notification, Message, Content } from 'react-impression'
 import Header from './Header'
 import Sidebar from './Sidebar'
 
-// 页面布局
 const Layout = ({ children }) => {
   return (
     <Flex className='layout'>
-      {/* 侧边栏 */}
       <Sidebar />
       <Flex.Item>
         <Flex direction='column'>
-          {/* 顶部栏 */}
           <Header />
-          {/* 内容区 */}
           <Content>{children}</Content>
           <Notification />
           <Message />

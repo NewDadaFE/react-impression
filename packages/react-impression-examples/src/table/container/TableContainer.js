@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Card, Table, Split } from 'react-impression'
 import * as actions from '../reducer'
 import { data } from '../config'
-import '../container.module.scss'
+import '../Container.module.scss'
 
 class Filter extends Component {
   static propTypes = {
@@ -69,7 +70,7 @@ class Filter extends Component {
           return (
             <div className='text-center'>
               <a
-                href='#'
+                href='#top'
                 className='operate'
                 onClick={() => {
                   console.log(value)
@@ -78,7 +79,7 @@ class Filter extends Component {
                 查看
               </a>
               <Split />
-              <a href='#' className='operate'>
+              <a href='#top' className='operate'>
                 编辑
               </a>
             </div>

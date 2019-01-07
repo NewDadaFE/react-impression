@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Row, Col } from 'react-impression'
-import './BaseInfo.module.scss'
+import classNames from 'classnames'
+import styles from './BaseInfo.module.scss'
 
 // MOCK 数据
 const mockData = [
@@ -38,53 +39,55 @@ const mockData = [
   },
 ]
 
-export default class BaseInfo extends React.Component {
-  render() {
-    return (
-      <Row>
-        {mockData.map((item, index) => {
-          const scoreColor = item.score.value > 90 ? 'green' : 'yellow'
-          const consumeColor = item.consume.value > 90 ? 'green' : 'yellow'
-          return (
-            <Col key={index}>
-              <Card>
-                <div styleName='cardTitle'>{item.title}</div>
-                <div styleName='body'>
-                  <div styleName='cell'>
-                    <div styleName='cellName'>{item.score.name}</div>
-                    <div styleName={`cellValue ${scoreColor}`}>
-                      {item.score.value}
-                    </div>
-                    <div styleName={consumeColor}>{item.score.desc}</div>
+export default function BaseInfo(props) {
+  return (
+    <Row>
+      {mockData.map((item, index) => {
+        const scoreColor = item.score.value > 90 ? 'green' : 'yellow'
+        const consumeColor = item.consume.value > 90 ? 'green' : 'yellow'
+        return (
+          <Col key={index}>
+            <Card>
+              <div className={styles.cardTitle}>{item.title}</div>
+              <div className={styles.body}>
+                <div className={styles.cell}>
+                  <div className={styles.cellName}>{item.score.name}</div>
+                  <div className={classNames('cellValue', scoreColor)}>
+                    {item.score.value}
                   </div>
-                  <div styleName='cell'>
-                    <div styleName='cellName'>{item.consume.name}</div>
-                    <div styleName='cellValue black'>{item.consume.value}</div>
-                    <div styleName='grey'>
-                      <span styleName='ratioLabel'>环比</span>
-                      <span>{item.consume.ratio}</span>
-                    </div>
+                  <div className={classNames(consumeColor)}>
+                    {item.score.desc}
                   </div>
                 </div>
-                <div styleName='footer'>
-                  <div styleName='item'>
-                    <div styleName='itemLabel'>当日利润： </div>
-                    <div styleName='itemValue'>{item.profit}</div>
+                <div className={styles.cell}>
+                  <div className={styles.cellName}>{item.consume.name}</div>
+                  <div className={classNames(styles.cellValue, styles.black)}>
+                    {item.consume.value}
                   </div>
-                  <div styleName='item'>
-                    <div styleName='itemLabel'>待开通账号： </div>
-                    <div styleName='itemValue'>{item.account}</div>
-                  </div>
-                  <div styleName='item'>
-                    <div styleName='itemLabel'>异常处理： </div>
-                    <div styleName='itemValue'>{item.abnormal}</div>
+                  <div className={styles.grey}>
+                    <span className={styles.ratioLabel}>环比</span>
+                    <span>{item.consume.ratio}</span>
                   </div>
                 </div>
-              </Card>
-            </Col>
-          )
-        })}
-      </Row>
-    )
-  }
+              </div>
+              <div className={styles.footer}>
+                <div className={styles.item}>
+                  <div className={styles.itemLabel}>当日利润： </div>
+                  <div className={styles.itemValue}>{item.profit}</div>
+                </div>
+                <div className={styles.item}>
+                  <div className={styles.itemLabel}>待开通账号： </div>
+                  <div className={styles.itemValue}>{item.account}</div>
+                </div>
+                <div className={styles.item}>
+                  <div className={styles.itemLabel}>异常处理： </div>
+                  <div className={styles.itemValue}>{item.abnormal}</div>
+                </div>
+              </div>
+            </Card>
+          </Col>
+        )
+      })}
+    </Row>
+  )
 }

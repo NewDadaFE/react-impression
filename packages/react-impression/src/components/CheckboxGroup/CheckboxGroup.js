@@ -73,10 +73,11 @@ export default class CheckboxGroup extends React.PureComponent {
     const { onChange } = this.props
 
     if (this.isPuppet) {
-      let propsValue = this.props.value,
-        originValue = checked
-          ? [...propsValue, value]
-          : [...propsValue.filter(item => item !== value)]
+      let propsValue = this.props.value
+
+      let originValue = checked
+        ? [...propsValue, value]
+        : [...propsValue.filter(item => item !== value)]
 
       onChange && onChange(originValue, event)
     } else {

@@ -2,8 +2,11 @@
 $sidebar-width: rem(230px) !default;
 $sidebar-font-size: rem(16px) !default;
 $sidebar-line-height: rem(20.1px) !default;
-$sidebar-bg: linear-gradient(180deg, rgba(#2f3a4f, 1) 0%, rgba(#293245, 1) 100%)
-  !default;
+$sidebar-bg: linear-gradient(
+  180deg,
+  rgba(#2f3a4f, 1) 0%,
+  rgba(#293245, 1) 100%
+) !default;
 $sidebar-icon-size: rem(20px) !default;
 
 $sidebar-header-border-color: rgba($brand-pure, 0.1) !default;

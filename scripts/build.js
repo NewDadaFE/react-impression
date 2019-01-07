@@ -16,4 +16,4 @@ const fs = require('fs-extra')
 
 fs.emptyDirSync('dist')
 fs.copySync('packages/react-impression-website/dist', 'dist')
-fs.copySync('packages/react-impression-examples/dist', 'dist/examples')
+fs.copySync('packages/react-impression-examples/build', 'dist/examples')

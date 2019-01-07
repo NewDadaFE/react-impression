@@ -18,8 +18,9 @@ import {
   Upload,
   Icon,
 } from 'react-impression'
-import './CreateOrder.module.scss'
+import styles from './CreateOrder.module.scss'
 import Counter from '../components/Counter'
+import classNames from 'classnames'
 
 const address = ['地址1', '地址2', '地址3']
 const insuranceType = ['1元保价', '2元保价', '3元保价']
@@ -72,7 +73,7 @@ export default class CreateOrder extends React.Component {
               </Col>
               <Col col='10'>
                 <Select
-                  styleName='address-select'
+                  className={styles['address-select']}
                   searchable
                   placeholder='请填写收货地址'
                 >
@@ -114,10 +115,13 @@ export default class CreateOrder extends React.Component {
               </Col>
             </FormGroup>
             <FormGroup>
-              <Col col='2' styleName='inline-label' className='text-right'>
+              <Col
+                col='2'
+                className={classNames('text-right', styles['inline-label'])}
+              >
                 <strong>类型:</strong>
               </Col>
-              <Col col='5' styleName='inline-content'>
+              <Col col='5' className={styles['inline-content']}>
                 <InlineSelect
                   defaultValue={'1'}
                   onChange={this.selectZoneHandle}
@@ -214,7 +218,7 @@ export default class CreateOrder extends React.Component {
               </Col>
             </FormGroup>
             <FormGroup style={{ justifyContent: 'center' }}>
-              <Button theme='default' styleName='cancel-button'>
+              <Button theme='default' className={styles['cancel-button']}>
                 取消
               </Button>
               <Button theme='primary'>保存</Button>

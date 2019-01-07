@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
@@ -45,7 +46,8 @@ class FilterContent extends Component {
           className='offset-l'
           onClick={handleAddToggleClick}
         >
-          <Icon type='plus' className='offset-r' />新增任务
+          <Icon type='plus' className='offset-r' />
+          新增任务
         </Button>
         <div className='pull-right'>
           <InputGroup>

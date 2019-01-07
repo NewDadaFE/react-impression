@@ -16,7 +16,7 @@ Then generate your new project:
 yo react-impression
 ```
 
-***OR*** upgrade existed project:
+**_OR_** upgrade existed project:
 
 ```bash
 cd YOUR_PROJECT_FOLDER
@@ -52,7 +52,8 @@ Then run following command to release `patch` version:
 npm version patch -m 'Release version %s'
 ```
 
-***OR*** release `minor` version:
+**_OR_** release `minor` version:
+
 ```bash
 npm version minor -m 'Release version %s'
 ```
@@ -84,7 +85,6 @@ npm version minor -m 'Release version %s'
 * Follow standard of [ducks-modular-redux][ducks-modular-redux]
 * Update state using [dot-prop-immutable][dot-prop-immutable]
 * Write styles with [babel-plugin-react-css-modules][babel-plugin-react-css-modules]
-
 
 ## License
 

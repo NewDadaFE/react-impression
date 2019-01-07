@@ -4,15 +4,15 @@
 // and disabled options for all buttons
 
 @mixin button-variant(
-    $color,
-    $background,
-    $border,
-    $hover-background,
-    $btn-hover-box-shadow,
-    $active-background,
-    $btn-disabled-color,
-    $btn-disabled-bg,
-    $btn-disabled-border
+  $color,
+  $background,
+  $border,
+  $hover-background,
+  $btn-hover-box-shadow,
+  $active-background,
+  $btn-disabled-color,
+  $btn-disabled-bg,
+  $btn-disabled-border
 ) {
   $hover-border: darken($border, 10%);
 

@@ -390,8 +390,10 @@ export default class Select extends React.PureComponent {
    */
   componentWillUnmount() {
     System.unmanager(this)
-    this.selectScrollbar.destroy()
-    this.selectScrollbar = null
+    if (this.selectScrollbar) {
+      this.selectScrollbar.destroy()
+      this.selectScrollbar = null
+    }
   }
 
   componentWillReceiveProps(props) {

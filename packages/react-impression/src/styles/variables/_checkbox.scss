@@ -4,9 +4,8 @@ $checkbox-space-x: rem(50px) !default;
 $checkbox-addon-size: 1.28 !default;
 $checkbox-addon-i-size: 0.7 !default;
 $checkbox-addon-padding: round(
-    ($checkbox-addon-size - $checkbox-addon-i-size) * $font-size-root / 2 - 1
-  )
-  !default;
+  ($checkbox-addon-size - $checkbox-addon-i-size) * $font-size-root / 2 - 1
+) !default;
 $checkbox-addon-border-color: $gray-darker !default;
 $checkbox-addon-border-width: rem(2px) !default;
 $checkbox-addon-border-radius: $border-radius !default;
