@@ -519,7 +519,7 @@ export default class Select extends React.PureComponent {
     }
     this.setState(
       {
-        showDatePicker: false,
+        showClear: false,
         selectText: '',
         value: '',
         showOption: false,
