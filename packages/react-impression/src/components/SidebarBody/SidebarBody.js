@@ -29,8 +29,10 @@ export default class SidebarBody extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.scrollbar && this.scrollbar.destroy()
-    this.scrollbar = null
+    if (this.scrollbar) {
+      this.scrollbar.destroy()
+      this.scrollbar = null
+    }
   }
 
   handleUpdateScroll = () => {
