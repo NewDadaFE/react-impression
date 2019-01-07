@@ -469,9 +469,9 @@ class DefaultExample extends React.Component {
 
 v2.0.0
 
-- 新增 searchable 可搜索属性
-- 新增 multiple 多选属性，多选模式下，value 或者 defaultValue 格式为 [1，2]
-- 新增 required 是否必选项属性, 状态需要自行控制
-- 新增 onDelete 回调方法，返回值为删除项的值，仅在多选模式下生效
-- 新增 filterMethod 筛选方法,可支持实时搜索。使用时在 filterMethod 里重置数据源即可。
-- 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
+* 新增 searchable 可搜索属性
+* 新增 multiple 多选属性，多选模式下，value 或者 defaultValue 格式为 [1，2]
+* 新增 required 是否必选项属性, 状态需要自行控制
+* 新增 onDelete 回调方法，返回值为删除项的值，仅在多选模式下生效
+* 新增 filterMethod 筛选方法,可支持实时搜索。使用时在 filterMethod 里重置数据源即可。
+* 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签

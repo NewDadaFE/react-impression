@@ -44,4 +44,4 @@
 
 v2.0.0
 
-- 增加 align 属性，包含 left，center，right 三种属性
+* 增加 align 属性，包含 left，center，right 三种属性

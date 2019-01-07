@@ -7,15 +7,15 @@ const fs = require('fs-extra')
 const semver = require('semver')
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
+  constructor (args, opts) {
     super(args, opts)
   }
 
-  initializing() {
+  initializing () {
     this.isUpgrade = this.fs.exists(this.destinationPath('package.json'))
   }
 
-  prompting() {
+  prompting () {
     this.log(
       yosay(`Welcome to the neat ${chalk.red('react-impression')} generator!`)
     )
@@ -30,19 +30,19 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'name',
-        message: 'Your project name:',
+        message: 'Your project name:'
       },
       {
         type: 'input',
         name: 'description',
-        message: 'Your project description:',
-      },
+        message: 'Your project description:'
+      }
     ]
 
     return this.prompt(prompts).then(props => (this.props = props))
   }
 
-  configuring() {
+  configuring () {
     if (this.isUpgrade) return
 
     if (path.basename(this.destinationPath()) === this.props.name) return
@@ -51,7 +51,7 @@ module.exports = class extends Generator {
     this.destinationRoot(this.destinationPath(this.props.name))
   }
 
-  _copyHTML() {
+  _copyHTML () {
     if (!this.isUpgrade) {
       this.fs.copyTpl(
         this.templatePath('public/index.html'),
@@ -75,7 +75,7 @@ module.exports = class extends Generator {
     }
   }
 
-  _copyExample() {
+  _copyExample () {
     if (!this.isUpgrade) {
       this.fs.copy(this.templatePath('src/**'), this.destinationPath('src'))
       return
@@ -91,15 +91,15 @@ module.exports = class extends Generator {
     const regex = {
       polyfill: /react-app-polyfill/gm,
       fetch: /import 'whatwg-fetch'\n/gm,
-      debug: /DEBUG|__DEV__/gm,
+      debug: /DEBUG|__DEV__/gm
     }
     const paths = {
       index: this.destinationPath('src/index.js'),
-      store: this.destinationPath('src/store.js'),
+      store: this.destinationPath('src/store.js')
     }
     const files = {
       index: this.fs.read(paths.index),
-      store: this.fs.exists(paths.store) ? this.fs.read(paths.store) : '',
+      store: this.fs.exists(paths.store) ? this.fs.read(paths.store) : ''
     }
     const debug = "process.env.NODE_ENV === 'development'"
 
@@ -121,20 +121,20 @@ module.exports = class extends Generator {
     }
   }
 
-  _copyConfig() {
+  _copyConfig () {
     this.fs.copy(
       this.templatePath('.{editorconfig,gitignore,npmrc}'),
       this.destinationRoot()
     )
   }
 
-  _copyDotenv() {
+  _copyDotenv () {
     if (this.fs.exists(this.destinationPath('.env'))) return
 
     this.fs.copy(this.templatePath('.env'), this.destinationPath('.env'))
   }
 
-  _copyQshell() {
+  _copyQshell () {
     if (!this.isUpgrade) {
       const config = this.fs.readJSON(this.templatePath('.qshell.json'))
       const custom = R.mergeRight(config, { key_prefix: `${this.props.name}/` })
@@ -149,20 +149,20 @@ module.exports = class extends Generator {
         access_key: pkg.deploy.ACCESS_KEY,
         secret_key: pkg.deploy.SECRET_KEY,
         bucket: pkg.deploy.BUCKET || '',
-        key_prefix: `${pkg.name}/`,
+        key_prefix: `${pkg.name}/`
       })
       this.fs.writeJSON(this.destinationPath('.qshell.json'), custom)
     }
   }
 
-  _copyPackage() {
+  _copyPackage () {
     let pkg = this.fs.readJSON(this.templatePath('package.json'))
 
     if (!this.isUpgrade) {
       pkg = R.mergeRight(pkg, this.props)
       pkg.babel.plugins[1][1]['react-impression'] = {
         transform: 'react-impression/components/${member}',
-        preventFullImport: true,
+        preventFullImport: true
       }
       this.fs.writeJSON(this.destinationPath('package.json'), pkg)
       return
@@ -182,10 +182,10 @@ module.exports = class extends Generator {
           'moment',
           'react',
           'react-app-polyfill',
-          'react-dom',
+          'react-dom'
         ],
         pkg.dependencies
-      ),
+      )
     }
 
     const custom = R.mergeDeepRight(config, required)
@@ -200,14 +200,14 @@ module.exports = class extends Generator {
     if (isVersionMatch) {
       pkg.babel.plugins[1][1]['react-impression'] = {
         transform: 'react-impression/components/${member}',
-        preventFullImport: true,
+        preventFullImport: true
       }
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg)
   }
 
-  _copyReadme() {
+  _copyReadme () {
     if (this.isUpgrade) return
 
     this.fs.copyTpl(
@@ -217,11 +217,11 @@ module.exports = class extends Generator {
     )
   }
 
-  _copyWebpack() {
+  _copyWebpack () {
     this.fs.copy(this.templatePath('*.js'), this.destinationRoot())
   }
 
-  writing() {
+  writing () {
     this._copyHTML()
     this._copyExample()
     this._copyConfig()
@@ -232,7 +232,7 @@ module.exports = class extends Generator {
     this._copyWebpack()
   }
 
-  install() {
+  install () {
     this.log(yosay(`WOW! I'm all ${chalk.red('done')}!`))
     this.yarnInstall()
   }

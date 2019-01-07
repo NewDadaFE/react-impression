@@ -60,7 +60,7 @@ npm version minor -m 'Release version %s'
 
 ## Best Practice
 
-- Proxy API request
+* Proxy API request
 
   First, update proxy table in `package.json`. For example:
 
@@ -81,10 +81,10 @@ npm version minor -m 'Release version %s'
   npm start
   ```
 
-- Create Flux Standard Action with [redux-actions][redux-actions]
-- Follow standard of [ducks-modular-redux][ducks-modular-redux]
-- Update state using [dot-prop-immutable][dot-prop-immutable]
-- Write styles with [babel-plugin-react-css-modules][babel-plugin-react-css-modules]
+* Create Flux Standard Action with [redux-actions][redux-actions]
+* Follow standard of [ducks-modular-redux][ducks-modular-redux]
+* Update state using [dot-prop-immutable][dot-prop-immutable]
+* Write styles with [babel-plugin-react-css-modules][babel-plugin-react-css-modules]
 
 ## License
 

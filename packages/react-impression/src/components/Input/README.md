@@ -284,7 +284,7 @@ class Example extends React.Component {
 
 v2.0.0
 
-- 新增 input-box-shadow-focus sass 变量
-- 新增 \$input-font-size-sm sass 变量
-- 新增 \$input-font-size-lg sass 变量
-- 修复 日期类型 Input 组件清除内容后，没有触发 onChange 事件的问题
+* 新增 input-box-shadow-focus sass 变量
+* 新增 \$input-font-size-sm sass 变量
+* 新增 \$input-font-size-lg sass 变量
+* 修复 日期类型 Input 组件清除内容后，没有触发 onChange 事件的问题

@@ -192,7 +192,9 @@ export default class TableBody extends React.PureComponent {
                 onMouseEnter={() => onMouseEnter(index)}
                 onMouseLeave={() => onMouseLeave(index)}
               >
-                {rowSelection && !isShowSelection && rowSelection.fixed && (
+                {rowSelection &&
+                  !isShowSelection &&
+                  rowSelection.fixed && (
                   <td
                     className={classnames(`item-fix-left`)}
                     key={-1}
@@ -210,7 +212,8 @@ export default class TableBody extends React.PureComponent {
                 )}
                 {!!fixLeftList.length &&
                   this.renderTd(fixLeftList, item, 'left', isNeedHide)}
-                {rowSelection && !rowSelection.fixed && (
+                {rowSelection &&
+                  !rowSelection.fixed && (
                   <td className={classnames(`item-fix-`)} key={-1} width={60}>
                     <div className='table-cell'>
                       <Checkbox
@@ -226,7 +229,9 @@ export default class TableBody extends React.PureComponent {
                 {!!noFixColumns.length && this.renderTd(noFixColumns, item)}
                 {!!fixRightList.length &&
                   this.renderTd(fixRightList, item, 'right', isNeedHide)}
-                {rowSelection && isShowSelection && rowSelection.fixed && (
+                {rowSelection &&
+                  isShowSelection &&
+                  rowSelection.fixed && (
                   <td
                     className={classnames(`item-fix-normal`)}
                     key={-1}

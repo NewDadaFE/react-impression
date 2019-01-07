@@ -66,5 +66,5 @@ initialState = {
 
 v2.0.0
 
-- 废弃`ellipsis`属性，自动显示省略号
-- 新增`lastContent`、`nextContent`属性，支持自定义翻页控制按钮内容
+* 废弃`ellipsis`属性，自动显示省略号
+* 新增`lastContent`、`nextContent`属性，支持自定义翻页控制按钮内容

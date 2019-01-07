@@ -150,26 +150,27 @@ export default class Pagination extends React.PureComponent {
             {lastContent || <i className='fa fa-chevron-left' />}
           </span>
         </li>
-        {pageList.map((child, index) =>
-          child ? (
-            <li
-              key={`${child}-${index}`}
-              className={classnames('page-item', {
-                active: child === (activePage || 1),
-              })}
-            >
-              <span
-                className='page-link'
-                onClick={() => this.goPageHandle(child)}
+        {pageList.map(
+          (child, index) =>
+            child ? (
+              <li
+                key={`${child}-${index}`}
+                className={classnames('page-item', {
+                  active: child === (activePage || 1),
+                })}
               >
-                {child}
-              </span>
-            </li>
-          ) : (
-            <li key={`${child}-${index}`} className='page-item disabled'>
-              <i className='fa fa-ellipsis-h' />
-            </li>
-          )
+                <span
+                  className='page-link'
+                  onClick={() => this.goPageHandle(child)}
+                >
+                  {child}
+                </span>
+              </li>
+            ) : (
+              <li key={`${child}-${index}`} className='page-item disabled'>
+                <i className='fa fa-ellipsis-h' />
+              </li>
+            )
         )}
         <li
           className={classnames('page-item', {

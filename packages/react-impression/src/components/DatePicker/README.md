@@ -13,12 +13,19 @@
 **基本用法**
 
 ```js
-<Row>
+const handleChange = dayFormat => {
+  setState({ defaultDate: dayFormat })
+  console.log('Change: ', dayFormat)
+}
+initialState = {
+  defaultDate: '',
+}
+;<Row>
   <Col>
     <Form>
       <FormGroup>
-        <label>默认:</label>
-        <Input type="date" />
+        <label>受控:</label>
+        <Input type="date" value={state.defaultDate} onChange={handleChange} />
       </FormGroup>
     </Form>
   </Col>
@@ -49,7 +56,7 @@
     <Form>
       <FormGroup>
         <label>最小值:</label>
-        <Input type="date" defaultValue="2018-09-20" minDate="2018-06-15" />
+        <Input type="date" defaultValue="2018-09-20" minDate="2018-09-01" />
       </FormGroup>
     </Form>
   </Col>
@@ -57,7 +64,7 @@
     <Form>
       <FormGroup>
         <label>最大值:</label>
-        <Input type="date" defaultValue="2018-09-20" maxDate="2018-06-30" />
+        <Input type="date" defaultValue="2018-09-20" maxDate="2018-09-25" />
       </FormGroup>
     </Form>
   </Col>
@@ -129,4 +136,4 @@
 
 ### 变更记录
 
-- 新增 type 属性`year`值，支持选择年份
+* 新增 type 属性`year`值，支持选择年份

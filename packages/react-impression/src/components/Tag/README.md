@@ -61,4 +61,4 @@
 
 v2.0.0
 
-- 默认值改为 primary
+* 默认值改为 primary

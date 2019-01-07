@@ -38,7 +38,4 @@ const mapStateToProps = state => ({ total: state.table.total })
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Table)
+export default connect(mapStateToProps, mapDispatchToProps)(Table)

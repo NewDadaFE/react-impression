@@ -135,8 +135,14 @@ export default class TableHead extends React.PureComponent {
         <table className='table-header' cellSpacing='0' cellPadding='0'>
           <thead>
             <tr>
-              {rowSelection && !isShowSelection && rowSelection.fixed && (
-                <th className={classnames(`item-fix-left`)} key={-1} width={60}>
+              {rowSelection &&
+                !isShowSelection &&
+                rowSelection.fixed && (
+                <th
+                  className={classnames(`item-fix-left`)}
+                  key={-1}
+                  width={60}
+                >
                   <div className='table-cell table-cell-select'>
                     <Checkbox
                       onChange={handleCheckOnSelectAll}
@@ -148,8 +154,13 @@ export default class TableHead extends React.PureComponent {
               )}
               {!!fixLeftList.length &&
                 this.renderHeader(fixLeftList, 'left', isNeedHide)}
-              {rowSelection && !rowSelection.fixed && (
-                <th key={-1} width={60} className={classnames(`item-fix-null`)}>
+              {rowSelection &&
+                !rowSelection.fixed && (
+                <th
+                  key={-1}
+                  width={60}
+                  className={classnames(`item-fix-null`)}
+                >
                   <div className='table-cell'>
                     <Checkbox
                       onChange={handleCheckOnSelectAll}
@@ -162,7 +173,9 @@ export default class TableHead extends React.PureComponent {
               {!!noFixColumns.length && this.renderHeader(noFixColumns)}
               {!!fixRightList.length &&
                 this.renderHeader(fixRightList, 'right', isNeedHide)}
-              {rowSelection && isShowSelection && rowSelection.fixed && (
+              {rowSelection &&
+                isShowSelection &&
+                rowSelection.fixed && (
                 <th
                   className={classnames(`item-fix-normal`)}
                   key={-1}

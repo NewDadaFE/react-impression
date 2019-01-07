@@ -11,10 +11,10 @@
 
 **特别提醒**
 
-- Sidebar 组件中覆写了 Collapse 组件 和 Nav 组件 的样式
-- 侧边栏**最多支持两级菜单的样式**，更多层级样式请自行实现
-- 菜单栏的收起展开逻辑，需要使用者自行实现
-- **Collapse 组件 不可以设置 eventKey 属性。**因此一级菜单若使用 Collapse 组件 + NavItem 组件 混合的方式，不可通过 Nav 组件 的 activeKey 属性控制选中状态。
+* Sidebar 组件中覆写了 Collapse 组件 和 Nav 组件 的样式
+* 侧边栏**最多支持两级菜单的样式**，更多层级样式请自行实现
+* 菜单栏的收起展开逻辑，需要使用者自行实现
+* **Collapse 组件 不可以设置 eventKey 属性。**因此一级菜单若使用 Collapse 组件 + NavItem 组件 混合的方式，不可通过 Nav 组件 的 activeKey 属性控制选中状态。
 
 ```js
 <div style={{ width: 230, height: 450 }}>

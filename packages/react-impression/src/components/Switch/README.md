@@ -29,4 +29,4 @@
 
 v2.0.0
 
-- 新增 sass 变量`$switch-addon-active-bg`用于 Switch 开状态背景色
+* 新增 sass 变量`$switch-addon-active-bg`用于 Switch 开状态背景色

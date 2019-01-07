@@ -74,8 +74,8 @@ const toggleConfirm3Handle = () => {
 
 v2.0.0
 
-- 移除 confirm-btn-padding sass 变量
-- 移除 confirm-btn-hover-bg sass 变量
-- 移除 confirm-btn-primary-color sass 变量
-- 新增 confirm-footer-btn-margin sass 变量
-- 新增 confirm-dialog-min-height sass 变量
+* 移除 confirm-btn-padding sass 变量
+* 移除 confirm-btn-hover-bg sass 变量
+* 移除 confirm-btn-primary-color sass 变量
+* 新增 confirm-footer-btn-margin sass 变量
+* 新增 confirm-dialog-min-height sass 变量

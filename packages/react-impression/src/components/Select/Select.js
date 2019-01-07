@@ -164,9 +164,7 @@ export default class Select extends React.PureComponent {
     const { optionList } = this.state
     const { multiple } = this.props
     const originValue = this.isPuppet
-      ? props !== undefined
-        ? props.value
-        : this.props.value
+      ? props !== undefined ? props.value : this.props.value
       : this.state.value
     let dataToSet
     if (!multiple) {

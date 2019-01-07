@@ -14,4 +14,4 @@
 
 v2.0.0
 
-- 删除 separator 属性，分割标识只为 arrow 模式
+* 删除 separator 属性，分割标识只为 arrow 模式
