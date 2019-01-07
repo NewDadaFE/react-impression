@@ -532,8 +532,6 @@ export default class DatePicker extends React.PureComponent {
     const dayMoment = moment(date, FORMAT.DATE)
     let min
     let max
-    if (this.props.maxDate === '2018-09-25') {
-    }
     if (panel === 'year') {
       min = minDate && moment(minDate.format(FORMAT.YEAR), FORMAT.DATE)
       max = maxDate && moment(maxDate.format(FORMAT.YEAR), FORMAT.DATE)
