@@ -68,6 +68,11 @@ export default class Select extends React.PureComponent {
     disabled: PropTypes.bool,
 
     /**
+     * 是否可清除，只适用于单选
+     */
+    clearable: PropTypes.bool,
+
+    /**
      * 是否可搜索
      */
     searchable: PropTypes.bool,
@@ -114,6 +119,7 @@ export default class Select extends React.PureComponent {
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
+    showClear: false,
   }
 
   componentDidMount() {
@@ -474,7 +480,56 @@ export default class Select extends React.PureComponent {
     if (!multiple) return 'select-options-normal'
     if (multiple) return 'select-options-multiple'
   }
+  /**
+   * @description 显示清空按钮
+   * @memberof Select
+   */
+  handleShowClear = () => {
+    !this.props.disabled &&
+      this.refMain &&
+      this.refMain.value &&
+      this.setState({
+        showClear: true,
+      })
+  }
 
+  /**
+   * @description 隐藏清空按钮
+   * @memberof Select
+   */
+  handleHideClear = () => {
+    this.setState({
+      showClear: false,
+    })
+  }
+
+  /**
+   * @description 清空选项事件
+   * @memberof Select
+   */
+  handleClearSelect = () => {
+    const { disabled, onChange } = this.props
+    const { options } = this.state
+
+    if (disabled) {
+      return
+    }
+    if (!this.isPuppet) {
+      this.refMain && (this.refMain.value = '')
+    }
+    this.setState(
+      {
+        showDatePicker: false,
+        selectText: '',
+        value: '',
+        showOption: false,
+      },
+      () => {
+        options.forEach(option => option.handleActive())
+        onChange && onChange('')
+      }
+    )
+  }
   render() {
     const {
       disabled,
@@ -484,6 +539,7 @@ export default class Select extends React.PureComponent {
       multiple,
       required,
       placeholder,
+      clearable,
     } = this.props
     const {
       showOption,
@@ -491,6 +547,7 @@ export default class Select extends React.PureComponent {
       queryText,
       currentPlaceholder,
       selectedItem,
+      showClear,
     } = this.state
     let { children } = this.props
     const optionWidth = this.selectMain && this.selectMain.offsetWidth
@@ -507,6 +564,8 @@ export default class Select extends React.PureComponent {
         )}
         disabled={disabled}
         ref={ref => (this.selectMain = ref)}
+        onMouseEnter={this.handleShowClear}
+        onMouseLeave={this.handleHideClear}
       >
         {multiple && (
           <div className='select-tags' onClick={this.toggleOptionsHandle}>
@@ -539,13 +598,22 @@ export default class Select extends React.PureComponent {
             disabled={disabled}
             className={classnames('select-selection')}
             onClick={this.toggleOptionsHandle}
+            ref={ref => (this.refMain = ref)}
+          />
+        )}
+        {(!showClear || !clearable) && (
+          <i
+            className='fa fa-chevron-down select-addon'
+            onClick={this.toggleOptionsHandle}
           />
         )}
 
-        <i
-          className='fa fa-chevron-down select-addon'
-          onClick={this.toggleOptionsHandle}
-        />
+        {clearable && showClear && !multiple && (
+          <i
+            className='fa fa-times select-addon'
+            onClick={this.handleClearSelect}
+          />
+        )}
         <div
           className={classnames(
             {
