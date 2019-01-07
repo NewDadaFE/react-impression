@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import uniqueId from 'lodash.uniqueid'
 
 export default class Switch extends React.PureComponent {
   static propTypes = {
@@ -38,6 +39,8 @@ export default class Switch extends React.PureComponent {
   static defaultProps = {
     disabled: false,
   }
+
+  id = uniqueId('switch-')
 
   getValue() {
     const { value } = this.props
@@ -80,7 +83,7 @@ export default class Switch extends React.PureComponent {
       <label
         {...others}
         className={classnames('switch', className)}
-        htmlFor={`switch${this._reactInternalInstance._mountOrder}`}
+        htmlFor={this.id}
       >
         <input
           ref='main'
@@ -89,7 +92,7 @@ export default class Switch extends React.PureComponent {
           defaultChecked={defaultChecked}
           disabled={disabled}
           onChange={onChange && this.onChangeHandle}
-          id={`switch${this._reactInternalInstance._mountOrder}`}
+          id={this.id}
         />
         <div className='switch-addon' />
       </label>

@@ -539,7 +539,6 @@ export default class Select extends React.PureComponent {
             disabled={disabled}
             className={classnames('select-selection')}
             onClick={this.toggleOptionsHandle}
-            onKeyUp={searchable ? this.handleSearch : ''}
           />
         )}
 

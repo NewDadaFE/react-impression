@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import uniqueId from 'lodash.uniqueid'
 
 export default class Radio extends React.PureComponent {
   static propTypes = {
@@ -49,6 +50,8 @@ export default class Radio extends React.PureComponent {
     disabled: false,
   }
 
+  id = uniqueId('radio-')
+
   getValue() {
     const { value } = this.props
     const { main } = this.refs
@@ -90,7 +93,7 @@ export default class Radio extends React.PureComponent {
       <label
         {...others}
         className={classnames('radio', className)}
-        htmlFor={`radio${this._reactInternalInstance._mountOrder}`}
+        htmlFor={this.id}
       >
         <input
           ref='main'
@@ -100,7 +103,7 @@ export default class Radio extends React.PureComponent {
           defaultChecked={defaultChecked}
           disabled={disabled}
           onChange={event => onChange && onChange(event, value)}
-          id={`radio${this._reactInternalInstance._mountOrder}`}
+          id={this.id}
         />
         <div className='radio-addon'>
           <i />
