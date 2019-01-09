@@ -1,4 +1,5 @@
 .pagination {
+  display: inline-block;
   text-align: center;
   padding-left: 0;
   margin-top: $spacer-y;
@@ -55,5 +56,28 @@
   &:hover {
     box-shadow: $pagination-hover-box-shadow;
     text-decoration: none;
+  }
+}
+.pagination-jumper {
+  display: inline-block;
+  & > span {
+    padding-left: $pagination-jumper-spacing;
+    padding-right: $pagination-jumper-spacing;
+  }
+}
+.pagination-jumper-input {
+  display: inline-block !important;
+  width: $pagination-jumper-input-width !important;
+  & > input {
+    text-align: center;
+    width: 100% !important;
+  }
+}
+.pagination-total {
+  display: inline-block;
+  padding-left: $pagination-jumper-spacing;
+  & > span {
+    padding-left: $pagination-total-spacing;
+    padding-right: $pagination-total-spacing;
   }
 }

@@ -17,6 +17,10 @@ export default class Pagination extends React.PureComponent {
      */
     totalPage: PropTypes.number.isRequired,
     /**
+     * 数据总数
+     */
+    total: PropTypes.number,
+    /**
      * 上一页控制按钮内容
      */
     lastContent: PropTypes.node,
@@ -29,6 +33,14 @@ export default class Pagination extends React.PureComponent {
      */
     onSelect: PropTypes.func,
     /**
+     * 是否可以快速跳转至某页
+     */
+    showQuickJumper: PropTypes.bool,
+    /**
+     * 是否显示数据总量和总页
+     */
+    showTotal: PropTypes.bool,
+    /**
      * 自定义样式
      */
     className: PropTypes.string,
@@ -38,12 +50,14 @@ export default class Pagination extends React.PureComponent {
     scope: 2,
     activePage: 1,
     totalPage: 1,
+    total: 0,
   }
 
   constructor(props) {
     super(props)
     this.state = {
       currentPage: this.props.activePage,
+      skipPageNo: '',
     }
   }
 
@@ -78,6 +92,7 @@ export default class Pagination extends React.PureComponent {
 
     onSelect && onSelect(page)
   }
+
   componentWillReceiveProps(nextProps) {
     if (Number(nextProps.activePage) !== Number(this.props.activePage)) {
       this.setState({
@@ -131,27 +146,46 @@ export default class Pagination extends React.PureComponent {
     return pageList
   }
 
+  handleInputChange = value => {
+    this.setState({ skipPageNo: value })
+  }
+
+  handleSkip = () => {
+    const { totalPage, onSelect } = this.props
+    const pageNo = +this.state.skipPageNo
+    if (isNaN(pageNo) || pageNo < 1 || pageNo > totalPage) {
+      this.setState({ skipPageNo: '' })
+      return
+    }
+    onSelect(pageNo)
+  }
+
   render() {
     const {
       totalPage = 1,
+      total,
       className,
       activePage,
       lastContent,
       nextContent,
+      showQuickJumper,
+      showTotal,
       ...others
     } = this.props
 
     const pageList = this.getPageList()
 
     return (
-      <ul {...others} className={classnames('pagination', className)}>
-        <li className={classnames('page-item', { disabled: activePage <= 1 })}>
-          <span className='page-link' onClick={this.prevPageHandle}>
-            {lastContent || <i className='fa fa-chevron-left' />}
-          </span>
-        </li>
-        {pageList.map(
-          (child, index) =>
+      <div className={className}>
+        <ul {...others} className='pagination'>
+          <li
+            className={classnames('page-item', { disabled: activePage <= 1 })}
+          >
+            <span className='page-link' onClick={this.prevPageHandle}>
+              {lastContent || <i className='fa fa-chevron-left' />}
+            </span>
+          </li>
+          {pageList.map((child, index) =>
             child ? (
               <li
                 key={`${child}-${index}`}
@@ -171,17 +205,41 @@ export default class Pagination extends React.PureComponent {
                 <i className='fa fa-ellipsis-h' />
               </li>
             )
+          )}
+          <li
+            className={classnames('page-item', {
+              disabled: activePage >= totalPage,
+            })}
+          >
+            <span className='page-link' onClick={this.nextPageHandle}>
+              {nextContent || <i className='fa fa-chevron-right' />}
+            </span>
+          </li>
+        </ul>
+
+        {showTotal && (
+          <div className='pagination-total'>
+            共<span>{totalPage || 1}</span>页<span>/</span>
+            <span>{total || 0}</span>条
+          </div>
         )}
-        <li
-          className={classnames('page-item', {
-            disabled: activePage >= totalPage,
-          })}
-        >
-          <span className='page-link' onClick={this.nextPageHandle}>
-            {nextContent || <i className='fa fa-chevron-right' />}
-          </span>
-        </li>
-      </ul>
+
+        {showQuickJumper && (
+          <div className='pagination-jumper'>
+            <span>跳转</span>
+            <Input
+              className='pagination-jumper-input'
+              size='sm'
+              value={this.state.skipPageNo}
+              onChange={this.handleInputChange}
+            />
+            <span>页</span>
+            <div className='page-link' onClick={this.handleSkip}>
+              GO
+            </div>
+          </div>
+        )}
+      </div>
     )
   }
 }
