@@ -47,18 +47,15 @@ export default class ButtonGroup extends React.PureComponent {
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { activeKey } = nextProps
-    const { props } = prevState
-    if (activeKey !== props.activeKey) {
-      return {
-        activeKey,
-        props: {
-          activeKey,
-        },
-      }
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.props.activeKey !== this.state.props.activeKey &&
+      prevState.activeKey === this.state.activeKey
+    ) {
+      this.setState({
+        activeKey: this.props.activeKey,
+      })
     }
-    return null
   }
 
   render() {
@@ -83,6 +80,9 @@ export default class ButtonGroup extends React.PureComponent {
         onClick: event => {
           this.setState({
             activeKey: eventKey,
+            props: {
+              activeKey: eventKey,
+            },
           })
           onSelect && onSelect(eventKey, event)
           onClick && onClick(event)
