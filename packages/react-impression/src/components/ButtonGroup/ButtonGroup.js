@@ -46,6 +46,17 @@ export default class ButtonGroup extends React.PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.props.activeKey !== this.state.activeKey &&
+      prevState.activeKey === this.state.activeKey
+    ) {
+      this.setState({
+        activeKey: this.props.activeKey,
+      })
+    }
+  }
+
   render() {
     let { theme, size, className, onSelect, children, ...others } = this.props
     const { activeKey } = this.state
