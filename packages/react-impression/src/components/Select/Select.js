@@ -39,6 +39,7 @@ export default class Select extends React.PureComponent {
       optionList: [],
       currentPlaceholder: this.props.placeholder,
       queryText: '', // 搜索字段
+      showClear: false,
     }
 
     this.state = {
@@ -119,7 +120,6 @@ export default class Select extends React.PureComponent {
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
-    showClear: false,
   }
 
   componentDidMount() {
