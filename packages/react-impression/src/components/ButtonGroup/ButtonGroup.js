@@ -45,7 +45,11 @@ export default class ButtonGroup extends React.PureComponent {
       activeKey: props.activeKey,
     }
   }
-
+  componentWillReceiveProps(preProp) {
+    this.state = {
+      activeKey: preProp.activeKey,
+    }
+  }
   render() {
     let { theme, size, className, onSelect, children, ...others } = this.props
     const { activeKey } = this.state
