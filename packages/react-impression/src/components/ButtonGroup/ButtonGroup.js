@@ -43,13 +43,12 @@ export default class ButtonGroup extends React.PureComponent {
     super(props, context)
     this.state = {
       activeKey: props.activeKey,
-      props,
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.props.activeKey !== this.state.props.activeKey &&
+      this.props.activeKey !== this.state.activeKey &&
       prevState.activeKey === this.state.activeKey
     ) {
       this.setState({
@@ -80,9 +79,6 @@ export default class ButtonGroup extends React.PureComponent {
         onClick: event => {
           this.setState({
             activeKey: eventKey,
-            props: {
-              activeKey: eventKey,
-            },
           })
           onSelect && onSelect(eventKey, event)
           onClick && onClick(event)
