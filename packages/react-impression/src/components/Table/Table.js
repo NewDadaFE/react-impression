@@ -85,8 +85,13 @@ export default class Table extends React.PureComponent {
     /**
      * 分页配置项，请参照Pagination
      */
-
     pagination: PropTypes.object,
+
+    /**
+     * 无数据时文案
+     */
+    noDataText: PropTypes.string,
+
     /**
      * 子组件
      */
@@ -95,6 +100,7 @@ export default class Table extends React.PureComponent {
   static defaultProps = {
     border: false,
     stripe: false,
+    noDataText: '暂无数据',
   }
 
   componentWillMount() {
@@ -580,6 +586,7 @@ export default class Table extends React.PureComponent {
       className,
       rowSelection,
       pagination,
+      noDataText,
     } = this.props
     const max = this.getMax(scroll)
     const {
@@ -736,7 +743,7 @@ export default class Table extends React.PureComponent {
             </div>
           )}
           {!data.length && (
-            <p className='text-center table-no-data'>暂无数据</p>
+            <p className='text-center table-no-data'>{noDataText}</p>
           )}
         </div>
         {this.renderPagination()}
