@@ -38,7 +38,7 @@ export default class SidebarBody extends React.PureComponent {
   handleUpdateScroll = () => {
     // 延迟更新滚动条
     window.requestAnimationFrame(() => {
-      this.scrollbar.update()
+      this.scrollbar && this.scrollbar.update()
     })
   }
 
