@@ -485,11 +485,7 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleShowClear = () => {
-    const showClear =
-      !this.props.disabled &&
-      this.refMain &&
-      this.refMain.value &&
-      this.refMain.value !== 0
+    const showClear = !this.props.disabled && this.refMain && this.refMain.value
     this.setState({ showClear })
   }
 
