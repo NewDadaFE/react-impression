@@ -13,7 +13,6 @@ initialState = {
   activePage: 2,
 }
 ;<Pagination
-  className="text-center"
   onSelect={onSelectHandle}
   scope={2}
   totalPage={state.totalPage}
@@ -34,7 +33,6 @@ initialState = {
   activePage: 50,
 }
 ;<Pagination
-  className="text-center"
   onSelect={onSelectHandle}
   scope={2}
   totalPage={state.totalPage}
@@ -55,7 +53,6 @@ initialState = {
   activePage: 1,
 }
 ;<Pagination
-  className="text-center"
   onSelect={onSelectHandle}
   scope={2}
   totalPage={state.totalPage}
@@ -78,7 +75,6 @@ initialState = {
   activePage: 50,
 }
 ;<Pagination
-  className="text-center"
   onSelect={onSelectHandle}
   scope={2}
   totalPage={state.totalPage}
@@ -103,7 +99,6 @@ initialState = {
   total: 27,
 }
 ;<Pagination
-  className="text-center"
   onSelect={onSelectHandle}
   scope={2}
   totalPage={state.totalPage}

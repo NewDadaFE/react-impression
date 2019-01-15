@@ -176,7 +176,7 @@ export default class Pagination extends React.PureComponent {
     const pageList = this.getPageList()
 
     return (
-      <div className={className}>
+      <div className={classnames('text-center', className)}>
         <ul {...others} className='pagination'>
           <li
             className={classnames('page-item', { disabled: activePage <= 1 })}
