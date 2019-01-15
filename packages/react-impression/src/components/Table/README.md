@@ -671,6 +671,7 @@ class DefaultExample extends React.Component {
 
 v2.0.0
 
-* 支持 TableColumn/columns 两种用法
-* 新增 columns 表格配置项属性。具体用法参照例子。参数包含 prop, rowspan, colspan, Cell, width。其中，prop 为 dataIndex，Header 为表头渲染，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，其他为自适应，fixed 可选值为 left/right，Cell 为 td 渲染，可自定义渲染项，非自定义结构下返回参数为 prop 对应值，自定义情况下返回参数为该条数据，rowspan 为跨行参数, colspan 为跨列参数
-* 新增 rowSelection 多选表格配置项属性。具体用法参照例子。其中 selectedRowKeys 和 onChange 必须同时为可控组件，onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys，fixed 为固定左侧参数
+- 支持 TableColumn/columns 两种用法
+- 新增 columns 表格配置项属性。具体用法参照例子。参数包含 prop, rowspan, colspan, Cell, width。其中，prop 为 dataIndex，Header 为表头渲染，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，其他为自适应，fixed 可选值为 left/right，Cell 为 td 渲染，可自定义渲染项，非自定义结构下返回参数为 prop 对应值，自定义情况下返回参数为该条数据，rowspan 为跨行参数, colspan 为跨列参数
+- 新增 rowSelection 多选表格配置项属性。具体用法参照例子。其中 selectedRowKeys 和 onChange 必须同时为可控组件，onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys，fixed 为固定左侧参数
+- 新增 placeholder 属性，表格无数据时提示文字。默认值为“暂无数据”
