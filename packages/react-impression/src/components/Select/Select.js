@@ -163,6 +163,10 @@ export default class Select extends React.PureComponent {
         option.queryChange('')
       })
       this.selectPopper && this.selectPopper.destroy()
+      if (this.selectInner) {
+        this.selectInner.scrollTop = 0
+        this.handleUpdateSelectScroll()
+      }
     })
   }
 
@@ -297,6 +301,10 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
+        if (this.selectInner) {
+          this.selectInner.scrollTop = 0
+          this.handleUpdateSelectScroll()
+        }
         if (this.state.showOption) {
           this.selectPopper = new Popper(this.selectMain, this.selectOption, {
             positionFixed: true,
@@ -389,6 +397,7 @@ export default class Select extends React.PureComponent {
           option.queryChange('')
         })
         this.selectPopper && this.selectPopper.update()
+        this.handleUpdateSelectScroll()
       }
     )
   }
@@ -635,7 +644,6 @@ export default class Select extends React.PureComponent {
             <ul
               className='select-options'
               ref={ref => (this.selectInner = ref)}
-              // onClick={this.handleUpdateMinuteScroll}
             >
               {children}
               {this.getEmptyText() && (
