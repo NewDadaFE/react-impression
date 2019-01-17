@@ -397,7 +397,6 @@ export default class Select extends React.PureComponent {
           option.queryChange('')
         })
         this.selectPopper && this.selectPopper.update()
-        this.selectInner.scrollTop = 0
         this.handleUpdateSelectScroll()
       }
     )
