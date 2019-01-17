@@ -124,11 +124,6 @@ export default class Select extends React.PureComponent {
 
   componentDidMount() {
     this.handleInit()
-    window.requestAnimationFrame(() => {
-      this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
-        suppressScrollX: true,
-      })
-    })
   }
 
   /**
@@ -163,6 +158,7 @@ export default class Select extends React.PureComponent {
         option.queryChange('')
       })
       this.selectPopper && this.selectPopper.destroy()
+      this.handleDestroySelectScroll()
     })
   }
 
@@ -305,8 +301,10 @@ export default class Select extends React.PureComponent {
               offset: { offset: '0, 10' },
             },
           })
+          this.handleInitSelectScroll()
         } else {
           this.selectPopper && this.selectPopper.destroy()
+          this.handleDestroySelectScroll()
         }
       }
     )
@@ -343,6 +341,8 @@ export default class Select extends React.PureComponent {
       this.setState({ currentPlaceholder: placeholder })
     }
     this.selectPopper && this.selectPopper.update()
+    this.selectInner.scrollTop = 0
+    this.handleUpdateSelectScroll()
     if (e) e.stopPropagation()
   }
 
@@ -398,10 +398,6 @@ export default class Select extends React.PureComponent {
    */
   componentWillUnmount() {
     System.unmanager(this)
-    if (this.selectScrollbar) {
-      this.selectScrollbar.destroy()
-      this.selectScrollbar = null
-    }
   }
 
   componentWillReceiveProps(props) {
@@ -456,6 +452,20 @@ export default class Select extends React.PureComponent {
     })
   }
 
+  handleInitSelectScroll = () => {
+    window.requestAnimationFrame(() => {
+      this.selectInner.scrollTop = 0
+      this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
+        suppressScrollX: true,
+      })
+    })
+  }
+  handleDestroySelectScroll = () => {
+    if (this.selectScrollbar) {
+      this.selectScrollbar.destroy()
+      this.selectScrollbar = null
+    }
+  }
   handleUpdateSelectScroll = () => {
     window.requestAnimationFrame(() => {
       this.selectScrollbar && this.selectScrollbar.update()
