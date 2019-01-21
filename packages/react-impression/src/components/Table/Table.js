@@ -235,7 +235,7 @@ export default class Table extends React.PureComponent {
     if (columns && currentColumns && !R.equals(columns, currentColumns)) {
       this.handleInt(columns, children)
     }
-    if (children && currentChildren && R.equals(children, currentChildren)) {
+    if (children && currentChildren && !R.equals(children, currentChildren)) {
       this.handleInt(columns, children)
     }
 
