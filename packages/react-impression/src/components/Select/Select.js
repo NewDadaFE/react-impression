@@ -130,8 +130,8 @@ export default class Select extends React.PureComponent {
    * @description 初始化
    * @memberof Select
    */
-  handleInit = () => {
-    this.handleValueChange()
+  handleInit = props => {
+    this.handleValueChange(props)
   }
   getChildContext() {
     return {
@@ -183,6 +183,7 @@ export default class Select extends React.PureComponent {
           return option.value === originValue
         })
       }
+      console.log(optionList)
       if (selectedItem) {
         dataToSet = {
           selectedItem,
@@ -219,6 +220,7 @@ export default class Select extends React.PureComponent {
         }
       }
     }
+    console.log(dataToSet)
     this.setState(dataToSet, () => {
       this.options.forEach(option => option.handleActive())
     })
@@ -422,20 +424,23 @@ export default class Select extends React.PureComponent {
       }
     }
     if (!R.equals(props.value, this.props.value)) {
-      this.handleInit()
+      this.handleInit(props)
       options.forEach(option => option.handleActive(props))
     }
   }
+  componentDidUpdate() {}
 
   onOptionCreate(option) {
     this.state.options.push(option)
     this.forceUpdate()
     this.handleInit()
   }
+
   onOptionGroupCreate(option) {
     this.state.optionGroup.push(option)
     this.forceUpdate()
   }
+
   onOptionGroupDestroy(option) {
     const { optionGroup } = this.state
     const index = optionGroup.indexOf(option)
@@ -444,6 +449,7 @@ export default class Select extends React.PureComponent {
     }
     this.forceUpdate()
   }
+
   onOptionDestroy(option) {
     const { options } = this.state
     const index = options.indexOf(option)
@@ -479,12 +485,14 @@ export default class Select extends React.PureComponent {
       })
     })
   }
+
   handleDestroySelectScroll = () => {
     if (this.selectScrollbar) {
       this.selectScrollbar.destroy()
       this.selectScrollbar = null
     }
   }
+
   handleUpdateSelectScroll = () => {
     window.requestAnimationFrame(() => {
       this.selectScrollbar && this.selectScrollbar.update()
