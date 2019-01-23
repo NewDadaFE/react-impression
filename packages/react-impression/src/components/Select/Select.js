@@ -131,19 +131,23 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleInit = () => {
-    const { options } = this.state
-    const optionList = options.map(option => {
-      const { value, children } = option.props
-      return { value, name: children.toString() }
-    })
-
-    this.setState({ optionList }, this.handleValueChange)
+    this.handleValueChange()
   }
   getChildContext() {
     return {
       componentSelect: this,
     }
   }
+
+  getOptionList = arr => {
+    if (!arr || !arr.length) return []
+    const result = arr.map(option => {
+      const { value, children } = option.props
+      return { value, name: children.toString() }
+    })
+    return result
+  }
+
   /**
    * @description 隐藏菜单
    * @memberof Select
@@ -163,7 +167,8 @@ export default class Select extends React.PureComponent {
   }
 
   handleValueChange(props) {
-    const { optionList } = this.state
+    const { options } = this.state
+    const optionList = this.getOptionList(options)
     const { multiple } = this.props
     const originValue = this.isPuppet
       ? props !== undefined
@@ -224,6 +229,7 @@ export default class Select extends React.PureComponent {
 
   setValue(value) {
     const { options } = this.state
+    const optionList = this.getOptionList(options)
     if (!this.isPuppet) {
       if (!this.props.multiple) {
         if (!value) {
@@ -231,7 +237,7 @@ export default class Select extends React.PureComponent {
             selectText: '',
           })
         } else {
-          this.state.optionList.forEach(option => {
+          optionList.forEach(option => {
             if (value === option.value) {
               this.setState({
                 selectText: option.value,
@@ -250,7 +256,7 @@ export default class Select extends React.PureComponent {
       } else {
         let selected = []
         let valueList = []
-        this.state.optionList.forEach(option => {
+        optionList.forEach(option => {
           if (value === option.value) {
             selected.push(option)
             valueList.push(option.value)
@@ -403,6 +409,18 @@ export default class Select extends React.PureComponent {
 
   componentWillReceiveProps(props) {
     const { options } = this.state
+    if (!R.equals(props.children, this.props.children)) {
+      if (!this.isPuppet) {
+        this.setState(
+          {
+            value: '',
+            selectedItem: [],
+            selectText: '',
+          },
+          () => options.forEach(option => option.handleActive(props))
+        )
+      }
+    }
     if (!R.equals(props.value, this.props.value)) {
       this.handleInit()
       options.forEach(option => option.handleActive(props))
@@ -414,8 +432,8 @@ export default class Select extends React.PureComponent {
     this.forceUpdate()
     this.handleInit()
   }
-  onOptionGroupCreate(optionGroup) {
-    this.state.optionGroup.push(optionGroup)
+  onOptionGroupCreate(option) {
+    this.state.optionGroup.push(option)
     this.forceUpdate()
   }
   onOptionGroupDestroy(option) {
@@ -473,9 +491,10 @@ export default class Select extends React.PureComponent {
     })
   }
 
-  getEmptyText = () => {
+  get EmptyText() {
     const { searchable, filterMethod } = this.props
-    const { options, optionList, queryText } = this.state
+    const { options, queryText } = this.state
+    const optionList = this.getOptionList(options)
     if (options.length === 0) {
       return '暂无数据'
     }
@@ -537,6 +556,7 @@ export default class Select extends React.PureComponent {
       }
     )
   }
+
   render() {
     const {
       disabled,
@@ -648,8 +668,8 @@ export default class Select extends React.PureComponent {
               ref={ref => (this.selectInner = ref)}
             >
               {children}
-              {this.getEmptyText() && (
-                <p className='select-empty'>{this.getEmptyText()}</p>
+              {this.EmptyText && (
+                <p className='select-empty'>{this.EmptyText}</p>
               )}
             </ul>
           </div>
