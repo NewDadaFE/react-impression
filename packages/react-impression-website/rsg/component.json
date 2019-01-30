@@ -38,5 +38,6 @@
   "Message": "消息提示",
   "Modal": "对话框",
   "Notification": "通知提醒框",
-  "Progress": "进度条"
+  "Progress": "进度条",
+  "TreeSelect": "树形选择器"
 }

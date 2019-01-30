@@ -1,0 +1,119 @@
+.tree {
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    white-space: nowrap;
+    outline: 0;
+
+    &.tree-treenode-disabled > span:not(.tree-switcher){
+      color: rgba(0, 0, 0, 0.25);
+      cursor: not-allowed;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0 0 0 18px;
+    }
+
+    .tree-node-content-wrapper {
+      display: inline-block;
+      padding: 0 5px;
+      border-radius: 2px;
+      margin: 0;
+      cursor: pointer;
+      text-decoration: none;
+      vertical-align: top;
+      color: rgba(0, 0, 0, 0.65);
+      -webkit-transition: all .3s;
+      transition: all .3s;
+      height: 24px;
+      line-height: 24px;
+    }
+    span {
+      &.tree-switcher {
+        line-height: 16px;
+        margin-right: 2px;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        border: 0 none;
+        cursor: pointer;
+        outline: none;
+        text-align: center;
+      }
+
+      &.tree-checkbox {
+        position: relative;
+        display: inline-block;
+        padding: $checkbox-addon-padding;
+        line-height: 1;
+        transition: $checkbox-addon-transtion;
+        vertical-align: middle;
+        border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
+        border-radius: $checkbox-addon-border-radius;
+        background-color: $checkbox-addon-bg-color;
+
+        i {
+          position: relative;
+          display: block;
+          width: round($checkbox-addon-i-size * $font-size-root);
+          height: round($checkbox-addon-i-size * $font-size-root);
+          transition: $checkbox-addon-transtion;
+          transform: scale(0);
+          transform-origin: 50% 50%;
+          color: transparent;
+          &::before {
+            position: absolute;
+            top: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
+            left: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
+            display: block;
+            transform: scale($checkbox-addon-scale);
+          }
+        }
+
+        &-checked {
+          border-color: $checkbox-addon-checked-color;
+          i {
+            transform: scale(1);
+            color: $checkbox-addon-checked-color;
+          }
+        }
+        &-indeterminate {
+          width: $checkbox-addon-padding * 2 + 4 +
+          round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
+          height: $checkbox-addon-padding * 2 + 4 +
+          round($checkbox-addon-i-size * $font-size-root);
+          border-color: $checkbox-addon-checked-color;
+
+          &::before {
+            position: relative;
+            top: 50%;
+            display: block;
+            margin-top: -$border-width;
+            content: '';
+            border: $border-width solid $checkbox-addon-indeterminate-color;
+          }
+
+          i {
+            display: none;
+          }
+        }
+        &-disabled {
+          cursor: not-allowed;
+          border-color: $checkbox-addon-disabled-color;
+          i {
+            color: $checkbox-addon-disabled-color;
+          }
+          &::before {
+            border-color: $checkbox-addon-disabled-color;
+          }
+        }
+      }
+    }
+  }
+}

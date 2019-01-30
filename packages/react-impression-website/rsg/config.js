@@ -109,6 +109,7 @@ module.exports = {
         'Tooltip',
         'Steps',
         'Step',
+        'TreeSelect',
       ]),
     },
     {
