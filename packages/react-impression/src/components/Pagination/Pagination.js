@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import Input from '../Input'
 
 export default class Pagination extends React.PureComponent {
   static propTypes = {
