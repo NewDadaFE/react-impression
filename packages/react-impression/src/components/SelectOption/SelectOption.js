@@ -32,12 +32,15 @@ export default class SelectOption extends React.PureComponent {
 
   state = {
     active: this.props.active || false,
-    name: this.props.children.toString(),
     visible: true,
   }
 
   static defaultProps = {
     disabled: false,
+  }
+
+  get labelName() {
+    return this.props.children.toString()
   }
 
   isEqual(a, b) {
@@ -67,7 +70,7 @@ export default class SelectOption extends React.PureComponent {
    * @memberof SelectOption
    */
   optionClickHandle = () => {
-    const { name, active } = this.state
+    const { active } = this.state
     const { value } = this.props
     const { multiple } = this.parent() ? this.parent().props : false
     if (active && !multiple) {
@@ -82,9 +85,9 @@ export default class SelectOption extends React.PureComponent {
     if (this.props.disabled) return
     this.parent().selectOptionHandle({
       value: value,
-      name,
+      name: this.labelName,
       index,
-      node: { value, name },
+      node: { value, name: this.labelName },
     })
   }
   handleActive = props => {
@@ -137,7 +140,7 @@ export default class SelectOption extends React.PureComponent {
   }
   getLabel() {
     return (
-      this.state.name ||
+      this.labelName ||
       (typeof this.props.value === 'string' ||
       typeof this.props.value === 'number'
         ? this.props.value
