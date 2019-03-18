@@ -12,9 +12,7 @@ export default class Table extends React.PureComponent {
 
     // 是否木偶组件
     this.isPuppet =
-      this.props.rowSelection &&
-      this.props.rowSelection.selectedRowKeys &&
-      this.props.rowSelection.onChange
+      this.props.rowSelection && this.props.rowSelection.selectedRowKeys
 
     // 子组件数据
     const initValue = {
