@@ -18,22 +18,26 @@ const columns = [
   { prop: 'creatTime', Header: '创建时间' },
   { prop: 'status', Header: '状态' },
   {
-    prop: 'id',
     Header: '操作',
-    Cell: value => {
+    Cell: item => {
       return (
         <div className="text-center">
           <a
             href="#"
             style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
-            onClick={() => {
-              console.log(value)
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
             }}
           >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -111,20 +115,25 @@ const data = [
     Header={() => {
       return <div>自定义</div>
     }}
-    Cell={value => {
+    Cell={item => {
       return (
         <div className="text-center">
           <a
             href="#"
             style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
-            onClick={() => {
-              console.log(value)
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
             }}
           >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -145,16 +154,23 @@ const columns = [
   { prop: 'creatTime', Header: '创建时间' },
   { prop: 'status', Header: '状态' },
   {
-    prop: 'id',
     Header: '操作',
     Cell: item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -202,16 +218,26 @@ const columns = [
   { prop: 'creatTime', Header: '创建时间' },
   { prop: 'status', Header: '状态' },
   {
-    prop: 'id',
     Header: '操作',
     Cell: item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#276BF2' }}
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
+            }}
+          >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -269,17 +295,27 @@ const columns = [
   { prop: 'creatTime', Header: '创建时间', width: 120 },
   { prop: 'status', Header: '状态', width: 120 },
   {
-    prop: 'id',
     Header: '操作',
     width: 202,
-    Cell: id => {
+    Cell: item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#276BF2' }}
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
+            }}
+          >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -367,18 +403,28 @@ const data = [
   <TableColumn prop="creatTime" Header="创建时间" width={120} />
   <TableColumn prop="status" Header="状态" width={120} />
   <TableColumn
-    prop="id"
     Header="操作"
     width={202}
     fixed="right"
     Cell={item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#276BF2' }}
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
+            }}
+          >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -407,18 +453,28 @@ const columns = [
   { prop: 'creatTime', Header: '创建时间', width: 120 },
   { prop: 'status', Header: '状态', width: 120 },
   {
-    prop: 'id',
     Header: '操作',
     width: 202,
     fixed: 'right',
-    Cell: id => {
+    Cell: item => {
       return (
         <div className="text-center">
-          <a href="#" style={{ paddingRight: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#276BF2' }}
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
+            }}
+          >
             编辑
           </a>
           <span style={{ color: '#E9EBF0' }}>|</span>
-          <a href="#" style={{ paddingLeft: 16, color: '#276BF2' }}>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
+          >
             删除
           </a>
         </div>
@@ -534,18 +590,18 @@ const columns = [
   { prop: 'creatTime', Header: '创建时间', width: 120 },
   { prop: 'status', Header: '状态', width: 120 },
   {
-    prop: 'id',
     Header: '操作',
     fixed: 'right',
     width: 202,
-    Cell: (value, index, current) => {
+    Cell: item => {
       return (
         <div>
           <a
             href="#"
             style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
-            onClick={() => {
-              console.log(value, index, current)
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
             }}
           >
             编辑
@@ -554,6 +610,7 @@ const columns = [
           <a
             href="#"
             style={{ paddingLeft: 16, paddingRight: 16, color: '#276BF2' }}
+            onClick={e => e.preventDefault()}
           >
             删除
           </a>
