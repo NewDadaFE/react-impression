@@ -712,12 +712,8 @@ export default class DatePicker extends React.PureComponent {
               </div>
             </div>
           )}
-          {showToday &&
-            panel === 'date' && (
-            <div
-              className='datepicker-footer'
-              onClick={this.handleSelectToday}
-            >
+          {showToday && panel === 'date' && (
+            <div className='datepicker-footer' onClick={this.handleSelectToday}>
               {todayText}
             </div>
           )}

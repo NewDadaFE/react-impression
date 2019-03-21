@@ -307,8 +307,7 @@ export default class Input extends React.PureComponent {
               style={style}
             />
 
-            {clearable &&
-              showClear && (
+            {clearable && showClear && (
               <i
                 className='fa fa-times input-addon'
                 onClick={this.handleClearDateInput}
@@ -361,8 +360,7 @@ export default class Input extends React.PureComponent {
               style={style}
             />
 
-            {clearable &&
-              showClear && (
+            {clearable && showClear && (
               <i
                 className='fa fa-times input-addon'
                 onClick={this.handleClearDateInput}
