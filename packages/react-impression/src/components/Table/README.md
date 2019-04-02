@@ -24,7 +24,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
+            style={{ paddingRight: 16, color: '#417FFA', height: 18 }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -35,7 +35,7 @@ const columns = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -120,7 +120,7 @@ const data = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
+            style={{ paddingRight: 16, color: '#417FFA', height: 18 }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -131,7 +131,7 @@ const data = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -160,7 +160,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2' }}
+            style={{ paddingRight: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             编辑
@@ -168,7 +168,7 @@ const columns = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -224,7 +224,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2' }}
+            style={{ paddingRight: 16, color: '#417FFA' }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -235,7 +235,7 @@ const columns = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -302,7 +302,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2' }}
+            style={{ paddingRight: 16, color: '#417FFA' }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -313,7 +313,7 @@ const columns = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -411,7 +411,7 @@ const data = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2' }}
+            style={{ paddingRight: 16, color: '#417FFA' }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -422,7 +422,7 @@ const data = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -461,7 +461,7 @@ const columns = [
         <div className="text-center">
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2' }}
+            style={{ paddingRight: 16, color: '#417FFA' }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -472,7 +472,7 @@ const columns = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
@@ -598,7 +598,7 @@ const columns = [
         <div>
           <a
             href="#"
-            style={{ paddingRight: 16, color: '#276BF2', height: 18 }}
+            style={{ paddingRight: 16, color: '#417FFA', height: 18 }}
             onClick={e => {
               e.preventDefault()
               console.log(item)
@@ -609,7 +609,7 @@ const columns = [
           <span style={{ color: '#E9EBF0' }}>|</span>
           <a
             href="#"
-            style={{ paddingLeft: 16, paddingRight: 16, color: '#276BF2' }}
+            style={{ paddingLeft: 16, paddingRight: 16, color: '#417FFA' }}
             onClick={e => e.preventDefault()}
           >
             删除
