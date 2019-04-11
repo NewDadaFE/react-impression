@@ -40,7 +40,7 @@ export default class SelectOption extends React.PureComponent {
   }
 
   get labelName() {
-    return this.props.children ? this.props.children.toString() : ''
+    return (this.props.children || '').toString()
   }
 
   isEqual(a, b) {
