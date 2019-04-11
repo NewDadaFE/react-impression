@@ -126,10 +126,11 @@ export default class SelectOption extends React.PureComponent {
   }
   queryChange(query, filterMethod) {
     if (!this.parent().props.searchable) return
-    let defaultMethod = (input, option) => {
+    let defaultMethod = (input = '', option) => {
       if (option) {
         return option.toLowerCase().indexOf(input.toLowerCase()) > -1
       }
+      return false
     }
 
     if (typeof filterMethod === 'function') {
@@ -146,7 +147,7 @@ export default class SelectOption extends React.PureComponent {
       this.labelName ||
       (typeof this.props.value === 'string' ||
       typeof this.props.value === 'number'
-        ? this.props.value
+        ? this.props.value.toString()
         : '')
     )
   }
