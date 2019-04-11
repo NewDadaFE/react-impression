@@ -205,15 +205,22 @@ export default class Table extends React.PureComponent {
     // 非受控组件
     if (!this.isPuppet) {
       const { defaultSelectedRowKeys = [] } = rowSelection
-      defaultSelectedRowKeys.forEach(item => {
-        this.handleSelected(Number(item))
-      })
+      this.setState(
+        { selectedRowKeys: defaultSelectedRowKeys },
+        defaultSelectedRowKeys.forEach(item => {
+          this.handleSelected(Number(item))
+        })
+      )
+
       return
     }
     const { selectedRowKeys = [] } = rowSelection
-    selectedRowKeys.forEach(item => {
-      this.handleSelected(Number(item))
-    })
+    this.setState(
+      { selectedRowKeys },
+      selectedRowKeys.forEach(item => {
+        this.handleSelected(Number(item))
+      })
+    )
   }
 
   /**
