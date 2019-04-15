@@ -215,12 +215,11 @@ export default class Table extends React.PureComponent {
       return
     }
     const { selectedRowKeys = [] } = rowSelection
-    this.setState(
-      { selectedRowKeys },
+    this.setState({ selectedRowKeys }, () => {
       selectedRowKeys.forEach(item => {
         this.handleSelected(Number(item))
       })
-    )
+    })
   }
 
   /**
@@ -274,7 +273,7 @@ export default class Table extends React.PureComponent {
     const dataLength = data.length
     if (selectedRowKeysLength === 0) {
       this.setState({
-        selectedRowKeys: rowSelection.selectedRowKeys,
+        selectedRowKeys: selectedRowKeys,
         indeterminate: false,
         checkAll: false,
       })
@@ -282,14 +281,14 @@ export default class Table extends React.PureComponent {
     if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
       this.setState({
         indeterminate: true,
-        selectedRowKeys: rowSelection.selectedRowKeys,
+        selectedRowKeys: selectedRowKeys,
         checkAll: false,
       })
     }
     if (selectedRowKeysLength === dataLength) {
       this.setState({
         indeterminate: false,
-        selectedRowKeys: rowSelection.selectedRowKeys,
+        selectedRowKeys: selectedRowKeys,
         checkAll: true,
       })
     }
