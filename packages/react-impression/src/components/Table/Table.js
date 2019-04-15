@@ -97,13 +97,11 @@ export default class Table extends React.PureComponent {
   }
 
   get isPuppet() {
-    if (
-      this.props.rowSelection &&
-      this.props.rowSelection.selectedRowKeys instanceof Array
-    ) {
-      return true
-    }
-    return false
+    const { rowSelection } = this.props
+    return (
+      typeof rowSelection === 'object' &&
+      Array.isArray(rowSelection.selectedRowKeys)
+    )
   }
 
   componentWillMount() {
