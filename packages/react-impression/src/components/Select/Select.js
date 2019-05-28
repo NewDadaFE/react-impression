@@ -141,7 +141,7 @@ export default class Select extends React.PureComponent {
 
   getOptionList = (arr = []) => {
     return arr.map(option => {
-      const { value, children } = option.props
+      const { value, children = '' } = option.props
       return { value, name: children.toString() }
     })
   }

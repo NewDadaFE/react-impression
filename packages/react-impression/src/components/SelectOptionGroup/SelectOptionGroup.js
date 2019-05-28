@@ -72,7 +72,7 @@ export default class SelectOptionGroup extends React.PureComponent {
       if (!child) {
         return child
       }
-      let { value, children } = child.props
+      let { value, children = '' } = child.props
       this.options.push(children.toString())
       return React.cloneElement(child, {
         key: index,

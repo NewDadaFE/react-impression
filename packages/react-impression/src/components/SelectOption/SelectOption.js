@@ -40,7 +40,7 @@ export default class SelectOption extends React.PureComponent {
   }
 
   get labelName() {
-    return this.props.children.toString()
+    return (this.props.children || '').toString()
   }
 
   isEqual(a, b) {
@@ -126,8 +126,12 @@ export default class SelectOption extends React.PureComponent {
   }
   queryChange(query, filterMethod) {
     if (!this.parent().props.searchable) return
-    let defaultMethod = (input, option) =>
-      option.toLowerCase().indexOf(input.toLowerCase()) > -1
+    let defaultMethod = (input = '', option) => {
+      if (option) {
+        return option.toLowerCase().indexOf(input.toLowerCase()) > -1
+      }
+      return false
+    }
 
     if (typeof filterMethod === 'function') {
       defaultMethod = filterMethod
@@ -143,7 +147,7 @@ export default class SelectOption extends React.PureComponent {
       this.labelName ||
       (typeof this.props.value === 'string' ||
       typeof this.props.value === 'number'
-        ? this.props.value
+        ? this.props.value.toString()
         : '')
     )
   }
