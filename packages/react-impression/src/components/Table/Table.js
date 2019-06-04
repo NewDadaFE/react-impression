@@ -100,6 +100,7 @@ export default class Table extends React.PureComponent {
     const { rowSelection } = this.props
     return (
       typeof rowSelection === 'object' &&
+      rowSelection !== null &&
       Array.isArray(rowSelection.selectedRowKeys)
     )
   }
