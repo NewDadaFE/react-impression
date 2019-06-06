@@ -10,10 +10,6 @@ export default class Table extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
-    // 是否木偶组件
-    this.isPuppet =
-      this.props.rowSelection && this.props.rowSelection.selectedRowKeys
-
     // 子组件数据
     const initValue = {
       columns: this.props.columns || [],
@@ -24,9 +20,7 @@ export default class Table extends React.PureComponent {
       rightFixedWidth: '',
       isEnd: false,
       isStart: true,
-      selectedRowKeys: this.isPuppet
-        ? this.props.rowSelection.selectedRowKeys
-        : [],
+      selectedRowKeys: [],
       indeterminate: false,
       checkAll: false,
       fixed: false,
@@ -74,6 +68,7 @@ export default class Table extends React.PureComponent {
      */
     rowSelection: PropTypes.shape({
       selectedRowKeys: PropTypes.array,
+      defaultSelectedRowKeys: PropTypes.array,
       onChange: PropTypes.func,
       onSelect: PropTypes.func,
       onSelectAll: PropTypes.func,
@@ -101,6 +96,15 @@ export default class Table extends React.PureComponent {
     placeholder: '暂无数据',
   }
 
+  get isPuppet() {
+    const { rowSelection } = this.props
+    return (
+      typeof rowSelection === 'object' &&
+      rowSelection !== null &&
+      Array.isArray(rowSelection.selectedRowKeys)
+    )
+  }
+
   componentWillMount() {
     this.handleInt()
   }
@@ -110,6 +114,7 @@ export default class Table extends React.PureComponent {
    */
   handleInt = (nextColumns, nextChildren) => {
     const { columns, children } = this.props
+
     let columnList = []
     if (nextChildren) {
       let columns = nextChildren.map(child => {
@@ -153,15 +158,21 @@ export default class Table extends React.PureComponent {
       },
       this.updateColumnsWidth
     )
-    if (this.isPuppet) {
-      const { rowSelection, data } = this.props
-      if (!rowSelection || !rowSelection.selectedRowKeys) return
-      const { selectedRowKeys } = rowSelection
-      const selectedRowKeysLength = selectedRowKeys.length
+    // 多选 table
+    if (this.props.rowSelection) {
+      const {
+        rowSelection: { selectedRowKeys = [], defaultSelectedRowKeys = [] },
+        data,
+      } = this.props
+      const selectedRowKeysLength = this.isPuppet
+        ? selectedRowKeys.length
+        : defaultSelectedRowKeys.length
       const dataLength = data.length
       if (selectedRowKeysLength === 0) {
         this.setState({
-          selectedRowKeys: rowSelection.selectedRowKeys,
+          selectedRowKeys: this.isPuppet
+            ? selectedRowKeys
+            : defaultSelectedRowKeys,
           indeterminate: false,
           checkAll: false,
         })
@@ -169,14 +180,18 @@ export default class Table extends React.PureComponent {
       if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
         this.setState({
           indeterminate: true,
-          selectedRowKeys: rowSelection.selectedRowKeys,
+          selectedRowKeys: this.isPuppet
+            ? selectedRowKeys
+            : defaultSelectedRowKeys,
           checkAll: false,
         })
       }
       if (selectedRowKeysLength === dataLength) {
         this.setState({
           indeterminate: false,
-          selectedRowKeys: rowSelection.selectedRowKeys,
+          selectedRowKeys: this.isPuppet
+            ? selectedRowKeys
+            : defaultSelectedRowKeys,
           checkAll: true,
         })
       }
@@ -185,10 +200,24 @@ export default class Table extends React.PureComponent {
 
   componentDidMount() {
     const { rowSelection } = this.props
-    if (!this.isPuppet || !rowSelection) return
-    const { selectedRowKeys } = rowSelection
-    selectedRowKeys.forEach(item => {
-      this.handleSelected(Number(item))
+    if (!rowSelection) return
+    // 非受控组件
+    if (!this.isPuppet) {
+      const { defaultSelectedRowKeys = [] } = rowSelection
+      this.setState(
+        { selectedRowKeys: defaultSelectedRowKeys },
+        defaultSelectedRowKeys.forEach(item => {
+          this.handleSelected(Number(item))
+        })
+      )
+
+      return
+    }
+    const { selectedRowKeys = [] } = rowSelection
+    this.setState({ selectedRowKeys }, () => {
+      selectedRowKeys.forEach(item => {
+        this.handleSelected(Number(item))
+      })
     })
   }
 
@@ -237,13 +266,13 @@ export default class Table extends React.PureComponent {
       this.handleInt(columns, children)
     }
 
-    if (!rowSelection || !rowSelection.selectedRowKeys || !this.isPuppet) return
+    if (!this.isPuppet) return
     const { selectedRowKeys, onChange } = rowSelection
     const selectedRowKeysLength = selectedRowKeys.length
     const dataLength = data.length
     if (selectedRowKeysLength === 0) {
       this.setState({
-        selectedRowKeys: rowSelection.selectedRowKeys,
+        selectedRowKeys: selectedRowKeys,
         indeterminate: false,
         checkAll: false,
       })
@@ -251,14 +280,14 @@ export default class Table extends React.PureComponent {
     if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
       this.setState({
         indeterminate: true,
-        selectedRowKeys: rowSelection.selectedRowKeys,
+        selectedRowKeys: selectedRowKeys,
         checkAll: false,
       })
     }
     if (selectedRowKeysLength === dataLength) {
       this.setState({
         indeterminate: false,
-        selectedRowKeys: rowSelection.selectedRowKeys,
+        selectedRowKeys: selectedRowKeys,
         checkAll: true,
       })
     }
@@ -268,7 +297,7 @@ export default class Table extends React.PureComponent {
     selectedRowKeys.forEach(item => {
       this.handleSelected(Number(item))
     })
-    onChange(selectedRowKeys)
+    onChange && onChange(selectedRowKeys)
   }
 
   componentDidUpdate() {
@@ -456,10 +485,13 @@ export default class Table extends React.PureComponent {
    */
   handleCheckOnSelect = (e, index, item) => {
     const status = e.target.checked
+    if (!this.props.rowSelection) return
+    const { selectedRowKeys } = this.state
     if (!this.isPuppet) {
-      const { selectedRowKeys } = this.state
       if (status) {
-        this.setState({ selectedRowKeys: [...selectedRowKeys, index] })
+        this.setState({
+          selectedRowKeys: [...selectedRowKeys, index],
+        })
       } else {
         this.setState({
           selectedRowKeys: selectedRowKeys.filter(
@@ -468,15 +500,15 @@ export default class Table extends React.PureComponent {
         })
       }
     }
+
     if (status) {
       this.handleSelected(index)
     } else {
       this.handleNoSelect(index)
     }
-    if (this.props.rowSelection && this.props.rowSelection.onSelect) {
-      const { onSelect } = this.props.rowSelection
-      onSelect(status, index, item)
-    }
+
+    const { onSelect } = this.props.rowSelection
+    onSelect && onSelect(status, index, item)
   }
 
   /**
@@ -486,7 +518,7 @@ export default class Table extends React.PureComponent {
   handleCheckOnSelectAll = () => {
     const { checkAll } = this.state
     const { data } = this.props
-
+    if (!this.props.rowSelection) return
     if (!this.isPuppet && checkAll) {
       this.setState(
         {
@@ -495,14 +527,12 @@ export default class Table extends React.PureComponent {
           indeterminate: false,
         },
         () => {
-          if (this.props.rowSelection && this.props.rowSelection.onSelectAll) {
-            const { onSelectAll } = this.props.rowSelection
-            const { checkAll, selectedRowKeys } = this.state
-            onSelectAll(checkAll, selectedRowKeys)
-            data.forEach((item, index) => {
-              this.handleNoSelect(index)
-            })
-          }
+          const { onSelectAll } = this.props.rowSelection
+          const { checkAll, selectedRowKeys } = this.state
+          onSelectAll && onSelectAll(checkAll, selectedRowKeys)
+          data.forEach((item, index) => {
+            this.handleNoSelect(index)
+          })
         }
       )
     }
@@ -515,26 +545,21 @@ export default class Table extends React.PureComponent {
           indeterminate: false,
         },
         () => {
-          if (this.props.rowSelection && this.props.rowSelection.onSelectAll) {
-            const { onSelectAll } = this.props.rowSelection
-            const { selectedRowKeys, checkAll } = this.state
-            onSelectAll(checkAll, selectedRowKeys)
-            data.forEach((item, index) => {
-              this.handleSelected(index)
-            })
-          }
+          const { onSelectAll } = this.props.rowSelection
+          const { selectedRowKeys, checkAll } = this.state
+          onSelectAll && onSelectAll(checkAll, selectedRowKeys)
+          data.forEach((item, index) => {
+            this.handleSelected(index)
+          })
         }
       )
     }
 
-    if (
-      this.isPuppet &&
-      this.props.rowSelection &&
-      this.props.rowSelection.onSelectAll
-    ) {
+    if (this.isPuppet) {
       const { onSelectAll, selectedRowKeys } = this.props.rowSelection
       const { checkAll } = this.state
-      onSelectAll(checkAll, selectedRowKeys)
+      this.setState({ checkAll: !checkAll })
+      onSelectAll && onSelectAll(!checkAll, selectedRowKeys)
     }
   }
 
