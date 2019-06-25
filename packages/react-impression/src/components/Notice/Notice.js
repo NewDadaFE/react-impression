@@ -39,6 +39,10 @@ export default class Notice extends PureComponent {
      * 鼠标移入事件回调
      */
     onMouseEnter: PropTypes.func,
+    /**
+     * 鼠标移开事件
+     */
+    onMouseLeave: PropTypes.func,
   }
 
   static defaultProps = {
@@ -72,6 +76,7 @@ export default class Notice extends PureComponent {
           this.props.className
         )}
         onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
       >
         <div className='notice-header'>
           <i className={classnames(iconClass)} />

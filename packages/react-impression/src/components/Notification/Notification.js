@@ -60,9 +60,22 @@ export default class Notification extends React.Component {
       message,
       theme,
       closeable,
+      duration,
     }
     this.setState(state)
     this.timeToRemoveNotice(key, duration)
+  }
+
+  /**
+   * 鼠标移开时当前元素仍然设置在计时器后自动消失
+   * @param key
+   * @param duration
+   * @constructor
+   */
+  TimeToRemoveCurrentTimer(key, duration) {
+    this.timers[key] = setTimeout(() => {
+      this.removeNotice(key)
+    }, duration)
   }
 
   /**
@@ -87,9 +100,13 @@ export default class Notification extends React.Component {
     )
   }
 
+  /***
+   * 鼠标悬停时，计时器清除，让提示不消失
+   * @param key
+   */
   handleClearTimer = key => {
     const stateData = this.state[key]
-    if (stateData && stateData.closeable) {
+    if (stateData) {
       clearTimeout(this.timers[key])
     }
   }
@@ -113,6 +130,9 @@ export default class Notification extends React.Component {
               title={this.state[key].title}
               close={() => this.removeNotice(key)}
               onMouseEnter={() => this.handleClearTimer(key)}
+              onMouseLeave={() =>
+                this.TimeToRemoveCurrentTimer(key, this.state[key].duration)
+              }
             >
               {this.state[key].message}
             </Notice>
