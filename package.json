@@ -31,6 +31,9 @@
     "prettier-standard": "^8.0.1"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "sourceType": "module"
+    },
     "rules": {
       "space-before-function-paren": [
         "error",
