@@ -24,6 +24,7 @@ export default class Table extends React.PureComponent {
       indeterminate: false,
       checkAll: false,
       fixed: false,
+      defaultSort: this.props.defaultSort || {},
     }
 
     this.state = {
@@ -55,9 +56,17 @@ export default class Table extends React.PureComponent {
     /**
      * 设置table的最大宽度 {x:number},默认为100%
      */
-
     scroll: PropTypes.object,
 
+    /**
+     * 默认排序字段以及排序顺序，{prop: 'time', order: 'descending/ascending'}
+     */
+    defaultSort: PropTypes.object,
+
+    /**
+     * 排序改变回调事件，返回 {prop,order}
+     */
+    onChangeSort: PropTypes.func,
     /**
      * 自定义样式
      */
@@ -96,6 +105,10 @@ export default class Table extends React.PureComponent {
     placeholder: '暂无数据',
   }
 
+  /**
+   * @description 判断是否是受控table
+   * @memberof Table
+   */
   get isPuppet() {
     const { rowSelection } = this.props
     return (
@@ -118,16 +131,32 @@ export default class Table extends React.PureComponent {
     let columnList = []
     if (nextChildren) {
       let columns = nextChildren.map(child => {
-        const { prop, label, fixed, Cell, width, Header } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header }
+        const {
+          prop,
+          label,
+          fixed,
+          Cell,
+          width,
+          Header,
+          sortable,
+        } = child.props
+        const obj = { prop, label, fixed, Cell, width, Header, sortable }
         return obj
       })
       columnList = columns
     }
     if (children && !nextChildren) {
       let columns = children.map(child => {
-        const { prop, label, fixed, Cell, width, Header } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header }
+        const {
+          prop,
+          label,
+          fixed,
+          Cell,
+          width,
+          Header,
+          sortable,
+        } = child.props
+        const obj = { prop, label, fixed, Cell, width, Header, sortable }
         return obj
       })
       columnList = columns
@@ -600,6 +629,25 @@ export default class Table extends React.PureComponent {
     )
   }
 
+  /**
+   * @description 点击排序，更改defaultSort
+   * @memberof Table
+   */
+  handleDefaultSort = defaultSort => {
+    const { onChangeSort } = this.props
+    this.setState({ defaultSort }, () => {
+      onChangeSort && onChangeSort({ ...defaultSort })
+      // 非受控table，更改排序，清空勾选项
+      if (!this.isPuppet) {
+        this.setState({
+          selectedRowKeys: [],
+          indeterminate: false,
+          checkAll: false,
+        })
+      }
+    })
+  }
+
   render() {
     const {
       data,
@@ -624,6 +672,7 @@ export default class Table extends React.PureComponent {
       indeterminate,
       checkAll,
       selectedRowKeys,
+      defaultSort,
     } = this.state
     const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : 60
     const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
@@ -662,6 +711,8 @@ export default class Table extends React.PureComponent {
                 fixed={fixed}
                 isNeedHide={isNeedHide}
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+                defaultSort={defaultSort}
+                handleSort={this.handleDefaultSort}
               />
               <TableBody
                 data={data}
@@ -703,6 +754,8 @@ export default class Table extends React.PureComponent {
                 noFixColumns={noFixColumns}
                 rowSelection={rowSelection}
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+                defaultSort={defaultSort}
+                handleSort={this.handleDefaultSort}
               />
               <TableBody
                 data={data}
@@ -745,6 +798,8 @@ export default class Table extends React.PureComponent {
                 noFixColumns={noFixColumns}
                 rowSelection={rowSelection}
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+                defaultSort={defaultSort}
+                handleSort={this.handleDefaultSort}
               />
               <TableBody
                 data={data}

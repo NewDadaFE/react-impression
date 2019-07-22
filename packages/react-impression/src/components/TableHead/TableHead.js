@@ -1,7 +1,9 @@
 import classnames from 'classnames'
 import React from 'react'
+import * as R from 'ramda'
 import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox'
+import Icon from '../Icon'
 
 const defaultWidth = 80
 export default class TableHead extends React.PureComponent {
@@ -66,6 +68,16 @@ export default class TableHead extends React.PureComponent {
      * 渲染内容是否需要隐藏
      */
     isNeedHide: PropTypes.bool,
+
+    /**
+     * 默认排序字段以及排序顺序,{prop: 'time', order: 'descending/ascending'}
+     */
+    defaultSort: PropTypes.object,
+
+    /**
+     * 点击排序事件
+     */
+    handleSort: PropTypes.func,
   }
 
   static defaultProps = {
@@ -73,8 +85,28 @@ export default class TableHead extends React.PureComponent {
   }
 
   renderHeader = (array, type, isNeedHide) => {
+    const { defaultSort: { prop, order } = {}, handleSort } = this.props
+
+    const handleClickSort = propColumn => {
+      // 暂不支持函数或者嵌套对象形式的prop
+
+      if (typeof propColumn !== 'string') return
+
+      let orderTar = ''
+      // 不同字段，则order为ascending，相同字段，则判断ascending／descending
+      if (propColumn === prop && order) {
+        orderTar = order === 'descending' ? 'ascending' : 'descending'
+      } else {
+        orderTar = 'ascending'
+      }
+      const obj = {
+        prop: propColumn,
+        order: orderTar,
+      }
+      handleSort && handleSort(obj)
+    }
     return array.map((column, index) => {
-      const { Header, width, fixed } = column
+      const { Header, width, fixed, sortable, prop: propColumn } = column
       let colWidth
       if (!type && !fixed) {
         colWidth = width || ''
@@ -101,6 +133,29 @@ export default class TableHead extends React.PureComponent {
             })}
           >
             {content}
+            {sortable && typeof propColumn === 'string' && (
+              <div
+                className={classnames('table-sort')}
+                onClick={() => handleClickSort(propColumn)}
+              >
+                <Icon
+                  type='sort-asc'
+                  className={classnames('sort-caret', {
+                    active:
+                      R.equals(order, 'ascending') &&
+                      R.equals(prop, propColumn),
+                  })}
+                />
+                <Icon
+                  type='sort-desc'
+                  className={classnames('sort-caret', {
+                    active:
+                      R.equals(order, 'descending') &&
+                      R.equals(prop, propColumn),
+                  })}
+                />
+              </div>
+            )}
           </div>
         </th>
       )
