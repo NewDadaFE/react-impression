@@ -91,7 +91,7 @@ export default class TableHead extends React.PureComponent {
       }
       return (
         <th
-          key={index}
+          key={index + Date.now()}
           width={colWidth}
           className={classnames(`item-fix-left`)}
         >

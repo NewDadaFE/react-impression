@@ -44,7 +44,7 @@ export default class TableBody extends React.PureComponent {
      */
     handleCheckOnSelect: PropTypes.func,
     /**
-     * 多选选中项index list
+     * 多选选中项list,默认index
      */
     selectedRowKeyList: PropTypes.array,
 
@@ -173,13 +173,14 @@ export default class TableBody extends React.PureComponent {
       fixLeftList = fixLeft ? fixLeftColumns : fixRightColumns
       fixRightList = fixLeft ? fixRightColumns : fixLeftColumns
     }
+    const rowKey = this.props.rowSelection?.rowKey ?? ''
     return (
       <div className='table-body-wrap'>
         <table className='table-body'>
           <tbody>
             {data.map((item, index) => (
               <tr
-                key={index}
+                key={index + Date.now()}
                 className={classnames(
                   'table-tr',
                   {
@@ -189,8 +190,8 @@ export default class TableBody extends React.PureComponent {
                     'is-hover': fixed && item.ishover,
                   }
                 )}
-                onMouseEnter={() => onMouseEnter(index)}
-                onMouseLeave={() => onMouseLeave(index)}
+                onMouseEnter={() => onMouseEnter(index, item)}
+                onMouseLeave={() => onMouseLeave(index, item)}
               >
                 {rowSelection && !isShowSelection && rowSelection.fixed && (
                   <td
@@ -201,7 +202,8 @@ export default class TableBody extends React.PureComponent {
                     <div className='table-cell table-cell-select'>
                       <Checkbox
                         checked={selectedRowKeyList.some(
-                          item => Number(item) === index
+                          items =>
+                            Number(items) === (rowKey ? item[rowKey] : index)
                         )}
                         onChange={e => handleCheckOnSelect(e, index, item)}
                       />
@@ -215,7 +217,8 @@ export default class TableBody extends React.PureComponent {
                     <div className='table-cell'>
                       <Checkbox
                         checked={selectedRowKeyList.some(
-                          item => Number(item) === index
+                          items =>
+                            Number(items) === (rowKey ? item[rowKey] : index)
                         )}
                         onChange={e => handleCheckOnSelect(e, index, item)}
                       />
