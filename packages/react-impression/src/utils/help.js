@@ -12,3 +12,11 @@ export const getTargetIndex = (item, arr = [], key) => {
   ind = R.findIndex(R.propEq(key, item[key]))(arr)
   return ind
 }
+
+export const getTargetList = (data = [], key) => {
+  return data.reduce((pre, cur) => {
+    if (Object.prototype.hasOwnProperty.call(cur, key)) {
+      return pre.concat([cur[key]])
+    }
+  }, [])
+}

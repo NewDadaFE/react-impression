@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import * as R from 'ramda'
 import Checkbox from '../Checkbox'
 
 const defaultWidth = 80
@@ -180,7 +181,7 @@ export default class TableBody extends React.PureComponent {
           <tbody>
             {data.map((item, index) => (
               <tr
-                key={index + Date.now()}
+                key={index}
                 className={classnames(
                   'table-tr',
                   {
@@ -201,9 +202,9 @@ export default class TableBody extends React.PureComponent {
                   >
                     <div className='table-cell table-cell-select'>
                       <Checkbox
-                        checked={selectedRowKeyList.some(
-                          items =>
-                            Number(items) === (rowKey ? item[rowKey] : index)
+                        checked={R.includes(
+                          rowKey ? item[rowKey] : index,
+                          selectedRowKeyList
                         )}
                         onChange={e => handleCheckOnSelect(e, index, item)}
                       />
@@ -216,9 +217,9 @@ export default class TableBody extends React.PureComponent {
                   <td className={classnames(`item-fix-`)} key={-1} width={60}>
                     <div className='table-cell'>
                       <Checkbox
-                        checked={selectedRowKeyList.some(
-                          items =>
-                            Number(items) === (rowKey ? item[rowKey] : index)
+                        checked={R.includes(
+                          rowKey ? item[rowKey] : index,
+                          selectedRowKeyList
                         )}
                         onChange={e => handleCheckOnSelect(e, index, item)}
                       />
