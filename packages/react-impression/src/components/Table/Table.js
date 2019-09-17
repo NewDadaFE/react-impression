@@ -170,33 +170,21 @@ export default class Table extends React.PureComponent {
         ? selectedRowKeys.length
         : defaultSelectedRowKeys.length
       const dataLength = data.length
-      if (selectedRowKeysLength === 0) {
-        this.setState({
-          selectedRowKeys: this.isPuppet
-            ? selectedRowKeys
-            : defaultSelectedRowKeys,
-          indeterminate: false,
-          checkAll: false,
-        })
-      }
+      let indeterminate = false
+      let checkAll = false
       if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
-        this.setState({
-          indeterminate: true,
-          selectedRowKeys: this.isPuppet
-            ? selectedRowKeys
-            : defaultSelectedRowKeys,
-          checkAll: false,
-        })
+        indeterminate = true
       }
-      if (selectedRowKeysLength === dataLength) {
-        this.setState({
-          indeterminate: false,
-          selectedRowKeys: this.isPuppet
-            ? selectedRowKeys
-            : defaultSelectedRowKeys,
-          checkAll: true,
-        })
+      if (selectedRowKeysLength === dataLength && selectedRowKeysLength !== 0) {
+        checkAll = true
       }
+      this.setState({
+        indeterminate,
+        selectedRowKeys: this.isPuppet
+          ? selectedRowKeys
+          : defaultSelectedRowKeys,
+        checkAll,
+      })
     }
   }
 
@@ -318,15 +306,21 @@ export default class Table extends React.PureComponent {
   handleScroll() {
     const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
     const scrollWidth = this.scrollEl.scrollLeft
+    let isEnd
+    let isStart
     if (scrollWidth === 0) {
-      this.setState({ isEnd: false, isStart: true })
+      isStart = true
+      isEnd = false
     }
     if (scrollWidth > 0 && scrollWidth < targetWidth) {
-      this.setState({ isEnd: false, isStart: false })
+      isEnd = false
+      isStart = false
     }
     if (scrollWidth === targetWidth + 2 || scrollWidth === targetWidth) {
-      this.setState({ isEnd: true, isStart: false })
+      isEnd = true
+      isStart = false
     }
+    this.setState({ isEnd, isStart })
   }
 
   getNowIndex = (defaultIndex, item) => {
@@ -473,60 +467,65 @@ export default class Table extends React.PureComponent {
    * @memberof Table
    */
   handleSetCheck = (selectedRowKeys = [], data = [], rowKey, func) => {
+    const sLength = selectedRowKeys.length
+    const dLength = data.length
     if (Array.isArray(data)) {
-      if (rowKey) {
-        const sLength = selectedRowKeys.length
-        const dLength = data.length
-        // selectedRowKeys 长度为0或者data长度为0，indeterminate／checkAll都为false
-        if (sLength === 0 || dLength === 0) {
-          this.setState(
-            {
-              selectedRowKeys,
-              indeterminate: false,
-              checkAll: false,
-            },
-            () => func && func()
-          )
-          return
+      // 木偶组件并且不存在rowKey，selectedRowKeys即为index列表
+      if (this.isPuppet && !rowKey) {
+        let indeterminate = false
+        let checkAll = false
+        if (sLength > 0 && sLength < dLength) {
+          indeterminate = true
         }
-        let targetList = [] // 符合当前data的selectedRowKeys
-        for (let i = 0; i < sLength; i++) {
-          if (R.includes(selectedRowKeys[i], getTargetList(data, rowKey))) {
-            targetList.push(selectedRowKeys[i])
-          }
+        if (sLength === dLength && sLength.length !== 0 && dLength !== 0) {
+          checkAll = true
         }
-        const tLength = targetList.length
-        if (tLength === 0) {
-          this.setState(
-            {
-              selectedRowKeys,
-              indeterminate: false,
-              checkAll: false,
-            },
-            () => func && func()
-          )
-        }
-        if (tLength > 0 && tLength < dLength) {
-          this.setState(
-            {
-              selectedRowKeys,
-              indeterminate: true,
-              checkAll: false,
-            },
-            () => func && func()
-          )
-        }
-        if (tLength >= dLength) {
-          this.setState(
-            {
-              selectedRowKeys,
-              indeterminate: false,
-              checkAll: true,
-            },
-            () => func && func()
-          )
+        this.setState(
+          {
+            selectedRowKeys,
+            indeterminate,
+            checkAll,
+          },
+          () => func && func()
+        )
+        return
+      }
+      if (!rowKey) return
+      // selectedRowKeys 长度为0或者data长度为0，indeterminate／checkAll都为false
+      if (sLength === 0 || dLength === 0) {
+        this.setState(
+          {
+            selectedRowKeys,
+            indeterminate: false,
+            checkAll: false,
+          },
+          () => func && func()
+        )
+        return
+      }
+      let targetList = [] // 符合当前data的selectedRowKeys
+      for (let i = 0; i < sLength; i++) {
+        if (R.includes(selectedRowKeys[i], getTargetList(data, rowKey))) {
+          targetList.push(selectedRowKeys[i])
         }
       }
+      const tLength = targetList.length
+      let indeterminate = false
+      let checkAll = false
+      if (tLength > 0 && tLength < dLength) {
+        indeterminate = true
+      }
+      if (tLength >= dLength && tLength !== 0) {
+        checkAll = true
+      }
+      this.setState(
+        {
+          selectedRowKeys,
+          indeterminate,
+          checkAll,
+        },
+        () => func && func()
+      )
     }
   }
 
