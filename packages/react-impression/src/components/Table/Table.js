@@ -96,6 +96,7 @@ export default class Table extends React.PureComponent {
     border: false,
     stripe: false,
     placeholder: '暂无数据',
+    data: [],
   }
 
   get isPuppet() {

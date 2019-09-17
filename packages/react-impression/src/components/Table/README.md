@@ -517,185 +517,23 @@ class DefaultExample extends React.Component {
     this.handleOnSelectAll = this.handleOnSelectAll.bind(this)
     this.handelOnSelect = this.handelOnSelect.bind(this)
     this.handlePage = this.handlePage.bind(this)
-    this.handleAdd = this.handleAdd.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
     this.state = {
       activePage: 1,
-      data: [
-        {
-          id: 1,
-          code: 'JD010234',
-          address: '上海',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 2,
-          code: 'JD010234',
-          address: '上海市na',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 3,
-          code: 'JD010234',
-          address: 'ffdsfsd',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
     }
   }
 
   handlePage(val) {
     this.setState({ activePage: val })
-    if (val === 2) {
-      this.setState({
-        data: [
-          {
-            id: 9,
-            code: 'JD010234',
-            address: '9上海',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-          {
-            id: 8,
-            code: 'JD010234',
-            address: '上海市8',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-        ],
-      })
-    } else {
-      this.setState({
-        data: [
-          {
-            id: 1,
-            code: 'JD010234',
-            address: '上海',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-          {
-            id: 2,
-            code: 'JD010234',
-            address: '上海市na',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-          {
-            id: 3,
-            code: 'JD010234',
-            address: 'ffdsfsd',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-        ],
-      })
-    }
   }
-  handelOnSelect(status, index, item) {
-    console.log(status, index, item)
+  handelOnSelect(status, key, item) {
+    console.log(status, key, item)
   }
   handleOnSelectAll(checkAll, selectedRowKeys) {
     console.log(checkAll, selectedRowKeys)
   }
-  handleAdd() {
-    const { data } = this.state
-    this.setState({
-      data: [
-        {
-          id: 4,
-          code: '1114',
-          address: '上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 1,
-          code: 'JD010234',
-          address: '上海',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 2,
-          code: 'JD010234',
-          address: '上海市na',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 3,
-          code: 'JD010234',
-          address: 'ffdsfsd',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
-    })
-  }
-  handleDelete() {
-    this.setState({
-      data: [
-        {
-          id: 1,
-          code: 'JD010234',
-          address: '上海',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 2,
-          code: 'JD010234',
-          address: '上海市na',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 3,
-          code: 'JD010234',
-          address: 'ffdsfsd',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
-    })
-  }
+
   render() {
-    const { activePage, data } = this.state
+    const { activePage } = this.state
     const rowSelection = {
       defaultSelectedRowKeys: [2],
       onSelect: this.handelOnSelect,
@@ -713,8 +551,6 @@ class DefaultExample extends React.Component {
       <div>
         <div className="text-right" style={{ marginBottom: 11 }}>
           <Input type="search" placeholder="选择日期" size="sm" />
-          <Button onClick={this.handleAdd}>+</Button>
-          <Button onClick={this.handleDelete}>-</Button>
         </div>
         <Table
           columns={columns}
@@ -820,105 +656,23 @@ class DefaultExample extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleOnSelectAll = this.handleOnSelectAll.bind(this)
     this.handelOnSelect = this.handelOnSelect.bind(this)
-    this.handlePage = this.handlePage.bind(this)
-    this.handleAdd = this.handleAdd.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
     this.state = {
-      selectedRowKeys: [1],
+      selectedRowKeys: [1, 3],
       activePage: 1,
-      data: [
-        {
-          id: 1,
-          code: 'JD010234',
-          address: '1上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 2,
-          code: 'JD010234',
-          address: '2上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 3,
-          code: 'JD010234',
-          address: '3上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
     }
   }
 
   handleChange(selectedRowKeys) {
     console.log(selectedRowKeys)
   }
-  handlePage(val) {
-    if (val === 1) {
-      this.setState({
-        activePage: val,
-        data: [
-          {
-            id: 1,
-            code: 'JD010234',
-            address: '1上海市南京西路',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-          {
-            id: 2,
-            code: 'JD010234',
-            address: '2上海市南京西路',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-          {
-            id: 3,
-            code: 'JD010234',
-            address: '3上海市南京西路',
-            num: 201003.0,
-            phone: 13866666666,
-            creatTime: '2018-03-09',
-            status: '正常',
-          },
-        ],
-      })
-      return
-    }
-    this.setState({
-      activePage: val,
-      data: [
-        {
-          id: 8,
-          code: 'JD010234',
-          address: '7上海',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
-    })
-  }
-  handelOnSelect(status, index, item) {
-    console.log(status, index, item)
+
+  handelOnSelect(status, key, item) {
+    console.log(status, key, item)
     if (status) {
       const { selectedRowKeys } = this.state
       this.setState(
         {
-          selectedRowKeys: [...selectedRowKeys, index],
+          selectedRowKeys: [...selectedRowKeys, key],
         },
         () => console.log(this.state.selectedRowKeys)
       )
@@ -934,72 +688,13 @@ class DefaultExample extends React.Component {
       )
     }
   }
-  handleAdd() {
-    this.setState({
-      selectedRowKeys: [2, 3],
-      data: [
-        {
-          id: 7,
-          code: 'JD010234',
-          address: '7上海',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 2,
-          code: 'JD010234',
-          address: '2上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 3,
-          code: 'JD010234',
-          address: '4上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
-    })
-  }
-  handleDelete() {
-    this.setState({
-      selectedRowKeys: [7, 1],
-      data: [
-        {
-          id: 7,
-          code: 'JD010234',
-          address: '7上海',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-        {
-          id: 1,
-          code: 'JD010234',
-          address: '1上海市南京西路',
-          num: 201003.0,
-          phone: 13866666666,
-          creatTime: '2018-03-09',
-          status: '正常',
-        },
-      ],
-    })
-  }
   handleOnSelectAll(checkAll, selectedRowKeys) {
     if (!checkAll) {
       this.setState({
         selectedRowKeys: [],
       })
     } else {
-      const { data, selectedRowKeys } = this.state
+      const { selectedRowKeys } = this.state
       this.setState({
         selectedRowKeys: data
           .map((item, index) => item.id)
@@ -1008,7 +703,7 @@ class DefaultExample extends React.Component {
     }
   }
   render() {
-    const { selectedRowKeys, activePage, data } = this.state
+    const { selectedRowKeys, activePage } = this.state
     const rowSelection = {
       selectedRowKeys: selectedRowKeys,
       onChange: this.handleChange,
@@ -1027,8 +722,6 @@ class DefaultExample extends React.Component {
       <div>
         <div className="text-right" style={{ marginBottom: 11 }}>
           <Input type="search" placeholder="选择日期" size="sm" />
-          <Button onClick={this.handleAdd}>+</Button>
-          <Button onClick={this.handleDelete}>-</Button>
         </div>
         <Table
           columns={columns}
