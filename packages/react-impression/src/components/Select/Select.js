@@ -139,10 +139,28 @@ export default class Select extends React.PureComponent {
     }
   }
 
+  /**
+   * @description  获取节点下内容
+   * @memberof Select
+   */
+  getIntLabel(node) {
+    function getLabel(target) {
+      const count = React.Children.count(target)
+      if (count > 1) return ''
+      if (!target) return ''
+      if (typeof target !== 'object') return target.toString()
+      if (typeof target.props.children === 'string') {
+        return target.props.children
+      }
+      return getLabel(target.props.children)
+    }
+    return getLabel(node)
+  }
+
   getOptionList = (arr = []) => {
     return arr.map(option => {
       const { value, children = '' } = option.props
-      return { value, name: children.toString() }
+      return { value, name: this.getIntLabel(children) }
     })
   }
 
