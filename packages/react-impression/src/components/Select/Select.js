@@ -150,7 +150,7 @@ export default class Select extends React.PureComponent {
       if (!target) return ''
       if (typeof target !== 'object') return target.toString()
       if (typeof target.props.children === 'string') {
-        return target.props.children
+        return target.props.children.toString()
       }
       return getLabel(target.props.children)
     }
