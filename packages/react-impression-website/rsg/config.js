@@ -13,7 +13,7 @@ const resolveWebsite = relativePath => path.resolve(process.cwd(), relativePath)
 
 module.exports = {
   title: 'React Impression',
-  serverPort: 8080,
+  serverPort: 9090,
   require: [resolveLibrary('src/styles/index.scss')],
   assetsDir: 'assets',
   styleguideDir: '../dist',

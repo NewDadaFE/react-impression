@@ -1,41 +1,41 @@
 {
-  "name": "react-impression",
-  "version": "2.0.9",
-  "author": "NewDadaFE",
-  "description": "UI Components with React.",
-  "sideEffects": false,
-  "module": "dist/components/index.js",
-  "sass": "dist/styles/index.scss",
-  "license": "MIT",
-  "repository": "NewDadaFE/react-impression",
-  "homepage": "https://github.com/NewDadaFE/react-impression",
-  "scripts": {
-    "build": "gulp build --env production",
-    "release": "gulp release --env production"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.0.0",
-    "classnames": "^2.2.0",
-    "lodash.uniqueid": "^4.0.1",
-    "perfect-scrollbar": "^1.4.0",
-    "popper.js": "^1.14.4",
-    "prop-types": "15.6.2",
-    "ramda": "^0.26.0",
-    "react-addons-css-transition-group": "15.6.2",
-    "react-debounce-input": "^3.2.0",
-    "react-portal": "^4.1.5",
-    "sass-rem": "^2.0.1"
-  },
-  "peerDependencies": {
-    "moment": "^2.22.2",
-    "react": ">=15.6.2",
-    "react-dom": ">=15.6.2"
-  },
-  "devDependencies": {
-    "fs-extra": "^7.0.0",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-load-plugins": "^1.5.0",
-    "minimist": "^1.2.0"
-  }
+	"name": "react-impression",
+	"version": "2.0.9",
+	"author": "NewDadaFE",
+	"description": "UI Components with React.",
+	"sideEffects": false,
+	"module": "dist/components/index.js",
+	"sass": "dist/styles/index.scss",
+	"license": "MIT",
+	"repository": "NewDadaFE/react-impression",
+	"homepage": "https://github.com/NewDadaFE/react-impression",
+	"scripts": {
+		"build": "gulp build --env production",
+		"release": "gulp release --env production"
+	},
+	"dependencies": {
+		"@babel/runtime": "^7.0.0",
+		"classnames": "^2.2.0",
+		"lodash.uniqueid": "^4.0.1",
+		"perfect-scrollbar": "^1.4.0",
+		"popper.js": "^1.14.4",
+		"prop-types": "15.6.2",
+		"ramda": "^0.26.0",
+		"react-addons-css-transition-group": "15.6.2",
+		"react-debounce-input": "^3.2.0",
+		"react-portal": "^4.1.5",
+		"sass-rem": "^2.0.1"
+	},
+	"peerDependencies": {
+		"moment": "^2.22.2",
+		"react": ">=15.6.2",
+		"react-dom": ">=15.6.2"
+	},
+	"devDependencies": {
+		"fs-extra": "^7.0.0",
+		"gulp": "^4.0.0",
+		"gulp-babel": "^8.0.0",
+		"gulp-load-plugins": "^1.5.0",
+		"minimist": "^1.2.0"
+	}
 }

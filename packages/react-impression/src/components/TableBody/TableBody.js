@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import * as R from 'ramda'
 import Checkbox from '../Checkbox'
 
 const defaultWidth = 80
@@ -44,7 +45,7 @@ export default class TableBody extends React.PureComponent {
      */
     handleCheckOnSelect: PropTypes.func,
     /**
-     * 多选选中项index list
+     * 多选选中项list,默认index
      */
     selectedRowKeyList: PropTypes.array,
 
@@ -173,6 +174,7 @@ export default class TableBody extends React.PureComponent {
       fixLeftList = fixLeft ? fixLeftColumns : fixRightColumns
       fixRightList = fixLeft ? fixRightColumns : fixLeftColumns
     }
+    const rowKey = this.props.rowSelection?.rowKey ?? ''
     return (
       <div className='table-body-wrap'>
         <table className='table-body'>
@@ -189,8 +191,8 @@ export default class TableBody extends React.PureComponent {
                     'is-hover': fixed && item.ishover,
                   }
                 )}
-                onMouseEnter={() => onMouseEnter(index)}
-                onMouseLeave={() => onMouseLeave(index)}
+                onMouseEnter={() => onMouseEnter(index, item)}
+                onMouseLeave={() => onMouseLeave(index, item)}
               >
                 {rowSelection && !isShowSelection && rowSelection.fixed && (
                   <td
@@ -200,8 +202,9 @@ export default class TableBody extends React.PureComponent {
                   >
                     <div className='table-cell table-cell-select'>
                       <Checkbox
-                        checked={selectedRowKeyList.some(
-                          item => Number(item) === index
+                        checked={R.includes(
+                          rowKey ? item[rowKey] : index,
+                          selectedRowKeyList
                         )}
                         onChange={e => handleCheckOnSelect(e, index, item)}
                       />
@@ -214,8 +217,9 @@ export default class TableBody extends React.PureComponent {
                   <td className={classnames(`item-fix-`)} key={-1} width={60}>
                     <div className='table-cell'>
                       <Checkbox
-                        checked={selectedRowKeyList.some(
-                          item => Number(item) === index
+                        checked={R.includes(
+                          rowKey ? item[rowKey] : index,
+                          selectedRowKeyList
                         )}
                         onChange={e => handleCheckOnSelect(e, index, item)}
                       />

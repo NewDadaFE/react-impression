@@ -1,55 +1,49 @@
 {
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "start": "yarn website:start",
-    "website:start": "yarn workspace react-impression-website start",
-    "website:build": "yarn workspace react-impression-website build",
-    "examples:start": "yarn workspace react-impression-examples start",
-    "examples:build": "yarn workspace react-impression-examples build",
-    "precommit": "lint-staged",
-    "format": "find . -name '*.js' -o -name '*.md' -o -name '*.scss' | grep -v -f .gitignore | xargs prettier-standard"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-export-default-from": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-transform-object-assign": "^7.0.0",
-    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-plugin-ramda": "^1.6.3",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.15",
-    "fs-extra": "^7.0.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
-    "node-fetch": "^2.2.0",
-    "prettier-standard": "^8.0.1"
-  },
-  "eslintConfig": {
-    "rules": {
-      "space-before-function-paren": [
-        "error",
-        {
-          "anonymous": "always",
-          "named": "never",
-          "asyncArrow": "always"
-        }
-      ],
-      "comma-dangle": [
-        "error",
-        "always-multiline"
-      ]
-    }
-  },
-  "lint-staged": {
-    "*.{js,md}": [
-      "prettier-standard",
-      "git add"
-    ]
-  }
+	"private": true,
+	"workspaces": [ "packages/*" ],
+	"scripts": {
+		"start": "yarn website:start",
+		"website:start": "yarn workspace react-impression-website start",
+		"website:build": "yarn workspace react-impression-website build",
+		"examples:start": "yarn workspace react-impression-examples start",
+		"examples:build": "yarn workspace react-impression-examples build",
+		"precommit": "lint-staged",
+		"format": "find . -name '*.js' -o -name '*.md' -o -name '*.scss' | grep -v -f .gitignore | xargs prettier-standard"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.0.0",
+		"@babel/plugin-proposal-class-properties": "^7.0.0",
+		"@babel/plugin-proposal-export-default-from": "^7.0.0",
+		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+		"@babel/plugin-transform-object-assign": "^7.0.0",
+		"@babel/plugin-transform-react-constant-elements": "^7.0.0",
+		"@babel/plugin-transform-runtime": "^7.0.0",
+		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+		"@babel/preset-env": "^7.0.0",
+		"@babel/preset-react": "^7.0.0",
+		"@babel/plugin-proposal-optional-chaining": "^7.0.0",
+		"babel-plugin-ramda": "^1.6.3",
+		"babel-plugin-transform-react-remove-prop-types": "^0.4.15",
+		"fs-extra": "^7.0.0",
+		"husky": "^0.14.3",
+		"lint-staged": "^7.2.2",
+		"node-fetch": "^2.2.0",
+		"prettier-standard": "^8.0.1"
+	},
+	"eslintConfig": {
+		"rules": {
+			"space-before-function-paren": [
+				"error",
+				{
+					"anonymous": "always",
+					"named": "never",
+					"asyncArrow": "always"
+				}
+			],
+			"comma-dangle": [ "error", "always-multiline" ]
+		}
+	},
+	"lint-staged": {
+		"*.{js,md}": [ "prettier-standard", "git add" ]
+	}
 }

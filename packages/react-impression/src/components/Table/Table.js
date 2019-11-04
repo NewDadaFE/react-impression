@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import TableBody from '../TableBody'
 import TableHead from '../TableHead'
 import Pagination from '../Pagination'
+import { getTargetIndex, getTargetList } from '../../utils/help'
 import * as R from 'ramda'
 
 export default class Table extends React.PureComponent {
@@ -21,7 +22,7 @@ export default class Table extends React.PureComponent {
       isEnd: false,
       isStart: true,
       selectedRowKeys: [],
-      indeterminate: false,
+      indeterminate: false, // check半选状态
       checkAll: false,
       fixed: false,
     }
@@ -64,7 +65,7 @@ export default class Table extends React.PureComponent {
     className: PropTypes.string,
 
     /**
-     * 多选表格配置,配置参考例子
+     * 多选表格配置,配置参考例子，rowKey默认取值index，可自定义
      */
     rowSelection: PropTypes.shape({
       selectedRowKeys: PropTypes.array,
@@ -73,6 +74,7 @@ export default class Table extends React.PureComponent {
       onSelect: PropTypes.func,
       onSelectAll: PropTypes.func,
       fixed: PropTypes.bool,
+      rowKey: PropTypes.string,
     }),
 
     /**
@@ -94,6 +96,7 @@ export default class Table extends React.PureComponent {
     border: false,
     stripe: false,
     placeholder: '暂无数据',
+    data: [],
   }
 
   get isPuppet() {
@@ -108,13 +111,13 @@ export default class Table extends React.PureComponent {
   componentWillMount() {
     this.handleInt()
   }
+
   /**
    * @description 初始化
    * @memberof Table
    */
   handleInt = (nextColumns, nextChildren) => {
     const { columns, children } = this.props
-
     let columnList = []
     if (nextChildren) {
       let columns = nextChildren.map(child => {
@@ -168,57 +171,37 @@ export default class Table extends React.PureComponent {
         ? selectedRowKeys.length
         : defaultSelectedRowKeys.length
       const dataLength = data.length
-      if (selectedRowKeysLength === 0) {
-        this.setState({
-          selectedRowKeys: this.isPuppet
-            ? selectedRowKeys
-            : defaultSelectedRowKeys,
-          indeterminate: false,
-          checkAll: false,
-        })
-      }
+      let indeterminate = false
+      let checkAll = false
       if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
-        this.setState({
-          indeterminate: true,
-          selectedRowKeys: this.isPuppet
-            ? selectedRowKeys
-            : defaultSelectedRowKeys,
-          checkAll: false,
-        })
+        indeterminate = true
       }
-      if (selectedRowKeysLength === dataLength) {
-        this.setState({
-          indeterminate: false,
-          selectedRowKeys: this.isPuppet
-            ? selectedRowKeys
-            : defaultSelectedRowKeys,
-          checkAll: true,
-        })
+      if (selectedRowKeysLength === dataLength && selectedRowKeysLength !== 0) {
+        checkAll = true
       }
+      this.setState({
+        indeterminate,
+        selectedRowKeys: this.isPuppet
+          ? selectedRowKeys
+          : defaultSelectedRowKeys,
+        checkAll,
+      })
     }
   }
 
   componentDidMount() {
-    const { rowSelection } = this.props
+    const { rowSelection, data } = this.props
     if (!rowSelection) return
     // 非受控组件
     if (!this.isPuppet) {
-      const { defaultSelectedRowKeys = [] } = rowSelection
-      this.setState(
-        { selectedRowKeys: defaultSelectedRowKeys },
-        defaultSelectedRowKeys.forEach(item => {
-          this.handleSelected(Number(item))
-        })
-      )
-
+      const { defaultSelectedRowKeys = [], rowKey } = rowSelection
+      this.setState({ selectedRowKeys: defaultSelectedRowKeys })
+      this.handleTrIsActive(rowKey, defaultSelectedRowKeys, data)
       return
     }
-    const { selectedRowKeys = [] } = rowSelection
-    this.setState({ selectedRowKeys }, () => {
-      selectedRowKeys.forEach(item => {
-        this.handleSelected(Number(item))
-      })
-    })
+    const { selectedRowKeys = [], rowKey } = rowSelection
+    this.setState({ selectedRowKeys })
+    this.handleTrIsActive(rowKey, selectedRowKeys, data)
   }
 
   /**
@@ -253,75 +236,58 @@ export default class Table extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { rowSelection, columns, children } = nextProps
-    const {
-      data,
-      columns: currentColumns,
-      children: currentChildren,
-    } = this.props
+    const { rowSelection, columns, children, data: nextData } = nextProps
+    const { columns: currentColumns, children: currentChildren } = this.props
+    // TableColumns为数据源
     if (columns && currentColumns && !R.equals(columns, currentColumns)) {
       this.handleInt(columns, children)
     }
     if (children && currentChildren && !R.equals(children, currentChildren)) {
       this.handleInt(columns, children)
     }
-
-    if (!this.isPuppet) return
+    const rowKey = this.props.rowSelection?.rowKey
+    // data为数据源
+    // 非受控组件，在data数据源发生变化，主要是在删除数据项的时候会对checkbox以及选中状态产生影响
+    if (!this.isPuppet) {
+      // 只有在设置了rowKey的时候，才能在非受控组件下添加或者删除table数据源，默认index时会有问题
+      if (rowKey) {
+        const { selectedRowKeys } = this.state
+        const { onChange } = rowSelection
+        // 重置checkbox的状态 && 重置selectedRowKeys
+        this.handleSetCheck(selectedRowKeys, nextData, rowKey, () => {
+          onChange && onChange(currentKeyList)
+        })
+      }
+      return
+    }
+    // 受控组件
     const { selectedRowKeys, onChange } = rowSelection
-    const selectedRowKeysLength = selectedRowKeys.length
-    const dataLength = data.length
-    if (selectedRowKeysLength === 0) {
-      this.setState({
-        selectedRowKeys: selectedRowKeys,
-        indeterminate: false,
-        checkAll: false,
-      })
-    }
-    if (selectedRowKeysLength > 0 && selectedRowKeysLength < dataLength) {
-      this.setState({
-        indeterminate: true,
-        selectedRowKeys: selectedRowKeys,
-        checkAll: false,
-      })
-    }
-    if (selectedRowKeysLength === dataLength) {
-      this.setState({
-        indeterminate: false,
-        selectedRowKeys: selectedRowKeys,
-        checkAll: true,
-      })
-    }
+    this.handleSetCheck(selectedRowKeys, nextData, rowKey, () => {
+      onChange && onChange(selectedRowKeys)
+    })
+    this.handleTrIsActive(rowKey, selectedRowKeys, nextData)
+  }
+
+  /**
+   * @description tr选中状态
+   * @memberof Table
+   */
+  handleTrIsActive = (rowKey, selectedRowKeys = [], data = []) => {
     data.forEach((item, index) => {
       this.handleNoSelect(index)
     })
-    selectedRowKeys.forEach(item => {
-      this.handleSelected(Number(item))
-    })
-    onChange && onChange(selectedRowKeys)
-  }
-
-  componentDidUpdate() {
-    const { selectedRowKeys } = this.state
-    const { data } = this.props
-    const selectedLength = selectedRowKeys.length
-    const dataLength = data.length
-    if (selectedLength === 0) {
-      this.setState({
-        indeterminate: false,
-        checkAll: false,
-      })
-    }
-    if (selectedLength > 0 && selectedLength < dataLength) {
-      this.setState({
-        indeterminate: true,
-        checkAll: false,
-      })
-    }
-    if (selectedLength === dataLength) {
-      this.setState({
-        indeterminate: false,
-        checkAll: true,
-      })
+    // data 中对应key值如果能在selectedRowKeys中找到，加上选中状态
+    if (rowKey) {
+      for (let j = 0; j < data.length; j++) {
+        if (Object.prototype.hasOwnProperty.call(data[j], rowKey)) {
+          if (R.includes(data[j][rowKey], selectedRowKeys)) {
+            this.handleSelected(j)
+          }
+        }
+      }
+    } else {
+      // 默认index的数组，故可以直接循环
+      selectedRowKeys.forEach(i => this.handleSelected(i))
     }
   }
 
@@ -341,29 +307,42 @@ export default class Table extends React.PureComponent {
   handleScroll() {
     const targetWidth = this.inner.offsetWidth - this.scrollEl.offsetWidth
     const scrollWidth = this.scrollEl.scrollLeft
+    let isEnd
+    let isStart
     if (scrollWidth === 0) {
-      this.setState({ isEnd: false, isStart: true })
+      isStart = true
+      isEnd = false
     }
     if (scrollWidth > 0 && scrollWidth < targetWidth) {
-      this.setState({ isEnd: false, isStart: false })
+      isEnd = false
+      isStart = false
     }
     if (scrollWidth === targetWidth + 2 || scrollWidth === targetWidth) {
-      this.setState({ isEnd: true, isStart: false })
+      isEnd = true
+      isStart = false
     }
+    this.setState({ isEnd, isStart })
   }
 
+  getNowIndex = (defaultIndex, item) => {
+    const { data = [] } = this.props
+    const rowKey = this.props.rowSelection?.rowKey
+    if (!rowKey) return defaultIndex
+    return getTargetIndex(item, data, rowKey)
+  }
   /**
    * @description 鼠标移入tr，联动展示hover效果
    * @memberof Table
    */
-  handleHover = index => {
+  handleHover = (index, item) => {
     const { fixed } = this.state
+    const targetIndex = this.getNowIndex(index, item)
     if (fixed) {
       const tbody = this.tableWrap.querySelectorAll('tbody')
       tbody.forEach(item => {
         const tr = item.children
         const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
-        const newRow = rows[index]
+        const newRow = rows[targetIndex]
         newRow && this.addClass(newRow, 'is-hover')
       })
     }
@@ -374,12 +353,14 @@ export default class Table extends React.PureComponent {
    * @memberof Table
    */
   handleSelected = index => {
-    const tbody = this.tableWrap.querySelectorAll('tbody')
-    tbody.forEach(item => {
-      const tr = item.children
-      const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
-      const newRow = rows[index]
-      newRow && this.addClass(newRow, 'is-selected')
+    requestAnimationFrame(() => {
+      const tbody = this.tableWrap.querySelectorAll('tbody')
+      tbody.forEach(item => {
+        const tr = item.children
+        const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+        const newRow = rows[index]
+        newRow && this.addClass(newRow, 'is-selected')
+      })
     })
   }
 
@@ -388,12 +369,14 @@ export default class Table extends React.PureComponent {
    * @memberof Table
    */
   handleNoSelect = index => {
-    const tbody = this.tableWrap.querySelectorAll('tbody')
-    tbody.forEach(item => {
-      const tr = item.children
-      const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
-      const newRow = rows[index]
-      newRow && this.removeClass(newRow, 'is-selected')
+    requestAnimationFrame(() => {
+      const tbody = this.tableWrap.querySelectorAll('tbody')
+      tbody.forEach(item => {
+        const tr = item.children
+        const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+        const newRow = rows[index]
+        newRow && this.removeClass(newRow, 'is-selected')
+      })
     })
   }
 
@@ -401,14 +384,15 @@ export default class Table extends React.PureComponent {
    * @description 鼠标移出tr时，去掉hover效果
    * @memberof Table
    */
-  handleHoverLeave = index => {
+  handleHoverLeave = (index, item) => {
     const { fixed } = this.state
+    const targetIndex = this.getNowIndex(index, item)
     if (fixed) {
       const tbody = this.tableWrap.querySelectorAll('tbody')
       tbody.forEach(item => {
         const tr = item.children
         const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
-        const newRow = rows[index]
+        const newRow = rows[targetIndex]
         newRow && this.removeClass(newRow, 'is-hover')
       })
     }
@@ -480,35 +464,104 @@ export default class Table extends React.PureComponent {
   }
 
   /**
+   * @description indeterminate／checkAll状态判断& set selectedRowKeys
+   * @memberof Table
+   */
+  handleSetCheck = (selectedRowKeys = [], data = [], rowKey, func) => {
+    const sLength = selectedRowKeys.length
+    const dLength = data.length
+    if (Array.isArray(data)) {
+      // 木偶组件并且不存在rowKey，selectedRowKeys即为index列表
+      if (this.isPuppet && !rowKey) {
+        let indeterminate = false
+        let checkAll = false
+        if (sLength > 0 && sLength < dLength) {
+          indeterminate = true
+        }
+        if (sLength === dLength && sLength.length !== 0 && dLength !== 0) {
+          checkAll = true
+        }
+        this.setState(
+          {
+            selectedRowKeys,
+            indeterminate,
+            checkAll,
+          },
+          () => func && func()
+        )
+        return
+      }
+      if (!rowKey) return
+      // selectedRowKeys 长度为0或者data长度为0，indeterminate／checkAll都为false
+      if (sLength === 0 || dLength === 0) {
+        this.setState(
+          {
+            selectedRowKeys,
+            indeterminate: false,
+            checkAll: false,
+          },
+          () => func && func()
+        )
+        return
+      }
+      let targetList = [] // 符合当前data的selectedRowKeys
+      for (let i = 0; i < sLength; i++) {
+        if (R.includes(selectedRowKeys[i], getTargetList(data, rowKey))) {
+          targetList.push(selectedRowKeys[i])
+        }
+      }
+      const tLength = targetList.length
+      let indeterminate = false
+      let checkAll = false
+      if (tLength > 0 && tLength < dLength) {
+        indeterminate = true
+      }
+      if (tLength >= dLength && tLength !== 0) {
+        checkAll = true
+      }
+      this.setState(
+        {
+          selectedRowKeys,
+          indeterminate,
+          checkAll,
+        },
+        () => func && func()
+      )
+    }
+  }
+
+  /**
    * @description 手动单选触发回调
    * @memberof Table
    */
   handleCheckOnSelect = (e, index, item) => {
     const status = e.target.checked
+    const rowKey = this.props.rowSelection?.rowKey ?? ''
+    const data = this.props.data ?? []
+    let selectRowKey = rowKey ? item[rowKey] : index
+    let currentIndex = this.getNowIndex(index, item)
     if (!this.props.rowSelection) return
     const { selectedRowKeys } = this.state
     if (!this.isPuppet) {
       if (status) {
-        this.setState({
-          selectedRowKeys: [...selectedRowKeys, index],
-        })
+        let selectedList = [...selectedRowKeys, selectRowKey]
+        this.handleSetCheck(selectedList, data, rowKey)
       } else {
-        this.setState({
-          selectedRowKeys: selectedRowKeys.filter(
-            item => Number(item) !== index
-          ),
-        })
+        this.handleSetCheck(
+          selectedRowKeys.filter(item => Number(item) !== selectRowKey),
+          data,
+          rowKey
+        )
       }
     }
-
     if (status) {
-      this.handleSelected(index)
+      this.handleSelected(currentIndex)
     } else {
-      this.handleNoSelect(index)
+      this.handleNoSelect(currentIndex)
     }
-
     const { onSelect } = this.props.rowSelection
-    onSelect && onSelect(status, index, item)
+    let targetValue = rowKey ? item[rowKey] : index
+    onSelect && onSelect(status, targetValue, item)
   }
 
   /**
@@ -516,13 +569,24 @@ export default class Table extends React.PureComponent {
    * @memberof Table
    */
   handleCheckOnSelectAll = () => {
-    const { checkAll } = this.state
+    const { checkAll, selectedRowKeys } = this.state
     const { data } = this.props
     if (!this.props.rowSelection) return
+    const rowKey = this.props.rowSelection?.rowKey ?? ''
     if (!this.isPuppet && checkAll) {
+      // 不存在rowkey，则直接[]
+      let selectedList = []
+      if (rowKey) {
+        // 存在rowKey，要在selectedRowKeys去掉data的对应key值
+        for (let i = 0; i < selectedRowKeys.length; i++) {
+          if (!R.includes(selectedRowKeys[i], getTargetList(data, rowKey))) {
+            selectedList.push(selectedRowKeys[i])
+          }
+        }
+      }
       this.setState(
         {
-          selectedRowKeys: [],
+          selectedRowKeys: selectedList,
           checkAll: false,
           indeterminate: false,
         },
@@ -537,10 +601,26 @@ export default class Table extends React.PureComponent {
       )
     }
     if (!this.isPuppet && !checkAll) {
-      const list = data.map((item, index) => index)
+      // 全选状态
+      let selectedList = []
+      if (!rowKey) {
+        selectedList = data.map((item, index) => {
+          if (rowKey && Object.prototype.hasOwnProperty.call(item, rowKey)) {
+            return item[rowKey]
+          }
+          return index
+        })
+      }
+      for (let j = 0; j < data.length; j++) {
+        if (Object.prototype.hasOwnProperty.call(data[j], rowKey)) {
+          if (!R.includes(data[j][rowKey], selectedRowKeys)) {
+            selectedList.push(data[j][rowKey])
+          }
+        }
+      }
       this.setState(
         {
-          selectedRowKeys: list,
+          selectedRowKeys: selectedList.concat(selectedRowKeys),
           checkAll: true,
           indeterminate: false,
         },
@@ -554,12 +634,13 @@ export default class Table extends React.PureComponent {
         }
       )
     }
-
     if (this.isPuppet) {
       const { onSelectAll, selectedRowKeys } = this.props.rowSelection
       const { checkAll } = this.state
-      this.setState({ checkAll: !checkAll })
-      onSelectAll && onSelectAll(!checkAll, selectedRowKeys)
+      this.setState({ checkAll: !checkAll }, () => {
+        const { checkAll } = this.state
+        onSelectAll && onSelectAll(checkAll, selectedRowKeys)
+      })
     }
   }
 
@@ -568,14 +649,17 @@ export default class Table extends React.PureComponent {
    * @memberof Table
    */
   handlePaginationChange = pagNo => {
-    const { pagination, rowSelection } = this.props
+    const { pagination } = this.props
     if (pagination && pagination.onSelect) {
-      this.setState({
-        checkAll: false,
-        selectedRowKeys: this.isPuppet ? rowSelection.selectedRowKeys : [],
-      })
-      const { onSelect } = pagination
-      onSelect(pagNo)
+      this.setState(
+        {
+          checkAll: false,
+        },
+        () => {
+          const { onSelect } = pagination
+          onSelect(pagNo)
+        }
+      )
     }
   }
 
@@ -677,6 +761,7 @@ export default class Table extends React.PureComponent {
                 onMouseLeave={this.handleHoverLeave}
                 handleCheckOnSelect={this.handleCheckOnSelect}
                 selectedRowKeyList={selectedRowKeys}
+                getCurrentIndex={this.getNowIndex}
               />
             </div>
           </div>
@@ -718,6 +803,7 @@ export default class Table extends React.PureComponent {
                 onMouseLeave={this.handleHoverLeave}
                 handleCheckOnSelect={this.handleCheckOnSelect}
                 selectedRowKeyList={selectedRowKeys}
+                getCurrentIndex={this.getNowIndex}
                 fixed
               />
             </div>
@@ -761,6 +847,7 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelect={this.handleCheckOnSelect}
                 onMouseLeave={this.handleHoverLeave}
                 selectedRowKeyList={selectedRowKeys}
+                getCurrentIndex={this.getNowIndex}
                 fixed
               />
             </div>

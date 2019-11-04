@@ -523,21 +523,22 @@ class DefaultExample extends React.Component {
   }
 
   handlePage(val) {
-    console.log(val)
     this.setState({ activePage: val })
   }
-  handelOnSelect(status, index, item) {
-    console.log(status, index, item)
+  handelOnSelect(status, key, item) {
+    console.log(status, key, item)
   }
   handleOnSelectAll(checkAll, selectedRowKeys) {
     console.log(checkAll, selectedRowKeys)
   }
+
   render() {
     const { activePage } = this.state
     const rowSelection = {
-      defaultSelectedRowKeys: [1],
+      defaultSelectedRowKeys: [2],
       onSelect: this.handelOnSelect,
       onSelectAll: this.handleOnSelectAll,
+      rowKey: 'id',
     }
     const pagination = {
       scope: 4,
@@ -545,6 +546,7 @@ class DefaultExample extends React.Component {
       totalPage: 50,
       activePage: activePage,
     }
+
     return (
       <div>
         <div className="text-right" style={{ marginBottom: 11 }}>
@@ -583,7 +585,7 @@ const columns = [
     Header: '地址',
     width: 160,
     Cell: item => {
-      return <Input size="sm" defaultValue={item.address} />
+      return <Input size="sm" value={item.address} />
     },
   },
   { prop: 'num', Header: '金额', width: 120 },
@@ -602,7 +604,6 @@ const columns = [
             style={{ paddingRight: 16, color: '#417FFA', height: 18 }}
             onClick={e => {
               e.preventDefault()
-              console.log(item)
             }}
           >
             编辑
@@ -655,41 +656,49 @@ class DefaultExample extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleOnSelectAll = this.handleOnSelectAll.bind(this)
     this.handelOnSelect = this.handelOnSelect.bind(this)
-    this.handlePage = this.handlePage.bind(this)
     this.state = {
-      selectedRowKeys: [0, 1],
-      activePage: 2,
+      selectedRowKeys: [1, 3],
+      activePage: 1,
     }
   }
 
   handleChange(selectedRowKeys) {
     console.log(selectedRowKeys)
   }
-  handlePage(val) {
-    console.log(val)
-  }
-  handelOnSelect(status, index, item) {
-    console.log(status, index, item)
+
+  handelOnSelect(status, key, item) {
+    console.log(status, key, item)
     if (status) {
       const { selectedRowKeys } = this.state
-      this.setState({
-        selectedRowKeys: [...selectedRowKeys, index],
-      })
+      this.setState(
+        {
+          selectedRowKeys: [...selectedRowKeys, key],
+        },
+        () => console.log(this.state.selectedRowKeys)
+      )
     } else {
       const { selectedRowKeys } = this.state
-      this.setState({
-        selectedRowKeys: selectedRowKeys.filter(item => Number(item) !== index),
-      })
+      this.setState(
+        {
+          selectedRowKeys: selectedRowKeys.filter(
+            items => Number(items) !== item.id
+          ),
+        },
+        () => console.log(this.state.selectedRowKeys)
+      )
     }
   }
   handleOnSelectAll(checkAll, selectedRowKeys) {
-    if (checkAll) {
+    if (!checkAll) {
       this.setState({
         selectedRowKeys: [],
       })
     } else {
+      const { selectedRowKeys } = this.state
       this.setState({
-        selectedRowKeys: data.map((item, index) => index),
+        selectedRowKeys: data
+          .map((item, index) => item.id)
+          .concat(selectedRowKeys),
       })
     }
   }
@@ -701,6 +710,7 @@ class DefaultExample extends React.Component {
       onSelect: this.handelOnSelect,
       onSelectAll: this.handleOnSelectAll,
       fixed: true,
+      rowKey: 'id',
     }
     const pagination = {
       scope: 4,
@@ -709,15 +719,20 @@ class DefaultExample extends React.Component {
       activePage: activePage,
     }
     return (
-      <Table
-        columns={columns}
-        data={data}
-        scroll={{ x: 900 }}
-        stripe
-        rowSelection={rowSelection}
-        pagination={pagination}
-        fixed
-      />
+      <div>
+        <div className="text-right" style={{ marginBottom: 11 }}>
+          <Input type="search" placeholder="选择日期" size="sm" />
+        </div>
+        <Table
+          columns={columns}
+          data={data}
+          scroll={{ x: 900 }}
+          stripe
+          rowSelection={rowSelection}
+          pagination={pagination}
+          fixed
+        />
+      </div>
     )
   }
 }
@@ -731,5 +746,9 @@ v2.0.0
 
 - 支持 TableColumn/columns 两种用法
 - 新增 columns 表格配置项属性。具体用法参照例子。参数包含 prop, rowspan, colspan, Cell, width。其中，prop 为 dataIndex，Header 为表头渲染，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，其他为自适应，fixed 可选值为 left/right，Cell 为 td 渲染，可自定义渲染项，非自定义结构下返回参数为 prop 对应值，自定义情况下返回参数为该条数据，rowspan 为跨行参数, colspan 为跨列参数
-- 新增 rowSelection 多选表格配置项属性。具体用法参照例子。添加 selectedRowKeys 参数则为可控组件，添加 defaultSelectedRowKeys 则为非受控组件。onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys。单选全选事件都会触发 onChange 事件，返回项为当前选择项目列表。fixed 为固定左侧参数
+- 新增 rowSelection 多选表格配置项属性。具体用法参照例子。添加 selectedRowKeys 参数则为可控组件，添加 defaultSelectedRowKeys 则为非受控组件。onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，选中项 key 值(默认为当前 index)，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys。单选全选事件都会触发 onChange 事件，返回项为当前选择项目列表。fixed 为固定左侧参数
 - 新增 placeholder 属性，表格无数据时提示文字。默认值为“暂无数据”
+
+v2.1.0
+
+- rowSelection 新增 rowKey 参数，多选 table 取值 key，默认为 index，字符串格式，例如 'id'。在非受控多选 table，若想动态添加或删除 table 行，请设置 rowKey。
