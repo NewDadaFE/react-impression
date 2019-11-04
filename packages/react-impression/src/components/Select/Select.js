@@ -407,18 +407,6 @@ export default class Select extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { options } = this.state
-    if (!R.equals(nextProps.children, this.props.children)) {
-      if (!this.isPuppet) {
-        this.setState(
-          {
-            value: '',
-            selectedItem: [],
-            selectText: '',
-          },
-          () => options.forEach(option => option.handleActive(nextProps))
-        )
-      }
-    }
     if (!R.equals(nextProps.value, this.props.value)) {
       this.handleInit(nextProps)
       options.forEach(option => option.handleActive(nextProps))
