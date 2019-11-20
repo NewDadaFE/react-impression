@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import PerfectScrollbar from 'perfect-scrollbar'
 import TableBody from '../TableBody'
 import TableHead from '../TableHead'
 import Pagination from '../Pagination'
@@ -108,6 +109,11 @@ export default class Table extends React.PureComponent {
   componentWillMount() {
     this.handleInt()
   }
+
+  componentWillUnmount() {
+    this.tableScroll && this.tableScroll.destroy()
+  }
+
   /**
    * @description 初始化
    * @memberof Table
@@ -200,6 +206,11 @@ export default class Table extends React.PureComponent {
 
   componentDidMount() {
     const { rowSelection } = this.props
+    if (this.scrollEl) {
+      this.tableScroll = new PerfectScrollbar(this.scrollEl, {
+        suppressScrollY: true,
+      })
+    }
     if (!rowSelection) return
     // 非受控组件
     if (!this.isPuppet) {
@@ -218,6 +229,12 @@ export default class Table extends React.PureComponent {
       selectedRowKeys.forEach(item => {
         this.handleSelected(Number(item))
       })
+    })
+  }
+
+  updateScroll = () => {
+    window.requestAnimationFrame(() => {
+      this.scrollEl && this.tableScroll.update()
     })
   }
 
@@ -261,9 +278,11 @@ export default class Table extends React.PureComponent {
     } = this.props
     if (columns && currentColumns && !R.equals(columns, currentColumns)) {
       this.handleInt(columns, children)
+      this.tableScroll && this.updateScroll()
     }
     if (children && currentChildren && !R.equals(children, currentChildren)) {
       this.handleInt(columns, children)
+      this.tableScroll && this.updateScroll()
     }
 
     if (!this.isPuppet) return
@@ -638,136 +657,140 @@ export default class Table extends React.PureComponent {
           }}
         >
           <div
-            onScroll={e => this.handleScroll(e)}
+            className='table-wrap table-scroll'
             ref={div => {
               this.scrollEl = div
             }}
-            className={classnames('table-wrap', 'table-scroll', {
-              'table-border': border,
-            })}
+            onScroll={e => this.handleScroll(e)}
           >
             <div
-              ref={div => {
-                this.inner = div
-              }}
-              className='table-inner'
+              className={classnames('table-wrap', {
+                'table-border': border,
+              })}
             >
-              <TableHead
-                rowSelection={rowSelection}
-                fixLeftColumns={fixLeftColumns}
-                fixRightColumns={fixRightColumns}
-                noFixColumns={noFixColumns}
-                indeterminate={indeterminate}
-                checkAll={checkAll}
-                fixed={fixed}
-                isNeedHide={isNeedHide}
-                handleCheckOnSelectAll={this.handleCheckOnSelectAll}
-              />
-              <TableBody
-                data={data}
-                stripe={stripe}
-                pagination={pagination}
-                fixLeftColumns={fixLeftColumns}
-                fixRightColumns={fixRightColumns}
-                noFixColumns={noFixColumns}
-                rowSelection={rowSelection}
-                fixed={fixed}
-                isNeedHide={isNeedHide}
-                onMouseEnter={this.handleHover}
-                onMouseLeave={this.handleHoverLeave}
-                handleCheckOnSelect={this.handleCheckOnSelect}
-                selectedRowKeyList={selectedRowKeys}
-              />
+              <div
+                ref={div => {
+                  this.inner = div
+                }}
+                className='table-inner'
+              >
+                <TableHead
+                  rowSelection={rowSelection}
+                  fixLeftColumns={fixLeftColumns}
+                  fixRightColumns={fixRightColumns}
+                  noFixColumns={noFixColumns}
+                  indeterminate={indeterminate}
+                  checkAll={checkAll}
+                  fixed={fixed}
+                  isNeedHide={isNeedHide}
+                  handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+                />
+                <TableBody
+                  data={data}
+                  stripe={stripe}
+                  pagination={pagination}
+                  fixLeftColumns={fixLeftColumns}
+                  fixRightColumns={fixRightColumns}
+                  noFixColumns={noFixColumns}
+                  rowSelection={rowSelection}
+                  fixed={fixed}
+                  isNeedHide={isNeedHide}
+                  onMouseEnter={this.handleHover}
+                  onMouseLeave={this.handleHoverLeave}
+                  handleCheckOnSelect={this.handleCheckOnSelect}
+                  selectedRowKeyList={selectedRowKeys}
+                />
+              </div>
             </div>
+            {(!!fixLeftColumns.length ||
+              (rowSelection && rowSelection.fixed)) && (
+              <div
+                className={classnames(
+                  'table-fixed-left',
+                  { 'table-border': border },
+                  { 'table-scroll': scroll && scroll.x },
+                  { 'table-shadow': !isStart },
+                  className
+                )}
+                style={{ width: leftWidth }}
+              >
+                <TableHead
+                  fixed
+                  fixLeft
+                  fixRight={false}
+                  indeterminate={indeterminate}
+                  checkAll={checkAll}
+                  fixLeftColumns={fixLeftColumns}
+                  fixRightColumns={fixRightColumns}
+                  noFixColumns={noFixColumns}
+                  rowSelection={rowSelection}
+                  handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+                />
+                <TableBody
+                  data={data}
+                  fixLeft
+                  fixRight={false}
+                  stripe={stripe}
+                  pagination={pagination}
+                  fixLeftColumns={fixLeftColumns}
+                  fixRightColumns={fixRightColumns}
+                  noFixColumns={noFixColumns}
+                  onMouseEnter={this.handleHover}
+                  rowSelection={rowSelection}
+                  onMouseLeave={this.handleHoverLeave}
+                  handleCheckOnSelect={this.handleCheckOnSelect}
+                  selectedRowKeyList={selectedRowKeys}
+                  fixed
+                />
+              </div>
+            )}
+            {!!fixRightColumns.length && (
+              <div
+                className={classnames(
+                  'table-fixed-right',
+                  { 'table-border': border },
+                  { 'table-scroll': scroll && scroll.x },
+                  { 'table-shadow': !isEnd },
+                  className
+                )}
+                style={{ width: rightWidth }}
+              >
+                <TableHead
+                  fixed
+                  fixRight
+                  fixLeft={false}
+                  indeterminate={indeterminate}
+                  checkAll={checkAll}
+                  isShowSelection
+                  fixLeftColumns={fixLeftColumns}
+                  fixRightColumns={fixRightColumns}
+                  noFixColumns={noFixColumns}
+                  rowSelection={rowSelection}
+                  handleCheckOnSelectAll={this.handleCheckOnSelectAll}
+                />
+                <TableBody
+                  data={data}
+                  fixRight
+                  fixLeft={false}
+                  fixLeftColumns={fixLeftColumns}
+                  fixRightColumns={fixRightColumns}
+                  noFixColumns={noFixColumns}
+                  stripe={stripe}
+                  pagination={pagination}
+                  isShowSelection
+                  onMouseEnter={this.handleHover}
+                  rowSelection={rowSelection}
+                  handleCheckOnSelect={this.handleCheckOnSelect}
+                  onMouseLeave={this.handleHoverLeave}
+                  selectedRowKeyList={selectedRowKeys}
+                  fixed
+                />
+              </div>
+            )}
+            {!data.length && (
+              <p className='text-center table-no-data'>{placeholder}</p>
+            )}
           </div>
-          {(!!fixLeftColumns.length ||
-            (rowSelection && rowSelection.fixed)) && (
-            <div
-              className={classnames(
-                'table-fixed-left',
-                { 'table-border': border },
-                { 'table-scroll': scroll && scroll.x },
-                { 'table-shadow': !isStart },
-                className
-              )}
-              style={{ width: leftWidth }}
-            >
-              <TableHead
-                fixed
-                fixLeft
-                fixRight={false}
-                indeterminate={indeterminate}
-                checkAll={checkAll}
-                fixLeftColumns={fixLeftColumns}
-                fixRightColumns={fixRightColumns}
-                noFixColumns={noFixColumns}
-                rowSelection={rowSelection}
-                handleCheckOnSelectAll={this.handleCheckOnSelectAll}
-              />
-              <TableBody
-                data={data}
-                fixLeft
-                fixRight={false}
-                stripe={stripe}
-                pagination={pagination}
-                fixLeftColumns={fixLeftColumns}
-                fixRightColumns={fixRightColumns}
-                noFixColumns={noFixColumns}
-                onMouseEnter={this.handleHover}
-                rowSelection={rowSelection}
-                onMouseLeave={this.handleHoverLeave}
-                handleCheckOnSelect={this.handleCheckOnSelect}
-                selectedRowKeyList={selectedRowKeys}
-                fixed
-              />
-            </div>
-          )}
-          {!!fixRightColumns.length && (
-            <div
-              className={classnames(
-                'table-fixed-right',
-                { 'table-border': border },
-                { 'table-scroll': scroll && scroll.x },
-                { 'table-shadow': !isEnd },
-                className
-              )}
-              style={{ width: rightWidth }}
-            >
-              <TableHead
-                fixed
-                fixRight
-                fixLeft={false}
-                indeterminate={indeterminate}
-                checkAll={checkAll}
-                isShowSelection
-                fixLeftColumns={fixLeftColumns}
-                fixRightColumns={fixRightColumns}
-                noFixColumns={noFixColumns}
-                rowSelection={rowSelection}
-                handleCheckOnSelectAll={this.handleCheckOnSelectAll}
-              />
-              <TableBody
-                data={data}
-                fixRight
-                fixLeft={false}
-                fixLeftColumns={fixLeftColumns}
-                fixRightColumns={fixRightColumns}
-                noFixColumns={noFixColumns}
-                stripe={stripe}
-                pagination={pagination}
-                isShowSelection
-                onMouseEnter={this.handleHover}
-                rowSelection={rowSelection}
-                handleCheckOnSelect={this.handleCheckOnSelect}
-                onMouseLeave={this.handleHoverLeave}
-                selectedRowKeyList={selectedRowKeys}
-                fixed
-              />
-            </div>
-          )}
-          {!data.length && (
-            <p className='text-center table-no-data'>{placeholder}</p>
-          )}
         </div>
         {this.renderPagination()}
       </div>
