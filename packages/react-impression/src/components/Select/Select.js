@@ -405,7 +405,7 @@ export default class Select extends React.PureComponent {
     System.unmanager(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { options } = this.state
     if (!R.equals(nextProps.value, this.props.value)) {
       this.handleInit(nextProps)

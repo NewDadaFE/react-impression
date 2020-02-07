@@ -106,7 +106,7 @@ export default class LoadingAddon extends React.PureComponent {
    * 根据props添加或清空定时器.
    * @param  {Object} nextprops [新props]
    */
-  componentWillReceiveProps(nextprops) {
+  UNSAFE_componentWillReceiveProps(nextprops) {
     !nextprops.show && this.clearDottedInterval()
     !this.props.show && nextprops.show && this.setDottedInterval()
   }

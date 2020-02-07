@@ -113,7 +113,7 @@ export default class SelectOption extends React.PureComponent {
       })
     }
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.parent()) {
       this.parent().onOptionCreate(this)
     }

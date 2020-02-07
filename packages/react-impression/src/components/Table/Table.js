@@ -105,7 +105,7 @@ export default class Table extends React.PureComponent {
     )
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.handleInt()
   }
   /**
@@ -252,7 +252,7 @@ export default class Table extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { rowSelection, columns, children } = nextProps
     const {
       data,

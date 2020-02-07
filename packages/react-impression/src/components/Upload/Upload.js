@@ -82,7 +82,7 @@ export default class Upload extends React.PureComponent {
     this.fileInput.files[0] = value
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     this.setState({
       previewImageUrl: newProps.src,
     })
