@@ -204,7 +204,7 @@ export default class Calendar extends React.Component {
     return days
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { format } = this.props
     const { currentMoment } = this.state
     const { date } = nextProps

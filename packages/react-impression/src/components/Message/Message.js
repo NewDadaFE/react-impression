@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 let _message
 let _timers
@@ -90,26 +90,27 @@ export default class Message extends React.Component {
 
     return (
       <div>
-        <ReactCSSTransitionGroup
-          component='div'
-          transitionName='message'
-          transitionEnterTimeout={240}
-          transitionLeaveTimeout={360}
+        <CSSTransition
+          in={show}
+          classNames='message'
+          unmountOnExit
+          timeout={{
+            enter: 240,
+            exit: 360,
+          }}
         >
-          {show && (
-            <div className={classnames('message', themeClass, className)}>
-              <div className='message-header'>
-                <i className={classnames(iconClass)} />
-              </div>
-              <div className='message-body'>{message}</div>
-              {closable && (
-                <div className='message-close' onClick={this.handleClose}>
-                  关闭
-                </div>
-              )}
+          <div className={classnames('message', themeClass, className)}>
+            <div className='message-header'>
+              <i className={classnames(iconClass)} />
             </div>
-          )}
-        </ReactCSSTransitionGroup>
+            <div className='message-body'>{message}</div>
+            {closable && (
+              <div className='message-close' onClick={this.handleClose}>
+                关闭
+              </div>
+            )}
+          </div>
+        </CSSTransition>
       </div>
     )
   }

@@ -39,7 +39,7 @@ export default class SelectOptionGroup extends React.PureComponent {
     visible: true,
     optionList: [],
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.parent().onOptionGroupCreate(this)
   }
   componentWillUnmount() {

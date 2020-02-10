@@ -38,11 +38,11 @@ class Filter extends Component {
   handleOnSelectAll = (checkAll, selectedRowKeys) => {
     if (checkAll) {
       this.setState({
-        selectedRowKeys: [],
+        selectedRowKeys: data.wuliu.map((item, index) => index),
       })
     } else {
       this.setState({
-        selectedRowKeys: data.map((item, index) => index),
+        selectedRowKeys: [],
       })
     }
   }
@@ -119,4 +119,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Filter)

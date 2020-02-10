@@ -78,7 +78,7 @@ export default class TimeSelect extends React.PureComponent {
       this.secondScrollbar = null
     }
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { value } = nextProps
     this.setState({
       currentHour: value ? value.split(':')[0] : '',

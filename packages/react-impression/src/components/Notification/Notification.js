@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Notice from '../Notice'
 
 let _notification
@@ -116,28 +116,29 @@ export default class Notification extends React.Component {
 
     return (
       <div className={classnames('notification', className)}>
-        <ReactCSSTransitionGroup
-          component='div'
-          transitionName='notice'
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={800}
-        >
+        <TransitionGroup>
           {Object.keys(this.state).map(key => (
-            <Notice
+            <CSSTransition
               key={key}
-              theme={this.state[key].theme}
-              closeable={this.state[key].closeable}
-              title={this.state[key].title}
-              close={() => this.removeNotice(key)}
-              onMouseEnter={() => this.handleClearTimer(key)}
-              onMouseLeave={() =>
-                this.TimeToRemoveCurrentTimer(key, this.state[key].duration)
-              }
+              classNames='notice'
+              timeout={{ exit: 800, enter: 200 }}
             >
-              {this.state[key].message}
-            </Notice>
+              <Notice
+                theme={this.state[key].theme}
+                closeable={this.state[key].closeable}
+                title={this.state[key].title}
+                close={() => this.removeNotice(key)}
+                onMouseEnter={() => this.handleClearTimer(key)}
+                onMouseLeave={() => {
+                  this.state[key] &&
+                    this.TimeToRemoveCurrentTimer(key, this.state[key].duration)
+                }}
+              >
+                {this.state[key].message}
+              </Notice>
+            </CSSTransition>
           ))}
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
       </div>
     )
   }
