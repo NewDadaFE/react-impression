@@ -45,17 +45,20 @@ export default class TimeSelect extends React.PureComponent {
     window.requestAnimationFrame(() => {
       this.hoursScrollbar = new PerfectScrollbar(this.hourContainer, {
         suppressScrollX: true,
+        swipeEasing: false,
         mixScrollbarLength: 34,
         maxScrollbarLength: 34,
       })
       this.minuteScrollbar = new PerfectScrollbar(this.minuteContainer, {
         suppressScrollX: true,
+        swipeEasing: false,
         mixScrollbarLength: 34,
         maxScrollbarLength: 34,
       })
       if (type === 'second') {
         this.secondScrollbar = new PerfectScrollbar(this.secondContainer, {
           suppressScrollX: true,
+          swipeEasing: false,
           mixScrollbarLength: 34,
           maxScrollbarLength: 34,
         })

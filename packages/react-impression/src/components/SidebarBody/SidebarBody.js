@@ -24,6 +24,7 @@ export default class SidebarBody extends React.PureComponent {
     setTimeout(() => {
       this.scrollbar = new PerfectScrollbar(this.container, {
         suppressScrollX: true,
+        swipeEasing: false,
       })
     }, 1000)
   }

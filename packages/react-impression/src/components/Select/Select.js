@@ -465,6 +465,7 @@ export default class Select extends React.PureComponent {
       this.selectInner.scrollTop = 0
       this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
         suppressScrollX: true,
+        swipeEasing: false,
       })
     })
   }
