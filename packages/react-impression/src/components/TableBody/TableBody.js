@@ -92,7 +92,7 @@ export default class TableBody extends React.PureComponent {
     isNeedHide: false,
   }
 
-  renderTd = (array, item, type, isNeedHide) => {
+  renderTd = (array, item, type, isNeedHide, index, data) => {
     const { fixed } = this.props
     return array.map((column, columnIndex) => {
       const { prop, rowspan, colspan, Cell, width } = column
@@ -121,7 +121,7 @@ export default class TableBody extends React.PureComponent {
 
       let content
       if (Cell && typeof Cell === 'function') {
-        content = Cell(item)
+        content = Cell(item, data, index)
       } else if (React.isValidElement(Cell)) {
         content = React.cloneElement(Cell)
       } else {
@@ -209,7 +209,7 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
                 {!!fixLeftList.length &&
-                  this.renderTd(fixLeftList, item, 'left', isNeedHide)}
+                  this.renderTd(fixLeftList, item, 'left', isNeedHide, index, data)}
                 {rowSelection && !rowSelection.fixed && (
                   <td className={classnames(`item-fix-`)} key={-1} width={60}>
                     <div className='table-cell'>
@@ -223,9 +223,9 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
 
-                {!!noFixColumns.length && this.renderTd(noFixColumns, item)}
+                {!!noFixColumns.length && this.renderTd(noFixColumns, item, 'normal', false, index, data)}
                 {!!fixRightList.length &&
-                  this.renderTd(fixRightList, item, 'right', isNeedHide)}
+                  this.renderTd(fixRightList, item, 'right', isNeedHide, index, data)}
                 {rowSelection && isShowSelection && rowSelection.fixed && (
                   <td
                     className={classnames(`item-fix-normal`)}
