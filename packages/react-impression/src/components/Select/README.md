@@ -529,6 +529,74 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
+**远程搜索**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      value: null,
+      data: [],
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.fetchData = this.fetchData.bind(this)
+  }
+
+  genData(str) {
+    const arr = []
+    const word = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    word.forEach(w1 => {
+      word.forEach(w2 => {
+        for (let i = 0; i < 20; i++) {
+          arr.push({
+            name: `${w1}${w2}-${i}`,
+            value: `${w1}${w2}${i}`,
+          })
+        }
+      })
+    })
+    return arr.filter(a => a.name.indexOf(str) > -1).slice(0, 20)
+  }
+
+  fetchData(str) {
+    setTimeout(() => {
+      this.setState({
+        data: this.genData(str),
+      })
+    }, 200)
+  }
+
+  handleChange(val, text) {
+    this.setState({ value: val })
+  }
+
+  render() {
+    const { value, data } = this.state
+    return (
+      <div>
+        <Select
+          ref={ref => (this.selectRef = ref)}
+          searchable
+          clearable
+          value={value}
+          remoteMethod={this.fetchData}
+          onChange={this.handleChange}
+        >
+          {data.map(item => (
+            <SelectOption key={item.value} value={item.value}>
+              {item.name}
+            </SelectOption>
+          ))}
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
+```
+
 ### 变更记录
 
 v2.0.0
@@ -540,3 +608,4 @@ v2.0.0
 - 新增 filterMethod 筛选方法,可支持实时搜索。使用时在 filterMethod 里重置数据源即可
 - 新增 clearable 可清除属性，仅在单选模式下生效
 - 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
+- 新增 remoteMethod 远程搜索方法，需要将 searchable 设置为 true
