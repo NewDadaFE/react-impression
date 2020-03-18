@@ -196,10 +196,10 @@ export default class Select extends React.PureComponent {
       } else {
         dataToSet = {
           selectedItem:
-            originValue || originValue === 0
-              ? { value: originValue, name: originValue }
-              : {},
-          selectText: originValue || originValue === 0 ? originValue : '',
+            !originValue && originValue !== 0
+              ? {}
+              : { value: originValue, name: originValue },
+          selectText: !originValue && originValue !== 0 ? '' : originValue,
         }
       }
     } else {
