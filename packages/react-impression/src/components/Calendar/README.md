@@ -123,9 +123,10 @@ class CalendarView extends React.Component {
         return (
           <div className="text-center">
             <Image
-              circle
               src={require('../../images/user.jpg')}
               style={{ width: '70px' }}
+              fluid
+              circle
             />
           </div>
         )
