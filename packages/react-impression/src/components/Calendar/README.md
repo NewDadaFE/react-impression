@@ -82,6 +82,7 @@ class CalendarView extends React.Component {
 **自定义模块内容**
 
 ```js
+const imgUser = require('../../images/user.jpg')
 class CalendarView extends React.Component {
   constructor(prop, context) {
     super(prop, context)
@@ -122,12 +123,7 @@ class CalendarView extends React.Component {
       case 27:
         return (
           <div className="text-center">
-            <Image
-              src={require('../../images/user.jpg')}
-              style={{ width: '70px' }}
-              fluid
-              circle
-            />
+            <Image src={imgUser} style={{ width: '70px' }} fluid circle />
           </div>
         )
       case 11:

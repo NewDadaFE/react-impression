@@ -33,7 +33,7 @@ const MODE_TO_STYLE_MAP = {
   right: 'img-right',
 }
 
-const Image = props => {
+function Image(props) {
   const {
     className = '',
     style,
