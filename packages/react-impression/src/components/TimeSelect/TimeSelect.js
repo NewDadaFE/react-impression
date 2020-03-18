@@ -42,7 +42,7 @@ export default class TimeSelect extends React.PureComponent {
 
   componentDidMount() {
     const { type } = this.props
-    window.requestAnimationFrame(() => {
+    this.requestId = window.requestAnimationFrame(() => {
       this.hoursScrollbar = new PerfectScrollbar(this.hourContainer, {
         suppressScrollX: true,
         swipeEasing: false,
@@ -68,6 +68,7 @@ export default class TimeSelect extends React.PureComponent {
 
   componentWillUnmount() {
     const { type } = this.props
+    window.cancelAnimationFrame(this.requestId)
     if (this.hoursScrollbar) {
       this.hoursScrollbar.destroy()
       this.hoursScrollbar = null
