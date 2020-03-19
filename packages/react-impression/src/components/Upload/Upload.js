@@ -3,6 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from '../Icon'
 
+const RotateDirection = {
+  Clockwise: 1,
+  CounterClockwise: -1,
+}
+
 export default class Upload extends React.PureComponent {
   static propTypes = {
     /**
@@ -71,6 +76,8 @@ export default class Upload extends React.PureComponent {
     this.state = {
       file: '',
       previewImageUrl: this.props.src,
+      showBigPreview: false,
+      previewImgRotate: 0,
     }
   }
 
@@ -127,6 +134,41 @@ export default class Upload extends React.PureComponent {
     onChange(event)
   }
 
+  /**
+   * 点击查看大图
+   */
+  handlePreview = event => {
+    event.stopPropagation()
+    this.handleTogglePreview()
+  }
+
+  handleTogglePreview = event => {
+    event && event.stopPropagation()
+    this.setState({
+      showBigPreview: !this.state.showBigPreview,
+      previewImgRotate: 0,
+    })
+  }
+
+  /**
+   * 大图旋转处理
+   */
+  handlePreviewRotate = (clockwise, event) => {
+    event && event.stopPropagation()
+    const DegOfOneMove = 90
+    this.setState({
+      previewImgRotate: this.state.previewImgRotate + clockwise * DegOfOneMove,
+    })
+  }
+
+  handlePreviewLeft = event => {
+    this.handlePreviewRotate(RotateDirection.CounterClockwise, event)
+  }
+
+  handlePreviewRight = event => {
+    this.handlePreviewRotate(RotateDirection.Clockwise, event)
+  }
+
   render() {
     const {
       preview,
@@ -139,7 +181,12 @@ export default class Upload extends React.PureComponent {
       ...others
     } = this.props
     delete others.onChange
-    const { file, previewImageUrl } = this.state
+    const {
+      file,
+      previewImageUrl,
+      showBigPreview,
+      previewImgRotate,
+    } = this.state
     let { children } = this.props
 
     if (preview) {
@@ -163,12 +210,49 @@ export default class Upload extends React.PureComponent {
           {previewImageUrl ? (
             <div className='upload-preview-inner upload-preview-img'>
               <img src={previewImageUrl} />
-              <div
-                className='upload-preview-remove'
-                onClick={this.handleRemoveImg}
-              >
-                <Icon type='trash' />
+              <div className='upload-preview-remove'>
+                <Icon
+                  type='eye'
+                  onClick={this.handlePreview}
+                  className='action-icon'
+                />
+                <Icon
+                  type='trash'
+                  onClick={this.handleRemoveImg}
+                  className='action-icon'
+                />
               </div>
+              {showBigPreview && (
+                <div
+                  className='image-preview'
+                  onClick={this.handleTogglePreview}
+                >
+                  <Icon
+                    type='close'
+                    onClick={this.handleTogglePreview}
+                    className='ic ic-close'
+                  />
+                  <div className='image-wrap'>
+                    <img
+                      src={previewImageUrl}
+                      alt=''
+                      style={{ transform: `rotate(${previewImgRotate}deg)` }}
+                    />
+                  </div>
+                  <div className='image-preview-operation'>
+                    <Icon
+                      type='rotate-right'
+                      onClick={this.handlePreviewRight}
+                      className='ic ic-rotate shadow'
+                    />
+                    <Icon
+                      type='rotate-left'
+                      onClick={this.handlePreviewLeft}
+                      className='ic ic-rotate shadow'
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className='upload-preview-inner upload-preview-tool'>

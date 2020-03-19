@@ -25,7 +25,7 @@ const init = () => {
   }
 }
 
-init()
+if (typeof document !== 'undefined') init()
 
 /**
  * 管理弹出层组件.

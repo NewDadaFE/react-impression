@@ -402,6 +402,7 @@ export default class Select extends React.PureComponent {
    * 清空组件管理
    */
   componentWillUnmount() {
+    window.cancelAnimationFrame(this.requestId)
     System.unmanager(this)
   }
 
@@ -461,7 +462,7 @@ export default class Select extends React.PureComponent {
   }
 
   handleInitSelectScroll = () => {
-    window.requestAnimationFrame(() => {
+    this.requestId = window.requestAnimationFrame(() => {
       this.selectInner.scrollTop = 0
       this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
         suppressScrollX: true,
