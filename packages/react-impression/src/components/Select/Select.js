@@ -434,8 +434,9 @@ export default class Select extends React.PureComponent {
       originValue = [originValue]
     }
     if (
-      originValue.includes(value) &&
-      !this.state.selectedOptions.map(option => option.value).includes(value)
+      originValue.indexOf(value) > -1 &&
+      this.state.selectedOptions.map(option => option.value).indexOf(value) ===
+        -1
     ) {
       this.state.selectedOptions.push({
         value,
@@ -522,12 +523,8 @@ export default class Select extends React.PureComponent {
     if (options.length === 0) {
       return '暂无数据'
     }
-    if (
-      searchable &&
-      !isContainer(queryText, optionList) &&
-      !filterMethod &&
-      !remoteMethod
-    ) {
+    const hasCustomFilter = !!(filterMethod || remoteMethod)
+    if (searchable && !isContainer(queryText, optionList) && !hasCustomFilter) {
       return '暂无数据'
     }
 
