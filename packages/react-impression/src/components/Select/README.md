@@ -560,11 +560,14 @@ class DefaultExample extends React.Component {
   }
 
   fetchData(str) {
-    setTimeout(() => {
-      this.setState({
-        data: this.genData(str),
-      })
-    }, 200)
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.setState({
+          data: this.genData(str),
+        })
+        reject()
+      }, 200)
+    })
   }
 
   handleChange(val, text) {
@@ -608,4 +611,4 @@ v2.0.0
 - 新增 filterMethod 筛选方法,可支持实时搜索。使用时在 filterMethod 里重置数据源即可
 - 新增 clearable 可清除属性，仅在单选模式下生效
 - 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
-- 新增 remoteMethod 远程搜索方法，需要将 searchable 设置为 true
+- 新增 remoteMethod 远程搜索方法，该方法需返回一个 Promise，使用时需要将 searchable 设置为 true

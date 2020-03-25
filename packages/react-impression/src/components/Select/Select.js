@@ -114,7 +114,7 @@ export default class Select extends React.PureComponent {
     filterMethod: PropTypes.func,
 
     /**
-     * 远程搜索方法，参数列表：inputValue
+     * 远程搜索方法，参数列表：inputValue, 接收 Promise 作为返回值
      */
     remoteMethod: PropTypes.func,
 
@@ -479,6 +479,12 @@ export default class Select extends React.PureComponent {
     this.setState({ queryText: val }, () => {
       if (remoteMethod) {
         remoteMethod(val)
+          .then(() => {
+            this.updateSelectPopper()
+          })
+          .catch(() => {
+            this.updateSelectPopper()
+          })
       } else {
         options.forEach(option => {
           option.queryChange(val, filterMethod)
@@ -486,11 +492,15 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange(val)
         })
+        this.updateSelectPopper()
       }
-      this.selectPopper && this.selectPopper.update()
       this.selectInner.scrollTop = 0
       this.handleUpdateSelectScroll()
     })
+  }
+
+  updateSelectPopper = () => {
+    this.selectPopper && this.selectPopper.update()
   }
 
   handleInitSelectScroll = () => {
