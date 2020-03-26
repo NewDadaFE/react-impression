@@ -478,12 +478,21 @@ export default class Select extends React.PureComponent {
     const { filterMethod, remoteMethod } = this.props
     this.setState({ queryText: val }, () => {
       if (remoteMethod) {
-        remoteMethod(val)
+        const promise = remoteMethod(val)
+        const hasPromise =
+          promise &&
+          typeof promise.then === 'function' &&
+          typeof promise.catch === 'function'
+        if (!hasPromise) {
+          this.handleUpdatePopperAndScroll()
+          return
+        }
+        promise
           .then(() => {
-            this.updateSelectPopper()
+            this.handleUpdatePopperAndScroll()
           })
           .catch(() => {
-            this.updateSelectPopper()
+            this.handleUpdatePopperAndScroll()
           })
       } else {
         options.forEach(option => {
@@ -492,11 +501,15 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange(val)
         })
-        this.updateSelectPopper()
+        this.handleUpdatePopperAndScroll()
       }
-      this.selectInner.scrollTop = 0
-      this.handleUpdateSelectScroll()
     })
+  }
+
+  handleUpdatePopperAndScroll = () => {
+    this.updateSelectPopper()
+    this.selectInner.scrollTop = 0
+    this.handleUpdateSelectScroll()
   }
 
   updateSelectPopper = () => {
