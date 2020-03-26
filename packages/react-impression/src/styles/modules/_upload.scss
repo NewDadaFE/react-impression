@@ -5,6 +5,13 @@
     width: 0;
   }
 
+  &.disabled {
+    .form-control {
+      cursor: not-allowed;
+      color: $gray-dark;
+    }
+  }
+
   .form-control {
     padding-left: $upload-offset-left;
     overflow: hidden;
@@ -59,6 +66,10 @@
   border-radius: $border-radius;
 }
 .upload-preview-tool {
+  &.disabled {
+    cursor: not-allowed;
+    color: $gray-dark;
+  }
   border-style: dashed;
   border-color: $upload-preview-border-color;
   background-color: $upload-preview-bg;
@@ -77,6 +88,13 @@
 /* 图片上传样式 end */
 /* 图片预览样式 start */
 .upload-preview-img {
+  &.disabled {
+    cursor: default;
+
+    & > .upload-preview-remove {
+      cursor: pointer;
+    }
+  }
   overflow: hidden;
   border-style: solid;
   border-color: $upload-preview-img-border-color;
