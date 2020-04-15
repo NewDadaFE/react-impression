@@ -34,6 +34,7 @@ export default class Select extends React.PureComponent {
       isSearch: false,
       selectText: '', // 选中字段
       options: [],
+      selectedOptions: [],
       optionGroup: [],
       selectedItem: this.props.multiple ? [] : {},
       optionList: [],
@@ -113,6 +114,11 @@ export default class Select extends React.PureComponent {
     filterMethod: PropTypes.func,
 
     /**
+     * 远程搜索方法，参数列表：inputValue, 接收 Promise 作为返回值
+     */
+    remoteMethod: PropTypes.func,
+
+    /**
      * 子组件
      */
     children: PropTypes.node,
@@ -165,8 +171,9 @@ export default class Select extends React.PureComponent {
   }
 
   handleValueChange(props) {
-    const { options } = this.state
-    const optionList = this.getOptionList(options)
+    const { options, selectedOptions } = this.state
+    const optionList = this.getOptionList(options).concat(selectedOptions)
+
     const { multiple } = this.props
     const originValue = this.isPuppet
       ? props !== undefined
@@ -188,20 +195,22 @@ export default class Select extends React.PureComponent {
         }
       } else {
         dataToSet = {
-          selectedItem: {},
-          selectText: '',
+          selectedItem:
+            !originValue && originValue !== 0
+              ? {}
+              : { value: originValue, name: originValue },
+          selectText: !originValue && originValue !== 0 ? '' : originValue,
         }
       }
     } else {
       let selectList = []
       originValue &&
         originValue.length > 0 &&
-        optionList.length > 0 &&
         originValue.forEach(val => {
           const item = optionList.find(option => {
             return option.value === val
           })
-          item && selectList.push(item)
+          selectList.push(item || { value: val, name: val })
         })
       if (!this.isPuppet) {
         dataToSet = {
@@ -358,7 +367,7 @@ export default class Select extends React.PureComponent {
    */
   selectOptionHandle(result) {
     const { onChange, value, multiple } = this.props
-    const { options, selectedItem, optionGroup } = this.state
+    const { options, selectedOptions, selectedItem, optionGroup } = this.state
     const originValue = this.isPuppet ? value : this.state.value
     if (multiple) {
       this.setState({ currentPlaceholder: '' })
@@ -387,6 +396,7 @@ export default class Select extends React.PureComponent {
       {
         showOption: !!multiple,
         queryText: '',
+        selectedOptions: selectedOptions.concat(result.node),
       },
       () => {
         optionGroup.forEach(option => {
@@ -416,6 +426,25 @@ export default class Select extends React.PureComponent {
 
   onOptionCreate(option) {
     this.state.options.push(option)
+    let originValue = this.isPuppet ? this.props.value : this.state.value
+    const { value, children = '' } = option.props
+
+    if (this.props.multiple) {
+      originValue = originValue || []
+    } else {
+      originValue = [originValue]
+    }
+    if (
+      originValue.indexOf(value) > -1 &&
+      this.state.selectedOptions.map(option => option.value).indexOf(value) ===
+        -1
+    ) {
+      this.state.selectedOptions.push({
+        value,
+        name: children.toString(),
+      })
+    }
+
     this.forceUpdate()
     this.handleInit()
   }
@@ -447,18 +476,45 @@ export default class Select extends React.PureComponent {
   handleQuery(event) {
     const val = event.target.value
     const { options, optionGroup } = this.state
-    const { filterMethod } = this.props
+    const { filterMethod, remoteMethod } = this.props
     this.setState({ queryText: val }, () => {
-      options.forEach(option => {
-        option.queryChange(val, filterMethod)
-      })
-      optionGroup.forEach(option => {
-        option.queryChange(val)
-      })
-      this.selectPopper && this.selectPopper.update()
-      this.selectInner.scrollTop = 0
-      this.handleUpdateSelectScroll()
+      if (remoteMethod) {
+        const promise = remoteMethod(val)
+        const hasPromise =
+          promise &&
+          typeof promise.then === 'function' &&
+          typeof promise.catch === 'function'
+        if (!hasPromise) {
+          this.handleUpdatePopperAndScroll()
+          return
+        }
+        promise
+          .then(() => {
+            this.handleUpdatePopperAndScroll()
+          })
+          .catch(() => {
+            this.handleUpdatePopperAndScroll()
+          })
+      } else {
+        options.forEach(option => {
+          option.queryChange(val, filterMethod)
+        })
+        optionGroup.forEach(option => {
+          option.queryChange(val)
+        })
+        this.handleUpdatePopperAndScroll()
+      }
     })
+  }
+
+  handleUpdatePopperAndScroll = () => {
+    this.updateSelectPopper()
+    this.selectInner.scrollTop = 0
+    this.handleUpdateSelectScroll()
+  }
+
+  updateSelectPopper = () => {
+    this.selectPopper && this.selectPopper.update()
   }
 
   handleInitSelectScroll = () => {
@@ -485,13 +541,14 @@ export default class Select extends React.PureComponent {
   }
 
   get emptyText() {
-    const { searchable, filterMethod } = this.props
+    const { searchable, filterMethod, remoteMethod } = this.props
     const { options, queryText } = this.state
     const optionList = this.getOptionList(options)
     if (options.length === 0) {
       return '暂无数据'
     }
-    if (searchable && !isContainer(queryText, optionList) && !filterMethod) {
+    const hasCustomFilter = !!(filterMethod || remoteMethod)
+    if (searchable && !isContainer(queryText, optionList) && !hasCustomFilter) {
       return '暂无数据'
     }
 
