@@ -195,22 +195,20 @@ export default class Select extends React.PureComponent {
         }
       } else {
         dataToSet = {
-          selectedItem:
-            !originValue && originValue !== 0
-              ? {}
-              : { value: originValue, name: originValue },
-          selectText: !originValue && originValue !== 0 ? '' : originValue,
+          selectedItem: {},
+          selectText: '',
         }
       }
     } else {
       let selectList = []
       originValue &&
         originValue.length > 0 &&
+        optionList.length > 0 &&
         originValue.forEach(val => {
           const item = optionList.find(option => {
             return option.value === val
           })
-          selectList.push(item || { value: val, name: val })
+          item && selectList.push(item)
         })
       if (!this.isPuppet) {
         dataToSet = {
