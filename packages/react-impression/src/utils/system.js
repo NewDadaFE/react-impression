@@ -27,7 +27,9 @@ if (typeof document !== 'undefined') init()
  * @param  {[Component]} component  [组件]
  */
 export const manager = component => {
-  document.body.popLayers.push(component)
+  if (typeof document !== 'undefined') {
+    document.body.popLayers.push(component)
+  }
 }
 
 /**
