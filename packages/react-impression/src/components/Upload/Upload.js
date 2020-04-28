@@ -50,6 +50,16 @@ export default class Upload extends React.PureComponent {
     accept: PropTypes.string,
 
     /**
+     * 文件名
+     */
+    fileName: PropTypes.string,
+
+    /**
+     * 是否不可用
+     */
+    disabled: PropTypes.bool,
+
+    /**
      * 子组件
      */
     children: PropTypes.node,
@@ -99,7 +109,9 @@ export default class Upload extends React.PureComponent {
    * 打开文件浏览器对话框
    */
   handleOpenFileDialog = () => {
-    this.fileInput.click()
+    if (!this.props.disabled) {
+      this.fileInput.click()
+    }
   }
 
   /**
@@ -108,9 +120,11 @@ export default class Upload extends React.PureComponent {
   handleFileChange = event => {
     const { onChange } = this.props
 
-    this.setState({
-      file: event.target.files[0].name,
-    })
+    if (event.target && event.target.files && event.target.files[0]) {
+      this.setState({
+        file: event.target.files[0].name,
+      })
+    }
 
     onChange(event)
   }
@@ -178,6 +192,8 @@ export default class Upload extends React.PureComponent {
       placeholder,
       className,
       accept,
+      fileName,
+      disabled,
       ...others
     } = this.props
     delete others.onChange
@@ -208,7 +224,11 @@ export default class Upload extends React.PureComponent {
             onChange={this.handleImagePreview}
           />
           {previewImageUrl ? (
-            <div className='upload-preview-inner upload-preview-img'>
+            <div
+              className={classnames('upload-preview-inner upload-preview-img', {
+                disabled,
+              })}
+            >
               <img src={previewImageUrl} />
               <div className='upload-preview-remove'>
                 <Icon
@@ -216,11 +236,13 @@ export default class Upload extends React.PureComponent {
                   onClick={this.handlePreview}
                   className='action-icon'
                 />
-                <Icon
-                  type='trash'
-                  onClick={this.handleRemoveImg}
-                  className='action-icon'
-                />
+                {!disabled && (
+                  <Icon
+                    type='trash'
+                    onClick={this.handleRemoveImg}
+                    className='action-icon'
+                  />
+                )}
               </div>
               {showBigPreview && (
                 <div
@@ -255,7 +277,12 @@ export default class Upload extends React.PureComponent {
               )}
             </div>
           ) : (
-            <div className='upload-preview-inner upload-preview-tool'>
+            <div
+              className={classnames(
+                'upload-preview-inner upload-preview-tool',
+                { disabled }
+              )}
+            >
               {children || (
                 <Icon type='camera' className='upload-preview-addon' />
               )}
@@ -271,12 +298,17 @@ export default class Upload extends React.PureComponent {
     return (
       <div
         {...others}
-        className={classnames('input-group', 'input-group-upload', className)}
+        className={classnames(
+          'input-group',
+          'input-group-upload',
+          { disabled },
+          className
+        )}
         onClick={this.handleOpenFileDialog}
       >
         <span className='form-control'>
           <Icon type='upload' className='upload-addon' />
-          {file || placeholder}
+          {fileName === undefined ? file || placeholder : fileName}
         </span>
         {/* 此处input只能放在中间，否则圆角样式会有问题 */}
         <input
@@ -288,6 +320,7 @@ export default class Upload extends React.PureComponent {
         <span className='input-group-btn'>
           <button
             type='button'
+            disabled={disabled}
             className={classnames('btn', `btn-${btnStyle}`)}
           >
             {btnText}
