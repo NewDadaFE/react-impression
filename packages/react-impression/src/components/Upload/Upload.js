@@ -68,6 +68,20 @@ export default class Upload extends React.PureComponent {
      * 回调函数，参数列表：event
      */
     onChange: PropTypes.func.isRequired,
+
+    /**
+     * 是否支持多选
+     */
+    multiple: PropTypes.bool,
+
+    /**
+     * 文件信息集合，多个文件时可用，单个文件以object形式，里面必须包含{name:'',url:''}
+     */
+    files: PropTypes.array,
+    /**
+     * 删除文件回调函数，参数以被删除的文件
+     */
+    onDeleteFile: PropTypes.func,
   }
 
   static defaultProps = {
@@ -75,6 +89,7 @@ export default class Upload extends React.PureComponent {
     btnStyle: 'default',
     placeholder: '请选择要上传的附件',
     preview: false,
+    multiple: false,
   }
 
   constructor(props, context) {
@@ -115,17 +130,26 @@ export default class Upload extends React.PureComponent {
   }
 
   /**
+   * 删除文件
+   */
+
+  removeFile = (file, index) => {
+    const { onDeleteFile } = this.props
+    onDeleteFile(file, index)
+  }
+
+  /**
    * 设置文件名
    */
   handleFileChange = event => {
-    const { onChange } = this.props
-
-    if (event.target && event.target.files && event.target.files[0]) {
-      this.setState({
-        file: event.target.files[0].name,
-      })
+    const { onChange, multiple, preview } = this.props
+    if (!multiple) {
+      if (event.target && event.target.files && event.target.files[0]) {
+        this.setState({
+          file: event.target.files[0].name,
+        })
+      }
     }
-
     onChange(event)
   }
 
@@ -137,15 +161,18 @@ export default class Upload extends React.PureComponent {
     onChange(event)
   }
 
-  handleRemoveImg = event => {
+  handleRemoveImg = (item, index) => {
     event.stopPropagation()
-    const { onChange } = this.props
-    this.fileInput.value = ''
-    this.setState({
-      previewImageUrl: '',
-    })
-
-    onChange(event)
+    const { onChange, multiple, onDeleteFile } = this.props
+    if (multiple) {
+      onDeleteFile(item, index)
+    } else {
+      this.fileInput.value = ''
+      this.setState({
+        previewImageUrl: '',
+      })
+      onChange(item)
+    }
   }
 
   /**
@@ -153,6 +180,17 @@ export default class Upload extends React.PureComponent {
    */
   handlePreview = event => {
     event.stopPropagation()
+
+    this.handleTogglePreview()
+  }
+
+  /**
+   * 多图点击查看大图
+   */
+  handleMulPreview = item => {
+    this.setState({
+      previewImageUrl: item.url,
+    })
     this.handleTogglePreview()
   }
 
@@ -183,6 +221,12 @@ export default class Upload extends React.PureComponent {
     this.handlePreviewRotate(RotateDirection.Clockwise, event)
   }
 
+  handleFileClick = file => {
+    if (file.url !== '') {
+      window.open(file.url)
+    }
+  }
+
   render() {
     const {
       preview,
@@ -194,6 +238,8 @@ export default class Upload extends React.PureComponent {
       accept,
       fileName,
       disabled,
+      multiple,
+      files,
       ...others
     } = this.props
     delete others.onChange
@@ -204,7 +250,6 @@ export default class Upload extends React.PureComponent {
       previewImgRotate,
     } = this.state
     let { children } = this.props
-
     if (preview) {
       if (children) {
         children = React.cloneElement(children, {
@@ -215,117 +260,238 @@ export default class Upload extends React.PureComponent {
         })
       }
 
-      return (
-        <div className='upload-preview' onClick={this.handleOpenFileDialog}>
+      if (multiple) {
+        return (
+          <div>
+            <div
+              className='upload-preview-mul'
+              onClick={this.handleOpenFileDialog}
+            >
+              <input
+                type='file'
+                accept='image/*'
+                ref={this.fileRef}
+                onChange={this.handleImagePreview}
+              />
+              <div
+                className={classnames(
+                  'upload-preview-inner upload-preview-tool',
+                  { disabled }
+                )}
+              >
+                {children}
+                {!!message && (
+                  <span className='upload-preview-text'>{message}</span>
+                )}
+              </div>
+            </div>
+            {files.map((item, index) => {
+              return (
+                <div className='upload-preview-mul' key={index}>
+                  <img src={item.url} />
+                  <div className='upload-preview-remove'>
+                    <Icon
+                      type='eye'
+                      onClick={() => {
+                        this.handleMulPreview(item)
+                      }}
+                      className='action-icon'
+                    />
+                    {!disabled && (
+                      <Icon
+                        type='trash'
+                        onClick={() => {
+                          this.handleRemoveImg(item, index)
+                        }}
+                        className='action-icon'
+                      />
+                    )}
+                  </div>
+                </div>
+              )
+            })}
+            {showBigPreview && (
+              <div className='image-preview' onClick={this.handleTogglePreview}>
+                <Icon
+                  type='close'
+                  onClick={this.handleTogglePreview}
+                  className='ic ic-close'
+                />
+                <div className='image-wrap'>
+                  <img
+                    src={previewImageUrl}
+                    alt=''
+                    style={{ transform: `rotate(${previewImgRotate}deg)` }}
+                  />
+                </div>
+                <div className='image-preview-operation'>
+                  <Icon
+                    type='rotate-right'
+                    onClick={this.handlePreviewRight}
+                    className='ic ic-rotate shadow'
+                  />
+                  <Icon
+                    type='rotate-left'
+                    onClick={this.handlePreviewLeft}
+                    className='ic ic-rotate shadow'
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )
+      } else {
+        return (
+          <div className='upload-preview' onClick={this.handleOpenFileDialog}>
+            <input
+              type='file'
+              accept={accept}
+              ref={this.fileRef}
+              onChange={this.handleImagePreview}
+            />
+            {previewImageUrl ? (
+              <div
+                className={classnames(
+                  'upload-preview-inner upload-preview-img',
+                  {
+                    disabled,
+                  }
+                )}
+              >
+                <img src={previewImageUrl} />
+                <div className='upload-preview-remove'>
+                  <Icon
+                    type='eye'
+                    onClick={this.handlePreview}
+                    className='action-icon'
+                  />
+                  {!disabled && (
+                    <Icon
+                      type='trash'
+                      onClick={this.handleRemoveImg}
+                      className='action-icon'
+                    />
+                  )}
+                </div>
+                {showBigPreview && (
+                  <div
+                    className='image-preview'
+                    onClick={this.handleTogglePreview}
+                  >
+                    <Icon
+                      type='close'
+                      onClick={this.handleTogglePreview}
+                      className='ic ic-close'
+                    />
+                    <div className='image-wrap'>
+                      <img
+                        src={previewImageUrl}
+                        alt=''
+                        style={{ transform: `rotate(${previewImgRotate}deg)` }}
+                      />
+                    </div>
+                    <div className='image-preview-operation'>
+                      <Icon
+                        type='rotate-right'
+                        onClick={this.handlePreviewRight}
+                        className='ic ic-rotate shadow'
+                      />
+                      <Icon
+                        type='rotate-left'
+                        onClick={this.handlePreviewLeft}
+                        className='ic ic-rotate shadow'
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div
+                className={classnames(
+                  'upload-preview-inner upload-preview-tool',
+                  { disabled }
+                )}
+              >
+                {children || (
+                  <Icon type='camera' className='upload-preview-addon' />
+                )}
+                {!!message && (
+                  <span className='upload-preview-text'>{message}</span>
+                )}
+              </div>
+            )}
+          </div>
+        )
+      }
+    }
+
+    return (
+      <div {...others}>
+        <div
+          {...others}
+          className={classnames(
+            'input-group',
+            'input-group-upload',
+            { disabled },
+            className
+          )}
+          onClick={this.handleOpenFileDialog}
+        >
+          <span className='form-control'>
+            <Icon type='upload' className='upload-addon' />
+            {fileName === undefined ? file || placeholder : fileName}
+          </span>
+          {/* 此处input只能放在中间，否则圆角样式会有问题 */}
           <input
             type='file'
             accept={accept}
             ref={this.fileRef}
-            onChange={this.handleImagePreview}
+            onChange={this.handleFileChange}
           />
-          {previewImageUrl ? (
-            <div
-              className={classnames('upload-preview-inner upload-preview-img', {
-                disabled,
-              })}
+          <span className='input-group-btn'>
+            <button
+              type='button'
+              disabled={disabled}
+              className={classnames('btn', `btn-${btnStyle}`)}
             >
-              <img src={previewImageUrl} />
-              <div className='upload-preview-remove'>
-                <Icon
-                  type='eye'
-                  onClick={this.handlePreview}
-                  className='action-icon'
-                />
-                {!disabled && (
-                  <Icon
-                    type='trash'
-                    onClick={this.handleRemoveImg}
-                    className='action-icon'
-                  />
-                )}
-              </div>
-              {showBigPreview && (
-                <div
-                  className='image-preview'
-                  onClick={this.handleTogglePreview}
-                >
-                  <Icon
-                    type='close'
-                    onClick={this.handleTogglePreview}
-                    className='ic ic-close'
-                  />
-                  <div className='image-wrap'>
-                    <img
-                      src={previewImageUrl}
-                      alt=''
-                      style={{ transform: `rotate(${previewImgRotate}deg)` }}
-                    />
-                  </div>
-                  <div className='image-preview-operation'>
-                    <Icon
-                      type='rotate-right'
-                      onClick={this.handlePreviewRight}
-                      className='ic ic-rotate shadow'
-                    />
-                    <Icon
-                      type='rotate-left'
-                      onClick={this.handlePreviewLeft}
-                      className='ic ic-rotate shadow'
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div
-              className={classnames(
-                'upload-preview-inner upload-preview-tool',
-                { disabled }
-              )}
-            >
-              {children || (
-                <Icon type='camera' className='upload-preview-addon' />
-              )}
-              {!!message && (
-                <span className='upload-preview-text'>{message}</span>
-              )}
+              {btnText}
+            </button>
+          </span>
+        </div>
+        <div>
+          {multiple && (
+            <div>
+              <ul className='upload-ul'>
+                {files.map((item, index) => {
+                  return (
+                    <li key={index} className='upload-li'>
+                      <span
+                        title={item.name}
+                        onClick={() => {
+                          this.handleFileClick(item)
+                        }}
+                        className={classnames({
+                          'upload-li-span': item.url !== '',
+                        })}
+                      >
+                        {item.name}
+                      </span>
+                      {!disabled && (
+                        <Icon
+                          type='times'
+                          onClick={() => {
+                            this.removeFile(item, index)
+                          }}
+                          className='upload-mul-remove'
+                        />
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
             </div>
           )}
         </div>
-      )
-    }
-
-    return (
-      <div
-        {...others}
-        className={classnames(
-          'input-group',
-          'input-group-upload',
-          { disabled },
-          className
-        )}
-        onClick={this.handleOpenFileDialog}
-      >
-        <span className='form-control'>
-          <Icon type='upload' className='upload-addon' />
-          {fileName === undefined ? file || placeholder : fileName}
-        </span>
-        {/* 此处input只能放在中间，否则圆角样式会有问题 */}
-        <input
-          type='file'
-          accept={accept}
-          ref={this.fileRef}
-          onChange={this.handleFileChange}
-        />
-        <span className='input-group-btn'>
-          <button
-            type='button'
-            disabled={disabled}
-            className={classnames('btn', `btn-${btnStyle}`)}
-          >
-            {btnText}
-          </button>
-        </span>
       </div>
     )
   }
