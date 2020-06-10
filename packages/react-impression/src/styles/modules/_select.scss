@@ -216,7 +216,7 @@
   user-select: none;
   position: absolute;
   color: $gray;
-  right: rem(1.5px);
+  right: rem(1px);
   top: rem(3px);
   z-index: 2;
   padding: $input-padding-y $input-padding-x;
@@ -242,7 +242,6 @@
     padding: $select-option-padding;
   }
 }
-
 .select-option {
   cursor: pointer;
   overflow: hidden;
