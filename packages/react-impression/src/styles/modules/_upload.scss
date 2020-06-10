@@ -202,6 +202,10 @@
 .upload-ul{
   margin-top:1em;
   padding-left:0;
+  &.upload-ul-outer{
+    height: calc(105px + 5rem);
+    overflow:scroll;
+  }
 }
 .upload-li{
   list-style: none;
@@ -209,7 +213,7 @@
   position: relative;
   height: 21px;
   line-height: 21px;
-  width:100%;
+  width:95%;
   margin-bottom: 1rem !important;
 }
 .upload-li-span{
@@ -237,7 +241,7 @@
 /* 多个文件样式 end */
 /* 多个图片样式 start */
 .upload-preview-mul{
-  margin:0 10px;
+  margin:0 12px;
   height:$upload-preview-height;
   width:$upload-preview-width;
   position: relative;
