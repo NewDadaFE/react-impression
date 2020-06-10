@@ -263,28 +263,6 @@ export default class Upload extends React.PureComponent {
       if (multiple) {
         return (
           <div>
-            <div
-              className='upload-preview-mul'
-              onClick={this.handleOpenFileDialog}
-            >
-              <input
-                type='file'
-                accept='image/*'
-                ref={this.fileRef}
-                onChange={this.handleImagePreview}
-              />
-              <div
-                className={classnames(
-                  'upload-preview-inner upload-preview-tool',
-                  { disabled }
-                )}
-              >
-                {children}
-                {!!message && (
-                  <span className='upload-preview-text'>{message}</span>
-                )}
-              </div>
-            </div>
             {files.map((item, index) => {
               return (
                 <div className='upload-preview-mul' key={index}>
@@ -310,6 +288,28 @@ export default class Upload extends React.PureComponent {
                 </div>
               )
             })}
+            <div
+              className='upload-preview-mul'
+              onClick={this.handleOpenFileDialog}
+            >
+              <input
+                type='file'
+                accept='image/*'
+                ref={this.fileRef}
+                onChange={this.handleImagePreview}
+              />
+              <div
+                className={classnames(
+                  'upload-preview-inner upload-preview-tool',
+                  { disabled }
+                )}
+              >
+                {children}
+                {!!message && (
+                  <span className='upload-preview-text'>{message}</span>
+                )}
+              </div>
+            </div>
             {showBigPreview && (
               <div className='image-preview' onClick={this.handleTogglePreview}>
                 <Icon
@@ -461,7 +461,12 @@ export default class Upload extends React.PureComponent {
         <div>
           {multiple && (
             <div>
-              <ul className='upload-ul'>
+              <ul
+                className={classnames(
+                  { 'upload-ul-outer': files.length > 5 },
+                  'upload-ul'
+                )}
+              >
                 {files.map((item, index) => {
                   return (
                     <li key={index} className='upload-li'>
