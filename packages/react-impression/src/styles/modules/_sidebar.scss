@@ -39,6 +39,17 @@
     font-size: $sidebar-font-size;
     line-height: $sidebar-line-height;
     cursor: pointer;
+  }
+  .nav .collapse-body .nav {
+    .nav-item > a,
+    .nav-link > a {
+      padding-left: $sidebar-nav-item-padding-inside;
+    }
+  }
+  .sub-collapse .collapse-title {
+    padding-left: $sidebar-nav-item-padding-inside;
+  }
+  .collapse > .collapse-title {
     .fa:first-child {
       width: $sidebar-icon-size;
       height: $sidebar-icon-size;
@@ -48,9 +59,12 @@
       vertical-align: top;
     }
   }
+  .collapse-body {
+    text-indent: 0;
+  }
 
   // 二级菜单增加缩进
-  .collapse {
+  .sub-collapse {
     .nav-item,
     .nav-link {
       display: block;
