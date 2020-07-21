@@ -46,7 +46,7 @@
       padding-left: $sidebar-nav-item-padding-inside;
     }
   }
-  .sub-collapse .collapse-title {
+  .secondary-collapse .collapse-title {
     padding-left: $sidebar-nav-item-padding-inside;
   }
   .collapse > .collapse-title {
@@ -64,7 +64,7 @@
   }
 
   // 二级菜单增加缩进
-  .sub-collapse {
+  .secondary-collapse {
     .nav-item,
     .nav-link {
       display: block;

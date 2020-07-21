@@ -1,4 +1,4 @@
-.collapse, .sub-collapse {
+.collapse, .secondary-collapse {
   transition: $collapse-transition;
 
   &.active {
@@ -14,7 +14,7 @@
   }
 }
 
-.sub-collapse {
+.secondary-collapse {
   .nav-item {
     padding-left: $collapse-text-indent;
   }
@@ -38,7 +38,7 @@
   font-size: $collapse-font-size;
 }
 
-.sub-collapse {
+.secondary-collapse {
   & > .collapse-body {
     height: 0;
     overflow: hidden;

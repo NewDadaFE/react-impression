@@ -44,7 +44,7 @@
         </CollapseTitle>
         <CollapseBody>
           <Nav stacked>
-            <Collapse subCollapse>
+            <Collapse isSecondary>
               <CollapseTitle>{'我是二级菜单'}</CollapseTitle>
               <CollapseBody>
                 <Nav stacked>
@@ -81,4 +81,4 @@
 
 v2.1.1-alpha.2
 
-- 新增 subCollapse 属性用于实现三级菜单功能
+- 新增 isSecondary 属性用于实现三级菜单功能
