@@ -16,10 +16,11 @@ $sidebar-header-logo-margin-right: rem(20px) !default;
 $sidebar-header-padding: rem(20px) rem(20px) rem(19px) !default;
 
 $sidebar-nav-item-padding: rem(20px) !default;
+$sidebar-nav-item-padding-inside: rem(64px) !default;
 $sidebar-nav-item-color: $gray-darker !default;
 $sidebar-nav-item-active-bg: rgba($brand-pure, 0.1) !default;
 $sidebar-nav-item-active-color: $brand-pure !default;
-$sidebar-nav-item-secondary-padding-left: rem(70px) !default;
+$sidebar-nav-item-secondary-padding-left: rem(50px) !default;
 
 $sidebar-footer-border-color: rgba($brand-pure, 0.1) !default;
 $sidebar-footer-height: 3rem !default;

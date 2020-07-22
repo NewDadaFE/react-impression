@@ -1,20 +1,22 @@
-.collapse {
+.collapse, .secondary-collapse {
   transition: $collapse-transition;
 
   &.active {
-    .collapse-title-addon {
+    & > .collapse-title > .collapse-title-addon {
       transform-origin: center center;
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
 
-    .collapse-body {
+    & >.collapse-body {
       height: auto;
       animation: $collapse-animation;
     }
   }
+}
 
+.secondary-collapse {
   .nav-item {
-    text-indent: $collapse-text-indent;
+    padding-left: $collapse-text-indent;
   }
 }
 
@@ -35,3 +37,14 @@
   transform-origin: center 0;
   font-size: $collapse-font-size;
 }
+
+.secondary-collapse {
+  & > .collapse-body {
+    height: 0;
+    overflow: hidden;
+    transform-origin: center 0;
+    font-size: $collapse-font-size;
+  }
+}
+
+
