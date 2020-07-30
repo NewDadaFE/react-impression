@@ -1,5 +1,4 @@
-//loading, modal
-$zindex-loading: 1050 !default;
+// modal
 $zindex-modal: 1050 !default;
 
 // confirm, alert, message, notification
@@ -18,3 +17,6 @@ $zindex-datepicker: 1080 !default;
 
 // tooltip
 $zindex-tooltip: 1090 !default;
+
+// loading
+$zindex-loading: 2000 !default;
