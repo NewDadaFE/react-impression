@@ -12,13 +12,13 @@ $red-primary: #E64600 !default
 $brand-pure: #FFFFFF !default;
 
 // 灰色
-$gray-base: #262626 !default; // 标题文字、重要文字、输入框已输入文字
-$gray-darker: #595959 !default; // 次级信息文本颜色、输入框提示文字
-$gray-dark: #8C8C8C !default; // 不可点击按钮的文字和图标的颜色
-$gray: #BFBFBF !default; // 输入框颜色、不可点击颜色
-$gray-light: #D9D9D9 !default; // 分割线颜色
-$gray-lighter: #F5F5F5 !default; // 页面背景、表头背景等
-$gray-lightest: #FAFAFA !default; // 模块背景颜色、交替背景色
+$gray-base: #262626 !default; // 标题文字
+$gray-darker: #595959 !default; // 正文文字
+$gray-dark: #8C8C8C !default; // 辅助、次要文字
+$gray: #BFBFBF !default; // 占位文字、禁用状态文字
+$gray-light: #D9D9D9 !default; // 描边
+$gray-lighter: #F5F5F5 !default; // 分割线（深）、页面结构背景
+$gray-lightest: #FAFAFA !default; // 分割线（浅）、表格内斑马线
 
 // 语义
 $brand-primary: $blue-primary !default;
