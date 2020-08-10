@@ -19,12 +19,12 @@ $nav-link-active-bg: #fff !default;
 $nav-link-hover-bg: $gray-lighter !default;
 $nav-link-active-border-width: 2px !default;
 
-$nav-disabled-link-color: $gray !default;
-$nav-disabled-link-hover-color: $gray !default;
+$nav-disabled-link-color: $gray-light!default;
+$nav-disabled-link-hover-color: $gray-light!default;
 $nav-disabled-link-hover-bg: #fff !default;
 
 $nav-tabs-link-padding: 0.5em 1em !default;
-$nav-tabs-link-color: $gray !default;
+$nav-tabs-link-color: $gray-light!default;
 $nav-tabs-border-color: $brand-primary !default;
 $nav-tabs-border-width: 2px !default;
 $nav-tabs-link-border-width: 1px !default;

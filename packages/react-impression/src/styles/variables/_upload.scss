@@ -1,13 +1,13 @@
 //Upload
-$upload-color: $gray-darker !default;
-$upload-icon-color: $gray !default;
+$upload-color: $gray-dark !default;
+$upload-icon-color: $gray-light!default;
 $upload-icon-font-size: rem(20px) !default;
 $upload-padding: rem(16px) !default;
 $upload-offset-left: rem(46px) !default;
 
 $upload-preview-width: rem(90px) !default;
 $upload-preview-height: $upload-preview-width !default;
-$upload-preview-border-color: $gray !default;
+$upload-preview-border-color: $gray-light!default;
 $upload-preview-bg: $gray-lighter !default;
 $upload-preview-color: $text-muted !default;
 $upload-preview-transition: all 0.18s ease-in-out !default;

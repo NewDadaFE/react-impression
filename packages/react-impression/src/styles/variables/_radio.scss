@@ -8,8 +8,8 @@ $radio-addon-padding: round(
   ($radio-addon-size - $radio-addon-i-size) * $font-size-root / 2 - 1
 ) !default;
 $radio-addon-bg-color: $brand-pure !default;
-$radio-addon-border-color: $gray-darker !default;
+$radio-addon-border-color: $gray-dark !default;
 $radio-addon-border-width: rem(2px) !default;
 $radio-addon-checked-color: $brand-primary !default;
-$radio-addon-disabled-color: $gray !default;
+$radio-addon-disabled-color: $gray-light!default;
 $radio-addon-transtion: all 0.2s ease !default;
