@@ -70,7 +70,7 @@ function Image(props) {
       {mode ? (
         <div
           className={classnames('img-mode', MODE_TO_STYLE_MAP[mode])}
-          style={{ backgroundImage: `url(${src})` }}
+          style={{ backgroundImage: `url('${src}')` }}
         />
       ) : (
         <img src={src} alt={src} />
