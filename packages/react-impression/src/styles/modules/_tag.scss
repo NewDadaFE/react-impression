@@ -56,10 +56,6 @@ a.tag {
   @include tag-variant($tag-primary);
 }
 
-.tag-secondary {
-  @include tag-variant($tag-secondary);
-}
-
 .tag-success {
   @include tag-variant($tag-success);
 }
@@ -84,10 +80,6 @@ a.tag {
 
 .tag-outline-primary {
   @include tag-outline-variant($tag-primary);
-}
-
-.tag-outline-secondary {
-  @include tag-outline-variant($tag-secondary);
 }
 
 .tag-outline-success {

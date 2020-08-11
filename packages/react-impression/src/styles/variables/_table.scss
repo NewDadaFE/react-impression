@@ -6,7 +6,7 @@ $table-header-padding: rem(10px) 0;
 $table-body-color: $gray-base;
 $table-body-padding: rem(17px) rem(10px);
 $table-header-border-color: #e1e5ec;
-$table-header-color: $gray-darker;
+$table-header-color: $gray-dark;
 $table-header-line-height: rem(14px);
 $table-spried-background: $gray-lighter;
 $table-body-hover-bg-color: #ecf2ff;
@@ -19,7 +19,7 @@ $table-fix-right-shadow: rem(-2px) 0px rem(10px) 0px rgba(19, 34, 64, 0.1);
 
 $table-bg: $brand-pure !default;
 $table-bg-accent: #f9f9f9 !default;
-$table-bg-hover: #f5f5f5 !default;
+$table-bg-hover: $gray-lighter !default;
 $table-bg-active: $table-bg-hover !default;
 
 $table-thead-bg: $gray-lightest !default;
@@ -27,7 +27,7 @@ $table-thead-bg: $gray-lightest !default;
 $table-border-width: $border-width !default;
 $table-border-color: $border-color !default;
 
-$table-inverse-bg: $gray-dark;
+$table-inverse-bg: $gray;
 $table-inverse-color: $gray-lighter;
 $table-inverse-thead-color: $brand-pure;
-$table-inverse-border-color: $gray;
+$table-inverse-border-color: $gray-light;

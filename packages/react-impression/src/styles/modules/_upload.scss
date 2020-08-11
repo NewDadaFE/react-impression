@@ -8,7 +8,7 @@
   &.disabled {
     .form-control {
       cursor: not-allowed;
-      color: $gray-dark;
+      color: $gray;
     }
   }
 
@@ -18,7 +18,7 @@
     cursor: default;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: $gray-darker;
+    color: $gray-dark;
     &:hover {
       border-color: $upload-preview-border-color;
     }
@@ -68,7 +68,7 @@
 .upload-preview-tool {
   &.disabled {
     cursor: not-allowed;
-    color: $gray-dark;
+    color: $gray;
   }
   border-style: dashed;
   border-color: $upload-preview-border-color;
