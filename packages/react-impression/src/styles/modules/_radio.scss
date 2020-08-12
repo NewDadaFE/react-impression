@@ -81,8 +81,8 @@
 
   i {
     display: block;
-    width: $radio-addon-i-size;
-    height: $radio-addon-i-size;
+    width: round($radio-addon-i-size * $font-size-root);
+    height: round($radio-addon-i-size * $font-size-root);
     content: '';
     transition: $radio-addon-transtion;
     transform: scale(0);
