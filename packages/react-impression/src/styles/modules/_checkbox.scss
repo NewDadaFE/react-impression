@@ -16,9 +16,10 @@
 
     &:checked + .checkbox-addon {
       border-color: $checkbox-addon-checked-color;
+      background-color: $checkbox-addon-checked-color;
       i {
         transform: scale(1);
-        color: $checkbox-addon-checked-color;
+        color: $brand-pure;
       }
     }
 
