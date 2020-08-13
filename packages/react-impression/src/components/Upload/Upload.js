@@ -79,7 +79,7 @@ export default class Upload extends React.PureComponent {
      */
     files: PropTypes.array,
     /**
-     * 删除文件回调函数，参数以被删除的文件
+     * 删除文件回调函数，参数是被删除的文件file
      */
     onDeleteFile: PropTypes.func,
   }
@@ -135,7 +135,7 @@ export default class Upload extends React.PureComponent {
 
   removeFile = (file, index) => {
     const { onDeleteFile } = this.props
-    onDeleteFile(file, index)
+    onDeleteFile && onDeleteFile(file, index)
   }
 
   /**
@@ -165,7 +165,7 @@ export default class Upload extends React.PureComponent {
     event.stopPropagation()
     const { onChange, multiple, onDeleteFile } = this.props
     if (multiple) {
-      onDeleteFile(item, index)
+      onDeleteFile && onDeleteFile(item, index)
     } else {
       this.fileInput.value = ''
       this.setState({
