@@ -32,7 +32,7 @@ module.exports = {
         },
         {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css',
+          href: 'https://at.alicdn.com/t/font_2010704_2lnqkpb53cl.css',
         },
       ],
     },
@@ -51,7 +51,7 @@ module.exports = {
     {
       name: 'General',
       description: '基础内容组件。',
-      components: resolveComponents(['Button*', 'Icon', 'Image']),
+      components: resolveComponents(['Button*', 'Ico', 'Icon', 'Image']),
     },
     {
       name: 'Layout',

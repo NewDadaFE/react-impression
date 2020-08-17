@@ -26,7 +26,7 @@ class CalendarView extends React.Component {
     if (this.state.days.indexOf(date.day) !== -1) {
       return (
         <div className="text-success text-center">
-          <Icon type="check" />
+          <Ico type="check" />
         </div>
       )
     }

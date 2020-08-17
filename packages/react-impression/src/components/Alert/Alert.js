@@ -10,9 +10,9 @@ import PropTypes from 'prop-types'
 const getAddonByType = type => {
   switch (type) {
     case 'danger':
-      return 'fa-exclamation-circle text-danger'
+      return 'dada-ico-exclamation-circle text-danger'
     default:
-      return 'fa-exclamation-triangle text-warning'
+      return 'dada-ico-exclamation-circle text-warning'
   }
 }
 
@@ -58,7 +58,7 @@ export default class Alert extends React.PureComponent {
       <div className={classnames('alert', className)}>
         <div {...others} className='alert-dialog'>
           <div className='alert-addon'>
-            <i className={classnames('fa', iconTypeClass)} />
+            <i className={classnames('dada-ico', iconTypeClass)} />
           </div>
           <div className='alert-body'>{children}</div>
           <div className='alert-footer' onClick={onClick}>

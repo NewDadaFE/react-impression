@@ -678,14 +678,14 @@ export default class Select extends React.PureComponent {
         )}
         {(!showClear || !clearable) && (
           <i
-            className='fa fa-chevron-down select-addon'
+            className='dada-ico dada-ico-angle-down select-addon'
             onClick={this.toggleOptionsHandle}
           />
         )}
 
         {clearable && showClear && !multiple && (
           <i
-            className='fa fa-times select-addon'
+            className='dada-ico dada-ico-times select-addon'
             onClick={this.handleClearSelect}
           />
         )}
@@ -708,7 +708,7 @@ export default class Select extends React.PureComponent {
                   onChange={e => this.handleQuery(e)}
                   className={classnames('select-search-input')}
                 />
-                <i className='fa fa-search select-search' />
+                <i className='dada-ico dada-ico-search select-search' />
               </div>
             )}
             <ul

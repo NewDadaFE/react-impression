@@ -51,9 +51,9 @@
 
 ```js
 <Steps current={1}>
-  <Step title="登录" icon={<Icon type="user" />} />
-  <Step title="认证" icon={<Icon type="spinner" />} />
-  <Step title="完成" icon={<Icon type="smile-o" />} />
+  <Step title="登录" icon={<Ico type="user" />} />
+  <Step title="认证" icon={<Ico type="ellipsis-h" />} />
+  <Step title="完成" icon={<Ico type="smile-o" />} />
 </Steps>
 ```
 
@@ -81,7 +81,7 @@
       <Step
         title="完成"
         description="自定义图标"
-        icon={<Icon type="smile-o" />}
+        icon={<Ico type="smile-o" />}
       />
     </Steps>
   </Col>

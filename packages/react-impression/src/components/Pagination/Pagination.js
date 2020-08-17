@@ -183,7 +183,7 @@ export default class Pagination extends React.PureComponent {
             className={classnames('page-item', { disabled: activePage <= 1 })}
           >
             <span className='page-link' onClick={this.prevPageHandle}>
-              {lastContent || <i className='fa fa-chevron-left' />}
+              {lastContent || <i className='dada-ico dada-ico-angle-left' />}
             </span>
           </li>
           {pageList.map((child, index) =>
@@ -203,7 +203,7 @@ export default class Pagination extends React.PureComponent {
               </li>
             ) : (
               <li key={`${child}-${index}`} className='page-item disabled'>
-                <i className='fa fa-ellipsis-h' />
+                <i className='dada-ico dada-ico-ellipsis-h' />
               </li>
             )
           )}
@@ -213,7 +213,7 @@ export default class Pagination extends React.PureComponent {
             })}
           >
             <span className='page-link' onClick={this.nextPageHandle}>
-              {nextContent || <i className='fa fa-chevron-right' />}
+              {nextContent || <i className='dada-ico dada-ico-angle-right' />}
             </span>
           </li>
         </ul>
