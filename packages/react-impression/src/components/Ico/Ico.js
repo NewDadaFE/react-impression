@@ -9,9 +9,9 @@ Ico.propTypes = {
   type: PropTypes.string,
 
   /**
-   * TODO 尺寸
+   * 尺寸
    */
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
 
   /**
    * 自定义样式
@@ -19,12 +19,20 @@ Ico.propTypes = {
   className: PropTypes.string,
 }
 
+Ico.defaultProps = {
+  size: 'sm',
+}
+
 function Ico(props) {
   const { type, size, className, ...others } = props
   const typeClass = `dada-ico-${type}`
+  const sizeClass = size && `dada-ico-${size}`
 
   return (
-    <i className={classNames('dada-ico', typeClass, className)} {...others} />
+    <i
+      className={classNames('dada-ico', typeClass, sizeClass, className)}
+      {...others}
+    />
   )
 }
 

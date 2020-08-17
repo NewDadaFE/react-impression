@@ -32,7 +32,7 @@ module.exports = {
         },
         {
           rel: 'stylesheet',
-          href: 'https://at.alicdn.com/t/font_2010704_2lnqkpb53cl.css',
+          href: 'https://at.alicdn.com/t/font_2010704_iayacnbwwce.css',
         },
       ],
     },
@@ -51,7 +51,7 @@ module.exports = {
     {
       name: 'General',
       description: '基础内容组件。',
-      components: resolveComponents(['Button*', 'Ico', 'Icon', 'Image']),
+      components: resolveComponents(['Button*', 'Ico', 'Image']),
     },
     {
       name: 'Layout',
