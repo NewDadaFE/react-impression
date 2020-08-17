@@ -250,7 +250,7 @@ export default class Upload extends React.PureComponent {
                   onClick={this.handleTogglePreview}
                 >
                   <Ico
-                    type='close'
+                    type='times'
                     onClick={this.handleTogglePreview}
                     className='ic ic-close'
                   />
