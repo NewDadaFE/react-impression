@@ -142,7 +142,7 @@ class UploadExample extends React.Component {
             message="上传图片"
             onChange={this.handlePreviewChange}
           >
-            <Icon type="plus" />
+            <Ico type="plus" />
           </Upload>
         </Col>
       </Row>
@@ -210,7 +210,7 @@ class UploadExample extends React.Component {
             files={files}
             onDeleteFile={this.deleteFile}
           >
-            <Icon type="plus" />
+            <Ico type="plus" />
           </Upload>
         </Col>
       </Row>

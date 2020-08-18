@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import Icon from '../Icon'
+import Ico from '../Ico'
 
 export default class Steps extends React.PureComponent {
   static propTypes = {
@@ -34,10 +34,10 @@ export default class Steps extends React.PureComponent {
 
   getStepIcon = (status, no) => {
     if (status === 'finish') {
-      return <Icon type='check-circle-o' />
+      return <Ico type='check-circle-o' />
     }
     if (status === 'error') {
-      return <Icon type='times-circle-o' />
+      return <Ico type='times-circle-o' />
     }
     return <div className='step-seq-icon'>{no}</div>
   }

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from '../Icon'
+import Ico from '../Ico'
 
 const RotateDirection = {
   Clockwise: 1,
@@ -79,7 +79,7 @@ export default class Upload extends React.PureComponent {
      */
     files: PropTypes.array,
     /**
-     * 删除文件回调函数，参数是被删除的文件file
+     * 删除文件回调函数，参数是被删除的文件file,只在multiple为true情况下可使用
      */
     onDeleteFile: PropTypes.func,
   }
@@ -268,7 +268,7 @@ export default class Upload extends React.PureComponent {
                 <div className='upload-preview-mul' key={index}>
                   <img src={item.url} />
                   <div className='upload-preview-remove'>
-                    <Icon
+                    <Ico
                       type='eye'
                       onClick={() => {
                         this.handleMulPreview(item)
@@ -276,7 +276,7 @@ export default class Upload extends React.PureComponent {
                       className='action-icon'
                     />
                     {!disabled && (
-                      <Icon
+                      <Ico
                         type='trash'
                         onClick={() => {
                           this.handleRemoveImg(item, index)
@@ -312,7 +312,7 @@ export default class Upload extends React.PureComponent {
             </div>
             {showBigPreview && (
               <div className='image-preview' onClick={this.handleTogglePreview}>
-                <Icon
+                <Ico
                   type='close'
                   onClick={this.handleTogglePreview}
                   className='ic ic-close'
@@ -325,12 +325,12 @@ export default class Upload extends React.PureComponent {
                   />
                 </div>
                 <div className='image-preview-operation'>
-                  <Icon
+                  <Ico
                     type='rotate-right'
                     onClick={this.handlePreviewRight}
                     className='ic ic-rotate shadow'
                   />
-                  <Icon
+                  <Ico
                     type='rotate-left'
                     onClick={this.handlePreviewLeft}
                     className='ic ic-rotate shadow'
@@ -360,13 +360,13 @@ export default class Upload extends React.PureComponent {
               >
                 <img src={previewImageUrl} />
                 <div className='upload-preview-remove'>
-                  <Icon
+                  <Ico
                     type='eye'
                     onClick={this.handlePreview}
                     className='action-icon'
                   />
                   {!disabled && (
-                    <Icon
+                    <Ico
                       type='trash'
                       onClick={this.handleRemoveImg}
                       className='action-icon'
@@ -378,7 +378,7 @@ export default class Upload extends React.PureComponent {
                     className='image-preview'
                     onClick={this.handleTogglePreview}
                   >
-                    <Icon
+                    <Ico
                       type='close'
                       onClick={this.handleTogglePreview}
                       className='ic ic-close'
@@ -391,12 +391,12 @@ export default class Upload extends React.PureComponent {
                       />
                     </div>
                     <div className='image-preview-operation'>
-                      <Icon
+                      <Ico
                         type='rotate-right'
                         onClick={this.handlePreviewRight}
                         className='ic ic-rotate shadow'
                       />
-                      <Icon
+                      <Ico
                         type='rotate-left'
                         onClick={this.handlePreviewLeft}
                         className='ic ic-rotate shadow'
@@ -413,7 +413,7 @@ export default class Upload extends React.PureComponent {
                 )}
               >
                 {children || (
-                  <Icon type='camera' className='upload-preview-addon' />
+                  <Ico type='camera' className='upload-preview-addon' />
                 )}
                 {!!message && (
                   <span className='upload-preview-text'>{message}</span>
@@ -438,7 +438,7 @@ export default class Upload extends React.PureComponent {
           onClick={this.handleOpenFileDialog}
         >
           <span className='form-control'>
-            <Icon type='upload' className='upload-addon' />
+            <Ico type='upload' className='upload-addon' />
             {fileName === undefined ? file || placeholder : fileName}
           </span>
           {/* 此处input只能放在中间，否则圆角样式会有问题 */}
@@ -482,7 +482,7 @@ export default class Upload extends React.PureComponent {
                         {item.name}
                       </span>
                       {!disabled && (
-                        <Icon
+                        <Ico
                           type='times'
                           onClick={() => {
                             this.removeFile(item, index)
