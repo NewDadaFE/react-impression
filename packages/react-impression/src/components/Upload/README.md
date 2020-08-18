@@ -86,7 +86,7 @@ class UploadExample extends React.Component {
             message="上传图片"
             onChange={this.handlePreviewChange}
           >
-            <Icon type="plus" />
+            <Ico type="plus" />
           </Upload>
         </Col>
       </Row>
@@ -130,5 +130,5 @@ const handleChange = e => {
 
 v2.0.0
 
-* 修改 选择文件后显示`文件路径`，改为显示`文件名称`
-* 新增 `accept` 指定选择的文件类型
+- 修改 选择文件后显示`文件路径`，改为显示`文件名称`
+- 新增 `accept` 指定选择的文件类型

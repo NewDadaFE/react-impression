@@ -216,3 +216,18 @@
   margin: $table-body-padding;
   color: $table-header-color;
 }
+.table-sort {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: super;
+  cursor: pointer;
+  overflow: initial;
+  position: relative;
+}
+.sort-caret {
+  position: absolute;
+  left: rem(6px);
+  &.active {
+    color: $table-sort-color;
+  }
+}

@@ -14,7 +14,7 @@
       <NavbarLink href="#navbar">系统</NavbarLink>
     </FlexItem>
     <NavbarButton>
-      <i className="fa fa-search" />
+      <i className="dada-ico dada-ico-search" />
     </NavbarButton>
   </Flex>
 </Navbar>
@@ -26,11 +26,11 @@
 <Navbar>
   <Flex>
     <NavbarButton>
-      <i className="fa fa-bars" />
+      <i className="dada-ico dada-ico-bars" />
     </NavbarButton>
     <FlexItem />
     <NavbarButton>
-      <i className="fa fa-search" />
+      <i className="dada-ico dada-ico-search" />
     </NavbarButton>
   </Flex>
 </Navbar>
@@ -42,7 +42,7 @@
 <Navbar>
   <Flex>
     <NavbarButton>
-      <i className="fa fa-bars" />
+      <i className="dada-ico dada-ico-bars" />
     </NavbarButton>
     <FlexItem>
       <NavbarLink href="#navbar" active>
@@ -53,7 +53,7 @@
       <NavbarLink href="#navbar">系统</NavbarLink>
     </FlexItem>
     <NavbarButton>
-      <i className="fa fa-search" />
+      <i className="dada-ico dada-ico-search" />
     </NavbarButton>
   </Flex>
 </Navbar>
@@ -63,4 +63,4 @@
 
 v2.0.0
 
-* 废弃原有组件，根据 UI 规范重新实现，不兼容 1.x 版本
+- 废弃原有组件，根据 UI 规范重新实现，不兼容 1.x 版本

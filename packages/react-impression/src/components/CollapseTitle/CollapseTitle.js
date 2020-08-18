@@ -10,7 +10,7 @@ const CollapseTitle = ({ onClick, children, className, ...others }) => {
       className={classnames('collapse-title', className)}
     >
       {children}
-      <i className='fa fa-angle-down collapse-title-addon' />
+      <i className='dada-ico dada-ico-angle-down collapse-title-addon' />
     </div>
   )
 }

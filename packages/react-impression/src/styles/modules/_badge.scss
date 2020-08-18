@@ -2,11 +2,7 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-
-  &,
-  > .fa {
-    line-height: 1;
-  }
+  line-height: 1;
 }
 
 .badge-addon {

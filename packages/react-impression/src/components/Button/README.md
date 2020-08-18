@@ -137,14 +137,14 @@ const buttonClickHandle = () => {
 
 ```js
 <div>
-  <Button theme="primary" className="offset-r"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
-  <Button theme="default" className="offset-r"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
-  <Button theme="secondary"><Icon type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="primary" className="offset-r"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="default" className="offset-r"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
+  <Button theme="secondary"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
 </div>
 <div className="offset-t">
-  <Button theme="primary" className="offset-r"><Icon type="download" /></Button>
-  <Button theme="default" className="offset-r"><Icon type="download" /></Button>
-  <Button theme="secondary"><Icon type="download" /></Button>
+  <Button theme="primary" className="offset-r"><Ico type="download" /></Button>
+  <Button theme="default" className="offset-r"><Ico type="download" /></Button>
+  <Button theme="secondary"><Ico type="download" /></Button>
 </div>
 ```
 
@@ -152,6 +152,6 @@ const buttonClickHandle = () => {
 
 v2.0.0
 
-* 新增 btn-font-size sass 变量
-* 移除 btn-border-radius-lg sass 变量
-* 移除 btn-border-radius-sm sass 变量
+- 新增 btn-font-size sass 变量
+- 移除 btn-border-radius-lg sass 变量
+- 移除 btn-border-radius-sm sass 变量

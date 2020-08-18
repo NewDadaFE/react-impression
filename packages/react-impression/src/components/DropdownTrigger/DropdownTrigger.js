@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from '../Icon'
+import Ico from '../Ico'
 
 const DropdownTrigger = ({
   trigger,
@@ -21,7 +21,7 @@ const DropdownTrigger = ({
     options,
     <span>
       {children.props.children}
-      <Icon className='dropdown-caret' right type='caret-down' />
+      <Ico className='dropdown-caret' type='caret-down' />
     </span>
   )
 

@@ -96,7 +96,7 @@ export default class Checkbox extends React.PureComponent {
           defaultChecked={defaultChecked}
         />
         <div className='checkbox-addon'>
-          <i className='fa fa-check' />
+          <i className='dada-ico dada-ico-check' />
         </div>
         <span className='checkbox-label'>{children}</span>
       </label>

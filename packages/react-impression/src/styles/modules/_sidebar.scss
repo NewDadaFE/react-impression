@@ -50,7 +50,7 @@
     padding-left: $sidebar-nav-item-padding-inside;
   }
   .collapse > .collapse-title {
-    .fa:first-child {
+    > i:nth-last-child(2) {
       width: $sidebar-icon-size;
       height: $sidebar-icon-size;
       margin-right: $sidebar-header-logo-margin-right;
