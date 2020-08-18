@@ -21,7 +21,7 @@ const DropdownTrigger = ({
     options,
     <span>
       {children.props.children}
-      <Ico className='dropdown-caret' right type='caret-down' />
+      <Ico className='dropdown-caret' type='caret-down' />
     </span>
   )
 
