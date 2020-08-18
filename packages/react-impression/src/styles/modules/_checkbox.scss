@@ -21,11 +21,19 @@
         transform: scale(1);
         color: $brand-pure;
       }
+      &:hover {
+        border-color: $checkbox-addon-hover-color;
+        background-color: $checkbox-addon-hover-color;
+      }
+      &:active {
+        border-color: $checkbox-addon-press-color;
+        background-color: $checkbox-addon-press-color;
+      }
     }
 
     &:disabled + .checkbox-addon {
       cursor: not-allowed;
-      border-color: $checkbox-addon-disabled-color;
+      opacity: 0.2;
       i {
         color: $checkbox-addon-disabled-color;
       }
@@ -35,28 +43,44 @@
       }
     }
 
-    &:not(:checked):not(:disabled) + .checkbox-addon:hover {
-      border-color: $checkbox-addon-checked-color;
+    &:not(:checked):not(:disabled) + .checkbox-addon {
+      &:hover {
+        border-color: $checkbox-addon-hover-color;
+      }
+      &:active {
+        border-color: $checkbox-addon-press-color;
+      }
     }
   }
 
   @at-root #{&}-indeterminate {
     > .checkbox-addon {
-      width: $checkbox-addon-padding * 2 + 4 +
-        round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
-      height: $checkbox-addon-padding * 2 + 4 +
-        round($checkbox-addon-i-size * $font-size-root);
       border-color: $checkbox-addon-checked-color;
-
-      &::before {
-        position: relative;
-        top: 50%;
-        display: block;
-        margin-top: -$border-width;
-        content: '';
-        border: $border-width solid $checkbox-addon-indeterminate-color;
+      padding: $checkbox-indeterminate-padding;
+      &:hover {
+        border-color: $checkbox-addon-hover-color;
       }
-
+      &:active {
+        border-color: $checkbox-addon-press-color;
+      }
+      &::before {
+        position: absolute;
+        width: round($checkbox-indeterminate-i-size * $font-size-root);
+        height: round($checkbox-indeterminate-i-size * $font-size-root);
+        border-radius: 1px;
+        top: ($checkbox-addon-size  -$checkbox-indeterminate-i-size) * $font-size-root / 2 - 1;
+        left: ($checkbox-addon-size  -$checkbox-indeterminate-i-size) * $font-size-root / 2 - 1;
+        transition: $checkbox-addon-transtion;
+        display: block;
+        content: '';
+        background-color: $checkbox-addon-checked-color;
+        &:hover {
+          background-color: $checkbox-addon-hover-color;
+        }
+        &:active {
+          background-color: $checkbox-addon-press-color;
+        }
+      }
       i {
         display: none;
       }
@@ -96,6 +120,8 @@
   display: inline-block;
   padding: $checkbox-addon-padding;
   line-height: 1;
+  width: round($checkbox-addon-size * $font-size-root);
+  height: round($checkbox-addon-size * $font-size-root);
   transition: $checkbox-addon-transtion;
   vertical-align: middle;
   border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
