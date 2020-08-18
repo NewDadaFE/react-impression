@@ -51,5 +51,8 @@
       "prettier-standard",
       "git add"
     ]
+  },
+  "dependencies": {
+    "@emotion/is-prop-valid": "^0.8.8"
   }
 }
