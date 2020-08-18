@@ -309,14 +309,14 @@ export default class Input extends React.PureComponent {
 
             {clearable && showClear && (
               <i
-                className='fa fa-times input-addon'
+                className='dada-ico dada-ico-times input-addon'
                 onClick={this.handleClearDateInput}
               />
             )}
 
             {(!showClear || !clearable) && (
               <i
-                className='fa fa-calendar input-addon'
+                className='dada-ico dada-ico-calendar input-addon'
                 onClick={this.handleShowDatePicker}
               />
             )}
@@ -362,14 +362,14 @@ export default class Input extends React.PureComponent {
 
             {clearable && showClear && (
               <i
-                className='fa fa-times input-addon'
+                className='dada-ico dada-ico-times input-addon'
                 onClick={this.handleClearDateInput}
               />
             )}
 
             {(!showClear || !clearable) && (
               <i
-                className='fa fa-clock-o input-addon '
+                className='dada-ico dada-ico-clock-o input-addon '
                 onClick={this.handleShowDatePicker}
               />
             )}
@@ -408,7 +408,10 @@ export default class Input extends React.PureComponent {
             />
             {children}
             {!children && (
-              <i className='fa fa-search input-addon' onClick={onClick} />
+              <i
+                className='dada-ico dada-ico-search input-addon'
+                onClick={onClick}
+              />
             )}
           </div>
         )

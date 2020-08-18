@@ -10,6 +10,7 @@
 
 .page-item {
   display: inline-block; // Remove list-style and block-level defaults
+  vertical-align: middle;
   &:not(:last-child) {
     margin-right: $pagination-item-spacer-x;
   }
@@ -27,7 +28,7 @@
       pointer-events: none;
     }
   }
-  .fa-ellipsis-h {
+  .dada-ico-ellipsis-h {
     color: $pagination-ellipsis-color;
     padding: 0 $pagination-ellipsis-padding;
   }
@@ -50,7 +51,7 @@
   border-radius: $pagination-border-radius;
 
   i {
-    transform: scale($pagination-fa-scale);
+    transform: scale($pagination-ico-scale);
   }
 
   &:hover {
