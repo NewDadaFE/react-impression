@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 import ButtonGroup from '../ButtonGroup'
-import Icon from '../Icon'
+import Ico from '../Ico'
 
 const FORMAT = {
   YEAR: 'YYYY',
@@ -243,10 +243,10 @@ export default class Calendar extends React.Component {
               <div className='calendar-header-toolbar'>
                 <ButtonGroup size={size}>
                   <Button eventKey='left' onClick={this.prevMonthHandle}>
-                    <Icon type='angle-left' />
+                    <Ico type='angle-left' />
                   </Button>
                   <Button eventKey='right' onClick={this.nextMonthHandle}>
-                    <Icon type='angle-right' />
+                    <Ico type='angle-right' />
                   </Button>
                 </ButtonGroup>
               </div>

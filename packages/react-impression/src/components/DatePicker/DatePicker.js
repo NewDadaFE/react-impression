@@ -592,13 +592,13 @@ export default class DatePicker extends React.PureComponent {
           <div className='datepicker-header'>
             {panel !== 'month' && (
               <i
-                className='fa datepicker-header-btn fa-angle-double-left'
+                className='dada-ico datepicker-header-btn dada-ico-angle-double-left'
                 onClick={this.handlePrevYear}
               />
             )}
             {panel !== 'year' && (
               <i
-                className='fa datepicker-header-btn fa-angle-left datepicker-month-btn'
+                className='dada-ico datepicker-header-btn dada-ico-angle-left datepicker-month-btn'
                 onClick={this.handlePrevMonth}
               />
             )}
@@ -612,13 +612,13 @@ export default class DatePicker extends React.PureComponent {
             </div>
             {panel !== 'year' && (
               <i
-                className='fa datepicker-header-btn fa-angle-right datepicker-month-btn'
+                className='dada-ico datepicker-header-btn dada-ico-angle-right datepicker-month-btn'
                 onClick={this.handleNextMonth}
               />
             )}
             {panel !== 'month' && (
               <i
-                className='fa datepicker-header-btn fa-angle-double-right'
+                className='dada-ico datepicker-header-btn dada-ico-angle-double-right'
                 onClick={this.handleNextYear}
               />
             )}
