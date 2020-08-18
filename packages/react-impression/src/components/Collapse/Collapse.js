@@ -25,6 +25,11 @@ export default class Collapse extends React.PureComponent {
     className: PropTypes.string,
 
     /**
+     * 是否是二级折叠面板
+     */
+    isSecondary: PropTypes.bool,
+
+    /**
      * 是否是激活状态
      */
     active: PropTypes.bool,
@@ -32,6 +37,7 @@ export default class Collapse extends React.PureComponent {
 
   static defaultProps = {
     active: false,
+    isSecondary: false,
   }
 
   toggleItemsHandle = () => {
@@ -41,8 +47,9 @@ export default class Collapse extends React.PureComponent {
   }
 
   render() {
-    const { children, className, ...others } = this.props
+    const { children, className, isSecondary, ...others } = this.props
     const { active } = this.state
+    const mainClassName = isSecondary ? 'secondary-collapse' : 'collapse'
 
     delete others.active
 
@@ -59,7 +66,7 @@ export default class Collapse extends React.PureComponent {
     return (
       <div
         {...others}
-        className={classnames('collapse', { active }, className)}
+        className={classnames(mainClassName, { active }, className)}
       >
         {_children}
       </div>

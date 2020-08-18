@@ -94,7 +94,7 @@ export default class Pagination extends React.PureComponent {
     onSelect && onSelect(page)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (Number(nextProps.activePage) !== Number(this.props.activePage)) {
       this.setState({
         currentPage: nextProps.activePage,

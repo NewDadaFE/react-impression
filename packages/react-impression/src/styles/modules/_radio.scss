@@ -14,28 +14,32 @@
     left: 0;
     visibility: hidden;
 
+
     &:checked + .radio-addon {
       border-color: $radio-addon-checked-color;
+      background-color: $radio-addon-checked-color;
       i {
         transform: scale(1);
-        background-color: $radio-addon-checked-color;
+        background-color: $radio-addon-bg-color;
+      }
+    }
+    &:disabled + .radio-addon {
+      cursor: not-allowed;
+      & + .radio-label {
+        cursor: not-allowed;
+        color: $gray-light;
       }
     }
 
-    &:disabled + .radio-addon {
-      cursor: not-allowed;
-      border-color: $radio-addon-disabled-color;
-      i {
-        background-color: $radio-addon-disabled-color;
-      }
-      & + .radio-label {
-        cursor: not-allowed;
-        color: $radio-addon-disabled-color;
-      }
+    &:disabled:not(:checked) + .radio-addon {
+      border-color: $gray-light;
+      background-color: $gray-lighter;
+    }
+    &:disabled:checked + .radio-addon {
+      opacity: 0.2;
     }
 
     &:not(:checked):not(:disabled) + .radio-addon:hover {
-      opacity: 0.8;
       border-color: $radio-addon-checked-color;
     }
   }
@@ -71,7 +75,7 @@
   padding: $radio-addon-padding;
   transition: $radio-addon-transtion;
   vertical-align: middle;
-  border: $radio-addon-border-width solid $radio-addon-border-color;
+  border: $radio-addon-border-width solid $gray-light;
   border-radius: 50%;
   background-color: $radio-addon-bg-color;
 
@@ -87,3 +91,4 @@
     background: transparent;
   }
 }
+

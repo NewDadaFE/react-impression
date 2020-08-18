@@ -1,12 +1,10 @@
-// Responsive images (ensure images don't scale beyond their parents)
-//
-// This is purposefully opt-in via an explicit class rather than being the default for all `<img>`s.
-// We previously tried the "images are responsive by default" approach in Bootstrap v2,
-// and abandoned it in Bootstrap v3 because it breaks lots of third-party widgets (including Google Maps)
-// which weren't expecting the images within themselves to be involuntarily resized.
-// See also https://github.com/twbs/bootstrap/issues/18178
 .img-fluid {
-  @include img-fluid();
+  display: block;
+  max-width: 100%;
+  height: auto;
+  & > img {
+    max-width: 100%;
+  }
 }
 
 // Rounded corners
@@ -16,14 +14,16 @@
 
 // Image thumbnails
 .img-thumbnail {
+  // Keep them at most 100% wide
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+
   padding: $thumbnail-padding;
-  background-color: $thumbnail-bg;
+  transition: all .2s ease-in-out;
   border: $thumbnail-border-width solid $thumbnail-border-color;
   border-radius: $thumbnail-border-radius;
-  transition: all 0.2s ease-in-out;
-
-  // Keep them at most 100% wide
-  @include img-fluid(inline-block);
+  background-color: $thumbnail-bg;
 }
 
 // Perfect circle
@@ -31,21 +31,73 @@
   border-radius: 50%;
 }
 
-//
-// Figures
-//
-
-.figure {
-  // Ensures the caption's text aligns with the image.
+.img {
+  position: relative;
   display: inline-block;
+  overflow: hidden;
+  text-align: center;
 }
 
-.figure-img {
-  margin-bottom: ($spacer-y / 2);
-  line-height: 1;
+.img-mode {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
 }
 
-.figure-caption {
-  font-size: $figure-caption-font-size;
-  color: $gray-light;
+.img-scale-to-fill {
+  background-size: 100% 100%;
+}
+
+.img-aspect-fit {
+  background-position: center center;
+  background-size: contain;
+}
+
+.img-aspect-fill {
+  background-position: center center;
+  background-size: cover;
+}
+
+.img-width-fix {
+  background-size: 100% auto;
+}
+
+.img-height-fix {
+  background-size: auto 100%;
+}
+
+.img-top {
+  background-position: center top;
+}
+
+.img-top-left {
+  background-position: left top;
+}
+
+.img-top-right {
+  background-position: right top;
+}
+
+.img-bottom {
+  background-position: center bottom;
+}
+
+.img-bottom-left {
+  background-position: left bottom;
+}
+
+.img-bottom-right {
+  background-position: right bottom;
+}
+
+.img-center {
+  background-position: center center;
+}
+
+.img-left {
+  background-position: left center;
+}
+
+.img-right {
+  background-position: right center;
 }

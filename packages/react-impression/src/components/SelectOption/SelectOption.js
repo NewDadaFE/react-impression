@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import isPropValid from '@emotion/is-prop-valid'
 
 export default class SelectOption extends React.PureComponent {
   static propTypes = {
@@ -113,7 +114,7 @@ export default class SelectOption extends React.PureComponent {
       })
     }
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.parent()) {
       this.parent().onOptionCreate(this)
     }
@@ -157,9 +158,15 @@ export default class SelectOption extends React.PureComponent {
     const { active } = this.state
     const { visible } = this.state
     const displayStyle = visible ? {} : { display: 'none' }
+    const otherDomProps = {}
+    for (let key in others) {
+      if (others.hasOwnProperty(key) && isPropValid(key)) {
+        otherDomProps[key] = others[key]
+      }
+    }
     return (
       <li
-        {...others}
+        {...otherDomProps}
         style={displayStyle}
         className={classnames('select-option', { active, disabled }, className)}
         onClick={this.optionClickHandle}

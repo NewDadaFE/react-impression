@@ -204,7 +204,7 @@ export default class Calendar extends React.Component {
     return days
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { format } = this.props
     const { currentMoment } = this.state
     const { date } = nextProps
@@ -283,7 +283,7 @@ export default class Calendar extends React.Component {
               >
                 <div
                   className={classnames('calendar-daygroup-item-header', {
-                    'text-secondary':
+                    'text-warning':
                       (index + firstDayOfWeek) % 7 === 0 ||
                       (index + firstDayOfWeek + 1) % 7 === 0,
                   })}

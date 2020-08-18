@@ -556,7 +556,7 @@ export default class DatePicker extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { value } = nextProps
     if (this.props.value !== value) {
       const { panel, format } = this.state

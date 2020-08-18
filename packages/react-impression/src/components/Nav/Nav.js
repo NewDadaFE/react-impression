@@ -64,7 +64,7 @@ export default class Nav extends React.PureComponent {
     type: 'inline',
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { activeKey } = nextProps
     this.setState({
       activeKey,

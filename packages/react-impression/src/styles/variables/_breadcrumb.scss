@@ -1,10 +1,10 @@
 // Breadcrumbs
-$breadcrumb-color: $gray-darker !default;
+$breadcrumb-color: $gray-dark !default;
 $breadcrumb-font-size: rem(14px) !default;
 $breadcrumb-padding: $card-padding !default;
 $breadcrumb-bg: transparent !default;
-$breadcrumb-divider-color: $gray !default;
-$breadcrumb-active-color: $gray !default;
+$breadcrumb-divider-color: $gray-light!default;
+$breadcrumb-active-color: $gray-light!default;
 $breadcrumb-divider: '/' !default;
 $breadcrumb-arrow-divider: '>' !default;
 $breadcrumb-item-padding: 0.25rem !default;

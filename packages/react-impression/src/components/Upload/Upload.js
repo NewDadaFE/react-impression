@@ -3,6 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from '../Icon'
 
+const RotateDirection = {
+  Clockwise: 1,
+  CounterClockwise: -1,
+}
+
 export default class Upload extends React.PureComponent {
   static propTypes = {
     /**
@@ -45,6 +50,16 @@ export default class Upload extends React.PureComponent {
     accept: PropTypes.string,
 
     /**
+     * 文件名
+     */
+    fileName: PropTypes.string,
+
+    /**
+     * 是否不可用
+     */
+    disabled: PropTypes.bool,
+
+    /**
      * 子组件
      */
     children: PropTypes.node,
@@ -71,6 +86,8 @@ export default class Upload extends React.PureComponent {
     this.state = {
       file: '',
       previewImageUrl: this.props.src,
+      showBigPreview: false,
+      previewImgRotate: 0,
     }
   }
 
@@ -82,7 +99,7 @@ export default class Upload extends React.PureComponent {
     this.fileInput.files[0] = value
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     this.setState({
       previewImageUrl: newProps.src,
     })
@@ -92,7 +109,9 @@ export default class Upload extends React.PureComponent {
    * 打开文件浏览器对话框
    */
   handleOpenFileDialog = () => {
-    this.fileInput.click()
+    if (!this.props.disabled) {
+      this.fileInput.click()
+    }
   }
 
   /**
@@ -101,9 +120,11 @@ export default class Upload extends React.PureComponent {
   handleFileChange = event => {
     const { onChange } = this.props
 
-    this.setState({
-      file: event.target.files[0].name,
-    })
+    if (event.target && event.target.files && event.target.files[0]) {
+      this.setState({
+        file: event.target.files[0].name,
+      })
+    }
 
     onChange(event)
   }
@@ -127,6 +148,41 @@ export default class Upload extends React.PureComponent {
     onChange(event)
   }
 
+  /**
+   * 点击查看大图
+   */
+  handlePreview = event => {
+    event.stopPropagation()
+    this.handleTogglePreview()
+  }
+
+  handleTogglePreview = event => {
+    event && event.stopPropagation()
+    this.setState({
+      showBigPreview: !this.state.showBigPreview,
+      previewImgRotate: 0,
+    })
+  }
+
+  /**
+   * 大图旋转处理
+   */
+  handlePreviewRotate = (clockwise, event) => {
+    event && event.stopPropagation()
+    const DegOfOneMove = 90
+    this.setState({
+      previewImgRotate: this.state.previewImgRotate + clockwise * DegOfOneMove,
+    })
+  }
+
+  handlePreviewLeft = event => {
+    this.handlePreviewRotate(RotateDirection.CounterClockwise, event)
+  }
+
+  handlePreviewRight = event => {
+    this.handlePreviewRotate(RotateDirection.Clockwise, event)
+  }
+
   render() {
     const {
       preview,
@@ -136,10 +192,17 @@ export default class Upload extends React.PureComponent {
       placeholder,
       className,
       accept,
+      fileName,
+      disabled,
       ...others
     } = this.props
     delete others.onChange
-    const { file, previewImageUrl } = this.state
+    const {
+      file,
+      previewImageUrl,
+      showBigPreview,
+      previewImgRotate,
+    } = this.state
     let { children } = this.props
 
     if (preview) {
@@ -161,17 +224,65 @@ export default class Upload extends React.PureComponent {
             onChange={this.handleImagePreview}
           />
           {previewImageUrl ? (
-            <div className='upload-preview-inner upload-preview-img'>
+            <div
+              className={classnames('upload-preview-inner upload-preview-img', {
+                disabled,
+              })}
+            >
               <img src={previewImageUrl} />
-              <div
-                className='upload-preview-remove'
-                onClick={this.handleRemoveImg}
-              >
-                <Icon type='trash' />
+              <div className='upload-preview-remove'>
+                <Icon
+                  type='eye'
+                  onClick={this.handlePreview}
+                  className='action-icon'
+                />
+                {!disabled && (
+                  <Icon
+                    type='trash'
+                    onClick={this.handleRemoveImg}
+                    className='action-icon'
+                  />
+                )}
               </div>
+              {showBigPreview && (
+                <div
+                  className='image-preview'
+                  onClick={this.handleTogglePreview}
+                >
+                  <Icon
+                    type='close'
+                    onClick={this.handleTogglePreview}
+                    className='ic ic-close'
+                  />
+                  <div className='image-wrap'>
+                    <img
+                      src={previewImageUrl}
+                      alt=''
+                      style={{ transform: `rotate(${previewImgRotate}deg)` }}
+                    />
+                  </div>
+                  <div className='image-preview-operation'>
+                    <Icon
+                      type='rotate-right'
+                      onClick={this.handlePreviewRight}
+                      className='ic ic-rotate shadow'
+                    />
+                    <Icon
+                      type='rotate-left'
+                      onClick={this.handlePreviewLeft}
+                      className='ic ic-rotate shadow'
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
-            <div className='upload-preview-inner upload-preview-tool'>
+            <div
+              className={classnames(
+                'upload-preview-inner upload-preview-tool',
+                { disabled }
+              )}
+            >
               {children || (
                 <Icon type='camera' className='upload-preview-addon' />
               )}
@@ -187,12 +298,17 @@ export default class Upload extends React.PureComponent {
     return (
       <div
         {...others}
-        className={classnames('input-group', 'input-group-upload', className)}
+        className={classnames(
+          'input-group',
+          'input-group-upload',
+          { disabled },
+          className
+        )}
         onClick={this.handleOpenFileDialog}
       >
         <span className='form-control'>
           <Icon type='upload' className='upload-addon' />
-          {file || placeholder}
+          {fileName === undefined ? file || placeholder : fileName}
         </span>
         {/* 此处input只能放在中间，否则圆角样式会有问题 */}
         <input
@@ -204,6 +320,7 @@ export default class Upload extends React.PureComponent {
         <span className='input-group-btn'>
           <button
             type='button'
+            disabled={disabled}
             className={classnames('btn', `btn-${btnStyle}`)}
           >
             {btnText}

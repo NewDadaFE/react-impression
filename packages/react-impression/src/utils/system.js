@@ -1,5 +1,4 @@
 import { findDOMNode } from 'react-dom'
-import { isDescendentNode } from './dom' // 获取组件中的真实dom
 
 /**
  * 初始化.
@@ -14,25 +13,23 @@ const init = () => {
     document.body.popLayers.forEach(component => {
       const componentDom = findDOMNode(component)
 
-      // 兼容Chrome、FF、Safari
-      if (
-        (event.path && event.path.indexOf(componentDom) === -1) ||
-        !isDescendentNode(componentDom, event.target)
-      ) {
+      if (!componentDom.contains(event.target)) {
         component.hideOptionsHandle && component.hideOptionsHandle()
       }
     })
   }
 }
 
-init()
+if (typeof document !== 'undefined') init()
 
 /**
  * 管理弹出层组件.
  * @param  {[Component]} component  [组件]
  */
 export const manager = component => {
-  document.body.popLayers.push(component)
+  if (typeof document !== 'undefined') {
+    document.body.popLayers.push(component)
+  }
 }
 
 /**

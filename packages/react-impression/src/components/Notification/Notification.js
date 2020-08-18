@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Notice from '../Notice'
 
 let _notification
@@ -60,9 +60,22 @@ export default class Notification extends React.Component {
       message,
       theme,
       closeable,
+      duration,
     }
     this.setState(state)
     this.timeToRemoveNotice(key, duration)
+  }
+
+  /**
+   * 鼠标移开时当前元素仍然设置在计时器后自动消失
+   * @param key
+   * @param duration
+   * @constructor
+   */
+  TimeToRemoveCurrentTimer(key, duration) {
+    this.timers[key] = setTimeout(() => {
+      this.removeNotice(key)
+    }, duration)
   }
 
   /**
@@ -87,9 +100,13 @@ export default class Notification extends React.Component {
     )
   }
 
+  /***
+   * 鼠标悬停时，计时器清除，让提示不消失
+   * @param key
+   */
   handleClearTimer = key => {
     const stateData = this.state[key]
-    if (stateData && stateData.closeable) {
+    if (stateData) {
       clearTimeout(this.timers[key])
     }
   }
@@ -99,25 +116,29 @@ export default class Notification extends React.Component {
 
     return (
       <div className={classnames('notification', className)}>
-        <ReactCSSTransitionGroup
-          component='div'
-          transitionName='notice'
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={800}
-        >
+        <TransitionGroup>
           {Object.keys(this.state).map(key => (
-            <Notice
+            <CSSTransition
               key={key}
-              theme={this.state[key].theme}
-              closeable={this.state[key].closeable}
-              title={this.state[key].title}
-              close={() => this.removeNotice(key)}
-              onMouseEnter={() => this.handleClearTimer(key)}
+              classNames='notice'
+              timeout={{ exit: 800, enter: 200 }}
             >
-              {this.state[key].message}
-            </Notice>
+              <Notice
+                theme={this.state[key].theme}
+                closeable={this.state[key].closeable}
+                title={this.state[key].title}
+                close={() => this.removeNotice(key)}
+                onMouseEnter={() => this.handleClearTimer(key)}
+                onMouseLeave={() => {
+                  this.state[key] &&
+                    this.TimeToRemoveCurrentTimer(key, this.state[key].duration)
+                }}
+              >
+                {this.state[key].message}
+              </Notice>
+            </CSSTransition>
           ))}
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
       </div>
     )
   }

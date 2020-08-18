@@ -1,8 +1,15 @@
 .input-group-upload {
-  & > input[type='file'] {
+  & > input[type="file"] {
     position: absolute;
     opacity: 0;
     width: 0;
+  }
+
+  &.disabled {
+    .form-control {
+      cursor: not-allowed;
+      color: $gray;
+    }
   }
 
   .form-control {
@@ -11,7 +18,7 @@
     cursor: default;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: $gray-darker;
+    color: $gray-dark;
     &:hover {
       border-color: $upload-preview-border-color;
     }
@@ -37,7 +44,7 @@
   width: $upload-preview-width;
   height: $upload-preview-height;
 
-  & > input[type='file'] {
+  & > input[type="file"] {
     position: absolute;
     top: 0;
     left: 0;
@@ -59,6 +66,10 @@
   border-radius: $border-radius;
 }
 .upload-preview-tool {
+  &.disabled {
+    cursor: not-allowed;
+    color: $gray;
+  }
   border-style: dashed;
   border-color: $upload-preview-border-color;
   background-color: $upload-preview-bg;
@@ -77,6 +88,13 @@
 /* 图片上传样式 end */
 /* 图片预览样式 start */
 .upload-preview-img {
+  &.disabled {
+    cursor: default;
+
+    & > .upload-preview-remove {
+      cursor: pointer;
+    }
+  }
   overflow: hidden;
   border-style: solid;
   border-color: $upload-preview-img-border-color;
@@ -98,13 +116,95 @@
   font-size: $upload-preview-remove-font-size;
   transition: $upload-preview-transition;
   opacity: 0;
-  color: $upload-preview-remove-color;
-  background-color: $upload-preview-remove-bg;
+  background-color: $upload-preview-wrapper-bg;
   display: flex;
   align-items: center;
   justify-content: center;
   &:hover {
     opacity: 1;
   }
+
+  .action-icon {
+    padding: $upload-preview-ic-padding;
+    &:hover {
+      color: $upload-preview-remove-color;
+    }
+  }
 }
 /* 图片预览样式 start */
+.image-preview {
+  position: fixed;
+  z-index: $zindex-modal;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  animation: fadeIn 0.36s ease;
+  outline: 0;
+  background-color: $upload-preview-wrapper-bg;
+
+  .ic {
+    font-size: $upload-preview-ic-font-size;
+    cursor: pointer;
+    color: $upload-preview-remove-color;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .shadow {
+    width: $upload-preview-big-img-action-btn-size;
+    height: $upload-preview-big-img-action-btn-size;
+    border-radius: $upload-preview-ic-border-radius;
+    &:hover {
+      box-shadow: $upload-preview-ic-shadow;
+    }
+  }
+
+  .ic-close {
+    position: absolute;
+    z-index: 1;
+    top: $upload-preview-close-top;
+    right: $upload-preview-close-right;
+  }
+  .image-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    text-align: center;
+    display: flex;
+
+    & > img {
+      max-width: $upload-preview-big-img-max-width;
+      max-height: $upload-preview-big-img-max-height;
+      margin: auto;
+    }
+  }
+
+  .image-preview-operation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .ic-rotate {
+      margin: $spacer-x;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

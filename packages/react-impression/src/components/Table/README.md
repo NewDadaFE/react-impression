@@ -37,7 +37,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -145,7 +145,7 @@ const data = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -182,7 +182,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -249,7 +249,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -327,7 +327,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -436,7 +436,7 @@ const data = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -492,7 +492,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -630,7 +630,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, paddingRight: 16, color: '#417FFA' }}

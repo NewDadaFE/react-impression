@@ -40,7 +40,7 @@ export default class NavItem extends React.PureComponent {
   onClickHandle = event => {
     const { disabled, active, onClick, eventKey } = this.props
 
-    !disabled && !active && onClick(eventKey, event)
+    !disabled && !active && onClick && onClick(eventKey, event)
   }
 
   render() {

@@ -42,20 +42,23 @@ export default class TimeSelect extends React.PureComponent {
 
   componentDidMount() {
     const { type } = this.props
-    window.requestAnimationFrame(() => {
+    this.requestId = window.requestAnimationFrame(() => {
       this.hoursScrollbar = new PerfectScrollbar(this.hourContainer, {
         suppressScrollX: true,
+        swipeEasing: false,
         mixScrollbarLength: 34,
         maxScrollbarLength: 34,
       })
       this.minuteScrollbar = new PerfectScrollbar(this.minuteContainer, {
         suppressScrollX: true,
+        swipeEasing: false,
         mixScrollbarLength: 34,
         maxScrollbarLength: 34,
       })
       if (type === 'second') {
         this.secondScrollbar = new PerfectScrollbar(this.secondContainer, {
           suppressScrollX: true,
+          swipeEasing: false,
           mixScrollbarLength: 34,
           maxScrollbarLength: 34,
         })
@@ -65,6 +68,7 @@ export default class TimeSelect extends React.PureComponent {
 
   componentWillUnmount() {
     const { type } = this.props
+    window.cancelAnimationFrame(this.requestId)
     if (this.hoursScrollbar) {
       this.hoursScrollbar.destroy()
       this.hoursScrollbar = null
@@ -78,7 +82,7 @@ export default class TimeSelect extends React.PureComponent {
       this.secondScrollbar = null
     }
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { value } = nextProps
     this.setState({
       currentHour: value ? value.split(':')[0] : '',
