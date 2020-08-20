@@ -19,7 +19,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     color: $gray-dark;
-    border: $input-btn-border-width solid $input-border-color;;
+    border: $input-border-width solid $input-border-color;;
     &:hover {
       border-color: $upload-preview-border-color;
     }

@@ -31,7 +31,7 @@
   .btn + .btn-group,
   .btn-group + .btn,
   .btn-group + .btn-group {
-    margin-left: -$input-btn-border-width;
+    margin-left: -$input-border-width;
   }
 
   > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {

@@ -21,7 +21,7 @@
   }
 
   &.disabled {
-    cursor: $cursor-disabled;
+    cursor: not-allowed;
 
     .page-link {
       color: $pagination-disabled-color;

@@ -31,7 +31,7 @@
 
     &:hover {
       color: $nav-disabled-link-hover-color;
-      cursor: $cursor-disabled;
+      cursor: not-allowed;
       background-color: $nav-disabled-link-hover-bg;
     }
   }

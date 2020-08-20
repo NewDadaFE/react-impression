@@ -34,7 +34,7 @@ form {
 
   &:disabled {
     color: $input-disabled-color;
-    cursor: $cursor-disabled;
+    cursor: not-allowed;
   }
 
   &:focus {
@@ -103,24 +103,6 @@ input[type='month'] {
   }
 }
 
-// Static form control text
-//
-// Apply class to an element to make any string of text align with labels in a
-// horizontal form layout.
-
-.form-control-static {
-  min-height: $input-height-md;
-  padding-top: $input-padding-y-md;
-  padding-bottom: $input-padding-y-md;
-  margin-bottom: 0;
-
-  &.form-control-sm,
-  &.form-control-lg {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
 // Form control sizing
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
@@ -128,6 +110,11 @@ input[type='month'] {
 //
 // The `.form-group-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
+.form-control-xs {
+  @include set-font-size($input-font-size-xs);
+
+  padding: $input-padding-y-xs $input-padding-x;
+}
 
 .form-control-sm {
   @include set-font-size($input-font-size-sm);

@@ -6,7 +6,7 @@
   width: $input-width;
   align-items: center;
   vertical-align: middle;
-  border: $input-btn-border-width solid $input-border-color;
+  border: $input-border-width solid $input-border-color;
   background-color: $brand-pure;
 
   &:hover {
@@ -27,7 +27,8 @@
   & > .dada-input-addon-before,
   & > .dada-input-addon-after,
   & > .input-addon {
-    color: $input-disabled-color;
+    color: $input-disabled-color !important;
+    cursor: not-allowed !important;
   }
 
   &:hover {
@@ -57,7 +58,7 @@
 }
 
 .dada-input-addon-before {
-  padding-right: 1px;
+  padding-right: $input-border-width;
   padding-left: $input-padding-x;
   color: $gray-light;
 }
@@ -65,7 +66,7 @@
 .dada-input-addon-after,
 .input-addon {
   padding-right: $input-padding-x;
-  padding-left: 1px;
+  padding-left: $input-border-width;
   color: $gray-light;
 }
 
