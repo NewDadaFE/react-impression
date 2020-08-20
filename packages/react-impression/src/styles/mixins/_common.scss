@@ -1,0 +1,32 @@
+/**
+ * 重置webkit内核的滚动条样式
+ */
+@mixin scroll-reset() {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-button {
+    height: 6px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 9px;
+    background-color: $gray-dark;
+    background-clip: content-box;
+  }
+}
+/**
+ * 最多显示 $line 行，超出为省略号
+ */
+@mixin line-clamp($line: 1) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+  -webkit-line-clamp: $line;
+  text-overflow: ellipsis;
+  @if $line == 1 {
+    white-space: nowrap;
+  }
+}
