@@ -39,6 +39,10 @@
         color: $checkbox-addon-disabled-color;
       }
     }
+    &:disabled:not(:checked) + .checkbox-addon {
+      opacity: 1;
+      background-color: $gray-lighter;
+    }
 
     &:not(:checked):not(:disabled) + .checkbox-addon {
       &:hover {
@@ -82,8 +86,8 @@
         display: none;
       }
     }
-    > input:disabled + .checkbox-addon::before {
-      border-color: $checkbox-addon-disabled-color;
+    > input:disabled + .checkbox-addon {
+      opacity: 0.2 !important;
     }
   }
 }
