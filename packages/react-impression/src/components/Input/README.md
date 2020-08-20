@@ -2,13 +2,29 @@
 
 Input 组件支持类型的详细内容请参照 [原生 input 的 type 值](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types)
 
+**尺寸**
+
+```js
+<Row>
+  <Col>
+    <Input size="sm" placeholder="小尺寸" />
+  </Col>
+  <Col>
+    <Input placeholder="默认尺寸" />
+  </Col>
+  <Col>
+    <Input size="lg" placeholder="大尺寸" />
+  </Col>
+</Row>
+```
+
 **文字类型**
 
 ```js
-class ModalExample extends React.Component {
+class InputExample extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = { basicValue: '' }
     this.clearInputHandle = this.clearInputHandle.bind(this)
   }
   clearInputHandle() {
@@ -17,30 +33,39 @@ class ModalExample extends React.Component {
   }
   render() {
     return (
-      <Row>
-        <Col>
-          <Form>
-            <FormGroup>
-              <label>基础:</label>
-              <Input type="text" />
-            </FormGroup>
-          </Form>
-        </Col>
-        <Col>
-          <Form>
-            <FormGroup>
-              <label>可清除:</label>
-              <Input type="text" ref="clearInput" defaultValue="内容">
-                <Ico type="times" onClick={this.clearInputHandle} />
-              </Input>
-            </FormGroup>
-          </Form>
-        </Col>
-      </Row>
+      <Form>
+        <FormGroup>
+          <label>基础:</label>
+          <Input
+            type="text"
+            placeholder="状态受控输入框"
+            value={this.state.basicValue}
+            onChange={value => this.setState({ basicValue: value })}
+          />
+        </FormGroup>
+        <FormGroup>
+          <label>附加图标:</label>
+          <Input
+            type="text"
+            placeholder="请输入"
+            addonBefore={<Ico type="smile-o" />}
+          />
+        </FormGroup>
+        <FormGroup>
+          <label>可清除:</label>
+          <Input
+            type="text"
+            ref="clearInput"
+            addonAfter={
+              <Ico type="times-circle" onClick={this.clearInputHandle} />
+            }
+          />
+        </FormGroup>
+      </Form>
     )
   }
 }
-;<ModalExample />
+;<InputExample />
 ```
 
 **日期类型**
@@ -132,20 +157,6 @@ class Example extends React.Component {
                   onClick={this.handleToggleModal}
                   value={this.state.city.name}
                 />
-              </FormGroup>
-            </Form>
-          </Col>
-          <Col>
-            <Form>
-              <FormGroup>
-                <label>可清除:</label>
-                <Input
-                  type="search"
-                  onClick={this.handleToggleModal}
-                  value={this.state.city.name}
-                >
-                  <Ico type="map-marker" />
-                </Input>
               </FormGroup>
             </Form>
           </Col>
@@ -250,34 +261,6 @@ class Example extends React.Component {
     <Input type="file" btnStyle="primary" style={{width: 464}} />
   </Col>
 </Row>
-```
-
-**三种大小**
-
-```js
-<Row>
-  <Col>
-    <Input size="sm" placeholder="小尺寸" />
-  </Col>
-  <Col>
-    <Input placeholder="默认尺寸" />
-  </Col>
-  <Col>
-    <Input size="lg" placeholder="大尺寸" />
-  </Col>
-</Row>
-```
-
-**椭圆形外观**
-
-```js
-<Input placeholder="请输入内容" pill />
-```
-
-**自适应尺寸**
-
-```js
-<Input placeholder="自适应尺寸" className="d-block" />
 ```
 
 ### 变更记录

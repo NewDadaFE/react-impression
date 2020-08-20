@@ -9,17 +9,13 @@ form {
 }
 
 .form-control {
+  @include set-font-size($input-font-size-md);
+
   display: block;
-  width: $input-width;
-  padding: $input-padding-y $input-padding-x;
-  font-size: $font-size-root;
-  line-height: $input-line-height;
+  padding: $input-padding-y-md $input-padding-x;
   color: $input-color;
-  background-color: $input-bg;
   background-image: none;
   background-clip: padding-box;
-  border: $input-btn-border-width solid $input-border-color;
-  @include border-radius($input-border-radius);
   transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 
   &::-ms-expand {
@@ -32,14 +28,7 @@ form {
 
   // Placeholder
   &::placeholder {
-    color: $input-color-placeholder;
-    font-size: $input-font-size-placeholder;
-    opacity: 1;
-  }
-
-  &:disabled,
-  &[readonly] {
-    background-color: $input-bg-disabled;
+    color: $input-placeholder-color;
     opacity: 1;
   }
 
@@ -51,10 +40,6 @@ form {
   &:focus {
     position: relative;
     z-index: 1;
-  }
-
-  &:hover:not(:disabled) {
-    border-color: $input-border-hover;
   }
 }
 
@@ -71,7 +56,7 @@ form {
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .form-control-label {
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-padding-y-md $input-padding-x;
   margin-bottom: 0;
 }
 
@@ -82,7 +67,7 @@ form {
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
 .form-control-legend {
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-padding-y-md $input-padding-x;
   margin-bottom: 0;
   font-size: $font-size-base;
 }
@@ -104,7 +89,7 @@ input[type='time'],
 input[type='datetime-local'],
 input[type='month'] {
   &.form-control {
-    line-height: $input-height;
+    line-height: $input-height-md;
   }
 
   &.input-sm,
@@ -124,9 +109,9 @@ input[type='month'] {
 // horizontal form layout.
 
 .form-control-static {
-  min-height: $input-height;
-  padding-top: $input-padding-y;
-  padding-bottom: $input-padding-y;
+  min-height: $input-height-md;
+  padding-top: $input-padding-y-md;
+  padding-bottom: $input-padding-y-md;
   margin-bottom: 0;
 
   &.form-control-sm,
@@ -145,13 +130,15 @@ input[type='month'] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
-  padding: $input-padding-y-sm $input-padding-x-sm;
-  font-size: $input-font-size-sm;
+  @include set-font-size($input-font-size-sm);
+
+  padding: $input-padding-y-sm $input-padding-x;
 }
 
 .form-control-lg {
-  padding: $input-padding-y-lg $input-padding-x-lg;
-  font-size: $input-font-size-lg;
+  @include set-font-size($input-font-size-lg);
+
+  padding: $input-padding-y-lg $input-padding-x;
 }
 
 // Form groups
