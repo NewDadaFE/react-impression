@@ -5,7 +5,7 @@
 ```html
 <link
   rel="stylesheet"
-  href="https://at.alicdn.com/t/font_2010704_iayacnbwwce.css"
+  href="https://at.alicdn.com/t/font_2010704_yzy647hi2ab.css"
 />
 ```
 
@@ -52,6 +52,7 @@ const allIcoType = [
   'angle-down',
   'times',
   'check',
+  'check-bold',
   'rotate-left',
   'rotate-right',
   'check-circle-o',

@@ -1,5 +1,5 @@
 //== Checkbox
-$checkbox-label-space-x: rem(10px) !default;
+$checkbox-label-space-x: rem(8px) !default;
 $checkbox-space-x: rem(50px) !default;
 $checkbox-addon-size: 1.14 !default;
 $checkbox-addon-i-size: 0.7 !default;
@@ -20,4 +20,4 @@ $checkbox-addon-hover-color: $blue-light !default;
 $checkbox-addon-press-color: $blue-dark !default;
 $checkbox-addon-disabled-color: $gray-light!default;
 $checkbox-addon-indeterminate-color: $checkbox-addon-checked-color !default;
-$checkbox-addon-scale: 0.72 !default;
+$checkbox-addon-scale: 0.625 !default;
