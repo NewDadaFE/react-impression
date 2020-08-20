@@ -49,6 +49,10 @@ module.exports = {
       href: 'examples/',
     },
     {
+      name: 'Typography',
+      content: resolveWebsite('docs/Typography.md'),
+    },
+    {
       name: 'General',
       description: '基础内容组件。',
       components: resolveComponents(['Button*', 'Ico', 'Image']),
