@@ -11,7 +11,9 @@
   white-space: nowrap !important;
 }
 .text-truncate {
-  @include text-truncate;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .text-left {
@@ -71,5 +73,9 @@
 // Misc
 
 .text-hide {
-  @include text-hide();
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
 }

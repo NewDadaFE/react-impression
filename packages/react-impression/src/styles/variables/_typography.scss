@@ -15,19 +15,14 @@ $font-size-sm: 0.875rem !default;
 $font-size-xs: 0.75rem !default;
 $small-font-size: 80% !default;
 
-$font-size-h1: ceil(($font-size-base * 2.4)) !default; // 34px
-$font-size-h2: ceil(($font-size-base * 1.7)) !default; // 24px
-$font-size-h3: ceil(($font-size-root * 1.25)) !default; // 18px
-$font-size-h4: floor(($font-size-root * 1.15)) !default; // 16px
-$font-size-h5: $font-size-root !default;
-$font-size-h6: ceil(($font-size-base * 0.85)) !default; // 12px
+// 标题字号
+$font-size-h1: rem(44px) !default;
+$font-size-h2: rem(38px) !default;
+$font-size-h3: rem(28px) !default;
+$font-size-h4: rem(24px) !default;
+$font-size-h5: rem(20px) !default;
+$font-size-h6: rem(16px) !default;
 
-$display1-size: 6rem !default;
-$display2-size: 5.5rem !default;
-$display3-size: 4.5rem !default;
-$display4-size: 3.5rem !default;
-
-$display1-weight: 300 !default;
-$display2-weight: 300 !default;
-$display3-weight: 300 !default;
-$display4-weight: 300 !default;
+// 字重
+$font-weight-normal: 400;
+$font-weight-bold: 500;
