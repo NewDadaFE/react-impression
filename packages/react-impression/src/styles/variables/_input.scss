@@ -1,12 +1,12 @@
 $input-width: rem(224px) !default;
-$input-padding-x: rem(16px) !default;
-$input-padding-y: rem(10.5px) !default;
-$input-line-height: 1.25 !default;
+$input-padding-x: rem(7px) !default;
+$input-padding-y: rem(6px) !default;
+$input-line-height: 1.572 !default;
 $input-bg: $brand-pure !default;
 $input-bg-disabled: $gray-lighter !default;
 $input-color: $gray-base !default;
-$input-disabled-color: $gray-light!default;
-$input-border-color: $gray-light!default;
+$input-disabled-color: $border-color!default;
+$input-border-color: $border-color!default;
 $input-btn-border-width: $border-width !default; // For form controls and buttons
 $input-border-radius: rem(2px) !default;
 
@@ -17,11 +17,11 @@ $input-box-focus-shadow: 0 0 rem(8px) $input-box-shadow-focus;
 
 $input-color-placeholder: $gray-dark !default;
 $input-font-size-placeholder: $font-size-root !default;
-
+// 小号输入框
 $input-padding-x-sm: rem(16px) !default;
 $input-padding-y-sm: rem(6.5px) !default;
-$input-font-size-sm: $font-size-root !default;
-
+$input-font-size-sm: $font-size-sm !default;
+// 大号输入框
 $input-padding-x-lg: rem(16px) !default;
 $input-padding-y-lg: rem(21px) !default;
 $input-font-size-lg: rem(16px) !default;
