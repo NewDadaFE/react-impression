@@ -1,0 +1,29 @@
+/**
+ * Remove the unit of a length
+ * @param {Number} $number - Number to remove unit from
+ * @return {Number} - Unitless number
+ */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/**
+ * 根据font-size设置字体大小、行高
+ * 计算规则：line-height = font-size + 8px
+ */
+$line-height-enlarge: 8px;
+@mixin set-font-size($font-size) {
+  font-size: $font-size;
+  $font-size-unit: unit($font-size);
+  @if $font-size-unit == em {
+    line-height: normal;
+  } @else if $font-size-unit == px {
+    line-height: ($font-size + $line-height-enlarge) / $font-size;
+  } @else {
+    line-height: ($font-size + strip-unit(rem($line-height-enlarge))) / $font-size;
+  }
+}
