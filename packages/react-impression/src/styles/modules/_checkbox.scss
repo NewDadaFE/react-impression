@@ -69,8 +69,8 @@
         width: round($checkbox-indeterminate-i-size * $font-size-root);
         height: round($checkbox-indeterminate-i-size * $font-size-root);
         border-radius: 1px;
-        top: $checkbox-indeterminate-padding;
-        left: $checkbox-indeterminate-padding;
+        top: $checkbox-addon-offset-x;
+        left: $checkbox-addon-offset-y;
         transition: $checkbox-addon-transtion;
         display: block;
         content: '';

@@ -4,9 +4,10 @@ $checkbox-space-x: rem(24px) !default;
 $checkbox-addon-size: 1.14 !default;
 $checkbox-addon-i-size: 0.7 !default;
 $checkbox-indeterminate-i-size: 0.4 !default;
-$checkbox-indeterminate-padding: round(
+$checkbox-addon-offset-x: round(
     ($checkbox-addon-size - $checkbox-indeterminate-i-size) * $font-size-root / 2 - 1
 ) !default;
+$checkbox-addon-offset-y: $checkbox-addon-offset-x;
 $checkbox-addon-border-color: $gray-light !default;
 $checkbox-addon-border-width: 1px !default;
 $checkbox-addon-border-radius: $border-radius !default;
@@ -16,5 +17,4 @@ $checkbox-addon-checked-color: $blue-primary !default;
 $checkbox-addon-hover-color: $blue-light !default;
 $checkbox-addon-press-color: $blue-dark !default;
 $checkbox-addon-disabled-color: $gray !default;
-$checkbox-addon-indeterminate-color: $checkbox-addon-checked-color !default;
 $checkbox-addon-scale: 0.625 !default;
