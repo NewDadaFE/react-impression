@@ -5,19 +5,24 @@ import DatePicker from '../DatePicker'
 import Upload from '../Upload'
 import Popper from 'popper.js'
 import TimeSelect from '../TimeSelect'
-import * as System from '../../utils/system'
+import Ico from '../Ico'
+import { addEventListener, contains } from '../../utils/system'
 
 export default class Input extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
-    System.manager(this)
-
     this.state = {
       showDatePicker: false,
       showClear: false,
     }
     this.datePopper = null
+    this.clickOutsideHandler = addEventListener(
+      window.document,
+      'mousedown',
+      this.hideOptionsHandle
+    )
   }
+
   static propTypes = {
     /**
      * 自定义样式
@@ -30,7 +35,9 @@ export default class Input extends React.PureComponent {
     style: PropTypes.object,
 
     /**
-     * 设置输入框类型，支持text，password，file，date，email，month，year，search，textarea，time，second和其他 原生 input 的 type 值
+     * 设置输入框类型，
+     * 支持text，password，file，date，email，month，year，search，textarea，time，second
+     * 和其他原生 input 的 type 值
      */
     type: PropTypes.string,
 
@@ -50,7 +57,7 @@ export default class Input extends React.PureComponent {
     defaultValue: PropTypes.any,
 
     /**
-     * 是否可清除
+     * 是否可清除，只对时间类型输入框有效
      */
     clearable: PropTypes.bool,
 
@@ -60,14 +67,9 @@ export default class Input extends React.PureComponent {
     disabled: PropTypes.bool,
 
     /**
-     * 子组件
+     * 附加靠右的图标
      */
     children: PropTypes.element,
-
-    /**
-     * 样式是否椭圆形
-     */
-    pill: PropTypes.bool,
 
     /**
      * 点击回调
@@ -83,6 +85,16 @@ export default class Input extends React.PureComponent {
      * 尺寸
      */
     size: PropTypes.oneOf(['sm', 'lg']),
+
+    /**
+     * 输入框前附加内容
+     */
+    addonBefore: PropTypes.element,
+
+    /**
+     * 输入框后附加内容
+     */
+    addonAfter: PropTypes.element,
   }
 
   static defaultProps = {
@@ -90,6 +102,7 @@ export default class Input extends React.PureComponent {
     clearable: true,
     disabled: false,
   }
+
   /**
    *getValue
    *
@@ -114,7 +127,6 @@ export default class Input extends React.PureComponent {
    */
   setValue(value) {
     const { type } = this.props
-
     switch (type) {
       case 'file':
         this.refMain.refs.main.files[0] = value
@@ -123,6 +135,7 @@ export default class Input extends React.PureComponent {
         this.refMain && (this.refMain.value = value)
     }
   }
+
   focus() {
     this.refMain.focus()
   }
@@ -133,7 +146,6 @@ export default class Input extends React.PureComponent {
    */
   handleShowDatePicker = () => {
     const { disabled } = this.props
-
     !disabled &&
       this.setState(
         {
@@ -142,7 +154,7 @@ export default class Input extends React.PureComponent {
         },
         () => {
           this.datePopper = new Popper(
-            this.refMain,
+            this.refs.container,
             this.datepicker.refs.container,
             {
               positionFixed: true,
@@ -160,28 +172,28 @@ export default class Input extends React.PureComponent {
    * 隐藏日期组件
    * @memberof Input
    */
-  hideOptionsHandle = () => {
-    this.setState(
-      {
-        showDatePicker: false,
-        showClear: false,
-      },
-      () => {
-        this.datePopper && this.datePopper.destroy()
-      }
-    )
+  hideOptionsHandle = event => {
+    if (!contains(this.refs.container, event.target)) {
+      this.setState(
+        {
+          showDatePicker: false,
+          showClear: false,
+        },
+        () => {
+          this.datePopper && this.datePopper.destroy()
+        }
+      )
+    }
   }
 
   /**
    * 清空时间类型的输入框
    * @memberof Input
    */
-  handleClearDateInput = () => {
+  handleClearInput = () => {
     const { disabled, onChange } = this.props
 
-    if (disabled) {
-      return
-    }
+    if (disabled) return
 
     this.setState({
       showDatePicker: false,
@@ -246,8 +258,19 @@ export default class Input extends React.PureComponent {
     onChange && onChange(event.target.files[0], event)
   }
 
+  handleInputChange = event => {
+    const { onChange } = this.props
+    onChange && onChange(event.target.value, event)
+  }
+
+  handleDateChange = value => {
+    const { onChange } = this.props
+    onChange && onChange(value)
+  }
+
   componentWillUnmount() {
-    System.unmanager(this)
+    this.clickOutsideHandler.remove()
+    this.clickOutsideHandler = null
   }
 
   render() {
@@ -259,22 +282,39 @@ export default class Input extends React.PureComponent {
       placeholder,
       clearable,
       style,
-      pill,
       onClick,
       className,
       children,
       onChange,
       size,
+      addonBefore,
+      addonAfter,
       ...others
     } = this.props
 
-    let { showDatePicker, showClear } = this.state
+    const inputValue = this.refMain && this.refMain.value
 
-    let pillClass = pill ? 'input-pill' : null
+    let { showDatePicker, showClear } = this.state
 
     children &&
       (children = React.cloneElement(children, {
         className: classnames('input-addon', children.props.className),
+      }))
+
+    addonBefore &&
+      (addonBefore = React.cloneElement(addonBefore, {
+        className: classnames(
+          'dada-input-addon-before',
+          addonBefore.props.className
+        ),
+      }))
+
+    addonAfter &&
+      (addonAfter = React.cloneElement(addonAfter, {
+        className: classnames(
+          'dada-input-addon-after',
+          addonAfter.props.className
+        ),
       }))
 
     switch (type) {
@@ -283,11 +323,21 @@ export default class Input extends React.PureComponent {
       case 'year':
         return (
           <div
-            className={classnames('input', className)}
+            className={classnames(
+              'input',
+              { 'dada-input-disabled': disabled },
+              className
+            )}
             ref='container'
             onMouseEnter={this.handleShowClear}
             onMouseLeave={this.handleHideClear}
+            style={style}
           >
+            <Ico
+              type='calendar'
+              className='dada-input-addon-before'
+              onClick={this.handleShowDatePicker}
+            />
             <input
               type='text'
               ref={ref => (this.refMain = ref)}
@@ -296,7 +346,6 @@ export default class Input extends React.PureComponent {
               className={classnames(
                 'form-control',
                 size && `form-control-${size}`,
-                pillClass,
                 'input-field',
                 'input-field-addon'
               )}
@@ -304,29 +353,20 @@ export default class Input extends React.PureComponent {
               disabled={disabled}
               placeholder={placeholder}
               onClick={this.handleShowDatePicker}
-              style={style}
             />
-
             {clearable && showClear && (
-              <i
-                className='dada-ico dada-ico-times input-addon'
-                onClick={this.handleClearDateInput}
+              <Ico
+                type='times-circle'
+                className='input-addon dada-input-clear'
+                onClick={this.handleClearInput}
               />
             )}
-
-            {(!showClear || !clearable) && (
-              <i
-                className='dada-ico dada-ico-calendar input-addon'
-                onClick={this.handleShowDatePicker}
-              />
-            )}
-
             <DatePicker
               className={classnames({ hidden: !showDatePicker })}
               {...others}
               type={type}
-              value={this.refMain && this.refMain.value}
-              onChange={value => onChange && onChange(value)}
+              value={inputValue}
+              onChange={this.handleDateChange}
               onSelect={this.handleSelectDate}
               ref={ref => (this.datepicker = ref)}
             />
@@ -336,11 +376,21 @@ export default class Input extends React.PureComponent {
       case 'second':
         return (
           <div
-            className={classnames('input', className)}
+            className={classnames(
+              'input',
+              { 'dada-input-disabled': disabled },
+              className
+            )}
             ref='container'
             onMouseEnter={this.handleShowClear}
             onMouseLeave={this.handleHideClear}
+            style={style}
           >
+            <Ico
+              type='clock-o'
+              className='dada-input-addon-before'
+              onClick={this.handleShowDatePicker}
+            />
             <input
               type='text'
               ref={ref => (this.refMain = ref)}
@@ -349,7 +399,6 @@ export default class Input extends React.PureComponent {
               className={classnames(
                 'form-control',
                 size && `form-control-${size}`,
-                pillClass,
                 'input-field',
                 'input-field-addon'
               )}
@@ -357,29 +406,20 @@ export default class Input extends React.PureComponent {
               disabled={disabled}
               placeholder={placeholder}
               onClick={this.handleShowDatePicker}
-              style={style}
             />
-
             {clearable && showClear && (
-              <i
-                className='dada-ico dada-ico-times input-addon'
-                onClick={this.handleClearDateInput}
+              <Ico
+                type='times-circle'
+                className='input-addon dada-input-clear'
+                onClick={this.handleClearInput}
               />
             )}
-
-            {(!showClear || !clearable) && (
-              <i
-                className='dada-ico dada-ico-clock-o input-addon '
-                onClick={this.handleShowDatePicker}
-              />
-            )}
-
             <TimeSelect
               {...others}
               type={type}
               className={classnames({ hidden: !showDatePicker })}
-              value={this.refMain && this.refMain.value}
-              onChange={value => onChange && onChange(value)}
+              value={inputValue}
+              onChange={this.handleDateChange}
               onSelect={this.handleSelectTime}
               ref={ref => (this.datepicker = ref)}
             />
@@ -387,7 +427,16 @@ export default class Input extends React.PureComponent {
         )
       case 'search':
         return (
-          <div className={classnames('input', className)} ref='container'>
+          <div
+            className={classnames(
+              'input',
+              { 'dada-input-disabled': disabled },
+              className
+            )}
+            ref='container'
+            style={style}
+          >
+            {addonBefore}
             <input
               {...others}
               type='text'
@@ -395,24 +444,20 @@ export default class Input extends React.PureComponent {
               value={value}
               className={classnames(
                 'form-control',
-                pillClass,
                 'input-field',
                 'input-field-addon'
               )}
               readOnly
               onClick={onClick}
-              onChange={e => onChange && onChange(e.target.value, e)}
+              onChange={this.handleInputChange}
               disabled={disabled}
               placeholder={placeholder}
-              style={style}
             />
             {children}
             {!children && (
-              <i
-                className='dada-ico dada-ico-search input-addon'
-                onClick={onClick}
-              />
+              <Ico type='search' className='input-addon' onClick={onClick} />
             )}
+            {addonAfter}
           </div>
         )
       case 'file':
@@ -435,15 +480,24 @@ export default class Input extends React.PureComponent {
             disabled={disabled}
             placeholder={placeholder}
             value={value}
-            onChange={e => onChange && onChange(e.target.value, e)}
+            onChange={this.handleInputChange}
             defaultValue={defaultValue}
             {...others}
-            className={classnames('form-control', className)}
+            className={classnames('form-control', 'input', className)}
           />
         )
       default:
         return (
-          <div className={classnames('input', className)} ref='container'>
+          <div
+            className={classnames(
+              'input',
+              { 'dada-input-disabled': disabled },
+              className
+            )}
+            ref='container'
+            style={style}
+          >
+            {addonBefore}
             <input
               {...others}
               type={type}
@@ -453,16 +507,14 @@ export default class Input extends React.PureComponent {
               className={classnames(
                 'form-control',
                 'input-field',
-                size && `form-control-${size}`,
-                pillClass,
-                { 'input-field-addon': children }
+                size && `form-control-${size}`
               )}
-              onChange={e => onChange && onChange(e.target.value, e)}
+              onChange={this.handleInputChange}
               disabled={disabled}
               placeholder={placeholder}
-              style={style}
             />
             {children}
+            {addonAfter}
           </div>
         )
     }

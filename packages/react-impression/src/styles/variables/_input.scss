@@ -1,33 +1,33 @@
-$input-width: rem(224px) !default;
-$input-padding-x: rem(16px) !default;
-$input-padding-y: rem(10.5px) !default;
-$input-line-height: 1.25 !default;
+$input-width: rem(220px) !default;
+$input-line-height: 1.572 !default; // todo 移除
+// 输入框背景色
 $input-bg: $brand-pure !default;
-$input-bg-disabled: $gray-lighter !default;
+$input-disabled-bg: $gray-lightest !default;
+// 输入框字体颜色
 $input-color: $gray-base !default;
-$input-disabled-color: $gray-light!default;
-$input-border-color: $gray-light!default;
+$input-disabled-color: $disabled-color !default;
+$input-border-color: $border-color !default;
 $input-btn-border-width: $border-width !default; // For form controls and buttons
 $input-border-radius: rem(2px) !default;
 
 $input-border-focus: $brand-primary !default;
 $input-border-hover: $brand-primary !default;
-$input-box-shadow-focus: rgba($input-border-focus, 0.8) !default;
-$input-box-focus-shadow: 0 0 rem(8px) $input-box-shadow-focus;
-
-$input-color-placeholder: $gray-dark !default;
-$input-font-size-placeholder: $font-size-root !default;
-
-$input-padding-x-sm: rem(16px) !default;
-$input-padding-y-sm: rem(6.5px) !default;
-$input-font-size-sm: $font-size-root !default;
-
-$input-padding-x-lg: rem(16px) !default;
-$input-padding-y-lg: rem(21px) !default;
+// 占位文字颜色
+$input-placeholder-color: $disabled-color !default;
+// 输入框左右内间距
+$input-padding-x: rem(7px) !default;
+// 小号输入框
+$input-padding-y-sm: rem(5px) !default;
+$input-font-size-sm: rem(12px) !default;
+// 中号输入框
+$input-padding-y-md: rem(6px) !default;
+$input-font-size-md: $font-size-base;
+// 大号输入框
+$input-padding-y-lg: rem(7px) !default;
 $input-font-size-lg: rem(16px) !default;
 
-$input-height: (
-  ($font-size-base * $line-height-base) + ($input-padding-y * 2)
+$input-height-md: (
+  ($font-size-base * $line-height-base) + ($input-padding-y-md * 2)
 ) !default;
 $input-height-lg: (
   ($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)
@@ -45,9 +45,9 @@ $form-group-inline-btn-margin-left: rem(30px) !default;
 $form-group-inline-component-line-height: 40px !default;
 
 $input-group-addon-bg: $brand-pure !default;
-$input-group-addon-color: $gray-light!default;
-$input-group-addon-border-color: $gray-light!default;
-$input-group-addon-padding-sm: $input-padding-y-sm $input-padding-x-sm !default;
-$input-group-addon-padding-lg: $input-padding-y-lg $input-padding-x-lg !default;
+$input-group-addon-color: $gray-light !default;
+$input-group-addon-border-color: $gray-light !default;
+$input-group-addon-padding-sm: $input-padding-y-sm $input-padding-x !default;
+$input-group-addon-padding-lg: $input-padding-y-lg $input-padding-x !default;
 $input-group-addon-font-size-lg: $font-size-lg !default;
 $input-group-addon-font-size-sm: $font-size-sm !default;
