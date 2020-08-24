@@ -77,6 +77,7 @@ module.exports = {
         'NavbarLink',
         'Pagination',
         'Sidebar*',
+        'TextLink',
       ]),
     },
     {
