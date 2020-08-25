@@ -1,0 +1,27 @@
+.dada-text-link {
+  cursor: pointer;
+  text-decoration: none;
+  transition: $text-link-transtion;
+
+  &:hover {
+    color: $text-link-hover-color;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $text-link-active-color;
+  }
+
+  &.dada-text-link-disabled {
+    color: $text-link-disabled-color;
+    cursor: $cursor-disabled;
+  }
+}
+
+.dada-text-link-primary {
+  color: $text-link-primary-color;
+}
+
+.dada-text-link-secondary {
+  color: $text-link-secondary-color;
+}
