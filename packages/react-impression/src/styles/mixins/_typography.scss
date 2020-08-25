@@ -1,17 +1,4 @@
 /**
- * Remove the unit of a length
- * @param {Number} $number - Number to remove unit from
- * @return {Number} - Unitless number
- */
-@function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
-  }
-
-  @return $number;
-}
-
-/**
  * 根据font-size设置字体大小、行高
  * 计算规则：line-height = font-size + 8px
  */

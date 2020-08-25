@@ -84,7 +84,7 @@ export default class Input extends React.PureComponent {
     /**
      * 尺寸
      */
-    size: PropTypes.oneOf(['sm', 'lg']),
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 
     /**
      * 输入框前附加内容
@@ -101,6 +101,7 @@ export default class Input extends React.PureComponent {
     type: 'text',
     clearable: true,
     disabled: false,
+    size: 'md',
   }
 
   /**
@@ -345,7 +346,7 @@ export default class Input extends React.PureComponent {
               defaultValue={defaultValue}
               className={classnames(
                 'form-control',
-                size && `form-control-${size}`,
+                { [`form-control-${size}`]: size && size !== 'md' },
                 'input-field',
                 'input-field-addon'
               )}

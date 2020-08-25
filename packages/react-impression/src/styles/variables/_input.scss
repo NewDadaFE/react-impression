@@ -7,7 +7,7 @@ $input-disabled-bg: $gray-lightest !default;
 $input-color: $gray-base !default;
 $input-disabled-color: $disabled-color !default;
 $input-border-color: $border-color !default;
-$input-btn-border-width: $border-width !default; // For form controls and buttons
+$input-border-width: $border-width !default; // For form controls and buttons
 $input-border-radius: rem(2px) !default;
 
 $input-border-focus: $brand-primary !default;
@@ -16,6 +16,9 @@ $input-border-hover: $brand-primary !default;
 $input-placeholder-color: $disabled-color !default;
 // 输入框左右内间距
 $input-padding-x: rem(7px) !default;
+// 最小号输入框
+$input-padding-y-xs: rem(3px) !default;
+$input-font-size-xs: rem(12px) !default;
 // 小号输入框
 $input-padding-y-sm: rem(5px) !default;
 $input-font-size-sm: rem(12px) !default;

@@ -7,11 +7,20 @@ Input 组件支持类型的详细内容请参照 [原生 input 的 type 值](htt
 ```js
 <Row>
   <Col>
+    <Input size="xs" placeholder="最小尺寸" />
+  </Col>
+</Row>
+<Row>
+  <Col>
     <Input size="sm" placeholder="小尺寸" />
   </Col>
+</Row>
+<Row>
   <Col>
     <Input placeholder="默认尺寸" />
   </Col>
+</Row>
+<Row>
   <Col>
     <Input size="lg" placeholder="大尺寸" />
   </Col>

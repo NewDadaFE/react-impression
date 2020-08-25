@@ -31,7 +31,7 @@
 
 .message-close {
   padding: $message-close-padding;
-  cursor: $cursor-pointer;
+  cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
