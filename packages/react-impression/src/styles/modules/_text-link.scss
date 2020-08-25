@@ -1,23 +1,27 @@
-.disabled {
-  color: $text-link-disabled-color !important;
-  cursor: $cursor-disabled !important;
-}
-
-.textLink {
+.dada-text-link {
   cursor: pointer;
-  font-size: $text-link-font-size;
   text-decoration: none;
   transition: $text-link-transtion;
+
   &:hover {
     color: $text-link-hover-color;
+    text-decoration: none;
   }
-&:active {
-  color: $text-link-active-color;
+
+  &:active {
+    color: $text-link-active-color;
+  }
+
+  &.dada-text-link-disabled {
+    color: $text-link-disabled-color;
+    cursor: $cursor-disabled;
+  }
 }
-}
-.text-link-primary {
+
+.dada-text-link-primary {
   color: $text-link-primary-color;
 }
-.text-link-default {
-  color: $text-link-default-color;
+
+.dada-text-link-secondary {
+  color: $text-link-secondary-color;
 }

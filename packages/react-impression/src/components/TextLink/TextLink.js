@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-const propTypes = {
+TextLink.propTypes = {
   /**
    * 自定义样式
    */
@@ -22,56 +22,71 @@ const propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * 点击跳转链接
+   * 链接指向的URL
    */
   href: PropTypes.string,
 
   /**
    * 主题色
    */
-  theme: PropTypes.string,
+  theme: PropTypes.oneOf(['primary', 'secondary']),
 }
-const TextLink = props => {
+TextLink.defaultProps = {
+  disabled: false,
+  theme: 'primary',
+}
+
+function TextLink(props) {
   const {
     href,
-    theme = 'primary',
-    disabled = false,
+    theme,
     onClick,
     children,
+    disabled,
     className,
+    ...others
   } = props
-  const getTheme = () => {
-    return theme === 'default' ? 'text-link-default' : 'text-link-primary'
+  // 链接组件的样式类名
+  const linkClassNames = classnames(
+    'dada-text-link',
+    {
+      'dada-text-link-disabled': disabled,
+      'dada-text-link-secondary': theme === 'secondary',
+      'dada-text-link-primary': theme === 'primary',
+    },
+    className
+  )
+
+  /**
+   * disabled时阻止默认行为和点击事件
+   * @param event
+   */
+  function clickHandler(event) {
+    if (disabled) {
+      event.preventDefault()
+      return
+    }
+    onClick && onClick(event)
   }
-  // href存在
+
+  // href 存在，用 a 标签保留页面跳转功能
   if (href) {
     return (
       <a
         href={href}
-        className={classnames(
-          { disabled: disabled },
-          'textLink',
-          getTheme(),
-          className
-        )}
+        className={linkClassNames}
+        onClick={clickHandler}
+        {...others}
       >
         {children}
       </a>
     )
   }
   return (
-    <span
-      className={classnames(
-        { disabled: disabled },
-        'textLink',
-        getTheme(),
-        className
-      )}
-      onClick={onClick}
-    >
+    <span className={linkClassNames} onClick={clickHandler} {...others}>
       {children}
     </span>
   )
 }
-TextLink.propTypes = propTypes
+
 export default TextLink
