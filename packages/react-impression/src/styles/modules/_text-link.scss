@@ -14,7 +14,7 @@
 
   &.dada-text-link-disabled {
     color: $text-link-disabled-color;
-    cursor: $cursor-disabled;
+    cursor: not-allowed;
   }
 }
 
