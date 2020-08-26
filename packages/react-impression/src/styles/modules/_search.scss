@@ -1,4 +1,4 @@
-$search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-baseline + $input-border-width * 2;
+$search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-baseline;
 
 .dada-search {
   position: relative;

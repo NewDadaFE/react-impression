@@ -57,7 +57,7 @@ export default class Input extends React.PureComponent {
     defaultValue: PropTypes.any,
 
     /**
-     * 是否可清除，只对时间类型输入框有效
+     * 是否可清除，仅时间类型输入框有效
      */
     clearable: PropTypes.bool,
 
@@ -72,7 +72,7 @@ export default class Input extends React.PureComponent {
     children: PropTypes.element,
 
     /**
-     * 点击回调
+     * 点击回调，仅搜索类型有效
      */
     onClick: PropTypes.func,
 
@@ -355,6 +355,7 @@ export default class Input extends React.PureComponent {
               placeholder={placeholder}
               onClick={this.handleShowDatePicker}
             />
+            <div className='dada-input-border' />
             {clearable && showClear && (
               <Ico
                 type='times-circle'
@@ -408,6 +409,7 @@ export default class Input extends React.PureComponent {
               placeholder={placeholder}
               onClick={this.handleShowDatePicker}
             />
+            <div className='dada-input-border' />
             {clearable && showClear && (
               <Ico
                 type='times-circle'
@@ -438,6 +440,11 @@ export default class Input extends React.PureComponent {
             style={style}
           >
             {addonBefore}
+            <Ico
+              type='search'
+              className='dada-input-addon-before'
+              onClick={onClick}
+            />
             <input
               {...others}
               type='text'
@@ -454,10 +461,8 @@ export default class Input extends React.PureComponent {
               disabled={disabled}
               placeholder={placeholder}
             />
+            <div className='dada-input-border' />
             {children}
-            {!children && (
-              <Ico type='search' className='input-addon' onClick={onClick} />
-            )}
             {addonAfter}
           </div>
         )
@@ -475,16 +480,19 @@ export default class Input extends React.PureComponent {
       case 'textarea':
         return (
           <textarea
-            rows='10'
+            className={classnames(
+              'form-control',
+              'dada-input-textarea',
+              className
+            )}
             ref={ref => (this.refMain = ref)}
-            style={style}
             disabled={disabled}
             placeholder={placeholder}
             value={value}
             onChange={this.handleInputChange}
             defaultValue={defaultValue}
+            style={style}
             {...others}
-            className={classnames('form-control', 'input', className)}
           />
         )
       default:
@@ -514,6 +522,7 @@ export default class Input extends React.PureComponent {
               disabled={disabled}
               placeholder={placeholder}
             />
+            <div className='dada-input-border' />
             {children}
             {addonAfter}
           </div>

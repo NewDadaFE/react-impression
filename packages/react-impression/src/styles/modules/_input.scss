@@ -1,17 +1,12 @@
 .input {
-  @include border-radius($input-border-radius);
-
   position: relative;
+  z-index: $zindex-input;
   display: inline-flex;
   width: $input-width;
   align-items: center;
   vertical-align: middle;
-  border: $input-border-width solid $input-border-color;
   background-color: $brand-pure;
 
-  &:hover {
-    border-color: $input-border-hover;
-  }
   // TODO 待Trigger组件完成后此处要清理
   & > .datepicker,
   & > .time-select-out {
@@ -20,37 +15,58 @@
 }
 
 .dada-input-disabled {
-  cursor: not-allowed;
-  color: $input-disabled-color;
   background-color: $input-disabled-bg;
-
-  & > .dada-input-addon-before,
-  & > .dada-input-addon-after,
-  & > .input-addon {
-    color: $input-disabled-color !important;
-    cursor: not-allowed !important;
-  }
-
-  &:hover {
-    border-color: $input-border-color;
-  }
 }
 
-.form-horizontal {
-  .input {
-    display: block;
-    width: 100%;
-  }
+// 输入框的描边
+.dada-input-border {
+  position: absolute;
+  z-index: $zindex-input-border;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: border-color ease-in-out .18s;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
 }
 
+// 输入框
 .input-field {
   overflow: hidden;
   flex: 1;
   border: none;
   background-color: transparent;
 
+  &:hover + .dada-input-border {
+    border-color: $input-border-hover;
+  }
+
+  &:focus {
+    outline: none;
+
+    & + .dada-input-border {
+      border-color: $input-border-focus;
+    }
+  }
+
   &:disabled {
-    background-color: transparent;
+    &,
+    & + .dada-input-addon-before,
+    & + .dada-input-addon-after,
+    & + .input-addon {
+      cursor: not-allowed;
+      color: $input-disabled-color;
+    }
+
+    & + .dada-input-border {
+      border-color: $input-border-color;
+    }
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: $input-placeholder-color;
   }
 }
 
@@ -58,21 +74,52 @@
 }
 
 .dada-input-addon-before {
-  padding-right: $input-border-width;
-  padding-left: $input-padding-x;
+  margin-left: $input-padding-x;
   color: $gray-light;
 }
 
 .dada-input-addon-after,
 .input-addon {
-  padding-right: $input-padding-x;
-  padding-left: $input-border-width;
+  margin-right: $input-padding-x;
   color: $gray-light;
 }
 
+// 清除图标
 .dada-input-clear {
   cursor: pointer;
+
   &:hover {
     color: $gray-darker;
+  }
+}
+
+// 单独处理长文本输入框
+.dada-input-textarea {
+  @include scroll-reset();
+
+  width: $input-width;
+  height: rem(72px);
+  resize: vertical;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+
+  &:hover {
+    border-color: $input-border-hover;
+  }
+
+  &:focus {
+    border-color: $input-border-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    resize: none;
+    cursor: not-allowed;
+    border-color: $input-border-color;
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: $input-placeholder-color;
   }
 }

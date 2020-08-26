@@ -606,7 +606,13 @@ const columns = [
     Header: '地址',
     width: 160,
     Cell: item => {
-      return <Input size="sm" defaultValue={item.address} />
+      return (
+        <Input
+          size="sm"
+          defaultValue={item.address}
+          style={{ width: '100%' }}
+        />
+      )
     },
   },
   { prop: 'num', Header: '金额', width: 120 },
