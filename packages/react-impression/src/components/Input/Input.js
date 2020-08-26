@@ -294,7 +294,6 @@ export default class Input extends React.PureComponent {
             transitionName='scale'
             popup={
               <DatePicker
-                className={classnames({ hidden: !showDatePicker })}
                 {...others}
                 type={type}
                 value={inputValue}
@@ -361,7 +360,6 @@ export default class Input extends React.PureComponent {
               <TimeSelect
                 {...others}
                 type={type}
-                className={classnames({ hidden: !showDatePicker })}
                 value={inputValue}
                 onChange={this.handleDateChange}
                 onSelect={this.handleSelectTime}

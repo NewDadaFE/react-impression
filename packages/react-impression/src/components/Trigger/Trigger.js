@@ -259,24 +259,6 @@ function Trigger(props) {
     [showPopup, onPopupVisibleChange]
   )
 
-  /**
-   * 监听showPopup变化，延迟隐藏弹出层
-   */
-  useEffect(
-    () => {
-      if (!transitionName) return
-      if (showPopup) {
-        setDelayShowPopup(true)
-      } else {
-        // 延迟时间跟动画时长一致
-        setTimeout(() => {
-          setDelayShowPopup(false)
-        }, 360)
-      }
-    },
-    [transitionName, showPopup]
-  )
-
   return (
     <Fragment>
       {Children}
@@ -292,6 +274,10 @@ function Trigger(props) {
           })}
           ref={setPopperElement}
           style={{ ...popperStyles.popper, ...style }}
+          onAnimationEnd={() => {
+            if (!transitionName) return
+            setDelayShowPopup(showPopup)
+          }}
           {...attributes.popper}
         >
           {typeof popup === 'function' ? popup() : popup}
