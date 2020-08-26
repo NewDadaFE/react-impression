@@ -106,7 +106,7 @@ class InputExample extends React.Component {
 
 **日期类型**
 
-日期类型输入框有 4 种：年份、月份、日期、时间。<br/>
+日期类型输入框有 5 种：年份、月份、日期、时间、秒。<br/>
 **clearable 属性**仅对日期类型输入框生效，clearable 为 true 时，鼠标悬停到输入框会出现清除图标，点击触发 onChange 事件，回传空字符串。<br/>
 更多用法请移步 [DatePicker 日期选择](#datepicker)。
 
@@ -127,6 +127,10 @@ class InputExample extends React.Component {
   <FormGroup>
     <label>时间：</label>
     <Input type="time" />
+  </FormGroup>
+  <FormGroup>
+    <label>秒：</label>
+    <Input type="second" />
   </FormGroup>
 </Form>
 ```

@@ -1,12 +1,11 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import Trigger from '../Trigger'
 import DatePicker from '../DatePicker'
 import Upload from '../Upload'
-import Popper from 'popper.js'
 import TimeSelect from '../TimeSelect'
 import Ico from '../Ico'
-import { addEventListener, contains } from '../../utils/system'
 
 export default class Input extends React.PureComponent {
   constructor(props, context) {
@@ -15,12 +14,6 @@ export default class Input extends React.PureComponent {
       showDatePicker: false,
       showClear: false,
     }
-    this.datePopper = null
-    this.clickOutsideHandler = addEventListener(
-      window.document,
-      'mousedown',
-      this.hideOptionsHandle
-    )
   }
 
   static propTypes = {
@@ -147,43 +140,17 @@ export default class Input extends React.PureComponent {
    */
   handleShowDatePicker = () => {
     const { disabled } = this.props
-    !disabled &&
-      this.setState(
-        {
-          showDatePicker: true,
-          showClear: false,
-        },
-        () => {
-          this.datePopper = new Popper(
-            this.refs.container,
-            this.datepicker.refs.container,
-            {
-              positionFixed: true,
-              placement: 'bottom-start',
-              modifiers: {
-                offset: { offset: '0, 10' },
-              },
-            }
-          )
-        }
-      )
+    if (!disabled) {
+      this.setState({
+        showDatePicker: true,
+        showClear: false,
+      })
+    }
   }
 
-  /**
-   * 隐藏日期组件
-   * @memberof Input
-   */
-  hideOptionsHandle = event => {
-    if (!contains(this.refs.container, event.target)) {
-      this.setState(
-        {
-          showDatePicker: false,
-          showClear: false,
-        },
-        () => {
-          this.datePopper && this.datePopper.destroy()
-        }
-      )
+  hideOptionsHandler = popupVisible => {
+    if (!popupVisible) {
+      this.setState({ showDatePicker: popupVisible })
     }
   }
 
@@ -269,11 +236,6 @@ export default class Input extends React.PureComponent {
     onChange && onChange(value)
   }
 
-  componentWillUnmount() {
-    this.clickOutsideHandler.remove()
-    this.clickOutsideHandler = null
-  }
-
   render() {
     let {
       type,
@@ -323,110 +285,132 @@ export default class Input extends React.PureComponent {
       case 'month':
       case 'year':
         return (
-          <div
-            className={classnames(
-              'input',
-              { 'dada-input-disabled': disabled },
-              className
-            )}
-            ref='container'
-            onMouseEnter={this.handleShowClear}
-            onMouseLeave={this.handleHideClear}
-            style={style}
-          >
-            <Ico
-              type='calendar'
-              className='dada-input-addon-before'
-              onClick={this.handleShowDatePicker}
-            />
-            <input
-              type='text'
-              ref={ref => (this.refMain = ref)}
-              value={value}
-              defaultValue={defaultValue}
-              className={classnames(
-                'form-control',
-                { [`form-control-${size}`]: size && size !== 'md' },
-                'input-field',
-                'input-field-addon'
-              )}
-              readOnly
-              disabled={disabled}
-              placeholder={placeholder}
-              onClick={this.handleShowDatePicker}
-            />
-            <div className='dada-input-border' />
-            {clearable && showClear && (
-              <Ico
-                type='times-circle'
-                className='input-addon dada-input-clear'
-                onClick={this.handleClearInput}
+          <Trigger
+            showAction='none'
+            hideAction='none'
+            popupVisible={showDatePicker}
+            onPopupVisibleChange={this.hideOptionsHandler}
+            stretch='auto'
+            transitionName='scale'
+            popup={
+              <DatePicker
+                className={classnames({ hidden: !showDatePicker })}
+                {...others}
+                type={type}
+                value={inputValue}
+                onChange={this.handleDateChange}
+                onSelect={this.handleSelectDate}
+                ref={ref => (this.datepicker = ref)}
               />
-            )}
-            <DatePicker
-              className={classnames({ hidden: !showDatePicker })}
-              {...others}
-              type={type}
-              value={inputValue}
-              onChange={this.handleDateChange}
-              onSelect={this.handleSelectDate}
-              ref={ref => (this.datepicker = ref)}
-            />
-          </div>
+            }
+          >
+            <div
+              className={classnames(
+                'input',
+                { 'dada-input-disabled': disabled },
+                className
+              )}
+              ref='container'
+              onMouseEnter={this.handleShowClear}
+              onMouseLeave={this.handleHideClear}
+              style={style}
+            >
+              <Ico
+                type='calendar'
+                className='dada-input-addon-before'
+                onClick={this.handleShowDatePicker}
+              />
+              <input
+                type='text'
+                ref={ref => (this.refMain = ref)}
+                value={value}
+                defaultValue={defaultValue}
+                className={classnames(
+                  'form-control',
+                  { [`form-control-${size}`]: size && size !== 'md' },
+                  'input-field',
+                  'input-field-addon'
+                )}
+                readOnly
+                disabled={disabled}
+                placeholder={placeholder}
+                onClick={this.handleShowDatePicker}
+              />
+              <div className='dada-input-border' />
+              {clearable && showClear && (
+                <Ico
+                  type='times-circle'
+                  className='input-addon dada-input-clear'
+                  onClick={this.handleClearInput}
+                />
+              )}
+            </div>
+          </Trigger>
         )
       case 'time':
       case 'second':
         return (
-          <div
-            className={classnames(
-              'input',
-              { 'dada-input-disabled': disabled },
-              className
-            )}
-            ref='container'
-            onMouseEnter={this.handleShowClear}
-            onMouseLeave={this.handleHideClear}
-            style={style}
-          >
-            <Ico
-              type='clock-o'
-              className='dada-input-addon-before'
-              onClick={this.handleShowDatePicker}
-            />
-            <input
-              type='text'
-              ref={ref => (this.refMain = ref)}
-              value={value}
-              defaultValue={defaultValue}
-              className={classnames(
-                'form-control',
-                size && `form-control-${size}`,
-                'input-field',
-                'input-field-addon'
-              )}
-              readOnly
-              disabled={disabled}
-              placeholder={placeholder}
-              onClick={this.handleShowDatePicker}
-            />
-            <div className='dada-input-border' />
-            {clearable && showClear && (
-              <Ico
-                type='times-circle'
-                className='input-addon dada-input-clear'
-                onClick={this.handleClearInput}
+          <Trigger
+            showAction='none'
+            hideAction='none'
+            popupVisible={showDatePicker}
+            onPopupVisibleChange={this.hideOptionsHandler}
+            stretch='auto'
+            transitionName='scale'
+            popup={
+              <TimeSelect
+                {...others}
+                type={type}
+                className={classnames({ hidden: !showDatePicker })}
+                value={inputValue}
+                onChange={this.handleDateChange}
+                onSelect={this.handleSelectTime}
+                ref={ref => (this.datepicker = ref)}
               />
-            )}
-            <TimeSelect
-              {...others}
-              type={type}
-              className={classnames({ hidden: !showDatePicker })}
-              value={inputValue}
-              onChange={this.handleDateChange}
-              onSelect={this.handleSelectTime}
-              ref={ref => (this.datepicker = ref)}
-            />
-          </div>
+            }
+          >
+            <div
+              className={classnames(
+                'input',
+                { 'dada-input-disabled': disabled },
+                className
+              )}
+              ref='container'
+              onMouseEnter={this.handleShowClear}
+              onMouseLeave={this.handleHideClear}
+              style={style}
+            >
+              <Ico
+                type='clock-o'
+                className='dada-input-addon-before'
+                onClick={this.handleShowDatePicker}
+              />
+              <input
+                type='text'
+                ref={ref => (this.refMain = ref)}
+                value={value}
+                defaultValue={defaultValue}
+                className={classnames(
+                  'form-control',
+                  size && `form-control-${size}`,
+                  'input-field',
+                  'input-field-addon'
+                )}
+                readOnly
+                disabled={disabled}
+                placeholder={placeholder}
+                onClick={this.handleShowDatePicker}
+              />
+              <div className='dada-input-border' />
+              {clearable && showClear && (
+                <Ico
+                  type='times-circle'
+                  className='input-addon dada-input-clear'
+                  onClick={this.handleClearInput}
+                />
+              )}
+            </div>
+          </Trigger>
         )
       case 'search':
         return (

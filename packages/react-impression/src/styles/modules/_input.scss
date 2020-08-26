@@ -6,12 +6,6 @@
   align-items: center;
   vertical-align: middle;
   background-color: $brand-pure;
-
-  // TODO 待Trigger组件完成后此处要清理
-  & > .datepicker,
-  & > .time-select-out {
-    position: fixed;
-  }
 }
 
 .dada-input-disabled {

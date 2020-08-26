@@ -1,10 +1,28 @@
 .dada-trigger {
+  z-index: $zindex-trigger;
   border-radius: $border-radius;
   background-color: $brand-pure;
   box-shadow: $box-shadow;
-  z-index: $zindex-trigger;
 }
 
 .dada-trigger-hidden {
   display: none;
+}
+
+.dada-trigger-popup-zoom-enter {
+  animation: .36s zoomIn ease;
+}
+
+.dada-trigger-popup-zoom-leave {
+  animation: .36s dadaZoomOut ease forwards;
+}
+
+.dada-trigger-popup-scale-enter {
+  transform-origin: center 0;
+  animation: .36s scaleIn ease;
+}
+
+.dada-trigger-popup-scale-leave {
+  transform-origin: center 0;
+  animation: .36s dadaScaleOut ease forwards;
 }
