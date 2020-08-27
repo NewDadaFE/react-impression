@@ -6,20 +6,22 @@
 
 .btn {
   display: inline-block;
-  line-height: $btn-line-height;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
   border: 1px solid transparent;
+  border-radius: $btn-border-radius;
 
   @include button-size(
     $btn-padding-y,
     $btn-padding-x,
     $btn-font-size,
-    $btn-border-radius
+    $btn-line-height,
+    $btn-height-md
   );
+
   transition: $btn-transition;
 
   &,
@@ -47,6 +49,14 @@
       box-shadow: none;
     }
   }
+  .dada-ico,
+  .btn-loading-addon {
+    vertical-align: -.1em;
+  }
+
+  & > span {
+    display: inline-block;
+  }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -61,38 +71,50 @@ fieldset[disabled] a.btn {
 
 $btn-primary-args: (
   color: $btn-primary-color,
+  hover-color: $btn-primary-color,
+  active-color: $btn-primary-color,
   background: $btn-primary-bg,
   border: $btn-primary-border,
   hover-background: $btn-hover-primary-bg,
+  hover-border: $btn-hover-primary-bg,
   btn-hover-box-shadow: $btn-hover-primary-box-shadow,
   active-background: $btn-active-primary-bg,
-  btn-disabled-color: $btn-disabled-color,
-  btn-disabled-bg: $btn-disabled-bg,
-  btn-disabled-border: transparent,
-);
-
-$btn-secondary-args: (
-  color: $btn-secondary-color,
-  background: $btn-secondary-bg,
-  border: $btn-secondary-border,
-  hover-background: $btn-hover-default-bg,
-  btn-hover-box-shadow: $btn-hover-primary-box-shadow,
-  active-background: $btn-active-secondary-bg,
-  btn-disabled-color: $btn-disabled-color,
-  btn-disabled-bg: $brand-pure,
-  btn-disabled-border: $btn-disabled-border,
+  active-border: $btn-active-primary-bg,
+  btn-disabled-color: $btn-primary-color,
+  btn-disabled-bg: $gray,
+  btn-disabled-border: transparent
 );
 
 $btn-default-args: (
   color: $btn-default-color,
+  hover-color: $btn-hover-primary-bg,
+  active-color: $btn-active-primary-bg,
   background: $btn-default-bg,
   border: $btn-default-border,
-  hover-background: $btn-hover-default-bg,
+  hover-background: $btn-default-bg,
+  hover-border: $btn-hover-primary-bg,
   btn-hover-box-shadow: $btn-hover-default-box-shadow,
-  active-background: $btn-active-default-bg,
-  btn-disabled-color: $btn-disabled-color,
-  btn-disabled-bg: $brand-pure,
-  btn-disabled-border: $btn-disabled-border,
+  active-background: $btn-default-bg,
+  active-border: $btn-active-primary-bg,
+  btn-disabled-color: $gray,
+  btn-disabled-bg: $gray-lighter,
+  btn-disabled-border: $btn-disabled-border
+);
+
+$btn-text-args: (
+  color: $btn-primary-bg,
+  hover-color: $btn-hover-primary-bg,
+  active-color: $btn-active-primary-bg,
+  background: $btn-default-bg,
+  border: transparent,
+  hover-background: $btn-text-hover-bg,
+  hover-border: $btn-text-hover-bg,
+  btn-hover-box-shadow: $btn-hover-default-box-shadow,
+  active-background: $btn-active-text-bg,
+  active-border: $btn-active-text-bg,
+  btn-disabled-color: $gray,
+  btn-disabled-bg: $btn-dash-disabled-bg,
+  btn-disabled-border: $btn-dash-disabled-bg
 );
 
 .btn-primary {
@@ -100,11 +122,26 @@ $btn-default-args: (
 }
 
 .btn-secondary {
-  @include button-variant($btn-secondary-args...);
+  @include button-variant($btn-default-args...);
 }
 
 .btn-default {
   @include button-variant($btn-default-args...);
+}
+
+.btn-dashed {
+  @include button-variant($btn-default-args...);
+  border-style: $btn-dash-border-type;
+  &:disabled {
+    background-color: $btn-dash-disabled-bg;
+    &:hover {
+      background-color: $btn-dash-disabled-bg;
+    }
+  }
+}
+
+.btn-text {
+  @include button-variant($btn-text-args...);
 }
 
 // Remove all backgrounds
@@ -174,7 +211,8 @@ $btn-default-args: (
     $btn-padding-y-lg,
     $btn-padding-x-lg,
     $btn-font-size-lg,
-    $btn-border-radius
+    $btn-line-height-lg,
+    $btn-height-lg
   );
 }
 
@@ -184,15 +222,47 @@ $btn-default-args: (
     $btn-padding-y-sm,
     $btn-padding-x-sm,
     $btn-font-size-sm,
-    $btn-border-radius
+    $btn-line-height-sm,
+    $btn-height-sm
+  );
+}
+.btn-xs {
+  // line-height: ensure proper height of button next to small input
+  @include button-size(
+    $btn-padding-y-xs,
+    $btn-padding-x-xs,
+    $btn-font-size-xs,
+    $btn-line-height-xs,
+    $btn-height-xs
   );
 }
 
+.btn-icon-lg {
+  @include button-icon-size($btn-icon-padding-lg, $btn-icon-size-lg);
+}
+.btn-icon-md {
+  @include button-icon-size($btn-icon-padding-md, $btn-icon-size-default);
+}
+.btn-icon-sm {
+  @include button-icon-size($btn-icon-padding-sm, $btn-icon-size-default);
+}
+.btn-icon-xs {
+  @include button-icon-size($btn-icon-padding-xs, $btn-icon-size-default);
+}
 // Pill Button
 .btn-pill {
-  border-radius: 200px;
+  border-radius: 50%;
 }
 
 .btn-block {
   width: 100%;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

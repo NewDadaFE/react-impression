@@ -3,15 +3,10 @@
 **主题**
 
 ```js
-const buttonClickHandle = () => {
-  console.log('Button clicked')
-}
-;<Row className="no-margin">
+<Row className="no-margin">
   <Col col="2">
     <CardBlock>
-      <Button type="button" theme="primary" onClick={buttonClickHandle}>
-        主题色
-      </Button>
+      <Button theme="primary">主题色</Button>
     </CardBlock>
   </Col>
   <Col col="2">
@@ -21,7 +16,24 @@ const buttonClickHandle = () => {
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="secondary">副主题色</Button>
+      <Button theme="dashed" shape="pill">
+        虚线
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="text">文字</Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus">文字</Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" />
     </CardBlock>
   </Col>
 </Row>
@@ -30,34 +42,45 @@ const buttonClickHandle = () => {
 **不可用状态**
 
 ```js
-const buttonClickHandle = () => {
-  console.log('Button clicked')
-}
-;<Row className="no-margin">
+<Row className="no-margin">
   <Col col="2">
     <CardBlock>
-      <Button
-        disabled
-        type="button"
-        theme="primary"
-        onClick={buttonClickHandle}
-      >
+      <Button theme="primary" disabled={true}>
         主题色
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button disabled theme="default">
+      <Button theme="default" disabled={true}>
         默认
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button disabled theme="secondary">
-        副主题色
+      <Button theme="dashed" disabled={true}>
+        虚线
       </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="text" disabled={true}>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" disabled={true}>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" disabled={true} />
     </CardBlock>
   </Col>
 </Row>
@@ -67,54 +90,44 @@ const buttonClickHandle = () => {
 
 ```js
 <Row className="no-margin">
-  <Col col="4">
+  <Col col="2">
     <CardBlock>
-      <Button theme="primary" size="sm">
-        小的型号
+      <Button theme="primary" size="xs" title="">
+        超小
       </Button>
     </CardBlock>
   </Col>
-  <Col col="4">
+  <Col col="2">
     <CardBlock>
-      <Button theme="primary">普通大小</Button>
+      <Button theme="primary" size="sm" title="">
+        小杯
+      </Button>
     </CardBlock>
   </Col>
-  <Col col="4">
+  <Col col="2">
     <CardBlock>
-      <Button theme="primary" size="lg">
-        大的型号
+      <Button theme="primary" size="md" title="">
+        中杯
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="primary" size="lg" title="">
+        大杯
       </Button>
     </CardBlock>
   </Col>
 </Row>
 ```
 
-**链接**
+**按钮形状**
+当按钮只有 icon 的时候才生效
 
 ```js
-<Row className="no-margin">
-  <Col col="2">
-    <CardBlock>
-      <Button theme="primary" href="https://www.github.com">
-        主题色
-      </Button>
-    </CardBlock>
-  </Col>
-  <Col col="2">
-    <CardBlock>
-      <Button theme="default" href="https://www.github.com">
-        默认
-      </Button>
-    </CardBlock>
-  </Col>
-  <Col col="2">
-    <CardBlock>
-      <Button theme="secondary" href="https://www.github.com">
-        副主题色
-      </Button>
-    </CardBlock>
-  </Col>
-</Row>
+<div>
+  <Button icon="plus" shape="pill" size="lg" />
+</div>
 ```
 
 **block 按钮**
@@ -127,24 +140,58 @@ const buttonClickHandle = () => {
   <Button theme="default" block className="offset-b">
     默认主题样式
   </Button>
-  <Button theme="secondary" block>
+  <Button theme="dashed" block className="offset-b">
     副主题样式
   </Button>
 </div>
 ```
 
-**图标按钮**
+**加载中 按钮**
 
 ```js
 <div>
-  <Button theme="primary" className="offset-r"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
-  <Button theme="default" className="offset-r"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
-  <Button theme="secondary"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
-</div>
-<div className="offset-t">
-  <Button theme="primary" className="offset-r"><Ico type="download" /></Button>
-  <Button theme="default" className="offset-r"><Ico type="download" /></Button>
-  <Button theme="secondary"><Ico type="download" /></Button>
+  <Row className="no-margin">
+    <Col col="2">
+      <CardBlock>
+        <Button theme="primary" loading={true}>
+          主题色
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button theme="default" loading={true}>
+          默认
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button theme="dashed" shape="pill" loading={true}>
+          虚线
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button theme="text" loading={true}>
+          文字
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button icon="plus" loading={true}>
+          文字
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button icon="plus" loading={true} />
+      </CardBlock>
+    </Col>
+  </Row>
 </div>
 ```
 

@@ -1,6 +1,6 @@
-$btn-padding-x: rem(30px) !default;
-$btn-padding-y: rem(10.5px) !default;
-$btn-line-height: 1.25 !default;
+$btn-padding-x: rem(15px) !default;
+$btn-padding-y: rem(6px) !default;
+$btn-line-height: rem(22px) !default;
 $btn-font-size: rem(14px) !default;
 
 $btn-hover-primary-box-shadow: 0px rem(2px) rem(10px) 0px
@@ -11,19 +11,25 @@ $btn-hover-default-box-shadow: 0px rem(2px) rem(10px) 0px
 $btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !default;
 $btn-disabled-color: $gray !default;
 $btn-disabled-bg: $gray-light !default;
-$btn-disabled-border: $gray-light!default;
+$btn-disabled-border: $gray-light !default;
 
 $btn-primary-color: $brand-pure !default;
 $btn-primary-bg: $brand-primary !default;
-$btn-active-primary-bg: #3567CC !default;
+$btn-active-primary-bg: #0083e0 !default;
 $btn-primary-border: $btn-primary-bg !default;
-$btn-hover-primary-bg: #3C74E6 !default;
+$btn-hover-primary-bg: #0095ff !default;
 
-$btn-default-color: #12203d !default;
+$btn-default-color: #595959 !default;
 $btn-default-bg: $brand-pure !default;
 $btn-active-default-bg: #f7f9fc !default;
-$btn-default-border: $gray-light!default;
+$btn-default-border: $gray-light !default;
 $btn-hover-default-bg: $brand-pure !default;
+
+$btn-dash-border-type: dashed !default;
+$btn-dash-disabled-bg: #fff !default;
+
+$btn-text-hover-bg: #e6f3fd !default;
+$btn-active-text-bg: #e4f2fb !default;
 
 $btn-secondary-color: $brand-primary !default;
 $btn-secondary-bg: $brand-pure !default;
@@ -32,13 +38,20 @@ $btn-secondary-border: $brand-primary !default;
 
 $btn-link-disabled-color: $gray-light !default;
 
-$btn-padding-x-sm: rem(10px) !default;
-$btn-padding-y-sm: rem(7.51px) !default;
+$btn-padding-x-sm: rem(15px) !default;
+$btn-padding-y-sm: rem(5px) !default;
 $btn-font-size-sm: rem(12px) !default;
+$btn-line-height-sm: rem(20px) !default;
 
-$btn-padding-x-lg: rem(80px) !default;
-$btn-padding-y-lg: rem(20.01px) !default;
-$btn-font-size-lg: rem(18px) !default;
+$btn-padding-x-lg: rem(19px) !default;
+$btn-padding-y-lg: rem(7px) !default;
+$btn-font-size-lg: rem(16px) !default;
+$btn-line-height-lg: rem(24px) !default;
+
+$btn-padding-x-xs: rem(11px) !default;
+$btn-padding-y-xs: rem(3px) !default;
+$btn-font-size-xs: rem(12px) !default;
+$btn-line-height-xs: rem(20px) !default;
 
 $btn-block-spacing-y: rem(5px) !default;
 $btn-toolbar-margin: rem(15px) !default;
@@ -47,8 +60,26 @@ $split-btn-dropdown-toggle-padding-x: rem(8px) !default;
 $split-btn-lg-dropdown-toggle-padding-x: rem(12px) !default;
 
 $btn-border-radius: rem(2px) !default;
+$btn-border-radius-icon: 50% !default;
 
 $btn-group-active-box-shadow: rem(2px) rem(2px) rem(6px) $inverse-level-1,
   rem(-1px) rem(-1px) rem(6px) $inverse-level-1 !default;
 $btn-group-padding-x-sm: rem(20px) !default;
 $btn-group-padding-y-sm: rem(9px) !default;
+
+// icon button 的padding md，sm，xs共用一个padding
+$btn-icon-size-lg: rem(20px);
+$btn-icon-padding-lg: rem(9px);
+
+$btn-icon-size-default: rem(16px);
+$btn-icon-padding-md: rem(9px);
+
+$btn-icon-padding-sm: rem(7px);
+
+$btn-icon-padding-xs: rem(7px);
+
+// btn-height 只有在icon 和 children 同时存在的情况下使用 消除 二者因空格而使button的高度发生改变的情况
+$btn-height-lg:rem(40px);
+$btn-height-md:rem(36px);
+$btn-height-sm:rem(32px);
+$btn-height-xs:rem(28px);

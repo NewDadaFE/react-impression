@@ -12,26 +12,35 @@
   $active-background,
   $btn-disabled-color,
   $btn-disabled-bg,
-  $btn-disabled-border
+  $btn-disabled-border,
+  $hover-color,
+  $hover-border,
+  $active-color,
+  $active-border
 ) {
-  $hover-border: darken($border, 10%);
-
   color: $color;
   background-color: $background;
   border-color: $border;
 
   &:hover {
-    color: $color;
+    color: $hover-color;
     background-color: $hover-background;
     border-color: $hover-border;
-    box-shadow: $btn-hover-box-shadow;
+    // box-shadow: $btn-hover-box-shadow;
+    .btn-loading-circle {
+      .btn-loading-addon {
+        border-top-color: $hover-color;
+        border-right-color: $hover-color;
+      }
+    }
   }
 
   &:active,
   .open > &.dropdown-toggle {
-    color: $color;
+    color: $active-color;
     background-color: $active-background;
     background-image: none;
+    border-color: $active-border;
     box-shadow: none;
   }
 
@@ -45,6 +54,20 @@
       color: $btn-disabled-color;
       background-color: $btn-disabled-bg;
       border-color: $btn-disabled-border;
+    }
+  }
+  .btn-loading-circle {
+    .btn-loading-addon {
+      border: $loading-circle-line-height solid transparent;
+      border-top-color: $color;
+      border-right-color: $color;
+      border-radius: 100%;
+      animation: spinner $loading-circle-animation-duration linear infinite;
+    }
+
+    .btn-loading-message {
+      color: inherit;
+      margin-top: $loading-circle-height * 0.5 + rem(16px);
     }
   }
 }
@@ -89,8 +112,35 @@
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $btn-height
+) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
-  border-radius: $border-radius;
+  line-height: $line-height;
+  .btn-loading-circle {
+    .btn-loading-addon {
+      display: inline-block;
+      width: $font-size;
+      height: $font-size;
+    }
+
+    .btn-loading-message {
+      margin-top: $loading-circle-height * 0.5 + rem(16px);
+    }
+  }
+  &.btn-height {
+    height: $btn-height;
+  }
+}
+
+// icon button size
+@mixin button-icon-size($padding, $size) {
+  padding: $padding;
+  font-size: $size;
+  line-height: $size;
 }
