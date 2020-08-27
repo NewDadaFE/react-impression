@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from '../Input'
+import { Input, Select, SelectOption } from '../index'
 
 export default class Pagination extends React.PureComponent {
   static propTypes = {
@@ -45,13 +45,46 @@ export default class Pagination extends React.PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+    /**
+     * 是否展示pageSize切换器
+     */
+    showSizeChanger: PropTypes.bool,
+    /**
+     * 指定每页可以展示多少条
+     */
+    pageSizeOptions: PropTypes.array,
+    /**
+     * pageSize变化回调, 参数列表pageSize
+     */
+    onShowSizeChange: PropTypes.func,
+    /**
+     * 每页条数
+     */
+    pageSize: PropTypes.number,
+    /**
+     * 全局禁用分页
+     */
+    disabled: PropTypes.bool,
+    /**
+     * 默认每页条数
+     */
+    defaultPageSize: PropTypes.bool,
+    /**
+     * 翻页器尺寸
+     */
+    size: PropTypes.oneOf(['sm', 'md']),
   }
 
   static defaultProps = {
-    scope: 2,
+    scope: 3,
     activePage: 1,
     totalPage: 1,
     total: 0,
+    defaultPageSize: 10,
+    disabled: false,
+    size: 'md',
+    showSizeChanger: false,
+    pageSizeOptions: [10, 20, 50, 100],
   }
 
   constructor(props) {
@@ -160,6 +193,10 @@ export default class Pagination extends React.PureComponent {
     }
     onSelect(pageNo)
   }
+  // pageSize
+  changePageSize = value => {
+    console.log('value', value)
+  }
 
   render() {
     const {
@@ -171,18 +208,26 @@ export default class Pagination extends React.PureComponent {
       nextContent,
       showQuickJumper,
       showTotal,
+      size,
+      showSizeChanger,
+      pageSizeOptions,
+      pageSize,
+      defaultPageSize,
       ...others
     } = this.props
 
     const pageList = this.getPageList()
-
+    const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
+    const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
     return (
       <div className={classnames('text-center', className)}>
         <ul {...others} className='pagination'>
           <li
-            className={classnames('page-item', { disabled: activePage <= 1 })}
+            className={classnames(pageItemClass, {
+              disabled: activePage <= 1,
+            })}
           >
-            <span className='page-link' onClick={this.prevPageHandle}>
+            <span className={pageLinkClass} onClick={this.prevPageHandle}>
               {lastContent || <i className='dada-ico dada-ico-angle-left' />}
             </span>
           </li>
@@ -190,34 +235,48 @@ export default class Pagination extends React.PureComponent {
             child ? (
               <li
                 key={`${child}-${index}`}
-                className={classnames('page-item', {
+                className={classnames(pageItemClass, {
                   active: child === (activePage || 1),
                 })}
               >
                 <span
-                  className='page-link'
+                  className={pageLinkClass}
                   onClick={() => this.goPageHandle(child)}
                 >
                   {child}
                 </span>
               </li>
             ) : (
-              <li key={`${child}-${index}`} className='page-item disabled'>
+              <li
+                key={`${child}-${index}`}
+                className={classnames('disabled', pageItemClass)}
+              >
                 <i className='dada-ico dada-ico-ellipsis-h' />
               </li>
             )
           )}
           <li
-            className={classnames('page-item', {
+            className={classnames(pageItemClass, {
               disabled: activePage >= totalPage,
             })}
           >
-            <span className='page-link' onClick={this.nextPageHandle}>
+            <span className={pageLinkClass} onClick={this.nextPageHandle}>
               {nextContent || <i className='dada-ico dada-ico-angle-right' />}
             </span>
           </li>
         </ul>
 
+        {showSizeChanger && (
+          <Select
+            value={pageSize}
+            defaultValue={defaultPageSize}
+            onChange={this.changePageSize}
+          >
+            {pageSizeOptions.map(item => (
+              <SelectOption value={item}>{`${item}条/页`}</SelectOption>
+            ))}
+          </Select>
+        )}
         {showTotal && (
           <div className='pagination-total'>
             共<span>{totalPage || 1}</span>页<span>/</span>
@@ -235,7 +294,7 @@ export default class Pagination extends React.PureComponent {
               onChange={this.handleInputChange}
             />
             <span>页</span>
-            <div className='page-link' onClick={this.handleSkip}>
+            <div className={pageLinkClass} onClick={this.handleSkip}>
               GO
             </div>
           </div>

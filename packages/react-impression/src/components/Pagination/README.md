@@ -14,7 +14,7 @@ initialState = {
 }
 ;<Pagination
   onSelect={onSelectHandle}
-  scope={2}
+  scope={3}
   totalPage={state.totalPage}
   activePage={state.activePage}
 />
@@ -34,7 +34,8 @@ initialState = {
 }
 ;<Pagination
   onSelect={onSelectHandle}
-  scope={2}
+  scope={3}
+  showSizeChanger={true}
   totalPage={state.totalPage}
   activePage={state.activePage}
 />
@@ -54,7 +55,7 @@ initialState = {
 }
 ;<Pagination
   onSelect={onSelectHandle}
-  scope={2}
+  scope={3}
   totalPage={state.totalPage}
   activePage={state.activePage}
   lastContent="上一页"
@@ -105,6 +106,30 @@ initialState = {
   activePage={state.activePage}
   total={state.total}
   showTotal
+/>
+```
+
+**小尺寸翻页器**
+
+```js
+const onSelectHandle = pageNo => {
+  setState({
+    activePage: pageNo,
+  })
+}
+initialState = {
+  totalPage: 50,
+  activePage: 1,
+  total: 500,
+}
+;<Pagination
+  onSelect={onSelectHandle}
+  scope={2}
+  totalPage={state.totalPage}
+  activePage={state.activePage}
+  total={state.total}
+  showTotal
+  size="sm"
 />
 ```
 
