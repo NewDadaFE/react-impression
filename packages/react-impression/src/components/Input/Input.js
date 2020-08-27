@@ -7,6 +7,13 @@ import Upload from '../Upload'
 import TimeSelect from '../TimeSelect'
 import Ico from '../Ico'
 
+const inputAddonSizeMap = {
+  xs: 'sm',
+  sm: 'sm',
+  md: 'sm',
+  lg: 'md',
+}
+
 export default class Input extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -200,12 +207,11 @@ export default class Input extends React.PureComponent {
    * @memberof Input
    */
   handleShowClear = () => {
-    !this.props.disabled &&
-      this.refMain &&
-      this.refMain.value &&
+    if (!this.props.disabled && this.refMain && this.refMain.value) {
       this.setState({
         showClear: true,
       })
+    }
   }
 
   /**
@@ -259,26 +265,31 @@ export default class Input extends React.PureComponent {
 
     let { showDatePicker, showClear } = this.state
 
-    children &&
-      (children = React.cloneElement(children, {
+    if (children) {
+      children = React.cloneElement(children, {
         className: classnames('input-addon', children.props.className),
-      }))
+      })
+    }
 
-    addonBefore &&
-      (addonBefore = React.cloneElement(addonBefore, {
+    if (addonBefore) {
+      addonBefore = React.cloneElement(addonBefore, {
         className: classnames(
           'dada-input-addon-before',
           addonBefore.props.className
         ),
-      }))
+        size: inputAddonSizeMap[size],
+      })
+    }
 
-    addonAfter &&
-      (addonAfter = React.cloneElement(addonAfter, {
+    if (addonAfter) {
+      addonAfter = React.cloneElement(addonAfter, {
         className: classnames(
           'dada-input-addon-after',
           addonAfter.props.className
         ),
-      }))
+        size: inputAddonSizeMap[size],
+      })
+    }
 
     switch (type) {
       case 'date':
@@ -495,11 +506,9 @@ export default class Input extends React.PureComponent {
               ref={ref => (this.refMain = ref)}
               value={value}
               defaultValue={defaultValue}
-              className={classnames(
-                'form-control',
-                'input-field',
-                size && `form-control-${size}`
-              )}
+              className={classnames('form-control', 'input-field', {
+                [`form-control-${size}`]: !!size,
+              })}
               onChange={this.handleInputChange}
               disabled={disabled}
               placeholder={placeholder}
