@@ -37,7 +37,7 @@ export default class InputGroupInput extends React.PureComponent {
       <input
         {...others}
         type={type}
-        className={classnames('form-control', className)}
+        className={classnames('form-control', 'input-field', className)}
         placeholder={placeholder}
         ref={ref => (this.refMain = ref)}
       />

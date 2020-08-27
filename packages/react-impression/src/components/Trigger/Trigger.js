@@ -72,6 +72,10 @@ Trigger.propTypes = {
    * 弹出层显隐状态变化回调，参数列表：popupVisible
    */
   onPopupVisibleChange: PropTypes.func,
+  /**
+   * 弹出层动画
+   */
+  transitionName: PropTypes.oneOf(['zoom', 'scale']),
 }
 
 Trigger.defaultProps = {
@@ -90,7 +94,11 @@ function Trigger(props) {
     hideAction,
     popupVisible,
     onPopupVisibleChange,
+    transitionName,
+    stretch,
   } = props
+  // 延迟隐藏弹出层
+  const [delayShowPopup, setDelayShowPopup] = useState(false)
   // 弹出层显隐控制标记
   const [showPopup, setShowPopup] = useState(false)
   // popper 相关---开始
@@ -102,6 +110,7 @@ function Trigger(props) {
         name: 'computeStyles',
         options: {
           adaptive: true, // true by default
+          gpuAcceleration: !transitionName, // true by default
         },
       },
       {
@@ -112,7 +121,7 @@ function Trigger(props) {
       },
       {
         name: 'sameWidth',
-        enabled: props.stretch === 'sameWidth',
+        enabled: stretch === 'sameWidth',
         phase: 'beforeWrite',
         requires: ['computeStyles'],
         fn: ({ state }) => {
@@ -125,7 +134,7 @@ function Trigger(props) {
         },
       },
     ],
-    []
+    [transitionName, stretch]
   )
   const { styles: popperStyles, attributes } = usePopper(
     referenceElement,
@@ -256,10 +265,19 @@ function Trigger(props) {
       {createPortal(
         <div
           className={classNames('dada-trigger', props.popupClassName, {
-            'dada-trigger-hidden': !showPopup,
+            [`dada-trigger-popup-${transitionName}-enter`]:
+              transitionName && showPopup,
+            [`dada-trigger-popup-${transitionName}-leave`]:
+              transitionName && !showPopup,
+            'dada-trigger-hidden':
+              !transitionName || showPopup ? !showPopup : !delayShowPopup,
           })}
           ref={setPopperElement}
           style={{ ...popperStyles.popper, ...style }}
+          onAnimationEnd={() => {
+            if (!transitionName) return
+            setDelayShowPopup(showPopup)
+          }}
           {...attributes.popper}
         >
           {typeof popup === 'function' ? popup() : popup}

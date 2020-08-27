@@ -15,18 +15,18 @@ $input-border-hover: $brand-primary !default;
 // 占位文字颜色
 $input-placeholder-color: $disabled-color !default;
 // 输入框左右内间距
-$input-padding-x: rem(7px) !default;
+$input-padding-x: rem(8px) !default;
 // 最小号输入框
-$input-padding-y-xs: rem(3px) !default;
+$input-padding-y-xs: rem(4px) !default;
 $input-font-size-xs: rem(12px) !default;
 // 小号输入框
-$input-padding-y-sm: rem(5px) !default;
+$input-padding-y-sm: rem(6px) !default;
 $input-font-size-sm: rem(12px) !default;
 // 中号输入框
-$input-padding-y-md: rem(6px) !default;
+$input-padding-y-md: rem(7px) !default;
 $input-font-size-md: $font-size-base;
 // 大号输入框
-$input-padding-y-lg: rem(7px) !default;
+$input-padding-y-lg: rem(8px) !default;
 $input-font-size-lg: rem(16px) !default;
 
 $input-height-md: (

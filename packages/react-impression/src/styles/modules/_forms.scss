@@ -14,32 +14,10 @@ form {
   display: block;
   padding: $input-padding-y-md $input-padding-x;
   color: $input-color;
-  background-image: none;
-  background-clip: padding-box;
-  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 
   &::-ms-expand {
     background-color: transparent;
     border: 0;
-  }
-
-  // Customize the `:focus` state to imitate native WebKit styles.
-  @include form-control-focus();
-
-  // Placeholder
-  &::placeholder {
-    color: $input-placeholder-color;
-    opacity: 1;
-  }
-
-  &:disabled {
-    color: $input-disabled-color;
-    cursor: not-allowed;
-  }
-
-  &:focus {
-    position: relative;
-    z-index: 1;
   }
 }
 
@@ -181,11 +159,6 @@ input[type='month'] {
     vertical-align: middle;
   }
 
-  // Make static controls behave like regular ones
-  .form-control-static {
-    display: inline-block;
-  }
-
   .input-group {
     vertical-align: middle;
 
@@ -204,11 +177,6 @@ input[type='month'] {
     margin-bottom: 0;
     vertical-align: middle;
     font-weight: bold;
-  }
-
-  // Re-override the feedback icon.
-  .has-feedback .form-control-feedback {
-    top: 0;
   }
 }
 
@@ -231,6 +199,7 @@ input[type='month'] {
       margin-bottom: 0;
     }
   }
+  .input,
   .form-control {
     width: 100%;
   }
