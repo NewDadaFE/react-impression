@@ -16,52 +16,78 @@
 
     &:checked + .checkbox-addon {
       border-color: $checkbox-addon-checked-color;
+      background-color: $checkbox-addon-checked-color;
       i {
-        transform: scale(1);
-        color: $checkbox-addon-checked-color;
+        transform: scale($checkbox-addon-scale);
+        color: $checkbox-addon-bg-color;
+      }
+      &:hover {
+        border-color: $checkbox-addon-hover-color;
+        background-color: $checkbox-addon-hover-color;
+      }
+      &:active {
+        border-color: $checkbox-addon-press-color;
+        background-color: $checkbox-addon-press-color;
       }
     }
 
     &:disabled + .checkbox-addon {
       cursor: not-allowed;
-      border-color: $checkbox-addon-disabled-color;
-      i {
-        color: $checkbox-addon-disabled-color;
-      }
+      opacity: 0.2;
       & + .checkbox-label {
         cursor: not-allowed;
         color: $checkbox-addon-disabled-color;
       }
     }
+    &:disabled:not(:checked) + .checkbox-addon {
+      opacity: 1;
+      background-color: $gray-lighter;
+    }
 
-    &:not(:checked):not(:disabled) + .checkbox-addon:hover {
-      border-color: $checkbox-addon-checked-color;
+    &:not(:checked):not(:disabled) + .checkbox-addon {
+      &:hover {
+        border-color: $checkbox-addon-hover-color;
+      }
+      &:active {
+        border-color: $checkbox-addon-press-color;
+      }
     }
   }
 
   @at-root #{&}-indeterminate {
     > .checkbox-addon {
-      width: $checkbox-addon-padding * 2 + 4 +
-        round($checkbox-addon-i-size * $font-size-root); // padding + border + i标签的宽高
-      height: $checkbox-addon-padding * 2 + 4 +
-        round($checkbox-addon-i-size * $font-size-root);
       border-color: $checkbox-addon-checked-color;
-
-      &::before {
-        position: relative;
-        top: 50%;
-        display: block;
-        margin-top: -$border-width;
-        content: '';
-        border: $border-width solid $checkbox-addon-indeterminate-color;
+      // padding: $checkbox-indeterminate-padding;
+      &:hover {
+        border-color: $checkbox-addon-hover-color;
       }
-
+      &:active {
+        border-color: $checkbox-addon-press-color;
+      }
+      &::before {
+        position: absolute;
+        width: round($checkbox-indeterminate-i-size * $font-size-root);
+        height: round($checkbox-indeterminate-i-size * $font-size-root);
+        border-radius: 1px;
+        top: $checkbox-addon-offset-x;
+        left: $checkbox-addon-offset-y;
+        transition: $checkbox-addon-transtion;
+        display: block;
+        content: '';
+        background-color: $checkbox-addon-checked-color;
+        &:hover {
+          background-color: $checkbox-addon-hover-color;
+        }
+        &:active {
+          background-color: $checkbox-addon-press-color;
+        }
+      }
       i {
         display: none;
       }
     }
-    > input:disabled + .checkbox-addon::before {
-      border-color: $checkbox-addon-disabled-color;
+    > input:disabled + .checkbox-addon {
+      opacity: 0.2 !important;
     }
   }
 }
@@ -93,29 +119,23 @@
 .checkbox-addon {
   position: relative;
   display: inline-block;
-  padding: $checkbox-addon-padding;
   line-height: 1;
+  width: round($checkbox-addon-size * $font-size-root);
+  height: round($checkbox-addon-size * $font-size-root);
   transition: $checkbox-addon-transtion;
   vertical-align: middle;
   border: $checkbox-addon-border-width solid $checkbox-addon-border-color;
   border-radius: $checkbox-addon-border-radius;
-  background-color: $checkbox-addon-bg-color;
-
   i {
-    position: relative;
+    position: absolute;
     display: block;
-    width: round($checkbox-addon-i-size * $font-size-root);
-    height: round($checkbox-addon-i-size * $font-size-root);
+    width: round($checkbox-addon-size * $font-size-root);
+    height: round($checkbox-addon-size * $font-size-root);
     transition: $checkbox-addon-transtion;
     transform: scale(0);
     transform-origin: 50% 50%;
+    top: round($checkbox-addon-size  -$checkbox-addon-i-size) * $font-size-root / 2 - 1;
+    left: round($checkbox-addon-size  -$checkbox-addon-i-size) * $font-size-root / 2 - 1;
     color: transparent;
-    &::before {
-      position: absolute;
-      top: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
-      left: round(($checkbox-addon-scale - 1) / 2 * $font-size-root);
-      display: block;
-      transform: scale($checkbox-addon-scale);
-    }
   }
 }

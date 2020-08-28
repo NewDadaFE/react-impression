@@ -1,7 +1,38 @@
 .input {
-  display: inline-block;
-  vertical-align: middle;
+  @include border-radius($input-border-radius);
+
   position: relative;
+  display: inline-flex;
+  width: $input-width;
+  align-items: center;
+  vertical-align: middle;
+  border: $input-btn-border-width solid $input-border-color;
+  background-color: $brand-pure;
+
+  &:hover {
+    border-color: $input-border-hover;
+  }
+  // TODO 待Trigger组件完成后此处要清理
+  & > .datepicker,
+  & > .time-select-out {
+    position: fixed;
+  }
+}
+
+.dada-input-disabled {
+  cursor: not-allowed;
+  color: $input-disabled-color;
+  background-color: $input-disabled-bg;
+
+  & > .dada-input-addon-before,
+  & > .dada-input-addon-after,
+  & > .input-addon {
+    color: $input-disabled-color;
+  }
+
+  &:hover {
+    border-color: $input-border-color;
+  }
 }
 
 .form-horizontal {
@@ -12,41 +43,35 @@
 }
 
 .input-field {
-  &[readonly] {
-    cursor: pointer;
-    background: $brand-pure;
-    box-shadow: none;
-  }
+  overflow: hidden;
+  flex: 1;
+  border: none;
+  background-color: transparent;
 
-  &[disabled] {
-    cursor: not-allowed;
-    background: $input-bg-disabled;
-
-    + .input-addon {
-      cursor: not-allowed;
-    }
+  &:disabled {
+    background-color: transparent;
   }
 }
 
 .input-field-addon {
-  padding-right: 0.75rem * 2 + 0.5;
 }
 
-.input-pill {
-  border-radius: 10rem;
+.dada-input-addon-before {
+  padding-right: 1px;
+  padding-left: $input-padding-x;
+  color: $gray-light;
 }
 
+.dada-input-addon-after,
 .input-addon {
-  cursor: pointer;
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  z-index: 2;
-  padding: 0 1px;
-  transform: translateY(-50%);
-  opacity: 0.8;
+  padding-right: $input-padding-x;
+  padding-left: 1px;
+  color: $gray-light;
+}
 
+.dada-input-clear {
+  cursor: pointer;
   &:hover {
-    opacity: 1;
+    color: $gray-darker;
   }
 }

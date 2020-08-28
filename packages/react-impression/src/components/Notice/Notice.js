@@ -79,7 +79,7 @@ export default class Notice extends PureComponent {
         onMouseLeave={this.props.onMouseLeave}
       >
         <div className='notice-header'>
-          <i className={classnames(iconClass)} />
+          <i className={classnames(iconClass, 'dada-ico-xl')} />
         </div>
         <div className='notice-body'>
           {this.props.closeable && (

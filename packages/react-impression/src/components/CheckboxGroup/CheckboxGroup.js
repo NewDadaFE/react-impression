@@ -137,12 +137,10 @@ export default class CheckboxGroup extends React.PureComponent {
 
 CheckboxGroup.getValue = ref => {
   if (!ref) return undefined
-
   return ref.getValue()
 }
 
 CheckboxGroup.setValue = (ref, value) => {
   if (!ref) return
-
   ref.setValue(value)
 }

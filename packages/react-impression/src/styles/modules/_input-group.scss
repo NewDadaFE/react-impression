@@ -25,6 +25,7 @@
     }
 
     margin-bottom: 0;
+    border: $input-btn-border-width solid $input-border-color;
 
     &:focus,
     &:hover {
@@ -84,7 +85,7 @@
 //
 
 .input-group-addon {
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-padding-y-md $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
   font-weight: normal;
