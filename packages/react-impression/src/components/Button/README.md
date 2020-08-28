@@ -89,48 +89,72 @@
 **尺寸**
 
 ```js
-<Row className="no-margin">
+<Row>
   <Col col="2">
-    <CardBlock>
-      <Button theme="primary" size="xs" title="">
-        超小
-      </Button>
-    </CardBlock>
+    <Button theme="primary" size="xs" title="">
+      超小
+    </Button>
   </Col>
   <Col col="2">
-    <CardBlock>
-      <Button theme="primary" size="sm" title="">
-        小杯
-      </Button>
-    </CardBlock>
+    <Button theme="primary" size="sm" title="">
+      小杯
+    </Button>
   </Col>
   <Col col="2">
-    <CardBlock>
-      <Button theme="primary" size="md" title="">
-        中杯
-      </Button>
-    </CardBlock>
+    <Button theme="primary" size="md" title="">
+      中杯
+    </Button>
   </Col>
   <Col col="2">
-    <CardBlock>
-      <Button theme="primary" size="lg" title="">
-        大杯
-      </Button>
-    </CardBlock>
+    <Button theme="primary" size="lg" title="">
+      大杯
+    </Button>
   </Col>
 </Row>
 ```
 
-**按钮形状**
-当按钮只有 icon 的时候才生效
+**图标**
 
-```js
-<div>
-  <Button icon="plus" shape="pill" size="lg" />
-</div>
+icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)。<br/>
+除了使用内置图标库的图标，也可以传入自定义图标组件。
+
+```javascript
+<Form>
+  <FormGroup>
+    <label>使用内置图标库：</label>
+    <Button icon="plus" />
+  </FormGroup>
+  <FormGroup>
+    <label>自定义图标：</label>
+    <Button icon={<span style={{ width: '16px', height: '16px' }}>A</span>} />
+  </FormGroup>
+</Form>
 ```
 
-**block 按钮**
+**圆形按钮**
+
+仅纯图标类型按钮生效。
+
+```js
+<Row>
+  <Col col="2">
+    <Button icon="plus" shape="circle" size="xs" />
+  </Col>
+  <Col col="2">
+    <Button icon="plus" shape="circle" size="sm" />
+  </Col>
+  <Col col="2">
+    <Button icon="plus" shape="circle" size="md">
+      children不会生效
+    </Button>
+  </Col>
+  <Col col="2">
+    <Button icon="plus" shape="circle" size="lg" />
+  </Col>
+</Row>
+```
+
+**块状按钮**
 
 ```js
 <div>
@@ -167,7 +191,7 @@
     </Col>
     <Col col="2">
       <CardBlock>
-        <Button theme="dashed" shape="pill" loading={true}>
+        <Button theme="dashed" loading={true}>
           虚线
         </Button>
       </CardBlock>

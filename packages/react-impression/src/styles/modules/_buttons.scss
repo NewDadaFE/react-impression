@@ -5,8 +5,9 @@
 //
 
 .btn {
-  display: inline-block;
-  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
@@ -18,8 +19,7 @@
     $btn-padding-y,
     $btn-padding-x,
     $btn-font-size,
-    $btn-line-height,
-    $btn-height-md
+    $btn-line-height
   );
 
   transition: $btn-transition;
@@ -48,10 +48,6 @@
     &:hover {
       box-shadow: none;
     }
-  }
-  .dada-ico,
-  .btn-loading-addon {
-    vertical-align: -0.1em;
   }
 
   & > span {
@@ -211,8 +207,7 @@ $btn-text-args: (
     $btn-padding-y-lg,
     $btn-padding-x-lg,
     $btn-font-size-lg,
-    $btn-line-height-lg,
-    $btn-height-lg
+    $btn-line-height-lg
   );
 }
 
@@ -222,8 +217,7 @@ $btn-text-args: (
     $btn-padding-y-sm,
     $btn-padding-x-sm,
     $btn-font-size-sm,
-    $btn-line-height-sm,
-    $btn-height-sm
+    $btn-line-height-sm
   );
 }
 .btn-xs {
@@ -232,8 +226,7 @@ $btn-text-args: (
     $btn-padding-y-xs,
     $btn-padding-x-xs,
     $btn-font-size-xs,
-    $btn-line-height-xs,
-    $btn-height-xs
+    $btn-line-height-xs
   );
 }
 
@@ -250,7 +243,7 @@ $btn-text-args: (
   @include button-icon-size($btn-icon-padding-xs, $btn-icon-size-default);
 }
 // Pill Button
-.btn-pill {
+.btn-circle {
   border-radius: 50%;
 }
 

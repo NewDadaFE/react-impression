@@ -31,6 +31,7 @@
       .btn-loading-addon {
         border-top-color: $hover-color;
         border-right-color: $hover-color;
+        border-bottom-color: $hover-color;
       }
     }
   }
@@ -58,10 +59,10 @@
   }
   .btn-loading-circle {
     .btn-loading-addon {
-      border: $loading-circle-line-height solid transparent;
-      border-top-color: $color;
-      border-right-color: $color;
+      border: $loading-circle-line-height solid $color;
+      border-left-color: transparent;
       border-radius: 100%;
+      vertical-align: text-bottom;
       animation: spinner $loading-circle-animation-duration linear infinite;
     }
 
@@ -112,13 +113,7 @@
 }
 
 // Button sizes
-@mixin button-size(
-  $padding-y,
-  $padding-x,
-  $font-size,
-  $line-height,
-  $btn-height
-) {
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
   line-height: $line-height;
@@ -133,9 +128,6 @@
       margin-top: $loading-circle-height * 0.5 + rem(16px);
     }
   }
-  &.btn-height {
-    height: $btn-height;
-  }
 }
 
 // icon button size
@@ -143,4 +135,9 @@
   padding: $padding;
   font-size: $size;
   line-height: $size;
+  .btn-loading-circle {
+    .btn-loading-addon {
+      vertical-align: initial;
+    }
+  }
 }

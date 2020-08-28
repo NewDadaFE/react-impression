@@ -76,10 +76,4 @@ $btn-icon-padding-md: rem(9px);
 
 $btn-icon-padding-sm: rem(7px);
 
-$btn-icon-padding-xs: rem(7px);
-
-// btn-height 只有在icon 和 children 同时存在的情况下使用 消除 二者因空格而使button的高度发生改变的情况
-$btn-height-lg: rem(40px);
-$btn-height-md: rem(36px);
-$btn-height-sm: rem(32px);
-$btn-height-xs: rem(28px);
+$btn-icon-padding-xs: rem(5px);

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Ico from '../Ico'
 
 const iconSize = {
-  xs: 'xs',
+  xs: 'sm',
   sm: 'sm',
   md: 'sm',
   lg: 'md',
@@ -45,17 +45,12 @@ export default class Button extends React.PureComponent {
     /**
      * 尺寸
      */
-    size: PropTypes.oneOf(['sm', 'lg', 'md', 'xs']),
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 
     /**
-     * 形状，可选值为pill
+     * 形状
      */
-    shape: PropTypes.string,
-
-    /**
-     * 是否为关闭样式按钮
-     */
-    close: PropTypes.bool,
+    shape: PropTypes.oneOf(['circle']),
 
     /**
      * 是否block元素
@@ -66,16 +61,16 @@ export default class Button extends React.PureComponent {
      * 按钮加载中的状态
      */
     loading: PropTypes.bool,
+
     /**
-     * 按钮的icon
+     * 按钮的图标
      */
-    icon: PropTypes.node,
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   }
 
   static defaultProps = {
     theme: 'primary',
     block: false,
-    close: false,
     outline: false,
   }
 
@@ -97,13 +92,16 @@ export default class Button extends React.PureComponent {
     } = this.props
     delete others.eventKey
     const btnSize = size
-      ? `btn${icon && !children ? '-icon' : ''}-${size}`
+      ? `btn${icon && (!children || shape) ? '-icon' : ''}-${size}`
       : icon
         ? `btn${!children ? '-icon' : ''}-md`
         : ''
-    const iconMargin = children && {
-      marginRight: theme === 'text' ? '8px' : '4px',
-    }
+    const iconMargin =
+      children && !shape
+        ? {
+          marginRight: theme === 'text' ? '8px' : '4px',
+        }
+        : {}
 
     return (
       <button
@@ -130,9 +128,12 @@ export default class Button extends React.PureComponent {
             {typeof icon === 'string' ? (
               <Ico type={icon} size={iconSize[size]} style={iconMargin} />
             ) : (
-              icon
+              icon &&
+              React.cloneElement(icon, {
+                style: { ...iconMargin, ...icon.props.style },
+              })
             )}
-            <span>{children}</span>
+            {shape !== 'circle' && <span>{children}</span>}
           </>
         )}
       </button>
