@@ -14,32 +14,10 @@ form {
   display: block;
   padding: $input-padding-y-md $input-padding-x;
   color: $input-color;
-  background-image: none;
-  background-clip: padding-box;
-  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 
   &::-ms-expand {
     background-color: transparent;
     border: 0;
-  }
-
-  // Customize the `:focus` state to imitate native WebKit styles.
-  @include form-control-focus();
-
-  // Placeholder
-  &::placeholder {
-    color: $input-placeholder-color;
-    opacity: 1;
-  }
-
-  &:disabled {
-    color: $input-disabled-color;
-    cursor: $cursor-disabled;
-  }
-
-  &:focus {
-    position: relative;
-    z-index: 1;
   }
 }
 
@@ -103,24 +81,6 @@ input[type='month'] {
   }
 }
 
-// Static form control text
-//
-// Apply class to an element to make any string of text align with labels in a
-// horizontal form layout.
-
-.form-control-static {
-  min-height: $input-height-md;
-  padding-top: $input-padding-y-md;
-  padding-bottom: $input-padding-y-md;
-  margin-bottom: 0;
-
-  &.form-control-sm,
-  &.form-control-lg {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
 // Form control sizing
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
@@ -128,6 +88,11 @@ input[type='month'] {
 //
 // The `.form-group-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
+.form-control-xs {
+  @include set-font-size($input-font-size-xs);
+
+  padding: $input-padding-y-xs $input-padding-x;
+}
 
 .form-control-sm {
   @include set-font-size($input-font-size-sm);
@@ -194,11 +159,6 @@ input[type='month'] {
     vertical-align: middle;
   }
 
-  // Make static controls behave like regular ones
-  .form-control-static {
-    display: inline-block;
-  }
-
   .input-group {
     vertical-align: middle;
 
@@ -217,11 +177,6 @@ input[type='month'] {
     margin-bottom: 0;
     vertical-align: middle;
     font-weight: bold;
-  }
-
-  // Re-override the feedback icon.
-  .has-feedback .form-control-feedback {
-    top: 0;
   }
 }
 
@@ -244,6 +199,7 @@ input[type='month'] {
       margin-bottom: 0;
     }
   }
+  .input,
   .form-control {
     width: 100%;
   }

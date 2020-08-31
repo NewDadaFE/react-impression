@@ -15,11 +15,11 @@
 		.select-tags,
 		.select-selection {
 			background: $select-disable-bg;
-			cursor: $cursor-disabled;
+			cursor: not-allowed;
 			color: $select-selection-color;
 		}
 		.tag {
-			cursor: $cursor-disabled;
+			cursor: not-allowed;
 		}
 	}
 	.select-tags {
@@ -260,7 +260,7 @@
 	}
 
 	&.disabled {
-		cursor: $cursor-disabled;
+		cursor: not-allowed;
 		color: $select-option-disable-color;
 	}
 	.select-group-inner & {
@@ -271,7 +271,7 @@
 	list-style-type: none;
 	padding: 0;
 	&.disabled {
-		cursor: $cursor-disabled;
+		cursor: not-allowed;
 		color: $select-option-disable-color;
 	}
 	.disabled & {

@@ -7,11 +7,20 @@ Input 组件支持类型的详细内容请参照 [原生 input 的 type 值](htt
 ```js
 <Row>
   <Col>
+    <Input size="xs" placeholder="最小尺寸" />
+  </Col>
+</Row>
+<Row>
+  <Col>
     <Input size="sm" placeholder="小尺寸" />
   </Col>
+</Row>
+<Row>
   <Col>
     <Input placeholder="默认尺寸" />
   </Col>
+</Row>
+<Row>
   <Col>
     <Input size="lg" placeholder="大尺寸" />
   </Col>
@@ -19,6 +28,8 @@ Input 组件支持类型的详细内容请参照 [原生 input 的 type 值](htt
 ```
 
 **文字类型**
+
+**clearable 属性**对文字类型输入框无效，可清除功能借助 **afterAddon 属性**可自行实现。
 
 ```js
 class InputExample extends React.Component {
@@ -35,7 +46,7 @@ class InputExample extends React.Component {
     return (
       <Form>
         <FormGroup>
-          <label>基础:</label>
+          <label>普通：</label>
           <Input
             type="text"
             placeholder="状态受控输入框"
@@ -44,7 +55,7 @@ class InputExample extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <label>附加图标:</label>
+          <label>附加图标：</label>
           <Input
             type="text"
             placeholder="请输入"
@@ -52,7 +63,7 @@ class InputExample extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <label>可清除:</label>
+          <label>可清除：</label>
           <Input
             type="text"
             ref="clearInput"
@@ -68,51 +79,66 @@ class InputExample extends React.Component {
 ;<InputExample />
 ```
 
+**长文本类型**
+
+默认可以在垂直方向进行拖拽拉伸，若想关闭拖拽效果需要自定义 style 样式，设置 **resize: none**。
+
+```javascript
+<Form>
+  <FormGroup>
+    <label>普通：</label>
+    <Input type="textarea" placeholder="占位提示文案" />
+  </FormGroup>
+  <FormGroup>
+    <label>禁用：</label>
+    <Input type="textarea" placeholder="占位提示文案" disabled />
+  </FormGroup>
+  <FormGroup>
+    <label>自定义样式：</label>
+    <Input
+      type="textarea"
+      placeholder="占位提示文案"
+      style={{ width: '300px', resize: 'none' }}
+    />
+  </FormGroup>
+</Form>
+```
+
 **日期类型**
 
+日期类型输入框有 5 种：年份、月份、日期、时间、秒。<br/>
+**clearable 属性**仅对日期类型输入框生效，clearable 为 true 时，鼠标悬停到输入框会出现清除图标，点击触发 onChange 事件，回传空字符串。<br/>
+更多用法请移步 [DatePicker 日期选择](#datepicker)。
+
 ```js
-<Row>
-  <Col>
-    <Form>
-      <FormGroup>
-        <label>基础:</label>
-        <Input type="date" style={{ width: 200 }} />
-      </FormGroup>
-    </Form>
-  </Col>
-  <Col>
-    <Form>
-      <FormGroup>
-        <label>默认值:</label>
-        <Input type="date" defaultValue="2016-05-29" style={{ width: 200 }} />
-      </FormGroup>
-    </Form>
-  </Col>
-  <Col>
-    <Form>
-      <FormGroup>
-        <label>禁用状态:</label>
-        <Input
-          type="date"
-          defaultValue="2016-05-29"
-          disabled
-          style={{ width: 200 }}
-        />
-      </FormGroup>
-    </Form>
-  </Col>
-  <Col>
-    <Form>
-      <FormGroup>
-        <label>时间:</label>
-        <Input type="time" style={{ width: 200 }} />
-      </FormGroup>
-    </Form>
-  </Col>
-</Row>
+<Form>
+  <FormGroup>
+    <label>年份：</label>
+    <Input type="year" />
+  </FormGroup>
+  <FormGroup>
+    <label>月份：</label>
+    <Input type="month" />
+  </FormGroup>
+  <FormGroup>
+    <label>日期：</label>
+    <Input type="date" />
+  </FormGroup>
+  <FormGroup>
+    <label>时间：</label>
+    <Input type="time" />
+  </FormGroup>
+  <FormGroup>
+    <label>秒：</label>
+    <Input type="second" />
+  </FormGroup>
+</Form>
 ```
 
 **可搜索类型**
+
+可搜索类型命名上由于历史原因不够准确，实际表现是输入框为只读状态，接受 onClick 回调。<br/>
+带搜索功能的输入框请移步 [Search 搜索](#search)。
 
 ```js
 class Example extends React.Component {
@@ -147,28 +173,11 @@ class Example extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col>
-            <Form>
-              <FormGroup>
-                <label>基础:</label>
-                <Input
-                  type="search"
-                  onClick={this.handleToggleModal}
-                  value={this.state.city.name}
-                />
-              </FormGroup>
-            </Form>
-          </Col>
-          <Col>
-            <Form>
-              <FormGroup>
-                <label>禁用状态:</label>
-                <Input type="search" value="上海" disabled />
-              </FormGroup>
-            </Form>
-          </Col>
-        </Row>
+        <Input
+          type="search"
+          onClick={this.handleToggleModal}
+          value={this.state.city.name}
+        />
         {this.state.show && (
           <Modal
             size={this.state.size}

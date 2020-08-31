@@ -77,6 +77,7 @@ module.exports = {
         'NavbarLink',
         'Pagination',
         'Sidebar*',
+        'TextLink',
       ]),
     },
     {
@@ -88,6 +89,7 @@ module.exports = {
         'Form*',
         'Input*',
         'Radio*',
+        'Search',
         'Select*',
         'Switch',
         'Upload',
