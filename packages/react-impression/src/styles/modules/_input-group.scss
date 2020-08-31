@@ -5,7 +5,7 @@
 .input-group {
   position: relative;
   z-index: $zindex-input;
-  width: 100%;
+  min-width: $input-width;
 
   @if $enable-flex {
     display: inline-flex;
@@ -84,6 +84,12 @@
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   @extend .form-control-sm;
+}
+
+.input-group-xs > .dada-input-group-input > .form-control,
+.input-group-xs > .input-group-addon,
+.input-group-xs > .input-group-btn > .btn {
+  @extend .form-control-xs;
 }
 
 //
