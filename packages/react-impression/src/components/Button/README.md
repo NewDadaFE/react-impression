@@ -133,7 +133,7 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
 
 **圆形按钮**
 
-仅纯图标类型按钮生效。
+仅纯图标类型按钮生效，指定 shape 为 circle 时，icon 必须有值，且 children 无效。
 
 ```js
 <Row>
