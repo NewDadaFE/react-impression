@@ -24,23 +24,12 @@ export default class Button extends React.PureComponent {
     /**
      * 主题样式
      */
-    theme: PropTypes.oneOf([
-      'primary',
-      'secondary',
-      'default',
-      'dashed',
-      'text',
-    ]),
+    theme: PropTypes.oneOf(['primary', 'secondary', 'dashed', 'text']),
 
     /**
      * click事件
      */
     onClick: PropTypes.func,
-
-    /**
-     * 是否outline
-     */
-    outline: PropTypes.bool,
 
     /**
      * 尺寸
@@ -71,13 +60,12 @@ export default class Button extends React.PureComponent {
   static defaultProps = {
     theme: 'primary',
     block: false,
-    outline: false,
+    size: 'md',
   }
 
   render() {
-    let {
+    const {
       theme,
-      outline,
       size,
       shape,
       className,
@@ -91,30 +79,28 @@ export default class Button extends React.PureComponent {
       ...others
     } = this.props
     delete others.eventKey
-    const btnSize = size
-      ? `btn${icon && (!children || shape) ? '-icon' : ''}-${size}`
-      : icon
-        ? `btn${!children ? '-icon' : ''}-md`
-        : ''
-    const iconMargin =
-      children && !shape
-        ? {
-          marginRight: theme === 'text' ? '8px' : '4px',
-        }
-        : {}
+
+    // 判断按钮是否为纯图标按钮：无children 或者 shape 为 circle
+    const isIconBtn = !children || shape === 'circle'
+
+    const btnSize = isIconBtn ? `btn-icon-${size}` : `btn-${size}`
+    // 纯图标按钮不需要设置外边距，在文本按钮和普通按钮中，图标右侧外边距有差异
+    const iconMargin = isIconBtn
+      ? {}
+      : { marginRight: theme === 'text' ? '8px' : '4px' }
 
     return (
       <button
         {...others}
         onClick={onClick}
         className={classnames(
-          !close && 'btn',
-          !close && `btn${outline ? '-outline' : ''}-${theme}`,
+          {
+            [`btn btn-${theme}`]: !close,
+            [`btn-${shape}`]: shape && icon,
+            close: close,
+            'btn-block': block,
+          },
           btnSize,
-          shape && icon && `btn-${shape}`,
-          close && 'close',
-          block && 'btn-block',
-          icon && 'btn-height',
           className
         )}
       >
@@ -133,6 +119,7 @@ export default class Button extends React.PureComponent {
                 style: { ...iconMargin, ...icon.props.style },
               })
             )}
+            {/* 如果是圆形按钮，则不支持 children 属性 */}
             {shape !== 'circle' && <span>{children}</span>}
           </>
         )}

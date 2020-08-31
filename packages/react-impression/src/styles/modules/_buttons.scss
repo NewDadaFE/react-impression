@@ -117,16 +117,13 @@ $btn-text-args: (
   @include button-variant($btn-primary-args...);
 }
 
-.btn-secondary {
-  @include button-variant($btn-default-args...);
-}
-
-.btn-default {
+.btn-secondary,
+.btn-default,
+.btn-dashed {
   @include button-variant($btn-default-args...);
 }
 
 .btn-dashed {
-  @include button-variant($btn-default-args...);
   border-style: $btn-dash-border-type;
   &:disabled {
     background-color: $btn-dash-disabled-bg;
@@ -138,19 +135,6 @@ $btn-text-args: (
 
 .btn-text {
   @include button-variant($btn-text-args...);
-}
-
-// Remove all backgrounds
-.btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg);
-}
-
-.btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border);
-}
-
-.btn-outline-default {
-  @include button-outline-variant($btn-default-border);
 }
 
 //

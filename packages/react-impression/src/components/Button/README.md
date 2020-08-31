@@ -6,17 +6,17 @@
 <Row className="no-margin">
   <Col col="2">
     <CardBlock>
-      <Button theme="primary">主题色</Button>
+      <Button theme="primary">主要</Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="default">默认</Button>
+      <Button theme="secondary">次要</Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="dashed" shape="pill">
+      <Button theme="dashed" shape="circle">
         虚线
       </Button>
     </CardBlock>
@@ -45,42 +45,42 @@
 <Row className="no-margin">
   <Col col="2">
     <CardBlock>
-      <Button theme="primary" disabled={true}>
-        主题色
+      <Button theme="primary" disabled>
+        主要
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="default" disabled={true}>
-        默认
+      <Button theme="secondary" disabled>
+        次要
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="dashed" disabled={true}>
+      <Button theme="dashed" disabled>
         虚线
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="text" disabled={true}>
+      <Button theme="text" disabled>
         文字
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button icon="plus" disabled={true}>
+      <Button icon="plus" disabled>
         文字
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button icon="plus" disabled={true} />
+      <Button icon="plus" disabled />
     </CardBlock>
   </Col>
 </Row>
@@ -159,13 +159,13 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
 ```js
 <div>
   <Button theme="primary" block className="offset-b">
-    主题样式
+    主要
   </Button>
-  <Button theme="default" block className="offset-b">
-    默认主题样式
+  <Button theme="secondary" block className="offset-b">
+    次要
   </Button>
   <Button theme="dashed" block className="offset-b">
-    副主题样式
+    虚线
   </Button>
 </div>
 ```
@@ -177,42 +177,42 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
   <Row className="no-margin">
     <Col col="2">
       <CardBlock>
-        <Button theme="primary" loading={true}>
-          主题色
+        <Button theme="primary" loading>
+          主要
         </Button>
       </CardBlock>
     </Col>
     <Col col="2">
       <CardBlock>
-        <Button theme="default" loading={true}>
-          默认
+        <Button theme="secondary" loading>
+          次要
         </Button>
       </CardBlock>
     </Col>
     <Col col="2">
       <CardBlock>
-        <Button theme="dashed" loading={true}>
+        <Button theme="dashed" loading>
           虚线
         </Button>
       </CardBlock>
     </Col>
     <Col col="2">
       <CardBlock>
-        <Button theme="text" loading={true}>
+        <Button theme="text" loading>
           文字
         </Button>
       </CardBlock>
     </Col>
     <Col col="2">
       <CardBlock>
-        <Button icon="plus" loading={true}>
+        <Button icon="plus" loading>
           文字
         </Button>
       </CardBlock>
     </Col>
     <Col col="2">
       <CardBlock>
-        <Button icon="plus" loading={true} />
+        <Button icon="plus" loading />
       </CardBlock>
     </Col>
   </Row>
