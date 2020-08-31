@@ -235,7 +235,7 @@ class Example extends React.Component {
               </Row>
             </ModalBody>
             <ModalFooter>
-              <Button theme="default" onClick={this.handleToggleModal}>
+              <Button theme="secondary" onClick={this.handleToggleModal}>
                 关闭
               </Button>
             </ModalFooter>
