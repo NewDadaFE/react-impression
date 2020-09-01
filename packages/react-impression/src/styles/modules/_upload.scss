@@ -199,6 +199,74 @@
     }
   }
 }
+/* 多个文件样式 start */
+.upload-ul{
+  margin-top:1em;
+  padding-left:0;
+  &.upload-ul-outer{
+    height: calc(105px + 5rem);
+    overflow:scroll;
+  }
+}
+.upload-li{
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  height: 21px;
+  line-height: 21px;
+  width:95%;
+  margin-bottom: 1rem !important;
+}
+.upload-li-span{
+  color: rgb(83, 155, 250);
+}
+.upload-li span{
+  display:inline-block;
+  width:90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.upload-li .remove{
+  margin-left: 15px;
+}
+.upload-li .upload-li-span:hover{
+  text-decoration: underline;
+}
+.upload-mul-remove{
+  color: #919cb3;
+  display: inline-block;
+  width: 10%;
+  text-align: right;
+}
+/* 多个文件样式 end */
+/* 多个图片样式 start */
+.upload-preview-mul{
+  margin:0 12px;
+  height:$upload-preview-height;
+  width:$upload-preview-width;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  & > input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    opacity: 0;
+  }
+  .upload-preview-remove{
+    cursor:pointer;
+  }
+}
+.upload-preview-mul img{
+  width:$upload-preview-width;
+  height:$upload-preview-height;
+  padding: $upload-preview-img-offset;
+  border: 1px solid #e9ebf0;
+}
+
+/* 多个图片样式 end */
 
 @keyframes fadeIn {
   0% {

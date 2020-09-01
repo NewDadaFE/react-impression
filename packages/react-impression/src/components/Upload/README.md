@@ -39,6 +39,65 @@ const handleChange = e => {
 </div>
 ```
 
+**多个文件点击上传**
+
+```js
+class UploadExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      files: [{ name: 'xxx.png', url: 'www.baidu.com' }],
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.deleteFile = this.deleteFile.bind(this)
+  }
+  handleChange(event) {
+    const file = event.target.files && event.target.files[0]
+    if (file) {
+      console.log('选择了文件:', file)
+      const file = event.target.files[0]
+      this.setState({
+        files: [
+          ...this.state.files,
+          {
+            name: file.name,
+            url: 'www.google.com', //实际url为后台返回的url
+          },
+        ],
+      })
+    }
+  }
+  deleteFile(file, index) {
+    console.log('需要删除的文件是:', file)
+    console.log('需要删除的文件的索引是:', index)
+    var fileList = this.state.files
+    fileList.splice(index, 1)
+    this.setState({
+      files: fileList,
+    })
+  }
+  render() {
+    const { files } = this.state
+    return (
+      <div>
+        <Row>
+          <Col>
+            <Upload
+              style={{ width: 464 }}
+              onChange={this.handleChange}
+              multiple={true}
+              onDeleteFile={this.deleteFile}
+              files={files}
+            />
+          </Col>
+        </Row>
+      </div>
+    )
+  }
+}
+;<UploadExample />
+```
+
 **图片上传**
 
 ```js
@@ -85,6 +144,77 @@ class UploadExample extends React.Component {
             preview
             message="上传图片"
             onChange={this.handlePreviewChange}
+          >
+            <Ico type="plus" />
+          </Upload>
+        </Col>
+      </Row>
+    )
+  }
+}
+;<UploadExample />
+```
+
+**上传多张图片**
+
+```js
+class UploadExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      files: [
+        {
+          name: 'xxx.png',
+          url:
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2070940192,1982182585&fm=26&gp=0.jpg',
+        },
+      ],
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.deleteFile = this.deleteFile.bind(this)
+  }
+
+  handleChange(event) {
+    const file = event.target.files && event.target.files[0]
+    if (file) {
+      console.log('选择了文件：', file)
+      const file = event.target.files[0]
+      this.setState({
+        files: [
+          ...this.state.files,
+          {
+            name: file.name,
+            url:
+              'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2684769705,335692720&fm=26&gp=0.jpg', //url为实际后台返回的地址
+          },
+        ],
+      })
+    }
+  }
+
+  deleteFile(item, index) {
+    console.log('需要删除的文件是', item)
+    console.log('需要删除的文件的索引是', index)
+    let fileList = this.state.files
+    fileList.splice(index, 1)
+    this.setState({
+      files: fileList,
+    })
+  }
+
+  render() {
+    const { files } = this.state
+    return (
+      <Row>
+        <Col>
+          <h5>选择图片后预览：</h5>
+          <Upload
+            preview
+            multiple
+            message="上传图片"
+            onChange={this.handleChange}
+            files={files}
+            onDeleteFile={this.deleteFile}
           >
             <Ico type="plus" />
           </Upload>
