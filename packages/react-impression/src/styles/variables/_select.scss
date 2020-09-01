@@ -4,6 +4,22 @@ $select-bg: $brand-pure !default;
 $select-disable-bg: $gray-lighter !default;
 $select-selection-padding-right: 2.25rem !default;
 $select-selection-max-height: 20rem !default;
+$select-height-sm: rem(32px) !default;
+$select-height-xs: rem(28px) !default;
+// 最小号select框
+$select-padding-y-xs: rem(4px) !default;
+$select-margin-x-right-xs: rem(10px) !default;
+$select-margin-x-left-xs: rem(4px) !default;
+// 小号select框
+//$select-padding-y-top-sm: rem(3px) !default;
+//$select-padding-x-sm: rem(2px) !default;
+//$select-padding-y-bottom-sm: rem(5px) !default;
+$select-margin-x-right-sm: rem(12px) !default;
+// 中号select框
+$input-padding-y-md: rem(7px) !default;
+$input-font-size-md: $font-size-base;
+$select-margin-y: rem(8px) !default;
+
 $select-options-top: 120% !default;
 $select-selection-color: $gray-light;
 $select-tags-bg-color: #fff;

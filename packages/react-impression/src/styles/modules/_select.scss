@@ -287,3 +287,32 @@
 		padding: 0;
 	}
 }
+
+// 高度较小的表单框
+.select-sm {
+  height: $select-height-sm;
+  & > .select-addon {
+    padding: 0 0;
+    font-size: 14px;
+    margin: $select-margin-y $select-margin-x-right-sm $select-margin-y;
+  }
+  & > .select-selection {
+    height: $select-height-sm - 2 * $select-margin-y;
+  }
+}
+
+// 高度最小的表单框
+.select-xs {
+  height: $select-height-xs;
+  width: rem(82px);
+  & > .select-addon {
+    padding: 0 0;
+    transform: scale(0.75);
+    margin: $select-margin-y $select-margin-x-right-xs $select-margin-y $select-margin-x-left-xs;
+  }
+  & > .select-selection {
+    height: $select-height-xs - 2 * $input-padding-y-xs;
+    padding: $select-margin-y 0 $select-margin-y $select-margin-y;
+  }
+}
+

@@ -122,10 +122,16 @@ export default class Select extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
+    /**
+     * 尺寸
+     */
+    size: PropTypes.oneOf(['xs', 'sm', 'md']),
   }
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
+    size: 'md',
   }
 
   componentDidMount() {
@@ -615,6 +621,7 @@ export default class Select extends React.PureComponent {
       required,
       placeholder,
       clearable,
+      size,
     } = this.props
     const {
       showOption,
@@ -635,6 +642,8 @@ export default class Select extends React.PureComponent {
           { disabled },
           { required },
           { open: showOption },
+          { 'select-sm': size === 'sm' },
+          { 'select-xs': size === 'xs' },
           className
         )}
         disabled={disabled}

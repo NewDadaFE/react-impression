@@ -29,6 +29,7 @@ class DefaultExample extends React.Component {
         <Select
           ref={select => (this.select = select)}
           onChange={this.handleChange}
+          size="sm"
         >
           <SelectOption value={1}>一</SelectOption>
           <SelectOption value={2}>二</SelectOption>
@@ -80,6 +81,7 @@ class DefaultExample extends React.Component {
           ref={select => (this.select = select)}
           onChange={this.handleChange}
           clearable
+          size="xs"
         >
           <SelectOption value={1}>一</SelectOption>
           <SelectOption value={2}>二</SelectOption>
