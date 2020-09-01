@@ -25,6 +25,7 @@
     }
 
     margin-bottom: 0;
+    border: $input-border-width solid $input-border-color;
 
     &:focus,
     &:hover {
@@ -84,7 +85,7 @@
 //
 
 .input-group-addon {
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-padding-y-md $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
   font-weight: normal;
@@ -160,7 +161,7 @@
     position: relative;
 
     + .btn {
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-$input-border-width);
     }
 
     // Bring the "active" button to the front
@@ -177,7 +178,7 @@
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-$input-border-width);
       // Because specificity
       &:hover,
       &:focus,

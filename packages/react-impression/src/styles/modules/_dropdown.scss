@@ -79,7 +79,7 @@
 
     &:hover {
       text-decoration: none;
-      cursor: $cursor-disabled;
+      cursor: not-allowed;
       background-color: transparent;
       background-image: none;
       color: $dropdown-link-disabled-color;

@@ -1,52 +1,119 @@
 .input {
-  display: inline-block;
-  vertical-align: middle;
   position: relative;
+  z-index: $zindex-input;
+  display: inline-flex;
+  width: $input-width;
+  align-items: center;
+  vertical-align: middle;
+  background-color: $brand-pure;
 }
 
-.form-horizontal {
-  .input {
-    display: block;
-    width: 100%;
-  }
+.dada-input-disabled {
+  background-color: $input-disabled-bg;
 }
 
+// 输入框的描边
+.dada-input-border {
+  position: absolute;
+  z-index: $zindex-input-border;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: border-color ease-in-out .18s;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+}
+
+// 输入框
 .input-field {
-  &[readonly] {
-    cursor: pointer;
-    background: $brand-pure;
-    box-shadow: none;
+  overflow: hidden;
+  flex: 1;
+  border: none;
+  background-color: transparent;
+
+  &:hover + .dada-input-border {
+    border-color: $input-border-hover;
   }
 
-  &[disabled] {
-    cursor: not-allowed;
-    background: $input-bg-disabled;
+  &:focus {
+    outline: none;
 
-    + .input-addon {
-      cursor: not-allowed;
+    & + .dada-input-border {
+      border-color: $input-border-focus;
     }
+  }
+
+  &:disabled {
+    &,
+    & + .dada-input-addon-before,
+    & + .dada-input-addon-after,
+    & + .input-addon {
+      cursor: not-allowed;
+      color: $input-disabled-color;
+    }
+
+    & + .dada-input-border {
+      border-color: $input-border-color;
+    }
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: $input-placeholder-color;
   }
 }
 
 .input-field-addon {
-  padding-right: 0.75rem * 2 + 0.5;
 }
 
-.input-pill {
-  border-radius: 10rem;
+.dada-input-addon-before {
+  margin-left: $input-padding-x;
+  color: $gray-light;
 }
 
+.dada-input-addon-after,
 .input-addon {
+  margin-right: $input-padding-x;
+  color: $gray-light;
+}
+
+// 清除图标
+.dada-input-clear {
   cursor: pointer;
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  z-index: 2;
-  padding: 0 1px;
-  transform: translateY(-50%);
-  opacity: 0.8;
 
   &:hover {
-    opacity: 1;
+    color: $gray-darker;
+  }
+}
+
+// 单独处理长文本输入框
+.dada-input-textarea {
+  @include scroll-reset();
+
+  width: $input-width;
+  height: rem(72px);
+  resize: vertical;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+
+  &:hover {
+    border-color: $input-border-hover;
+  }
+
+  &:focus {
+    border-color: $input-border-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    resize: none;
+    cursor: not-allowed;
+    border-color: $input-border-color;
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: $input-placeholder-color;
   }
 }

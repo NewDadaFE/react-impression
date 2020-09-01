@@ -5,7 +5,7 @@
 ```js
 <Collapse>
   <CollapseTitle>
-    <Ico type="bars" left />
+    <Ico type="bars" />
     公共页面
   </CollapseTitle>
   <CollapseBody>
@@ -31,7 +31,7 @@
 
 ```js
 <Sidebar>
-  <SidebarHeader styleName="justify">
+  <SidebarHeader>
     <Ico type="list" className="offset-r offset-r-lg" />
     <span>{'首页'}</span>
   </SidebarHeader>

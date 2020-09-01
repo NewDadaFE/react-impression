@@ -1,0 +1,70 @@
+$search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-baseline;
+
+.dada-search {
+  position: relative;
+  display: inline-block;
+}
+
+.dada-search-context {
+  position: absolute;
+  top: 50%;
+  right: $input-padding-x;
+  left: $search-context-offset;
+  overflow: hidden;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: $brand-pure;
+
+  &.dada-search-context-focus {
+    opacity: .5;
+  }
+
+  &.dada-search-context-clear {
+    right: $search-context-offset
+  }
+}
+
+.dada-input-disabled + .dada-search-context {
+  cursor: not-allowed;
+  color: $input-disabled-color;
+  background-color: $input-disabled-bg;
+}
+
+// 搜索icon
+.dada-search-addon {
+  color: $disabled-color;
+}
+
+// 清除icon
+.dada-search-clear:hover {
+  cursor: pointer;
+  color: $gray-darker;
+}
+.dada-search-clear-hidden {
+  display: none;
+}
+
+.dada-search-popup {
+  @include scroll-reset();
+
+  max-width: 408px;
+  max-height: 376px;
+  padding: 8px 0;
+  overflow: auto;
+}
+
+.dada-search-option {
+  padding: 7px 16px;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+
+  &-text {
+    @include line-clamp(3);
+  }
+
+  &:hover {
+    background-color: $gray-lightest;
+  }
+}

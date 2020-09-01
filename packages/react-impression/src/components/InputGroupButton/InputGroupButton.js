@@ -6,9 +6,9 @@ import Button from '../Button'
 export default class InputGroupButton extends React.PureComponent {
   static propTypes = {
     /**
-     * 设置输入框组内按钮样式,可选值为 default、primary
+     * 设置输入框组内按钮样式
      */
-    theme: PropTypes.string,
+    theme: PropTypes.oneOf(['primary', 'secondary']),
 
     /**
      * 自定义样式

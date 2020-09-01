@@ -4,20 +4,22 @@
 .select {
 	position: relative;
 	cursor: pointer;
-	display: inline-block;
+	display: inline-flex;
+  align-items: center;
 	width: 16rem;
 	line-height: $select-option-inline-height;
+  border: $border-width solid $gray-light;
 	&.disabled {
 		&,
 		.select-addon,
 		.select-tags,
 		.select-selection {
 			background: $select-disable-bg;
-			cursor: $cursor-disabled;
+			cursor: not-allowed;
 			color: $select-selection-color;
 		}
 		.tag {
-			cursor: $cursor-disabled;
+			cursor: not-allowed;
 		}
 	}
 	.select-tags {
@@ -28,7 +30,6 @@
 		text-align: left;
 		text-overflow: ellipsis;
 		width: 100%;
-		border-radius: rem(2px);
 		box-sizing: border-box;
 		font-size: 1rem;
 		line-height: 0.7;
@@ -36,9 +37,8 @@
 		background-color: $select-tags-bg-color;
 		background-image: none;
 		background-clip: padding-box;
-		border: rem(1px) solid $gray-light;
+		border: none;
 		transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-		padding-right: $select-selection-padding-right;
 		max-height: 5.71rem;
 		min-height: 2.857rem;
 		overflow-y: auto;
@@ -65,6 +65,7 @@
 			position: absolute;
 			top: $input-padding-x;
 			left: $input-padding-x;
+      line-height: rem(26px);
 			.required & {
 				color: $brand-danger;
 			}
@@ -89,7 +90,7 @@
 	user-select: none;
 	text-align: left;
 	text-overflow: ellipsis;
-	padding: $input-padding-y $input-padding-x;
+	padding: $input-padding-y-md $input-padding-x;
 	font-size: 1rem;
 	line-height: 1.25;
 	border-radius: rem(2px);
@@ -97,9 +98,8 @@
 	background-color: $select-tags-bg-color;
 	background-image: none;
 	background-clip: padding-box;
-	border: rem(1px) solid $gray-light;
+  border: none;
 	transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-	padding-right: $select-selection-padding-right;
 
 	&:active,
 	&:focus {
@@ -131,6 +131,8 @@
 	color: $brand-danger;
 }
 .select-option-outer {
+  // TODO 待Trigger组件完成后此处要清理position
+  position: fixed;
 	z-index: $zindex-select;
 }
 .select-options-wrap {
@@ -166,7 +168,7 @@
 	display: none;
 	width: 100%;
 	height: 2.143rem;
-	padding: $input-padding-y $input-padding-x;
+	padding: $input-padding-y-md $input-padding-x;
 	font-size: 1rem;
 	line-height: 1.25;
 	color: $gray-base;
@@ -202,24 +204,21 @@
 	font-size: 1.25rem;
 	top: rem(2px);
 	z-index: 2;
-	padding: $input-padding-y $input-padding-x;
+	padding: $input-padding-y-md $input-padding-x;
 }
 
 .select-empty {
 	margin-bottom: 0;
 	text-align: center;
 	color: $gray-dark;
-	padding: $input-padding-y $input-padding-x;
+	padding: $input-padding-y-md $input-padding-x;
 }
 .select-addon {
 	cursor: pointer;
 	user-select: none;
-	position: absolute;
 	color: $gray-light;
-	right: rem(1px);
-	top: rem(3px);
-	z-index: 2;
-	margin: $input-padding-y $input-padding-x;
+	margin-left: 1px;
+	margin-right: $input-padding-x;
 	transition: $select-transition;
 
 	.open & {
@@ -250,7 +249,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: $gray-base;
-	padding: $input-padding-y $input-padding-x-lg;
+	padding: $input-padding-y-md $input-padding-x;
 	line-height: $select-option-inline-height;
 	&:hover {
 		background-color: $select-option-hover-bg;
@@ -261,18 +260,18 @@
 	}
 
 	&.disabled {
-		cursor: $cursor-disabled;
+		cursor: not-allowed;
 		color: $select-option-disable-color;
 	}
 	.select-group-inner & {
-		padding-left: $input-padding-x-lg * 2;
+		padding-left: $input-padding-x * 2;
 	}
 }
 .select-group-container {
 	list-style-type: none;
 	padding: 0;
 	&.disabled {
-		cursor: $cursor-disabled;
+		cursor: not-allowed;
 		color: $select-option-disable-color;
 	}
 	.disabled & {
@@ -282,7 +281,7 @@
 	}
 	.select-group-title {
 		height: 2.867rem;
-		padding: $input-padding-y $input-padding-x-lg;
+		padding: $input-padding-y-md $input-padding-x;
 	}
 	.select-group-inner {
 		padding: 0;
