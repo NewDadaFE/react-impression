@@ -133,9 +133,10 @@ export default class Upload extends React.PureComponent {
    * 删除文件
    */
 
-  removeFile = (file, index) => {
-    const { onDeleteFile } = this.props
+  removeFile = (event, file, index) => {
+    const { onDeleteFile, onChange } = this.props
     onDeleteFile && onDeleteFile(file, index)
+    onChange(event)
   }
 
   /**
@@ -161,17 +162,18 @@ export default class Upload extends React.PureComponent {
     onChange(event)
   }
 
-  handleRemoveImg = (item, index) => {
+  handleRemoveImg = (event, item, index) => {
     event.stopPropagation()
     const { onChange, multiple, onDeleteFile } = this.props
     if (multiple) {
       onDeleteFile && onDeleteFile(item, index)
+      onChange(event)
     } else {
       this.fileInput.value = ''
       this.setState({
         previewImageUrl: '',
       })
-      onChange(item)
+      onChange(event)
     }
   }
 
@@ -278,8 +280,8 @@ export default class Upload extends React.PureComponent {
                     {!disabled && (
                       <Ico
                         type='trash'
-                        onClick={() => {
-                          this.handleRemoveImg(item, index)
+                        onClick={e => {
+                          this.handleRemoveImg(e, item, index)
                         }}
                         className='action-icon'
                       />
@@ -484,8 +486,8 @@ export default class Upload extends React.PureComponent {
                       {!disabled && (
                         <Ico
                           type='times'
-                          onClick={() => {
-                            this.removeFile(item, index)
+                          onClick={e => {
+                            this.removeFile(e, item, index)
                           }}
                           className='upload-mul-remove'
                         />

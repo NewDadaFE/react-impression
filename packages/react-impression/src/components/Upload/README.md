@@ -52,17 +52,20 @@ class UploadExample extends React.Component {
     this.deleteFile = this.deleteFile.bind(this)
   }
   handleChange(event) {
-    console.log('选择了文件:', event.target.files[0])
-    const file = event.target.files[0]
-    this.setState({
-      files: [
-        ...this.state.files,
-        {
-          name: file.name,
-          url: 'www.google.com', //实际url为后台返回的url
-        },
-      ],
-    })
+    const file = event.target.files && event.target.files[0]
+    if (file) {
+      console.log('选择了文件:', file)
+      const file = event.target.files[0]
+      this.setState({
+        files: [
+          ...this.state.files,
+          {
+            name: file.name,
+            url: 'www.google.com', //实际url为后台返回的url
+          },
+        ],
+      })
+    }
   }
   deleteFile(file, index) {
     console.log('需要删除的文件是:', file)
@@ -172,18 +175,21 @@ class UploadExample extends React.Component {
   }
 
   handleChange(event) {
-    console.log('选择了文件：', event.target.files[0])
-    const file = event.target.files[0]
-    this.setState({
-      files: [
-        ...this.state.files,
-        {
-          name: file.name,
-          url:
-            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2684769705,335692720&fm=26&gp=0.jpg', //url为实际后台返回的地址
-        },
-      ],
-    })
+    const file = event.target.files && event.target.files[0]
+    if (file) {
+      console.log('选择了文件：', file)
+      const file = event.target.files[0]
+      this.setState({
+        files: [
+          ...this.state.files,
+          {
+            name: file.name,
+            url:
+              'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2684769705,335692720&fm=26&gp=0.jpg', //url为实际后台返回的地址
+          },
+        ],
+      })
+    }
   }
 
   deleteFile(item, index) {
