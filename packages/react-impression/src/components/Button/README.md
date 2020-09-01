@@ -3,25 +3,37 @@
 **主题**
 
 ```js
-const buttonClickHandle = () => {
-  console.log('Button clicked')
-}
-;<Row className="no-margin">
+<Row className="no-margin">
   <Col col="2">
     <CardBlock>
-      <Button type="button" theme="primary" onClick={buttonClickHandle}>
-        主题色
+      <Button theme="primary">主要</Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="secondary">次要</Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="dashed" shape="circle">
+        虚线
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="default">默认</Button>
+      <Button theme="text">文字</Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="secondary">副主题色</Button>
+      <Button icon="plus">文字</Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" />
     </CardBlock>
   </Col>
 </Row>
@@ -30,34 +42,45 @@ const buttonClickHandle = () => {
 **不可用状态**
 
 ```js
-const buttonClickHandle = () => {
-  console.log('Button clicked')
-}
-;<Row className="no-margin">
+<Row className="no-margin">
   <Col col="2">
     <CardBlock>
-      <Button
-        disabled
-        type="button"
-        theme="primary"
-        onClick={buttonClickHandle}
-      >
-        主题色
+      <Button theme="primary" disabled>
+        主要
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button disabled theme="default">
-        默认
+      <Button theme="secondary" disabled>
+        次要
       </Button>
     </CardBlock>
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button disabled theme="secondary">
-        副主题色
+      <Button theme="dashed" disabled>
+        虚线
       </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="text" disabled>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" disabled>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" disabled />
     </CardBlock>
   </Col>
 </Row>
@@ -66,85 +89,133 @@ const buttonClickHandle = () => {
 **尺寸**
 
 ```js
-<Row className="no-margin">
-  <Col col="4">
-    <CardBlock>
-      <Button theme="primary" size="sm">
-        小的型号
-      </Button>
-    </CardBlock>
+<Row>
+  <Col col="2">
+    <Button theme="primary" size="xs" title="">
+      超小
+    </Button>
   </Col>
-  <Col col="4">
-    <CardBlock>
-      <Button theme="primary">普通大小</Button>
-    </CardBlock>
+  <Col col="2">
+    <Button theme="primary" size="sm" title="">
+      小杯
+    </Button>
   </Col>
-  <Col col="4">
-    <CardBlock>
-      <Button theme="primary" size="lg">
-        大的型号
-      </Button>
-    </CardBlock>
+  <Col col="2">
+    <Button theme="primary" size="md" title="">
+      中杯
+    </Button>
+  </Col>
+  <Col col="2">
+    <Button theme="primary" size="lg" title="">
+      大杯
+    </Button>
   </Col>
 </Row>
 ```
 
-**链接**
+**图标**
+
+icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)。<br/>
+除了使用内置图标库的图标，也可以传入自定义图标组件。
+
+```javascript
+<Form>
+  <FormGroup>
+    <label>使用内置图标库：</label>
+    <Button icon="plus" />
+  </FormGroup>
+  <FormGroup>
+    <label>自定义图标：</label>
+    <Button icon={<span style={{ width: '16px', height: '16px' }}>A</span>} />
+  </FormGroup>
+</Form>
+```
+
+**圆形按钮**
+
+仅纯图标类型按钮生效，指定 shape 为 circle 时，icon 必须有值，且 children 无效。
 
 ```js
-<Row className="no-margin">
+<Row>
   <Col col="2">
-    <CardBlock>
-      <Button theme="primary" href="https://www.github.com">
-        主题色
-      </Button>
-    </CardBlock>
+    <Button icon="plus" shape="circle" size="xs" />
   </Col>
   <Col col="2">
-    <CardBlock>
-      <Button theme="default" href="https://www.github.com">
-        默认
-      </Button>
-    </CardBlock>
+    <Button icon="plus" shape="circle" size="sm" />
   </Col>
   <Col col="2">
-    <CardBlock>
-      <Button theme="secondary" href="https://www.github.com">
-        副主题色
-      </Button>
-    </CardBlock>
+    <Button icon="plus" shape="circle" size="md">
+      children不会生效
+    </Button>
+  </Col>
+  <Col col="2">
+    <Button icon="plus" shape="circle" size="lg" />
   </Col>
 </Row>
 ```
 
-**block 按钮**
+**块状按钮**
 
 ```js
 <div>
   <Button theme="primary" block className="offset-b">
-    主题样式
+    主要
   </Button>
-  <Button theme="default" block className="offset-b">
-    默认主题样式
+  <Button theme="secondary" block className="offset-b">
+    次要
   </Button>
-  <Button theme="secondary" block>
-    副主题样式
+  <Button theme="dashed" block className="offset-b">
+    虚线
   </Button>
 </div>
 ```
 
-**图标按钮**
+**加载中 按钮**
 
 ```js
 <div>
-  <Button theme="primary" className="offset-r"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
-  <Button theme="default" className="offset-r"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
-  <Button theme="secondary"><Ico type="download" style={{marginRight: '6px'}} />保存</Button>
-</div>
-<div className="offset-t">
-  <Button theme="primary" className="offset-r"><Ico type="download" /></Button>
-  <Button theme="default" className="offset-r"><Ico type="download" /></Button>
-  <Button theme="secondary"><Ico type="download" /></Button>
+  <Row className="no-margin">
+    <Col col="2">
+      <CardBlock>
+        <Button theme="primary" loading>
+          主要
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button theme="secondary" loading>
+          次要
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button theme="dashed" loading>
+          虚线
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button theme="text" loading>
+          文字
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button icon="plus" loading>
+          文字
+        </Button>
+      </CardBlock>
+    </Col>
+    <Col col="2">
+      <CardBlock>
+        <Button icon="plus" loading />
+      </CardBlock>
+    </Col>
+  </Row>
 </div>
 ```
 

@@ -107,7 +107,7 @@ export default class Confirm extends React.PureComponent {
           </div>
           <div className='confirm-body'>{children}</div>
           <div className='confirm-footer'>
-            <Button theme='default' onClick={onCancelClick}>
+            <Button theme='secondary' onClick={onCancelClick}>
               {cancelText}
             </Button>
             <Button theme='primary' onClick={onOkClick}>

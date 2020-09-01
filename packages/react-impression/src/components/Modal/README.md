@@ -26,7 +26,7 @@ initialState = {
       <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={handleToggleClick}>
+      <Button theme="secondary" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -66,7 +66,7 @@ initialState = {
       <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={handleToggleClick}>
+      <Button theme="secondary" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -101,7 +101,7 @@ initialState = {
       <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={handleToggleClick}>
+      <Button theme="secondary" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -136,7 +136,7 @@ initialState = {
       <p style={{ color: '#919CB3' }}>内容&hellip;</p>
     </ModalBody>
     <ModalFooter>
-      <Button theme="default" onClick={handleToggleClick}>
+      <Button theme="secondary" onClick={handleToggleClick}>
         关闭
       </Button>
       <Button theme="primary">保存</Button>
@@ -223,7 +223,7 @@ class Overflow extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button theme="default" onClick={() => this.handleToggleClick()}>
+            <Button theme="secondary" onClick={() => this.handleToggleClick()}>
               关闭
             </Button>
             <Button theme="primary">保存</Button>
@@ -240,7 +240,7 @@ class Overflow extends React.Component {
 
 v2.0.0
 
-* 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
-* 废弃 modal-footer-border-color 这个 sass 变量
-* 废弃 modal-footer-border-width 这个 sass 变量
-* 废弃 modal-inner-padding-sm 这个 sass 变量
+- 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
+- 废弃 modal-footer-border-color 这个 sass 变量
+- 废弃 modal-footer-border-width 这个 sass 变量
+- 废弃 modal-inner-padding-sm 这个 sass 变量

@@ -120,22 +120,6 @@
   @extend .btn-lg;
 }
 
-//
-//Alternate button group
-//
-
-.btn-group-primary > .btn {
-  @extend .btn-outline-primary;
-}
-
-.btn-group-secondary > .btn {
-  @extend .btn-outline-secondary;
-}
-
-.btn-group-default > .btn {
-  @extend .btn-default;
-}
-
 // Reposition the caret
 .btn .caret {
   margin-left: 0;

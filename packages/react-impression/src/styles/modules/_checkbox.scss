@@ -57,6 +57,7 @@
   @at-root #{&}-indeterminate {
     > .checkbox-addon {
       border-color: $checkbox-addon-checked-color;
+
       &:hover {
         border-color: $checkbox-addon-hover-color;
       }

@@ -7,19 +7,19 @@
   <Col col="4">
     <InputGroup size="sm">
       <InputGroupInput placeholder="请输入内容" />
-      <InputGroupButton theme="default">搜索</InputGroupButton>
+      <InputGroupButton theme="secondary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
   <Col col="4">
     <InputGroup>
       <InputGroupInput placeholder="请输入内容" />
-      <InputGroupButton theme="default">搜索</InputGroupButton>
+      <InputGroupButton theme="secondary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
   <Col col="4">
     <InputGroup size="lg">
       <InputGroupInput placeholder="请输入内容" />
-      <InputGroupButton theme="default">搜索</InputGroupButton>
+      <InputGroupButton theme="secondary">搜索</InputGroupButton>
     </InputGroup>
   </Col>
 </Row>
