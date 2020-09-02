@@ -33,6 +33,7 @@ export default class Select extends React.PureComponent {
       value: this.isPuppet ? undefined : props.defaultValue,
       isSearch: false,
       selectText: '', // 选中字段
+      inputText: '', // 输入字段
       options: [],
       selectedOptions: [],
       optionGroup: [],
@@ -132,6 +133,7 @@ export default class Select extends React.PureComponent {
     disabled: false,
     placeholder: '请选择',
     size: 'md',
+    showSearch: false,
   }
 
   componentDidMount() {
@@ -163,7 +165,8 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   hideOptionsHandle = () => {
-    this.setState({ showOption: false }, () => {
+    const { selectText } = this.state
+    this.setState({ showOption: false, queryText: selectText }, () => {
       const { optionGroup, options } = this.state
       options.forEach(option => {
         option.queryChange('')
@@ -198,11 +201,13 @@ export default class Select extends React.PureComponent {
         dataToSet = {
           selectedItem,
           selectText: selectedItem.name || selectedItem.value,
+          queryText: selectedItem.name || selectedItem.value,
         }
       } else {
         dataToSet = {
           selectedItem: {},
           selectText: '',
+          queryText: '',
         }
       }
     } else {
@@ -246,12 +251,14 @@ export default class Select extends React.PureComponent {
         if (!value) {
           this.setState({
             selectText: '',
+            queryText: '',
           })
         } else {
           optionList.forEach(option => {
             if (value === option.value) {
               this.setState({
                 selectText: option.value,
+                queryText: option.value,
               })
             }
           })
@@ -299,12 +306,12 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = () => {
-    const { optionGroup } = this.state
+    const { optionGroup, selectText } = this.state
     if (this.props.disabled) return
+    if (this.state.queryText) return
     this.setState(
       {
         showOption: !this.state.showOption,
-        queryText: '',
       },
       () => {
         optionGroup.forEach(option => {
@@ -320,6 +327,7 @@ export default class Select extends React.PureComponent {
           })
           this.handleInitSelectScroll()
         } else {
+          this.setState({ queryText: selectText })
           this.selectPopper && this.selectPopper.destroy()
           this.handleDestroySelectScroll()
         }
@@ -382,6 +390,7 @@ export default class Select extends React.PureComponent {
         {
           value: multiple ? [...originValue, result.value] : result.value,
           selectText: multiple ? '' : result.name,
+          queryText: multiple ? '' : result.name,
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
         },
         () => {
@@ -399,7 +408,7 @@ export default class Select extends React.PureComponent {
     this.setState(
       {
         showOption: !!multiple,
-        queryText: '',
+        // queryText: '',
         selectedOptions: selectedOptions.concat(result.node),
       },
       () => {
@@ -601,6 +610,7 @@ export default class Select extends React.PureComponent {
       {
         showClear: false,
         selectText: '',
+        queryText: '',
         value: '',
         showOption: false,
       },
@@ -611,6 +621,25 @@ export default class Select extends React.PureComponent {
     )
   }
 
+  /**
+   * Input框focus事件
+   * @returns {*}
+   */
+  focusHandler = () => {
+    const { selectText, queryText } = this.state
+    console.log('selectText', queryText)
+    if (!selectText) return
+    this.setState({ currentPlaceholder: selectText, queryText: '' })
+  }
+
+  /**
+   * Input框blur事件
+   * @returns {*}
+   */
+  // blurHandler = () => {
+  //   const {selectText} = this.state
+  //   this.setState({queryText: selectText})
+  // }
   render() {
     const {
       disabled,
@@ -625,7 +654,6 @@ export default class Select extends React.PureComponent {
     } = this.props
     const {
       showOption,
-      selectText,
       queryText,
       currentPlaceholder,
       selectedItem,
@@ -641,9 +669,8 @@ export default class Select extends React.PureComponent {
           { 'select-multiple': multiple },
           { disabled },
           { required },
-          { open: showOption },
-          { 'select-sm': size === 'sm' },
-          { 'select-xs': size === 'xs' },
+          { open: showOption && !searchable },
+          { 'select-open': showOption },
           className
         )}
         disabled={disabled}
@@ -676,25 +703,40 @@ export default class Select extends React.PureComponent {
         {!multiple && (
           <input
             type='text'
-            value={selectText}
-            readOnly
+            value={queryText}
+            readOnly={!searchable}
             placeholder={currentPlaceholder}
             disabled={disabled}
-            className={classnames('select-selection')}
+            className={classnames('select-selection', {
+              [`select-selection-${size}`]: !!size,
+            })}
+            onChange={e => this.handleQuery(e)}
             onClick={this.toggleOptionsHandle}
+            onFocus={this.focusHandler}
+            // onBlur={this.blurHandler}
             ref={ref => (this.refMain = ref)}
           />
         )}
-        {(!showClear || !clearable) && (
+        {(!showClear || !clearable) && !searchable && (
           <i
-            className='dada-ico dada-ico-angle-down select-addon'
+            className={classnames('dada-ico dada-ico-angle-down select-addon', {
+              [`select-addon-${size}`]: !!size,
+            })}
             onClick={this.toggleOptionsHandle}
           />
         )}
-
+        {(!showClear || !clearable) && searchable && (
+          <i
+            className={classnames('dada-ico dada-ico-search select-addon', {
+              [`select-addon-${size}`]: !!size,
+            })}
+          />
+        )}
         {clearable && showClear && !multiple && (
           <i
-            className='dada-ico dada-ico-times select-addon'
+            className={classnames('dada-ico dada-ico-times select-addon', {
+              [`select-addon-${size}`]: !!size,
+            })}
             onClick={this.handleClearSelect}
           />
         )}
@@ -709,7 +751,7 @@ export default class Select extends React.PureComponent {
           style={{ width: optionWidth }}
         >
           <div className={classnames(this.wrapClass, 'select-options-wrap')}>
-            {searchable && (
+            {searchable && multiple && (
               <div className='select-search-wrap'>
                 <DebounceInput
                   debounceTimeout={500}
@@ -721,7 +763,7 @@ export default class Select extends React.PureComponent {
               </div>
             )}
             <ul
-              className='select-options'
+              className={classnames('select-options')}
               ref={ref => (this.selectInner = ref)}
             >
               {children}

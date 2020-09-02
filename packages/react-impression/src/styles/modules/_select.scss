@@ -85,14 +85,11 @@
 .select-selection {
 	cursor: pointer;
 	width: 100%;
-	height: 2.857rem;
 	display: inline-block;
 	user-select: none;
 	text-align: left;
 	text-overflow: ellipsis;
 	padding: $input-padding-y-md $input-padding-x;
-	font-size: 1rem;
-	line-height: 1.25;
 	border-radius: rem(2px);
 	color: $gray-base;
 	background-color: $select-tags-bg-color;
@@ -116,16 +113,30 @@
 	&::placeholder {
 		color: $gray-dark;
 	}
-	.open & {
-		border-color: $brand-primary;
-		outline: none;
-	}
 	.required & {
 		border-color: $brand-danger;
 		&::placeholder {
 			color: $brand-danger;
 		}
 	}
+}
+.select-selection-lg {
+  height: $select-height-lg;
+  line-height: $select-line-height-lg;
+  font-size: $select-font-size-lg;
+  padding: $select-padding-y-lg $select-padding-x;
+}
+.select-selection-md {
+  height: $select-height-md;
+  line-height: $line-height-base;
+  font-size: $font-size-base;
+  padding: $select-padding-y-md $select-padding-x;
+}
+.select-selection-sm {
+  height: $select-height-sm;
+  line-height: $line-height-sm;
+  font-size: $font-size-sm;
+  padding: $select-padding-y-sm $select-padding-x;
 }
 .select-required {
 	color: $brand-danger;
@@ -134,6 +145,11 @@
   // TODO 待Trigger组件完成后此处要清理position
   position: fixed;
 	z-index: $zindex-select;
+}
+.select-open {
+  border-color: $brand-primary;
+  outline: none;
+  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 }
 .select-options-wrap {
 	box-sizing: border-box;
@@ -165,10 +181,9 @@
 	display: inline-block;
 	text-align: left;
 	text-overflow: ellipsis;
-	display: none;
 	width: 100%;
 	height: 2.143rem;
-	padding: $input-padding-y-md $input-padding-x;
+	padding: $select-padding-y-md $input-padding-x;
 	font-size: 1rem;
 	line-height: 1.25;
 	color: $gray-base;
@@ -204,14 +219,14 @@
 	font-size: 1.25rem;
 	top: rem(2px);
 	z-index: 2;
-	padding: $input-padding-y-md $input-padding-x;
+	padding: $select-padding-y-md $input-padding-x;
 }
 
 .select-empty {
 	margin-bottom: 0;
 	text-align: center;
 	color: $gray-dark;
-	padding: $input-padding-y-md $input-padding-x;
+	padding: $select-padding-y-md $input-padding-x;
 }
 .select-addon {
 	cursor: pointer;
@@ -224,6 +239,19 @@
 	.open & {
 		transform: rotate(180deg);
 	}
+}
+.select-addon-lg {
+  // font-size: $select-addon-font-size-lg;
+  transform: scale(1.25);
+  margin: $select-addon-margin-y-lg $select-addon-margin-x $select-addon-margin-y-lg;
+}
+.select-addon-md {
+  font-size: $select-addon-font-size-md;
+  margin: $select-addon-margin-y-md $select-addon-margin-x $select-addon-margin-y-md;
+}
+.select-addon-sm {
+  font-size: $select-addon-font-size-sm;
+  margin: $select-addon-margin-y-sm $select-addon-margin-x $select-addon-margin-y-sm;
 }
 
 .select-options {
@@ -245,12 +273,12 @@
 .select-option {
 	cursor: pointer;
 	overflow: hidden;
-	height: 2.867rem;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: $gray-base;
-	padding: $input-padding-y-md $input-padding-x;
-	line-height: $select-option-inline-height;
+  height: $select-height-md + rem(1px) * 2;
+  line-height: $line-height-base;
+  padding: $select-padding-y-md  $select-padding-x * 2;
 	&:hover {
 		background-color: $select-option-hover-bg;
 	}
@@ -267,6 +295,21 @@
 		padding-left: $input-padding-x * 2;
 	}
 }
+//.select-option-lg {
+//  height: $select-height-lg;
+//  line-height: $select-line-height-lg;
+//  padding: $select-padding-y-lg  $select-padding-x * 2;
+//}
+//.select-option-md {
+//  height: $select-height-md;
+//  line-height: $line-height-base;
+//  padding: $select-padding-y-md  $select-padding-x * 2;
+//}
+//.select-option-sm {
+//  height: $select-height-sm;
+//  line-height: $line-height-sm;
+//  padding: $select-padding-y-sm  $select-padding-x * 2;
+//}
 .select-group-container {
 	list-style-type: none;
 	padding: 0;
@@ -281,38 +324,10 @@
 	}
 	.select-group-title {
 		height: 2.867rem;
-		padding: $input-padding-y-md $input-padding-x;
+		padding: $select-padding-y-md $input-padding-x;
 	}
 	.select-group-inner {
 		padding: 0;
 	}
-}
-
-// 高度较小的表单框
-.select-sm {
-  height: $select-height-sm;
-  & > .select-addon {
-    padding: 0 0;
-    font-size: 14px;
-    margin: $select-margin-y $select-margin-x-right-sm $select-margin-y;
-  }
-  & > .select-selection {
-    height: $select-height-sm - 2 * $select-margin-y;
-  }
-}
-
-// 高度最小的表单框
-.select-xs {
-  height: $select-height-xs;
-  width: rem(82px);
-  & > .select-addon {
-    padding: 0 0;
-    transform: scale(0.75);
-    margin: $select-margin-y $select-margin-x-right-xs $select-margin-y $select-margin-x-left-xs;
-  }
-  & > .select-selection {
-    height: $select-height-xs - 2 * $input-padding-y-xs;
-    padding: $select-margin-y 0 $select-margin-y $select-margin-y;
-  }
 }
 
