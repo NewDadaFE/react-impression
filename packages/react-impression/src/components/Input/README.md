@@ -250,24 +250,12 @@ class Example extends React.Component {
 
 **文件类型**
 
+实际是 Upload 组件的二次封装，文件上传建议直接使用 [Upload 上传](#upload)。
+
 ```js
 <Row>
   <Col>
-    <Input type="file" style={{width: 464}} />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Input
-      type="file"
-      placeholder="请选择要上传的证书图片"
-      style={{width: 464}}
-     />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Input type="file" btnStyle="primary" style={{width: 464}} />
+    <Input type="file" />
   </Col>
 </Row>
 ```

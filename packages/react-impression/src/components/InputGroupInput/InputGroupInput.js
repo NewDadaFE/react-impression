@@ -34,13 +34,16 @@ export default class InputGroupInput extends React.PureComponent {
     const { type, className, placeholder, ...others } = this.props
 
     return (
-      <input
-        {...others}
-        type={type}
-        className={classnames('form-control', 'input-field', className)}
-        placeholder={placeholder}
-        ref={ref => (this.refMain = ref)}
-      />
+      <div className='dada-input-group-input'>
+        <input
+          {...others}
+          type={type}
+          className={classnames('form-control', 'input-field', className)}
+          placeholder={placeholder}
+          ref={ref => (this.refMain = ref)}
+        />
+        <div className='dada-input-border' />
+      </div>
     )
   }
 }
