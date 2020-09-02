@@ -1,71 +1,64 @@
 ### 示例
 
-**特别提醒：**
+#### 特别提醒
 
 通常同一个 Upload 组件，相同文件，只能选择并上传一次。<br />
 若要实现相同文件多次上传的效果，可以在 onChange 回调函数中手动设置：**event.currentTarget.value = ''**
 
-**单个文件点击上传**
+#### 文件上传模式
+
+**单个文件上传**
 
 ```js
 const handleChange = e => {
   console.log('选择了文件：', e.currentTarget.value)
 }
-;<div>
-  <Row>
-    <Col>
-      <Upload style={{ width: 464 }} onChange={handleChange} />
-    </Col>
-  </Row>
-  <Row>
-    <Col>
-      <Upload
-        placeholder="请上传资质证明"
-        style={{ width: 464 }}
-        onChange={handleChange}
-      />
-    </Col>
-  </Row>
-  <Row>
-    <Col>
-      <Upload
-        btnText="附件"
-        btnStyle="primary"
-        style={{ width: 464 }}
-        onChange={handleChange}
-      />
-    </Col>
-  </Row>
-</div>
+;<Form>
+  <FormGroup>
+    <label>普通：</label>
+    <Upload onChange={handleChange} />
+  </FormGroup>
+  <FormGroup>
+    <label>禁用：</label>
+    <Upload onChange={handleChange} disabled />
+  </FormGroup>
+  <FormGroup>
+    <label>自定义样式：</label>
+    <Upload
+      placeholder="请上传资质证明"
+      btnText="附件"
+      btnStyle="primary"
+      onChange={handleChange}
+      style={{ width: '300px' }}
+    />
+  </FormGroup>
+</Form>
 ```
 
-**多个文件点击上传**
+**多个文件上传**
 
 ```js
 class UploadExample extends React.Component {
   constructor() {
     super()
     this.state = {
-      files: [{ name: 'xxx.png', url: 'www.baidu.com' }],
+      files: [{ name: 'www.baidu.com', url: 'www.baidu.com' }],
     }
     this.handleChange = this.handleChange.bind(this)
     this.deleteFile = this.deleteFile.bind(this)
   }
   handleChange(event) {
-    const file = event.target.files && event.target.files[0]
-    if (file) {
-      console.log('选择了文件:', file)
-      const file = event.target.files[0]
-      this.setState({
-        files: [
-          ...this.state.files,
-          {
-            name: file.name,
-            url: 'www.google.com', //实际url为后台返回的url
-          },
-        ],
-      })
+    const files = event.target.files
+    if (!files) return
+    const filesLength = files.length
+    const fileList = []
+    for (let i = 0; i < filesLength; i++) {
+      const file = files.item(i)
+      fileList.push({ name: file.name, url: 'www.baidu.com' })
     }
+    this.setState({
+      files: [...this.state.files, ...fileList],
+    })
   }
   deleteFile(file, index) {
     console.log('需要删除的文件是:', file)
@@ -73,7 +66,7 @@ class UploadExample extends React.Component {
     var fileList = this.state.files
     fileList.splice(index, 1)
     this.setState({
-      files: fileList,
+      files: [...fileList],
     })
   }
   render() {
@@ -83,11 +76,10 @@ class UploadExample extends React.Component {
         <Row>
           <Col>
             <Upload
-              style={{ width: 464 }}
               onChange={this.handleChange}
-              multiple={true}
               onDeleteFile={this.deleteFile}
               files={files}
+              multiple
             />
           </Col>
         </Row>
@@ -97,6 +89,8 @@ class UploadExample extends React.Component {
 }
 ;<UploadExample />
 ```
+
+#### 图片上传模式
 
 **图片上传**
 
@@ -132,30 +126,51 @@ class UploadExample extends React.Component {
 
   render() {
     return (
-      <Row>
-        <Col>
-          <h5>无预览效果：</h5>
-          <Upload preview onChange={this.handleChange} />
-        </Col>
-        <Col>
-          <h5>选择图片后预览：</h5>
+      <Form>
+        <FormGroup>
+          <label>无预览效果：</label>
+          <Upload onChange={this.handleChange} preview />
+        </FormGroup>
+        <FormGroup>
+          <label>选择图片后预览：</label>
           <Upload
             src={this.state.previewUrl}
-            preview
-            message="上传图片"
             onChange={this.handlePreviewChange}
+            preview
+          />
+        </FormGroup>
+        <FormGroup>
+          <label>自定义图标和文案：</label>
+          <Upload message="上传图片" onChange={this.handleChange} preview>
+            <Ico type="plus" />
+          </Upload>
+        </FormGroup>
+        <FormGroup>
+          <label>禁用：</label>
+          <Upload
+            message="上传图片"
+            onChange={this.handleChange}
+            style={{ marginRight: '16px' }}
+            preview
+            disabled
           >
             <Ico type="plus" />
           </Upload>
-        </Col>
-      </Row>
+          <Upload
+            src="https://placehold.it/240x400"
+            onChange={this.handlePreviewChange}
+            preview
+            disabled
+          />
+        </FormGroup>
+      </Form>
     )
   }
 }
 ;<UploadExample />
 ```
 
-**上传多张图片**
+**多张图片上传**
 
 ```js
 class UploadExample extends React.Component {
@@ -165,8 +180,7 @@ class UploadExample extends React.Component {
       files: [
         {
           name: 'xxx.png',
-          url:
-            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2070940192,1982182585&fm=26&gp=0.jpg',
+          url: 'https://placehold.it/240x400',
         },
       ],
     }
@@ -175,21 +189,17 @@ class UploadExample extends React.Component {
   }
 
   handleChange(event) {
-    const file = event.target.files && event.target.files[0]
-    if (file) {
-      console.log('选择了文件：', file)
-      const file = event.target.files[0]
-      this.setState({
-        files: [
-          ...this.state.files,
-          {
-            name: file.name,
-            url:
-              'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2684769705,335692720&fm=26&gp=0.jpg', //url为实际后台返回的地址
-          },
-        ],
-      })
+    const files = event.target.files
+    if (!files) return
+    const filesLength = files.length
+    const fileList = []
+    for (let i = 0; i < filesLength; i++) {
+      const file = files.item(i)
+      fileList.push({ name: file.name, url: 'https://placehold.it/400x240' })
     }
+    this.setState({
+      files: [...this.state.files, ...fileList],
+    })
   }
 
   deleteFile(item, index) {
@@ -205,28 +215,42 @@ class UploadExample extends React.Component {
   render() {
     const { files } = this.state
     return (
-      <Row>
-        <Col>
-          <h5>选择图片后预览：</h5>
+      <Form type="horizontal">
+        <FormGroup>
+          <label>普通：</label>
           <Upload
-            preview
-            multiple
             message="上传图片"
             onChange={this.handleChange}
             files={files}
             onDeleteFile={this.deleteFile}
+            preview
+            multiple
           >
             <Ico type="plus" />
           </Upload>
-        </Col>
-      </Row>
+        </FormGroup>
+        <FormGroup>
+          <label>禁用：</label>
+          <Upload
+            message="上传图片"
+            onChange={this.handleChange}
+            files={files}
+            onDeleteFile={this.deleteFile}
+            preview
+            multiple
+            disabled
+          >
+            <Ico type="plus" />
+          </Upload>
+        </FormGroup>
+      </Form>
     )
   }
 }
 ;<UploadExample />
 ```
 
-**指定上传的文件类型**
+**指定文件类型**
 
 通过 accept 参数，传入匹配文件类型的字符串。
 
@@ -234,26 +258,20 @@ class UploadExample extends React.Component {
 const handleChange = e => {
   console.log('选择了文件：', e.currentTarget.value)
 }
-;<div>
-  <Row>
-    <Col>
-      <h5>选择图片：</h5>
-      <Upload
-        placeholder="请选择图片"
-        accept="image/*"
-        onChange={handleChange}
-      />
-    </Col>
-    <Col>
-      <h5>选择Excel：</h5>
-      <Upload
-        placeholder="请选择Excel"
-        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-        onChange={handleChange}
-      />
-    </Col>
-  </Row>
-</div>
+;<Form>
+  <FormGroup>
+    <label>选择图片：</label>
+    <Upload placeholder="请选择图片" accept="image/*" onChange={handleChange} />
+  </FormGroup>
+  <FormGroup>
+    <label>选择Excel：</label>
+    <Upload
+      placeholder="请选择Excel"
+      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+      onChange={handleChange}
+    />
+  </FormGroup>
+</Form>
 ```
 
 ### 变更记录

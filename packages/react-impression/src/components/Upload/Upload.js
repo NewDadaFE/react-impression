@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Ico from '../Ico'
+import Image from '../Image'
 
 const RotateDirection = {
   Clockwise: 1,
@@ -78,6 +79,7 @@ export default class Upload extends React.PureComponent {
      * 文件信息集合，多个文件时可用，单个文件以object形式，里面必须包含{name:'',url:''}
      */
     files: PropTypes.array,
+
     /**
      * 删除文件回调函数，参数是被删除的文件file,只在multiple为true情况下可使用
      */
@@ -87,7 +89,7 @@ export default class Upload extends React.PureComponent {
   static defaultProps = {
     btnText: '浏览',
     btnStyle: 'default',
-    placeholder: '请选择要上传的附件',
+    placeholder: '请选择附件',
     preview: false,
     multiple: false,
   }
@@ -229,6 +231,39 @@ export default class Upload extends React.PureComponent {
     }
   }
 
+  showBigImagePreview = () => {
+    const { previewImageUrl, showBigPreview, previewImgRotate } = this.state
+
+    if (!showBigPreview) return null
+
+    return (
+      <div className='dada-big-img-preview' onClick={this.handleTogglePreview}>
+        <Ico
+          type='times-circle'
+          size='lg'
+          onClick={this.handleTogglePreview}
+          className='dada-big-img-preview-close'
+        />
+        <div className='dada-big-img-preview-inner'>
+          <img
+            src={previewImageUrl}
+            alt=''
+            className='dada-big-img-preview-image'
+            style={{ transform: `rotate(${previewImgRotate}deg)` }}
+          />
+        </div>
+        <div className='dada-big-img-preview-operations'>
+          <Ico
+            size='lg'
+            type='rotate-right'
+            onClick={this.handlePreviewRight}
+          />
+          <Ico size='lg' type='rotate-left' onClick={this.handlePreviewLeft} />
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const {
       preview,
@@ -241,18 +276,19 @@ export default class Upload extends React.PureComponent {
       fileName,
       disabled,
       multiple,
-      files,
+      files = [],
       ...others
     } = this.props
+
     delete others.onChange
-    const {
-      file,
-      previewImageUrl,
-      showBigPreview,
-      previewImgRotate,
-    } = this.state
+    delete others.onDeleteFile
+
+    const { file, previewImageUrl } = this.state
     let { children } = this.props
+
+    // 图片模式
     if (preview) {
+      // 自定义图片上传的图标
       if (children) {
         children = React.cloneElement(children, {
           className: classnames(
@@ -261,244 +297,185 @@ export default class Upload extends React.PureComponent {
           ),
         })
       }
-
+      const imageUploadInner = (
+        <div
+          className={classnames('upload-preview-inner upload-preview-tool', {
+            disabled,
+          })}
+        >
+          {children || <Ico type='camera' className='upload-preview-addon' />}
+          {!!message && <span className='upload-preview-text'>{message}</span>}
+        </div>
+      )
+      // 多张图片上传
       if (multiple) {
         return (
-          <div>
+          <div
+            className={classnames('dada-upload-preview-multiple', className)}
+            {...others}
+          >
             {files.map((item, index) => {
               return (
-                <div className='upload-preview-mul' key={index}>
-                  <img src={item.url} />
-                  <div className='upload-preview-remove'>
-                    <Ico
-                      type='eye'
-                      onClick={() => {
-                        this.handleMulPreview(item)
-                      }}
-                      className='action-icon'
-                    />
-                    {!disabled && (
-                      <Ico
-                        type='trash'
-                        onClick={e => {
-                          this.handleRemoveImg(e, item, index)
-                        }}
-                        className='action-icon'
-                      />
+                <div className='upload-preview' key={index}>
+                  <div
+                    className={classnames(
+                      'upload-preview-inner upload-preview-img',
+                      { disabled }
                     )}
+                  >
+                    <Image
+                      src={item.url}
+                      mode='aspectFill'
+                      className='dada-upload-preview-img'
+                    />
+                    <div className='dada-upload-preview-mask'>
+                      <Ico
+                        type='eye'
+                        onClick={() => this.handleMulPreview(item)}
+                        className='dada-upload-preview-action'
+                      />
+                      {!disabled && (
+                        <Ico
+                          type='trash'
+                          onClick={e => this.handleRemoveImg(e, item, index)}
+                          className='dada-upload-preview-action'
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
               )
             })}
-            <div
-              className='upload-preview-mul'
-              onClick={this.handleOpenFileDialog}
-            >
+            <div className='upload-preview' onClick={this.handleOpenFileDialog}>
               <input
                 type='file'
                 accept='image/*'
                 ref={this.fileRef}
                 onChange={this.handleImagePreview}
+                multiple
               />
-              <div
-                className={classnames(
-                  'upload-preview-inner upload-preview-tool',
-                  { disabled }
-                )}
-              >
-                {children}
-                {!!message && (
-                  <span className='upload-preview-text'>{message}</span>
-                )}
-              </div>
+              {imageUploadInner}
             </div>
-            {showBigPreview && (
-              <div className='image-preview' onClick={this.handleTogglePreview}>
-                <Ico
-                  type='close'
-                  onClick={this.handleTogglePreview}
-                  className='ic ic-close'
-                />
-                <div className='image-wrap'>
-                  <img
-                    src={previewImageUrl}
-                    alt=''
-                    style={{ transform: `rotate(${previewImgRotate}deg)` }}
-                  />
-                </div>
-                <div className='image-preview-operation'>
-                  <Ico
-                    type='rotate-right'
-                    onClick={this.handlePreviewRight}
-                    className='ic ic-rotate shadow'
-                  />
-                  <Ico
-                    type='rotate-left'
-                    onClick={this.handlePreviewLeft}
-                    className='ic ic-rotate shadow'
-                  />
-                </div>
-              </div>
-            )}
+            {this.showBigImagePreview()}
           </div>
         )
-      } else {
-        return (
-          <div className='upload-preview' onClick={this.handleOpenFileDialog}>
-            <input
-              type='file'
-              accept={accept}
-              ref={this.fileRef}
-              onChange={this.handleImagePreview}
-            />
-            {previewImageUrl ? (
+      }
+      // 单张图片上传
+      return (
+        <div
+          className={classnames('upload-preview', className)}
+          onClick={this.handleOpenFileDialog}
+          {...others}
+        >
+          <input
+            type='file'
+            accept={accept || 'image/*'}
+            ref={this.fileRef}
+            onChange={this.handleImagePreview}
+          />
+          {previewImageUrl ? (
+            <>
               <div
                 className={classnames(
                   'upload-preview-inner upload-preview-img',
-                  {
-                    disabled,
-                  }
+                  { disabled }
                 )}
               >
-                <img src={previewImageUrl} />
-                <div className='upload-preview-remove'>
+                <Image
+                  src={previewImageUrl}
+                  mode='aspectFill'
+                  className='dada-upload-preview-img'
+                />
+                <div className='dada-upload-preview-mask'>
                   <Ico
                     type='eye'
                     onClick={this.handlePreview}
-                    className='action-icon'
+                    className='dada-upload-preview-action'
                   />
                   {!disabled && (
                     <Ico
                       type='trash'
                       onClick={this.handleRemoveImg}
-                      className='action-icon'
+                      className='dada-upload-preview-action'
                     />
                   )}
                 </div>
-                {showBigPreview && (
-                  <div
-                    className='image-preview'
-                    onClick={this.handleTogglePreview}
-                  >
-                    <Ico
-                      type='close'
-                      onClick={this.handleTogglePreview}
-                      className='ic ic-close'
-                    />
-                    <div className='image-wrap'>
-                      <img
-                        src={previewImageUrl}
-                        alt=''
-                        style={{ transform: `rotate(${previewImgRotate}deg)` }}
-                      />
-                    </div>
-                    <div className='image-preview-operation'>
-                      <Ico
-                        type='rotate-right'
-                        onClick={this.handlePreviewRight}
-                        className='ic ic-rotate shadow'
-                      />
-                      <Ico
-                        type='rotate-left'
-                        onClick={this.handlePreviewLeft}
-                        className='ic ic-rotate shadow'
-                      />
-                    </div>
-                  </div>
-                )}
               </div>
-            ) : (
-              <div
-                className={classnames(
-                  'upload-preview-inner upload-preview-tool',
-                  { disabled }
-                )}
-              >
-                {children || (
-                  <Ico type='camera' className='upload-preview-addon' />
-                )}
-                {!!message && (
-                  <span className='upload-preview-text'>{message}</span>
-                )}
-              </div>
-            )}
-          </div>
-        )
-      }
+              {this.showBigImagePreview()}
+            </>
+          ) : (
+            imageUploadInner
+          )}
+        </div>
+      )
     }
 
     return (
-      <div {...others}>
+      <div className={className}>
         <div
+          className={classnames('input-group', 'input-group-upload', {
+            disabled,
+          })}
           {...others}
-          className={classnames(
-            'input-group',
-            'input-group-upload',
-            { disabled },
-            className
-          )}
-          onClick={this.handleOpenFileDialog}
         >
-          <span className='form-control'>
-            <Ico type='upload' className='upload-addon' />
-            {fileName === undefined ? file || placeholder : fileName}
-          </span>
-          {/* 此处input只能放在中间，否则圆角样式会有问题 */}
-          <input
-            type='file'
-            accept={accept}
-            ref={this.fileRef}
-            onChange={this.handleFileChange}
-          />
-          <span className='input-group-btn'>
+          <div className='dada-input-group-input'>
+            <Ico type='upload' className='dada-input-addon-before' />
+            <span
+              className={classnames({
+                'dada-upload-placeholder': fileName === undefined && !file,
+              })}
+            >
+              {fileName === undefined ? file || placeholder : fileName}
+            </span>
+            <input
+              className='input-field'
+              type='file'
+              accept={accept}
+              ref={this.fileRef}
+              onChange={this.handleFileChange}
+              multiple={multiple}
+              disabled={disabled}
+            />
+            <div className='dada-input-border' />
+          </div>
+          <div className='input-group-btn'>
             <button
               type='button'
               disabled={disabled}
               className={classnames('btn', `btn-${btnStyle}`)}
+              onClick={this.handleOpenFileDialog}
             >
               {btnText}
             </button>
-          </span>
+          </div>
         </div>
-        <div>
-          {multiple && (
-            <div>
-              <ul
-                className={classnames(
-                  { 'upload-ul-outer': files.length > 5 },
-                  'upload-ul'
-                )}
-              >
-                {files.map((item, index) => {
-                  return (
-                    <li key={index} className='upload-li'>
-                      <span
-                        title={item.name}
-                        onClick={() => {
-                          this.handleFileClick(item)
-                        }}
-                        className={classnames({
-                          'upload-li-span': item.url !== '',
-                        })}
-                      >
+        {multiple && files.length > 0 && (
+          <div className='dada-upload-ul-outer'>
+            <ul className='dada-upload-ul'>
+              {files.map((item, index) => {
+                return (
+                  <li key={index} className='dada-upload-li'>
+                    <div className='dada-upload-li-text'>
+                      <Ico type='file-text' className='dada-upload-li-ico' />
+                      <span onClick={() => this.handleFileClick(item)}>
                         {item.name}
                       </span>
-                      {!disabled && (
-                        <Ico
-                          type='times'
-                          onClick={e => {
-                            this.removeFile(e, item, index)
-                          }}
-                          className='upload-mul-remove'
-                        />
-                      )}
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          )}
-        </div>
+                    </div>
+                    {!disabled && (
+                      <Ico
+                        type='trash'
+                        onClick={e => {
+                          this.removeFile(e, item, index)
+                        }}
+                        className='dada-upload-li-remove'
+                      />
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )}
       </div>
     )
   }
