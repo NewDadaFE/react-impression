@@ -127,7 +127,7 @@ export default class Select extends React.PureComponent {
     /**
      * 尺寸
      */
-    size: PropTypes.oneOf(['xs', 'sm', 'md']),
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   }
   static defaultProps = {
     disabled: false,
@@ -596,9 +596,10 @@ export default class Select extends React.PureComponent {
    * @description 清空选项事件
    * @memberof Select
    */
-  handleClearSelect = () => {
-    const { disabled, onChange } = this.props
+  handleClearSelect = event => {
+    const { disabled, onChange, placeholder } = this.props
     const { options } = this.state
+    event.stopPropagation()
 
     if (disabled) {
       return
@@ -613,6 +614,7 @@ export default class Select extends React.PureComponent {
         queryText: '',
         value: '',
         showOption: false,
+        currentPlaceholder: placeholder,
       },
       () => {
         options.forEach(option => option.handleActive())
@@ -632,14 +634,6 @@ export default class Select extends React.PureComponent {
     this.setState({ currentPlaceholder: selectText, queryText: '' })
   }
 
-  /**
-   * Input框blur事件
-   * @returns {*}
-   */
-  // blurHandler = () => {
-  //   const {selectText} = this.state
-  //   this.setState({queryText: selectText})
-  // }
   render() {
     const {
       disabled,
@@ -679,7 +673,12 @@ export default class Select extends React.PureComponent {
         onMouseLeave={this.handleHideClear}
       >
         {multiple && (
-          <div className='select-tags' onClick={this.toggleOptionsHandle}>
+          <div
+            className={classnames('select-tags', {
+              'select-tag-xs': size === 'xs',
+            })}
+            onClick={this.toggleOptionsHandle}
+          >
             {selectedItem.length <= 0 && (
               <span className='select-placeholder'>{placeholder}</span>
             )}
@@ -691,7 +690,7 @@ export default class Select extends React.PureComponent {
                     closable
                     theme='default'
                     onClose={e => this.selectMultipleDelete(val, e)}
-                    className='offset-l'
+                    // className='offset-l'
                     key={item.value}
                   >
                     {item.name}
@@ -725,7 +724,7 @@ export default class Select extends React.PureComponent {
             onClick={this.toggleOptionsHandle}
           />
         )}
-        {(!showClear || !clearable) && searchable && (
+        {(!showClear || !clearable) && searchable && !multiple && (
           <i
             className={classnames('dada-ico dada-ico-search select-addon', {
               [`select-addon-${size}`]: !!size,

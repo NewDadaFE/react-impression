@@ -9,6 +9,7 @@
 	width: 16rem;
 	line-height: $select-option-inline-height;
   border: $border-width solid $gray-light;
+  border-radius: rem(2px);
 	&.disabled {
 		&,
 		.select-addon,
@@ -23,6 +24,8 @@
 		}
 	}
 	.select-tags {
+    @include scroll-reset();
+
 		cursor: pointer;
 		position: relative;
 		display: inline-block;
@@ -32,30 +35,35 @@
 		width: 100%;
 		box-sizing: border-box;
 		font-size: 1rem;
-		line-height: 0.7;
+		line-height: rem(22px);
 		color: $gray-base;
-		background-color: $select-tags-bg-color;
+		background-color: $select-bg-color;
 		background-image: none;
 		background-clip: padding-box;
 		border: none;
 		transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-		max-height: 5.71rem;
-		min-height: 2.857rem;
+		max-height: $select-mutiple-max-height;
+		min-height: $select-height-md;
 		overflow-y: auto;
+    padding-bottom: rem(4px);
+    padding-right: rem(42px);
 		.tag-default {
 			color: $gray-base;
-			background: rgba(233, 235, 240, 0.5);
-			margin-bottom: 0.3rem;
-			margin-top: 0.35rem;
-			height: 2.142rem;
+			background: $select-tags-bg-color;
+      margin: $select-tag-margin 0 0 $select-tag-margin;
+			height: $select-tag-height-md;
 			border: none;
-			padding-left: 0.714rem;
-			padding-right: 0.714rem;
+			padding-left: $select-padding-x;
+			padding-right: rem(4px);
+      &:hover {
+        background-color: $gray-light;
+      }
 		}
 		.tag-close {
 			color: $gray-dark;
 			opacity: 1;
 			font-size: $font-size-lg;
+      margin-left: rem(8px);
 			&:hover {
 				color: $gray-base;
 			}
@@ -63,15 +71,15 @@
 		.select-placeholder {
 			color: $gray-dark;
 			position: absolute;
-			top: $input-padding-x;
-			left: $input-padding-x;
-      line-height: rem(26px);
+			top: $select-padding-y-md;
+			left: $select-padding-x;
+      line-height: $select-line-height-md;
 			.required & {
 				color: $brand-danger;
 			}
 		}
 		.tag {
-			line-height: 1.7rem;
+			line-height: rem(22px);
 		}
 		.required & {
 			border: rem(1px) solid $brand-danger;
@@ -79,7 +87,15 @@
 	}
 	&.select-multiple {
 		width: 28.57rem;
+    // padding-bottom: rem(4px);
 	}
+  .select-tag-xs {
+    line-height: rem(20px);
+    min-height: $select-height-xs;
+    .tag-default {
+    height:$select-tag-height-xs;
+    }
+  }
 }
 
 .select-selection {
@@ -92,7 +108,7 @@
 	padding: $input-padding-y-md $input-padding-x;
 	border-radius: rem(2px);
 	color: $gray-base;
-	background-color: $select-tags-bg-color;
+	background-color: $select-bg-color;
 	background-image: none;
 	background-clip: padding-box;
   border: none;
@@ -111,7 +127,7 @@
 		background: $select-bg;
 	}
 	&::placeholder {
-		color: $gray-dark;
+    color: $select-placeholder-color;
 	}
 	.required & {
 		border-color: $brand-danger;
@@ -128,15 +144,21 @@
 }
 .select-selection-md {
   height: $select-height-md;
-  line-height: $line-height-base;
+  line-height: $select-line-height-md;
   font-size: $font-size-base;
   padding: $select-padding-y-md $select-padding-x;
 }
 .select-selection-sm {
   height: $select-height-sm;
-  line-height: $line-height-sm;
+  line-height: $select-line-height-sm;
   font-size: $font-size-sm;
   padding: $select-padding-y-sm $select-padding-x;
+}
+.select-selection-xs {
+  height: $select-height-xs;
+  line-height: $select-line-height-xs;
+  font-size: $font-size-xs;
+  padding: $select-padding-y-xs $select-padding-x;
 }
 .select-required {
 	color: $brand-danger;
@@ -155,9 +177,9 @@
 	box-sizing: border-box;
 	border-radius: rem(2px);
 	animation: 0.3s scaleIn ease;
-	border: $select-options-border;
+	// border: $select-options-border;
 	transform-origin: center 0;
-	box-shadow: 0px rem(2px) rem(10px) 0px rgba(19, 34, 64, 0.1);
+	box-shadow: 0px rem(6px) rem(18px) 0px rgba(0, 0, 0, 0.14);
 	margin: 0;
 	background: $select-bg;
 	padding: 0.714rem 0;
@@ -165,7 +187,7 @@
 .select-search-wrap {
 	position: relative;
 	z-index: $zindex-select;
-	background-color: $select-tags-bg-color;
+	background-color: $select-bg-color;
 	box-sizing: border-box;
 	padding: $select-option-padding;
 	.select-search {
@@ -187,7 +209,7 @@
 	font-size: 1rem;
 	line-height: 1.25;
 	color: $gray-base;
-	background-color: $select-tags-bg-color;
+	background-color: $select-bg-color;
 	background-image: none;
 	background-clip: padding-box;
 	border: 1px solid $border-color;
@@ -231,9 +253,12 @@
 .select-addon {
 	cursor: pointer;
 	user-select: none;
+  position: absolute;
 	color: $gray-light;
-	margin-left: 1px;
-	margin-right: $input-padding-x;
+	// margin-left: 16px;
+  font-size: $select-addon-font-size-md;
+  right: $select-addon-margin-x;
+  top: $select-addon-margin-y-md;
 	transition: $select-transition;
 
 	.open & {
@@ -241,17 +266,21 @@
 	}
 }
 .select-addon-lg {
-  // font-size: $select-addon-font-size-lg;
+  font-size: $select-addon-font-size-lg;
+  top: $select-addon-margin-y-lg;
   transform: scale(1.25);
-  margin: $select-addon-margin-y-lg $select-addon-margin-x $select-addon-margin-y-lg;
 }
 .select-addon-md {
   font-size: $select-addon-font-size-md;
-  margin: $select-addon-margin-y-md $select-addon-margin-x $select-addon-margin-y-md;
+  top: $select-addon-margin-y-md;
 }
 .select-addon-sm {
   font-size: $select-addon-font-size-sm;
-  margin: $select-addon-margin-y-sm $select-addon-margin-x $select-addon-margin-y-sm;
+  top: $select-addon-margin-y-sm;
+}
+.select-addon-xs {
+  font-size: $select-addon-font-size-xs;
+  top: $select-addon-margin-y-xs;
 }
 
 .select-options {
@@ -277,8 +306,8 @@
 	white-space: nowrap;
 	color: $gray-base;
   height: $select-height-md + rem(1px) * 2;
-  line-height: $line-height-base;
-  padding: $select-padding-y-md  $select-padding-x * 2;
+  line-height: $select-line-height-md;
+  padding: $select-option-padding-y  $select-option-padding-x;
 	&:hover {
 		background-color: $select-option-hover-bg;
 	}
@@ -295,21 +324,7 @@
 		padding-left: $input-padding-x * 2;
 	}
 }
-//.select-option-lg {
-//  height: $select-height-lg;
-//  line-height: $select-line-height-lg;
-//  padding: $select-padding-y-lg  $select-padding-x * 2;
-//}
-//.select-option-md {
-//  height: $select-height-md;
-//  line-height: $line-height-base;
-//  padding: $select-padding-y-md  $select-padding-x * 2;
-//}
-//.select-option-sm {
-//  height: $select-height-sm;
-//  line-height: $line-height-sm;
-//  padding: $select-padding-y-sm  $select-padding-x * 2;
-//}
+
 .select-group-container {
 	list-style-type: none;
 	padding: 0;
