@@ -50,7 +50,7 @@
 		.tag-default {
 			color: $gray-base;
 			background: $select-tags-bg-color;
-      margin: $select-tag-margin 0 0 $select-tag-margin;
+      margin: $select-tag-margin-md 0 0 $select-tag-margin-md;
 			height: $select-tag-height-md;
 			border: none;
 			padding-left: $select-padding-x;
@@ -61,15 +61,17 @@
 		}
 		.tag-close {
 			color: $gray-dark;
+      display: inline-block;
 			opacity: 1;
 			font-size: $font-size-lg;
+      height: rem(20px);
       margin-left: rem(8px);
 			&:hover {
 				color: $gray-base;
 			}
 		}
 		.select-placeholder {
-			color: $gray-dark;
+			color: $gray;
 			position: absolute;
 			top: $select-padding-y-md;
 			left: $select-padding-x;
@@ -92,8 +94,20 @@
   .select-tag-xs {
     line-height: rem(20px);
     min-height: $select-height-xs;
+    padding-bottom: rem(2px);
     .tag-default {
     height:$select-tag-height-xs;
+    margin: $select-tag-margin-xs 0 0 $select-tag-margin-xs;
+    padding: 0 rem(4px) 0 rem(8px);
+    }
+    .select-placeholder-xs {
+      line-height: $select-line-height-xs;
+      font-size: $font-size-xs;
+      top: rem(3px);
+      left: rem(8px);
+    }
+    .tag {
+      line-height: rem(20px);
     }
   }
 }
@@ -255,8 +269,6 @@
 	user-select: none;
   position: absolute;
 	color: $gray-light;
-	// margin-left: 16px;
-  font-size: $select-addon-font-size-md;
   right: $select-addon-margin-x;
   top: $select-addon-margin-y-md;
 	transition: $select-transition;
@@ -266,7 +278,6 @@
 	}
 }
 .select-addon-lg {
-  font-size: $select-addon-font-size-lg;
   top: $select-addon-margin-y-lg;
   transform: scale(1.25);
 }
@@ -279,7 +290,7 @@
   top: $select-addon-margin-y-sm;
 }
 .select-addon-xs {
-  font-size: $select-addon-font-size-xs;
+  font-size: $select-addon-font-size-sm;
   top: $select-addon-margin-y-xs;
 }
 
@@ -305,7 +316,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: $gray-base;
-  height: $select-height-md + rem(1px) * 2;
+  height: $select-height-md + rem(2px);
   line-height: $select-line-height-md;
   padding: $select-option-padding-y  $select-option-padding-x;
 	&:hover {

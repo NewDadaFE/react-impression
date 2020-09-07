@@ -23,13 +23,13 @@ $select-addon-font-size-md: rem(18px) !default;
 $select-padding-y-md: rem(6px) !default;
 $select-line-height-md: rem(22px) !default;
 $select-tag-height-md: rem(26px) !default;
-$select-tag-margin: rem(4px) !default;
+$select-tag-margin-md: rem(4px) !default;
 $select-height-md: (
   $select-line-height-md + ($select-padding-y-md * 2)
 ) !default;
 // 小号
 $select-addon-margin-y-sm: rem(8px) !default;
-$select-addon-font-size-sm: rem(16x) !default;
+$select-addon-font-size-sm: rem(16px) !default;
 $select-padding-y-sm: rem(5px) !default;
 $select-line-height-sm: rem(20px) !default;
 $select-height-sm: (
@@ -41,6 +41,7 @@ $select-addon-font-size-xs: rem(14px) !default;
 $select-padding-y-xs: rem(3px) !default;
 $select-line-height-xs: rem(20px) !default;
 $select-tag-height-xs: rem(20px) !default;
+$select-tag-margin-xs: rem(3px) !default;
 $select-height-xs: (
   $select-line-height-xs + ($select-padding-y-xs * 2)
 ) !default;

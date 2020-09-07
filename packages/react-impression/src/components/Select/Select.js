@@ -7,6 +7,7 @@ import { DebounceInput } from 'react-debounce-input'
 import PerfectScrollbar from 'perfect-scrollbar'
 import Tag from '../Tag/index'
 import Popper from 'popper.js'
+import Trigger from '../Trigger'
 import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
@@ -680,7 +681,13 @@ export default class Select extends React.PureComponent {
             onClick={this.toggleOptionsHandle}
           >
             {selectedItem.length <= 0 && (
-              <span className='select-placeholder'>{placeholder}</span>
+              <span
+                className={classnames('select-placeholder', {
+                  'select-placeholder-xs': size === 'xs',
+                })}
+              >
+                {placeholder}
+              </span>
             )}
             {selectedItem.length > 0 &&
               selectedItem.map(item => {
