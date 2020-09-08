@@ -16,9 +16,7 @@
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="dashed" shape="circle">
-        虚线
-      </Button>
+      <Button theme="dashed">虚线</Button>
     </CardBlock>
   </Col>
   <Col col="2">
