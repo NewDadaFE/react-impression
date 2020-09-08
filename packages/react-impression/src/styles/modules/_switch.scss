@@ -60,7 +60,7 @@
     display: block;
     width: round($switch-addon-width * $font-size-root);
     height: round($switch-addon-height * $font-size-root);
-    content: "";
+    content: '';
     transition: $checkbox-addon-transtion;
     border-radius: 50%;
     background-color: $switch-addon-bg;
