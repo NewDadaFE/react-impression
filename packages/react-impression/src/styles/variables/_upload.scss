@@ -22,12 +22,11 @@ $upload-preview-img-bg: $brand-pure !default;
 $upload-preview-img-border-color: $gray-light !default;
 $upload-preview-img-offset: rem(10px - $border-width) !default;
 // 图片预览hover
-$upload-preview-remove-font-size: rem(20px) !default;
 $upload-preview-remove-color: $brand-pure !default;
 $upload-preview-wrapper-bg: rgba(black, 0.5) !default;
 // 大图预览
 $upload-preview-ic-padding: 4px;
-$upload-preview-ic-font-size: rem(30px) !default;
+$upload-preview-ic-font-size: rem(24px) !default;
 $upload-preview-ic-shadow: 0px rem(2px) rem(10px) 0px
 rgba(0, 0, 0, 0.3) !default;
 $upload-preview-ic-border-radius: rem(20px) !default;

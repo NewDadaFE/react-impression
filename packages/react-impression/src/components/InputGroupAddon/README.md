@@ -3,31 +3,28 @@
 **基本用法**
 
 ```js
-<Row>
-  <Col>
+<Form>
+  <FormGroup>
+    <label>附加左侧：</label>
     <InputGroup>
-      <InputGroupAddon>@</InputGroupAddon>
-      <InputGroupInput placeholder="请输入内容" />
+      <InputGroupAddon>+86</InputGroupAddon>
+      <InputGroupInput placeholder="请输入手机" />
     </InputGroup>
-  </Col>
-  <Col>
+  </FormGroup>
+  <FormGroup>
+    <label>附加右侧：</label>
     <InputGroup>
-      <InputGroupInput placeholder="请输入内容" />
-      <InputGroupAddon>@</InputGroupAddon>
-    </InputGroup>
-  </Col>
-  <Col>
-    <InputGroup>
-      <InputGroupAddon>@</InputGroupAddon>
       <InputGroupInput placeholder="请输入内容" />
       <InputGroupAddon>@</InputGroupAddon>
     </InputGroup>
-  </Col>
-  <Col>
+  </FormGroup>
+  <FormGroup>
+    <label>附加双侧：</label>
     <InputGroup>
-      <InputGroupAddon pure>+86</InputGroupAddon>
-      <InputGroupInput placeholder="请输入电话" />
+      <InputGroupAddon>+86</InputGroupAddon>
+      <InputGroupInput placeholder="请输入手机" />
+      <InputGroupAddon>@</InputGroupAddon>
     </InputGroup>
-  </Col>
-</Row>
+  </FormGroup>
+</Form>
 ```
