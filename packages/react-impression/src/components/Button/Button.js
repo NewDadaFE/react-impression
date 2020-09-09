@@ -9,7 +9,8 @@ const iconSize = {
   md: 'sm',
   lg: 'md',
 }
-export default class Button extends React.PureComponent {
+
+class Button extends React.PureComponent {
   static propTypes = {
     /**
      * 子组件
@@ -20,6 +21,11 @@ export default class Button extends React.PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+
+    /**
+     * 按钮类型，同HTML button元素的 type
+     */
+    type: PropTypes.string,
 
     /**
      * 主题样式
@@ -61,6 +67,7 @@ export default class Button extends React.PureComponent {
     theme: 'primary',
     block: false,
     size: 'md',
+    type: 'button',
   }
 
   render() {
@@ -76,6 +83,7 @@ export default class Button extends React.PureComponent {
       children,
       loading,
       icon,
+      innerRef,
       ...others
     } = this.props
     delete others.eventKey
@@ -103,6 +111,7 @@ export default class Button extends React.PureComponent {
           btnSize,
           className
         )}
+        ref={innerRef}
       >
         {loading ? (
           <span className='btn-loading-circle'>
@@ -127,3 +136,7 @@ export default class Button extends React.PureComponent {
     )
   }
 }
+
+export default React.forwardRef((props, ref) => (
+  <Button innerRef={ref} {...props} />
+))
