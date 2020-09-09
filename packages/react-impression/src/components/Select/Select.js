@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as R from 'ramda'
 import { DebounceInput } from 'react-debounce-input'
-import PerfectScrollbar from 'perfect-scrollbar'
 import Tag from '../Tag/index'
 import Trigger from '../Trigger'
 import SelectOption from '../SelectOption'
@@ -19,11 +18,9 @@ export default class Select extends React.PureComponent {
     super(props, context)
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
-    this.selectPopper = null
     // 子组件数据
     this.options = []
     // 滚动条
-    this.selectScrollbar = null
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
@@ -158,7 +155,6 @@ export default class Select extends React.PureComponent {
   }
 
   handleValueChange(props) {
-    console.log('valueChange')
     const { options, selectedOptions } = this.state
     const optionList = this.getOptionList(options).concat(selectedOptions)
 
@@ -298,10 +294,8 @@ export default class Select extends React.PureComponent {
           option.queryChange('')
         })
         if (this.state.showOption) {
-          this.handleInitSelectScroll()
         } else {
           this.setState({ queryText: selectText })
-          this.handleDestroySelectScroll()
         }
       }
     )
@@ -338,7 +332,6 @@ export default class Select extends React.PureComponent {
       this.setState({ currentPlaceholder: placeholder })
     }
     this.selectInner.scrollTop = 0
-    this.handleUpdateSelectScroll()
     if (e) e.stopPropagation()
   }
 
@@ -379,14 +372,12 @@ export default class Select extends React.PureComponent {
     this.setState(
       {
         showOption: !!multiple,
-        // queryText: '',
         selectedOptions: selectedOptions.concat(result.node),
       },
       () => {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
-        this.handleUpdateSelectScroll()
       }
     )
   }
@@ -461,60 +452,14 @@ export default class Select extends React.PureComponent {
     const { options, optionGroup } = this.state
     const { filterMethod, remoteMethod } = this.props
     this.setState({ queryText: val }, () => {
-      if (remoteMethod) {
-        const promise = remoteMethod(val)
-        const hasPromise =
-          promise &&
-          typeof promise.then === 'function' &&
-          typeof promise.catch === 'function'
-        if (!hasPromise) {
-          this.handleUpdateScroll()
-          return
-        }
-        promise
-          .then(() => {
-            this.handleUpdateScroll()
-          })
-          .catch(() => {
-            this.handleUpdateScroll()
-          })
-      } else {
+      if (!remoteMethod) {
         options.forEach(option => {
           option.queryChange(val, filterMethod)
         })
         optionGroup.forEach(option => {
           option.queryChange(val)
         })
-        this.handleUpdateScroll()
       }
-    })
-  }
-
-  handleUpdateScroll = () => {
-    this.selectInner.scrollTop = 0
-    this.handleUpdateSelectScroll()
-  }
-
-  handleInitSelectScroll = () => {
-    this.requestId = window.requestAnimationFrame(() => {
-      this.selectInner.scrollTop = 0
-      this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
-        suppressScrollX: true,
-        swipeEasing: false,
-      })
-    })
-  }
-
-  handleDestroySelectScroll = () => {
-    if (this.selectScrollbar) {
-      this.selectScrollbar.destroy()
-      this.selectScrollbar = null
-    }
-  }
-
-  handleUpdateSelectScroll = () => {
-    window.requestAnimationFrame(() => {
-      this.selectScrollbar && this.selectScrollbar.update()
     })
   }
 
@@ -594,8 +539,7 @@ export default class Select extends React.PureComponent {
    * @returns {*}
    */
   focusHandler = () => {
-    const { selectText, queryText } = this.state
-    console.log('queryText', 'focusHandler')
+    const { selectText } = this.state
     if (!selectText) return
     this.setState({ currentPlaceholder: selectText, queryText: '' })
   }
@@ -611,7 +555,6 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
-        this.handleDestroySelectScroll()
       })
     }
   }
@@ -636,7 +579,6 @@ export default class Select extends React.PureComponent {
       showClear,
     } = this.state
     let { children } = this.props
-    console.log('queryText', queryText)
     return (
       <>
         <Trigger
@@ -647,7 +589,7 @@ export default class Select extends React.PureComponent {
           stretch='sameWidth'
           transitionName='scale'
           popup={
-            <div className='select-option-outer'>
+            <div>
               <div
                 className={classnames(this.wrapClass, 'select-options-wrap')}
               >

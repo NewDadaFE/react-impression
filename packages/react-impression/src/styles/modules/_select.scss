@@ -123,7 +123,7 @@
     }
 
     .tag {
-      line-height: rem(20px);
+      line-height: rem(18px);
     }
   }
 }
@@ -202,12 +202,6 @@
   color: $brand-danger;
 }
 
-.select-option-outer {
-  // TODO 待Trigger组件完成后此处要清理position
-  // position: fixed;
-  // z-index: $zindex-select;
-}
-
 .select-open {
   border-color: $brand-primary;
   outline: none;
@@ -215,12 +209,9 @@
 }
 
 .select-options-wrap {
-  @include scroll-reset();
   box-sizing: border-box;
   border-radius: rem(2px);
   animation: 0.3s scaleIn ease;
-  // border: $select-options-border;
-  overflow-y: auto;
   transform-origin: center 0;
   margin: 0;
   background: $select-bg;
@@ -336,13 +327,14 @@
 }
 
 .select-options {
+  @include scroll-reset();
+  overflow-y: auto;
   width: 100%;
   padding: 0;
   margin: 0;
   position: relative;
   z-index: $zindex-select;
   list-style: none;
-  overflow-y: auto;
   max-height: $select-selection-max-height;
 
   .select-noresult {
