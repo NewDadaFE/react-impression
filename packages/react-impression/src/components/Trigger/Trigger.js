@@ -254,7 +254,7 @@ function Trigger(props) {
    */
   useEffect(
     () => {
-      onPopupVisibleChange(showPopup)
+      onPopupVisibleChange && onPopupVisibleChange(showPopup)
     },
     [showPopup, onPopupVisibleChange]
   )
