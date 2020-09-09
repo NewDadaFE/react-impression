@@ -2,110 +2,126 @@
 //
 //
 .select {
-	position: relative;
-	cursor: pointer;
-	display: inline-flex;
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
-	width: 16rem;
-	line-height: $select-option-inline-height;
+  width: 16rem;
+  line-height: $select-option-inline-height;
   border: $border-width solid $gray-light;
   border-radius: rem(2px);
-	&.disabled {
-		&,
-		.select-addon,
-		.select-tags,
-		.select-selection {
-			background: $select-disable-bg;
-			cursor: not-allowed;
-			color: $select-selection-color;
-		}
-		.tag {
-			cursor: not-allowed;
-		}
-	}
-	.select-tags {
+
+  &.disabled {
+    &,
+    .select-addon,
+    .select-tags,
+    .select-selection {
+      background: $select-disable-bg;
+      cursor: not-allowed;
+      color: $select-selection-color;
+    }
+
+    .tag {
+      cursor: not-allowed;
+    }
+  }
+
+  .select-tags {
     @include scroll-reset();
 
-		cursor: pointer;
-		position: relative;
-		display: inline-block;
-		user-select: none;
-		text-align: left;
-		text-overflow: ellipsis;
-		width: 100%;
-		box-sizing: border-box;
-		font-size: 1rem;
-		line-height: rem(22px);
-		color: $gray-base;
-		background-color: $select-bg-color;
-		background-image: none;
-		background-clip: padding-box;
-		border: none;
-		transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-		max-height: $select-mutiple-max-height;
-		min-height: $select-height-md;
-		overflow-y: auto;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    text-align: left;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: rem(22px);
+    color: $gray-base;
+    background-color: $select-bg-color;
+    background-image: none;
+    background-clip: padding-box;
+    border: none;
+    transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
+    max-height: $select-mutiple-max-height;
+    min-height: $select-height-md;
+    overflow-y: auto;
     padding-bottom: rem(4px);
     padding-right: rem(42px);
-		.tag-default {
-			color: $gray-base;
-			background: $select-tags-bg-color;
+
+    .tag-default {
+      color: $gray-base;
+      background: $select-tags-bg-color;
       margin: $select-tag-margin-md 0 0 $select-tag-margin-md;
-			height: $select-tag-height-md;
-			border: none;
-			padding-left: $select-padding-x;
-			padding-right: rem(4px);
+      height: $select-tag-height-md;
+      border: none;
+      padding-left: $select-padding-x;
+      padding-right: rem(4px);
+
       &:hover {
         background-color: $gray-light;
       }
-		}
-		.tag-close {
-			color: $gray-dark;
+    }
+
+    .tag-close {
+      color: $gray;
       display: inline-block;
-			opacity: 1;
-			font-size: $font-size-lg;
+      opacity: 1;
+      font-size: $font-size-lg;
       height: rem(20px);
       margin-left: rem(8px);
-			&:hover {
-				color: $gray-base;
-			}
-		}
-		.select-placeholder {
-			color: $gray;
-			position: absolute;
-			top: $select-padding-y-md;
-			left: $select-padding-x;
+
+      &:hover {
+        color: $gray-base;
+      }
+    }
+
+    .select-placeholder {
+      color: $gray;
+      position: absolute;
+      top: $select-padding-y-md;
+      left: $select-padding-x;
       line-height: $select-line-height-md;
-			.required & {
-				color: $brand-danger;
-			}
-		}
-		.tag {
-			line-height: rem(22px);
-		}
-		.required & {
-			border: rem(1px) solid $brand-danger;
-		}
-	}
-	&.select-multiple {
-		width: 28.57rem;
+
+      .required & {
+        color: $brand-danger;
+      }
+    }
+
+    .tag {
+      line-height: rem(20px);
+    }
+
+    .required & {
+      border: rem(1px) solid $brand-danger;
+    }
+  }
+
+  &.select-multiple {
+    width: 28.57rem;
     // padding-bottom: rem(4px);
-	}
+  }
+
   .select-tag-xs {
     line-height: rem(20px);
     min-height: $select-height-xs;
     padding-bottom: rem(2px);
+
     .tag-default {
-    height:$select-tag-height-xs;
-    margin: $select-tag-margin-xs 0 0 $select-tag-margin-xs;
-    padding: 0 rem(4px) 0 rem(8px);
+      height: $select-tag-height-xs;
+      margin: $select-tag-margin-xs 0 0 $select-tag-margin-xs;
+      padding: 0 rem(4px) 0 rem(8px);
     }
+
     .select-placeholder-xs {
       line-height: $select-line-height-xs;
       font-size: $font-size-xs;
       top: rem(3px);
       left: rem(8px);
     }
+
     .tag {
       line-height: rem(20px);
     }
@@ -113,247 +129,279 @@
 }
 
 .select-selection {
-	cursor: pointer;
-	width: 100%;
-	display: inline-block;
-	user-select: none;
-	text-align: left;
-	text-overflow: ellipsis;
-	padding: $input-padding-y-md $input-padding-x;
-	border-radius: rem(2px);
-	color: $gray-base;
-	background-color: $select-bg-color;
-	background-image: none;
-	background-clip: padding-box;
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  user-select: none;
+  text-align: left;
+  text-overflow: ellipsis;
+  padding: $input-padding-y-md $input-padding-x;
+  border-radius: rem(2px);
+  color: $gray-base;
+  background-color: $select-bg-color;
+  background-image: none;
+  background-clip: padding-box;
   border: none;
-	transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
+  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 
-	&:active,
-	&:focus {
-		outline: none;
+  &:active,
+  &:focus {
+    outline: none;
 
-		&::placeholder {
-			opacity: 1;
-		}
-	}
+    &::placeholder {
+      opacity: 1;
+    }
+  }
 
-	&[readonly] {
-		background: $select-bg;
-	}
-	&::placeholder {
+  &[readonly] {
+    background: $select-bg;
+  }
+
+  &::placeholder {
     color: $select-placeholder-color;
-	}
-	.required & {
-		border-color: $brand-danger;
-		&::placeholder {
-			color: $brand-danger;
-		}
-	}
+  }
+
+  .required & {
+    border-color: $brand-danger;
+
+    &::placeholder {
+      color: $brand-danger;
+    }
+  }
 }
+
 .select-selection-lg {
   height: $select-height-lg;
   line-height: $select-line-height-lg;
   font-size: $select-font-size-lg;
-  padding: $select-padding-y-lg $select-padding-x;
+  padding: $select-padding-y-lg $select-addon-font-size-lg + $select-padding-x * 2 $select-padding-y-lg $select-padding-x;
 }
+
 .select-selection-md {
   height: $select-height-md;
   line-height: $select-line-height-md;
   font-size: $font-size-base;
-  padding: $select-padding-y-md $select-padding-x;
+  padding: $select-padding-y-md $select-addon-font-size-md + $select-padding-x * 2 $select-padding-y-md $select-padding-x;
 }
+
 .select-selection-sm {
   height: $select-height-sm;
   line-height: $select-line-height-sm;
   font-size: $font-size-sm;
-  padding: $select-padding-y-sm $select-padding-x;
+  padding: $select-padding-y-sm $select-addon-font-size-sm + $select-padding-x * 2 $select-padding-y-sm $select-padding-x;
 }
+
 .select-selection-xs {
   height: $select-height-xs;
   line-height: $select-line-height-xs;
   font-size: $font-size-xs;
-  padding: $select-padding-y-xs $select-padding-x;
+  padding: $select-padding-y-xs $select-addon-font-size-xs + $select-padding-x * 2 $select-padding-y-xs $select-padding-x;
 }
+
 .select-required {
-	color: $brand-danger;
+  color: $brand-danger;
 }
+
 .select-option-outer {
   // TODO 待Trigger组件完成后此处要清理position
-  position: fixed;
-	z-index: $zindex-select;
+  // position: fixed;
+  // z-index: $zindex-select;
 }
+
 .select-open {
   border-color: $brand-primary;
   outline: none;
   transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 }
+
 .select-options-wrap {
-	box-sizing: border-box;
-	border-radius: rem(2px);
-	animation: 0.3s scaleIn ease;
-	// border: $select-options-border;
-	transform-origin: center 0;
-	box-shadow: 0px rem(6px) rem(18px) 0px rgba(0, 0, 0, 0.14);
-	margin: 0;
-	background: $select-bg;
-	padding: 0.714rem 0;
+  @include scroll-reset();
+  box-sizing: border-box;
+  border-radius: rem(2px);
+  animation: 0.3s scaleIn ease;
+  // border: $select-options-border;
+  overflow-y: auto;
+  transform-origin: center 0;
+  margin: 0;
+  background: $select-bg;
+  padding: 0.714rem 0;
 }
+
 .select-search-wrap {
-	position: relative;
-	z-index: $zindex-select;
-	background-color: $select-bg-color;
-	box-sizing: border-box;
-	padding: $select-option-padding;
-	.select-search {
-		position: absolute;
-		right: $input-padding-x;
-		height: 2.142rem;
-		top: rem(8px);
-	}
+  position: relative;
+  z-index: $zindex-select;
+  background-color: $select-bg-color;
+  box-sizing: border-box;
+  padding: $select-option-padding;
+
+  .select-search {
+    position: absolute;
+    right: $input-padding-x;
+    height: 2.142rem;
+    top: rem(4px);
+  }
 }
 
 .select-search-input {
-	cursor: pointer;
-	display: inline-block;
-	text-align: left;
-	text-overflow: ellipsis;
-	width: 100%;
-	height: 2.143rem;
-	padding: $select-padding-y-md $input-padding-x;
-	font-size: 1rem;
-	line-height: 1.25;
-	color: $gray-base;
-	background-color: $select-bg-color;
-	background-image: none;
-	background-clip: padding-box;
-	border: 1px solid $border-color;
-	transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-	padding-right: $select-selection-padding-right;
-	&:active,
-	&:focus {
-		outline: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: left;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 2.143rem;
+  padding: $select-padding-y-md $input-padding-x;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: $gray-base;
+  background-color: $select-bg-color;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid $border-color;
+  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
+  padding-right: $select-selection-padding-right;
 
-		&::placeholder {
-			opacity: 1;
-		}
-	}
+  &:active,
+  &:focus {
+    outline: none;
 
-	&[readonly] {
-		background: $select-bg;
-	}
-	.open & {
-		display: inline-block;
-	}
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  &[readonly] {
+    background: $select-bg;
+  }
+
+  .open & {
+    display: inline-block;
+  }
 }
 
 .select-search {
-	cursor: pointer;
-	user-select: none;
-	position: absolute;
-	color: $gray-light;
-	right: rem(1px);
-	font-size: 1.25rem;
-	top: rem(2px);
-	z-index: 2;
-	padding: $select-padding-y-md $input-padding-x;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  color: $gray-light;
+  right: rem(1px);
+  font-size: 1.25rem;
+  top: rem(2px);
+  z-index: 2;
+  padding: $select-padding-y-md $input-padding-x;
 }
 
 .select-empty {
-	margin-bottom: 0;
-	text-align: center;
-	color: $gray-dark;
-	padding: $select-padding-y-md $input-padding-x;
+  margin-bottom: 0;
+  text-align: center;
+  color: $gray-dark;
+  padding: $select-padding-y-md $input-padding-x;
 }
-.select-addon {
-	cursor: pointer;
-	user-select: none;
-  position: absolute;
-	color: $gray-light;
-  right: $select-addon-margin-x;
-  top: $select-addon-margin-y-md;
-	transition: $select-transition;
 
-	.open & {
-		transform: rotate(180deg);
-	}
+.select-addon {
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  color: $gray-light;
+  right: $select-addon-margin-x;
+  top: 0;
+  transition: $select-transition;
+
+  .open & {
+    transform: rotate(180deg);
+  }
 }
+
 .select-addon-lg {
-  top: $select-addon-margin-y-lg;
-  transform: scale(1.25);
+  height: $select-height-lg;
+  font-size: $select-addon-font-size-lg;
+  line-height: $select-height-lg;
 }
+
 .select-addon-md {
   font-size: $select-addon-font-size-md;
-  top: $select-addon-margin-y-md;
+  height: $select-height-md;
+  line-height: $select-height-md;
 }
+
 .select-addon-sm {
   font-size: $select-addon-font-size-sm;
-  top: $select-addon-margin-y-sm;
+  height: $select-height-sm;
+  line-height: $select-height-sm;
 }
+
 .select-addon-xs {
   font-size: $select-addon-font-size-sm;
-  top: $select-addon-margin-y-xs;
+  height: $select-height-xs;
+  line-height: $select-height-xs;
 }
 
 .select-options {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	position: relative;
-	z-index: $zindex-select;
-	list-style: none;
-	overflow-y: auto;
-	max-height: $select-selection-max-height;
-	.select-noresult {
-		cursor: not-allowed;
-		color: $select-option-disable-color;
-		padding: $select-option-padding;
-	}
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: $zindex-select;
+  list-style: none;
+  overflow-y: auto;
+  max-height: $select-selection-max-height;
+
+  .select-noresult {
+    cursor: not-allowed;
+    color: $select-option-disable-color;
+    padding: $select-option-padding;
+  }
 }
 
 .select-option {
-	cursor: pointer;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	color: $gray-base;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $gray-base;
   height: $select-height-md + rem(2px);
   line-height: $select-line-height-md;
-  padding: $select-option-padding-y  $select-option-padding-x;
-	&:hover {
-		background-color: $select-option-hover-bg;
-	}
+  padding: $select-option-padding-y $select-option-padding-x;
 
-	&.active {
-		color: $select-option-active-color;
-	}
+  &:hover {
+    background-color: $select-option-hover-bg;
+  }
 
-	&.disabled {
-		cursor: not-allowed;
-		color: $select-option-disable-color;
-	}
-	.select-group-inner & {
-		padding-left: $input-padding-x * 2;
-	}
+  &.active {
+    color: $select-option-active-color;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $select-option-disable-color;
+  }
+
+  .select-group-inner & {
+    padding-left: $input-padding-x * 2;
+  }
 }
 
 .select-group-container {
-	list-style-type: none;
-	padding: 0;
-	&.disabled {
-		cursor: not-allowed;
-		color: $select-option-disable-color;
-	}
-	.disabled & {
-		.select-group-title {
-			color: $select-option-disable-color;
-		}
-	}
-	.select-group-title {
-		height: 2.867rem;
-		padding: $select-padding-y-md $input-padding-x;
-	}
-	.select-group-inner {
-		padding: 0;
-	}
+  list-style-type: none;
+  padding: 0;
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $select-option-disable-color;
+  }
+
+  .disabled & {
+    .select-group-title {
+      color: $select-option-disable-color;
+    }
+  }
+
+  .select-group-title {
+    height: 2.867rem;
+    padding: $select-padding-y-md $input-padding-x;
+  }
+
+  .select-group-inner {
+    padding: 0;
+  }
 }
 
