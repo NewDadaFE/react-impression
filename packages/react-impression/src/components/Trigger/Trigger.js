@@ -4,6 +4,7 @@ import React, {
   useState,
   useCallback,
   useEffect,
+  useRef,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { usePopper } from 'react-popper'
@@ -101,6 +102,8 @@ function Trigger(props) {
   const [delayShowPopup, setDelayShowPopup] = useState(false)
   // 弹出层显隐控制标记
   const [showPopup, setShowPopup] = useState(false)
+  // 暂存宿主元素宽高
+  const referenceSizeRef = useRef({ width: 0, height: 0 })
   // popper 相关---开始
   const [referenceElement, setReferenceElement] = useState(null)
   const [popperElement, setPopperElement] = useState(null)
@@ -136,7 +139,7 @@ function Trigger(props) {
     ],
     [transitionName, stretch]
   )
-  const { styles: popperStyles, attributes } = usePopper(
+  const { styles: popperStyles, attributes, update } = usePopper(
     referenceElement,
     popperElement,
     {
@@ -151,7 +154,15 @@ function Trigger(props) {
   // 使用 useMemo 可以减少页面滚动时引起的重复 clone 操作
   const Children = useMemo(
     () => {
-      const childrenProps = { ref: setReferenceElement }
+      const childrenProps = {
+        ref: childRef => {
+          setReferenceElement(childRef)
+          // 处理宿主元素传入 ref 的情况
+          if (typeof children.ref === 'function') {
+            children.ref(childRef)
+          }
+        },
+      }
       const hidePopupOnMouseLeave = event => {
         children.props.onMouseLeave && children.props.onMouseLeave(event)
         setShowPopup(false)
@@ -258,6 +269,18 @@ function Trigger(props) {
     },
     [showPopup, onPopupVisibleChange]
   )
+
+  // 判断宿主元素宽高变化，主动更新弹出层位置
+  // useEffect 监听元素宽高，因为宽高变量不是state，所以不会触发render
+  const height = referenceElement ? referenceElement.offsetHeight : 0
+  const width = referenceElement ? referenceElement.offsetWidth : 0
+  if (
+    height !== referenceSizeRef.current.height ||
+    width !== referenceSizeRef.current.width
+  ) {
+    update && update()
+    referenceSizeRef.current = { width, height }
+  }
 
   return (
     <Fragment>

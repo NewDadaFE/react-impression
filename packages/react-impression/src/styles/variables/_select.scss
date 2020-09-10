@@ -1,17 +1,62 @@
 $select-line-height: $input-line-height !default;
 $select-transition: all 0.2s ease !default;
 $select-bg: $brand-pure !default;
-$select-disable-bg: $gray-lighter !default;
+$select-disable-bg: $gray-lightest !default;
 $select-selection-padding-right: 2.25rem !default;
 $select-selection-max-height: 20rem !default;
+$select-padding-x: rem(8px) !default;
+$select-addon-margin-x: rem(8px) !default;
+$select-placeholder-color: $gray !default;
+// 大号
+$select-addon-margin-y-lg: rem(10px) !default;
+$select-addon-font-size-lg: rem(20px) !default;
+$select-font-size-lg: rem(16px) !default;
+$select-line-height-lg: rem(24px) !default;
+$select-padding-y-lg: rem(7px) !default;
+$select-height-lg: (
+  $select-line-height-lg + ($select-padding-y-lg * 2)
+) !default;
+// 中号
+$select-addon-margin-y-md: rem(9px) !default;
+$select-addon-font-size-md: rem(18px) !default;
+$select-padding-y-md: rem(6px) !default;
+$select-line-height-md: rem(22px) !default;
+$select-tag-height-md: rem(26px) !default;
+$select-tag-margin-md: rem(4px) !default;
+$select-height-md: (
+  $select-line-height-md + ($select-padding-y-md * 2)
+) !default;
+// 小号
+$select-addon-margin-y-sm: rem(8px) !default;
+$select-addon-font-size-sm: rem(16px) !default;
+$select-padding-y-sm: rem(5px) !default;
+$select-line-height-sm: rem(20px) !default;
+$select-height-sm: (
+  $select-line-height-sm + ($select-padding-y-sm * 2)
+) !default;
+// 最小号
+$select-addon-margin-y-xs: rem(6px) !default;
+$select-addon-font-size-xs: rem(14px) !default;
+$select-padding-y-xs: rem(3px) !default;
+$select-line-height-xs: rem(20px) !default;
+$select-tag-height-xs: rem(20px) !default;
+$select-tag-margin-xs: rem(3px) !default;
+$select-height-xs: (
+  $select-line-height-xs + ($select-padding-y-xs * 2)
+) !default;
+
 $select-options-top: 120% !default;
 $select-selection-color: $gray-light;
-$select-tags-bg-color: #fff;
+$select-mutiple-max-height: rem(96px) !default;
+$select-bg-color: #fff;
+$select-tags-bg-color: $gray-lighter;
 $select-option-inline-height: 1rem;
 $select-options-box-shadow: 0 2px 6px $inverse-level-2 !default;
 $select-options-border: 1px solid $gray-light !default;
+$select-option-padding-y: rem(7px) !default;
+$select-option-padding-x: rem(16px) !default;
 
 $select-option-padding: $input-padding-y-md $input-padding-x !default;
-$select-option-hover-bg: $gray-lighter !default;
+$select-option-hover-bg: $gray-lightest !default;
 $select-option-active-color: $brand-primary !default;
-$select-option-disable-color: $gray-light !default;
+$select-option-disable-color: $gray !default;
