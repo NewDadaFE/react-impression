@@ -22,7 +22,7 @@ InputGroup.propTypes = {
   /**
    * 设置输入框组大小
    */
-  size: PropTypes.oneOf(['sm', 'lg']),
+  size: PropTypes.oneOf(['xs', 'sm', 'lg']),
 
   /**
    * 自定义样式

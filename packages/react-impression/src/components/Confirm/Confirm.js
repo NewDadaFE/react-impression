@@ -103,7 +103,7 @@ export default class Confirm extends React.PureComponent {
       <div className={classnames('confirm', className)}>
         <div {...others} className='confirm-dialog'>
           <div className='confirm-addon'>
-            <i className={classnames('dada-ico', iconTypeClass)} />
+            <i className={classnames('dada-ico dada-ico-xl', iconTypeClass)} />
           </div>
           <div className='confirm-body'>{children}</div>
           <div className='confirm-footer'>

@@ -36,7 +36,7 @@ TextLink.defaultProps = {
   theme: 'primary',
 }
 
-function TextLink(props) {
+function TextLink(props, ref) {
   const {
     href,
     theme,
@@ -76,6 +76,7 @@ function TextLink(props) {
         href={href}
         className={linkClassNames}
         onClick={clickHandler}
+        ref={ref}
         {...others}
       >
         {children}
@@ -83,10 +84,15 @@ function TextLink(props) {
     )
   }
   return (
-    <span className={linkClassNames} onClick={clickHandler} {...others}>
+    <span
+      className={linkClassNames}
+      onClick={clickHandler}
+      ref={ref}
+      {...others}
+    >
       {children}
     </span>
   )
 }
 
-export default TextLink
+export default React.forwardRef(TextLink)

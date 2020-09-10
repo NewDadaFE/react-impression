@@ -432,12 +432,9 @@ export default class Input extends React.PureComponent {
             ref='container'
             style={style}
           >
-            {addonBefore}
-            <Ico
-              type='search'
-              className='dada-input-addon-before'
-              onClick={onClick}
-            />
+            {addonBefore || (
+              <Ico type='search' className='dada-input-addon-before' />
+            )}
             <input
               {...others}
               type='text'
