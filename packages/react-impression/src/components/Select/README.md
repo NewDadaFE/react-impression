@@ -1,10 +1,12 @@
-### 示例
-
-**特别提醒**
+### 特别提醒
 
 - 使用受控 Select 组件时，一定要设置 value 值(可以为 null)，不能为**undefined**
 
-**尺寸**
+### 示例
+
+- **尺寸**
+
+Select 的尺寸包括：xs，sm，md（默认），lg。
 
 ```js
 class SizeExample extends React.Component {
@@ -106,487 +108,305 @@ class SizeExample extends React.Component {
 ;<SizeExample />
 ```
 
-**基本用法**
+- **基本用法**
 
 ```js
+const selectList = [
+  { label: '一帆风顺', value: 1 },
+  { label: '双喜临门', value: 2 },
+  { label: '三羊开泰', value: 3 },
+  { label: '四季平安', value: 4 },
+  { label: '五谷丰登', value: 5 },
+  { label: '六六大顺', value: 6 },
+  { label: '七喜来财', value: 7 },
+  { label: '八面威风', value: 8 },
+  { label: '九天揽月', value: 9 },
+  { label: '十全十美', value: 10 },
+]
 class DefaultExample extends React.Component {
   constructor() {
     super()
-    this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      normalValue: 1,
+      clearableValue: 2,
+      optionDisabledValue: 3,
+    }
+    this.handleNormalChange = this.handleNormalChange.bind(this)
+    this.handleClearableChange = this.handleClearableChange.bind(this)
+    this.handleOptionDisabledChange = this.handleOptionDisabledChange.bind(this)
   }
 
-  handleChange(val, text) {
+  handleNormalChange(value, text) {
     Notification.info({
-      title: 'Select',
+      title: '普通 Select',
       message: `${text} 被选中了！！！`,
     })
+    this.setState({ normalValue: value })
+  }
 
-    this.select.setValue(null)
+  handleClearableChange(value) {
+    this.setState({ clearableValue: value })
+  }
+
+  handleOptionDisabledChange(value) {
+    this.setState({ optionDisabledValue: value })
   }
 
   render() {
     return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
+      <Form>
+        <FormGroup>
+          <label>普通：</label>
+          <Select
+            value={this.state.normalValue}
+            onChange={this.handleNormalChange}
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>可清除：</label>
+          <Select
+            value={this.state.normalValue}
+            onChange={this.handleClearableChange}
+            clearable
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>组件禁用：</label>
+          <Select value={3} disabled>
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>选项禁用：</label>
+          <Select value={this.state.optionDisabledValue}>
+            {selectList.map(item => (
+              <SelectOption
+                value={item.value}
+                key={item.value}
+                disabled={item.value === 1}
+                onChange={this.handleOptionDisabledChange}
+              >
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+      </Form>
     )
   }
 }
-
 ;<DefaultExample />
 ```
 
-**可清除**
+- **多选用法**
+
+多选用法下，value 值为数组，已选状态值的改变需要自行实现。
 
 ```js
+const selectList = [
+  { label: '一帆风顺', value: 1 },
+  { label: '双喜临门', value: 2 },
+  { label: '三羊开泰', value: 3 },
+  { label: '四季平安', value: 4 },
+  { label: '五谷丰登', value: 5 },
+  { label: '六六大顺', value: 6 },
+  { label: '七喜来财', value: 7 },
+  { label: '八面威风', value: 8 },
+  { label: '九天揽月', value: 9 },
+  { label: '十全十美', value: 10 },
+]
 class DefaultExample extends React.Component {
   constructor() {
     super()
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(val, text) {
-    if (val) {
-      Notification.info({
-        title: 'Select',
-        message: `${text} 被选中了！！！`,
-      })
-    } else {
-      Notification.success({
-        title: 'Select',
-        message: '清空成功',
-      })
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          onChange={this.handleChange}
-          clearable
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<DefaultExample />
-```
-
-**指定值（受控组件）**
-
-```js
-class ValueExample extends React.Component {
-  constructor() {
-    super()
-
-    this.handleChange = this.handleChange.bind(this)
-    this.state = {
-      val: null,
-    }
-  }
-
-  handleChange(val, text) {
-    if (val) {
-      Notification.info({
-        title: 'Select',
-        message: `${text} 被选中了！！！`,
-      })
-    } else {
-      Notification.success({
-        title: 'Select',
-        message: '清空成功',
-      })
-    }
-    this.setState({ val: val })
-  }
-
-  render() {
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          value={this.state.val}
-          clearable
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<ValueExample />
-```
-
-**必填项**
-
-```js
-class DefaultExample extends React.Component {
-  constructor() {
-    super()
-    this.handleChange = this.handleChange.bind(this)
-    this.state = {
-      required: true,
-    }
-  }
-
-  handleChange(val, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
-    })
-    this.setState({ required: false })
-    // this.select.setValue(null)
-  }
-
-  render() {
-    const { required } = this.state
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          onChange={this.handleChange}
-          required={required}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<DefaultExample />
-```
-
-**禁用状态**
-
-```js
-<Select disabled>
-  <SelectOption value="1">一</SelectOption>
-  <SelectOption value="2">二</SelectOption>
-  <SelectOption value="3">三</SelectOption>
-</Select>
-```
-
-**选项禁用**
-
-```js
-<Select>
-  <SelectOption value="1">一</SelectOption>
-  <SelectOption value="2" disabled>
-    二
-  </SelectOption>
-  <SelectOption value="3">三</SelectOption>
-</Select>
-```
-
-**基本多选使用**
-
-```js
-class DefaultExample extends React.Component {
-  constructor() {
-    super()
+    this.state = { selected: [5, 6] }
     this.handleChange = this.handleChange.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  handleChange(val, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
-    })
-    // this.select.setValue(null)
-  }
-  handleDelete(val) {
-    Notification.info({
-      title: 'Select',
-      message: `删除值为${val}`,
-    })
-  }
-  render() {
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          multiple
-          onDelete={this.handleDelete}
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<DefaultExample />
-```
-
-**指定值多选（受控组件）**
-
-```js
-class ValueExample extends React.Component {
-  constructor() {
-    super()
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
-    this.state = {
-      val: [1],
-    }
+  handleChange(value) {
+    this.setState({ selected: [...this.state.selected, value] })
   }
 
-  handleChange(val, text, c, d) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
-    })
-    this.setState({ val: [...this.state.val, val] })
-  }
-  handleDelete(val) {
-    const list = this.state.val.filter(item => item !== val)
-    this.setState({ val: list })
-  }
-
-  render() {
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          value={this.state.val}
-          multiple
-          onChange={this.handleChange}
-          onDelete={this.handleDelete}
-        >
-          <SelectOption value={1}>一个测试</SelectOption>
-          <SelectOption value={2}>二个测试测试</SelectOption>
-          <SelectOption value={3}>三个测试测试测试</SelectOption>
-          <SelectOption value={4}>四个测试测试测试测试</SelectOption>
-          <SelectOption value={5}>五个测试测试测试测试测试</SelectOption>
-          <SelectOption value={6}>六个测试测试测试测试测试测试</SelectOption>
-          <SelectOption value={7}>七个测试测试测试测试测试</SelectOption>
-          <SelectOption value={8}>八个测试测试测试测试</SelectOption>
-          <SelectOption value={9}>九个测试测试测试</SelectOption>
-          <SelectOption value={10}>十个测试测试</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<ValueExample />
-```
-
-**默认值多选（非受控组件）**
-
-```js
-class DefaultValueExample extends React.Component {
-  constructor() {
-    super()
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(val, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
+  handleDelete(value) {
+    const { selected } = this.state
+    this.setState({
+      selected: selected.filter(val => val !== value),
     })
   }
 
   render() {
     return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          defaultValue={[1]}
-          searchable
-          multiple
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<DefaultValueExample />
-```
-
-**可搜索**
-
-```js
-class DefaultExample extends React.Component {
-  constructor() {
-    super()
-    this.handleChange = this.handleChange.bind(this)
-    this.state = {
-      data: [2, 3, 4],
-    }
-  }
-
-  handleChange(val, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
-    })
-  }
-
-  render() {
-    const { data } = this.state
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          searchable
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1} key={1}>
-            1
+      <Select
+        value={this.state.selected}
+        onChange={this.handleChange}
+        onDelete={this.handleDelete}
+        multiple
+      >
+        {selectList.map(item => (
+          <SelectOption value={item.value} key={item.value}>
+            {item.label}
           </SelectOption>
-          {data.map(item => (
-            <SelectOption value={item} key={item}>
-              {item}
-            </SelectOption>
-          ))}
-        </Select>
-      </div>
+        ))}
+      </Select>
     )
   }
 }
-
 ;<DefaultExample />
 ```
 
-**selectOptionGroup**
+- **可搜索**
+
+可搜索功能在单选和多选用法下表现有差异：
+
+1. 若为单选，搜索在选择框中进行；
+1. 若为多选，搜索在下拉弹出层中进行。
+
+注意：filterMethod 属性不建议使用！它会在每个选项中去执行一次。
 
 ```js
+const selectList = [
+  { label: '一帆风顺', value: 1 },
+  { label: '双喜临门', value: 2 },
+  { label: '三羊开泰', value: 3 },
+  { label: '四季平安', value: 4 },
+  { label: '五谷丰登', value: 5 },
+  { label: '六六大顺', value: 6 },
+  { label: '七喜来财', value: 7 },
+  { label: '八面威风', value: 8 },
+  { label: '九天揽月', value: 9 },
+  { label: '十全十美', value: 10 },
+]
 class DefaultExample extends React.Component {
   constructor() {
     super()
-
+    this.state = {
+      singleValue: 1,
+      selectedValue: [1, 2],
+    }
+    this.handleSingleChange = this.handleSingleChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(val, text) {
+  handleSingleChange(value, text) {
     Notification.info({
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
   }
-  handleDelete(val) {
-    console.log(val)
+
+  handleChange(value) {
+    this.setState({
+      selectedValue: [...this.state.selectedValue, value],
+    })
+  }
+
+  handleChange(value) {
+    const { selectedValue } = this.state
+    this.setState({
+      selected: selectedValue.filter(val => val !== value),
+    })
   }
 
   render() {
     return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          multiple
-          defaultValue={[5, 6]}
-          searchable
-          onChange={this.handleChange}
-          onDelete={this.handleDelete}
-        >
-          <SelectOptionGroup name="上海" disabled>
-            <SelectOption value={1}>浦电路站</SelectOption>
-            <SelectOption value={2}>世纪公园站</SelectOption>
-            <SelectOption value={3}>人民广场站</SelectOption>
-            <SelectOption value={4}>中山公园站</SelectOption>
-          </SelectOptionGroup>
-          <SelectOptionGroup name="深圳">
-            <SelectOption value={5}>竹子林站</SelectOption>
-            <SelectOption value={6}>华强北站</SelectOption>
-            <SelectOption value={7}>会展中心站</SelectOption>
-            <SelectOption value={8}>科学馆站</SelectOption>
-          </SelectOptionGroup>
-          <SelectOptionGroup name="苏州" disabled />
-        </Select>
-      </div>
+      <Form>
+        <FormGroup>
+          <label>单选搜索：</label>
+          <Select
+            value={this.state.singleValue}
+            onChange={this.handleSingleChange}
+            searchable
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>多选搜索：</label>
+          <Select
+            value={this.state.selectedValue}
+            onChange={this.handleChange}
+            onDelete={this.handleDelete}
+            multiple
+            searchable
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+      </Form>
     )
   }
 }
-
 ;<DefaultExample />
 ```
 
-**远程搜索**
+- **选项分组**
+
+通过 SelectOptionGroup 组件可以实现对选项列表的分组效果，但是不支持选择分组的组名。
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.state = { selected: 2 }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(value) {
+    this.setState({ selected: value })
+  }
+
+  render() {
+    return (
+      <Select value={this.state.selected} onChange={this.handleChange}>
+        <SelectOptionGroup name="上海">
+          <SelectOption value={1}>浦电路站</SelectOption>
+          <SelectOption value={2}>世纪公园站</SelectOption>
+          <SelectOption value={3}>人民广场站</SelectOption>
+          <SelectOption value={4}>中山公园站</SelectOption>
+        </SelectOptionGroup>
+        <SelectOptionGroup name="深圳">
+          <SelectOption value={5}>竹子林站</SelectOption>
+          <SelectOption value={6}>华强北站</SelectOption>
+          <SelectOption value={7}>会展中心站</SelectOption>
+          <SelectOption value={8}>科学馆站</SelectOption>
+        </SelectOptionGroup>
+        <SelectOptionGroup name="南京">
+          <SelectOption value={9}>新街口站</SelectOption>
+          <SelectOption value={10}>南京南站</SelectOption>
+        </SelectOptionGroup>
+      </Select>
+    )
+  }
+}
+;<DefaultExample />
+```
+
+- **远程搜索**
 
 ```js
 class DefaultExample extends React.Component {
@@ -653,7 +473,6 @@ class DefaultExample extends React.Component {
     )
   }
 }
-
 ;<DefaultExample />
 ```
 

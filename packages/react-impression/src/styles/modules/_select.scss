@@ -6,7 +6,7 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  width: 16rem;
+  width: $select-width;
   line-height: $select-option-inline-height;
   border: $border-width solid $gray-light;
   border-radius: rem(2px);
@@ -84,24 +84,17 @@
       top: $select-padding-y-md;
       left: $select-padding-x;
       line-height: $select-line-height-md;
-
-      .required & {
-        color: $brand-danger;
-      }
     }
 
     .tag {
       line-height: rem(20px);
     }
-
-    .required & {
-      border: rem(1px) solid $brand-danger;
-    }
   }
 
   &.select-multiple {
-    width: 28.57rem;
-    // padding-bottom: rem(4px);
+    width: auto;
+    min-width: $select-width;
+    max-width: $select-max-width;
   }
 
   .select-tag-xs {
@@ -160,14 +153,6 @@
   &::placeholder {
     color: $select-placeholder-color;
   }
-
-  .required & {
-    border-color: $brand-danger;
-
-    &::placeholder {
-      color: $brand-danger;
-    }
-  }
 }
 
 .select-selection-lg {
@@ -196,10 +181,6 @@
   line-height: $select-line-height-xs;
   font-size: $font-size-xs;
   padding: $select-padding-y-xs $select-addon-font-size-xs + $select-padding-x * 2 $select-padding-y-xs $select-padding-x;
-}
-
-.select-required {
-  color: $brand-danger;
 }
 
 .select-open {
