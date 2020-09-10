@@ -293,10 +293,8 @@ export default class Select extends React.PureComponent {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
-        if (this.state.showOption) {
-          this.selectInner.scrollTop = 0
-        } else {
-          this.selectInner.scrollTop = 0
+        this.selectInner.scrollTop = 0
+        if (!this.state.showOption) {
           this.setState({ queryText: selectText })
         }
       }
