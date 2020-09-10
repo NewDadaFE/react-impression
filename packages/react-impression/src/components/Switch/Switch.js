@@ -108,11 +108,11 @@ export default class Switch extends React.PureComponent {
         <div
           className={classnames(
             'switch-addon',
-            size && `switch-${size}`,
-            loading && 'switch-loading'
+            size && `dada-switch-${size}`,
+            loading && 'dada-switch-loading'
           )}
         >
-          {loading && <span className='switch-spinner' />}
+          {loading && <span className='dada-switch-spinner' />}
         </div>
       </label>
     )
