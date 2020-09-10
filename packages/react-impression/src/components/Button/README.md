@@ -155,72 +155,67 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
 **块状按钮**
 
 ```js
-<div>
-  <Button theme="primary" block className="offset-b">
-    主要
-  </Button>
-  <Button theme="secondary" block className="offset-b">
-    次要
-  </Button>
-  <Button theme="dashed" block className="offset-b">
-    虚线
-  </Button>
-</div>
+<Button theme="primary" block className="offset-b">
+  主要
+</Button>
+<Button theme="secondary" block className="offset-b">
+  次要
+</Button>
+<Button theme="dashed" block className="offset-b">
+  虚线
+</Button>
 ```
 
 **加载中 按钮**
 
 ```js
-<div>
-  <Row className="no-margin">
-    <Col col="2">
-      <CardBlock>
-        <Button theme="primary" loading>
-          主要
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button theme="secondary" loading>
-          次要
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button theme="dashed" loading>
-          虚线
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button theme="text" loading>
-          文字
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button icon="plus" loading>
-          文字
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button icon="plus" loading />
-      </CardBlock>
-    </Col>
-  </Row>
-</div>
+<Row className="no-margin">
+  <Col col="2">
+    <CardBlock>
+      <Button theme="primary" loading>
+        主要
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="secondary" loading>
+        次要
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="dashed" loading>
+        虚线
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="text" loading>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" loading>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" loading />
+    </CardBlock>
+  </Col>
+</Row>
 ```
 
 ### 变更记录
 
-v2.0.0
+v2.1.2
 
-- 新增 btn-font-size sass 变量
-- 移除 btn-border-radius-lg sass 变量
-- 移除 btn-border-radius-sm sass 变量
+- 删除 outline 属性
+- 删除 theme 属性中的 default 值，请用 secondary 替代 default

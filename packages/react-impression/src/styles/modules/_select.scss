@@ -21,7 +21,7 @@
       color: $select-selection-color;
     }
 
-    .tag {
+    .dada-tag {
       cursor: not-allowed;
     }
   }
@@ -51,7 +51,7 @@
     padding-bottom: rem(4px);
     padding-right: rem(42px);
 
-    .tag-default {
+    .dada-tag-default {
       color: $gray-base;
       background: $select-tags-bg-color;
       margin: $select-tag-margin-md 0 0 $select-tag-margin-md;
@@ -65,7 +65,7 @@
       }
     }
 
-    .tag-close {
+    .dada-tag-close {
       color: $gray;
       display: inline-block;
       opacity: 1;
@@ -86,7 +86,7 @@
       line-height: $select-line-height-md;
     }
 
-    .tag {
+    .dada-tag {
       line-height: rem(20px);
     }
   }
@@ -102,7 +102,7 @@
     min-height: $select-height-xs;
     padding-bottom: rem(2px);
 
-    .tag-default {
+    .dada-tag-default {
       height: $select-tag-height-xs;
       margin: $select-tag-margin-xs 0 0 $select-tag-margin-xs;
       padding: 0 rem(4px) 0 rem(8px);
@@ -115,7 +115,7 @@
       left: rem(8px);
     }
 
-    .tag {
+    .dada-tag {
       line-height: rem(18px);
     }
   }
