@@ -60,7 +60,7 @@ module.exports = {
     {
       name: 'Layout',
       description: '布局组件，用于辅助页面结构的布局工作。',
-      components: resolveComponents(['Row', 'Col', 'Flex*']),
+      components: resolveComponents(['Row', 'Col', 'Flex*', 'Trigger']),
     },
     {
       name: 'Navigation',
