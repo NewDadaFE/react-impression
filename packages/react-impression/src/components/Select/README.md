@@ -259,51 +259,6 @@ class ValueExample extends React.Component {
 ;<ValueExample />
 ```
 
-**默认值（非受控组件）**
-
-```js
-class DefaultValueExample extends React.Component {
-  constructor() {
-    super()
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(val, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
-    })
-    this.select.setValue(null)
-  }
-
-  render() {
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          defaultValue={1}
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<DefaultValueExample />
-```
-
 **必填项**
 
 ```js
@@ -465,16 +420,16 @@ class ValueExample extends React.Component {
           onChange={this.handleChange}
           onDelete={this.handleDelete}
         >
-          <SelectOption value={1}>一沟通和节日哦歌好听</SelectOption>
-          <SelectOption value={2}>二过分惹UI共和军他热i</SelectOption>
-          <SelectOption value={3}>三哥特火锅太热的话</SelectOption>
-          <SelectOption value={4}>四给他renter</SelectOption>
-          <SelectOption value={5}>五给v热给他热</SelectOption>
-          <SelectOption value={6}>六给他热给他热</SelectOption>
-          <SelectOption value={7}>七发热给热</SelectOption>
-          <SelectOption value={8}>八给他热给他热</SelectOption>
-          <SelectOption value={9}>九个人风格他热给他</SelectOption>
-          <SelectOption value={10}>十过分热特给他热</SelectOption>
+          <SelectOption value={1}>一个测试</SelectOption>
+          <SelectOption value={2}>二个测试测试</SelectOption>
+          <SelectOption value={3}>三个测试测试测试</SelectOption>
+          <SelectOption value={4}>四个测试测试测试测试</SelectOption>
+          <SelectOption value={5}>五个测试测试测试测试测试</SelectOption>
+          <SelectOption value={6}>六个测试测试测试测试测试测试</SelectOption>
+          <SelectOption value={7}>七个测试测试测试测试测试</SelectOption>
+          <SelectOption value={8}>八个测试测试测试测试</SelectOption>
+          <SelectOption value={9}>九个测试测试测试</SelectOption>
+          <SelectOption value={10}>十个测试测试</SelectOption>
         </Select>
       </div>
     )
