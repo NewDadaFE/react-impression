@@ -12,7 +12,7 @@ export default class ButtonGroup extends React.PureComponent {
     /**
      * 主题样式
      */
-    theme: PropTypes.oneOf(['primary', 'secondary', 'default']),
+    theme: PropTypes.oneOf(['primary', 'secondary']),
 
     /**
      * 激活索引（被选中Button会额外添加选中样式，为空时不额外添加选中样式）
@@ -36,7 +36,7 @@ export default class ButtonGroup extends React.PureComponent {
   }
 
   static defaultProps = {
-    theme: 'default',
+    theme: 'secondary',
   }
 
   constructor(props, context) {

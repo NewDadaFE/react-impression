@@ -1,15 +1,16 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import Ico from '../Ico'
 
-export default class Button extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-      Tag: props.href ? 'a' : 'button',
-    }
-  }
+const iconSize = {
+  xs: 'sm',
+  sm: 'sm',
+  md: 'sm',
+  lg: 'md',
+}
 
+class Button extends React.PureComponent {
   static propTypes = {
     /**
      * 子组件
@@ -22,9 +23,14 @@ export default class Button extends React.PureComponent {
     className: PropTypes.string,
 
     /**
+     * 按钮类型，同HTML button元素的 type
+     */
+    type: PropTypes.string,
+
+    /**
      * 主题样式
      */
-    theme: PropTypes.oneOf(['primary', 'default', 'secondary']),
+    theme: PropTypes.oneOf(['primary', 'secondary', 'dashed', 'text']),
 
     /**
      * click事件
@@ -32,47 +38,41 @@ export default class Button extends React.PureComponent {
     onClick: PropTypes.func,
 
     /**
-     * 是否outline
-     */
-    outline: PropTypes.bool,
-
-    /**
      * 尺寸
      */
-    size: PropTypes.oneOf(['sm', 'lg']),
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 
     /**
-     * 形状，可选值为pill
+     * 形状
      */
-    shape: PropTypes.string,
-
-    /**
-     * 按钮的链接
-     */
-    href: PropTypes.string,
-
-    /**
-     * 是否为关闭样式按钮
-     */
-    close: PropTypes.bool,
+    shape: PropTypes.oneOf(['circle']),
 
     /**
      * 是否block元素
      */
     block: PropTypes.bool,
+
+    /**
+     * 按钮加载中的状态
+     */
+    loading: PropTypes.bool,
+
+    /**
+     * 按钮的图标
+     */
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   }
 
   static defaultProps = {
     theme: 'primary',
     block: false,
-    close: false,
-    outline: false,
+    size: 'md',
+    type: 'button',
   }
 
   render() {
-    let {
+    const {
       theme,
-      outline,
       size,
       shape,
       className,
@@ -81,30 +81,62 @@ export default class Button extends React.PureComponent {
       close,
       block,
       children,
+      loading,
+      icon,
+      innerRef,
       ...others
     } = this.props
-    const { Tag } = this.state
-
     delete others.eventKey
 
+    // 判断按钮是否为纯图标按钮：无children 或者 shape 为 circle
+    const isIconBtn = !children || shape === 'circle'
+
+    const btnSize = isIconBtn ? `btn-icon-${size}` : `btn-${size}`
+    // 纯图标按钮不需要设置外边距，在文本按钮和普通按钮中，图标右侧外边距有差异
+    const iconMargin = isIconBtn
+      ? {}
+      : { marginRight: theme === 'text' ? '8px' : '4px' }
+
     return (
-      <Tag
+      <button
         {...others}
-        type={href ? null : 'button'}
         onClick={onClick}
-        href={href}
         className={classnames(
-          !close && 'btn',
-          !close && `btn${outline ? '-outline' : ''}-${theme}`,
-          size && `btn-${size}`,
-          shape && `btn-${shape}`,
-          close && 'close',
-          block && 'btn-block',
+          {
+            [`btn btn-${theme}`]: !close,
+            [`btn-${shape}`]: shape && icon,
+            close: close,
+            'btn-block': block,
+          },
+          btnSize,
           className
         )}
+        ref={innerRef}
       >
-        {children}
-      </Tag>
+        {loading ? (
+          <span className='btn-loading-circle'>
+            <span className='btn-loading-addon' style={iconMargin} />
+            {children && <span className='btn-loading-message'>加载中...</span>}
+          </span>
+        ) : (
+          <>
+            {typeof icon === 'string' ? (
+              <Ico type={icon} size={iconSize[size]} style={iconMargin} />
+            ) : (
+              icon &&
+              React.cloneElement(icon, {
+                style: { ...iconMargin, ...icon.props.style },
+              })
+            )}
+            {/* 如果是圆形按钮，则不支持 children 属性 */}
+            {shape !== 'circle' && <span>{children}</span>}
+          </>
+        )}
+      </button>
     )
   }
 }
+
+export default React.forwardRef((props, ref) => (
+  <Button innerRef={ref} {...props} />
+))

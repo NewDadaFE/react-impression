@@ -3,7 +3,7 @@
 **基本用法**
 
 ```js
-<ButtonGroup theme="default" activeKey="left">
+<ButtonGroup theme="secondary" activeKey="left">
   <Button eventKey="left">左</Button>
   <Button eventKey="middle">中</Button>
   <Button eventKey="right">右</Button>
@@ -14,7 +14,7 @@
 
 ```js
 <ButtonToolbar>
-  <ButtonGroup theme="default" activeKey="right">
+  <ButtonGroup theme="primary" activeKey="right">
     <Button eventKey="left">左</Button>
     <Button eventKey="middle">中</Button>
     <Button eventKey="right">右</Button>

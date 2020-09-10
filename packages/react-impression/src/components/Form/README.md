@@ -29,7 +29,7 @@
   </FormGroup>
   <FormGroup>
     <Button theme="secondary">搜索</Button>
-    <Button theme="default" style={{ marginLeft: 20 }}>
+    <Button theme="secondary" style={{ marginLeft: 20 }}>
       重置
     </Button>
   </FormGroup>
@@ -78,7 +78,7 @@
     </Col>
   </FormGroup>
   <FormGroup style={{ justifyContent: 'center' }}>
-    <Button theme="default" style={{ marginRight: 20 }}>
+    <Button theme="secondary" style={{ marginRight: 20 }}>
       关闭
     </Button>
     <Button theme="primary">保存</Button>
@@ -90,6 +90,6 @@
 
 v2.0.0
 
-* 新增 form-group-inline-label-margin-bottom sass 变量
-* 新增 form-group-inline-btn-margin-left sass 变量
-* 新增 form-group-inline-margin-bottom sass 变量
+- 新增 form-group-inline-label-margin-bottom sass 变量
+- 新增 form-group-inline-btn-margin-left sass 变量
+- 新增 form-group-inline-margin-bottom sass 变量

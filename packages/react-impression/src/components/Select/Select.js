@@ -2,11 +2,9 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as R from 'ramda'
-import * as System from '../../utils/system'
 import { DebounceInput } from 'react-debounce-input'
-import PerfectScrollbar from 'perfect-scrollbar'
 import Tag from '../Tag/index'
-import Popper from 'popper.js'
+import Trigger from '../Trigger'
 import SelectOption from '../SelectOption'
 
 const isContainer = (text, array) => {
@@ -18,21 +16,17 @@ const isContainer = (text, array) => {
 export default class Select extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
-
-    System.manager(this)
-
     // 是否木偶组件
     this.isPuppet = props.value !== undefined
-    this.selectPopper = null
     // 子组件数据
     this.options = []
     // 滚动条
-    this.selectScrollbar = null
     const initValue = {
       showOption: false,
       value: this.isPuppet ? undefined : props.defaultValue,
       isSearch: false,
       selectText: '', // 选中字段
+      inputText: '', // 输入字段
       options: [],
       selectedOptions: [],
       optionGroup: [],
@@ -122,10 +116,17 @@ export default class Select extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
+    /**
+     * 尺寸 多选只有两个尺寸，'md'和'xs'，单选
+     */
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   }
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
+    size: 'md',
+    showSearch: false,
   }
 
   componentDidMount() {
@@ -139,6 +140,7 @@ export default class Select extends React.PureComponent {
   handleInit = props => {
     this.handleValueChange(props)
   }
+
   getChildContext() {
     return {
       componentSelect: this,
@@ -149,24 +151,6 @@ export default class Select extends React.PureComponent {
     return arr.map(option => {
       const { value, children = '' } = option.props
       return { value, name: children.toString() }
-    })
-  }
-
-  /**
-   * @description 隐藏菜单
-   * @memberof Select
-   */
-  hideOptionsHandle = () => {
-    this.setState({ showOption: false }, () => {
-      const { optionGroup, options } = this.state
-      options.forEach(option => {
-        option.queryChange('')
-      })
-      optionGroup.forEach(option => {
-        option.queryChange('')
-      })
-      this.selectPopper && this.selectPopper.destroy()
-      this.handleDestroySelectScroll()
     })
   }
 
@@ -192,6 +176,7 @@ export default class Select extends React.PureComponent {
         dataToSet = {
           selectedItem,
           selectText: selectedItem.name || selectedItem.value,
+          queryText: selectedItem.name || selectedItem.value,
         }
       } else {
         dataToSet = {
@@ -228,6 +213,7 @@ export default class Select extends React.PureComponent {
       this.options.forEach(option => option.handleActive())
     })
   }
+
   getValue() {
     return this.isPuppet ? this.props.value : this.state.value
   }
@@ -240,12 +226,14 @@ export default class Select extends React.PureComponent {
         if (!value) {
           this.setState({
             selectText: '',
+            queryText: '',
           })
         } else {
           optionList.forEach(option => {
             if (value === option.value) {
               this.setState({
                 selectText: option.value,
+                queryText: option.value,
               })
             }
           })
@@ -292,30 +280,22 @@ export default class Select extends React.PureComponent {
    * @description 显示/隐藏菜单
    * @memberof Select
    */
-  toggleOptionsHandle = () => {
-    const { optionGroup } = this.state
+  toggleOptionsHandle = event => {
+    event.preventDefault()
+    const { optionGroup, selectText } = this.state
     if (this.props.disabled) return
+    if (this.state.queryText) return
     this.setState(
       {
         showOption: !this.state.showOption,
-        queryText: '',
       },
       () => {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
-        if (this.state.showOption) {
-          this.selectPopper = new Popper(this.selectMain, this.selectOption, {
-            positionFixed: true,
-            placement: 'bottom-start',
-            modifiers: {
-              offset: { offset: '0, 10' },
-            },
-          })
-          this.handleInitSelectScroll()
-        } else {
-          this.selectPopper && this.selectPopper.destroy()
-          this.handleDestroySelectScroll()
+        this.selectInner.scrollTop = 0
+        if (!this.state.showOption) {
+          this.setState({ queryText: selectText })
         }
       }
     )
@@ -351,9 +331,7 @@ export default class Select extends React.PureComponent {
     if (list.length <= 0) {
       this.setState({ currentPlaceholder: placeholder })
     }
-    this.selectPopper && this.selectPopper.update()
     this.selectInner.scrollTop = 0
-    this.handleUpdateSelectScroll()
     if (e) e.stopPropagation()
   }
 
@@ -376,6 +354,7 @@ export default class Select extends React.PureComponent {
         {
           value: multiple ? [...originValue, result.value] : result.value,
           selectText: multiple ? '' : result.name,
+          queryText: multiple ? '' : result.name,
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
         },
         () => {
@@ -393,15 +372,12 @@ export default class Select extends React.PureComponent {
     this.setState(
       {
         showOption: !!multiple,
-        queryText: '',
         selectedOptions: selectedOptions.concat(result.node),
       },
       () => {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
-        this.selectPopper && this.selectPopper.update()
-        this.handleUpdateSelectScroll()
       }
     )
   }
@@ -411,7 +387,6 @@ export default class Select extends React.PureComponent {
    */
   componentWillUnmount() {
     window.cancelAnimationFrame(this.requestId)
-    System.unmanager(this)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -473,68 +448,20 @@ export default class Select extends React.PureComponent {
 
   handleQuery(event) {
     const val = event.target.value
+    event.stopPropagation()
     const { options, optionGroup } = this.state
     const { filterMethod, remoteMethod } = this.props
     this.setState({ queryText: val }, () => {
-      if (remoteMethod) {
-        const promise = remoteMethod(val)
-        const hasPromise =
-          promise &&
-          typeof promise.then === 'function' &&
-          typeof promise.catch === 'function'
-        if (!hasPromise) {
-          this.handleUpdatePopperAndScroll()
-          return
-        }
-        promise
-          .then(() => {
-            this.handleUpdatePopperAndScroll()
-          })
-          .catch(() => {
-            this.handleUpdatePopperAndScroll()
-          })
-      } else {
+      this.selectInner.scrollTop = 0
+      remoteMethod && remoteMethod(val)
+      if (!remoteMethod) {
         options.forEach(option => {
           option.queryChange(val, filterMethod)
         })
         optionGroup.forEach(option => {
           option.queryChange(val)
         })
-        this.handleUpdatePopperAndScroll()
       }
-    })
-  }
-
-  handleUpdatePopperAndScroll = () => {
-    this.updateSelectPopper()
-    this.selectInner.scrollTop = 0
-    this.handleUpdateSelectScroll()
-  }
-
-  updateSelectPopper = () => {
-    this.selectPopper && this.selectPopper.update()
-  }
-
-  handleInitSelectScroll = () => {
-    this.requestId = window.requestAnimationFrame(() => {
-      this.selectInner.scrollTop = 0
-      this.selectScrollbar = new PerfectScrollbar(this.selectInner, {
-        suppressScrollX: true,
-        swipeEasing: false,
-      })
-    })
-  }
-
-  handleDestroySelectScroll = () => {
-    if (this.selectScrollbar) {
-      this.selectScrollbar.destroy()
-      this.selectScrollbar = null
-    }
-  }
-
-  handleUpdateSelectScroll = () => {
-    window.requestAnimationFrame(() => {
-      this.selectScrollbar && this.selectScrollbar.update()
     })
   }
 
@@ -558,6 +485,7 @@ export default class Select extends React.PureComponent {
     if (!multiple) return 'select-options-normal'
     if (multiple) return 'select-options-multiple'
   }
+
   /**
    * @description 显示清空按钮
    * @memberof Select
@@ -581,9 +509,10 @@ export default class Select extends React.PureComponent {
    * @description 清空选项事件
    * @memberof Select
    */
-  handleClearSelect = () => {
-    const { disabled, onChange } = this.props
+  handleClearSelect = event => {
+    const { disabled, onChange, placeholder } = this.props
     const { options } = this.state
+    event.stopPropagation()
 
     if (disabled) {
       return
@@ -595,14 +524,42 @@ export default class Select extends React.PureComponent {
       {
         showClear: false,
         selectText: '',
+        queryText: '',
         value: '',
         showOption: false,
+        currentPlaceholder: placeholder,
       },
       () => {
         options.forEach(option => option.handleActive())
         onChange && onChange('')
       }
     )
+  }
+
+  /**
+   * Input框focus事件
+   * @returns {*}
+   */
+  focusHandler = () => {
+    const { selectText } = this.state
+    if (!selectText) return
+    this.setState({ currentPlaceholder: selectText, queryText: '' })
+  }
+
+  hideOptionsHandler = popupVisible => {
+    if (!popupVisible) {
+      const { selectText } = this.state
+      this.setState({ showOption: false, queryText: selectText }, () => {
+        this.selectInner.scrollTop = 0
+        const { optionGroup, options } = this.state
+        options.forEach(option => {
+          option.queryChange('')
+        })
+        optionGroup.forEach(option => {
+          option.queryChange('')
+        })
+      })
+    }
   }
 
   render() {
@@ -615,114 +572,149 @@ export default class Select extends React.PureComponent {
       required,
       placeholder,
       clearable,
+      size,
     } = this.props
     const {
       showOption,
-      selectText,
       queryText,
       currentPlaceholder,
       selectedItem,
       showClear,
     } = this.state
     let { children } = this.props
-    const optionWidth = this.selectMain && this.selectMain.offsetWidth
     return (
-      <div
-        style={style}
-        className={classnames(
-          'select',
-          { 'select-multiple': multiple },
-          { disabled },
-          { required },
-          { open: showOption },
-          className
-        )}
-        disabled={disabled}
-        ref={ref => (this.selectMain = ref)}
-        onMouseEnter={this.handleShowClear}
-        onMouseLeave={this.handleHideClear}
-      >
-        {multiple && (
-          <div className='select-tags' onClick={this.toggleOptionsHandle}>
-            {selectedItem.length <= 0 && (
-              <span className='select-placeholder'>{placeholder}</span>
-            )}
-            {selectedItem.length > 0 &&
-              selectedItem.map(item => {
-                const val = item.value
-                return (
-                  <Tag
-                    closable
-                    theme='default'
-                    onClose={e => this.selectMultipleDelete(val, e)}
-                    className='offset-l'
-                    key={item.value}
-                  >
-                    {item.name}
-                  </Tag>
-                )
-              })}
-          </div>
-        )}
-        {!multiple && (
-          <input
-            type='text'
-            value={selectText}
-            readOnly
-            placeholder={currentPlaceholder}
-            disabled={disabled}
-            className={classnames('select-selection')}
-            onClick={this.toggleOptionsHandle}
-            ref={ref => (this.refMain = ref)}
-          />
-        )}
-        {(!showClear || !clearable) && (
-          <i
-            className='dada-ico dada-ico-angle-down select-addon'
-            onClick={this.toggleOptionsHandle}
-          />
-        )}
-
-        {clearable && showClear && !multiple && (
-          <i
-            className='dada-ico dada-ico-times select-addon'
-            onClick={this.handleClearSelect}
-          />
-        )}
-        <div
-          className={classnames(
-            {
-              hidden: !showOption,
-            },
-            'select-option-outer'
-          )}
-          ref={ref => (this.selectOption = ref)}
-          style={{ width: optionWidth }}
+      <>
+        <Trigger
+          showAction='none'
+          hideAction='none'
+          popupVisible={showOption}
+          onPopupVisibleChange={this.hideOptionsHandler}
+          stretch='sameWidth'
+          transitionName='scale'
+          popup={
+            <div>
+              <div
+                className={classnames(this.wrapClass, 'select-options-wrap')}
+              >
+                {searchable && multiple && (
+                  <div className='select-search-wrap'>
+                    <DebounceInput
+                      debounceTimeout={500}
+                      value={queryText}
+                      onChange={e => this.handleQuery(e)}
+                      className={classnames('select-search-input')}
+                    />
+                    <i className='dada-ico dada-ico-search select-search' />
+                  </div>
+                )}
+                <ul
+                  className={classnames('select-options')}
+                  ref={ref => (this.selectInner = ref)}
+                >
+                  {children}
+                  {this.emptyText && (
+                    <p className='select-empty'>{this.emptyText}</p>
+                  )}
+                </ul>
+              </div>
+            </div>
+          }
         >
-          <div className={classnames(this.wrapClass, 'select-options-wrap')}>
-            {searchable && (
-              <div className='select-search-wrap'>
-                <DebounceInput
-                  debounceTimeout={500}
-                  value={queryText}
-                  onChange={e => this.handleQuery(e)}
-                  className={classnames('select-search-input')}
-                />
-                <i className='dada-ico dada-ico-search select-search' />
+          <div
+            style={style}
+            className={classnames(
+              'select',
+              { 'select-multiple': multiple },
+              { disabled },
+              { required },
+              { open: showOption && !searchable },
+              { 'select-open': showOption },
+              className
+            )}
+            disabled={disabled}
+            onMouseEnter={this.handleShowClear}
+            onMouseLeave={this.handleHideClear}
+          >
+            {multiple && (
+              <div
+                className={classnames('select-tags', {
+                  'select-tag-xs': size === 'xs',
+                })}
+                onClick={this.toggleOptionsHandle}
+              >
+                {selectedItem.length <= 0 && (
+                  <span
+                    className={classnames('select-placeholder', {
+                      'select-placeholder-xs': size === 'xs',
+                    })}
+                  >
+                    {placeholder}
+                  </span>
+                )}
+                {selectedItem.length > 0 &&
+                  selectedItem.map(item => {
+                    const val = item.value
+                    return (
+                      <Tag
+                        closable
+                        theme='default'
+                        onClose={e => this.selectMultipleDelete(val, e)}
+                        key={item.value}
+                      >
+                        {item.name}
+                      </Tag>
+                    )
+                  })}
               </div>
             )}
-            <ul
-              className='select-options'
-              ref={ref => (this.selectInner = ref)}
-            >
-              {children}
-              {this.emptyText && (
-                <p className='select-empty'>{this.emptyText}</p>
-              )}
-            </ul>
+            {!multiple && (
+              <input
+                type='text'
+                value={queryText}
+                readOnly={!searchable}
+                placeholder={currentPlaceholder}
+                disabled={disabled}
+                className={classnames('select-selection', {
+                  [`select-selection-${size}`]: !!size,
+                })}
+                onChange={e => this.handleQuery(e)}
+                onClick={this.toggleOptionsHandle}
+                onFocus={this.focusHandler}
+                ref={ref => (this.refMain = ref)}
+              />
+            )}
+            {(!showClear || !clearable) && (!searchable || multiple) && (
+              <i
+                className={classnames(
+                  'dada-ico dada-ico-angle-down select-addon',
+                  {
+                    [`select-addon-${size}`]: !!size,
+                  }
+                )}
+                onClick={this.toggleOptionsHandle}
+              />
+            )}
+            {(!showClear || !clearable) && searchable && !multiple && (
+              <i
+                className={classnames('dada-ico dada-ico-search select-addon', {
+                  [`select-addon-${size}`]: !!size,
+                })}
+              />
+            )}
+            {clearable && showClear && !multiple && (
+              <i
+                className={classnames(
+                  'dada-ico dada-ico-times-circle select-addon',
+                  {
+                    [`select-addon-${size}`]: !!size,
+                  }
+                )}
+                onClick={this.handleClearSelect}
+              />
+            )}
           </div>
-        </div>
-      </div>
+        </Trigger>
+      </>
     )
   }
 }

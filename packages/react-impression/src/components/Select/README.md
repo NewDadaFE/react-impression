@@ -4,6 +4,108 @@
 
 - 使用受控 Select 组件时，一定要设置 value 值(可以为 null)，不能为**undefined**
 
+**尺寸**
+
+```js
+class SizeExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      data: [
+        { value: 1, name: '一' },
+        { value: 2, name: '二' },
+        { value: 3, name: '三' },
+        { value: 4, name: '四' },
+        { value: 5, name: '五' },
+        { value: 6, name: '六' },
+        { value: 7, name: '七' },
+      ],
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(val, text) {
+    Notification.info({
+      title: 'Select',
+      message: `${text} 被选中了！！！`,
+    })
+
+    this.select.setValue(null)
+  }
+  render() {
+    return (
+      <div>
+        <Notification />
+        <Row>
+          <Col>
+            <Select
+              ref={select => (this.select = select)}
+              onChange={this.handleChange}
+              size="xs"
+              placeholder="最小尺寸"
+            >
+              {this.state.data.map(item => (
+                <SelectOption value={item.value} key={item.value}>
+                  {item.name}
+                </SelectOption>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Select
+              ref={select => (this.select = select)}
+              onChange={this.handleChange}
+              size="sm"
+              placeholder="小尺寸"
+            >
+              {this.state.data.map(item => (
+                <SelectOption value={item.value} key={item.value}>
+                  {item.name}
+                </SelectOption>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Select
+              ref={select => (this.select = select)}
+              onChange={this.handleChange}
+              placeholder="默认尺寸"
+            >
+              {this.state.data.map(item => (
+                <SelectOption value={item.value} key={item.value}>
+                  {item.name}
+                </SelectOption>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Select
+              ref={select => (this.select = select)}
+              onChange={this.handleChange}
+              placeholder="大尺寸"
+              size="lg"
+            >
+              {this.state.data.map(item => (
+                <SelectOption value={item.value} key={item.value}>
+                  {item.name}
+                </SelectOption>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+      </div>
+    )
+  }
+}
+;<SizeExample />
+```
+
 **基本用法**
 
 ```js
@@ -155,51 +257,6 @@ class ValueExample extends React.Component {
 }
 
 ;<ValueExample />
-```
-
-**默认值（非受控组件）**
-
-```js
-class DefaultValueExample extends React.Component {
-  constructor() {
-    super()
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(val, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
-    })
-    this.select.setValue(null)
-  }
-
-  render() {
-    return (
-      <div>
-        <Notification />
-        <Select
-          ref={select => (this.select = select)}
-          defaultValue={1}
-          onChange={this.handleChange}
-        >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
-        </Select>
-      </div>
-    )
-  }
-}
-
-;<DefaultValueExample />
 ```
 
 **必填项**
@@ -363,16 +420,16 @@ class ValueExample extends React.Component {
           onChange={this.handleChange}
           onDelete={this.handleDelete}
         >
-          <SelectOption value={1}>一</SelectOption>
-          <SelectOption value={2}>二</SelectOption>
-          <SelectOption value={3}>三</SelectOption>
-          <SelectOption value={4}>四</SelectOption>
-          <SelectOption value={5}>五</SelectOption>
-          <SelectOption value={6}>六</SelectOption>
-          <SelectOption value={7}>七</SelectOption>
-          <SelectOption value={8}>八</SelectOption>
-          <SelectOption value={9}>九</SelectOption>
-          <SelectOption value={10}>十</SelectOption>
+          <SelectOption value={1}>一个测试</SelectOption>
+          <SelectOption value={2}>二个测试测试</SelectOption>
+          <SelectOption value={3}>三个测试测试测试</SelectOption>
+          <SelectOption value={4}>四个测试测试测试测试</SelectOption>
+          <SelectOption value={5}>五个测试测试测试测试测试</SelectOption>
+          <SelectOption value={6}>六个测试测试测试测试测试测试</SelectOption>
+          <SelectOption value={7}>七个测试测试测试测试测试</SelectOption>
+          <SelectOption value={8}>八个测试测试测试测试</SelectOption>
+          <SelectOption value={9}>九个测试测试测试</SelectOption>
+          <SelectOption value={10}>十个测试测试</SelectOption>
         </Select>
       </div>
     )

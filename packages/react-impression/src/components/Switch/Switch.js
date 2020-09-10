@@ -34,6 +34,16 @@ export default class Switch extends React.PureComponent {
      * 值，通过getValue可获取
      */
     value: PropTypes.any,
+
+    /**
+     * 加载中的状态
+     */
+    loading: PropTypes.bool,
+
+    /**
+     * switch 组件的大小 默认为lg
+     */
+    size: PropTypes.oneOf(['lg', 'sm']),
   }
 
   static defaultProps = {
@@ -65,7 +75,6 @@ export default class Switch extends React.PureComponent {
   onChangeHandle = event => {
     const { onChange } = this.props
     const { checked } = event.target
-
     onChange(checked, event)
   }
 
@@ -76,6 +85,8 @@ export default class Switch extends React.PureComponent {
       onChange,
       disabled,
       className,
+      loading,
+      size,
       ...others
     } = this.props
 
@@ -94,7 +105,15 @@ export default class Switch extends React.PureComponent {
           onChange={onChange && this.onChangeHandle}
           id={this.id}
         />
-        <div className='switch-addon' />
+        <div
+          className={classnames(
+            'switch-addon',
+            size && `dada-switch-${size}`,
+            loading && 'dada-switch-loading'
+          )}
+        >
+          {loading && <span className='dada-switch-spinner' />}
+        </div>
       </label>
     )
   }

@@ -110,12 +110,7 @@ export default class Table extends React.PureComponent {
    * @memberof Table
    */
   get isPuppet() {
-    const { rowSelection } = this.props
-    return (
-      typeof rowSelection === 'object' &&
-      rowSelection !== null &&
-      Array.isArray(rowSelection.selectedRowKeys)
-    )
+    return isPuppetTable(this.props.rowSelection)
   }
 
   UNSAFE_componentWillMount() {
@@ -295,7 +290,8 @@ export default class Table extends React.PureComponent {
       this.handleInt(columns, children)
     }
 
-    if (!this.isPuppet) return
+    if (!isPuppetTable(rowSelection)) return
+
     const { selectedRowKeys, onChange } = rowSelection
     const selectedRowKeysLength = selectedRowKeys.length
     const dataLength = data.length
@@ -829,4 +825,12 @@ export default class Table extends React.PureComponent {
       </div>
     )
   }
+}
+
+const isPuppetTable = rowSelection => {
+  return (
+    typeof rowSelection === 'object' &&
+    rowSelection !== null &&
+    Array.isArray(rowSelection.selectedRowKeys)
+  )
 }
