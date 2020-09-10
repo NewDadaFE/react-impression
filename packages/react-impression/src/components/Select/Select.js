@@ -118,7 +118,7 @@ export default class Select extends React.PureComponent {
     children: PropTypes.node,
 
     /**
-     * 尺寸
+     * 尺寸 多选只有两个尺寸，'md'和'xs'，单选
      */
     size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   }
@@ -294,7 +294,9 @@ export default class Select extends React.PureComponent {
           option.queryChange('')
         })
         if (this.state.showOption) {
+          this.selectInner.scrollTop = 0
         } else {
+          this.selectInner.scrollTop = 0
           this.setState({ queryText: selectText })
         }
       }
@@ -452,6 +454,8 @@ export default class Select extends React.PureComponent {
     const { options, optionGroup } = this.state
     const { filterMethod, remoteMethod } = this.props
     this.setState({ queryText: val }, () => {
+      this.selectInner.scrollTop = 0
+      remoteMethod && remoteMethod(val)
       if (!remoteMethod) {
         options.forEach(option => {
           option.queryChange(val, filterMethod)
@@ -548,6 +552,7 @@ export default class Select extends React.PureComponent {
     if (!popupVisible) {
       const { selectText } = this.state
       this.setState({ showOption: false, queryText: selectText }, () => {
+        this.selectInner.scrollTop = 0
         const { optionGroup, options } = this.state
         options.forEach(option => {
           option.queryChange('')
