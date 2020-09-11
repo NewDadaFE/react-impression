@@ -129,7 +129,7 @@ class DefaultExample extends React.Component {
     this.state = {
       normalValue: 1,
       clearableValue: 2,
-      optionDisabledValue: 3,
+      optionDisabledValue: 4,
     }
     this.handleNormalChange = this.handleNormalChange.bind(this)
     this.handleClearableChange = this.handleClearableChange.bind(this)
@@ -171,7 +171,7 @@ class DefaultExample extends React.Component {
         <FormGroup>
           <label>可清除：</label>
           <Select
-            value={this.state.normalValue}
+            value={this.state.clearableValue}
             onChange={this.handleClearableChange}
             clearable
           >
@@ -194,13 +194,15 @@ class DefaultExample extends React.Component {
         </FormGroup>
         <FormGroup>
           <label>选项禁用：</label>
-          <Select value={this.state.optionDisabledValue}>
+          <Select
+            value={this.state.optionDisabledValue}
+            onChange={this.handleOptionDisabledChange}
+          >
             {selectList.map(item => (
               <SelectOption
                 value={item.value}
                 key={item.value}
-                disabled={item.value === 1}
-                onChange={this.handleOptionDisabledChange}
+                disabled={item.value === 5}
               >
                 {item.label}
               </SelectOption>

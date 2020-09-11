@@ -542,7 +542,7 @@ export default class Select extends React.PureComponent {
   }
 
   hideOptionsHandler = popupVisible => {
-    if (!popupVisible) {
+    if (!popupVisible && this.state.showOption) {
       const { selectText } = this.state
       this.setState({ showOption: false, queryText: selectText }, () => {
         this.selectInner.scrollTop = 0
