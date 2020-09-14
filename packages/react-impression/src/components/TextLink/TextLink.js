@@ -2,41 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-TextLink.propTypes = {
-  /**
-   * 自定义样式
-   */
-  className: PropTypes.string,
-  /**
-   * 子组件
-   */
-  children: PropTypes.node,
-  /**
-   * 点击事件回调，参数：event
-   */
-  onClick: PropTypes.func,
-
-  /**
-   * 是否禁用
-   */
-  disabled: PropTypes.bool,
-
-  /**
-   * 链接指向的URL
-   */
-  href: PropTypes.string,
-
-  /**
-   * 主题色
-   */
-  theme: PropTypes.oneOf(['primary', 'secondary']),
-}
-TextLink.defaultProps = {
-  disabled: false,
-  theme: 'primary',
-}
-
-function TextLink(props) {
+const TextLink = React.forwardRef((props, ref) => {
   const {
     href,
     theme,
@@ -76,6 +42,7 @@ function TextLink(props) {
         href={href}
         className={linkClassNames}
         onClick={clickHandler}
+        ref={ref}
         {...others}
       >
         {children}
@@ -83,10 +50,50 @@ function TextLink(props) {
     )
   }
   return (
-    <span className={linkClassNames} onClick={clickHandler} {...others}>
+    <span
+      className={linkClassNames}
+      onClick={clickHandler}
+      ref={ref}
+      {...others}
+    >
       {children}
     </span>
   )
+})
+
+TextLink.propTypes = {
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
+  /**
+   * 子组件
+   */
+  children: PropTypes.node,
+  /**
+   * 点击事件回调，参数：event
+   */
+  onClick: PropTypes.func,
+
+  /**
+   * 是否禁用
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * 链接指向的URL
+   */
+  href: PropTypes.string,
+
+  /**
+   * 主题色
+   */
+  theme: PropTypes.oneOf(['primary', 'secondary']),
 }
+TextLink.defaultProps = {
+  disabled: false,
+  theme: 'primary',
+}
+TextLink.displayName = 'TextLink'
 
 export default TextLink
