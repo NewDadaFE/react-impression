@@ -146,7 +146,7 @@ class Modal extends React.Component {
             className={classnames('modal-dialog', sizeClass)}
             onClick={this.handleStopPropagation}
           >
-            <div className='modal-content slideInDown'>{children}</div>
+            <div className='modal-content'>{children}</div>
           </div>
         </div>
       </Portal>

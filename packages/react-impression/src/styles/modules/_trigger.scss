@@ -1,5 +1,8 @@
 .dada-trigger {
   z-index: $zindex-trigger;
+}
+
+.dada-trigger-inner {
   border-radius: $border-radius;
   background-color: $brand-pure;
   box-shadow: $box-shadow;
