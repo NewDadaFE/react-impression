@@ -284,7 +284,7 @@ export default class Select extends React.PureComponent {
     event.preventDefault()
     const { optionGroup, selectText } = this.state
     if (this.props.disabled) return
-    if (this.state.queryText) return
+    if (this.state.queryText && this.state.showOption) return
     this.setState(
       {
         showOption: !this.state.showOption,
@@ -547,7 +547,7 @@ export default class Select extends React.PureComponent {
   }
 
   hideOptionsHandler = popupVisible => {
-    if (!popupVisible) {
+    if (!popupVisible && this.state.showOption) {
       const { selectText } = this.state
       this.setState({ showOption: false, queryText: selectText }, () => {
         this.selectInner.scrollTop = 0

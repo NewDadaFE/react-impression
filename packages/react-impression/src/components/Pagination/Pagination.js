@@ -92,6 +92,7 @@ export default class Pagination extends React.PureComponent {
     this.state = {
       currentPage: this.props.activePage,
       skipPageNo: '',
+      pageSize: props.defaultPageSize,
     }
   }
 
@@ -195,6 +196,10 @@ export default class Pagination extends React.PureComponent {
   }
   // pageSize
   changePageSize = value => {
+    const { onShowSizeChange } = this.props
+    this.setState({ pageSize: value }, () => {
+      onShowSizeChange && onShowSizeChange(value)
+    })
     console.log('value', value)
   }
 
@@ -211,16 +216,22 @@ export default class Pagination extends React.PureComponent {
       size,
       showSizeChanger,
       pageSizeOptions,
-      pageSize,
+      // pageSize,
       defaultPageSize,
       ...others
     } = this.props
+    const { pageSize } = this.state
 
     const pageList = this.getPageList()
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
     const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
     return (
       <div className={classnames('text-center', className)}>
+        {showTotal && (
+          <div className='pagination-total'>
+            共<span>{total || 0}</span>条
+          </div>
+        )}
         <ul {...others} className='pagination'>
           <li
             className={classnames(pageItemClass, {
@@ -267,23 +278,19 @@ export default class Pagination extends React.PureComponent {
         </ul>
 
         {showSizeChanger && (
-          <Select
-            value={pageSize}
-            defaultValue={defaultPageSize}
-            onChange={this.changePageSize}
-          >
-            {pageSizeOptions.map(item => (
-              <SelectOption value={item}>{`${item}条/页`}</SelectOption>
-            ))}
-          </Select>
-        )}
-        {showTotal && (
-          <div className='pagination-total'>
-            共<span>{totalPage || 1}</span>页<span>/</span>
-            <span>{total || 0}</span>条
+          <div className='pagination-pageSize'>
+            <Select
+              value={pageSize}
+              onChange={this.changePageSize}
+              size={`${size === 'sm' ? 'xs' : 'sm'}`}
+              className='size-changer-sm'
+            >
+              {pageSizeOptions.map(item => (
+                <SelectOption value={item}>{`${item}条/页`}</SelectOption>
+              ))}
+            </Select>
           </div>
         )}
-
         {showQuickJumper && (
           <div className='pagination-jumper'>
             <span>跳转</span>
