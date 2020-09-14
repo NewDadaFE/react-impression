@@ -6,7 +6,7 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  width: 16rem;
+  width: $select-width;
   line-height: $select-option-inline-height;
   border: $border-width solid $gray-light;
   border-radius: rem(2px);
@@ -21,7 +21,7 @@
       color: $select-selection-color;
     }
 
-    .tag {
+    .dada-tag {
       cursor: not-allowed;
     }
   }
@@ -51,7 +51,7 @@
     padding-bottom: rem(4px);
     padding-right: rem(42px);
 
-    .tag-default {
+    .dada-tag-default {
       color: $gray-base;
       background: $select-tags-bg-color;
       margin: $select-tag-margin-md 0 0 $select-tag-margin-md;
@@ -65,7 +65,7 @@
       }
     }
 
-    .tag-close {
+    .dada-tag-close {
       color: $gray;
       display: inline-block;
       opacity: 1;
@@ -84,24 +84,17 @@
       top: $select-padding-y-md;
       left: $select-padding-x;
       line-height: $select-line-height-md;
-
-      .required & {
-        color: $brand-danger;
-      }
     }
 
-    .tag {
+    .dada-tag {
       line-height: rem(20px);
-    }
-
-    .required & {
-      border: rem(1px) solid $brand-danger;
     }
   }
 
   &.select-multiple {
-    width: 28.57rem;
-    // padding-bottom: rem(4px);
+    width: auto;
+    min-width: $select-width;
+    max-width: $select-max-width;
   }
 
   .select-tag-xs {
@@ -109,7 +102,7 @@
     min-height: $select-height-xs;
     padding-bottom: rem(2px);
 
-    .tag-default {
+    .dada-tag-default {
       height: $select-tag-height-xs;
       margin: $select-tag-margin-xs 0 0 $select-tag-margin-xs;
       padding: 0 rem(4px) 0 rem(8px);
@@ -122,7 +115,7 @@
       left: rem(8px);
     }
 
-    .tag {
+    .dada-tag {
       line-height: rem(18px);
     }
   }
@@ -160,14 +153,6 @@
   &::placeholder {
     color: $select-placeholder-color;
   }
-
-  .required & {
-    border-color: $brand-danger;
-
-    &::placeholder {
-      color: $brand-danger;
-    }
-  }
 }
 
 .select-selection-lg {
@@ -196,10 +181,6 @@
   line-height: $select-line-height-xs;
   font-size: $font-size-xs;
   padding: $select-padding-y-xs $select-addon-font-size-xs + $select-padding-x * 2 $select-padding-y-xs $select-padding-x;
-}
-
-.select-required {
-  color: $brand-danger;
 }
 
 .select-open {
