@@ -9,26 +9,21 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
   position: absolute;
   top: 50%;
   right: $input-padding-x;
-  left: $search-context-offset;
+  left: $search-context-offset + 1px;
   overflow: hidden;
   transform: translateY(-50%);
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: $gray-base;
   background-color: $brand-pure;
 
   &.dada-search-context-focus {
-    opacity: .5;
+    color: $disabled-color;
   }
 
   &.dada-search-context-clear {
-    right: $search-context-offset
+    right: $search-context-offset;
   }
-}
-
-.dada-input-disabled + .dada-search-context {
-  cursor: not-allowed;
-  color: $input-disabled-color;
-  background-color: $input-disabled-bg;
 }
 
 // 搜索icon
@@ -41,6 +36,7 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
   cursor: pointer;
   color: $gray-darker;
 }
+
 .dada-search-clear-hidden {
   display: none;
 }
@@ -66,5 +62,18 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
 
   &:hover {
     background-color: $gray-lightest;
+  }
+}
+
+.dada-input-disabled {
+  & > .dada-input-addon-before,
+  & > .dada-input-addon-after,
+  & + .dada-search-context {
+    cursor: not-allowed;
+    color: $input-disabled-color;
+  }
+
+  & + .dada-search-context {
+    background-color: $input-disabled-bg;
   }
 }
