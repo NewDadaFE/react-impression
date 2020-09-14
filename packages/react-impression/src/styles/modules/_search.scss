@@ -41,13 +41,11 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
   display: none;
 }
 
-.dada-search-popup {
+.dada-search-popup > .dada-trigger-inner {
   @include scroll-reset();
 
   max-width: 408px;
   max-height: 376px;
-  padding: 8px 0;
-  overflow: auto;
 }
 
 .dada-search-option {
@@ -62,6 +60,14 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
 
   &:hover {
     background-color: $gray-lightest;
+  }
+
+  &:first-child {
+    margin-top: 8px;
+  }
+
+  &:last-child {
+    margin-bottom: 8px;
   }
 }
 

@@ -3,9 +3,10 @@
 }
 
 .dada-trigger-inner {
-  border-radius: $border-radius;
+  overflow: auto;
   background-color: $brand-pure;
   box-shadow: $box-shadow;
+  border-radius: $border-radius;
 }
 
 .dada-trigger-hidden {
