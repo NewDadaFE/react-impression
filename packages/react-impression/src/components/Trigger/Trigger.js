@@ -102,8 +102,7 @@ function Trigger(props) {
   const [delayShowPopup, setDelayShowPopup] = useState(false)
   // 弹出层显隐控制标记
   const [showPopup, setShowPopup] = useState(false)
-  // 暂存宿主元素宽高
-  const referenceSizeRef = useRef({ width: 0, height: 0 })
+
   // popper 相关---开始
   const [referenceElement, setReferenceElement] = useState(null)
   const [popperElement, setPopperElement] = useState(null)
@@ -272,14 +271,9 @@ function Trigger(props) {
 
   // 判断宿主元素宽高变化，主动更新弹出层位置
   // useEffect 监听元素宽高，因为宽高变量不是state，所以不会触发render
-  const height = referenceElement ? referenceElement.offsetHeight : 0
-  const width = referenceElement ? referenceElement.offsetWidth : 0
-  if (
-    height !== referenceSizeRef.current.height ||
-    width !== referenceSizeRef.current.width
-  ) {
+  const isReferenceResize = useIsDomResize(referenceElement)
+  if (isReferenceResize) {
     update && update()
-    referenceSizeRef.current = { width, height }
   }
 
   return (
@@ -287,23 +281,27 @@ function Trigger(props) {
       {Children}
       {createPortal(
         <div
-          className={classNames('dada-trigger', props.popupClassName, {
-            [`dada-trigger-popup-${transitionName}-enter`]:
-              transitionName && showPopup,
-            [`dada-trigger-popup-${transitionName}-leave`]:
-              transitionName && !showPopup,
-            'dada-trigger-hidden':
-              !transitionName || showPopup ? !showPopup : !delayShowPopup,
-          })}
+          className={classNames('dada-trigger', props.popupClassName)}
           ref={setPopperElement}
           style={{ ...popperStyles.popper, ...style }}
-          onAnimationEnd={() => {
-            if (!transitionName) return
-            setDelayShowPopup(showPopup)
-          }}
           {...attributes.popper}
         >
-          {typeof popup === 'function' ? popup() : popup}
+          <div
+            className={classNames('dada-trigger-inner', {
+              [`dada-trigger-popup-${transitionName}-enter`]:
+                transitionName && showPopup,
+              [`dada-trigger-popup-${transitionName}-leave`]:
+                transitionName && !showPopup,
+              'dada-trigger-hidden':
+                !transitionName || showPopup ? !showPopup : !delayShowPopup,
+            })}
+            onAnimationEnd={() => {
+              if (!transitionName) return
+              setDelayShowPopup(showPopup)
+            }}
+          >
+            {typeof popup === 'function' ? popup() : popup}
+          </div>
         </div>,
         window.document.getElementsByTagName('body')[0]
       )}
@@ -312,3 +310,30 @@ function Trigger(props) {
 }
 
 export default Trigger
+
+function useIsDomResize(element) {
+  const elementSizeRef = useRef({
+    lastWidth: 0,
+    lastHeight: 0,
+    lastTop: 0,
+    lastLeft: 0,
+  })
+  if (!element) return false
+  const { lastWidth, lastHeight, lastTop, lastLeft } = elementSizeRef.current
+  const { width, height, top, left } = element.getBoundingClientRect()
+  if (
+    lastWidth !== width ||
+    lastHeight !== height ||
+    lastTop !== top ||
+    lastLeft !== left
+  ) {
+    elementSizeRef.current = {
+      lastWidth: width,
+      lastHeight: height,
+      lastTop: top,
+      lastLeft: left,
+    }
+    return true
+  }
+  return false
+}
