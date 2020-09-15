@@ -94,6 +94,7 @@ function Search(props) {
     defaultValue,
     type,
     clearable,
+    disabled,
   } = props
   const labelKey = optionKey.label || defaultOptionKey.label
   const valueString = typeof value === 'object' ? JSON.stringify(value) : ''
@@ -137,6 +138,7 @@ function Search(props) {
   )
 
   const clearHandler = () => {
+    if (disabled) return
     if (type === 'select') {
       setSelectedItem(null)
     } else if (type === 'input') {
@@ -263,7 +265,7 @@ function Search(props) {
             }
             setIsFocus(false)
           }}
-          disabled={props.disabled}
+          disabled={disabled}
         />
         {/* select类型，selectedItem 以 onSelect 为准 */}
         {type === 'select' && selectedItem && !keyword && (

@@ -1,8 +1,12 @@
 .dada-trigger {
   z-index: $zindex-trigger;
-  border-radius: $border-radius;
+}
+
+.dada-trigger-inner {
+  overflow: auto;
   background-color: $brand-pure;
   box-shadow: $box-shadow;
+  border-radius: $border-radius;
 }
 
 .dada-trigger-hidden {

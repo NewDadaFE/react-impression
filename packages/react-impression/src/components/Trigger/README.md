@@ -72,7 +72,8 @@ Trigger 组件弹出层在定位时，需要获取寄主（children）的位置�
 
 **自由控制弹出层**
 
-下面的示例中，Input 组件没有传递 ref，所以使用了一个 span 标签包装，display 属性为 inline-block。
+下面的示例中，Input 组件没有传递 ref，所以使用了一个 span 标签包装，display 属性为 inline-block。<br/>
+使用 popupClassName 属性自定义弹出层样式时，可以通过覆写 **.custom—class-name > .dada-trigger-inner** 实现。
 
 ```javascript
 class Example extends React.Component {
