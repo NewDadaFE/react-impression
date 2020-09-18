@@ -7,16 +7,6 @@
   }
 }
 
-// .collapse {
-// display: none;
-
-// &.in {
-//     display: block;
-// }
-// tr&.in    { display: table-row; }
-// tbody&.in { display: table-row-group; }
-// }
-
 .collapsing {
   position: relative;
   height: 0;
@@ -119,5 +109,15 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes dadaFadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

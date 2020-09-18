@@ -1,20 +1,44 @@
 .dada-trigger {
   z-index: $zindex-trigger;
 
-  &[data-popper-placement^="top"] > .dada-trigger-inner > .dada-trigger-arrow {
-    bottom: -4px;
+  &[data-popper-placement^="top"] {
+    & > .dada-trigger-inner > .dada-trigger-arrow {
+      bottom: -4px;
+    }
+
+    & > .dada-trigger-popup-border > .dada-trigger-arrow::before {
+      transform: rotate(-135deg);
+    }
   }
 
-  &[data-popper-placement^="bottom"] > .dada-trigger-inner > .dada-trigger-arrow {
-    top: -4px;
+  &[data-popper-placement^="bottom"] {
+    & > .dada-trigger-inner > .dada-trigger-arrow {
+      top: -4px;
+    }
+
+    & > .dada-trigger-popup-border > .dada-trigger-arrow::before {
+      transform: rotate(45deg);
+    }
   }
 
-  &[data-popper-placement^="left"] > .dada-trigger-inner > .dada-trigger-arrow {
-    right: -4px;
+  &[data-popper-placement^="left"] {
+    & > .dada-trigger-inner > .dada-trigger-arrow {
+      right: -4px;
+    }
+
+    & > .dada-trigger-popup-border > .dada-trigger-arrow::before {
+      transform: rotate(135deg);
+    }
   }
 
-  &[data-popper-placement^="right"] > .dada-trigger-inner > .dada-trigger-arrow {
-    left: -4px;
+  &[data-popper-placement^="right"] {
+    & > .dada-trigger-inner > .dada-trigger-arrow {
+      left: -4px;
+    }
+
+    & > .dada-trigger-popup-border > .dada-trigger-arrow::before {
+      transform: rotate(-45deg);
+    }
   }
 }
 
@@ -53,17 +77,19 @@
   animation: .36s dadaScaleOut ease forwards;
 }
 
-// 箭头
-.dada-trigger-arrow,
-.dada-trigger-arrow::before {
-  position: absolute;
-  width: 8px;
-  height: 8px;
+.dada-trigger-popup-fade-enter {
+  animation: fadeIn .36s ease;
 }
 
+.dada-trigger-popup-fade-leave {
+  animation: .36s dadaFadeOut ease forwards;
+}
+
+// 箭头
 .dada-trigger-arrow::before {
-  z-index: 1;
+  display: block;
+  width: 8px;
+  height: 8px;
   content: "";
-  transform: rotate(45deg);
   background-color: $brand-pure;
 }

@@ -76,7 +76,7 @@ Trigger.propTypes = {
   /**
    * 弹出层动画
    */
-  transitionName: PropTypes.oneOf(['zoom', 'scale']),
+  transitionName: PropTypes.oneOf(['zoom', 'scale', 'fade']),
   /**
    * 弹出层X偏移量
    */
@@ -343,6 +343,7 @@ function Trigger(props) {
               setDelayShowPopup(showPopup)
             }}
           >
+            {typeof popup === 'function' ? popup() : popup}
             {arrowVisible && (
               <div
                 className='dada-trigger-arrow'
@@ -350,7 +351,6 @@ function Trigger(props) {
                 data-popper-arrow
               />
             )}
-            {typeof popup === 'function' ? popup() : popup}
           </div>
         </div>,
         window.document.getElementsByTagName('body')[0]
