@@ -303,7 +303,7 @@ class DefaultExample extends React.Component {
     }
     this.handleSingleChange = this.handleSingleChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleSingleChange(value, text) {
@@ -319,10 +319,10 @@ class DefaultExample extends React.Component {
     })
   }
 
-  handleChange(value) {
+  handleDelete(value) {
     const { selectedValue } = this.state
     this.setState({
-      selected: selectedValue.filter(val => val !== value),
+      selectedValue: selectedValue.filter(val => val !== value),
     })
   }
 
