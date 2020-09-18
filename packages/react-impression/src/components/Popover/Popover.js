@@ -8,7 +8,16 @@ export default class Popover extends React.PureComponent {
     /**
      * 显示位置
      */
-    position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+    position: PropTypes.oneOf([
+      'top',
+      'top-start',
+      'top-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'right',
+      'left',
+    ]).isRequired,
     /**
      * 标题
      */
