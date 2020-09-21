@@ -71,6 +71,9 @@
       margin-top: $loading-circle-height * 0.5 + rem(16px);
     }
   }
+  .dada-ico {
+    transition: transform 0.2s ease;
+  }
 }
 
 // Button sizes

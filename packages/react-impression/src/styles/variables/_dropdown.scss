@@ -2,23 +2,25 @@
 //
 $dropdown-min-width: 120px !default;
 $dropdown-padding-y: 0.5rem !default;
-$dropdown-margin-top: 4px !default;
+$dropdown-margin-top: rem(8px) !default;
 $dropdown-bg: $brand-pure !default;
 $dropdown-border-color: rgba($gray-lighter, 0.2) !default;
 $dropdown-border-width: $border-width !default;
 $dropdown-border-radius: $border-radius-sm;
 $dropdown-divider-bg: #e5e5e5 !default;
-$dropdown-box-shadow: 0 1px 8px $inverse-level-2 !default;
+$dropdown-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.14) !default;
+$dropdown-normal-color: $gray-base !default;
 
-$dropdown-link-hover-color: lighten($brand-primary, 6%) !default;
-$dropdown-link-hover-bg: $gray-lighter !default;
+$dropdown-link-hover-color: $blue-primary !default;
+$dropdown-link-hover-bg: $gray-lightest !default;
 
 $dropdown-link-active-color: $gray-light !default;
 $dropdown-link-active-bg: $component-active-bg !default;
 
 $dropdown-link-disabled-color: $gray-light !default;
 
-$dropdown-item-padding-x: 1.5rem !default;
-$dropdown-item-padding-y: 0.5rem !default;
+$dropdown-item-padding-x: rem(16px) !default;
+$dropdown-item-padding-y: rem(5px) !default;
+$dropdown-item-line-height: rem(22px) !default;
 
 $dropdown-caret-transition: all 0.36s ease !default;

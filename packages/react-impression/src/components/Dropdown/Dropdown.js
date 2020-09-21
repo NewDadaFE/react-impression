@@ -1,100 +1,110 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import DropdownTrigger from '../DropdownTrigger'
 import DropdownMenu from '../DropdownMenu'
 import DropdownMenuItem from '../DropdownMenuItem'
 import DropdownMenuDivider from '../DropdownMenuDivider'
-import * as System from '../../utils/system'
+import { addEventListener, contains } from '../../utils/system'
 
-export default class Dropdown extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context)
-    System.manager(this)
-
-    this.state = {
-      active: undefined === props.active ? false : props.active,
-    }
-  }
-
-  static propTypes = {
-    /**
-     * 是否激活
-     */
-    active: PropTypes.bool,
-
-    /**
-     * 触发动作
-     */
-    trigger: PropTypes.oneOf(['click', 'hover']),
-
-    /**
-     * 子组件
-     */
-    children: PropTypes.array.isRequired,
-
-    /**
-     * 自定义样式
-     */
-    className: PropTypes.string,
-  }
-  static defaultProps = {
-    active: false,
-    trigger: 'click',
-  }
-
-  toggleOptionsHandle = flag => {
-    let { active } = this.state
-
-    this.setState({
-      active: typeof flag === 'boolean' ? flag : !active,
-    })
-  }
-
-  hideOptionsHandle = () => {
-    this.setState({
-      active: false,
-    })
-  }
-
-  componentWillUnmount() {
-    System.unmanager(this)
-  }
-
-  render() {
-    const { trigger, className, ...others } = this.props
-    const { active } = this.state
-    let { children } = this.props
-
-    children = React.Children.map(children, child => {
-      if (!child) {
-        return child
+export default function Dropdown(props) {
+  const [active, setActive] = useState(
+    undefined === props.active ? false : props.active
+  )
+  const toggleOptionsHandle = useCallback(
+    flag => {
+      setActive(typeof flag === 'boolean' ? flag : !active)
+    },
+    [active]
+  )
+  const referenceElement = useRef(null)
+  /**
+   * 隐藏弹出层
+   */
+  const hidePopupHandler = useCallback(
+    event => {
+      if (!contains(referenceElement.current, event.target)) {
+        setActive(false)
       }
+    },
+    [referenceElement]
+  )
+  useEffect(
+    () => {
+      let clickOutsideHandler = addEventListener(
+        window.document,
+        'mousedown',
+        hidePopupHandler
+      )
+      return () => {
+        clickOutsideHandler.remove()
+        clickOutsideHandler = null
+      }
+    },
+    [hidePopupHandler]
+  )
+  const { trigger, className, disabled, ...others } = props
+  let { children } = props
 
-      return React.cloneElement(child, {
-        trigger,
-        toggleMenu: this.toggleOptionsHandle,
-      })
-    })
-
-    if (trigger === 'hover') {
-      others.onMouseOver = () => this.toggleOptionsHandle(true)
-      others.onMouseOut = () => this.toggleOptionsHandle(false)
+  children = React.Children.map(children, child => {
+    if (!child) {
+      return child
     }
+    let childProp = {
+      trigger,
+      toggleMenu: toggleOptionsHandle,
+    }
+    disabled && (childProp.disabled = true)
+    return React.cloneElement(child, childProp)
+  })
 
-    delete others.active
-
-    return (
-      <div
-        {...others}
-        className={classnames('dropdown', { active }, className)}
-      >
-        {children}
-      </div>
-    )
+  if (trigger === 'hover') {
+    others.onMouseOver = () => toggleOptionsHandle(true)
+    others.onMouseOut = () => toggleOptionsHandle(false)
   }
-}
 
+  delete others.active
+
+  return (
+    <div
+      {...others}
+      className={classnames('dropdown', { active }, className)}
+      ref={referenceElement}
+    >
+      {children}
+    </div>
+  )
+}
+Dropdown.propTypes = {
+  /**
+   * 是否激活
+   */
+  active: PropTypes.bool,
+
+  /**
+   * 触发动作
+   */
+  trigger: PropTypes.oneOf(['click', 'hover']),
+
+  /**
+   * 子组件
+   */
+  children: PropTypes.array.isRequired,
+
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
+
+  /**
+   * 禁用状态
+   */
+  disabled: PropTypes.bool,
+}
+Dropdown.defaultProps = {
+  active: false,
+  trigger: 'click',
+}
 Dropdown.Trigger = DropdownTrigger
 Dropdown.Menu = DropdownMenu
 Dropdown.MenuItem = DropdownMenuItem
