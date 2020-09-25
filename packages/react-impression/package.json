@@ -20,7 +20,6 @@
     "classnames": "^2.2.0",
     "lodash.uniqueid": "^4.0.1",
     "perfect-scrollbar": "^1.4.0",
-    "popper.js": "^1.14.4",
     "prop-types": "15.6.2",
     "ramda": "^0.26.0",
     "react-debounce-input": "^3.2.2",
