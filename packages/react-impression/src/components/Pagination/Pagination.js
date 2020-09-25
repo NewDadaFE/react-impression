@@ -68,7 +68,7 @@ export default class Pagination extends React.PureComponent {
     /**
      * 默认每页条数
      */
-    defaultPageSize: PropTypes.bool,
+    defaultPageSize: PropTypes.number,
     /**
      * 翻页器尺寸
      */
