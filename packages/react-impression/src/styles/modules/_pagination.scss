@@ -1,4 +1,6 @@
 .pagination {
+}
+.pagination-ul {
   display: inline-block;
   text-align: center;
   padding-left: 0;
@@ -84,6 +86,18 @@
   & > span {
     padding-left: $pagination-jumper-spacing;
     padding-right: $pagination-jumper-spacing;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    & > div {
+      color: $pagination-disabled-color;
+      border-color: $pagination-disabled-border-color;
+      pointer-events: none;
+      background-color: $pagination-disabled-bg-color;
+    }
+    i {
+      color: $pagination-disabled-color;
+    }
   }
 }
   .pagination-jumper-input-sm {
@@ -171,11 +185,6 @@
 }
 .page-link-go-md {
   padding: 0 $pagination-link-go-padding-md;
-  &.disabled {
-    cursor: not-allowed;
-    pointer-events: none;
-    background-color: $pagination-disabled-bg-color;
-  }
 }
 .page-link-go-sm {
   border: $pagination-border-width solid $pagination-border-color;
@@ -183,11 +192,6 @@
   min-height: $pagination-link-go-sm;
   line-height: $pagination-link-go-line-height-sm;
   font-size: $font-size-sm;
-  &.disabled {
-    color: $pagination-disabled-color;
-    border-color: $pagination-disabled-border-color;
-    background-color: $pagination-disabled-bg-color;
-  }
 }
 .disabled {
   color: $pagination-disabled-color;

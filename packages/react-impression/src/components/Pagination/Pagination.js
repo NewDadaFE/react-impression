@@ -30,7 +30,7 @@ export default class Pagination extends React.PureComponent {
      */
     nextContent: PropTypes.node,
     /**
-     * 选中回调，参数列表：activePage
+     * 选中回调，参数列表：activePage, pageSize
      */
     onSelect: PropTypes.func,
     /**
@@ -103,9 +103,10 @@ export default class Pagination extends React.PureComponent {
    */
   prevPageHandle = () => {
     let { onSelect, activePage } = this.props
+    const { pageSize } = this.state
 
     activePage -= 1
-    activePage >= 1 && onSelect && onSelect(activePage)
+    activePage >= 1 && onSelect && onSelect(activePage, pageSize)
   }
 
   /**
@@ -113,10 +114,10 @@ export default class Pagination extends React.PureComponent {
    */
   nextPageHandle = () => {
     let { onSelect, activePage } = this.props
-    const { totalPage } = this.state
+    const { totalPage, pageSize } = this.state
 
     activePage += 1
-    activePage <= totalPage && onSelect && onSelect(activePage)
+    activePage <= totalPage && onSelect && onSelect(activePage, pageSize)
   }
 
   /**
@@ -124,11 +125,11 @@ export default class Pagination extends React.PureComponent {
    * @param page
    */
   goPageHandle = page => {
-    const { currentPage } = this.state
+    const { currentPage, pageSize } = this.state
     if (Number(currentPage) === Number(page)) return
     const { onSelect } = this.props
 
-    onSelect && onSelect(page)
+    onSelect && onSelect(page, pageSize)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -191,13 +192,13 @@ export default class Pagination extends React.PureComponent {
 
   handleSkip = () => {
     const { onSelect } = this.props
-    const { totalPage } = this.state
+    const { totalPage, pageSize } = this.state
     const pageNo = +this.state.skipPageNo
     if (isNaN(pageNo) || pageNo < 1 || pageNo > totalPage) {
       this.setState({ skipPageNo: '' })
       return
     }
-    onSelect(pageNo)
+    onSelect(pageNo, pageSize)
   }
   // pageSize
   changePageSize = value => {
@@ -216,7 +217,7 @@ export default class Pagination extends React.PureComponent {
       },
       () => {
         onShowSizeChange && onShowSizeChange(value)
-        onSelect && onSelect(page)
+        onSelect && onSelect(page, value)
       }
     )
   }
@@ -239,13 +240,12 @@ export default class Pagination extends React.PureComponent {
       ...others
     } = this.props
     const { pageSize, totalPage } = this.state
-    console.log('disabled', disabled)
 
     const pageList = this.getPageList()
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
     const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
     return (
-      <div className={classnames('text-center', className)}>
+      <div className={classnames('text-center', 'pagination', className)}>
         {showTotal && (
           <div
             className={classnames('pagination-total', { disabled: disabled })}
@@ -253,7 +253,7 @@ export default class Pagination extends React.PureComponent {
             共<span>{total || 0}</span>条
           </div>
         )}
-        <ul {...others} className='pagination'>
+        <ul {...others} className='pagination-ul'>
           <li
             className={classnames(pageItemClass, {
               disabled: activePage <= 1 || disabled,
@@ -317,7 +317,9 @@ export default class Pagination extends React.PureComponent {
           </div>
         )}
         {showQuickJumper && (
-          <div className='pagination-jumper'>
+          <div
+            className={classnames('pagination-jumper', { disabled: disabled })}
+          >
             <span className={classnames({ disabled: disabled })}>跳转</span>
             <Input
               className={classnames({
@@ -332,7 +334,6 @@ export default class Pagination extends React.PureComponent {
             <div
               className={classnames(pageLinkClass, {
                 [`page-link-go-${size}`]: !!size,
-                disabled: disabled,
               })}
               onClick={this.handleSkip}
             >

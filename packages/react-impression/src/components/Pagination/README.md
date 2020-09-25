@@ -3,15 +3,17 @@
 **基本用法**
 
 ```js
-const onLargeActiveHandle = pageNo => {
+const onLargeActiveHandle = (pageNo, pageSize) => {
   setState({
     largeActivePage: pageNo,
   })
+  console.log(pageSize)
 }
-const onSmallActiveHandle = pageNo => {
+const onSmallActiveHandle = (pageNo, pageSize) => {
   setState({
     smallActivePage: pageNo,
   })
+  console.log(pageSize)
 }
 
 initialState = {
@@ -43,15 +45,17 @@ initialState = {
 改变 pageSize 的功能依赖 **pageSize 属性**, **showSizeChanger 属性**和**onShowSizeChange 属性**。
 
 ```js
-const onLargeActiveHandle = pageNo => {
+const onLargeActiveHandle = (pageNo, pageSize) => {
   setState({
     largeActivePage: pageNo,
   })
+  console.log(pageSize)
 }
-const onSmallActiveHandle = pageNo => {
+const onSmallActiveHandle = (pageNo, pageSize) => {
   setState({
     smallActivePage: pageNo,
   })
+  console.log(pageSize)
 }
 const onLargeSizeChange = pageSize => {
   setState({
@@ -163,7 +167,6 @@ initialState = {
     scope={3}
     total={state.total}
     activePage={state.largeActivePage}
-    showQuickJumper
     showTotal
   />
   <div>小尺寸：</div>
@@ -173,7 +176,6 @@ initialState = {
     total={state.total}
     activePage={state.smallActivePage}
     size="sm"
-    showQuickJumper
     showTotal
   />
 </div>
@@ -232,3 +234,10 @@ v2.0.0
 - 新增`lastContent`、`nextContent`属性，支持自定义翻页控制按钮内容
 - 新增`showQuickJumper`属性，支持快速跳转功能
 - 新增`total`、 `showTotal`属性，支持显示总页数和总数据条数
+
+v2.1.2
+
+- 新增 `size` 属性，支持 sm，md（默认)
+- 删除 `totalPage`属性，内部计算总页数
+- 新增`disabled`属性，全局禁用模式
+- 新增`pageSize`属性和`pageSizeOptions`属性，支持自定义每页数量。
