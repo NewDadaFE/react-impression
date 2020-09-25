@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from '../Input'
+import { Input, Select, SelectOption } from '../index'
 
 export default class Pagination extends React.PureComponent {
   static propTypes = {
@@ -30,7 +30,7 @@ export default class Pagination extends React.PureComponent {
      */
     nextContent: PropTypes.node,
     /**
-     * 选中回调，参数列表：activePage
+     * 选中回调，参数列表：activePage, pageSize
      */
     onSelect: PropTypes.func,
     /**
@@ -45,13 +45,46 @@ export default class Pagination extends React.PureComponent {
      * 自定义样式
      */
     className: PropTypes.string,
+    /**
+     * 是否展示pageSize切换器
+     */
+    showSizeChanger: PropTypes.bool,
+    /**
+     * 指定每页可以展示多少条
+     */
+    pageSizeOptions: PropTypes.array,
+    /**
+     * pageSize变化回调, 参数列表pageSize
+     */
+    onShowSizeChange: PropTypes.func,
+    /**
+     * 每页条数
+     */
+    pageSize: PropTypes.number,
+    /**
+     * 全局禁用分页
+     */
+    disabled: PropTypes.bool,
+    /**
+     * 默认每页条数
+     */
+    defaultPageSize: PropTypes.number,
+    /**
+     * 翻页器尺寸
+     */
+    size: PropTypes.oneOf(['sm', 'md']),
   }
 
   static defaultProps = {
-    scope: 2,
+    scope: 3,
     activePage: 1,
     totalPage: 1,
     total: 0,
+    defaultPageSize: 10,
+    disabled: false,
+    size: 'md',
+    showSizeChanger: false,
+    pageSizeOptions: [10, 20, 50, 100],
   }
 
   constructor(props) {
@@ -59,6 +92,9 @@ export default class Pagination extends React.PureComponent {
     this.state = {
       currentPage: this.props.activePage,
       skipPageNo: '',
+      pageSize: props.pageSize || props.defaultPageSize,
+      totalPage:
+        Math.ceil(props.total / (props.pageSize || props.defaultPageSize)) || 1,
     }
   }
 
@@ -67,19 +103,21 @@ export default class Pagination extends React.PureComponent {
    */
   prevPageHandle = () => {
     let { onSelect, activePage } = this.props
+    const { pageSize } = this.state
 
     activePage -= 1
-    activePage >= 1 && onSelect && onSelect(activePage)
+    activePage >= 1 && onSelect && onSelect(activePage, pageSize)
   }
 
   /**
    * 下一页
    */
   nextPageHandle = () => {
-    let { onSelect, activePage, totalPage = 1 } = this.props
+    let { onSelect, activePage } = this.props
+    const { totalPage, pageSize } = this.state
 
     activePage += 1
-    activePage <= totalPage && onSelect && onSelect(activePage)
+    activePage <= totalPage && onSelect && onSelect(activePage, pageSize)
   }
 
   /**
@@ -87,11 +125,11 @@ export default class Pagination extends React.PureComponent {
    * @param page
    */
   goPageHandle = page => {
-    const { currentPage } = this.state
+    const { currentPage, pageSize } = this.state
     if (Number(currentPage) === Number(page)) return
     const { onSelect } = this.props
 
-    onSelect && onSelect(page)
+    onSelect && onSelect(page, pageSize)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -107,7 +145,8 @@ export default class Pagination extends React.PureComponent {
    * @returns {Array}
    */
   getPageList = () => {
-    const { scope, totalPage, activePage } = this.props
+    const { scope, activePage } = this.props
+    const { totalPage } = this.state
     const pageList = []
     const scopeLength = scope * 2
     // 页数少于（首、尾、中间、两边scope）不出现省略号
@@ -152,18 +191,39 @@ export default class Pagination extends React.PureComponent {
   }
 
   handleSkip = () => {
-    const { totalPage, onSelect } = this.props
+    const { onSelect } = this.props
+    const { totalPage, pageSize } = this.state
     const pageNo = +this.state.skipPageNo
     if (isNaN(pageNo) || pageNo < 1 || pageNo > totalPage) {
       this.setState({ skipPageNo: '' })
       return
     }
-    onSelect(pageNo)
+    onSelect(pageNo, pageSize)
+  }
+  // pageSize
+  changePageSize = value => {
+    const { onShowSizeChange, total, onSelect } = this.props
+    const { currentPage } = this.state
+    // 判断当前页码是否超过总页数，超过则自动选择最后一页
+    let page = currentPage
+    if (value * currentPage > total) {
+      page = Math.ceil(total / value)
+    }
+    this.setState(
+      {
+        pageSize: value,
+        totalPage: Math.ceil(this.props.total / value),
+        currentPage: page,
+      },
+      () => {
+        onShowSizeChange && onShowSizeChange(value)
+        onSelect && onSelect(page, value)
+      }
+    )
   }
 
   render() {
     const {
-      totalPage = 1,
       total,
       className,
       activePage,
@@ -171,18 +231,37 @@ export default class Pagination extends React.PureComponent {
       nextContent,
       showQuickJumper,
       showTotal,
+      disabled,
+      size,
+      showSizeChanger,
+      pageSizeOptions,
+      // pageSize,
+      defaultPageSize,
       ...others
     } = this.props
+    const { pageSize, totalPage } = this.state
 
     const pageList = this.getPageList()
-
+    const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
+    const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
     return (
       <div className={classnames('text-center', className)}>
+        {showTotal && (
+          <div
+            className={classnames('pagination-total', {
+              'dada-page-disabled': disabled,
+            })}
+          >
+            共<span>{total || 0}</span>条
+          </div>
+        )}
         <ul {...others} className='pagination'>
           <li
-            className={classnames('page-item', { disabled: activePage <= 1 })}
+            className={classnames(pageItemClass, {
+              disabled: activePage <= 1 || disabled,
+            })}
           >
-            <span className='page-link' onClick={this.prevPageHandle}>
+            <span className={pageLinkClass} onClick={this.prevPageHandle}>
               {lastContent || <i className='dada-ico dada-ico-angle-left' />}
             </span>
           </li>
@@ -190,52 +269,80 @@ export default class Pagination extends React.PureComponent {
             child ? (
               <li
                 key={`${child}-${index}`}
-                className={classnames('page-item', {
+                className={classnames(pageItemClass, {
                   active: child === (activePage || 1),
+                  disabled: disabled,
+                  [`active-disabled-${size}`]:
+                    !!size && child === (activePage || 1) && disabled,
                 })}
               >
                 <span
-                  className='page-link'
+                  className={pageLinkClass}
                   onClick={() => this.goPageHandle(child)}
                 >
                   {child}
                 </span>
               </li>
             ) : (
-              <li key={`${child}-${index}`} className='page-item disabled'>
-                <i className='dada-ico dada-ico-ellipsis-h' />
+              <li
+                key={`${child}-${index}`}
+                className={classnames('disabled', pageItemClass)}
+              >
+                <i className='dada-ico dada-page-ico-ellipsis' />
               </li>
             )
           )}
           <li
-            className={classnames('page-item', {
-              disabled: activePage >= totalPage,
+            className={classnames(pageItemClass, {
+              disabled: activePage >= totalPage || disabled,
             })}
           >
-            <span className='page-link' onClick={this.nextPageHandle}>
+            <span className={pageLinkClass} onClick={this.nextPageHandle}>
               {nextContent || <i className='dada-ico dada-ico-angle-right' />}
             </span>
           </li>
         </ul>
 
-        {showTotal && (
-          <div className='pagination-total'>
-            共<span>{totalPage || 1}</span>页<span>/</span>
-            <span>{total || 0}</span>条
+        {showSizeChanger && (
+          <div className='pagination-pageSize'>
+            <Select
+              value={pageSize}
+              onChange={this.changePageSize}
+              size={`${size === 'sm' ? 'xs' : 'sm'}`}
+              className='size-changer-width'
+              disabled={disabled}
+            >
+              {pageSizeOptions.map(item => (
+                <SelectOption value={item}>{`${item}条/页`}</SelectOption>
+              ))}
+            </Select>
           </div>
         )}
-
         {showQuickJumper && (
-          <div className='pagination-jumper'>
-            <span>跳转</span>
+          <div
+            className={classnames('pagination-jumper', { disabled: disabled })}
+          >
+            <span className={classnames({ 'dada-page-disabled': disabled })}>
+              跳转
+            </span>
             <Input
-              className='pagination-jumper-input'
-              size='sm'
+              className={classnames({
+                [`pagination-jumper-input-${size}`]: !!size,
+              })}
+              size={`${size === 'sm' ? 'xs' : 'sm'}`}
               value={this.state.skipPageNo}
               onChange={this.handleInputChange}
+              disabled={disabled}
             />
-            <span>页</span>
-            <div className='page-link' onClick={this.handleSkip}>
+            <span className={classnames({ 'dada-page-disabled': disabled })}>
+              页
+            </span>
+            <div
+              className={classnames(pageLinkClass, {
+                [`page-link-go-${size}`]: !!size,
+              })}
+              onClick={this.handleSkip}
+            >
               GO
             </div>
           </div>

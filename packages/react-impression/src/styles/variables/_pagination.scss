@@ -1,4 +1,5 @@
 $pagination-padding-x: rem(7px) !default;
+$pagination-padding-x-sm: rem(2px) !default;
 $pagination-padding-y: 0 !default;
 
 $pagination-color: $gray-base !default;
@@ -9,21 +10,32 @@ $pagination-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !default;
 $pagination-border-radius: rem(2px) !default;
 
 $pagination-ellipsis-color: $gray-dark !default;
-$pagination-ellipsis-padding: rem(10px) !default;
+$pagination-ellipsis-padding: rem(8px) !default;
 
 $pagination-hover-box-shadow: 0 rem(2px) rem(10px) 0 rgba($gray-dark, 0.3);
+$pagination-hover-color: $brand-primary !default;
 
 $pagination-active-color: $brand-primary !default;
 $pagination-active-border: $brand-primary !default;
 
-$pagination-disabled-color: $gray-light!default;
+$pagination-disabled-border-color: $gray-light !default;
+$pagination-disabled-color: $gray !default;
+$pagination-disabled-bg-color: $gray-lighter !default;
 
 $pagination-link-min-size: rem(32px);
 $pagination-link-line-height: rem(30px);
+$pagination-link-size-sm: rem(22px);
+$pagination-link-line-height-sm: rem(20px);
+$pagination-link-go-sm: rem(28px);
+$pagination-link-go-line-height-sm: rem(26px);
+$pagination-link-go-padding-md: rem(4px);
 
 $pagination-ico-scale: 0.72;
-$pagination-item-spacer-x: rem(6px);
+// $pagination-ico-scale-sm:
+$pagination-item-spacer-x: rem(8px);
+$pagination-item-spacer-x-sm: rem(4px);
 
-$pagination-jumper-input-width: rem(92px) !default;
-$pagination-jumper-spacing: rem(20px) !default;
+$pagination-jumper-input-width-md: rem(48px) !default;
+$pagination-jumper-input-width-sm: rem(42px) !default;
+$pagination-jumper-spacing: rem(8px) !default;
 $pagination-total-spacing: rem(4px) !default;

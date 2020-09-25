@@ -7,7 +7,9 @@
   user-select: none;
   cursor: pointer;
 }
-
+.size-changer-width {
+  width: rem(98px);
+}
 .page-item {
   display: inline-block; // Remove list-style and block-level defaults
   vertical-align: middle;
@@ -16,8 +18,9 @@
   }
 
   &.active .page-link {
-    color: $pagination-active-color;
+    color: $pagination-bg;
     border-color: $pagination-active-border;
+    background-color: $pagination-active-color;
   }
 
   &.disabled {
@@ -25,12 +28,23 @@
 
     .page-link {
       color: $pagination-disabled-color;
+      border-color: $pagination-disabled-border-color;
       pointer-events: none;
+      background-color: $pagination-disabled-bg-color;
+    }
+    i {
+      color: $pagination-disabled-color;
     }
   }
-  .dada-ico-ellipsis-h {
+  &.active-disabled-md {
+    .page-link {
+      color: $brand-pure;
+      border-color: $pagination-disabled-color;
+      background-color: $pagination-disabled-color;
+    }
+  }
+  .dada-page-ico-ellipsis {
     color: $pagination-ellipsis-color;
-    padding: 0 $pagination-ellipsis-padding;
   }
 }
 
@@ -55,9 +69,15 @@
   }
 
   &:hover {
-    box-shadow: $pagination-hover-box-shadow;
+    border-color: $pagination-hover-color;
+    color: $pagination-hover-color;
     text-decoration: none;
   }
+}
+.pagination-pageSize {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: rem(16px);
 }
 .pagination-jumper {
   display: inline-block;
@@ -65,20 +85,112 @@
     padding-left: $pagination-jumper-spacing;
     padding-right: $pagination-jumper-spacing;
   }
-}
-.pagination-jumper-input {
-  display: inline-block !important;
-  width: $pagination-jumper-input-width !important;
-  & > input {
-    text-align: center;
-    width: 100% !important;
+  &.disabled {
+    cursor: not-allowed;
+    & > div {
+      color: $pagination-disabled-color;
+      border-color: $pagination-disabled-border-color;
+      pointer-events: none;
+      background-color: $pagination-disabled-bg-color;
+    }
+    i {
+      color: $pagination-disabled-color;
+    }
   }
 }
+  .pagination-jumper-input-sm {
+    display: inline-block !important;
+    width: $pagination-jumper-input-width-sm !important;
+    & > input {
+      text-align: center;
+      width: 100% !important;
+    }
+  }
+  .pagination-jumper-input-md {
+    display: inline-block !important;
+    width: $pagination-jumper-input-width-md !important;
+    & > input {
+      text-align: center;
+      width: 100% !important;
+    }
+  }
+
 .pagination-total {
   display: inline-block;
-  padding-left: $pagination-jumper-spacing;
+  padding-right: $pagination-jumper-spacing;
+  // margin-right: rem(8px);
+  &.disabled {
+    color: $pagination-disabled-color;
+  }
   & > span {
     padding-left: $pagination-total-spacing;
     padding-right: $pagination-total-spacing;
   }
+}
+
+.page-item-sm {
+  display: inline-block; // Remove list-style and block-level defaults
+  vertical-align: middle;
+  &:not(:last-child) {
+    margin-right: $pagination-item-spacer-x-sm;
+  }
+  &.active .page-link-sm {
+    color: $pagination-active-color;
+    border: $pagination-border-width solid $pagination-active-color;
+  }
+  &.disabled {
+    cursor: not-allowed;
+
+    .page-link-sm {
+      color: $pagination-disabled-color;
+      pointer-events: none;
+    }
+    .dada-ico-ellipsis-h {
+      color: $pagination-disabled-color;
+    }
+  }
+  &.active-disabled-sm {
+    .page-link-sm {
+      border-color: $pagination-disabled-color;
+    }
+  }
+}
+
+.page-link-sm {
+  position: relative;
+  display: inline-block;
+  min-width: $pagination-link-size-sm;
+  min-height: $pagination-link-size-sm;
+  line-height: $pagination-link-line-height-sm;
+  padding: $pagination-padding-y $pagination-padding-x-sm;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  color: $pagination-color;
+  background-color: $pagination-bg;
+  border: $pagination-border-width solid $pagination-bg;
+  transition: $pagination-transition;
+  border-radius: $pagination-border-radius;
+
+  i {
+    font-size: rem(12px);
+  }
+
+  &:hover {
+    color: $pagination-hover-color;
+    text-decoration: none;
+  }
+}
+.page-link-go-md {
+  padding: 0 $pagination-link-go-padding-md;
+}
+.page-link-go-sm {
+  border: $pagination-border-width solid $pagination-border-color;
+  min-width: $pagination-link-go-sm;
+  min-height: $pagination-link-go-sm;
+  line-height: $pagination-link-go-line-height-sm;
+  font-size: $font-size-sm;
+}
+.dada-page-disabled {
+  color: $pagination-disabled-color;
 }
