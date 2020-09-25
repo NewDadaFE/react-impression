@@ -92,7 +92,9 @@ export default class Pagination extends React.PureComponent {
     this.state = {
       currentPage: this.props.activePage,
       skipPageNo: '',
-      pageSize: props.defaultPageSize,
+      pageSize: props.pageSize || props.defaultPageSize,
+      totalPage:
+        Math.ceil(props.total / (props.pageSize || props.defaultPageSize)) || 1,
     }
   }
 
@@ -110,7 +112,8 @@ export default class Pagination extends React.PureComponent {
    * 下一页
    */
   nextPageHandle = () => {
-    let { onSelect, activePage, totalPage = 1 } = this.props
+    let { onSelect, activePage } = this.props
+    const { totalPage } = this.state
 
     activePage += 1
     activePage <= totalPage && onSelect && onSelect(activePage)
@@ -141,7 +144,8 @@ export default class Pagination extends React.PureComponent {
    * @returns {Array}
    */
   getPageList = () => {
-    const { scope, totalPage, activePage } = this.props
+    const { scope, activePage } = this.props
+    const { totalPage } = this.state
     const pageList = []
     const scopeLength = scope * 2
     // 页数少于（首、尾、中间、两边scope）不出现省略号
@@ -186,7 +190,8 @@ export default class Pagination extends React.PureComponent {
   }
 
   handleSkip = () => {
-    const { totalPage, onSelect } = this.props
+    const { onSelect } = this.props
+    const { totalPage } = this.state
     const pageNo = +this.state.skipPageNo
     if (isNaN(pageNo) || pageNo < 1 || pageNo > totalPage) {
       this.setState({ skipPageNo: '' })
@@ -196,16 +201,28 @@ export default class Pagination extends React.PureComponent {
   }
   // pageSize
   changePageSize = value => {
-    const { onShowSizeChange } = this.props
-    this.setState({ pageSize: value }, () => {
-      onShowSizeChange && onShowSizeChange(value)
-    })
-    console.log('value', value)
+    const { onShowSizeChange, total, onSelect } = this.props
+    const { currentPage } = this.state
+    // 判断当前页码是否超过总页数，超过则自动选择最后一页
+    let page = currentPage
+    if (value * currentPage > total) {
+      page = Math.ceil(total / value)
+    }
+    this.setState(
+      {
+        pageSize: value,
+        totalPage: Math.ceil(this.props.total / value),
+        currentPage: page,
+      },
+      () => {
+        onShowSizeChange && onShowSizeChange(value)
+        onSelect && onSelect(page)
+      }
+    )
   }
 
   render() {
     const {
-      totalPage = 1,
       total,
       className,
       activePage,
@@ -213,6 +230,7 @@ export default class Pagination extends React.PureComponent {
       nextContent,
       showQuickJumper,
       showTotal,
+      disabled,
       size,
       showSizeChanger,
       pageSizeOptions,
@@ -220,7 +238,8 @@ export default class Pagination extends React.PureComponent {
       defaultPageSize,
       ...others
     } = this.props
-    const { pageSize } = this.state
+    const { pageSize, totalPage } = this.state
+    console.log('disabled', disabled)
 
     const pageList = this.getPageList()
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
@@ -228,14 +247,16 @@ export default class Pagination extends React.PureComponent {
     return (
       <div className={classnames('text-center', className)}>
         {showTotal && (
-          <div className='pagination-total'>
+          <div
+            className={classnames('pagination-total', { disabled: disabled })}
+          >
             共<span>{total || 0}</span>条
           </div>
         )}
         <ul {...others} className='pagination'>
           <li
             className={classnames(pageItemClass, {
-              disabled: activePage <= 1,
+              disabled: activePage <= 1 || disabled,
             })}
           >
             <span className={pageLinkClass} onClick={this.prevPageHandle}>
@@ -248,6 +269,9 @@ export default class Pagination extends React.PureComponent {
                 key={`${child}-${index}`}
                 className={classnames(pageItemClass, {
                   active: child === (activePage || 1),
+                  disabled: disabled,
+                  [`active-disabled-${size}`]:
+                    !!size && child === (activePage || 1) && disabled,
                 })}
               >
                 <span
@@ -268,7 +292,7 @@ export default class Pagination extends React.PureComponent {
           )}
           <li
             className={classnames(pageItemClass, {
-              disabled: activePage >= totalPage,
+              disabled: activePage >= totalPage || disabled,
             })}
           >
             <span className={pageLinkClass} onClick={this.nextPageHandle}>
@@ -283,7 +307,8 @@ export default class Pagination extends React.PureComponent {
               value={pageSize}
               onChange={this.changePageSize}
               size={`${size === 'sm' ? 'xs' : 'sm'}`}
-              className='size-changer-sm'
+              className='size-changer-width'
+              disabled={disabled}
             >
               {pageSizeOptions.map(item => (
                 <SelectOption value={item}>{`${item}条/页`}</SelectOption>
@@ -293,15 +318,24 @@ export default class Pagination extends React.PureComponent {
         )}
         {showQuickJumper && (
           <div className='pagination-jumper'>
-            <span>跳转</span>
+            <span className={classnames({ disabled: disabled })}>跳转</span>
             <Input
-              className='pagination-jumper-input'
-              size='sm'
+              className={classnames({
+                [`pagination-jumper-input-${size}`]: !!size,
+              })}
+              size={`${size === 'sm' ? 'xs' : 'sm'}`}
               value={this.state.skipPageNo}
               onChange={this.handleInputChange}
+              disabled={disabled}
             />
-            <span>页</span>
-            <div className={pageLinkClass} onClick={this.handleSkip}>
+            <span className={classnames({ disabled: disabled })}>页</span>
+            <div
+              className={classnames(pageLinkClass, {
+                [`page-link-go-${size}`]: !!size,
+                disabled: disabled,
+              })}
+              onClick={this.handleSkip}
+            >
               GO
             </div>
           </div>
