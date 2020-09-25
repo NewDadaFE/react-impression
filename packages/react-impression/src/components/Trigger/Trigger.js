@@ -14,7 +14,7 @@ import { addEventListener, contains } from '../../utils/system'
 
 Trigger.propTypes = {
   /**
-   * 触发器寄主，单个节点
+   * 弹出层的触发器，单个节点
    */
   children: PropTypes.element,
   /**
@@ -76,7 +76,27 @@ Trigger.propTypes = {
   /**
    * 弹出层动画
    */
-  transitionName: PropTypes.oneOf(['zoom', 'scale']),
+  transitionName: PropTypes.oneOf(['zoom', 'scale', 'fade']),
+  /**
+   * 弹出层X偏移量
+   */
+  offsetX: PropTypes.number,
+  /**
+   * 弹出层Y偏移量
+   */
+  offsetY: PropTypes.number,
+  /**
+   * 弹出层阴影
+   */
+  popupShadow: PropTypes.oneOf(['none', 'light', 'normal', 'dark', 'darker']),
+  /**
+   * 弹出层外边框
+   */
+  popupBorder: PropTypes.bool,
+  /**
+   * 指示箭头是否可见
+   */
+  arrowVisible: PropTypes.bool,
 }
 
 Trigger.defaultProps = {
@@ -84,6 +104,9 @@ Trigger.defaultProps = {
   strategy: 'absolute',
   stretch: 'sameWidth',
   showAction: 'click',
+  offsetX: 0,
+  offsetY: 8,
+  popupShadow: 'normal',
 }
 
 function Trigger(props) {
@@ -97,47 +120,59 @@ function Trigger(props) {
     onPopupVisibleChange,
     transitionName,
     stretch,
+    offsetX,
+    offsetY,
+    popupShadow,
+    popupBorder,
+    arrowVisible,
   } = props
   // 延迟隐藏弹出层
   const [delayShowPopup, setDelayShowPopup] = useState(false)
   // 弹出层显隐控制标记
   const [showPopup, setShowPopup] = useState(false)
-  // 暂存宿主元素宽高
-  const referenceSizeRef = useRef({ width: 0, height: 0 })
+  // 暂存弹出层显隐控制标记
+  const showPopupRef = useRef(showPopup)
+
   // popper 相关---开始
   const [referenceElement, setReferenceElement] = useState(null)
   const [popperElement, setPopperElement] = useState(null)
   const modifiers = useMemo(
-    () => [
-      {
-        name: 'computeStyles',
-        options: {
-          adaptive: true, // true by default
-          gpuAcceleration: !transitionName, // true by default
+    () => {
+      return [
+        {
+          name: 'computeStyles',
+          options: {
+            adaptive: true, // true by default
+            gpuAcceleration: !transitionName, // true by default
+          },
         },
-      },
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 8],
+        {
+          name: 'offset',
+          options: { offset: [offsetX, offsetY] },
         },
-      },
-      {
-        name: 'sameWidth',
-        enabled: stretch === 'sameWidth',
-        phase: 'beforeWrite',
-        requires: ['computeStyles'],
-        fn: ({ state }) => {
-          state.styles.popper.width = `${state.rects.reference.width}px`
+        {
+          name: 'sameWidth',
+          enabled: stretch === 'sameWidth',
+          phase: 'beforeWrite',
+          requires: ['computeStyles'],
+          fn: ({ state }) => {
+            state.styles.popper.width = `${state.rects.reference.width}px`
+          },
+          effect: ({ state }) => {
+            state.elements.popper.style.width = `${
+              state.elements.reference.offsetWidth
+            }px`
+          },
         },
-        effect: ({ state }) => {
-          state.elements.popper.style.width = `${
-            state.elements.reference.offsetWidth
-          }px`
+        {
+          name: 'arrow',
+          options: {
+            padding: 5, // 5px from the edges of the popper
+          },
         },
-      },
-    ],
-    [transitionName, stretch]
+      ]
+    },
+    [transitionName, stretch, offsetX, offsetY]
   )
   const { styles: popperStyles, attributes, update } = usePopper(
     referenceElement,
@@ -261,25 +296,25 @@ function Trigger(props) {
   )
 
   /**
-   * 监听showPopup变化
+   * 监听showPopup变化，同步弹出层显示状态
    */
   useEffect(
     () => {
       onPopupVisibleChange && onPopupVisibleChange(showPopup)
+      showPopupRef.current = showPopup
     },
     [showPopup, onPopupVisibleChange]
   )
 
+  // 监听showPopup变化，主动更新弹出层位置
+  const isNeedUpdate = showPopupRef.current !== showPopup
+
   // 判断宿主元素宽高变化，主动更新弹出层位置
   // useEffect 监听元素宽高，因为宽高变量不是state，所以不会触发render
-  const height = referenceElement ? referenceElement.offsetHeight : 0
-  const width = referenceElement ? referenceElement.offsetWidth : 0
-  if (
-    height !== referenceSizeRef.current.height ||
-    width !== referenceSizeRef.current.width
-  ) {
+  const isReferenceResize = useIsDomResize(referenceElement)
+
+  if (isNeedUpdate || isReferenceResize) {
     update && update()
-    referenceSizeRef.current = { width, height }
   }
 
   return (
@@ -287,23 +322,36 @@ function Trigger(props) {
       {Children}
       {createPortal(
         <div
-          className={classNames('dada-trigger', props.popupClassName, {
-            [`dada-trigger-popup-${transitionName}-enter`]:
-              transitionName && showPopup,
-            [`dada-trigger-popup-${transitionName}-leave`]:
-              transitionName && !showPopup,
-            'dada-trigger-hidden':
-              !transitionName || showPopup ? !showPopup : !delayShowPopup,
-          })}
+          className={classNames('dada-trigger', props.popupClassName)}
           ref={setPopperElement}
           style={{ ...popperStyles.popper, ...style }}
-          onAnimationEnd={() => {
-            if (!transitionName) return
-            setDelayShowPopup(showPopup)
-          }}
           {...attributes.popper}
         >
-          {typeof popup === 'function' ? popup() : popup}
+          <div
+            className={classNames('dada-trigger-inner', {
+              [`dada-shadow-${popupShadow}`]: popupShadow !== 'none',
+              'dada-trigger-popup-border': popupBorder,
+              [`dada-trigger-popup-${transitionName}-enter`]:
+                transitionName && showPopup,
+              [`dada-trigger-popup-${transitionName}-leave`]:
+                transitionName && !showPopup,
+              hidden:
+                !transitionName || showPopup ? !showPopup : !delayShowPopup,
+            })}
+            onAnimationEnd={() => {
+              if (!transitionName) return
+              setDelayShowPopup(showPopup)
+            }}
+          >
+            {typeof popup === 'function' ? popup() : popup}
+            {arrowVisible && (
+              <div
+                className='dada-trigger-arrow'
+                style={popperStyles.arrow}
+                data-popper-arrow
+              />
+            )}
+          </div>
         </div>,
         window.document.getElementsByTagName('body')[0]
       )}
@@ -312,3 +360,30 @@ function Trigger(props) {
 }
 
 export default Trigger
+
+function useIsDomResize(element) {
+  const elementSizeRef = useRef({
+    lastWidth: 0,
+    lastHeight: 0,
+    lastTop: 0,
+    lastLeft: 0,
+  })
+  if (!element) return false
+  const { lastWidth, lastHeight, lastTop, lastLeft } = elementSizeRef.current
+  const { width, height, top, left } = element.getBoundingClientRect()
+  if (
+    lastWidth !== width ||
+    lastHeight !== height ||
+    lastTop !== top ||
+    lastLeft !== left
+  ) {
+    elementSizeRef.current = {
+      lastWidth: width,
+      lastHeight: height,
+      lastTop: top,
+      lastLeft: left,
+    }
+    return true
+  }
+  return false
+}

@@ -587,31 +587,27 @@ export default class Select extends React.PureComponent {
           stretch='sameWidth'
           transitionName='scale'
           popup={
-            <div>
-              <div
-                className={classnames(this.wrapClass, 'select-options-wrap')}
+            <div className={classnames(this.wrapClass, 'select-options-wrap')}>
+              {searchable && multiple && (
+                <div className='select-search-wrap'>
+                  <DebounceInput
+                    debounceTimeout={500}
+                    value={queryText}
+                    onChange={e => this.handleQuery(e)}
+                    className={classnames('select-search-input')}
+                  />
+                  <i className='dada-ico dada-ico-search select-search' />
+                </div>
+              )}
+              <ul
+                className={classnames('select-options')}
+                ref={ref => (this.selectInner = ref)}
               >
-                {searchable && multiple && (
-                  <div className='select-search-wrap'>
-                    <DebounceInput
-                      debounceTimeout={500}
-                      value={queryText}
-                      onChange={e => this.handleQuery(e)}
-                      className={classnames('select-search-input')}
-                    />
-                    <i className='dada-ico dada-ico-search select-search' />
-                  </div>
+                {children}
+                {this.emptyText && (
+                  <p className='select-empty'>{this.emptyText}</p>
                 )}
-                <ul
-                  className={classnames('select-options')}
-                  ref={ref => (this.selectInner = ref)}
-                >
-                  {children}
-                  {this.emptyText && (
-                    <p className='select-empty'>{this.emptyText}</p>
-                  )}
-                </ul>
-              </div>
+              </ul>
             </div>
           }
         >
