@@ -280,7 +280,6 @@ export default class Select extends React.PureComponent {
     const { optionGroup, selectText } = this.state
     if (this.props.disabled) return
     if (this.state.queryText && this.props.searchable) return
-    console.log(543543)
     this.setState(
       {
         showOption: !this.state.showOption,

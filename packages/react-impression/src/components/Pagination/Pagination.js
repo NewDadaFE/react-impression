@@ -245,15 +245,17 @@ export default class Pagination extends React.PureComponent {
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
     const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
     return (
-      <div className={classnames('text-center', 'pagination', className)}>
+      <div className={classnames('text-center', className)}>
         {showTotal && (
           <div
-            className={classnames('pagination-total', { disabled: disabled })}
+            className={classnames('pagination-total', {
+              'dada-page-disabled': disabled,
+            })}
           >
             共<span>{total || 0}</span>条
           </div>
         )}
-        <ul {...others} className='pagination-ul'>
+        <ul {...others} className='pagination'>
           <li
             className={classnames(pageItemClass, {
               disabled: activePage <= 1 || disabled,
@@ -286,7 +288,7 @@ export default class Pagination extends React.PureComponent {
                 key={`${child}-${index}`}
                 className={classnames('disabled', pageItemClass)}
               >
-                <i className='dada-ico dada-ico-ellipsis-h' />
+                <i className='dada-ico dada-page-ico-ellipsis' />
               </li>
             )
           )}
@@ -320,7 +322,9 @@ export default class Pagination extends React.PureComponent {
           <div
             className={classnames('pagination-jumper', { disabled: disabled })}
           >
-            <span className={classnames({ disabled: disabled })}>跳转</span>
+            <span className={classnames({ 'dada-page-disabled': disabled })}>
+              跳转
+            </span>
             <Input
               className={classnames({
                 [`pagination-jumper-input-${size}`]: !!size,
@@ -330,7 +334,9 @@ export default class Pagination extends React.PureComponent {
               onChange={this.handleInputChange}
               disabled={disabled}
             />
-            <span className={classnames({ disabled: disabled })}>页</span>
+            <span className={classnames({ 'dada-page-disabled': disabled })}>
+              页
+            </span>
             <div
               className={classnames(pageLinkClass, {
                 [`page-link-go-${size}`]: !!size,

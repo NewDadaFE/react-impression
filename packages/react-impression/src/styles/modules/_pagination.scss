@@ -1,6 +1,4 @@
 .pagination {
-}
-.pagination-ul {
   display: inline-block;
   text-align: center;
   padding-left: 0;
@@ -45,7 +43,7 @@
       background-color: $pagination-disabled-color;
     }
   }
-  .dada-ico-ellipsis-h {
+  .dada-page-ico-ellipsis {
     color: $pagination-ellipsis-color;
   }
 }
@@ -193,6 +191,6 @@
   line-height: $pagination-link-go-line-height-sm;
   font-size: $font-size-sm;
 }
-.disabled {
+.dada-page-disabled {
   color: $pagination-disabled-color;
 }
