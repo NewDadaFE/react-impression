@@ -14,7 +14,7 @@ class ModalExample extends React.Component {
   menuClickHandle(message) {
     Notification.info({
       closeable: false,
-      title: '菜单点击',
+      title: '菜单点击！',
       message: `${message}被点击了！！！`,
     })
   }
@@ -27,24 +27,15 @@ class ModalExample extends React.Component {
               <Button theme="primary">下拉菜单</Button>
             </DropdownTrigger>
             <DropdownMenu>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单一')}>
+              <DropdownMenuItem
+                disabled
+                onClick={() => this.menuClickHandle('菜单一')}
+              >
                 菜单一
               </DropdownMenuItem>
+              <DropdownMenuDivider />
               <DropdownMenuItem onClick={() => this.menuClickHandle('菜单二')}>
                 菜单二
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单三')}>
-                菜单三
-              </DropdownMenuItem>
-              <DropdownMenuDivider />
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单四')}>
-                菜单四
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单五')}>
-                菜单五
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单六')}>
-                菜单六
               </DropdownMenuItem>
             </DropdownMenu>
           </Dropdown>
@@ -52,27 +43,36 @@ class ModalExample extends React.Component {
         <Col>
           <Dropdown>
             <DropdownTrigger>
-              <a href="#dropdown">下拉菜单</a>
+              <Button theme="secondary">下拉菜单</Button>
             </DropdownTrigger>
             <DropdownMenu>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单一')}>
+              <DropdownMenuItem
+                disabled
+                onClick={() => this.menuClickHandle('菜单一')}
+              >
                 菜单一
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => this.menuClickHandle('菜单二')}>
                 菜单二
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单三')}>
-                菜单三
+            </DropdownMenu>
+          </Dropdown>
+          <Notification />
+        </Col>
+        <Col>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button theme="text">下拉菜单</Button>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownMenuItem
+                disabled
+                onClick={() => this.menuClickHandle('菜单一')}
+              >
+                菜单一
               </DropdownMenuItem>
-              <DropdownMenuDivider />
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单四')}>
-                菜单四
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单五')}>
-                菜单五
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单六')}>
-                菜单六
+              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单二')}>
+                菜单二
               </DropdownMenuItem>
             </DropdownMenu>
           </Dropdown>
@@ -107,7 +107,7 @@ class ModalExample extends React.Component {
     return (
       <Row>
         <Col>
-          <Dropdown>
+          <Dropdown disabled={true}>
             <DropdownTrigger>
               <Button theme="primary">下拉菜单</Button>
             </DropdownTrigger>
@@ -118,35 +118,17 @@ class ModalExample extends React.Component {
               >
                 菜单一
               </DropdownMenuItem>
-              <DropdownMenuItem
-                disabled
-                onClick={() => this.menuClickHandle('菜单二')}
-              >
-                菜单二
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                disabled
-                onClick={() => this.menuClickHandle('菜单三')}
-              >
-                菜单三
-              </DropdownMenuItem>
               <DropdownMenuDivider />
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单四')}>
-                菜单四
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单五')}>
-                菜单五
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单六')}>
-                菜单六
+              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单二')}>
+                菜单二
               </DropdownMenuItem>
             </DropdownMenu>
           </Dropdown>
         </Col>
         <Col>
-          <Dropdown>
+          <Dropdown disabled={true}>
             <DropdownTrigger>
-              <a href="#dropdown">下拉菜单</a>
+              <Button theme="secondary">下拉菜单</Button>
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownMenuItem
@@ -155,27 +137,27 @@ class ModalExample extends React.Component {
               >
                 菜单一
               </DropdownMenuItem>
-              <DropdownMenuItem
-                disabled
-                onClick={() => this.menuClickHandle('菜单二')}
-              >
+              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单二')}>
                 菜单二
               </DropdownMenuItem>
+            </DropdownMenu>
+          </Dropdown>
+          <Notification />
+        </Col>
+        <Col>
+          <Dropdown disabled={true}>
+            <DropdownTrigger>
+              <Button theme="text">下拉菜单</Button>
+            </DropdownTrigger>
+            <DropdownMenu>
               <DropdownMenuItem
                 disabled
-                onClick={() => this.menuClickHandle('菜单三')}
+                onClick={() => this.menuClickHandle('菜单一')}
               >
-                菜单三
+                菜单一
               </DropdownMenuItem>
-              <DropdownMenuDivider />
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单四')}>
-                菜单四
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单五')}>
-                菜单五
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单六')}>
-                菜单六
+              <DropdownMenuItem onClick={() => this.menuClickHandle('菜单二')}>
+                菜单二
               </DropdownMenuItem>
             </DropdownMenu>
           </Dropdown>

@@ -126,6 +126,12 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
     <label>自定义图标：</label>
     <Button icon={<span style={{ width: '16px', height: '16px' }}>A</span>} />
   </FormGroup>
+  <FormGroup>
+    <label>图标位置：</label>
+    <Button icon="angle-down" iconPosition="right">
+      Dropdown
+    </Button>
+  </FormGroup>
 </Form>
 ```
 
@@ -155,13 +161,13 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
 **块状按钮**
 
 ```js
-<Button theme="primary" block className="offset-b">
+<Button theme='primary' block className='offset-b'>
   主要
 </Button>
-<Button theme="secondary" block className="offset-b">
+<Button theme='secondary' block className='offset-b'>
   次要
 </Button>
-<Button theme="dashed" block className="offset-b">
+<Button theme='dashed' block className='offset-b'>
   虚线
 </Button>
 ```
