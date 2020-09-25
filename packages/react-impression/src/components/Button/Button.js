@@ -23,7 +23,7 @@ const Button = React.forwardRef((props, ref) => {
     children,
     loading,
     icon,
-    iconpos,
+    iconPosition,
     ...others
   } = props
   delete others.eventKey
@@ -33,13 +33,17 @@ const Button = React.forwardRef((props, ref) => {
 
   const btnSize = isIconBtn ? `btn-icon-${size}` : `btn-${size}`
   // 纯图标按钮不需要设置外边距，在文本按钮和普通按钮中，图标右侧外边距有差异
-  const iconMargin = isIconBtn
-    ? {}
-    : {
-      [iconpos && iconpos === 'right' ? 'marginLeft' : 'marginRight']:
-          theme === 'text' ? '8px' : '4px',
-    }
-
+  let iconMargin
+  if (!isIconBtn) {
+    // icon的margin的类型
+    let marginType =
+      iconPosition && iconPosition === 'right' ? 'marginLeft' : 'marginRight'
+    // icon的margin的数值
+    let marginDistance = theme === 'text' ? '8px' : '4px'
+    iconMargin = { [marginType]: marginDistance }
+  } else {
+    iconMargin = {}
+  }
   return (
     <button
       {...others}
@@ -63,7 +67,7 @@ const Button = React.forwardRef((props, ref) => {
         </span>
       ) : (
         <>
-          {shape !== 'circle' && (iconpos && iconpos === 'right') && (
+          {shape !== 'circle' && (iconPosition && iconPosition === 'right') && (
             <span>{children}</span>
           )}
           {typeof icon === 'string' ? (
@@ -81,7 +85,8 @@ const Button = React.forwardRef((props, ref) => {
             })
           )}
           {/* 如果是圆形按钮，则不支持 children 属性 */}
-          {shape !== 'circle' && (!iconpos || iconpos !== 'right') && (
+          {shape !== 'circle' &&
+            (!iconPosition || iconPosition !== 'right') && (
             <span>{children}</span>
           )}
         </>
@@ -144,7 +149,7 @@ Button.propTypes = {
   /**
    * 按钮的位置
    */
-  iconpos: PropTypes.oneOf(['left', 'right']),
+  iconPosition: PropTypes.oneOf(['left', 'right']),
 }
 Button.defaultProps = {
   theme: 'primary',

@@ -128,7 +128,7 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
   </FormGroup>
   <FormGroup>
     <label>图标位置：</label>
-    <Button icon="angle-down" iconpos="right">
+    <Button icon="angle-down" iconPosition="right">
       Dropdown
     </Button>
   </FormGroup>

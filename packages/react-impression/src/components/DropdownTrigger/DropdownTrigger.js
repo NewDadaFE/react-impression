@@ -12,7 +12,7 @@ const DropdownTrigger = ({
 }) => {
   let options = {
     icon: 'angle-down',
-    iconpos: 'right',
+    iconPosition: 'right',
   }
   disabled && (options.disabled = true)
   if (trigger === 'click') {
