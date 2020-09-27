@@ -116,12 +116,18 @@ export default class Select extends React.PureComponent {
      * 尺寸 多选只有两个尺寸，'md'和'xs'，单选
      */
     size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+
+    /**
+     * 弹出层宽度伸缩方式
+     */
+    stretch: PropTypes.oneOf(['sameWidth', 'auto']),
   }
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
     size: 'md',
     showSearch: false,
+    stretch: 'sameWidth',
   }
 
   componentDidMount() {
@@ -276,10 +282,10 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = event => {
-    event.preventDefault()
-    const { optionGroup, selectText } = this.state
+    event && event.preventDefault()
+    const { optionGroup, selectText, queryText, showOption } = this.state
     if (this.props.disabled) return
-    if (this.state.queryText && this.props.searchable) return
+    if (queryText && this.props.searchable && showOption) return
     this.setState(
       {
         showOption: !this.state.showOption,
@@ -291,6 +297,9 @@ export default class Select extends React.PureComponent {
         this.selectInner.scrollTop = 0
         if (!this.state.showOption) {
           this.setState({ queryText: selectText })
+        }
+        if (this.state.showOption && this.props.searchable) {
+          this.focusHandler()
         }
       }
     )
@@ -446,7 +455,7 @@ export default class Select extends React.PureComponent {
     event.stopPropagation()
     const { options, optionGroup } = this.state
     const { filterMethod, remoteMethod } = this.props
-    this.setState({ queryText: val }, () => {
+    this.setState({ queryText: val, showOption: true }, () => {
       this.selectInner.scrollTop = 0
       remoteMethod && remoteMethod(val)
       if (!remoteMethod) {
@@ -567,6 +576,7 @@ export default class Select extends React.PureComponent {
       placeholder,
       clearable,
       size,
+      stretch,
     } = this.props
     const {
       showOption,
@@ -583,7 +593,7 @@ export default class Select extends React.PureComponent {
           hideAction='none'
           popupVisible={showOption}
           onPopupVisibleChange={this.hideOptionsHandler}
-          stretch='sameWidth'
+          stretch={stretch}
           transitionName='scale'
           popup={
             <div className={classnames(this.wrapClass, 'select-options-wrap')}>
@@ -660,7 +670,7 @@ export default class Select extends React.PureComponent {
               <input
                 type='text'
                 value={queryText}
-                readOnly={!searchable}
+                readOnly={!searchable || (searchable && !showOption)}
                 placeholder={currentPlaceholder}
                 disabled={disabled}
                 className={classnames('select-selection', {
@@ -668,11 +678,12 @@ export default class Select extends React.PureComponent {
                 })}
                 onChange={e => this.handleQuery(e)}
                 onClick={this.toggleOptionsHandle}
-                onFocus={this.focusHandler}
+                onFocus={searchable && this.focusHandler}
                 ref={ref => (this.refMain = ref)}
               />
             )}
-            {(!showClear || !clearable) && (!searchable || multiple) && (
+            {(!showClear || !clearable) &&
+              (!searchable || multiple || (searchable && !showOption)) && (
               <i
                 className={classnames(
                   'dada-ico dada-ico-angle-down select-addon',
@@ -683,11 +694,18 @@ export default class Select extends React.PureComponent {
                 onClick={this.toggleOptionsHandle}
               />
             )}
-            {(!showClear || !clearable) && searchable && !multiple && (
+            {(!showClear || !clearable) &&
+              searchable &&
+              showOption &&
+              !multiple && (
               <i
-                className={classnames('dada-ico dada-ico-search select-addon', {
-                  [`select-addon-${size}`]: !!size,
-                })}
+                className={classnames(
+                  'dada-ico dada-ico-search select-addon',
+                  {
+                    [`select-addon-${size}`]: !!size,
+                  }
+                )}
+                onClick={this.toggleOptionsHandle}
               />
             )}
             {clearable && showClear && !multiple && (

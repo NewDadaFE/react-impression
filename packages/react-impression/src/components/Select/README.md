@@ -130,10 +130,16 @@ class DefaultExample extends React.Component {
       normalValue: 1,
       clearableValue: 2,
       optionDisabledValue: 4,
+      optionSameWidthValue: 1,
+      optionAutoValue: 5,
     }
     this.handleNormalChange = this.handleNormalChange.bind(this)
     this.handleClearableChange = this.handleClearableChange.bind(this)
     this.handleOptionDisabledChange = this.handleOptionDisabledChange.bind(this)
+    this.handleOptionSameWidthChange = this.handleOptionSameWidthChange.bind(
+      this
+    )
+    this.handleOptionAutoChange = this.handleOptionAutoChange.bind(this)
   }
 
   handleNormalChange(value, text) {
@@ -150,6 +156,12 @@ class DefaultExample extends React.Component {
 
   handleOptionDisabledChange(value) {
     this.setState({ optionDisabledValue: value })
+  }
+  handleOptionSameWidthChange(value) {
+    this.setState({ optionSameWidthValue: value })
+  }
+  handleOptionAutoChange(value) {
+    this.setState({ optionAutoValue: value })
   }
 
   render() {
@@ -204,6 +216,33 @@ class DefaultExample extends React.Component {
                 key={item.value}
                 disabled={item.value === 5}
               >
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>弹出层伸缩（sameWidth）：</label>
+          <Select
+            value={this.state.optionSameWidthValue}
+            onChange={this.handleOptionSameWidthChange}
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>弹出层伸缩（auto）：</label>
+          <Select
+            value={this.state.optionAutoValue}
+            onChange={this.handleOptionAutoChange}
+            stretch="auto"
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
                 {item.label}
               </SelectOption>
             ))}
