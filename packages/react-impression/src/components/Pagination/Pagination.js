@@ -3,6 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Input, Select, SelectOption } from '../index'
 
+// 起始页
+const START_PAGE_NUM = 1
+
 export default class Pagination extends React.PureComponent {
   static propTypes = {
     /**
@@ -148,7 +151,7 @@ export default class Pagination extends React.PureComponent {
     const totalPages = Math.ceil(total / (pageSize || defaultPageSize))
     const pageList = []
     const scopeLength = scope * 2
-    // 页数少于（首、尾、中间、两边scope）不出现省略号
+    // 页数少于（首部、尾部、中心、两边scope）最少分页项总数，不出现省略号
     if (totalPages <= 3 + scopeLength) {
       const totalPageNumber = totalPages || 1
       for (let i = 1; i <= totalPageNumber; i++) {
@@ -168,18 +171,17 @@ export default class Pagination extends React.PureComponent {
     }
     // 首页页码必须为 1
     scopeLeft !== 1 && pageList.push(1)
-    // 显示"..."的情况，考虑到scope=1的特殊情况所以current也不能等于3
-    if (activePage >= 1 + scopeLength && activePage !== 3) {
+    // 显示left"..."的情况：activePage距离起始页个数超过scope则显示"..."
+    // 即：activePage - startPage - 1 > scope
+    if (activePage > scope + START_PAGE_NUM + 1) {
       pageList.push('')
     }
     for (let i = scopeLeft; i <= scopeRight; i++) {
       pageList.push(i)
     }
-    // 显示"..."的情况
-    if (
-      activePage <= totalPages - scopeLength &&
-      activePage !== totalPages - 2
-    ) {
+    // 显示right"..."的情况：activePage距离结束页个数超过scope则显示"..."
+    // 即：totalPages - activePage - 1 > scope
+    if (activePage < totalPages - scope - 1) {
       pageList.push('')
     }
     // 尾页页码必须为 totalPage
@@ -240,11 +242,10 @@ export default class Pagination extends React.PureComponent {
       pageSizeOptions,
       defaultPageSize,
       align,
-      // props中pageSize从others中剔除
-      pageSize: pageSizer,
       ...others
     } = this.props
     const { pageSize } = this.state
+    delete others.pageSize
     const totalPage = Math.ceil(total / pageSize)
 
     const pageList = this.getPageList()
