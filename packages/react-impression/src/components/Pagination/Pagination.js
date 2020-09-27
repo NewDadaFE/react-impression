@@ -69,6 +69,10 @@ export default class Pagination extends React.PureComponent {
      * 翻页器尺寸
      */
     size: PropTypes.oneOf(['sm', 'md']),
+    /**
+     * 翻页器对其方式
+     */
+    align: PropTypes.oneOf(['left', 'right', 'center']),
   }
 
   static defaultProps = {
@@ -80,6 +84,7 @@ export default class Pagination extends React.PureComponent {
     size: 'md',
     showSizeChanger: false,
     pageSizeOptions: [10, 20, 50, 100],
+    align: 'right',
   }
 
   constructor(props) {
@@ -234,6 +239,7 @@ export default class Pagination extends React.PureComponent {
       showSizeChanger,
       pageSizeOptions,
       defaultPageSize,
+      align,
       // props中pageSize从others中剔除
       pageSize: pageSizer,
       ...others
@@ -245,7 +251,7 @@ export default class Pagination extends React.PureComponent {
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
     const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
     return (
-      <div className={classnames('text-center', className)}>
+      <div className={classnames(`text-${align}`, className)}>
         {showTotal && (
           <div
             className={classnames('pagination-total', {
