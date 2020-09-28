@@ -116,12 +116,18 @@ export default class Select extends React.PureComponent {
      * 尺寸 多选只有两个尺寸，'md'和'xs'，单选
      */
     size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+
+    /**
+     * 弹出层宽度伸缩方式
+     */
+    stretch: PropTypes.oneOf(['sameWidth', 'auto']),
   }
   static defaultProps = {
     disabled: false,
     placeholder: '请选择',
     size: 'md',
     showSearch: false,
+    stretch: 'sameWidth',
   }
 
   componentDidMount() {
@@ -276,21 +282,36 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = event => {
-    event.preventDefault()
-    const { optionGroup, selectText } = this.state
-    if (this.props.disabled) return
-    if (this.state.queryText && this.props.searchable) return
+    event && event.preventDefault()
+    const { searchable, disabled } = this.props
+    const {
+      optionGroup,
+      selectText,
+      queryText,
+      showOption,
+      options,
+    } = this.state
+    if (disabled || (queryText && searchable && showOption)) {
+      return
+    }
     this.setState(
       {
-        showOption: !this.state.showOption,
+        showOption: !showOption,
       },
       () => {
         optionGroup.forEach(option => {
           option.queryChange('')
         })
+        options.forEach(option => {
+          option.queryChange('')
+        })
         this.selectInner.scrollTop = 0
         if (!this.state.showOption) {
           this.setState({ queryText: selectText })
+        }
+        // 单选可搜索时，显示弹出层同时清除 Input 的值
+        if (this.state.showOption && searchable) {
+          this.setState({ queryText: '' })
         }
       }
     )
@@ -446,7 +467,7 @@ export default class Select extends React.PureComponent {
     event.stopPropagation()
     const { options, optionGroup } = this.state
     const { filterMethod, remoteMethod } = this.props
-    this.setState({ queryText: val }, () => {
+    this.setState({ queryText: val, showOption: true }, () => {
       this.selectInner.scrollTop = 0
       remoteMethod && remoteMethod(val)
       if (!remoteMethod) {
@@ -471,7 +492,6 @@ export default class Select extends React.PureComponent {
     if (searchable && !isContainer(queryText, optionList) && !hasCustomFilter) {
       return '暂无数据'
     }
-
     return null
   }
 
@@ -536,9 +556,10 @@ export default class Select extends React.PureComponent {
    * @returns {*}
    */
   focusHandler = () => {
-    const { selectText } = this.state
-    if (!selectText) return
-    this.setState({ currentPlaceholder: selectText, queryText: '' })
+    const { selectText, showOption } = this.state
+    // 单选搜索输入聚焦时，弹出层是展开状态，则不需要做响应
+    if (!selectText || showOption) return
+    this.setState({ currentPlaceholder: selectText })
   }
 
   hideOptionsHandler = popupVisible => {
@@ -546,13 +567,6 @@ export default class Select extends React.PureComponent {
       const { selectText } = this.state
       this.setState({ showOption: false, queryText: selectText }, () => {
         this.selectInner.scrollTop = 0
-        const { optionGroup, options } = this.state
-        options.forEach(option => {
-          option.queryChange('')
-        })
-        optionGroup.forEach(option => {
-          option.queryChange('')
-        })
       })
     }
   }
@@ -567,6 +581,7 @@ export default class Select extends React.PureComponent {
       placeholder,
       clearable,
       size,
+      stretch,
     } = this.props
     const {
       showOption,
@@ -583,7 +598,7 @@ export default class Select extends React.PureComponent {
           hideAction='none'
           popupVisible={showOption}
           onPopupVisibleChange={this.hideOptionsHandler}
-          stretch='sameWidth'
+          stretch={stretch}
           transitionName='scale'
           popup={
             <div className={classnames(this.wrapClass, 'select-options-wrap')}>
@@ -660,7 +675,7 @@ export default class Select extends React.PureComponent {
               <input
                 type='text'
                 value={queryText}
-                readOnly={!searchable}
+                readOnly={!searchable || (searchable && !showOption)}
                 placeholder={currentPlaceholder}
                 disabled={disabled}
                 className={classnames('select-selection', {
@@ -668,11 +683,12 @@ export default class Select extends React.PureComponent {
                 })}
                 onChange={e => this.handleQuery(e)}
                 onClick={this.toggleOptionsHandle}
-                onFocus={this.focusHandler}
+                onFocus={searchable && this.focusHandler}
                 ref={ref => (this.refMain = ref)}
               />
             )}
-            {(!showClear || !clearable) && (!searchable || multiple) && (
+            {(!showClear || !clearable) &&
+              (!searchable || multiple || (searchable && !showOption)) && (
               <i
                 className={classnames(
                   'dada-ico dada-ico-angle-down select-addon',
@@ -683,11 +699,18 @@ export default class Select extends React.PureComponent {
                 onClick={this.toggleOptionsHandle}
               />
             )}
-            {(!showClear || !clearable) && searchable && !multiple && (
+            {(!showClear || !clearable) &&
+              searchable &&
+              showOption &&
+              !multiple && (
               <i
-                className={classnames('dada-ico dada-ico-search select-addon', {
-                  [`select-addon-${size}`]: !!size,
-                })}
+                className={classnames(
+                  'dada-ico dada-ico-search select-addon',
+                  {
+                    [`select-addon-${size}`]: !!size,
+                  }
+                )}
+                onClick={this.toggleOptionsHandle}
               />
             )}
             {clearable && showClear && !multiple && (

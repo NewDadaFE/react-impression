@@ -80,9 +80,9 @@
 
     .select-placeholder {
       color: $gray;
-      position: absolute;
-      top: $select-padding-y-md;
-      left: $select-padding-x;
+      display: inline-block;
+      padding-top: $select-padding-y-md;
+      padding-left: $select-padding-x;
       line-height: $select-line-height-md;
     }
 
@@ -111,8 +111,8 @@
     .select-placeholder-xs {
       line-height: $select-line-height-xs;
       font-size: $font-size-xs;
-      top: rem(3px);
-      left: rem(8px);
+      padding-top: rem(3px);
+      padding-left: rem(8px);
     }
 
     .dada-tag {

@@ -130,10 +130,12 @@ class DefaultExample extends React.Component {
       normalValue: 1,
       clearableValue: 2,
       optionDisabledValue: 4,
+      optionAutoValue: 5,
     }
     this.handleNormalChange = this.handleNormalChange.bind(this)
     this.handleClearableChange = this.handleClearableChange.bind(this)
     this.handleOptionDisabledChange = this.handleOptionDisabledChange.bind(this)
+    this.handleOptionAutoChange = this.handleOptionAutoChange.bind(this)
   }
 
   handleNormalChange(value, text) {
@@ -150,6 +152,10 @@ class DefaultExample extends React.Component {
 
   handleOptionDisabledChange(value) {
     this.setState({ optionDisabledValue: value })
+  }
+
+  handleOptionAutoChange(value) {
+    this.setState({ optionAutoValue: value })
   }
 
   render() {
@@ -204,6 +210,20 @@ class DefaultExample extends React.Component {
                 key={item.value}
                 disabled={item.value === 5}
               >
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <label>弹出层宽度自适应：</label>
+          <Select
+            value={this.state.optionAutoValue}
+            onChange={this.handleOptionAutoChange}
+            stretch="auto"
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
                 {item.label}
               </SelectOption>
             ))}
@@ -307,9 +327,8 @@ class DefaultExample extends React.Component {
   }
 
   handleSingleChange(value, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
+    this.setState({
+      singleValue: value,
     })
   }
 

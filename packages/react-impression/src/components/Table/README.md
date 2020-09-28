@@ -565,7 +565,6 @@ class DefaultExample extends React.Component {
     const pagination = {
       scope: 4,
       onSelect: this.handlePage,
-      totalPage: 50,
       activePage: activePage,
     }
     return (
@@ -734,7 +733,6 @@ class DefaultExample extends React.Component {
     const pagination = {
       scope: 4,
       onSelect: this.handlePage,
-      totalPage: 50,
       activePage: activePage,
     }
     return (
