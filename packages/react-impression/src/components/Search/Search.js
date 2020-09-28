@@ -8,9 +8,9 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Trigger from '../Trigger'
+import Input from '../Input'
 import Ico from '../Ico'
 
-const debounceTime = 300
 const defaultOptionKey = { label: 'label' }
 
 Search.propTypes = {
@@ -73,6 +73,14 @@ Search.propTypes = {
    * 是否可清除
    */
   clearable: PropTypes.bool,
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
+  /**
+   * 防抖时间间隔，单位：ms
+   */
+  debounceTime: PropTypes.number,
 }
 
 Search.defaultProps = {
@@ -81,10 +89,15 @@ Search.defaultProps = {
   size: 'md',
   type: 'input',
   clearable: true,
+  debounceTime: 300,
 }
 
 function Search(props) {
   const {
+    optionsWidthStretch,
+    placeholder,
+    size,
+    notFoundContent,
     onChange,
     onSearch,
     onSelect,
@@ -95,6 +108,10 @@ function Search(props) {
     type,
     clearable,
     disabled,
+    className,
+    debounceTime,
+    // props 透传，注意移除原生标签不支持的属性！
+    ...others
   } = props
   const labelKey = optionKey.label || defaultOptionKey.label
   const valueString = typeof value === 'object' ? JSON.stringify(value) : ''
@@ -175,7 +192,7 @@ function Search(props) {
         debounceRef.current = null
       }, debounceTime)
     },
-    [keyword, isFocus, onChange, onSearch]
+    [debounceTime, keyword, isFocus, onChange, onSearch]
   )
 
   // 监听搜索框 value 值变化
@@ -203,7 +220,7 @@ function Search(props) {
         if (result.length === 0) {
           return (
             <div className='dada-search-empty'>
-              {props.notFoundContent || '无匹配结果'}
+              {notFoundContent || '无匹配结果'}
             </div>
           )
         }
@@ -231,11 +248,11 @@ function Search(props) {
           )
         })
       }}
-      stretch={props.optionsWidthStretch ? 'auto' : 'sameWidth'}
+      stretch={optionsWidthStretch ? 'auto' : 'sameWidth'}
       popupVisible={showPopup}
       onPopupVisibleChange={setShowPopup}
     >
-      <div className='dada-search'>
+      <div className={classNames('dada-search', className)} {...others}>
         <Input
           ref={inputRef}
           addonBefore={<Ico className='dada-search-addon' type='search' />}
@@ -253,8 +270,8 @@ function Search(props) {
             ) : null
           }
           type='text'
-          size={props.size}
-          placeholder={props.placeholder}
+          size={size}
+          placeholder={placeholder}
           value={keyword}
           onChange={value => setKeyword(value)}
           onFocus={() => setIsFocus(true)}

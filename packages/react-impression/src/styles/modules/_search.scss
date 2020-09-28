@@ -3,6 +3,11 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
 .dada-search {
   position: relative;
   display: inline-block;
+  width: $input-width;
+
+  & > .input {
+    width: 100%;
+  }
 }
 
 .dada-search-context {
