@@ -46,12 +46,13 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
 
   max-width: 408px;
   max-height: 376px;
+  overflow: auto;
 }
 
 .dada-search-option {
+  @include set-font-size(14px);
+
   padding: 7px 16px;
-  font-size: 14px;
-  line-height: 22px;
   cursor: pointer;
 
   &-text {
@@ -82,4 +83,12 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
   & + .dada-search-context {
     background-color: $input-disabled-bg;
   }
+}
+
+.dada-search-empty {
+  @include set-font-size(14px);
+
+  padding: 7px 16px;
+  text-align: center;
+  color: $disabled-color;
 }
