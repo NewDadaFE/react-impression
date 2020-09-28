@@ -26,6 +26,8 @@ const Button = React.forwardRef((props, ref) => {
     iconPosition,
     ...others
   } = props
+  // 为了兼容旧版属性，手动删除 outline
+  delete others.outline
   delete others.eventKey
 
   // 判断按钮是否为纯图标按钮：无children 或者 shape 为 circle
@@ -150,6 +152,12 @@ Button.propTypes = {
    * 按钮的位置
    */
   iconPosition: PropTypes.oneOf(['left', 'right']),
+
+  /**
+   * 按钮的位置 v2.1.2废弃
+   * @ignore
+   */
+  outline: PropTypes.bool,
 }
 Button.defaultProps = {
   theme: 'primary',
