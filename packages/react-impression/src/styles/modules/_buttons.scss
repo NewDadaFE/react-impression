@@ -5,9 +5,7 @@
 //
 
 .btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
@@ -48,6 +46,10 @@
     &:hover {
       box-shadow: none;
     }
+  }
+
+  & > i {
+    vertical-align: top;
   }
 
   & > span {
