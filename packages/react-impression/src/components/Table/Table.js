@@ -617,10 +617,8 @@ export default class Table extends React.PureComponent {
       <div className='table-pagination text-center'>
         <Pagination
           {...pagination}
-          scope={pagination.scope ? pagination.scope : 4}
+          scope={pagination.scope || 3}
           onSelect={this.handlePaginationChange}
-          totalPage={pagination.totalPage}
-          activePage={pagination.activePage}
         />
       </div>
     )

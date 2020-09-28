@@ -130,15 +130,11 @@ class DefaultExample extends React.Component {
       normalValue: 1,
       clearableValue: 2,
       optionDisabledValue: 4,
-      optionSameWidthValue: 1,
       optionAutoValue: 5,
     }
     this.handleNormalChange = this.handleNormalChange.bind(this)
     this.handleClearableChange = this.handleClearableChange.bind(this)
     this.handleOptionDisabledChange = this.handleOptionDisabledChange.bind(this)
-    this.handleOptionSameWidthChange = this.handleOptionSameWidthChange.bind(
-      this
-    )
     this.handleOptionAutoChange = this.handleOptionAutoChange.bind(this)
   }
 
@@ -157,9 +153,7 @@ class DefaultExample extends React.Component {
   handleOptionDisabledChange(value) {
     this.setState({ optionDisabledValue: value })
   }
-  handleOptionSameWidthChange(value) {
-    this.setState({ optionSameWidthValue: value })
-  }
+
   handleOptionAutoChange(value) {
     this.setState({ optionAutoValue: value })
   }
@@ -222,20 +216,7 @@ class DefaultExample extends React.Component {
           </Select>
         </FormGroup>
         <FormGroup>
-          <label>弹出层伸缩（sameWidth）：</label>
-          <Select
-            value={this.state.optionSameWidthValue}
-            onChange={this.handleOptionSameWidthChange}
-          >
-            {selectList.map(item => (
-              <SelectOption value={item.value} key={item.value}>
-                {item.label}
-              </SelectOption>
-            ))}
-          </Select>
-        </FormGroup>
-        <FormGroup>
-          <label>弹出层伸缩（auto）：</label>
+          <label>弹出层宽度自适应：</label>
           <Select
             value={this.state.optionAutoValue}
             onChange={this.handleOptionAutoChange}
@@ -346,9 +327,8 @@ class DefaultExample extends React.Component {
   }
 
   handleSingleChange(value, text) {
-    Notification.info({
-      title: 'Select',
-      message: `${text} 被选中了！！！`,
+    this.setState({
+      singleValue: value,
     })
   }
 

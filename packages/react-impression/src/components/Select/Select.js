@@ -283,23 +283,35 @@ export default class Select extends React.PureComponent {
    */
   toggleOptionsHandle = event => {
     event && event.preventDefault()
-    const { optionGroup, selectText, queryText, showOption } = this.state
-    if (this.props.disabled) return
-    if (queryText && this.props.searchable && showOption) return
+    const { searchable, disabled } = this.props
+    const {
+      optionGroup,
+      selectText,
+      queryText,
+      showOption,
+      options,
+    } = this.state
+    if (disabled || (queryText && searchable && showOption)) {
+      return
+    }
     this.setState(
       {
-        showOption: !this.state.showOption,
+        showOption: !showOption,
       },
       () => {
         optionGroup.forEach(option => {
+          option.queryChange('')
+        })
+        options.forEach(option => {
           option.queryChange('')
         })
         this.selectInner.scrollTop = 0
         if (!this.state.showOption) {
           this.setState({ queryText: selectText })
         }
-        if (this.state.showOption && this.props.searchable) {
-          this.focusHandler()
+        // 单选可搜索时，显示弹出层同时清除 Input 的值
+        if (this.state.showOption && searchable) {
+          this.setState({ queryText: '' })
         }
       }
     )
@@ -480,7 +492,6 @@ export default class Select extends React.PureComponent {
     if (searchable && !isContainer(queryText, optionList) && !hasCustomFilter) {
       return '暂无数据'
     }
-
     return null
   }
 
@@ -545,9 +556,10 @@ export default class Select extends React.PureComponent {
    * @returns {*}
    */
   focusHandler = () => {
-    const { selectText } = this.state
-    if (!selectText) return
-    this.setState({ currentPlaceholder: selectText, queryText: '' })
+    const { selectText, showOption } = this.state
+    // 单选搜索输入聚焦时，弹出层是展开状态，则不需要做响应
+    if (!selectText || showOption) return
+    this.setState({ currentPlaceholder: selectText })
   }
 
   hideOptionsHandler = popupVisible => {
@@ -555,13 +567,6 @@ export default class Select extends React.PureComponent {
       const { selectText } = this.state
       this.setState({ showOption: false, queryText: selectText }, () => {
         this.selectInner.scrollTop = 0
-        const { optionGroup, options } = this.state
-        options.forEach(option => {
-          option.queryChange('')
-        })
-        optionGroup.forEach(option => {
-          option.queryChange('')
-        })
       })
     }
   }

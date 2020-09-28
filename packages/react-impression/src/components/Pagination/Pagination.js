@@ -61,13 +61,14 @@ export default class Pagination extends React.PureComponent {
      */
     pageSize: PropTypes.number,
     /**
+     * 总页数，v2.1.2 废弃
+     * @ignore
+     */
+    totalPage: PropTypes.number,
+    /**
      * 全局禁用分页
      */
     disabled: PropTypes.bool,
-    /**
-     * 默认每页条数
-     */
-    defaultPageSize: PropTypes.number,
     /**
      * 翻页器尺寸
      */
@@ -82,12 +83,12 @@ export default class Pagination extends React.PureComponent {
     scope: 3,
     activePage: 1,
     total: 0,
-    defaultPageSize: 10,
     disabled: false,
     size: 'md',
     showSizeChanger: false,
     pageSizeOptions: [10, 20, 50, 100],
     align: 'right',
+    pageSize: 10,
   }
 
   constructor(props) {
@@ -95,7 +96,8 @@ export default class Pagination extends React.PureComponent {
     this.state = {
       currentPage: this.props.activePage,
       skipPageNo: '',
-      pageSize: props.pageSize || props.defaultPageSize,
+      pageSize: props.pageSize,
+      totalPage: Math.ceil(props.total / props.pageSize),
     }
   }
 
@@ -114,9 +116,8 @@ export default class Pagination extends React.PureComponent {
    * 下一页
    */
   nextPageHandle = () => {
-    let { onSelect, activePage, total } = this.props
-    const { pageSize } = this.state
-    const totalPage = Math.ceil(total / pageSize)
+    let { onSelect, activePage } = this.props
+    const { pageSize, totalPage } = this.state
 
     activePage += 1
     activePage <= totalPage && onSelect && onSelect(activePage, pageSize)
@@ -140,6 +141,19 @@ export default class Pagination extends React.PureComponent {
         currentPage: nextProps.activePage,
       })
     }
+    if (
+      Number(nextProps.total) !== Number(this.props.total) ||
+      Number(nextProps.pageSize) !== Number(this.props.pageSize)
+    ) {
+      this.setState({
+        totalPage: Math.ceil(nextProps.total / nextProps.pageSize),
+      })
+    }
+    if (Number(nextProps.pageSize) !== Number(this.props.pageSize)) {
+      this.setState({
+        pageSize: nextProps.pageSize,
+      })
+    }
   }
 
   /**
@@ -147,13 +161,13 @@ export default class Pagination extends React.PureComponent {
    * @returns {Array}
    */
   getPageList = () => {
-    const { scope, activePage, total, pageSize, defaultPageSize } = this.props
-    const totalPages = Math.ceil(total / (pageSize || defaultPageSize))
+    const { scope, activePage } = this.props
+    const { totalPage } = this.state
     const pageList = []
     const scopeLength = scope * 2
     // 页数少于（首部、尾部、中心、两边scope）最少分页项总数，不出现省略号
-    if (totalPages <= 3 + scopeLength) {
-      const totalPageNumber = totalPages || 1
+    if (totalPage <= 3 + scopeLength) {
+      const totalPageNumber = totalPage || 1
       for (let i = 1; i <= totalPageNumber; i++) {
         pageList.push(i)
       }
@@ -161,12 +175,12 @@ export default class Pagination extends React.PureComponent {
     }
     // 有"..."的情况下，中间部分页数的范围 [scopeLeft，scopeRight]
     let scopeLeft = Math.max(1, activePage - scope)
-    let scopeRight = Math.min(activePage + scope, totalPages)
+    let scopeRight = Math.min(activePage + scope, totalPage)
     // scopeLeft或scopeRight为总页数的左端或右端，特殊处理
     if (scopeLeft === 1) {
       scopeRight = scopeLeft + scopeLength
     }
-    if (scopeRight === totalPages) {
+    if (scopeRight === totalPage) {
       scopeLeft = scopeRight - scopeLength
     }
     // 首页页码必须为 1
@@ -180,12 +194,12 @@ export default class Pagination extends React.PureComponent {
       pageList.push(i)
     }
     // 显示right"..."的情况：activePage距离结束页个数超过scope则显示"..."
-    // 即：totalPages - activePage - 1 > scope
-    if (activePage < totalPages - scope - 1) {
+    // 即：totalPage - activePage - 1 > scope
+    if (activePage < totalPage - scope - 1) {
       pageList.push('')
     }
     // 尾页页码必须为 totalPage
-    scopeRight !== totalPages && pageList.push(totalPages)
+    scopeRight !== totalPage && pageList.push(totalPage)
 
     return pageList
   }
@@ -195,9 +209,8 @@ export default class Pagination extends React.PureComponent {
   }
 
   handleSkip = () => {
-    const { onSelect, total = 0 } = this.props
-    const { pageSize } = this.state
-    const totalPage = Math.ceil(total / pageSize)
+    const { onSelect } = this.props
+    const { pageSize, totalPage } = this.state
     const pageNo = +this.state.skipPageNo
     if (isNaN(pageNo) || pageNo < 1 || pageNo > totalPage) {
       this.setState({ skipPageNo: '' })
@@ -240,13 +253,14 @@ export default class Pagination extends React.PureComponent {
       size,
       showSizeChanger,
       pageSizeOptions,
-      defaultPageSize,
       align,
       ...others
     } = this.props
-    const { pageSize } = this.state
+    const { pageSize, totalPage } = this.state
+    // 为了兼容旧版 Pagination 的参数，需要手动删除 totalPage
+    delete others.totalPage
     delete others.pageSize
-    const totalPage = Math.ceil(total / pageSize)
+    delete others.onShowSizeChange
 
     const pageList = this.getPageList()
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
