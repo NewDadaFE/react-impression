@@ -8,9 +8,9 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Trigger from '../Trigger'
+import Input from '../Input'
 import Ico from '../Ico'
 
-const debounceTime = 300
 const defaultOptionKey = { label: 'label' }
 
 Search.propTypes = {
@@ -73,6 +73,14 @@ Search.propTypes = {
    * 是否可清除
    */
   clearable: PropTypes.bool,
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
+  /**
+   * 防抖时间间隔，单位：ms
+   */
+  debounceTime: PropTypes.number,
 }
 
 Search.defaultProps = {
@@ -81,10 +89,15 @@ Search.defaultProps = {
   size: 'md',
   type: 'input',
   clearable: true,
+  debounceTime: 300,
 }
 
 function Search(props) {
   const {
+    optionsWidthStretch,
+    placeholder,
+    size,
+    notFoundContent,
     onChange,
     onSearch,
     onSelect,
@@ -95,9 +108,15 @@ function Search(props) {
     type,
     clearable,
     disabled,
+    className,
+    debounceTime,
+    // props 透传，注意移除原生标签不支持的属性！
+    ...others
   } = props
   const labelKey = optionKey.label || defaultOptionKey.label
   const valueString = typeof value === 'object' ? JSON.stringify(value) : ''
+  // 标记初始化
+  const isInitRef = useRef(true)
   // type 为 'select' 时，输入框选中项
   const [selectedItem, setSelectedItem] = useState(
     type === 'select' && typeof defaultValue === 'object' ? defaultValue : null
@@ -141,8 +160,10 @@ function Search(props) {
     if (disabled) return
     if (type === 'select') {
       setSelectedItem(null)
+      onSelect && onSelect(null)
     } else if (type === 'input') {
       setKeyword('')
+      onSelect && onSelect('')
     }
   }
 
@@ -175,20 +196,23 @@ function Search(props) {
         debounceRef.current = null
       }, debounceTime)
     },
-    [keyword, isFocus, onChange, onSearch]
+    [debounceTime, keyword, isFocus, onChange, onSearch]
   )
 
   // 监听搜索框 value 值变化
   useEffect(
     () => {
+      if (isInitRef.current) {
+        isInitRef.current = false
+        return
+      }
       const valueObject = valueString ? JSON.parse(valueString) : {}
-      if (valueObject[labelKey] === undefined) return
       if (type === 'select') {
         setSelectedItem(valueObject)
         return
       }
       if (type === 'input') {
-        setKeyword(valueObject[labelKey])
+        setKeyword(valueObject[labelKey] || '')
       }
     },
     [type, labelKey, valueString]
@@ -203,7 +227,7 @@ function Search(props) {
         if (result.length === 0) {
           return (
             <div className='dada-search-empty'>
-              {props.notFoundContent || '无匹配结果'}
+              {notFoundContent || '无匹配结果'}
             </div>
           )
         }
@@ -231,11 +255,11 @@ function Search(props) {
           )
         })
       }}
-      stretch={props.optionsWidthStretch ? 'auto' : 'sameWidth'}
+      stretch={optionsWidthStretch ? 'auto' : 'sameWidth'}
       popupVisible={showPopup}
       onPopupVisibleChange={setShowPopup}
     >
-      <div className='dada-search'>
+      <div className={classNames('dada-search', className)} {...others}>
         <Input
           ref={inputRef}
           addonBefore={<Ico className='dada-search-addon' type='search' />}
@@ -245,7 +269,8 @@ function Search(props) {
                 className={classNames('dada-search-clear', {
                   'dada-search-clear-hidden':
                     (type === 'input' && !keyword) ||
-                    (type === 'select' && !selectedItem),
+                    (type === 'select' &&
+                      (!selectedItem || !selectedItem[labelKey])),
                 })}
                 type='times-circle'
                 onClick={clearHandler}
@@ -253,8 +278,8 @@ function Search(props) {
             ) : null
           }
           type='text'
-          size={props.size}
-          placeholder={props.placeholder}
+          size={size}
+          placeholder={placeholder}
           value={keyword}
           onChange={value => setKeyword(value)}
           onFocus={() => setIsFocus(true)}

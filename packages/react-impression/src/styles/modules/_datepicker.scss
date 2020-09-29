@@ -154,9 +154,9 @@
   line-height: 1;
   cursor: pointer;
   text-align: center;
-  color: $link-color;
+  color: $text-link-primary-color;
   border-top: $datepicker-border;
   &:hover {
-    color: $link-hover-color;
+    color: $text-link-hover-color;
   }
 }

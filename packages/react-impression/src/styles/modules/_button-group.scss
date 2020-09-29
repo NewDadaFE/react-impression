@@ -74,15 +74,6 @@
     padding-right: $split-btn-lg-dropdown-toggle-padding-x;
     padding-left: $split-btn-lg-dropdown-toggle-padding-x;
   }
-
-  // The clickable button for toggling the menu
-  // Remove the gradient and set the same inset shadow as the :active state
-  &.open .dropdown-toggle {
-    // Show no shadow for `.btn-link` since it has no other button styles.
-    &.btn-link {
-      box-shadow: none;
-    }
-  }
 }
 
 // Optional: Group multiple button groups together for a toolbar
