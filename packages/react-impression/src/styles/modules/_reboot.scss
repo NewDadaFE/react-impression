@@ -130,16 +130,20 @@ blockquote {
 }
 
 //
-// Links
+// Links 与 TextLink 一致
 //
 
 a {
-  color: $link-color;
-  text-decoration: $link-decoration;
+  color: $text-link-primary-color;
+  text-decoration: none;
 
   &:hover {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+    color: $text-link-hover-color;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $text-link-active-color;
   }
 }
 

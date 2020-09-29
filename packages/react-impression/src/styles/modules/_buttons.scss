@@ -140,50 +140,6 @@ $btn-text-args: (
 }
 
 //
-// Link buttons
-//
-
-// Make a button look and behave like a link
-.btn-link {
-  font-weight: normal;
-  color: $link-color;
-  border-radius: 0;
-
-  &,
-  &:active,
-  &.active,
-  &:disabled {
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  &,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
-
-  &:hover {
-    border-color: transparent;
-  }
-
-  &:hover,
-  &:focus {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-    background-color: transparent;
-  }
-
-  &:disabled {
-    &:hover,
-    &:focus {
-      color: $btn-link-disabled-color;
-      text-decoration: none;
-    }
-  }
-}
-
-//
 // Button Sizes
 //
 

@@ -199,7 +199,6 @@ function Search(props) {
   useEffect(
     () => {
       const valueObject = valueString ? JSON.parse(valueString) : {}
-      if (valueObject[labelKey] === undefined) return
       if (type === 'select') {
         setSelectedItem(valueObject)
         return
