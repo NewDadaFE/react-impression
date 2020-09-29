@@ -156,9 +156,9 @@ export default class Select extends React.PureComponent {
   }
 
   handleValueChange(props) {
-    const { options, selectedOptions } = this.state
+    const { options, selectedOptions, queryText, optionGroup } = this.state
+    const { filterMethod } = this.props
     const optionList = this.getOptionList(options).concat(selectedOptions)
-
     const { multiple } = this.props
     const originValue = this.isPuppet
       ? props !== undefined
@@ -212,6 +212,14 @@ export default class Select extends React.PureComponent {
     }
     this.setState(dataToSet, () => {
       this.options.forEach(option => option.handleActive())
+      if (multiple) {
+        options.forEach(option => {
+          option.queryChange(queryText, filterMethod)
+        })
+        optionGroup.forEach(option => {
+          option.queryChange(queryText)
+        })
+      }
     })
   }
 
@@ -341,7 +349,6 @@ export default class Select extends React.PureComponent {
       options.forEach(option => {
         option.handleActive()
       })
-
       onDelete && onDelete(newVal)
     })
     if (list.length <= 0) {
@@ -359,7 +366,7 @@ export default class Select extends React.PureComponent {
    */
   selectOptionHandle(result) {
     const { onChange, value, multiple } = this.props
-    const { options, selectedOptions, selectedItem, optionGroup } = this.state
+    const { options, selectedOptions, selectedItem } = this.state
     const originValue = this.isPuppet ? value : this.state.value
     if (multiple) {
       this.setState({ currentPlaceholder: '' })
@@ -385,17 +392,10 @@ export default class Select extends React.PureComponent {
         result.value !== originValue &&
         onChange(result.value, result.name)
     }
-    this.setState(
-      {
-        showOption: !!multiple,
-        selectedOptions: selectedOptions.concat(result.node),
-      },
-      () => {
-        optionGroup.forEach(option => {
-          option.queryChange('')
-        })
-      }
-    )
+    this.setState({
+      showOption: !!multiple,
+      selectedOptions: selectedOptions.concat(result.node),
+    })
   }
 
   /**
