@@ -160,8 +160,10 @@ function Search(props) {
     if (disabled) return
     if (type === 'select') {
       setSelectedItem(null)
+      onSelect && onSelect(null)
     } else if (type === 'input') {
       setKeyword('')
+      onSelect && onSelect('')
     }
   }
 
@@ -267,7 +269,8 @@ function Search(props) {
                 className={classNames('dada-search-clear', {
                   'dada-search-clear-hidden':
                     (type === 'input' && !keyword) ||
-                    (type === 'select' && !selectedItem),
+                    (type === 'select' &&
+                      (!selectedItem || !selectedItem[labelKey])),
                 })}
                 type='times-circle'
                 onClick={clearHandler}
