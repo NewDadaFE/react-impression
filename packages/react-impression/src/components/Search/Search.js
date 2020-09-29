@@ -115,6 +115,8 @@ function Search(props) {
   } = props
   const labelKey = optionKey.label || defaultOptionKey.label
   const valueString = typeof value === 'object' ? JSON.stringify(value) : ''
+  // 标记初始化
+  const isInitRef = useRef(true)
   // type 为 'select' 时，输入框选中项
   const [selectedItem, setSelectedItem] = useState(
     type === 'select' && typeof defaultValue === 'object' ? defaultValue : null
@@ -198,13 +200,17 @@ function Search(props) {
   // 监听搜索框 value 值变化
   useEffect(
     () => {
+      if (isInitRef.current) {
+        isInitRef.current = false
+        return
+      }
       const valueObject = valueString ? JSON.parse(valueString) : {}
       if (type === 'select') {
         setSelectedItem(valueObject)
         return
       }
       if (type === 'input') {
-        setKeyword(valueObject[labelKey])
+        setKeyword(valueObject[labelKey] || '')
       }
     },
     [type, labelKey, valueString]
