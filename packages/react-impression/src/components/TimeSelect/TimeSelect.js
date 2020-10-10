@@ -39,10 +39,6 @@ export default class TimeSelect extends React.PureComponent {
      * 时间控件类型
      */
     type: PropTypes.oneOf(['time', 'second']),
-
-    /**
-     *
-     */
   }
 
   componentDidMount() {
