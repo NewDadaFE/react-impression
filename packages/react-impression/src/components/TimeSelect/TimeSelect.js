@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import PerfectScrollbar from 'perfect-scrollbar'
+import Button from '../Button'
 import moment from 'moment'
 
 export default class TimeSelect extends React.PureComponent {
@@ -38,6 +39,10 @@ export default class TimeSelect extends React.PureComponent {
      * 时间控件类型
      */
     type: PropTypes.oneOf(['time', 'second']),
+
+    /**
+     *
+     */
   }
 
   componentDidMount() {
@@ -214,62 +219,72 @@ export default class TimeSelect extends React.PureComponent {
     return (
       <div className={classnames('time-select-out', className)} ref='container'>
         <div className='time-select flex'>
-          <div
-            className='time-select-wrap'
-            ref={div => (this.hourContainer = div)}
-            onClick={this.handleUpdateHourScroll}
-          >
-            {this.hourList.map(item => (
-              <div
-                key={`hour${item}`}
-                className={classnames('time-select-wrap-inner', {
-                  active:
-                    currentHour && currentHour.toString() === item.toString(),
-                })}
-                onClick={e => this.handleSetHour(item, e)}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-          <div
-            className='time-select-wrap'
-            ref={div => (this.minuteContainer = div)}
-            onClick={this.handleUpdateMinuteScroll}
-          >
-            {this.minuteList.map(min => (
-              <div
-                key={`minute${min}`}
-                className={classnames('time-select-wrap-inner', {
-                  active:
-                    currentMinute &&
-                    currentMinute.toString() === min.toString(),
-                })}
-                onClick={e => this.handleSetMinute(min, e)}
-              >
-                {min}
-              </div>
-            ))}
-          </div>
-          {type === 'second' && (
+          <div>
+            <div className='time-select-wrap-inner title'>时</div>
             <div
               className='time-select-wrap'
-              ref={div => (this.secondContainer = div)}
-              onClick={this.handleUpdateMinuteScroll}
+              ref={div => (this.hourContainer = div)}
+              onClick={this.handleUpdateHourScroll}
             >
-              {this.secondList.map(min => (
+              {this.hourList.map(item => (
                 <div
-                  key={`second${min}`}
+                  key={`hour${item}`}
                   className={classnames('time-select-wrap-inner', {
                     active:
-                      currentSecond &&
-                      currentSecond.toString() === min.toString(),
+                      currentHour && currentHour.toString() === item.toString(),
                   })}
-                  onClick={e => this.handleSetSecond(min, e)}
+                  onClick={e => this.handleSetHour(item, e)}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className='time-select-wrap-inner title'>分</div>
+            <div
+              className='time-select-wrap'
+              ref={div => (this.minuteContainer = div)}
+              onClick={this.handleUpdateMinuteScroll}
+            >
+              {this.minuteList.map(min => (
+                <div
+                  key={`minute${min}`}
+                  className={classnames('time-select-wrap-inner', {
+                    active:
+                      currentMinute &&
+                      currentMinute.toString() === min.toString(),
+                  })}
+                  onClick={e => this.handleSetMinute(min, e)}
                 >
                   {min}
                 </div>
               ))}
+            </div>
+          </div>
+
+          {type === 'second' && (
+            <div>
+              <div className='time-select-wrap-inner title'>秒</div>
+              <div
+                className='time-select-wrap'
+                ref={div => (this.secondContainer = div)}
+                onClick={this.handleUpdateMinuteScroll}
+              >
+                {this.secondList.map(min => (
+                  <div
+                    key={`second${min}`}
+                    className={classnames('time-select-wrap-inner', {
+                      active:
+                        currentSecond &&
+                        currentSecond.toString() === min.toString(),
+                    })}
+                    onClick={e => this.handleSetSecond(min, e)}
+                  >
+                    {min}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
