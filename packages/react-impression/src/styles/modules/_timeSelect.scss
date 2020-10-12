@@ -13,7 +13,7 @@
   border: 1px solid $time-select-border-color;
   border-radius: 0.14286rem;
   background-color: #fff;
-  &>div:last-child .time-select-wrap{
+  & > div:last-child .time-select-wrap {
     border-right: none;
   }
 }
@@ -22,7 +22,6 @@
   overflow-y: auto;
   position: relative;
   border-right: 1px solid $time-select-border-color;
-  border-top: 1px solid $time-select-border-color;
 }
 .time-select-wrap-inner {
   padding: $time-select-wrap-inner-padding;
@@ -37,8 +36,12 @@
   }
   &.title {
     color: $gray;
+    border-right: 1px solid $time-select-border-color;
   }
-  &.title:hover{
+  &.title:last-child {
+    border: none;
+  }
+  &.title:hover {
     background: none;
   }
 }
