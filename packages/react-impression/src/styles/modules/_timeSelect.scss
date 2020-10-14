@@ -13,7 +13,8 @@
   border: 1px solid $time-select-border-color;
   border-radius: 0.14286rem;
   background-color: #fff;
-  & > div:last-child .time-select-wrap {
+  & > div:last-child .time-select-wrap,
+  & > div:last-child .time-select-wrap-inner.title {
     border-right: none;
   }
 }
@@ -26,7 +27,9 @@
 .time-select-wrap-inner {
   padding: $time-select-wrap-inner-padding;
   color: $gray-darker;
+  box-sizing: content-box;
   line-height: $time-select-lineheight;
+  width: $time-select-wrap-inner-width;
   cursor: pointer;
   &:hover {
     background: $time-select-bg-color;
@@ -37,9 +40,6 @@
   &.title {
     color: $gray;
     border-right: 1px solid $time-select-border-color;
-  }
-  &.title:last-child {
-    border: none;
   }
   &.title:hover {
     background: none;
