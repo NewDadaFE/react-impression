@@ -4,6 +4,7 @@
   display: inline-block;
   margin: 0;
   font-weight: normal !important;
+  font-size: 0;
   cursor: pointer;
   user-select: none;
   vertical-align: middle;
@@ -18,17 +19,30 @@
     &:checked {
       & + .switch-addon {
         background-color: $switch-addon-active-bg;
-        box-shadow: 0 rem(2px) rem(4px) 0 rgba($switch-addon-active-bg, 0.2);
-
         &::before {
           transform: $switch-addon-translate-x;
         }
+        .dada-switch-spinner {
+          left: rem(25px);
+          border-color: $switch-addon-active-bg;
+          border-left-color: transparent;
+        }
       }
-      &:disabled + .switch-addon {
+      & + .switch-addon.dada-switch-sm {
+        &::before {
+          transform: $switch-addon-translate-x-sm;
+        }
+        .dada-switch-spinner {
+          left: rem(19px);
+        }
+      }
+      &:disabled + .switch-addon,
+      & + .dada-switch-loading {
         opacity: 0.15;
       }
     }
-    &:disabled + .switch-addon {
+    &:disabled + .switch-addon,
+    & + .dada-switch-loading {
       opacity: 0.3;
     }
   }
@@ -41,14 +55,58 @@
   transition: $checkbox-addon-transtion;
   border-radius: round($switch-addon-width * $font-size-root);
   background-color: $switch-bg;
-
+  position: relative;
   &::before {
     display: block;
     width: round($switch-addon-width * $font-size-root);
     height: round($switch-addon-height * $font-size-root);
-    content: '';
+    content: "";
     transition: $checkbox-addon-transtion;
     border-radius: 50%;
     background-color: $switch-addon-bg;
+  }
+  > .dada-switch-spinner {
+    left: rem(5px);
+    height: rem(14px);
+    width: rem(14px);
+    border-color: $switch-bg;
+    border-left-color: transparent;
+    top: rem(5px);
+  }
+  &.dada-switch-sm .dada-switch-spinner {
+    left: rem(3px);
+  }
+}
+
+.dada-switch-sm.switch-addon {
+  width: round($switch-width-sm * $font-size-root);
+  border-radius: round($switch-addon-width * $font-size-root);
+  &::before {
+    width: round($switch-addon-width-sm * $font-size-root);
+    height: round($switch-addon-height-sm * $font-size-root);
+  }
+  > .dada-switch-spinner {
+    height: rem(10px);
+    width: rem(10px);
+    top: rem(3px);
+  }
+}
+
+.dada-switch-spinner {
+  display: inline-block;
+  border: 2px solid;
+  border-left-color: transparent;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  animation: spinner 1s linear infinite;
+  transition: $checkbox-addon-transtion;
+  position: absolute;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

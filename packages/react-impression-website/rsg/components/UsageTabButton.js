@@ -8,7 +8,10 @@ const UsageTabButton = props => {
     component.props || (component.methods && component.methods.length > 0)
   return showButton ? (
     <TabButton {...props}>
-      参数 <i className={`fa fa-angle-${props.active ? 'up' : 'down'}`} />
+      参数{' '}
+      <i
+        className={`dada-ico dada-ico-angle-${props.active ? 'up' : 'down'}`}
+      />
     </TabButton>
   ) : null
 }

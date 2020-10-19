@@ -11,11 +11,16 @@ const columns = [
         编码
       </span>
     ),
+    sortable: true,
   },
-  { prop: data => `${data.address.detail.target}`, Header: '地址' },
-  { prop: 'num', Header: '金额' },
-  { prop: 'phone', Header: '电话' },
-  { prop: 'creatTime', Header: '创建时间' },
+  {
+    prop: data => `${data.address.detail.target}`,
+    Header: '地址',
+    sortable: true,
+  },
+  { prop: 'num', Header: '金额', sortable: true },
+  { prop: 'phone', Header: '电话', sortable: true },
+  { prop: 'creatTime', Header: '创建时间', sortable: true },
   { prop: 'status', Header: '状态' },
   {
     Header: '操作',
@@ -32,7 +37,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -77,7 +82,14 @@ const data = [
     status: '正常',
   },
 ]
-;<Table columns={columns} data={data} />
+;<Table
+  columns={columns}
+  data={data}
+  defaultSort={{ prop: 'num' }}
+  onChangeSort={val => {
+    console.log(val)
+  }}
+/>
 ```
 
 **TableColumn 基本用法**
@@ -103,9 +115,14 @@ const data = [
     status: '正常',
   },
 ]
-;<Table data={data}>
-  <TableColumn prop="code" Header={<span>编码</span>} />
-  <TableColumn prop="address" Header="地址" />
+;<Table
+  data={data}
+  onChangeSort={val => {
+    console.log(val)
+  }}
+>
+  <TableColumn prop="code" Header={<span>编码</span>} sortable />
+  <TableColumn prop="address" Header="地址" sortable />
   <TableColumn prop="num" Header="金额" />
   <TableColumn prop="phone" Header="电话" />
   <TableColumn prop="creatTime" Header="创建时间" />
@@ -128,7 +145,7 @@ const data = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -165,7 +182,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -232,7 +249,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -310,7 +327,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -419,7 +436,7 @@ const data = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -443,6 +460,7 @@ const columns = [
     Header: '编码',
     width: 120,
     fixed: 'left',
+    sortable: true,
     Cell: item => {
       return <a href="#">{item.code}</a>
     },
@@ -451,7 +469,12 @@ const columns = [
   { prop: 'num', Header: '金额', width: 120 },
   { prop: 'phone', Header: '电话', width: 120 },
   { prop: 'creatTime', Header: '创建时间', width: 120 },
-  { prop: 'status', Header: '状态', width: 120 },
+  {
+    prop: 'status',
+    Header: '状态',
+    width: 120,
+    sortable: true,
+  },
   {
     Header: '操作',
     width: 202,
@@ -469,7 +492,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, color: '#417FFA' }}
@@ -542,7 +565,6 @@ class DefaultExample extends React.Component {
     const pagination = {
       scope: 4,
       onSelect: this.handlePage,
-      totalPage: 50,
       activePage: activePage,
     }
     return (
@@ -583,7 +605,13 @@ const columns = [
     Header: '地址',
     width: 160,
     Cell: item => {
-      return <Input size="sm" defaultValue={item.address} />
+      return (
+        <Input
+          size="sm"
+          defaultValue={item.address}
+          style={{ width: '100%' }}
+        />
+      )
     },
   },
   { prop: 'num', Header: '金额', width: 120 },
@@ -607,7 +635,7 @@ const columns = [
           >
             编辑
           </a>
-          <span style={{ color: '#E9EBF0' }}>|</span>
+          <span style={{ color: '#d9d9d9' }}>|</span>
           <a
             href="#"
             style={{ paddingLeft: 16, paddingRight: 16, color: '#417FFA' }}
@@ -705,7 +733,6 @@ class DefaultExample extends React.Component {
     const pagination = {
       scope: 4,
       onSelect: this.handlePage,
-      totalPage: 50,
       activePage: activePage,
     }
     return (
@@ -725,6 +752,98 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
+**可排序 table**
+
+```js
+const columns = [
+  {
+    prop: data => `${data.code.id}`,
+    Header: (
+      <span id="recipe" data-type="title">
+        编码
+      </span>
+    ),
+    sortable: true,
+  },
+  {
+    prop: data => `${data.address.detail.target}`,
+    Header: '地址',
+    sortable: true,
+  },
+  { prop: 'num', Header: '金额', sortable: true },
+  { prop: 'phone', Header: '电话', sortable: true },
+  { prop: 'creatTime', Header: '创建时间', sortable: true },
+  { prop: 'status', Header: '状态' },
+  {
+    Header: '操作',
+    Cell: item => {
+      return (
+        <div className="text-center">
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#417FFA', height: 18 }}
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
+            }}
+          >
+            编辑
+          </a>
+          <span style={{ color: '#E9EBF0' }}>|</span>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#417FFA' }}
+            onClick={e => e.preventDefault()}
+          >
+            删除
+          </a>
+        </div>
+      )
+    },
+  },
+]
+const data = [
+  {
+    id: 1,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+  {
+    id: 2,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+]
+;<Table
+  columns={columns}
+  data={data}
+  defaultSort={{ prop: 'num', order: 'descending' }}
+  onChangeSort={val => {
+    console.log(val)
+  }}
+/>
+```
+
 ### 变更记录
 
 v2.0.0
@@ -733,3 +852,7 @@ v2.0.0
 - 新增 columns 表格配置项属性。具体用法参照例子。参数包含 prop, rowspan, colspan, Cell, width。其中，prop 为 dataIndex，Header 为表头渲染，width 为表格项宽度，没有 width 属性但是有 fixed 属性时，fixed 列默认宽度为 80，其他为自适应，fixed 可选值为 left/right，Cell 为 td 渲染，可自定义渲染项，非自定义结构下返回参数为 prop 对应值，自定义情况下返回参数为该条数据，rowspan 为跨行参数, colspan 为跨列参数
 - 新增 rowSelection 多选表格配置项属性。具体用法参照例子。添加 selectedRowKeys 参数则为可控组件，添加 defaultSelectedRowKeys 则为非受控组件。onSelect 为手动单选／取消单选触发事件，返回参数为 checkbox 状态(true/false)，index，选中项数据 ，onSelectAll 为手动全选／取消全选触发事件，返回参数为全选 checkbox 状态(true/false)，selectedRowKeys。单选全选事件都会触发 onChange 事件，返回项为当前选择项目列表。fixed 为固定左侧参数
 - 新增 placeholder 属性，表格无数据时提示文字。默认值为“暂无数据”
+
+v2.1.0
+
+- 新增可排序 table。defaultSort，设置默认排序字段和排序顺序。onChangeSort 排序更改回调事件，返回参数为{prop,order}。暂只支持对 prop 为 string 类型的字段进行排序。当为非可控 table 时，更改排序，清空勾选项。

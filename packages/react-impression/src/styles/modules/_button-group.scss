@@ -31,7 +31,7 @@
   .btn + .btn-group,
   .btn-group + .btn,
   .btn-group + .btn-group {
-    margin-left: -$input-btn-border-width;
+    margin-left: -$input-border-width;
   }
 
   > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
@@ -74,15 +74,6 @@
     padding-right: $split-btn-lg-dropdown-toggle-padding-x;
     padding-left: $split-btn-lg-dropdown-toggle-padding-x;
   }
-
-  // The clickable button for toggling the menu
-  // Remove the gradient and set the same inset shadow as the :active state
-  &.open .dropdown-toggle {
-    // Show no shadow for `.btn-link` since it has no other button styles.
-    &.btn-link {
-      box-shadow: none;
-    }
-  }
 }
 
 // Optional: Group multiple button groups together for a toolbar
@@ -118,22 +109,6 @@
 }
 .btn-group-lg > .btn {
   @extend .btn-lg;
-}
-
-//
-//Alternate button group
-//
-
-.btn-group-primary > .btn {
-  @extend .btn-outline-primary;
-}
-
-.btn-group-secondary > .btn {
-  @extend .btn-outline-secondary;
-}
-
-.btn-group-default > .btn {
-  @extend .btn-default;
 }
 
 // Reposition the caret

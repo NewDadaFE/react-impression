@@ -78,11 +78,11 @@ export default class Confirm extends React.PureComponent {
   getAddonByType = type => {
     switch (type) {
       case 'info':
-        return 'fa-question-circle text-primary'
+        return 'dada-ico-question-circle text-primary'
       case 'danger':
-        return 'fa-exclamation-circle text-danger'
+        return 'dada-ico-exclamation-circle text-danger'
       default:
-        return 'fa-exclamation-circle text-warning'
+        return 'dada-ico-exclamation-circle text-warning'
     }
   }
 
@@ -103,11 +103,11 @@ export default class Confirm extends React.PureComponent {
       <div className={classnames('confirm', className)}>
         <div {...others} className='confirm-dialog'>
           <div className='confirm-addon'>
-            <i className={classnames('fa', iconTypeClass)} />
+            <i className={classnames('dada-ico dada-ico-xl', iconTypeClass)} />
           </div>
           <div className='confirm-body'>{children}</div>
           <div className='confirm-footer'>
-            <Button theme='default' onClick={onCancelClick}>
+            <Button theme='secondary' onClick={onCancelClick}>
               {cancelText}
             </Button>
             <Button theme='primary' onClick={onOkClick}>

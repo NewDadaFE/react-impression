@@ -1,17 +1,20 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from '../Icon'
 
 const DropdownTrigger = ({
   trigger,
   toggleMenu,
   className,
   children,
+  disabled,
   ...others
 }) => {
-  let options = {}
-
+  let options = {
+    icon: 'angle-down',
+    iconPosition: 'right',
+  }
+  disabled && (options.disabled = true)
   if (trigger === 'click') {
     options.onClick = toggleMenu
   }
@@ -19,10 +22,7 @@ const DropdownTrigger = ({
   children = React.cloneElement(
     children,
     options,
-    <span>
-      {children.props.children}
-      <Icon className='dropdown-caret' right type='caret-down' />
-    </span>
+    <span>{children.props.children}</span>
   )
 
   return (

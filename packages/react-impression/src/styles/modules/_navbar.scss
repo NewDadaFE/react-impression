@@ -18,8 +18,8 @@
 
 .navbar-link {
   display: block;
-  font-size: $font-size-h3;
-  color: $gray-darker;
+  font-size: rem(18px);
+  color: $gray-dark;
 
   &.active,
   &:hover {

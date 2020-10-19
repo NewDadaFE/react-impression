@@ -1,5 +1,11 @@
-//loading, modal
-$zindex-loading: 1050 !default;
+// input
+$zindex-input-border: -1 !default;
+$zindex-input: 0 !default;
+$zindex-input-group-btn: 2 !default;
+$zindex-input-group-btn-active: 3 !default;
+$zindex-input-group-input-border: 4 !default;
+$zindex-input-group-input: 5 !default;
+// modal
 $zindex-modal: 1050 !default;
 
 // confirm, alert, message, notification
@@ -18,3 +24,7 @@ $zindex-datepicker: 1080 !default;
 
 // tooltip
 $zindex-tooltip: 1090 !default;
+$zindex-trigger: 1090 !default;
+
+// loading
+$zindex-loading: 2000 !default;

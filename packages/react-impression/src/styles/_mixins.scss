@@ -1,12 +1,12 @@
 // Utilities
+@import 'mixins/common';
 @import 'mixins/breakpoints';
 @import 'mixins/hover';
 @import 'mixins/tag';
 @import 'mixins/resize';
 @import 'mixins/tab-focus';
 @import 'mixins/text-emphasis';
-@import 'mixins/text-hide';
-@import 'mixins/text-truncate';
+@import 'mixins/typography';
 
 // // Components
 @import 'mixins/attention';

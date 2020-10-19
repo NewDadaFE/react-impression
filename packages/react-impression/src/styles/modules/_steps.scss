@@ -72,9 +72,11 @@
   width: $step-icon-size;
   height: $step-icon-size;
   margin-bottom: $step-icon-offset-bottom;
-  font-size: $step-icon-size;
-  line-height: $step-icon-size;
   text-align: center;
+  & > i {
+    font-size: $step-icon-size;
+    line-height: $step-icon-size;
+  }
 }
 // 节点序号
 .step-seq-icon {
@@ -82,6 +84,7 @@
   color: $step-title-color;
   border-radius: 50%;
   background-color: $step-icon-bg-color;
+  line-height: $step-icon-size;
 }
 .step-dot {
   display: inline-block;
@@ -91,6 +94,7 @@
   border-width: $step-dot-border-width;
   border-style: solid;
   border-radius: 50%;
+  margin: ($step-icon-size - $step-dot-size) / 2;
 }
 .step-title {
   padding-bottom: $step-title-offset-bottom;

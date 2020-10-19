@@ -6,8 +6,6 @@
 .datepicker-inner {
   padding-top: $datepicker-padding-top;
   font-size: $datepicker-font-size;
-  transform-origin: center 0;
-  animation: 0.36s scaleIn ease;
   color: $gray-base;
   border: $datepicker-border;
   border-radius: $border-radius;
@@ -156,9 +154,9 @@
   line-height: 1;
   cursor: pointer;
   text-align: center;
-  color: $link-color;
+  color: $text-link-primary-color;
   border-top: $datepicker-border;
   &:hover {
-    color: $link-hover-color;
+    color: $text-link-hover-color;
   }
 }

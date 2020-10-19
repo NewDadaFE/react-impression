@@ -4,7 +4,8 @@
 
 .input-group {
   position: relative;
-  width: 100%;
+  z-index: $zindex-input;
+  min-width: $input-width;
 
   @if $enable-flex {
     display: inline-flex;
@@ -13,26 +14,32 @@
     border-collapse: separate;
   }
 
-  .form-control {
-    border-radius: $input-border-radius;
+  & > .dada-input-group-input {
     position: relative;
 
     @if $enable-flex {
+      display: flex;
       flex: 1;
     } @else {
       float: left;
       width: 100%;
     }
 
-    margin-bottom: 0;
-
-    &:focus,
-    &:hover {
-      z-index: 6;
+    & > .input-field {
+      &:focus,
+      &:hover {
+        z-index: $zindex-input-group-input;
+        & + .dada-input-border {
+          z-index: $zindex-input-group-input-border;
+        }
+      }
     }
+  }
 
+  & > .dada-input-group-input,
+  & > .input-group-addon {
     &:not(:first-child) {
-      margin-left: -1px;
+      margin-left: (-$input-border-width);
     }
   }
 
@@ -60,10 +67,6 @@
   }
   white-space: nowrap;
   vertical-align: middle; // Match the inputs
-
-  .fa {
-    line-height: $line-height-base;
-  }
 }
 
 // Sizing options
@@ -71,16 +74,22 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control,
+.input-group-lg > .dada-input-group-input > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   @extend .form-control-lg;
 }
 
-.input-group-sm > .form-control,
+.input-group-sm > .dada-input-group-input > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   @extend .form-control-sm;
+}
+
+.input-group-xs > .dada-input-group-input > .form-control,
+.input-group-xs > .input-group-addon,
+.input-group-xs > .input-group-btn > .btn {
+  @extend .form-control-xs;
 }
 
 //
@@ -88,7 +97,7 @@
 //
 
 .input-group-addon {
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-padding-y-md $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
   font-weight: normal;
@@ -98,6 +107,7 @@
   background-color: $input-group-addon-bg;
   border: 1px solid $input-group-addon-border-color;
   border-radius: $input-border-radius;
+  cursor: default;
 
   // Sizing
   &.form-control-sm {
@@ -120,7 +130,7 @@
 // Reset rounded corners
 //
 
-.input-group .form-control:not(:last-child),
+.input-group > .dada-input-group-input:not(:last-child) > .dada-input-border,
 .input-group-addon:not(:last-child),
 .input-group-btn:not(:last-child) > .btn,
 .input-group-btn:not(:last-child) > .btn-group > .btn,
@@ -131,11 +141,7 @@
   @include border-right-radius(0);
 }
 
-.input-group-addon:not(:last-child) {
-  border-right: 0;
-}
-
-.input-group .form-control:not(:first-child),
+.input-group > .dada-input-group-input:not(:first-child) > .dada-input-border,
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
 .input-group-btn:not(:first-child) > .btn-group > .btn,
@@ -143,10 +149,6 @@
 .input-group-btn:not(:last-child) > .btn:not(:first-child),
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
-}
-
-.form-control + .input-group-addon:not(:first-child) {
-  border-left: 0;
 }
 
 //
@@ -164,14 +166,14 @@
     position: relative;
 
     + .btn {
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-$input-border-width);
     }
 
     // Bring the "active" button to the front
     &:hover,
     &:focus,
     &:active {
-      z-index: 3;
+      z-index: $zindex-input-group-btn-active;
     }
   }
 
@@ -180,13 +182,13 @@
   &:not(:first-child) {
     > .btn,
     > .btn-group {
-      z-index: 2;
-      margin-left: (-$input-btn-border-width);
+      z-index: $zindex-input-group-btn;
+      margin-left: (-$input-border-width);
       // Because specificity
       &:hover,
       &:focus,
       &:active {
-        z-index: 3;
+        z-index: $zindex-input-group-btn-active;
       }
     }
   }

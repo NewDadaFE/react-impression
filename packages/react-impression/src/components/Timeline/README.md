@@ -48,7 +48,7 @@
           <Col col={2}>下单</Col>
         </Row>
       </TimelineItem>
-      <TimelineItem dot={<Icon type="pause-circle-o" className="text-muted" />}>
+      <TimelineItem dot={<Ico type="pause-circle-o" className="text-muted" />}>
         <a href="#">查看更多</a>
       </TimelineItem>
     </Timeline>
@@ -64,11 +64,11 @@
     <Timeline size="lg">
       <TimelineItem
         dot={
-          <Icon type="map-marker" style={{ fontSize: 40, marginLeft: -3 }} />
+          <Ico type="map-marker" style={{ fontSize: 40, marginLeft: -12 }} />
         }
         Title={
           <div>
-            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-12</div>
+            <div style={{ fontSize: 16, color: '#262626' }}>2017-05-12</div>
             <div>11:21:34</div>
           </div>
         }
@@ -88,7 +88,7 @@
       <TimelineItem
         Title={
           <div>
-            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-11</div>
+            <div style={{ fontSize: 16, color: '#262626' }}>2017-05-11</div>
             <div>11:21:34</div>
           </div>
         }
@@ -100,7 +100,7 @@
       <TimelineItem
         Title={
           <div>
-            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-10</div>
+            <div style={{ fontSize: 16, color: '#262626' }}>2017-05-10</div>
             <div>11:21:34</div>
           </div>
         }

@@ -1,111 +1,110 @@
 ### 示例
 
-**基本用法**
+**显示位置**
+
+默认：右侧
 
 ```js
 initialState = {
   content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',
 }
 ;<Row>
-  <Col>
+  <Col col={3}>
     <Popover position="right" title="标题" content={state.content}>
-      <Button theme="secondary">显示在右侧</Button>
+      <Button>显示在右侧</Button>
     </Popover>
   </Col>
-  <Col>
+  <Col col={3}>
     <Popover position="left" title="标题" content={state.content}>
-      <Button theme="secondary">显示在左侧</Button>
+      <Button>显示在左侧</Button>
     </Popover>
   </Col>
-  <Col>
+  <Col col={3}>
     <Popover position="top" title="标题" content={state.content}>
-      <Button theme="secondary">显示在上方</Button>
+      <Button>显示在上方</Button>
     </Popover>
   </Col>
-  <Col>
+  <Col col={3}>
     <Popover position="bottom" title="标题" content={state.content}>
-      <Button theme="secondary">显示在下方</Button>
+      <Button>显示在下方</Button>
     </Popover>
   </Col>
 </Row>
 ```
 
-**激活方式**
+**触发方式**
+
+默认：鼠标悬停
 
 ```js
 initialState = {
   content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',
 }
 ;<Row>
-  <Col>
+  <Col col={3}>
     <Popover position="right" title="标题" content={state.content}>
-      <Button theme="secondary">默认是鼠标悬停激活</Button>
+      <Button>鼠标悬停触发</Button>
     </Popover>
   </Col>
-  <Col>
+  <Col col={3}>
     <Popover
       trigger="click"
-      position="top"
+      position="bottom"
       title="标题"
       content={state.content}
     >
-      <Button theme="secondary">点击激活</Button>
+      <Button>点击触发</Button>
     </Popover>
   </Col>
 </Row>
 ```
 
-**插入表格内容**
+**自定义内容**
+
+弹出层最大宽度默认为 276px，可以用过 style 属性或者 className 属性覆写样式：
+
+```css
+/* style={{ width: '500px', maxWidth: 'none' }} 或 */
+.override {
+  max-width: none;
+  width: 500px;
+}
+```
 
 ```js
 initialState = {
   content: (
-    <Row>
-      <Col
-        col="3"
-        style={{
-          padding: '0.35rem 0.71429rem',
-          boxSizing: 'border-box',
-          color: '#132240',
-        }}
-        className="text-right"
-      >
-        <strong>城市:</strong>{' '}
-      </Col>
-      <Col col="9" style={{ paddingLeft: 0 }}>
-        <InlineSelect defaultValue={'1'} onChange={this.selectZoneHandle}>
-          <InlineSelectOption value="1">南京</InlineSelectOption>
-          <InlineSelectOption value="2">无锡</InlineSelectOption>
-          <InlineSelectOption value="3">徐州</InlineSelectOption>
-          <InlineSelectOption value="4">常州</InlineSelectOption>
-          <InlineSelectOption value="5">苏州</InlineSelectOption>
-          <InlineSelectOption value="6">南通</InlineSelectOption>
-          <InlineSelectOption value="7">连云港</InlineSelectOption>
-          <InlineSelectOption value="8">盐城</InlineSelectOption>
-          <InlineSelectOption value="9">淮安</InlineSelectOption>
-          <InlineSelectOption value="10">扬州</InlineSelectOption>
-          <InlineSelectOption value="11">镇江</InlineSelectOption>
-          <InlineSelectOption value="12">泰州</InlineSelectOption>
-          <InlineSelectOption value="13">宿迁</InlineSelectOption>
-        </InlineSelect>
-      </Col>
-    </Row>
+    <Table data={[{ name: '青青', age: '18', nation: '中国' }]}>
+      <TableColumn prop="name" Header="姓名" />
+      <TableColumn prop="age" Header="年龄" />
+      <TableColumn prop="nation" Header="国籍" />
+    </Table>
   ),
 }
 ;<Row>
-  <Col>
-    <Popover position="right" title="标题" content={state.content}>
-      <Button theme="secondary">鼠标悬停显示表格</Button>
-    </Popover>
-  </Col>
-  <Col>
+  <Col col={3}>
     <Popover
       trigger="click"
-      position="top"
+      position="bottom"
       title="标题"
       content={state.content}
     >
-      <Button theme="secondary">点击激活</Button>
+      <Button>点击显示表格</Button>
+    </Popover>
+  </Col>
+  <Col col={3}>
+    <Popover trigger="click" position="bottom" content={state.content}>
+      <Button>点击显示无标题</Button>
+    </Popover>
+  </Col>
+  <Col col={3}>
+    <Popover
+      trigger="click"
+      position="bottom"
+      content={state.content}
+      style={{ width: '500px', maxWidth: 'none' }}
+    >
+      <Button>自定义宽度</Button>
     </Popover>
   </Col>
 </Row>
@@ -115,5 +114,4 @@ initialState = {
 
 v2.0.0
 
-* 新增 \$popover-margin sass 变量
-* 新增 trigger 参数
+- 新增 trigger 参数

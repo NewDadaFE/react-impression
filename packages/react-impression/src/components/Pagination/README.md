@@ -1,111 +1,229 @@
 ### 示例
 
-**页码较少的情况**
+**基本用法**
 
 ```js
-const onSelectHandle = pageNo => {
+const onLargeActiveHandle = (pageNo, pageSize) => {
   setState({
-    activePage: pageNo,
+    largeActivePage: pageNo,
   })
+  console.log(pageSize)
 }
+const onSmallActiveHandle = (pageNo, pageSize) => {
+  setState({
+    smallActivePage: pageNo,
+  })
+  console.log(pageSize)
+}
+
 initialState = {
-  totalPage: 6,
-  activePage: 2,
+  total: 666,
+  largeActivePage: 50,
+  smallActivePage: 2,
 }
-;<Pagination
-  onSelect={onSelectHandle}
-  scope={2}
-  totalPage={state.totalPage}
-  activePage={state.activePage}
-/>
+;<div>
+  <div>大尺寸：</div>
+  <Pagination
+    onSelect={onLargeActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.largeActivePage}
+  />
+  <div>小尺寸：</div>
+  <Pagination
+    onSelect={onSmallActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.smallActivePage}
+    size="sm"
+  />
+</div>
 ```
 
-**页码较多的情况**
+**改变 pageSize**
+
+改变 pageSize 的功能依赖 **pageSize 属性**, **showSizeChanger 属性**和**onShowSizeChange 属性**。
 
 ```js
-const onSelectHandle = pageNo => {
+const onLargeActiveHandle = (pageNo, pageSize) => {
   setState({
-    activePage: pageNo,
+    largeActivePage: pageNo,
+  })
+  console.log(pageSize)
+}
+const onSmallActiveHandle = (pageNo, pageSize) => {
+  setState({
+    smallActivePage: pageNo,
+  })
+  console.log(pageSize)
+}
+const onLargeSizeChange = pageSize => {
+  setState({
+    largePageSize: pageSize,
+  })
+}
+const onSmallSizeChange = pageSize => {
+  setState({
+    smallPageSize: pageSize,
   })
 }
 initialState = {
-  totalPage: 99,
-  activePage: 50,
+  total: 6660,
+  largeActivePage: 50,
+  smallActivePage: 2,
+  largePageSize: 50,
+  smallPageSize: 20,
 }
-;<Pagination
-  onSelect={onSelectHandle}
-  scope={2}
-  totalPage={state.totalPage}
-  activePage={state.activePage}
-/>
-```
-
-**自定义翻页控制按钮的内容**
-
-```js
-const onSelectHandle = pageNo => {
-  setState({
-    activePage: pageNo,
-  })
-}
-initialState = {
-  totalPage: 3,
-  activePage: 1,
-}
-;<Pagination
-  onSelect={onSelectHandle}
-  scope={2}
-  totalPage={state.totalPage}
-  activePage={state.activePage}
-  lastContent="上一页"
-  nextContent="下一页"
-/>
+;<div>
+  <div>大尺寸：</div>
+  <Pagination
+    onSelect={onLargeActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.largeActivePage}
+    pageSize={state.largePageSize}
+    onShowSizeChange={onLargeSizeChange}
+    showSizeChanger
+  />
+  <div>小尺寸：</div>
+  <Pagination
+    onSelect={onSmallActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.smallActivePage}
+    pageSize={state.smallPageSize}
+    size="sm"
+    onShowSizeChange={onSmallSizeChange}
+    showSizeChanger
+  />
+</div>
 ```
 
 **快速跳转**
 
+快速跳转功能依赖 **showQuickJumper 属性**。
+
 ```js
-const onSelectHandle = pageNo => {
+const onLargeActiveHandle = pageNo => {
   setState({
-    activePage: pageNo,
+    largeActivePage: pageNo,
+  })
+}
+const onSmallActiveHandle = pageNo => {
+  setState({
+    smallActivePage: pageNo,
   })
 }
 initialState = {
-  totalPage: 12999,
-  activePage: 50,
+  total: 6660,
+  largeActivePage: 50,
+  smallActivePage: 2,
 }
-;<Pagination
-  onSelect={onSelectHandle}
-  scope={2}
-  totalPage={state.totalPage}
-  activePage={state.activePage}
-  showQuickJumper
-/>
+;<div>
+  <div>大尺寸：</div>
+  <Pagination
+    onSelect={onLargeActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.largeActivePage}
+    showQuickJumper
+  />
+  <div>小尺寸：</div>
+  <Pagination
+    onSelect={onSmallActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.smallActivePage}
+    size="sm"
+    showQuickJumper
+  />
+</div>
 ```
 
-**显示总数量**
+**显示总数**
 
 显示总数量的功能依赖 **total 属性** 和 **showTotal 属性**。
 
 ```js
-const onSelectHandle = pageNo => {
+const onLargeActiveHandle = pageNo => {
   setState({
-    activePage: pageNo,
+    largeActivePage: pageNo,
+  })
+}
+const onSmallActiveHandle = pageNo => {
+  setState({
+    smallActivePage: pageNo,
   })
 }
 initialState = {
-  totalPage: 3,
-  activePage: 1,
-  total: 27,
+  total: 6660,
+  largeActivePage: 50,
+  smallActivePage: 2,
 }
-;<Pagination
-  onSelect={onSelectHandle}
-  scope={2}
-  totalPage={state.totalPage}
-  activePage={state.activePage}
-  total={state.total}
-  showTotal
-/>
+;<div>
+  <div>大尺寸：</div>
+  <Pagination
+    onSelect={onLargeActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.largeActivePage}
+    showTotal
+  />
+  <div>小尺寸：</div>
+  <Pagination
+    onSelect={onSmallActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.smallActivePage}
+    size="sm"
+    showTotal
+  />
+</div>
+```
+
+**全局禁用**
+
+```js
+const onLargeActiveHandle = pageNo => {
+  setState({
+    largeActivePage: pageNo,
+  })
+}
+const onSmallActiveHandle = pageNo => {
+  setState({
+    smallActivePage: pageNo,
+  })
+}
+initialState = {
+  total: 6660,
+  largeActivePage: 50,
+  smallActivePage: 2,
+}
+;<div>
+  <div>大尺寸：</div>
+  <Pagination
+    onSelect={onLargeActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.largeActivePage}
+    showQuickJumper
+    showSizeChanger
+    showTotal
+    disabled
+  />
+  <div>小尺寸：</div>
+  <Pagination
+    onSelect={onSmallActiveHandle}
+    scope={3}
+    total={state.total}
+    activePage={state.smallActivePage}
+    size="sm"
+    showQuickJumper
+    showSizeChanger
+    showTotal
+    disabled
+  />
+</div>
 ```
 
 ### 变更记录
@@ -116,3 +234,10 @@ v2.0.0
 - 新增`lastContent`、`nextContent`属性，支持自定义翻页控制按钮内容
 - 新增`showQuickJumper`属性，支持快速跳转功能
 - 新增`total`、 `showTotal`属性，支持显示总页数和总数据条数
+
+v2.1.2
+
+- 新增 `size` 属性，支持 sm，md（默认)
+- 删除 `totalPage`属性，内部计算总页数
+- 新增`disabled`属性，全局禁用模式
+- 新增`pageSize`属性和`pageSizeOptions`属性，支持自定义每页数量。

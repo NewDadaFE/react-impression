@@ -1,48 +1,39 @@
 .input-group-upload {
-  & > input[type="file"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
+  cursor: pointer;
+
+  & > .dada-input-group-input {
+    align-items: center;
+
+    & > .dada-input-addon-before {
+      margin-right: $input-padding-x;
+    }
+
+    & > .input-field {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+    }
   }
 
   &.disabled {
-    .form-control {
-      cursor: not-allowed;
-      color: $gray-dark;
-    }
+    cursor: not-allowed;
   }
+}
 
-  .form-control {
-    padding-left: $upload-offset-left;
-    overflow: hidden;
-    cursor: default;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: $gray-darker;
-    &:hover {
-      border-color: $upload-preview-border-color;
-    }
-  }
-  .btn {
-    padding-right: $upload-padding;
-    padding-left: $upload-padding;
-  }
+.dada-upload-placeholder {
+  color: $input-placeholder-color;
 }
-.upload-addon {
-  position: absolute;
-  top: 50%;
-  left: $upload-padding;
-  font-size: $upload-icon-font-size;
-  transform: translateY(-50%);
-  color: $upload-icon-color;
-}
+
 /* 图片上传样式 start */
 .upload-preview {
   position: relative;
   display: inline-block;
-  vertical-align: middle;
   width: $upload-preview-width;
   height: $upload-preview-height;
+  vertical-align: middle;
 
   & > input[type="file"] {
     position: absolute;
@@ -52,6 +43,7 @@
     opacity: 0;
   }
 }
+
 .upload-preview-inner {
   display: flex;
   width: 100%;
@@ -62,43 +54,47 @@
   cursor: pointer;
   text-align: center;
   color: $upload-preview-color;
-  border-width: $border-width;
   border-radius: $border-radius;
 }
+
 .upload-preview-tool {
+  border: $border-width dashed $upload-preview-border-color;
+  background-color: $upload-preview-bg;
+
   &.disabled {
     cursor: not-allowed;
-    color: $gray-dark;
+    color: $gray;
   }
-  border-style: dashed;
-  border-color: $upload-preview-border-color;
-  background-color: $upload-preview-bg;
 }
+
 .upload-preview-addon {
   width: $upload-preview-addon-width;
   height: $upload-preview-addon-height;
   font-size: $upload-preview-addon-font-size;
   line-height: $upload-preview-addon-height;
 }
+
 .upload-preview-text {
   padding-top: $upload-preview-text-padding-top;
   font-size: $upload-preview-text-font-size;
   line-height: $upload-preview-text-font-size;
 }
+
 /* 图片上传样式 end */
+
 /* 图片预览样式 start */
 .upload-preview-img {
+  overflow: hidden;
+  border: $border-width solid $upload-preview-img-border-color;
+  background-color: $upload-preview-img-bg;
+
   &.disabled {
     cursor: default;
 
-    & > .upload-preview-remove {
+    & > .dada-upload-preview-mask {
       cursor: pointer;
     }
   }
-  overflow: hidden;
-  border-style: solid;
-  border-color: $upload-preview-img-border-color;
-  background-color: $upload-preview-img-bg;
 
   & > img {
     width: 100%;
@@ -106,33 +102,44 @@
     padding: $upload-preview-img-offset;
   }
 }
-.upload-preview-remove {
+
+.dada-upload-preview-img {
+  width: $upload-preview-width;
+  height: $upload-preview-height;
+}
+
+.dada-upload-preview-mask {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  margin: $upload-preview-img-offset;
-  font-size: $upload-preview-remove-font-size;
-  transition: $upload-preview-transition;
-  opacity: 0;
-  background-color: $upload-preview-wrapper-bg;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: $upload-preview-transition;
+  opacity: 0;
+  background-color: $upload-preview-wrapper-bg;
+
   &:hover {
     opacity: 1;
   }
+}
 
-  .action-icon {
-    padding: $upload-preview-ic-padding;
-    &:hover {
-      color: $upload-preview-remove-color;
-    }
+.dada-upload-preview-action {
+  padding: $upload-preview-ic-padding;
+  font-size: $upload-preview-ic-font-size;
+  opacity: .6;
+  color: white;
+
+  &:hover {
+    opacity: 1;
   }
 }
-/* 图片预览样式 start */
-.image-preview {
+
+/* 图片预览样式 end */
+// 大图查看 开始
+.dada-big-img-preview {
   position: fixed;
   z-index: $zindex-modal;
   top: 0;
@@ -140,71 +147,128 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
-  animation: fadeIn 0.36s ease;
+  animation: fadeIn .36s ease;
   outline: 0;
   background-color: $upload-preview-wrapper-bg;
 
-  .ic {
-    font-size: $upload-preview-ic-font-size;
+  .dada-ico {
     cursor: pointer;
+    opacity: .6;
     color: $upload-preview-remove-color;
-    opacity: 0.6;
 
     &:hover {
       opacity: 1;
     }
   }
+}
 
-  .shadow {
+.dada-big-img-preview-operations {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+
+  & > .dada-ico {
     width: $upload-preview-big-img-action-btn-size;
     height: $upload-preview-big-img-action-btn-size;
+    margin: $spacer-x;
     border-radius: $upload-preview-ic-border-radius;
+
     &:hover {
       box-shadow: $upload-preview-ic-shadow;
     }
   }
+}
 
-  .ic-close {
-    position: absolute;
-    z-index: 1;
-    top: $upload-preview-close-top;
-    right: $upload-preview-close-right;
+.dada-big-img-preview-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow: auto;
+}
+
+.dada-big-img-preview-image {
+  max-width: $upload-preview-big-img-max-width;
+  max-height: $upload-preview-big-img-max-height;
+  margin: auto;
+}
+
+.dada-big-img-preview-close {
+  position: absolute;
+  z-index: 1;
+  top: $upload-preview-close-top;
+  right: $upload-preview-close-right;
+}
+
+// 大图查看 结束
+// 多图片上传
+.dada-upload-preview-multiple {
+  & > .upload-preview:not(:last-child) {
+    margin-right: rem(16px);
   }
-  .image-wrap {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
-    text-align: center;
-    display: flex;
+}
+/* 多个文件上传列表样式 start */
+.dada-upload-ul-outer {
+  @include scroll-reset();
 
-    & > img {
-      max-width: $upload-preview-big-img-max-width;
-      max-height: $upload-preview-big-img-max-height;
-      margin: auto;
-    }
+  width: 360px;
+  max-height: 32px * 5;
+  margin-top: 16px;
+  overflow-y: scroll;
+}
+
+.dada-upload-ul {
+  margin: 0;
+  padding: 0;
+}
+
+.dada-upload-li {
+  position: relative;
+  display: flex;
+  padding: 0 8px;
+  align-items: center;
+  list-style: none;
+
+  &:hover {
+    background-color: $gray-lightest;
   }
+}
 
-  .image-preview-operation {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.dada-upload-li-text {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex: 1;
 
-    .ic-rotate {
-      margin: $spacer-x;
+  & > span {
+    @include set-font-size(14px);
+
+    padding: 5px 0;
+    overflow: hidden;
+    flex: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: $gray-darker;
+
+    &:hover {
+      color: $brand-primary;
     }
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.dada-upload-li-ico {
+  margin-right: 8px;
+  color: $disabled-color;
 }
+
+.dada-upload-li-remove {
+  cursor: pointer;
+  color: $text-muted;
+}
+
+/* 多个文件上传列表样式 end */

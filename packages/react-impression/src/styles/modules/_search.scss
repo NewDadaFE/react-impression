@@ -1,0 +1,99 @@
+$search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-baseline;
+
+.dada-search {
+  position: relative;
+  display: inline-block;
+  width: $input-width;
+
+  & > .input {
+    width: 100%;
+  }
+}
+
+.dada-search-context {
+  position: absolute;
+  top: 50%;
+  right: $input-padding-x;
+  left: $search-context-offset + 1px;
+  overflow: hidden;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $gray-base;
+  background-color: $brand-pure;
+
+  &.dada-search-context-focus {
+    color: $disabled-color;
+  }
+
+  &.dada-search-context-clear {
+    right: $search-context-offset;
+  }
+}
+
+// 搜索icon
+.dada-search-addon {
+  color: $disabled-color;
+}
+
+// 清除icon
+.dada-search-clear:hover {
+  cursor: pointer;
+  color: $gray-darker;
+}
+
+.dada-search-clear-hidden {
+  display: none;
+}
+
+.dada-search-popup > .dada-trigger-inner {
+  @include scroll-reset();
+
+  max-width: 408px;
+  max-height: 376px;
+  overflow: auto;
+}
+
+.dada-search-option {
+  @include set-font-size(14px);
+
+  padding: 7px 16px;
+  cursor: pointer;
+
+  &-text {
+    @include line-clamp(3);
+  }
+
+  &:hover {
+    background-color: $gray-lightest;
+  }
+
+  &:first-child {
+    margin-top: 8px;
+  }
+
+  &:last-child {
+    margin-bottom: 8px;
+  }
+}
+
+.dada-input-disabled {
+  & > .dada-input-addon-before,
+  & > .dada-input-addon-after,
+  & + .dada-search-context {
+    cursor: not-allowed;
+    color: $input-disabled-color;
+  }
+
+  & + .dada-search-context {
+    background-color: $input-disabled-bg;
+  }
+}
+
+.dada-search-empty {
+  @include set-font-size(14px);
+
+  padding: 7px 16px;
+  text-align: center;
+  color: $disabled-color;
+}

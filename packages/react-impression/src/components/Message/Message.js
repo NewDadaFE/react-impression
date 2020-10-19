@@ -51,10 +51,10 @@ export default class Message extends React.Component {
    */
   getTitleIcon() {
     const themeMap = {
-      info: ['fa', 'fa-info-circle'],
-      success: ['fa', 'fa-check-circle'],
-      warning: ['fa', 'fa-exclamation-triangle'],
-      danger: ['fa', 'fa-times-circle'],
+      info: ['dada-ico', 'dada-ico-info-circle', 'dada-ico-md'],
+      success: ['dada-ico', 'dada-ico-check-circle', 'dada-ico-md'],
+      warning: ['dada-ico', 'dada-ico-exclamation-circle', 'dada-ico-md'],
+      danger: ['dada-ico', 'dada-ico-times-circle', 'dada-ico-md'],
       loading: ['message-icon-loading'],
     }
 

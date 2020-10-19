@@ -51,7 +51,7 @@ const TimelineItem = ({
       {size === 'lg' && <div className='timeline-item-title'>{content}</div>}
       <div className='timeline-item-line' />
       <div className='timeline-item-addon'>
-        {dot || <i className='fa fa-circle-o' />}
+        {dot || <i className='dada-ico dada-ico-circle-o' />}
       </div>
       <div className='timeline-item-body'>{children}</div>
     </li>

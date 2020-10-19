@@ -56,10 +56,10 @@ export default class Notice extends PureComponent {
    */
   getTitleIcon() {
     const themeMap = {
-      info: ['fa', 'fa-info-circle'],
-      success: ['fa', 'fa-check-circle'],
-      warning: ['fa', 'fa-exclamation-triangle'],
-      danger: ['fa', 'fa-times-circle'],
+      info: ['dada-ico', 'dada-ico-info-circle'],
+      success: ['dada-ico', 'dada-ico-check-circle'],
+      warning: ['dada-ico', 'dada-ico-exclamation-circle'],
+      danger: ['dada-ico', 'dada-ico-times-circle'],
     }
 
     return themeMap[this.props.theme]
@@ -79,7 +79,7 @@ export default class Notice extends PureComponent {
         onMouseLeave={this.props.onMouseLeave}
       >
         <div className='notice-header'>
-          <i className={classnames(iconClass)} />
+          <i className={classnames(iconClass, 'dada-ico-xl')} />
         </div>
         <div className='notice-body'>
           {this.props.closeable && (

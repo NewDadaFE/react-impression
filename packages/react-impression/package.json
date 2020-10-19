@@ -15,13 +15,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "@emotion/is-prop-valid": "^0.8.8",
+    "@popperjs/core": "^2.4.4",
     "classnames": "^2.2.0",
     "lodash.uniqueid": "^4.0.1",
     "perfect-scrollbar": "^1.4.0",
-    "popper.js": "^1.14.4",
     "prop-types": "15.6.2",
     "ramda": "^0.26.0",
     "react-debounce-input": "^3.2.2",
+    "react-popper": "^2.2.3",
     "react-portal": "^4.1.5",
     "react-transition-group": "^4.3.0",
     "sass-rem": "^2.0.1"
@@ -36,6 +38,6 @@
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-load-plugins": "^1.5.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.3"
   }
 }

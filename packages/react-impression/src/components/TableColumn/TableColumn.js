@@ -17,6 +17,11 @@ TableColumn.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
   /**
+   * 列是否可排序
+   */
+  sortable: PropTypes.bool,
+
+  /**
    * 列是否固定
    */
   fixed: PropTypes.oneOf(['left', 'right']),

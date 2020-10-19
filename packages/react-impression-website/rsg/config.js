@@ -32,7 +32,7 @@ module.exports = {
         },
         {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/font-awesome/4.7.0/index.css',
+          href: 'https://at.alicdn.com/t/font_2010704_yzy647hi2ab.css',
         },
       ],
     },
@@ -49,14 +49,18 @@ module.exports = {
       href: 'examples/',
     },
     {
+      name: 'Typography',
+      content: resolveWebsite('docs/Typography.md'),
+    },
+    {
       name: 'General',
       description: '基础内容组件。',
-      components: resolveComponents(['Button*', 'Icon', 'Image']),
+      components: resolveComponents(['Button*', 'Ico', 'Image']),
     },
     {
       name: 'Layout',
       description: '布局组件，用于辅助页面结构的布局工作。',
-      components: resolveComponents(['Row', 'Col', 'Flex*']),
+      components: resolveComponents(['Row', 'Col', 'Flex*', 'Trigger']),
     },
     {
       name: 'Navigation',
@@ -68,11 +72,11 @@ module.exports = {
         'Nav',
         'Nav[A-Z]*',
         'Navbar',
-        // 'NavbarBrand',
         'NavbarButton',
         'NavbarLink',
         'Pagination',
         'Sidebar*',
+        'TextLink',
       ]),
     },
     {
@@ -84,6 +88,7 @@ module.exports = {
         'Form*',
         'Input*',
         'Radio*',
+        'Search',
         'Select*',
         'Switch',
         'Upload',
@@ -101,9 +106,7 @@ module.exports = {
         'ListGroup*',
         'Popover',
         'Table',
-        // 'TableBody',
         'TableColumn',
-        // 'TableHead',
         'Tag',
         'Timeline*',
         'Tooltip',
@@ -115,7 +118,6 @@ module.exports = {
       name: 'Feedback',
       description: '页面输出内容组件，丰富和优化网页对用户行为作出的反馈。',
       components: resolveComponents([
-        // 'Alert',
         'Attention*',
         'Confirm',
         'Loading',

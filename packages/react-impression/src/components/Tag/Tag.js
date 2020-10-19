@@ -64,17 +64,17 @@ export default class Tag extends React.PureComponent {
       className,
       ...others
     } = this.props
-    const tagStyle = outline ? `tag-outline-${theme}` : `tag-${theme}`
-    const tagShape = shape ? `tag-${shape}` : ''
+    const tagStyle = outline ? `dada-tag-outline-${theme}` : `dada-tag-${theme}`
+    const tagShape = shape ? `dada-tag-${shape}` : ''
 
     return (
       <span
         {...others}
-        className={classnames('tag', tagStyle, tagShape, className)}
+        className={classnames('dada-tag', tagStyle, tagShape, className)}
       >
         {children}
         {closable && (
-          <span className='tag-close' onClick={onClose}>
+          <span className='dada-tag-close' onClick={onClose}>
             &times;
           </span>
         )}

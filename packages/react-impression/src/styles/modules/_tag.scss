@@ -3,7 +3,7 @@
 // Requires one of the contextual, color modifier classes for `color` and
 // `background-color`.
 
-.tag {
+.dada-tag {
   display: inline-block;
   padding: $tag-padding-y $tag-padding-x;
   font-size: $tag-font-size;
@@ -22,13 +22,13 @@
 }
 
 // Quick fix for tags in buttons
-.btn .tag {
+.btn .dada-tag {
   position: relative;
   top: -1px;
 }
 
 // Add hover effects, but only for links
-a.tag {
+a.dada-tag {
   &:hover,
   &:focus {
     color: $tag-link-hover-color;
@@ -41,73 +41,65 @@ a.tag {
 //
 // Make them extra rounded with a modifier to replace v3's badges.
 
-.tag-pill {
+.dada-tag-pill {
   padding: $tag-pill-padding-y $tag-pill-padding-x;
   border-radius: $tag-pill-border-radius;
 }
 
 // Themes
 //
-.tag-default {
+.dada-tag-default {
   @include tag-variant($tag-default);
 }
 
-.tag-primary {
+.dada-tag-primary {
   @include tag-variant($tag-primary);
 }
 
-.tag-secondary {
-  @include tag-variant($tag-secondary);
-}
-
-.tag-success {
+.dada-tag-success {
   @include tag-variant($tag-success);
 }
 
-.tag-info {
+.dada-tag-info {
   @include tag-variant($tag-info);
 }
 
-.tag-warning {
+.dada-tag-warning {
   @include tag-variant($tag-warning);
 }
 
-.tag-danger {
+.dada-tag-danger {
   @include tag-variant($tag-danger);
 }
 
 // Outline
 //
-.tag-outline-default {
+.dada-tag-outline-default {
   @include tag-outline-variant($tag-default);
 }
 
-.tag-outline-primary {
+.dada-tag-outline-primary {
   @include tag-outline-variant($tag-primary);
 }
 
-.tag-outline-secondary {
-  @include tag-outline-variant($tag-secondary);
-}
-
-.tag-outline-success {
+.dada-tag-outline-success {
   @include tag-outline-variant($tag-success);
 }
 
-.tag-outline-info {
+.dada-tag-outline-info {
   @include tag-outline-variant($tag-info);
 }
 
-.tag-outline-warning {
+.dada-tag-outline-warning {
   @include tag-outline-variant($tag-warning);
 }
 
-.tag-outline-danger {
+.dada-tag-outline-danger {
   @include tag-outline-variant($tag-danger);
 }
 
 // Close
-.tag-close {
+.dada-tag-close {
   cursor: pointer;
   margin-left: $tag-close-margin-right;
   opacity: 0.6;

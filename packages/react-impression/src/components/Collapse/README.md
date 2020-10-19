@@ -5,7 +5,7 @@
 ```js
 <Collapse>
   <CollapseTitle>
-    <Icon type="bars" left />
+    <Ico type="bars" />
     公共页面
   </CollapseTitle>
   <CollapseBody>
@@ -31,15 +31,15 @@
 
 ```js
 <Sidebar>
-  <SidebarHeader styleName="justify">
-    <Icon type="home" className="fa-lg offset-r offset-r-lg" />
+  <SidebarHeader>
+    <Ico type="list" className="offset-r offset-r-lg" />
     <span>{'首页'}</span>
   </SidebarHeader>
   <SidebarBody>
     <Nav stacked>
       <Collapse>
         <CollapseTitle>
-          <Icon type="home" className="fa-lg offset-r offset-r-lg" />
+          <Ico type="list" className="offset-r offset-r-lg" />
           {'我是一级菜单'}
         </CollapseTitle>
         <CollapseBody>
@@ -68,7 +68,7 @@
       </Collapse>
       <NavItem key={1}>
         <a href="">
-          <Icon type="home" className="fa-lg offset-r offset-r-lg" />
+          <Ico type="list" className="offset-r offset-r-lg" />
           {'我是一级菜单'}
         </a>
       </NavItem>

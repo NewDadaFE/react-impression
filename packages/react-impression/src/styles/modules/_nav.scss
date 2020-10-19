@@ -31,7 +31,7 @@
 
     &:hover {
       color: $nav-disabled-link-hover-color;
-      cursor: $cursor-disabled;
+      cursor: not-allowed;
       background-color: $nav-disabled-link-hover-bg;
     }
   }
@@ -67,7 +67,7 @@
 .nav-stacked {
   .nav-item {
     padding: $nav-stacked-padding;
-    color: $gray-darker;
+    color: $gray-dark;
     cursor: pointer;
     background: $brand-pure;
     transition: background-color 0.2s ease-in-out;
@@ -98,7 +98,7 @@
     border-bottom: $nav-border-width solid $nav-border-color;
     padding: $nav-card-padding;
     background: $gray-lighter;
-    color: $gray-darker;
+    color: $gray-dark;
     transition: background-color 0.2s ease-in-out;
     &.active {
       background: $nav-link-active-bg;
