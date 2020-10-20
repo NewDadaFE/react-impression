@@ -49,9 +49,27 @@
       </Form>
     </Col>
   </Row>
+  <Row>
+    <Col>
+      <Form>
+        <FormGroup>
+          <label>自动关闭:</label>
+          <Input type="time" defaultValue="02:04" autoClose />
+        </FormGroup>
+      </Form>
+    </Col>
+    <Col>
+      <Form>
+        <FormGroup>
+          <label>二次确认:</label>
+          <Input type="time" defaultValue="02:04" />
+        </FormGroup>
+      </Form>
+    </Col>
+  </Row>
 </div>
 ```
 
 ### 变更记录
 
-* 新增 type 属性`time`值，支持选择时分，属性`second`值，支持选择时分秒
+- 新增 autoClose 属性 bool 选完时间是否会自动关闭面板 或者 进行二次确定
