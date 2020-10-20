@@ -12,6 +12,8 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { addEventListener, contains } from '../../utils/system'
 
+const debounceTime = 140
+
 Trigger.propTypes = {
   /**
    * 弹出层的触发器，单个节点
@@ -132,6 +134,7 @@ function Trigger(props) {
   const [showPopup, setShowPopup] = useState(false)
   // 暂存弹出层显隐控制标记
   const showPopupRef = useRef(showPopup)
+  const debounceRef = useRef(null)
 
   // popper 相关---开始
   const [referenceElement, setReferenceElement] = useState(null)
@@ -185,6 +188,30 @@ function Trigger(props) {
   )
   // popper 相关---结束
 
+  const popoverMouseLeave = () => {
+    if (
+      (showAction === 'hover' && !hideAction) ||
+      hideAction === 'mouseLeave'
+    ) {
+      debounceRef.current = setTimeout(() => {
+        setShowPopup(false)
+        debounceRef.current = null
+      }, debounceTime)
+    }
+  }
+
+  const popoverMouseEnter = () => {
+    if (
+      (showAction === 'hover' && !hideAction) ||
+      hideAction === 'mouseLeave'
+    ) {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current)
+        debounceRef.current = null
+      }
+    }
+  }
+
   // 监听 children 变化，更新 referenceElement
   // 使用 useMemo 可以减少页面滚动时引起的重复 clone 操作
   const Children = useMemo(
@@ -199,8 +226,12 @@ function Trigger(props) {
         },
       }
       const hidePopupOnMouseLeave = event => {
-        children.props.onMouseLeave && children.props.onMouseLeave(event)
-        setShowPopup(false)
+        event.persist()
+        debounceRef.current = setTimeout(() => {
+          children.props.onMouseLeave && children.props.onMouseLeave(event)
+          setShowPopup(false)
+          debounceRef.current = null
+        }, debounceTime)
       }
       const hidePopupOnBlur = event => {
         children.props.onBlur && children.props.onBlur(event)
@@ -217,9 +248,14 @@ function Trigger(props) {
         }
       } else if (showAction === 'hover') {
         childrenProps.onMouseEnter = event => {
+          if (debounceRef.current) {
+            clearTimeout(debounceRef.current)
+            debounceRef.current = null
+          }
           children.props.onMouseEnter && children.props.onMouseEnter(event)
           setShowPopup(true)
         }
+        // 没有指定隐藏触发事件，使用默认事件：鼠标移除️
         if (!hideAction) {
           childrenProps.onMouseLeave = hidePopupOnMouseLeave
         }
@@ -235,6 +271,17 @@ function Trigger(props) {
       }
       // 处理弹出层隐藏逻辑
       if (hideAction === 'mouseLeave') {
+        // 鼠标移出弹出层，会注册隐藏弹出层的延迟事件，显示触发事件不是hover时，
+        // 需要特殊处理目标元素的鼠标移入事件，来取消移出弹出层时注册的事件
+        if (showAction !== 'hover') {
+          childrenProps.onMouseEnter = event => {
+            if (debounceRef.current) {
+              clearTimeout(debounceRef.current)
+              debounceRef.current = null
+            }
+            children.props.onMouseEnter && children.props.onMouseEnter(event)
+          }
+        }
         childrenProps.onMouseLeave = hidePopupOnMouseLeave
       } else if (hideAction === 'blur') {
         childrenProps.onBlur = hidePopupOnBlur
@@ -326,6 +373,8 @@ function Trigger(props) {
           ref={setPopperElement}
           style={{ ...popperStyles.popper, ...style }}
           {...attributes.popper}
+          onMouseEnter={popoverMouseEnter}
+          onMouseLeave={popoverMouseLeave}
         >
           <div
             className={classNames('dada-trigger-inner', {
