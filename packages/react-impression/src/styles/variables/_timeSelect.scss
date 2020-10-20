@@ -4,4 +4,5 @@ $time-select-border-color: $gray-lightest;
 $time-select-bg-color: $gray-lightest;
 $time-select-hover-color: $brand-primary;
 $time-select-border-radio: 0px 6px 18px 0px rgba(38, 38, 38, 0.14);
-$time-select-lineheight: rem(22px)
+$time-select-lineheight: rem(22px);
+$time-select-wrap-inner-width: rem(18px) !default;

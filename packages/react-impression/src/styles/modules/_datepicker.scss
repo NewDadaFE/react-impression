@@ -6,11 +6,22 @@
 .datepicker-inner {
   padding-top: $datepicker-padding-top;
   font-size: $datepicker-font-size;
-  color: $gray-base;
+  color: $gray-darker;
   border: $datepicker-border;
   border-radius: $border-radius;
   background-color: $datepicker-bg;
   box-shadow: $datepicker-box-shadow;
+
+  // datepicker内 时间选择器样式覆写
+  .time-select-out {
+    box-shadow: none;
+  }
+  .time-select {
+    border: none;
+  }
+  .time-select-wrap-inner {
+    padding: rem(7px) rem(37px);
+  }
 }
 // 头部
 .datepicker-header {
@@ -49,8 +60,27 @@
   }
 }
 
+// 时间选择
+.datepicker-timeselect-review {
+  padding: $datepicker-timeselect-padding;
+  display: flex;
+  justify-content: space-between;
+  .input,
+  input {
+    width: $datepicker-timeselect-input-width !important;
+  }
+}
+
 .datepicker-body {
   padding: $datepicker-body-padding;
+}
+
+.datepicker-weekgroup,
+.datepicker-daygroup {
+  padding: $datepicker-daygroup-padding;
+}
+.datepicker-weekgroup {
+  padding-top: rem(8px);
 }
 
 // 星期
@@ -74,10 +104,8 @@
 .datepicker-item-text {
   position: relative;
   border: $border-width solid transparent;
-
   &:hover:not(.disable):not(.active) {
-    color: $datepicker-item-active-bg;
-    border-color: $datepicker-item-active-bg;
+    background-color: $datepicker-daygroup-item-hover-color;
   }
 
   &.active {
@@ -90,6 +118,10 @@
     color: $datepicker-item-disable-color !important;
     background-color: $datepicker-item-disable-bg !important;
   }
+
+  &.notinmonth {
+    color: $datepicker-daygroup-notcurrent-item-color;
+  }
 }
 
 // 日
@@ -97,66 +129,53 @@
   width: $datepicker-daygroup-width;
 }
 .datepicker-daygroup-item {
-  padding: rem(2px);
   .datepicker-item-text {
     width: $datepicker-daygroup-item-width;
     line-height: $datepicker-daygroup-item-line-height;
-    border-radius: $datepicker-daygroup-item-border-radius;
+    border-radius: $datepicker-item-border-radius;
 
-    &.now::before {
-      position: absolute;
-      bottom: $datepicker-item-dot-bottom;
-      left: 50%;
-      width: $datepicker-item-dot-size;
-      height: $datepicker-item-dot-size;
-      content: '';
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background-color: $brand-primary;
+    &.now:not(.active) {
+      color: $datepicker-item-active-bg;
+      border-color: $datepicker-item-active-bg;
     }
   }
 }
 
-// 月
-.datepicker-monthgroup {
-  width: $datepicker-monthgroup-width;
-}
-.datepicker-monthgroup-item {
-  padding: $datepicker-monthgroup-item-padding;
-  &:nth-child(3n-1) {
-    padding-right: rem(12px);
-    padding-left: rem(12px);
-  }
-  .datepicker-item-text {
-    width: $datepicker-monthgroup-item-text-width;
-    line-height: $datepicker-monthgroup-item-line-height;
-    border-radius: $datepicker-monthgroup-item-border-radius;
-  }
-}
-
-// 年
+// 月, 年
+.datepicker-monthgroup,
 .datepicker-yeargroup {
   width: $datepicker-daygroup-width;
-  padding-bottom: rem(10px);
+  padding: $datepicker-yeargroup-padding;
 }
+.datepicker-monthgroup-item,
 .datepicker-yeargroup-item {
   padding: $datepicker-yeargroup-item-padding;
   .datepicker-item-text {
     width: $datepicker-yeargroup-item-text-width;
     line-height: $datepicker-yeargroup-item-line-height;
-    border-radius: $datepicker-yeargroup-item-border-radius;
+    border-radius: $datepicker-item-border-radius;
   }
 }
 
-//底部
+//底部确认按钮
 .datepicker-footer {
   padding: $datepicker-footer-padding;
   line-height: 1;
-  cursor: pointer;
   text-align: center;
   color: $text-link-primary-color;
-  border-top: $datepicker-border;
+  border-top: $datepicker-footer-border-top;
   &:hover {
     color: $text-link-hover-color;
+  }
+  &.datepicker-confirm {
+    text-align: right;
+    padding: 0;
+    .btn:hover:not(:disabled) {
+      background-color: inherit;
+      border-color: transparent;
+    }
+  }
+  & > span {
+    cursor: pointer;
   }
 }

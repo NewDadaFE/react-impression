@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import PerfectScrollbar from 'perfect-scrollbar'
 import Button from '../Button'
-import moment from 'moment'
+import { auto } from '@popperjs/core'
 
 export default class TimeSelect extends React.PureComponent {
   state = {
@@ -13,6 +13,9 @@ export default class TimeSelect extends React.PureComponent {
     currentHour: this.props.value ? this.props.value.split(':')[0] : '',
     currentMinute: this.props.value ? this.props.value.split(':')[1] : '',
     currentSecond: this.props.value ? this.props.value.split(':')[2] : '',
+  }
+  static defaultProps = {
+    autoClose: false,
   }
   static propTypes = {
     /**
@@ -39,6 +42,11 @@ export default class TimeSelect extends React.PureComponent {
      * 时间控件类型
      */
     type: PropTypes.oneOf(['time', 'second']),
+
+    /**
+     * 是否选完自动关闭
+     */
+    autoClose: PropTypes.bool,
   }
 
   componentDidMount() {
@@ -186,32 +194,31 @@ export default class TimeSelect extends React.PureComponent {
 
   /**
    * @description  回调
+   * @param ifConfirm 是否是点击确定按钮 默认false
    * @memberof TimeSelect
    */
-  handleSave = () => {
+  handleSave = (ifConfirm = false) => {
     const { currentHour, currentMinute, currentSecond } = this.state
-    const { onChange, onSelect, type } = this.props
-    if (
-      !currentHour ||
-      !currentMinute ||
-      (!currentSecond && type === 'second')
-    ) {
-      return
+    const { onChange, onSelect, type, autoClose } = this.props
+    if (ifConfirm || (autoClose && (currentHour && currentMinute))) {
+      if (!currentSecond && type === 'second') {
+        return
+      }
+      let result = ''
+      if (type === 'time') {
+        result = `${currentHour}:${currentMinute}`
+      }
+      if (type === 'second') {
+        result = `${currentHour}:${currentMinute}:${currentSecond}`
+      }
+      onSelect && onSelect(result)
+      onChange && onChange(result)
     }
-    let result = ''
-    if (type === 'time') {
-      result = `${currentHour}:${currentMinute}`
-    }
-    if (type === 'second') {
-      result = `${currentHour}:${currentMinute}:${currentSecond}`
-    }
-    onSelect && onSelect(result)
-    onChange && onChange(result)
   }
 
   render() {
     const { currentHour, currentMinute, currentSecond } = this.state
-    const { className, type } = this.props
+    const { className, type, autoClose } = this.props
     return (
       <div className={classnames('time-select-out', className)} ref='container'>
         <div className='time-select flex'>
@@ -284,6 +291,21 @@ export default class TimeSelect extends React.PureComponent {
             </div>
           )}
         </div>
+        {!autoClose && (
+          <div className='time-select-footer'>
+            <Button
+              theme='text'
+              onClick={() => this.handleSave(true)}
+              disabled={
+                !currentHour ||
+                !currentMinute ||
+                (!currentSecond && type === 'second')
+              }
+            >
+              确定
+            </Button>
+          </div>
+        )}
       </div>
     )
   }

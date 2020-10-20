@@ -1,9 +1,9 @@
 //时间控件
 $datepicker-bg: $brand-pure !default;
-$datepicker-border: 1px solid $border-color !default;
+$datepicker-border: 1px solid transparent !default;
 $datepicker-font-size: rem(14px) !default;
-$datepicker-box-shadow: 0 2px 10px 0 rgba($gray-base, 0.1) !default;
-$datepicker-padding-top: rem(9px) !default;
+$datepicker-box-shadow: 0px rem(6px) rem(18px) 0px rgba(38, 38, 38, 0.14) !default;
+$datepicker-padding-top: rem(7px) !default;
 
 $datepicker-header-padding: 0 rem(11px) !default;
 
@@ -13,39 +13,43 @@ $datepicker-header-btn-font-size: 1.2rem !default;
 $datepicker-header-btn-transition: all 0.18s linear !default;
 $datepicker-header-btn-hover-color: $brand-primary !default;
 
-$datepicker-body-padding: 0 rem(9px) rem(9px) !default;
+$datepicker-body-padding: 0 rem(9px) rem(5px) rem(9px) !default;
 
-$datepicker-caption-padding: rem(15px) 0 !default;
+$datepicker-caption-padding: rem(8px) 0 !default;
 $datepicker-caption-line-height: rem(20.5px) !default;
 $datepicker-caption-hover-color: $brand-primary !default;
 
-$datepicker-weekgroup-item-size: rem(40px) !default;
+$datepicker-weekgroup-item-size: rem(36px) !default;
 
 $datepicker-item-active-bg: $brand-primary !default;
 $datepicker-item-active-color: $brand-pure !default;
-$datepicker-item-disable-color: $gray-light!default;
+$datepicker-item-disable-color: $gray-light !default;
 $datepicker-item-disable-bg: $brand-pure !default;
+$datepicker-item-border-radius: rem(2px) !default;
 
 // 用px单位圆点才圆
 $datepicker-item-dot-size: 4px !default;
 $datepicker-item-dot-bottom: rem(3px) !default;
+
 // 日
-$datepicker-daygroup-width: rem(280px) !default;
+$datepicker-daygroup-notcurrent-item-color: $gray !default;
+$datepicker-daygroup-width: rem(260px) !default;
 $datepicker-daygroup-item-width: rem(36px) !default;
 $datepicker-daygroup-item-line-height: rem(34.5px) !default;
-$datepicker-daygroup-item-border-radius: 50% !default;
+$datepicker-daygroup-padding: 0 rem(4px) !default;
+$datepicker-daygroup-item-hover-color: rgba(0, 140, 240, 0.1) !default;
 
-// 月
-$datepicker-monthgroup-width: rem(204px) !default;
-$datepicker-monthgroup-item-line-height: rem(28px) !default;
-$datepicker-monthgroup-item-border-radius: rem(15px) !default;
-$datepicker-monthgroup-item-padding: 0 rem(5px) rem(10px) !default;
-$datepicker-monthgroup-item-text-width: rem(50px) !default;
+// 年,月
+$datepicker-yeargroup-padding: rem(14px) rem(13px) 0 rem(13px) !default;
+$datepicker-yeargroup-item-line-height: rem(34px) !default;
+$datepicker-yeargroup-item-padding: 0 rem(7px) rem(8px) rem(7px) !default;
+$datepicker-yeargroup-item-text-width: rem(64px) !default;
 
-// 年
-$datepicker-yeargroup-item-line-height: rem(33.5px) !default;
-$datepicker-yeargroup-item-border-radius: rem(18px) !default;
-$datepicker-yeargroup-item-padding: 0 rem(20px) rem(20px) !default;
-$datepicker-yeargroup-item-text-width: rem(52px) !default;
+$datepicker-footer-padding: rem(12px) 0 rem(11px) !default;
 
-$datepicker-footer-padding: rem(13px) 0 rem(12px) !default;
+//底部
+$datepicker-footer-border-top: 1px solid $gray-lightest !default;
+
+// timeselect 输入框
+$datepicker-timeselect-padding: 0 rem(8px) rem(8px) !default;
+$datepicker-timeselect-input-width: rem(125px) !default;

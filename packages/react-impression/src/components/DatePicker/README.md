@@ -3,9 +3,11 @@
 **基本用法**
 
 ```js
+
+<DatePicker className='offset-r-lg' type='dateTime' />
+<DatePicker className='offset-r-lg'/>
 <DatePicker className='offset-r-lg' type='year' />
-<DatePicker className='offset-r-lg' type='month' />
-<DatePicker />
+<DatePicker type='month' />
 ```
 
 #### 配合 Input 组件使用
@@ -24,7 +26,7 @@ initialState = {
   <Col>
     <Form>
       <FormGroup>
-        <label>受控:</label>
+        <label>受控: </label>
         <Input type="date" value={state.defaultDate} onChange={handleChange} />
       </FormGroup>
     </Form>
@@ -33,7 +35,7 @@ initialState = {
     <Form>
       <FormGroup>
         <label>默认值（非受控组件）:</label>
-        <Input type="date" defaultValue="2018-09-20" />
+        <Input type="date" defaultValue="2018-09-20" timeSelect />
       </FormGroup>
     </Form>
   </Col>
@@ -56,7 +58,12 @@ initialState = {
     <Form>
       <FormGroup>
         <label>最小值:</label>
-        <Input type="date" defaultValue="2018-09-20" minDate="2018-09-01" />
+        <Input
+          type="date"
+          defaultValue="2018-09-20"
+          minDate="2018-09-01"
+          timeSelect
+        />
       </FormGroup>
     </Form>
   </Col>
@@ -87,7 +94,7 @@ initialState = {
     <Form>
       <FormGroup>
         <label>年-月-日:</label>
-        <Input type="date" defaultValue="2018-9-20" format="Y-M-D" />
+        <Input type="date" defaultValue="2018-9-20" format="Y-M-D HH:mm:ss" />
       </FormGroup>
     </Form>
   </Col>
@@ -134,6 +141,16 @@ initialState = {
 </Row>
 ```
 
+**时间选择**
+
+```js
+<Row>
+  <Col>
+    <Input type="dateTime" />
+  </Col>
+</Row>
+```
+
 ### 变更记录
 
-* 新增 type 属性`year`值，支持选择年份
+- 新增 type 属性`dateTime`值，支持选择时间
