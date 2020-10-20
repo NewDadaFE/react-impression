@@ -1,6 +1,6 @@
 import moment from 'moment'
 import classnames from 'classnames'
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import TimeSelect from '../TimeSelect'
 import Button from '../Button'

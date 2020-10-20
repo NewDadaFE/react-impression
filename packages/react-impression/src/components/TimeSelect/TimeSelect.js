@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import PerfectScrollbar from 'perfect-scrollbar'
 import Button from '../Button'
-import { auto } from '@popperjs/core'
 
 export default class TimeSelect extends React.PureComponent {
   state = {
