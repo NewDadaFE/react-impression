@@ -287,33 +287,10 @@ export default class DatePicker extends React.PureComponent {
    * @param {Moment} newMoment
    */
   afterSwitchMonth = newMoment => {
-    const checkedDay = { ...this.state.checkedDay }
-    // newMoment 与 checkedDay 比较
-    if (newMoment.month() === checkedDay.month) {
-      // 同月，回复日期
-      checkedDay.date = this.state.resumeDay.date
-    } else {
-      // 不同月，重置日期
-      checkedDay.date = -1
-    }
-    // 日期面板更新：日期数据、组件标题
-    if (this.state.panel === 'date') {
-      this.setState({
-        days: this.getDays(newMoment),
-        currentMoment: newMoment,
-      })
-      return
-    }
-    // 月份面板更新：选中日期，组件标题
     this.setState({
-      checkedDay: this.convertDateToMap(newMoment),
+      days: this.getDays(newMoment),
       currentMoment: newMoment,
     })
-    const isDisable = this.isDisableDate(newMoment.format(FORMAT.YEAR_MONTH))
-    const { onSelect, onChange } = this.props
-    const formatDateStr = isDisable ? '' : newMoment.format(this.state.format)
-    onSelect && onSelect(formatDateStr)
-    onChange && onChange(formatDateStr)
   }
 
   /**
@@ -341,33 +318,11 @@ export default class DatePicker extends React.PureComponent {
    * @param {Moment} newMoment
    */
   afterSwitchYear = newMoment => {
-    const { years, panel } = this.state
-    const { type } = this.props
-    // 日期面板更新：日期数据、组件标题
-    if (panel === 'date' || type === 'month') {
-      this.setState({
-        days: this.getDays(newMoment),
-        currentMoment: newMoment,
-      })
-      return
-    }
-    // 年份面板
+    const { panel } = this.state
     const state = { currentMoment: newMoment }
-    // 1. 年份类型，选中
-    if (type === panel) {
-      state.checkedDay = this.convertDateToMap(newMoment)
-      const isDisable = this.isDisableDate(newMoment.year())
-      const { onSelect, onChange } = this.props
-      const formatDateStr = isDisable ? '' : newMoment.format(this.state.format)
-      onSelect && onSelect(formatDateStr)
-      onChange && onChange(formatDateStr)
-    }
-    // 2. 非年份类型，选到首尾年份后翻页
-    if (
-      newMoment.year() > years[years.length - 1] ||
-      newMoment.year() < years[0]
-    ) {
-      state.years = this.getYears(newMoment)
+    // 日期面板更新：日期数据、组件标题
+    if (panel === 'date') {
+      state.days = this.getDays(newMoment)
     }
     this.setState(state)
   }
