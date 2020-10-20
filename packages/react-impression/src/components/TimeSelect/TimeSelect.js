@@ -199,7 +199,7 @@ export default class TimeSelect extends React.PureComponent {
   handleSave = (ifConfirm = false) => {
     const { currentHour, currentMinute, currentSecond } = this.state
     const { onChange, onSelect, type, autoClose } = this.props
-    if (ifConfirm || (autoClose && (currentHour && currentMinute))) {
+    if (ifConfirm || (autoClose && currentHour && currentMinute)) {
       if (!currentSecond && type === 'second') {
         return
       }
