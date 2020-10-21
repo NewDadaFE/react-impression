@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import PerfectScrollbar from 'perfect-scrollbar'
-import moment from 'moment'
+import Button from '../Button'
 
 export default class TimeSelect extends React.PureComponent {
   state = {
@@ -12,6 +12,9 @@ export default class TimeSelect extends React.PureComponent {
     currentHour: this.props.value ? this.props.value.split(':')[0] : '',
     currentMinute: this.props.value ? this.props.value.split(':')[1] : '',
     currentSecond: this.props.value ? this.props.value.split(':')[2] : '',
+  }
+  static defaultProps = {
+    autoClose: false,
   }
   static propTypes = {
     /**
@@ -38,6 +41,11 @@ export default class TimeSelect extends React.PureComponent {
      * 时间控件类型
      */
     type: PropTypes.oneOf(['time', 'second']),
+
+    /**
+     * 是否选完自动关闭
+     */
+    autoClose: PropTypes.bool,
   }
 
   componentDidMount() {
@@ -185,94 +193,118 @@ export default class TimeSelect extends React.PureComponent {
 
   /**
    * @description  回调
+   * @param ifConfirm 是否是点击确定按钮 默认false
    * @memberof TimeSelect
    */
-  handleSave = () => {
+  handleSave = (ifConfirm = false) => {
     const { currentHour, currentMinute, currentSecond } = this.state
-    const { onChange, onSelect, type } = this.props
-    if (
-      !currentHour ||
-      !currentMinute ||
-      (!currentSecond && type === 'second')
-    ) {
-      return
+    const { onChange, onSelect, type, autoClose } = this.props
+    if (ifConfirm || (autoClose && currentHour && currentMinute)) {
+      if (!currentSecond && type === 'second') {
+        return
+      }
+      let result = ''
+      if (type === 'time') {
+        result = `${currentHour}:${currentMinute}`
+      }
+      if (type === 'second') {
+        result = `${currentHour}:${currentMinute}:${currentSecond}`
+      }
+      onSelect && onSelect(result)
+      onChange && onChange(result)
     }
-    let result = ''
-    if (type === 'time') {
-      result = `${currentHour}:${currentMinute}`
-    }
-    if (type === 'second') {
-      result = `${currentHour}:${currentMinute}:${currentSecond}`
-    }
-    onSelect && onSelect(result)
-    onChange && onChange(result)
   }
 
   render() {
     const { currentHour, currentMinute, currentSecond } = this.state
-    const { className, type } = this.props
+    const { className, type, autoClose } = this.props
     return (
       <div className={classnames('time-select-out', className)} ref='container'>
         <div className='time-select flex'>
-          <div
-            className='time-select-wrap'
-            ref={div => (this.hourContainer = div)}
-            onClick={this.handleUpdateHourScroll}
-          >
-            {this.hourList.map(item => (
-              <div
-                key={`hour${item}`}
-                className={classnames('time-select-wrap-inner', {
-                  active:
-                    currentHour && currentHour.toString() === item.toString(),
-                })}
-                onClick={e => this.handleSetHour(item, e)}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-          <div
-            className='time-select-wrap'
-            ref={div => (this.minuteContainer = div)}
-            onClick={this.handleUpdateMinuteScroll}
-          >
-            {this.minuteList.map(min => (
-              <div
-                key={`minute${min}`}
-                className={classnames('time-select-wrap-inner', {
-                  active:
-                    currentMinute &&
-                    currentMinute.toString() === min.toString(),
-                })}
-                onClick={e => this.handleSetMinute(min, e)}
-              >
-                {min}
-              </div>
-            ))}
-          </div>
-          {type === 'second' && (
+          <div>
+            <div className='time-select-wrap-inner title'>时</div>
             <div
               className='time-select-wrap'
-              ref={div => (this.secondContainer = div)}
-              onClick={this.handleUpdateMinuteScroll}
+              ref={div => (this.hourContainer = div)}
+              onClick={this.handleUpdateHourScroll}
             >
-              {this.secondList.map(min => (
+              {this.hourList.map(item => (
                 <div
-                  key={`second${min}`}
+                  key={`hour${item}`}
                   className={classnames('time-select-wrap-inner', {
                     active:
-                      currentSecond &&
-                      currentSecond.toString() === min.toString(),
+                      currentHour && currentHour.toString() === item.toString(),
                   })}
-                  onClick={e => this.handleSetSecond(min, e)}
+                  onClick={e => this.handleSetHour(item, e)}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className='time-select-wrap-inner title'>分</div>
+            <div
+              className='time-select-wrap'
+              ref={div => (this.minuteContainer = div)}
+              onClick={this.handleUpdateMinuteScroll}
+            >
+              {this.minuteList.map(min => (
+                <div
+                  key={`minute${min}`}
+                  className={classnames('time-select-wrap-inner', {
+                    active:
+                      currentMinute &&
+                      currentMinute.toString() === min.toString(),
+                  })}
+                  onClick={e => this.handleSetMinute(min, e)}
                 >
                   {min}
                 </div>
               ))}
             </div>
+          </div>
+
+          {type === 'second' && (
+            <div>
+              <div className='time-select-wrap-inner title'>秒</div>
+              <div
+                className='time-select-wrap'
+                ref={div => (this.secondContainer = div)}
+                onClick={this.handleUpdateMinuteScroll}
+              >
+                {this.secondList.map(min => (
+                  <div
+                    key={`second${min}`}
+                    className={classnames('time-select-wrap-inner', {
+                      active:
+                        currentSecond &&
+                        currentSecond.toString() === min.toString(),
+                    })}
+                    onClick={e => this.handleSetSecond(min, e)}
+                  >
+                    {min}
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
+        {!autoClose && (
+          <div className='time-select-footer'>
+            <Button
+              theme='text'
+              onClick={() => this.handleSave(true)}
+              disabled={
+                !currentHour ||
+                !currentMinute ||
+                (!currentSecond && type === 'second')
+              }
+            >
+              确定
+            </Button>
+          </div>
+        )}
       </div>
     )
   }

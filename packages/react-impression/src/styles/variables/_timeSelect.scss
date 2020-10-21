@@ -1,6 +1,8 @@
-$time-select-wrap-inner-padding: rem(10px) rem(27px) !default;
+$time-select-wrap-inner-padding: rem(7px) rem(27px) !default;
 $time-select-color: $gray-base;
-$time-select-border-color: $gray-light;
-$time-select-bg-color: #f3f7ff;
-$time-select-hover-color: $brand-info;
-$time-select-border-radio: 0px 2px 10px 0px rgba(19, 34, 64, 0.1);
+$time-select-border-color: $gray-lightest;
+$time-select-bg-color: $gray-lightest;
+$time-select-hover-color: $brand-primary;
+$time-select-border-radio: 0px 6px 18px 0px rgba(38, 38, 38, 0.14);
+$time-select-lineheight: rem(22px);
+$time-select-wrap-inner-width: rem(18px) !default;

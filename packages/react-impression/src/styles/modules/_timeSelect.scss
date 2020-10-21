@@ -2,6 +2,8 @@
   z-index: $zindex-datepicker;
   display: inline-block;
   vertical-align: top;
+  box-shadow: $time-select-border-radio;
+  overflow: hidden;
 }
 .time-select {
   font-size: 1rem;
@@ -11,27 +13,45 @@
   border: 1px solid $time-select-border-color;
   border-radius: 0.14286rem;
   background-color: #fff;
-  box-shadow: $time-select-border-radio;
+  & > div:last-child .time-select-wrap,
+  & > div:last-child .time-select-wrap-inner.title {
+    border-right: none;
+  }
 }
 .time-select-wrap {
   height: 17.14rem;
   overflow-y: auto;
   position: relative;
-  border-right: 1px solid $gray-light;
-  &:last-child {
-    border: none;
-  }
+  border-right: 1px solid $time-select-border-color;
 }
 .time-select-wrap-inner {
   padding: $time-select-wrap-inner-padding;
-
+  color: $gray-darker;
+  box-sizing: content-box;
+  line-height: $time-select-lineheight;
+  width: $time-select-wrap-inner-width;
   cursor: pointer;
   &:hover {
     background: $time-select-bg-color;
-    color: $time-select-hover-color;
   }
   &.active {
-    background: $time-select-bg-color;
     color: $time-select-hover-color;
+  }
+  &.title {
+    color: $gray;
+    border-right: 1px solid $time-select-border-color;
+  }
+  &.title:hover {
+    background: none;
+  }
+}
+.time-select-footer {
+  text-align: right;
+  .btn:hover:not(:disabled) {
+    background-color: inherit;
+    border-color: transparent;
+  }
+  & > span {
+    cursor: pointer;
   }
 }

@@ -295,6 +295,7 @@ export default class Input extends React.PureComponent {
       case 'date':
       case 'month':
       case 'year':
+      case 'dateTime':
         return (
           <Trigger
             showAction='none'

@@ -2,16 +2,18 @@ import moment from 'moment'
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import TimeSelect from '../TimeSelect'
+import Button from '../Button'
 
 /**
  * 时间格式
  */
-
 const FORMAT = {
   YEAR: 'YYYY',
   MONTH: 'MM',
   YEAR_MONTH: 'YYYY-MM',
   DATE: 'YYYY-MM-DD',
+  TIME: 'HH:mm:ss',
 }
 
 export default class DatePicker extends React.PureComponent {
@@ -19,7 +21,7 @@ export default class DatePicker extends React.PureComponent {
     /**
      * 类型
      */
-    type: PropTypes.oneOf(['date', 'month', 'year']),
+    type: PropTypes.oneOf(['date', 'month', 'year', 'dateTime']),
 
     /**
      * 自定义样式
@@ -47,7 +49,7 @@ export default class DatePicker extends React.PureComponent {
     months: PropTypes.arrayOf(PropTypes.string),
 
     /**
-     * 是否显示今天
+     * 是否显示今天 时间选择显示此刻按钮
      */
     showToday: PropTypes.bool,
 
@@ -89,16 +91,20 @@ export default class DatePicker extends React.PureComponent {
 
   constructor(props, context) {
     super(props, context)
-    const { type, value, minDate, maxDate, format } = props
+    const { type, value, minDate, maxDate, format, yearScope } = props
     const weekdays = this.getSortWeekdays()
     const state = {
       days: [],
       years: [],
       weekdays,
+      selectedDate: (value && moment(value).format(FORMAT.DATE)) || '', // 时间选择选中的日期
+      selectedTime: (value && moment(value).format(FORMAT.TIME)) || '00:00:00', // 时间选择选中的时间
       currentMoment: moment(value || moment(), format),
+      yearOnPanel: moment(value || moment(), format), // 年份面板显示的时间范围的记录
       checkedDay: this.convertDateToMap(value, format),
     }
-
+    const yearNumbers = Math.ceil((yearScope * 2 + 1) / 3) * 3 // 年份面板 一页显示多少年
+    state.yearNumbers = yearNumbers
     switch (type) {
       case 'year':
         state.format = format || FORMAT.YEAR
@@ -113,6 +119,14 @@ export default class DatePicker extends React.PureComponent {
         state.panel = 'date'
         break
     }
+    let timeSelect
+    if (type === 'dateTime') {
+      timeSelect = true
+      state.format = format || `${FORMAT.DATE} ${FORMAT.TIME}`
+    } else {
+      timeSelect = false
+    }
+    state.timeSelect = timeSelect
     state.resumeDay = { ...state.checkedDay }
     state.minDate = minDate ? moment(minDate, state.format) : undefined
     state.maxDate = maxDate ? moment(maxDate, state.format) : undefined
@@ -201,6 +215,7 @@ export default class DatePicker extends React.PureComponent {
       days.unshift({
         text: prevMonthDaysLength - i,
         date: dayMoment,
+        beforeMonth: true,
         isToday: dayMoment.isSame(today),
         disable: this.isDisableDate(dayMoment),
       })
@@ -223,6 +238,7 @@ export default class DatePicker extends React.PureComponent {
       days.push({
         text: i,
         date: dayMoment,
+        afterMonth: true,
         isToday: dayMoment.isSame(today),
         disable: this.isDisableDate(dayMoment),
       })
@@ -271,33 +287,10 @@ export default class DatePicker extends React.PureComponent {
    * @param {Moment} newMoment
    */
   afterSwitchMonth = newMoment => {
-    const checkedDay = { ...this.state.checkedDay }
-    // newMoment 与 checkedDay 比较
-    if (newMoment.month() === checkedDay.month) {
-      // 同月，回复日期
-      checkedDay.date = this.state.resumeDay.date
-    } else {
-      // 不同月，重置日期
-      checkedDay.date = -1
-    }
-    // 日期面板更新：日期数据、组件标题
-    if (this.state.panel === 'date') {
-      this.setState({
-        days: this.getDays(newMoment),
-        currentMoment: newMoment,
-      })
-      return
-    }
-    // 月份面板更新：选中日期，组件标题
     this.setState({
-      checkedDay: this.convertDateToMap(newMoment),
+      days: this.getDays(newMoment),
       currentMoment: newMoment,
     })
-    const isDisable = this.isDisableDate(newMoment.format(FORMAT.YEAR_MONTH))
-    const { onSelect, onChange } = this.props
-    const formatDateStr = isDisable ? '' : newMoment.format(this.state.format)
-    onSelect && onSelect(formatDateStr)
-    onChange && onChange(formatDateStr)
   }
 
   /**
@@ -325,32 +318,11 @@ export default class DatePicker extends React.PureComponent {
    * @param {Moment} newMoment
    */
   afterSwitchYear = newMoment => {
-    const { years, panel } = this.state
+    const { panel } = this.state
+    const state = { currentMoment: newMoment }
     // 日期面板更新：日期数据、组件标题
     if (panel === 'date') {
-      this.setState({
-        days: this.getDays(newMoment),
-        currentMoment: newMoment,
-      })
-      return
-    }
-    // 年份面板
-    const state = { currentMoment: newMoment }
-    // 1. 年份类型，选中
-    if (this.props.type === panel) {
-      state.checkedDay = this.convertDateToMap(newMoment)
-      const isDisable = this.isDisableDate(newMoment.year())
-      const { onSelect, onChange } = this.props
-      const formatDateStr = isDisable ? '' : newMoment.format(this.state.format)
-      onSelect && onSelect(formatDateStr)
-      onChange && onChange(formatDateStr)
-    }
-    // 2. 非年份类型，选到首尾年份后翻页
-    if (
-      newMoment.year() > years[years.length - 1] ||
-      newMoment.year() < years[0]
-    ) {
-      state.years = this.getYears(newMoment)
+      state.days = this.getDays(newMoment)
     }
     this.setState(state)
   }
@@ -374,20 +346,30 @@ export default class DatePicker extends React.PureComponent {
   }
 
   /**
-   * 选中时间
+   * 选中日期
    * @param {Moment} day
    */
   handleSelectDate = day => {
     const { onSelect, onChange } = this.props
-    const { checkedDay, format } = this.state
+    const { checkedDay, format, timeSelect } = this.state
     const dayFormat = day.format(format)
-
-    onSelect && onSelect(dayFormat)
-    if (!moment(checkedDay).isSame(day)) {
-      onChange && onChange(dayFormat)
+    if (timeSelect) {
+      this.setState({ selectedDate: day.format(FORMAT.DATE), panel: 'time' })
+    } else {
+      onSelect && onSelect(dayFormat)
+      if (!moment(checkedDay).isSame(day)) {
+        onChange && onChange(dayFormat)
+      }
     }
-
     this.setState({ checkedDay: this.convertDateToMap(day) })
+  }
+
+  /**
+   * 选中时间
+   * @param {Moment} time
+   */
+  handleSelectTime = time => {
+    this.setState({ selectedTime: time })
   }
 
   /**
@@ -545,6 +527,92 @@ export default class DatePicker extends React.PureComponent {
     return (min && dayMoment.isBefore(min)) || (max && dayMoment.isAfter(max))
   }
 
+  /**
+   * 日期时间选择 点击确定按钮
+   */
+  handleConfirmTime = () => {
+    const { onSelect, onChange } = this.props
+    const { selectedDate, selectedTime, format } = this.state
+    const date = `${selectedDate} ${selectedTime}`
+    onChange && onChange(moment(date).format(format))
+    onSelect && onSelect(moment(date).format(format))
+    this.setState({
+      panel: 'date',
+    })
+  }
+
+  /**
+   * 时间日期选择 此刻
+   */
+  handleSelectNow = () => {
+    const { onSelect, onChange } = this.props
+    const { format } = this.state
+    let currentTime = moment()
+    this.setState({
+      selectedDate: currentTime.format(FORMAT.DATE),
+      selectedTime: currentTime.format(FORMAT.TIME),
+    })
+    onChange && onChange(currentTime.format(format))
+    onSelect && onSelect(currentTime.format(format))
+    this.setState({
+      panel: 'date',
+    })
+  }
+
+  /**
+   * 点击单尖括号
+   * @param type 点击的尖括号的类型 左：1，右 0
+   */
+  handleClickAngle = (type = 1) => {
+    const { panel } = this.state
+    const {
+      handlePrevMonth,
+      handlePrevYear,
+      handleNextMonth,
+      handleNextYear,
+    } = this
+    if (panel === 'month') {
+      type ? handlePrevYear() : handleNextYear()
+    }
+    if (panel === 'date') {
+      type ? handlePrevMonth() : handleNextMonth()
+    }
+  }
+
+  /**
+   * 点击双尖括号
+   * @param type 点击的尖括号的类型 左：1，右 0
+   */
+  handleClickDoubleAngle = (type = 1) => {
+    const { panel } = this.state
+    const { handlePrevYear, handleNextYear, handleChangeYearRange } = this
+    if (panel === 'year') {
+      handleChangeYearRange(type)
+    }
+    if (panel === 'date') {
+      type ? handlePrevYear() : handleNextYear()
+    }
+  }
+
+  /**
+   * 修改年份面板的范围
+   * @param type 1:前*年 0:后*年
+   */
+  handleChangeYearRange = type => {
+    const { yearOnPanel, yearNumbers } = this.state
+    const currentYear = yearOnPanel.year()
+    let years
+    years = this.getYears(
+      yearOnPanel.set(
+        'year',
+        type ? currentYear - yearNumbers : currentYear + yearNumbers
+      )
+    )
+    this.setState({
+      years,
+    })
+  }
+
   componentDidMount() {
     const { currentMoment, panel } = this.state
     if (panel === 'date') {
@@ -558,18 +626,41 @@ export default class DatePicker extends React.PureComponent {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { value } = nextProps
-    if (this.props.value !== value) {
-      const { panel, format } = this.state
-      const currentMoment = moment(value || moment(), format)
+    const { timeSelect, selectedDate, selectedTime } = this.state
+    if (timeSelect) {
+      const state = {}
+      // 当 value 为空时清空selectedDate 和 selectedTime 的值
+      if (selectedDate !== moment(value).format(FORMAT.DATE)) {
+        // 保持value 的日期和selectedDate显示的日期是同一天
+        state.selectedDate = value ? moment(value).format(FORMAT.DATE) : ''
+        state.checkedDay = this.convertDateToMap(value)
+      }
+      if (selectedTime !== moment(value).format(FORMAT.TIME)) {
+        // 保持value 的时间和selectedDate显示的日期是同一天
+        state.selectedTime = value ? moment(value).format(FORMAT.TIME) : ''
+      }
+      this.setState({
+        ...state,
+        panel: 'date',
+      })
+    }
+    if (!value && this.props.value !== value) {
+      // 针对非时间日期选择器的 情况
+      // value 重置为空
+      const { panel } = this.state
+      const currentMoment = moment()
       const state = {
         currentMoment,
         checkedDay: this.convertDateToMap(value),
       }
       if (panel === 'date') {
+        // 如果面板为日期 把当前可选的月份 改为此刻的月份
         state.days = this.getDays(currentMoment)
       }
       if (panel === 'year') {
+        // 如果面板为日期 把当前可选的年份 改为此刻的年份对应的面板
         state.years = this.getYears(currentMoment)
+        state.yearOnPanel = moment()
       }
       this.setState(state)
     }
@@ -582,47 +673,108 @@ export default class DatePicker extends React.PureComponent {
       weekdays,
       days,
       checkedDay,
+      selectedDate,
+      selectedTime,
       years,
+      timeSelect,
     } = this.state
     const { type, showToday, todayText, months, className } = this.props
     const checkedDayMoment = moment(checkedDay)
     return (
       <div className={classnames('datepicker', className)} ref='container'>
         <div className='datepicker-inner'>
-          <div className='datepicker-header'>
-            {panel !== 'month' && (
-              <i
-                className='dada-ico datepicker-header-btn dada-ico-angle-double-left'
-                onClick={this.handlePrevYear}
-              />
-            )}
-            {panel !== 'year' && (
-              <i
-                className='dada-ico datepicker-header-btn dada-ico-angle-left datepicker-month-btn'
-                onClick={this.handlePrevMonth}
-              />
-            )}
-            <div
-              className={classnames('datepicker-caption', {
-                disable: panel === 'year',
-              })}
-              onClick={this.handleSwitchPanel}
-            >
-              {this.getPickerTitle()}
+          {timeSelect && (
+            <div className='datepicker-timeselect-review'>
+              <div className='input'>
+                <input
+                  readOnly
+                  type='text'
+                  className='form-control input-field form-control-sm'
+                  placeholder={FORMAT.DATE}
+                  onClick={() => {
+                    this.setState({ panel: 'date' })
+                  }}
+                  value={
+                    (selectedDate &&
+                      moment(selectedDate).format(FORMAT.DATE)) ||
+                    ''
+                  }
+                />
+                <div className='dada-input-border' />
+                {selectedDate && (
+                  <i
+                    className='dada-ico dada-ico-times-circle dada-ico-sm dada-input-addon-after'
+                    onClick={e => {
+                      e.stopPropagation()
+                      this.setState({
+                        selectedDate: '',
+                        checkedDay: this.convertDateToMap(null),
+                        panel: 'date',
+                      })
+                    }}
+                  />
+                )}
+              </div>
+              <div className='input'>
+                <input
+                  readOnly
+                  type='text'
+                  className='form-control input-field form-control-sm'
+                  placeholder={FORMAT.TIME}
+                  onClick={() => {
+                    this.setState({ panel: 'time' })
+                  }}
+                  value={selectedTime || ''}
+                />
+                <div className='dada-input-border' />
+                {selectedTime && (
+                  <i
+                    className='dada-ico dada-ico-times-circle dada-ico-sm dada-input-addon-after'
+                    onClick={e => {
+                      e.stopPropagation()
+                      this.setState({ selectedTime: '' })
+                    }}
+                  />
+                )}
+              </div>
             </div>
-            {panel !== 'year' && (
-              <i
-                className='dada-ico datepicker-header-btn dada-ico-angle-right datepicker-month-btn'
-                onClick={this.handleNextMonth}
-              />
-            )}
-            {panel !== 'month' && (
-              <i
-                className='dada-ico datepicker-header-btn dada-ico-angle-double-right'
-                onClick={this.handleNextYear}
-              />
-            )}
-          </div>
+          )}
+          {panel !== 'time' && (
+            <div className='datepicker-header'>
+              {panel !== 'month' && (
+                <i
+                  className='dada-ico datepicker-header-btn dada-ico-angle-double-left'
+                  onClick={this.handleClickDoubleAngle}
+                />
+              )}
+              {panel !== 'year' && (
+                <i
+                  className='dada-ico datepicker-header-btn dada-ico-angle-left datepicker-month-btn'
+                  onClick={this.handleClickAngle}
+                />
+              )}
+              <div
+                className={classnames('datepicker-caption', {
+                  disable: panel === 'year',
+                })}
+                onClick={this.handleSwitchPanel}
+              >
+                {this.getPickerTitle()}
+              </div>
+              {panel !== 'year' && (
+                <i
+                  className='dada-ico datepicker-header-btn dada-ico-angle-right datepicker-month-btn'
+                  onClick={() => this.handleClickAngle(0)}
+                />
+              )}
+              {panel !== 'month' && (
+                <i
+                  className='dada-ico datepicker-header-btn dada-ico-angle-double-right'
+                  onClick={() => this.handleClickDoubleAngle(0)}
+                />
+              )}
+            </div>
+          )}
           {panel === 'date' && (
             <div className='datepicker-body'>
               <div className='datepicker-weekgroup'>
@@ -638,23 +790,38 @@ export default class DatePicker extends React.PureComponent {
                 ))}
               </div>
               <div className='datepicker-daygroup'>
-                {days.map(({ text, date, isToday, inMonth, disable }) => (
-                  <div
-                    key={`${text}-${inMonth}`}
-                    onClick={() => !disable && this.handleSelectDate(date)}
-                    className='datepicker-item datepicker-daygroup-item'
-                  >
+                {days.map(
+                  ({
+                    text,
+                    date,
+                    isToday,
+                    inMonth,
+                    disable,
+                    beforeMonth,
+                    afterMonth,
+                  }) => (
                     <div
-                      className={classnames('datepicker-item-text', {
-                        disable,
-                        now: isToday,
-                        active: date.isSame(checkedDayMoment),
-                      })}
+                      key={`${text}-${inMonth}`}
+                      onClick={() => {
+                        !disable && this.handleSelectDate(date)
+                        beforeMonth && this.handlePrevMonth()
+                        afterMonth && this.handleNextMonth()
+                      }}
+                      className='datepicker-item datepicker-daygroup-item'
                     >
-                      {text}
+                      <div
+                        className={classnames('datepicker-item-text', {
+                          disable,
+                          now: isToday,
+                          active: date.isSame(checkedDayMoment),
+                          notinmonth: !inMonth, // 是否是当月
+                        })}
+                      >
+                        {text}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
               </div>
             </div>
           )}
@@ -712,9 +879,35 @@ export default class DatePicker extends React.PureComponent {
               </div>
             </div>
           )}
-          {showToday && panel === 'date' && (
+          {panel === 'time' && (
+            <TimeSelect
+              type='second'
+              value={selectedTime}
+              autoClose={true}
+              onSelect={val => {
+                this.handleSelectTime(val)
+              }}
+            />
+          )}
+          {showToday && panel === 'date' && !timeSelect && (
             <div className='datepicker-footer' onClick={this.handleSelectToday}>
-              {todayText}
+              <span>{todayText}</span>
+            </div>
+          )}
+          {timeSelect && (panel === 'date' || panel === 'time') && (
+            <div className='datepicker-footer datepicker-confirm'>
+              {showToday && (
+                <Button theme='text' onClick={this.handleSelectNow}>
+                  此刻
+                </Button>
+              )}
+              <Button
+                theme='text'
+                disabled={!selectedDate || !selectedTime}
+                onClick={this.handleConfirmTime}
+              >
+                确定
+              </Button>
             </div>
           )}
         </div>
