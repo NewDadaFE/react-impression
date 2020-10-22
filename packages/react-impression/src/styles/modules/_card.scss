@@ -21,7 +21,7 @@
 .card-block {
   @include clearfix;
   padding: $card-padding;
-  color: $gray-dark;
+  color: $gray-darker;
 
   & ~ .card-footer {
     padding-top: 0;

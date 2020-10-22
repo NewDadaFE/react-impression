@@ -68,7 +68,7 @@
         }
         Title={
           <div>
-            <div style={{ fontSize: 16, color: '#262626' }}>2017-05-12</div>
+            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-12</div>
             <div>11:21:34</div>
           </div>
         }
@@ -88,7 +88,7 @@
       <TimelineItem
         Title={
           <div>
-            <div style={{ fontSize: 16, color: '#262626' }}>2017-05-11</div>
+            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-11</div>
             <div>11:21:34</div>
           </div>
         }
@@ -100,7 +100,7 @@
       <TimelineItem
         Title={
           <div>
-            <div style={{ fontSize: 16, color: '#262626' }}>2017-05-10</div>
+            <div style={{ fontSize: 16, color: '#132240' }}>2017-05-10</div>
             <div>11:21:34</div>
           </div>
         }

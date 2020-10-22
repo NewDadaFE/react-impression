@@ -54,7 +54,7 @@
     <Card>
       <Image fluid src="https://placehold.it/350x200" />
       <CardBlock>
-        <h3 style={{ color: '#262626', margin: '10px 0 20px' }}>居左</h3>
+        <h3 style={{ color: '#132240', margin: '10px 0 20px' }}>居左</h3>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <div style={{ display: 'inline-block', margin: '10px 0' }}>
           <a href="#">链接</a>
@@ -69,7 +69,7 @@
     <Card className="text-center">
       <Image fluid src="https://placehold.it/350x200" />
       <CardBlock>
-        <h3 style={{ color: '#262626', margin: '10px 0 20px' }}>居中</h3>
+        <h3 style={{ color: '#132240', margin: '10px 0 20px' }}>居中</h3>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <div style={{ display: 'inline-block', margin: '10px 0' }}>
           <a href="#">链接</a>
@@ -84,7 +84,7 @@
     <Card className="text-right">
       <Image fluid src="https://placehold.it/350x200" />
       <CardBlock>
-        <h3 style={{ color: '#262626', margin: '10px 0 20px' }}>居右</h3>
+        <h3 style={{ color: '#132240', margin: '10px 0 20px' }}>居右</h3>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <div style={{ display: 'inline-block', margin: '10px 0' }}>
           <a href="#">链接</a>
@@ -133,4 +133,4 @@
 
 v2.0.0
 
-- 删除 noborder 属性
+* 删除 noborder 属性

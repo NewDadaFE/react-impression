@@ -44,7 +44,7 @@
     </Col>
   </Row>
   <Row>
-    <Col col="1" style={{padding: '0.35rem 0.71429rem',boxSizing: 'border-box',color: '#262626'}} className='text-right'><strong>城市:</strong> </Col>
+    <Col col="1" style={{padding: '0.35rem 0.71429rem',boxSizing: 'border-box',color: '#132240'}} className='text-right'><strong>城市:</strong> </Col>
     <Col col="11" style={{paddingLeft:0}}>
       <InlineSelect defaultValue={'1'} onChange={this.selectZoneHandle}>
         <InlineSelectOption value="1">南京</InlineSelectOption>
@@ -69,6 +69,6 @@
 
 v2.0.0
 
-- 新增 label 标签名属性，不传可自定义 label 项目
-- 新增 col 标签占比参数，默认值为 1
-- 将删除对 InlineSelect.Option 写法的支持，请使用 InlineSelectOption 标签
+* 新增 label 标签名属性，不传可自定义 label 项目
+* 新增 col 标签占比参数，默认值为 1
+* 将删除对 InlineSelect.Option 写法的支持，请使用 InlineSelectOption 标签

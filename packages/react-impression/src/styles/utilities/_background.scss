@@ -3,7 +3,7 @@
 //
 .bg-inverse {
   color: $gray-lighter;
-  background-color: $gray;
+  background-color: $gray-dark;
 }
 
 .bg-faded {
@@ -22,7 +22,7 @@
 
 @include bg-variant('.bg-success', $brand-success);
 
-@include bg-variant('.bg-secondary', $brand-warning);
+@include bg-variant('.bg-secondary', $brand-secondary);
 
 @include bg-variant('.bg-warning', $brand-warning);
 

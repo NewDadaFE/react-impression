@@ -16,22 +16,22 @@ $notice-content-line-height: rem(22px) !default;
 
 $notice-primary-bg: linear-gradient(
   270deg,
-  mix($brand-info, white, 80%) 0%,
+  #0c85ff 0%,
   $brand-info 100%
 ) !default;
 $notice-success-bg: linear-gradient(
   270deg,
-  mix($brand-success, white, 80%) 0%,
+  #00b250 0%,
   $brand-success 100%
 ) !default;
 $notice-warning-bg: linear-gradient(
   270deg,
-  mix($brand-warning, white, 80%) 0%,
+  #ffa200 0%,
   $brand-warning 100%
 ) !default;
 $notice-danger-bg: linear-gradient(
   270deg,
-  mix($brand-danger, white, 80%) 0%,
+  #fd3737 0%,
   $brand-danger 100%
 ) !default;
 

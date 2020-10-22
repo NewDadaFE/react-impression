@@ -9,9 +9,9 @@ $btn-hover-default-box-shadow: 0px rem(2px) rem(10px) 0px
   rgba(145, 156, 179, 0.3) !default; // hover---secondary和default的button的box shadow
 
 $btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !default;
-$btn-disabled-color: $gray !default;
+$btn-disabled-color: $gray-dark !default;
 $btn-disabled-bg: $gray-light !default;
-$btn-disabled-border: $gray-light!default;
+$btn-disabled-border: $gray !default;
 
 $btn-primary-color: $brand-pure !default;
 $btn-primary-bg: $brand-primary !default;
@@ -22,7 +22,7 @@ $btn-hover-primary-bg: #3C74E6 !default;
 $btn-default-color: #12203d !default;
 $btn-default-bg: $brand-pure !default;
 $btn-active-default-bg: #f7f9fc !default;
-$btn-default-border: $gray-light!default;
+$btn-default-border: $gray !default;
 $btn-hover-default-bg: $brand-pure !default;
 
 $btn-secondary-color: $brand-primary !default;

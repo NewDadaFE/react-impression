@@ -36,7 +36,7 @@
 		background-color: $select-tags-bg-color;
 		background-image: none;
 		background-clip: padding-box;
-		border: rem(1px) solid $gray-light;
+		border: rem(1px) solid $gray;
 		transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 		padding-right: $select-selection-padding-right;
 		max-height: 5.71rem;
@@ -53,7 +53,7 @@
 			padding-right: 0.714rem;
 		}
 		.tag-close {
-			color: $gray-dark;
+			color: $gray-darker;
 			opacity: 1;
 			font-size: $font-size-lg;
 			&:hover {
@@ -61,7 +61,7 @@
 			}
 		}
 		.select-placeholder {
-			color: $gray-dark;
+			color: $gray-darker;
 			position: absolute;
 			top: $input-padding-x;
 			left: $input-padding-x;
@@ -97,7 +97,7 @@
 	background-color: $select-tags-bg-color;
 	background-image: none;
 	background-clip: padding-box;
-	border: rem(1px) solid $gray-light;
+	border: rem(1px) solid $gray;
 	transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 	padding-right: $select-selection-padding-right;
 
@@ -114,7 +114,7 @@
 		background: $select-bg;
 	}
 	&::placeholder {
-		color: $gray-dark;
+		color: $gray-darker;
 	}
 	.open & {
 		border-color: $brand-primary;
@@ -197,7 +197,7 @@
 	cursor: pointer;
 	user-select: none;
 	position: absolute;
-	color: $gray-light;
+	color: $gray;
 	right: rem(1px);
 	font-size: 1.25rem;
 	top: rem(2px);
@@ -208,14 +208,14 @@
 .select-empty {
 	margin-bottom: 0;
 	text-align: center;
-	color: $gray-dark;
+	color: $gray-darker;
 	padding: $input-padding-y $input-padding-x;
 }
 .select-addon {
 	cursor: pointer;
 	user-select: none;
 	position: absolute;
-	color: $gray-light;
+	color: $gray;
 	right: rem(1px);
 	top: rem(3px);
 	z-index: 2;

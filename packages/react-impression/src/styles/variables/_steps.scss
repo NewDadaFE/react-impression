@@ -2,10 +2,10 @@
 // steps color
 $step-active-color: $brand-primary !default;
 $step-error-color: $brand-danger !default;
-$step-ready-color: $gray-light!default;
+$step-ready-color: $gray !default;
 $step-title-current-color: $gray-base !default;
-$step-title-color: $gray-dark !default;
-$step-custom-color: $gray !default;
+$step-title-color: $gray-darker !default;
+$step-custom-color: $gray-dark !default;
 $step-icon-bg-color: $gray-light !default;
 // size
 $step-content-width: rem(100px) !default;

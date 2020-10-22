@@ -8,15 +8,15 @@ $pagination-border-color: $gray-light !default;
 $pagination-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !default;
 $pagination-border-radius: rem(2px) !default;
 
-$pagination-ellipsis-color: $gray-dark !default;
+$pagination-ellipsis-color: $gray-darker !default;
 $pagination-ellipsis-padding: rem(10px) !default;
 
-$pagination-hover-box-shadow: 0 rem(2px) rem(10px) 0 rgba($gray-dark, 0.3);
+$pagination-hover-box-shadow: 0 rem(2px) rem(10px) 0 rgba($gray-darker, 0.3);
 
 $pagination-active-color: $brand-primary !default;
 $pagination-active-border: $brand-primary !default;
 
-$pagination-disabled-color: $gray-light!default;
+$pagination-disabled-color: $gray !default;
 
 $pagination-link-min-size: rem(32px);
 $pagination-link-line-height: rem(30px);
