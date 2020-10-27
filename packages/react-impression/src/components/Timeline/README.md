@@ -63,9 +63,7 @@
   <Col col={12}>
     <Timeline size="lg">
       <TimelineItem
-        dot={
-          <Ico type="map-marker" style={{ fontSize: 40, marginLeft: -12 }} />
-        }
+        dot={<Ico type="location" style={{ fontSize: 40, marginLeft: -12 }} />}
         Title={
           <div>
             <div style={{ fontSize: 16, color: '#262626' }}>2017-05-12</div>
