@@ -330,13 +330,13 @@ export default class Upload extends React.PureComponent {
                     />
                     <div className='dada-upload-preview-mask'>
                       <Ico
-                        type='eye'
+                        type='eye-o'
                         onClick={() => this.handleMulPreview(item)}
                         className='dada-upload-preview-action'
                       />
                       {!disabled && (
                         <Ico
-                          type='trash'
+                          type='trash-o'
                           onClick={e => this.handleRemoveImg(e, item, index)}
                           className='dada-upload-preview-action'
                         />
@@ -388,13 +388,13 @@ export default class Upload extends React.PureComponent {
                 />
                 <div className='dada-upload-preview-mask'>
                   <Ico
-                    type='eye'
+                    type='eye-o'
                     onClick={this.handlePreview}
                     className='dada-upload-preview-action'
                   />
                   {!disabled && (
                     <Ico
-                      type='trash'
+                      type='trash-o'
                       onClick={this.handleRemoveImg}
                       className='dada-upload-preview-action'
                     />
@@ -456,14 +456,14 @@ export default class Upload extends React.PureComponent {
                 return (
                   <li key={index} className='dada-upload-li'>
                     <div className='dada-upload-li-text'>
-                      <Ico type='file-text' className='dada-upload-li-ico' />
+                      <Ico type='file-o' className='dada-upload-li-ico' />
                       <span onClick={() => this.handleFileClick(item)}>
                         {item.name}
                       </span>
                     </div>
                     {!disabled && (
                       <Ico
-                        type='trash'
+                        type='trash-o'
                         onClick={e => {
                           this.removeFile(e, item, index)
                         }}
