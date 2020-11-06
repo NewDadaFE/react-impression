@@ -99,6 +99,19 @@ export default class Pagination extends React.PureComponent {
       pageSize: props.pageSize,
       totalPage: Math.ceil(props.total / props.pageSize),
     }
+    if (props.totalPage !== undefined) {
+      console.warn(
+        'ReactImpression: totalPage属性即将被废弃，请使用 pageSize属性替换！'
+      )
+    }
+  }
+
+  getTotalPage = () => {
+    // 为了兼容旧版 Pagination 的 totalPage 参数
+    if (this.props.totalPage !== undefined) {
+      return this.props.totalPage
+    }
+    return this.state.totalPage
   }
 
   /**
@@ -117,10 +130,11 @@ export default class Pagination extends React.PureComponent {
    */
   nextPageHandle = () => {
     let { onSelect, activePage } = this.props
-    const { pageSize, totalPage } = this.state
-
+    const totalPage = this.getTotalPage()
     activePage += 1
-    activePage <= totalPage && onSelect && onSelect(activePage, pageSize)
+    if (activePage <= totalPage && onSelect) {
+      onSelect(activePage, this.state.pageSize)
+    }
   }
 
   /**
@@ -162,7 +176,7 @@ export default class Pagination extends React.PureComponent {
    */
   getPageList = () => {
     const { scope, activePage } = this.props
-    const { totalPage } = this.state
+    const totalPage = this.getTotalPage()
     const pageList = []
     const scopeLength = scope * 2
     // 页数少于（首部、尾部、中心、两边scope）最少分页项总数，不出现省略号
@@ -210,13 +224,13 @@ export default class Pagination extends React.PureComponent {
 
   handleSkip = () => {
     const { onSelect } = this.props
-    const { pageSize, totalPage } = this.state
+    const totalPage = this.getTotalPage()
     const pageNo = +this.state.skipPageNo
     if (isNaN(pageNo) || pageNo < 1 || pageNo > totalPage) {
       this.setState({ skipPageNo: '' })
       return
     }
-    onSelect(pageNo, pageSize)
+    onSelect && onSelect(pageNo, this.state.pageSize)
   }
   // pageSize
   changePageSize = value => {
@@ -256,12 +270,11 @@ export default class Pagination extends React.PureComponent {
       align,
       ...others
     } = this.props
-    const { pageSize, totalPage } = this.state
-    // 为了兼容旧版 Pagination 的参数，需要手动删除 totalPage
     delete others.totalPage
     delete others.pageSize
     delete others.onShowSizeChange
 
+    const totalPage = this.getTotalPage()
     const pageList = this.getPageList()
     const pageItemClass = size === 'sm' ? 'page-item-sm' : 'page-item'
     const pageLinkClass = size === 'sm' ? 'page-link-sm' : 'page-link'
@@ -327,7 +340,7 @@ export default class Pagination extends React.PureComponent {
         {showSizeChanger && (
           <div className='pagination-pageSize'>
             <Select
-              value={pageSize}
+              value={this.state.pageSize}
               onChange={this.changePageSize}
               size={`${size === 'sm' ? 'xs' : 'sm'}`}
               className='size-changer-width'
