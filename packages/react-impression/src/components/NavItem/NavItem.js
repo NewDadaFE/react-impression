@@ -31,7 +31,7 @@ const NavItem = forwardRef((props, ref) => {
       ref={ref}
       onClick={onClickHandle}
     >
-      <div className={classnames('nav-link', tempBorder)}>{children}</div>
+      <div className='nav-link'>{children}</div>
     </div>
   )
 })

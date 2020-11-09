@@ -84,31 +84,7 @@ initialState = {
 **尺寸**
 
 ```js
-<Nav activeKey={2} size="xs" >
-  <NavItem eventKey={1}>选中</NavItem>
-  <NavItem eventKey={2}>链接</NavItem>
-  <NavItem eventKey={3}>其他</NavItem>
-  <NavItem eventKey={4} disabled>
-    禁用
-  </NavItem>
-</Nav>
-<Nav activeKey={2} size="xs" type="tab">
-  <NavItem eventKey={1}>选中</NavItem>
-  <NavItem eventKey={2}>链接</NavItem>
-  <NavItem eventKey={3}>其他</NavItem>
-  <NavItem eventKey={4} disabled>
-    禁用
-  </NavItem>
-</Nav>
-<Nav activeKey={2} size="xs" type="block">
-  <NavItem eventKey={1}>选中</NavItem>
-  <NavItem eventKey={2}>链接</NavItem>
-  <NavItem eventKey={3}>其他</NavItem>
-  <NavItem eventKey={4} disabled>
-    禁用
-  </NavItem>
-</Nav>
-<Nav activeKey={2} size="xs" stacked>
+<Nav activeKey={2} size="xs">
   <NavItem eventKey={1}>选中</NavItem>
   <NavItem eventKey={2}>链接</NavItem>
   <NavItem eventKey={3}>其他</NavItem>
@@ -133,7 +109,6 @@ initialState = {
 
 **变更记录**
 
-v2.0.0
-
-- 删除 type 属性的 pill 可选项，支持 tab,inline 属性值，默认为 inline
-- 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle
+- 添加 size 属性 组件支持 md 和 xs 两个尺寸
+- 添加 direction 属性 纵向的情况下选择组件的方向
+- 将删除 NavLink／NavTitle 请使用 NavItem
