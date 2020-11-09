@@ -7,13 +7,11 @@ const onLargeActiveHandle = (pageNo, pageSize) => {
   setState({
     largeActivePage: pageNo,
   })
-  console.log(pageSize)
 }
 const onSmallActiveHandle = (pageNo, pageSize) => {
   setState({
     smallActivePage: pageNo,
   })
-  console.log(pageSize)
 }
 
 initialState = {

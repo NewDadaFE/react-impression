@@ -2,6 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+const Ico = React.forwardRef((props, ref) => {
+  const { type, size, className, ...others } = props
+  const typeClass = `dada-ico-${type}`
+  const sizeClass = size && `dada-ico-${size}`
+
+  return (
+    <i
+      className={classNames('dada-ico', typeClass, sizeClass, className)}
+      {...others}
+    />
+  )
+})
+
 Ico.propTypes = {
   /**
    * 图标类型
@@ -23,17 +36,6 @@ Ico.defaultProps = {
   size: 'sm',
 }
 
-function Ico(props) {
-  const { type, size, className, ...others } = props
-  const typeClass = `dada-ico-${type}`
-  const sizeClass = size && `dada-ico-${size}`
-
-  return (
-    <i
-      className={classNames('dada-ico', typeClass, sizeClass, className)}
-      {...others}
-    />
-  )
-}
+Ico.displayName = 'Ico'
 
 export default Ico
