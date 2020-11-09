@@ -9,7 +9,7 @@
   }
 }
 
-.active {
+.dropdown.active {
   > .dropdown-picker {
     display: block;
   }
@@ -18,7 +18,7 @@
     outline: 0;
   }
 
-  .dada-ico {
+  > .dropdown-toggle .dada-ico {
     transform: rotate(180deg);
   }
 }

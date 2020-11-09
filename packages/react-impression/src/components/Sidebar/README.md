@@ -16,7 +16,7 @@
 - 菜单栏的收起展开逻辑，需要使用者自行实现
 - **Collapse 组件 不可以设置 eventKey 属性。**因此一级菜单若使用 Collapse 组件 + NavItem 组件 混合的方式，不可通过 Nav 组件 的 activeKey 属性控制选中状态。
 
-```js
+<!-- ```js
 <div style={{ width: 230, height: 450 }}>
   <Sidebar>
     <SidebarHeader>
@@ -64,4 +64,4 @@
     </SidebarBody>
   </Sidebar>
 </div>
-```
+``` -->

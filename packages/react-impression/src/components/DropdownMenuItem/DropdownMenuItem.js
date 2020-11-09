@@ -37,7 +37,7 @@ export default class DropdownMenuItem extends React.PureComponent {
     const { disabled, onClick, toggleMenu } = this.props
 
     !disabled && onClick && onClick()
-    toggleMenu()
+    if (!disabled) toggleMenu()
   }
 
   render() {

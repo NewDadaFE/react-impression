@@ -1,51 +1,34 @@
 // Navs
-$nav-border-color: #e9e9eb !default;
-$nav-border-width: rem(1px) !default;
-$nav-active-border-width: rem(2px) !default;
-$nav-normal-padding: rem(14px) rem(30px);
-$nav-card-padding: rem(13px) rem(61px);
-$nav-stacked-padding: rem(15px) rem(20px);
-$nav-item-margin: 0.2rem !default;
-$nav-item-spacer-x: 1rem !default;
-$nav-item-inline-spacer: $nav-item-spacer-x * 2 !default;
+$nav-normal-lineheight: rem(36px);
+$nav-item-max-width: rem(130px) !default;
+$nav-link-font-size: rem(14px) !default;
 
-$nav-title-color: $brand-pure !default;
-$nav-title-padding: 1rem !default;
-$nav-title-font-size: 1.1rem !default;
-
-$nav-link-padding: 0 !default;
 $nav-link-active-color: $brand-primary !default;
-$nav-link-active-bg: #fff !default;
-$nav-link-hover-bg: $gray-lighter !default;
-$nav-link-active-border-width: 2px !default;
 
-$nav-disabled-link-color: $gray-light!default;
-$nav-disabled-link-hover-color: $gray-light!default;
-$nav-disabled-link-hover-bg: #fff !default;
+$nav-disabled-link-color: $gray !default;
 
-$nav-tabs-link-padding: 0.5em 1em !default;
-$nav-tabs-link-color: $gray-light!default;
-$nav-tabs-border-color: $brand-primary !default;
-$nav-tabs-border-width: 2px !default;
-$nav-tabs-link-border-width: 1px !default;
-$nav-tabs-link-hover-bg: $gray-lighter !default;
-$nav-tabs-link-hover-border-color: $nav-tabs-link-hover-bg !default;
+$nav-cards-border: rem(1px) solid $gray-light !default;
+$nav-cards-item-active-color: $blue-primary !default;
+$nav-cards-item-active-bg: $brand-pure !default;
+$nav-cards-link-padding: 0 rem(16px) !default;
+$nav-cards-item-bg: $gray-lightest !default;
+$nav-cards-link-lineheight: rem(35px) !default;
+$nav-cards-link-border-radius: rem(2px) rem(2px) 0px 0px !default;
 
-$nav-tabs-active-link-hover-color: $brand-pure !default;
-$nav-tabs-active-link-hover-bg: $nav-tabs-border-color !default;
-$nav-tabs-active-link-border-color: $nav-tabs-border-color !default;
-$nav-tabs-active-link-hover-border-color: #ddd !default;
-$nav-tabs-justified-link-border-color: #ddd !default;
+$nav-block-border: rem(2px) solid $gray-lightest !default;
+$nav-block-link-line-height: rem(32px) !default;
 
-$nav-tabs-justified-active-link-border-color: $body-bg !default;
+$nav-stacked-items-padding: 0 rem(16px) !default;
+$nav-stacked-link-line-height: rem(36px) !default;
 
-$nav-pills-link-color: $nav-tabs-link-color !default;
-$nav-pills-link-border-radius: $border-radius !default;
-$nav-pills-link-padding: $nav-tabs-link-padding !default;
-$nav-pills-active-link-color: $component-active-color !default;
-$nav-pills-active-link-bg: $brand-primary !default;
-$nav-pills-link-hover-color: $nav-tabs-active-link-hover-color !default;
-$nav-pills-link-hover-bg: $nav-tabs-link-hover-bg !default;
-$nav-pills-link-hover-border-color: $nav-tabs-link-hover-border-color !default;
+$nav-xs-font-size: rem(12px) !default;
+$nav-xs-normal-line-height: rem(28px) !default;
+$nav-xs-stacked-line-height: rem(28px) !default;
+$nav-xs-block-line-height: rem(24px) !default;
+$nav-xs-block-link-padding: 0 rem(12px) !default;
+$nav-xs-link-max-width: rem(108px) !default;
+$nav-xs-card-item-height: rem(28px) !default;
+$nav-xs-item-height: rem(28px) !default;
+$nav-xs-normal-slider-height: rem(24px) !default;
 
-$nav-stacked-items-padding: 0.75rem 1rem !default;
+$nav-after-bg: $gray-light !default;

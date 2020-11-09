@@ -10,10 +10,10 @@
   </CollapseTitle>
   <CollapseBody>
     <Nav>
-      <NavLink>
+      <NavItem>
         <span>登录</span>
-      </NavLink>
-      <NavLink>
+      </NavItem>
+      <NavItem>
         <a
           href="http://fontawesome.io/icons/"
           rel="noreferrer noopener"
@@ -21,7 +21,7 @@
         >
           报错页面
         </a>
-      </NavLink>
+      </NavItem>
     </Nav>
   </CollapseBody>
 </Collapse>

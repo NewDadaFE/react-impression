@@ -10,20 +10,13 @@ const DropdownTrigger = ({
   disabled,
   ...others
 }) => {
-  let options = {
-    icon: 'angle-down',
-    iconPosition: 'right',
-  }
+  let options = {}
   disabled && (options.disabled = true)
   if (trigger === 'click') {
     options.onClick = toggleMenu
   }
 
-  children = React.cloneElement(
-    children,
-    options,
-    <span>{children.props.children}</span>
-  )
+  children = React.cloneElement(children, options, children.props.children)
 
   return (
     <span {...others} className={classnames('dropdown-toggle', className)}>
