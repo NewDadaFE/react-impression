@@ -32,7 +32,7 @@ module.exports = {
         },
         {
           rel: 'stylesheet',
-          href: 'https://at.alicdn.com/t/font_2010704_ph7d2pl746e.css',
+          href: 'https://at.alicdn.com/t/font_2010704_0skvm4f627s.css',
         },
       ],
     },
