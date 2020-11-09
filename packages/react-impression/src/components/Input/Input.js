@@ -327,7 +327,7 @@ export default class Input extends React.PureComponent {
               style={style}
             >
               <Ico
-                type='calendar'
+                type='calendar-o'
                 className='dada-input-addon-before'
                 onClick={this.handleShowDatePicker}
               />

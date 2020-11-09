@@ -27,7 +27,7 @@
       <Nav stacked>
         <Collapse>
           <CollapseTitle>
-            <Ico type="bar-chart" />
+            <Ico type="chart-bar" />
             热带地区
           </CollapseTitle>
           <CollapseBody>
@@ -43,7 +43,7 @@
         </Collapse>
         <Collapse>
           <CollapseTitle>
-            <Ico type="file-text" />
+            <Ico type="file" />
             温带地区
           </CollapseTitle>
           <CollapseBody>
