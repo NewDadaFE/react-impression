@@ -43,7 +43,7 @@ function Nav(props) {
     props.activeKey || props.defaultActiveKey
   )
 
-  const navItems = useRef([])
+  const navItemsRef = useRef([])
   const nav = useRef(null)
   const navWrapInnerRef = useRef(null)
   const [hiddenItems, setHiddenItems] = useState([]) // 需要通过 ref计算的值的汇总 通过getNavSliderStyle方法
@@ -63,90 +63,51 @@ function Nav(props) {
       clientHeight,
     } = navWrapInnerRef.current || {}
 
-    const calcVerticalHiddenItems = () => {
-      const newHiddenItems = []
-      // 没有滚动条的不需要计算
-      if (clientHeight >= scrollHeight) return newHiddenItems
+    /**
+     * @param {number}client clientHeight 或者 clientWidth
+     * @param {number}scrollTotal scrollHeight 或者 scrollWidth
+     * @param {number}scroll scrollLeft 或者 scrollTop
+     * @param {'offsetTop'｜'offsetLeft'} type
+     * @returns []
+     */
+    const calcHiddenItems = (client, scrollTotal, scroll, type) => {
+      const result = []
 
-      let lastItemOffsetTop = 0
-      const itemHeightList = []
-      for (let i in navItems.current) {
-        // 获取 元素实际占用的高度 包括margin
-        if (+i === 0) continue
-        const { dom } = navItems.current[i]
-        const { offsetTop } = dom.current || {}
-        if (+i === navItems.current.length - 1) {
-          // 最后一个元素
-          itemHeightList[i] = scrollHeight - offsetTop
-        }
-        itemHeightList[i - 1] = offsetTop - lastItemOffsetTop
-        lastItemOffsetTop = offsetTop
-      }
+      if (client >= scrollTotal) return result
 
-      let topTotal = 0
-      for (let i in navItems.current) {
-        const { dom, child } = navItems.current[i]
-        const { offsetTop } = dom.current || {}
-        if (
-          topTotal + itemHeightList[i] < scrollTop ||
-          (topTotal < scrollTop && topTotal + itemHeightList[i] > scrollTop)
-        ) {
-          // 上半部分隐藏
-          newHiddenItems.push({ child, offset: offsetTop })
-        }
-        if (offsetTop > scrollTop + clientHeight - itemHeightList[i]) {
-          // 下半部分隐藏
-          newHiddenItems.push({ child, offset: offsetTop })
-        }
-        topTotal += itemHeightList[i]
-      }
-
-      return newHiddenItems
-    }
-
-    const calcHorizontalHiddenItems = () => {
-      const newHiddenItems = []
-
-      if (clientWidth >= scrollWidth) return newHiddenItems
-
-      // 横向的
-      let lastItemOffsetLeft = 0
+      let lastItemOffset = 0
       const itemWidthList = []
-      // 计算每一项包含margin的宽度
-      for (let i in navItems.current) {
-        // 获取 元素实际占用的宽度 包括margin
-        if (+i === 0) continue
-        const { dom } = navItems.current[i]
-        const { offsetLeft: itemOffsetLeft } = dom.current || {}
-        // 计算上一个项包含margin的宽度
-        itemWidthList[i - 1] = itemOffsetLeft - lastItemOffsetLeft
-        // 最后一个元素
-        if (+i === navItems.current.length - 1) {
-          itemWidthList[i] = scrollWidth - itemOffsetLeft
+      // 计算每一项包含margin的宽高
+      for (let i in navItemsRef.current) {
+        // 取后一个元素的dom 的offset
+        const { dom: nextDom } = navItemsRef.current[+i + 1] || {
+          dom: { current: null },
         }
-        lastItemOffsetLeft = itemOffsetLeft
-      }
+        const nextDomOffset = (nextDom.current || {})[type] || lastItemOffset
 
-      let leftTotal = 0
-      for (let i in navItems.current) {
-        const { dom, child } = navItems.current[i]
-        const { offsetLeft } = dom.current || {}
+        // 当前元素包括margin的长度或者高度 = 后一个元素的offset - 当前元素的offset
+        if (+i === navItemsRef.current.length - 1) {
+          // 最后一个元素
+          itemWidthList[i] = scrollTotal - lastItemOffset
+        } else {
+          itemWidthList[i] = nextDomOffset - lastItemOffset
+        }
 
+        const { dom, child } = navItemsRef.current[i]
+        const offset = (dom.current || {})[type]
         if (
-          leftTotal + itemWidthList[i] < scrollLeft ||
-          (leftTotal < scrollLeft && leftTotal + itemWidthList[i] > scrollLeft)
+          lastItemOffset < scroll ||
+          offset > scroll + client - itemWidthList[i]
         ) {
-          // 左侧隐藏
-          newHiddenItems.push({ child, offset: offsetLeft })
+          // 左 ｜ 上侧隐藏
+          // 右 ｜ 下侧隐藏
+          result.push({ child, offset: offset })
         }
-        // 右侧隐藏
-        if (offsetLeft > scrollLeft + clientWidth - itemWidthList[i]) {
-          newHiddenItems.push({ child, offset: offsetLeft })
-        }
-        leftTotal += itemWidthList[i]
+
+        lastItemOffset = nextDomOffset
       }
 
-      return newHiddenItems
+      return result
     }
 
     // 隐藏起来的元素 reactNode
@@ -154,9 +115,19 @@ function Nav(props) {
 
     // 规则：没有完全显示就加入 hiddenItems 当中
     if (stacked) {
-      newHiddenItems = calcVerticalHiddenItems()
+      newHiddenItems = calcHiddenItems(
+        clientHeight,
+        scrollHeight,
+        scrollTop,
+        'offsetTop'
+      )
     } else {
-      newHiddenItems = calcHorizontalHiddenItems()
+      newHiddenItems = calcHiddenItems(
+        clientWidth,
+        scrollWidth,
+        scrollLeft,
+        'offsetLeft'
+      )
     }
     setHiddenItems(newHiddenItems)
   }, [])
@@ -178,8 +149,8 @@ function Nav(props) {
           // 原则是没有完全显示就加入 hiddenItems 当中
           let top = 0
           let height = 0
-          for (let i in navItems.current) {
-            const { dom, active } = navItems.current[i] || {}
+          for (let i in navItemsRef.current) {
+            const { dom, active } = navItemsRef.current[i] || {}
             if (active && dom.current && type !== 'tab') {
               const { offsetTop, clientHeight: childHeght } = dom.current
               if (!hiddenItemsKeys.length) {
@@ -189,9 +160,11 @@ function Nav(props) {
               height = childHeght
               top = offsetTop
               const newNavSliderStyle = { top, height }
-              direction === 'left'
-                ? (newNavSliderStyle.left = 0)
-                : (newNavSliderStyle.right = 0)
+              if (direction === 'left') {
+                newNavSliderStyle.left = 0
+              } else {
+                newNavSliderStyle.right = 0
+              }
               setNavSliderStyle({ ...newNavSliderStyle })
               break
             }
@@ -200,8 +173,8 @@ function Nav(props) {
           // 横向的
           let left = 0
           let sliderWidth = 0
-          for (let i in navItems.current) {
-            const { dom, active } = navItems.current[i] || {}
+          for (let i in navItemsRef.current) {
+            const { dom, active } = navItemsRef.current[i] || {}
             if (active && dom.current) {
               const { offsetLeft, clientWidth: childWidth } = dom.current
               if (!hiddenItemsKeys.length) {
@@ -274,7 +247,7 @@ function Nav(props) {
         if (!child) return
 
         let ref = React.createRef()
-        navItems.current[index] = { dom: ref, child }
+        navItemsRef.current[index] = { dom: ref, child }
         const { eventKey, onClick } = child.props
         const options = {
           key: index,
@@ -288,7 +261,7 @@ function Nav(props) {
         if (eventKey !== undefined) {
           options.eventKey = eventKey
           if (activeKey !== undefined) {
-            navItems.current[index].active = eventKey === activeKey
+            navItemsRef.current[index].active = eventKey === activeKey
             options.active = eventKey === activeKey
           }
         }

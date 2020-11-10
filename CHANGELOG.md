@@ -1,3 +1,10 @@
+### nav 组件重构
+
+**button** 去掉只有 icon 时 组件内的空的 span 标签；
+**dropdown** 1.去掉 dropdown trigger 传入 button 的定制的 icon 和 iconPosition 2.修复 dropdownItem 中 disabled 的选项点击不会收起面板
+table pagination， totalPage 属性不存在时不渲染的问题；
+**nav** 1.新增 激活项切换时的过度动画 2.新增 折叠选项 以侧边或底部的 dropdown 新式展现 3.新增 defaultActiveKey 默认激活的选项
+
 - 新增 **Ico 组件** 支持 158 个图标
 
 ## 2.0.2

@@ -68,7 +68,7 @@ initialState = {
 
 ```js
 <Row>
-  <Col col="3">
+  <Col col="3" style={{ height: '180px' }}>
     <Nav activeKey={2} stacked>
       <NavItem eventKey={1}>选中</NavItem>
       <NavItem eventKey={2}>链接</NavItem>
