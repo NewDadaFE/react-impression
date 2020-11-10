@@ -69,9 +69,9 @@ const Button = React.forwardRef((props, ref) => {
         </span>
       ) : (
         <>
-          {shape !== 'circle' && (iconPosition && iconPosition === 'right') && (
-            <span>{children}</span>
-          )}
+          {shape !== 'circle' &&
+            (iconPosition && iconPosition === 'right') &&
+            (children && <span>{children}</span>)}
           {typeof icon === 'string' ? (
             <Ico
               type={icon}
@@ -88,9 +88,8 @@ const Button = React.forwardRef((props, ref) => {
           )}
           {/* 如果是圆形按钮，则不支持 children 属性 */}
           {shape !== 'circle' &&
-            (!iconPosition || iconPosition !== 'right') && (
-            <span>{children}</span>
-          )}
+            (!iconPosition || iconPosition !== 'right') &&
+            (children && <span>{children}</span>)}
         </>
       )}
     </button>

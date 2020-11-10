@@ -2,134 +2,281 @@
 //
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
-
 .nav-wrap {
+  position: relative;
+  display: flex;
+  .dropdown {
+    .btn {
+      .dada-ico {
+        transition: none;
+      }
+      color: inherit;
+    }
+  }
+}
+
+.nav-wrap-inner {
   overflow-x: auto;
+  position: relative;
+  flex: 1;
+  font-size: 0;
   &::-webkit-scrollbar {
     display: none;
   }
 }
+
 .nav {
   padding-left: 0;
   margin-bottom: 0;
-  list-style: none;
-  &.nav-inline {
-    display: inline-block;
-  }
-}
-
-.nav-link {
+  position: relative;
+  box-sizing: border-box;
   display: inline-block;
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  // Disabled state lightens text and removes hover/tab effects
-  &.disabled {
-    color: $nav-disabled-link-color;
-
-    &:hover {
-      color: $nav-disabled-link-hover-color;
-      cursor: not-allowed;
-      background-color: $nav-disabled-link-hover-bg;
-    }
-  }
+  white-space: nowrap;
 }
 
 // Nav normal
-
 .nav-normal {
-  border-bottom: $nav-border-width solid $nav-border-color;
-  height: rem(50px);
-  box-sizing: border-box;
   .nav-item {
-    display: inline-block;
-    cursor: pointer;
-    background: #fff;
-    padding: $nav-normal-padding;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease-in-out;
     &.active {
       color: $nav-link-active-color;
-      background-color: $nav-link-active-bg;
-      border-bottom: $nav-active-border-width solid $nav-link-active-color;
     }
     &:hover {
       color: $nav-link-active-color;
     }
     &.disabled {
       color: $nav-disabled-link-color;
-      cursor: not-allowed;
     }
   }
+  .nav-item:not(:last-child) {
+    margin-right: rem(32px);
+  }
 }
-.nav-stacked {
-  .nav-item {
-    padding: $nav-stacked-padding;
-    color: $gray-dark;
-    cursor: pointer;
-    background: $brand-pure;
-    transition: background-color 0.2s ease-in-out;
-    &.active {
-      background: $nav-link-active-color;
-      color: $brand-pure;
+
+.nav-stacked-left,
+.nav-stacked-right {
+  flex-direction: column;
+  height: inherit;
+  .nav-wrap-inner {
+    overflow-y: auto;
+    height: inherit;
+  }
+  .nav {
+    display: block;
+    .nav-item {
+      display: block;
+      padding: $nav-stacked-items-padding;
+      max-width: unset;
     }
-    &:hover {
-      background: $nav-link-active-color;
-      color: $brand-pure;
+    .nav-link {
+      line-height: $nav-stacked-link-line-height;
     }
-    &.disabled {
-      color: $nav-disabled-link-color;
-      cursor: not-allowed;
-      &:hover {
-        background: $brand-pure;
-      }
+    .nav-item:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: rem(16px);
     }
+  }
+  .dropdown {
+    padding: $nav-stacked-items-padding;
+  }
+}
+.nav-stacked-left {
+  .nav-link,
+  .dropdown {
+    text-align: left;
+  }
+}
+.nav-stacked-right {
+  .nav-item,
+  .dropdown {
+    text-align: right;
   }
 }
 
 .nav-card {
   .nav-item {
-    display: inline-block;
-    cursor: pointer;
-    border-top: $nav-border-width solid $nav-border-color;
-    border-left: $nav-border-width solid $nav-border-color;
-    border-bottom: $nav-border-width solid $nav-border-color;
-    padding: $nav-card-padding;
-    background: $gray-lighter;
-    color: $gray-dark;
-    transition: background-color 0.2s ease-in-out;
-    &.active {
-      background: $nav-link-active-bg;
-      color: $nav-link-active-color;
-      border-bottom: none;
-    }
+    background-color: $nav-cards-item-bg;
+    color: $gray-darker;
+    padding: $nav-cards-link-padding;
+    border: $nav-cards-border;
+    border-bottom: none;
+    border-radius: $nav-cards-link-border-radius;
+    position: relative;
+    overflow-y: visible;
+    &.active,
     &:hover {
-      background: $nav-link-active-bg;
-      color: $nav-link-active-color;
-      border-bottom: none;
+      color: $nav-cards-item-active-color;
     }
-    &.disabled {
+    &.active {
+      background-color: $nav-cards-item-active-bg;
+      z-index: 3;
+    }
+    .nav-link {
+      line-height: $nav-cards-link-lineheight;
+    }
+    &.disabled,
+    &.disabled:hover {
       color: $nav-disabled-link-color;
-      cursor: not-allowed;
-      &:hover {
-        background: $gray-lighter;
-        border-bottom: $nav-border-width solid $nav-border-color;
-      }
     }
-    &:last-child {
-      border-right: $nav-border-width solid $nav-border-color;
+  }
+  .nav-item:not(:last-child) {
+    margin-right: rem(4px);
+  }
+}
+
+.nav-block {
+  border-radius: $nav-cards-link-border-radius;
+  background-color: $gray-lightest;
+  border: $nav-block-border;
+  .nav-item {
+    color: $gray-darker;
+    &.active,
+    &:hover {
+      color: $nav-cards-item-active-color;
+    }
+    &.disabled,
+    &.disabled:hover {
+      color: $nav-disabled-link-color;
+    }
+    .nav-link {
+      position: relative;
+      z-index: 4;
+      line-height: $nav-block-link-line-height;
+      background-color: transparent;
+      padding: $nav-cards-link-padding;
     }
   }
 }
-// Hide tabbable panes to start, show them when `.active`
-.tab-content {
-  > .tab-pane {
-    display: none;
-  }
 
-  > .active {
-    display: block;
+.nav-item {
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+  &.disabled {
+    cursor: not-allowed;
   }
+  .nav-link {
+    line-height: $nav-normal-lineheight;
+    display: inline-block;
+    font-size: 0;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .nav-link {
+    font-size: $nav-link-font-size;
+    max-width: $nav-item-max-width;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+}
+
+.nav-xs {
+  height: $nav-xs-item-height;
+  .nav-item {
+    .nav-link {
+      font-size: $nav-xs-font-size;
+      max-width: $nav-xs-link-max-width;
+      line-height: $nav-xs-normal-line-height;
+    }
+  }
+  &.nav-normal {
+    .nav-item:not(:last-child) {
+      margin-right: rem(20px);
+    }
+  }
+  &.nav-block {
+    .nav-slider {
+      height: $nav-xs-normal-slider-height;
+    }
+    .nav-link {
+      line-height: $nav-xs-block-line-height;
+      padding: $nav-xs-block-link-padding;
+    }
+  }
+  &.nav-card {
+    .nav-item {
+      height: $nav-xs-card-item-height;
+      padding: $nav-xs-block-link-padding;
+    }
+  }
+}
+.nav-stacked-left,
+.nav-stacked-right {
+  .nav-xs {
+    .nav-link {
+      max-width: unset;
+      line-height: $nav-xs-stacked-line-height;
+    }
+    .nav-item:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: rem(12px);
+    }
+  }
+}
+
+//轨道
+.nav-wrap-inline,
+.nav-wrap-inline,
+.nav-wrap-tab {
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: rem(1px);
+    background-color: $nav-after-bg;
+    z-index: 2;
+    right: 0;
+    left: 0;
+  }
+}
+
+.nav-stacked-left,
+.nav-stacked-right {
+  &:after {
+    content: "";
+    position: absolute;
+    width: rem(2px);
+    background-color: $nav-after-bg;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+  }
+}
+.nav-stacked-left:after {
+  left: 0;
+}
+.nav-stacked-right:after {
+  right: 0;
+}
+
+// 滑块
+.nav-normal .nav-slider {
+  position: absolute;
+  height: rem(2px);
+  width: 0;
+  bottom: 0;
+  background-color: $nav-link-active-color;
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+.nav-stacked-left,
+.nav-stacked-right {
+  .nav-normal .nav-slider {
+    width: rem(2px);
+  }
+}
+
+.nav-block .nav-slider {
+  position: absolute;
+  height: rem(32px);
+  width: 0px;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: $brand-pure;
+  transition: all 0.2s ease;
+  z-index: 4;
 }

@@ -39,14 +39,11 @@ module.exports = {
   },
   theme,
   styles,
+  pagePerSection: true,
   sections: [
     {
       name: 'Introduction',
       content: resolveWebsite('docs/Introduction.md'),
-    },
-    {
-      name: 'Examples',
-      href: 'examples/',
     },
     {
       name: 'Typography',
@@ -55,22 +52,24 @@ module.exports = {
     {
       name: 'General',
       description: '基础内容组件。',
+      sectionDepth: 1,
       components: resolveComponents(['Button*', 'Ico', 'Image']),
     },
     {
       name: 'Layout',
       description: '布局组件，用于辅助页面结构的布局工作。',
+      sectionDepth: 1,
       components: resolveComponents(['Row', 'Col', 'Flex*', 'Trigger']),
     },
     {
       name: 'Navigation',
       description: '导航组件，用于页面功能模块的指示和引导。',
+      sectionDepth: 1,
       components: resolveComponents([
         'Breadcrumb',
         'Dropdown*',
-        'InlineSelect*',
         'Nav',
-        'Nav[A-Z]*',
+        'NavItem',
         'Navbar',
         'NavbarButton',
         'NavbarLink',
@@ -82,6 +81,7 @@ module.exports = {
     {
       name: 'Data Entry',
       description: '表单组件，用于采集用户输入的信息。',
+      sectionDepth: 1,
       components: resolveComponents([
         'Checkbox*',
         'DatePicker',
@@ -98,6 +98,7 @@ module.exports = {
     {
       name: 'Data Display',
       description: '数据展示组件，优化页面内容的展示效果。',
+      sectionDepth: 1,
       components: resolveComponents([
         'Badge',
         'Calendar',
@@ -117,6 +118,7 @@ module.exports = {
     {
       name: 'Feedback',
       description: '页面输出内容组件，丰富和优化网页对用户行为作出的反馈。',
+      sectionDepth: 1,
       components: resolveComponents([
         'Attention*',
         'Confirm',
