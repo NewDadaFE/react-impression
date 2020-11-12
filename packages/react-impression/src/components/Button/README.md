@@ -113,7 +113,7 @@
 
 **图标**
 
-icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)。<br/>
+icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#/General/Ico)。<br/>
 除了使用内置图标库的图标，也可以传入自定义图标组件。
 
 ```javascript

@@ -6,6 +6,7 @@
   flex-direction: column;
   background: $sidebar-bg;
 }
+
 // 头部
 .sidebar-header {
   display: flex;
@@ -22,33 +23,36 @@
     margin-right: $sidebar-header-logo-margin-right;
   }
 }
+
 // 主内容
 .sidebar-body {
   position: relative;
-  flex: 1;
-  color: $sidebar-nav-item-color;
   overflow: hidden;
+  flex: 1;
 
   .nav-item > a,
   .nav-link > a,
   .collapse-title {
     display: block;
-    color: inherit;
-    text-decoration: none;
     padding: $sidebar-nav-item-padding;
     font-size: $sidebar-font-size;
     line-height: $sidebar-line-height;
     cursor: pointer;
+    text-decoration: none;
+    color: $sidebar-nav-item-color;
   }
+
   .nav .collapse-body .nav {
     .nav-item > a,
     .nav-link > a {
       padding-left: $sidebar-nav-item-padding-inside;
     }
   }
+
   .secondary-collapse .collapse-title {
     padding-left: $sidebar-nav-item-padding-inside;
   }
+
   .collapse > .collapse-title {
     > i:nth-last-child(2) {
       width: $sidebar-icon-size;
@@ -59,6 +63,7 @@
       vertical-align: top;
     }
   }
+
   .collapse-body {
     text-indent: 0;
   }
@@ -69,6 +74,7 @@
     .nav-link {
       display: block;
       text-indent: 0;
+
       & > a {
         padding-left: $sidebar-nav-item-secondary-padding-left;
       }
@@ -93,15 +99,17 @@
       bottom: 0;
       left: 0;
       width: rem(4px);
-      content: '';
+      content: "";
       background-color: $brand-primary;
     }
 
     &.disabled {
       color: inherit;
+
       &:hover {
         background-color: transparent;
       }
+
       & > .nav-link > a {
         cursor: not-allowed;
       }
@@ -112,6 +120,7 @@
     margin-right: rem(10px);
   }
 }
+
 // 底部
 .sidebar-footer {
   display: flex;
@@ -119,6 +128,7 @@
   font-size: $sidebar-footer-font-size;
   line-height: $sidebar-footer-height;
   border-top: $border-width solid $sidebar-footer-border-color;
+
   &-item {
     flex: 1;
     cursor: pointer;

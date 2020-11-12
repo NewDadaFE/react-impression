@@ -1,3 +1,3 @@
 ### 示例
 
-参考 [Dropdown](#dropdown)
+参考 [Dropdown](#/Navigation/Dropdown)

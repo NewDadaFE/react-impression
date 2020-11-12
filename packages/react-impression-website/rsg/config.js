@@ -68,6 +68,8 @@ module.exports = {
       components: resolveComponents([
         'Breadcrumb',
         'Dropdown*',
+        'Tabs',
+        'TabPane',
         'Nav',
         'NavItem',
         'Navbar',

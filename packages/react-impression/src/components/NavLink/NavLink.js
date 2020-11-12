@@ -19,7 +19,7 @@ const NavLink = forwardRef(({ children, className, ...others }, ref) => {
   }
 
   let childrenProps = {
-    className: classnames('nav-link-inner', children.props.className),
+    className: classnames('nav-link', children.props.className),
   }
 
   if (children.type && ['a', 'span', 'div'].indexOf(children.type) === -1) {
@@ -30,7 +30,7 @@ const NavLink = forwardRef(({ children, className, ...others }, ref) => {
 
   return (
     <li {...others} className={classnames('nav-item', className)} ref={ref}>
-      <span className='nav-link'>{children}</span>
+      {children}
     </li>
   )
 })

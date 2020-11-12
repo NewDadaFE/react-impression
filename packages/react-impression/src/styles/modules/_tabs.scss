@@ -1,0 +1,335 @@
+// 标签窗口项目
+.dada-tab-pane {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: $tab-pane-color;
+
+  &:hover {
+    color: $tab-pane-active-color;
+  }
+
+  &.active {
+    color: $tab-pane-active-color;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $tab-pane-disabled-color;
+  }
+}
+
+.dada-tab-pane-text {
+  display: inline-block;
+  max-width: $tab-pane-text-max-width;
+  overflow: hidden;
+  font-size: $tab-pane-text-font-size;
+  line-height: $tab-pane-text-line-height;
+  transition: all .2s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// 标签组最外层
+.dada-tabs {
+  position: relative;
+  display: flex;
+}
+
+.dada-tabs-inner {
+  position: relative;
+  overflow-x: auto;
+  flex: 1;
+  font-size: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// 隐藏选项
+.dada-tabs-dropdown {
+  .btn {
+    color: inherit;
+  }
+}
+
+.dada-tabs-list {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+// 滑动条
+%dada-tabs-track-h {
+  &:after {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    height: 1px;
+    content: "";
+    background-color: $border-color;
+  }
+}
+
+%dada-tabs-track-v {
+  height: inherit;
+  flex-direction: column;
+
+  &:after {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    content: "";
+    background-color: $border-color;
+  }
+}
+
+.dada-tabs-slider {
+  position: absolute;
+  z-index: 3;
+  width: 0;
+  transition: all .2s ease;
+}
+
+// 默认类型
+.dada-tabs-line {
+  .dada-tab-pane:not(:last-child) {
+    margin-right: rem(32px);
+  }
+
+  .dada-tabs-slider {
+    height: rem(2px);
+    background-color: $tab-pane-active-color;
+  }
+}
+
+// 卡片类型
+.dada-tabs-card {
+  .dada-tab-pane {
+    padding: $tab-pane-padding;
+    overflow-y: visible;
+    border: 1px solid $border-color;
+    border-radius: $tab-pane-border-radius;
+    background-color: $tab-pane-bg;
+
+    &:not(:last-child) {
+      margin-right: rem(4px);
+    }
+
+    &.active {
+      z-index: 3;
+      background-color: $tab-pane-card-active-bg;
+    }
+  }
+
+  .dada-tab-pane-text {
+    line-height: $tab-pane-card-text-line-height;
+  }
+}
+
+// 滑块类型
+.dada-tabs-block {
+  .dada-tabs-list {
+    border: $tab-pane-block-border;
+    border-radius: $tab-pane-border-radius;
+    background-color: $tab-pane-bg;
+  }
+
+  .dada-tab-pane-text {
+    position: relative;
+    z-index: 4;
+    padding: $tab-pane-padding;
+    line-height: $tab-pane-block-text-line-height;
+    background-color: transparent;
+  }
+
+  .dada-tabs-slider {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: $tab-pane-block-text-line-height;
+    background-color: $brand-pure;
+  }
+}
+
+// 尺寸样式覆盖
+.dada-tabs-md {
+  // 默认为md，不需要覆写样式
+}
+
+.dada-tabs-sm {
+  .dada-tab-pane-text {
+    font-size: $tab-pane-sm-text-font-size;
+    line-height: $tab-pane-sm-text-line-height;
+  }
+
+  &.dada-tabs-line {
+    .dada-tab-pane:not(:last-child) {
+      margin-right: rem(20px);
+    }
+
+    .dada-tab-pane-text {
+      max-width: $tab-pane-sm-block-text-max-width;
+    }
+  }
+
+  &.dada-tabs-card {
+    .dada-tab-pane {
+      height: $tab-pane-sm-height;
+      padding: $tab-pane-sm-block-text-padding;
+    }
+  }
+
+  &.dada-tabs-block {
+    .dada-tab-pane-text {
+      padding: $tab-pane-sm-block-text-padding;
+      line-height: $tab-pane-sm-block-text-line-height;
+    }
+
+    .dada-tabs-slider {
+      height: $tabs-sm-block-slider-height;
+    }
+  }
+}
+
+// 横向排列
+.dada-tabs-top,
+.dada-tabs-bottom {
+  &.dada-tabs-line,
+  &.dada-tabs-card {
+    @extend %dada-tabs-track-h;
+  }
+}
+
+.dada-tabs-top {
+  &:after {
+    bottom: 0;
+  }
+
+  &.dada-tabs-line .dada-tabs-slider {
+    bottom: 0;
+  }
+
+  &.dada-tabs-card .dada-tab-pane {
+    border-bottom: none;
+  }
+}
+
+.dada-tabs-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  &:after {
+    top: 0;
+  }
+
+  &.dada-tabs-line .dada-tabs-slider {
+    top: 0;
+  }
+
+  &.dada-tabs-card .dada-tab-pane {
+    border-top: none;
+  }
+}
+
+// 纵向排列
+.dada-tabs-left,
+.dada-tabs-right {
+  &.dada-tabs-line,
+  &.dada-tabs-card {
+    @extend %dada-tabs-track-v;
+
+    .dada-tabs-slider {
+      width: rem(2px);
+    }
+  }
+
+  &.dada-tabs-block .dada-tabs-slider {
+    width: unset;
+  }
+
+  &.dada-tabs-sm {
+    .dada-tab-pane:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: rem(12px);
+    }
+
+    .dada-tab-pane-text {
+      max-width: unset;
+    }
+  }
+
+  .dada-tabs-inner {
+    height: inherit;
+    overflow-y: auto;
+  }
+
+  .dada-tabs-list {
+    display: block;
+  }
+
+  .dada-tab-pane {
+    display: block;
+    max-width: unset;
+    padding: $tab-pane-padding;
+
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: rem(16px);
+    }
+  }
+
+  .dada-tabs-dropdown {
+    padding: $tab-pane-padding;
+  }
+}
+
+.dada-tabs-left {
+  float: left;
+
+  &:after {
+    right: 0;
+  }
+
+
+  &.dada-tabs-line {
+    .dada-tab-pane,
+    .dada-tabs-dropdown {
+      text-align: right;
+    }
+  }
+
+  &.dada-tabs-card .dada-tab-pane {
+    border-right: none;
+  }
+}
+
+.dada-tabs-right {
+  float: right;
+
+  &:after {
+    left: 0;
+  }
+
+  &.dada-tabs-line {
+    .dada-tab-pane,
+    .dada-tabs-dropdown {
+      text-align: left;
+    }
+  }
+
+  &.dada-tabs-card .dada-tab-pane {
+    border-left: none;
+  }
+}
