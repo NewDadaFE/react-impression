@@ -108,7 +108,7 @@ class InputExample extends React.Component {
 
 日期类型输入框有 5 种：年份、月份、日期、时间、秒。<br/>
 **clearable 属性**仅对日期类型输入框生效，clearable 为 true 时，鼠标悬停到输入框会出现清除图标，点击触发 onChange 事件，回传空字符串。<br/>
-更多用法请移步 [DatePicker 日期选择](#datepicker)。
+更多用法请移步 [DatePicker 日期选择](#/Data%20Entry/DatePicker)。
 
 ```js
 <Form>
@@ -138,7 +138,7 @@ class InputExample extends React.Component {
 **可搜索类型**
 
 可搜索类型命名上由于历史原因不够准确，实际表现是输入框为只读状态，接受 onClick 回调。<br/>
-带搜索功能的输入框请移步 [Search 搜索](#search)。
+带搜索功能的输入框请移步 [Search 搜索](#/Data%20Entry/Search)。
 
 ```js
 class Example extends React.Component {
@@ -250,7 +250,7 @@ class Example extends React.Component {
 
 **文件类型**
 
-实际是 Upload 组件的二次封装，文件上传建议直接使用 [Upload 上传](#upload)。
+实际是 Upload 组件的二次封装，文件上传建议直接使用 [Upload 上传](#/Data%20Entry/Upload)。
 
 ```js
 <Row>

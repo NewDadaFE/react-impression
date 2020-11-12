@@ -88,7 +88,7 @@ export default class Select extends React.PureComponent {
     placeholder: PropTypes.string,
 
     /**
-     * 状态变更回调，参数列表：value，name，index
+     * 状态变更回调，参数列表：value，name
      */
     onChange: PropTypes.func,
 
@@ -360,9 +360,7 @@ export default class Select extends React.PureComponent {
 
   /**
    * option选中回调
-   * @param {String} 值
-   * @param {String} 显示文本
-   * @param {Number} 索引
+   * @param result
    */
   selectOptionHandle(result) {
     const { onChange, value, multiple } = this.props
@@ -546,7 +544,7 @@ export default class Select extends React.PureComponent {
       },
       () => {
         options.forEach(option => option.handleActive())
-        onChange && onChange('')
+        onChange && onChange('', '')
       }
     )
   }

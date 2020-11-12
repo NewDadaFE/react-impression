@@ -1,0 +1,28 @@
+// Tabs & TabPane
+// TabPane
+$tab-pane-color: $gray-darker !default;
+$tab-pane-padding: 0 rem(16px) !default;
+$tab-pane-border-radius: rem(2px) rem(2px) 0px 0px !default;
+$tab-pane-bg: $gray-lightest !default;
+$tab-pane-active-color: $brand-primary !default;
+$tab-pane-disabled-color: $gray !default;
+// TabPane Text
+$tab-pane-text-max-width: rem(130px) !default;
+$tab-pane-text-line-height: rem(36px) !default;
+$tab-pane-text-font-size: rem(14px) !default;
+
+$tab-pane-card-active-bg: $brand-pure !default;
+$tab-pane-card-text-line-height: rem(35px) !default;
+
+$tab-pane-block-border: $border-radius solid transparent !default;
+$tab-pane-block-text-line-height: rem(32px) !default;
+// xs
+$tabs-sm-block-slider-height: rem(24px) !default;
+
+$tab-pane-sm-height: rem(28px) !default;
+$tab-pane-sm-text-font-size: rem(12px) !default;
+$tab-pane-sm-text-line-height: $tab-pane-sm-height !default;
+
+$tab-pane-sm-block-text-line-height: rem(24px) !default;
+$tab-pane-sm-block-text-padding: 0 rem(12px) !default;
+$tab-pane-sm-block-text-max-width: rem(108px) !default;

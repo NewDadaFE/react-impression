@@ -1,6 +1,6 @@
 ### 示例
 
-单选组件，一般配合 [RadioGroup 单选组合](#radiogroup)使用。
+单选组件，一般配合 [RadioGroup 单选组合](#/Data%20Entry/RadioGroup)使用。
 
 **基本用法**
 

@@ -1,3 +1,3 @@
 ### 示例
 
-参考 [Navbar](#navbar)
+参考 [Navbar](#/Navigation/Navbar)

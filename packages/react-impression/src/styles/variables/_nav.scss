@@ -1,11 +1,14 @@
 // Navs
-$nav-normal-lineheight: rem(36px);
-$nav-item-max-width: rem(130px) !default;
-$nav-link-font-size: rem(14px) !default;
+$nav-active-border-width: rem(2px) !default;
+$nav-normal-padding: rem(8px) 0 rem(6px);
+$nav-stacked-padding: rem(15px) rem(20px);
 
 $nav-link-active-color: $brand-primary !default;
+$nav-link-active-bg: $brand-pure !default;
 
-$nav-disabled-link-color: $gray !default;
+$nav-disabled-link-color: $gray-light!default;
+$nav-disabled-link-hover-color: $gray-light!default;
+$nav-disabled-link-hover-bg: $brand-pure !default;
 
 $nav-cards-border: rem(1px) solid $gray-light !default;
 $nav-cards-item-active-color: $blue-primary !default;
@@ -14,21 +17,3 @@ $nav-cards-link-padding: 0 rem(16px) !default;
 $nav-cards-item-bg: $gray-lightest !default;
 $nav-cards-link-lineheight: rem(35px) !default;
 $nav-cards-link-border-radius: rem(2px) rem(2px) 0px 0px !default;
-
-$nav-block-border: rem(2px) solid $gray-lightest !default;
-$nav-block-link-line-height: rem(32px) !default;
-
-$nav-stacked-items-padding: 0 rem(16px) !default;
-$nav-stacked-link-line-height: rem(36px) !default;
-
-$nav-xs-font-size: rem(12px) !default;
-$nav-xs-normal-line-height: rem(28px) !default;
-$nav-xs-stacked-line-height: rem(28px) !default;
-$nav-xs-block-line-height: rem(24px) !default;
-$nav-xs-block-link-padding: 0 rem(12px) !default;
-$nav-xs-link-max-width: rem(108px) !default;
-$nav-xs-card-item-height: rem(28px) !default;
-$nav-xs-item-height: rem(28px) !default;
-$nav-xs-normal-slider-height: rem(24px) !default;
-
-$nav-after-bg: $gray-light !default;

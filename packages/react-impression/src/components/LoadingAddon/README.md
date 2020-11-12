@@ -23,4 +23,4 @@ initialState = {
 </div>
 ```
 
-更多样式类型参考 [Loading](#loading)
+更多样式类型参考 [Loading](#/Feedback/Loading)
