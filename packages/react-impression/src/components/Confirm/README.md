@@ -45,6 +45,7 @@ const toggleConfirm3Handle = () => {
     <Confirm
       onOkClick={toggleConfirm1Handle}
       onCancelClick={toggleConfirm1Handle}
+      title="删除记录"
     >
       您确定删除消费记录？
     </Confirm>
@@ -54,6 +55,7 @@ const toggleConfirm3Handle = () => {
       type="info"
       onOkClick={toggleConfirm2Handle}
       onCancelClick={toggleConfirm2Handle}
+      title="购买机票"
     >
       您确定购买该航班机票？
     </Confirm>
@@ -61,6 +63,7 @@ const toggleConfirm3Handle = () => {
   {state.showConfirm3 && (
     <Confirm
       type="danger"
+      title="注销银行卡"
       onOkClick={toggleConfirm3Handle}
       onCancelClick={toggleConfirm3Handle}
     >
