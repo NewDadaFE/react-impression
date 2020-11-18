@@ -35,7 +35,7 @@ function Confirm(props) {
   let addonClassNames
   switch (type) {
     case 'info':
-      addonClassNames = null
+      addonClassNames = 'dada-ico-question-circle text-primary'
       break
     case 'danger':
       addonClassNames = 'dada-ico-exclamation-circle text-danger'
@@ -58,13 +58,9 @@ function Confirm(props) {
           type === 'info' ? null : `confirm-${type}`
         )}
       >
-        {type !== 'info' && (
-          <div className='confirm-addon'>
-            <i
-              className={classnames('dada-ico dada-ico-xl', addonClassNames)}
-            />
-          </div>
-        )}
+        <div className='confirm-addon'>
+          <i className={classnames('dada-ico dada-ico-xl', addonClassNames)} />
+        </div>
         <div className='confirm-body'>
           {title && <div className='confirm-title'>{title}</div>}
           <div className='confirm-content'>{children}</div>

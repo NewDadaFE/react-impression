@@ -5,16 +5,14 @@ $confirm-bg: $modal-bg !default;
 $confirm-dialog-bg: $brand-pure !default;
 $confirm-dialog-min-width: rem(302px) !default;
 $confirm-dialog-max-width: rem(408px) !default;
-$confirm-dialog-padding-normal: rem(20px) !default;
-$confirm-dialog-padding-danger: rem(32px) !default;
+$confirm-dialog-padding: rem(32px) !default;
 $confirm-dialog-border-radius: rem(2px) !default;
 $confirm-dialog-min-height: rem(95px) !default;
 $confirm-dialog-box-shadow: 0px rem(6px) rem(18px) 0px rgba(38, 38, 38, 0.14);
 
 $confirm-addon-font-size: rem(40px) !default;
 $confirm-addon-line-height: rem(40px) !default;
-$confirm-body-normal-padding: 0 0 rem(20px) 0 !default;
-$confirm-body-danger-padding: rem(32px) 0 !default;
+$confirm-body-padding: rem(32px) 0 !default;
 $confirm-content-font-weight: 400 !default;
 $confirm-content-font-size: rem(14px) !default;
 $confirm-content-color: $gray-darker !default;
