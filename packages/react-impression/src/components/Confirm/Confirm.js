@@ -51,13 +51,7 @@ function Confirm(props) {
 
   return (
     <div className={classnames('confirm', className)}>
-      <div
-        {...others}
-        className={classnames(
-          'confirm-dialog',
-          type === 'info' ? null : `confirm-${type}`
-        )}
-      >
+      <div {...others} className='confirm-dialog'>
         <div className='confirm-addon'>
           <i className={classnames('dada-ico dada-ico-xl', addonClassNames)} />
         </div>
