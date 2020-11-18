@@ -75,10 +75,5 @@ const toggleConfirm3Handle = () => {
 
 **变更记录**
 
-v2.0.0
-
-- 移除 confirm-btn-padding sass 变量
-- 移除 confirm-btn-hover-bg sass 变量
-- 移除 confirm-btn-primary-color sass 变量
-- 新增 confirm-footer-btn-margin sass 变量
-- 新增 confirm-dialog-min-height sass 变量
+- 添加 title 属性，confirm 显示的区分文案和标题
+- 样式修改 info 类型 和 warning、danger 作出区分
