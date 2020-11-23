@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
+import isPropValid from '@emotion/is-prop-valid'
 
 const disableScroll = () => {
   const documentBody = document.body

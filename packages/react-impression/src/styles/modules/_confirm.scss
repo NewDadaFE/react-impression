@@ -45,15 +45,15 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
-    font-size: $confirm-title-font-size;
     color: $confirm-title-color;
     font-weight: $confirm-title-font-weight;
+    @include set-font-size($confirm-title-font-size);
   }
   .confirm-content {
-    font-size: $confirm-content-font-size;
     color: $confirm-content-color;
     font-weight: $confirm-content-font-weight;
     text-align: center;
+    @include set-font-size($confirm-content-font-size);
   }
 }
 
