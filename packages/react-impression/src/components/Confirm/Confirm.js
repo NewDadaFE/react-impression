@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 
@@ -49,8 +49,21 @@ function Confirm(props) {
     return enableScroll
   }, [])
 
+  const otherDomProps = useMemo(
+    () => {
+      const result = {}
+      for (let key in others) {
+        if (others.hasOwnProperty(key) && isPropValid(key)) {
+          result[key] = others[key]
+        }
+      }
+      return result
+    },
+    [others]
+  )
+
   return (
-    <div className={classnames('confirm', className)}>
+    <div className={classnames('confirm', otherDomProps)}>
       <div {...others} className='confirm-dialog'>
         <div className='confirm-addon'>
           <i className={classnames('dada-ico dada-ico-xl', addonClassNames)} />
