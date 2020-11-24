@@ -23,7 +23,6 @@
     "prop-types": "15.6.2",
     "ramda": "^0.26.0",
     "react-debounce-input": "^3.2.2",
-    "react-popper": "^2.2.3",
     "react-portal": "^4.1.5",
     "react-transition-group": "^4.3.0",
     "resize-observer-polyfill": "^1.5.1",
