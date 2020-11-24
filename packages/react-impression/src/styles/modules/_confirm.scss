@@ -16,28 +16,45 @@
 
 .confirm-dialog {
   position: relative;
+  min-width: $confirm-dialog-min-width;
+  max-width: $confirm-dialog-max-width;
   padding: $confirm-dialog-padding;
-  text-align: center;
-  width: $confirm-dialog-width;
   min-height: $confirm-dialog-min-height;
   background: $confirm-dialog-bg;
   border-radius: $confirm-dialog-border-radius;
   animation: bounceIn $confirm-animation-duration ease-in-out;
+  box-shadow: $confirm-dialog-box-shadow;
 }
 
 .confirm-addon {
-  font-size: $confirm-addon-font-size;
-
+  text-align: center;
   i {
-    display: block;
+    font-size: 0;
+    &:before {
+      line-height: $confirm-addon-line-height;
+      font-size: $confirm-addon-font-size;
+    }
   }
 }
 
 .confirm-body {
-  font-size: $confirm-body-font-size;
   padding: $confirm-body-padding;
-  color: $confirm-body-color;
-  font-weight: $confirm-body-font-weight;
+  .confirm-title {
+    margin-bottom: $confirm-title-mgbottom;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    color: $confirm-title-color;
+    font-weight: $confirm-title-font-weight;
+    @include set-font-size($confirm-title-font-size);
+  }
+  .confirm-content {
+    color: $confirm-content-color;
+    font-weight: $confirm-content-font-weight;
+    text-align: center;
+    @include set-font-size($confirm-content-font-size);
+  }
 }
 
 .confirm-footer {
@@ -45,7 +62,6 @@
   text-align: center;
   border-radius: 0 0 $confirm-dialog-border-radius $confirm-dialog-border-radius;
   cursor: pointer;
-
   .btn:last-child {
     margin-left: $confirm-footer-btn-margin;
   }

@@ -45,6 +45,7 @@ const toggleConfirm3Handle = () => {
     <Confirm
       onOkClick={toggleConfirm1Handle}
       onCancelClick={toggleConfirm1Handle}
+      title="删除记录"
     >
       您确定删除消费记录？
     </Confirm>
@@ -54,6 +55,7 @@ const toggleConfirm3Handle = () => {
       type="info"
       onOkClick={toggleConfirm2Handle}
       onCancelClick={toggleConfirm2Handle}
+      title="购买机票"
     >
       您确定购买该航班机票？
     </Confirm>
@@ -61,6 +63,7 @@ const toggleConfirm3Handle = () => {
   {state.showConfirm3 && (
     <Confirm
       type="danger"
+      title="注销银行卡"
       onOkClick={toggleConfirm3Handle}
       onCancelClick={toggleConfirm3Handle}
     >
@@ -72,10 +75,5 @@ const toggleConfirm3Handle = () => {
 
 **变更记录**
 
-v2.0.0
-
-- 移除 confirm-btn-padding sass 变量
-- 移除 confirm-btn-hover-bg sass 变量
-- 移除 confirm-btn-primary-color sass 变量
-- 新增 confirm-footer-btn-margin sass 变量
-- 新增 confirm-dialog-min-height sass 变量
+- 添加 title 属性，confirm 显示的区分文案和标题
+- 样式修改 info 类型 和 warning、danger 作出区分

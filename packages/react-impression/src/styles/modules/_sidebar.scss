@@ -30,6 +30,11 @@
   overflow: hidden;
   flex: 1;
 
+  .nav-item,
+  .nav-link {
+    display: block;
+  }
+
   .nav-item > a,
   .nav-link > a,
   .collapse-title {
