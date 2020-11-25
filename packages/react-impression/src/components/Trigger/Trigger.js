@@ -376,13 +376,7 @@ function Trigger(props) {
   useEffect(
     () => {
       onPopupVisibleChange && onPopupVisibleChange(showPopup)
-      if (showPopup) {
-        create()
-      } else {
-        destroy()
-      }
     },
-    // 此处不需要监听 create、destroy 的变化
     [showPopup, onPopupVisibleChange]
   )
 
@@ -398,8 +392,8 @@ function Trigger(props) {
         destroy()
       }
     },
-    // 此处不需要监听 create、destroy 的变化
-    [showPopup, delayShowPopup]
+    // 此处不需要监听 create 的变化
+    [create, destroy, showPopup, delayShowPopup]
   )
 
   useEffect(() => destroy, [destroy])
