@@ -392,7 +392,6 @@ function Trigger(props) {
         destroy()
       }
     },
-    // 此处不需要监听 create 的变化
     [create, destroy, showPopup, delayShowPopup]
   )
 
