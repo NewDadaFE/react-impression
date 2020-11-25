@@ -182,7 +182,11 @@ function Trigger(props) {
   // 创建 popper 实例
   const create = useCallback(
     () => {
-      if (referenceElement == null || popperElement == null) {
+      if (
+        referenceElement == null ||
+        popperElement == null ||
+        popperInstanceRef.current
+      ) {
         return
       }
       popperInstanceRef.current = createPopper(
@@ -380,6 +384,22 @@ function Trigger(props) {
     },
     // 此处不需要监听 create、destroy 的变化
     [showPopup, onPopupVisibleChange]
+  )
+
+  /**
+   * 监听 showPopup/delayShowPopup 变化
+   * 管理 popper 实例的创建和销毁
+   */
+  useEffect(
+    () => {
+      if (showPopup) {
+        create()
+      } else if (!delayShowPopup) {
+        destroy()
+      }
+    },
+    // 此处不需要监听 create、destroy 的变化
+    [showPopup, delayShowPopup]
   )
 
   useEffect(() => destroy, [destroy])
