@@ -7,7 +7,7 @@ import React, {
   useRef,
 } from 'react'
 import { createPortal } from 'react-dom'
-import { usePopper } from 'react-popper'
+import { createPopper } from '@popperjs/core'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { addEventListener, contains } from '../../utils/system'
@@ -127,13 +127,13 @@ function Trigger(props) {
     popupShadow,
     popupBorder,
     arrowVisible,
+    placement,
+    strategy,
   } = props
-  // 延迟隐藏弹出层
+  // 展示动画效果，延迟隐藏弹出层
   const [delayShowPopup, setDelayShowPopup] = useState(false)
   // 弹出层显隐控制标记
   const [showPopup, setShowPopup] = useState(false)
-  // 暂存弹出层显隐控制标记
-  const showPopupRef = useRef(showPopup)
   const debounceRef = useRef(null)
 
   // popper 相关---开始
@@ -177,15 +177,39 @@ function Trigger(props) {
     },
     [transitionName, stretch, offsetX, offsetY]
   )
-  const { styles: popperStyles, attributes, update } = usePopper(
-    referenceElement,
-    popperElement,
-    {
-      placement: props.placement,
-      strategy: props.strategy,
-      modifiers,
-    }
+  const popperInstanceRef = useRef(null)
+
+  // 创建 popper 实例
+  const create = useCallback(
+    () => {
+      if (referenceElement == null || popperElement == null) {
+        return
+      }
+      popperInstanceRef.current = createPopper(
+        referenceElement,
+        popperElement,
+        {
+          placement,
+          strategy,
+          modifiers,
+        }
+      )
+    },
+    [referenceElement, popperElement, placement, strategy, modifiers]
   )
+
+  // 销毁 popper 实例
+  const destroy = useCallback(() => {
+    if (popperInstanceRef.current) {
+      popperInstanceRef.current.destroy()
+      popperInstanceRef.current = null
+    }
+  }, [])
+
+  const {
+    styles: popperStyles = {},
+    attributes = {},
+  } = popperInstanceRef.current ? popperInstanceRef.current.state : {}
   // popper 相关---结束
 
   const popoverMouseLeave = () => {
@@ -348,20 +372,24 @@ function Trigger(props) {
   useEffect(
     () => {
       onPopupVisibleChange && onPopupVisibleChange(showPopup)
-      showPopupRef.current = showPopup
+      if (showPopup) {
+        create()
+      } else {
+        destroy()
+      }
     },
+    // 此处不需要监听 create、destroy 的变化
     [showPopup, onPopupVisibleChange]
   )
 
-  // 监听showPopup变化，主动更新弹出层位置
-  const isNeedUpdate = showPopupRef.current !== showPopup
+  useEffect(() => destroy, [destroy])
 
   // 判断宿主元素宽高变化，主动更新弹出层位置
   // useEffect 监听元素宽高，因为宽高变量不是state，所以不会触发render
   const isReferenceResize = useIsDomResize(referenceElement)
 
-  if (isNeedUpdate || isReferenceResize) {
-    update && update()
+  if (isReferenceResize) {
+    popperInstanceRef.current && popperInstanceRef.current.update()
   }
 
   return (
