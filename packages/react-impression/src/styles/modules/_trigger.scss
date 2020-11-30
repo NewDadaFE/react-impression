@@ -1,5 +1,7 @@
 .dada-trigger {
+  position: absolute;
   z-index: $zindex-trigger;
+  left: -100%;
 
   &[data-popper-placement^="top"] {
     & > .dada-trigger-inner > .dada-trigger-arrow {
