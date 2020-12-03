@@ -1,3 +1,8 @@
+## 2.1.3-beta.1
+
+feat:增加 **SelectOption 组件** 被选中后是否可删除属性;
+fix:修复 **Select 组件**，被选中选项为 **disabled** 时可删除问题;
+
 ## 2.1.3-beta.0
 
 fix `SelectOption组件增加过滤掉非dom属性`
