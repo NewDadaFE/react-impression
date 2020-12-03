@@ -147,8 +147,8 @@ export default class Select extends React.PureComponent {
 
   getOptionList = (arr = []) => {
     return arr.map(option => {
-      const { value, children = '' } = option.props
-      return { value, name: children.toString() }
+      const { value, children = '', closable } = option.props
+      return { value, name: children.toString(), closable }
     })
   }
 
@@ -425,7 +425,7 @@ export default class Select extends React.PureComponent {
   onOptionCreate(option) {
     this.state.options.push(option)
     let originValue = this.isPuppet ? this.props.value : this.state.value
-    const { value, children = '' } = option.props
+    const { value, children = '', closable } = option.props
 
     if (this.props.multiple) {
       originValue = originValue || []
@@ -437,9 +437,15 @@ export default class Select extends React.PureComponent {
       this.state.selectedOptions.map(option => option.value).indexOf(value) ===
         -1
     ) {
-      this.state.selectedOptions.push({
-        value,
-        name: children.toString(),
+      this.setState(state => {
+        return [
+          ...state.selectedOptions,
+          {
+            value,
+            name: children.toString(),
+            closable,
+          },
+        ]
       })
     }
 
@@ -649,16 +655,16 @@ export default class Select extends React.PureComponent {
             )}
             {selectedItem.length > 0 &&
               selectedItem.map(item => {
-                const val = item.value
+                const { value, name, closable = true } = item
                 return (
                   <Tag
-                    closable
+                    closable={closable}
                     theme='default'
-                    onClose={e => this.selectMultipleDelete(val, e)}
+                    onClose={e => this.selectMultipleDelete(value, e)}
                     className='offset-l'
-                    key={item.value}
+                    key={value}
                   >
-                    {item.name}
+                    {name}
                   </Tag>
                 )
               })}
