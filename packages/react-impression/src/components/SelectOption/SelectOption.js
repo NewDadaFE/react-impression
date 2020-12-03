@@ -29,6 +29,13 @@ export default class SelectOption extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
+    /**
+     * 选中后是否有删除按钮
+     * 该属性多选时方可用
+     * 默认值 true
+     */
+    closable: PropTypes.bool,
   }
 
   state = {
@@ -72,13 +79,13 @@ export default class SelectOption extends React.PureComponent {
    */
   optionClickHandle = () => {
     const { active } = this.state
-    const { value } = this.props
+    const { value, closable, disabled } = this.props
     const { multiple } = this.parent() ? this.parent().props : false
     if (active && !multiple) {
       this.parent().toggleOptionsHandle()
       return
     }
-    if (active && multiple) {
+    if (active && multiple && !disabled) {
       this.parent().selectMultipleDelete(value)
       return
     }
@@ -88,7 +95,7 @@ export default class SelectOption extends React.PureComponent {
       value: value,
       name: this.labelName,
       index,
-      node: { value, name: this.labelName },
+      node: { value, name: this.labelName, closable },
     })
   }
   handleActive = props => {
