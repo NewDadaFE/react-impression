@@ -79,13 +79,13 @@ export default class SelectOption extends React.PureComponent {
    */
   optionClickHandle = () => {
     const { active } = this.state
-    const { value, closable } = this.props
+    const { value, closable, disabled } = this.props
     const { multiple } = this.parent() ? this.parent().props : false
     if (active && !multiple) {
       this.parent().toggleOptionsHandle()
       return
     }
-    if (active && multiple) {
+    if (active && multiple && !disabled) {
       this.parent().selectMultipleDelete(value)
       return
     }
