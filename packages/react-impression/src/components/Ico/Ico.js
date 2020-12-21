@@ -10,6 +10,7 @@ const Ico = React.forwardRef((props, ref) => {
   return (
     <i
       className={classNames('dada-ico', typeClass, sizeClass, className)}
+      ref={ref}
       {...others}
     />
   )

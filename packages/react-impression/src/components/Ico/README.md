@@ -246,22 +246,27 @@ Ico 的尺寸包括：xs，sm，md，lg，xl。<br/>
   <Col col={1} className="text-center">
     <Ico type="smile-o" size="xs" />
     <div>xs</div>
+    <div>12px</div>
   </Col>
   <Col col={1} className="text-center">
     <Ico type="smile-o" size="sm" />
     <div>sm</div>
+    <div>16px</div>
   </Col>
   <Col col={1} className="text-center">
     <Ico type="smile-o" size="md" />
     <div>md</div>
+    <div>20px</div>
   </Col>
   <Col col={1} className="text-center">
     <Ico type="smile-o" size="lg" />
     <div>lg</div>
+    <div>32px</div>
   </Col>
   <Col col={1} className="text-center">
     <Ico type="smile-o" size="xl" />
     <div>xl</div>
+    <div>40px</div>
   </Col>
 </Row>
 ```
