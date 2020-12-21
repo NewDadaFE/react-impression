@@ -38,6 +38,7 @@
   "Steps": "步骤组件",
   "Attention": "提示栏",
   "Confirm": "确认框",
+  "Popconfirm": "气泡确认框",
   "Loading": "加载提示",
   "Message": "消息提示",
   "Modal": "对话框",

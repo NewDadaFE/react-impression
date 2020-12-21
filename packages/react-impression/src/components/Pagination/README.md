@@ -233,7 +233,7 @@ v2.0.0
 - 新增`showQuickJumper`属性，支持快速跳转功能
 - 新增`total`、 `showTotal`属性，支持显示总页数和总数据条数
 
-v2.1.2
+v3.0.0
 
 - 新增 `size` 属性，支持 sm，md（默认)
 - 删除 `totalPage`属性，内部计算总页数

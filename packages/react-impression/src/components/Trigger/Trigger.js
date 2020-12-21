@@ -99,6 +99,10 @@ Trigger.propTypes = {
    * 指示箭头是否可见
    */
   arrowVisible: PropTypes.bool,
+  /**
+   * 点击外部代理禁用
+   */
+  outsideDisabled: PropTypes.bool,
 }
 
 Trigger.defaultProps = {
@@ -109,6 +113,7 @@ Trigger.defaultProps = {
   offsetX: 0,
   offsetY: 8,
   popupShadow: 'normal',
+  outsideDisabled: false,
 }
 
 function Trigger(props) {
@@ -129,6 +134,7 @@ function Trigger(props) {
     arrowVisible,
     placement,
     strategy,
+    outsideDisabled,
   } = props
   // 展示动画效果，延迟隐藏弹出层
   const [delayShowPopup, setDelayShowPopup] = useState(false)
@@ -345,17 +351,20 @@ function Trigger(props) {
    */
   useEffect(
     () => {
+      if (outsideDisabled) return
+
       let clickOutsideHandler = addEventListener(
         window.document,
         'mousedown',
         hidePopupHandler
       )
+
       return () => {
         clickOutsideHandler.remove()
         clickOutsideHandler = null
       }
     },
-    [hidePopupHandler]
+    [outsideDisabled, hidePopupHandler]
   )
 
   /**

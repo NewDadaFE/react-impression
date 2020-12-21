@@ -124,6 +124,7 @@ module.exports = {
       components: resolveComponents([
         'Attention*',
         'Confirm',
+        'Popconfirm',
         'Loading',
         'Message',
         'Modal*',

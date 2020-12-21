@@ -221,7 +221,7 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#/Gene
 
 ### 变更记录
 
-v2.1.2
+v3.0.0
 
 - 删除 outline 属性
 - 删除 theme 属性中的 default 值，请用 secondary 替代 default

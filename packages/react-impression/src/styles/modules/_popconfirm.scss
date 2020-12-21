@@ -1,0 +1,25 @@
+.dada-popconfirm {
+  z-index: $zindex-popconfirm;
+  max-width: $popconfirm-max-width;
+}
+
+.dada-popconfirm-popup {
+  padding: $popconfirm-content-padding-y $popconfirm-content-padding-x;
+}
+
+.dada-popconfirm-content {
+  @include scroll-reset();
+  @include set-font-size($popconfirm-content-font-size);
+
+  max-height: $popconfirm-content-height;
+  overflow-y: auto;
+}
+
+.dada-popconfirm-btns {
+  padding-top: $popconfirm-content-padding-y;
+  text-align: right;
+
+  & > button:not(:last-child) {
+    margin-right: $popconfirm-content-padding-x;
+  }
+}
