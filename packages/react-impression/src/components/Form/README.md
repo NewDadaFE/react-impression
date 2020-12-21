@@ -64,7 +64,7 @@
       <Input type="textarea" style={{ height: '90px' }} />
     </Col>
   </FormGroup>
-  <FormGroup className="offset-b-lg">
+  <FormGroup className="offset-b">
     <Col col="2" className="text-right">
       <FormControlLabel>区域:</FormControlLabel>
     </Col>

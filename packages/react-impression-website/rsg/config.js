@@ -58,6 +58,7 @@ module.exports = {
     {
       name: 'Layout',
       description: '布局组件，用于辅助页面结构的布局工作。',
+      content: resolveWebsite('docs/Layout.md'),
       sectionDepth: 1,
       components: resolveComponents(['Row', 'Col', 'Flex*', 'Trigger']),
     },

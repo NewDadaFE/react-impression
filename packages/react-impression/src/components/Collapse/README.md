@@ -32,14 +32,14 @@
 ```js
 <Sidebar>
   <SidebarHeader>
-    <Ico type="list" className="offset-r offset-r-lg" />
+    <Ico type="list" className="offset-r" />
     <span>{'首页'}</span>
   </SidebarHeader>
   <SidebarBody>
     <Nav stacked>
       <Collapse>
         <CollapseTitle>
-          <Ico type="list" className="offset-r offset-r-lg" />
+          <Ico type="list" className="offset-r" />
           {'我是一级菜单'}
         </CollapseTitle>
         <CollapseBody>
@@ -68,7 +68,7 @@
       </Collapse>
       <NavItem key={1}>
         <a href="">
-          <Ico type="list" className="offset-r offset-r-lg" />
+          <Ico type="list" className="offset-r" />
           {'我是一级菜单'}
         </a>
       </NavItem>
