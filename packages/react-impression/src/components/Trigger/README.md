@@ -14,16 +14,14 @@ hideAction 没有指定时，弹出层隐藏的触发类型由 showAction 决定
 
 如果要通过 popupVisible 属性**自行控制弹出层的显示隐藏**，将 showAction 和 hideAction 都设置为 none 即可。
 
-**注意：**<br/>
+### 注意
 
 > onPopupVisibleChange 回调不能传入内联回调函数！否则会引发死循环。
 
-### 示例
-
-**注意：**<br/>
-
 > Trigger 组件弹出层在定位时，需要获取触发器（children）的位置，所以**请务必保证触发器可以接受 ref 属性**。<br/>
 > 如果触发器没有传递 ref，可以用标签包装一下触发器，并**保证外包标签的 display 属性与触发器最外层 dom 一致**。
+
+### 示例
 
 **触发行为**
 
@@ -228,3 +226,9 @@ class Example extends React.Component {
 }
 ;<Example />
 ```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 Trigger 组件

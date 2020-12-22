@@ -1,107 +1,110 @@
+最新设计规范是 24 栅格系统，但在旧的规范中，Row 组件、Col 组件实现的是 12 栅格。
+
 ### 示例
 
-**基本用法**
+<style type='text/css'>
+.row > div > div {
+  background-color: #008CF0;
+  color: white;
+  text-align: center;
+}
+</style>
 
 ```js
 <Row>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>1</div>
+    <div>1</div>
   </Col>
 </Row>
 <Row>
   <Col>
-    <div className='bg-primary text-center'>2</div>
+    <div>2</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>2</div>
+    <div>2</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>2</div>
+    <div>2</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>2</div>
+    <div>2</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>2</div>
+    <div>2</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>2</div>
+    <div>2</div>
   </Col>
 </Row>
 <Row>
   <Col>
-    <div className='bg-primary text-center'>3</div>
+    <div>3</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>3</div>
+    <div>3</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>3</div>
+    <div>3</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>3</div>
+    <div>3</div>
   </Col>
 </Row>
 <Row>
   <Col>
-    <div className='bg-primary text-center'>4</div>
+    <div>4</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>4</div>
+    <div>4</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>4</div>
+    <div>4</div>
   </Col>
 </Row>
 <Row>
   <Col>
-    <div className='bg-primary text-center'>6</div>
+    <div>6</div>
   </Col>
   <Col>
-    <div className='bg-primary text-center'>6</div>
+    <div>6</div>
   </Col>
 </Row>
 <Row>
-  <Col col='6' push='1'>
-    <div className='bg-primary text-center'>12</div>
-  </Col>
-</Row>
-<Row>
-  <Col offset='1' col='9'>
-    <div className='bg-primary text-center'>12</div>
+  <Col>
+    <div>12</div>
   </Col>
 </Row>
 ```

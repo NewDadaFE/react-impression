@@ -1,5 +1,7 @@
 ### 示例
 
+配合 CollapseTitle 组件、CollapseBody 组件实现展开收起的效果。
+
 **基本用法**
 
 ```js

@@ -1,3 +1,4 @@
+- 新增 **Flex 组件** justify 属性
 - 新增 **Popconfirm 组件**
 - 新增 **Trigger 组件**
 - 变更 **Confirm 组件**样式调整; 添加 title 属性，confirm 显示的区分文案和标题

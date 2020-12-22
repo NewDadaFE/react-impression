@@ -26,22 +26,22 @@ const Col = ({ col, offset, push, pull, children, className, ...others }) => {
 
 Col.propTypes = {
   /**
-   * 所占比例
+   * 所占比例，''或[1, 12]
    */
   col: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * 向左偏移
+   * 左侧外边距，[0, 11]
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * 向左偏移
+   * 左侧偏移量，[0, 12]
    */
   push: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * 向右偏移
+   * 右侧偏移量，[0, 12]
    */
   pull: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 

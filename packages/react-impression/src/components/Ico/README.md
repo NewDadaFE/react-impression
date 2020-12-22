@@ -1,4 +1,4 @@
-### 注意事项
+### 注意
 
 - 使用 Ico 组件需要手动在 HTML 页面中引入 CSS 文件：
 
@@ -279,3 +279,9 @@ Ico 的尺寸包括：xs，sm，md，lg，xl。<br/>
 <Ico type='smile-o' style={{ fontSize: '30px', color: '#E64600' }} />
 <Ico type='smile-o' className='offset-l-lg text-warning' />
 ```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 Ico 组件

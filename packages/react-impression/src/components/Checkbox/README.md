@@ -21,7 +21,7 @@
 </Row>
 ```
 
-**全选**
+**配合 CheckGroup 组件**
 
 ```js
 const options = ['苹果', '香蕉', '梨子', '葡萄']
@@ -90,4 +90,4 @@ class Indeterminate extends React.Component {
 
 v2.0.0
 
-* 新增 indeterminate 参数
+- 新增 indeterminate 参数

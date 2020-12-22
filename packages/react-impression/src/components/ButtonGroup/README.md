@@ -13,18 +13,16 @@
 **主题**
 
 ```js
-<ButtonToolbar>
-  <ButtonGroup theme="primary" activeKey="right">
-    <Button eventKey="left">左</Button>
-    <Button eventKey="middle">中</Button>
-    <Button eventKey="right">右</Button>
-  </ButtonGroup>
-  <ButtonGroup theme="secondary" activeKey="middle">
-    <Button eventKey="left">左</Button>
-    <Button eventKey="middle">中</Button>
-    <Button eventKey="right">右</Button>
-  </ButtonGroup>
-</ButtonToolbar>
+<ButtonGroup theme="primary" activeKey="right">
+  <Button eventKey="left">左</Button>
+  <Button eventKey="middle">中</Button>
+  <Button eventKey="right">右</Button>
+</ButtonGroup>
+<ButtonGroup className='offset-l' theme="secondary" activeKey="middle">
+  <Button eventKey="left">左</Button>
+  <Button eventKey="middle">中</Button>
+  <Button eventKey="right">右</Button>
+</ButtonGroup>
 ```
 
 **尺寸**
@@ -47,9 +45,15 @@
   </div>
   <div>
     <ButtonGroup size="sm">
-      <Button eventKey="7">7</Button>
-      <Button eventKey="8">8</Button>
-      <Button eventKey="9">9</Button>
+      <Button size="sm" eventKey="7">
+        7
+      </Button>
+      <Button size="sm" eventKey="8">
+        8
+      </Button>
+      <Button size="sm" eventKey="9">
+        9
+      </Button>
     </ButtonGroup>
   </div>
 </div>

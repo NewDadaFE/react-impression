@@ -115,3 +115,7 @@ initialState = {
 v2.0.0
 
 - 新增 trigger 参数
+
+v3.0.0
+
+- 新增 position 属性有效值：top-start、top-end、bottom-start、bottom-end

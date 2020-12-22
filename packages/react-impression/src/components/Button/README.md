@@ -223,5 +223,8 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#/Gene
 
 v3.0.0
 
-- 删除 outline 属性
-- 删除 theme 属性中的 default 值，请用 secondary 替代 default
+- 废弃 outline 属性、href 属性、close 属性
+- 新增 loading 属性，支持按钮加载中的状态
+- 新增 icon 属性、iconPosition 属性，支持添加按钮的图标
+- 新增 theme 属性有效值：text、dashed，废弃 default 类型的主题，请用 secondary 替代 default
+- 新增 shape 属性有效值：circle，废弃 pill 类型的形状

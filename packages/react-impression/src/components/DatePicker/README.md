@@ -154,4 +154,6 @@ initialState = {
 
 ### 变更记录
 
-- 新增 type 属性`dateTime`值，支持选择时间
+v3.0.0
+
+- 新增 type 属性有效值：dateTime，支持选择时间
