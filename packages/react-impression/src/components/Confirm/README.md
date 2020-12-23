@@ -73,7 +73,8 @@ const toggleConfirm3Handle = () => {
 </div>
 ```
 
-**变更记录**
+### 变更记录
 
-- 添加 title 属性，confirm 显示的区分文案和标题
-- 样式修改 info 类型 和 warning、danger 作出区分
+v3.0.0
+
+- 新增 title 属性，区分提示表题和提示内容

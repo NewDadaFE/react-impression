@@ -3,11 +3,12 @@
   "ButtonGroup": "按钮组合",
   "Ico": "图标",
   "Image": "图片",
-  "Row": "行",
-  "Col": "列",
+  "Row": "栅格行",
+  "Col": "栅格列",
+  "Flex": "伸缩容器",
+  "FlexItem": "伸缩项",
   "Breadcrumb": "面包屑",
   "Dropdown": "下拉菜单",
-  "InlineSelect": "行内选择",
   "Nav": "导航",
   "Navbar": "导航栏",
   "Tabs": "选项卡",
@@ -38,9 +39,11 @@
   "Steps": "步骤组件",
   "Attention": "提示栏",
   "Confirm": "确认框",
+  "Popconfirm": "气泡确认框",
   "Loading": "加载提示",
   "Message": "消息提示",
   "Modal": "对话框",
   "Notification": "通知提醒框",
-  "Progress": "进度条"
+  "Progress": "进度条",
+  "Split": "垂直分割线"
 }

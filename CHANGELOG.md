@@ -1,6 +1,9 @@
+- 新增 **Flex 组件** justify 属性
+- 新增 **Popconfirm 组件**
+- 新增 **Trigger 组件**
 - 变更 **Confirm 组件**样式调整; 添加 title 属性，confirm 显示的区分文案和标题
 - 变更 **Nav 组件**样式调整
-- 新增 **Tabs、TabPane 组件**，在 Nav 组件 基础上删除 stack 属性，新增 tabPosition 属性，支持自动折叠过多选项
+- 新增 **Tabs 组件**、**TabPane 组件**，在 **Nav 组件** 基础上删除 stack 属性，新增 tabPosition 属性，支持自动折叠过多选项
 - 新增 **Ico 组件** 支持 158 个图标
 
 ## 2.0.2

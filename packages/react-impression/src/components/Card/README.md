@@ -1,27 +1,23 @@
-### 示例
+**Card 组件**配合 **CardHeader 组件**、**CardBlock 组件**、**CardFooter 组件**可以实现内容分块效果的布局。
 
-**基本用法**
+#### 基本用法
 
 ```js
 <Row>
   <Col>
     <Card>
+      <CardHeader>标题</CardHeader>
       <CardBlock>
-        <h3 style={{ color: '#133240', margin: '10px 0 20px' }}>标题</h3>
-        <div>我是一个示例，这块区域是内容区域，我可以包含很多内容</div>
+        我是一个示例，这块区域是内容区域，我可以包含很多内容
       </CardBlock>
-      <Image fluid src="https://placehold.it/350x200" />
-      <CardBlock>
-        <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
-        <Button theme="primary">更多</Button>
-      </CardBlock>
+      <CardFooter>卡片底部</CardFooter>
     </Card>
   </Col>
   <Col>
     <Card>
       <Image fluid src="https://placehold.it/350x200" />
+      <CardHeader>标题</CardHeader>
       <CardBlock>
-        <h3 style={{ color: '#133240', margin: '10px 0 20px' }}>标题</h3>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
         <Button theme="primary">详细内容</Button>
       </CardBlock>
@@ -33,100 +29,49 @@
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
       </CardBlock>
       <Image fluid src="https://placehold.it/350x200" />
-    </Card>
-  </Col>
-  <Col>
-    <Card>
       <CardBlock>
         <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
-        <Button theme="primary">好的</Button>
       </CardBlock>
     </Card>
   </Col>
 </Row>
 ```
 
-**文字排列**
+#### 外轮廓类型
+
+Card 组件外轮廓可以设为外阴影（默认）、外边框和无边框三种类型。
 
 ```js
 <Row>
   <Col>
     <Card>
-      <Image fluid src="https://placehold.it/350x200" />
-      <CardBlock>
-        <h3 style={{ color: '#262626', margin: '10px 0 20px' }}>居左</h3>
-        <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
-        <div style={{ display: 'inline-block', margin: '10px 0' }}>
-          <a href="#">链接</a>
-          <a href="#" style={{ marginLeft: 80 }}>
-            另一个链接
-          </a>
-        </div>
-      </CardBlock>
-    </Card>
-  </Col>
-  <Col>
-    <Card className="text-center">
-      <Image fluid src="https://placehold.it/350x200" />
-      <CardBlock>
-        <h3 style={{ color: '#262626', margin: '10px 0 20px' }}>居中</h3>
-        <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
-        <div style={{ display: 'inline-block', margin: '10px 0' }}>
-          <a href="#">链接</a>
-          <a href="#" style={{ marginLeft: 80 }}>
-            另一个链接
-          </a>
-        </div>
-      </CardBlock>
-    </Card>
-  </Col>
-  <Col>
-    <Card className="text-right">
-      <Image fluid src="https://placehold.it/350x200" />
-      <CardBlock>
-        <h3 style={{ color: '#262626', margin: '10px 0 20px' }}>居右</h3>
-        <p>我是一个示例，这块区域是内容区域，我可以包含很多内容</p>
-        <div style={{ display: 'inline-block', margin: '10px 0' }}>
-          <a href="#">链接</a>
-          <a href="#" style={{ marginLeft: 80 }}>
-            另一个链接
-          </a>
-        </div>
-      </CardBlock>
-    </Card>
-  </Col>
-</Row>
-```
-
-**外轮廓类型：Card 组件外轮廓可以设为外阴影、外边框和无边框三种类型。默认为外阴影**
-
-```js
-<Row>
-  <Col>
-    <Card>
-      <CardBlock>
-        <p>外阴影类型</p>
-        <Button theme="primary">好的</Button>
-      </CardBlock>
+      <CardHeader>外阴影类型（默认）</CardHeader>
+      <CardBlock>这块区域是内容区域</CardBlock>
     </Card>
   </Col>
   <Col>
     <Card outline="border">
-      <CardBlock>
-        <p>外边框类型</p>
-        <Button theme="primary">好的</Button>
-      </CardBlock>
+      <CardHeader>外边框类型</CardHeader>
+      <CardBlock>这块区域是内容区域</CardBlock>
     </Card>
   </Col>
   <Col>
     <Card outline="none">
-      <CardBlock>
-        <p>无边框类型</p>
-        <Button theme="primary">好的</Button>
-      </CardBlock>
+      <CardHeader>无边框类型</CardHeader>
+      <CardBlock>这块区域是内容区域</CardBlock>
     </Card>
   </Col>
 </Row>
+```
+
+#### 简单用法
+
+block 属性会赋予 Card 组件与 CardBlock 组件一样的内边距和字体颜色。
+
+```javascript
+<Card outline="border" block>
+  这块区域是内容区域
+</Card>
 ```
 
 ### 变更记录

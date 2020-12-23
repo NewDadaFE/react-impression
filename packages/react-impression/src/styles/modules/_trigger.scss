@@ -1,9 +1,55 @@
+// 弹出层动画
+.dada-trigger-popup-zoom-enter {
+  animation: .2s zoomIn ease-out;
+}
+
+.dada-trigger-popup-zoom-leave {
+  animation: .2s dadaZoomOut ease-in forwards;
+}
+
+.dada-trigger-popup-fade-enter {
+  animation: fadeIn .3s ease;
+}
+
+.dada-trigger-popup-fade-leave {
+  animation: .3s dadaFadeOut ease forwards;
+}
+
+%y-scale {
+  & > .dada-trigger-popup-scale-enter {
+    animation: .2s scaleIn ease-out;
+  }
+
+  & > .dada-trigger-popup-scale-leave {
+    animation: .2s dadaScaleYOut ease-in forwards;
+  }
+}
+
+%x-scale {
+  & > .dada-trigger-popup-scale-enter {
+    animation: .2s dadaScaleXIn ease-out;
+  }
+
+  & > .dada-trigger-popup-scale-leave {
+    animation: .2s dadaScaleXOut ease-in forwards;
+  }
+}
+
 .dada-trigger {
   position: absolute;
   z-index: $zindex-trigger;
   left: -100%;
 
   &[data-popper-placement^="top"] {
+    @extend %y-scale;
+
+    & > .dada-trigger-popup-scale-enter,
+    & > .dada-trigger-popup-scale-leave,
+    & > .dada-trigger-popup-zoom-enter,
+    & > .dada-trigger-popup-zoom-leave {
+      transform-origin: center 100%;
+    }
+
     & > .dada-trigger-inner > .dada-trigger-arrow {
       bottom: -4px;
     }
@@ -14,6 +60,15 @@
   }
 
   &[data-popper-placement^="bottom"] {
+    @extend %y-scale;
+
+    & > .dada-trigger-popup-scale-enter,
+    & > .dada-trigger-popup-scale-leave,
+    & > .dada-trigger-popup-zoom-enter,
+    & > .dada-trigger-popup-zoom-leave {
+      transform-origin: center 0;
+    }
+
     & > .dada-trigger-inner > .dada-trigger-arrow {
       top: -4px;
     }
@@ -24,6 +79,15 @@
   }
 
   &[data-popper-placement^="left"] {
+    @extend %x-scale;
+
+    & > .dada-trigger-popup-scale-enter,
+    & > .dada-trigger-popup-scale-leave,
+    & > .dada-trigger-popup-zoom-enter,
+    & > .dada-trigger-popup-zoom-leave {
+      transform-origin: 100% center;
+    }
+
     & > .dada-trigger-inner > .dada-trigger-arrow {
       right: -4px;
     }
@@ -34,6 +98,15 @@
   }
 
   &[data-popper-placement^="right"] {
+    @extend %x-scale;
+
+    & > .dada-trigger-popup-scale-enter,
+    & > .dada-trigger-popup-scale-leave,
+    & > .dada-trigger-popup-zoom-enter,
+    & > .dada-trigger-popup-zoom-leave {
+      transform-origin: 0 center;
+    }
+
     & > .dada-trigger-inner > .dada-trigger-arrow {
       left: -4px;
     }
@@ -60,38 +133,12 @@
   }
 }
 
-// 弹出层动画
-.dada-trigger-popup-zoom-enter {
-  animation: .36s zoomIn ease;
-}
-
-.dada-trigger-popup-zoom-leave {
-  animation: .36s dadaZoomOut ease forwards;
-}
-
-.dada-trigger-popup-scale-enter {
-  transform-origin: center 0;
-  animation: .36s scaleIn ease;
-}
-
-.dada-trigger-popup-scale-leave {
-  transform-origin: center 0;
-  animation: .36s dadaScaleOut ease forwards;
-}
-
-.dada-trigger-popup-fade-enter {
-  animation: fadeIn .36s ease;
-}
-
-.dada-trigger-popup-fade-leave {
-  animation: .36s dadaFadeOut ease forwards;
-}
-
 // 箭头
 .dada-trigger-arrow::before {
   display: block;
   width: 8px;
   height: 8px;
   content: "";
+  transform: rotate(45deg);
   background-color: $brand-pure;
 }

@@ -1,8 +1,12 @@
+import React, { useEffect } from 'react'
 import classnames from 'classnames'
-import React from 'react'
 import PropTypes from 'prop-types'
 
 const ButtonToolbar = ({ className, children }) => {
+  useEffect(() => {
+    console.warn('ReactImpression: ButtonToolbar 组件即将废弃！')
+  }, [])
+
   return <div className={classnames('btn-toolbar', className)}>{children}</div>
 }
 

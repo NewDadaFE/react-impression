@@ -88,14 +88,38 @@
   position: relative;
 }
 
+.flex-item-4 {
+  flex: 4;
+  overflow: auto;
+  position: relative;
+}
+
 .flex-items-top {
   align-items: flex-start;
 }
+
 .flex-items-middle {
   align-items: center;
 }
+
 .flex-items-bottom {
   align-items: flex-end;
+}
+
+.flex-justify-left {
+  justify-content: flex-start;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-justify-right {
+  justify-content: flex-end;
+}
+
+.flex-justify-around {
+  justify-content: space-around;
 }
 
 .flex-justify-between {

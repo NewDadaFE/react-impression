@@ -27,6 +27,7 @@ class Nav extends React.PureComponent {
     this.state = {
       activeKey: this.props.activeKey,
     }
+    console.warn('ReactImpression: 建议使用 Tabs 组件替换 Nav 组件！')
   }
 
   static propTypes = {

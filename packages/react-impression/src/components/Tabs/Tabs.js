@@ -228,7 +228,6 @@ function Tabs(props) {
         tabsItemsRef.current[index] = { dom: ref, child }
         const { eventKey, onClick } = child.props
         const options = {
-          key: index,
           ref,
           onClick: event => {
             onSelectHandle(eventKey)
@@ -296,7 +295,7 @@ function Tabs(props) {
             {hiddenItems.map(({ child, offset }, index) => {
               return (
                 <DropdownMenuItem
-                  key={child.props.key || index}
+                  key={child.key || index}
                   disabled={child.props.disabled}
                   onClick={() => {
                     isVertical

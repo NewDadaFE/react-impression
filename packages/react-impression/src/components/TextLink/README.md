@@ -11,3 +11,9 @@ const handleClick = (event) => {
   <Col><TextLink disabled>禁用链接</TextLink></Col>
 </Row>
 ```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 TextLink 组件

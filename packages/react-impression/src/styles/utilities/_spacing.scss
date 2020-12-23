@@ -1,54 +1,64 @@
-.offset-l {
-  margin-left: $spacer-x / 2 !important;
+// 生成内边距、外边距工具类
+@each $direction, $suffix in $directionList {
+  @each $header, $size in $sizeMap {
+    .offset#{$direction}#{$header} {
+      @if $direction == '-tb' {
+        margin-top: $size !important;
+        margin-bottom: $size !important;
+      } @else if $direction == '-lr' {
+        margin-left: $size !important;
+        margin-right: $size !important;
+      } @else {
+        margin#{$suffix}: $size !important;
+      }
+    }
+  }
 }
 
-.offset-l-lg {
-  margin-left: $spacer-x !important;
-}
-
-.offset-r {
-  margin-right: $spacer-x / 2 !important;
-}
-
-.offset-r-lg {
-  margin-right: $spacer-x !important;
-}
-
-.offset-t {
-  margin-top: $spacer-y !important;
-}
-
-.offset-b {
-  margin-bottom: $spacer-y !important;
-}
-
-.offset-b-lg {
-  margin-bottom: $spacer-y * 2 !important;
-}
-
-.padding-t {
-  padding-top: $spacer-y / 2 !important;
-}
-
-.padding-b {
-  padding-bottom: $spacer-y / 2 !important;
-}
-
-.padding-v {
-  padding-top: $spacer-y / 2 !important;
-  padding-bottom: $spacer-y / 2 !important;
-}
-
-.padding-l {
-  padding-left: $spacer-x / 2 !important;
-}
-
-.padding-r {
-  padding-right: $spacer-x / 2 !important;
+@each $direction, $suffix in $directionList {
+  @each $header, $size in $sizeMap {
+    .padding#{$direction}#{$header} {
+      @if $direction == '-tb' {
+        padding-top: $size !important;
+        padding-bottom: $size !important;
+      } @else if $direction == '-lr' {
+        padding-left: $size !important;
+        padding-right: $size !important;
+      } @else {
+        padding#{$suffix}: $size !important;
+      }
+    }
+  }
 }
 
 .no-margin {
   margin: 0 !important;
+}
+
+.no-margin-t {
+  margin-top: 0 !important;
+}
+
+.no-margin-b {
+  margin-bottom: 0 !important;
+}
+
+.no-margin-l {
+  margin-left: 0 !important;
+}
+
+.no-margin-r {
+  margin-right: 0 !important;
+}
+
+.no-margin-tb {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.no-margin-lr {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .no-padding {
@@ -71,6 +81,16 @@
   padding-right: 0 !important;
 }
 
+.no-padding-tb {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.no-padding-lr {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .no-border {
-  border: 0 !important;
+  border: none !important;
 }

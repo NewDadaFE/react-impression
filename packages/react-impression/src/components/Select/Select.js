@@ -126,7 +126,6 @@ export default class Select extends React.PureComponent {
     disabled: false,
     placeholder: '请选择',
     size: 'md',
-    showSearch: false,
     stretch: 'sameWidth',
   }
 
