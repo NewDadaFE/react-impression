@@ -182,57 +182,12 @@ class Example extends React.Component {
           <Modal
             size={this.state.size}
             isOpen={this.state.show}
-            onClose={this.handleToggleModalhandleToggleModal}
+            onClose={this.handleToggleModal}
+            showClose
           >
-            <ModalHeader>
-              <Button close onClick={this.handleToggleModal}>
-                &times;
-              </Button>
-              <h5 className="no-margin">搜索</h5>
-            </ModalHeader>
+            <ModalHeader>搜索</ModalHeader>
             <ModalBody>
-              <Row>
-                <Col col="2" className="text-right">
-                  <strong>华东：</strong>
-                </Col>
-                <Col col="10">
-                  <InlineSelect
-                    value={this.state.city.id}
-                    onChange={this.selectCityHandle}
-                  >
-                    <InlineSelectOption value="1">上海</InlineSelectOption>
-                    <InlineSelectOption value="2">苏州</InlineSelectOption>
-                    <InlineSelectOption value="3">杭州</InlineSelectOption>
-                    <InlineSelectOption value="4">嘉兴</InlineSelectOption>
-                    <InlineSelectOption value="5">绍兴</InlineSelectOption>
-                    <InlineSelectOption value="6">常州</InlineSelectOption>
-                    <InlineSelectOption value="7">千岛湖</InlineSelectOption>
-                    <InlineSelectOption value="8">昆山</InlineSelectOption>
-                    <InlineSelectOption value="9">合肥</InlineSelectOption>
-                  </InlineSelect>
-                </Col>
-              </Row>
-              <Row>
-                <Col col="2" className="text-right">
-                  <strong>华南：</strong>
-                </Col>
-                <Col col="10">
-                  <InlineSelect
-                    value={this.state.city.id}
-                    onChange={this.selectCityHandle}
-                  >
-                    <InlineSelectOption value="21">广州</InlineSelectOption>
-                    <InlineSelectOption value="22">深圳</InlineSelectOption>
-                    <InlineSelectOption value="23">东莞</InlineSelectOption>
-                    <InlineSelectOption value="24">佛山</InlineSelectOption>
-                    <InlineSelectOption value="25">厦门</InlineSelectOption>
-                    <InlineSelectOption value="26">福州</InlineSelectOption>
-                    <InlineSelectOption value="27">南昌</InlineSelectOption>
-                    <InlineSelectOption value="28">泉州</InlineSelectOption>
-                    <InlineSelectOption value="29">赣州</InlineSelectOption>
-                  </InlineSelect>
-                </Col>
-              </Row>
+              <p>内容&hellip;</p>
             </ModalBody>
             <ModalFooter>
               <Button theme="secondary" onClick={this.handleToggleModal}>

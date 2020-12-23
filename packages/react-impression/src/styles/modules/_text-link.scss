@@ -16,6 +16,10 @@
     color: $text-link-disabled-color;
     cursor: not-allowed;
   }
+
+  & > .dada-ico {
+    vertical-align: top;
+  }
 }
 
 .dada-text-link-primary {
