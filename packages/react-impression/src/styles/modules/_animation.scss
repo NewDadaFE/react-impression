@@ -37,7 +37,7 @@
   }
 }
 
-@keyframes dadaScaleOut {
+@keyframes dadaScaleYOut {
   0% {
     transform: scaleY(1);
   }
@@ -45,6 +45,28 @@
   100% {
     opacity: 0;
     transform: scaleY(0);
+  }
+}
+
+@keyframes dadaScaleXIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dadaScaleXOut {
+  0% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(0);
   }
 }
 

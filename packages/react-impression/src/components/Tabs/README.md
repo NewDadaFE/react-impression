@@ -35,7 +35,9 @@ for (let i = 0; i < tabLength; i++) {
 }
 ;<Tabs activeKey={2}>
   {tabList.map(tab => (
-    <TabPane eventKey={tab}>Tab {tab}</TabPane>
+    <TabPane key={tab} eventKey={tab}>
+      Tab {tab}
+    </TabPane>
   ))}
 </Tabs>
 ```
@@ -155,3 +157,9 @@ tabPosition 属性 可指定选项卡的方向：上（top），下（bottom）�
   </Col>
 </Row>
 ```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 Tabs 组件，替换旧版 Nav 组件

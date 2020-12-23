@@ -10,7 +10,7 @@
 
 #### 取值类型
 
-**注意事项**
+**注意**
 
 > 1. **非受控**状态下，**不能**通过 ref 获取组件的值。
 > 2. **受控**状态下，传入的 **value 必须是一个对象**，且包含用于显示的字段，默认是 label。
@@ -173,3 +173,9 @@ class Example extends React.Component {
 ```javascript
 <Search className="pull-right" style={{ width: '50%' }} />
 ```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 Search 组件

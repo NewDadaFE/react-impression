@@ -510,7 +510,8 @@ v2.0.0
 - 即将删除对 Select.Option 写法的支持，请使用 SelectOptionGroup/ SelectOption 标签
 - 新增 remoteMethod 远程搜索方法，需要同时设置 searchable 属性使用。远程搜索时需返回一个 Promise
 
-v2.1.2
+v3.0.0
 
-- 新增 size 属性，支持 xs，sm，md（默认），lg
-- 删除 required 是否必选项属性
+- 废弃 required 是否必选项属性
+- 新增 size 属性，支持 xs、sm、md(默认)、lg，多选时，lg/sm 无效果
+- 新增 stretch 属性，支持下拉弹出层宽度两个模式：sameWidth(默认)、auto

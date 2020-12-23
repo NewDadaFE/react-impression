@@ -64,7 +64,7 @@
       <Input type="textarea" style={{ height: '90px' }} />
     </Col>
   </FormGroup>
-  <FormGroup className="offset-b-lg">
+  <FormGroup className="offset-b">
     <Col col="2" className="text-right">
       <FormControlLabel>区域:</FormControlLabel>
     </Col>
@@ -87,9 +87,3 @@
 ```
 
 ### 变更记录
-
-v2.0.0
-
-- 新增 form-group-inline-label-margin-bottom sass 变量
-- 新增 form-group-inline-btn-margin-left sass 变量
-- 新增 form-group-inline-margin-bottom sass 变量

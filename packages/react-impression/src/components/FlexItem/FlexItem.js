@@ -17,7 +17,7 @@ export default class FlexItem extends React.PureComponent {
     /**
      * 占比
      */
-    flex: PropTypes.number,
+    flex: PropTypes.oneOf([1, 2, 3, 4, '1', '2', '3', '4']),
   }
 
   static defaultProps = {

@@ -1,50 +1,55 @@
-import classnames from 'classnames'
 import React from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import FlexItem from '../FlexItem'
 
-export default class Flex extends React.PureComponent {
-  static propTypes = {
-    /**
-     * 自定义样式
-     */
-    className: PropTypes.string,
+const Flex = props => {
+  const { direction, align, justify, className, children, ...others } = props
 
-    /**
-     * 子组件
-     */
-    children: PropTypes.node,
+  return (
+    <div
+      {...others}
+      className={classNames(className, 'flex', {
+        'flex-vertical': direction === 'column',
+        [`flex-items-${align}`]: !!align,
+        [`flex-justify-${justify}`]: !!justify,
+      })}
+    >
+      {children}
+    </div>
+  )
+}
 
-    /**
-     * 对齐方式
-     */
-    align: PropTypes.oneOf(['top', 'middle', 'bottom']),
+Flex.propTypes = {
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
 
-    /**
-     * 方向
-     */
-    direction: PropTypes.oneOf(['row', 'column']),
-  }
+  /**
+   * 子组件
+   */
+  children: PropTypes.node,
 
-  static defaultProps = {
-    direction: 'row',
-  }
+  /**
+   * 水平对齐方式
+   */
+  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
 
-  render() {
-    const { direction, align, className, ...others } = this.props
-    let { children } = this.props
-    const directionClass = direction === 'row' ? '' : 'flex-vertical'
-    const alignClass = align ? `flex-items-${align}` : null
+  /**
+   * 方向
+   */
+  direction: PropTypes.oneOf(['row', 'column']),
+  /**
+   * 两端对齐方式
+   */
+  justify: PropTypes.oneOf(['left', 'center', 'right', 'around', 'between']),
+}
 
-    return (
-      <div
-        {...others}
-        className={classnames('flex', directionClass, alignClass, className)}
-      >
-        {children}
-      </div>
-    )
-  }
+Flex.defaultProps = {
+  direction: 'row',
 }
 
 Flex.Item = FlexItem
+
+export default Flex

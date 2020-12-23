@@ -64,8 +64,8 @@ $btn-border-radius-icon: 50% !default;
 
 $btn-group-active-box-shadow: rem(2px) rem(2px) rem(6px) $inverse-level-1,
   rem(-1px) rem(-1px) rem(6px) $inverse-level-1 !default;
-$btn-group-padding-x-sm: rem(20px) !default;
-$btn-group-padding-y-sm: rem(9px) !default;
+$btn-group-padding-x-sm: $btn-padding-x-sm !default;
+$btn-group-padding-y-sm: $btn-padding-y-sm !default;
 
 // icon button 的padding md，sm，xs共用一个padding
 $btn-icon-size-lg: rem(20px);

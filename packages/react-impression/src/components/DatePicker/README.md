@@ -4,9 +4,9 @@
 
 ```js
 
-<DatePicker className='offset-r-lg' type='dateTime' />
-<DatePicker className='offset-r-lg'/>
-<DatePicker className='offset-r-lg' type='year' />
+<DatePicker className='offset-r' type='dateTime' />
+<DatePicker className='offset-r'/>
+<DatePicker className='offset-r' type='year' />
 <DatePicker type='month' />
 ```
 
@@ -154,4 +154,6 @@ initialState = {
 
 ### 变更记录
 
-- 新增 type 属性`dateTime`值，支持选择时间
+v3.0.0
+
+- 新增 type 属性有效值：dateTime，支持选择时间
