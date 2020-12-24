@@ -53,9 +53,10 @@ html {
 }
 
 body {
+  // 设置指定<长度>的 line-height
+  @include set-font-size($font-size-base, false);
+
   font-family: $font-family-base;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
   color: $body-color;
   background-color: $body-bg;
 }

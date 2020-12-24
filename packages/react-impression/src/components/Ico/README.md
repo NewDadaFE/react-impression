@@ -238,32 +238,31 @@ const IcoList = () => {
 
 #### 尺寸
 
-Ico 的尺寸包括：xs，sm，md，lg，xl。<br/>
-默认为 sm：16px。
+Ico 的尺寸包括：xs，sm(默认)，md，lg，xl。<br/>
 
 ```js
-<Row className="flex-items-bottom">
-  <Col col={1} className="text-center">
+<Row className="flex-items-bottom text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="xs" />
     <div>xs</div>
     <div>12px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1} className="text-danger">
     <Ico type="smile-o" size="sm" />
     <div>sm</div>
     <div>16px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="md" />
     <div>md</div>
     <div>20px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="lg" />
     <div>lg</div>
     <div>32px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="xl" />
     <div>xl</div>
     <div>40px</div>

@@ -1,34 +1,32 @@
 $modal-bg: rgba(0, 0, 0, 0.5) !default;
-$modal-left: 0 !default;
-$modal-top: 0 !default;
-$modal-inner-padding: rem(30px) !default;
-$modal-inner-padding-lg: rem(50px) !default;
+$modal-inner-padding: rem(20px) !default;
 $modal-border-radius: $border-radius !default;
 
 $modal-dialog-margin: $navbar-height !default;
 
-$modal-title-padding: rem(18px) rem(20px) !default;
-$modal-title-line-height: $line-height-base !default;
-
-$modal-content-border-color: rgba($gray-lighter, 0.06) !default;
 $modal-content-border-width: $border-width !default;
 
+$modal-close-size: rem(28px) !default;
+
+$modal-header-border-color: $gray-lighter !default;
+$modal-header-padding-right: $modal-close-size + rem(24px);
+$modal-header-padding: $modal-inner-padding 0 rem(19px) $modal-inner-padding !default;
 $modal-header-bg: $brand-pure !default;
-$modal-header-font-size: $font-size-h6 !default;
-$modal-header-line-height: 24px !default;
+$modal-header-font-size: $font-size-h5 !default;
 $modal-header-font-weight: $font-weight-bold !default;
-$modal-header-color: #21252a !default;
-$modal-header-border-color: $gray-light !default;
-$modal-header-border-width: $modal-content-border-width !default;
+$modal-header-color: $body-color !default;
 
 $modal-body-bg: $brand-pure !default;
+$modal-body-color: $gray-darker !default;
 $modal-body-max-height: rem(500px);
 
 $modal-footer-bg: $brand-pure !default;
-$modal-footer-btn-margin: rem(20px) !default;
+$modal-footer-btn-margin: rem(16px) !default;
 
-$modal-lg: rem(900px) !default;
-$modal-md: rem(700px) !default;
-$modal-sm: rem(420px) !default;
+$modal-xl: rem(1200px) !default;
+$modal-lg: rem(920px) !default;
+$modal-md: rem(680px) !default;
+$modal-sm: rem(440px) !default;
+$modal-xs: rem(320px) !default;
 
 $modal-animation-duration: 0.36s !default;
