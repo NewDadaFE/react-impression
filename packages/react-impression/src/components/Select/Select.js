@@ -182,6 +182,7 @@ export default class Select extends React.PureComponent {
         dataToSet = {
           selectedItem: {},
           selectText: '',
+          queryText: '',
         }
       }
     } else {

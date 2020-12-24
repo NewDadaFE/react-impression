@@ -5,6 +5,7 @@ import { Portal } from 'react-portal'
 import ModalHeader from '../ModalHeader'
 import ModalBody from '../ModalBody'
 import ModalFooter from '../ModalFooter'
+import Ico from '../Ico'
 
 const KEYCODE_ESCAPE = 27
 
@@ -23,7 +24,7 @@ class Modal extends React.Component {
     /**
      * 大小
      */
-    size: PropTypes.oneOf(['sm', 'lg']),
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
 
     /**
      * Modal是否内部滚动
@@ -49,13 +50,19 @@ class Modal extends React.Component {
      * modal显示与否
      */
     isOpen: PropTypes.bool,
+    /**
+     * 是否显示关闭图标
+     */
+    showClose: PropTypes.bool,
   }
 
   static defaultProps = {
+    size: 'md',
     scrollInside: false,
     isOpen: true,
     closeOnEsc: true,
     closeOnOutsideClick: true,
+    showClose: false,
     onClose: () => {},
   }
 
@@ -130,7 +137,14 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { size, className, children, scrollInside } = this.props
+    const {
+      size,
+      className,
+      children,
+      scrollInside,
+      onClose,
+      showClose,
+    } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     return (
@@ -146,7 +160,17 @@ class Modal extends React.Component {
             className={classnames('modal-dialog', sizeClass)}
             onClick={this.handleStopPropagation}
           >
-            <div className='modal-content'>{children}</div>
+            <div className='modal-content dada-shadow-darker'>
+              {showClose && (
+                <Ico
+                  className='dada-modal-close'
+                  size='md'
+                  type='times'
+                  onClick={onClose}
+                />
+              )}
+              {children}
+            </div>
           </div>
         </div>
       </Portal>

@@ -3,14 +3,24 @@
  * 计算规则：line-height = font-size + 8px
  */
 $line-height-enlarge: 8px;
-@mixin set-font-size($font-size) {
+@mixin set-font-size($font-size, $is-no-unit: true) {
   font-size: $font-size;
   $font-size-unit: unit($font-size);
+
   @if $font-size-unit == em {
     line-height: normal;
-  } @else if $font-size-unit == px {
-    line-height: ($font-size + $line-height-enlarge) / $font-size;
   } @else {
-    line-height: ($font-size + strip-unit(rem($line-height-enlarge))) / $font-size;
+    $line-height-result: 0;
+    @if $font-size-unit == px {
+      $line-height-result: $font-size + $line-height-enlarge;
+    } @else {
+      $line-height-result: $font-size + strip-unit(rem($line-height-enlarge));
+    }
+    // 去除单位，设置为系数
+    @if $is-no-unit {
+      line-height: $line-height-result / $font-size;
+    } @else {
+      line-height: $line-height-result;
+    }
   }
 }

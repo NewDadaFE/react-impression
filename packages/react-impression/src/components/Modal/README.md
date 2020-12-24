@@ -1,41 +1,67 @@
+**Modal 组件**配合 **ModalHeader 组件**、**ModalBody 组件**、**ModalFooter 组件**可以实现模态框。
+
 ### 示例
 
-**默认样式**
+#### 1、基本用法
+
+组件支持 5 种尺寸的弹窗。
 
 ```js
-const handleToggleClick = () => {
+const handleToggleClick = size => {
   setState({
+    size: typeof size === 'string' ? size : 'sm',
     isOpen: !state.isOpen,
   })
 }
 initialState = {
+  size: 'sm',
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={handleToggleClick}>
-    显示默认弹窗
-  </Button>
-  <Modal isOpen={state.isOpen} onClose={handleToggleClick}>
-    <ModalHeader>
-      <Button close onClick={handleToggleClick}>
-        &times;
+  <Row>
+    <Col>
+      <Button theme="secondary" onClick={() => handleToggleClick('xs')}>
+        超小尺寸
       </Button>
-      弹窗标题
-    </ModalHeader>
-    <ModalBody>
-      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
-    </ModalBody>
+    </Col>
+    <Col>
+      <Button theme="secondary" onClick={() => handleToggleClick('sm')}>
+        小尺寸
+      </Button>
+    </Col>
+    <Col>
+      <Button onClick={() => handleToggleClick('md')}>默认尺寸</Button>
+    </Col>
+    <Col>
+      <Button theme="secondary" onClick={() => handleToggleClick('lg')}>
+        大尺寸
+      </Button>
+    </Col>
+    <Col>
+      <Button theme="secondary" onClick={() => handleToggleClick('xl')}>
+        超大尺寸
+      </Button>
+    </Col>
+  </Row>
+
+  <Modal size={state.size} onClose={handleToggleClick} isOpen={state.isOpen}>
+    <ModalHeader>弹窗标题</ModalHeader>
+    <ModalBody>内容&hellip;</ModalBody>
     <ModalFooter>
       <Button theme="secondary" onClick={handleToggleClick}>
-        关闭
+        取消
       </Button>
-      <Button theme="primary">保存</Button>
+      <Button>确定</Button>
     </ModalFooter>
   </Modal>
 </div>
 ```
 
-**默认支持键盘 esc 键位和点击背景阴影区域关闭，下例取消了这两种方式**
+#### 2、关闭弹窗的方式
+
+- **closeOnEsc 属性：** 按下键盘 esc 键位（默认开启）
+- **closeOnOutsideClick 属性：** 点击背景阴影区域（默认开启）
+- **showClose 属性：** 点击右上角关闭图标（默认关闭）
 
 ```js
 const handleToggleClick = () => {
@@ -47,35 +73,24 @@ initialState = {
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={handleToggleClick}>
-    打开Modal
-  </Button>
+  <p>取消默认的 3 种️关闭方式：</p>
+  <Button onClick={handleToggleClick}>打开弹窗</Button>
   <Modal
     isOpen={state.isOpen}
     onClose={handleToggleClick}
     closeOnEsc={false}
     closeOnOutsideClick={false}
+    showClose
   >
-    <ModalHeader>
-      <Button close onClick={handleToggleClick}>
-        &times;
-      </Button>
-      弹窗标题
-    </ModalHeader>
-    <ModalBody>
-      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
-    </ModalBody>
-    <ModalFooter>
-      <Button theme="secondary" onClick={handleToggleClick}>
-        关闭
-      </Button>
-      <Button theme="primary">保存</Button>
-    </ModalFooter>
+    <ModalHeader>弹窗标题</ModalHeader>
+    <ModalBody>内容&hellip;</ModalBody>
   </Modal>
 </div>
 ```
 
-**小尺寸弹窗**
+#### 3、弹窗头部附加内容
+
+通过 **ModalHeader 组件** 的 **addonAfter 属性** 支持在弹窗头部右侧插入附加内容。
 
 ```js
 const handleToggleClick = () => {
@@ -87,65 +102,33 @@ initialState = {
   isOpen: false,
 }
 ;<div>
-  <Button theme="primary" onClick={handleToggleClick}>
-    显示小尺寸弹窗
-  </Button>
-  <Modal size="sm" onClose={handleToggleClick} isOpen={state.isOpen}>
-    <ModalHeader>
-      <Button close onClick={handleToggleClick}>
-        &times;
-      </Button>
+  <Button onClick={handleToggleClick}>头部附加内容</Button>
+  <Modal isOpen={state.isOpen} onClose={handleToggleClick} showClose>
+    <ModalHeader
+      addonAfter={
+        <TextLink>
+          <Ico className="offset-r-xs" type="download" />
+          导出
+        </TextLink>
+      }
+    >
       弹窗标题
     </ModalHeader>
-    <ModalBody>
-      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
-    </ModalBody>
+    <ModalBody>内容&hellip;</ModalBody>
     <ModalFooter>
       <Button theme="secondary" onClick={handleToggleClick}>
-        关闭
+        取消
       </Button>
-      <Button theme="primary">保存</Button>
+      <Button>确定</Button>
     </ModalFooter>
   </Modal>
 </div>
 ```
 
-**大尺寸弹窗**
+#### 4、内容滚动模式
 
-```js
-const handleToggleClick = () => {
-  setState({
-    isOpen: !state.isOpen,
-  })
-}
-initialState = {
-  isOpen: false,
-}
-;<div>
-  <Button theme="primary" onClick={handleToggleClick}>
-    显示大尺寸弹窗
-  </Button>
-  <Modal size="lg" onClose={handleToggleClick} isOpen={state.isOpen}>
-    <ModalHeader>
-      <Button close onClick={handleToggleClick}>
-        &times;
-      </Button>
-      弹窗标题
-    </ModalHeader>
-    <ModalBody>
-      <p style={{ color: '#919CB3' }}>内容&hellip;</p>
-    </ModalBody>
-    <ModalFooter>
-      <Button theme="secondary" onClick={handleToggleClick}>
-        关闭
-      </Button>
-      <Button theme="primary">保存</Button>
-    </ModalFooter>
-  </Modal>
-</div>
-```
-
-**多内容情况可以选择滚动模式**
+- 弹窗高度被内容区域撑开，整个弹窗滚动（默认）
+- 弹窗定高，内容区域滚动
 
 ```js
 class Overflow extends React.Component {
@@ -157,18 +140,12 @@ class Overflow extends React.Component {
     }
 
     this.handleToggleClick = this.handleToggleClick.bind(this)
-    this.toggleModalLimitHeight = this.toggleModalLimitHeight.bind(this)
   }
 
-  handleToggleClick() {
+  handleToggleClick(scrollInside) {
     this.setState({
       show: !this.state.show,
-    })
-  }
-
-  toggleModalLimitHeight(value) {
-    this.setState({
-      scrollInside: value,
+      scrollInside,
     })
   }
 
@@ -176,15 +153,14 @@ class Overflow extends React.Component {
     return (
       <div>
         <Row>
-          <Col>
-            <label className="offset-r-lg">内部滚动模式</label>
-            <Switch onChange={this.toggleModalLimitHeight} />
+          <Col col={3}>
+            <Button onClick={() => this.handleToggleClick(false)}>
+              整个弹窗滚动
+            </Button>
           </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Button theme="primary" onClick={() => this.handleToggleClick()}>
-              显示弹窗
+          <Col col={3}>
+            <Button onClick={() => this.handleToggleClick(true)}>
+              内部滚动
             </Button>
           </Col>
         </Row>
@@ -193,14 +169,9 @@ class Overflow extends React.Component {
           onClose={() => this.handleToggleClick()}
           isOpen={this.state.show}
         >
-          <ModalHeader>
-            <Button close onClick={() => this.handleToggleClick()}>
-              &times;
-            </Button>
-            弹窗标题
-          </ModalHeader>
+          <ModalHeader>弹窗标题</ModalHeader>
           <ModalBody>
-            <div style={{ color: '#919CB3' }}>
+            <div>
               <p>显示内容&hellip;</p>
               <p>显示内容&hellip;</p>
               <p>显示内容&hellip;</p>
@@ -219,14 +190,14 @@ class Overflow extends React.Component {
               <p>显示内容&hellip;</p>
               <p>显示内容&hellip;</p>
               <p>显示内容&hellip;</p>
-              <p>显示内容&hellip;</p>
+              <div>显示内容&hellip;</div>
             </div>
           </ModalBody>
           <ModalFooter>
             <Button theme="secondary" onClick={() => this.handleToggleClick()}>
-              关闭
+              取消
             </Button>
-            <Button theme="primary">保存</Button>
+            <Button>确定</Button>
           </ModalFooter>
         </Modal>
       </div>
@@ -238,9 +209,8 @@ class Overflow extends React.Component {
 
 ### 变更记录
 
-v2.0.0
+v3.0.0
 
-- 废弃 modal-dialog-sm-up-margin-y 这个 sass 变量
-- 废弃 modal-footer-border-color 这个 sass 变量
-- 废弃 modal-footer-border-width 这个 sass 变量
-- 废弃 modal-inner-padding-sm 这个 sass 变量
+- 新增 size 属性有效值：xs、md、xl
+- 新增 showClose 属性，支持关闭图标
+- 新增 ModalHeader 组件的 addonAfter 属性，支持头部添加附加元件
