@@ -107,7 +107,7 @@ initialState = {
     <ModalHeader
       addonAfter={
         <TextLink>
-          <Ico className="offset-r-xs" type="download" />
+          <Ico className="offset-r-xxs" type="download" />
           导出
         </TextLink>
       }

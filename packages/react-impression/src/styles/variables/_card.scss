@@ -6,10 +6,10 @@ $card-border-width: 1px !default;
 $card-border-color: $border-color !default;
 $card-border-radius: $border-radius-sm !default;
 $card-border-radius-inner: $card-border-radius !default;
-$card-box-shadow: 0px rem(2px) rem(10px) 0px rgba(145, 156, 179, 0.1) !default;
+$card-box-shadow: $box-shadow-light !default;
 $card-cap-bg: $gray-lighter !default;
 $card-cap-color: $gray-base !default;
-$card_cap-font-size: $font-size-h6 !default;
+$card_cap-font-size: $font-size-h5 !default;
 $card-cap-font-weight: $font-weight-bold !default;
 $card-bg: $brand-pure !default;
 

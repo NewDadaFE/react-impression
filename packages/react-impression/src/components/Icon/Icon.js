@@ -39,8 +39,8 @@ export default class Icon extends React.PureComponent {
     const { type, size, left, right, className, ...others } = this.props
     const typeClass = `fa-${type}`
     const sizeClass = size ? `fa-${size}` : null
-    const leftClass = left ? 'offset-r-sm' : null
-    const rightClass = right ? 'offset-l-sm' : null
+    const leftClass = left ? 'offset-r-xs' : null
+    const rightClass = right ? 'offset-l-xs' : null
 
     return (
       <i
