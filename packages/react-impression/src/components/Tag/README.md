@@ -1,31 +1,14 @@
 ### 示例
 
-**基本用法**
+#### 主题
 
-```js
-<div>
-  <span>举个例子</span> <Tag>上海</Tag>
-</div>
-```
-
-**边框**
-
-```js
-<Tag outline>已追单</Tag>
-```
-
-**圆角**
-
-```js
-<Tag shape="pill">99</Tag>
-```
-
-**多彩**
-
-```js
+```javascript
 <div>
   <div className="offset-b">
     <Tag className="offset-r">普通</Tag>
+    <Tag theme="info" className="offset-r">
+      信息
+    </Tag>
     <Tag theme="success" className="offset-r">
       成功
     </Tag>
@@ -40,6 +23,9 @@
   <div>
     <Tag className="offset-r" outline>
       普通
+    </Tag>
+    <Tag theme="info" className="offset-r" outline>
+      信息
     </Tag>
     <Tag theme="success" className="offset-r" outline>
       成功
@@ -57,8 +43,51 @@
 </div>
 ```
 
+#### 尺寸
+
+```javascript
+<div className='offset-b-sm'>
+  小号（默认）：
+  <Tag className='offset-r-sm' size='sm'>上海</Tag>
+  <Tag size='sm'>上海欢迎你 Welcome to Shanghai ！</Tag>
+</div>
+<div>
+  中号：
+  <Tag className='offset-r-sm' size='md'>上海</Tag>
+  <Tag size='md'>上海欢迎你 Welcome to Shanghai ！</Tag>
+</div>
+```
+
+#### 显示关闭图标
+
+```javascript
+<div className="offset-b-sm">
+  <Tag className="offset-r-sm" size="sm" closable>
+    上海
+  </Tag>
+  <Tag className="offset-r-sm" closable>
+    上海欢迎你 Welcome to Shanghai ！
+  </Tag>
+  <Tag outline closable>
+    上海
+  </Tag>
+</div>
+```
+
+#### 圆角
+
+注意：shape 属性有值时，size 属性值无效。
+
+```js
+<Tag shape="pill">99</Tag>
+```
+
 **变更记录**
 
 v2.0.0
 
-* 默认值改为 primary
+- 默认值改为 primary
+
+v3.0.0
+
+- 新增 size 属性，支持 sm、md 2 种尺寸。

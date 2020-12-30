@@ -4,20 +4,33 @@
 // `background-color`.
 
 .dada-tag {
-  display: inline-block;
-  padding: $tag-padding-y $tag-padding-x;
-  font-size: $tag-font-size;
+  display: inline-flex;
+  max-width: $tag-max-width;
   font-weight: $tag-font-weight;
-  line-height: 1;
   color: $tag-color;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
   border-radius: $tag-border-radius;
 
   // Empty tags collapse automatically
   &:empty {
     display: none;
+  }
+}
+
+.dada-tag-sm {
+  padding: $tag-sm-padding-y $tag-sm-padding-x;
+  font-size: $tag-sm-font-size;
+  line-height: $tag-sm-line-height;
+  & > .dada-tag-close {
+    margin-left: $tag-sm-close-margin-left;
+  }
+}
+
+.dada-tag-md {
+  padding: $tag-md-padding-y $tag-md-padding-x;
+  font-size: $tag-md-font-size;
+  line-height: $tag-md-line-height;
+  & > .dada-tag-close {
+    margin-left: $tag-md-close-margin-left;
   }
 }
 
@@ -27,29 +40,21 @@
   top: -1px;
 }
 
-// Add hover effects, but only for links
-a.dada-tag {
-  &:hover,
-  &:focus {
-    color: $tag-link-hover-color;
-    text-decoration: none;
-    cursor: pointer;
-  }
-}
-
 // Pill tags
 //
 // Make them extra rounded with a modifier to replace v3's badges.
 
 .dada-tag-pill {
-  padding: $tag-pill-padding-y $tag-pill-padding-x;
+  padding: $tag-pill-padding;
   border-radius: $tag-pill-border-radius;
 }
 
 // Themes
 //
 .dada-tag-default {
-  @include tag-variant($tag-default);
+  color: $tag-default-color;
+  border: $tag-border-width solid $tag-default;
+  background-color: $tag-default;
 }
 
 .dada-tag-primary {
@@ -75,7 +80,9 @@ a.dada-tag {
 // Outline
 //
 .dada-tag-outline-default {
-  @include tag-outline-variant($tag-default);
+  color: $tag-default-color;
+  border: $tag-border-width solid $tag-default;
+  background-color: $tag-default-outline-bg;
 }
 
 .dada-tag-outline-primary {
@@ -98,13 +105,19 @@ a.dada-tag {
   @include tag-outline-variant($tag-danger);
 }
 
+.dada-tag-text {
+  overflow: hidden;
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 // Close
 .dada-tag-close {
   cursor: pointer;
-  margin-left: $tag-close-margin-right;
-  opacity: 0.6;
+  color: $tag-close-color;
 
   &:hover {
-    opacity: 1;
+    color: $tag-close-hover-color;
   }
 }
