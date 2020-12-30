@@ -2,25 +2,11 @@
 
 @mixin tag-variant($color) {
   background-color: $color;
-  border: 1px solid $color;
-
-  &[href] {
-    &:hover,
-    &:focus {
-      background-color: darken($color, 10%);
-    }
-  }
+  border: $tag-border-width solid $color;
 }
 
 @mixin tag-outline-variant($color) {
   color: $color;
-  border: 1px solid $color;
-
-  &[href] {
-    &:hover,
-    &:focus {
-      color: darken($color, 6%);
-      border-color: darken($color, 6%);
-    }
-  }
+  border: $tag-border-width solid $color;
+  background-color: rgba($color, .1);
 }

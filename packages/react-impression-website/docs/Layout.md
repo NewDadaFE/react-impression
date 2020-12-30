@@ -4,11 +4,11 @@
 
 **方向：上(-t)、下(-b)、上下(-tb)、左(-l)、右(-r)、左右(-lr)、四周('')**
 
-**尺寸：xs(4px)、sm(8px)、默认(16px)、lg(24px)、xl(32px)、无间距(0)**
+**尺寸：xxs(4px)、xs(8px)、sm(12px)、默认(16px)、lg(20px)、xl(32px)、xxl(48px)、无间距(0)**
 
 ### 外边距 (offset)
 
-外边距工具类由方向和大小排列组 + 无外边距的情况，共 42 个样式工具类。
+外边距工具类由方向和大小排列组 + 无外边距的情况，共 56 个样式工具类。
 
 ```javascript
 const data = [
@@ -24,6 +24,16 @@ const data = [
   },
   {
     size: '4px',
+    top: '.offset-t-xxs',
+    bottom: '.offset-b-xxs',
+    topBottom: '.offset-tb-xxs',
+    left: '.offset-l-xxs',
+    right: '.offset-r-xxs',
+    leftRight: '.offset-lr-xxs',
+    around: '.offset-xxs',
+  },
+  {
+    size: '8px',
     top: '.offset-t-xs',
     bottom: '.offset-b-xs',
     topBottom: '.offset-tb-xs',
@@ -33,7 +43,7 @@ const data = [
     around: '.offset-xs',
   },
   {
-    size: '8px',
+    size: '12px',
     top: '.offset-t-sm',
     bottom: '.offset-b-sm',
     topBottom: '.offset-tb-sm',
@@ -53,7 +63,7 @@ const data = [
     around: '.offset',
   },
   {
-    size: '24px',
+    size: '20px',
     top: '.offset-t-lg',
     bottom: '.offset-b-lg',
     topBottom: '.offset-tb-lg',
@@ -72,6 +82,16 @@ const data = [
     leftRight: '.offset-lr-xl',
     around: '.offset-xl',
   },
+  {
+    size: '48px',
+    top: '.offset-t-xxl',
+    bottom: '.offset-b-xxl',
+    topBottom: '.offset-tb-xxl',
+    left: '.offset-l-xxl',
+    right: '.offset-r-xxl',
+    leftRight: '.offset-lr-xxl',
+    around: '.offset-xxl',
+  },
 ]
 ;<Table data={data}>
   <TableColumn prop="size" Header="尺寸" width={60} />
@@ -87,7 +107,7 @@ const data = [
 
 ### 内边距 (padding)
 
-内边距工具类由方向和大小排列组 + 无内边距的情况，共 42 个样式工具类。
+内边距工具类由方向和大小排列组 + 无内边距的情况，共 56 个样式工具类。
 
 ```javascript
 const data = [
@@ -103,6 +123,16 @@ const data = [
   },
   {
     size: '4px',
+    top: '.padding-t-xxs',
+    bottom: '.padding-b-xxs',
+    topBottom: '.padding-tb-xxs',
+    left: '.padding-l-xxs',
+    right: '.padding-r-xxs',
+    leftRight: '.padding-lr-xxs',
+    around: '.padding-xxs',
+  },
+  {
+    size: '8px',
     top: '.padding-t-xs',
     bottom: '.padding-b-xs',
     topBottom: '.padding-tb-xs',
@@ -112,7 +142,7 @@ const data = [
     around: '.padding-xs',
   },
   {
-    size: '8px',
+    size: '12px',
     top: '.padding-t-sm',
     bottom: '.padding-b-sm',
     topBottom: '.padding-tb-sm',
@@ -132,7 +162,7 @@ const data = [
     around: '.padding',
   },
   {
-    size: '24px',
+    size: '20px',
     top: '.padding-t-lg',
     bottom: '.padding-b-lg',
     topBottom: '.padding-tb-lg',
@@ -150,6 +180,16 @@ const data = [
     right: '.padding-r-xl',
     leftRight: '.padding-lr-xl',
     around: '.padding-xl',
+  },
+  {
+    size: '48px',
+    top: '.padding-t-xxl',
+    bottom: '.padding-b-xxl',
+    topBottom: '.padding-tb-xxl',
+    left: '.padding-l-xxl',
+    right: '.padding-r-xxl',
+    leftRight: '.padding-lr-xxl',
+    around: '.padding-xxl',
   },
 ]
 ;<Table data={data}>

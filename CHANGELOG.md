@@ -1,3 +1,4 @@
+- 新增 **Tag 组件** size 属性有效值：sm、md
 - 新增 **Modal 组件** showClose 属性，新增 size 属性有效值：xs、md、xl，**ModalHeader 组件** addonAfter 属性
 - 新增 **Flex 组件** justify 属性
 - 新增 **Popconfirm 组件**
