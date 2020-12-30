@@ -13,9 +13,11 @@ $directionList: (
   '-lr': '',
 );
 $sizeMap: (
-  '-xs': $spacer / 4, // 4
-  '-sm': $spacer / 2, // 8
+  '-xxs': $spacer / 4, // 4
+  '-xs': $spacer / 4 * 2, // 8
+  '-sm': $spacer / 4 * 3, // 12
   '': $spacer, // 16
-  '-lg': $spacer / 2 * 3, // 24
+  '-lg': $spacer / 4 * 5, // 20
   '-xl': $spacer * 2, // 32
+  '-xxl': $spacer * 3, // 48
 );

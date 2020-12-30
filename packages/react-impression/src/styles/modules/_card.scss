@@ -21,7 +21,7 @@
 .card-block {
   @include clearfix;
   padding: $card-padding;
-  color: $gray-dark;
+  color: $gray-darker;
 
   & ~ .card-footer {
     padding-top: 0;
@@ -74,7 +74,7 @@
   margin: 0;
   padding: $card-spacer-y $card-spacer-x;
   color: $card-cap-color;
-  font-size: $card-cap-font-size;
+  font-size: $font-size-h6;
   font-weight: $card-cap-font-weight;
 
   &:last-child {
