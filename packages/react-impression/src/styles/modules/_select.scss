@@ -3,139 +3,92 @@
 //
 .select {
   position: relative;
-  cursor: pointer;
   display: inline-flex;
-  align-items: center;
   width: $select-width;
+  align-items: center;
   line-height: $select-option-inline-height;
+  cursor: pointer;
   border: $border-width solid $gray-light;
-  border-radius: rem(2px);
+  border-radius: $border-radius;
 
   &.disabled {
     &,
     .select-addon,
     .select-tags,
     .select-selection {
-      background: $select-disable-bg;
       cursor: not-allowed;
       color: $select-selection-color;
-    }
-
-    .dada-tag {
-      cursor: not-allowed;
+      background-color: $select-disable-bg;
     }
   }
 
-  .select-tags {
-    @include scroll-reset();
-
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    user-select: none;
-    text-align: left;
-    text-overflow: ellipsis;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-    line-height: rem(22px);
-    color: $gray-base;
-    background-color: $select-bg-color;
-    background-image: none;
-    background-clip: padding-box;
-    border: none;
-    transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-    max-height: $select-mutiple-max-height;
-    min-height: $select-height-md;
-    overflow-y: auto;
-    padding-bottom: rem(4px);
-    padding-right: rem(42px);
-
-    .dada-tag-default {
-      color: $gray-base;
-      background: $select-tags-bg-color;
-      margin: $select-tag-margin-md 0 0 $select-tag-margin-md;
-      height: $select-tag-height-md;
-      border: none;
-      padding-left: $select-padding-x;
-      padding-right: rem(4px);
-
-      &:hover {
-        background-color: $gray-light;
-      }
-    }
-
-    .dada-tag-close {
-      color: $gray;
-      display: inline-block;
-      opacity: 1;
-      font-size: $font-size-lg;
-      height: rem(20px);
-      margin-left: rem(8px);
-
-      &:hover {
-        color: $gray-base;
-      }
-    }
-
-    .select-placeholder {
-      color: $gray;
-      display: inline-block;
-      padding-top: $select-padding-y-md;
-      padding-left: $select-padding-x;
-      line-height: $select-line-height-md;
-    }
-
-    .dada-tag {
-      line-height: rem(20px);
-    }
-  }
-
+  // 多选
   &.select-multiple {
     width: auto;
     min-width: $select-width;
     max-width: $select-max-width;
   }
 
-  .select-tag-xs {
-    line-height: rem(20px);
-    min-height: $select-height-xs;
-    padding-bottom: rem(2px);
+  & > .select-tags {
+    @include scroll-reset();
+    @include set-font-size(1rem);
 
-    .dada-tag-default {
-      height: $select-tag-height-xs;
-      margin: $select-tag-margin-xs 0 0 $select-tag-margin-xs;
-      padding: 0 rem(4px) 0 rem(8px);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-height: $select-height-md;
+    max-height: $select-multiple-max-height;
+    padding: 1px 42px 1px 1px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
+    text-align: left;
+    text-overflow: ellipsis;
+    color: $gray-base;
+    border: none;
+    background-color: $select-bg-color;
+    background-image: none;
+    background-clip: padding-box;
+
+    & > .dada-tag-default {
+      margin: 2px;
+      color: $gray-base;
+      border-color: $select-tags-bg-color;
+      background-color: $select-tags-bg-color;
+
+      &:hover {
+        border-color: $gray-light;
+        background-color: $gray-light;
+      }
     }
 
-    .select-placeholder-xs {
-      line-height: $select-line-height-xs;
-      font-size: $font-size-xs;
-      padding-top: rem(3px);
-      padding-left: rem(8px);
-    }
+    & > .select-placeholder {
+      @include set-font-size(rem(14px));
 
-    .dada-tag {
-      line-height: rem(18px);
+      display: inline-block;
+      padding: 5px 0 5px 6px;
+      color: $gray;
     }
   }
 }
 
 .select-selection {
-  cursor: pointer;
-  width: 100%;
   display: inline-block;
+  width: 100%;
+  padding: $input-padding-y-md $input-padding-x;
+  cursor: pointer;
   user-select: none;
+  transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
   text-align: left;
   text-overflow: ellipsis;
-  padding: $input-padding-y-md $input-padding-x;
-  border-radius: rem(2px);
   color: $gray-base;
+  border: none;
+  border-radius: $border-radius;
   background-color: $select-bg-color;
   background-image: none;
   background-clip: padding-box;
-  border: none;
-  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 
   &:active,
   &:focus {
@@ -155,80 +108,52 @@
   }
 }
 
-.select-selection-lg {
-  height: $select-height-lg;
-  line-height: $select-line-height-lg;
-  font-size: $select-font-size-lg;
-  padding: $select-padding-y-lg $select-addon-font-size-lg + $select-padding-x * 2 $select-padding-y-lg $select-padding-x;
-}
-
-.select-selection-md {
-  height: $select-height-md;
-  line-height: $select-line-height-md;
-  font-size: $font-size-base;
-  padding: $select-padding-y-md $select-addon-font-size-md + $select-padding-x * 2 $select-padding-y-md $select-padding-x;
-}
-
-.select-selection-sm {
-  height: $select-height-sm;
-  line-height: $select-line-height-sm;
-  font-size: $font-size-sm;
-  padding: $select-padding-y-sm $select-addon-font-size-sm + $select-padding-x * 2 $select-padding-y-sm $select-padding-x;
-}
-
-.select-selection-xs {
-  height: $select-height-xs;
-  line-height: $select-line-height-xs;
-  font-size: $font-size-xs;
-  padding: $select-padding-y-xs $select-addon-font-size-xs + $select-padding-x * 2 $select-padding-y-xs $select-padding-x;
-}
-
 .select-open {
+  transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
   border-color: $brand-primary;
   outline: none;
-  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
 }
 
 .select-options-wrap {
-  box-sizing: border-box;
-  border-radius: rem(2px);
   margin: 0;
+  padding: .714rem 0;
+  box-sizing: border-box;
+  border-radius: $border-radius;
   background: $select-bg;
-  padding: 0.714rem 0;
 }
 
 .select-search-wrap {
   position: relative;
   z-index: $zindex-select;
-  background-color: $select-bg-color;
-  box-sizing: border-box;
   padding: $select-option-padding;
+  box-sizing: border-box;
+  background-color: $select-bg-color;
 
   .select-search {
     position: absolute;
+    top: rem(4px);
     right: $input-padding-x;
     height: 2.142rem;
-    top: rem(4px);
   }
 }
 
 .select-search-input {
-  cursor: pointer;
   display: inline-block;
-  text-align: left;
-  text-overflow: ellipsis;
   width: 100%;
   height: 2.143rem;
   padding: $select-padding-y-md $input-padding-x;
+  padding-right: $select-selection-padding-right;
   font-size: 1rem;
   line-height: 1.25;
+  cursor: pointer;
+  transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
+  text-align: left;
+  text-overflow: ellipsis;
   color: $gray-base;
+  border: 1px solid $border-color;
   background-color: $select-bg-color;
   background-image: none;
   background-clip: padding-box;
-  border: 1px solid $border-color;
-  transition: border-color ease-in-out 0.18s, box-shadow ease-in-out 0.18s;
-  padding-right: $select-selection-padding-right;
 
   &:active,
   &:focus {
@@ -249,89 +174,66 @@
 }
 
 .select-search {
+  position: absolute;
+  z-index: 2;
+  top: 2px;
+  right: 1px;
+  padding: $select-padding-y-md $input-padding-x;
+  font-size: 1.25rem;
   cursor: pointer;
   user-select: none;
-  position: absolute;
   color: $gray-light;
-  right: rem(1px);
-  font-size: 1.25rem;
-  top: rem(2px);
-  z-index: 2;
-  padding: $select-padding-y-md $input-padding-x;
 }
 
 .select-empty {
   margin-bottom: 0;
+  padding: $select-padding-y-md $input-padding-x;
   text-align: center;
   color: $gray-dark;
-  padding: $select-padding-y-md $input-padding-x;
 }
 
 .select-addon {
+  position: absolute;
+  top: 0;
+  right: $select-addon-margin-x;
   cursor: pointer;
   user-select: none;
-  position: absolute;
-  color: $gray-light;
-  right: $select-addon-margin-x;
-  top: 0;
   transition: $select-transition;
+  color: $gray-light;
 
   .open & {
     transform: rotate(180deg);
   }
 }
 
-.select-addon-lg {
-  height: $select-height-lg;
-  font-size: $select-addon-font-size-lg;
-  line-height: $select-height-lg;
-}
-
-.select-addon-md {
-  font-size: $select-addon-font-size-md;
-  height: $select-height-md;
-  line-height: $select-height-md;
-}
-
-.select-addon-sm {
-  font-size: $select-addon-font-size-sm;
-  height: $select-height-sm;
-  line-height: $select-height-sm;
-}
-
-.select-addon-xs {
-  font-size: $select-addon-font-size-sm;
-  height: $select-height-xs;
-  line-height: $select-height-xs;
-}
-
 .select-options {
   @include scroll-reset();
-  overflow-y: auto;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+
   position: relative;
   z-index: $zindex-select;
-  list-style: none;
+  width: 100%;
   max-height: $select-selection-max-height;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
 
   .select-noresult {
+    padding: $select-option-padding;
     cursor: not-allowed;
     color: $select-option-disable-color;
-    padding: $select-option-padding;
   }
 }
 
 .select-option {
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: $gray-base;
   height: $select-height-md + rem(2px);
-  line-height: $select-line-height-md;
   padding: $select-option-padding-y $select-option-padding-x;
+  overflow: hidden;
+  line-height: $select-line-height-md;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $gray-base;
 
   &:hover {
     background-color: $select-option-hover-bg;
@@ -352,8 +254,8 @@
 }
 
 .select-group-container {
-  list-style-type: none;
   padding: 0;
+  list-style-type: none;
 
   &.disabled {
     cursor: not-allowed;
@@ -376,3 +278,75 @@
   }
 }
 
+// Size
+.dada-select-xs {
+  & > .select-selection {
+    height: $select-height-xs;
+    padding: $select-padding-y-xs $select-addon-font-size-xs + $select-padding-x * 2 $select-padding-y-xs $select-padding-x;
+    font-size: rem(12px);
+    line-height: $select-line-height-xs;
+  }
+
+  & > .select-addon {
+    height: $select-height-xs;
+    font-size: $select-addon-font-size-sm;
+    line-height: $select-height-xs;
+  }
+
+  & > .select-tags {
+    min-height: $select-height-xs;
+    max-height: $select-xs-multiple-max-height;
+    padding: 1px 42px 1px 1px;
+
+    & > .select-placeholder {
+      @include set-font-size(rem(12px));
+
+      padding: 2px 0 2px 6px;
+    }
+  }
+}
+
+.dada-select-sm {
+  & > .select-selection {
+    height: $select-height-sm;
+    padding: $select-padding-y-sm $select-addon-font-size-sm + $select-padding-x * 2 $select-padding-y-sm $select-padding-x;
+    font-size: $font-size-sm;
+    line-height: $select-line-height-sm;
+  }
+
+  & > .select-addon {
+    height: $select-height-sm;
+    font-size: $select-addon-font-size-sm;
+    line-height: $select-height-sm;
+  }
+}
+
+.dada-select-md {
+  & > .select-selection {
+    height: $select-height-md;
+    padding: $select-padding-y-md $select-addon-font-size-md + $select-padding-x * 2 $select-padding-y-md $select-padding-x;
+    font-size: $font-size-base;
+    line-height: $select-line-height-md;
+  }
+
+  & > .select-addon {
+    height: $select-height-md;
+    font-size: $select-addon-font-size-md;
+    line-height: $select-height-md;
+  }
+}
+
+.dada-select-lg {
+  & > .select-selection {
+    height: $select-height-lg;
+    padding: $select-padding-y-lg $select-addon-font-size-lg + $select-padding-x * 2 $select-padding-y-lg $select-padding-x;
+    font-size: $select-font-size-lg;
+    line-height: $select-line-height-lg;
+  }
+
+  & > .select-addon {
+    height: $select-height-lg;
+    font-size: $select-addon-font-size-lg;
+    line-height: $select-height-lg;
+  }
+}

@@ -36,7 +36,7 @@
     <Tag theme="danger" className="offset-r" outline>
       警告
     </Tag>
-    <Tag theme="default" className="offset-r" outline>
+    <Tag theme="default" outline>
       置灰
     </Tag>
   </div>
@@ -62,6 +62,9 @@
 
 ```javascript
 <div className="offset-b-sm">
+  <Tag className="offset-r-sm" size="md" closable>
+    上海
+  </Tag>
   <Tag className="offset-r-sm" size="sm" closable>
     上海
   </Tag>
