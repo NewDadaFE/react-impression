@@ -7,9 +7,9 @@ $tag-warning: $brand-warning !default;
 $tag-danger: $brand-danger !default;
 
 // Theme Default Style
-$tag-default: $gray-light !default;
+$tag-default: $gray-lighter !default;
 $tag-default-color: $gray-darker !default;
-$tag-default-outline-bg: $gray-lighter !default;
+$tag-default-outline: $gray-light !default;
 
 // General Style
 $tag-max-width: rem(200px) !default;
@@ -34,5 +34,4 @@ $tag-md-close-margin-left: rem(8px) !default;
 $tag-pill-padding: 2px rem(11px) 1px !default;
 $tag-pill-border-radius: rem(12px) !default;
 
-$tag-close-color: $disabled-color !default;
-$tag-close-hover-color: $gray-base !default;
+$tag-close-color: $brand-pure !default;

@@ -14,6 +14,18 @@
   &:empty {
     display: none;
   }
+
+  &.dada-tag-disabled {
+    cursor: not-allowed !important;
+    color: $disabled-color !important;
+    border-color: $tag-default !important;
+    background-color: $tag-default !important;
+
+    &:hover {
+      border-color: $tag-default !important;
+      background-color: $tag-default !important;
+    }
+  }
 }
 
 .dada-tag-sm {
@@ -81,8 +93,8 @@
 //
 .dada-tag-outline-default {
   color: $tag-default-color;
-  border: $tag-border-width solid $tag-default;
-  background-color: $tag-default-outline-bg;
+  border: $tag-border-width solid $tag-default-outline;
+  background-color: $tag-default;
 }
 
 .dada-tag-outline-primary {
@@ -115,9 +127,4 @@
 // Close
 .dada-tag-close {
   cursor: pointer;
-  color: $tag-close-color;
-
-  &:hover {
-    color: $tag-close-hover-color;
-  }
 }

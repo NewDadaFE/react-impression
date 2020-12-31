@@ -3,7 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as R from 'ramda'
 import { DebounceInput } from 'react-debounce-input'
-import Tag from '../Tag/index'
+import Ico from '../Ico'
+import Tag from '../Tag'
 import Trigger from '../Trigger'
 import SelectOption from '../SelectOption'
 
@@ -589,6 +590,10 @@ export default class Select extends React.PureComponent {
       showClear,
     } = this.state
     let { children } = this.props
+    let realSize = 'md'
+    if (!multiple || (multiple && (size === 'xs' || size === 'md'))) {
+      realSize = size
+    }
     return (
       <>
         <Trigger
@@ -608,7 +613,7 @@ export default class Select extends React.PureComponent {
                     onChange={e => this.handleQuery(e)}
                     className={classnames('select-search-input')}
                   />
-                  <i className='dada-ico dada-ico-search select-search' />
+                  <Ico type='search' className='select-search' />
                 </div>
               )}
               <ul
@@ -627,23 +632,20 @@ export default class Select extends React.PureComponent {
             style={style}
             className={classnames(
               'select',
-              { 'select-multiple': multiple },
-              { disabled },
-              { open: showOption && !searchable },
-              { 'select-open': showOption },
+              `dada-select-${realSize}`,
+              {
+                'select-multiple': multiple,
+                disabled,
+                open: showOption && !searchable,
+                'select-open': showOption,
+              },
               className
             )}
-            disabled={disabled}
             onMouseEnter={this.handleShowClear}
             onMouseLeave={this.handleHideClear}
           >
             {multiple && (
-              <div
-                className={classnames('select-tags', {
-                  'select-tag-xs': size === 'xs',
-                })}
-                onClick={this.toggleOptionsHandle}
-              >
+              <div className='select-tags' onClick={this.toggleOptionsHandle}>
                 {selectedItem.length <= 0 && (
                   <span
                     className={classnames('select-placeholder', {
@@ -658,10 +660,12 @@ export default class Select extends React.PureComponent {
                     const val = item.value
                     return (
                       <Tag
-                        closable
+                        key={item.value}
+                        size={size === 'xs' ? 'sm' : 'md'}
                         theme='default'
                         onClose={e => this.selectMultipleDelete(val, e)}
-                        key={item.value}
+                        disabled={disabled}
+                        closable
                       >
                         {item.name}
                       </Tag>
@@ -676,9 +680,7 @@ export default class Select extends React.PureComponent {
                 readOnly={!searchable || (searchable && !showOption)}
                 placeholder={currentPlaceholder}
                 disabled={disabled}
-                className={classnames('select-selection', {
-                  [`select-selection-${size}`]: !!size,
-                })}
+                className='select-selection'
                 onChange={e => this.handleQuery(e)}
                 onClick={this.toggleOptionsHandle}
                 onFocus={searchable && this.focusHandler}
@@ -687,13 +689,9 @@ export default class Select extends React.PureComponent {
             )}
             {(!showClear || !clearable) &&
               (!searchable || multiple || (searchable && !showOption)) && (
-              <i
-                className={classnames(
-                  'dada-ico dada-ico-angle-down select-addon',
-                  {
-                    [`select-addon-${size}`]: !!size,
-                  }
-                )}
+              <Ico
+                type='angle-down'
+                className='select-addon'
                 onClick={this.toggleOptionsHandle}
               />
             )}
@@ -701,24 +699,16 @@ export default class Select extends React.PureComponent {
               searchable &&
               showOption &&
               !multiple && (
-              <i
-                className={classnames(
-                  'dada-ico dada-ico-search select-addon',
-                  {
-                    [`select-addon-${size}`]: !!size,
-                  }
-                )}
+              <Ico
+                type='search'
+                className='select-addon'
                 onClick={this.toggleOptionsHandle}
               />
             )}
             {clearable && showClear && !multiple && (
-              <i
-                className={classnames(
-                  'dada-ico dada-ico-times-circle select-addon',
-                  {
-                    [`select-addon-${size}`]: !!size,
-                  }
-                )}
+              <Ico
+                type='times-circle'
+                className='select-addon'
                 onClick={this.handleClearSelect}
               />
             )}
