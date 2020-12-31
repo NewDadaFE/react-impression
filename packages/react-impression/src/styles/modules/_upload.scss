@@ -2,6 +2,7 @@
   cursor: pointer;
 
   & > .dada-input-group-input {
+    overflow: hidden;
     align-items: center;
 
     & > .dada-input-addon-before {

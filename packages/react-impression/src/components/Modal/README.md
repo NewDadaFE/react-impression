@@ -61,7 +61,7 @@ initialState = {
 
 - **closeOnEsc 属性：** 按下键盘 esc 键位（默认开启）
 - **closeOnOutsideClick 属性：** 点击背景阴影区域（默认开启）
-- **showClose 属性：** 点击右上角关闭图标（默认关闭）
+- **showClose 属性：** 点击右上角关闭图标（默认关闭），开启 showClose 时，onClose 回调必传！
 
 ```js
 const handleToggleClick = () => {
@@ -205,6 +205,34 @@ class Overflow extends React.Component {
   }
 }
 ;<Overflow />
+```
+
+#### 用作提示的弹窗
+
+```javascript
+const handleToggleClick = () => {
+  setState({
+    isOpen: !state.isOpen,
+  })
+}
+initialState = {
+  isOpen: false,
+}
+;<div>
+  <Button onClick={handleToggleClick}>点击提示</Button>
+  <Modal size="xs" isOpen={state.isOpen}>
+    <ModalBody>
+      <h6>提示</h6>
+      内容&hellip;
+    </ModalBody>
+    <ModalFooter>
+      <Button theme="secondary" onClick={handleToggleClick}>
+        取消
+      </Button>
+      <Button>确定</Button>
+    </ModalFooter>
+  </Modal>
+</div>
 ```
 
 ### 变更记录
