@@ -421,7 +421,7 @@ export default class Upload extends React.PureComponent {
           <div className='dada-input-group-input'>
             <Ico type='upload' className='dada-input-addon-before' />
             <span
-              className={classnames({
+              className={classnames('text-truncate', {
                 'dada-upload-placeholder': fileName === undefined && !file,
               })}
             >

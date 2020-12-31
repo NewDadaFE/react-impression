@@ -52,11 +52,16 @@
   border-radius: $modal-border-radius $modal-border-radius 0 0;
   background-color: $modal-header-bg;
   border-bottom: 1px solid $modal-header-border-color;
+  // 兼容旧版本的关闭按钮
+  & > .close {
+    margin-right: $modal-inner-padding;
+  }
 }
 
 // Modal Close Icon
 .dada-modal-close {
   position: absolute;
+  z-index: 1;
   top: $modal-inner-padding;
   right: $modal-inner-padding;
   width: $modal-close-size;
