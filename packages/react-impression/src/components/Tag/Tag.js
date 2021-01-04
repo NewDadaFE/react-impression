@@ -3,11 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Ico from '../Ico'
 
-const TAG_ICO_SIZE = {
-  sm: 'xs',
-  md: 'sm',
-}
-
 const Tag = React.forwardRef((props, ref) => {
   const {
     theme,
@@ -18,6 +13,7 @@ const Tag = React.forwardRef((props, ref) => {
     children,
     className,
     size,
+    disabled,
     ...others
   } = props
 
@@ -33,6 +29,7 @@ const Tag = React.forwardRef((props, ref) => {
           [`dada-tag-outline-${theme}`]: outline,
           [`dada-tag-${theme}`]: !outline,
           [`dada-tag-${shape}`]: shape,
+          'dada-tag-disabled': disabled,
         },
         className
       )}
@@ -43,8 +40,10 @@ const Tag = React.forwardRef((props, ref) => {
         <Ico
           className='dada-tag-close'
           type='times'
-          size={TAG_ICO_SIZE[size]}
-          onClick={onClose}
+          size='xs'
+          onClick={e => {
+            !disabled && onClose && onClose(e)
+          }}
         />
       )}
     </span>
@@ -97,6 +96,10 @@ Tag.propTypes = {
    * 尺寸
    */
   size: PropTypes.oneOf(['sm', 'md']),
+  /**
+   * 禁用
+   */
+  disabled: PropTypes.bool,
 }
 Tag.defaultProps = {
   theme: 'primary',

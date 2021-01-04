@@ -6,13 +6,15 @@
 
 - **尺寸**
 
-Select 的尺寸包括：xs，sm，md（默认），lg。
+Select 的尺寸包括：xs，sm，md（默认），lg。<br/>
+注意：多选时，只有 md 和 xs 有效！
 
 ```js
 class SizeExample extends React.Component {
   constructor() {
     super()
     this.state = {
+      value: -1,
       data: [
         { value: 1, name: '一' },
         { value: 2, name: '二' },
@@ -26,13 +28,13 @@ class SizeExample extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(val, text) {
+  handleChange(value, text) {
     Notification.info({
       title: 'Select',
       message: `${text} 被选中了！！！`,
     })
 
-    this.select.setValue(null)
+    this.setState({ value })
   }
   render() {
     return (
@@ -41,7 +43,7 @@ class SizeExample extends React.Component {
         <Row>
           <Col>
             <Select
-              ref={select => (this.select = select)}
+              value={this.state.value}
               onChange={this.handleChange}
               size="xs"
               placeholder="最小尺寸"
@@ -57,7 +59,7 @@ class SizeExample extends React.Component {
         <Row>
           <Col>
             <Select
-              ref={select => (this.select = select)}
+              value={this.state.value}
               onChange={this.handleChange}
               size="sm"
               placeholder="小尺寸"
@@ -73,7 +75,7 @@ class SizeExample extends React.Component {
         <Row>
           <Col>
             <Select
-              ref={select => (this.select = select)}
+              value={this.state.value}
               onChange={this.handleChange}
               placeholder="默认尺寸"
             >
@@ -88,7 +90,7 @@ class SizeExample extends React.Component {
         <Row>
           <Col>
             <Select
-              ref={select => (this.select = select)}
+              value={this.state.value}
               onChange={this.handleChange}
               placeholder="大尺寸"
               size="lg"
