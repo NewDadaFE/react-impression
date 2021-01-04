@@ -38,7 +38,7 @@
     width: 100%;
     min-height: $select-height-md;
     max-height: $select-multiple-max-height;
-    padding: 1px 42px 1px 1px;
+    padding: 2px 42px 2px 2px;
     overflow-y: auto;
     box-sizing: border-box;
     cursor: pointer;
@@ -68,7 +68,7 @@
       @include set-font-size(rem(14px));
 
       display: inline-block;
-      padding: 5px 0 5px 6px;
+      padding: 4px 0 4px 5px;
       color: $gray;
     }
   }
