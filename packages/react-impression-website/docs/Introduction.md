@@ -20,7 +20,7 @@ yarn add react-impression
 ```html
 <link
   rel="stylesheet"
-  href="https://at.alicdn.com/t/font_2010704_0skvm4f627s.css"
+  href="https://at.alicdn.com/t/font_2010704_40jb20frv6u.css"
 />
 ```
 
@@ -28,6 +28,7 @@ yarn add react-impression
 
 | 版本号                                             | 更新日期   |
 | -------------------------------------------------- | ---------- |
+| font<span>_</span>2010704<span>_</span>40jb20frv6u | 2021-01-04 |
 | font<span>_</span>2010704<span>_</span>0skvm4f627s | 2020-11-25 |
 
 4、引入组件：
