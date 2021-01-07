@@ -1,57 +1,66 @@
 .time-select-out {
   z-index: $zindex-datepicker;
   display: inline-block;
+  overflow: hidden;
   vertical-align: top;
   box-shadow: $time-select-border-radio;
-  overflow: hidden;
 }
+
 .time-select {
+  display: flex;
   font-size: 1rem;
   transform-origin: center 0;
-  animation: 0.36s scaleIn ease;
+  animation: .36s scaleIn ease;
   color: $time-select-color;
   border: 1px solid $time-select-border-color;
-  border-radius: 0.14286rem;
-  background-color: #fff;
+  border-radius: .14286rem;
+  background-color: $brand-pure;
+
   & > div:last-child .time-select-wrap,
   & > div:last-child .time-select-wrap-inner.title {
     border-right: none;
   }
 }
+
 .time-select-wrap {
-  height: 17.14rem;
-  overflow-y: auto;
   position: relative;
+  height: $time-select-wrap-height;
+  overflow-y: auto;
   border-right: 1px solid $time-select-border-color;
 }
+
 .time-select-wrap-inner {
+  width: $time-select-wrap-inner-width;
   padding: $time-select-wrap-inner-padding;
-  color: $gray-darker;
   box-sizing: content-box;
   line-height: $time-select-lineheight;
-  width: $time-select-wrap-inner-width;
   cursor: pointer;
+  color: $gray-darker;
+
   &:hover {
     background: $time-select-bg-color;
   }
+
   &.active {
     color: $time-select-hover-color;
   }
-  &.title {
-    color: $gray;
-    border-right: 1px solid $time-select-border-color;
-  }
-  &.title:hover {
+}
+
+.dada-time-select-title {
+  color: $gray;
+  border-right: 1px solid $time-select-border-color;
+
+  &:hover {
     background: none;
   }
 }
-.time-select-footer {
+
+.dada-time-select-footer {
   text-align: right;
-  .btn:hover:not(:disabled) {
-    background-color: inherit;
-    border-color: transparent;
-  }
-  & > span {
-    cursor: pointer;
-  }
+}
+
+.dada-time-select-btn {
+  display: inline-block;
+  padding: $time-select-btn-padding;
+  margin-right: $time-select-btn-offset;
 }
