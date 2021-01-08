@@ -44,7 +44,7 @@ class Example extends React.Component {
   constructor() {
     super()
     this.state = {
-      inputValue: {},
+      inputValue: { label: 'b栗子' },
     }
     this.searchHandler = this.searchHandler.bind(this)
     this.inputChangeHandler = this.inputChangeHandler.bind(this)
@@ -120,7 +120,7 @@ class Example extends React.Component {
   constructor() {
     super()
     this.state = {
-      selectValue: {},
+      selectValue: { label: 'b栗子' },
     }
     this.searchHandler = this.searchHandler.bind(this)
     this.selectChangeHandler = this.selectChangeHandler.bind(this)
