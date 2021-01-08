@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import PerfectScrollbar from 'perfect-scrollbar'
-import Button from '../Button'
+import TextLink from '../TextLink'
 
 export default class TimeSelect extends React.PureComponent {
   state = {
@@ -220,9 +220,11 @@ export default class TimeSelect extends React.PureComponent {
     const { className, type, autoClose } = this.props
     return (
       <div className={classnames('time-select-out', className)} ref='container'>
-        <div className='time-select flex'>
+        <div className='time-select'>
           <div>
-            <div className='time-select-wrap-inner title'>时</div>
+            <div className='time-select-wrap-inner dada-time-select-title'>
+              时
+            </div>
             <div
               className='time-select-wrap'
               ref={div => (this.hourContainer = div)}
@@ -243,7 +245,9 @@ export default class TimeSelect extends React.PureComponent {
             </div>
           </div>
           <div>
-            <div className='time-select-wrap-inner title'>分</div>
+            <div className='time-select-wrap-inner dada-time-select-title'>
+              分
+            </div>
             <div
               className='time-select-wrap'
               ref={div => (this.minuteContainer = div)}
@@ -267,7 +271,9 @@ export default class TimeSelect extends React.PureComponent {
 
           {type === 'second' && (
             <div>
-              <div className='time-select-wrap-inner title'>秒</div>
+              <div className='time-select-wrap-inner dada-time-select-title'>
+                秒
+              </div>
               <div
                 className='time-select-wrap'
                 ref={div => (this.secondContainer = div)}
@@ -291,9 +297,9 @@ export default class TimeSelect extends React.PureComponent {
           )}
         </div>
         {!autoClose && (
-          <div className='time-select-footer'>
-            <Button
-              theme='text'
+          <div className='dada-time-select-footer'>
+            <TextLink
+              className='dada-time-select-btn'
               onClick={() => this.handleSave(true)}
               disabled={
                 !currentHour ||
@@ -302,7 +308,7 @@ export default class TimeSelect extends React.PureComponent {
               }
             >
               确定
-            </Button>
+            </TextLink>
           </div>
         )}
       </div>

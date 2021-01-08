@@ -114,17 +114,18 @@ function Search(props) {
     ...others
   } = props
   const labelKey = optionKey.label || defaultOptionKey.label
+  const initialValue = defaultValue || value
   const valueString = typeof value === 'object' ? JSON.stringify(value) : ''
   // 标记初始化
   const isInitRef = useRef(true)
   // type 为 'select' 时，输入框选中项
   const [selectedItem, setSelectedItem] = useState(
-    type === 'select' && typeof defaultValue === 'object' ? defaultValue : null
+    type === 'select' && typeof initialValue === 'object' ? initialValue : null
   )
   // 搜索关键词
   const [keyword, setKeyword] = useState(
-    type === 'input' && typeof defaultValue === 'object'
-      ? defaultValue[labelKey]
+    type === 'input' && typeof initialValue === 'object'
+      ? initialValue[labelKey]
       : ''
   )
   // 搜索结果列表
@@ -169,6 +170,7 @@ function Search(props) {
 
   useEffect(
     () => {
+      if (isInitRef.current) return
       onChange && onChange(keyword)
     },
     [keyword]

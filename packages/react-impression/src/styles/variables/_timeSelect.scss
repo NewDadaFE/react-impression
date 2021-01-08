@@ -1,3 +1,4 @@
+$time-select-wrap-height: rem(240px) !default;
 $time-select-wrap-inner-padding: rem(7px) rem(27px) !default;
 $time-select-color: $gray-base;
 $time-select-border-color: $gray-lightest;
@@ -6,3 +7,5 @@ $time-select-hover-color: $brand-primary;
 $time-select-border-radio: 0px 6px 18px 0px rgba(38, 38, 38, 0.14);
 $time-select-lineheight: rem(22px);
 $time-select-wrap-inner-width: rem(18px) !default;
+$time-select-btn-padding: rem(7px) rem(7px) rem(8px) !default;
+$time-select-btn-offset: rem(10px) !default;
