@@ -261,6 +261,15 @@ function Tabs(props) {
     [others]
   )
 
+  useEffect(
+    () => {
+      setActiveKey(oldState => {
+        return oldState === props.activeKey ? oldState : props.activeKey
+      })
+    },
+    [props.activeKey]
+  )
+
   return (
     <div
       className={classnames(
