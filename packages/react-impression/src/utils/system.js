@@ -13,7 +13,7 @@ const init = () => {
     document.body.popLayers.forEach(component => {
       const componentDom = findDOMNode(component)
 
-      if (!componentDom.contains(event.target)) {
+      if (componentDom && !componentDom.contains(event.target)) {
         component.hideOptionsHandle && component.hideOptionsHandle()
       }
     })
