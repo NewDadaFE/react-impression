@@ -23,7 +23,7 @@ function Tabs(props) {
   const isVertical = tabPosition === 'left' || tabPosition === 'right'
   const showSlider = type === 'line' || type === 'block'
   const [activeKey, setActiveKey] = useState(
-    props.activeKey || props.defaultActiveKey
+    props.activeKey === undefined ? props.defaultActiveKey : props.activeKey
   )
 
   const tabsItemsRef = useRef([])
@@ -259,6 +259,15 @@ function Tabs(props) {
       return result
     },
     [others]
+  )
+
+  useEffect(
+    () => {
+      setActiveKey(oldState => {
+        return oldState === props.activeKey ? oldState : props.activeKey
+      })
+    },
+    [props.activeKey]
   )
 
   return (
