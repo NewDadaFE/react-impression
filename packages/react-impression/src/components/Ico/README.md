@@ -5,7 +5,7 @@
 ```html
 <link
   rel="stylesheet"
-  href="https://at.alicdn.com/t/font_2010704_40jb20frv6u.css"
+  href="https://fe.imdada.cn/t/font_2010704_sseid8vi9ua.css"
 />
 ```
 
@@ -100,6 +100,7 @@ const allIcoType = [
   'ellipsis-h',
   'envelope',
   'envelope-o',
+  'exchange',
   'exclamation-circle',
   'exclamation-circle-o',
   'exit',
@@ -145,6 +146,8 @@ const allIcoType = [
   'location-o',
   'lock',
   'lock-o',
+  'map',
+  'map-o',
   'minus',
   'minus-circle',
   'minus-circle-o',
@@ -175,6 +178,8 @@ const allIcoType = [
   'power-off',
   'print',
   'print-o',
+  'proportion',
+  'proportion-o',
   'question-circle',
   'question-circle-o',
   'rotate-left',
@@ -191,6 +196,7 @@ const allIcoType = [
   'shop-o',
   'sitemap',
   'sitemap-o',
+  'sliders',
   'smile',
   'smile-o',
   'stamp',
