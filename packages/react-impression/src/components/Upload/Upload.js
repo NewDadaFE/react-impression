@@ -428,7 +428,7 @@ export default class Upload extends React.PureComponent {
     }
 
     return (
-      <div {...others}>
+      <div {...others} style={{ width: '100%' }}>
         <div
           {...others}
           className={classnames(
