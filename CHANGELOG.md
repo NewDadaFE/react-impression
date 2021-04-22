@@ -1,9 +1,21 @@
-## 2.1.3-beta.1
+## 2.1.1-beta.5
+
+fix 修复 `Upload` 组件样式展示问题
+
+## 2.1.1-beta.4
+
+fix 修复部分场景下组件弹层收起时，`contains`调用报错
+
+## 2.1.1-beta.3
+
+feat 支持`Upload` 组件支持多文件上传
+
+## 2.1.1-beta.1
 
 feat:增加 **SelectOption 组件** 被选中后是否可删除属性;
 fix:修复 **Select 组件**，被选中选项为 **disabled** 时可删除问题;
 
-## 2.1.3-beta.0
+## 2.1.1-beta.0
 
 fix `SelectOption组件增加过滤掉非dom属性`
 
