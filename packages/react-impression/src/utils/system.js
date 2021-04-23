@@ -1,5 +1,14 @@
 import { findDOMNode } from 'react-dom'
 
+function contains (event, element) {
+  try {
+    const path = event.composedPath()
+    return path.some(x => x === element)
+  } catch (error) {
+    return element.contains(event.target)
+  }
+}
+
 /**
  * 初始化.
  */
@@ -13,7 +22,7 @@ const init = () => {
     document.body.popLayers.forEach(component => {
       const componentDom = findDOMNode(component)
 
-      if (componentDom && !componentDom.contains(event.target)) {
+      if (componentDom && !contains(event, componentDom)) {
         component.hideOptionsHandle && component.hideOptionsHandle()
       }
     })
