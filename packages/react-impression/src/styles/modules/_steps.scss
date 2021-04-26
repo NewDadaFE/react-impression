@@ -1,105 +1,183 @@
-// 步骤条样式
 .steps {
   display: flex;
-  justify-content: space-between;
-}
-.step {
-  position: relative;
-  flex: 1;
-  text-align: right;
-  &::before {
-    position: absolute;
-    z-index: 1;
-    top: $step-tail-top;
-    right: $step-content-width - $step-tail-left;
-    left: -$step-tail-left;
-    height: $step-tail-height;
-    content: '';
-  }
-  &.ready {
-    @include step-status($step-ready-color, $step-icon-bg-color);
-  }
-  &.finish {
-    @include step-status($step-active-color);
-    .step-dot {
-      background-color: transparent;
+
+  &.steps-horizontal {
+    justify-content: space-between;
+
+    .step {
+      .step-content {
+        width: $step-content-width;
+        text-align: center;
+
+        &::after {
+          position: absolute;
+          top: $step-tail-top;
+          right: -($step-content-width - $step-icon-size - $steps-horizontal-space) / 2;
+          left: ($step-content-width + $step-icon-size + $steps-horizontal-space) / 2;
+          height: $step-tail-height;
+          content: '';
+        }
+      }
     }
   }
-  &.current {
-    @include step-status($step-active-color);
-    .step-seq-icon {
-      color: white;
-      background-color: $step-active-color;
-    }
-    .step-title {
-      color: $step-title-current-color;
+
+  &.steps-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    min-width: $steps-vertical-min-width;
+    overflow-x: scroll;
+
+    .step {
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+
+      .step-content {
+        height: 100%;
+        display: flex;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: $step-tail-height;
+          left: ($step-icon-size - $step-tail-height) / 2;
+          top: $step-icon-size + $steps-vertical-space;
+          bottom: $steps-vertical-space;
+        }
+
+        .step-info {
+          width: 100%;
+          text-align: start;
+          margin-left: 2 * $steps-vertical-space;
+        }
+      }
     }
   }
-  &.error {
-    @include step-status($step-error-color);
-    .step-title {
-      color: $step-error-color;
+
+  .step {
+    position: relative;
+    flex: 1;
+
+    &.ready {
+      @include step-info-status($step-tail-bg-color);
+    }
+
+    &.finish {
+      @include step-info-status($step-active-color);
+
+      .step-dot {
+        background-color: transparent;
+      }
+    }
+
+    &.current {
+      @include step-info-status($step-active-color);
+
+      .step-seq-icon {
+        color: white;
+        background-color: $step-active-color;
+      }
+    }
+
+    &.error {
+      @include step-info-status($step-error-color);
+
+      .step-title {
+        color: $step-error-color;
+      }
+    }
+
+    &.to-ready {
+      @include step-tail-status($step-tail-bg-color);
+    }
+
+    &.to-finish,
+    &.to-current {
+      @include step-tail-status($step-active-color);
+    }
+
+    &.to-error {
+      @include step-tail-status($step-error-color);
+    }
+
+    &:last-child {
+      flex: unset;
+
+      .step-content::after {
+        background-color: transparent;
+      }
+    }
+
+    .step-content {
+      font-weight: 400;
+
+      .step-icon {
+        display: inline-block;
+        width: $step-icon-size;
+        height: $step-icon-size;
+        margin-bottom: $step-icon-offset-bottom;
+        text-align: center;
+        flex-shrink: 0;
+
+        & > i {
+          font-size: $step-icon-size;
+          line-height: $step-icon-size;
+        }
+
+        .step-seq-icon {
+          font-size: $step-seq-font-size;
+          color: white;
+          border-radius: 50%;
+          background-color: $step-icon-bg-color;
+          line-height: $step-icon-size;
+        }
+
+        .step-dot {
+          display: inline-block;
+          width: $step-dot-size;
+          height: $step-dot-size;
+          content: '';
+          border-width: $step-dot-border-width;
+          border-style: solid;
+          border-radius: 50%;
+          margin: ($step-icon-size - $step-dot-size) / 2;
+        }
+      }
+
+      .step-info {
+        .step-title {
+          font-size: $step-title-font-size;
+          line-height: $step-title-line-height;
+          color: $step-title-color;
+        }
+
+        .step-custom {
+          font-size: $step-custom-font-size;
+          line-height: $step-custom-line-height;
+          color: $step-custom-color;
+          padding-top: $step-custom-offset-top;
+        }
+      }
+
+      &.selected,
+      &:hover {
+        .step-icon,
+        .step-title,
+        .step-custom {
+          color: $step-active-color;
+        }
+
+        .step-dot {
+          border-color: $step-active-color;
+          background-color: $step-active-color;
+        }
+
+        .step-seq-icon {
+          color: white;
+          background-color: $step-active-color;
+        }
+      }
     }
   }
-  &:first-child {
-    flex: unset;
-    &::before {
-      background-color: transparent;
-    }
-    & > .step-content::before {
-      background-color: transparent;
-    }
-  }
-  &:last-child {
-    & > .step-content::after {
-      background-color: transparent;
-    }
-  }
-}
-.step-content {
-  position: relative;
-  display: inline-block;
-  width: $step-content-width;
-  text-align: center;
-}
-// 节点自定义内容
-.step-custom {
-  line-height: $step-custom-line-height;
-  color: $step-custom-color;
-}
-.step-icon {
-  display: inline-block;
-  width: $step-icon-size;
-  height: $step-icon-size;
-  margin-bottom: $step-icon-offset-bottom;
-  text-align: center;
-  & > i {
-    font-size: $step-icon-size;
-    line-height: $step-icon-size;
-  }
-}
-// 节点序号
-.step-seq-icon {
-  font-size: $step-seq-font-size;
-  color: $step-title-color;
-  border-radius: 50%;
-  background-color: $step-icon-bg-color;
-  line-height: $step-icon-size;
-}
-.step-dot {
-  display: inline-block;
-  width: $step-dot-size;
-  height: $step-dot-size;
-  content: '';
-  border-width: $step-dot-border-width;
-  border-style: solid;
-  border-radius: 50%;
-  margin: ($step-icon-size - $step-dot-size) / 2;
-}
-.step-title {
-  padding-bottom: $step-title-offset-bottom;
-  font-size: $step-title-font-size;
-  font-weight: bold;
-  line-height: $step-title-font-size;
-  color: $step-title-color;
 }
