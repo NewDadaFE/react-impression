@@ -64,7 +64,7 @@ function Confirm(props) {
   )
 
   return (
-    <div className={classnames('confirm', otherDomProps)}>
+    <div className={classnames('confirm', className)} {...otherDomProps}>
       <div {...others} className='confirm-dialog'>
         <div className='confirm-addon'>
           <i className={classnames('dada-ico dada-ico-xl', addonClassNames)} />

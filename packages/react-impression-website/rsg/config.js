@@ -111,6 +111,7 @@ module.exports = {
         'Select*',
         'Upload',
         'TimeSelect',
+        'TreeSelect',
       ]),
     },
     {
