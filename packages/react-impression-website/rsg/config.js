@@ -114,6 +114,7 @@ module.exports = {
         'Upload',
         'TimeSelect',
         'Cascader',
+        'TreeSelect',
       ]),
     },
     {
