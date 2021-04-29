@@ -1,6 +1,5 @@
 const fs = require('fs-extra')
 const minimist = require('minimist')
-const del = require('del')
 const gulp = require('gulp')
 const plugin = require('gulp-load-plugins')()
 
@@ -17,8 +16,6 @@ const script = () => {
     .pipe(plugin.babel({ configFile: '../../babel.config.js' }))
     .pipe(gulp.dest('dist'))
 }
-
-const build = gulp.series(clean, gulp.parallel(style, script))
 
 const config = async () => {
   const transform = x =>
@@ -43,6 +40,6 @@ const config = async () => {
   }
 }
 
-const release = gulp.series(clean, gulp.parallel(style, script, config))
+const build = gulp.series(clean, gulp.parallel(style, script, config))
 
-module.exports = { build, release }
+module.exports = { build }
