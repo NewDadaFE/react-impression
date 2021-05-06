@@ -128,6 +128,25 @@
   max-width: $modal-sm;
 }
 
+.modal-full {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: $modal-body-bg;
+
+    .modal-body {
+      flex: 1;
+      overflow: auto;
+    }
+  }
+}
+
 @include media-breakpoint-up(sm) {
   .modal-md {
     max-width: $modal-md;
