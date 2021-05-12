@@ -8,7 +8,7 @@
 @import 'mixins/text-emphasis';
 @import 'mixins/typography';
 
-// // Components
+// Components
 @import 'mixins/attention';
 @import 'mixins/buttons';
 @import 'mixins/cards';
@@ -21,12 +21,13 @@
 @import 'mixins/table-row';
 @import 'mixins/message';
 @import 'mixins/steps';
+@import 'mixins/menu';
 
-// // Skins
+// Skins
 @import 'mixins/background-variant';
 @import 'mixins/border-radius';
 
-// // Layout
+// Layout
 @import 'mixins/clearfix';
 // @import 'mixins/navbar-align';
 @import 'mixins/grid-framework';

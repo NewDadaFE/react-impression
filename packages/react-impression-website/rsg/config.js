@@ -93,6 +93,7 @@ module.exports = {
         'SidebarHeader',
         'Tabs',
         'TabPane',
+        'Menu',
       ]),
     },
     {
