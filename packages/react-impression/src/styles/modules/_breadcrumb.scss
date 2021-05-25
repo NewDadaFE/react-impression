@@ -1,29 +1,38 @@
 .breadcrumb {
   margin: 0;
   list-style: none;
-  color: $breadcrumb-color;
+  color: $breadcrumb-last-color;
   font-size: $breadcrumb-font-size;
   padding: $breadcrumb-padding;
   padding-bottom: 0;
   background-color: $breadcrumb-bg;
-
   @include clearfix;
 }
 
 .breadcrumb-item {
   float: left;
   text-transform: capitalize;
+  :global(.active) {
+    .breadcrumb-font-ellipsis {
+      color: $brand-primary;
+    }
+  }
 
   // The separator between breadcrumbs (by default, a forward-slash: "/")
-  + .breadcrumb-item::before {
-    display: inline-block; // Suppress underlining of the separator in modern browsers
-    padding-right: $breadcrumb-item-padding;
-    padding-left: $breadcrumb-item-padding;
-    color: $breadcrumb-divider-color;
-    content: '#{$breadcrumb-divider}';
-    .breadcrumb-arrow & {
-      content: '#{$breadcrumb-arrow-divider}';
-    }
+  //+ .breadcrumb-item::before {
+  //  display: inline-block; // Suppress underlining of the separator in modern browsers
+  //  padding-right: $breadcrumb-item-padding;
+  //  padding-left: $breadcrumb-item-padding;
+  //  color: $breadcrumb-divider-color;
+  //  content: '#{$breadcrumb-divider}';
+  //  .breadcrumb-arrow & {
+  //    content: '#{$breadcrumb-arrow-divider}';
+  //  }
+  //}
+  i {
+    color: $breadcrumb-icon-color;
+    font-size: $breadcrumb-font-size;
+    margin: 0 $breadcrumb-margin;
   }
 
   + .breadcrumb-item:hover::before {
@@ -33,7 +42,12 @@
   &.active {
     color: $breadcrumb-active-color;
   }
-
+  &:not(:last-child) {
+    color: $breadcrumb-color;
+  }
+  a{
+    color: $breadcrumb-color;
+  }
   a:hover {
     color: $brand-primary;
     text-decoration: none;
@@ -43,4 +57,12 @@
 .breadcrumb-item-addon {
   margin-right: $breadcrumb-item-addon-spacer;
   font-size: $breadcrumb-item-addon-font-size;
+}
+.breadcrumb-font-ellipsis{
+  font-size: rem(18px);
+  font-weight: bold;
+  &:hover{
+    color: $brand-primary;
+    cursor: pointer;
+  }
 }
