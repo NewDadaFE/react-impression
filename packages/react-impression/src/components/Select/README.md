@@ -592,3 +592,4 @@ v3.0.0
 - 废弃 required 是否必选项属性
 - 新增 size 属性，支持 xs、sm、md(默认)、lg，多选时，lg/sm 无效果
 - 新增 stretch 属性，支持下拉弹出层宽度两个模式：sameWidth(默认)、auto
+- 新增远程搜索多选方法，多选模式下，value 或者 defaultValue 格式为[{value: 'aa1', name: 'aa-1'}]

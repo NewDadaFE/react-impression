@@ -198,7 +198,7 @@ function Search(props) {
         debounceRef.current = null
       }, debounceTime)
     },
-    [debounceTime, keyword, isFocus, onSearch]
+    [debounceTime, keyword, isFocus, onChange, onSearch]
   )
 
   // 监听搜索框 value 值变化

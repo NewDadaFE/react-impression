@@ -139,7 +139,6 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleInit = props => {
-    // this.props.remoteMethod && this.props.remoteMethod(this.props.value)
     this.handleValueChange(props)
   }
 

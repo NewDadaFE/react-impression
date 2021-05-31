@@ -36,7 +36,7 @@ export default class Radio extends React.PureComponent {
     disabled: PropTypes.bool,
 
     /**
-     * 状态变更回调，参数列表：event，value
+     * 状态变更回调，参数列表：value，event
      */
     onChange: PropTypes.func,
 
