@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import isPropValid from '@emotion/is-prop-valid'
+import * as R from 'ramda'
 
 export default class SelectOption extends React.PureComponent {
   static propTypes = {
@@ -92,31 +93,31 @@ export default class SelectOption extends React.PureComponent {
     })
   }
   handleActive = props => {
+    const originalValue = props
+      ? props.value
+      : this.parent().props.value || this.parent().state.value
     if (!this.parent().props.multiple) {
       this.setState({
-        active:
-          this.isEqual(this.props.value, this.parent().state.value) ||
-          this.isEqual(
-            this.props.value,
-            props ? props.value : this.parent().props.value
-          ),
+        active: this.isEqual(this.props.value, originalValue),
       })
     } else {
+      if (!this.parent().props.remoteMethod) {
+        this.setState({
+          active: this.contains(this.props.value, originalValue),
+          visible: true,
+        })
+        return
+      }
       this.setState({
-        active:
-          this.contains(this.props.value, this.parent().state.value) ||
-          this.contains(
-            this.props.value,
-            props ? props.value : this.parent().props.value
-          ),
+        active: !R.isEmpty(
+          R.filter(n => n.value === this.props.value, originalValue)
+        ),
         visible: true,
       })
     }
   }
   UNSAFE_componentWillMount() {
-    if (this.parent()) {
-      this.parent().onOptionCreate(this)
-    }
+    this.parent() && this.parent().onOptionCreate(this)
   }
   componentDidMount() {
     this.parent() && this.handleActive()

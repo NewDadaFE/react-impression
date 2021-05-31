@@ -179,7 +179,7 @@ function Search(props) {
   // keyword 变化或者聚焦时，发起搜索
   useEffect(
     () => {
-      if (!onSearch) return
+      if (!onSearch || !isFocus) return
       if (debounceRef.current) {
         clearTimeout(debounceRef.current)
       }
@@ -198,7 +198,7 @@ function Search(props) {
         debounceRef.current = null
       }, debounceTime)
     },
-    [debounceTime, keyword, isFocus, onChange, onSearch]
+    [debounceTime, keyword, isFocus, onSearch]
   )
 
   // 监听搜索框 value 值变化
