@@ -2,6 +2,7 @@
 // 蓝色
 $blue-lighter: #3CA0FF !default;
 $blue-light: #0095FF !default;
+$blue-lightest: #008CFF !default;
 $blue-primary: #008CF0 !default;
 $blue-dark: #0083E0 !default;
 
@@ -16,12 +17,14 @@ $gray-base: #262626 !default; // 标题文字
 $gray-darker: #595959 !default; // 正文文字
 $gray-dark: #8C8C8C !default; // 辅助、次要文字
 $gray: #BFBFBF !default; // 占位文字、禁用状态文字
+$grayish: #D8D8D8 !default; // 进度线背景
 $gray-light: #D9D9D9 !default; // 描边
 $gray-lighter: #F5F5F5 !default; // 分割线（深）、页面结构背景
 $gray-lightest: #FAFAFA !default; // 分割线（浅）、表格内斑马线
 
 // 语义
 $brand-primary: $blue-primary !default;
+$brand-lightest: $blue-lightest !default;
 $brand-info: $blue-lighter !default;
 $brand-success: $green-primary !default;
 $brand-warning: $orange-primary !default;

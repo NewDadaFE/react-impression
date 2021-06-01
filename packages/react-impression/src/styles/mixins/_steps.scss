@@ -1,15 +1,20 @@
-@mixin step-status($color, $tail-color: null) {
-  @if not $tail-color {
-    $tail-color: $color;
-  }
-  &::before {
-    background-color: $tail-color;
-  }
+@mixin step-info-status($color) {
   .step-dot {
     border-color: $color;
     background-color: $color;
   }
+
   .step-icon {
     color: $color;
+  }
+}
+
+@mixin step-tail-status($color) {
+  &::before {
+    background-color: $color;
+  }
+
+  .step-content::after {
+    background-color: $color;
   }
 }
