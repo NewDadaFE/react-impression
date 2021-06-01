@@ -25,43 +25,77 @@ export default class Steps extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+    /**
+     * 步骤条方向
+     */
+    direction: PropTypes.oneOf(['horizontal', 'vertical']),
+    /**
+     * 点击步骤时触发
+     */
+    onChange: PropTypes.func,
   }
 
   static defaultProps = {
     current: 0,
     processDot: false,
+    direction: 'horizontal',
+    onChange: i => console.log(`current index: ${i}`),
   }
 
-  getStepIcon = (status, no) => {
-    if (status === 'finish') {
-      return <Ico type='check-circle-o' />
+  getStepInfo = index => {
+    const { current, status } = this.props
+    const dataSource = {
+      ready: {
+        status: 'ready',
+        icon: <div className='step-seq-icon'>{index + 1}</div>,
+      },
+      finish: {
+        status: 'finish',
+        icon: <Ico type='check-circle' />,
+      },
+      current: {
+        status: 'current',
+        icon: <div className='step-seq-icon'>{index + 1}</div>,
+      },
+      error: {
+        status: 'error',
+        icon: <Ico type='times-circle-o' />,
+      },
     }
-    if (status === 'error') {
-      return <Ico type='times-circle-o' />
+    if (index < current) {
+      return dataSource.finish
     }
-    return <div className='step-seq-icon'>{no}</div>
+    if (index > current) {
+      return dataSource.ready
+    }
+    if (status) {
+      return dataSource[status]
+    }
+    return dataSource.current
   }
 
-  render() {
-    const { className, children, processDot, current, status } = this.props
-    const stepsNode = React.Children.map(children, (child, index) => {
-      const options = {}
-      // 判断节点状态
-      if (index < current) {
-        options.status = 'finish'
-      } else if (index > current) {
-        options.status = 'ready'
-      } else if (status) {
-        options.status = status
-      } else {
-        options.status = 'current'
-      }
+  getStepsNode = () => {
+    const { processDot, children, onChange } = this.props
+
+    return React.Children.map(children, (child, index) => {
+      const { status, icon } = this.getStepInfo(index)
+      const { status: nextStatus } = this.getStepInfo(index + 1)
+      let options = { index, status, nextStatus, onChange }
       // 设置节点图标
       if (!processDot && !child.props.icon) {
-        options.icon = this.getStepIcon(options.status, index + 1)
+        options.icon = icon
       }
       return React.cloneElement(child, options)
     })
-    return <div className={classnames('steps', className)}>{stepsNode}</div>
+  }
+
+  render() {
+    const { className, direction } = this.props
+
+    return (
+      <div className={classnames('steps', className, `steps-${direction}`)}>
+        {this.getStepsNode()}
+      </div>
+    )
   }
 }

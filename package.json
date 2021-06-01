@@ -9,6 +9,8 @@
     "website:build": "yarn workspace react-impression-website build",
     "examples:start": "yarn workspace react-impression-examples start",
     "examples:build": "yarn workspace react-impression-examples build",
+    "predeploy": "yarn website:build",
+    "deploy": "gh-pages -d packages/react-impression-website/dist",
     "precommit": "lint-staged",
     "format": "find . -name '*.js' -o -name '*.md' -o -name '*.scss' | grep -v -f .gitignore | xargs prettier-standard"
   },
@@ -25,6 +27,7 @@
     "babel-plugin-ramda": "^1.6.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.15",
     "fs-extra": "^7.0.0",
+    "gh-pages": "^3.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "node-fetch": "^2.2.0",
@@ -55,5 +58,5 @@
   "dependencies": {
     "@emotion/is-prop-valid": "^0.8.8"
   },
-  "version": "3.0.0-beta.1"
+  "version": "3.0.0-beta.5"
 }

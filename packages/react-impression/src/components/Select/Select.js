@@ -156,8 +156,15 @@ export default class Select extends React.PureComponent {
   }
 
   handleValueChange(props) {
-    const { options, selectedOptions, queryText, optionGroup } = this.state
-    const { filterMethod } = this.props
+    const {
+      options,
+      selectedOptions,
+      queryText,
+      optionGroup,
+      selectText,
+      showOption,
+    } = this.state
+    const { filterMethod, remoteMethod } = this.props
     const optionList = this.getOptionList(options).concat(selectedOptions)
     const { multiple } = this.props
     const originValue = this.isPuppet
@@ -166,49 +173,57 @@ export default class Select extends React.PureComponent {
         : this.props.value
       : this.state.value
     let dataToSet
+    // 单选非远程搜索
     if (!multiple) {
-      let selectedItem
+      let selectedItem = {}
+      // 非远程搜索
       if (optionList.length > 0) {
-        selectedItem = optionList.find(option => {
-          return option.value === originValue
-        })
+        selectedItem =
+          optionList.find(option => {
+            return option.value === originValue
+          }) || {}
       }
-      if (selectedItem) {
-        dataToSet = {
-          selectedItem,
-          selectText: selectedItem.name || selectedItem.value,
-          queryText: selectedItem.name || selectedItem.value,
-        }
-      } else {
-        dataToSet = {
-          selectedItem: {},
-          selectText: '',
-          queryText: '',
+      if (remoteMethod) {
+        selectedItem = {
+          value: originValue,
+          name: selectText || originValue,
         }
       }
-    } else {
+      dataToSet = {
+        selectedItem,
+        selectText: showOption
+          ? selectText
+          : selectedItem.name || selectedItem.value || '',
+        queryText: showOption
+          ? queryText
+          : selectedItem.name || selectedItem.value || '',
+      }
+    }
+    if (multiple) {
       let selectList = []
-      originValue &&
-        originValue.length > 0 &&
-        optionList.length > 0 &&
-        originValue.forEach(val => {
-          const item = optionList.find(option => {
-            return option.value === val
+      if (!remoteMethod) {
+        originValue &&
+          originValue.length > 0 &&
+          optionList.length > 0 &&
+          originValue.forEach(val => {
+            const item = optionList.find(option => {
+              return option.value === val
+            })
+            item && selectList.push(item)
           })
-          item && selectList.push(item)
+      }
+      if (remoteMethod) {
+        selectList = originValue.map(item => {
+          if (typeof item === 'string') {
+            return { name: item, value: item }
+          }
+          return item
         })
-      if (!this.isPuppet) {
-        dataToSet = {
-          selectedItem: selectList || [],
-          selectText: '',
-          value: originValue || [],
-        }
-      } else {
-        dataToSet = {
-          selectedItem: selectList || [],
-          selectText: '',
-          value: '',
-        }
+      }
+      dataToSet = {
+        selectedItem: selectList || [],
+        selectText: '',
+        value: !this.isPuppet ? originValue || [] : '',
       }
     }
     this.setState(dataToSet, () => {
@@ -370,11 +385,15 @@ export default class Select extends React.PureComponent {
     if (multiple) {
       this.setState({ currentPlaceholder: '' })
     }
+    let values = []
+    if (Array.isArray(originValue)) {
+      values = originValue.map(item => item.value)
+    }
     // 木偶组件
     if (!this.isPuppet) {
       this.setState(
         {
-          value: multiple ? [...originValue, result.value] : result.value,
+          value: multiple ? [...values, result.value] : result.value,
           selectText: multiple ? '' : result.name,
           queryText: multiple ? '' : result.name,
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
@@ -387,9 +406,17 @@ export default class Select extends React.PureComponent {
         }
       )
     } else {
-      onChange &&
-        result.value !== originValue &&
-        onChange(result.value, result.name)
+      this.setState(
+        {
+          selectText: multiple ? '' : result.name,
+          queryText: multiple ? '' : result.name,
+        },
+        () => {
+          onChange &&
+            result.value !== originValue &&
+            onChange(result.value, result.name)
+        }
+      )
     }
     this.setState({
       showOption: !!multiple,
@@ -461,20 +488,18 @@ export default class Select extends React.PureComponent {
     this.handleInit()
   }
 
-  handleQuery(event) {
-    const val = event.target.value
-    event.stopPropagation()
+  handleQuery(value) {
     const { options, optionGroup } = this.state
     const { filterMethod, remoteMethod } = this.props
-    this.setState({ queryText: val, showOption: true }, () => {
+    this.setState({ queryText: value, showOption: true }, () => {
       this.selectInner.scrollTop = 0
-      remoteMethod && remoteMethod(val)
+      remoteMethod && remoteMethod(value)
       if (!remoteMethod) {
         options.forEach(option => {
-          option.queryChange(val, filterMethod)
+          option.queryChange(value, filterMethod)
         })
         optionGroup.forEach(option => {
-          option.queryChange(val)
+          option.queryChange(value)
         })
       }
     })
@@ -610,7 +635,10 @@ export default class Select extends React.PureComponent {
                   <DebounceInput
                     debounceTimeout={500}
                     value={queryText}
-                    onChange={e => this.handleQuery(e)}
+                    onChange={e => {
+                      e.stopPropagation()
+                      this.handleQuery(e.target.value)
+                    }}
                     className={classnames('select-search-input')}
                   />
                   <Ico type='search' className='select-search' />
@@ -681,7 +709,10 @@ export default class Select extends React.PureComponent {
                 placeholder={currentPlaceholder}
                 disabled={disabled}
                 className='select-selection'
-                onChange={e => this.handleQuery(e)}
+                onChange={e => {
+                  e.stopPropagation()
+                  this.handleQuery(e.target.value)
+                }}
                 onClick={this.toggleOptionsHandle}
                 onFocus={searchable && this.focusHandler}
                 ref={ref => (this.refMain = ref)}

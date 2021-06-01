@@ -1,0 +1,53 @@
+/**
+ * menu default
+ */
+$menu-default-width: rem(208px) !default;
+$menu-collapsed-width: rem(48px) !important;
+$menu-default-padding: 0 rem(16px) 0 rem(16px) !default;
+$menu-default-font-size: rem(14px) !default;
+$menu-default-font-weight: 400 !default;
+
+$menu-scrollbar-width: rem(4px) !default;
+$menu-scrollbar-border-radius: rem(10px) !default;
+$menu-scrollbar-track-bg: rgba(0, 0, 0, 0.1) !default;
+$menu-scrollbar-thumb-bg: rgba(0, 0, 0, 0.3) !default;
+
+/**
+ * menu header/footer/content/item
+ */
+$menu-header-height: rem(64px) !default;
+$menu-footer-height: rem(48px) !default;
+
+$menu-item-default-height: rem(48px) !default;
+$menu-item-title-padding: 0 rem(12px) !default;
+$menu-item-sm-height: rem(40px) !default;
+$menu-item-sm-padding: 0 rem(8px) 0 rem(44px) !default;
+
+/**
+ * menu floating item
+ */
+$menu-floating-itm-width: rem(160px) !default;
+$menu-floating-itm-sm-width: rem(148px) !default;
+$menu-floating-itm-height: rem(40px) !default;
+$menu-floating-itm-padding: rem(4px) 0 !default;
+$menu-floating-itm-left: rem(8px) !default;
+$menu-floating-itm-sm-left: rem(4px) !default;
+
+/**
+ * menu img/icon
+ */
+$menu-logo-width: rem(48px) !default;
+$menu-name-img-width: rem(124px) !default;
+$menu-name-img-height: rem(48px) !default;
+$menu-icon-width: rem(16px) !default;
+$menu-switch-width: rem(12px) !default;
+
+/**
+ * menu dark style
+ */
+$menu-dark-bg: $gray-base !default;
+$menu-dark-mask-bg: rgba(0, 0, 0, 0.1) !default;
+$menu-dark-mask-active-bg: rgba(0, 0, 0, 0.2) !default;
+
+$menu-dark-normal-color: rgba(255, 255, 255, 0.5) !default;
+$menu-dark-active-color: rgba(255, 255, 255, 0.9) !default;

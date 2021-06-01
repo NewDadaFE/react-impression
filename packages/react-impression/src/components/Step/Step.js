@@ -33,21 +33,57 @@ export default class Step extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+    /**
+     * 当前index
+     * @ignore
+     */
+    index: PropTypes.number,
+    /**
+     * 下一个步骤状态
+     * @ignore
+     */
+    nextStatus: PropTypes.string,
+    /**
+     * 点击事件
+     * @ignore
+     */
+    onChange: PropTypes.func,
   }
 
   static defaultProps = {
     status: 'ready',
+    title: '',
+    description: '',
+  }
+
+  state = {
+    selectedIdx: -1,
+  }
+
+  onMouseOver = () => this.setState({ selectedIdx: this.props.index })
+
+  onMouseOut = () => this.setState({ selectedIdx: -1 })
+
+  onStepClick = () => {
+    const { onChange, index } = this.props
+    if (onChange) {
+      this.setState({ selectedIdx: index })
+      onChange(index)
+    }
   }
 
   render() {
+    const { selectedIdx } = this.state
     const {
       status,
+      nextStatus,
       icon,
       title,
       description,
       popover,
       className,
       children,
+      index,
     } = this.props
 
     const stepIcon = (
@@ -55,7 +91,18 @@ export default class Step extends React.PureComponent {
     )
 
     return (
-      <div className={classnames('step', className, status)}>
+      <div
+        className={classnames(
+          'step',
+          className,
+          `${selectedIdx === index ? 'selected' : 'not-selected'}`,
+          status,
+          `to-${nextStatus}`
+        )}
+        onMouseOver={this.onMouseOver}
+        onMouseOut={this.onMouseOut}
+        onClick={this.onStepClick}
+      >
         <div className='step-content'>
           {popover ? (
             <Popover position='top' content={popover}>
@@ -64,10 +111,12 @@ export default class Step extends React.PureComponent {
           ) : (
             stepIcon
           )}
-          {title && <div className='step-title'>{title}</div>}
-          <div className='step-custom'>
-            {description}
-            {children}
+          <div className='step-info'>
+            <div className='step-title'>{title}</div>
+            <div className='step-custom'>
+              {description}
+              {children}
+            </div>
           </div>
         </div>
       </div>
