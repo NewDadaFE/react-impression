@@ -1,3 +1,12 @@
+## 3.0.0-beta.5
+
+- 新增 **Menu 组件**
+- 变更 **Steps 组件** 新增竖直方向的步骤条
+- 变更 **select 组件** 远程搜索单选问题，同时支持远程搜索多选
+- 变更 **Breadcrumb 组件** 样式优化，最多支持四级路径，超出收起
+
+## 3.0.0-beta.3
+
 - 新增 **Tag 组件** size 属性有效值：sm、md
 - 新增 **Modal 组件** showClose 属性，新增 size 属性有效值：xs、md、xl，**ModalHeader 组件** addonAfter 属性
 - 新增 **Flex 组件** justify 属性
