@@ -162,6 +162,7 @@ export default class Select extends React.PureComponent {
       queryText,
       optionGroup,
       selectText,
+      showOption,
     } = this.state
     const { filterMethod, remoteMethod } = this.props
     const optionList = this.getOptionList(options).concat(selectedOptions)
@@ -187,8 +188,12 @@ export default class Select extends React.PureComponent {
       }
       dataToSet = {
         selectedItem,
-        selectText: selectText || selectedItem.name || selectedItem.value || '',
-        queryText: queryText || selectedItem.name || selectedItem.value || '',
+        selectText: showOption
+          ? selectText
+          : selectText || selectedItem.name || selectedItem.value || '',
+        queryText: showOption
+          ? queryText
+          : queryText || selectedItem.name || selectedItem.value || '',
       }
     }
     if (multiple) {
