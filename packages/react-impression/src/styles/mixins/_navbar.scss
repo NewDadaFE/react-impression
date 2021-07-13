@@ -1,7 +1,3 @@
-// Horizontal dividers
-//
-// Dividers (basically an hr) within dropdowns and nav lists
-
 @mixin nav-divider($color) {
   height: 1px;
   margin: ($spacer-y / 2) 0;
@@ -20,6 +16,31 @@
 
     &:hover {
       color: darken($color, 12%);
+    }
+  }
+}
+
+@mixin navbar-base-font($isSmall: false) {
+  font-weight: 400;
+  color: $navbar-default-color;
+
+  @if $isSmall {
+    font-size: $navbar-small-font-size;
+    line-height: $navbar-small-line-height;
+  } @else {
+    font-size: $navbar-default-font-size;
+    line-height: $navbar-default-line-height;
+  }
+
+  &.active,
+  &.hover,
+  &:hover {
+    color: $navbar-active-color !important;
+  }
+
+  &.hover {
+    i {
+      transform: rotate(180deg);
     }
   }
 }

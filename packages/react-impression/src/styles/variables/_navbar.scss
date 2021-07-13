@@ -1,5 +1,5 @@
 // Navbar
-$navbar-height: 60px !default;
+$navbar-height: 64px !default;
 $navbar-line-height: $navbar-height !default;
 $navbar-padding-x: 1.25rem !default;
 $navbar-padding-y: 0 !default;
@@ -22,5 +22,20 @@ $navbar-pure-color: $body-color !default;
 $navbar-pure-border-color: $border-color !default;
 
 $navbar-margin-vertical: (
-    $navbar-height - (1 + 0.5 * 2) * $font-size-root - 1 * 2
-  ) / 2 !default;
+  $navbar-height - (1 + 0.5 * 2) * $font-size-root - 1 * 2
+) / 2 !default;
+
+$navbar-bg-color: $brand-pure;
+$navbar-logo-width: rem(208px) !default;
+$navbar-default-color: $gray-base !default;
+$navbar-active-color: $blue-primary !default;
+$navbar-default-font-size: rem(16px) !default;
+$navbar-default-line-height: rem(24px) !default;
+$navbar-small-font-size: rem(14px) !default;
+$navbar-small-line-height: rem(22px) !default;
+
+$navbar-menu-name-min-width: rem(140px) !default;
+$navbar-menu-child-min-width: rem(88px) !default;
+$navbar-menu-child-max-width: rem(105px) !default;
+$navbar-trigger-itm-height: rem(32px) !default;
+$navbar-icons-size: rem(34px) !default;
