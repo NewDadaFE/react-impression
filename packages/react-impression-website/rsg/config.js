@@ -94,6 +94,7 @@ module.exports = {
         'Tabs',
         'TabPane',
         'Menu',
+        'PageHeader',
       ]),
     },
     {
