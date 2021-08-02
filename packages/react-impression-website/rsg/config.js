@@ -112,6 +112,7 @@ module.exports = {
         'Select*',
         'Upload',
         'TimeSelect',
+        'Cascader',
       ]),
     },
     {

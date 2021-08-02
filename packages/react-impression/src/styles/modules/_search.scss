@@ -15,8 +15,8 @@ $search-context-offset: strip-unit($ico-size-sm + $input-padding-x * 2) * $rem-b
   top: 50%;
   right: $input-padding-x;
   left: $search-context-offset + 1px;
-  overflow: hidden;
   transform: translateY(-50%);
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: $gray-base;
