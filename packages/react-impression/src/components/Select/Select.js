@@ -184,16 +184,16 @@ export default class Select extends React.PureComponent {
           }) || {}
       }
       if (remoteMethod) {
-        selectedItem = { value: originValue, name: originValue }
+        selectedItem = { value: originValue, name: selectText || originValue }
       }
       dataToSet = {
         selectedItem,
         selectText: showOption
           ? selectText
-          : selectText || selectedItem.name || selectedItem.value || '',
+          : selectedItem.name || selectedItem.value || '',
         queryText: showOption
           ? queryText
-          : queryText || selectedItem.name || selectedItem.value || '',
+          : selectedItem.name || selectedItem.value || '',
       }
     }
     if (multiple) {
