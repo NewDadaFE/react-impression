@@ -24,6 +24,7 @@ export default class Table extends React.PureComponent {
       indeterminate: false,
       checkAll: false,
       fixed: false,
+      excludeIndexList: ['-1'], // 包含CheckBox的<Td>默认
     }
 
     this.state = {
@@ -89,6 +90,11 @@ export default class Table extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
+    /**
+     * Tr标签的事件函数
+     */
+    onClickTr: PropTypes.func
   }
   static defaultProps = {
     border: false,
@@ -139,7 +145,11 @@ export default class Table extends React.PureComponent {
     let fixLeftColumns = []
     let fixRightColumns = []
     let noFixColumns = []
-    columnList.forEach(column => {
+    let excludeIndexList = []
+    columnList.forEach((column, index) => {
+      if (column.exclude) {
+        excludeIndexList.push(index + '')
+      }
       if (column.fixed === 'left') {
         fixLeftColumns.push(column)
       } else if (column.fixed === 'right') {
@@ -153,6 +163,7 @@ export default class Table extends React.PureComponent {
         fixLeftColumns,
         fixRightColumns,
         noFixColumns,
+        excludeIndexList,
         columns: fixLeftColumns.concat(noFixColumns, fixRightColumns),
         fixed: fixLeftColumns.length > 0 || fixRightColumns.length > 0,
       },
@@ -439,7 +450,7 @@ export default class Table extends React.PureComponent {
    */
   addClass(el, cls) {
     if (!el) return
-    const curClass = el.className
+    let curClass = el.className
     const classes = (cls || '').split(' ')
     classes.forEach(classItem => {
       if (!classItem) return
@@ -463,7 +474,7 @@ export default class Table extends React.PureComponent {
   removeClass(el, cls) {
     if (!el || !cls) return
     const classes = cls.split(' ')
-    const curClass = ' ' + el.className + ' '
+    let curClass = ' ' + el.className + ' '
 
     classes.forEach(classItem => {
       let clsName = classItem
@@ -611,6 +622,7 @@ export default class Table extends React.PureComponent {
       rowSelection,
       pagination,
       placeholder,
+      onClickTr,
     } = this.props
     const max = this.getMax(scroll)
     const {
@@ -625,6 +637,7 @@ export default class Table extends React.PureComponent {
       indeterminate,
       checkAll,
       selectedRowKeys,
+      excludeIndexList,
     } = this.state
     const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : 60
     const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
@@ -665,6 +678,8 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
+                excludeIndexList={excludeIndexList}
+                onClickTr={onClickTr}
                 data={data}
                 stripe={stripe}
                 pagination={pagination}
@@ -706,6 +721,8 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
+                excludeIndexList={excludeIndexList}
+                onClickTr={onClickTr}
                 data={data}
                 fixLeft
                 fixRight={false}
@@ -748,6 +765,8 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
+                excludeIndexList={excludeIndexList}
+                onClickTr={onClickTr}
                 data={data}
                 fixRight
                 fixLeft={false}
