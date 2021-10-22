@@ -1,3 +1,7 @@
+## 2.1.1-beta.7
+
+feat 新增 `Table` 组件 `onClickTr` 属性（ `<tr>` 标签的事件处理函数）
+
 ## 2.1.1-beta.5
 
 fix 修复 `Upload` 组件样式展示问题
