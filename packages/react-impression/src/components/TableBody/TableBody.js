@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox'
 
 const defaultWidth = 80
+const DEFAULT_EXCLUDE_PROP = 'HAS_CHECKBOX'
 export default class TableBody extends React.PureComponent {
   static propTypes = {
     /**
@@ -94,9 +95,9 @@ export default class TableBody extends React.PureComponent {
     onClickTr: PropTypes.func,
 
     /**
-     * 不触发<Tr>标签事件函数的index值
+     * 不触发<Tr>标签事件函数的Prop值
      */
-    excludeIndexList: PropTypes.array,
+    excludePropList: PropTypes.array,
   }
   static defaultProps = {
     isNeedHide: false,
@@ -105,11 +106,14 @@ export default class TableBody extends React.PureComponent {
   renderTd = (array, item, type, isNeedHide, index, data) => {
     const { fixed } = this.props
     return array.map((column, columnIndex) => {
-      const { prop, rowspan, colspan, Cell, width } = column
+      const { prop, rowspan, functionName, colspan, Cell, width } = column
+      let dataColumnProp = ''
       let value
       if (prop && typeof prop === 'function') {
+        dataColumnProp = functionName || ''
         value = prop(item)
       } else {
+        dataColumnProp = prop
         value = item[prop]
       }
       const colRowspan = rowspan || 1
@@ -144,7 +148,7 @@ export default class TableBody extends React.PureComponent {
           colSpan={colColspan}
           width={colunmWidth}
           className={classnames(`item-fix-left`)}
-          data-column-index={columnIndex}
+          data-column-prop={dataColumnProp}
         >
           <div
             className={classnames('table-cell', {
@@ -159,14 +163,18 @@ export default class TableBody extends React.PureComponent {
   }
 
   handleClickTr = (e, item, index) => {
-    const { excludeIndexList, onClickTr } = this.props
+    const { excludePropList, onClickTr } = this.props
     if (!onClickTr) return
     // 根据currentTarget和target获取对应的Td
     const tdNode = Array.prototype.filter.call(
-        e.currentTarget.childNodes,
-        node => node === e.target || (node && node.contains(e.target)))
+      e.currentTarget.childNodes,
+      node => node === e.target || (node && node.contains(e.target))
+    )
     // 判断当前的Td是否需要触发Tr标签的事件函数
-    if (tdNode[0] && excludeIndexList.indexOf(tdNode[0].getAttribute('data-column-index')) === -1) {
+    if (
+      tdNode[0] &&
+      excludePropList.indexOf(tdNode[0].getAttribute('data-column-prop')) === -1
+    ) {
       onClickTr(item, index)
     }
   }
@@ -216,14 +224,14 @@ export default class TableBody extends React.PureComponent {
                 )}
                 onMouseEnter={() => onMouseEnter(index)}
                 onMouseLeave={() => onMouseLeave(index)}
-                onClick={e =>this.handleClickTr(e, item, index)}
+                onClick={e => this.handleClickTr(e, item, index)}
               >
                 {rowSelection && !isShowSelection && rowSelection.fixed && (
                   <td
                     className={classnames(`item-fix-left`)}
                     key={-1}
                     width={60}
-                    data-column-index={-1}
+                    data-column-prop={DEFAULT_EXCLUDE_PROP}
                   >
                     <div className='table-cell table-cell-select'>
                       <Checkbox
@@ -236,9 +244,21 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
                 {!!fixLeftList.length &&
-                  this.renderTd(fixLeftList, item, 'left', isNeedHide, index, data)}
+                  this.renderTd(
+                    fixLeftList,
+                    item,
+                    'left',
+                    isNeedHide,
+                    index,
+                    data
+                  )}
                 {rowSelection && !rowSelection.fixed && (
-                  <td className={classnames(`item-fix-`)} key={-1} width={60} data-column-index={-1}>
+                  <td
+                    className={classnames(`item-fix-`)}
+                    key={-1}
+                    width={60}
+                    data-column-prop={DEFAULT_EXCLUDE_PROP}
+                  >
                     <div className='table-cell'>
                       <Checkbox
                         checked={selectedRowKeyList.some(
@@ -250,15 +270,30 @@ export default class TableBody extends React.PureComponent {
                   </td>
                 )}
 
-                {!!noFixColumns.length && this.renderTd(noFixColumns, item, 'normal', false, index, data)}
+                {!!noFixColumns.length &&
+                  this.renderTd(
+                    noFixColumns,
+                    item,
+                    'normal',
+                    false,
+                    index,
+                    data
+                  )}
                 {!!fixRightList.length &&
-                  this.renderTd(fixRightList, item, 'right', isNeedHide, index, data)}
+                  this.renderTd(
+                    fixRightList,
+                    item,
+                    'right',
+                    isNeedHide,
+                    index,
+                    data
+                  )}
                 {rowSelection && isShowSelection && rowSelection.fixed && (
                   <td
                     className={classnames(`item-fix-normal`)}
                     key={-1}
                     width={60}
-                    data-column-index={-1}
+                    data-column-prop={DEFAULT_EXCLUDE_PROP}
                   >
                     <div className='table-cell table-cell-select'>
                       <Checkbox />
