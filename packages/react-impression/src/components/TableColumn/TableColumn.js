@@ -34,4 +34,9 @@ TableColumn.propTypes = {
     PropTypes.func,
     PropTypes.string,
   ]),
+
+  /**
+   * 是否禁止列触发onClickTr函数
+   */
+  exclude: PropTypes.bool,
 }
