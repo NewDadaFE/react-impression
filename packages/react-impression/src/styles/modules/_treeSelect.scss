@@ -1,0 +1,168 @@
+.dada-tree-select {
+  border: 1px solid #d9d9d9;
+  width: 220px;
+  padding: 2px 21px 2px 4px;
+  display: flex;
+  user-select: none;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  .dada-tree-select-icons {
+    position: absolute;
+    right: 5px;
+  }
+  &:hover {
+    .dada-tree-select-allow-clear {
+      display: block;
+    }
+    .dada-tree-select-angle-hide {
+      display: none;
+    }
+  }
+  .dada-ico-times-circle {
+    display: none;
+    color: #bfbfbf;
+  }
+
+  .dada-tree-select-checked-tags {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: $tree-select-line-height-default;
+    line-height: $tree-select-line-height-default;
+    max-width: 100%;
+    .dada-tag{
+      margin: 2px 4px 2px 0;
+    }
+  }
+
+  .dada-ico-angle-down {
+    color: #bfbfbf;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+    &.showoption {
+      transform: rotate(180deg);
+    }
+  }
+  .dada-tree-select-search-input {
+    max-width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: $tree-select-line-height-default;
+    input {
+      border: none;
+      width: fit-content;
+      width: 4px;
+      &:focus {
+        outline: none;
+      }
+      padding: 0;
+    }
+  }
+  .dada-tree-select-count-width {
+    white-space: nowrap;
+    width: max-content;
+  }
+  .dada-tree-select-placeholder,
+  .dada-tree-select-singal-value {
+    position: absolute;
+    left: 5px;
+  }
+  .dada-tree-select-placeholder {
+    color: #bfbfbf;
+  }
+  .dada-tree-select-disabled {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+    left: 0;
+    z-index: 10;
+    opacity: .5;
+  }
+}
+.dada-tree-select-popup {
+  height: 304px;
+
+  .dada-tree-select-popup-list {
+    padding: 8px 16px;
+    position: relative;
+  }
+  .dada-tree-space-content {
+    display: inline-block;
+    width: 20px;
+  }
+  .dada-tree-select-node {
+    display: flex;
+    align-items: center;
+    height: 36px;
+  }
+  .dada-tree-node-ico {
+    transform: rotate(0deg);
+    line-height: 36px;
+    height: 36px;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .dada-tree-node-expand {
+    transform: rotate(90deg);
+  }
+  .dada-tree-select-check {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    cursor: pointer;
+    .checkbox {
+      margin-right: 8px;
+    }
+  }
+  .dada-tree-select-checked {
+    color: #008cf0;
+  }
+  .dada-tree-select-node-disabled {
+    color: #bfbfbf;
+  }
+}
+.dada-tree-select-popup,
+.dada-tree-select {
+  .dada-ico {
+    cursor: pointer;
+  }
+}
+
+.dada-ico-rotate-right.spin {
+  animation: spin 0.3s infinite;
+  color: #008cf0;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dada-tree-select-sm{
+  font-size: $tree-select-font-size-sm;
+  .dada-tree-select-checked-tags{
+    min-height: $tree-select-line-height-sm;
+    line-height: $tree-select-line-height-sm;
+  }
+  .dada-tree-select-search-input{
+    height: $tree-select-line-height-sm;
+  }
+}
+
+.dada-tree-select-lg{
+  font-size: $tree-select-font-size-lg;
+  .dada-tree-select-checked-tags{
+    min-height: $tree-select-line-height-lg;
+    line-height: $tree-select-line-height-lg;
+  }
+  .dada-tree-select-search-input{
+    height: $tree-select-line-height-lg;
+  }
+  .dada-tag,.dada-tag .dada-ico{
+    font-size: $tree-select-font-size-lg;
+  }
+}
