@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox'
 
 const defaultWidth = 80
-const DEFAULT_EXCLUDE_PROP = 'HAS_CHECKBOX'
+const DEFAULT_EXCLUDE_PROP = 'true'
 export default class TableBody extends React.PureComponent {
   static propTypes = {
     /**
@@ -50,6 +50,11 @@ export default class TableBody extends React.PureComponent {
     selectedRowKeyList: PropTypes.array,
 
     /**
+     * 点击选中或取消项index list
+     */
+    handleToggleSelected: PropTypes.func,
+
+    /**
      * 是否显示多选框
      */
     isShowSelection: PropTypes.bool,
@@ -93,11 +98,6 @@ export default class TableBody extends React.PureComponent {
      * <Tr>标签的onClick事件函数
      */
     onClickTr: PropTypes.func,
-
-    /**
-     * 不触发<Tr>标签事件函数的Prop值
-     */
-    excludePropList: PropTypes.array,
   }
   static defaultProps = {
     isNeedHide: false,
@@ -106,8 +106,7 @@ export default class TableBody extends React.PureComponent {
   renderTd = (array, item, type, isNeedHide, index, data) => {
     const { fixed } = this.props
     return array.map((column, columnIndex) => {
-      const { prop, rowspan, functionName, colspan, Cell, width } = column
-      let dataColumnProp = ''
+      const { prop, rowspan, exclude = false, colspan, Cell, width } = column
       let value
       if (prop && typeof prop === 'function') {
         dataColumnProp = functionName || ''
@@ -148,7 +147,7 @@ export default class TableBody extends React.PureComponent {
           colSpan={colColspan}
           width={colunmWidth}
           className={classnames(`item-fix-left`)}
-          data-column-prop={dataColumnProp}
+          data-column-prop={exclude}
         >
           <div
             className={classnames('table-cell', {
@@ -162,9 +161,11 @@ export default class TableBody extends React.PureComponent {
     })
   }
 
-  handleClickTr = (e, item, index) => {
-    const { excludePropList, onClickTr } = this.props
+  handleClickTr = (item, index, e) => {
+    const { onClickTr, handleToggleSelected } = this.props
     if (!onClickTr) return
+    // 设计点击选中样式
+    handleToggleSelected(index)
     // 根据currentTarget和target获取对应的Td
     const tdNode = Array.prototype.filter.call(
       e.currentTarget.childNodes,
@@ -173,9 +174,9 @@ export default class TableBody extends React.PureComponent {
     // 判断当前的Td是否需要触发Tr标签的事件函数
     if (
       tdNode[0] &&
-      excludePropList.indexOf(tdNode[0].getAttribute('data-column-prop')) === -1
+      tdNode[0].getAttribute('data-column-prop') === DEFAULT_EXCLUDE_PROP
     ) {
-      onClickTr(item, index)
+      onClickTr(item, index, e)
     }
   }
 
@@ -224,7 +225,7 @@ export default class TableBody extends React.PureComponent {
                 )}
                 onMouseEnter={() => onMouseEnter(index)}
                 onMouseLeave={() => onMouseLeave(index)}
-                onClick={e => this.handleClickTr(e, item, index)}
+                onClick={e => this.handleClickTr(item, index, e)}
               >
                 {rowSelection && !isShowSelection && rowSelection.fixed && (
                   <td
