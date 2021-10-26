@@ -109,8 +109,10 @@ export default class TableBody extends React.PureComponent {
       const { prop, rowspan, exclude = false, colspan, Cell, width } = column
       let value
       if (prop && typeof prop === 'function') {
+        dataColumnProp = functionName || ''
         value = prop(item)
       } else {
+        dataColumnProp = prop
         value = item[prop]
       }
       const colRowspan = rowspan || 1

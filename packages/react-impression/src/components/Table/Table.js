@@ -6,6 +6,7 @@ import TableHead from '../TableHead'
 import Pagination from '../Pagination'
 import * as R from 'ramda'
 
+const DEFAULT_EXCLUDE_PROP_LIST = ['HAS_CHECKBOX']
 export default class Table extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
