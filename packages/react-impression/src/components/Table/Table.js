@@ -6,7 +6,6 @@ import TableHead from '../TableHead'
 import Pagination from '../Pagination'
 import * as R from 'ramda'
 
-const DEFAULT_EXCLUDE_PROP_LIST = ['HAS_CHECKBOX']
 export default class Table extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -25,7 +24,6 @@ export default class Table extends React.PureComponent {
       indeterminate: false,
       checkAll: false,
       fixed: false,
-      excludePropList: DEFAULT_EXCLUDE_PROP_LIST, // 包含CheckBox的<Td>默认
     }
 
     this.state = {
@@ -125,16 +123,16 @@ export default class Table extends React.PureComponent {
     let columnList = []
     if (nextChildren) {
       let columns = nextChildren.map(child => {
-        const { prop, label, fixed, Cell, width, Header } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header }
+        const { prop, label, fixed, Cell, width, Header, exclude } = child.props
+        const obj = { prop, label, fixed, Cell, width, Header, exclude }
         return obj
       })
       columnList = columns
     }
     if (children && !nextChildren) {
       let columns = children.map(child => {
-        const { prop, label, fixed, Cell, width, Header } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header }
+        const { prop, label, fixed, Cell, width, Header, exclude } = child.props
+        const obj = { prop, label, fixed, Cell, width, Header, exclude }
         return obj
       })
       columnList = columns
@@ -146,11 +144,7 @@ export default class Table extends React.PureComponent {
     let fixLeftColumns = []
     let fixRightColumns = []
     let noFixColumns = []
-    let excludePropList = DEFAULT_EXCLUDE_PROP_LIST
-    columnList.forEach((column, index) => {
-      if (column.exclude) {
-        excludePropList.push(column.prop)
-      }
+    columnList.forEach(column => {
       if (column.fixed === 'left') {
         fixLeftColumns.push(column)
       } else if (column.fixed === 'right') {
@@ -164,7 +158,6 @@ export default class Table extends React.PureComponent {
         fixLeftColumns,
         fixRightColumns,
         noFixColumns,
-        excludePropList,
         columns: fixLeftColumns.concat(noFixColumns, fixRightColumns),
         fixed: fixLeftColumns.length > 0 || fixRightColumns.length > 0,
       },
@@ -379,6 +372,26 @@ export default class Table extends React.PureComponent {
         newRow && this.addClass(newRow, 'is-hover')
       })
     }
+  }
+
+  /**
+   * @description 点击时，该行tr选中激活状态
+   */
+  handleToggleSelected = index => {
+    const tbody = this.tableWrap.querySelectorAll('tbody')
+    tbody.forEach(item => {
+      const tr = item.children
+      const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+      rows.map((row, rowIndex) => {
+        if (rowIndex === index) {
+          this.hasClass(row, 'is-clicked')
+            ? this.removeClass(row, 'is-clicked')
+            : this.addClass(row, 'is-clicked')
+          return
+        }
+        this.removeClass(row, 'is-clicked')
+      })
+    })
   }
 
   /**
@@ -638,7 +651,6 @@ export default class Table extends React.PureComponent {
       indeterminate,
       checkAll,
       selectedRowKeys,
-      excludePropList,
     } = this.state
     const leftWidth = leftFixedWidth ? leftFixedWidth + 'px' : 60
     const rightWidth = rightFixedWidth ? rightFixedWidth + 'px' : ''
@@ -679,7 +691,7 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
-                excludePropList={excludePropList}
+                handleToggleSelected={this.handleToggleSelected}
                 onClickTr={onClickTr}
                 data={data}
                 stripe={stripe}
@@ -722,7 +734,7 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
-                excludePropList={excludePropList}
+                handleToggleSelected={this.handleToggleSelected}
                 onClickTr={onClickTr}
                 data={data}
                 fixLeft
@@ -766,7 +778,7 @@ export default class Table extends React.PureComponent {
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
               />
               <TableBody
-                excludePropList={excludePropList}
+                handleToggleSelected={this.handleToggleSelected}
                 onClickTr={onClickTr}
                 data={data}
                 fixRight
