@@ -1,3 +1,7 @@
+## 2.1.3-alpha.0, 2.1.3-alpha.1
+
+feat 增加 `Table` 组件 `Tr` 点击选中样式（传入 `onClickTr` 属性时生效）
+
 ## 2.1.1-beta.8
 
 fix 修复 `Table` 组件 `onClickTr` 属性触发问题
