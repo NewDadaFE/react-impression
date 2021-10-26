@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox'
 
 const defaultWidth = 80
-const DEFAULT_EXCLUDE_PROP = 'true'
+const DEFAULT_CHECKBOX_PROP = 'true'
+const DEFAULT_EXCLUDE_PROP = 'false'
 export default class TableBody extends React.PureComponent {
   static propTypes = {
     /**
@@ -230,7 +231,7 @@ export default class TableBody extends React.PureComponent {
                     className={classnames(`item-fix-left`)}
                     key={-1}
                     width={60}
-                    data-column-prop={DEFAULT_EXCLUDE_PROP}
+                    data-column-prop={DEFAULT_CHECKBOX_PROP}
                   >
                     <div className='table-cell table-cell-select'>
                       <Checkbox
@@ -256,7 +257,7 @@ export default class TableBody extends React.PureComponent {
                     className={classnames(`item-fix-`)}
                     key={-1}
                     width={60}
-                    data-column-prop={DEFAULT_EXCLUDE_PROP}
+                    data-column-prop={DEFAULT_CHECKBOX_PROP}
                   >
                     <div className='table-cell'>
                       <Checkbox
@@ -292,7 +293,7 @@ export default class TableBody extends React.PureComponent {
                     className={classnames(`item-fix-normal`)}
                     key={-1}
                     width={60}
-                    data-column-prop={DEFAULT_EXCLUDE_PROP}
+                    data-column-prop={DEFAULT_CHECKBOX_PROP}
                   >
                     <div className='table-cell table-cell-select'>
                       <Checkbox />
