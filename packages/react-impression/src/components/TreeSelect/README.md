@@ -139,7 +139,11 @@ class Example extends React.Component {
         <Row>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>单选:</label>
                 <TreeSelect
                   data={data}
@@ -152,7 +156,11 @@ class Example extends React.Component {
           </Col>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>多选:</label>
                 <TreeSelect
                   data={data}
@@ -170,7 +178,11 @@ class Example extends React.Component {
         <Row>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>受控单选:</label>
                 <TreeSelect
                   data={data}
@@ -187,7 +199,11 @@ class Example extends React.Component {
           </Col>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>受控多选:</label>
                 <TreeSelect
                   data={this.state.data}
@@ -218,6 +234,12 @@ class Example extends React.Component {
                     return new Promise(resolve => {
                       setTimeout(() => {
                         resolve()
+                        node.children = [
+                          {
+                            title: node.title + '-0',
+                            key: node.title + '-0',
+                          },
+                        ]
                       }, 1000)
                     })
                   }}
@@ -330,7 +352,11 @@ class Example extends React.Component {
         <Row>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>小:</label>
                 <TreeSelect
                   data={data}
@@ -344,7 +370,11 @@ class Example extends React.Component {
           </Col>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>默认:</label>
                 <TreeSelect
                   data={data}
@@ -360,7 +390,11 @@ class Example extends React.Component {
         <Row>
           <Col>
             <Form>
-              <FormGroup>
+              <FormGroup
+                style={{
+                  width: '100%',
+                }}
+              >
                 <label>大:</label>
                 <TreeSelect
                   data={data}

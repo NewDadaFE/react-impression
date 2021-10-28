@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
-  useRef,
+  useRef
 } from "react";
 import classnames from "classnames";
 import * as R from "ramda";
@@ -51,9 +51,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     loadData,
     onSelect,
     stretch = "sameWidth",
-    listHeight = 304,
-    virtual,
-    ...others
+    listHeight = 304
   } = props;
   const SeacrhInputRef = useRef(null);
   const CountWidth = useRef(null);
@@ -67,7 +65,6 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
   const [showOption, setShowOption] = useState(false); // 下拉的状态改变
   const [indeterminateIds, setIndeterminateIds] = useState(new Set());
   const [loadingNode, setLoadingNode] = useState(undefined);
-  const [virtualScroll, setVirtualScroll] = useState(0);
 
   /** 方法 */
   const initTreeStruct = useCallback(
@@ -86,8 +83,15 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
           label: item.label,
           disabled: item.disabled || false
         });
-        if (item.children && item.children.length)
-          initTreeStruct(item.children, renderList, level + 1);
+
+        if (treeRenderPropReflect) {
+          const { children = "children" } = treeRenderPropReflect;
+          if (item[children] && item[children].length)
+            initTreeStruct(item[children], renderList, level + 1);
+        } else {
+          if (item.children && item.children.length)
+            initTreeStruct(item.children, renderList, level + 1);
+        }
       });
       return renderList;
     },
@@ -98,7 +102,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
       // 树的平铺结构
       return initTreeStruct(data, []);
     },
-    [initTreeStruct]
+    [initTreeStruct,data]
   );
 
   const diffAllParent = useCallback((treeNode: TreeNodeRender, newIds) => {
@@ -599,26 +603,6 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     },
     [nodeRenderList, filterString, treeNodeRender, checkedIds, expandIds, value]
   );
-
-  let virtualNodeRenderList = useMemo(
-    () => {
-      if (!virtual) return filteredNodeRenderList;
-      let newVirtualScroll = virtualScroll;
-      if (
-        listHeight + virtualScroll > filteredNodeRenderList.length * 36 &&
-        virtualScroll > 0
-      ) {
-        // 说明有空白
-        newVirtualScroll = filteredNodeRenderList.length * 36 - listHeight;
-      }
-      const scrollNumber = Math.floor(newVirtualScroll / 36);
-      const maxListNumber = Math.ceil(listHeight / 36) + 1;
-      const virtualList = [...filteredNodeRenderList];
-      virtualList.splice(0, scrollNumber);
-      return virtualList.splice(0, maxListNumber);
-    },
-    [virtualScroll, filteredNodeRenderList, listHeight]
-  );
   const checkedIdList = useMemo<CheckedIdList>(
     () => {
       return value
@@ -666,172 +650,150 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
         >
           <div
             className="dada-tree-select-popup-list"
-            style={
-              virtual
-                ? {
-                    height: filteredNodeRenderList.length * 36 + 16 + "px"
-                  }
-                : {}
-            }
-            onWheel={e => {
-              if (!virtual) return;
-              let newVirtualScroll =
-                virtualScroll + e.deltaY < 0 ? 0 : virtualScroll + e.deltaY;
-              newVirtualScroll =
-                newVirtualScroll + listHeight >=
-                filteredNodeRenderList.length * 36
-                  ? filteredNodeRenderList.length * 36 - listHeight
-                  : newVirtualScroll;
-              // 留了一个问题
-              // scroll 事件在最底部时 先往下滚动再往上滚动 不会响应
-              // onWheel 会响应
-              // 导致滑到底的再网上滑的时候 virtualList 计算错误
-              setVirtualScroll(newVirtualScroll < 0 ? 0 : newVirtualScroll);
+            style={{
+              width: "max-content"
             }}
           >
-            <div
-              style={{
-                position: "absolute",
-                width: "max-content",
-                transform: `translateY(${Math.floor(virtualScroll / 36) *
-                  36}px)`
-              }}
-            >
-              {virtualNodeRenderList.map(item => {
-                return (
-                  <div className="dada-tree-select-node" key={item.key}>
-                    {new Array(item.level).fill(1).map((item, index) => {
-                      return (
-                        <span className="dada-tree-space-content" key={index} />
-                      );
-                    })}
-                    <NewSwitcherIcon
-                      className={classnames(
-                        item.expand ? "dada-tree-node-expand" : "",
-                        "dada-tree-node-ico"
-                      )}
-                      id={item.id}
-                      onClick={() => {
-                        // 筛选时 折叠无响应
-                        if (!filterString) {
-                          const newExpandIds = new Set(expandIds);
-                          if (item.expand && newExpandIds.has(item.id)) {
-                            newExpandIds.delete(item.id);
-                            setExpandIds(newExpandIds);
-                          } else {
-                            if (
-                              (!item.children || !item.children.length) &&
-                              (loadData && !item.isLeaf)
-                            ) {
-                              setLoadingNode(item.id);
-                              loadData(item)
-                                .then(() => {
-                                  newExpandIds.add(item.id);
-                                  setExpandIds(newExpandIds);
-                                })
-                                .catch(error => {
-                                  console.log(error);
-                                })
-                                .finally(() => {
-                                  setLoadingNode(undefined);
-                                });
-                            } else {
-                              newExpandIds.add(item.id);
-                              setExpandIds(newExpandIds);
-                            }
-                          }
-
-                          onTreeExpand && onTreeExpand(item.id, item);
-                          searchable && SeacrhInputRef.current.focus();
-                        }
-                      }}
-                      style={{
-                        visibility:
-                          (item.children && item.children.length) ||
-                          (loadData && !item.isLeaf)
-                            ? "visible"
-                            : "hidden"
-                      }}
-                    />
-
-                    <span
-                      onClick={e => {
-                        e.preventDefault();
-                        let nextCheckedIds: CheckedIds = new Set();
-                        const {
-                          checked,
-                          expand,
-                          level,
-                          indeterminate,
-                          ...others
-                        } = item;
-                        if (item.disabled) return;
-                        if (autoClearSearchValue) setFileterString("");
-                        if (multiple) {
-                          nextCheckedIds = caculateSelectedKey(
-                            checkedIds,
-                            item,
-                            !item.checked
-                          );
-                          const [
-                            nextCheckedIdListStrategy,
-                            nextCheckedLabelListStrategy
-                          ] = CIATSCS(nextCheckedIds);
-                          onChange &&
-                            onChange(
-                              nextCheckedIdListStrategy,
-                              nextCheckedLabelListStrategy,
-                              {
-                                preValue: checkedIdList,
-                                triggerNode: others
-                              }
-                            );
+            {filteredNodeRenderList.map(item => {
+              return (
+                <div className="dada-tree-select-node" key={item.key}>
+                  {new Array(item.level).fill(1).map((item, index) => {
+                    return (
+                      <span className="dada-tree-space-content" key={index} />
+                    );
+                  })}
+                  <NewSwitcherIcon
+                    className={classnames(
+                      item.expand ? "dada-tree-node-expand" : "",
+                      "dada-tree-node-ico"
+                    )}
+                    id={item.id}
+                    onClick={() => {
+                      // 筛选时 折叠无响应
+                      if (!filterString) {
+                        const newExpandIds = new Set(expandIds);
+                        if (item.expand && newExpandIds.has(item.id)) {
+                          newExpandIds.delete(item.id);
+                          setExpandIds(newExpandIds);
                         } else {
-                          if (!checkedIds.has(item.id)) {
-                            nextCheckedIds.add(item.id);
-                            setCheckedIds(nextCheckedIds);
-                            onChange &&
-                              onChange([item.id], [item.label], {
-                                preValue: checkedIdList,
-                                triggerNode: others
+                          if (
+                            (!item.children || !item.children.length) &&
+                            (loadData && !item.isLeaf)
+                          ) {
+                            setLoadingNode(item.id);
+                            loadData(item)
+                              .then(() => {
+                                newExpandIds.add(item.id);
+                                setExpandIds(newExpandIds);
+                              })
+                              .catch(error => {
+                                console.log(error);
+                              })
+                              .finally(() => {
+                                setLoadingNode(undefined);
                               });
+                          } else {
+                            newExpandIds.add(item.id);
+                            setExpandIds(newExpandIds);
                           }
                         }
 
+                        onTreeExpand && onTreeExpand(item.id, item);
                         searchable && SeacrhInputRef.current.focus();
-                      }}
-                      className={classnames(
-                        "dada-tree-select-check",
-                        checkedIdList.includes(item.id) && !multiple
-                          ? "dada-tree-select-checked"
-                          : "",
-                        item.disabled ? "dada-tree-select-node-disabled" : ""
-                      )}
-                    >
-                      {multiple && item.checkable && (
-                        <Checkbox
-                          disabled={item.disabled}
-                          checked={item.disabled ? false : item.checked}
-                          indeterminate={
-                            item.disabled
-                              ? false
-                              : item.checked
-                              ? false
-                              : item.indeterminate
-                          }
-                        />
-                      )}
-                      {suffixIcon && suffixIcon(item)}
-                      {treeNodeRender ? (
-                        treeNodeRender(item)
-                      ) : (
-                        <span key={item.key}>{item.label}</span>
-                      )}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+                      }
+                    }}
+                    style={{
+                      visibility:
+                        (item.children && item.children.length) ||
+                        (loadData && !item.isLeaf)
+                          ? "visible"
+                          : "hidden"
+                    }}
+                  />
+
+                  <span
+                    onClick={e => {
+                      e.preventDefault();
+                      let nextCheckedIds: CheckedIds = new Set();
+                      const {
+                        checked,
+                        expand,
+                        level,
+                        indeterminate,
+                        ...others
+                      } = item;
+                      if (item.disabled) return;
+                      if (autoClearSearchValue) setFileterString("");
+                      if (multiple) {
+                        nextCheckedIds = caculateSelectedKey(
+                          checkedIds,
+                          item,
+                          !item.checked
+                        );
+                        const [
+                          nextCheckedIdListStrategy,
+                          nextCheckedLabelListStrategy
+                        ] = CIATSCS(nextCheckedIds);
+                        onChange &&
+                          onChange(
+                            nextCheckedIdListStrategy,
+                            nextCheckedLabelListStrategy,
+                            {
+                              preValue: checkedIdList,
+                              triggerNode: others
+                            }
+                          );
+                      } else {
+                        if (!checkedIds.has(item.id)) {
+                          nextCheckedIds.add(item.id);
+                          setCheckedIds(nextCheckedIds);
+                          onChange &&
+                            onChange([item.id], [item.label], {
+                              preValue: checkedIdList,
+                              triggerNode: others
+                            });
+                        }
+                      }
+
+                      searchable && SeacrhInputRef.current.focus();
+                    }}
+                    className={classnames(
+                      "dada-tree-select-check",
+                      checkedIdList.includes(item.id) && !multiple
+                        ? "dada-tree-select-checked"
+                        : "",
+                      item.disabled ? "dada-tree-select-node-disabled" : ""
+                    )}
+                  >
+                    {multiple && item.checkable && (
+                      <Checkbox
+                        disabled={item.disabled}
+                        checked={item.disabled ? false : item.checked}
+                        indeterminate={
+                          item.disabled
+                            ? false
+                            : item.checked
+                            ? false
+                            : item.indeterminate
+                        }
+                        onChange={() => {
+                          console.log(item);
+                          onSelect(item);
+                        }}
+                      />
+                    )}
+                    {suffixIcon && suffixIcon(item)}
+                    {treeNodeRender ? (
+                      treeNodeRender(item)
+                    ) : (
+                      <span key={item.key} title={item.label}>
+                        {item.label}
+                      </span>
+                    )}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       }
@@ -889,7 +851,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
                   }}
                   key={selectItem.key}
                   theme={tagTheme || "default"}
-                  size={size !== 'lg'? size || 'md':"md"}
+                  size={size !== "lg" ? size || "md" : "md"}
                 >
                   {selectItem.label || ""}
                 </Tag>
@@ -915,6 +877,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
                 ref={SeacrhInputRef}
                 onChange={e => {
                   setFileterString(e.target.value);
+                  onSearch(e.target.value);
                 }}
                 style={{
                   width:
