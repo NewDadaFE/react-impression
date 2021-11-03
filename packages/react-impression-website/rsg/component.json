@@ -46,5 +46,6 @@
   "Notification": "通知提醒框",
   "Progress": "进度条",
   "Split": "垂直分割线",
-  "Menu": "导航菜单"
+  "Menu": "导航菜单",
+  "PageHeader": "页头"
 }

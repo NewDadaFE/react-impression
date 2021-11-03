@@ -190,7 +190,6 @@ function Tabs(props) {
     () => {
       let ro = new ResizeObserver(() => {
         getHiddenItems()
-        getNavSliderStyle()
       })
       ro.observe(tabsWrapInnerRef.current)
       return () => {
@@ -198,7 +197,7 @@ function Tabs(props) {
         ro = null
       }
     },
-    [getHiddenItems, getNavSliderStyle]
+    [getHiddenItems]
   )
 
   /**
