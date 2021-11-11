@@ -1,5 +1,6 @@
 import React, { useState, useContext, useRef } from 'react'
 import { createPortal } from 'react-dom'
+import Tooltip from '../../Tooltip'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import {
@@ -34,6 +35,7 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
     collapsed,
     defaultOpenAll,
     defaultOpenValues,
+    getItemContainer,
   } = useContext(MenuContext)
   const [folded, setFolded] = useState(
     !(defaultOpenAll || defaultOpenValues.includes(value))
@@ -41,6 +43,7 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
   const [floating, setFloating] = useState(false)
   const [boundingRect, setBoundingRect] = useState({})
   const mouseTimeout = useRef()
+  const container = getItemContainer && getItemContainer()
 
   const getSubmenuContent = isFloating => {
     const contentClass = classnames({
@@ -72,7 +75,7 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
       <div
         style={contentStyle}
         className={classnames(contentClass)}
-        onMouseEnter={onContentMouseEnter}
+        onMouseOver={onContentMouseOver}
         onMouseLeave={onMouseLeave}
       >
         {newChildren}
@@ -81,14 +84,16 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
   }
 
   const onSwitchChange = () => {
+    if (collapsed) return
     setFolded(!folded)
   }
 
-  const onItemMouseEnter = e => {
+  const onItemMouseOver = e => {
     const rect = e.currentTarget.getBoundingClientRect()
     setBoundingRect(rect)
 
     if (!collapsed) return
+    clearTimeout(mouseTimeout.current)
     setFloating(true)
   }
 
@@ -96,16 +101,17 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
     if (!collapsed) return
     mouseTimeout.current = setTimeout(() => {
       floating && setFloating(false)
-    }, 200)
+    }, 50)
   }
 
-  const onContentMouseEnter = () => {
+  const onContentMouseOver = () => {
     if (!collapsed) return
     clearTimeout(mouseTimeout.current)
     setFloating(true)
   }
 
   if (!title) return null
+
   return (
     <div
       className='menu-submenu'
@@ -118,7 +124,7 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
           active: isActive(value, parentValue, valuePath),
         })}
         onClick={onSwitchChange}
-        onMouseEnter={onItemMouseEnter}
+        onMouseOver={onItemMouseOver}
         onMouseLeave={onMouseLeave}
       >
         {getMenuLogo(iconType, img)}
@@ -135,7 +141,7 @@ function SubMenu({ value, parentValue, iconType, img, title, children }) {
         <div style={PORTAL_DEFAULT_STYLE}>
           <div>{getSubmenuContent(true)}</div>
         </div>,
-        window.document.getElementsByTagName('body')[0]
+        container || window.document.getElementsByTagName('body')[0]
       )}
     </div>
   )
