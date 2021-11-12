@@ -4,7 +4,7 @@
 
 #### 1、基本用法
 
-组件支持 5 种尺寸的弹窗。
+组件支持 6 种尺寸的弹窗, 通过设置 `size` 属性改变弹窗尺寸。
 
 ```js
 const handleToggleClick = size => {
@@ -42,11 +42,21 @@ initialState = {
         超大尺寸
       </Button>
     </Col>
+    <Col>
+      <Button theme="secondary" onClick={() => handleToggleClick('full')}>
+        全屏弹窗
+      </Button>
+    </Col>
   </Row>
 
   <Modal size={state.size} onClose={handleToggleClick} isOpen={state.isOpen}>
     <ModalHeader>弹窗标题</ModalHeader>
-    <ModalBody>内容&hellip;</ModalBody>
+    <ModalBody>
+      内容&hellip;
+      {state.size === 'full' && (
+        <div style={{ height: '1122px' }}>我很高, 超出后滚动</div>
+      )}
+    </ModalBody>
     <ModalFooter>
       <Button theme="secondary" onClick={handleToggleClick}>
         取消
@@ -207,7 +217,7 @@ class Overflow extends React.Component {
 ;<Overflow />
 ```
 
-#### 用作提示的弹窗
+#### 5、用作提示的弹窗
 
 ```javascript
 const handleToggleClick = () => {

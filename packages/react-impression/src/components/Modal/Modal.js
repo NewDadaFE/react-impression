@@ -24,7 +24,7 @@ class Modal extends React.Component {
     /**
      * 大小
      */
-    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+    size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'full']),
 
     /**
      * Modal是否内部滚动
@@ -50,6 +50,7 @@ class Modal extends React.Component {
      * modal显示与否
      */
     isOpen: PropTypes.bool,
+
     /**
      * 是否显示关闭图标
      */
