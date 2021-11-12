@@ -1,0 +1,124 @@
+
+.select-placeholder-xs {
+  position: absolute;
+  left: rem(8px);
+  top: rem(7px);
+  color: #bfbfbf;
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.animation-loading {
+  -webkit-animation: loading 1s infinite linear;
+  font-size: rem(12px);
+}
+.cascader-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  :global(.input-field) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .cascader-select-addon {
+    position: absolute;
+    top: 0;
+    right: $select-addon-margin-x;
+    cursor: pointer;
+    user-select: none;
+    transition: $select-transition;
+    color: $gray-light;
+  }
+}
+.cascader-select-xs {
+  & > .cascader-select-addon {
+    height: $select-height-xs;
+    font-size: $select-addon-font-size-sm;
+    line-height: $select-height-xs;
+  }
+}
+.cascader-select-sm {
+  & > .cascader-select-addon {
+    height: $select-height-sm;
+    font-size: $select-addon-font-size-sm;
+    line-height: $select-height-sm;
+  }
+}
+.cascader-select-md {
+  & > .cascader-select-addon {
+    height: $select-height-md;
+    font-size: $select-addon-font-size-md;
+    line-height: $select-height-md;
+  }
+}
+.cascader-select-lg {
+  & > .cascader-select-addon {
+    height: $select-height-lg;
+    font-size: $select-addon-font-size-lg;
+    line-height: $select-height-lg;
+  }
+}
+.cascader-popup {
+  @include line-clamp(1);
+}
+.popup-menu {
+  padding: 7px 0;
+  .no-list-style {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  i {
+    transform: scale(0.75);
+  }
+   .menu-level-ul {
+     @include scroll-reset();
+     display: inline-block;
+     vertical-align: top;
+     text-align: left;
+     padding: 0;
+     max-height: $cascader-ul-max-height;
+     overflow: auto;
+     &:not(:last-child) {
+       border-right: 1px solid $gray-lightest;
+     }
+     @extend .no-list-style
+   }
+  .active {
+    .menu-li-text {
+      color: $blue-primary;
+    }
+  }
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .disabled {
+      color: $gray;
+      cursor: not-allowed !important;
+  }
+  .menu-li {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: $cascader-li-padding;
+    cursor: pointer;
+    @extend .no-list-style;
+    .menu-li-text {
+      @include line-clamp(1);
+    }
+    &:hover {
+      background-color: $gray-lightest;
+      @extend .active;
+    }
+  }
+}
