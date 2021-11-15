@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import classnames from "classnames";
 import * as R from "ramda";
+import PropTypes from "prop-types";
 
 import Tag from "../Tag";
 import Ico from "../Ico";
@@ -38,20 +39,19 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     size,
     allowClear,
     onDropDownVisibleChange,
-    showCheckedStrategy = "SHOW_PARENT",
+    showCheckedStrategy,
     disabled,
     placeholder,
     searchable,
-    SwitcherIcon,
+    switcherIcon,
     autoClearSearchValue = true,
     onChange,
     onSearch,
     onTreeExpand,
     suffixIcon,
     loadData,
-    onSelect,
-    stretch = "sameWidth",
-    listHeight = 304
+    stretch,
+    listHeight
   } = props;
   const SeacrhInputRef = useRef(null);
   const CountWidth = useRef(null);
@@ -71,7 +71,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     (treeNode: Array<TreeNodeRender>, renderList, level: number = 0) => {
       // 全部节点展开铺平的列表
       // 包含树简单的信息 确定之后不再改变
-      treeNode.forEach((item, index) => {
+      treeNode.forEach((item) => {
         if (treeRenderPropReflect) {
           const { id = "id", label = "label" } = treeRenderPropReflect;
           item.id = item[id];
@@ -95,14 +95,14 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
       });
       return renderList;
     },
-    []
+    [treeRenderPropReflect]
   );
   const treeStruct = useMemo(
     () => {
       // 树的平铺结构
       return initTreeStruct(data, []);
     },
-    [initTreeStruct,data]
+    [initTreeStruct, data]
   );
 
   const diffAllParent = useCallback((treeNode: TreeNodeRender, newIds) => {
@@ -170,13 +170,13 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
       });
       return renderList;
     },
-    [treeRenderPropReflect, multiple, treeDefaultExpandedKeys, diffAllParent]
+    [treeRenderPropReflect, multiple, treeDefaultExpandedKeys, diffAllParent, treeDefaultExpandAll]
   );
 
   const nodeRenderList = useMemo(
     () => {
       // 添加深拷贝 防止 多个组件使用同一数据源而造成组件的状态同步
-      const newExpandIds: Set<TreeNodeRender["id"]> = new Set(expandIds);
+      const newExpandIds: Set<TreeNodeRender["id"]> = new Set();
       const preRenderList = dimensionMinusTo1(
         null,
         R.clone(data),
@@ -203,6 +203,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
         });
         item.position = position.join(",");
       });
+
       setExpandIds(newExpandIds);
       return preRenderList;
     },
@@ -290,12 +291,12 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
         }
       }
     },
-    [treeStruct, indeterminateIds]
+    [treeStruct]
   );
 
   /**
    * 变更
-   * @param {boolean} value - true 选中 false 取消选中
+   * @param {bool} value - true 选中 false 取消选中
    */
   const caculateSelectedKey = useCallback(
     (newcheckedIds, checkedItem: TreeNodeRender, value): CheckedIds => {
@@ -393,7 +394,6 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
       return newcheckedIds;
     },
     [
-      treeStruct,
       clearAllChildNodeId,
       diffSublingNode,
       indeterminateIds,
@@ -405,7 +405,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     () => {
       onDropDownVisibleChange && onDropDownVisibleChange(showOption);
     },
-    [showOption]
+    [showOption, onDropDownVisibleChange]
   );
   useEffect(
     () => {
@@ -417,7 +417,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     [showOption, searchable, SeacrhInputRef, filterString]
   );
 
-  let CIATSCS = useCallback(
+  const CIATSCS = useCallback(
     (
       nextCheckedIds: CheckedIds
     ): [Array<TreeNodeRender["id"]>, Array<TreeNodeRender["label"]>] => {
@@ -543,6 +543,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     },
     [treeStruct, showCheckedStrategy]
   );
+
   let filteredNodeRenderList = useMemo(
     () => {
       // 基于nodeRenderList计算渲染用的树 包含搜索的条件 没展开的就不参与渲染
@@ -601,7 +602,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
       });
       return filterNodeList;
     },
-    [nodeRenderList, filterString, treeNodeRender, checkedIds, expandIds, value]
+    [nodeRenderList, filterString, treeNodeRender, checkedIds, expandIds, value, indeterminateIds]
   );
   const checkedIdList = useMemo<CheckedIdList>(
     () => {
@@ -611,7 +612,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
           : value
         : CIATSCS(checkedIds)[0];
     },
-    [checkedIds]
+    [checkedIds, CIATSCS, value]
   );
   const NewSwitcherIcon = useCallback(
     props => {
@@ -620,15 +621,15 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
         <div {...otherProps}>
           {loadingNode === id ? (
             <Ico type="rotate-right spin" />
-          ) : SwitcherIcon ? (
-            SwitcherIcon
+          ) : switcherIcon ? (
+            switcherIcon
           ) : (
             <Ico type="angle-right" />
           )}
         </div>
       );
     },
-    [SwitcherIcon, loadingNode]
+    [switcherIcon, loadingNode]
   );
 
   return (
@@ -650,9 +651,6 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
         >
           <div
             className="dada-tree-select-popup-list"
-            style={{
-              width: "max-content"
-            }}
           >
             {filteredNodeRenderList.map(item => {
               return (
@@ -776,10 +774,6 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
                             ? false
                             : item.indeterminate
                         }
-                        onChange={() => {
-                          console.log(item);
-                          onSelect(item);
-                        }}
                       />
                     )}
                     {suffixIcon && suffixIcon(item)}
@@ -860,7 +854,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
           ) : filterString ? (
             ""
           ) : (
-            <span
+            <div
               className="dada-tree-select-singal-value"
               style={{
                 color: filterString ? "#bfbfbf" : ""
@@ -868,7 +862,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
             >
               {(R.find(R.propEq("id", checkedIdList[0]), nodeRenderList) || {})
                 .label || ""}
-            </span>
+            </div>
           )}
           {searchable && (
             <div className={classnames("dada-tree-select-search-input")}>
@@ -877,7 +871,7 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
                 ref={SeacrhInputRef}
                 onChange={e => {
                   setFileterString(e.target.value);
-                  onSearch(e.target.value);
+                  onSearch && onSearch(e.target.value);
                 }}
                 style={{
                   width:
@@ -925,4 +919,116 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
     </Trigger>
   );
 };
+TreeSelect.propTypes = {
+  /**
+   * Input 框显示清除按钮
+   */
+  allowClear: PropTypes.bool,
+  /**
+   * 树每个选项前是否有 checkbox
+   */
+  multiple: PropTypes.bool,
+  /**
+   * 默认选中的数据
+   */
+  defaultValue: PropTypes.array,
+  /**
+   * 用于渲染的数据
+   */
+  data: PropTypes.array.isRequired,
+  /**
+   * 整体禁用
+   */
+  disabled: PropTypes.bool,
+  /**
+   * 当多选模式下值被选择，自动清空搜索框
+   */
+  autoClearSearchValue: PropTypes.bool,
+  /**
+   * 用作树的calssName
+   */
+  dropdownClassName: PropTypes.string,
+  /**
+   * 自定义过滤方法
+   */
+  filterTreeNode: PropTypes.func,
+  onChange: PropTypes.func,
+  /**
+   * 弹窗 显示状态改变的回调
+   */
+  onDropDownVisibleChange: PropTypes.func,
+  /**
+   * 设置弹窗的高度
+   */
+  listHeight: PropTypes.number,
+  /**
+   * 按节点加载数据 默认每个节点都能展开 除非单独设置isLeaf或有子节点
+   */
+  loadData: PropTypes.func,
+  placeholder: PropTypes.string,
+  /**
+   * 选中时回调值的策略
+   */
+  showCheckedStrategy: PropTypes.oneOf([
+    "SHOW_ALL",
+    "SHOW_PARENT",
+    "SHOW_CHILD"
+  ]),
+  /**
+   * 是否支持 搜索
+   */
+  searchable: PropTypes.bool,
+  /**
+   * 开关切换的icon
+   */
+  switcherIcon: PropTypes.node,
+  /**
+   * data 属性默认支持的结构 是 id，label和children。当传入的data为其他结构时 可以使用treeRenderPropReflect指定他们的别名。
+   */
+  treeRenderPropReflect: PropTypes.object,
+  /**
+   * 树 默认展开所有节点
+   */
+  treeDefaultExpandAll: PropTypes.bool,
+  /**
+   * 默认 展开的树的id 列表
+   */
+  treeDefaultExpandedKeys: PropTypes.array,
+  /**
+   * 搜索时的回调
+   */
+  onSearch: PropTypes.func,
+  /**
+   * 展开节点时回调
+   */
+  onTreeExpand: PropTypes.func,
+  /**
+   * 弹窗的最大高度，涉及虚拟滚动的最大可见区域高度
+   */
+  treeNodeRender: PropTypes.func,
+  value: PropTypes.array,
+  /**
+   * 选中的标签的主题颜色
+   */
+  tagTheme: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  /**
+   * 弹出层的宽度 默认 sameWidth
+   */
+  stretch: PropTypes.oneOf(["sameWidth", "auto"]),
+  /**
+   * label 前置的icon
+   */
+  suffixIcon: PropTypes.func,
+  size: PropTypes.oneOf(["md", "sm", "lg"])
+};
+TreeSelect.defaultProps = {
+  showCheckedStrategy: "SHOW_PARENT",
+  stretch: "sameWidth",
+  listHeight: 304
+};
+TreeSelect.SHOW_PARENT = "SHOW_PARENT";
+TreeSelect.SHOW_ALL = "SHOW_ALL";
+TreeSelect.SHOW_CHILD = "SHOW_CHILD";
 export default TreeSelect;
