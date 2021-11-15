@@ -65,6 +65,10 @@
   .dada-tree-select-singal-value {
     position: absolute;
     left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
   }
   .dada-tree-select-placeholder {
     color: #bfbfbf;
@@ -73,6 +77,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    cursor: not-allowed;
     background-color: #FAFAFA;
     left: 0;
     z-index: 10;
@@ -83,7 +88,7 @@
   height: 304px;
 
   .dada-tree-select-popup-list {
-    padding: 8px 16px;
+    padding: 8px 0;
     position: relative;
   }
   .dada-tree-space-content {
@@ -93,7 +98,10 @@
   .dada-tree-select-node {
     display: flex;
     align-items: center;
-    height: 36px;
+    padding: 0 16px;
+  }
+  .dada-tree-select-node:hover{
+    background-color: #fafafa;
   }
   .dada-tree-node-ico {
     transform: rotate(0deg);
@@ -108,8 +116,8 @@
   .dada-tree-select-check {
     display: flex;
     align-items: center;
-    height: 36px;
     cursor: pointer;
+    flex:1;
     .checkbox {
       margin-right: 8px;
     }
@@ -129,7 +137,7 @@
 }
 
 .dada-ico-rotate-right.spin {
-  animation: spin 0.3s infinite;
+  animation: spin 0.5s infinite;
   color: #008cf0;
 }
 @keyframes spin {
