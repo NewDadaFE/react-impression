@@ -1,0 +1,215 @@
+/**
+ * menu header/footer
+ */
+@mixin menu-header-footer-common($height, $isTop) {
+  position: absolute;
+  z-index: $zindex-menu;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $height;
+  padding: $menu-default-padding;
+  box-shadow: $box-shadow-light;
+
+  @if $isTop {
+    top: 0;
+
+    & ~ .menu-content {
+      padding-top: $height;
+    }
+
+    &.menu-hidden {
+      display: none;
+  
+      & ~ .menu-content {
+        padding-top: 0;
+      }
+    }
+  } @else {
+    bottom: 0;
+
+    & ~ .menu-content {
+      padding-bottom: $height;
+    }
+
+    &.menu-hidden {
+      display: none;
+  
+      & ~ .menu-content {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+/**
+ * dark 主题，设置字体颜色和背景色
+ */
+@mixin menu-dark-theme() {
+  color: $menu-dark-normal-color;
+  background-color: $menu-dark-bg;
+
+  .menu-header,
+  .menu-footer,
+  .menu-content {
+    background-color: inherit;
+  }
+
+  /**
+   * 一级，二级，三级设置默认蒙层
+   */
+  .menu-submenu-item,
+  .menu-item {
+    color: $menu-dark-normal-color;
+    background-color: $menu-dark-mask-bg;
+
+    &.active,
+    &:hover {
+      color: $menu-dark-active-color;
+      background-color: $menu-dark-mask-active-bg;
+    }
+  }
+
+  // 一级没有蒙层，覆盖默认蒙层
+  .menu-content > .menu-item,
+  .menu-content > .menu-submenu > .menu-submenu-item {
+    background-color: inherit;
+  }
+}
+
+/**
+ * menu title
+ */
+ @mixin menu-title-style {
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: $menu-default-font-size;
+  font-weight: $menu-default-font-weight;
+}
+
+/**
+ * 一级，二级，三级的高度，间距不同，设置高度，间距等
+ */
+@mixin menu-item-style {
+  /**
+   * 设置每级默认高度和左右间距
+   */
+  .menu-submenu-item,
+  .menu-item {
+    height: $menu-item-default-height;
+    line-height: $menu-item-default-height;
+    padding: $menu-default-padding;
+    overflow: hidden;
+  }
+
+  /**
+   * 二级，三级菜单没有 logo
+   */
+  .menu-submenu-content .menu-submenu-item,
+  .menu-submenu-content .menu-item {
+    .logo {
+      opacity: 0;
+    }
+  }
+
+  /**
+   * 三级高度与其他不同，覆盖默认值
+   * 三级左右间距与其他不同，覆盖默认值
+   */
+  .menu-submenu-content .menu-submenu-content .menu-item {
+    height: $menu-item-sm-height;
+    line-height: $menu-item-sm-height;
+    padding: $menu-item-sm-padding;
+
+    .title {
+      width: 100%;
+    }
+  }
+}
+
+/**
+ * 设置悬浮样式
+ */
+@mixin menu-item-floating-style {
+  .menu-submenu-item,
+  .menu-item {
+    display: flex;
+    align-items: center;
+    height: $menu-floating-itm-height;
+    padding: 0 16px;
+    cursor: pointer;
+    user-select: none;
+
+    .title {
+      width: calc(100% - 12px);
+      max-width: fit-content;
+      @include menu-title-style;
+    }
+
+    i {
+      max-width: 0;
+
+      &::before {
+        content: '';
+      }
+    }
+  }
+}
+
+/**
+ * 折叠样式
+ */
+@mixin menu-collapsed {
+  width: $menu-collapsed-width;
+
+  .menu-header {
+    padding: 0;
+  }
+
+  .menu-footer {
+    padding: 0 calc(50% - 10px);
+  }
+
+  .menu-submenu-item,
+  .menu-item {
+    padding: 0 calc(50% - 8px);
+    text-overflow: clip;
+
+    &.active,
+    &:hover {
+      background-color: $menu-dark-mask-active-bg !important;
+    }
+  }
+
+  .menu-header > .name,
+  .title,
+  .switch {
+    opacity: 0;
+    max-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/**
+ * 设置滚动条的样式
+ */
+@mixin menu-scroll-bar {
+  &::-webkit-scrollbar {
+    width: $menu-scrollbar-width;
+  }
+
+  /* 滚动槽 */
+  &::-webkit-scrollbar-track {
+    border-radius: $menu-scrollbar-border-radius;
+    background-color: $menu-scrollbar-track-bg;
+  }
+
+  /* 滚动条滑块 */
+  &::-webkit-scrollbar-thumb {
+    border-radius: $menu-scrollbar-border-radius;
+    background-color: $menu-scrollbar-thumb-bg;
+  }
+}

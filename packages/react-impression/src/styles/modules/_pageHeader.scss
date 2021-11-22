@@ -1,0 +1,21 @@
+.pageHeader {
+  padding: $pageHeader-padding;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pageHeader-ghost {
+  background-color: $pageHeader-ghost-bgcolor;
+}
+.pageHeader-title {
+  font-weight: 500;
+  color: $gray-base;
+}
+.pageHeader-content-title {
+  line-height: $pageHeader-content-title-lineHeight;
+  font-size: $pageHeader-content-title-fontSize;
+}
+.pageHeader-modal-title {
+  line-height: $pageHeader-modal-title-lineHeight;
+  font-size: $pageHeader-modal-title-fontSize;
+}

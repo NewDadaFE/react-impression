@@ -1,0 +1,127 @@
+.menu {
+  position: relative;
+  width: $menu-default-width;
+  height: 100%;
+  font-size: $menu-default-font-size;
+  font-weight: $menu-default-font-weight;
+  transition: all .3s;
+  @include menu-item-style;
+
+  &.dark {
+    @include menu-dark-theme;
+  }
+
+  &.collapsed {
+    @include menu-collapsed;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.menu-header {
+  @include menu-header-footer-common($menu-header-height, true);
+  @extend .flex-center;
+
+  img[src=""]{
+    opacity: 0;
+  }
+
+  .logo {
+    width: $menu-logo-width;
+    height: $menu-logo-width;
+  }
+
+  .name {
+    width: $menu-name-img-width;
+    height: $menu-name-img-height;
+    line-height: $menu-name-img-height;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+  }
+}
+
+.menu-footer {
+  @include menu-header-footer-common($menu-footer-height, false);
+  @extend .flex-center;
+
+  i {
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      color: $menu-dark-active-color;
+    }
+  }
+}
+
+.menu-content {
+  height: 100%;
+  width: 100%;
+  font-weight: 400;
+  overflow-y: auto;
+  @include menu-scroll-bar;
+
+  .logo {
+    width: $menu-icon-width;
+  }
+
+  .switch {
+    width: $menu-switch-width;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .switch-up {
+    transform: rotate(180deg);
+  }
+
+  .title {
+    @include menu-title-style;
+    padding: $menu-item-title-padding;
+    width: calc(100% - 32px);
+  }
+
+  .menu-item,
+  .menu-submenu-item {
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    @extend .flex-center;
+  }
+
+  .menu-submenu {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.menu-floating {
+  position: absolute;
+  width: $menu-floating-itm-width;
+  max-height: 999px;
+  margin-left: $menu-floating-itm-left;
+  padding: $menu-floating-itm-padding;
+  border-radius: 2px;
+  z-index: 1050;
+  @include menu-dark-theme;
+  @include menu-item-floating-style;
+}
+
+.menu-floating:before {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  left: -$menu-floating-itm-left;
+  width: 100%;
+  height: 100%;
+  opacity: .0001;
+  content: " ";
+  z-index: -1;
+}
+
+.menu-folded-hidden,
+.menu-floating-hidden {
+  display: none;
+}

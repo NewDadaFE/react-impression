@@ -429,14 +429,14 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
-- **远程搜索**
+- **远程搜索单选**
 
 ```js
 class DefaultExample extends React.Component {
   constructor() {
     super()
     this.state = {
-      value: null,
+      value: 'aa-1',
       data: [],
     }
     this.handleChange = this.handleChange.bind(this)
@@ -499,6 +499,81 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
+- **远程搜索多选**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      value: [{ name: 'aa-1', value: 'aa1' }],
+      data: [],
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.fetchData = this.fetchData.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  genData(str) {
+    const arr = []
+    const word = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    word.forEach(w1 => {
+      word.forEach(w2 => {
+        for (let i = 0; i < 20; i++) {
+          arr.push({
+            name: `${w1}${w2}-${i}`,
+            value: `${w1}${w2}${i}`,
+          })
+        }
+      })
+    })
+    return arr.filter(a => a.name.indexOf(str) > -1).slice(0, 20)
+  }
+
+  fetchData(str) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.setState({
+          data: this.genData(str),
+        })
+        resolve()
+      }, 200)
+    })
+  }
+
+  handleChange(val, text) {
+    this.setState({ value: [...this.state.value, { value: val, name: text }] })
+  }
+  handleDelete(value) {
+    this.setState({ value: this.state.value.filter(n => n.value !== value) })
+  }
+
+  render() {
+    const { value, data } = this.state
+    return (
+      <div>
+        <Select
+          ref={ref => (this.selectRef = ref)}
+          searchable
+          multiple
+          value={value}
+          remoteMethod={this.fetchData}
+          onChange={this.handleChange}
+          onDelete={this.handleDelete}
+        >
+          {data.map(item => (
+            <SelectOption key={item.value} value={item.value}>
+              {item.name}
+            </SelectOption>
+          ))}
+        </Select>
+      </div>
+    )
+  }
+}
+;<DefaultExample />
+```
+
 ### 变更记录
 
 v2.0.0
@@ -517,3 +592,4 @@ v3.0.0
 - 废弃 required 是否必选项属性
 - 新增 size 属性，支持 xs、sm、md(默认)、lg，多选时，lg/sm 无效果
 - 新增 stretch 属性，支持下拉弹出层宽度两个模式：sameWidth(默认)、auto
+- 新增远程搜索多选方法，多选模式下，value 或者 defaultValue 格式为[{value: 'aa1', name: 'aa-1'}]

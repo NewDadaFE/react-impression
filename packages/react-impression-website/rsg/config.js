@@ -93,6 +93,8 @@ module.exports = {
         'SidebarHeader',
         'Tabs',
         'TabPane',
+        'Menu',
+        'PageHeader',
       ]),
     },
     {
@@ -112,6 +114,7 @@ module.exports = {
         'Upload',
         'TimeSelect',
         'TreeSelect',
+        'Cascader',
       ]),
     },
     {

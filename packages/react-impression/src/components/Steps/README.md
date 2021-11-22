@@ -13,6 +13,40 @@
 </Steps>
 ```
 
+**竖直方向的步骤条**
+
+```jsx
+<Steps current={1} direction="vertical">
+  <Step title="已完成" description="这里是描述" />
+  <Step title="进行中" description="这里是描述" />
+  <Step title="未开始" description="这里是描述" />
+</Steps>
+```
+
+**父元素固定宽高时，竖直方向的步骤条**
+
+```jsx
+<div style={{ height: '400px', width: '200px' }}>
+  <Steps current={2} direction="vertical" status="error">
+    <Step title="已完成" description="这里是描述">
+      <div>
+        <button>我是没有事件的按钮</button>
+      </div>
+    </Step>
+    <Step title="标题比较长的已完成" description="这里是描述" />
+    <Step
+      title="已中断"
+      description="这里是话术很长很长很长很长很长很长的描述"
+    />
+    <Step title="未开始" description="这里是描述">
+      <div>
+        <button>我是没有事件的按钮</button>
+      </div>
+    </Step>
+  </Steps>
+</div>
+```
+
 **进度中断的用法**
 
 ```js

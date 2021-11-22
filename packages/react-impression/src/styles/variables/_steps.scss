@@ -1,24 +1,30 @@
 //== Steps Step
 // steps color
-$step-active-color: $brand-primary !default;
+$step-active-color: $brand-lightest !default;
 $step-error-color: $brand-danger !default;
-$step-ready-color: $gray-light!default;
-$step-title-current-color: $gray-base !default;
-$step-title-color: $gray-dark !default;
-$step-custom-color: $gray !default;
-$step-icon-bg-color: $gray-light !default;
+$step-ready-color: $gray-light !default;
+$step-title-color: $gray-base !default;
+$step-custom-color: $gray-dark !default;
+$step-icon-bg-color: $gray !default;
+$step-tail-bg-color: $grayish !default;
 // size
+$steps-vertical-min-width: rem(180px) !default;
 $step-content-width: rem(100px) !default;
+$step-content-height: rem(100px) !default;
 $step-tail-height: rem(3px) !default;
 $step-icon-size: rem(24px) !default;
 $step-dot-size: rem(10px) !default;
 $step-dot-border-width: rem(2px) !default;
 // offset
-$step-tail-left: ($step-content-width - $step-icon-size) / 2 - rem(10px) !default;
 $step-tail-top: ($step-icon-size - $step-tail-height) / 2 !default;
 $step-icon-offset-bottom: rem(10px) !default;
-$step-title-offset-bottom: rem(4px) !default;
+$step-custom-offset-top: rem(4px) !default;
+$steps-horizontal-space: rem(10px) !default;
+$steps-vertical-space: rem(4px) !default;
 // font size
-$step-title-font-size: rem(16px) !default;
+$step-title-font-size: rem(14px) !default;
 $step-seq-font-size: rem(14px) !default;
-$step-custom-line-height: rem(18px) !default;
+$step-custom-font-size: rem(12px) !default;
+// line-height
+$step-title-line-height: rem(22px) !default;
+$step-custom-line-height: rem(20px) !default;
