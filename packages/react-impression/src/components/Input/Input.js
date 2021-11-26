@@ -95,6 +95,11 @@ export default class Input extends React.PureComponent {
      * 输入框后附加内容
      */
     addonAfter: PropTypes.element,
+
+    /**
+     * 清除两端的空格,只会应用在类型为text,textArea,search的输入框中 默认为true
+     */
+    clearSpace: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -102,6 +107,7 @@ export default class Input extends React.PureComponent {
     clearable: true,
     disabled: false,
     size: 'md',
+    clearSpace: true,
   }
 
   /**
@@ -233,8 +239,12 @@ export default class Input extends React.PureComponent {
   }
 
   handleInputChange = event => {
-    const { onChange } = this.props
-    onChange && onChange(event.target.value, event)
+    const { onChange, clearSpace } = this.props
+    let val = event.target.value
+    if (clearSpace) {
+      val.replace(/(^\s*)|(\s*$)/g, '')
+    }
+    onChange && onChange(val, event)
   }
 
   handleDateChange = value => {
@@ -253,6 +263,7 @@ export default class Input extends React.PureComponent {
       style,
       onClick,
       className,
+      clearSpace,
       children,
       onChange,
       size,
