@@ -6,9 +6,9 @@ import Button from '../Button'
 export default class InputGroupButton extends React.PureComponent {
   static propTypes = {
     /**
-     * 设置输入框组内按钮样式
+     * 设置输入框组内按钮样式 <br /> One of: primary, secondary
      */
-    theme: PropTypes.oneOf(['primary', 'secondary']),
+    theme: PropTypes.string,
 
     /**
      * 自定义样式
@@ -26,7 +26,12 @@ export default class InputGroupButton extends React.PureComponent {
   }
 
   render() {
-    const { theme, className, children, ...others } = this.props
+    let { theme, className, children, ...others } = this.props
+
+    // 为了兼容旧版theme=default
+    if (theme === 'default') {
+      theme = 'secondary'
+    }
 
     return (
       <span {...others} className='input-group-btn'>

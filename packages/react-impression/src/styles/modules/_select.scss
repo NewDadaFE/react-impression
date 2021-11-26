@@ -10,6 +10,12 @@
   cursor: pointer;
   border: $border-width solid $gray-light;
   border-radius: $border-radius;
+  &.required {
+    border-color: $brand-danger;
+    ::placeholder {
+      color: $brand-danger;
+    }
+  }
 
   &.disabled {
     &,

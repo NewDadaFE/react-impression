@@ -84,6 +84,11 @@ export default class Select extends React.PureComponent {
     className: PropTypes.string,
 
     /**
+     * 是否必选项
+     */
+    required: PropTypes.bool,
+
+    /**
      * 占位文字
      */
     placeholder: PropTypes.string,
@@ -599,6 +604,7 @@ export default class Select extends React.PureComponent {
       className,
       searchable,
       multiple,
+      required,
       placeholder,
       clearable,
       size,
@@ -664,6 +670,7 @@ export default class Select extends React.PureComponent {
                 open: showOption && !searchable,
                 'select-open': showOption,
               },
+              { required },
               className
             )}
             onMouseEnter={this.handleShowClear}
