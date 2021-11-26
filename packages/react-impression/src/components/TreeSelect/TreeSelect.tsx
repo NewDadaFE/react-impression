@@ -646,7 +646,6 @@ const TreeSelect: React.FunctionComponent<TreeSelectProps> = (
           ref={ListPopupRef}
           style={{
             [listHeight ? "height" : ""]: [listHeight ? listHeight + "px" : ""],
-            overflow: "scroll"
           }}
         >
           <div
@@ -1026,7 +1025,6 @@ TreeSelect.propTypes = {
 TreeSelect.defaultProps = {
   showCheckedStrategy: "SHOW_PARENT",
   stretch: "sameWidth",
-  listHeight: 304
 };
 TreeSelect.SHOW_PARENT = "SHOW_PARENT";
 TreeSelect.SHOW_ALL = "SHOW_ALL";
