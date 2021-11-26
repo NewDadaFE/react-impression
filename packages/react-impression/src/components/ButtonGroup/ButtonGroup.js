@@ -10,9 +10,9 @@ export default class ButtonGroup extends React.PureComponent {
     size: PropTypes.oneOf(['sm', 'lg']),
 
     /**
-     * 主题样式
+     * 主题样式 <br /> One of: primary, secondary
      */
-    theme: PropTypes.oneOf(['primary', 'secondary']),
+    theme: PropTypes.string,
 
     /**
      * 激活索引（被选中Button会额外添加选中样式，为空时不额外添加选中样式）
@@ -59,6 +59,12 @@ export default class ButtonGroup extends React.PureComponent {
 
   render() {
     let { theme, size, className, onSelect, children, ...others } = this.props
+
+    // 为了兼容旧版theme=default
+    if (theme === 'default') {
+      theme = 'secondary'
+    }
+
     const { activeKey } = this.state
     const btnGroupSize = size ? `btn-group-${size}` : null
 
