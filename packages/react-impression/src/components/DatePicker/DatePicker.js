@@ -627,23 +627,23 @@ export default class DatePicker extends React.PureComponent {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { value } = nextProps
     const { timeSelect, selectedDate, selectedTime } = this.state
+    const state = {}
+    // 当 value 为空时清空selectedDate 和 selectedTime 的值
+    if (selectedDate !== moment(value).format(FORMAT.DATE)) {
+      // 保持value 的日期和selectedDate显示的日期是同一天
+      state.selectedDate = value ? moment(value).format(FORMAT.DATE) : ''
+      state.checkedDay = this.convertDateToMap(value)
+    }
     if (timeSelect) {
-      const state = {}
-      // 当 value 为空时清空selectedDate 和 selectedTime 的值
-      if (selectedDate !== moment(value).format(FORMAT.DATE)) {
-        // 保持value 的日期和selectedDate显示的日期是同一天
-        state.selectedDate = value ? moment(value).format(FORMAT.DATE) : ''
-        state.checkedDay = this.convertDateToMap(value)
-      }
       if (selectedTime !== moment(value).format(FORMAT.TIME)) {
         // 保持value 的时间和selectedDate显示的日期是同一天
         state.selectedTime = value ? moment(value).format(FORMAT.TIME) : ''
       }
-      this.setState({
-        ...state,
-        panel: 'date',
-      })
     }
+    this.setState({
+      ...state,
+      panel: 'date',
+    })
     if (!value && this.props.value !== value) {
       // 针对非时间日期选择器的 情况
       // value 重置为空
