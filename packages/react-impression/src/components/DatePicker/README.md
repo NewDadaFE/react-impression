@@ -17,7 +17,6 @@
 ```js
 const handleChange = dayFormat => {
   setState({ defaultDate: dayFormat })
-  console.log('Change: ', dayFormat)
 }
 initialState = {
   defaultDate: '',
