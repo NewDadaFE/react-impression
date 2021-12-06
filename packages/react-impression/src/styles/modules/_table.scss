@@ -102,15 +102,33 @@
     }
   }
   &.is-hover {
+    &.is-clicked {
+      background: $table-body-clicked-bg-color;
+      .select-selection {
+        background: $table-body-clicked-bg-color;
+      }
+    }
     background: $table-body-hover-bg-color;
     .select-selection {
       background: $table-body-hover-bg-color;
     }
   }
   &.is-selected {
+    &.is-clicked {
+      background: $table-body-clicked-bg-color;
+      .select-selection {
+        background: $table-body-clicked-bg-color;
+      }
+    }
     background: $table-body-hover-bg-color;
     .select-selection {
       background: $table-body-hover-bg-color;
+    }
+  }
+  &.is-clicked {
+    background: $table-body-clicked-bg-color;
+    .select-selection {
+      background: $table-body-clicked-bg-color;
     }
   }
 }
