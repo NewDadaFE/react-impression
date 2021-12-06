@@ -616,7 +616,6 @@ const TreeSelect = props => {
           ref={ListPopupRef}
           style={{
             [listHeight ? 'height' : '']: [listHeight ? listHeight + 'px' : ''],
-            overflow: 'scroll',
           }}
         >
           <div className='dada-tree-select-popup-list'>
@@ -1001,7 +1000,6 @@ TreeSelect.propTypes = {
 TreeSelect.defaultProps = {
   showCheckedStrategy: 'SHOW_PARENT',
   stretch: 'sameWidth',
-  listHeight: 304,
 }
 TreeSelect.SHOW_PARENT = 'SHOW_PARENT'
 TreeSelect.SHOW_ALL = 'SHOW_ALL'
