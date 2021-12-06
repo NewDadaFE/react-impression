@@ -1,3 +1,8 @@
+## 3.0.0-alpha.4
+
+- 变更 **Table 组件** 新增 onClickTr 行点击事件
+- 修复 **DatePicker 组件** 受控赋值选中问题
+
 ## 3.0.0-alpha.1
 
 - 新增 **Cascader 组件**
