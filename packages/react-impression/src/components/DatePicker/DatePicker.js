@@ -243,7 +243,6 @@ export default class DatePicker extends React.PureComponent {
         disable: this.isDisableDate(dayMoment),
       })
     }
-
     return days
   }
 
@@ -640,15 +639,16 @@ export default class DatePicker extends React.PureComponent {
         state.selectedTime = value ? moment(value).format(FORMAT.TIME) : ''
       }
     }
+    // const days = this.getDays(moment(value))
     this.setState({
       ...state,
       panel: 'date',
     })
-    if (!value && this.props.value !== value) {
+    if (this.props.value !== value) {
       // 针对非时间日期选择器的 情况
       // value 重置为空
       const { panel } = this.state
-      const currentMoment = moment()
+      const currentMoment = value ? moment(value) : moment()
       const state = {
         currentMoment,
         checkedDay: this.convertDateToMap(value),
