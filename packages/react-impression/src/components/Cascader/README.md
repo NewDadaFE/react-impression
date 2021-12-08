@@ -7,25 +7,25 @@ Cascader 级联组件
 ```js
 const options = [
   {
-    value: '浙江',
+    value: 1,
     label: '浙江',
     children: [
       {
-        value: '杭州',
+        value: 11,
         label: '杭州',
         children: [
           {
-            value: '西湖',
+            value: 111,
             label: '西湖',
           },
         ],
       },
       {
-        value: '台州',
+        value: 12,
         label: '台州',
         children: [
           {
-            value: '仙居',
+            value: 121,
             label: '仙居',
           },
         ],
@@ -33,29 +33,29 @@ const options = [
     ],
   },
   {
-    value: '江苏',
+    value: 2,
     label: '江苏',
     children: [
       {
-        value: '南京',
+        value: 21,
         label: '南京',
         children: [
           {
-            value: '中华门',
+            value: 211,
             label: '中华门',
           },
         ],
       },
       {
-        value: '无锡',
+        value: 22,
         label: '无锡',
         children: [
           {
-            value: '锡山区',
+            value: 221,
             label: '锡山区',
           },
           {
-            value: '惠山区',
+            value: 222,
             label: '惠山区',
           },
         ],
@@ -65,10 +65,10 @@ const options = [
 ]
 initialState = {
   normalValue: [],
-  defaultValue: ['浙江', '杭州', '西湖'],
+  defaultValue: [1, 11, 111],
   hoverValue: [],
   changeOnSelectValue: [],
-  clearableValue: ['浙江', '杭州', '西湖'],
+  clearableValue: [1, 11, 111],
 }
 const handleNormalChange = (value, path) => {
   console.log(path)

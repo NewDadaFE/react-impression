@@ -7,6 +7,7 @@ import Ico from '../Ico'
 import { PopupMenus } from './components'
 import * as R from 'ramda'
 import classnames from 'classnames'
+import { all } from 'ramda'
 
 function Cascader(props) {
   const [popupVisible, setPopupVisible] = useState(false)
@@ -71,7 +72,7 @@ function Cascader(props) {
         pathObject = {
           valuePath: tempValuePath,
           labelPath: `${labelPath}${labelPath ? '/' : ''}${
-            node[fieldNames.value]
+            node[fieldNames.label]
           }`,
         }
         if (
@@ -134,11 +135,13 @@ function Cascader(props) {
     () => {
       setPopupVisible(!!popupVisible)
       if (!popupVisible) {
-        value && setInputValue(value.join('/'))
+        const selectedItem =
+          allPath.find(n => n.valuePath.join('/') === value.join('/')) || {}
+        value && setInputValue(selectedItem.labelPath || value.join('/'))
         setFilterOption([])
       }
     },
-    [popupVisible, value]
+    [popupVisible, value, allPath]
   )
   // 显示/隐藏弹窗回调
   useEffect(
@@ -151,9 +154,9 @@ function Cascader(props) {
   useEffect(
     () => {
       // 不可搜索时不做遍历
-      if (!searchable) {
-        return
-      }
+      // if (!searchable) {
+      //   return
+      // }
       getAllPath(options)
     },
     [options, searchable, getAllPath]
@@ -166,9 +169,25 @@ function Cascader(props) {
       } else if ('defaultValue' in props) {
         initialValue = defaultValue || []
       }
-      setInputValue(initialValue.join('/'))
+      const valuelength = initialValue.length
+      console.log('allPath =>', allPath)
+      const selectedItem =
+        allPath.find(
+          n =>
+            n.valuePath.slice(0, valuelength).join('/') ===
+            initialValue.join('/')
+        ) || {}
+      console.log('selectedItem =>', selectedItem)
+      setInputValue(
+        selectedItem.labelPath
+          ? selectedItem.labelPath
+            .split('/')
+            .slice(0, valuelength)
+            .join('/')
+          : initialValue.join('/')
+      )
     },
-    [value, defaultValue]
+    [value, defaultValue, allPath]
   )
   return (
     <>
