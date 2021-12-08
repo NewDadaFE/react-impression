@@ -134,9 +134,20 @@ function Cascader(props) {
     () => {
       setPopupVisible(!!popupVisible)
       if (!popupVisible) {
+        const valueLength = value.length
         const selectedItem =
-          allPath.find(n => n.valuePath.join('/') === value.join('/')) || {}
-        value && setInputValue(selectedItem.labelPath || value.join('/'))
+          allPath.find(
+            n => n.valuePath.slice(0, valueLength).join('/') === value.join('/')
+          ) || {}
+        value &&
+          setInputValue(
+            selectedItem.labelPath
+              ? selectedItem.labelPath
+                .split('/')
+                .slice(0, valueLength)
+                .join('/')
+              : value.join('/')
+          )
         setFilterOption([])
       }
     },
@@ -160,6 +171,7 @@ function Cascader(props) {
     },
     [options, searchable, getAllPath]
   )
+
   useEffect(
     () => {
       let initialValue = []
@@ -168,18 +180,18 @@ function Cascader(props) {
       } else if ('defaultValue' in props) {
         initialValue = defaultValue || []
       }
-      const valuelength = initialValue.length
+      const valueLength = initialValue.length
       const selectedItem =
         allPath.find(
           n =>
-            n.valuePath.slice(0, valuelength).join('/') ===
+            n.valuePath.slice(0, valueLength).join('/') ===
             initialValue.join('/')
         ) || {}
       setInputValue(
         selectedItem.labelPath
           ? selectedItem.labelPath
             .split('/')
-            .slice(0, valuelength)
+            .slice(0, valueLength)
             .join('/')
           : initialValue.join('/')
       )
