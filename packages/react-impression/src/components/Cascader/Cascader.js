@@ -71,7 +71,7 @@ function Cascader(props) {
         pathObject = {
           valuePath: tempValuePath,
           labelPath: `${labelPath}${labelPath ? '/' : ''}${
-            node[fieldNames.value]
+            node[fieldNames.label]
           }`,
         }
         if (
@@ -134,11 +134,24 @@ function Cascader(props) {
     () => {
       setPopupVisible(!!popupVisible)
       if (!popupVisible) {
-        value && setInputValue(value.join('/'))
+        const valueLength = value.length
+        const selectedItem =
+          allPath.find(
+            n => n.valuePath.slice(0, valueLength).join('/') === value.join('/')
+          ) || {}
+        value &&
+          setInputValue(
+            selectedItem.labelPath
+              ? selectedItem.labelPath
+                .split('/')
+                .slice(0, valueLength)
+                .join('/')
+              : value.join('/')
+          )
         setFilterOption([])
       }
     },
-    [popupVisible, value]
+    [popupVisible, value, allPath]
   )
   // 显示/隐藏弹窗回调
   useEffect(
@@ -151,9 +164,9 @@ function Cascader(props) {
   useEffect(
     () => {
       // 不可搜索时不做遍历
-      if (!searchable) {
-        return
-      }
+      // if (!searchable) {
+      //   return
+      // }
       getAllPath(options)
     },
     [options, searchable, getAllPath]
@@ -166,9 +179,23 @@ function Cascader(props) {
       } else if ('defaultValue' in props) {
         initialValue = defaultValue || []
       }
-      setInputValue(initialValue.join('/'))
+      const valueLength = initialValue.length
+      const selectedItem =
+        allPath.find(
+          n =>
+            n.valuePath.slice(0, valueLength).join('/') ===
+            initialValue.join('/')
+        ) || {}
+      setInputValue(
+        selectedItem.labelPath
+          ? selectedItem.labelPath
+            .split('/')
+            .slice(0, valueLength)
+            .join('/')
+          : initialValue.join('/')
+      )
     },
-    [value, defaultValue]
+    [value, defaultValue, allPath]
   )
   return (
     <>
