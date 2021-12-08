@@ -171,7 +171,6 @@ function Cascader(props) {
     },
     [options, searchable, getAllPath]
   )
-
   useEffect(
     () => {
       let initialValue = []
