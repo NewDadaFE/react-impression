@@ -506,8 +506,8 @@ class DefaultExample extends React.Component {
   constructor() {
     super()
     this.state = {
-      value: [{ name: 'aa-1', value: 'aa1' }],
-      data: [],
+      value: ['aa1'],
+      data: [{ name: 'aa-1', value: 'aa1' }],
     }
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
@@ -542,10 +542,10 @@ class DefaultExample extends React.Component {
   }
 
   handleChange(val, text) {
-    this.setState({ value: [...this.state.value, { value: val, name: text }] })
+    this.setState({ value: [...this.state.value, val] })
   }
   handleDelete(value) {
-    this.setState({ value: this.state.value.filter(n => n.value !== value) })
+    this.setState({ value: this.state.value.filter(n => n !== value) })
   }
 
   render() {
