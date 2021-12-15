@@ -159,7 +159,7 @@ export default class Select extends React.PureComponent {
       return { value, name: children.toString() }
     })
   }
-
+  // 目前多选远程搜索兼容两种用法，value可以是{value: '', name: ''} 也可以是value的集合string/number[]
   handleValueChange(props) {
     const {
       options,
@@ -203,7 +203,11 @@ export default class Select extends React.PureComponent {
     }
     if (multiple) {
       let selectList = []
-      if (!remoteMethod) {
+      const [originalItem] = originValue
+      if (
+        !remoteMethod ||
+        (remoteMethod && originalItem.constructor !== Object)
+      ) {
         originValue &&
           originValue.length > 0 &&
           optionList.length > 0 &&
@@ -214,13 +218,8 @@ export default class Select extends React.PureComponent {
             item && selectList.push(item)
           })
       }
-      if (remoteMethod) {
-        selectList = originValue.map(item => {
-          if (typeof item === 'string') {
-            return { name: item, value: item }
-          }
-          return item
-        })
+      if (originalItem.constructor === Object) {
+        selectList = originValue
       }
       dataToSet = {
         selectedItem: selectList || [],
