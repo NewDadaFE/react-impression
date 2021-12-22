@@ -436,8 +436,8 @@ class DefaultExample extends React.Component {
   constructor() {
     super()
     this.state = {
-      value: 'aa-1',
-      data: [],
+      value: 'aa1',
+      data: [{ name: 'aa-1', value: 'aa1' }],
     }
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
@@ -492,6 +492,7 @@ class DefaultExample extends React.Component {
             </SelectOption>
           ))}
         </Select>
+        <Button onClick={() => this.setState({ value: '' })}>置空</Button>
       </div>
     )
   }
@@ -567,6 +568,7 @@ class DefaultExample extends React.Component {
             </SelectOption>
           ))}
         </Select>
+        <Button onClick={() => this.setState({ value: [] })}>置空</Button>
       </div>
     )
   }
