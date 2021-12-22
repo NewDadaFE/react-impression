@@ -104,7 +104,9 @@ export default class SelectOption extends React.PureComponent {
       const [valueItem] = originalValue
       if (
         !this.parent().props.remoteMethod ||
-        (this.parent().props.remoteMethod && valueItem.constructor !== Object)
+        (this.parent().props.remoteMethod &&
+          valueItem &&
+          valueItem.constructor !== Object)
       ) {
         this.setState({
           active: this.contains(this.props.value, originalValue),

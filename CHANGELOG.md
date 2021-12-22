@@ -1,3 +1,7 @@
+## 3.0.0-alpha.6
+
+- 变更 **Select 组件**兼容 value 值为{value: '', name: ''}[] 或 value 的集合 string/number[]
+
 ## 3.0.0-alpha.4
 
 - 变更 **Table 组件** 新增 onClickTr 行点击事件

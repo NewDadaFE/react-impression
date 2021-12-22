@@ -159,7 +159,7 @@ export default class Select extends React.PureComponent {
       return { value, name: children.toString() }
     })
   }
-  // 目前多选远程搜索兼容两种用法，value可以是{value: '', name: ''} 也可以是value的集合string/number[]
+  // 目前多选远程搜索兼容两种用法，value可以是{value: '', name: ''}[] 也可以是value的集合string/number[]
   handleValueChange(props) {
     const {
       options,
@@ -188,9 +188,6 @@ export default class Select extends React.PureComponent {
             return option.value === originValue
           }) || {}
       }
-      if (remoteMethod) {
-        selectedItem = { value: originValue, name: selectText || originValue }
-      }
       dataToSet = {
         selectedItem,
         selectText: showOption
@@ -199,14 +196,15 @@ export default class Select extends React.PureComponent {
         queryText: showOption
           ? queryText
           : selectedItem.name || selectedItem.value || '',
+        currentPlaceholder: selectedItem.name || selectedItem.value || '',
       }
     }
     if (multiple) {
       let selectList = []
-      const [originalItem] = originValue
+      const [originalItem = ''] = originValue || []
       if (
         !remoteMethod ||
-        (remoteMethod && originalItem.constructor !== Object)
+        (remoteMethod && originalItem && originalItem.constructor !== Object)
       ) {
         originValue &&
           originValue.length > 0 &&
@@ -218,7 +216,7 @@ export default class Select extends React.PureComponent {
             item && selectList.push(item)
           })
       }
-      if (originalItem.constructor === Object) {
+      if (originalItem && originalItem.constructor === Object) {
         selectList = originValue
       }
       dataToSet = {
@@ -709,7 +707,7 @@ export default class Select extends React.PureComponent {
                 type='text'
                 value={queryText}
                 readOnly={!searchable || (searchable && !showOption)}
-                placeholder={currentPlaceholder}
+                placeholder={currentPlaceholder || '请选择'}
                 disabled={disabled}
                 className='select-selection'
                 onChange={e => {
