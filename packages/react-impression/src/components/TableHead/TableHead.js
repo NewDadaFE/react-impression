@@ -3,7 +3,7 @@ import React from 'react'
 import * as R from 'ramda'
 import PropTypes from 'prop-types'
 import Checkbox from '../Checkbox'
-import Icon from '../Icon'
+import Ico from '../Ico'
 
 const defaultWidth = 80
 export default class TableHead extends React.PureComponent {
@@ -138,16 +138,20 @@ export default class TableHead extends React.PureComponent {
                 className={classnames('table-sort')}
                 onClick={() => handleClickSort(propColumn)}
               >
-                <Icon
-                  type='sort-asc'
+                <Ico
+                  type='caret-up'
+                  size='xs'
+                  style={{ marginBottom: '8px' }}
                   className={classnames('sort-caret', {
                     active:
                       R.equals(order, 'ascending') &&
                       R.equals(prop, propColumn),
                   })}
                 />
-                <Icon
-                  type='sort-desc'
+                <Ico
+                  size='xs'
+                  type='caret-down'
+                  style={{ marginTop: '8px' }}
                   className={classnames('sort-caret', {
                     active:
                       R.equals(order, 'descending') &&
