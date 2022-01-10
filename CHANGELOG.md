@@ -1,3 +1,7 @@
+## 2.1.3-alpha.3
+
+feat `select` 支持下拉加载更多
+
 ## 2.1.3-alpha.0, 2.1.3-alpha.1, 2.1.3-alpha.2
 
 feat 增加 `Table` 组件 `Tr` 点击选中样式（传入 `onClickTr` 属性时生效）
