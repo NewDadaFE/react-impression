@@ -122,6 +122,14 @@ export default class Select extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+    /**
+     * 滚动到底部
+     */
+    onScrollBottom: PropTypes.func,
+    /**
+     * 加载更多
+     */
+    loadingText: PropTypes.string,
   }
   static defaultProps = {
     disabled: false,
@@ -130,6 +138,33 @@ export default class Select extends React.PureComponent {
 
   componentDidMount() {
     this.handleInit()
+    this.handleListnerScroll()
+  }
+
+  /**
+   * 处理下拉加载
+   */
+  handleListnerScroll = () => {
+    if (
+      this.props.onScrollBottom &&
+      typeof this.props.onScrollBottom === 'function'
+    ) {
+      this.addScrollListener()
+    }
+  }
+
+  addScrollListener = () => {
+    this.selectInner.addEventListener(
+      'ps-y-reach-end',
+      this.props.onScrollBottom
+    )
+  }
+
+  removeScrollListener = () => {
+    this.selectInner.removeEventListener(
+      'ps-y-reach-end',
+      this.props.onScrollBottom
+    )
   }
 
   /**
@@ -412,6 +447,12 @@ export default class Select extends React.PureComponent {
   componentWillUnmount() {
     window.cancelAnimationFrame(this.requestId)
     System.unmanager(this)
+    if (
+      this.props.onScrollBottom &&
+      typeof this.props.onScrollBottom === 'function'
+    ) {
+      this.removeScrollListener()
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -724,6 +765,9 @@ export default class Select extends React.PureComponent {
               {children}
               {this.emptyText && (
                 <p className='select-empty'>{this.emptyText}</p>
+              )}
+              {this.props.loadingText && (
+                <p className='select-empty'>{this.props.loadingText}</p>
               )}
             </ul>
           </div>
