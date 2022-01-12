@@ -30,7 +30,7 @@
 
   // 多选
   &.select-multiple {
-    width: auto;
+    width: $select-multiple-width;
   }
 
   & > .select-tags {
