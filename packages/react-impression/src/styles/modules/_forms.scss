@@ -12,6 +12,7 @@ form {
   @include set-font-size($input-font-size-md);
 
   display: block;
+  width: $input-width;
   padding: $input-padding-y-md $input-padding-x;
   color: $input-color;
 
