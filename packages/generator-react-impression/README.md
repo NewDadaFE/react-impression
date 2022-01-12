@@ -11,7 +11,7 @@
 首先, 安装`Yeoman`和`generator-react-impression`:
 
 ```sh
-yarn global add yo generator-react-impression --registry https://npm.corp.imdada.cn/
+yarn global add yo generator-react-impression --registry https://registry.npmmirror.com/
 ```
 
 然后创建新项目:
