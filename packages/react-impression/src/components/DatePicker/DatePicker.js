@@ -632,18 +632,20 @@ export default class DatePicker extends React.PureComponent {
       // 保持value 的日期和selectedDate显示的日期是同一天
       state.selectedDate = value ? moment(value).format(FORMAT.DATE) : ''
       state.checkedDay = this.convertDateToMap(value)
+      this.setState({
+        ...state,
+      })
     }
     if (timeSelect) {
       if (selectedTime !== moment(value).format(FORMAT.TIME)) {
         // 保持value 的时间和selectedDate显示的日期是同一天
         state.selectedTime = value ? moment(value).format(FORMAT.TIME) : ''
+        this.setState({
+          ...state,
+          panel: 'date',
+        })
       }
     }
-    // const days = this.getDays(moment(value))
-    this.setState({
-      ...state,
-      panel: 'date',
-    })
     if (this.props.value !== value) {
       // 针对非时间日期选择器的 情况
       // value 重置为空
