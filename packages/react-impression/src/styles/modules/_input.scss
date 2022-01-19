@@ -63,9 +63,6 @@
   }
 }
 
-.input-field-addon {
-}
-
 .dada-input-addon-before {
   margin-right: $input-padding-x;
   color: $gray-light;
@@ -80,6 +77,8 @@
 // 清除图标
 .dada-input-clear {
   cursor: pointer;
+  position: absolute;
+  right: $input-padding-x;
 
   &:hover {
     color: $gray-darker;
