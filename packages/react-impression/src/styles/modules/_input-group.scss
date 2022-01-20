@@ -5,7 +5,7 @@
 .input-group {
   position: relative;
   z-index: $zindex-input;
-  min-width: $input-width;
+  width: $input-width;
 
   @if $enable-flex {
     display: inline-flex;

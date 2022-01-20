@@ -706,7 +706,7 @@ export default class Select extends React.PureComponent {
               <input
                 type='text'
                 value={queryText}
-                readOnly={!searchable || (searchable && !showOption)}
+                readOnly={!searchable}
                 placeholder={currentPlaceholder || '请选择'}
                 disabled={disabled}
                 className='select-selection'
