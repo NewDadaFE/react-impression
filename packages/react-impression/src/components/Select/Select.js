@@ -124,12 +124,28 @@ export default class Select extends React.PureComponent {
     children: PropTypes.node,
     /**
      * 滚动到底部
+     * const onScrollBottom = () => {
+        处理滚动到底部后回调函数
+      }
+     *
      */
     onScrollBottom: PropTypes.func,
     /**
      * 加载更多
      */
     loadingText: PropTypes.string,
+    /**
+     * 下拉搜索回显用，默认渲染options，不匹配下拉数据
+     */
+    defaultRenderOptions: PropTypes.any,
+    /**
+     * 下拉搜索回显用，默认渲染options，不匹配下拉数据
+     * {
+        value: 'id',
+        label: 'name',
+      },
+     */
+    optionKey: PropTypes.object,
   }
   static defaultProps = {
     disabled: false,
@@ -205,6 +221,23 @@ export default class Select extends React.PureComponent {
     })
   }
 
+  getDefaultRenderOptions(data) {
+    if (!data) return null
+    let defaultRenderOptions = null
+    let { value = 'value', label = 'name' } = this.props.optionKey || {}
+    const getItem = item => ({
+      value: item[value] || '',
+      name: item[label] || '',
+    })
+    if (Object.prototype.toString.call(data) === '[object Array]') {
+      defaultRenderOptions = data.map(item => getItem(item))
+    }
+    if (Object.prototype.toString.call(data) === '[object Object]') {
+      defaultRenderOptions = getItem(data)
+    }
+    return defaultRenderOptions
+  }
+
   handleValueChange(props) {
     const { options, selectedOptions } = this.state
     const optionList = this.getOptionList(options).concat(selectedOptions)
@@ -215,6 +248,10 @@ export default class Select extends React.PureComponent {
         ? props.value
         : this.props.value
       : this.state.value
+    let { defaultRenderOptions } = props || this.props
+    if (defaultRenderOptions) {
+      defaultRenderOptions = this.getDefaultRenderOptions(defaultRenderOptions)
+    }
     let dataToSet
     if (!multiple) {
       let selectedItem
@@ -222,6 +259,9 @@ export default class Select extends React.PureComponent {
         selectedItem = optionList.find(option => {
           return option.value === originValue
         })
+      }
+      if (defaultRenderOptions && !selectedItem) {
+        selectedItem = defaultRenderOptions
       }
       if (selectedItem) {
         dataToSet = {
@@ -245,6 +285,19 @@ export default class Select extends React.PureComponent {
           })
           item && selectList.push(item)
         })
+      if (defaultRenderOptions) {
+        originValue &&
+          originValue.length > 0 &&
+          originValue.forEach(val => {
+            const defaultRenderItem = defaultRenderOptions.find(defautItem => {
+              return (
+                defautItem.value === val &&
+                selectList.every(item => item.value !== defautItem.value)
+              )
+            })
+            defaultRenderItem && selectList.push(defaultRenderItem)
+          })
+      }
       if (!this.isPuppet) {
         dataToSet = {
           selectedItem: selectList || [],
@@ -328,7 +381,11 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   toggleOptionsHandle = () => {
-    const { optionGroup } = this.state
+    const { optionGroup, queryText } = this.state
+    const { remoteMethod, onScrollBottom } = this.props || {}
+    if (queryText && remoteMethod && !!onScrollBottom) {
+      remoteMethod('')
+    }
     if (this.props.disabled) return
     this.setState(
       {
@@ -399,7 +456,7 @@ export default class Select extends React.PureComponent {
    * @param {Number} 索引
    */
   selectOptionHandle(result) {
-    const { onChange, value, multiple } = this.props
+    const { onChange, value, multiple, remoteMethod } = this.props
     const { options, selectedOptions, selectedItem, optionGroup } = this.state
     const originValue = this.isPuppet ? value : this.state.value
     if (multiple) {
@@ -428,7 +485,7 @@ export default class Select extends React.PureComponent {
     this.setState(
       {
         showOption: !!multiple,
-        queryText: '',
+        queryText: !remoteMethod ? '' : this.state.queryText,
         selectedOptions: selectedOptions.concat(result.node),
       },
       () => {
@@ -436,7 +493,7 @@ export default class Select extends React.PureComponent {
           option.queryChange('')
         })
         this.selectPopper && this.selectPopper.update()
-        this.handleUpdateSelectScroll()
+        !this.props.onScrollBottom && this.handleUpdateSelectScroll()
       }
     )
   }
