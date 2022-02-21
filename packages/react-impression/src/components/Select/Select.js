@@ -124,6 +124,10 @@ export default class Select extends React.PureComponent {
     children: PropTypes.node,
     /**
      * 滚动到底部
+     * const onScrollBottom = () => {
+        处理滚动到底部后回调函数
+      }
+     *
      */
     onScrollBottom: PropTypes.func,
     /**
@@ -141,7 +145,7 @@ export default class Select extends React.PureComponent {
         label: 'name',
       },
      */
-    optionKey: PropTypes.object
+    optionKey: PropTypes.object,
   }
   static defaultProps = {
     disabled: false,
@@ -219,14 +223,14 @@ export default class Select extends React.PureComponent {
 
   getDefaultRenderOptions(data) {
     if (!data) return null
-    let defaultRenderOptions = null;
+    let defaultRenderOptions = null
     let { value = 'value', label = 'name' } = this.props.optionKey || {}
     const getItem = item => ({
       value: item[value] || '',
-      name: item[label] || ''
+      name: item[label] || '',
     })
     if (Object.prototype.toString.call(data) === '[object Array]') {
-      defaultRenderOptions = data.map(item => (getItem(item)))
+      defaultRenderOptions = data.map(item => getItem(item))
     }
     if (Object.prototype.toString.call(data) === '[object Object]') {
       defaultRenderOptions = getItem(data)
@@ -237,14 +241,14 @@ export default class Select extends React.PureComponent {
   handleValueChange(props) {
     const { options, selectedOptions } = this.state
     const optionList = this.getOptionList(options).concat(selectedOptions)
-    
+
     const { multiple } = this.props
     const originValue = this.isPuppet
       ? props !== undefined
         ? props.value
         : this.props.value
       : this.state.value
-    let { defaultRenderOptions } = props ? props : this.props
+    let { defaultRenderOptions } = props || this.props
     if (defaultRenderOptions) {
       defaultRenderOptions = this.getDefaultRenderOptions(defaultRenderOptions)
     }
@@ -282,12 +286,17 @@ export default class Select extends React.PureComponent {
           item && selectList.push(item)
         })
       if (defaultRenderOptions) {
-        originValue && originValue.length > 0 && originValue.forEach(val => {
-          const defaultRenderItem = defaultRenderOptions.find(defautItem => {
-            return defautItem.value === val && selectList.every(item => (item.value !== defautItem.value))
+        originValue &&
+          originValue.length > 0 &&
+          originValue.forEach(val => {
+            const defaultRenderItem = defaultRenderOptions.find(defautItem => {
+              return (
+                defautItem.value === val &&
+                selectList.every(item => item.value !== defautItem.value)
+              )
+            })
+            defaultRenderItem && selectList.push(defaultRenderItem)
           })
-          defaultRenderItem && selectList.push(defaultRenderItem)
-        })
       }
       if (!this.isPuppet) {
         dataToSet = {
@@ -524,7 +533,7 @@ export default class Select extends React.PureComponent {
     if (
       originValue.indexOf(value) > -1 &&
       this.state.selectedOptions.map(option => option.value).indexOf(value) ===
-      -1
+        -1
     ) {
       this.setState(state => {
         return [

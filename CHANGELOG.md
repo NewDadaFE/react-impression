@@ -1,3 +1,10 @@
+## 2.1.3-alpha.6，2.1.3-alpha.5, 2.1.3-alpha.4
+
+feat 增加 `Select` 组件 `onScrollBottom` select 滚动到底部回调函数（传入 `onScrollBottom` 属性时生效）
+feat 增加 `Select` 组件 `loadingText` select 滚动时 loading 文案（传入 `loadingText` 属性时生效）
+feat 增加 `Select` 组件 `defaultRenderOptions` 默认渲染，不匹配下拉数据（传入 `defaultRenderOptions` 属性时生效）
+feat 增加 `Select` 组件 `optionKey` 数据字段 key（传入 `defaultRenderOptions` 属性时生效）
+
 ## 2.1.3-alpha.3
 
 feat `select` 支持下拉加载更多
