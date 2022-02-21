@@ -114,8 +114,12 @@ export default class CheckboxGroup extends React.PureComponent {
         onChange: this.onChangeHandle,
         disabled: disabled || this.props.disabled,
         checked: this.isPuppet
-          ? this.props.value.indexOf(value) !== -1
-          : this.state.value.indexOf(value) !== -1,
+          ? this.props.value
+            ? this.props.value.indexOf(value) !== -1
+            : false
+          : this.state.value
+            ? this.state.value.indexOf(value) !== -1
+            : false,
       })
     })
 
