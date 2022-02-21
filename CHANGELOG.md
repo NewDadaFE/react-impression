@@ -1,3 +1,8 @@
+## 3.0.0-alpha.15
+
+- 修复 **InputGroutInput** others props 透传问题
+- 修复 **CheckboxGroup** 默认值问题
+
 ## 3.0.0-alpha.6
 
 - 变更 **Select 组件**兼容 value 值为{value: '', name: ''}[] 或 value 的集合 string/number[]
