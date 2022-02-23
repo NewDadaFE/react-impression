@@ -600,10 +600,108 @@ class DefaultExample extends React.Component {
 ;<DefaultExample />
 ```
 
+**下拉到底部加载更多**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      value: 'af2',
+      data: [],
+      pages: 6,
+      pageNum: 0,
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.fetchData = this.fetchData.bind(this)
+    this.onScrollBottom = this.onScrollBottom.bind(this)
+  }
+
+  get defaultData() {
+    const defaultData = []
+    const word = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    word.forEach(w1 => {
+      word.forEach(w2 => {
+        for (let i = 0; i < 5; i++) {
+          defaultData.push({
+            name: `${w1}${w2}`,
+            value: `${w1}${w2}${i}`,
+          })
+        }
+      })
+    })
+    return defaultData.slice(0, 60)
+  }
+
+  fetchData(pageNum) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let res = this.defaultData.slice(pageNum * 10, pageNum * 10 + 10)
+        console.log('res', res)
+        this.setState({
+          data: [...this.state.data, ...res],
+        })
+        resolve()
+      }, 200)
+    })
+  }
+
+  onScrollBottom() {
+    const newPageNum = this.state.pageNum + 1
+    if (newPageNum < this.state.pages) {
+      this.setState({ pageNum: newPageNum })
+      this.fetchData(newPageNum)
+    }
+  }
+
+  componentDidMount() {
+    this.fetchData(0)
+  }
+
+  handleChange(val, text) {
+    this.setState({ value: val })
+  }
+
+  render() {
+    const { value, data } = this.state
+    return (
+      <div>
+        <Select
+          ref={ref => (this.selectRef = ref)}
+          searchable
+          clearable
+          value={value}
+          onChange={this.handleChange}
+          onScrollBottom={this.onScrollBottom}
+          defaultRenderOptions={{
+            name: 'af',
+            value: 'af2',
+          }}
+          optionKey={{
+            value: 'value',
+            label: 'name',
+          }}
+        >
+          {data.map(item => (
+            <SelectOption key={item.value} value={item.value}>
+              {item.name}
+            </SelectOption>
+          ))}
+        </Select>
+      </div>
+    )
+  }
+}
+
+;<DefaultExample />
+```
+
 ### 变更记录
 
 v2.0.0
 
+- 新增 defaultRenderOptions 默认回显，不匹配下拉 options，用于回显当前页不存在的 option
+- 新增 onScrollBottom 下拉到底部
 - 新增 searchable 可搜索属性
 - 新增 multiple 多选属性，多选模式下，value 或者 defaultValue 格式为 [1，2]
 - 新增 required 是否必选项属性, 状态需要自行控制
