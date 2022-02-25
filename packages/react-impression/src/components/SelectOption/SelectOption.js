@@ -97,6 +97,12 @@ export default class SelectOption extends React.PureComponent {
       ? props.value
       : this.parent().props.value || this.parent().state.value
     if (!this.parent().props.multiple) {
+      if (originalValue && originalValue.constructor === Object) {
+        this.setState({
+          active: this.isEqual(this.props.value, originalValue.value),
+        })
+        return
+      }
       this.setState({
         active: this.isEqual(this.props.value, originalValue),
       })
