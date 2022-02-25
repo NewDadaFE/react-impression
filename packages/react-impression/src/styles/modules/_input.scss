@@ -44,6 +44,9 @@
   }
 
   &:disabled {
+    opacity: 1;
+    -webkit-text-fill-color: #bfbfbf;
+
     &,
     & + .dada-input-addon-before,
     & + .dada-input-addon-after,
