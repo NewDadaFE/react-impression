@@ -471,7 +471,7 @@ class DefaultExample extends React.Component {
   }
 
   handleChange(val, text) {
-    this.setState({ value: { value: val, name: text } })
+    this.setState({ value: val })
   }
 
   render() {
