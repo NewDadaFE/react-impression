@@ -182,11 +182,18 @@ export default class Select extends React.PureComponent {
     if (!multiple) {
       let selectedItem = {}
       // 非远程搜索
-      if (optionList.length > 0) {
+      if (
+        optionList.length > 0 &&
+        originValue &&
+        originValue.constructor !== Object
+      ) {
         selectedItem =
           optionList.find(option => {
             return option.value === originValue
           }) || {}
+      }
+      if (remoteMethod && originValue && originValue.constructor === Object) {
+        selectedItem = originValue
       }
       dataToSet = {
         selectedItem,
