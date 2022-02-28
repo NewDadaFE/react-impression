@@ -611,7 +611,6 @@ class DefaultExample extends React.Component {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         let res = this.defaultData.slice(pageNum * 10, pageNum * 10 + 10)
-        console.log('res', res)
         this.setState({
           data: [...this.state.data, ...res],
         })
