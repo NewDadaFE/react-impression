@@ -177,11 +177,13 @@ export default class Select extends React.PureComponent {
   }
 
   addScrollListener = () => {
-    this.selectInner.addEventListener('scroll', this.handleScroll)
+    this.selectInner &&
+      this.selectInner.addEventListener('scroll', this.handleScroll)
   }
 
   removeScrollListener = () => {
-    this.selectInner.removeEventListener('scroll', this.handleScroll)
+    this.selectInner &&
+      this.selectInner.removeEventListener('scroll', this.handleScroll)
   }
 
   /**
@@ -665,7 +667,9 @@ export default class Select extends React.PureComponent {
     if (!popupVisible && this.state.showOption) {
       const { selectText } = this.state
       const { remoteMethod, onScrollBottom } = this.props
-      if (this.state.queryText && !!remoteMethod && !!onScrollBottom) { remoteMethod('') }
+      if (this.state.queryText && !!remoteMethod && !!onScrollBottom) {
+        remoteMethod('')
+      }
       this.setState({ showOption: false, queryText: selectText }, () => {
         this.selectInner.scrollTop = 0
       })
