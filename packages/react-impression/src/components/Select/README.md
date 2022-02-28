@@ -591,6 +591,7 @@ class DefaultExample extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
     this.onScrollBottom = this.onScrollBottom.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
   get defaultData() {
     const defaultData = []
@@ -599,7 +600,7 @@ class DefaultExample extends React.Component {
       word.forEach(w2 => {
         for (let i = 0; i < 5; i++) {
           defaultData.push({
-            name: `${w1}${w2}`,
+            name: `${w1}${w2}-${i}`,
             value: `${w1}${w2}${i}`,
           })
         }
@@ -629,7 +630,10 @@ class DefaultExample extends React.Component {
     this.fetchData(0)
   }
   handleChange(val, text) {
-    this.setState({ value: val })
+    this.setState({ value: [...this.state.value, val] })
+  }
+  handleDelete(value) {
+    this.setState({ value: this.state.value.filter(n => n !== value) })
   }
 
   render() {
@@ -638,10 +642,8 @@ class DefaultExample extends React.Component {
       <div>
         <Select
           ref={ref => (this.selectRef = ref)}
-          searchable
           multiple
           value={value}
-          remoteMethod={this.fetchData}
           onChange={this.handleChange}
           onDelete={this.handleDelete}
           onScrollBottom={this.onScrollBottom}
