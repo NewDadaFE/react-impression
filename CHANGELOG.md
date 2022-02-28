@@ -1,3 +1,8 @@
+## 3.0.0-alpha.19
+
+- 修复 **Input** IOS disabled 兼容性问题
+- 新增 **Select** 下拉加载功能
+
 ## 3.0.0-alpha.16
 
 - 修复 **DropDown** 组件下拉 Icon 问题
