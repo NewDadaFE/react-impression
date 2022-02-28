@@ -127,6 +127,11 @@ export default class Select extends React.PureComponent {
      * 弹出层宽度伸缩方式
      */
     stretch: PropTypes.oneOf(['sameWidth', 'auto']),
+
+    /**
+     * 指定selectOption渲染的dom节点
+     */
+    container: PropTypes.oneOfType([PropTypes.node, PropTypes.undefined]),
   }
   static defaultProps = {
     disabled: false,
@@ -606,6 +611,8 @@ export default class Select extends React.PureComponent {
       clearable,
       size,
       stretch,
+      container,
+      outsideDisabled = false,
     } = this.props
     const {
       showOption,
@@ -655,6 +662,8 @@ export default class Select extends React.PureComponent {
               </ul>
             </div>
           }
+          container={container}
+          outsideDisabled={outsideDisabled}
         >
           <div
             style={style}
