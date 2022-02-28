@@ -1,3 +1,7 @@
+## 3.0.0-alpha.16
+
+- 修复 **DropDown** 组件下拉 Icon 问题
+
 ## 3.0.0-alpha.15
 
 - 修复 **InputGroutInput** others props 透传问题
