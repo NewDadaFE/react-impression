@@ -229,18 +229,13 @@ export default class Select extends React.PureComponent {
     if (!multiple) {
       let selectedItem = {}
       // 非远程搜索
-      if (
-        optionList.length > 0 &&
-        originValue &&
-        originValue.constructor !== Object
-      ) {
+      if (remoteMethod && originValue && originValue.constructor === Object) {
+        selectedItem = originValue
+      } else if (optionList.length > 0) {
         selectedItem =
           optionList.find(option => {
             return option.value === originValue
           }) || {}
-      }
-      if (remoteMethod && originValue && originValue.constructor === Object) {
-        selectedItem = originValue
       }
       dataToSet = {
         selectedItem,
@@ -256,10 +251,9 @@ export default class Select extends React.PureComponent {
     if (multiple) {
       let selectList = []
       const [originalItem = ''] = originValue || []
-      if (
-        !remoteMethod ||
-        (remoteMethod && originalItem && originalItem.constructor !== Object)
-      ) {
+      if (originalItem && originalItem.constructor === Object) {
+        selectList = originValue
+      } else {
         originValue &&
           originValue.length > 0 &&
           optionList.length > 0 &&
@@ -269,9 +263,6 @@ export default class Select extends React.PureComponent {
             })
             item && selectList.push(item)
           })
-      }
-      if (originalItem && originalItem.constructor === Object) {
-        selectList = originValue
       }
       dataToSet = {
         selectedItem: selectList || [],

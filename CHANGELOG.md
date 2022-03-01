@@ -1,3 +1,8 @@
+
+## 3.0.0-alpha.20
+
+- 修复 **Select** value 为 0，null 空字符串等显示问题
+
 ## 3.0.0-alpha.19
 
 - 修复 **Input** IOS disabled 兼容性问题
