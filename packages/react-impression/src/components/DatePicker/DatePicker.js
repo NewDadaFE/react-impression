@@ -650,7 +650,7 @@ export default class DatePicker extends React.PureComponent {
       // 针对非时间日期选择器的 情况
       // value 重置为空
       const { panel } = this.state
-      const currentMoment = value ? moment(value) : moment()
+      const currentMoment = value ? moment(value, this.props.format) : moment()
       const state = {
         currentMoment,
         checkedDay: this.convertDateToMap(value),
