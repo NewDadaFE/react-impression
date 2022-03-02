@@ -337,7 +337,12 @@ export default class Input extends React.PureComponent {
               onMouseLeave={this.handleHideClear}
               style={style}
             >
-              <div className='form-control' style={{ display: 'inline-flex' }}>
+              <div
+                className={classnames('form-control', {
+                  [`form-control-${size}`]: size && size !== 'md',
+                })}
+                style={{ display: 'inline-flex' }}
+              >
                 <Ico
                   type='calendar-o'
                   className='dada-input-addon-before'
@@ -348,12 +353,7 @@ export default class Input extends React.PureComponent {
                   ref={ref => (this.refMain = ref)}
                   value={value}
                   defaultValue={defaultValue}
-                  className={classnames(
-                    { [`form-control-${size}`]: size && size !== 'md' },
-                    'no-padding',
-                    'input-field',
-                    'input-field-addon'
-                  )}
+                  className='no-padding input-field'
                   style={{ lineHeight: 'unset' }}
                   readOnly
                   disabled={disabled}
@@ -404,7 +404,13 @@ export default class Input extends React.PureComponent {
               onMouseLeave={this.handleHideClear}
               style={style}
             >
-              <div className='form-control' style={{ display: 'inline-flex' }}>
+              <div
+                className={classnames(
+                  'form-control',
+                  size && `form-control-${size}`
+                )}
+                style={{ display: 'inline-flex' }}
+              >
                 <Ico
                   type='clock-o'
                   className='dada-input-addon-before'
@@ -415,12 +421,7 @@ export default class Input extends React.PureComponent {
                   ref={ref => (this.refMain = ref)}
                   value={value}
                   defaultValue={defaultValue}
-                  className={classnames(
-                    size && `form-control-${size}`,
-                    'no-padding',
-                    'input-field',
-                    'input-field-addon'
-                  )}
+                  className='no-padding input-field'
                   style={{ lineHeight: 'unset' }}
                   readOnly
                   disabled={disabled}
@@ -459,11 +460,7 @@ export default class Input extends React.PureComponent {
                 type='text'
                 ref={ref => (this.refMain = ref)}
                 value={value}
-                className={classnames(
-                  'no-padding',
-                  'input-field',
-                  'input-field-addon'
-                )}
+                className='no-padding input-field'
                 style={{ lineHeight: 'unset' }}
                 readOnly
                 onClick={onClick}
@@ -517,7 +514,12 @@ export default class Input extends React.PureComponent {
             ref='container'
             style={style}
           >
-            <div className='form-control' style={{ display: 'inline-flex' }}>
+            <div
+              className={classnames('form-control', {
+                [`form-control-${size}`]: !!size,
+              })}
+              style={{ display: 'inline-flex' }}
+            >
               {addonBefore}
               <input
                 {...others}
@@ -525,9 +527,7 @@ export default class Input extends React.PureComponent {
                 ref={ref => (this.refMain = ref)}
                 value={value}
                 defaultValue={defaultValue}
-                className={classnames('input-field', 'no-padding', {
-                  [`form-control-${size}`]: !!size,
-                })}
+                className='no-padding input-field'
                 style={{ lineHeight: 'unset' }}
                 onChange={this.handleInputChange}
                 disabled={disabled}

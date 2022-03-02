@@ -1,3 +1,21 @@
+## 3.0.0-alpha.20
+
+- 修复 **Select** value 为 0，null 空字符串等显示问题
+
+## 3.0.0-alpha.19
+
+- 修复 **Input** IOS disabled 兼容性问题
+- 新增 **Select** 下拉加载功能
+
+## 3.0.0-alpha.16
+
+- 修复 **DropDown** 组件下拉 Icon 问题
+
+## 3.0.0-alpha.15
+
+- 修复 **InputGroutInput** others props 透传问题
+- 修复 **CheckboxGroup** 默认值问题
+
 ## 3.0.0-alpha.6
 
 - 变更 **Select 组件**兼容 value 值为{value: '', name: ''}[] 或 value 的集合 string/number[]

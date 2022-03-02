@@ -100,6 +100,10 @@ Trigger.propTypes = {
    */
   arrowVisible: PropTypes.bool,
   /**
+   * 指定渲染的dom节点
+   */
+  container: PropTypes.oneOfType([PropTypes.node, PropTypes.undefined]),
+  /**
    * 点击外部代理禁用
    */
   outsideDisabled: PropTypes.bool,
@@ -113,6 +117,7 @@ Trigger.defaultProps = {
   offsetX: 0,
   offsetY: 8,
   popupShadow: 'normal',
+  container: undefined,
   outsideDisabled: false,
 }
 
@@ -135,6 +140,7 @@ function Trigger(props) {
     placement,
     strategy,
     outsideDisabled,
+    container,
   } = props
   // 展示动画效果，延迟隐藏弹出层
   const [delayShowPopup, setDelayShowPopup] = useState(false)
@@ -452,7 +458,7 @@ function Trigger(props) {
             )}
           </div>
         </div>,
-        window.document.getElementsByTagName('body')[0]
+        container || window.document.getElementsByTagName('body')[0]
       )}
     </Fragment>
   )
