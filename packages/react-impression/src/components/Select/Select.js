@@ -271,11 +271,13 @@ export default class Select extends React.PureComponent {
       }
     }
     this.setState(dataToSet, () => {
-      this.options.forEach(option => option.handleActive())
-      if (multiple) {
-        options.forEach(option => {
+      this.options.forEach(option => {
+        option.handleActive()
+        if (multiple) {
           option.queryChange(queryText, filterMethod)
-        })
+        }
+      })
+      if (multiple && !R.isEmpty(optionGroup)) {
         optionGroup.forEach(option => {
           option.queryChange(queryText)
         })
