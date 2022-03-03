@@ -36,7 +36,7 @@ module.exports = {
         },
         {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/t/font_2010704_sseid8vi9ua.css',
+          href: 'http://fe.imdada.cn/font_2010704_20ye7uiwzku.css',
         },
       ],
     },
