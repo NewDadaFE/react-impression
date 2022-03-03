@@ -5,7 +5,7 @@
 ```html
 <link
   rel="stylesheet"
-  href="https://fe.imdada.cn/font_2010704_20ye7uiwzku.css"
+  href="https://fe.imdada.cn/font_2010704_odjayg6yaqk.css"
 />
 ```
 
