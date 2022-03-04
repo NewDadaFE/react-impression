@@ -88,6 +88,7 @@ Search.defaultProps = {
   optionKey: defaultOptionKey,
   size: 'md',
   type: 'input',
+  placeholder: '请输入',
   clearable: true,
   debounceTime: 300,
 }

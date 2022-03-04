@@ -22,6 +22,7 @@ export default class InputGroupInput extends React.PureComponent {
 
   static defaultProps = {
     type: 'text',
+    placeholder: '请输入',
   }
   getValue() {
     return this.refMain ? this.refMain.value : undefined
