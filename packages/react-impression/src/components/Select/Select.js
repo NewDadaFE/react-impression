@@ -437,15 +437,11 @@ export default class Select extends React.PureComponent {
     if (multiple) {
       this.setState({ currentPlaceholder: '' })
     }
-    let values = []
-    if (Array.isArray(originValue)) {
-      values = originValue.map(item => item.value)
-    }
     // 木偶组件
     if (!this.isPuppet) {
       this.setState(
         {
-          value: multiple ? [...values, result.value] : result.value,
+          value: multiple ? [...originValue, result.value] : result.value,
           selectText: multiple ? '' : result.name,
           queryText: multiple ? '' : result.name,
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
