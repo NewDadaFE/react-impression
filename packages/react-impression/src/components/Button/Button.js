@@ -91,7 +91,7 @@ const Button = React.forwardRef((props, ref) => {
       {loading ? (
         <span className='btn-loading-circle'>
           <span className='btn-loading-addon' style={iconMargin} />
-          {children && <span className='btn-loading-message'>加载中...</span>}
+          {children && <span className='btn-loading-message'>{children}</span>}
         </span>
       ) : (
         <>
