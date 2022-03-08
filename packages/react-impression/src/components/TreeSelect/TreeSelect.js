@@ -3,14 +3,18 @@ var __rest =
   function (s, e) {
     var t = {}
     for (var p in s) {
-      if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) { t[p] = s[p] }
+      if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) {
+        t[p] = s[p]
+      }
     }
     if (s != null && typeof Object.getOwnPropertySymbols === 'function') {
       for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
         if (
           e.indexOf(p[i]) < 0 &&
           Object.prototype.propertyIsEnumerable.call(s, p[i])
-        ) { t[p[i]] = s[p[i]] }
+        ) {
+          t[p[i]] = s[p[i]]
+        }
       }
     }
     return t
@@ -86,9 +90,13 @@ const TreeSelect = props => {
         })
         if (treeRenderPropReflect) {
           const { children = 'children' } = treeRenderPropReflect
-          if (item[children] && item[children].length) { initTreeStruct(item[children], renderList, level + 1) }
+          if (item[children] && item[children].length) {
+            initTreeStruct(item[children], renderList, level + 1)
+          }
         } else {
-          if (item.children && item.children.length) { initTreeStruct(item.children, renderList, level + 1) }
+          if (item.children && item.children.length) {
+            initTreeStruct(item.children, renderList, level + 1)
+          }
         }
       })
       return renderList
@@ -295,7 +303,9 @@ const TreeSelect = props => {
       const newIndeterminateIds = new Set(indeterminateIds)
       if (value) {
         // 删除下级节点
-        if (checkedItem.children && checkedItem.children.length) { clearAllChildNodeId(checkedItem, newcheckedIds, newIndeterminateIds) }
+        if (checkedItem.children && checkedItem.children.length) {
+          clearAllChildNodeId(checkedItem, newcheckedIds, newIndeterminateIds)
+        }
         // 向上遍历
         if (checkedParentId) {
           let sublingItemAllChecked = true
@@ -342,7 +352,9 @@ const TreeSelect = props => {
         while (diffNode.parent && !diffNode.parent.disabled) {
           if (diffNode.parent.checked) {
             diffNode.parent.children.forEach(item => {
-              if (item.id !== diffNode.id && !item.disabled) { newcheckedIds.add(item.id) }
+              if (item.id !== diffNode.id && !item.disabled) {
+                newcheckedIds.add(item.id)
+              }
             })
           }
           const { checkedType, checkedChildrenId } = diffSublingNode(
@@ -524,7 +536,9 @@ const TreeSelect = props => {
         if (
           checkedIds.has(item.id) ||
           (item.parent && item.parent.checked && !item.parent.disabled)
-        ) { item.checked = true } else item.checked = false
+        ) {
+          item.checked = true
+        } else item.checked = false
         if (indeterminateIds.has(item.id)) {
           item.indeterminate = true
         } else item.indeterminate = false
@@ -594,8 +608,8 @@ const TreeSelect = props => {
         <div {...otherProps}>
           {loadingNode === id ? (
             <Ico type='rotate-right spin' />
-          ) : switcherIcon || (
-            <Ico type='angle-right' />
+          ) : (
+            switcherIcon || <Ico type='angle-right' />
           )}
         </div>
       )
@@ -790,12 +804,7 @@ const TreeSelect = props => {
                       selectItem,
                       false
                     )
-                    const {
-                      checked,
-                      expand,
-                      level,
-                      indeterminate,
-                    } = selectItem
+                    const { checked, expand, level, indeterminate } = selectItem
 
                     const others = __rest(selectItem, [
                       'checked',
@@ -1000,6 +1009,7 @@ TreeSelect.propTypes = {
 TreeSelect.defaultProps = {
   showCheckedStrategy: 'SHOW_PARENT',
   stretch: 'sameWidth',
+  placeholder: '请选择',
 }
 TreeSelect.SHOW_PARENT = 'SHOW_PARENT'
 TreeSelect.SHOW_ALL = 'SHOW_ALL'

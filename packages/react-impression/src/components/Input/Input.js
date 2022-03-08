@@ -14,6 +14,20 @@ const inputAddonSizeMap = {
   lg: 'md',
 }
 
+const defaultPlaceholderMap = {
+  time: '请选择时间',
+  text: '请输入',
+  file: '请选择附件',
+}
+
+const getDefaultPlaceholder = type => {
+  if (['date', 'month', 'year', 'dateTime', 'time', 'second'].includes(type)) {
+    return defaultPlaceholderMap['time']
+  }
+  if (type === 'file') return defaultPlaceholderMap['file']
+  return defaultPlaceholderMap['text']
+}
+// wq
 export default class Input extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -357,7 +371,11 @@ export default class Input extends React.PureComponent {
                   style={{ lineHeight: 'unset' }}
                   readOnly
                   disabled={disabled}
-                  placeholder={placeholder}
+                  placeholder={
+                    placeholder === undefined
+                      ? getDefaultPlaceholder(type)
+                      : placeholder
+                  }
                   onClick={this.handleShowDatePicker}
                 />
                 <div className='dada-input-border' />
@@ -425,7 +443,11 @@ export default class Input extends React.PureComponent {
                   style={{ lineHeight: 'unset' }}
                   readOnly
                   disabled={disabled}
-                  placeholder={placeholder}
+                  placeholder={
+                    placeholder === undefined
+                      ? getDefaultPlaceholder(type)
+                      : placeholder
+                  }
                   onClick={this.handleShowDatePicker}
                 />
                 <div className='dada-input-border' />
@@ -466,7 +488,11 @@ export default class Input extends React.PureComponent {
                 onClick={onClick}
                 onChange={this.handleInputChange}
                 disabled={disabled}
-                placeholder={placeholder}
+                placeholder={
+                  placeholder === undefined
+                    ? getDefaultPlaceholder(type)
+                    : placeholder
+                }
               />
               <div className='dada-input-border' />
               {children}
@@ -480,7 +506,11 @@ export default class Input extends React.PureComponent {
             {...others}
             ref={ref => (this.refMain = ref)}
             className={className}
-            placeholder={placeholder}
+            placeholder={
+              placeholder === undefined
+                ? getDefaultPlaceholder(type)
+                : placeholder
+            }
             onChange={this.handleUploadChange}
             style={style}
           />
@@ -495,7 +525,11 @@ export default class Input extends React.PureComponent {
             )}
             ref={ref => (this.refMain = ref)}
             disabled={disabled}
-            placeholder={placeholder}
+            placeholder={
+              placeholder === undefined
+                ? getDefaultPlaceholder(type)
+                : placeholder
+            }
             value={value}
             onChange={this.handleInputChange}
             defaultValue={defaultValue}
@@ -531,7 +565,11 @@ export default class Input extends React.PureComponent {
                 style={{ lineHeight: 'unset' }}
                 onChange={this.handleInputChange}
                 disabled={disabled}
-                placeholder={placeholder}
+                placeholder={
+                  placeholder === undefined
+                    ? getDefaultPlaceholder(type)
+                    : placeholder
+                }
               />
               <div className='dada-input-border' />
               {children}
