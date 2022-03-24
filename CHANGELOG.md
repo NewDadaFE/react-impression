@@ -1,5 +1,19 @@
+## 3.0.1
+
+- 按钮 loading 状态内容修改为 children
+- Input 增加默认 placeholder
+
+## 3.0.0-alpha.28
+
+- revert “修复 **Table** fix 状态下显示错行问题”
+
+## 3.0.0-alpha.27
+
+- 修复 Select 非受控组件选择问题
+
 ## 3.0.0-alpha.25
 
+- 修复 **Table** fix 状态下显示错行问题
 - 新增 **Ico** 合计 50 个图标，优化图标显示
 
 ## 3.0.0-alpha.20
