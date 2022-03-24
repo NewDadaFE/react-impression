@@ -55,6 +55,10 @@ class Modal extends React.Component {
      * 是否显示关闭图标
      */
     showClose: PropTypes.bool,
+    /**
+     * Modal渲染的节点
+     */
+    container: PropTypes.oneOfType([PropTypes.node, PropTypes.undefined]),
   }
 
   static defaultProps = {
@@ -65,6 +69,7 @@ class Modal extends React.Component {
     closeOnOutsideClick: true,
     showClose: false,
     onClose: () => {},
+    container: undefined,
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -145,11 +150,12 @@ class Modal extends React.Component {
       scrollInside,
       onClose,
       showClose,
+      container,
     } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     return (
-      <Portal>
+      <Portal node={container}>
         <div
           style={this.modalStyle}
           onClick={this.handleModalMaskClick}

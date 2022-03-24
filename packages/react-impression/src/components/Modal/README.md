@@ -245,6 +245,36 @@ initialState = {
 </div>
 ```
 
+#### 6、指定 Modal 渲染的节点
+
+```javascript
+const handleToggleClick = () => {
+  setState({
+    isOpen: !state.isOpen,
+    container: document.getElementById('modalContainer'),
+  })
+}
+initialState = {
+  isOpen: false,
+  container: undefined,
+}
+;<div id="modalContainer">
+  <Button onClick={handleToggleClick}>点击提示</Button>
+  <Modal container={state.container} size="xs" isOpen={state.isOpen}>
+    <ModalBody>
+      <h6>提示</h6>
+      内容&hellip;
+    </ModalBody>
+    <ModalFooter>
+      <Button theme="secondary" onClick={handleToggleClick}>
+        取消
+      </Button>
+      <Button>确定</Button>
+    </ModalFooter>
+  </Modal>
+</div>
+```
+
 ### 变更记录
 
 v3.0.0
