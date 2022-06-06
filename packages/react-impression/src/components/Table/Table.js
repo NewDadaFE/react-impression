@@ -140,8 +140,18 @@ export default class Table extends React.PureComponent {
           Header,
           sortable,
           exclude,
+          onCell,
         } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header, sortable }
+        const obj = {
+          prop,
+          label,
+          fixed,
+          Cell,
+          width,
+          Header,
+          sortable,
+          onCell,
+        }
         return obj
       })
       columnList = columns
@@ -157,8 +167,18 @@ export default class Table extends React.PureComponent {
           Header,
           sortable,
           exclude,
+          onCell,
         } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header, sortable }
+        const obj = {
+          prop,
+          label,
+          fixed,
+          Cell,
+          width,
+          Header,
+          sortable,
+          onCell,
+        }
         return obj
       })
       columnList = columns
