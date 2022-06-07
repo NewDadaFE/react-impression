@@ -107,15 +107,29 @@ export default class TableBody extends React.PureComponent {
   renderTd = (array, item, type, isNeedHide, index, data) => {
     const { fixed } = this.props
     return array.map((column, columnIndex) => {
-      const { prop, rowspan, exclude = false, colspan, Cell, width } = column
+      const {
+        prop,
+        rowspan,
+        exclude = false,
+        colspan,
+        Cell,
+        width,
+        onCell,
+      } = column
       let value
       if (prop && typeof prop === 'function') {
         value = prop(item)
       } else {
         value = item[prop]
       }
-      const colRowspan = rowspan || 1
-      const colColspan = colspan || 1
+      let colSpanInfo = {
+        rowSpan: rowspan || 1,
+        colSpan: colspan || 1,
+      }
+      if (onCell && typeof onCell === 'function') {
+        colSpanInfo = { ...colSpanInfo, ...onCell(item, data, index) }
+      }
+      if (!colSpanInfo.rowSpan || !colSpanInfo.colSpan) return null
       let key
       let colunmWidth
       if (type === 'left') {
@@ -142,8 +156,8 @@ export default class TableBody extends React.PureComponent {
       return (
         <td
           key={key}
-          rowSpan={colRowspan}
-          colSpan={colColspan}
+          rowSpan={colSpanInfo.rowSpan}
+          colSpan={colSpanInfo.colSpan}
           width={colunmWidth}
           className={classnames(`item-fix-left`)}
           data-column-prop={exclude}

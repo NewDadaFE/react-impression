@@ -122,11 +122,39 @@ const data = [
   }}
 >
   <TableColumn prop="code" Header={<span>编码</span>} sortable />
-  <TableColumn prop="address" Header="地址" sortable />
+  <TableColumn
+    prop="address"
+    Header="地址"
+    sortable
+    onCell={(item, data, index) => {
+      if (index === 0) {
+        return {
+          rowSpan: 2,
+        }
+      }
+      if (index === 1) {
+        return {
+          rowSpan: 0,
+        }
+      }
+      return {}
+    }}
+  />
   <TableColumn prop="num" Header="金额" />
   <TableColumn prop="phone" Header="电话" />
   <TableColumn prop="creatTime" Header="创建时间" />
-  <TableColumn prop="status" Header="状态" />
+  <TableColumn
+    prop="status"
+    Header="状态"
+    onCell={(item, data, index) => {
+      if (index === 0) {
+        return {
+          colSpan: 0,
+        }
+      }
+      return {}
+    }}
+  />
   <TableColumn
     prop="id"
     Header={() => {
@@ -155,6 +183,14 @@ const data = [
           </a>
         </div>
       )
+    }}
+    onCell={(item, data, index) => {
+      if (index === 0) {
+        return {
+          colSpan: 2,
+        }
+      }
+      return {}
     }}
   />
 </Table>
@@ -820,6 +856,174 @@ const data = [
   },
   {
     id: 2,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+]
+;<Table
+  columns={columns}
+  data={data}
+  defaultSort={{ prop: 'num', order: 'descending' }}
+  onChangeSort={val => {
+    console.log(val)
+  }}
+/>
+```
+
+**合并单元格 table**
+
+```js
+const columns = [
+  {
+    prop: data => `${data.code.id}`,
+    Header: (
+      <span id="recipe" data-type="title">
+        编码
+      </span>
+    ),
+    sortable: true,
+    onCell: (item, data, index) => {
+      if (index === 2) {
+        return {
+          rowSpan: 2,
+        }
+      }
+      if (index === 3) {
+        return {
+          rowSpan: 0,
+        }
+      }
+      return {}
+    },
+  },
+  {
+    prop: data => `${data.address.detail.target}`,
+    Header: '地址',
+    sortable: true,
+    onCell: (item, data, index) => {
+      if (index === 4) {
+        return { colSpan: 0 }
+      }
+
+      return {}
+    },
+  },
+  {
+    prop: 'num',
+    Header: '金额',
+    sortable: true,
+    onCell: (item, data, index) => {
+      if (index === 4) {
+        return {
+          colSpan: 2,
+        }
+      }
+    },
+  },
+  { prop: 'phone', Header: '电话', sortable: true },
+  { prop: 'creatTime', Header: '创建时间', sortable: true },
+  { prop: 'status', Header: '状态' },
+  {
+    Header: '操作',
+    Cell: item => {
+      return (
+        <div className="text-center">
+          <a
+            href="#"
+            style={{ paddingRight: 16, color: '#417FFA', height: 18 }}
+            onClick={e => {
+              e.preventDefault()
+              console.log(item)
+            }}
+          >
+            编辑
+          </a>
+          <span style={{ color: '#E9EBF0' }}>|</span>
+          <a
+            href="#"
+            style={{ paddingLeft: 16, color: '#417FFA' }}
+            onClick={e => e.preventDefault()}
+          >
+            删除
+          </a>
+        </div>
+      )
+    },
+  },
+]
+const data = [
+  {
+    id: 1,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+  {
+    id: 2,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+  {
+    id: 3,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+  {
+    id: 4,
+    code: {
+      id: 'JD010234',
+    },
+    address: {
+      detail: {
+        target: '上海市南京西路',
+      },
+    },
+    num: 201003.0,
+    phone: 13866666666,
+    creatTime: '2018-03-09',
+    status: '正常',
+  },
+  {
+    id: 5,
     code: {
       id: 'JD010234',
     },
