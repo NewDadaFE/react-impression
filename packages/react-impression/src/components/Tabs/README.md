@@ -5,7 +5,7 @@
 ```js
 const handleNav = activeKey => {
   setState({
-    activeKey,
+    activeKey: activeKey,
   })
 }
 initialState = {
@@ -33,7 +33,16 @@ const tabList = []
 for (let i = 0; i < tabLength; i++) {
   tabList.push(i)
 }
-;<Tabs activeKey={2}>
+initialState = {
+  activeKey: 1,
+}
+const handleNav = activeKey => {
+  setState({
+    activeKey: activeKey,
+  })
+}
+
+;<Tabs activeKey={state.activeKey} onSelect={handleNav}>
   {tabList.map(tab => (
     <TabPane key={tab} eventKey={tab}>
       Tab {tab}
@@ -47,7 +56,7 @@ for (let i = 0; i < tabLength; i++) {
 ```js
 <Row>
   <Col col={4}>
-    <Tabs activeKey={2} size="sm" type="line">
+    <Tabs defaultActiveKey={1} size="sm" type="line">
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>
@@ -57,7 +66,7 @@ for (let i = 0; i < tabLength; i++) {
     </Tabs>
   </Col>
   <Col col={4}>
-    <Tabs activeKey={2} size="sm" type="card">
+    <Tabs defaultActiveKey={2} size="sm" type="card">
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>
@@ -67,7 +76,7 @@ for (let i = 0; i < tabLength; i++) {
     </Tabs>
   </Col>
   <Col col={4}>
-    <Tabs activeKey={2} size="sm" type="block">
+    <Tabs defaultActiveKey={2} size="sm" type="block">
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>
@@ -82,28 +91,28 @@ for (let i = 0; i < tabLength; i++) {
 **卡片类型**
 
 ```js
-<Tabs activeKey={1} type="card">
+<Tabs defaultActiveKey={1} type="card">
   <TabPane eventKey={1}>标题</TabPane>
   <TabPane eventKey={2}>长标题</TabPane>
   <TabPane eventKey={3}>标题很长</TabPane>
   <TabPane eventKey={4} disabled>
     标题特别长
   </TabPane>
-  <TabPane eventKey={5}>标题再长一点</TabPane>
+  <TabPane defaultActiveKey={5}>标题再长一点</TabPane>
 </Tabs>
 ```
 
 **滑块类型**
 
 ```js
-<Tabs activeKey={1} type="block">
+<Tabs defaultActiveKey={1} type="block">
   <TabPane eventKey={1}>标题</TabPane>
   <TabPane eventKey={2}>长标题</TabPane>
   <TabPane eventKey={3}>标题很长</TabPane>
   <TabPane eventKey={4} disabled>
     标题特别长
   </TabPane>
-  <TabPane eventKey={5}>标题再长一点</TabPane>
+  <TabPane defaultActiveKey={5}>标题再长一点</TabPane>
 </Tabs>
 ```
 
@@ -116,7 +125,7 @@ tabPosition 属性 可指定选项卡的方向：上（top），下（bottom）�
 ```js
 <Row>
   <Col col={3}>
-    <Tabs activeKey={2} tabPosition="top">
+    <Tabs defaultActiveKey={2} tabPosition="top">
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>
@@ -126,7 +135,7 @@ tabPosition 属性 可指定选项卡的方向：上（top），下（bottom）�
     </Tabs>
   </Col>
   <Col col={3}>
-    <Tabs activeKey={2} tabPosition="bottom" style={{ width: '200px' }}>
+    <Tabs defaultActiveKey={2} tabPosition="bottom" style={{ width: '200px' }}>
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>
@@ -136,7 +145,7 @@ tabPosition 属性 可指定选项卡的方向：上（top），下（bottom）�
     </Tabs>
   </Col>
   <Col col={3}>
-    <Tabs activeKey={2} tabPosition="left">
+    <Tabs defaultActiveKey={2} tabPosition="left">
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>
@@ -146,7 +155,7 @@ tabPosition 属性 可指定选项卡的方向：上（top），下（bottom）�
     </Tabs>
   </Col>
   <Col col={3}>
-    <Tabs activeKey={2} tabPosition="right">
+    <Tabs defaultActiveKey={2} tabPosition="right">
       <TabPane eventKey={1}>选中</TabPane>
       <TabPane eventKey={2}>链接</TabPane>
       <TabPane eventKey={3}>其他</TabPane>

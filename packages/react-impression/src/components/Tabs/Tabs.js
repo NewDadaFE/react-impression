@@ -8,6 +8,7 @@ import DropdownTrigger from '../DropdownTrigger'
 import Button from '../Button'
 import ResizeObserver from 'resize-observer-polyfill'
 import isPropValid from '@emotion/is-prop-valid'
+import * as R from 'ramda'
 
 function Tabs(props) {
   const {
@@ -207,15 +208,18 @@ function Tabs(props) {
    */
   const onSelectHandle = useCallback(
     eventKey => {
+      // 非受控 activeKey未传
+      if (R.isNil(props.activeKey)) {
+        setActiveKey(eventKey)
+      }
       if (activeKey === eventKey || eventKey === undefined) {
         // 未传eventKey的选项 点击无法触发更新 和 onSelect回调
         return false
       }
-      setActiveKey(eventKey)
       onSelect && onSelect(eventKey)
       return true
     },
-    [activeKey, onSelect]
+    [activeKey, onSelect, props.activeKey]
   )
 
   const tabsChildren = useMemo(
@@ -262,13 +266,11 @@ function Tabs(props) {
 
   useEffect(
     () => {
-      setActiveKey(oldState => {
-        return oldState === props.activeKey ? oldState : props.activeKey
-      })
+      if (R.isNil(props.activeKey)) return
+      setActiveKey(props.activeKey)
     },
     [props.activeKey]
   )
-
   return (
     <div
       className={classnames(
