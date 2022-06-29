@@ -22,6 +22,7 @@ export default class InputGroupInput extends React.PureComponent {
 
   static defaultProps = {
     type: 'text',
+    placeholder: '请输入',
   }
   getValue() {
     return this.refMain ? this.refMain.value : undefined
@@ -31,14 +32,17 @@ export default class InputGroupInput extends React.PureComponent {
   }
 
   render() {
-    const { type, className, placeholder, ...others } = this.props
+    const { type, className, style, placeholder, ...others } = this.props
 
     return (
-      <div className='dada-input-group-input'>
+      <div
+        className={classnames('dada-input-group-input', className)}
+        style={style}
+      >
         <input
           {...others}
           type={type}
-          className={classnames('form-control', 'input-field', className)}
+          className='form-control input-field'
           placeholder={placeholder}
           ref={ref => (this.refMain = ref)}
         />

@@ -36,6 +36,7 @@
   "TimeSelect": "时间选择器",
   "Tooltip": "文字提示",
   "Trigger": "弹出层",
+  "TreeSelect": "树选择",
   "Steps": "步骤组件",
   "Attention": "提示栏",
   "Confirm": "确认框",
@@ -46,5 +47,7 @@
   "Notification": "通知提醒框",
   "Progress": "进度条",
   "Split": "垂直分割线",
-  "Menu": "导航菜单"
+  "Menu": "导航菜单",
+  "Cascader": "级联",
+  "PageHeader": "页头"
 }

@@ -2,7 +2,6 @@
   position: relative;
   z-index: $zindex-input;
   display: inline-flex;
-  width: $input-width;
   align-items: center;
   vertical-align: middle;
   background-color: $brand-pure;
@@ -45,6 +44,9 @@
   }
 
   &:disabled {
+    opacity: 1;
+    -webkit-text-fill-color: #bfbfbf;
+
     &,
     & + .dada-input-addon-before,
     & + .dada-input-addon-after,
@@ -64,23 +66,22 @@
   }
 }
 
-.input-field-addon {
-}
-
 .dada-input-addon-before {
-  margin-left: $input-padding-x;
+  margin-right: $input-padding-x;
   color: $gray-light;
 }
 
 .dada-input-addon-after,
 .input-addon {
-  margin-right: $input-padding-x;
+  margin-left: $input-padding-x;
   color: $gray-light;
 }
 
 // 清除图标
 .dada-input-clear {
   cursor: pointer;
+  position: absolute;
+  right: $input-padding-x;
 
   &:hover {
     color: $gray-darker;
@@ -110,6 +111,7 @@
     resize: none;
     cursor: not-allowed;
     border-color: $input-border-color;
+    color: $input-disabled-color;
   }
 
   // Placeholder

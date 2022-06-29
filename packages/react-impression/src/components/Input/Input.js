@@ -14,6 +14,20 @@ const inputAddonSizeMap = {
   lg: 'md',
 }
 
+const defaultPlaceholderMap = {
+  time: '请选择时间',
+  text: '请输入',
+  file: '请选择附件',
+}
+
+const getDefaultPlaceholder = type => {
+  if (['date', 'month', 'year', 'dateTime', 'time', 'second'].includes(type)) {
+    return defaultPlaceholderMap['time']
+  }
+  if (type === 'file') return defaultPlaceholderMap['file']
+  return defaultPlaceholderMap['text']
+}
+// wq
 export default class Input extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
@@ -95,6 +109,11 @@ export default class Input extends React.PureComponent {
      * 输入框后附加内容
      */
     addonAfter: PropTypes.element,
+
+    /**
+     * 清除两端的空格,只会应用在类型为text,textArea,search的输入框中 默认为true
+     */
+    clearSpace: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -102,6 +121,7 @@ export default class Input extends React.PureComponent {
     clearable: true,
     disabled: false,
     size: 'md',
+    clearSpace: true,
   }
 
   /**
@@ -233,8 +253,12 @@ export default class Input extends React.PureComponent {
   }
 
   handleInputChange = event => {
-    const { onChange } = this.props
-    onChange && onChange(event.target.value, event)
+    const { onChange, clearSpace } = this.props
+    let val = event.target.value
+    if (clearSpace) {
+      val.replace(/(^\s*)|(\s*$)/g, '')
+    }
+    onChange && onChange(val, event)
   }
 
   handleDateChange = value => {
@@ -253,6 +277,7 @@ export default class Input extends React.PureComponent {
       style,
       onClick,
       className,
+      clearSpace,
       children,
       onChange,
       size,
@@ -326,35 +351,42 @@ export default class Input extends React.PureComponent {
               onMouseLeave={this.handleHideClear}
               style={style}
             >
-              <Ico
-                type='calendar-o'
-                className='dada-input-addon-before'
-                onClick={this.handleShowDatePicker}
-              />
-              <input
-                type='text'
-                ref={ref => (this.refMain = ref)}
-                value={value}
-                defaultValue={defaultValue}
-                className={classnames(
-                  'form-control',
-                  { [`form-control-${size}`]: size && size !== 'md' },
-                  'input-field',
-                  'input-field-addon'
-                )}
-                readOnly
-                disabled={disabled}
-                placeholder={placeholder}
-                onClick={this.handleShowDatePicker}
-              />
-              <div className='dada-input-border' />
-              {clearable && showClear && (
+              <div
+                className={classnames('form-control', {
+                  [`form-control-${size}`]: size && size !== 'md',
+                })}
+                style={{ display: 'inline-flex' }}
+              >
                 <Ico
-                  type='times-circle'
-                  className='input-addon dada-input-clear'
-                  onClick={this.handleClearInput}
+                  type='calendar-o'
+                  className='dada-input-addon-before'
+                  onClick={this.handleShowDatePicker}
                 />
-              )}
+                <input
+                  type='text'
+                  ref={ref => (this.refMain = ref)}
+                  value={value}
+                  defaultValue={defaultValue}
+                  className='no-padding input-field'
+                  style={{ lineHeight: 'unset' }}
+                  readOnly
+                  disabled={disabled}
+                  placeholder={
+                    placeholder === undefined
+                      ? getDefaultPlaceholder(type)
+                      : placeholder
+                  }
+                  onClick={this.handleShowDatePicker}
+                />
+                <div className='dada-input-border' />
+                {clearable && showClear && (
+                  <Ico
+                    type='times-circle'
+                    className='input-addon dada-input-clear'
+                    onClick={this.handleClearInput}
+                  />
+                )}
+              </div>
             </div>
           </Trigger>
         )
@@ -390,35 +422,43 @@ export default class Input extends React.PureComponent {
               onMouseLeave={this.handleHideClear}
               style={style}
             >
-              <Ico
-                type='clock-o'
-                className='dada-input-addon-before'
-                onClick={this.handleShowDatePicker}
-              />
-              <input
-                type='text'
-                ref={ref => (this.refMain = ref)}
-                value={value}
-                defaultValue={defaultValue}
+              <div
                 className={classnames(
                   'form-control',
-                  size && `form-control-${size}`,
-                  'input-field',
-                  'input-field-addon'
+                  size && `form-control-${size}`
                 )}
-                readOnly
-                disabled={disabled}
-                placeholder={placeholder}
-                onClick={this.handleShowDatePicker}
-              />
-              <div className='dada-input-border' />
-              {clearable && showClear && (
+                style={{ display: 'inline-flex' }}
+              >
                 <Ico
-                  type='times-circle'
-                  className='input-addon dada-input-clear'
-                  onClick={this.handleClearInput}
+                  type='clock-o'
+                  className='dada-input-addon-before'
+                  onClick={this.handleShowDatePicker}
                 />
-              )}
+                <input
+                  type='text'
+                  ref={ref => (this.refMain = ref)}
+                  value={value}
+                  defaultValue={defaultValue}
+                  className='no-padding input-field'
+                  style={{ lineHeight: 'unset' }}
+                  readOnly
+                  disabled={disabled}
+                  placeholder={
+                    placeholder === undefined
+                      ? getDefaultPlaceholder(type)
+                      : placeholder
+                  }
+                  onClick={this.handleShowDatePicker}
+                />
+                <div className='dada-input-border' />
+                {clearable && showClear && (
+                  <Ico
+                    type='times-circle'
+                    className='input-addon dada-input-clear'
+                    onClick={this.handleClearInput}
+                  />
+                )}
+              </div>
             </div>
           </Trigger>
         )
@@ -433,28 +473,31 @@ export default class Input extends React.PureComponent {
             ref='container'
             style={style}
           >
-            {addonBefore || (
-              <Ico type='search' className='dada-input-addon-before' />
-            )}
-            <input
-              {...others}
-              type='text'
-              ref={ref => (this.refMain = ref)}
-              value={value}
-              className={classnames(
-                'form-control',
-                'input-field',
-                'input-field-addon'
+            <div className='form-control' style={{ display: 'inline-flex' }}>
+              {addonBefore || (
+                <Ico type='search' className='dada-input-addon-before' />
               )}
-              readOnly
-              onClick={onClick}
-              onChange={this.handleInputChange}
-              disabled={disabled}
-              placeholder={placeholder}
-            />
-            <div className='dada-input-border' />
-            {children}
-            {addonAfter}
+              <input
+                {...others}
+                type='text'
+                ref={ref => (this.refMain = ref)}
+                value={value}
+                className='no-padding input-field'
+                style={{ lineHeight: 'unset' }}
+                readOnly
+                onClick={onClick}
+                onChange={this.handleInputChange}
+                disabled={disabled}
+                placeholder={
+                  placeholder === undefined
+                    ? getDefaultPlaceholder(type)
+                    : placeholder
+                }
+              />
+              <div className='dada-input-border' />
+              {children}
+              {addonAfter}
+            </div>
           </div>
         )
       case 'file':
@@ -463,7 +506,11 @@ export default class Input extends React.PureComponent {
             {...others}
             ref={ref => (this.refMain = ref)}
             className={className}
-            placeholder={placeholder}
+            placeholder={
+              placeholder === undefined
+                ? getDefaultPlaceholder(type)
+                : placeholder
+            }
             onChange={this.handleUploadChange}
             style={style}
           />
@@ -478,7 +525,11 @@ export default class Input extends React.PureComponent {
             )}
             ref={ref => (this.refMain = ref)}
             disabled={disabled}
-            placeholder={placeholder}
+            placeholder={
+              placeholder === undefined
+                ? getDefaultPlaceholder(type)
+                : placeholder
+            }
             value={value}
             onChange={this.handleInputChange}
             defaultValue={defaultValue}
@@ -497,23 +548,33 @@ export default class Input extends React.PureComponent {
             ref='container'
             style={style}
           >
-            {addonBefore}
-            <input
-              {...others}
-              type={type}
-              ref={ref => (this.refMain = ref)}
-              value={value}
-              defaultValue={defaultValue}
-              className={classnames('form-control', 'input-field', {
+            <div
+              className={classnames('form-control', {
                 [`form-control-${size}`]: !!size,
               })}
-              onChange={this.handleInputChange}
-              disabled={disabled}
-              placeholder={placeholder}
-            />
-            <div className='dada-input-border' />
-            {children}
-            {addonAfter}
+              style={{ display: 'inline-flex' }}
+            >
+              {addonBefore}
+              <input
+                {...others}
+                type={type}
+                ref={ref => (this.refMain = ref)}
+                value={value}
+                defaultValue={defaultValue}
+                className='no-padding input-field'
+                style={{ lineHeight: 'unset' }}
+                onChange={this.handleInputChange}
+                disabled={disabled}
+                placeholder={
+                  placeholder === undefined
+                    ? getDefaultPlaceholder(type)
+                    : placeholder
+                }
+              />
+              <div className='dada-input-border' />
+              {children}
+              {addonAfter}
+            </div>
           </div>
         )
     }

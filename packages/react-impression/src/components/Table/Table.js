@@ -98,6 +98,11 @@ export default class Table extends React.PureComponent {
      * 子组件
      */
     children: PropTypes.node,
+
+    /**
+     * Tr标签的事件函数
+     */
+    onClickTr: PropTypes.func,
   }
   static defaultProps = {
     border: false,
@@ -134,8 +139,19 @@ export default class Table extends React.PureComponent {
           width,
           Header,
           sortable,
+          exclude,
+          onCell,
         } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header, sortable }
+        const obj = {
+          prop,
+          label,
+          fixed,
+          Cell,
+          width,
+          Header,
+          sortable,
+          onCell,
+        }
         return obj
       })
       columnList = columns
@@ -150,8 +166,19 @@ export default class Table extends React.PureComponent {
           width,
           Header,
           sortable,
+          exclude,
+          onCell,
         } = child.props
-        const obj = { prop, label, fixed, Cell, width, Header, sortable }
+        const obj = {
+          prop,
+          label,
+          fixed,
+          Cell,
+          width,
+          Header,
+          sortable,
+          onCell,
+        }
         return obj
       })
       columnList = columns
@@ -395,6 +422,26 @@ export default class Table extends React.PureComponent {
   }
 
   /**
+   * @description 点击时，该行tr选中激活状态
+   */
+  handleToggleSelected = index => {
+    const tbody = this.tableWrap.querySelectorAll('tbody')
+    tbody.forEach(item => {
+      const tr = item.children
+      const rows = [].filter.call(tr, row => this.hasClass(row, 'table-tr'))
+      rows.map((row, rowIndex) => {
+        if (rowIndex === index) {
+          this.hasClass(row, 'is-clicked')
+            ? this.removeClass(row, 'is-clicked')
+            : this.addClass(row, 'is-clicked')
+          return
+        }
+        this.removeClass(row, 'is-clicked')
+      })
+    })
+  }
+
+  /**
    * @description 多选时，该行tr选中激活状态
    * @memberof Table
    */
@@ -464,7 +511,7 @@ export default class Table extends React.PureComponent {
    */
   addClass(el, cls) {
     if (!el) return
-    const curClass = el.className
+    let curClass = el.className
     const classes = (cls || '').split(' ')
     classes.forEach(classItem => {
       if (!classItem) return
@@ -488,7 +535,7 @@ export default class Table extends React.PureComponent {
   removeClass(el, cls) {
     if (!el || !cls) return
     const classes = cls.split(' ')
-    const curClass = ' ' + el.className + ' '
+    let curClass = ' ' + el.className + ' '
 
     classes.forEach(classItem => {
       let clsName = classItem
@@ -653,6 +700,7 @@ export default class Table extends React.PureComponent {
       rowSelection,
       pagination,
       placeholder,
+      onClickTr,
     } = this.props
     const max = this.getMax(scroll)
     const {
@@ -710,6 +758,8 @@ export default class Table extends React.PureComponent {
                 handleSort={this.handleDefaultSort}
               />
               <TableBody
+                handleToggleSelected={this.handleToggleSelected}
+                onClickTr={onClickTr}
                 data={data}
                 stripe={stripe}
                 pagination={pagination}
@@ -753,6 +803,8 @@ export default class Table extends React.PureComponent {
                 handleSort={this.handleDefaultSort}
               />
               <TableBody
+                handleToggleSelected={this.handleToggleSelected}
+                onClickTr={onClickTr}
                 data={data}
                 fixLeft
                 fixRight={false}
@@ -797,6 +849,8 @@ export default class Table extends React.PureComponent {
                 handleSort={this.handleDefaultSort}
               />
               <TableBody
+                handleToggleSelected={this.handleToggleSelected}
+                onClickTr={onClickTr}
                 data={data}
                 fixRight
                 fixLeft={false}

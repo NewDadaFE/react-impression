@@ -3,7 +3,7 @@
  */
 @mixin menu-header-footer-common($height, $isTop) {
   position: absolute;
-  z-index: 1;
+  z-index: $zindex-menu;
   left: 0;
   right: 0;
   width: 100%;

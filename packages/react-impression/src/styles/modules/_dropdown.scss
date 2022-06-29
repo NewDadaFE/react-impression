@@ -17,6 +17,9 @@
   > a {
     outline: 0;
   }
+  .dropdown-caret {
+    transform: rotate(180deg);
+  }
 }
 
 .dropdown-picker {

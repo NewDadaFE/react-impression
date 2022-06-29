@@ -12,8 +12,13 @@ form {
   @include set-font-size($input-font-size-md);
 
   display: block;
+  width: $input-width;
   padding: $input-padding-y-md $input-padding-x;
   color: $input-color;
+
+  .dada-ico.dada-ico-sm {
+    line-height: rem(22px);
+  }
 
   &::-ms-expand {
     background-color: transparent;
@@ -92,18 +97,30 @@ input[type='month'] {
   @include set-font-size($input-font-size-xs);
 
   padding: $input-padding-y-xs $input-padding-x;
+
+  .dada-ico.dada-ico-sm {
+    line-height: rem(22px);
+  }
 }
 
 .form-control-sm {
   @include set-font-size($input-font-size-sm);
 
   padding: $input-padding-y-sm $input-padding-x;
+
+  .dada-ico.dada-ico-sm {
+    line-height: rem(22px);
+  }
 }
 
 .form-control-lg {
   @include set-font-size($input-font-size-lg);
 
   padding: $input-padding-y-lg $input-padding-x;
+
+  .dada-ico.dada-ico-md {
+    line-height: rem(24px);
+  }
 }
 
 // Form groups

@@ -10,6 +10,12 @@
   cursor: pointer;
   border: $border-width solid $gray-light;
   border-radius: $border-radius;
+  &.required {
+    border-color: $brand-danger;
+    ::placeholder {
+      color: $brand-danger;
+    }
+  }
 
   &.disabled {
     &,
@@ -24,9 +30,7 @@
 
   // 多选
   &.select-multiple {
-    width: auto;
-    min-width: $select-width;
-    max-width: $select-max-width;
+    width: $select-multiple-width;
   }
 
   & > .select-tags {
@@ -79,7 +83,6 @@
   width: 100%;
   padding: $input-padding-y-md $input-padding-x;
   cursor: pointer;
-  user-select: none;
   transition: border-color ease-in-out .18s, box-shadow ease-in-out .18s;
   text-align: left;
   text-overflow: ellipsis;
@@ -224,7 +227,6 @@
     color: $select-option-disable-color;
   }
 }
-
 .select-option {
   height: $select-height-md + rem(2px);
   padding: $select-option-padding-y $select-option-padding-x;

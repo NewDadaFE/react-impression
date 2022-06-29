@@ -95,23 +95,36 @@ export default class SelectOption extends React.PureComponent {
   handleActive = props => {
     const originalValue = props
       ? props.value
-      : this.parent().props.value || this.parent().state.value
+      : this.parent().props.value !== undefined
+        ? this.parent().props.value
+        : this.parent().state.value
     if (!this.parent().props.multiple) {
+      if (originalValue && originalValue.constructor === Object) {
+        this.setState({
+          active: this.isEqual(this.props.value, originalValue.value),
+        })
+        return
+      }
       this.setState({
         active: this.isEqual(this.props.value, originalValue),
       })
     } else {
-      if (!this.parent().props.remoteMethod) {
+      const [valueItem] = originalValue
+      if (
+        this.parent().props.remoteMethod &&
+        valueItem &&
+        valueItem.constructor === Object
+      ) {
         this.setState({
-          active: this.contains(this.props.value, originalValue),
+          active: !R.isEmpty(
+            R.filter(n => n.value === this.props.value, originalValue)
+          ),
           visible: true,
         })
         return
       }
       this.setState({
-        active: !R.isEmpty(
-          R.filter(n => n.value === this.props.value, originalValue)
-        ),
+        active: this.contains(this.props.value, originalValue),
         visible: true,
       })
     }

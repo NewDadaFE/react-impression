@@ -12,7 +12,6 @@ const iconSize = {
 
 const Button = React.forwardRef((props, ref) => {
   const {
-    theme,
     size,
     shape,
     className,
@@ -30,6 +29,12 @@ const Button = React.forwardRef((props, ref) => {
   delete others.outline
   delete others.eventKey
 
+  // 为了兼容旧版theme=default
+  let { theme } = props
+  if (theme === 'default') {
+    theme = 'secondary'
+  }
+
   // 判断按钮是否为纯图标按钮：无children 或者 shape 为 circle
   const isIconBtn = !children || shape === 'circle'
 
@@ -46,6 +51,27 @@ const Button = React.forwardRef((props, ref) => {
   } else {
     iconMargin = {}
   }
+  if (href) {
+    // 支持 href 属性 该功能将废弃（为了兼容2.0升级3.0）
+    return (
+      <a
+        href={href}
+        className={classnames(
+          {
+            [`btn btn-${theme}`]: !close,
+            [`btn-${shape}`]: shape && icon,
+            close: close,
+            'btn-block': block,
+          },
+          btnSize,
+          className
+        )}
+      >
+        {children}
+      </a>
+    )
+  }
+
   return (
     <button
       {...others}
@@ -65,7 +91,7 @@ const Button = React.forwardRef((props, ref) => {
       {loading ? (
         <span className='btn-loading-circle'>
           <span className='btn-loading-addon' style={iconMargin} />
-          {children && <span className='btn-loading-message'>加载中...</span>}
+          {children && <span className='btn-loading-message'>{children}</span>}
         </span>
       ) : (
         <>
@@ -113,9 +139,9 @@ Button.propTypes = {
   type: PropTypes.string,
 
   /**
-   * 主题样式
+   * 主题样式 <br /> One of: primary, secondary, dashed, text
    */
-  theme: PropTypes.oneOf(['primary', 'secondary', 'dashed', 'text']),
+  theme: PropTypes.string,
 
   /**
    * click事件

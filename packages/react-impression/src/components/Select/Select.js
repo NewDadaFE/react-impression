@@ -36,6 +36,7 @@ export default class Select extends React.PureComponent {
       currentPlaceholder: this.props.placeholder,
       queryText: '', // 搜索字段
       showClear: false,
+      scrollDistance: 10, // 距离底部多远触发onScrollBottom，默认值为10
     }
 
     this.state = {
@@ -84,6 +85,11 @@ export default class Select extends React.PureComponent {
     className: PropTypes.string,
 
     /**
+     * 是否必选项
+     */
+    required: PropTypes.bool,
+
+    /**
      * 占位文字
      */
     placeholder: PropTypes.string,
@@ -122,6 +128,20 @@ export default class Select extends React.PureComponent {
      * 弹出层宽度伸缩方式
      */
     stretch: PropTypes.oneOf(['sameWidth', 'auto']),
+
+    /**
+     * 指定selectOption渲染的dom节点
+     */
+    container: PropTypes.oneOfType([PropTypes.node, PropTypes.undefined]),
+    /**
+     * 滚动到底部
+     *
+     */
+    onScrollBottom: PropTypes.func,
+    /**
+     * 下拉加载loading文案
+     */
+    loadingText: PropTypes.string,
   }
   static defaultProps = {
     disabled: false,
@@ -132,6 +152,38 @@ export default class Select extends React.PureComponent {
 
   componentDidMount() {
     this.handleInit()
+    this.handleListnerScroll()
+  }
+
+  /**
+   * 处理下拉加载
+   */
+  handleListnerScroll = () => {
+    if (
+      this.props.onScrollBottom &&
+      typeof this.props.onScrollBottom === 'function'
+    ) {
+      this.addScrollListener()
+    }
+  }
+
+  handleScroll = e => {
+    if (
+      e.target.scrollHeight - e.target.scrollTop - e.target.offsetHeight <=
+      this.state.scrollDistance
+    ) {
+      this.props.onScrollBottom()
+    }
+  }
+
+  addScrollListener = () => {
+    this.selectInner &&
+      this.selectInner.addEventListener('scroll', this.handleScroll)
+  }
+
+  removeScrollListener = () => {
+    this.selectInner &&
+      this.selectInner.removeEventListener('scroll', this.handleScroll)
   }
 
   /**
@@ -154,7 +206,7 @@ export default class Select extends React.PureComponent {
       return { value, name: children.toString() }
     })
   }
-
+  // 目前多选远程搜索兼容两种用法，value可以是{value: '', name: ''}[] 也可以是value的集合string/number[]
   handleValueChange(props) {
     const {
       options,
@@ -177,28 +229,31 @@ export default class Select extends React.PureComponent {
     if (!multiple) {
       let selectedItem = {}
       // 非远程搜索
-      if (optionList.length > 0) {
+      if (remoteMethod && originValue && originValue.constructor === Object) {
+        selectedItem = originValue
+      } else if (optionList.length > 0) {
         selectedItem =
           optionList.find(option => {
             return option.value === originValue
           }) || {}
       }
-      if (remoteMethod) {
-        selectedItem = { value: originValue, name: originValue }
-      }
       dataToSet = {
         selectedItem,
         selectText: showOption
           ? selectText
-          : selectText || selectedItem.name || selectedItem.value || '',
+          : selectedItem.name || selectedItem.value || '',
         queryText: showOption
           ? queryText
-          : queryText || selectedItem.name || selectedItem.value || '',
+          : selectedItem.name || selectedItem.value || '',
+        currentPlaceholder: selectedItem.name || selectedItem.value || '',
       }
     }
     if (multiple) {
       let selectList = []
-      if (!remoteMethod) {
+      const [originalItem = ''] = originValue || []
+      if (originalItem && originalItem.constructor === Object) {
+        selectList = originValue
+      } else {
         originValue &&
           originValue.length > 0 &&
           optionList.length > 0 &&
@@ -209,14 +264,6 @@ export default class Select extends React.PureComponent {
             item && selectList.push(item)
           })
       }
-      if (remoteMethod) {
-        selectList = originValue.map(item => {
-          if (typeof item === 'string') {
-            return { name: item, value: item }
-          }
-          return item
-        })
-      }
       dataToSet = {
         selectedItem: selectList || [],
         selectText: '',
@@ -224,11 +271,13 @@ export default class Select extends React.PureComponent {
       }
     }
     this.setState(dataToSet, () => {
-      this.options.forEach(option => option.handleActive())
-      if (multiple) {
-        options.forEach(option => {
+      this.options.forEach(option => {
+        option.handleActive()
+        if (multiple) {
           option.queryChange(queryText, filterMethod)
-        })
+        }
+      })
+      if (multiple && !R.isEmpty(optionGroup)) {
         optionGroup.forEach(option => {
           option.queryChange(queryText)
         })
@@ -376,21 +425,23 @@ export default class Select extends React.PureComponent {
    * @param result
    */
   selectOptionHandle(result) {
-    const { onChange, value, multiple } = this.props
+    const {
+      onChange,
+      value,
+      multiple,
+      remoteMethod,
+      onScrollBottom,
+    } = this.props
     const { options, selectedOptions, selectedItem } = this.state
     const originValue = this.isPuppet ? value : this.state.value
     if (multiple) {
       this.setState({ currentPlaceholder: '' })
     }
-    let values = []
-    if (Array.isArray(originValue)) {
-      values = originValue.map(item => item.value)
-    }
     // 木偶组件
     if (!this.isPuppet) {
       this.setState(
         {
-          value: multiple ? [...values, result.value] : result.value,
+          value: multiple ? [...originValue, result.value] : result.value,
           selectText: multiple ? '' : result.name,
           queryText: multiple ? '' : result.name,
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
@@ -403,10 +454,22 @@ export default class Select extends React.PureComponent {
         }
       )
     } else {
+      if (
+        !multiple &&
+        this.state.queryText &&
+        !!remoteMethod &&
+        !!onScrollBottom
+      ) {
+        remoteMethod('')
+      }
       this.setState(
         {
           selectText: multiple ? '' : result.name,
-          queryText: multiple ? '' : result.name,
+          queryText: multiple
+            ? !!remoteMethod && !!onScrollBottom
+              ? this.state.queryText
+              : ''
+            : result.name,
         },
         () => {
           onChange &&
@@ -426,6 +489,12 @@ export default class Select extends React.PureComponent {
    */
   componentWillUnmount() {
     window.cancelAnimationFrame(this.requestId)
+    if (
+      this.props.onScrollBottom &&
+      typeof this.props.onScrollBottom === 'function'
+    ) {
+      this.removeScrollListener()
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -586,6 +655,10 @@ export default class Select extends React.PureComponent {
   hideOptionsHandler = popupVisible => {
     if (!popupVisible && this.state.showOption) {
       const { selectText } = this.state
+      const { remoteMethod, onScrollBottom } = this.props
+      if (this.state.queryText && !!remoteMethod && !!onScrollBottom) {
+        remoteMethod('')
+      }
       this.setState({ showOption: false, queryText: selectText }, () => {
         this.selectInner.scrollTop = 0
       })
@@ -599,10 +672,13 @@ export default class Select extends React.PureComponent {
       className,
       searchable,
       multiple,
+      required,
       placeholder,
       clearable,
       size,
       stretch,
+      container,
+      outsideDisabled = false,
     } = this.props
     const {
       showOption,
@@ -649,9 +725,14 @@ export default class Select extends React.PureComponent {
                 {this.emptyText && (
                   <p className='select-empty'>{this.emptyText}</p>
                 )}
+                {this.props.loadingText && (
+                  <p className='select-empty'>{this.props.loadingText}</p>
+                )}
               </ul>
             </div>
           }
+          container={container}
+          outsideDisabled={outsideDisabled}
         >
           <div
             style={style}
@@ -664,6 +745,7 @@ export default class Select extends React.PureComponent {
                 open: showOption && !searchable,
                 'select-open': showOption,
               },
+              { required },
               className
             )}
             onMouseEnter={this.handleShowClear}
@@ -702,8 +784,8 @@ export default class Select extends React.PureComponent {
               <input
                 type='text'
                 value={queryText}
-                readOnly={!searchable || (searchable && !showOption)}
-                placeholder={currentPlaceholder}
+                readOnly={!searchable}
+                placeholder={currentPlaceholder || placeholder}
                 disabled={disabled}
                 className='select-selection'
                 onChange={e => {

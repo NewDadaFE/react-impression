@@ -1,3 +1,59 @@
+## 3.0.2
+
+- 新增 **Table** 单元格合并功能
+
+## 3.0.1
+
+- 按钮 loading 状态内容修改为 children
+- Input 增加默认 placeholder
+
+## 3.0.0-alpha.28
+
+- revert “修复 **Table** fix 状态下显示错行问题”
+
+## 3.0.0-alpha.27
+
+- 修复 Select 非受控组件选择问题
+
+## 3.0.0-alpha.25
+
+- 修复 **Table** fix 状态下显示错行问题
+- 新增 **Ico** 合计 50 个图标，优化图标显示
+
+## 3.0.0-alpha.20
+
+- 修复 **Select** value 为 0，null 空字符串等显示问题
+
+## 3.0.0-alpha.19
+
+- 修复 **Input** IOS disabled 兼容性问题
+- 新增 **Select** 下拉加载功能
+
+## 3.0.0-alpha.16
+
+- 修复 **DropDown** 组件下拉 Icon 问题
+
+## 3.0.0-alpha.15
+
+- 修复 **InputGroutInput** others props 透传问题
+- 修复 **CheckboxGroup** 默认值问题
+
+## 3.0.0-alpha.6
+
+- 变更 **Select 组件**兼容 value 值为{value: '', name: ''}[] 或 value 的集合 string/number[]
+
+## 3.0.0-alpha.4
+
+- 变更 **Table 组件** 新增 onClickTr 行点击事件
+- 修复 **DatePicker 组件** 受控赋值选中问题
+
+## 3.0.0-alpha.1
+
+- 新增 **Cascader 组件**
+- 变更 **Modal 组件** 支持全屏模态框
+- 变更 **Navbar 组件** 新增系统 logo, 菜单，小工具，切换角色功能 导航栏位置固定在顶部
+- 变更 **Menu 组件** 新增 collapsed 状态下，自定义二级弹窗的挂载容器
+
 ## 3.0.0-beta.5
 
 - 新增 **Menu 组件**

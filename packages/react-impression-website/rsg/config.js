@@ -36,7 +36,7 @@ module.exports = {
         },
         {
           rel: 'stylesheet',
-          href: 'https://fe.imdada.cn/t/font_2010704_sseid8vi9ua.css',
+          href: 'https://fe.imdada.cn/font_2010704_odjayg6yaqk.css',
         },
       ],
     },
@@ -94,6 +94,7 @@ module.exports = {
         'Tabs',
         'TabPane',
         'Menu',
+        'PageHeader',
       ]),
     },
     {
@@ -112,6 +113,8 @@ module.exports = {
         'Select*',
         'Upload',
         'TimeSelect',
+        'TreeSelect',
+        'Cascader',
       ]),
     },
     {

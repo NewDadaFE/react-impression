@@ -436,8 +436,8 @@ class DefaultExample extends React.Component {
   constructor() {
     super()
     this.state = {
-      value: 'aa-1',
-      data: [],
+      value: 'aa1',
+      data: [{ name: 'aa-1', value: 'aa1' }],
     }
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
@@ -492,6 +492,7 @@ class DefaultExample extends React.Component {
             </SelectOption>
           ))}
         </Select>
+        <Button onClick={() => this.setState({ value: '' })}>置空</Button>
       </div>
     )
   }
@@ -506,8 +507,8 @@ class DefaultExample extends React.Component {
   constructor() {
     super()
     this.state = {
-      value: [{ name: 'aa-1', value: 'aa1' }],
-      data: [],
+      value: ['aa1'],
+      data: [{ name: 'aa-1', value: 'aa1' }],
     }
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
@@ -542,10 +543,10 @@ class DefaultExample extends React.Component {
   }
 
   handleChange(val, text) {
-    this.setState({ value: [...this.state.value, { value: val, name: text }] })
+    this.setState({ value: [...this.state.value, val] })
   }
   handleDelete(value) {
-    this.setState({ value: this.state.value.filter(n => n.value !== value) })
+    this.setState({ value: this.state.value.filter(n => n !== value) })
   }
 
   render() {
@@ -567,6 +568,93 @@ class DefaultExample extends React.Component {
             </SelectOption>
           ))}
         </Select>
+        <Button onClick={() => this.setState({ value: [] })}>置空</Button>
+      </div>
+    )
+  }
+}
+;<DefaultExample />
+```
+
+- **下拉加载更多**
+
+```js
+class DefaultExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      value: [],
+      data: [],
+      pages: 6,
+      pageNum: 0,
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.fetchData = this.fetchData.bind(this)
+    this.onScrollBottom = this.onScrollBottom.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+  get defaultData() {
+    const defaultData = []
+    const word = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    word.forEach(w1 => {
+      word.forEach(w2 => {
+        for (let i = 0; i < 5; i++) {
+          defaultData.push({
+            name: `${w1}${w2}-${i}`,
+            value: `${w1}${w2}${i}`,
+          })
+        }
+      })
+    })
+    return defaultData.slice(0, 60)
+  }
+  fetchData(pageNum) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let res = this.defaultData.slice(pageNum * 10, pageNum * 10 + 10)
+        this.setState({
+          data: [...this.state.data, ...res],
+        })
+        resolve()
+      }, 200)
+    })
+  }
+  onScrollBottom() {
+    const newPageNum = this.state.pageNum + 1
+    if (newPageNum < this.state.pages) {
+      this.setState({ pageNum: newPageNum })
+      this.fetchData(newPageNum)
+    }
+  }
+  componentDidMount() {
+    this.fetchData(0)
+  }
+  handleChange(val, text) {
+    this.setState({ value: [...this.state.value, val] })
+  }
+  handleDelete(value) {
+    this.setState({ value: this.state.value.filter(n => n !== value) })
+  }
+
+  render() {
+    const { value, data } = this.state
+    return (
+      <div>
+        <Select
+          ref={ref => (this.selectRef = ref)}
+          multiple
+          value={value}
+          onChange={this.handleChange}
+          onDelete={this.handleDelete}
+          onScrollBottom={this.onScrollBottom}
+        >
+          {data.map(item => (
+            <SelectOption key={item.value} value={item.value}>
+              {item.name}
+            </SelectOption>
+          ))}
+        </Select>
+        <Button onClick={() => this.setState({ value: [] })}>置空</Button>
       </div>
     )
   }

@@ -20,7 +20,7 @@ yarn add react-impression
 ```html
 <link
   rel="stylesheet"
-  href="https://fe.imdada.cn/t/font_2010704_sseid8vi9ua.css"
+  href="https://fe.imdada.cn/font_2010704_odjayg6yaqk.css"
 />
 ```
 
