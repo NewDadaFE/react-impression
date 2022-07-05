@@ -7,11 +7,23 @@ import { terser } from 'rollup-plugin-terser'
 export default {
   input: 'src/components/index.js',
   external: Object.keys(require('./package.json').peerDependencies),
-  output: {
-    file: 'dist/index.system.js',
-    format: 'system',
-    name: null,
-  },
+  output: [
+    {
+      file: 'dist/index.system.js',
+      format: 'system',
+      name: null,
+    },
+    {
+      file: 'dist/index.min.js',
+      format: 'iife',
+      name: null,
+    },
+    {
+      file: 'dist/index.es.js',
+      format: 'es',
+      name: null,
+    },
+  ],
   plugins: [
     resolve(),
     babel({
