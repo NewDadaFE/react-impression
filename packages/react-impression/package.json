@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm-run-all build:*",
     "build:esm": "gulp build --env production",
-    "build:system": "rollup -c",
+    "build:js": "rollup -c",
     "build:css": "node-sass --output-style compressed --importer ../../node_modules/node-sass-package-importer/dist/cli.js src/styles/index.scss dist/index.css"
   },
   "dependencies": {
