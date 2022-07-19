@@ -132,7 +132,7 @@ export default class Select extends React.PureComponent {
     /**
      * 指定selectOption渲染的dom节点
      */
-    container: PropTypes.oneOfType([PropTypes.node, PropTypes.undefined]),
+    container: PropTypes.node,
     /**
      * 滚动到底部
      *

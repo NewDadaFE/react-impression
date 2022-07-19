@@ -1,3 +1,8 @@
+## 3.0.3
+
+- fix **Select、Navbar、Trigger** propTypes 参数
+- 新增 **Table** 表格滚动阻止页面前进后退
+
 ## 3.0.2
 
 - 新增 **Table** 单元格合并功能

@@ -51,7 +51,7 @@ Navbar.propTypes = {
   /**
    * 自定义样式
    */
-  style: PropTypes.shape(),
+  style: PropTypes.object,
   /**
    * 自定义类名
    */
