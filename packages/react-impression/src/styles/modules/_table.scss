@@ -153,6 +153,7 @@
   }
   &.table-scroll {
     overflow-x: auto;
+    overscroll-behavior-x: none;
   }
 }
 .table-fixed-left {

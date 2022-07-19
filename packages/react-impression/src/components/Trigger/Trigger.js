@@ -102,7 +102,7 @@ Trigger.propTypes = {
   /**
    * 指定渲染的dom节点
    */
-  container: PropTypes.oneOfType([PropTypes.node, PropTypes.undefined]),
+  container: PropTypes.node,
   /**
    * 点击外部代理禁用
    */
