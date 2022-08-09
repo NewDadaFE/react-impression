@@ -1,0 +1,13 @@
+/**
+* 仅限洪流内样式标准使用
+* https://portal.imdada.cn
+*/
+$brand-bg: #f6f7fb !default;
+$font-size-root: 12px !default;
+$text-dark: #333;
+$body-bg: $brand-bg;
+$input-width: 100%;
+$nav-normal-padding: 12px 26px;
+$step-content-width: 13rem;
+
+@import './index.scss';
