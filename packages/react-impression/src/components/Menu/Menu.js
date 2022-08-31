@@ -23,8 +23,9 @@ function Menu({
   defaultOpenValues,
   defaultOpenAll,
   getItemContainer,
+  defaultCollapsed,
 }) {
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(defaultCollapsed)
   const [valuePath, setValuePath] = useState(defaultSelectedValues)
 
   const onCollapsedChange = () => {
@@ -139,6 +140,10 @@ Menu.propTypes = {
    * collapsed状态下，二级菜单弹框容器
    */
   getItemContainer: PropTypes.func,
+  /**
+   *  defaultCollapsed，默认展开收起状态
+   */
+  defaultCollapsed: PropTypes.bool,
 }
 
 Menu.defaultProps = {
@@ -151,6 +156,7 @@ Menu.defaultProps = {
   defaultSelectedValues: [],
   defaultOpenValues: [],
   defaultOpenAll: false,
+  defaultCollapsed: false,
 }
 
 Menu.SubMenu = SubMenu

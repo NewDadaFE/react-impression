@@ -1,3 +1,9 @@
+## 3.0.4
+
+- fix **Table** 错行问题
+- 新增 **Menu** defaultCollapsed 属性，控制默认折叠状态
+- fix **TreeSelect** 边框样式问题以及默认 switcherIcon
+
 ## 3.0.3
 
 - fix **Select、Navbar、Trigger** propTypes 参数

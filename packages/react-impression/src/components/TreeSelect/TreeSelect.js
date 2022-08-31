@@ -609,7 +609,7 @@ const TreeSelect = props => {
           {loadingNode === id ? (
             <Ico type='rotate-right spin' />
           ) : (
-            switcherIcon || <Ico type='angle-right' />
+            switcherIcon || <Ico type='caret-right' />
           )}
         </div>
       )
