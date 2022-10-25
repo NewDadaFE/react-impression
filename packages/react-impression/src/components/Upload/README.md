@@ -157,7 +157,7 @@ class UploadExample extends React.Component {
             <Ico type="plus" />
           </Upload>
           <Upload
-            src="https://placehold.it/240x400"
+            src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg"
             onChange={this.handlePreviewChange}
             preview
             disabled
@@ -173,14 +173,28 @@ class UploadExample extends React.Component {
 **多张图片上传**
 
 ```js
+const reader = new window.FileReader()
 class UploadExample extends React.Component {
   constructor() {
     super()
     this.state = {
       files: [
         {
-          name: 'xxx.png',
-          url: 'https://placehold.it/240x400',
+          name: '123',
+          url: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg',
+        },
+        {
+          name: '456',
+          url: 'https://img01.yzcdn.cn/vant/cat.jpeg',
+        },
+        {
+          name: '789',
+          url: 'https://img01.yzcdn.cn/vant/apple-1.jpg',
+        },
+        {
+          name: '10',
+          url:
+            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         },
       ],
     }
@@ -195,11 +209,16 @@ class UploadExample extends React.Component {
     const fileList = []
     for (let i = 0; i < filesLength; i++) {
       const file = files.item(i)
-      fileList.push({ name: file.name, url: 'https://placehold.it/400x240' })
+      reader.onload = e => {
+        fileList.push({ name: file.name, url: e.currentTarget.result })
+      }
+      reader.readAsDataURL(file)
     }
-    this.setState({
-      files: [...this.state.files, ...fileList],
-    })
+    setTimeout(() => {
+      this.setState({
+        files: [...this.state.files, ...fileList],
+      })
+    }, 50)
   }
 
   deleteFile(item, index) {

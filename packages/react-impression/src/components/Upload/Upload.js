@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Ico from '../Ico'
 import Image from '../Image'
+import ImagePreview from '../ImagePreview'
 
 const RotateDirection = {
   Clockwise: 1,
@@ -105,6 +106,7 @@ export default class Upload extends React.PureComponent {
       previewImageUrl: this.props.src,
       showBigPreview: false,
       previewImgRotate: 0,
+      startPosition: 0,
     }
   }
 
@@ -191,9 +193,10 @@ export default class Upload extends React.PureComponent {
   /**
    * 多图点击查看大图
    */
-  handleMulPreview = item => {
+  handleMulPreview = (item, index) => {
     this.setState({
       previewImageUrl: item.url,
+      startPosition: index,
     })
     this.handleTogglePreview()
   }
@@ -231,39 +234,6 @@ export default class Upload extends React.PureComponent {
     }
   }
 
-  showBigImagePreview = () => {
-    const { previewImageUrl, showBigPreview, previewImgRotate } = this.state
-
-    if (!showBigPreview) return null
-
-    return (
-      <div className='dada-big-img-preview' onClick={this.handleTogglePreview}>
-        <Ico
-          type='times-circle'
-          size='lg'
-          onClick={this.handleTogglePreview}
-          className='dada-big-img-preview-close'
-        />
-        <div className='dada-big-img-preview-inner'>
-          <img
-            src={previewImageUrl}
-            alt=''
-            className='dada-big-img-preview-image'
-            style={{ transform: `rotate(${previewImgRotate}deg)` }}
-          />
-        </div>
-        <div className='dada-big-img-preview-operations'>
-          <Ico
-            size='lg'
-            type='rotate-right'
-            onClick={this.handlePreviewRight}
-          />
-          <Ico size='lg' type='rotate-left' onClick={this.handlePreviewLeft} />
-        </div>
-      </div>
-    )
-  }
-
   render() {
     const {
       preview,
@@ -283,7 +253,7 @@ export default class Upload extends React.PureComponent {
     delete others.onChange
     delete others.onDeleteFile
 
-    const { file, previewImageUrl } = this.state
+    const { file, previewImageUrl, showBigPreview, startPosition } = this.state
     let { children } = this.props
 
     // 图片模式
@@ -331,7 +301,7 @@ export default class Upload extends React.PureComponent {
                     <div className='dada-upload-preview-mask'>
                       <Ico
                         type='eye-o'
-                        onClick={() => this.handleMulPreview(item)}
+                        onClick={() => this.handleMulPreview(item, index)}
                         className='dada-upload-preview-action'
                       />
                       {!disabled && (
@@ -356,7 +326,18 @@ export default class Upload extends React.PureComponent {
               />
               {imageUploadInner}
             </div>
-            {this.showBigImagePreview()}
+            {showBigPreview && (
+              <ImagePreview
+                files={files}
+                startPosition={startPosition}
+                onClose={() => {
+                  this.setState({
+                    showBigPreview: false,
+                    startPosition: 0,
+                  })
+                }}
+              />
+            )}
           </div>
         )
       }
@@ -401,7 +382,18 @@ export default class Upload extends React.PureComponent {
                   )}
                 </div>
               </div>
-              {this.showBigImagePreview()}
+              {showBigPreview && (
+                <ImagePreview
+                  files={[{ name: previewImageUrl, url: previewImageUrl }]}
+                  startPosition={startPosition}
+                  onClose={() => {
+                    this.setState({
+                      showBigPreview: false,
+                      startPosition: 0,
+                    })
+                  }}
+                />
+              )}
             </>
           ) : (
             imageUploadInner

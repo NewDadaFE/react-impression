@@ -126,6 +126,7 @@ module.exports = {
         'Card',
         'Collapse',
         'Image',
+        'ImagePreview',
         'ListGroup*',
         'Popover',
         'Table',
