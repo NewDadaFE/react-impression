@@ -105,7 +105,6 @@ export default class TableBody extends React.PureComponent {
   }
 
   renderTd = (array, item, type, isNeedHide, index, data) => {
-    const { fixed } = this.props
     return array.map((column, columnIndex) => {
       const {
         prop,
@@ -115,6 +114,7 @@ export default class TableBody extends React.PureComponent {
         Cell,
         width,
         onCell,
+        fixed,
       } = column
       let value
       if (prop && typeof prop === 'function') {
