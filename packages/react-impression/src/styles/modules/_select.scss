@@ -10,6 +10,9 @@
   cursor: pointer;
   border: $border-width solid $gray-light;
   border-radius: $border-radius;
+  &:hover {
+    border-color: $input-border-hover;
+  }
   &.required {
     border-color: $brand-danger;
     ::placeholder {
@@ -23,6 +26,7 @@
     .select-tags,
     .select-selection {
       cursor: not-allowed;
+      border-color: $gray-light;
       color: $select-selection-color;
       background-color: $select-disable-bg;
     }
@@ -58,9 +62,6 @@
 
     & > .dada-tag-default {
       margin: 2px;
-      color: $gray-base;
-      border-color: $select-tags-bg-color;
-      background-color: $select-tags-bg-color;
 
       &:hover {
         border-color: $gray-light;
@@ -92,7 +93,6 @@
   background-color: $select-bg-color;
   background-image: none;
   background-clip: padding-box;
-
   &:active,
   &:focus {
     outline: none;
@@ -157,7 +157,7 @@
   background-color: $select-bg-color;
   background-image: none;
   background-clip: padding-box;
-
+  
   &:active,
   &:focus {
     outline: none;
