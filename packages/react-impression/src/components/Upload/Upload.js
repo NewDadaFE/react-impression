@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Ico from '../Ico'
 import Image from '../Image'
@@ -343,62 +343,64 @@ export default class Upload extends React.PureComponent {
       }
       // 单张图片上传
       return (
-        <div
-          className={classnames('upload-preview', className)}
-          onClick={this.handleOpenFileDialog}
-          {...others}
-        >
-          <input
-            type='file'
-            accept={accept || 'image/*'}
-            ref={this.fileRef}
-            onChange={this.handleImagePreview}
-          />
-          {previewImageUrl ? (
-            <>
-              <div
-                className={classnames(
-                  'upload-preview-inner upload-preview-img',
-                  { disabled }
-                )}
-              >
-                <Image
-                  src={previewImageUrl}
-                  mode='aspectFill'
-                  className='dada-upload-preview-img'
-                />
-                <div className='dada-upload-preview-mask'>
-                  <Ico
-                    type='eye-o'
-                    onClick={this.handlePreview}
-                    className='dada-upload-preview-action'
+        <Fragment>
+          <div
+            className={classnames('upload-preview', className)}
+            onClick={this.handleOpenFileDialog}
+            {...others}
+          >
+            <input
+              type='file'
+              accept={accept || 'image/*'}
+              ref={this.fileRef}
+              onChange={this.handleImagePreview}
+            />
+            {previewImageUrl ? (
+              <>
+                <div
+                  className={classnames(
+                    'upload-preview-inner upload-preview-img',
+                    { disabled }
+                  )}
+                >
+                  <Image
+                    src={previewImageUrl}
+                    mode='aspectFill'
+                    className='dada-upload-preview-img'
                   />
-                  {!disabled && (
+                  <div className='dada-upload-preview-mask'>
                     <Ico
-                      type='trash-o'
-                      onClick={this.handleRemoveImg}
+                      type='eye-o'
+                      onClick={this.handlePreview}
                       className='dada-upload-preview-action'
                     />
-                  )}
+                    {!disabled && (
+                      <Ico
+                        type='trash-o'
+                        onClick={this.handleRemoveImg}
+                        className='dada-upload-preview-action'
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
-              {showBigPreview && (
-                <ImagePreview
-                  files={[{ name: previewImageUrl, url: previewImageUrl }]}
-                  startPosition={startPosition}
-                  onClose={() => {
-                    this.setState({
-                      showBigPreview: false,
-                      startPosition: 0,
-                    })
-                  }}
-                />
-              )}
-            </>
-          ) : (
-            imageUploadInner
+              </>
+            ) : (
+              imageUploadInner
+            )}
+          </div>
+          {showBigPreview && (
+            <ImagePreview
+              files={[{ name: previewImageUrl, url: previewImageUrl }]}
+              startPosition={startPosition}
+              onClose={() => {
+                this.setState({
+                  showBigPreview: false,
+                  startPosition: 0,
+                })
+              }}
+            />
           )}
-        </div>
+        </Fragment>
       )
     }
 

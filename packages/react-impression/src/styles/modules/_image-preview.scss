@@ -43,11 +43,22 @@
   &__item {
     height: 100%;
     width: 100%;
+    overflow: auto;
+    text-align: center;
+    scrollbar-width: none;
+    &__flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   &__image {
-    width: 100%;
-    height: 100%;
     transition: transform .3s;
+    object-fit: contain;
+    cursor: grab;
   }
   &__actions {
     height: 40px;

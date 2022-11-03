@@ -157,7 +157,7 @@ class UploadExample extends React.Component {
             <Ico type="plus" />
           </Upload>
           <Upload
-            src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg"
+            src="https://fe.imdada.cn/react-impression/image-1.jpeg"
             onChange={this.handlePreviewChange}
             preview
             disabled
@@ -181,20 +181,19 @@ class UploadExample extends React.Component {
       files: [
         {
           name: '123',
-          url: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg',
+          url: 'https://fe.imdada.cn/react-impression/image-1.jpeg',
         },
         {
           name: '456',
-          url: 'https://img01.yzcdn.cn/vant/cat.jpeg',
+          url: 'https://fe.imdada.cn/react-impression/image-2.jpeg',
         },
         {
           name: '789',
-          url: 'https://img01.yzcdn.cn/vant/apple-1.jpg',
+          url: 'https://fe.imdada.cn/react-impression/image-3.jpeg',
         },
         {
           name: '10',
-          url:
-            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+          url: 'https://fe.imdada.cn/react-impression/image-4.png',
         },
       ],
     }
