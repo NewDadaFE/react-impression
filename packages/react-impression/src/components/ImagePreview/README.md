@@ -54,7 +54,7 @@ initialState = {
       <Button
         onClick={() => setState({ showImagePreview: true, duration: 1000 })}
       >
-        设置1分钟动画时长
+        设置1s动画时长
       </Button>
     </Col>
     <Col>
