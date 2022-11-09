@@ -20,6 +20,11 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
   const count = files.length
   const trackRef = useRef()
   const [active, setActive] = useState(startPosition || 0)
+  /**
+   * 是否需要改变，主要最对轮播的最后一张和第一张
+   * 如果为true的话，把轮播的动画时间设置为0
+   * false的话，轮播的时间为duration
+   */
   const [needChange, setNeedChange] = useState(false)
   // 偏移的距离
   const [offset, setOffset] = useState(-startPosition * maxWidth)
@@ -43,7 +48,9 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
   useEffect(
     () => {
       try {
+        // 获取当前激活的dom
         const { children } = trackRef.current.children[active]
+        // 找到当前激活dom下的图片，通过对图片进行放大旋转
         const ImageDom = children[0]
         let zoomMultipe = scale * scaleMultipe
         if (scale === -1) {
@@ -53,6 +60,7 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
           zoomMultipe = 1
         }
         if (ImageDom && ImageDom.style) {
+          // 获取到图片的原始宽高，在原始大小的基础上进行放大缩小
           const { originalwidth, originalheight } = ImageDom.dataset
           if (!originalwidth || !originalheight) return
           const width = originalwidth * zoomMultipe
@@ -61,6 +69,10 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
           ImageDom.style.height = height + 'px'
           ImageDom.style.transform = `rotate(${rotate * rotateMultipe}deg)`
           const parentElement = ImageDom.parentElement
+          /**
+           * 判断放大后的图片是否超出容器的宽高，如果超出居中放大
+           * 没有超出的话居中显示，添加居中class flexClassName
+           */
           if (width > maxWidth || height > maxHeight) {
             parentElement.classList.remove(flexClassName)
             parentElement.scrollLeft = (width - maxWidth) / 2
@@ -74,6 +86,9 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
     [rotate, scale]
   )
 
+  /**
+   * 外层容器的样式，通过对容器样式的transform进行改变，来实现轮播效果
+   */
   const trackStyle = useMemo(
     () => {
       return {
@@ -85,6 +100,9 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
     [offset, needChange]
   )
 
+  /**
+   * 图片样式初始化是否可以点击
+   */
   const restoreClassName = useMemo(
     () => {
       if (scale === defaultScale && rotate === defaultRotate) return ''
@@ -93,11 +111,20 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
     [rotate, scale]
   )
 
+  /**
+   * 设置轮播Item移动
+   * @param {*} path 当前索引
+   * @param {*} offset 偏移的距离
+   */
   const setSwipeItemTransform = (path, offset) => {
     const { children } = trackRef.current
     children[path].style.transform = offset ? `translateX(${offset}px)` : ''
   }
 
+  /**
+   * 获取当前轮播Item的transform
+   * @param {*} path
+   */
   const getSwipeItemTransform = path => {
     const { children } = trackRef.current
     return children[path].style.transform
@@ -106,21 +133,34 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
   const handleChange = type => {
     if (swiping) return
     setSwiping(true)
+    // 轮播前需要把当前的图片恢复默认值
     handleRestore()
+    // 当前是否是第一张
     const atFirst = active === 0
+    // 当前是否是最后一张
     const atLast = active === count - 1
+    // 是否是点击下一张
     const isNext = type === 'next'
     let nextAt = isNext ? active + 1 : active - 1
+    // 如果下一个轮播的索引大于等于轮播图的数量，将索引设置为第一个，即为0
     if (nextAt >= count) {
       nextAt = 0
     }
+    // 如果下一个轮播的索引小于0，将索引设置为轮播图的最后一个，即为轮播图数量 - 1
     if (nextAt < 0) {
       nextAt = count - 1
     }
+    // 容器的偏移量，即为当前索引 * 容器的宽
     let nextOffset = -nextAt * maxWidth
     if (atFirst) {
+      // 获取第一个的Item的transform
       const transform = getSwipeItemTransform(active)
+      // 点击上一张
       if (!isNext) {
+        /**
+         * 如果transform有值，证明当前索引的Item偏移过，将当前索引的偏移量设置为0
+         * 如果没有值，将最后的一张图放在最左边，设置其偏移量的轮播图的数量 * 容器的宽
+         */
         if (transform) {
           setSwipeItemTransform(active, 0)
         } else {
@@ -129,6 +169,7 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
         }
       } else {
         if (transform) {
+          // 点击下一张需要把第一张的偏移设置为0，同是设置needChange为true
           setSwipeItemTransform(0, 0)
           setNeedChange(true)
           setOffset(0)
@@ -141,10 +182,13 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
       }
     } else if (atLast) {
       const transform = getSwipeItemTransform(active)
+      // 下一张操作
       if (isNext) {
         if (transform) {
+          // 把当前页的偏移设置为0
           setSwipeItemTransform(active, 0)
         } else {
+          // 如果是最后一张，需要把第一张的偏移量设置为轮播图的长度 * 容器的宽
           nextOffset = -count * maxWidth
           setSwipeItemTransform(nextAt, Math.abs(nextOffset))
         }
@@ -178,6 +222,7 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
 
   const handleRestore = () => {
     try {
+      // 设置图片的宽高为初始化，并且设置Item的滚动为0
       const { children } = trackRef.current.children[active]
       const ImageDom = children[0]
       const { originalwidth, originalheight } = ImageDom.dataset
@@ -194,6 +239,7 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
   }
 
   const onLoad = event => {
+    // 监听图片加载完成后，设置图片的宽高
     const { width, height } = event.target
     const imgWidth = width > maxWidth ? maxWidth : width
     const imgHeight = height > maxHeight ? maxHeight : height
