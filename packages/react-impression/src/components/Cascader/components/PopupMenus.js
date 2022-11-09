@@ -173,7 +173,7 @@ function PopupMenus(props) {
                 <li
                   key={index}
                   className={classnames('menu-li', {
-                    active: selectPath.includes(option),
+                    active: currentPath.includes(option),
                     'pointer-events-none': option.disabled,
                   })}
                   onMouseEnter={
