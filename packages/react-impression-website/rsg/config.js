@@ -108,6 +108,7 @@ module.exports = {
         'Tooltip',
         'Collapse',
         'Image',
+        'ImagePreview',
         'Table',
         'TableColumn',
         'ListGroup*',

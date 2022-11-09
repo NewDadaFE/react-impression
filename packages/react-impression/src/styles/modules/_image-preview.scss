@@ -1,0 +1,127 @@
+.dada-image-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transform: none;
+  animation: fadeIn .36s ease;
+  outline: 0;
+  background-color: $upload-preview-wrapper-bg;
+  z-index: $zindex-modal;
+  &-close {
+    position: fixed;
+    color: #fff;
+    top: 63px;
+    right: 64px;
+    cursor: pointer;
+    opacity: .6;
+    z-index: $zindex-modal;
+    &:hover {
+      opacity: 1;
+      transform: opacity .3;
+    }
+    .dada-ico.dada-ico-times {
+      font-size: 25px;
+    }
+  }
+}
+
+.dada-image-swipe {
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  &__track {
+    display: flex;
+    height: 100%;
+    position: relative;
+  }
+  &__item {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    scrollbar-width: none;
+    &__flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__image {
+    transition: transform .3s;
+    object-fit: contain;
+    cursor: grab;
+  }
+  &__actions {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    bottom: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    &-restore {
+      display: flex;
+      width: 20px;
+      height: 20px;
+      background-image: url(https://image3.imdada.cn/38c215b7f6864d089f2e2b35b861842e.png
+      );
+      background-repeat: no-repeat;
+      background-size: cover;
+      &.active {
+        background-image: url(https://image3.imdada.cn/1096afd8e50943a4a06558040fa43e57.png
+        );
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+    &-arrow {
+      width: 40px;
+      height: 40px;
+      background: rgba(48,49,51,0.8);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .dada-ico {
+        font-size: 24px !important;
+        color: #fff;
+        opacity: .6;
+        &:hover {
+          opacity: 1;
+          transform: opacity .3;
+        }
+      }
+    }
+    &-wrap {
+      background: rgba(0, 0,0, .6);
+      width: 312px;
+      height: 40px;
+      border-radius: 702px;
+      margin: 0 20px;
+      padding: 10px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      .dada-ico {
+        font-size: 21px !important;
+        color: #fff;
+        opacity: .6;
+        &:hover {
+          opacity: 1;
+          transform: opacity .3;
+        }
+      }
+    }
+  }
+}

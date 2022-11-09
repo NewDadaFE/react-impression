@@ -3,6 +3,7 @@
   "ButtonGroup": "按钮组合",
   "Ico": "图标",
   "Image": "图片",
+  "ImagePreview": "图片预览",
   "Row": "栅格行",
   "Col": "栅格列",
   "Flex": "伸缩容器",

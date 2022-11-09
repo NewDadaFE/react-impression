@@ -157,7 +157,7 @@ class UploadExample extends React.Component {
             <Ico type="plus" />
           </Upload>
           <Upload
-            src="https://placehold.it/240x400"
+            src="https://fe.imdada.cn/react-impression/image-1.jpeg"
             onChange={this.handlePreviewChange}
             preview
             disabled
@@ -173,14 +173,27 @@ class UploadExample extends React.Component {
 **多张图片上传**
 
 ```js
+const reader = new window.FileReader()
 class UploadExample extends React.Component {
   constructor() {
     super()
     this.state = {
       files: [
         {
-          name: 'xxx.png',
-          url: 'https://placehold.it/240x400',
+          name: '123',
+          url: 'https://fe.imdada.cn/react-impression/image-1.jpeg',
+        },
+        {
+          name: '456',
+          url: 'https://fe.imdada.cn/react-impression/image-2.jpeg',
+        },
+        {
+          name: '789',
+          url: 'https://fe.imdada.cn/react-impression/image-3.jpeg',
+        },
+        {
+          name: '10',
+          url: 'https://fe.imdada.cn/react-impression/image-4.png',
         },
       ],
     }
@@ -195,11 +208,16 @@ class UploadExample extends React.Component {
     const fileList = []
     for (let i = 0; i < filesLength; i++) {
       const file = files.item(i)
-      fileList.push({ name: file.name, url: 'https://placehold.it/400x240' })
+      reader.onload = e => {
+        fileList.push({ name: file.name, url: e.currentTarget.result })
+      }
+      reader.readAsDataURL(file)
     }
-    this.setState({
-      files: [...this.state.files, ...fileList],
-    })
+    setTimeout(() => {
+      this.setState({
+        files: [...this.state.files, ...fileList],
+      })
+    }, 50)
   }
 
   deleteFile(item, index) {
