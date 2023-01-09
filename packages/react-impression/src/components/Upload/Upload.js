@@ -194,11 +194,15 @@ export default class Upload extends React.PureComponent {
    * 多图点击查看大图
    */
   handleMulPreview = (item, index) => {
-    this.setState({
-      previewImageUrl: item.url,
-      startPosition: index,
-    })
-    this.handleTogglePreview()
+    this.setState(
+      {
+        previewImageUrl: item.url,
+        startPosition: index,
+      },
+      () => {
+        this.handleTogglePreview()
+      }
+    )
   }
 
   handleTogglePreview = event => {
@@ -326,7 +330,7 @@ export default class Upload extends React.PureComponent {
               />
               {imageUploadInner}
             </div>
-            {showBigPreview && (
+            <div style={{ display: showBigPreview ? 'block' : 'none' }}>
               <ImagePreview
                 files={files}
                 startPosition={startPosition}
@@ -337,7 +341,7 @@ export default class Upload extends React.PureComponent {
                   })
                 }}
               />
-            )}
+            </div>
           </div>
         )
       }
@@ -388,7 +392,7 @@ export default class Upload extends React.PureComponent {
               imageUploadInner
             )}
           </div>
-          {showBigPreview && (
+          <div style={{ display: showBigPreview ? 'block' : 'none' }}>
             <ImagePreview
               files={[{ name: previewImageUrl, url: previewImageUrl }]}
               startPosition={startPosition}
@@ -399,7 +403,7 @@ export default class Upload extends React.PureComponent {
                 })
               }}
             />
-          )}
+          </div>
         </Fragment>
       )
     }
