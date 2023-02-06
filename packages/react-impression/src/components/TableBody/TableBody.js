@@ -99,12 +99,14 @@ export default class TableBody extends React.PureComponent {
      * <Tr>标签的onClick事件函数
      */
     onClickTr: PropTypes.func,
+    isFullDispaly: PropTypes.bool,
   }
   static defaultProps = {
     isNeedHide: false,
   }
 
   renderTd = (array, item, type, isNeedHide, index, data) => {
+    const { isFullDispaly } = this.props
     return array.map((column, columnIndex) => {
       const {
         prop,
@@ -139,7 +141,7 @@ export default class TableBody extends React.PureComponent {
       } else {
         key = `normal${columnIndex}`
       }
-      if (!fixed) {
+      if (!fixed && isFullDispaly) {
         colunmWidth = width || ''
       } else {
         colunmWidth = width || defaultWidth
