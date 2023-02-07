@@ -78,6 +78,7 @@ export default class TableHead extends React.PureComponent {
      * 点击排序事件
      */
     handleSort: PropTypes.func,
+    isFullDispaly: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -85,7 +86,11 @@ export default class TableHead extends React.PureComponent {
   }
 
   renderHeader = (array, type, isNeedHide) => {
-    const { defaultSort: { prop, order } = {}, handleSort } = this.props
+    const {
+      defaultSort: { prop, order } = {},
+      handleSort,
+      isFullDispaly,
+    } = this.props
 
     const handleClickSort = propColumn => {
       // 暂不支持函数或者嵌套对象形式的prop
@@ -108,7 +113,7 @@ export default class TableHead extends React.PureComponent {
     return array.map((column, index) => {
       const { Header, width, fixed, sortable, prop: propColumn } = column
       let colWidth
-      if (!type && !fixed) {
+      if (!type && !fixed && isFullDispaly) {
         colWidth = width || ''
       } else {
         colWidth = width || defaultWidth
