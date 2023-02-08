@@ -119,6 +119,7 @@ Trigger.defaultProps = {
   popupShadow: 'normal',
   container: undefined,
   outsideDisabled: false,
+  style: {},
 }
 
 function Trigger(props) {
@@ -167,7 +168,7 @@ function Trigger(props) {
         },
         {
           name: 'sameWidth',
-          enabled: stretch === 'sameWidth',
+          enabled: stretch === 'sameWidth' && !style.width,
           phase: 'beforeWrite',
           requires: ['computeStyles'],
           fn: ({ state }) => {

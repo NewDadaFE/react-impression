@@ -66,7 +66,7 @@ export default class Select extends React.PureComponent {
     disabled: PropTypes.bool,
 
     /**
-     * 是否可清除，只适用于单选
+     * 是否可清除，当多选可清除时要搭配onClear使用，具体参考多选用法案例
      */
     clearable: PropTypes.bool,
 
@@ -142,6 +142,14 @@ export default class Select extends React.PureComponent {
      * 下拉加载loading文案
      */
     loadingText: PropTypes.string,
+    /**
+     * 自定义弹出层popup样式(主要用于自定义弹出层宽度，当指定弹出层宽度时，优先级大于'stretch'指定的伸缩宽度)
+     */
+    popupStyle: PropTypes.object,
+    /**
+     * 清除回调
+     */
+    onClear: PropTypes.func,
   }
   static defaultProps = {
     disabled: false,
@@ -271,7 +279,7 @@ export default class Select extends React.PureComponent {
       }
     }
     this.setState(dataToSet, () => {
-      this.options.forEach(option => {
+      options.forEach(option => {
         option.handleActive()
         if (multiple) {
           option.queryChange(queryText, filterMethod)
@@ -443,7 +451,7 @@ export default class Select extends React.PureComponent {
         {
           value: multiple ? [...originValue, result.value] : result.value,
           selectText: multiple ? '' : result.name,
-          queryText: multiple ? '' : result.name,
+          // queryText: multiple ? '' : result.name,
           selectedItem: multiple ? [...selectedItem, result.node] : result.node,
         },
         () => {
@@ -465,11 +473,7 @@ export default class Select extends React.PureComponent {
       this.setState(
         {
           selectText: multiple ? '' : result.name,
-          queryText: multiple
-            ? !!remoteMethod && !!onScrollBottom
-              ? this.state.queryText
-              : ''
-            : result.name,
+          queryText: multiple ? this.state.queryText : result.name,
         },
         () => {
           onChange &&
@@ -596,7 +600,10 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleShowClear = () => {
-    const showClear = !this.props.disabled && this.refMain && this.refMain.value
+    const { selectedItem } = this.state
+    const showClear =
+      !this.props.disabled &&
+      ((this.refMain && this.refMain.value) || !R.isEmpty(selectedItem))
     this.setState({ showClear })
   }
 
@@ -615,7 +622,7 @@ export default class Select extends React.PureComponent {
    * @memberof Select
    */
   handleClearSelect = event => {
-    const { disabled, onChange, placeholder } = this.props
+    const { disabled, onChange, placeholder, multiple, onClear } = this.props
     const { options } = this.state
     event.stopPropagation()
 
@@ -630,13 +637,16 @@ export default class Select extends React.PureComponent {
         showClear: false,
         selectText: '',
         queryText: '',
-        value: '',
+        value: multiple ? [] : '',
         showOption: false,
         currentPlaceholder: placeholder,
       },
       () => {
-        options.forEach(option => option.handleActive())
-        onChange && onChange('', '')
+        options.forEach(option =>
+          option.handleActive({ value: multiple ? [] : '' })
+        )
+        onChange && !multiple && onChange('', '')
+        onClear && onClear()
       }
     )
   }
@@ -679,6 +689,7 @@ export default class Select extends React.PureComponent {
       stretch,
       container,
       outsideDisabled = false,
+      popupStyle,
     } = this.props
     const {
       showOption,
@@ -701,6 +712,7 @@ export default class Select extends React.PureComponent {
           onPopupVisibleChange={this.hideOptionsHandler}
           stretch={stretch}
           transitionName='scale'
+          style={popupStyle}
           popup={
             <div className={classnames(this.wrapClass, 'select-options-wrap')}>
               {searchable && multiple && (
@@ -742,7 +754,7 @@ export default class Select extends React.PureComponent {
               {
                 'select-multiple': multiple,
                 disabled,
-                open: showOption && !searchable,
+                open: showOption && (!searchable || (searchable && multiple)),
                 'select-open': showOption,
               },
               { required },
@@ -798,7 +810,7 @@ export default class Select extends React.PureComponent {
               />
             )}
             {(!showClear || !clearable) &&
-              (!searchable || multiple || (searchable && !showOption)) && (
+              (!searchable || (searchable && multiple)) && (
               <Ico
                 type='angle-down'
                 className='select-addon'
@@ -815,7 +827,7 @@ export default class Select extends React.PureComponent {
                 onClick={this.toggleOptionsHandle}
               />
             )}
-            {clearable && showClear && !multiple && (
+            {clearable && showClear && (
               <Ico
                 type='times-circle'
                 className='select-addon'

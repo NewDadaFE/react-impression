@@ -133,11 +133,13 @@ class DefaultExample extends React.Component {
       clearableValue: 2,
       optionDisabledValue: 4,
       optionAutoValue: 5,
+      specifyOptionValue: 1,
     }
     this.handleNormalChange = this.handleNormalChange.bind(this)
     this.handleClearableChange = this.handleClearableChange.bind(this)
     this.handleOptionDisabledChange = this.handleOptionDisabledChange.bind(this)
     this.handleOptionAutoChange = this.handleOptionAutoChange.bind(this)
+    this.handleSpecifyOptionChange = this.handleSpecifyOptionChange.bind(this)
   }
 
   handleNormalChange(value, text) {
@@ -158,6 +160,9 @@ class DefaultExample extends React.Component {
 
   handleOptionAutoChange(value) {
     this.setState({ optionAutoValue: value })
+  }
+  handleSpecifyOptionChange(value) {
+    this.setState({ specifyOptionValue: value })
   }
 
   render() {
@@ -231,6 +236,20 @@ class DefaultExample extends React.Component {
             ))}
           </Select>
         </FormGroup>
+        <FormGroup>
+          <label>指定弹出层宽度：</label>
+          <Select
+            value={this.state.specifyOptionValue}
+            onChange={this.handleSpecifyOptionChange}
+            popupStyle={{ width: 300 }}
+          >
+            {selectList.map(item => (
+              <SelectOption value={item.value} key={item.value}>
+                {item.label}
+              </SelectOption>
+            ))}
+          </Select>
+        </FormGroup>
       </Form>
     )
   }
@@ -240,7 +259,7 @@ class DefaultExample extends React.Component {
 
 - **多选用法**
 
-多选用法下，value 值为数组，已选状态值的改变需要自行实现。
+多选用法下，value 值为数组，已选状态值的改变需要自行实现。多选支持可清除，配合清除回调 onClear 自行改变值。
 
 ```js
 const selectList = [
@@ -261,6 +280,7 @@ class DefaultExample extends React.Component {
     this.state = { selected: [5, 6] }
     this.handleChange = this.handleChange.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleClear = this.handleClear.bind(this)
   }
 
   handleChange(value) {
@@ -273,6 +293,11 @@ class DefaultExample extends React.Component {
       selected: selected.filter(val => val !== value),
     })
   }
+  handleClear() {
+    this.setState({
+      selected: [],
+    })
+  }
 
   render() {
     return (
@@ -280,6 +305,8 @@ class DefaultExample extends React.Component {
         value={this.state.selected}
         onChange={this.handleChange}
         onDelete={this.handleDelete}
+        onClear={this.handleClear}
+        clearable
         multiple
       >
         {selectList.map(item => (
@@ -644,6 +671,7 @@ class DefaultExample extends React.Component {
           ref={ref => (this.selectRef = ref)}
           multiple
           value={value}
+          clearable
           onChange={this.handleChange}
           onDelete={this.handleDelete}
           onScrollBottom={this.onScrollBottom}
