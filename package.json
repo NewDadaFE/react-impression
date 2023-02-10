@@ -30,7 +30,7 @@
     "gh-pages": "^3.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^2.6.7",
     "prettier-standard": "^8.0.1"
   },
   "eslintConfig": {
