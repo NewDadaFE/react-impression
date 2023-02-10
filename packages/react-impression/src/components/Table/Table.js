@@ -262,10 +262,10 @@ export default class Table extends React.PureComponent {
   componentDidMount() {
     const { rowSelection } = this.props
     let ro = new ResizeObserver(() => {
-      if (this.inner.scrollWidth <= this.scrollEl.offsetWidth) {
-        this.setState({ isFullDispaly: true })
-      } else {
-        this.setState({ isFullDispaly: false })
+      if (this.inner && this.scrollEl) {
+        this.setState({
+          isFullDispaly: this.inner.scrollWidth <= this.scrollEl.offsetWidth,
+        })
       }
     })
     ro.observe(this.scrollEl)
