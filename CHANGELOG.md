@@ -1,3 +1,7 @@
+## 3.1.2
+
+- fix **Table** @dada/form 中 useTable 用法下 scrollWidth 报错问题
+
 ## 3.1.1
 
 - fix **Table** 表格超出滚动并且未指定列宽时宽度为 0 的问题
