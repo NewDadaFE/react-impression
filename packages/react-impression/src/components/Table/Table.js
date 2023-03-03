@@ -262,10 +262,10 @@ export default class Table extends React.PureComponent {
   componentDidMount() {
     const { rowSelection } = this.props
     let ro = new ResizeObserver(() => {
-      if (this.inner.scrollWidth <= this.scrollEl.offsetWidth) {
-        this.setState({ isFullDispaly: true })
-      } else {
-        this.setState({ isFullDispaly: false })
+      if (this.inner && this.scrollEl) {
+        this.setState({
+          isFullDispaly: this.inner.scrollWidth <= this.scrollEl.offsetWidth,
+        })
       }
     })
     ro.observe(this.scrollEl)
@@ -773,6 +773,7 @@ export default class Table extends React.PureComponent {
                 indeterminate={indeterminate}
                 checkAll={checkAll}
                 fixed={fixed}
+                isFullDispaly={isFullDispaly}
                 isNeedHide={isNeedHide}
                 handleCheckOnSelectAll={this.handleCheckOnSelectAll}
                 defaultSort={defaultSort}
@@ -784,6 +785,7 @@ export default class Table extends React.PureComponent {
                 data={data}
                 stripe={stripe}
                 pagination={pagination}
+                isFullDispaly={isFullDispaly}
                 fixLeftColumns={fixLeftColumns}
                 fixRightColumns={fixRightColumns}
                 noFixColumns={noFixColumns}
@@ -819,6 +821,7 @@ export default class Table extends React.PureComponent {
                     checkAll={checkAll}
                     fixLeftColumns={fixLeftColumns}
                     fixRightColumns={fixRightColumns}
+                    isFullDispaly={isFullDispaly}
                     noFixColumns={noFixColumns}
                     rowSelection={rowSelection}
                     handleCheckOnSelectAll={this.handleCheckOnSelectAll}
@@ -835,6 +838,7 @@ export default class Table extends React.PureComponent {
                     pagination={pagination}
                     fixLeftColumns={fixLeftColumns}
                     fixRightColumns={fixRightColumns}
+                    isFullDispaly={isFullDispaly}
                     noFixColumns={noFixColumns}
                     onMouseEnter={this.handleHover}
                     rowSelection={rowSelection}

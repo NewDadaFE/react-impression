@@ -75,8 +75,8 @@
       @include step-info-status($step-active-color);
 
       .step-seq-icon {
-        color: white;
-        background-color: $step-active-color;
+        color: white !important;
+        background-color: $step-active-color !important;
       }
     }
 
@@ -160,8 +160,7 @@
         }
       }
 
-      &.selected,
-      &:hover {
+      &.selected {
         .step-icon,
         .step-title,
         .step-custom {

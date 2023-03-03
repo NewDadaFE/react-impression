@@ -1,6 +1,22 @@
-## 3.0.5
+## 3.1.3
+
+- fix **Steps** 修改 Step 图标和样式问题
+
+## 3.1.2
+
+- fix **Table** @dada/form 中 useTable 用法下 scrollWidth 报错问题
+
+## 3.1.1
+
+- fix **Table** 表格超出滚动并且未指定列宽时宽度为 0 的问题
+
+## 3.1.0
 
 - 新增 **ImagePreview** 组件
+- 新增 **Ico** 合计 46 个图标
+- fix **Cascader** 当前显示路径交互
+- fix **Select** 样式优化
+- fix 组件分类及目录与 ued 规范文档对齐
 
 ## 3.0.4
 
