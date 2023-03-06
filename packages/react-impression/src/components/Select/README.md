@@ -7,7 +7,6 @@
 - **尺寸**
 
 Select 的尺寸包括：xs，sm，md（默认），lg。<br/>
-注意：多选时，只有 md 和 xs 有效！
 
 ```js
 class SizeExample extends React.Component {
@@ -326,7 +325,7 @@ class DefaultExample extends React.Component {
 可搜索功能在单选和多选用法下表现有差异：
 
 1. 若为单选，搜索在选择框中进行；
-1. 若为多选，搜索在下拉弹出层中进行。
+2. 若为多选，搜索在下拉弹出层中进行。
 
 注意：filterMethod 属性不建议使用！它会在每个选项中去执行一次。
 

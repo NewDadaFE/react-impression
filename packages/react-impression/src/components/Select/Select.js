@@ -699,10 +699,7 @@ export default class Select extends React.PureComponent {
       showClear,
     } = this.state
     let { children } = this.props
-    let realSize = 'md'
-    if (!multiple || (multiple && (size === 'xs' || size === 'md'))) {
-      realSize = size
-    }
+    let realSize = size || 'md'
     return (
       <>
         <Trigger
@@ -780,7 +777,7 @@ export default class Select extends React.PureComponent {
                     return (
                       <Tag
                         key={item.value}
-                        size={size === 'xs' ? 'sm' : 'md'}
+                        size={size === 'xs' || size === 'sm' ? 'sm' : 'md'}
                         theme='default'
                         onClose={e => this.selectMultipleDelete(val, e)}
                         disabled={disabled}

@@ -206,6 +206,7 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
       }
     }
     setActive(nextAt)
+    setSwiping(false)
     setOffset(nextOffset)
   }
 
@@ -271,9 +272,24 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
     }
   }
 
+  useEffect(
+    () => {
+      setActive(startPosition || 0)
+      setOffset(-startPosition * maxWidth)
+    },
+    [startPosition]
+  )
+
   return (
     <div className='dada-image-preview'>
-      <div className='dada-image-preview-close' onClick={onClose}>
+      <div
+        className='dada-image-preview-close'
+        onClick={() => {
+          setScale(defaultScale)
+          setRotate(defaultRotate)
+          onClose()
+        }}
+      >
         <Ico type='times' />
       </div>
       <div
