@@ -1,3 +1,11 @@
+## 3.1.2-alpha.1
+
+- 新增 **Select** 多选模式下 sm 和 lg 尺寸
+- 新增 **Select** 多选清空操作
+- fix **Select** 多选搜索选中之后搜索内容清空问题
+- fix **Table** resizeObserver loop limit exceeded 报错问题
+- fix **Upload** 图片预览卡顿问题
+
 ## 3.1.2
 
 - fix **Table** @dada/form 中 useTable 用法下 scrollWidth 报错问题
