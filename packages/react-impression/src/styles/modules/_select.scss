@@ -10,17 +10,21 @@
   cursor: pointer;
   border: $border-width solid $gray-light;
   border-radius: $border-radius;
+
   &:hover {
     border-color: $input-border-hover;
   }
+
   &.required {
     border-color: $brand-danger;
+
     ::placeholder {
       color: $brand-danger;
     }
   }
 
   &.disabled {
+
     &,
     .select-addon,
     .select-tags,
@@ -37,7 +41,7 @@
     width: $select-multiple-width;
   }
 
-  & > .select-tags {
+  &>.select-tags {
     @include scroll-reset();
     @include set-font-size(1rem);
 
@@ -60,7 +64,7 @@
     background-image: none;
     background-clip: padding-box;
 
-    & > .dada-tag-default {
+    &>.dada-tag-default {
       margin: 2px;
 
       &:hover {
@@ -69,7 +73,7 @@
       }
     }
 
-    & > .select-placeholder {
+    &>.select-placeholder {
       @include set-font-size(rem(14px));
 
       display: inline-block;
@@ -93,6 +97,7 @@
   background-color: $select-bg-color;
   background-image: none;
   background-clip: padding-box;
+
   &:active,
   &:focus {
     outline: none;
@@ -157,7 +162,7 @@
   background-color: $select-bg-color;
   background-image: none;
   background-clip: padding-box;
-  
+
   &:active,
   &:focus {
     outline: none;
@@ -227,6 +232,7 @@
     color: $select-option-disable-color;
   }
 }
+
 .select-option {
   height: $select-height-md + rem(2px);
   padding: $select-option-padding-y $select-option-padding-x;
@@ -282,25 +288,25 @@
 
 // Size
 .dada-select-xs {
-  & > .select-selection {
+  &>.select-selection {
     height: $select-height-xs;
     padding: $select-padding-y-xs $select-addon-font-size-xs + $select-padding-x * 2 $select-padding-y-xs $select-padding-x;
     font-size: rem(12px);
     line-height: $select-line-height-xs;
   }
 
-  & > .select-addon {
+  &>.select-addon {
     height: $select-height-xs;
     font-size: $select-addon-font-size-sm;
     line-height: $select-height-xs;
   }
 
-  & > .select-tags {
+  &>.select-tags {
     min-height: $select-height-xs;
     max-height: $select-xs-multiple-max-height;
     padding: 1px 42px 1px 1px;
 
-    & > .select-placeholder {
+    &>.select-placeholder {
       @include set-font-size(rem(12px));
 
       padding: 2px 0 2px 6px;
@@ -309,29 +315,40 @@
 }
 
 .dada-select-sm {
-  & > .select-selection {
+  &>.select-selection {
     height: $select-height-sm;
     padding: $select-padding-y-sm $select-addon-font-size-sm + $select-padding-x * 2 $select-padding-y-sm $select-padding-x;
     font-size: $font-size-sm;
     line-height: $select-line-height-sm;
   }
 
-  & > .select-addon {
+  &>.select-addon {
     height: $select-height-sm;
     font-size: $select-addon-font-size-sm;
     line-height: $select-height-sm;
   }
+
+  &>.select-tags {
+    min-height: $select-height-sm;
+    max-height: $select-xs-multiple-max-height;
+
+    &>.select-placeholder {
+      @include set-font-size(rem(12px));
+
+      padding: 2px 0 2px 6px;
+    }
+  }
 }
 
 .dada-select-md {
-  & > .select-selection {
+  &>.select-selection {
     height: $select-height-md;
     padding: $select-padding-y-md $select-addon-font-size-md + $select-padding-x * 2 $select-padding-y-md $select-padding-x;
     font-size: $font-size-base;
     line-height: $select-line-height-md;
   }
 
-  & > .select-addon {
+  &>.select-addon {
     height: $select-height-md;
     font-size: $select-addon-font-size-md;
     line-height: $select-height-md;
@@ -339,16 +356,23 @@
 }
 
 .dada-select-lg {
-  & > .select-selection {
+  &>.select-selection {
     height: $select-height-lg;
     padding: $select-padding-y-lg $select-addon-font-size-lg + $select-padding-x * 2 $select-padding-y-lg $select-padding-x;
     font-size: $select-font-size-lg;
     line-height: $select-line-height-lg;
   }
 
-  & > .select-addon {
+  &>.select-addon {
     height: $select-height-lg;
     font-size: $select-addon-font-size-lg;
     line-height: $select-height-lg;
+  }
+
+  &>.select-tags {
+    min-height: $select-height-lg;
+    line-height: $select-line-height-lg;
+    vertical-align: middle;
+    padding: 4px 42px 4px 4px;
   }
 }
