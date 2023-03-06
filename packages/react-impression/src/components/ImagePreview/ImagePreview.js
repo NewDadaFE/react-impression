@@ -37,14 +37,6 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
   // 当前移动图片的ref，用来记录当前移动的clientX，clientY
   const imgClientRef = useRef()
 
-  useEffect(() => {
-    const bodyDom = document.body
-    bodyDom.style.setProperty('overflow', 'hidden')
-    return () => {
-      bodyDom.style.removeProperty('overflow')
-    }
-  }, [])
-
   useEffect(
     () => {
       try {
