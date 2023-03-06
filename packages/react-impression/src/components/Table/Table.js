@@ -252,7 +252,10 @@ export default class Table extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const ro = this.state.ro
+    const { ro, animationFrame } = this.state
+    if (animationFrame) {
+      window.cancelAnimationFrame(animationFrame)
+    }
     // 取消节点监听事件
     if (ro && ro.disconnect) {
       ro.disconnect()
@@ -261,15 +264,18 @@ export default class Table extends React.PureComponent {
 
   componentDidMount() {
     const { rowSelection } = this.props
+    let animationFrame = null
     let ro = new ResizeObserver(() => {
-      if (this.inner && this.scrollEl) {
-        this.setState({
-          isFullDispaly: this.inner.scrollWidth <= this.scrollEl.offsetWidth,
-        })
-      }
+      animationFrame = window.requestAnimationFrame(() => {
+        if (this.inner && this.scrollEl) {
+          this.setState({
+            isFullDispaly: this.inner.scrollWidth <= this.scrollEl.offsetWidth,
+          })
+        }
+      })
     })
     ro.observe(this.scrollEl)
-    this.setState({ ro })
+    this.setState({ ro, animationFrame })
     if (!rowSelection) return
     // 非受控组件
     if (!this.isPuppet) {
