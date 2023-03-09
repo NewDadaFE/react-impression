@@ -74,9 +74,13 @@
     &.current {
       @include step-info-status($step-active-color);
 
-      .step-seq-icon {
-        color: white !important;
-        background-color: $step-active-color !important;
+      .step-content {
+        .step-icon {
+          .step-seq-icon {
+            color: white;
+            background-color: $step-active-color;
+          }
+        }
       }
     }
 
