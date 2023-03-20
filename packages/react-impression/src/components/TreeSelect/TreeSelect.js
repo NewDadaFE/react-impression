@@ -59,13 +59,12 @@ const TreeSelect = props => {
     stretch,
     listHeight,
   } = props
+  const defaultSetValue = new Set(value || defaultValue || '')
   const SeacrhInputRef = useRef(null)
   const CountWidth = useRef(null)
   const ListPopupRef = useRef(null)
   const [filterString, setFileterString] = useState('')
-  const [checkedIds, setCheckedIds] = useState(
-    value ? new Set(value) : defaultValue ? new Set(defaultValue) : new Set()
-  )
+  const [checkedIds, setCheckedIds] = useState(defaultSetValue)
   const [searchFocus, setSearchFocus] = useState(false) // 记录搜索框的 聚焦状态
   const [expandIds, setExpandIds] = useState(new Set())
   const [showOption, setShowOption] = useState(false) // 下拉的状态改变
@@ -387,6 +386,68 @@ const TreeSelect = props => {
       return newcheckedIds
     },
     [clearAllChildNodeId, diffSublingNode, indeterminateIds, diffAllParent]
+  )
+  useEffect(
+    () => {
+      if (defaultSetValue.size > 0 && nodeRenderList.length) {
+        const newIndeterminateIds = new Set()
+        const newcheckedIds = R.clone(defaultSetValue)
+        function setSelectedKey(checkedItem) {
+          let { id: checkedId } = checkedItem
+          let { id: checkedParentId } = checkedItem.parent || {}
+          // 删除下级节点
+          if (checkedItem.children && checkedItem.children.length) {
+            clearAllChildNodeId(checkedItem, newcheckedIds, newIndeterminateIds)
+          }
+          // 向上遍历
+          if (checkedParentId) {
+            let sublingItemAllChecked = true
+            let diffNode = checkedItem
+            // 所有父级节点加为半选
+            diffAllParent(checkedItem, newIndeterminateIds)
+            // 检查 被选项 的兄弟 节点 是否已经被选择
+            // 如果已被选择 删掉 兄弟节点的数据 添加父节点 为 已选择节点
+            // 重复这个步骤直到 到 一级的节点
+            while (sublingItemAllChecked && diffNode.parent) {
+              // 获取兄弟节点的选中状态
+              const { checkedType, childrenId } = diffSublingNode(
+                diffNode,
+                newcheckedIds
+              )
+              // 父节点disabled的话要停止向上遍历
+              if (checkedType === 'all' && !diffNode.parent.disabled) {
+                childrenId.forEach(item => {
+                  newcheckedIds.delete(item)
+                })
+                // 准备下一次遍历 能循环就确定了有父节点
+                diffNode = diffNode.parent
+                // 添加 父 节点 为 已选状态
+                newcheckedIds.add(diffNode.id)
+                // 删除父节点的半选状态
+                newIndeterminateIds.delete(diffNode.id)
+              } else {
+                // 结束遍历
+                sublingItemAllChecked = false
+                // 添加该节点为已选节点
+                newcheckedIds.add(diffNode.id)
+              }
+            }
+          } else {
+            // 没有父节点 直接添加该节点为已选
+            newcheckedIds.add(checkedId)
+          }
+        }
+        defaultSetValue.forEach(item => {
+          const checkedItem = nodeRenderList.find(v => v.id === item)
+          if (checkedItem) {
+            setSelectedKey(checkedItem)
+          }
+        })
+        setCheckedIds(newcheckedIds)
+        setIndeterminateIds(newIndeterminateIds)
+      }
+    },
+    [nodeRenderList]
   )
   useEffect(
     () => {
