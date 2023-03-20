@@ -1,6 +1,13 @@
 ## 3.1.3
 
+- 新增 **Select** 多选模式下 sm 和 lg 尺寸
+- 新增 **Select** 多选清空操作
+- 新增 **Modal** 自定义挂载节点
+- fix **Select** 多选搜索选中之后搜索内容清空问题
+- fix **Table** resizeObserver loop limit exceeded 报错问题
+- fix **Upload** 图片预览卡顿问题
 - fix **Steps** 修改 Step 图标和样式问题
+- fix **TreeSelect** 初始化面板选中问题
 
 ## 3.1.2
 
