@@ -59,7 +59,7 @@ export default class Steps extends React.PureComponent {
       },
       error: {
         status: 'error',
-        icon: <Ico type='times-circle-o' />,
+        icon: <Ico type='times-circle' />,
       },
     }
     if (index < current) {

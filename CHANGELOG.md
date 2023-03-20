@@ -1,3 +1,7 @@
+## 3.1.3
+
+- fix **Steps** 修改 Step 图标和样式问题
+
 ## 3.1.2
 
 - fix **Table** @dada/form 中 useTable 用法下 scrollWidth 报错问题
