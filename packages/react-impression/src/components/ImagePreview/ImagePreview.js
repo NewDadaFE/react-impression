@@ -37,14 +37,6 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
   // 当前移动图片的ref，用来记录当前移动的clientX，clientY
   const imgClientRef = useRef()
 
-  useEffect(() => {
-    const bodyDom = document.body
-    bodyDom.style.setProperty('overflow', 'hidden')
-    return () => {
-      bodyDom.style.removeProperty('overflow')
-    }
-  }, [])
-
   useEffect(
     () => {
       try {
@@ -206,6 +198,7 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
       }
     }
     setActive(nextAt)
+    setSwiping(false)
     setOffset(nextOffset)
   }
 
@@ -271,9 +264,24 @@ function ImagePreview({ files = [], startPosition, duration, onClose }) {
     }
   }
 
+  useEffect(
+    () => {
+      setActive(startPosition || 0)
+      setOffset(-startPosition * maxWidth)
+    },
+    [startPosition]
+  )
+
   return (
     <div className='dada-image-preview'>
-      <div className='dada-image-preview-close' onClick={onClose}>
+      <div
+        className='dada-image-preview-close'
+        onClick={() => {
+          setScale(defaultScale)
+          setRotate(defaultRotate)
+          onClose()
+        }}
+      >
         <Ico type='times' />
       </div>
       <div

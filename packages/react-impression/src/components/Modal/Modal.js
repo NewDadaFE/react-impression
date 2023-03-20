@@ -55,6 +55,10 @@ class Modal extends React.Component {
      * 是否显示关闭图标
      */
     showClose: PropTypes.bool,
+    /**
+     * 挂载的父节点
+     */
+    customContainer: PropTypes.node,
   }
 
   static defaultProps = {
@@ -65,6 +69,7 @@ class Modal extends React.Component {
     closeOnOutsideClick: true,
     showClose: false,
     onClose: () => {},
+    customContainer: document.body,
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -101,11 +106,11 @@ class Modal extends React.Component {
   }
 
   disableScroll() {
-    document.body.style.setProperty('overflow', 'hidden')
+    this.props.customContainer.style.setProperty('overflow', 'hidden')
   }
 
   enableScroll() {
-    document.body.style.removeProperty('overflow')
+    this.props.customContainer.style.removeProperty('overflow')
   }
 
   handleStopPropagation = e => {
@@ -145,11 +150,12 @@ class Modal extends React.Component {
       scrollInside,
       onClose,
       showClose,
+      customContainer,
     } = this.props
     const sizeClass = size ? `modal-${size}` : null
 
     return (
-      <Portal>
+      <Portal node={customContainer}>
         <div
           style={this.modalStyle}
           onClick={this.handleModalMaskClick}
