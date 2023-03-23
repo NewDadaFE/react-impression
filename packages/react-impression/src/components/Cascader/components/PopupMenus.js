@@ -4,7 +4,6 @@ import * as R from 'ramda'
 import classnames from 'classnames'
 import { usePrevious } from '../hooks/usePrevious'
 
-const MAX_LEVEL = 4
 function PopupMenus(props) {
   const {
     fieldNames,
@@ -16,6 +15,7 @@ function PopupMenus(props) {
     changeOnSelect,
     loadData,
     onOptions,
+    maxLevel,
   } = props
   const [showOptions, setShowOptions] = useState([])
   const [currentPath, setCurrentPath] = useState([]) // 暂存当前显示路径
@@ -47,7 +47,7 @@ function PopupMenus(props) {
       let initialShowOption = [options]
       let initialPath = []
       // 当选中选项路径上选项被禁用时，则子集不展开，不反选
-      let disabledLevel = MAX_LEVEL // 被禁用选项级数
+      let disabledLevel = maxLevel // 被禁用选项级数
       initialValue.forEach((valueItem, index) => {
         const currentOption =
           filterOptions.find(n => n[fieldNames.value] === valueItem) || {}
@@ -65,7 +65,7 @@ function PopupMenus(props) {
       setCurrentPath(initialPath)
       setSelectPath(initialPath)
     },
-    [value, defaultValue, options, fieldNames, previousValue]
+    [value, defaultValue, options, fieldNames, previousValue, maxLevel]
   )
   // 显示下级菜单
   const showNextLevel = async (option = {}, level) => {
@@ -75,7 +75,7 @@ function PopupMenus(props) {
     setCurrentPath(path)
 
     // 当前为叶子节点，直接返回, 最多支持四级展示，最后一级直接返回
-    if ((loadData && isLeaf) || level >= MAX_LEVEL - 1) {
+    if ((loadData && isLeaf) || level >= maxLevel - 1) {
       return
     }
     // 非叶子节点，并且子集不存在时，加载下一级
@@ -138,7 +138,7 @@ function PopupMenus(props) {
   const handleClick = (option = {}, level, hasChildren) => {
     if (isLoading.current) return
     // 有子集 显示下一集菜单
-    if (hasChildren || (!option.isLeaf && loadData && level < MAX_LEVEL - 1)) {
+    if (hasChildren || (!option.isLeaf && loadData && level < maxLevel - 1)) {
       showNextLevel(option, level)
     }
     // 无子集，非动态加载/父级可选/动态加载并且为叶子节点
@@ -146,7 +146,7 @@ function PopupMenus(props) {
       (!hasChildren && !loadData) ||
       changeOnSelect ||
       (option.isLeaf && loadData) ||
-      level >= MAX_LEVEL - 1
+      level >= maxLevel - 1
     ) {
       handleSelect(option, level)
     }
@@ -188,7 +188,7 @@ function PopupMenus(props) {
                     {option[fieldNames.label]}
                   </span>
                   {(isHasChildren || (!option.isLeaf && loadData)) &&
-                    level < MAX_LEVEL - 1 &&
+                    level < maxLevel - 1 &&
                     (lastPath[fieldNames.value] === option[fieldNames.value] &&
                     isLoading.current ? (
                         <i className='dada-ico dada-ico-rotate-right offset-l animation-loading' />

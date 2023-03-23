@@ -370,6 +370,10 @@ Cascader.propTypes = {
    * 是否可清除
    */
   clearable: PropTypes.bool,
+  /**
+   * 最多显示多少个层级
+   */
+  maxLevel: PropTypes.number,
 }
 Cascader.defaultProps = {
   expandTrigger: 'click',
@@ -381,6 +385,7 @@ Cascader.defaultProps = {
   clearable: false,
   placeholder: '请选择',
   disabled: false,
+  maxLevel: 4,
   // value: [],
 }
 
