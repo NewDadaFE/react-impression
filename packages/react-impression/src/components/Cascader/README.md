@@ -489,3 +489,9 @@ async function loadData(selectedOptions) {
   </FormGroup>
 </Form>
 ```
+
+### 变更记录
+
+v3.1.4
+
+- 新增 maxLeval 属性，支持自定义最大层级展示
